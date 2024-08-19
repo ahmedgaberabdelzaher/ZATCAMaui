@@ -2,8 +2,6 @@
 using System.Globalization;
 using System.Text;
 using System.Windows.Input;
-
-
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
@@ -18,1023 +16,939 @@ using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.ContractReleasePages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
-using static ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse;
-using Metadata = ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse.Metadata;
+using Metadata = ZATCAMAUI.Models.ContractRelease.Metadata;
 
-namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
+namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
+
+public class ContractReleaseViewModel : BaseViewModel
 {
+    #region Enums
 
-    public class ContractReleaseViewModel : BaseViewModel
+    enum PagesEnum
     {
-        #region Enums
+        CrReleaseDetailsView,
+        CrAttachmentsView,
+        CrRemarksAndDescriptionView,
+        CrDeclarationView,
+        CrSummaryView,
+    }
 
-        enum PagesEnum
+    #endregion
+
+    #region Commands
+
+    public ICommand ReleaseDetailsConBtnTapped { get; set; }
+    public ICommand AttachmentsConBtnTapped { get; set; }
+    public ICommand RemarksAndDescConBtnTapped { get; set; }
+    public ICommand DeclarationConBtnTapped { get; set; }
+    public ICommand SummaryConBtnTapped { get; set; }
+    public ICommand ContractInstructionsClicked { get; set; }
+    public ICommand CloseClick { get; set; }
+    public ICommand GoBackClick { get; set; }
+    public ICommand GoBackToReleaseDetails { get; set; }
+    public ICommand GoBackToAttachments { get; set; }
+    public ICommand GoBackToDeclaration { get; set; }
+    public ICommand ShowPicker { get; set; }
+    public ICommand ShowStartDatePicker { get; set; }
+    public ICommand ShowEndDatePicker { get; set; }
+
+    public ICommand ContractProfitPercentCommand { get; set; }
+    public ICommand ProfitEstimatedContractCommand { get; set; }
+    public ICommand EstimatedProfitZakatCommand { get; set; }
+    public ICommand EstimatedProfitTaxCommand { get; set; }
+    public ICommand ValueofZakatDuesCommand { get; set; }
+    public ICommand ValueofTaxDuesCommand { get; set; }
+    public ICommand TotalDuesCommand { get; set; }
+    public ICommand NewContractCopyAttachmentTapped { get; set; }
+    public ICommand NewInvoiceAttachmentTapped { get; set; }
+
+    #endregion
+
+    public bool isSubmitted = false;
+
+    private bool _isInvoiceAttachments = true;
+
+    private bool _isBackButtonVisible = true;
+
+    public bool IsBackButtonVisible
+    {
+        get { return _isBackButtonVisible; }
+        set
         {
-            CrReleaseDetailsView,
-            CrAttachmentsView,
-            CrRemarksAndDescriptionView,
-            CrDeclarationView,
-            CrSummaryView,
+            if (_isBackButtonVisible == value) return;
+            _isBackButtonVisible = value;
+            OnPropertyChanged("IsBackButtonVisible");
         }
+    }
 
-        #endregion
+    private bool _isReleaseDetailsVisible = false;
 
-        #region Commands
-
-        public ICommand ReleaseDetailsConBtnTapped { get; set; }
-        public ICommand AttachmentsConBtnTapped { get; set; }
-        public ICommand RemarksAndDescConBtnTapped { get; set; }
-        public ICommand DeclarationConBtnTapped { get; set; }
-        public ICommand SummaryConBtnTapped { get; set; }
-        public ICommand ContractInstructionsClicked { get; set; }
-        public ICommand CloseClick { get; set; }
-        public ICommand GoBackClick { get; set; }
-        public ICommand GoBackToReleaseDetails { get; set; }
-        public ICommand GoBackToAttachments { get; set; }
-        public ICommand GoBackToDeclaration { get; set; }
-        public ICommand ShowPicker { get; set; }
-        public ICommand ShowStartDatePicker { get; set; }
-        public ICommand ShowEndDatePicker { get; set; }
-
-        public ICommand ContractProfitPercentCommand { get; set; }
-        public ICommand ProfitEstimatedContractCommand { get; set; }
-        public ICommand EstimatedProfitZakatCommand { get; set; }
-        public ICommand EstimatedProfitTaxCommand { get; set; }
-        public ICommand ValueofZakatDuesCommand { get; set; }
-        public ICommand ValueofTaxDuesCommand { get; set; }
-        public ICommand TotalDuesCommand { get; set; }
-        public ICommand NewContractCopyAttachmentTapped { get; set; }
-        public ICommand NewInvoiceAttachmentTapped { get; set; }
-
-        #endregion
-
-        public bool isSubmitted = false;
-
-        private bool _isInvoiceAttachments = true;
-
-        private bool _isBackButtonVisible = true;
-
-        public bool IsBackButtonVisible
+    public bool IsReleaseDetailsVisible
+    {
+        get { return _isReleaseDetailsVisible; }
+        set
         {
-            get { return _isBackButtonVisible; }
-            set
-            {
-                if (_isBackButtonVisible == value) return;
-                _isBackButtonVisible = value;
-                OnPropertyChanged("IsBackButtonVisible");
-            }
+            if (_isReleaseDetailsVisible == value) return;
+
+            _isReleaseDetailsVisible = value;
+            OnPropertyChanged("IsReleaseDetailsVisible");
         }
+    }
 
-        private bool _isReleaseDetailsVisible = false;
 
-        public bool IsReleaseDetailsVisible
+    private bool _attachmentsVisible = false;
+
+    public bool AttachmentsVisible
+    {
+        get { return _attachmentsVisible; }
+        set
         {
-            get { return _isReleaseDetailsVisible; }
-            set
-            {
-                if (_isReleaseDetailsVisible == value) return;
+            if (_attachmentsVisible == value) return;
 
-                _isReleaseDetailsVisible = value;
-                OnPropertyChanged("IsReleaseDetailsVisible");
-            }
+            _attachmentsVisible = value;
+            OnPropertyChanged("AttachmentsVisible");
         }
+    }
 
+    private bool _remarksAndDescVisible = false;
 
-        private bool _isLoading1 = false;
-
-        public bool IsLoading1
+    public bool RemarksAndDescVisible
+    {
+        get { return _remarksAndDescVisible; }
+        set
         {
-            get { return _isLoading1; }
-            set
-            {
-                if (_isLoading1 == value) return;
+            if (_remarksAndDescVisible == value) return;
 
-                _isLoading1 = value;
-                OnPropertyChanged("IsLoading1");
-            }
+            _remarksAndDescVisible = value;
+            OnPropertyChanged("RemarksAndDescVisible");
         }
+    }
 
-        private bool _attachmentsVisible = false;
+    private bool _declarationVisible = false;
 
-        public bool AttachmentsVisible
+    public bool DeclarationVisible
+    {
+        get { return _declarationVisible; }
+        set
         {
-            get { return _attachmentsVisible; }
-            set
-            {
-                if (_attachmentsVisible == value) return;
+            if (_declarationVisible == value) return;
 
-                _attachmentsVisible = value;
-                OnPropertyChanged("AttachmentsVisible");
-            }
+            _declarationVisible = value;
+            OnPropertyChanged("DeclarationVisible");
         }
+    }
 
-        private bool _remarksAndDescVisible = false;
+    private bool _isReleaseDetailsEnabled = false;
 
-        public bool RemarksAndDescVisible
+    public bool IsReleaseDetailsEnabled
+    {
+        get { return _isReleaseDetailsEnabled; }
+        set
         {
-            get { return _remarksAndDescVisible; }
-            set
-            {
-                if (_remarksAndDescVisible == value) return;
+            if (_isReleaseDetailsEnabled == value) return;
 
-                _remarksAndDescVisible = value;
-                OnPropertyChanged("RemarksAndDescVisible");
-            }
+            _isReleaseDetailsEnabled = value;
+            ReleaseDetailsButtonBackGroundColor = (_isReleaseDetailsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
+            OnPropertyChanged("IsReleaseDetailsEnabled");
         }
+    }
 
-        private bool _declarationVisible = false;
-
-        public bool DeclarationVisible
+    private Color _releaseDetailsButtonBackGroundColor = (Color)Application.Current.Resources["Secondary"];
+    public Color ReleaseDetailsButtonBackGroundColor
+    {
+        get
         {
-            get { return _declarationVisible; }
-            set
-            {
-                if (_declarationVisible == value) return;
-
-                _declarationVisible = value;
-                OnPropertyChanged("DeclarationVisible");
-            }
+            return _releaseDetailsButtonBackGroundColor;
         }
-
-        private bool _isReleaseDetailsEnabled = false;
-
-        public bool IsReleaseDetailsEnabled
+        set
         {
-            get { return _isReleaseDetailsEnabled; }
-            set
+            if (_releaseDetailsButtonBackGroundColor == value)
             {
-                if (_isReleaseDetailsEnabled == value) return;
-
-                _isReleaseDetailsEnabled = value;
-                ReleaseDetailsButtonBackGroundColor = _isReleaseDetailsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
-                OnPropertyChanged("IsReleaseDetailsEnabled");
+                return;
             }
+            _releaseDetailsButtonBackGroundColor = value;
+            OnPropertyChanged("ReleaseDetailsButtonBackGroundColor");
         }
+    }
 
-        private Color _releaseDetailsButtonBackGroundColor = (Color)Application.Current.Resources["Secondary"];
-        public Color ReleaseDetailsButtonBackGroundColor
+    private bool _isAttachmentsEnabled = false;
+
+    public bool IsAttachmentsEnabled
+    {
+        get { return _isAttachmentsEnabled; }
+        set
         {
-            get
-            {
-                return _releaseDetailsButtonBackGroundColor;
-            }
-            set
-            {
-                if (_releaseDetailsButtonBackGroundColor == value)
-                {
-                    return;
-                }
-                _releaseDetailsButtonBackGroundColor = value;
-                OnPropertyChanged("ReleaseDetailsButtonBackGroundColor");
-            }
+            if (_isAttachmentsEnabled == value) return;
+
+            _isAttachmentsEnabled = value;
+            AttachButtonBackGroundColor = (_isAttachmentsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
+            OnPropertyChanged("IsAttachmentsEnabled");
         }
+    }
 
-        private bool _isAttachmentsEnabled = false;
-
-        public bool IsAttachmentsEnabled
+    private Color _attachButtonBackGroundColor = (Color)Application.Current.Resources["Secondary"];
+    public Color AttachButtonBackGroundColor
+    {
+        get
         {
-            get { return _isAttachmentsEnabled; }
-            set
-            {
-                if (_isAttachmentsEnabled == value) return;
-
-                _isAttachmentsEnabled = value;
-                AttachButtonBackGroundColor = _isAttachmentsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
-                OnPropertyChanged("IsAttachmentsEnabled");
-            }
+            return _attachButtonBackGroundColor;
         }
-
-        private Color _attachButtonBackGroundColor = (Color)Application.Current.Resources["Secondary"];
-        public Color AttachButtonBackGroundColor
+        set
         {
-            get
+            if (_attachButtonBackGroundColor == value)
             {
-                return _attachButtonBackGroundColor;
+                return;
             }
-            set
-            {
-                if (_attachButtonBackGroundColor == value)
-                {
-                    return;
-                }
-                _attachButtonBackGroundColor = value;
-                OnPropertyChanged("AttachButtonBackGroundColor");
-            }
+            _attachButtonBackGroundColor = value;
+            OnPropertyChanged("AttachButtonBackGroundColor");
         }
+    }
 
-        private bool _isDeclarationEnabled = false;
+    private bool _isDeclarationEnabled = false;
 
-        public bool IsDeclarationEnabled
+    public bool IsDeclarationEnabled
+    {
+        get { return _isDeclarationEnabled; }
+        set
         {
-            get { return _isDeclarationEnabled; }
-            set
-            {
-                if (_isDeclarationEnabled == value) return;
+            if (_isDeclarationEnabled == value) return;
 
-                _isDeclarationEnabled = value;
-                DeclarationButtonBackGroundColor = _isDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
+            _isDeclarationEnabled = value;
+            DeclarationButtonBackGroundColor = (_isDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
 
-                OnPropertyChanged("IsDeclarationEnabled");
-            }
+            OnPropertyChanged("IsDeclarationEnabled");
         }
+    }
 
-        private string _charCountDetailDescription = 0 + "/" + 132;
-        public string charCountDetailDescription
+    private string _charCountDetailDescription = 0 + "/" + 132;
+    public string charCountDetailDescription
+    {
+        get
         {
-            get
-            {
-                return _charCountDetailDescription;
-            }
-            set
-            {
-                if (_charCountDetailDescription == value) return;
-
-                _charCountDetailDescription = value;
-                OnPropertyChanged("charCountDetailDescription");
-            }
+            return _charCountDetailDescription;
         }
-
-        private string _charCountRemarksText = 0 + "/" + 255;
-        public string charCountRemarksText
+        set
         {
-            get
-            {
-                return _charCountRemarksText;
-            }
-            set
-            {
-                if (_charCountRemarksText == value) return;
+            if (_charCountDetailDescription == value) return;
 
-                _charCountRemarksText = value;
-                OnPropertyChanged("charCountRemarksText");
-            }
+            _charCountDetailDescription = value;
+            OnPropertyChanged("charCountDetailDescription");
         }
-        private Color _declarationButtonBackGroundColor = (Color)Application.Current.Resources["Secondary"];
-        public Color DeclarationButtonBackGroundColor
+    }
+
+    private string _charCountRemarksText = 0 + "/" + 255;
+    public string charCountRemarksText
+    {
+        get
         {
-            get
-            {
-                return _declarationButtonBackGroundColor;
-            }
-            set
-            {
-                if (_declarationButtonBackGroundColor == value)
-                {
-                    return;
-                }
-                _declarationButtonBackGroundColor = value;
-                OnPropertyChanged("DeclarationButtonBackGroundColor");
-            }
+            return _charCountRemarksText;
         }
-
-        public bool fromDatePicker = false;
-
-        private bool _summaryVisible = false;
-
-        public bool SummaryVisible
+        set
         {
-            get { return _summaryVisible; }
-            set
-            {
-                if (_summaryVisible == value) return;
+            if (_charCountRemarksText == value) return;
 
-                _summaryVisible = value;
-                OnPropertyChanged("SummaryVisible");
-            }
+            _charCountRemarksText = value;
+            OnPropertyChanged("charCountRemarksText");
         }
-
-
-        private string _infoTitle = "";
-        public string InfoTitle
+    }
+    private Color _declarationButtonBackGroundColor = (Color)Application.Current.Resources["Secondary"];
+    public Color DeclarationButtonBackGroundColor
+    {
+        get
         {
-            get
-            {
-                return _infoTitle;
-            }
-            set
-            {
-                _infoTitle = value;
-                OnPropertyChanged("InfoTitle");
-            }
+            return _declarationButtonBackGroundColor;
         }
-
-        private string _infoDesc = "";
-        public string InfoDesc
+        set
         {
-            get
+            if (_declarationButtonBackGroundColor == value)
             {
-                return _infoDesc;
+                return;
             }
-            set
-            {
-                _infoDesc = value;
-                OnPropertyChanged("InfoDesc");
-            }
+            _declarationButtonBackGroundColor = value;
+            OnPropertyChanged("DeclarationButtonBackGroundColor");
         }
+    }
 
-        private string _pickedContract = "";
+    public bool fromDatePicker = false;
 
-        public string PickedContract
+    private bool _summaryVisible = false;
+
+    public bool SummaryVisible
+    {
+        get { return _summaryVisible; }
+        set
         {
-            get { return _pickedContract; }
-            set
-            {
-                if (_pickedContract == value) return;
+            if (_summaryVisible == value) return;
 
-                _pickedContract = value;
-                OnPropertyChanged("PickedContract");
-            }
+            _summaryVisible = value;
+            OnPropertyChanged("SummaryVisible");
         }
+    }
 
-        private string _pickedContractId = "";
-        public string PickedContractId
+
+    private string _infoTitle = "";
+    public string InfoTitle
+    {
+        get
         {
-            get { return _pickedContractId; }
-            set
-            {
-                if (_pickedContractId == value) return;
-
-                _pickedContractId = value;
-                OnPropertyChanged("PickedContractId");
-            }
+            return _infoTitle;
         }
-
-        public double _contractTotalAmount = 0.0;
-
-        public double ContractTotalAmount
+        set
         {
-            get { return _contractTotalAmount; }
-            set
-            {
-                if (_contractTotalAmount == value) return;
-
-                _contractTotalAmount = value;
-                OnPropertyChanged("ContractTotalAmount");
-            }
+            _infoTitle = value;
+            OnPropertyChanged("InfoTitle");
         }
+    }
 
-        public double _amountToRelease = 0.0;
-
-        public double AmountToRelease
+    private string _infoDesc = "";
+    public string InfoDesc
+    {
+        get
         {
-            get { return _amountToRelease; }
-            set
-            {
-                if (_amountToRelease == value) return;
-
-                _amountToRelease = value;
-                OnPropertyChanged("AmountToRelease");
-            }
+            return _infoDesc;
         }
-
-
-        private double _contractTotalAmountText = 0.0;
-        public double ContractTotalAmountText
+        set
         {
-            get { return _contractTotalAmountText; }
-            set
-            {
-                if (_contractTotalAmountText == value) return;
-
-                _contractTotalAmountText = value;
-                OnPropertyChanged("ContractTotalAmountText");
-            }
+            _infoDesc = value;
+            OnPropertyChanged("InfoDesc");
         }
+    }
 
+    private string _pickedContract = "";
 
-        private double _amountoReleaseTxt = 0.0;
-        public double AmountoReleaseTxt
+    public string PickedContract
+    {
+        get { return _pickedContract; }
+        set
         {
-            get { return _amountoReleaseTxt; }
-            set
-            {
-                if (_amountoReleaseTxt == value) return;
+            if (_pickedContract == value) return;
 
-                _amountoReleaseTxt = value;
-                OnPropertyChanged("AmountoReleaseTxt");
-            }
+            _pickedContract = value;
+            OnPropertyChanged("PickedContract");
         }
+    }
 
-        private double _pickedContractPercent = 0.0;
-
-        public double PickedContractPercent
+    private string _pickedContractId = "";
+    public string PickedContractId
+    {
+        get { return _pickedContractId; }
+        set
         {
-            get { return _pickedContractPercent; }
-            set
-            {
-                if (_pickedContractPercent == value) return;
+            if (_pickedContractId == value) return;
 
-                _pickedContractPercent = value;
-                OnPropertyChanged("PickedContractPercent");
-            }
+            _pickedContractId = value;
+            OnPropertyChanged("PickedContractId");
         }
+    }
 
-        private double _profitEstimatedContract = 0.0;
+    public double _contractTotalAmount = 0.0;
 
-        public double ProfitEstimatedContract
+    public double ContractTotalAmount
+    {
+        get { return _contractTotalAmount; }
+        set
         {
-            get { return _profitEstimatedContract; }
-            set
-            {
-                if (_profitEstimatedContract == value) return;
+            if (_contractTotalAmount == value) return;
 
-                _profitEstimatedContract = value;
-                OnPropertyChanged("ProfitEstimatedContract");
-            }
+            _contractTotalAmount = value;
+            OnPropertyChanged("ContractTotalAmount");
         }
+    }
 
-        private double _estimatedProfitForZakatPercent = 0.0;
+    public double _amountToRelease = 0.0;
 
-        public double EstimatedProfitForZakatPercent
+    public double AmountToRelease
+    {
+        get { return _amountToRelease; }
+        set
         {
-            get { return _estimatedProfitForZakatPercent; }
-            set
-            {
-                if (_estimatedProfitForZakatPercent == value) return;
+            if (_amountToRelease == value) return;
 
-                _estimatedProfitForZakatPercent = value;
-                OnPropertyChanged("EstimatedProfitForZakatPercent");
-            }
+            _amountToRelease = value;
+            OnPropertyChanged("AmountToRelease");
         }
+    }
 
-        private double _estimatedProfitForZakatAmount = 0.0;
 
-        public double EstimatedProfitForZakatAmount
+    private double _contractTotalAmountText = 0.0;
+    public double ContractTotalAmountText
+    {
+        get { return _contractTotalAmountText; }
+        set
         {
-            get { return _estimatedProfitForZakatAmount; }
-            set
-            {
-                if (_estimatedProfitForZakatAmount == value) return;
+            if (_contractTotalAmountText == value) return;
 
-                _estimatedProfitForZakatAmount = value;
-                OnPropertyChanged("EstimatedProfitForZakatAmount");
-            }
+            _contractTotalAmountText = value;
+            OnPropertyChanged("ContractTotalAmountText");
         }
+    }
 
-        private double _estimatedProfitForTaxAmount = 0.0;
 
-        public double EstimatedProfitForTaxAmount
+    private double _amountoReleaseTxt = 0.0;
+    public double AmountoReleaseTxt
+    {
+        get { return _amountoReleaseTxt; }
+        set
         {
-            get { return _estimatedProfitForTaxAmount; }
-            set
-            {
-                if (_estimatedProfitForTaxAmount == value) return;
+            if (_amountoReleaseTxt == value) return;
 
-                _estimatedProfitForTaxAmount = value;
-                OnPropertyChanged("EstimatedProfitForTaxAmount");
-            }
+            _amountoReleaseTxt = value;
+            OnPropertyChanged("AmountoReleaseTxt");
         }
+    }
 
-        private double _estimatedProfitForTaxPercent = 100.0;
+    private double _pickedContractPercent = 0.0;
 
-        public double EstimatedProfitForTaxPercent
+    public double PickedContractPercent
+    {
+        get { return _pickedContractPercent; }
+        set
         {
-            get { return _estimatedProfitForTaxPercent; }
-            set
-            {
-                if (_estimatedProfitForTaxPercent == value) return;
+            if (_pickedContractPercent == value) return;
 
-                _estimatedProfitForTaxPercent = value;
-                OnPropertyChanged("EstimatedProfitForTaxPercent");
-            }
+            _pickedContractPercent = value;
+            OnPropertyChanged("PickedContractPercent");
         }
+    }
 
-        private double _zakatDues = 0.0;
+    private double _profitEstimatedContract = 0.0;
 
-        public double ZakatDues
+    public double ProfitEstimatedContract
+    {
+        get { return _profitEstimatedContract; }
+        set
         {
-            get { return _zakatDues; }
-            set
-            {
-                if (_zakatDues == value) return;
+            if (_profitEstimatedContract == value) return;
 
-                _zakatDues = value;
-                OnPropertyChanged("ZakatDues");
-            }
+            _profitEstimatedContract = value;
+            OnPropertyChanged("ProfitEstimatedContract");
         }
+    }
 
-        private double _taxDues = 0.0;
+    private double _estimatedProfitForZakatPercent = 0.0;
 
-        public double TaxDues
+    public double EstimatedProfitForZakatPercent
+    {
+        get { return _estimatedProfitForZakatPercent; }
+        set
         {
-            get { return _taxDues; }
-            set
-            {
-                if (_taxDues == value) return;
+            if (_estimatedProfitForZakatPercent == value) return;
 
-                _taxDues = value;
-                OnPropertyChanged("TaxDues");
-            }
+            _estimatedProfitForZakatPercent = value;
+            OnPropertyChanged("EstimatedProfitForZakatPercent");
         }
+    }
 
-        private double _totalDues = 0.0;
+    private double _estimatedProfitForZakatAmount = 0.0;
 
-        public double TotalDues
+    public double EstimatedProfitForZakatAmount
+    {
+        get { return _estimatedProfitForZakatAmount; }
+        set
         {
-            get { return _totalDues; }
-            set
-            {
-                if (_totalDues == value) return;
+            if (_estimatedProfitForZakatAmount == value) return;
 
-                _totalDues = value;
-                OnPropertyChanged("TotalDues");
-            }
+            _estimatedProfitForZakatAmount = value;
+            OnPropertyChanged("EstimatedProfitForZakatAmount");
         }
+    }
 
-        private string _remarks = "";
+    private double _estimatedProfitForTaxAmount = 0.0;
 
-        public string Remarks
+    public double EstimatedProfitForTaxAmount
+    {
+        get { return _estimatedProfitForTaxAmount; }
+        set
         {
-            get { return _remarks; }
-            set
-            {
-                if (_remarks == value) return;
+            if (_estimatedProfitForTaxAmount == value) return;
 
-                _remarks = value;
-                OnPropertyChanged("Remarks");
-            }
+            _estimatedProfitForTaxAmount = value;
+            OnPropertyChanged("EstimatedProfitForTaxAmount");
         }
+    }
 
-        private string _detailDescription = "";
+    private double _estimatedProfitForTaxPercent = 100.0;
 
-        public string DetailDescription
+    public double EstimatedProfitForTaxPercent
+    {
+        get { return _estimatedProfitForTaxPercent; }
+        set
         {
-            get { return _detailDescription; }
-            set
-            {
-                if (_detailDescription == value) return;
+            if (_estimatedProfitForTaxPercent == value) return;
 
-                _detailDescription = value;
-                OnPropertyChanged("DetailDescription");
-            }
+            _estimatedProfitForTaxPercent = value;
+            OnPropertyChanged("EstimatedProfitForTaxPercent");
         }
+    }
 
-        private string _contactPersonName = "";
+    private double _zakatDues = 0.0;
 
-        public string ContactPersonName
+    public double ZakatDues
+    {
+        get { return _zakatDues; }
+        set
         {
-            get { return _contactPersonName; }
-            set
-            {
-                if (_contactPersonName == value) return;
+            if (_zakatDues == value) return;
 
-                _contactPersonName = value;
-                OnPropertyChanged("ContactPersonName");
-            }
+            _zakatDues = value;
+            OnPropertyChanged("ZakatDues");
         }
+    }
 
-        private string _designation = "";
+    private double _taxDues = 0.0;
 
-        public string Designation
+    public double TaxDues
+    {
+        get { return _taxDues; }
+        set
         {
-            get { return _designation; }
-            set
-            {
-                if (_designation == value) return;
+            if (_taxDues == value) return;
 
-                _designation = value;
-                OnPropertyChanged("Designation");
-            }
+            _taxDues = value;
+            OnPropertyChanged("TaxDues");
         }
+    }
 
-        private string _contractName = "";
+    private double _totalDues = 0.0;
 
-        public string ContractName
+    public double TotalDues
+    {
+        get { return _totalDues; }
+        set
         {
-            get { return _contractName; }
-            set
-            {
-                if (_contractName == value) return;
+            if (_totalDues == value) return;
 
-                _contractName = value;
-                OnPropertyChanged("ContractName");
-            }
+            _totalDues = value;
+            OnPropertyChanged("TotalDues");
         }
+    }
 
-        private string _contractNumber = "";
+    private string _remarks = "";
 
-        public string ContractNumber
+    public string Remarks
+    {
+        get { return _remarks; }
+        set
         {
-            get { return _contractNumber; }
-            set
-            {
-                if (_contractNumber == value) return;
+            if (_remarks == value) return;
 
-                _contractNumber = value;
-                OnPropertyChanged("ContractNumber");
-            }
+            _remarks = value;
+            OnPropertyChanged("Remarks");
         }
-        private bool _IsHijriCal = false;
-        public bool IsHijriCal
-        {
-            get
-            {
-                return _IsHijriCal;
-            }
-            set
-            {
-                if (_IsHijriCal == value) return;
+    }
 
-                _IsHijriCal = value;
-                OnPropertyChanged("IsHijriCal");
-            }
+    private string _detailDescription = "";
+
+    public string DetailDescription
+    {
+        get { return _detailDescription; }
+        set
+        {
+            if (_detailDescription == value) return;
+
+            _detailDescription = value;
+            OnPropertyChanged("DetailDescription");
         }
-        private string _fromDate = "";
+    }
 
-        public string FromDate
+    private string _contactPersonName = "";
+
+    public string ContactPersonName
+    {
+        get { return _contactPersonName; }
+        set
         {
-            get { return _fromDate; }
-            set
-            {
-                if (_fromDate == value) return;
+            if (_contactPersonName == value) return;
 
-                _fromDate = value;
-                OnPropertyChanged("FromDate");
-            }
+            _contactPersonName = value;
+            OnPropertyChanged("ContactPersonName");
         }
+    }
 
-        private string _toDate = "";
+    private string _designation = "";
 
-        public string ToDate
+    public string Designation
+    {
+        get { return _designation; }
+        set
         {
-            get { return _toDate; }
-            set
-            {
-                if (_toDate == value) return;
+            if (_designation == value) return;
 
-                _toDate = value;
-                OnPropertyChanged("ToDate");
-            }
+            _designation = value;
+            OnPropertyChanged("Designation");
         }
+    }
 
-        private GenericPickerModel _pickerModel { get; set; }
+    private string _contractName = "";
 
-        public GenericPickerModel PickerModel
+    public string ContractName
+    {
+        get { return _contractName; }
+        set
         {
-            get { return _pickerModel; }
-            set
-            {
-                if (_pickerModel == value) return;
+            if (_contractName == value) return;
 
-                _pickerModel = value;
-                OnPropertyChanged("PickerModel");
-            }
+            _contractName = value;
+            OnPropertyChanged("ContractName");
         }
+    }
 
-        private int _currenrIndex = 1;
+    private string _contractNumber = "";
 
-        public int CurrentIndex
+    public string ContractNumber
+    {
+        get { return _contractNumber; }
+        set
         {
-            get => _currenrIndex;
-            set
-            {
-                if (_currenrIndex == value) return;
+            if (_contractNumber == value) return;
 
-                _currenrIndex = value;
-                OnPropertyChanged(nameof(CurrentIndex));
-                if (_currenrIndex == MaxIndex)
-                {
-                    MarkComplete = true;
-                    OnPropertyChanged(nameof(MarkComplete));
-                }
-                else
-                {
-                    MarkComplete = false;
-                    OnPropertyChanged(nameof(MarkComplete));
-                }
+            _contractNumber = value;
+            OnPropertyChanged("ContractNumber");
+        }
+    }
+    private bool _IsHijriCal = false;
+    public bool IsHijriCal
+    {
+        get
+        {
+            return _IsHijriCal;
+        }
+        set
+        {
+            if (_IsHijriCal == value) return;
+
+            _IsHijriCal = value;
+            OnPropertyChanged("IsHijriCal");
+        }
+    }
+    private string _fromDate = "";
+
+    public string FromDate
+    {
+        get { return _fromDate; }
+        set
+        {
+            if (_fromDate == value) return;
+
+            _fromDate = value;
+            OnPropertyChanged("FromDate");
+        }
+    }
+
+    private string _toDate = "";
+
+    public string ToDate
+    {
+        get { return _toDate; }
+        set
+        {
+            if (_toDate == value) return;
+
+            _toDate = value;
+            OnPropertyChanged("ToDate");
+        }
+    }
+
+    private GenericPickerModel _pickerModel { get; set; }
+
+    public GenericPickerModel PickerModel
+    {
+        get { return _pickerModel; }
+        set
+        {
+            if (_pickerModel == value) return;
+
+            _pickerModel = value;
+            OnPropertyChanged("PickerModel");
+        }
+    }
+
+    private int _currenrIndex = 1;
+
+    public int CurrentIndex
+    {
+        get => _currenrIndex;
+        set
+        {
+            if (_currenrIndex == value) return;
+
+            _currenrIndex = value;
+            OnPropertyChanged(nameof(CurrentIndex));
+            if (_currenrIndex == MaxIndex)
+            {
+                MarkComplete = true;
+                OnPropertyChanged(nameof(MarkComplete));
+            }
+            else
+            {
+                MarkComplete = false;
+                OnPropertyChanged(nameof(MarkComplete));
             }
         }
+    }
 
-        public bool MarkComplete { get; private set; } = false;
-        public int MaxIndex { get; private set; } = 5;
+    public bool MarkComplete { get; private set; } = false;
+    public int MaxIndex { get; private set; } = 5;
 
-        public ObservableCollection<Attachment> contractCopyAttachmentsListViewData { get; set; }
+    public ObservableCollection<Attachment> contractCopyAttachmentsListViewData { get; set; }
 
-        public ObservableCollection<Attachment> ContractCopyAttachmentsListViewData
+    public ObservableCollection<Attachment> ContractCopyAttachmentsListViewData
+    {
+        get { return contractCopyAttachmentsListViewData; }
+
+        set
         {
-            get { return contractCopyAttachmentsListViewData; }
-
-            set
+            if (contractCopyAttachmentsListViewData == value)
             {
-                if (contractCopyAttachmentsListViewData == value)
-                {
-                    return;
-                }
-
-                contractCopyAttachmentsListViewData = value;
-                OnPropertyChanged("ContractCopyAttachmentsListViewData");
+                return;
             }
+
+            contractCopyAttachmentsListViewData = value;
+            OnPropertyChanged("ContractCopyAttachmentsListViewData");
         }
+    }
 
-        public ObservableCollection<Attachment> invoicesAttachmentsListViewData { get; set; }
+    public ObservableCollection<Attachment> invoicesAttachmentsListViewData { get; set; }
 
-        public ObservableCollection<Attachment> InvoiceAttachmentsListViewData
+    public ObservableCollection<Attachment> InvoiceAttachmentsListViewData
+    {
+        get { return invoicesAttachmentsListViewData; }
+
+        set
         {
-            get { return invoicesAttachmentsListViewData; }
-
-            set
+            if (invoicesAttachmentsListViewData == value)
             {
-                if (invoicesAttachmentsListViewData == value)
-                {
-                    return;
-                }
-
-                invoicesAttachmentsListViewData = value;
-                OnPropertyChanged("InvoiceAttachmentsListViewData");
+                return;
             }
+
+            invoicesAttachmentsListViewData = value;
+            OnPropertyChanged("InvoiceAttachmentsListViewData");
         }
+    }
 
-        private Dictionary<string, double> ContractTypeDictionary = null;
+    private Dictionary<string, double> ContractTypeDictionary = null;
 
 
-        private Dictionary<string, string> ContractTypeIdDictionary = null;
+    private Dictionary<string, string> ContractTypeIdDictionary = null;
 
-        private ContractReleaseFormResponse _contractReleaseData;
+    private ContractReleaseFormResponse _contractReleaseData;
 
-        public ContractReleaseFormResponse ContractReleaseData
+    public ContractReleaseFormResponse ContractReleaseData
+    {
+        get { return _contractReleaseData; }
+        set
         {
-            get { return _contractReleaseData; }
-            set
-            {
-                if (_contractReleaseData == value) return;
+            if (_contractReleaseData == value) return;
 
-                _contractReleaseData = value;
-                OnPropertyChanged("ContractReleaseData");
-            }
+            _contractReleaseData = value;
+            OnPropertyChanged("ContractReleaseData");
         }
-        private bool _isDeclarationViewEnabled;
-        public bool IsDeclarationViewEnabled
-        {
-            get
-            {
-                return _isDeclarationViewEnabled;
-            }
-            set
-            {
-                if (_isDeclarationViewEnabled == value) return;
+    }
+    private ContractReleaseFormResponse1 _contractReleaseData1;
 
-                _isDeclarationViewEnabled = value;
-                OnPropertyChanged("IsDeclarationViewEnabled");
-            }
+    public ContractReleaseFormResponse1 ContractReleaseData1
+    {
+        get { return _contractReleaseData1; }
+        set
+        {
+            if (_contractReleaseData1 == value) return;
+
+            _contractReleaseData1 = value;
+            OnPropertyChanged("ContractReleaseData");
         }
+    }
+    private string _referenceNumberTxt = "";
 
-
-        private bool _isDeclarationViewEnabledNew;
-        public bool IsDeclarationViewEnabledNew
+    public string ReferenceNumberTxt
+    {
+        get { return _referenceNumberTxt; }
+        set
         {
-            get
-            {
-                return _isDeclarationViewEnabledNew;
-            }
-            set
-            {
-                if (_isDeclarationViewEnabledNew == value) return;
+            if (_referenceNumberTxt == value) return;
 
-                _isDeclarationViewEnabledNew = value;
-                OnPropertyChanged("IsDeclarationViewEnabledNew");
-            }
+            _referenceNumberTxt = value;
+            OnPropertyChanged("ReferenceNumberTxt");
         }
+    }
+    private string _contractNumberTxt = "";
 
-        public VATDeregDeclaration _vatDeregDeclaration;
-        public VATDeregDeclaration VatDeregDeclaration
+    public string ContractNumberTxt
+    {
+        get { return _contractNumberTxt; }
+        set
         {
-            get
-            {
-                return _vatDeregDeclaration;
-            }
-            set
-            {
-                if (_vatDeregDeclaration == value) return;
+            if (_contractNumberTxt == value) return;
 
-                _vatDeregDeclaration = value;
-                OnPropertyChanged("VatDeregDeclaration");
-            }
+            _contractNumberTxt = value;
+            OnPropertyChanged("ContractNumberTxt");
         }
+    }
 
-        public string _zterms;
-        public string Zterms
+    int selectedPage = (int)PagesEnum.CrReleaseDetailsView;
+
+    public ContractReleaseInterface contractReleaseInterface { get; set; }
+
+    public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+    {
+
+
+        CloseClick = new Command(() =>
         {
-            get
-            {
-                return _zterms;
-            }
-            set
-            {
-                if (_zterms == value) return;
+            _navigationService.GoBack();
+        });
 
-                _zterms = value;
-                OnPropertyChanged("Zterms");
-            }
-        }
-        private bool isDECCheckBox = false;
-        public bool IsDECCheckBox
+        GoBackClick = new Command(() => { BackNavigations(); });
+
+        GoBackToReleaseDetails = new Command(() => { EnableReleaseDetailsView(); });
+
+        GoBackToAttachments = new Command(() => { EnableAttachmentsView(); });
+
+        GoBackToDeclaration = new Command(() => { EnableDeclarationView(); });
+
+        ContractProfitPercentCommand = new Command(async () =>
         {
-            get { return isDECCheckBox; }
-            set
-            {
-                if (isDECCheckBox == value) return;
-
-                isDECCheckBox = value;
-                OnPropertyChanged("IsDECCheckBox");
-            }
-        }
-
-        private bool shouldShowAR = false;
-        public bool ShouldShowAR
+            InfoTitle = AppResources.CRContractprofitEstimatedRate;
+            InfoDesc = AppResources.CRContractprofitEstimatedRateDesc;
+            await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+        });
+        ProfitEstimatedContractCommand = new Command(async () =>
         {
-            get { return shouldShowAR; }
-            set
-            {
-                if (shouldShowAR == value) return;
-
-                shouldShowAR = value;
-                OnPropertyChanged("ShouldShowAR");
-            }
-        }
-        private bool shouldShowEN = false;
-        public bool ShouldShowEN
+            InfoTitle = AppResources.CRProfitEstimatedForContract;
+            InfoDesc = AppResources.CRProfitEstimatedForContractDesc;
+            await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+        });
+        EstimatedProfitZakatCommand = new Command(async () =>
         {
-            get { return shouldShowEN; }
-            set
-            {
-                if (shouldShowEN == value) return;
-
-                shouldShowEN = value;
-                OnPropertyChanged("ShouldShowEN");
-            }
-        }
-
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-
-        int selectedPage = (int)PagesEnum.CrReleaseDetailsView;
-
-        public ContractReleaseInterface contractReleaseInterface { get; set; }
-
-        public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+            InfoTitle = AppResources.CREstimatedProfitforZakat;
+            InfoDesc = AppResources.CREstimatedProfitforZakatDesc;
+            await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+        });
+        EstimatedProfitTaxCommand = new Command(async () =>
         {
-            _navigationService = navigationService;
-
-            _dialogService = dialogService;
-
-
-            CloseClick = new Command(async () =>
-            {
-                _navigationService.GoBack();
-            });
-
-            GoBackClick = new Command(async () => { BackNavigations(); });
-
-            GoBackToReleaseDetails = new Command(async () => { EnableReleaseDetailsView(); });
-
-            GoBackToAttachments = new Command(async () => { EnableAttachmentsView(); });
-
-            GoBackToDeclaration = new Command(async () => { EnableDeclarationView(); });
-
-            ContractProfitPercentCommand = new Command(async () =>
-            {
-                InfoTitle = AppResources.CRContractprofitEstimatedRate;
-                InfoDesc = AppResources.CRContractprofitEstimatedRateDesc;
-                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
-            });
-            ProfitEstimatedContractCommand = new Command(async () =>
-            {
-                InfoTitle = AppResources.CRProfitEstimatedForContract;
-                InfoDesc = AppResources.CRProfitEstimatedForContractDesc;
-                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
-            });
-            EstimatedProfitZakatCommand = new Command(async () =>
-            {
-                InfoTitle = AppResources.CREstimatedProfitforZakat;
-                InfoDesc = AppResources.CREstimatedProfitforZakatDesc;
-                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
-            });
-            EstimatedProfitTaxCommand = new Command(async () =>
-            {
-                InfoTitle = AppResources.CREstimatedProfitforTax;
-                InfoDesc = AppResources.CREstimatedProfitforTaxDesc;
-                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
-            });
-            ValueofZakatDuesCommand = new Command(async () =>
-            {
-                InfoTitle = AppResources.CRTheValueofZakatdues;
-                InfoDesc = AppResources.CRTheValueofZakatduesDesc;
-                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
-            });
-            ValueofTaxDuesCommand = new Command(async () =>
-            {
-                InfoTitle = AppResources.CRTheValueTaxDues;
-                InfoDesc = AppResources.CRTheValueTaxDuesDesc;
-                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
-            });
-            TotalDuesCommand = new Command(async () =>
-            {
-                InfoTitle = AppResources.CRTotalDues;
-                InfoDesc = AppResources.CRTotalDuesDesc;
-                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
-            });
-
-            ShowStartDatePicker = new Command(async () =>
-            {
-                fromDatePicker = true;
-                showDatePickerDialog(AppResources.CRContractStartDate);
-
-            });
-
-            ShowEndDatePicker = new Command(async () =>
-            {
-                fromDatePicker = false;
-                showDatePickerDialog(AppResources.CRContractEndDate);
-
-            });
-
-            ShowPicker = new Command(async () => { showPickerDialog(); });
-
-
-            ReleaseDetailsConBtnTapped = new Command(ReleaseDetailsConBtnClicked);
-            AttachmentsConBtnTapped = new Command(AttachmentsConBtnClicked);
-            RemarksAndDescConBtnTapped = new Command(RemarksAndDescConBtnClicked);
-            DeclarationConBtnTapped = new Command(DeclarationConBtnClicked);
-            SummaryConBtnTapped = new Command(SummaryConBtnClicked);
-            ContractInstructionsClicked = new Command(InstructionsTapped);
-            NewInvoiceAttachmentTapped = new Command(NewInvoiceAttachmentClicked);
-            NewContractCopyAttachmentTapped = new Command(NewContractCopyAttachmentClicked);
-
-            setPickerModel();
-        }
-
-        private void setPickerModel()
+            InfoTitle = AppResources.CREstimatedProfitforTax;
+            InfoDesc = AppResources.CREstimatedProfitforTaxDesc;
+            await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+        });
+        ValueofZakatDuesCommand = new Command(async () =>
         {
-            var list = new List<string>();
-            list.Add(AppResources.CRSupplyforAramco);
-            list.Add(AppResources.CRSupplyandmaintenance);
-            list.Add(AppResources.CRsupplymaintenanceandoperating);
-            list.Add(AppResources.CRDisassembleinstallationandoperate);
-            list.Add(AppResources.CRsupplyinstallationandoperate);
-            list.Add(AppResources.CRDisassembleinstallationandtransport);
-            list.Add(AppResources.CRCleanlinessandmaintenance);
-            list.Add(AppResources.CRSupplyinstallationanddeliver);
-            list.Add(AppResources.CRmaintenanceandoperate);
-            list.Add(AppResources.CRtransport);
-            list.Add(AppResources.CRsupplyandwatertransport);
-            list.Add(AppResources.CRconstruction);
-            list.Add(AppResources.CRmaintenance);
-            list.Add(AppResources.CRoperate);
-            list.Add(AppResources.CRDesignandconstruction);
-            list.Add(AppResources.CRsupplyanddesign);
-            list.Add(AppResources.CRsupplyandoprate);
-            list.Add(AppResources.CRsupplyandinstallation);
-            list.Add(AppResources.CRdesignsupplyandinstallation);
-            list.Add(AppResources.CRdesignsupplyandopratemaintenance);
-            list.Add(AppResources.CRequipmentrental);
-            list.Add(AppResources.CRmaintenancecleanlinessandoprate);
-            list.Add(AppResources.CRcleanliness);
-            list.Add(AppResources.CRcatering);
-            list.Add(AppResources.CRSecurityguards);
-            list.Add(AppResources.CRRoadsmaintenance);
-            list.Add(AppResources.CRLaborrecruiting);
-            list.Add(AppResources.CRContractingRoadsandTransport);
-            list.Add(AppResources.CRSupply);
-            list.Add(AppResources.CRSupplyanddeliverytowarehouses);
-            list.Add(AppResources.CRSupplyanddeliveryport);
-            list.Add(AppResources.CROperationofservicesattheport);
-            list.Add(AppResources.CRConsultations);
-            list.Add(AppResources.CRPrivateConsultante);
-            list.Add(AppResources.CRStudiesandConsulting);
-            list.Add(AppResources.CROther);
-
-            GenericPickerModel genericPickerModel = new GenericPickerModel();
-            genericPickerModel.PickerData = list;
-            genericPickerModel.PickerTitle = AppResources.CRContractType;
-            genericPickerModel.PickerId = "ContractType";
-
-            PickerModel = genericPickerModel;
-        }
-
-        public async void showInstructionDialog()
+            InfoTitle = AppResources.CRTheValueofZakatdues;
+            InfoDesc = AppResources.CRTheValueofZakatduesDesc;
+            await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+        });
+        ValueofTaxDuesCommand = new Command(async () =>
         {
-            await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
-                instructionString: AppResources.CRInstructions, checkBoxString: AppResources.CRInstrCheckDesc,
-                continueString: AppResources.CRContinue,
-                _dialogType: InstructionsBottomPopUpViewModel.DialogType
-                    .Instructions));
-
-            EnableReleaseDetailsView();
-        }
-
-        public void updatePicker()
+            InfoTitle = AppResources.CRTheValueTaxDues;
+            InfoDesc = AppResources.CRTheValueTaxDuesDesc;
+            await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+        });
+        TotalDuesCommand = new Command(async () =>
         {
-            PickedContract = PickerModel.SelectedValue;
-            PickedContractPercent = ContractTypeDictionary[PickedContract];
-            PickedContractId = ContractTypeIdDictionary[PickedContract];
-            MakeCalculations();
-        }
+            InfoTitle = AppResources.CRTotalDues;
+            InfoDesc = AppResources.CRTotalDuesDesc;
+            await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+        });
 
-        public void updatePickerContractType()
+        ShowStartDatePicker = new Command(async () =>
         {
+            fromDatePicker = true;
+            showDatePickerDialog(AppResources.CRContractStartDate);
+
+        });
+
+        ShowEndDatePicker = new Command(() =>
+        {
+            fromDatePicker = false;
+            showDatePickerDialog(AppResources.CRContractEndDate);
+
+        });
+
+        ShowPicker = new Command(() => { showPickerDialog(); });
 
 
-            ContractTypeDictionary = new Dictionary<string, double>
+        ReleaseDetailsConBtnTapped = new Command(ReleaseDetailsConBtnClicked);
+        AttachmentsConBtnTapped = new Command(AttachmentsConBtnClicked);
+        RemarksAndDescConBtnTapped = new Command(RemarksAndDescConBtnClicked);
+        DeclarationConBtnTapped = new Command(DeclarationConBtnClicked);
+        SummaryConBtnTapped = new Command(SummaryConBtnClicked);
+        ContractInstructionsClicked = new Command(InstructionsTapped);
+        NewInvoiceAttachmentTapped = new Command(NewInvoiceAttachmentClicked);
+        NewContractCopyAttachmentTapped = new Command(NewContractCopyAttachmentClicked);
+
+        setPickerModel();
+    }
+
+    private void setPickerModel()
+    {
+        var list = new List<string>();
+        list.Add(AppResources.CRSupplyforAramco);
+        list.Add(AppResources.CRSupplyandmaintenance);
+        list.Add(AppResources.CRsupplymaintenanceandoperating);
+        list.Add(AppResources.CRDisassembleinstallationandoperate);
+        list.Add(AppResources.CRsupplyinstallationandoperate);
+        list.Add(AppResources.CRDisassembleinstallationandtransport);
+        list.Add(AppResources.CRCleanlinessandmaintenance);
+        list.Add(AppResources.CRSupplyinstallationanddeliver);
+        list.Add(AppResources.CRmaintenanceandoperate);
+        list.Add(AppResources.CRtransport);
+        list.Add(AppResources.CRsupplyandwatertransport);
+        list.Add(AppResources.CRconstruction);
+        list.Add(AppResources.CRmaintenance);
+        list.Add(AppResources.CRoperate);
+        list.Add(AppResources.CRDesignandconstruction);
+        list.Add(AppResources.CRsupplyanddesign);
+        list.Add(AppResources.CRsupplyandoprate);
+        list.Add(AppResources.CRsupplyandinstallation);
+        list.Add(AppResources.CRdesignsupplyandinstallation);
+        list.Add(AppResources.CRdesignsupplyandopratemaintenance);
+        list.Add(AppResources.CRequipmentrental);
+        list.Add(AppResources.CRmaintenancecleanlinessandoprate);
+        list.Add(AppResources.CRcleanliness);
+        list.Add(AppResources.CRcatering);
+        list.Add(AppResources.CRSecurityguards);
+        list.Add(AppResources.CRRoadsmaintenance);
+        list.Add(AppResources.CRLaborrecruiting);
+        list.Add(AppResources.CRContractingRoadsandTransport);
+        list.Add(AppResources.CRSupply);
+        list.Add(AppResources.CRSupplyanddeliverytowarehouses);
+        list.Add(AppResources.CRSupplyanddeliveryport);
+        list.Add(AppResources.CROperationofservicesattheport);
+        list.Add(AppResources.CRConsultations);
+        list.Add(AppResources.CRPrivateConsultante);
+        list.Add(AppResources.CRStudiesandConsulting);
+        list.Add(AppResources.CROther);
+
+        GenericPickerModel genericPickerModel = new GenericPickerModel();
+        genericPickerModel.PickerData = list;
+        genericPickerModel.PickerTitle = AppResources.CRContractType;
+        genericPickerModel.PickerId = "ContractType";
+
+        PickerModel = genericPickerModel;
+    }
+
+    public async void showInstructionDialog()
+    {
+        await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
+            instructionString: AppResources.CRInstructions, checkBoxString: AppResources.CRInstrCheckDesc,
+            continueString: AppResources.CRContinue,
+            _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                .Instructions));
+
+        EnableReleaseDetailsView();
+    }
+
+    public void updatePicker()
+    {
+        PickedContract = PickerModel.SelectedValue;
+        PickedContractPercent = ContractTypeDictionary[PickedContract];
+        PickedContractId = ContractTypeIdDictionary[PickedContract];
+        MakeCalculations();
+    }
+
+    public void updatePickerContractType()
+    {
+
+
+        ContractTypeDictionary = new Dictionary<string, double>
         {
             {AppResources.CRSupplyforAramco, 3.0},
             {AppResources.CRSupplyandmaintenance, 10.50},
@@ -1075,7 +989,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         };
 
 
-            ContractTypeIdDictionary = new Dictionary<string, string>
+        ContractTypeIdDictionary = new Dictionary<string, string>
             {
                 {AppResources.CRSupplyforAramco,"1" },
                 {AppResources.CRSupplyandmaintenance, "2"},
@@ -1115,588 +1029,376 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 {AppResources.CROther, "33"},
             };
 
-        }
+    }
 
 
-        private async void showDatePickerDialog(string title)
+    private async void showDatePickerDialog(string title)
+    {
+        GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
+        genericPickerModel.DatePickerTitle = title;
+        genericPickerModel.PickerId = "DatePicker";
+
+        try
         {
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.DatePickerTitle = title;
-            genericPickerModel.PickerId = "DatePicker";
-
-            try
-            {
-                await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel, false));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+            await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel, false));
         }
-
-        private async void showPickerDialog()
+        catch (InternetException ex)
         {
-            try
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
         }
+    }
 
-        public async void InstructionsTapped()
+    private async void showPickerDialog()
+    {
+        try
         {
-            try
-            {
-                await MopupService.Instance.PopAsync();
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+            await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
         }
-
-        private async void ReleaseDetailsConBtnClicked()
+        catch (InternetException ex)
         {
-            try
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
-                CultureInfo calCul;
-
-
-
-
-                if (IsHijriCal)
-                {
-                    calCul = new CultureInfo("ar-SA");
-                }
-                else
-                {
-                    calCul = new CultureInfo("en-US");
-                }
-
-                if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(HDateNow(), "yyyy/MM/dd", calCul))
-                {
-                    await _dialogService.ShowMessage(AppResources.CRContractDateshouldnotbegreaterfromcurentdate,
-                        AppResources.Information);
-                    return;
-                }
-                else if (DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(HDateNow(), "yyyy/MM/dd", calCul))
-                {
-                    await _dialogService.ShowMessage(AppResources.CRContractEndDateshouldnotbegreaterfromcurentdate,
-                        AppResources.Information);
-                    return;
-                }
-                else if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul))
-                {
-                    await _dialogService.ShowMessage(AppResources.CRContractEndDateshouldnotbelessfromcontractdate,
-                        AppResources.Information);
-                    return;
-                }
-                else if (!IsReleaseDetailsEnabled)
-                {
-                    return;
-                }
-
-                EnableAttachmentsView();
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
         }
+    }
 
-        private void AttachmentsConBtnClicked()
+    public async void InstructionsTapped()
+    {
+        try
         {
-            try
-            {
-                if (!IsAttachmentsEnabled)
-                {
-                    return;
-                }
-                EnableRemarksAndDescView();
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+            await MopupService.Instance.PopAsync();
         }
-
-        private void RemarksAndDescConBtnClicked()
+        catch (InternetException ex)
         {
-            try
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
-                EnableDeclarationView();
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
         }
+    }
 
-        private void DeclarationConBtnClicked()
+    private async void ReleaseDetailsConBtnClicked()
+    {
+        try
         {
-            try
-            {
-                if (IsDeclarationViewEnabledNew)
-                {
-                    IsDeclarationEnabled = true;
-                    if (!string.IsNullOrEmpty(Zterms) && !IsDECCheckBox)
-                    {
-                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                        return;
-                    }
-                }
-                else
-                {
-                    if (!IsDeclarationEnabled)
-                    {
-                        return;
-                    }
-                }
+            CultureInfo calCul;
 
-                EnableSummaryView();
+
+
+
+            if (IsHijriCal)
+            {
+                calCul = new CultureInfo("ar-SA");
             }
-            catch (GAZTUnlockAccountException ex)
+            else
             {
-
-
+                calCul = new CultureInfo("en-US");
             }
-            catch (InternetException ex)
+
+            if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(HDateNow(), "yyyy/MM/dd", calCul))
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-        }
-
-        private async void SummaryConBtnClicked()
-        {
-
-            try
-            {
-
-                if (!isSubmitted)
-                {
-                    //await MopupService.Instance.PushAsync(App.ActivityIndicatorView, false);
-                    await SubmitClicked();
-                }
-
-            }
-            catch (GAZTErrorException ex)
-            {
-                if (MopupService.Instance.PopupStack.Count > 0)
-                    await MopupService.Instance.PopAsync(false);
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.ToString(), AppResources.Information);
-                });
+                await _dialogService.ShowMessage(AppResources.CRContractDateshouldnotbegreaterfromcurentdate,
+                    AppResources.Information);
                 return;
             }
-            catch (GAZTVATRegistrationInProcessException ex)
+            else if (DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(HDateNow(), "yyyy/MM/dd", calCul))
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    if (MopupService.Instance.PopupStack.Count > 0)
-                        await MopupService.Instance.PopAsync(false);
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(AppResources.CRContractEndDateshouldnotbegreaterfromcurentdate,
+                    AppResources.Information);
+                return;
+            }
+            else if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul))
+            {
+                await _dialogService.ShowMessage(AppResources.CRContractEndDateshouldnotbelessfromcontractdate,
+                    AppResources.Information);
+                return;
+            }
+            else if (!IsReleaseDetailsEnabled)
+            {
                 return;
             }
 
-            catch (InternetException ex)
+            EnableAttachmentsView();
+        }
+        catch (InternetException ex)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+    }
+
+    private void AttachmentsConBtnClicked()
+    {
+        try
+        {
+            if (!IsAttachmentsEnabled)
+            {
+                return;
             }
-            catch (Exception ex)
+            EnableRemarksAndDescView();
+        }
+        catch (InternetException ex)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+    }
+
+    private void RemarksAndDescConBtnClicked()
+    {
+        try
+        {
+            EnableDeclarationView();
+        }
+        catch (InternetException ex)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+    }
+
+    private void DeclarationConBtnClicked()
+    {
+        try
+        {
+            if (!IsDeclarationEnabled)
+            {
+                return;
+            }
+            EnableSummaryView();
+        }
+        catch (InternetException ex)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+    }
+
+    private async void SummaryConBtnClicked()
+    {
+
+        try
+        {
+
+            if (!isSubmitted)
+            {
+                //await MopupService.Instance.PushAsync(App.ActivityIndicatorView, false);
+                await SubmitClicked();
+            }
+
+        }
+        catch (GAZTErrorException ex)
+        {
+            if (MopupService.Instance.PopupStack.Count > 0)
+                await MopupService.Instance.PopAsync(false);
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(ex.ToString(), AppResources.Information);
+            });
+            return;
+        }
+        catch (GAZTVATRegistrationInProcessException ex)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
                 if (MopupService.Instance.PopupStack.Count > 0)
                     await MopupService.Instance.PopAsync(false);
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-            }
-            finally
-            {
-                if (MopupService.Instance.PopupStack.Count > 0)
-                    await MopupService.Instance.PopAsync(false);
-            }
+            });
+            return;
         }
 
-        #region ApiIntegration
-
-        private ObservableCollection<object> _todayDateStart;
-        public ObservableCollection<object> TodayDateStart
+        catch (InternetException ex)
         {
-            get
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
-                return _todayDateStart;
-            }
-            set
-            {
-                if (_todayDateStart == value) return;
-                _todayDateStart = value;
-                OnPropertyChanged("TodayDateStart");
-            }
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
         }
-        private ObservableCollection<object> _todayDateinHijriStart;
-        public ObservableCollection<object> TodayDateinHijriStart
+        catch (Exception ex)
         {
-            get
-            {
-                return _todayDateinHijriStart;
-            }
-            set
-            {
-                if (_todayDateinHijriStart == value) return;
-
-                _todayDateinHijriStart = value;
-                OnPropertyChanged("TodayDateinHijriStart");
-            }
+            if (MopupService.Instance.PopupStack.Count > 0)
+                await MopupService.Instance.PopAsync(false);
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
         }
-        private ObservableCollection<object> _todayDateEnd;
-        public ObservableCollection<object> TodayDateEnd
+        finally
         {
-            get
-            {
-                return _todayDateEnd;
-            }
-            set
-            {
-                if (_todayDateEnd == value) return;
-
-                _todayDateEnd = value;
-                OnPropertyChanged("TodayDateEnd");
-            }
+            if (MopupService.Instance.PopupStack.Count > 0)
+                await MopupService.Instance.PopAsync(false);
         }
-        private ObservableCollection<object> _todayDateinHijriEnd;
-        public ObservableCollection<object> TodayDateinHijriEnd
-        {
-            get
-            {
-                return _todayDateinHijriEnd;
-            }
-            set
-            {
-                if (_todayDateinHijriEnd == value) return;
+    }
 
-                _todayDateinHijriEnd = value;
-                OnPropertyChanged("TodayDateinHijriEnd");
-            }
+    #region ApiIntegration
+
+    private ObservableCollection<object> _todayDateStart;
+    public ObservableCollection<object> TodayDateStart
+    {
+        get
+        {
+            return _todayDateStart;
         }
-
-        public ObservableCollection<ChipModel> _chipDataFilterlist = null;
-        public ObservableCollection<ChipModel> ChipDataFilterlist
+        set
         {
-            get
-            {
-                return _chipDataFilterlist;
-            }
-            set
-            {
-                if (_chipDataFilterlist == value) return;
-
-                _chipDataFilterlist = value;
-                OnPropertyChanged("ChipDataFilterlist");
-            }
+            if (_todayDateStart == value) return;
+            _todayDateStart = value;
+            OnPropertyChanged("TodayDateStart");
         }
-
-        public void PopulateDataInChips()
+    }
+    private ObservableCollection<object> _todayDateinHijriStart;
+    public ObservableCollection<object> TodayDateinHijriStart
+    {
+        get
         {
-            ChipDataFilterlist = new ObservableCollection<ChipModel>()
+            return _todayDateinHijriStart;
+        }
+        set
+        {
+            if (_todayDateinHijriStart == value) return;
+
+            _todayDateinHijriStart = value;
+            OnPropertyChanged("TodayDateinHijriStart");
+        }
+    }
+    private ObservableCollection<object> _todayDateEnd;
+    public ObservableCollection<object> TodayDateEnd
+    {
+        get
+        {
+            return _todayDateEnd;
+        }
+        set
+        {
+            if (_todayDateEnd == value) return;
+
+            _todayDateEnd = value;
+            OnPropertyChanged("TodayDateEnd");
+        }
+    }
+    private ObservableCollection<object> _todayDateinHijriEnd;
+    public ObservableCollection<object> TodayDateinHijriEnd
+    {
+        get
+        {
+            return _todayDateinHijriEnd;
+        }
+        set
+        {
+            if (_todayDateinHijriEnd == value) return;
+
+            _todayDateinHijriEnd = value;
+            OnPropertyChanged("TodayDateinHijriEnd");
+        }
+    }
+
+    public ObservableCollection<ChipModel> _chipDataFilterlist = null;
+    public ObservableCollection<ChipModel> ChipDataFilterlist
+    {
+        get
+        {
+            return _chipDataFilterlist;
+        }
+        set
+        {
+            if (_chipDataFilterlist == value) return;
+
+            _chipDataFilterlist = value;
+            OnPropertyChanged("ChipDataFilterlist");
+        }
+    }
+
+    public void PopulateDataInChips()
+    {
+        ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
                 new ChipModel(){Text =AppResources.NDGregorian, TemplateType = AppResources.NDGregorian, ImageSource="Calendar"},
                 new ChipModel(){Text =AppResources.NDHijri, TemplateType = AppResources.NDHijri,ImageSource = "Calendar"},
             };
-        }
+    }
 
-        public int DefaultMonth;
-        public int DefaultMonthHijri;
-        public void SetDefaultDate()
+    public int DefaultMonth;
+    public int DefaultMonthHijri;
+    public void SetDefaultDate()
+    {
+        ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+        //Select today dates
+
+        if (DateTime.Now.Date.Day < 10)
+            todaycollection.Add("0" + DateTime.Now.Date.Day);
+        else
+            todaycollection.Add(DateTime.Now.Date.Day.ToString());
+        if (DateTime.Now.Date.Month < 10)
+            todaycollection.Add("0" + DateTime.Now.Date.Month);
+        else
+            todaycollection.Add(DateTime.Now.Date.Month.ToString());
+        todaycollection.Add(DateTime.Now.Date.Year.ToString());
+        TodayDateStart = todaycollection;
+        TodayDateEnd = todaycollection;
+        DefaultMonth = DateTime.Now.Date.Month;
+
+        //TodayDateinHijri
+        ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
+        var calendar = new HijriCalendar();
+        if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
+            todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+        else
+            todaycollectionHijri.Add(calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+        if (calendar.GetMonth(DateTime.Now.Date) < 10)
+            todaycollectionHijri.Add("0" + calendar.GetMonth(DateTime.Now.Date));
+        else
+            todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
+        todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
+
+        TodayDateinHijriStart = todaycollectionHijri;
+        TodayDateinHijriEnd = todaycollectionHijri;
+
+        if (ContractReleaseData != null)
         {
-            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-            //Select today dates
 
-            if (DateTime.Now.Date.Day < 10)
-                todaycollection.Add("0" + DateTime.Now.Date.Day);
-            else
-                todaycollection.Add(DateTime.Now.Date.Day.ToString());
-            if (DateTime.Now.Date.Month < 10)
-                todaycollection.Add("0" + DateTime.Now.Date.Month);
-            else
-                todaycollection.Add(DateTime.Now.Date.Month.ToString());
-            todaycollection.Add(DateTime.Now.Date.Year.ToString());
-            TodayDateStart = todaycollection;
-            TodayDateEnd = todaycollection;
-            DefaultMonth = DateTime.Now.Date.Month;
 
-            //TodayDateinHijri
-            ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
-            var calendar = new HijriCalendar();
-            if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
-                todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
-            else
-                todaycollectionHijri.Add(calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
-            if (calendar.GetMonth(DateTime.Now.Date) < 10)
-                todaycollectionHijri.Add("0" + calendar.GetMonth(DateTime.Now.Date));
-            else
-                todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
-            todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
+            if (ContractReleaseData.d.ACalTp == "Hijri")
+            {
 
-            TodayDateinHijriStart = todaycollectionHijri;
-            TodayDateinHijriEnd = todaycollectionHijri;
+                FromDate = HDateNow();
+                ToDate = HDateNow();
+            }
+            else
+            {
+                FromDate = (TodayDateStart[2] + "/" + TodayDateStart[1] + "/" + TodayDateStart[0]).ToString();
+                ToDate = (TodayDateEnd[2] + "/" + TodayDateEnd[1] + "/" + TodayDateEnd[0]).ToString();
+            }
 
+        }
+    }
+
+
+    public string HDateNow()
+    {
+        try
+        {
+
+            CultureInfo calCul;
             if (ContractReleaseData != null)
             {
-
-
-                if (ContractReleaseData.d.ACalTp == "H")
-                {
-
-                    FromDate = HDateNow();
-                    ToDate = HDateNow();
-                }
-                else
-                {
-                    FromDate = (TodayDateStart[2] + "/" + TodayDateStart[1] + "/" + TodayDateStart[0]).ToString();
-                    ToDate = (TodayDateEnd[2] + "/" + TodayDateEnd[1] + "/" + TodayDateEnd[0]).ToString();
-                }
-
-            }
-        }
-
-
-        public string HDateNow()
-        {
-            try
-            {
-
-                CultureInfo calCul;
-                if (ContractReleaseData != null)
-                {
-
-                    if (IsHijriCal)
-                    {
-                        calCul = new CultureInfo("ar-SA");
-                    }
-                    else
-                    {
-                        calCul = new CultureInfo("en-US");
-                    }
-                }
-                else
-                {
-
-                    calCul = new CultureInfo("en-US");
-                }
-                return DateTime.Now.ToString("yyyy/MM/dd", calCul.DateTimeFormat);
-            }
-            catch (Exception)
-
-            /* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-            Before:
-                        {
-
-
-
-                            return "";
-            After:
-                        {
-
-
-
-                            return "";
-            */
-            {
-
-
-
-                return "";
-            }
-        }
-
-        public ContractReleaseFormRequest BuildRequestObject()
-        {
-            ContractReleaseFormRequest request = new ContractReleaseFormRequest();
-            request.d = new CotractRequest();
-            try
-            {
-                request.d.__metadata = ContractReleaseData.d.__metadata;
-                DateTime dateTime = DateTime.Now;
-                var h = dateTime.Hour;
-                var m = dateTime.Minute;
-                var s = dateTime.Second;
-                request.d.AAgreeTm = "PT" + h + "H" + m + "M" + s + "S";// ContractReleaseData.d.AAgreeTm;
-                request.d.ABranch = ContractReleaseData.d.ABranch;
-                request.d.ACalTp = ContractReleaseData.d.ACalTp;
-                request.d.AContChk = ContractReleaseData.d.AContChk;
-                request.d.AHijriPeriodFrom = ContractReleaseData.d.AHijriPeriodFrom;
-                request.d.AHijriPeriodTo = ContractReleaseData.d.AHijriPeriodTo;
-                request.d.AmdRsnz = ContractReleaseData.d.AmdRsnz;
-                request.d.AOtherDes = ContractReleaseData.d.AOtherDes;
-                request.d.APeriodFrom = ContractReleaseData.d.APeriodFrom;
-                request.d.APeriodTo = ContractReleaseData.d.APeriodTo;
-                request.d.Approvez = ContractReleaseData.d.Approvez;
-
-                request.d.ARemark = ContractReleaseData.d.ARemark;
-                request.d.ATin = ContractReleaseData.d.ATin;
-                request.d.ATpNm = ContractReleaseData.d.ATpNm;
-                request.d.Auditorz = ContractReleaseData.d.Auditorz;
-                request.d.CaseGuid = ContractReleaseData.d.CaseGuid;
-                request.d.CreateTxAssesz = ContractReleaseData.d.CreateTxAssesz;
-                request.d.CurrDatumz = null;
-                request.d.Euser = ContractReleaseData.d.Euser;
-                request.d.Fbnum = ContractReleaseData.d.Fbnum;
-                request.d.Fbnumz = ContractReleaseData.d.Fbnumz;
-                request.d.FormGuid = ContractReleaseData.d.FormGuid;
-                request.d.Langz = GetLangZParameter();
-                request.d.LegacyDocNo = ContractReleaseData.d.LegacyDocNo;
-                request.d.Mandt = ContractReleaseData.d.Mandt;
-                request.d.Monthz = ContractReleaseData.d.Monthz;
-                request.d.OfficerUidz = ContractReleaseData.d.OfficerUidz;
-                request.d.PeriodKey = ContractReleaseData.d.PeriodKey;
-                request.d.PeriodKeyz = ContractReleaseData.d.PeriodKeyz;
-                request.d.PortalUsrz = ContractReleaseData.d.PortalUsrz;
-                request.d.RegIdz = ContractReleaseData.d.RegIdz;
-                request.d.Rejectz = ContractReleaseData.d.Rejectz;
-                request.d.Savez = ContractReleaseData.d.Savez;
-                request.d.Status = ContractReleaseData.d.Status;
-                request.d.Taxpayerz = ContractReleaseData.d.Taxpayerz;
-                request.d.Textnote = ContractReleaseData.d.Textnote;
-                request.d.UserTin = ContractReleaseData.d.UserTin;
-                request.d.Xvoidz = ContractReleaseData.d.Xvoidz;
-                request.d.AContDtFg = ContractReleaseData.d.AContDtFg;
-                request.d.AContEndDtFg = ContractReleaseData.d.AContEndDtFg;
-                request.d.AContNm = ContractName;
-                request.d.AContNo = ContractNumber;
-                request.d.AContProfit = ProfitEstimatedContract.ToString();
-                request.d.AContProfitPer = PickedContractPercent.ToString();
-                request.d.ADueTax = TaxDues.ToString();
-                request.d.ADueTot = TotalDues.ToString();
-                request.d.ADueZakat = ZakatDues.ToString();
-                request.d.AReqAmt = AmountToRelease.ToString();
-                request.d.ATaxProfi = ContractReleaseData.d.ATaxProfi;
-                request.d.ATaxProfitPer = EstimatedProfitForTaxAmount.ToString();
-                request.d.ATotalAmt = ContractTotalAmount.ToString();
-                request.d.AZakatProfit = ContractReleaseData.d.AZakatProfit;
-                request.d.AZakatProfitPer = EstimatedProfitForZakatAmount.ToString();
-                request.d.AComments = Remarks.ToString();
-                request.d.ARemark = Remarks.ToString();
-
-                request.d.DecFg = IsDECCheckBox ? "X" : "";
-                request.d.ADoc1 = "0";
-                request.d.ADoc2 = "1";
-                request.d.ADoc3 = "1";
-                request.d.AInvoiceChk = "";
-                request.d.AType = PickedContractId;
-
-                ZnotesSet notes = new ZnotesSet();
-                if (DetailDescription != null)
-                {
-
-                    notes.Tdline = DetailDescription.ToString();
-
-                }
-                else
-                {
-                    notes.Tdline = "";
-
-                }
-                Metadata _metdata = new Metadata();
-                _metdata.uri = ZATCAConstants.ContractReleaseRequestUrl + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotesSet(1)";
-                _metdata.type = "Z_TP_NOTES_TP11_SRV.znotes";
-                _metdata.id = ZATCAConstants.ContractReleaseRequestUrl + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotesSet(1)";
-
-                notes.__metadata = _metdata;
-                notes.AttByz = "TP";
-                notes.ElemNo = 0;
-
-                notes.Erfdtz = null;
-                notes.Erftmz = null;
-                notes.Erfusrz = "";
-                notes.Lineno = 1;
-                notes.Noteno = "001";
-                notes.Notenoz = "001";
-                notes.Rcodez = "TP11_NOTE";
-                notes.Refnamez = "";
-                notes.Tdformat = "";
-                notes.XInvoicez = "";
-                notes.XObsoletez = "";
-                request.d.znotesSet = new ZnotesSet[1];
-                request.d.znotesSet[0] = notes;
-                request.d.AttDetSet = ContractReleaseData.d.AttDetSet.results;
-                var todayDate = DateTime.Now.ToString();
-
-                DateTime dt2 = Convert.ToDateTime(todayDate);
-                JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
-                {
-                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                };
-                var jsonDateTime2 = JsonConvert.SerializeObject(dt2, microsoftDateFormatSettings2);
-                string[] dateList2 = jsonDateTime2.Split('+');
-                jsonDateTime2 = dateList2[0].Replace("\"\\", "");
-                jsonDateTime2 = jsonDateTime2 + ")/";
-                var convretedTodayate = jsonDateTime2;
-
-                request.d.AReceiveDt = convretedTodayate;
-                CultureInfo calCul;
 
                 if (IsHijriCal)
                 {
@@ -1706,596 +1408,713 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 {
                     calCul = new CultureInfo("en-US");
                 }
-
-                DateTime dt = DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul);
-                JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
-                {
-                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                };
-                var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                string[] dateList = jsonDateTime.Split('+');
-                jsonDateTime = dateList[0].Replace("\"\\", "");
-                jsonDateTime = jsonDateTime + ")/";
-                var convretedFromDate = jsonDateTime;
-
-                DateTime dt1 = DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul);
-                JsonSerializerSettings microsoftDateFormatSettings1 = new JsonSerializerSettings
-                {
-                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                };
-                var jsonDateTime1 = JsonConvert.SerializeObject(dt1, microsoftDateFormatSettings);
-                string[] dateList1 = jsonDateTime1.Split('+');
-                jsonDateTime1 = dateList1[0].Replace("\"\\", "");
-                jsonDateTime1 = jsonDateTime1 + ")/";
-                var convretedToDate = jsonDateTime1;
-                request.d.AContDt = convretedFromDate;
-                request.d.AContEndDt = convretedToDate;
-                request.d.AContEndDtCh = ToDate;
-                request.d.AContDt1 = FromDate;
-
-                if (ContractReleaseData.d.ACalTp == "H")
-                {
-                    if (IsHijriCal)
-                    {
-                        request.d.AContEndDtCh = ToDate;
-                        request.d.AContDt1 = FromDate;
-                    }
-                    else
-                    {
-                        CultureInfo arCI = new CultureInfo("en-US");
-
-                        DateTime tempDate = DateTime.ParseExact(ToDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                        DateTime tempDate1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-
-                        CultureInfo arCI1 = new CultureInfo("ar-SA");
-
-                        string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
-                        string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
-                        request.d.AContEndDtCh = convertedDae1;
-                        request.d.AContDt1 = convertedDae2;
-                    }
-                }
-                else
-                {
-                    if (!IsHijriCal)
-                    {
-
-                        request.d.AContEndDtCh = ToDate;
-                        request.d.AContDt1 = FromDate;
-                    }
-                    else
-                    {
-                        CultureInfo arCI1 = new CultureInfo("en-US");
-                        CultureInfo arCI = new CultureInfo("ar-SA");
-                        DateTime tempDate = DateTime.ParseExact(ToDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                        DateTime tempDate1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                        string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
-                        string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
-                        request.d.AContEndDtCh = convertedDae1;
-                        request.d.AContDt1 = convertedDae2;
-                    }
-                }
-                request.d.Savez = "X";
-                request.d.Submitz = "X";
-            }
-            catch (Exception)
-            {
-
-
-            }
-            return request;
-        }
-
-        private static string GetLangZParameter()
-        {
-            if (App.IsArabic)
-                return "A";
-            else
-                return "E";
-        }
-
-        public async Task<bool> SubmitClicked()
-        {
-            ContractReleaseFormResponse response = new ContractReleaseFormResponse();
-
-            ContractReleaseFormRequest request = new ContractReleaseFormRequest();
-            try
-            {
-                request = BuildRequestObject();
-                IsLoading1 = true;
-                string ContractReleaseResponse = await ContractReleaseWebServiceManager.GAZTSubmitContractReleaseRequestData(request);
-                ContractReleaseFormResponse releaseFormResponse = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(ContractReleaseResponse);
-
-                if (releaseFormResponse.d == null)
-                {
-                    IsLoading1 = false;
-                    isSubmitted = false;
-                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ContractReleaseResponse);
-                    StringBuilder Message = new StringBuilder();
-                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
-                    {
-                        if (itemerror.severity.Contains("error"))
-                        {
-                            if (Message.Length > 0)
-                            {
-                                Message.Append(Environment.NewLine);
-                            }
-                            Message.Append(itemerror.message);
-                        }
-                    }
-
-                    throw new GAZTErrorException(Message.ToString());
-                }
-                else
-                {
-                    ContractReleaseData = releaseFormResponse;
-
-                    if (ContractReleaseData.d != null)
-                    {
-                        IsLoading1 = false;
-                        await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView(this));
-                    }
-
-                }
-            }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                IsLoading1 = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                throw new GAZTVATRegistrationInProcessException(ex.Message);
-            }
-
-            catch (Exception ex)
-            {
-                IsLoading1 = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-
-                });
-            }
-            return true;
-        }
-
-
-        #endregion
-
-        private void EnableReleaseDetailsView()
-        {
-            CurrentIndex = 1;
-            IsBackButtonVisible = false;
-            IsReleaseDetailsVisible = true;
-            AttachmentsVisible = false;
-            RemarksAndDescVisible = false;
-            DeclarationVisible = false;
-            SummaryVisible = false;
-            selectedPage = (int)PagesEnum.CrReleaseDetailsView;
-        }
-
-        private void EnableAttachmentsView()
-        {
-            CurrentIndex = 2;
-            IsBackButtonVisible = true;
-            IsReleaseDetailsVisible = false;
-            AttachmentsVisible = true;
-            RemarksAndDescVisible = false;
-            DeclarationVisible = false;
-            SummaryVisible = false;
-            selectedPage = (int)PagesEnum.CrAttachmentsView;
-        }
-
-        private void EnableRemarksAndDescView()
-        {
-            CurrentIndex = 3;
-            IsBackButtonVisible = true;
-            IsReleaseDetailsVisible = false;
-            AttachmentsVisible = false;
-            RemarksAndDescVisible = true;
-            DeclarationVisible = false;
-            SummaryVisible = false;
-            selectedPage = (int)PagesEnum.CrRemarksAndDescriptionView;
-        }
-
-        private void EnableDeclarationView()
-        {
-            CurrentIndex = 4;
-            IsBackButtonVisible = true;
-            IsReleaseDetailsVisible = false;
-            AttachmentsVisible = false;
-            RemarksAndDescVisible = false;
-            DeclarationVisible = true;
-            if (VatDeregDeclaration != null && VatDeregDeclaration.D != null && string.IsNullOrEmpty(VatDeregDeclaration.D.Zterms))
-            {
-                IsDeclarationViewEnabled = true;
-                IsDeclarationViewEnabledNew = false;
-            }
-            else
-            {
-                Zterms = VatDeregDeclaration.D.Zterms;
-                IsDeclarationViewEnabled = false;
-                IsDeclarationViewEnabledNew = true;
-                if (App.IsArabic)
-                {
-                    ShouldShowAR = true;
-                    ShouldShowEN = false;
-                }
-                else
-                {
-                    ShouldShowEN = true;
-                    ShouldShowAR = false;
-                }
-
-            }
-            SummaryVisible = false;
-            selectedPage = (int)PagesEnum.CrDeclarationView;
-        }
-
-        private void EnableSummaryView()
-        {
-            CurrentIndex = 5;
-            IsBackButtonVisible = true;
-            IsReleaseDetailsVisible = false;
-            AttachmentsVisible = false;
-            RemarksAndDescVisible = false;
-            DeclarationVisible = false;
-            SummaryVisible = true;
-            selectedPage = (int)PagesEnum.CrSummaryView;
-        }
-
-        private void BackNavigations()
-        {
-            switch (selectedPage)
-            {
-                case (int)PagesEnum.CrAttachmentsView:
-                    EnableReleaseDetailsView();
-                    break;
-                case (int)PagesEnum.CrRemarksAndDescriptionView:
-                    EnableAttachmentsView();
-                    break;
-
-                case (int)PagesEnum.CrDeclarationView:
-                    EnableRemarksAndDescView();
-                    break;
-                case (int)PagesEnum.CrSummaryView:
-                    EnableDeclarationView();
-                    break;
-            }
-        }
-
-        #region OnPageLoad
-
-        public async Task OnPageLoad()
-        {
-            try
-            {
-                await Task.Run(async () =>
-                {
-
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        IsLoading1 = true;
-                    });
-                    ContractReleaseData = null;
-                    try
-                    {
-                        ContractReleaseData = await ContractReleaseWebServiceManager.GAZTGetContractReleaseRequestData();
-                        if (ContractReleaseData != null && ContractReleaseData.d != null)
-                        {
-                            VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(ContractReleaseData.d.Fbnum);
-                            bindDataToUI();
-
-                            if (ContractReleaseData.d.ACalTp == "H")
-                            {
-
-                                IsHijriCal = true;
-                            }
-                            else
-                            {
-
-                                IsHijriCal = false;
-                            }
-                            contractReleaseInterface.setDateFormatFirstTime();
-                            SetDefaultDate();
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                IsLoading1 = false;
-                            });
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
-                                    AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                    }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading1 = false;
-                        });
-                        throw ex;
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-
-                            _navigationService.GoBack();
-                        });
-                    }
-                });
-
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    IsLoading1 = false;
-                });
-            }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    IsLoading1 = false;
-                });
-            }
-            catch (Exception)
-            {
-
-
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    IsLoading1 = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-        }
-
-        public async void NewContractCopyAttachmentClicked()
-        {
-            if (MopupService.Instance.PopupStack.Count > 0) return;
-            _isInvoiceAttachments = false;
-            if (ContractCopyAttachmentsListViewData == null)
-            {
-                ContractCopyAttachmentsListViewData = new ObservableCollection<Attachment>();
-            }
-            try
-            {
-
-                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
-                    ContractCopyAttachmentsListViewData.ToList(),
-                    WhichAttachment.ContractReleaseCopy, ContractReleaseData.d.CaseGuid));
-
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
-        public async void NewInvoiceAttachmentClicked()
-        {
-            if (MopupService.Instance.PopupStack.Count > 0) return;
-            _isInvoiceAttachments = true;
-            if (InvoiceAttachmentsListViewData == null)
-            {
-                InvoiceAttachmentsListViewData = new ObservableCollection<Attachment>();
-            }
-            try
-            {
-
-                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
-                    InvoiceAttachmentsListViewData.ToList(),
-                   WhichAttachment.ContractReleaseInvoice,
-                    ContractReleaseData.d.CaseGuid));
-
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
-
-        public void MakeCalculations()
-        {
-            ProfitEstimatedContract = AmountToRelease * (PickedContractPercent / 100);
-            EstimatedProfitForZakatAmount = EstimatedProfitForZakatPercent / 100 * ProfitEstimatedContract;
-            EstimatedProfitForTaxAmount = EstimatedProfitForTaxPercent / 100 * ProfitEstimatedContract;
-            ZakatDues = 2.5 / 100 * EstimatedProfitForZakatAmount;
-            TaxDues = 20.00 / 100 * EstimatedProfitForTaxAmount;
-            TotalDues = ZakatDues + TaxDues;
-
-            if (ContractName == "" || ContractNumber == "" || PickedContract == "" || ContractTotalAmount.Equals(0.0) || AmountToRelease.Equals(0.0) || ContractTotalAmount < AmountToRelease)
-            {
-                IsReleaseDetailsEnabled = false;
-            }
-            else
-            {
-                IsReleaseDetailsEnabled = true;
-            }
-        }
-
-        public void PopulateAttachments(List<Attachment> attachments)
-        {
-            var attachmentsListViewData = new ObservableCollection<Attachment>();
-
-            foreach (Attachment attachemnt in attachments)
-            {
-                attachmentsListViewData.Add(attachemnt);
-            }
-
-            if (_isInvoiceAttachments)
-            {
-                InvoiceAttachmentsListViewData = attachmentsListViewData;
-            }
-            else
-            {
-                ContractCopyAttachmentsListViewData = attachmentsListViewData;
-            }
-
-            EnableAttachments();
-        }
-
-        private void EnableAttachments()
-        {
-
-            if (InvoiceAttachmentsListViewData == null)
-            {
-                IsAttachmentsEnabled = false;
-            }
-            else if (ContractCopyAttachmentsListViewData == null)
-            {
-
-                IsAttachmentsEnabled = false;
             }
             else
             {
 
-                if (InvoiceAttachmentsListViewData.Count == 0 || ContractCopyAttachmentsListViewData.Count == 0)
-                {
-
-                    IsAttachmentsEnabled = false;
-                }
-                else
-                {
-                    IsAttachmentsEnabled = true;
-                }
+                calCul = new CultureInfo("en-US");
             }
-
+            return DateTime.Now.ToString("yyyy/MM/dd", calCul.DateTimeFormat);
         }
-
-        public void EnableDeclarationContinue()
-        {
-            if (IsDeclarationViewEnabledNew)
-            {
-                IsDeclarationEnabled = true;
-            }
-            else
-            {
-                if (ContactPersonName == "" || Designation == "")
-                {
-                    IsDeclarationEnabled = false;
-                }
-                else
-                {
-                    IsDeclarationEnabled = true;
-                }
-            }
-        }
-
-        public void PopToRootPage()
-        {
-            if (App.IsSessionExpired)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
-            }
-        }
-
-        public void ResetData()
+        catch (Exception)
         {
 
-            TodayDateEnd = null;
-            TodayDateinHijriEnd = null;
-            TodayDateStart = null;
-            TodayDateinHijriStart = null;
-            IsHijriCal = false;
-            FromDate = "";
-            ToDate = "";
-            SetDefaultDate();
-            updatePickerContractType();
-            _isInvoiceAttachments = true;
-            IsReleaseDetailsEnabled = false;
-            IsAttachmentsEnabled = false;
-            IsDeclarationEnabled = false;
-            fromDatePicker = false;
-            isSubmitted = false;
-            InfoTitle = "";
-            InfoDesc = "";
-            PickedContract = "";
-            ContractTotalAmount = 0.0;
-            AmountToRelease = 0.0;
-            PickedContractPercent = 0.0;
-            ProfitEstimatedContract = 0.0;
-            EstimatedProfitForZakatPercent = 0.0;
-            EstimatedProfitForZakatAmount = 0.0;
-            EstimatedProfitForTaxAmount = 0.0;
-            EstimatedProfitForTaxPercent = 100.0;
-            ZakatDues = 0.0;
-            TaxDues = 0.0;
-            TotalDues = 0.0;
-            Remarks = "";
-            DetailDescription = "";
-            ContactPersonName = "";
-            Designation = "";
-            ContractName = "";
-            ContractNumber = "";
-            PickerModel = null;
-            setPickerModel();
-            ContractCopyAttachmentsListViewData = null;
-            InvoiceAttachmentsListViewData = null;
-            charCountRemarksText = 0 + "/" + 255;
-            charCountDetailDescription = 0 + "/" + 132;
 
+
+            return "";
         }
-
-
-        public void bindDataToUI()
-        {
-            try
-            {
-                EstimatedProfitForZakatPercent = Convert.ToDouble(ContractReleaseData.d.AZakatProfit);
-                EstimatedProfitForTaxPercent = Convert.ToDouble(ContractReleaseData.d.ATaxProfi);
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-
-        #endregion
-        
     }
+
+    public string ConvertToRequiredDatesFormat(string date, bool isTimeStamp, bool isRemoveTime = false)
+    {
+        try
+        {
+            if (!string.IsNullOrEmpty(date))
+            {
+                if (isTimeStamp)
+                {
+                    long timestamp = long.Parse(date.Substring(6, date.Length - 8));
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(timestamp);
+                    string requiredTime = dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:ss");
+                    if (isRemoveTime)
+                    {
+                        DateTime dateTime = DateTime.ParseExact(requiredTime, "yyyy-MM-ddTHH:mm:ss", null);
+                        requiredTime = dateTime.ToString("yyyy-MM-dd");
+                    }
+                    return requiredTime;
+                }
+                else
+                {
+                    DateTime inputDate = DateTime.ParseExact(date, "yyyy/MM/dd", null);
+                    string requiredTime = inputDate.ToString("yyyy-MM-ddTHH:mm:ss");
+                    if (isRemoveTime)
+                    {
+                        DateTime dateTime = DateTime.ParseExact(requiredTime, "yyyy-MM-ddTHH:mm:ss", null);
+                        requiredTime = dateTime.ToString("yyyy-MM-dd");
+                    }
+                    return requiredTime;
+                }
+            }
+            else
+                return "";
+
+        }
+        catch (Exception)
+        {
+        }
+
+
+
+        return "";
+
+    }
+
+    public ContractReleaseFormRequest BuildRequestObject()
+    {
+        ContractReleaseFormRequest request = new ContractReleaseFormRequest();
+        request.d = new CotractRequest();
+        try
+        {
+            request.d.__metadata = ContractReleaseData.d.__metadata;
+
+            // request.d.AAgreeTm = ContractReleaseData.d.AAgreeTm;
+            request.d.AAgreeTm = DateTime.Now.ToString("HH:mm:ss");
+            request.d.ABranch = ContractReleaseData.d.ABranch;
+            request.d.ACalTp = ContractReleaseData.d.ACalTp;
+            request.d.AContChk = ContractReleaseData.d.AContChk;
+            request.d.AHijriPeriodFrom = ContractReleaseData.d.AHijriPeriodFrom;
+            request.d.AHijriPeriodTo = ContractReleaseData.d.AHijriPeriodTo;
+            request.d.AmdRsnz = ContractReleaseData.d.AmdRsnz;
+            request.d.AOtherDes = ContractReleaseData.d.AOtherDes;
+            request.d.APeriodFrom = ContractReleaseData.d.APeriodFrom;
+            request.d.APeriodTo = ContractReleaseData.d.APeriodTo;
+            request.d.Approvez = ContractReleaseData.d.Approvez;
+
+            request.d.ARemark = ContractReleaseData.d.ARemark;
+            request.d.ATin = ContractReleaseData.d.ATin;
+            request.d.ATpNm = ContractReleaseData.d.ATpNm;
+            request.d.Auditorz = ContractReleaseData.d.Auditorz;
+            request.d.CaseGuid = ContractReleaseData.d.CaseGuid;
+            request.d.CreateTxAssesz = ContractReleaseData.d.CreateTxAssesz;
+            request.d.CurrDatumz = null;
+            request.d.Euser = ContractReleaseData.d.Euser;
+            request.d.Fbnum = ContractReleaseData.d.Fbnum;
+            if (ContractReleaseData.d.Fbnumz.Equals("$"))
+                request.d.Fbnumz = string.Empty;
+            else
+                request.d.Fbnumz = ContractReleaseData.d.Fbnumz;
+
+            //request.d.Fbnumz = ContractReleaseData.d.Fbnumz;
+            request.d.FormGuid = ContractReleaseData.d.FormGuid;
+            request.d.Langz = WebServiceManager.GetLangZParameterAREN();
+            request.d.LegacyDocNo = ContractReleaseData.d.LegacyDocNo;
+            request.d.Mandt = ContractReleaseData.d.Mandt;
+            request.d.Monthz = ContractReleaseData.d.Monthz;
+            request.d.OfficerUidz = ContractReleaseData.d.OfficerUidz;
+            request.d.PeriodKey = ContractReleaseData.d.PeriodKey;
+            request.d.PeriodKeyz = ContractReleaseData.d.PeriodKeyz;
+            request.d.PortalUsrz = ContractReleaseData.d.PortalUsrz;
+            request.d.RegIdz = ContractReleaseData.d.RegIdz;
+            request.d.Rejectz = ContractReleaseData.d.Rejectz;
+            request.d.Savez = ContractReleaseData.d.Savez;
+            request.d.Status = ContractReleaseData.d.Status;
+            request.d.Taxpayerz = ContractReleaseData.d.Taxpayerz;
+            request.d.Textnote = ContractReleaseData.d.Textnote;
+            request.d.UserTin = ContractReleaseData.d.UserTin;
+            request.d.Xvoidz = ContractReleaseData.d.Xvoidz;
+            request.d.AContDtFg = ContractReleaseData.d.AContDtFg;
+            request.d.AContEndDtFg = ContractReleaseData.d.AContEndDtFg;
+            request.d.AContNm = ContractName;
+            request.d.AContNo = ContractNumber;
+            request.d.AContProfit = ProfitEstimatedContract.ToString();
+            request.d.AContProfitPer = PickedContractPercent.ToString();
+            request.d.ADueTax = TaxDues.ToString();
+            request.d.ADueTot = TotalDues.ToString();
+            request.d.ADueZakat = ZakatDues.ToString();
+            request.d.AReqAmt = AmountToRelease.ToString();
+            request.d.ATaxProfi = ContractReleaseData.d.ATaxProfi;
+            request.d.ATaxProfitPer = EstimatedProfitForTaxAmount.ToString();
+            request.d.ATotalAmt = ContractTotalAmount.ToString();
+            request.d.AZakatProfit = ContractReleaseData.d.AZakatProfit;
+            request.d.AZakatProfitPer = EstimatedProfitForZakatAmount.ToString();
+            request.d.AComments = Remarks.ToString();
+            request.d.ARemark = Remarks.ToString();
+            request.d.declaration = "X";
+            request.d.ADoc1 = "0";
+            request.d.ADoc2 = "1";
+            request.d.ADoc3 = "1";
+            request.d.AInvoiceChk = "";
+            request.d.AType = PickedContractId;
+
+            ZnotesSet notes = new ZnotesSet();
+            if (DetailDescription != null)
+            {
+
+                notes.Tdline = DetailDescription.ToString();
+
+            }
+            else
+            {
+                notes.Tdline = "";
+
+            }
+            Metadata _metdata = new Metadata();
+            _metdata.uri = ZATCAConstants.ContractReleaseRequestUrl + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotesSet(1)";
+            _metdata.type = "Z_TP_NOTES_TP11_SRV.znotes";
+            _metdata.id = ZATCAConstants.ContractReleaseRequestUrl + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotesSet(1)";
+
+            notes.__metadata = _metdata;
+            notes.AttByz = "TP";
+            notes.ElemNo = 0;
+
+            notes.Erfdtz = null;
+            notes.Erftmz = null;
+            notes.Erfusrz = "";
+            notes.Lineno = 1;
+            notes.Noteno = "001";
+            notes.Notenoz = "001";
+            notes.Rcodez = "TP11_NOTE";
+            notes.Refnamez = "";
+            notes.Tdformat = "";
+            notes.XInvoicez = "";
+            notes.XObsoletez = "";
+            request.d.znotesSet = new ZnotesSet[1];
+            request.d.znotesSet[0] = notes;
+            request.d.AttDetSet = ContractReleaseData.d.AttDetSet;
+            var todayDate = DateTime.Now.ToString();
+
+            DateTime dt2 = Convert.ToDateTime(todayDate);
+            JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
+            {
+                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+            };
+            var jsonDateTime2 = JsonConvert.SerializeObject(dt2, microsoftDateFormatSettings2);
+            string[] dateList2 = jsonDateTime2.Split('+');
+            jsonDateTime2 = dateList2[0].Replace("\"\\", "");
+            jsonDateTime2 = jsonDateTime2 + ")/";
+            var convretedTodayate = jsonDateTime2;
+
+            request.d.AReceiveDt = ConvertToRequiredDatesFormat(convretedTodayate, true);
+            CultureInfo calCul;
+
+            if (IsHijriCal)
+            {
+                calCul = new CultureInfo("ar-SA");
+            }
+            else
+            {
+                calCul = new CultureInfo("en-US");
+            }
+
+            DateTime dt = DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul);
+            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+            {
+                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+            };
+            var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+            string[] dateList = jsonDateTime.Split('+');
+            jsonDateTime = dateList[0].Replace("\"\\", "");
+            jsonDateTime = jsonDateTime + ")/";
+            var convretedFromDate = jsonDateTime;
+
+            DateTime dt1 = DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul);
+            JsonSerializerSettings microsoftDateFormatSettings1 = new JsonSerializerSettings
+            {
+                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+            };
+            var jsonDateTime1 = JsonConvert.SerializeObject(dt1, microsoftDateFormatSettings);
+            string[] dateList1 = jsonDateTime1.Split('+');
+            jsonDateTime1 = dateList1[0].Replace("\"\\", "");
+            jsonDateTime1 = jsonDateTime1 + ")/";
+            var convretedToDate = jsonDateTime1;
+            request.d.AContDt = ConvertToRequiredDatesFormat(convretedFromDate, true);
+            request.d.AContEndDt = ConvertToRequiredDatesFormat(convretedToDate, true);
+            request.d.AContEndDtCh = ToDate;
+            request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate, false, true);
+
+            if (ContractReleaseData.d.ACalTp == "Hijri")
+            {
+                if (IsHijriCal)
+                {
+                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat(ToDate, false, true);
+                    request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate, false, true);
+                }
+                else
+                {
+                    CultureInfo arCI = new CultureInfo("en-US");
+
+                    DateTime tempDate = DateTime.ParseExact(ToDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                    DateTime tempDate1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+
+                    CultureInfo arCI1 = new CultureInfo("ar-SA");
+
+                    string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
+                    string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
+                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat(convertedDae1, false, true);
+                    request.d.AContDt1 = ConvertToRequiredDatesFormat(convertedDae2, false, true);
+                }
+            }
+            else
+            {
+                if (!IsHijriCal)
+                {
+
+                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat(ToDate, false, true);
+                    request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate, false, true);
+                }
+                else
+                {
+                    CultureInfo arCI1 = new CultureInfo("en-US");
+                    CultureInfo arCI = new CultureInfo("ar-SA");
+                    DateTime tempDate = DateTime.ParseExact(ToDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                    DateTime tempDate1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                    string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
+                    string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
+                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat(convertedDae1, false, true);
+                    request.d.AContDt1 = ConvertToRequiredDatesFormat(convertedDae2, false, true);
+                }
+            }
+            request.d.Savez = "X";
+            request.d.Submitz = "X";
+        }
+        catch (Exception)
+        {
+
+
+        }
+        return request;
+    }
+
+    private static string GetLangZParameter()
+    {
+        if (App.IsArabic)
+            return "A";
+        else
+            return "E";
+    }
+
+    public async Task<bool> SubmitClicked()
+    {
+        ContractReleaseFormResponse1 response = new ContractReleaseFormResponse1();
+
+        ContractReleaseFormRequest request = new ContractReleaseFormRequest();
+        try
+        {
+            request = BuildRequestObject();
+            IsLoading = true;
+            string ContractReleaseResponse = await ContractReleaseWebServiceManager.GAZTSubmitContractReleaseRequestData(request);
+            ContractReleaseFormResponse1 releaseFormResponse = JsonConvert.DeserializeObject<ContractReleaseFormResponse1>(ContractReleaseResponse);
+
+            if (releaseFormResponse.d == null)
+            {
+                IsLoading = false;
+                isSubmitted = false;
+                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ContractReleaseResponse);
+                StringBuilder Message = new StringBuilder();
+                foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                {
+                    if (itemerror.severity.Contains("error"))
+                    {
+                        if (Message.Length > 0)
+                        {
+                            Message.Append(Environment.NewLine);
+                        }
+                        Message.Append(itemerror.message);
+                    }
+                }
+
+                throw new GAZTErrorException(Message.ToString());
+            }
+            else
+            {
+                ContractReleaseData1 = releaseFormResponse;
+
+                if (ContractReleaseData1.d != null)
+                {
+                    IsLoading = false;
+                    await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView(this));
+                }
+
+            }
+        }
+        catch (GAZTVATRegistrationInProcessException ex)
+        {
+            IsLoading = false;
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            throw new GAZTVATRegistrationInProcessException(ex.ToString());
+        }
+
+        catch (Exception ex)
+        {
+            IsLoading = false;
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            });
+
+
+            //throw;
+        }
+        return true;
+    }
+
+
+    #endregion
+
+    private void EnableReleaseDetailsView()
+    {
+        CurrentIndex = 1;
+        IsBackButtonVisible = false;
+        IsReleaseDetailsVisible = true;
+        AttachmentsVisible = false;
+        RemarksAndDescVisible = false;
+        DeclarationVisible = false;
+        SummaryVisible = false;
+        selectedPage = (int)PagesEnum.CrReleaseDetailsView;
+    }
+
+    private void EnableAttachmentsView()
+    {
+        CurrentIndex = 2;
+        IsBackButtonVisible = true;
+        IsReleaseDetailsVisible = false;
+        AttachmentsVisible = true;
+        RemarksAndDescVisible = false;
+        DeclarationVisible = false;
+        SummaryVisible = false;
+        selectedPage = (int)PagesEnum.CrAttachmentsView;
+    }
+
+    private void EnableRemarksAndDescView()
+    {
+        CurrentIndex = 3;
+        IsBackButtonVisible = true;
+        IsReleaseDetailsVisible = false;
+        AttachmentsVisible = false;
+        RemarksAndDescVisible = true;
+        DeclarationVisible = false;
+        SummaryVisible = false;
+        selectedPage = (int)PagesEnum.CrRemarksAndDescriptionView;
+    }
+
+    private void EnableDeclarationView()
+    {
+        CurrentIndex = 4;
+        IsBackButtonVisible = true;
+        IsReleaseDetailsVisible = false;
+        AttachmentsVisible = false;
+        RemarksAndDescVisible = false;
+        DeclarationVisible = true;
+        SummaryVisible = false;
+        selectedPage = (int)PagesEnum.CrDeclarationView;
+    }
+
+    private void EnableSummaryView()
+    {
+        CurrentIndex = 5;
+        IsBackButtonVisible = true;
+        IsReleaseDetailsVisible = false;
+        AttachmentsVisible = false;
+        RemarksAndDescVisible = false;
+        DeclarationVisible = false;
+        SummaryVisible = true;
+        selectedPage = (int)PagesEnum.CrSummaryView;
+    }
+
+    private void BackNavigations()
+    {
+        switch (selectedPage)
+        {
+            case (int)PagesEnum.CrAttachmentsView:
+                EnableReleaseDetailsView();
+                break;
+            case (int)PagesEnum.CrRemarksAndDescriptionView:
+                EnableAttachmentsView();
+                break;
+
+            case (int)PagesEnum.CrDeclarationView:
+                EnableRemarksAndDescView();
+                break;
+            case (int)PagesEnum.CrSummaryView:
+                EnableDeclarationView();
+                break;
+        }
+    }
+
+    #region OnPageLoad
+
+    public async Task OnPageLoad()
+    {
+        try
+        {
+
+            IsLoading = true;
+            ContractReleaseData = await ContractReleaseWebServiceManager.GAZTGetContractReleaseRequestData();
+            if (ContractReleaseData != null && ContractReleaseData.d != null)
+            {
+                bindDataToUI();
+
+                if (ContractReleaseData.d.ACalTp == "Hijri")
+                {
+
+                    IsHijriCal = true;
+                }
+                else
+                {
+
+                    IsHijriCal = false;
+                }
+                contractReleaseInterface.setDateFormatFirstTime();
+                SetDefaultDate();
+                IsLoading = false;
+            }
+            else
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
+                        AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            IsLoading = false;
+
+        }
+        catch (GAZTVATRegistrationInProcessException ex)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
+            IsLoading = false;
+        }
+        catch (Exception)
+        {
+
+
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                IsLoading = false;
+            });
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+    }
+
+    public async void NewContractCopyAttachmentClicked()
+    {
+        if (MopupService.Instance.PopupStack.Count > 0) return;
+        _isInvoiceAttachments = false;
+        if (ContractCopyAttachmentsListViewData == null)
+        {
+            ContractCopyAttachmentsListViewData = new ObservableCollection<Attachment>();
+        }
+        try
+        {
+
+            await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
+                ContractCopyAttachmentsListViewData.ToList(),
+                WhichAttachment.ContractReleaseCopy, ContractReleaseData.d.CaseGuid));
+
+        }
+        catch (InternetException ex)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+        catch (Exception)
+        {
+
+        }
+    }
+
+    public async void NewInvoiceAttachmentClicked()
+    {
+        if (MopupService.Instance.PopupStack.Count > 0) return;
+        _isInvoiceAttachments = true;
+        if (InvoiceAttachmentsListViewData == null)
+        {
+            InvoiceAttachmentsListViewData = new ObservableCollection<Attachment>();
+        }
+        try
+        {
+
+            await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
+                InvoiceAttachmentsListViewData.ToList(),
+                WhichAttachment.ContractReleaseInvoice,
+                ContractReleaseData.d.CaseGuid));
+
+        }
+        catch (InternetException ex)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+    }
+
+
+    public void MakeCalculations()
+    {
+        ProfitEstimatedContract = AmountToRelease * (PickedContractPercent / 100);
+        EstimatedProfitForZakatAmount = (EstimatedProfitForZakatPercent / 100) * ProfitEstimatedContract;
+        EstimatedProfitForTaxAmount = (EstimatedProfitForTaxPercent / 100) * ProfitEstimatedContract;
+        ZakatDues = (2.5 / 100) * EstimatedProfitForZakatAmount;
+        TaxDues = (20.00 / 100) * EstimatedProfitForTaxAmount;
+        TotalDues = ZakatDues + TaxDues;
+
+        if (ContractName == "" || ContractNumber == "" || PickedContract == "" || ContractTotalAmount.Equals(0.0) || AmountToRelease.Equals(0.0) || ContractTotalAmount < AmountToRelease)
+        {
+            IsReleaseDetailsEnabled = false;
+        }
+        else
+        {
+            IsReleaseDetailsEnabled = true;
+        }
+    }
+
+    public void PopulateAttachments(List<Attachment> attachments)
+    {
+        var attachmentsListViewData = new ObservableCollection<Attachment>();
+
+        foreach (Attachment attachemnt in attachments)
+        {
+            attachmentsListViewData.Add(attachemnt);
+        }
+
+        if (_isInvoiceAttachments)
+        {
+            InvoiceAttachmentsListViewData = attachmentsListViewData;
+        }
+        else
+        {
+            ContractCopyAttachmentsListViewData = attachmentsListViewData;
+        }
+
+        EnableAttachments();
+    }
+
+    private void EnableAttachments()
+    {
+
+        if (InvoiceAttachmentsListViewData == null)
+        {
+            IsAttachmentsEnabled = false;
+        }
+        else if (ContractCopyAttachmentsListViewData == null)
+        {
+
+            IsAttachmentsEnabled = false;
+        }
+        else
+        {
+
+            if (InvoiceAttachmentsListViewData.Count == 0 || ContractCopyAttachmentsListViewData.Count == 0)
+            {
+
+                IsAttachmentsEnabled = false;
+            }
+            else
+            {
+                IsAttachmentsEnabled = true;
+            }
+        }
+
+    }
+
+    public void EnableDeclarationContinue()
+    {
+        if (ContactPersonName == "" || Designation == "")
+        {
+            IsDeclarationEnabled = false;
+        }
+        else
+        {
+            IsDeclarationEnabled = true;
+        }
+    }
+
+    public void PopToRootPage()
+    {
+        if (App.IsSessionExpired)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            });
+        }
+    }
+
+    public void ResetData()
+    {
+
+        TodayDateEnd = null;
+        TodayDateinHijriEnd = null;
+        TodayDateStart = null;
+        TodayDateinHijriStart = null;
+        IsHijriCal = false;
+        FromDate = "";
+        ToDate = "";
+        SetDefaultDate();
+        updatePickerContractType();
+        _isInvoiceAttachments = true;
+        IsReleaseDetailsEnabled = false;
+        IsAttachmentsEnabled = false;
+        IsDeclarationEnabled = false;
+        fromDatePicker = false;
+        isSubmitted = false;
+        InfoTitle = "";
+        InfoDesc = "";
+        PickedContract = "";
+        ContractTotalAmount = 0.0;
+        AmountToRelease = 0.0;
+        PickedContractPercent = 0.0;
+        ProfitEstimatedContract = 0.0;
+        EstimatedProfitForZakatPercent = 0.0;
+        EstimatedProfitForZakatAmount = 0.0;
+        EstimatedProfitForTaxAmount = 0.0;
+        EstimatedProfitForTaxPercent = 100.0;
+        ZakatDues = 0.0;
+        TaxDues = 0.0;
+        TotalDues = 0.0;
+        Remarks = "";
+        DetailDescription = "";
+        ContactPersonName = "";
+        Designation = "";
+        ContractName = "";
+        ContractNumber = "";
+        PickerModel = null;
+        setPickerModel();
+        ContractCopyAttachmentsListViewData = null;
+        InvoiceAttachmentsListViewData = null;
+        charCountRemarksText = 0 + "/" + 255;
+        charCountDetailDescription = 0 + "/" + 132;
+
+    }
+
+
+    public void bindDataToUI()
+    {
+        try
+        {
+            EstimatedProfitForZakatPercent = Convert.ToDouble(ContractReleaseData.d.AZakatProfit);
+            EstimatedProfitForTaxPercent = Convert.ToDouble(ContractReleaseData.d.ATaxProfi);
+        }
+        catch (Exception)
+        {
+        }
+    }
+
+    #endregion
 }

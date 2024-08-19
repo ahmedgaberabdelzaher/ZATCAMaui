@@ -271,7 +271,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
                             viewModel.IsLoading = false;
-                            var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
+                            var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
 
 
                         }
@@ -284,7 +284,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 try
                                 {
 
-                                    var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
+                                    var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
                                 }
                                 catch (Exception)

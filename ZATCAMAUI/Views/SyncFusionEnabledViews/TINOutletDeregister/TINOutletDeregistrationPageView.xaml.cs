@@ -1,3 +1,6 @@
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister;
+using static ZATCAMAUI.Models.TINOutletDeregister.TinOutletPrevousRequestsModel;
+
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.TINOutletDeregister;
 
 public partial class TINOutletDeregistrationPageView : ContentPage
@@ -38,10 +41,10 @@ public partial class TINOutletDeregistrationPageView : ContentPage
 				viewModel.NavigatingtoRequestPageView(item);
 			});
 		}
-		catch (Exception ex)
+		catch (Exception )
 		{
-			Console.WriteLine(ex.Message);
-			Console.Write(ex.StackTrace.ToString());
+			
+			
 
 		}
 	}

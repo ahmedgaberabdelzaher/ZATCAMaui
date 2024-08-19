@@ -249,8 +249,8 @@ public class NafathAuthenticationViewModel : BaseViewModel
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }

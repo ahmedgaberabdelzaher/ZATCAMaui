@@ -8,7 +8,6 @@ using ZATCAMAUI.Models.InstalmentPlanModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 {
-
     public class InstalmentPlanViewModel : BaseViewModel
     {
 
@@ -67,7 +66,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
         {
             try
             {
-                _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
+                 _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
+                //_navigationService.NavigateTo(App.ZakatInstalmentPlanListPageView);
 
             }
             catch (GAZTUnlockAccountException)
@@ -230,7 +230,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
                 });
             }
 
-            if (App.LoginDataRetrieved.VtReg == "X" || App.LoginDataRetrieved.VtReg == "R")
+            if (App.LoginDataRetrieved.VtReg == "X" || App.LoginDataRetrieved.VtReg == "R" || App.LoginDataRetrieved.VtReg == "G")
             {
 
                 outletDecisionOptions.Add(new InstalmentPlanModel

@@ -760,7 +760,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 {
                     if (viewModel != null)
                     {
-                        Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
+                        MainThread.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
                     }
                 }
                 catch (Exception)
@@ -812,7 +812,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
             finally
             {
-                Device.BeginInvokeOnMainThread(() => HijriCalSwitch1.IsToggled = viewModel.IsDOBHijriCal);
+                MainThread.BeginInvokeOnMainThread(() => HijriCalSwitch1.IsToggled = viewModel.IsDOBHijriCal);
             }
         }
 

@@ -1,5 +1,5 @@
 ﻿
-using Foundation;
+
 using PassKit;
 using UIKit;
 using ZATCAMAUI.Core.Interfaces;

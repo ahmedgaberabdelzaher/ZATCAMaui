@@ -345,63 +345,46 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
+                IsLoading = true;
+                try
                 {
 
-                    IsLoading = true;
-
-                    try
+                    var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingList(App.LoginDataRetrieved.TIN);
+                    if (resultData != null)
                     {
+                        var changeFilingFrequencyDataList = resultData.d.ASSLISTSet.Where(x => x.Fbtyp.ToUpper() == "TPCV".ToUpper()).ToList();
 
-                        var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingList(App.LoginDataRetrieved.TIN);
-                        if (resultData != null)
+                        var myRequestsListViewData = new ObservableCollection<VATChangeFillingListModel.ChangeFillingFrequency>();
+
+                        foreach (var changeFilingFrequencyData in changeFilingFrequencyDataList)
                         {
-                            var changeFilingFrequencyDataList = resultData.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "TPCV".ToUpper()).ToList();
-
-                            var myRequestsListViewData = new ObservableCollection<VATChangeFillingListModel.ChangeFillingFrequency>();
-
-                            foreach (var changeFilingFrequencyData in changeFilingFrequencyDataList)
-                            {
-                                myRequestsListViewData.Add(changeFilingFrequencyData);
-                            }
-
-                            MyRequestsListViewData = myRequestsListViewData;
-
+                            myRequestsListViewData.Add(changeFilingFrequencyData);
                         }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                        IsLoading = false;
-                    }
-                    catch (GAZTVATRegistrationInProcessException )
-                    {
 
+                        MyRequestsListViewData = myRequestsListViewData;
 
                     }
-                    catch (InternetException ex)
+                    else
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                         });
-
                     }
-                });
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
+                }
+                catch (InternetException ex)
+                {
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        IsLoading = false;
+                        _navigationService.GoBack();
+                    });
+
+                }
+                IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
@@ -417,12 +400,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             catch (Exception)
 
             {
-
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -435,96 +413,57 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingSummary(item.Fbnum, item.Fbust);
+                if (resultData != null && resultData.d != null)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
+                    vATChangingSummaryData = new VATChangeFillingSummaryModel.VATChangingSummaryData();
+                    vATChangingSummaryData.Attchk = resultData.d.Attchk;
+                    vATChangingSummaryData.CureentF = resultData.d.CureentF;
+                    vATChangingSummaryData.FilingF = resultData.d.FilingF;
+                    //Persl i.e 21JA means January 2021
+                    vATChangingSummaryData.Persl = resultData.d.CPersl;
+                    vATChangingSummaryData.Decfg = resultData.d.Decfg;
+                    vATChangingSummaryData.Decname = resultData.d.Decname;
+                    vATChangingSummaryData.DecidNo = resultData.d.DecidNo;
+                    vATChangingSummaryData.DecidTy = resultData.d.DecidTy;
+                    vATChangingSummaryData.AttachmentList = resultData.d.ATTACHSet;
+                    vATChangingSummaryData.Fbnum = resultData.d.Fbnumz;
+                    //vATChangingSummaryData.NOTESSet = resultData.d.NOTESSet;
+
+                    CurrentFrequency = vATChangingSummaryData.CureentF;
+                    NewFrequency = vATChangingSummaryData.FilingF;
+                    EffectiveDatePicked = vATChangingSummaryData.Persl;
+                    IDType = IDTypeDictionary[vATChangingSummaryData.DecidTy];
+                    if (vATChangingSummaryData.DecidTy == "ZS0001" || vATChangingSummaryData.DecidTy == "ZS0002")
+                    {
+                        IsDobVisible = true;
+                    }
+                    else
+                    {
+                        IsDobVisible = false;
+                    }
+                    IDNumber = vATChangingSummaryData.DecidNo;
+                    PickedDate = vATChangingSummaryData.Decfg;
+                    ContactPersonName = vATChangingSummaryData.Decname;
+
+                    PopulateAttachentsListData(resultData.d.ATTACHSet);
+                }
+                else
                 {
-
-                    IsLoading = true;
-
-                    try
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
-
-
-                        var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingSummary(item.Fbnum, item.Fbust);
-                        if (resultData != null && resultData.d != null)
-                        {
-                            vATChangingSummaryData = new VATChangeFillingSummaryModel.VATChangingSummaryData();
-                            vATChangingSummaryData.Attchk = resultData.d.Attchk;
-                            vATChangingSummaryData.CureentF = resultData.d.CureentF;
-                            vATChangingSummaryData.FilingF = resultData.d.FilingF;
-                            //Persl i.e 21JA means January 2021
-                            vATChangingSummaryData.Persl = resultData.d.Persl;
-                            vATChangingSummaryData.Decfg = resultData.d.Decfg;
-                            vATChangingSummaryData.Decname = resultData.d.Decname;
-                            vATChangingSummaryData.DecidNo = resultData.d.DecidNo;
-                            vATChangingSummaryData.DecidTy = resultData.d.DecidTy;
-                            vATChangingSummaryData.AttachmentList = resultData.d.ATTACHSet;
-                            vATChangingSummaryData.Fbnum = resultData.d.Fbnumz;
-                            //vATChangingSummaryData.NOTESSet = resultData.d.NOTESSet;
-
-                            CurrentFrequency = vATChangingSummaryData.CureentF;
-                            NewFrequency = vATChangingSummaryData.FilingF;
-                            EffectiveDatePicked = vATChangingSummaryData.Persl;
-                            IDType = IDTypeDictionary[vATChangingSummaryData.DecidTy];
-                            if (vATChangingSummaryData.DecidTy == "ZS0001" || vATChangingSummaryData.DecidTy == "ZS0002")
-                            {
-                                IsDobVisible = true;
-                            }
-                            else
-                            {
-                                IsDobVisible = false;
-                            }
-                            IDNumber = vATChangingSummaryData.DecidNo;
-                            PickedDate = vATChangingSummaryData.Decfg;
-                            ContactPersonName = vATChangingSummaryData.Decname;
-
-                            PopulateAttachentsListData(resultData.d.ATTACHSet);
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                        IsLoading = false;
-                    }
-                    catch (GAZTVATChangeFillingPeriodException ex)
-                    {
-
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                        });
-                        //throw ex;
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                IsLoading = false;
             }
             catch (GAZTVATChangeFillingPeriodException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    IsLoading = false;
+                   
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
@@ -532,8 +471,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -546,13 +483,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        private void PopulateAttachentsListData(VATChangeFillingSummaryModel.ATTACHSet dAttachSet)
+        private void PopulateAttachentsListData(List<Attachment> dAttachSet)
         {
             var yearsAttachmentsListViewData = new ObservableCollection<Attachment>();
             var monthsAttachmentsListViewData = new ObservableCollection<Attachment>();
             var othersAttachmentsListViewData = new ObservableCollection<Attachment>();
 
-            foreach (var attachment in dAttachSet.results)
+            foreach (var attachment in dAttachSet)
             {
                 if (attachment.Dotyp == "ZTPA")
                 {

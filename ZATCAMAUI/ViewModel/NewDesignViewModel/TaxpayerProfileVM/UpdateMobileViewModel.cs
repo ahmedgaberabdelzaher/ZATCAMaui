@@ -174,8 +174,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     }
                     catch (Exception)
                     {
-
-
                     }
                 }
                 OnPropertyChanged("NewMobileNumberEntryText");
@@ -454,6 +452,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             catch (Exception ex)
             {
                 IsLoading = false;
+                System.Diagnostics.Debug.WriteLine("VERIFY OTP ERROR : {0}", ex.Message);
                 ShowValidationPopup(ex.Message);
             }
 
@@ -492,8 +491,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 IsLoading = false;
                 ShowValidationPopup(ex.Message);
-
-
             }
 
             return TP;

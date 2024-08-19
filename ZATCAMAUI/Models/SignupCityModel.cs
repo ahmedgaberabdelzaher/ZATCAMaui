@@ -1,4 +1,7 @@
-﻿namespace ZATCAMAUI.Models
+﻿
+using Newtonsoft.Json;
+
+namespace ZATCAMAUI.Models
 {
 
     public class SignupCityModel
@@ -42,10 +45,15 @@
     public class SignupCityResult
     {
         public Metadata2 __metadata { get; set; }
+        [JsonProperty("language")]
         public string Langu { get; set; }
+        [JsonProperty("country")]
         public string Country { get; set; }
+        [JsonProperty("cityCode")]
         public string CityCode { get; set; }
+        [JsonProperty("region")]
         public string Region { get; set; }
+        [JsonProperty("cityName")]
         public string CityName { get; set; }
     }
     
@@ -56,18 +64,29 @@
     
     public class SignupCityD
     {
-        public Metadata __metadata { get; set; }
-        public string Spras { get; set; }
-        public string Land1 { get; set; }
-        public string Bland { get; set; }
-        public string Cityc { get; set; }
-        public SignupCityCountryDropdownSet country_dropdownSet { get; set; }
-        public SignupCityStateDropdownSet State_dropdownSet { get; set; }
-        public SignupCityDropdownSet city_dropdownSet { get; set; }
+        public string cityCode { get; set; }
+        public string region { get; set; }
+        public string country { get; set; }
+        public List<SignupCityResult> cities { get; set; }
     }
+    public class City
+    {
+        [JsonProperty("language")]
+        public string Langu { get; set; }
+        [JsonProperty("country")]
+        public string Country { get; set; }
+        [JsonProperty("cityCode")]
+        public string CityCode { get; set; }
+        [JsonProperty("region")]
+        public string Region { get; set; }
+        [JsonProperty("cityName")]
+        public string CityName { get; set; }
+    }
+
     
     public class SignupCityRootObject
     {
+        [JsonProperty("data")]
         public SignupCityD d { get; set; }
     }
 }

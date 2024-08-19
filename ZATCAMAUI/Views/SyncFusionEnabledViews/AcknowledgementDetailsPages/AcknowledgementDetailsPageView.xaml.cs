@@ -1,11 +1,7 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Globalization;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsPage;
-using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages
 {
@@ -20,9 +16,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages
         public AcknowledgementDetailsPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
-            On<iOS>().SetUseSafeArea(true);
-            NavigationPage.SetBackButtonTitle(this, "");
-            ChangeAeroIcon();
             try
             {
                 viewModel = App.Locator.AcknowledgementDetailsPageView;
@@ -118,45 +111,16 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages
         {
             try
             {
-                await Task.Run(() =>
-                  {
-                      viewModel.IsLoading = true;
-                  });
-                await Task.Run(async () =>
-                {
-                    await viewModel.OnRefreshClick();
-                });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
+
+                await viewModel.OnRefreshClick();
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-        public void IsCheckedEnable()
-        {
-            if (App.ICRStatus == "E0006")
-            {
-            }
-        }
-       
         protected async void OnVATRefreshButtonClicked(object sender, EventArgs e)
         {
             await viewModel.OnRefreshClick();

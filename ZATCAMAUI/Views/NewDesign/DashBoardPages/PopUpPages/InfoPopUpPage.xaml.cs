@@ -2,7 +2,7 @@
 using Mopups.Services;
 using System.Globalization;
 using ZATCAMAUI.Core.Mangers;
-using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.DashBoardPages.PopUpPages
 {

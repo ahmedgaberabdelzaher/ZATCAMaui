@@ -3,7 +3,6 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 
-[XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 {
 

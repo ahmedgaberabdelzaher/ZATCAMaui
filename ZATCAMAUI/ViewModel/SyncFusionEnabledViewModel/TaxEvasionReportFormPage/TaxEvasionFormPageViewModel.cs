@@ -782,7 +782,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             {
                 string[] filetypes;
 
-                filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
+                filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForTaxEvasion();
 
                 PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
                 //var fileData = await CrossFilePicker.Current.PickFile(filetypes);

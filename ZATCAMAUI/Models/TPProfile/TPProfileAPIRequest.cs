@@ -1,75 +1,128 @@
-﻿using ZATCAMAUI.Core.Helper;
-
+﻿using Newtonsoft.Json;
+using ZATCAMAUI.Core.Helper;
 namespace ZATCAMAUI.Models.TPProfile
 {
 
     public class TPProfileAPIRequest
     {
         public Metadata __metadata { get; set; }
-        public string UserId { get; set; } = App.TP.UserId;
-        public string Auditorz { get; set; } = App.TP.Auditorz;
+        [JsonProperty("userId")]
+        public string UserId { get; set; } = App.TP.userId;
+        [JsonProperty("auditor")]
+        public string Auditorz { get; set; } = App.TP.auditor;
+        [JsonProperty("previousEmail")]
         public string PrevEmail { get; set; } = App.TP.PrevEmail;
+        [JsonProperty("previousPassword")]
         public string PreviousPwd { get; set; } = App.TP.PreviousPwd;
+        [JsonProperty("mobileCountry")]
         public string MobileCountry { get; set; } = App.TP.MobileCountry;
-        public string Euser1 { get; set; } = App.TP.Euser1;
-        public string TpType { get; set; } = App.TP.TpType;
+        [JsonProperty("authenticationUser1")]
+        public string Euser1 { get; set; } = App.TP.authenticationUser1;
+        [JsonProperty("taxpayerType")]
+        public string TpType { get; set; } = App.TP.taxpayerType;
+        [JsonProperty("verifyEmail")]
         public string VerifyEmail { get; set; } = string.Empty;
-        public string Euser { get; set; } = App.TP.Euser;
-        public string Euser2 { get; set; } = App.TP.Euser2;
+        [JsonProperty("authenticationUser")]
+        public string Euser { get; set; } = App.TP.authenticationUser;
+        [JsonProperty("authenticationUser2")]
+        public string Euser2 { get; set; } = App.TP.authenticationUser2;
+        [JsonProperty("verifyMobile")]
         public string VerifyMobile { get; set; } = string.Empty;
-        public string Euser3 { get; set; } = App.TP.Euser3;
-        public string TypeChk { get; set; } = App.TP.TypeChk;
-        public string Euser4 { get; set; } = App.TP.Euser4;
-        public string Fbguid { get; set; } = App.TP.Fbguid;
-        public string Euser5 { get; set; } = App.TP.Euser5;
+        [JsonProperty("authenticationUser3")]
+        public string Euser3 { get; set; } = App.TP.authenticationUser3;
+        [JsonProperty("typeCheck")]
+        public string TypeChk { get; set; } = App.TP.typeCheck;
+        [JsonProperty("authenticationUser4")]
+        public string Euser4 { get; set; } = App.TP.authenticationUser4;
+        [JsonProperty("formBundleGUID")]
+        public string Fbguid { get; set; } = App.TP.formBundleGUID;
+        [JsonProperty("authenticationUser5")]
+        public string Euser5 { get; set; } = App.TP.authenticationUser5;
+        [JsonProperty("TIN")]
         public string Taxpayerz { get; set; } = App.TP.Taxpayerz;
+        [JsonProperty("contractNumber")]
         public string RegIdz { get; set; } = App.TP.RegIdz;
-        public string PeriodKeyz { get; set; } = App.TP.PeriodKeyz;
-        public string Submitz { get; set; } = App.TP.Submitz;
-        public string Savez { get; set; } = App.TP.Savez;
-        public string Fbnumz { get; set; } = App.TP.Fbnumz;
-        public string Langz { get; set; } = App.TP.Langz;
-        public string PortalUsrz { get; set; } = App.TP.PortalUsrz;
-        public string Monthz { get; set; } = App.TP.Monthz;
+        [JsonProperty("peroidKey")]
+        public string PeriodKeyz { get; set; } = App.TP.periodKey;
+        [JsonProperty("submit")]
+        public string Submitz { get; set; } = App.TP.submit;
+        [JsonProperty("save")]
+        public string Savez { get; set; } = App.TP.save;
+        [JsonProperty("formBundleNumber")]
+        public string Fbnumz { get; set; } = App.TP.formBundleNumber;
+        [JsonProperty("language")]
+        public string Langz { get; set; } = App.TP.language;
+        [JsonProperty("portalUser")]
+        public string PortalUsrz { get; set; } = App.TP.portalUser;
+        [JsonProperty("month")]
+        public string Monthz { get; set; } = App.TP.month;
+        [JsonProperty("username")]
         public string OfficerUidz { get; set; } = App.TP.OfficerUidz;
-        public string Approvez { get; set; } = App.TP.Approvez;
-        public string Rejectz { get; set; } = App.TP.Rejectz;
-        public string CreateTxAssesz { get; set; } = App.TP.CreateTxAssesz;
-        public string Xvoidz { get; set; } = App.TP.Xvoidz;
-        public string AmdRsnz { get; set; } = App.TP.AmdRsnz;
-        public string ObjSubmitz { get; set; } = App.TP.ObjSubmitz;
-        public string Dmodez { get; set; } = App.TP.Dmodez;
-        public string SkipBillingz { get; set; } = App.TP.SkipBillingz;
-        public string Partner { get; set; } = App.TP.Partner;
-        public string NameChk { get; set; } = App.TP.NameChk;
-        public string NameFirst { get; set; } = App.TP.NameFirst;
-        public string NameLast { get; set; } = App.TP.NameLast;
-        public string NameOrg1 { get; set; } = App.TP.NameOrg1;
-        public string ActnmChk { get; set; } = App.TP.ActnmChk;
-        public string Actnm { get; set; } = App.TP.Actnm;
+        [JsonProperty("approve")]
+        public string Approvez { get; set; } = App.TP.approve;
+        [JsonProperty("reject")]
+        public string Rejectz { get; set; } = App.TP.reject;
+        [JsonProperty("createTaxAssessment")]
+        public string CreateTxAssesz { get; set; } = App.TP.createTaxAssessment;
+        [JsonProperty("void")]
+        public string Xvoidz { get; set; } = App.TP.Void;
+        [JsonProperty("amendmentReason")]
+        public string AmdRsnz { get; set; } = App.TP.amendmentReason;
+        [JsonProperty("objectSubmit")]
+        public string ObjSubmitz { get; set; } = App.TP.objectSubmit;
+        [JsonProperty("mode")]
+        public string Dmodez { get; set; } = App.TP.mode;
+        [JsonProperty("skipBilling")]
+        public string SkipBillingz { get; set; } = App.TP.skipBilling;
+        [JsonProperty("partner")]
+        public string Partner { get; set; } = App.TP.partner;
+        [JsonProperty("nameCheck")]
+        public string NameChk { get; set; } = App.TP.nameCheck;
+        [JsonProperty("firstName")]
+        public string NameFirst { get; set; } = App.TP.firstName;
+        [JsonProperty("lastName")]
+        public string NameLast { get; set; } = App.TP.lastName;
+        [JsonProperty("organizationName1")]
+        public string NameOrg1 { get; set; } = App.TP.organizationName;
+        [JsonProperty("activityNameCheck")]
+        public string ActnmChk { get; set; } = App.TP.activityNameCheck;
+        [JsonProperty("activityName")]
+        public string Actnm { get; set; } = App.TP.activityName;
+        [JsonProperty("emailCheck")]
         public string EmailChk { get; set; } = string.Empty;
-        public string Email { get; set; } = App.TP.Email;
+        [JsonProperty("email")]
+        public string Email { get; set; } = App.TP.email;
+        [JsonProperty("emailLoginCode")]
         public string EmailLoginCd { get; set; } = string.Empty;
+        [JsonProperty("mobileCheck")]
         public string MobileChk { get; set; } = string.Empty;
-        public string Mobile { get; set; } = App.TP.Mobile;
+        [JsonProperty("mobile")]
+        public string Mobile { get; set; } = App.TP.mobile;
+        [JsonProperty("mobileLoginCode")]
         public string MobileLoginCd { get; set; } = string.Empty;
+        [JsonProperty("passwordCheck")]
         public string PasswordChk { get; set; } = string.Empty;
-        public string PasswordOld { get; set; } = App.TP.PasswordOld;
-        public string PasswordNew { get; set; } = App.TP.PasswordNew;
-        public string Edit { get; set; } = App.TP.Edit;
-        public string Cancel { get; set; } = App.TP.Cancel;
-        public string Conf { get; set; } = string.Empty;
+        [JsonProperty("oldPassword")]
+        public string PasswordOld { get; set; } = App.TP.oldPassword;
+        [JsonProperty("newPassword")]
+        public string PasswordNew { get; set; } = App.TP.newPassword;
+        [JsonProperty("edit")]
+        public string Edit { get; set; } = App.TP.edit;
+        [JsonProperty("cancel")]
+        public string Cancel { get; set; } = App.TP.cancel;
+        [JsonProperty("confirm")]
+        public string Conf { get; set; } = App.TP.confirm;
 
         // * Prepare POST API Request Data
         public static TPProfileAPIRequest PrepareRequestData(TPProfileAPIRequestDataModel APIRequestDataModel)
         {
             var metaData = new Metadata();
-            metaData.id = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet(Euser1='00000000000000000000',Euser='',Euser2='00000000000000000000',Euser3='00000000000000000000',Euser4='00000000000000000000',Fbguid='',Euser5='00000000000000000000',Taxpayerz='" + App.TP.Tin + "',Langz='E')";
-            metaData.uri = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet(Euser1='00000000000000000000',Euser='',Euser2='00000000000000000000',Euser3='00000000000000000000',Euser4='00000000000000000000',Fbguid='',Euser5='00000000000000000000',Taxpayerz='" + App.TP.Tin + "',Langz='E')";
+            metaData.id = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet(Euser1='00000000000000000000',Euser='',Euser2='00000000000000000000',Euser3='00000000000000000000',Euser4='00000000000000000000',Fbguid='',Euser5='00000000000000000000',Taxpayerz='" + App.TP.TIN + "',Langz='E')";
+            metaData.uri = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet(Euser1='00000000000000000000',Euser='',Euser2='00000000000000000000',Euser3='00000000000000000000',Euser4='00000000000000000000',Fbguid='',Euser5='00000000000000000000',Taxpayerz='" + App.TP.TIN + "',Langz='E')";
             metaData.type = "Z_TP_PROFILE_N_SRV.TPFL_HEADER";
 
-            string lang = "E";
-            if (App.IsArabic == true) { lang = "A"; }
+            string lang = "EN";
+            if (App.IsArabic == true) { lang = "AR"; }
 
             var TPProfileAPIRequestData = new TPProfileAPIRequest();
             TPProfileAPIRequestData.__metadata = metaData;
@@ -129,5 +182,14 @@ namespace ZATCAMAUI.Models.TPProfile
         public string NewEmail { get; set; } // Email
         public string OldPassword { get; set; } // PreviousPwd
         public string NewPassword { get; set; } // PasswordOld + PasswordNew
+    }
+
+    public class TPProfileUpdatePasswordRequestModel
+    {
+        public string email { get; set; }
+        public string TIN { get; set; }
+        public string oldPassword { get; set; }
+        public string newPassword { get; set; }
+        public string confirmPassword { get; set; }
     }
 }

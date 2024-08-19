@@ -174,16 +174,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     }
                     catch (Exception)
                     {
-
-
                     }
 
                     OnPropertyChanged("SelectedTaxEvasionListItem");
                 }
                 catch (Exception)
                 {
-
-
                 }
             }
         }
@@ -209,8 +205,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             catch (Exception)
             {
-
-
             }
 
         }
@@ -227,8 +221,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     }
                     catch (Exception)
                     {
-
-
                     }
 
                     if (SelectedChipFilterItemList != null)
@@ -261,8 +253,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                             }
                             catch (Exception)
                             {
-
-
                             }
 
 
@@ -373,8 +363,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             catch (Exception)
             {
-
-
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await Task.Run(() =>
@@ -405,8 +393,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             catch (Exception)
             {
-
-
             }
         }
     }

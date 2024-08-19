@@ -135,6 +135,11 @@
         <None Remove="ViewModel\NewDesignViewModel\EscalatedCasesGSTCPageViewModel\" />
         <None Remove="Views\NewDesign\EscalatedCasesGSTC\" />
         <Compile Remove="ViewModel\SyncFusionEnabledViewModel\MyCommitmentsPage\MyCommitmentsPageViewModel.cs" />
+        <None Remove="Models\TINOutletDeregister\" />
+        <None Remove="ViewModel\SyncFusionEnabledViewModel\TINOutletDeregister\" />
+        <None Remove="ViewModel\NewDesignViewModel\ChangeNumber\" />
+        <None Remove="ViewModel\NewDesignViewModel\UpdateVatEffectiveDateVM\" />
+        <None Remove="ViewModel\NewDesignViewModel\ZakatRejectionPopUpViewModel\" />
     </ItemGroup>
     <ItemGroup>
         <Compile Remove="Platforms\Android\DependencyServices\CustomPdfRenderer.cs" />
@@ -187,6 +192,11 @@
         <Folder Include="Views\NewDesign\IBanAccountsManagementPages\" />
         <Folder Include="ViewModel\NewDesignViewModel\EscalatedCasesGSTCPageViewModel\" />
         <Folder Include="Views\NewDesign\EscalatedCasesGSTC\" />
+        <Folder Include="Models\TINOutletDeregister\" />
+        <Folder Include="ViewModel\SyncFusionEnabledViewModel\TINOutletDeregister\" />
+        <Folder Include="ViewModel\NewDesignViewModel\ChangeNumber\" />
+        <Folder Include="ViewModel\NewDesignViewModel\UpdateVatEffectiveDateVM\" />
+        <Folder Include="ViewModel\NewDesignViewModel\ZakatRejectionPopUpViewModel\" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Resources\Fonts\MyMaterialIcon.ttf" />

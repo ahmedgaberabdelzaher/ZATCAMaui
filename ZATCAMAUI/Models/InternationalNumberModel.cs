@@ -1,12 +1,16 @@
-﻿namespace ZATCAMAUI.Models
+﻿using Newtonsoft.Json;
+
+namespace ZATCAMAUI.Models
 {
 
     public class InternationalMobileData
     {
-        public __metadata __metadata { get; set; }
+        [JsonProperty("countryCode")]
         public string Land1 { get; set; }
+        [JsonProperty("countryDescription")]
         public string Landx50 { get; set; }
         public string _telefto = string.Empty;
+        [JsonProperty("telephoneCountryCode")]
         public string Telefto
         {
             get
@@ -20,7 +24,9 @@
             }
         }
 
+        [JsonProperty("language")]
         public string Spras { get; set; }
+        [JsonProperty("countryName")]
         public string Landx { get; set; }
     }
 

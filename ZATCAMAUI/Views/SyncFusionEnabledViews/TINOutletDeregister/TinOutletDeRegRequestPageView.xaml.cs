@@ -2,6 +2,8 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
+using ZATCAMAUI.Models.TINOutletDeregister;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.TINOutletDeregister;
@@ -61,7 +63,7 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 	{
 		viewModel.OutlettUiList = new ObservableCollection<ContactInfo_NestedListView>();
 		viewModel.SelectedOutletItem = new ContactInfo_NestedListView();
-		viewModel.SelectedPermitItem = new DetailsContactInfo();
+		viewModel.SelectedPermitItem = new ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister.DetailsContactInfo();
 		viewModel.SelectedDeRegType = string.Empty;
 		viewModel.SelectedDeRegReason = string.Empty;
 		viewModel.ShouldShowDeregReason = false;
@@ -200,8 +202,8 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
         }
 		catch (Exception ex)
 		{
-			Console.Write(ex.ToString());
-			Console.Write(ex.StackTrace.ToString());
+			
+			
 		}
 
 	}
@@ -270,8 +272,8 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 		}
 		catch (Exception ex)
 		{
-			Console.Write(ex.ToString());
-			Console.Write(ex.StackTrace.ToString());
+			
+			
 		}
 
 	}

@@ -3093,7 +3093,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 catch (Exception ex)
                 {
 
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                         _navigationService.GoBack();
@@ -3113,7 +3113,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
                     if (App.TP != null)
                         App.TP = null;

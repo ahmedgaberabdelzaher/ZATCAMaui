@@ -7,6 +7,7 @@ using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Common;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels;
@@ -27,6 +28,7 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.LiveVideoVM;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.MyReportsVM;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.NF;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ReportOTPVM;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport;
@@ -38,6 +40,7 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Template;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VAT;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
@@ -79,6 +82,7 @@ using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage;
@@ -307,7 +311,6 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<FilterVatEffectiveDatePageViewModel>()
                 .AddSingleton<NFLoginViewModel>()
                 .AddSingleton<ZakatExemptionPageViewModel>()
-                .AddSingleton<NewChaneMobileViewModel>();
                 .AddSingleton<UpdateActivityInstructionsPageViewModel>()
                 .AddSingleton<NafathChangeMobileNumberOptionsViewModel>()
                 .AddSingleton<NafathChangeMobileNumberViewModel>()
@@ -591,20 +594,6 @@ namespace ZATCAMAUI.Core.Helper
                 try
                 {
                     return Ioc.Default.GetService<NFLoginViewModel>();
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-        }
-        public NewChaneMobileViewModel newChaneMobileViewModel
-        {
-            get
-            {
-                try
-                {
-                    return Ioc.Default.GetService<NewChaneMobileViewModel>();
                 }
                 catch (Exception)
                 {

@@ -1,3 +1,5 @@
+using ZATCAMAUI.Models.VATInstalmentModels;
+
 namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan;
 
 public partial class VatInstalmentPlanRevokePageView : ContentPage
@@ -24,7 +26,7 @@ public partial class VatInstalmentPlanRevokePageView : ContentPage
 
 
 		}
-		catch (Exception ex)
+		catch (Exception )
 		{
 		}
 	}

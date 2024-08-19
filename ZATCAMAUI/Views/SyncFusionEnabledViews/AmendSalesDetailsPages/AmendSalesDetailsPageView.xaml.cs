@@ -26,7 +26,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
         {
             InitializeComponent();
             On<iOS>().SetUseSafeArea(true);
-            double ht = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceHeight();
+            double ht = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceHeight();
             ht = ht * 35 / 100;
             Attachmentlist.HeightRequest = ht;
             try
@@ -85,7 +85,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
                             downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
                             viewModel.IsLoading = false;
-                            var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
+                            var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
 
 
                         }
@@ -97,7 +97,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
                                 try
                                 {
 
-                                    var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
+                                    var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
                                 }
                                 catch (Exception)
@@ -203,11 +203,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
         }
         public async Task email(string doguid, ZakatAttachment attachment)
         {
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-            });
-            await Task.Run(async () =>
+            viewModel.IsLoading = true;
+            await Task.Run( () =>
             {
                 try
                 {
@@ -245,15 +242,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
 
                 }
                 catch (Exception)
-                {
-
-
-                }
+                {}
             });
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
+            viewModel.IsLoading = false;
         }
         protected override void OnDisappearing()
         {

@@ -875,7 +875,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             try
             {
                 string deviceOs = DeviceInfo.Platform.ToString();
-                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                 return WebServiceManager.CreateSAMLLoginURL("", deviceUdid, "", deviceOs, lang);
 
             }

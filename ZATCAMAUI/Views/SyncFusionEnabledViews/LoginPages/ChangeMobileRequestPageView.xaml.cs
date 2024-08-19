@@ -1,6 +1,7 @@
 using System.Text;
 using Mopups.Services;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
@@ -17,7 +18,7 @@ public partial class ChangeMobileRequestPageView : ContentPage
 	public ChangeMobileRequestPageView(Dictionary<string, string> d)
 	{
 		InitializeComponent();
-		this.BindingContext = viewModel = App.Locator.ChangeMobileRequestViewModel;
+		this.BindingContext = viewModel = App.Locator.ChangeMobileRequestPageView;
 		InitializePopups();
 
 		setDefaults();

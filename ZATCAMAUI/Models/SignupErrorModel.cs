@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
+
 namespace ZATCAMAUI.Models
 {
 
@@ -104,5 +105,39 @@ namespace ZATCAMAUI.Models
         [DataMember]
 
         public SignupErrorModelError error { get; set; }
+        [DataMember]
+        public Header header { get; set; }
     }
+    
+    public class ErrorDetail
+    {
+        [DataMember]
+        public string code { get; set; }
+        [DataMember]
+        public string message { get; set; }
+    }
+    
+    public class Header
+    {
+        [DataMember]
+        public string requestID { get; set; }
+        [DataMember]
+        public Status status { get; set; }
+        [DataMember]
+        public MoreInformation moreInformation { get; set; }
+    }
+    
+    public class MoreInformation
+    {
+        public List<ErrorDetail> errorDetails { get; set; }
+    }
+    
+    public class Status
+    {
+        [DataMember]
+        public string code { get; set; }
+        [DataMember]
+        public string description { get; set; }
+    }
+
 }

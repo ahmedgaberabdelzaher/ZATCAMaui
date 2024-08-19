@@ -22,19 +22,22 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GetVATReviewRequestTPFVURL
-                        + "Fbnumz='"
-                        + "',PortalUsrz='"
-                        + "',Langz='" + lang
-                        + "',Officerz='" + strOfficerz
-                        + "',Gpartz='" + strGpartz
-                        + "',UserTypz='"
-                        + "',TxnTpz='"
-                        + "',Euser='" + strEuser
-                        + "',Fbguid='" + strFbguid
-                        + "'," + "ReviewFg=" + strReviewFg + ")?&$expand=AttdetSet,NotesSet,QUESTIONSSet,QUESLISTSet&$format=json";
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+
+                    String url = ZATCAConstants.GetVATReviewRequestTPFVURL + strGpartz + "&language="
+                        + lang + "&serialNumber=" + strEuser + "&formBundleGUID=" + strFbguid + "&isReview=" + strReviewFg;
 
                     var uri = new Uri(url);
                     HttpResponseMessage VATReviewRequestTPFVResponse = await client.GetAsync(uri);
@@ -86,9 +89,6 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (Exception)
 
                 {
-
-
-                    // App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -107,18 +107,25 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GetVATReviewRequestVTGRURL
-                        + "Euser='" + strEuser
-                        + "',Fbguid='" + strFbguid
-                        + "',Fbnumz='" + strFBNum
-                        + "',Gpart='" + strGpart
-                        + "',Langz='" + lang
-                        + "',Officerz='"
-                        + "',PortalUsrz='"
-                        + "',TxnTpz='" + strTxnTpz
-                        + "'," + "ReviewFg=true)?&$expand=ATTDETSet,NOTESSet,TABLESet,EFFDATESet,ELGBL_DOCSet,QUESLISTSet&$format=json";
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.GetVATReviewRequestVTGRURL + strGpart
+                        + "&Fbguid=" + strFbguid
+                        + "&formBundleNumber=" + strFBNum
+                        + "&language=" + lang
+                        + "&transactionType=" + strTxnTpz
+                        + "&isReview=true";
 
                     var uri = new Uri(url);
                     HttpResponseMessage VATReviewRequestVTGRResponse = await client.GetAsync(uri);
@@ -169,11 +176,7 @@ namespace ZATCAMAUI.Core.Mangers
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (Exception)
-
                 {
-
-
-                    //App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -192,18 +195,27 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     HttpClient client = new HttpClient(App.httpClientHandler);
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+
                     string Euser = "00000000000000000000";
-                    string url = ZATCAConstants.GetVATObjViewApplicationDREGURL
-                        + "FormGuid='" + fbGUID
-                        + "',Fbnumx='"
-                        + "',Gpartx='" + App.LoginDataRetrieved.TIN
-                        + "',Langx='" + lang
-                        + "',Officerx='"
-                        + "',PortalUsrx='"
-                        + "',Euser='" + Euser
-                        + "'," + "ReviewFg=true)?&$expand=AddressSet,AttdetSet,NotesSet,QuesListSet&$format=json";
+                    String url = ZATCAConstants.GetVATObjViewApplicationDREGURL + App.LoginDataRetrieved.TIN
+                        + "&formBundleGUID=" + fbGUID
+                        + "&formBundleNumber="
+                        + "&language=" + lang
+                        + "&serialNumber=" + Euser
+                        + "&isReviewed=true";
 
                     var uri = new Uri(url);
                     HttpResponseMessage VATDREGResponse = await client.GetAsync(uri);
@@ -255,9 +267,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
-                    //App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -277,18 +286,23 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     HttpClient client = new HttpClient(App.httpClientHandler);
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
-                    string url = string.Empty;
-                    if (deregType == "VT_DREG")
-                    {
-                        url = ZATCAConstants.GetVATObjViewApplicationDREGReasonSetURL + "'" + lang + "'&$format=json";
-                    }
-                    else
-                    {
-                        url = ZATCAConstants.GetVATObjViewApplicationDREGSuspensionReasonSetURL;
-                    }
+
+                    String url = string.Empty;
+                    url = ZATCAConstants.GetVATObjViewApplicationDREGReasonSetURL + deregType + "&language=" + lang;
 
                     var uri = new Uri(url);
                     HttpResponseMessage VATDREGReasonResponse = await client.GetAsync(uri);
@@ -339,9 +353,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
-                    // App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -360,9 +371,21 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GetVATObjSuspensionDetailSetURL + "Gpart eq'" + App.LoginDataRetrieved.TIN + "'and StartDate eq datetime'" + startDate + "' and  EndDate eq datetime'" + endDate + "'&$format=json";
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    // String url = Constants.GetVATObjSuspensionDetailSetURL + "Gpart eq'" + App.LoginDataRetrieved.TIN + "'and StartDate eq datetime'" + startDate + "' and  EndDate eq datetime'" + endDate + "'&$format=json";
+                    String url = ZATCAConstants.GetVATObjSuspensionDetailSetURL + App.LoginDataRetrieved.TIN + "&startDate=" + startDate + "&endDate=" + endDate;
                     var uri = new Uri(url);
                     HttpResponseMessage vATReviewDREGSuspension = await client.GetAsync(uri);
                     if (vATReviewDREGSuspension != null)
@@ -412,9 +435,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
-                    //App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -468,8 +488,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
                 }
             });
 

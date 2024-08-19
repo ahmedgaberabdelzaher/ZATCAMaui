@@ -690,21 +690,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
 
         private List<String> _ListOfActionButtonsApplicableForRegistration;
         public List<String> ListOfActionButtonsApplicableForRegistration

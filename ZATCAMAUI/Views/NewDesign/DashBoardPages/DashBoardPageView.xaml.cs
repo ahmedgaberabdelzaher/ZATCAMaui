@@ -10,10 +10,10 @@ using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
-using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.VATDeRegistration;
 using Application = Microsoft.Maui.Controls.Application;
 using ScrollView = Microsoft.Maui.Controls.ScrollView;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 {

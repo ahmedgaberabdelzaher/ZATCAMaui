@@ -5,8 +5,6 @@
              Title="NewChaneMobileView">
     <ContentPage.Content>
         <WebView x:Name="loadweb"
-                 Navigated="loadweb_Navigated"
-                 Navigating="loadweb_Navigating"
                  HeightRequest="1000"
                  WidthRequest="1000" Source="https://www.iam.gov.sa/authservice/userauthservice?lang=en"  />
 

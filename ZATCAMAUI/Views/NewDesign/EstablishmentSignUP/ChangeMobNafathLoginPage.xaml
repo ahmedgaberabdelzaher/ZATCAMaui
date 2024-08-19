@@ -9,13 +9,9 @@
     <ContentPage.Content>
         <Grid>
             <Grid
-                x:Name="RegnagaftGrid">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*" />
-                </Grid.ColumnDefinitions>
+                x:Name="RegnagaftGrid"
+                RowDefinitions="100*"
+                ColumnDefinitions="100*">
             </Grid>
         </Grid>
     </ContentPage.Content>

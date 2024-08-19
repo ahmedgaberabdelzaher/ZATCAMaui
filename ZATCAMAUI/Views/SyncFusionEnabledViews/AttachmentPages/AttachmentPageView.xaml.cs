@@ -31,7 +31,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
         public AttachmentPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
-            double ht = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceHeight();
+            double ht = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceHeight();
             ht = ht * 45 / 100;
             AttachmentList.HeightRequest = ht;
             ChangeAeroIcon();
@@ -170,10 +170,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = true;
                 await Task.Run(() =>
                 {
                     if (result)
@@ -201,10 +198,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
                         }
                     }
                 });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
@@ -250,7 +244,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
                             downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
                             viewModel.IsLoading = false;
-                            var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
+                            var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
 
 
                         }
@@ -260,17 +254,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
                             //Once download is completed you have to tell the user through an alert that download is completed and check in download folder.
                             if (tempAttachmentDocumentModel.Filename.Contains(""))
                             {
-                                try
-                                {
-
-                                    var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
-
-                                }
-                                catch (Exception)
-                                {
-
-
-                                }
+                                var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
                             }
                             else
                             {
@@ -352,11 +336,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
         }
         public async Task email(string doguid, VATAttachment attachment)
         {
-            await Task.Run(async () =>
-            {
-                viewModel.IsLoading = true;
-            });
-            await Task.Run(async () =>
+            viewModel.IsLoading = true;
+            await Task.Run( () =>
             {
                 try
                 {
@@ -400,21 +381,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
 
                 }
             });
-            await Task.Run(async () =>
-            {
-                viewModel.IsLoading = false;
-            });
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
+            viewModel.IsLoading = false;
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using Foundation;
+﻿
 using MediaManager;
 using System.Net;
 using UIKit;
 using AppDynamics.Agent;
 using Microsoft.Maui.Handlers;
 using ZATCAMAUI.Core.CustomControls;
+using Foundation;
 
 namespace ZATCAMAUI.Platforms.iOS;
 

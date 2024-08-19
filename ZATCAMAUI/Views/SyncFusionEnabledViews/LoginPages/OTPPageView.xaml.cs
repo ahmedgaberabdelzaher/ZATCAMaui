@@ -1,6 +1,7 @@
 using AppDynamics.Agent;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages;
 
@@ -227,7 +228,7 @@ public partial class OTPPageView : ContentPage
 		if (!isTimeRemaining)
 		{
 			viewModel.ResendToken().ConfigureAwait(false);
-			ResendCodeText.TextColor = Color.Gray;
+			ResendCodeText.TextColor = Colors.Gray;
 			ResendCodeText.IsEnabled = false;
 			Step1.Text = Step2.Text = Step3.Text = Step4.Text = string.Empty;
 			remainingTime = TimeSpan.FromMinutes(2);

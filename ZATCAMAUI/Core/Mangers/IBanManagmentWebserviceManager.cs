@@ -13,7 +13,6 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using static ZATCAMAUI.Models.ErrorMessage;
 using static ZATCAMAUI.Models.IBanManagementListModel;
-
 namespace ZATCAMAUI.Manager
 {
     public static class IBanManagmentWebserviceManager
@@ -27,13 +26,20 @@ namespace ZATCAMAUI.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
-
-
-                    string url = ZATCAConstants.GetBankAccountInformation + "Tin=" + "'" + App.LoginDataRetrieved.TIN + "'" + ",Fbguid=''," + "Euser='')?sap-language=" + LangZAREN + "&$expand=BankListSet,IbanListSet,IdNumberListSet,IdTypeListSet&$format=json";
+                    string lang = WebServiceManager.GetLangZParameterAREN();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.GetBankAccountInformation + "?TIN=" + App.LoginDataRetrieved.TIN;
 
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTIBanAccountsResponse = await client.GetAsync(uri);
@@ -81,7 +87,7 @@ namespace ZATCAMAUI.Manager
                     }
                     return IBanModelResponse;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -92,6 +98,127 @@ namespace ZATCAMAUI.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+        public async static Task<IBANPostResponse> GAZTSubmitBankAccountIBAN(IBANPostRequest postdata)
+        {
+            IBANPostResponse IBANPostResponse = new IBANPostResponse();
+            if (NetworkCheck.IsInternet())
+            {
+                try
+                {
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    string lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.PostBankAccountIBAN;
+                    var uri = new Uri(url);
+                    var serilized = JsonConvert.SerializeObject(postdata);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                    IBANPostResponse = JsonConvert.DeserializeObject<IBANPostResponse>(detailJson);
+
+                    if (IBANPostResponse == null || IBANPostResponse.d == null)
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                            WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                            WebServiceManager.ErrorMessageForVAT = WithReplacedString;
+                            //ErrorMessageForVAT
+                            throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
+                        }
+                    }
+
+                    return IBANPostResponse;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public async static Task<IBANPostResponse> GAZTSubmitBankAccountIBAN(IBANClickRequest postdata)
+        {
+            IBANPostResponse IBANPostResponse = new IBANPostResponse();
+            if (NetworkCheck.IsInternet())
+            {
+                try
+                {
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    string lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.PostBankAccountIBAN;
+                    var uri = new Uri(url);
+                    var serilized = JsonConvert.SerializeObject(postdata);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                    IBANPostResponse = JsonConvert.DeserializeObject<IBANPostResponse>(detailJson);
+
+                    if (IBANPostResponse == null || IBANPostResponse.d == null)
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                            WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                            WebServiceManager.ErrorMessageForVAT = WithReplacedString;
+                            //ErrorMessageForVAT
+                            throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
+                        }
+                    }
+
+                    return IBANPostResponse;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
         public async static Task<IbanAccountFormGuidResponse> GAZTGetIBanAccountsFormGUID()
         {
             if (NetworkCheck.IsInternet())
@@ -100,12 +227,22 @@ namespace ZATCAMAUI.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+                    string lang = WebServiceManager.GetLangZParameterAREN();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.GetIBANAcoountFormGUID + "?formGUID=";
 
-                    string url =ZATCAConstants.GetIBANAcoountFormGUID + LangZAREN + "&$format=json";
+
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTIBanAccountsResponse = await client.GetAsync(uri);
                     if (GAZTIBanAccountsResponse != null)
@@ -163,132 +300,129 @@ namespace ZATCAMAUI.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+        //public async static Task<IBANPostResponse> GAZTSubmitBankAccountIBAN(IBANPostRequest postdata)
+        //{
+        //    IBANPostResponse IBANPostResponse = new IBANPostResponse();
+        //    if (NetworkCheck.IsInternet())
+        //    {
+        //        try
+        //        {
+        //            string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+
+        //            char LangZ = WebServiceManager.GetLangZParameter();
+        //            string lang = UtilityManager.GetLanguageParameter();
+        //            string url = ZATCAConstants.PostBankAccountIBAN + lang;
+
+        //            var uri = new Uri(url);
+        //            HttpClient client = new HttpClient(App.httpClientHandler);
+
+        //            client.DefaultRequestHeaders.Add("Token", "123");
+        //            client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+        //            client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+        //            client.DefaultRequestHeaders.Add("Accept", "application/json");
 
 
 
-        public async static Task<IBANPostResponse> GAZTSubmitBankAccountIBAN(IBANPostRequest postdata)
-        {
-            IBANPostResponse IBANPostResponse = new IBANPostResponse();
-            if (NetworkCheck.IsInternet())
-            {
-                try
-                {
-                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+        //            var serilized = JsonConvert.SerializeObject(postdata);
+        //            HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+        //            HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+        //            var detailJson = res.Content.ReadAsStringAsync().Result;
+        //            IBANPostResponse = JsonConvert.DeserializeObject<IBANPostResponse>(detailJson);
 
-                    char LangZ = WebServiceManager.GetLangZParameter();
-                    string lang = UtilityManager.GetLanguageParameter();
-                    string url = ZATCAConstants.PostBankAccountIBAN + lang;
+        //            if (IBANPostResponse == null || IBANPostResponse.d == null)
+        //            {
+        //                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+        //                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+        //                {
+        //                    WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+        //                    WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+        //                    String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+        //                    WebServiceManager.ErrorMessageForVAT = WithReplacedString;
+        //                    //ErrorMessageForVAT
+        //                    throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
+        //                }
+        //            }
 
-                    var uri = new Uri(url);
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+        //            return IBANPostResponse;
+        //        }
+        //        catch (GAZTVATRegistrationInProcessException ex)
+        //        {
+        //            throw new GAZTVATRegistrationInProcessException(ex.Message);
+        //        }
 
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+        //        catch (Exception)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        throw new InternetException(AppResources.ZZInternetConnectionMessage);
+        //    }
+        //}
 
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+        //public async static Task<IBANPostResponse> GAZTSubmitBankAccountIBAN(IBANClickRequest postdata)
+        //{
+        //    IBANPostResponse IBANPostResponse = new IBANPostResponse();
+        //    if (NetworkCheck.IsInternet())
+        //    {
+        //        try
+        //        {
+        //            string LangZAREN = WebServiceManager.GetLangZParameterAREN();
 
+        //            char LangZ = WebServiceManager.GetLangZParameter();
+        //            string lang = UtilityManager.GetLanguageParameter();
+        //            String url = ZATCAConstants.PostBankAccountIBAN + lang;
 
+        //            var uri = new Uri(url);
+        //            HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    var serilized = JsonConvert.SerializeObject(postdata);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    var detailJson = res.Content.ReadAsStringAsync().Result;
-                    IBANPostResponse = JsonConvert.DeserializeObject<IBANPostResponse>(detailJson);
+        //            client.DefaultRequestHeaders.Add("Token", "123");
+        //            client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
-                    if (IBANPostResponse == null || IBANPostResponse.d == null)
-                    {
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                        {
-                            WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
-                            WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
-                            String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
-                            WebServiceManager.ErrorMessageForVAT = WithReplacedString;
-                            //ErrorMessageForVAT
-                            throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
-                        }
-                    }
-
-                    return IBANPostResponse;
-                }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw new GAZTVATRegistrationInProcessException(ex.Message);
-                }
-
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
-            }
-        }
-
-        public async static Task<IBANPostResponse> GAZTSubmitBankAccountIBAN(IBANClickRequest postdata)
-        {
-            IBANPostResponse IBANPostResponse = new IBANPostResponse();
-            if (NetworkCheck.IsInternet())
-            {
-                try
-                {
-                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
-
-                    char LangZ = WebServiceManager.GetLangZParameter();
-                    string lang = UtilityManager.GetLanguageParameter();
-                    String url = ZATCAConstants.PostBankAccountIBAN + lang;
-
-                    var uri = new Uri(url);
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+        //            client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+        //            client.DefaultRequestHeaders.Add("Accept", "application/json");
 
 
 
-                    var serilized = JsonConvert.SerializeObject(postdata);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    var detailJson = res.Content.ReadAsStringAsync().Result;
-                    IBANPostResponse = JsonConvert.DeserializeObject<IBANPostResponse>(detailJson);
+        //            var serilized = JsonConvert.SerializeObject(postdata);
+        //            HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+        //            HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+        //            var detailJson = res.Content.ReadAsStringAsync().Result;
+        //            IBANPostResponse = JsonConvert.DeserializeObject<IBANPostResponse>(detailJson);
 
-                    if (IBANPostResponse == null || IBANPostResponse.d == null)
-                    {
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                        {
-                            WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
-                            WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
-                            String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
-                            WebServiceManager.ErrorMessageForVAT = WithReplacedString;
-                            //ErrorMessageForVAT
-                            throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
-                        }
-                    }
+        //            if (IBANPostResponse == null || IBANPostResponse.d == null)
+        //            {
+        //                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+        //                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+        //                {
+        //                    WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+        //                    WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+        //                    String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+        //                    WebServiceManager.ErrorMessageForVAT = WithReplacedString;
+        //                    //ErrorMessageForVAT
+        //                    throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
+        //                }
+        //            }
 
-                    return IBANPostResponse;
-                }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw new GAZTVATRegistrationInProcessException(ex.Message);
-                }
+        //            return IBANPostResponse;
+        //        }
+        //        catch (GAZTVATRegistrationInProcessException ex)
+        //        {
+        //            throw new GAZTVATRegistrationInProcessException(ex.Message);
+        //        }
 
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
-            }
-        }
+        //        catch (Exception)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        throw new InternetException(AppResources.ZZInternetConnectionMessage);
+        //    }
+        //}
 
-    }
+   }
 }

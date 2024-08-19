@@ -85,8 +85,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             catch (GAZTUnlockAccountException ex)
             {
 
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
             catch (InternetException ex)
@@ -200,10 +200,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         {
             // MainListData = new ObservableCollection<IbanListSetResult>();
             MainListData.Clear();
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
 
             await Task.Run(async () =>
             {
@@ -212,7 +209,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 IsLoading = false;
 
-                foreach (var item in IbanAccounts.d.IbanListSet.results)
+                foreach (var item in IbanAccounts.d.IbanListSet)
                 {
                     IbanListSetResult newItem = new IbanListSetResult();
 
@@ -275,7 +272,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
 
                 if (IbanAccounts != null && IbanAccounts.d != null && IbanAccounts.d.IbanListSet != null
-                && IbanAccounts.d.IbanListSet.results != null && IbanAccounts.d.IbanListSet.results.Count > 0)
+                && IbanAccounts.d.IbanListSet != null && IbanAccounts.d.IbanListSet.Count > 0)
                 {
                     try
                     {
@@ -293,8 +290,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     }
                     catch (Exception ex)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         IsLoading = false;
                     }
                 }

@@ -1,4 +1,7 @@
 using System.Collections.ObjectModel;
+using ZATCAMAUI.Models.AccountDetails;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
+using static ZATCAMAUI.Models.AccountDetails.AccoungtDetails;
 
 namespace ZATCAMAUI.Views.NewDesign.AccountStatements;
 

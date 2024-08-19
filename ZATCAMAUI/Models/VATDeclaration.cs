@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 using ZATCAMAUI.Core.Mangers;
 using Font = Microsoft.Maui.Font;
 
@@ -20,68 +21,84 @@ namespace ZATCAMAUI.Models
     }
 
     //[Serializable]
-   
+
     //[DataContract]
     public class Metadata2
     {
-        //[DataMember]
+        [DataMember]
         public string id { get; set; }
-        //[DataMember]
+        [DataMember]
         public string uri { get; set; }
-        //[DataMember]
+        [DataMember]
         public string type { get; set; }
     }
-
-    // [Serializable]
-   
-    // [DataContract]
     public class Note
     {
-        //[DataMember]
-        public Metadata2 __metadata { get; set; }
-        //[DataMember]
+        // public Metadata2 __metadata { get; set; }
+        [DataMember]
+        [JsonProperty("noteNumber")]
         public string Notenoz { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("referenceName")]
         public string Refnamez { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("displayOnAssessment")]
         public string XInvoicez { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("completed")]
         public string XObsoletez { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("processingReason")]
         public string Rcodez { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("userName")]
         public string Erfusrz { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("entryDate")]
         public string Erfdtz { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("createdAt")]
         public string Erftmz { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("attachedByPerson")]
         public string AttByz { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("portalUser")]
         public string ByPusrz { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("TIN")]
         public string ByGpartz { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("dataVersion")]
         public string DataVersionz { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("name")]
         public string Namez { get; set; } //Name
-        //[DataMember]
+        [DataMember]
         public string Noteno { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("lineNumber")]
         public int Lineno { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("elementNumber")]
         public int ElemNo { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("notesFormat")]
         public string Tdformat { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("notesLine")]
         public string Tdline { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("section")]
         public string Sect { get; set; } //Section
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("startDate")]
         public string Strdt { get; set; } //date
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("startTime")]
         public string Strtime { get; set; } //time
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("notesDescription")]
         public string Strline { get; set; }   //note
     }
 
@@ -91,6 +108,7 @@ namespace ZATCAMAUI.Models
     public class NOTESSet
     {
         // [DataMember]
+        [JsonProperty("notes")]
         public List<Note> results { get; set; }
     }
 
@@ -99,11 +117,11 @@ namespace ZATCAMAUI.Models
     //[DataContract]
     public class Metadata3
     {
-        //[DataMember]
+        [DataMember]
         public string id { get; set; }
-        //[DataMember]
+        [DataMember]
         public string uri { get; set; }
-        //[DataMember]
+        [DataMember]
         public string type { get; set; }
     }
 
@@ -112,13 +130,16 @@ namespace ZATCAMAUI.Models
     //[DataContract]
     public class Result2
     {
-        //[DataMember]
+        [DataMember]
         public Metadata3 __metadata { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("TIN")]
         public string Partner { get; set; } = string.Empty;
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("bankDetails")]
         public string Bkvid { get; set; } = string.Empty;
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("IBAN")]
         public string Iban { get; set; }
     }
 
@@ -127,7 +148,8 @@ namespace ZATCAMAUI.Models
     //[DataContract]
     public class IBANSet
     {
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("IBANs")]
         public List<Result2> results { get; set; }
     }
 
@@ -152,16 +174,22 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public Metadata4 __metadata { get; set; }
         [DataMember]
+        [JsonProperty("lineNumber")]
         public int LineNo { get; set; }
         [DataMember]
+        [JsonProperty("creditAmount")]
         public string CreditAmt { get; set; }
         [DataMember]
+        [JsonProperty("formBundleNumber")]
         public string Fbnum { get; set; }
         [DataMember]
+        [JsonProperty("documentNumber")]
         public string DocNo { get; set; }
         [DataMember]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
         [DataMember]
+        [JsonProperty("returnId")]
         public string ReturnId { get; set; }
     }
 
@@ -171,6 +199,7 @@ namespace ZATCAMAUI.Models
     public class CFSet
     {
         [DataMember]
+        [JsonProperty("credits")]
         public List<Result3> results { get; set; }
     }
 
@@ -179,11 +208,11 @@ namespace ZATCAMAUI.Models
     // [DataContract]
     public class Metadata5
     {
-        //[DataMember]
+        [DataMember]
         public string id { get; set; }
-        //[DataMember]
+        [DataMember]
         public string uri { get; set; }
-        //[DataMember]
+        [DataMember]
         public string type { get; set; }
     }
 
@@ -192,49 +221,69 @@ namespace ZATCAMAUI.Models
     //[DataContract]
     public class Attachment
     {
-        //[DataMember]
-        public Metadata5 __metadata { get; set; }
-        //[DataMember]
+        // public Metadata5 __metadata { get; set; }
+        [DataMember]
+        [JsonProperty("returnGUID")]
         public string RetGuid { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("sequenceNumber")]
         public string Seqno { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("formGuid")]
         public string SchGuid { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("documentCategory")]
         public string Dotyp { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("serialNumber")]
         public int Srno { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("documentId")]
         public string Doguid { get; set; }
-        //[DataMember]
+
+        [DataMember]
+        [JsonProperty("attachedByPerson")]
         public string AttBy { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("fileName")]
         public string Filename { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("fileExtension")]
         public string FileExtn { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("MIMEType")]
         public string Mimetype { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("portalUser")]
         public string ByPusr { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("entryDate")]
         public string Erfdt { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("createdAt")]
         public string Erftm { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("dataVersion")]
         public string DataVersion { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("documentURL")]
         public string DocUrl { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("outletReference")]
         public string OutletRef { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("enableEdit")]
         public string Enbedit { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("enableDelete")]
         public string Enbdele { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("visibleEdit")]
         public string Visedit { get; set; }
-        //[DataMember]
+        [DataMember]
+        [JsonProperty("visibleDelete")]
         public string Visdel { get; set; }
-        //[DataMember]
+         [DataMember]
         public Color ColorOf { get; set; }
         public bool showDelete { get; set; }
     }
@@ -288,6 +337,11 @@ namespace ZATCAMAUI.Models
         public string Visdel { get; set; }
         [DataMember]
         public string DeleteImageSource { get; set; }
+
+        [DataMember]
+        public Color ColorOf { get; set; }
+        [DataMember]
+        public bool ShowDelete { get; set; }
     }
 
     [Serializable]
@@ -296,6 +350,7 @@ namespace ZATCAMAUI.Models
     public class ATTACHSet
     {
         [DataMember]
+        [JsonProperty("attachments")]
         public List<Attachment> results { get; set; }
     }
 
@@ -320,32 +375,46 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public Metadata6 __metadata { get; set; }
         [DataMember]
+        [JsonProperty("regionDescription")]
         public string RegionDesc { get; set; }
         [DataMember]
+        [JsonProperty("addressType")]
         public string AddrType { get; set; }
         [DataMember]
+        [JsonProperty("sourceIdentifier")]
         public string Srcidentify { get; set; }
         [DataMember]
+        [JsonProperty("startDate")]
         public object Begda { get; set; }
         [DataMember]
+        [JsonProperty("endDate")]
         public object Endda { get; set; }
         [DataMember]
+        [JsonProperty("addressNumber")]
         public string Addrnumber { get; set; }
         [DataMember]
+        [JsonProperty("city")]
         public string City { get; set; }
         [DataMember]
+        [JsonProperty("quarter")]
         public string Quarter { get; set; }
         [DataMember]
+        [JsonProperty("postalCode")]
         public string PostalCd { get; set; }
         [DataMember]
+        [JsonProperty("street")]
         public string Street { get; set; }
         [DataMember]
+        [JsonProperty("additionalNumber")]
         public string AdditionalNo { get; set; }
         [DataMember]
+        [JsonProperty("buildingNumber")]
         public string BuildingNo { get; set; }
         [DataMember]
+        [JsonProperty("region")]
         public string Region { get; set; }
         [DataMember]
+        [JsonProperty("sizeUnit")]
         public string SizUn { get; set; }
     }
 
@@ -355,6 +424,7 @@ namespace ZATCAMAUI.Models
     public class ADRSet
     {
         [DataMember]
+        [JsonProperty("addresses")]
         public List<Result5> results { get; set; }
     }
 
@@ -364,6 +434,7 @@ namespace ZATCAMAUI.Models
     public class VATRMSGSet
     {
         [DataMember]
+        [JsonProperty("messages")]
         public List<object> results { get; set; }
     }
 
@@ -373,6 +444,7 @@ namespace ZATCAMAUI.Models
     public class AttachmentRootOject
     {
         [DataMember]
+        [JsonProperty("result")]
         public Attachment d { get; set; }
     }
 
@@ -381,358 +453,358 @@ namespace ZATCAMAUI.Models
     [DataContract]
     public class VATDeclarationD
     {
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
         [DataMember]
         public VATDeclarationsMetadata __metadata { get; set; }
         [DataMember]
-
+        [JsonProperty("goLive")]
         public string GoliveFg { get; set; }
         [DataMember]
+        [JsonProperty("CR3487GoLive")]
         public string Cr3487golive { get; set; }
         [DataMember]
+        [JsonProperty("CR1317GoLive")]
         public string Cr1317golive { get; set; }
         [DataMember]
+        [JsonProperty("CR2215GoLive")]
         public string Cr2215 { get; set; }
         [DataMember]
+        [JsonProperty("governmentalSuppliesRateChange")]
         public string GovsupYesno { get; set; }
 
         [DataMember]
+        [JsonProperty("reviewNotAvailableMessage")]
         public string ReviewNaMsg { get; set; }
         [DataMember]
+        [JsonProperty("CR1645GoLive")]
         public string Cr1645GoliveFg { get; set; }
         [DataMember]
 
+        [JsonProperty("pendingIBANMessage")]
+        public string PendingIbanMsg { get; set; }
+        [DataMember]
+        [JsonProperty("rateChange")]
         public string Yesno { get; set; }
         [DataMember]
+        [JsonProperty("termsAndConditionsStep4")]
         public string TcFlg { get; set; }
         [DataMember]
+        [JsonProperty("idType")]
         public string Idtype { get; set; }
         [DataMember]
+        [JsonProperty("payableAmount")]
         public string Betrh { get; set; }
         [DataMember]
+        [JsonProperty("importer")]
         public string ImporterFg { get; set; }
         [DataMember]
+        [JsonProperty("idNumber")]
         public string Idnum { get; set; }
         [DataMember]
+        [JsonProperty("groupNumber")]
         public string GrpNo { get; set; }
         [DataMember]
+        [JsonProperty("submit")]
         public string SubmitFg { get; set; }
-        [DataMember]
+        //[DataMember]
+        [JsonProperty("taxpayerIdType")]
         public string IdType { get; set; }
         [DataMember]
+        [JsonProperty("idNumber2ndStep")]
         public string Idnumber { get; set; }
         [DataMember]
+        [JsonProperty("totalSalesAmount")]    
         public string TotalsalesAmt { get; set; }
-        //public string _totalsalesAmt;
-        //public string TotalsalesAmt
-        //{ 
-        //     get
-        //    {
-        //        return _totalsalesAmt;
-        //    }
-        //    set
-        //    {
-        //        _totalsalesAmt = value;
-        //        OnPropertyChanged("TotalsalesAmt");
-        //    }
-        //}
         [DataMember]
+        [JsonProperty("estimated")]
         public string EstimatedFg { get; set; }
         [DataMember]
+        [JsonProperty("totalSalesAdjustment")]
         public string TotalsalesAdj { get; set; }
-        //public string _totalsalesAdj;
-        //public string TotalsalesAdj
-        //{
-        //    get
-        //    {
-        //        return _totalsalesAdj;
-        //    }
-        //    set
-        //    {
-        //        _totalsalesAdj = value;
-        //        OnPropertyChanged("TotalsalesAdj");
-        //    }
-        //}
         [DataMember]
+        [JsonProperty("formBundleStatus")]
         public string Fbust { get; set; }
         [DataMember]
+        [JsonProperty("totalPurchaseAmount")]
         public string TotalpurchaseAmt { get; set; }
-        //public string _totalpurchaseAmt;
-        //public string TotalpurchaseAmt
-        //{
-        //    get
-        //    {
-        //        return _totalpurchaseAmt;
-        //    }
-        //    set
-        //    {
-        //        _totalpurchaseAmt = value;
-        //        OnPropertyChanged("TotalpurchaseAmt");
-        //    }
-        //}
         [DataMember]
+        [JsonProperty("totalPurchaseAdjustment")]
         public string TotalpurchaseAdj { get; set; }
-        //public string _totalpurchaseAdj;
-        //public string TotalpurchaseAdj
-        //{
-        //    get
-        //    {
-        //        return _totalpurchaseAdj;
-        //    }
-        //    set
-        //    {
-        //        _totalpurchaseAdj = value;
-        //        OnPropertyChanged("TotalpurchaseAdj");
-        //    }
-        //}
         [DataMember]
+        [JsonProperty("taxpayerRegistration")]
         public string TpregFg { get; set; }
         [DataMember]
+        [JsonProperty("creditVATRefund")]
         public string CreditVatRef { get; set; }
         [DataMember]
+        [JsonProperty("VATPost")]
         public string VatPost { get; set; }
         [DataMember]
+        [JsonProperty("IBANCheckBox")]
         public string IbanCb { get; set; }
         [DataMember]
+        [JsonProperty("VATAmount")]
         public string LfpVat { get; set; }
         [DataMember]
+        [JsonProperty("inboundCorrespondenceDescription")]
         public string Incotext { get; set; }
         [DataMember]
+        [JsonProperty("systemCode")]
         public string Mandtz { get; set; }
+        //[DataMember]
+        //[JsonProperty("periodKey")]
+        //public string Periodkeyz { get; set; }
         [DataMember]
-        public string Periodkeyz { get; set; }
-        [DataMember]
+        [JsonProperty("periodDescription")]
         public string Perslt { get; set; }
         [DataMember]
+        [JsonProperty("confirmStep2")]
         public string ConfStp2 { get; set; }
         [DataMember]
+        [JsonProperty("totalDueVAT")]
         public string TotaldueVat { get; set; }
         [DataMember]
+        [JsonProperty("formBundleNumber")]
         public string Fbnumz { get; set; }
         [DataMember]
+        [JsonProperty("portalUser")]
         public string PortalUsrz { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Langz { get; set; }
         [DataMember]
+        [JsonProperty("operation")]
         public string Operationz { get; set; }
         [DataMember]
+       // [JsonProperty("stepNumber")]
         public string StepNumberz { get; set; }
         [DataMember]
+        [JsonProperty("returnId")]
         public string ReturnIdz { get; set; }
         [DataMember]
+        [JsonProperty("officer")]
         public string Officerz { get; set; }
+        //[DataMember]
+        //[JsonProperty("TIN")]
+        //public string Gpartz { get; set; }
         [DataMember]
-        public string Gpartz { get; set; }
-        [DataMember]
+        [JsonProperty("statusCode")]
         public string Statusz { get; set; }
         [DataMember]
+        [JsonProperty("userType")]
         public string UserTypz { get; set; }
         [DataMember]
+        [JsonProperty("transactionType")]
         public string TxnTpz { get; set; }
         [DataMember]
+        [JsonProperty("formProcess")]
         public string Formprocz { get; set; }
         [DataMember]
         public string OfficerTz { get; set; }
         [DataMember]
+        [JsonProperty("sourceApplication")]
         public string SrcAppz { get; set; }
         [DataMember]
+        //[JsonProperty("formBundleNumber")]
         public string Fbnum { get; set; }
         [DataMember]
+        [JsonProperty("TIN")]
         public string Gpart { get; set; }
         [DataMember]
+        [JsonProperty("VATReturn")]
         public string Vrtaxret { get; set; }
         [DataMember]
+        [JsonProperty("inboundCorrespondenceType")]
         public string Incotyp { get; set; }
         [DataMember]
+        [JsonProperty("periodKey")]
         public string Persl { get; set; }
         [DataMember]
+        [JsonProperty("periodStartDate")]
         public string Abrzu { get; set; }
         [DataMember]
+        [JsonProperty("periodEndDate")]
         public string Abrzo { get; set; }
         [DataMember]
+        [JsonProperty("contractNumber")]
         public string Fin { get; set; }
         [DataMember]
+        [JsonProperty("taxpayerName")]
         public string Tpnm { get; set; }
         [DataMember]
+        [JsonProperty("termsAndConditionsStep1")]
         public string TcFg { get; set; }
         [DataMember]
+        [JsonProperty("standardSalesAmount")]
         public string StdsalesAmt { get; set; }
         [DataMember]
+        [JsonProperty("standardSalesAdjustment")]
         public string StdsalesAdj { get; set; }
         [DataMember]
+        [JsonProperty("standardSalesVAT")]
         public string StdsalesVat { get; set; }
-        //public string _stdsalesVat;
-        //public string StdsalesVat
-        //{
-        //    get
-        //    {
-        //        return _stdsalesVat;
-        //    }
-        //    set
-        //    {
-        //        _stdsalesVat = value;
-        //        OnPropertyChanged("StdsalesVat");
-        //    }
-        //}
         [DataMember]
+        [JsonProperty("salesGCCAmount")]
         public string SalesGccAmt { get; set; }
         [DataMember]
+        [JsonProperty("salesGCCAdjustment")]
         public string SalesGccAdj { get; set; }
         [DataMember]
+        [JsonProperty("zeroSalesAmount")]
         public string ZerosalesAmt { get; set; }
         [DataMember]
+        [JsonProperty("zeroSalesAdjustment")]
         public string ZerosalesAdj { get; set; }
         [DataMember]
+        [JsonProperty("exportsAmount")]
         public string ExportsAmt { get; set; }
         [DataMember]
+        [JsonProperty("exportsAdjustment")]
         public string ExportsAdj { get; set; }
         [DataMember]
+        [JsonProperty("exemptSalesAmount")]
         public string ExemptsalesAmt { get; set; }
         [DataMember]
+        [JsonProperty("exemptSalesAdjustment")]
         public string ExemptsalesAdj { get; set; }
         [DataMember]
+        [JsonProperty("totalSalesVAT")]
         public string TotalsalesVat { get; set; }
-        //public string _totalsalesVat;
-        //public string TotalsalesVat
-        //{
-        //    get
-        //    {
-        //        return _totalsalesVat;
-        //    }
-        //    set
-        //    {
-        //        _totalsalesVat = value;
-        //        OnPropertyChanged("TotalsalesVat");
-        //    }
-        //}
         [DataMember]
+        [JsonProperty("standardPurchaseAmount")]
         public string StdpurchaseAmt { get; set; }
         [DataMember]
+        [JsonProperty("standardPurchaseAdjustment")]
         public string StdpurchaseAdj { get; set; }
         [DataMember]
+        [JsonProperty("standardPurchasesVAT")]
         public string StdpurchasesVat { get; set; }
-        //public string _stdpurchasesVat;
-        //public string StdpurchasesVat
-        //{
-        //    get
-        //    {
-        //        return _stdpurchasesVat;
-        //    }
-        //    set
-        //    {
-        //        _stdpurchasesVat = value;
-        //        OnPropertyChanged("StdpurchasesVat");
-        //    }
-        //}
         [DataMember]
+        [JsonProperty("importsPaidAmount")]
         public string ImportspaidAmt { get; set; }
         [DataMember]
+        [JsonProperty("importsPaidAdjustment")]
         public string ImportspaidAdj { get; set; }
         [DataMember]
+        [JsonProperty("importsPaidVAT")]
         public string ImportspaidVat { get; set; }
-        //public string _importspaidVat;
-        //public string ImportspaidVat
-        //{
-        //    get
-        //    {
-        //        return _importspaidVat;
-        //    }
-        //    set
-        //    {
-        //        _importspaidVat = value;
-        //        OnPropertyChanged("ImportspaidVat");
-        //    }
-        //}
         [DataMember]
+        [JsonProperty("importsAccountAmount")]
         public string ImportsaccAmt { get; set; }
         [DataMember]
+        [JsonProperty("importsAccountAdjustment")]
         public string ImportsaccAdj { get; set; }
         [DataMember]
+        [JsonProperty("importsAccountVAT")]
         public string ImportsaccVat { get; set; }
         [DataMember]
+        [JsonProperty("zeroPurchaseAmount")]
         public string ZeropurchaseAmt { get; set; }
         [DataMember]
+        [JsonProperty("zeroPurchaseAdjustment")]
         public string ZeropurchaseAdj { get; set; }
         [DataMember]
+        [JsonProperty("exemptPurchaseAmount")]
         public string ExemptpurchaseAmt { get; set; }
         [DataMember]
+        [JsonProperty("exemptPurchaseAdjustment")]
         public string ExemptpurchaseAdj { get; set; }
         [DataMember]
+        [JsonProperty("totalPurchaseVAT")]
         public string TotalpurchaseVat { get; set; }
-        //public string _totalpurchaseVat;
-        //public string TotalpurchaseVat
-        //{
-        //    get
-        //    {
-        //        return _totalpurchaseVat;
-        //    }
-        //    set
-        //    {
-        //        _totalpurchaseVat = value;
-        //        OnPropertyChanged("TotalpurchaseVat");
-        //    }
-        //}
         [DataMember]
+        [JsonProperty("preperiodCorrection")]
         public string Preperiodcorr { get; set; }
         [DataMember]
+        [JsonProperty("creditVAT")]
         public string CreditVat { get; set; }
         [DataMember]
+        [JsonProperty("netDueVAT")]
         public string NetdueVat { get; set; }
         [DataMember]
+        [JsonProperty("correctionPenalty")]
         public string CorrPen { get; set; }
         [DataMember]
+        [JsonProperty("finalDueVAT")]
         public string FinaldueVat { get; set; }
         [DataMember]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
         [DataMember]
+        [JsonProperty("refund")]
         public string RefundFg { get; set; }
         [DataMember]
+        [JsonProperty("exporter")]
         public string ExporterFg { get; set; }
         [DataMember]
+        [JsonProperty("declaration")]
         public string DecFg { get; set; }
         [DataMember]
+        [JsonProperty("recieptDate")]
         public string ReceiptDt { get; set; }
         [DataMember]
+        [JsonProperty("sadadBillNumber")]
         public string Sopbel { get; set; }
         [DataMember]
+        [JsonProperty("calendarType")]
         public string Caltp { get; set; }
         [DataMember]
+        [JsonProperty("stepNumber")]
         public string StepNumber { get; set; }
         [DataMember]
+        [JsonProperty("hotlineNumber")]
         public string HotlineNo { get; set; }
         [DataMember]
+        [JsonProperty("returnSource")]
         public string RetSource { get; set; }
         [DataMember]
+        [JsonProperty("IBAN")]
         public string Iban { get; set; }
         [DataMember]
+        [JsonProperty("industrySector")]
         public string Activity { get; set; }
         [DataMember]
+        [JsonProperty("authenticationUser")]
         public string Euser { get; set; }
         [DataMember]
+        [JsonProperty("formBundleGUID")]
         public string Fbguid { get; set; }
         [DataMember]
+        [JsonProperty("totalSales")]
         public string ToSflg { get; set; }
         [DataMember]
+        [JsonProperty("declarationMode")]
         public string DmodeFlg { get; set; }
         [DataMember]
+        [JsonProperty("block")]
         public string Block { get; set; }
         [DataMember]
+        [JsonProperty("fieldName")]
         public string FldNm { get; set; }
         [DataMember]
-        public VATPERITEMSet VATPERITEMSet { get; set; }
+        [JsonProperty("VATItems")]
+        public List<Result6> VATPERITEMSet { get; set; }
         [DataMember]
-        public NOTESSet NOTESSet { get; set; }
+        [JsonProperty("notes")]
+        public List<Note> NOTESSet { get; set; }
         [DataMember]
-        public IBANSet IBANSet { get; set; }
+        [JsonProperty("IBANs")]
+        public List<Result2> IBANSet { get; set; }
         [DataMember]
-        public CFSet CFSet { get; set; }
+        [JsonProperty("credits")]
+        public List<Result3> CFSet { get; set; }
         [DataMember]
-        public ATTACHSet ATTACHSet { get; set; }
+        [JsonProperty("attachments")]
+        public List<Attachment> ATTACHSet { get; set; }
         [DataMember]
-        public ADRSet ADRSet { get; set; }
+        [JsonProperty("addresses")]
+        public List<Result5> ADRSet { get; set; }
         [DataMember]
-        public VATRMSGSet VATR_MSGSet { get; set; }
+        [JsonProperty("messages")]
+        public List<object> VATR_MSGSet { get; set; }
         [DataMember]
+        [JsonProperty("madaButton")]
         public string MadabutFg { get; set; }
         [DataMember]
         public string OpenliMsg { get; set; }
@@ -778,7 +850,10 @@ namespace ZATCAMAUI.Models
     public class VATDeclaration
     {
         [DataMember]
-        public VATDeclarationD d { get; set; }
+        [JsonProperty("data")]
+        public VATDeclarationD data { get; set; }
+        [JsonProperty("result")]
+        public VATDeclarationD data1 { get; set; }
     }
 
     [Serializable]
@@ -806,10 +881,7 @@ namespace ZATCAMAUI.Models
                 if (textColor != value)
                 {
                     textColor = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("TextColor"));
-                    }
+                    OnPropertyChanged(nameof(TextColor));
                 }
             }
             get
@@ -825,10 +897,7 @@ namespace ZATCAMAUI.Models
                 if (_font != value)
                 {
                     _font = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Font"));
-                    }
+                    OnPropertyChanged(nameof(Font));
                 }
             }
             get
@@ -836,25 +905,38 @@ namespace ZATCAMAUI.Models
                 return _font;
             }
         }
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
+   
     [Serializable]
    
     [DataContract]
+
     public class ApplicableButton
     {
         [DataMember]
+        [JsonProperty("formBundleType")]
         public string Fbtyp { get; set; }
         [DataMember]
+        [JsonProperty("formBundleStatus")]
         public string Fbust { get; set; }
         [DataMember]
+        [JsonProperty("button")]
         public string Button { get; set; }
         [DataMember]
+        [JsonProperty("transactionType")]
         public string TransactionType { get; set; }
         [DataMember]
+        [JsonProperty("userType")]
         public string UserTyp { get; set; }
         [DataMember]
+        [JsonProperty("systemCode")]
         public Buttons buttonEnumId = Buttons.None;
     }
 
@@ -867,6 +949,7 @@ namespace ZATCAMAUI.Models
     public class VATPERITEMSet
     {
         [DataMember]
+        [JsonProperty("VATItems")]
         public List<Result6> results { get; set; }
     }
 
@@ -878,54 +961,79 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public VATDeclarationsMetadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("formGUID")]
         public string FormGuid { get; set; }
         [DataMember]
+        [JsonProperty("VATType")]
         public string Type { get; set; }
         [DataMember]
+        [JsonProperty("dataVersion")]
         public string DataVersion { get; set; }
         [DataMember]
+        [JsonProperty("lineNumber")]
         public int LineNo { get; set; }
         [DataMember]
+        [JsonProperty("rankingOrder")]
         public string RankingOrder { get; set; }
         [DataMember]
+        [JsonProperty("rate")]
         public string Rate { get; set; }
         [DataMember]
+        [JsonProperty("standardSalesAmount")]
         public string StdsalesAmt { get; set; }
         [DataMember]
+        [JsonProperty("standardSalesAdjustment")]
         public string StdsalesAdj { get; set; }
         [DataMember]
+        [JsonProperty("standardSalesVAT")]
         public string StdsalesVat { get; set; }
         [DataMember]
+        [JsonProperty("standardPurchaseAmount")]
         public string StdpurchaseAmt { get; set; }
         [DataMember]
+        [JsonProperty("standardPurchaseAdjustment")]
         public string StdpurchaseAdj { get; set; }
         [DataMember]
+        [JsonProperty("standardPurchasesVAT")]
         public string StdpurchasesVat { get; set; }
         [DataMember]
+        [JsonProperty("importsPaidAmount")]
         public string ImportspaidAmt { get; set; }
         [DataMember]
+        [JsonProperty("importsPaidAdjustment")]
         public string ImportspaidAdj { get; set; }
         [DataMember]
+        [JsonProperty("importsPaidVAT")]
         public string ImportspaidVat { get; set; }
         [DataMember]
+        [JsonProperty("importsAccountAmount")]
         public string ImportsaccAmt { get; set; }
         [DataMember]
+        [JsonProperty("importsAccountAdjustment")]
         public string ImportsaccAdj { get; set; }
         [DataMember]
+        [JsonProperty("importsAccountVAT")]
         public string ImportsaccVat { get; set; }
         [DataMember]
+        [JsonProperty("returnId")]
         public string ReturnId { get; set; }
         [DataMember]
+        [JsonProperty("timeStampCreation")]
         public string TimestampCr { get; set; }
         [DataMember]
+        [JsonProperty("timeStampChange")]
         public string TimestampCh { get; set; }
         [DataMember]
+        [JsonProperty("currency")]
         public string Waers { get; set; }
         [DataMember]
+        [JsonProperty("governmentSuppliesSalesAdjustment")]
         public string GovsupsalesAdj { get; set; }
         [DataMember]
+        [JsonProperty("governmentSuppliesSalesVAT")]
         public string GovsupsalesVat { get; set; }
         [DataMember]
+        [JsonProperty("governmentSuppliesSalesAmount")]
         public string GovsupsalesAmt { get; set; }
     }
 

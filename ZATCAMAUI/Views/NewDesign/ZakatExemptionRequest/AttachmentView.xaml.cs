@@ -59,7 +59,7 @@ public partial class AttachmentView : ContentView
 
 	public async void NewCompanyArticalsAttachmentsPopup()
 	{
-		if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
+		if (Rg.Plugins.Popup.Services.MopupService.Instance.PopupStack.Count > 0) return;
 		if (viewModel.AttachmentsListViewData == null)
 		{
 			viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();

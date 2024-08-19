@@ -1,8 +1,8 @@
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Models.ContractRelease;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
-using static ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse;
-using static ZATCAMAUI.Models.ContractRelease.ContractReleaseSummaryModel;
+using static ZATCAMAUI.Models.ContractReleas.ContractReleaseSummaryModel;
 
 namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 {

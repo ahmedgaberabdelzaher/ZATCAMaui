@@ -6,8 +6,8 @@ namespace ZATCAMAUI.Models
 
     public partial class AttachmentDocumentModel
     {
-        [JsonProperty("d")]
-        public DAttachmentDocumentModel D { get; set; }
+        [JsonProperty("data")]
+        public AttachmentResult[] D { get; set; }
     }
     
 
@@ -23,52 +23,52 @@ namespace ZATCAMAUI.Models
         [JsonProperty("__metadata")]
         public MetadataAttachment Metadata { get; set; }
 
-        [JsonProperty("RetGuid")]
+        [JsonProperty("returnGUID")]
         public string RetGuid { get; set; }
 
-        [JsonProperty("ByPusr")]
+        [JsonProperty("portalUser")]
         public string ByPusr { get; set; }
 
-        [JsonProperty("Flag")]
+        [JsonProperty("attachment")]
         public string Flag { get; set; }
 
-        [JsonProperty("Seqno")]
+        [JsonProperty("sequenceNumber")]
         public string Seqno { get; set; }
 
-        [JsonProperty("SchGuid")]
+        [JsonProperty("formGUID")]
         public string SchGuid { get; set; }
 
-        [JsonProperty("Dotyp")]
+        [JsonProperty("documentCategory")]
         public string Dotyp { get; set; }
 
-        [JsonProperty("Doguid")]
+        [JsonProperty("documentId")]
         public string Doguid { get; set; }
 
-        [JsonProperty("AttBy")]
+        [JsonProperty("attachedByPerson")]
         public string AttBy { get; set; }
 
-        [JsonProperty("Filename")]
+        [JsonProperty("fileName")]
         public string Filename { get; set; }
 
-        [JsonProperty("FileExtn")]
+        [JsonProperty("fileExtension")]
         public string FileExtn { get; set; }
 
-        [JsonProperty("Mimetype")]
+        [JsonProperty("MIMEType")]
         public string Mimetype { get; set; }
 
-        [JsonProperty("Erfdt")]
+        [JsonProperty("entryDate")]
         public string Erfdt { get; set; }
 
-        [JsonProperty("DataVersion")]
+        [JsonProperty("dataVersion")]
         public string DataVersion { get; set; }
 
-        [JsonProperty("DocUrl")]
+        [JsonProperty("documentURL")]
         public Uri DocUrl { get; set; }
 
-        [JsonProperty("Content")]
+        [JsonProperty("content")]
         public string Content { get; set; }
 
-        [JsonProperty("OutletRef")]
+        [JsonProperty("outletReference")]
         public string OutletRef { get; set; }
     }
     

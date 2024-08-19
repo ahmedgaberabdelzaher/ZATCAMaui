@@ -90,7 +90,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 IsLoading = false;
                 ShowValidationPopup(ex.Message);
 
-
             }
 
             return TP;

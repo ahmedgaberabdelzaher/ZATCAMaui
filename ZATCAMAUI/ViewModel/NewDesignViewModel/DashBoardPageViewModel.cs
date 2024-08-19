@@ -21,8 +21,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.MyBillsPages;
 using ZATCAMAUI.Views.NewDesign.PaymentOptions;
 using ReturnType = ZATCAMAUI.Models.SyncfusionEnabledModels.ReturnType;
-
-namespace ZATCAMAUI.ViewModel.NewDesignViewModel
+namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 {
 
     public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
@@ -43,19 +42,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged();
             }
         }
-        //Cr6264
-        private bool _IstileUpdated = true;
-        public bool istileUpdated
-        {
-            get => _IstileUpdated;
-            set
-            {
-                if (_IstileUpdated == value) return;
+        ////Cr6264
+        //private bool _IstileUpdated = true;
+        //public bool istileUpdated
+        //{
+        //    get => _IstileUpdated;
+        //    set
+        //    {
+        //        if (_IstileUpdated == value) return;
 
-                _IstileUpdated = value;
-                OnPropertyChanged("istileUpdated");
-            }
-        }
+        //        _IstileUpdated = value;
+        //        OnPropertyChanged("istileUpdated");
+        //    }
+        //}
 
         int fQanswer;
         public int FQanswer
@@ -263,6 +262,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged(nameof(CurrentIndex));
             }
         }
+
+        //istileUpdated CR6264
+
+        private bool _IstileUpdated = true;
+        public bool istileUpdated
+        {
+            get => _IstileUpdated;
+            set
+            {
+                if (_IstileUpdated == value) return;
+
+                _IstileUpdated = value;
+                OnPropertyChanged("istileUpdated");
+            }
+        }
+
         private int _currenrIndex = 1;
         public int CurrentIndex
         {
@@ -275,6 +290,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged(nameof(CurrentIndex));
             }
         }
+
+        private string _vatProfitGoodsTileTxt = string.Empty;
+        public string VatProfitGoodsTileTxt
+        {
+            get => _vatProfitGoodsTileTxt;
+            set
+            {
+                if (_vatProfitGoodsTileTxt == value) return;
+
+                _vatProfitGoodsTileTxt = value;
+                OnPropertyChanged("VatProfitGoodsTileTxt");
+            }
+        }
+
         #endregion
 
         #region Fields
@@ -450,6 +479,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
+        public async Task  getActivityUpdateStatus()
+        {
+           
+            await Task.Run(async () =>
+            {
+                DashBoardUpdateViewResponseModel dashBoardUpdateViewResponse = await WebServiceManager.getTaxPayerActivityUpdateStatus();
+
+                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                if(dashBoardUpdateViewResponse != null && dashBoardUpdateViewResponse.d!=null&&dashBoardUpdateViewResponse.d.results!=null
+                && dashBoardUpdateViewResponse.d.results.Count>0&& dashBoardUpdateViewResponse.d.results[0]!=null
+                && !string.IsNullOrEmpty(dashBoardUpdateViewResponse.d.results[0].Msg))
+                MopupService.Instance.PushAsync(new UpdateActivityInstructionsPageView(false, dashBoardUpdateViewResponse.d.results[0].Msg));
+            });
+
+        }
 
         public List<TaxRelationSetResult> TaxTypeFilter
         {
@@ -770,6 +814,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _ifSignUpnNotRegInVAT = value;
                 OnPropertyChanged("IfSignUpnNotRegInVAT");
+            }
+        }
+
+        private bool _isGrpVATReg = false;
+        public bool ISGRPVATReg
+        {
+            get
+            {
+                return _isGrpVATReg;
+            }
+            set
+            {
+                if (_isGrpVATReg == value) return;
+                _isGrpVATReg = value;
+                OnPropertyChanged("ISGRPVATReg");
             }
         }
 
@@ -1133,6 +1192,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _privacyandPolicy = value;
                 this.OnPropertyChanged("PrivacyandPolicy");
+            }
+        }
+        private string _profitongoods = AppResources.ZProfitOnGoods;
+        public string ProfitOnGoods
+        {
+            get
+            {
+                return this._profitongoods;
+            }
+            set
+            {
+                if (_profitongoods == value) return;
+
+                this._profitongoods = value;
+                this.OnPropertyChanged("ProfitOnGoods");
             }
         }
 
@@ -1831,6 +1905,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged("ACStatementBills");
             }
         }
+
         private bool _isContactZatcaEmpTileVisible = false;
         public bool IsContactZatcaEmpTileVisible
         {
@@ -1846,6 +1921,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged("IsContactZatcaEmpTileVisible");
             }
         }
+
         #endregion
 
         #region Constructor
@@ -1859,7 +1935,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             LiveChatVisible = false;
             AccountStatementVisible = false;
             IsToolbarTaxVisible = true;
-
             MyObligationAmount = 0.0;
 
             TaxpayerName = string.Empty;
@@ -1880,7 +1955,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             MenuViewVisible = false;
             HomeViewVisible = true;
-            //GetDashBoardMenuLst(1);
 
         }
         #endregion
@@ -1893,23 +1967,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             foreach (var item in AllBills)
             {
-                newMultiplePayableBills.Add(new MyBills
-                {
-                    Abtypt = item.Abtypt,
-                    VTRE2 = item.Sopbel,
+
+                newMultiplePayableBills.Add(new MyBills { 
+                    VTRE2=item.sadadBillNumber,
                     MadabutFg = item.MadabutFg,
-                    TestDueAmount = item.Amount,
-                    FormatedFaedn = item.FormatedDuedate,
-                    StatusText = item.IcrStatus,
-                    Fbnum = item.Fbnum,
-                    Txt30 = item.Txt50
+                    TestDueAmount =item.amount,
+                    //FormatedFaedn=item.FormatedDuedate,
+                    StatusText=item.ICRStatus,
+                    Fbnum=item.formBundleNumber,
+                    Txt30=item.taxTypeDescription
 
                 });
             }
 
             if (AllBills != null && AllBills.Count > 0)
             {
-                MultiplePayableBills = new ObservableCollection<MyBills>(newMultiplePayableBills.Where(x => !string.IsNullOrEmpty(BModel.Sopbel) && x.VTRE2.Equals(BModel.Sopbel)).ToList());
+                MultiplePayableBills = new ObservableCollection<MyBills>(newMultiplePayableBills.Where(x => !String.IsNullOrEmpty(BModel.sadadBillNumber) && x.VTRE2.Equals(BModel.sadadBillNumber)).ToList());
             }
 
             if (MultiplePayableBills != null && MultiplePayableBills.Count > 1)
@@ -1930,7 +2003,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             if (BModel != null)
             {
-
                 if (BModel.MadabutFg == "X")
                 {
                     await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
@@ -1946,12 +2018,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    total = BModel.Amount;
+                    total = BModel.amount;
                 }
-                selectedFbNum = BModel.Fbnum;
-                selectedSadadNo = BModel.Sopbel;
+                selectedFbNum = BModel.formBundleNumber;
+                selectedSadadNo = BModel.sadadBillNumber;
                 selectedAmount = total;
-                selectedTaxablePeriod = BModel.Persl;
+                selectedTaxablePeriod = BModel.periodDescription;
                 isPayNowTapped = false;
             }
         }
@@ -1970,7 +2042,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public void MadaPaymentSelected()
         {
 
-            DoValidatePayment(selectedFbNum, selectedSadadNo, "M");
+
+            DoValidatePayment(selectedFbNum, selectedSadadNo, "Mada Payment");
 
 
 
@@ -2009,8 +2082,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     modelDetails.Sadad = sdadNo;
 
                     PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
+
                     if (PaymentData != null && PaymentData.d != null)
                     {
+
                         if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                         {
                             await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
@@ -2024,18 +2099,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                         }
 
-                        if (paymentType == "M")
+                        if (paymentType == "Mada Payment")
                         {
 
-                            MainThread.BeginInvokeOnMainThread(() =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
-
-                                _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
-
+                                IsLoading = true;
+                                //CR7420
+                                CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
+                                IsLoading = false;
+                                if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
+                                {
+                                    App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                                    _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                                }
                             });
                         }
 
                     }
+
                     IsLoading = false;
 
                 }
@@ -2048,7 +2130,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         //_navigationService.GoBack();
                     });
                 }
-                catch (InternetException )
+
+                catch (InternetException ex)
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -2058,7 +2141,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (GAZTNetworkConnectivityIssueException )
+                catch (GAZTNetworkConnectivityIssueException ex)
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -2069,7 +2152,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     });
                 }
             }
-            catch (InternetException )
+            catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -2082,6 +2165,37 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
 
 
+
+        public async Task<CreateMadaResponseRoot> GetWebviewContent(string srcid)
+        {
+            try
+            {
+                var paymentPayload = new CreateMadaPaymentPayload
+                {
+                    GUID = App.PaymentGuid,
+                    sourceId = srcid
+                };
+
+                CreateMadaResponseRoot respose = await WebServiceManager.GAZTCreateMadaPayment(paymentPayload);
+                return respose;
+            }
+            catch (GAZTValidateMadaPaymentException ex)
+            {
+                IsLoading = false;
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public async Task UpdateApplePayPaymentGuid()
         {
             try
@@ -2177,28 +2291,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-                if (App.TP != null)
+                string UserId = App.LoginDataRetrieved.TIN;
+                TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileAndUpdatePasswordAPICall(UserId);
+                if (TPProfile != null)
                 {
-                    if (App.TP.TypeChk == "X")
+                    if (App.TP != null)
                     {
-                        TaxpayerName = App.TP.NameFirst + " " + App.TP.NameLast;
-                    }
-                    else
-                    {
-                        TaxpayerName = App.TP.NameOrg1;
+                        App.TP = TPProfile;
+                        if (App.TP.typeCheck == "X")
+                        {
+                            TaxpayerName = App.TP.TpTitle + " " + App.TP.firstName + " " + App.TP.lastName;
+                        }
+                        else
+                        {
+                            TaxpayerName = App.TP.organizationName;
+                        }
                     }
                 }
-
                 try
                 {
-                    DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                    DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.LoginDataRetrieved.TIN);
+                   // ProfitGoods goods = await WebServiceManager.TilesSetRecovery();
 
                 }
-                catch (GAZTErrorException)
+                catch (GAZTErrorException ex)
                 {
 
-
-
+                    
+                    
                 }
 
                 if (App.isMybillsRefresh)
@@ -2209,6 +2329,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         await GetAccountStatments();
                         await GetBillsAndReturns();
                         PopulateBillsInformation();
+                   
                     });
                 }
                 else
@@ -2222,10 +2343,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     });
                     //_ = Task.Run(GetAccountStatments);
                     // _ = Task.Run(GetBillsAndReturns);
-                    if (DashboardData.results[0] != null && DashboardData.results[0].InsActFlg != null)
+                    if (DashboardData.data[0] != null && DashboardData.data[0].instructionAction != null)
                     {
 
-                        if (DashboardData.results[0].InsActFlg == "X")
+                        if (DashboardData.data[0].instructionAction == "X")
                         {
                             IsInstalmentPlanVisible = true;
                             _ = Task.Run(getDashboardInstalmentPlan);
@@ -2295,11 +2416,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     PopToRootPage();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 IsLoading = false;
-
             }
 
             IsLoading = false;
@@ -2316,7 +2435,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             ObservableCollection<MyBills> ACBills = new ObservableCollection<MyBills>();
 
-            ObservableCollection<MyBills> TempBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang, "Bills");
+            ObservableCollection<MyBills> TempBills = await WebServiceManager.GAZTGetMyBills(App.LoginDataRetrieved.TIN, lang,"Bills");
 
             if (TempBills != null)
             {
@@ -2359,8 +2478,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
 
 
-          
-
+            
             if (ACStatementBills != null && ACStatementBills.Count > 2)
             {
                 LastTransactionsListHeight = 220;
@@ -2397,35 +2515,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             try
             {
-                List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(UtilityManager.GetLanguageParameter(), App.LoginDataRetrieved.TIN);
                 AllBills = TempBills;
 
+            if (TempBills != null)
+            {
 
+                var newItems = TempBills.ToList();
 
-
-                if (TempBills != null)
+                if (newItems != null)
                 {
-
-                    var newItems = TempBills.ToList();
-
-                    if (newItems != null)
+                    if (newItems.Count > 3)
                     {
-                        if (newItems.Count > 3)
+                        for (int i = 0; i < 3; i++)
                         {
-                            for (int i = 0; i < 3; i++)
+
+                            var singleItem = newItems[i];
+
+                            try
                             {
 
-                                var singleItem = newItems[i];
-
-                                try
-                                {
-
-                                    if (singleItem.Abtyp != null)
+                                    if (singleItem.revenueType != null)
                                     {
 
-                                        if (singleItem.Abtyp.Equals("VATX") || singleItem.Abtyp.Equals("ETAX"))
+                                        if (singleItem.revenueType.Equals("VATX") || singleItem.revenueType.Equals("ETAX"))
                                         {
-                                            singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
+                                            singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("en-US")));
 
                                             string[] dts = singleItem.FormatedDuedate.Split('/');
                                             if (App.IsArabic)
@@ -2446,9 +2561,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                         {
 
 
-                                            if (singleItem.CalendarTyp.Equals("G"))
+                                            if (singleItem.calendarType.Equals("G"))
                                             {
-                                                singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
+                                                singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("en-US")));
 
                                                 string[] dts = singleItem.FormatedDuedate.Split('/');
                                                 if (App.IsArabic)
@@ -2468,7 +2583,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                             else
                                             {
 
-                                                singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+                                                singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("ar-SA")));
 
                                                 string[] dts = singleItem.FormatedDuedate.Split('/');
                                                 if (App.IsArabic)
@@ -2488,33 +2603,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                         }
                                     }
                                 }
-                                catch (Exception)
-                                {
-
-
-
-
-                                }
-
-
-                                pendingBills.Add(singleItem);
-                            }
-                        }
-                        else
-                        {
-                            for (int i = 0; i < newItems.Count; i++)
+                            catch (Exception ex)
                             {
-                                var singleItem = newItems[i];
+                                
+                                
+                                
 
-                                try
-                                {
+                            }
 
-                                    if (singleItem.Abtyp != null)
+
+                            pendingBills.Add(singleItem);
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < newItems.Count; i++)
+                        {
+                            var singleItem = newItems[i];
+
+                            try
+                            {
+
+                                    if (singleItem.revenueType != null)
                                     {
 
-                                        if (singleItem.Abtyp.Equals("VATX") || singleItem.Abtyp.Equals("ETAX"))
+                                        if (singleItem.revenueType.Equals("VATX") || singleItem.revenueType.Equals("ETAX"))
                                         {
-                                            singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
+                                            singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("en-US")));
 
                                             string[] dts = singleItem.FormatedDuedate.Split('/');
                                             if (App.IsArabic)
@@ -2535,9 +2650,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                         {
 
 
-                                            if (singleItem.CalendarTyp.Equals("G"))
+                                            if (singleItem.calendarType.Equals("G"))
                                             {
-                                                singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
+                                                singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("en-US")));
 
                                                 string[] dts = singleItem.FormatedDuedate.Split('/');
                                                 if (App.IsArabic)
@@ -2557,7 +2672,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                             else
                                             {
 
-                                                singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+                                                singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("ar-SA")));
 
                                                 string[] dts = singleItem.FormatedDuedate.Split('/');
                                                 if (App.IsArabic)
@@ -2577,83 +2692,85 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                         }
                                     }
                                 }
-                                catch (Exception)
-                                {
-                                }
-
-                                pendingBills.Add(singleItem);
-                            }
-                        }
-                        foreach (OverduePaymentAndUnSubmittedReturn ee in newItems)
-                        {
-                            temp1.Add(ee);
-                            if (ee.Amount != null)
+                            catch (Exception e)
                             {
-                                MyObligationAmount += Double.Parse(ee.Amount);
+                                Console.WriteLine(e.Message);
+                                Console.Write(e.StackTrace.ToString());
+
                             }
+
+                            pendingBills.Add(singleItem);
+                        }
+                    }
+                    foreach (OverduePaymentAndUnSubmittedReturn ee in newItems)
+                    {
+                        temp1.Add(ee);
+                        if (ee.amount != null)
+                        {
+                            MyObligationAmount += Double.Parse(ee.amount);
                         }
                     }
                 }
+            }
 
 
-                if (MyObligationAmount > 0)
-                {
-                    IsMyObligationsClear = false;
-                    IsBodyMyTaxVisible = true;
-                }
-                else
-                {
-                    IsMyObligationsClear = true;
-                    IsBodyMyTaxVisible = false;
-                }
+            if (MyObligationAmount > 0)
+            {
+                IsMyObligationsClear = false;
+                IsBodyMyTaxVisible = true;
+            }
+            else
+            {
+                IsMyObligationsClear = true;
+                IsBodyMyTaxVisible = false;
+            }
 
-                MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
+            MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
 
-                Bills = temp1;
-                PendingBills = pendingBills;
-                if (PendingBills.Count == 0)
-                {
-                    IsPendingBillsVisible = false;
-                }
-                else
-                {
-                    IsPendingBillsVisible = true;
-                }
-                if (PendingBills != null && PendingBills.Count > 2)
-                {
-                    PendingBillsListHeight = 250;
-                }
-                else if (PendingBills != null && PendingBills.Count > 1)
-                {
-                    PendingBillsListHeight = 170;
-                }
-                else
-                {
-                    PendingBillsListHeight = 83;
-                }
+            Bills = temp1;
+            PendingBills = pendingBills;
+            if (PendingBills.Count == 0)
+            {
+                IsPendingBillsVisible = false;
+            }
+            else
+            {
+                IsPendingBillsVisible = true;
+            }
+            if (PendingBills != null && PendingBills.Count > 2)
+            {
+                PendingBillsListHeight = 250;
+            }
+            else if (PendingBills != null && PendingBills.Count > 1)
+            {
+                PendingBillsListHeight = 170;
+            }
+            else
+            {
+                PendingBillsListHeight = 83;
+            }
 
 
                 var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
-                List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(UtilityManager.GetLanguageParameter(), App.LoginDataRetrieved.TIN);
                 foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
                 {
                     temp2.Add(ee);
                 }
                 MainThread.BeginInvokeOnMainThread(() => Returns = temp2);
-
             }
-            catch (GAZTErrorException)
+            catch (GAZTErrorException ex)
             {
 
-
-
+                
+                
             }
 
         }
         private async Task getDashboardInstalmentPlan()
         {
 
-            InstalmentResponse = WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.TP.Userid);
+            InstalmentResponse = WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.LoginDataRetrieved.TIN);
 
             var items = new ObservableCollection<InstalmentPlanResult>();
 
@@ -2665,15 +2782,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             };
 
 
-            foreach (InstalmentPlanResult singleItem in InstalmentResponse.INST_PLAN_itemSet.results)
+            foreach (InstalmentPlanResult singleItem in InstalmentResponse.installmentPlans)
             {
                 double totalPaidBills = 0;
                 double nextBill = 0;
                 double unPaidBills = 0;
                 var chartData = new ObservableCollection<Model>();
-                totalPaidBills = string.IsNullOrEmpty(singleItem.TotalInstPaid) ? 0 : int.Parse(singleItem.TotalInstPaid);
-                nextBill = string.IsNullOrEmpty(singleItem.NextInstAmt) ? 0 : 1;
-                unPaidBills = string.IsNullOrEmpty(singleItem.TotalInstUnpaid) ? 0 : int.Parse(singleItem.TotalInstUnpaid);
+                totalPaidBills = String.IsNullOrEmpty(singleItem.TotalInstallmentsPaid) ? 0 : int.Parse(singleItem.TotalInstallmentsPaid);
+                nextBill = String.IsNullOrEmpty(singleItem.NextInstallmentAmount) ? 0 : 1;
+                unPaidBills = String.IsNullOrEmpty(singleItem.TotalInstallmentsPaid) ? 0 : int.Parse(singleItem.TotalInstallmentsPaid);
                 if (unPaidBills > 0) { unPaidBills = unPaidBills--; }
                 chartData.Add(new Model("Paid", totalPaidBills));
                 chartData.Add(new Model("nextPayment", nextBill));
@@ -2685,7 +2802,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 doughnutSeries.PaletteBrushes = ColorsChild;
                 doughnutSeries.ItemsSource = chartData;
                 singleItem.Series = new ChartSeriesCollection() { doughnutSeries };
-                singleItem.DayMonthToDisplay = singleItem.Bldat.Value.Day + " " + UtilityManager.GetMonthName(singleItem.Bldat.Value.Month.ToString());
 
                 items.Add(singleItem);
 
@@ -2752,35 +2868,67 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         if (SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
                         {
-                            BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a =>
-                            a.DueDtC != null && DateTime.Compare((DateTime)a.DueDtC, Today) <= 0
-                            || a.DueDt != null && DateTime.Compare(Convert.ToDateTime(a.DueDt), Today) <= 0).ToList();
+                             BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a =>
+                             (a.dueDate!=null&&DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) <= 0)
+                             ||(a.dueDate != null && DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) <= 0)).ToList();
 
                             foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
                             {
                                 var date = new DateTime();
 
                                 if (item.IsPaymentOverdue)
-                                { date = Convert.ToDateTime(item.DueDtC); }
-                                else
-                                {
-                                    date = Convert.ToDateTime(item.DueDt);
+                                { date = Convert.ToDateTime(item.dueDate); }
+                                else { date = Convert.ToDateTime(item.dueDate);
                                 }
 
                                 if (App.IsArabic)
                                 {
-                                    if (item.CalendarTyp.Equals("H") || item.Incotyp.StartsWith("H"))
+                                    if (item.calendarType.Equals("H") || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
                                         item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)
                                         {
-                                            var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
-                                            string[] splitDate = hijriDate.Split('/');
-                                            item.Month = splitDate[0];
+                                            if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
+                                            {
+                                            item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                                if (!item.IsPaymentOverdue)
+                                                {
+                                                    var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
+                                                    string[] splitDate = hijriDate.Split('/');
+                                                    item.Month = splitDate[0];
+                                                }
+                                                else
+                                                {
+                                                    item.Month = date.Year.ToString();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                                item.Month = date.Year.ToString();
+                                            }
                                         }
                                         else
                                         {
-                                            item.Month = date.Year.ToString();
+                                            if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
+                                            {
+                                                item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                                if (!item.IsPaymentOverdue)
+                                                {
+                                                    var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
+                                                    string[] splitDate = hijriDate.Split('/');
+                                                    item.Month = splitDate[0];
+                                                }
+                                                else
+                                                {
+                                                  item.Month = date.Year.ToString();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
+                                                item.Month = date.Year.ToString();
+                                            }
                                         }
                                     }
                                     else
@@ -2791,7 +2939,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 else
                                 {
-                                    if (item.CalendarTyp.Equals("H") || item.Incotyp.StartsWith("H"))
+                                    if (item.calendarType.Equals("H") || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
                                         item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)
@@ -2818,22 +2966,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
                         {
                             BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a =>
-                            a.DueDtC != null && DateTime.Compare((DateTime)a.DueDtC, Today) > 0
-                            || a.DueDt != null && DateTime.Compare(Convert.ToDateTime(a.DueDt), Today) > 0).ToList();
+                            (a.dueDate != null && DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) > 0)
+                            || (a.dueDate != null && DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) > 0)).ToList();
                             foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
                             {
                                 var date = new DateTime();
 
                                 if (item.IsPaymentOverdue)
-                                { date = Convert.ToDateTime(item.DueDtC); }
+                                { date = Convert.ToDateTime(item.dueDate); }
                                 else
                                 {
-                                    date = Convert.ToDateTime(item.DueDt);
+                                    date = Convert.ToDateTime(item.dueDate);
                                 }
 
                                 if (App.IsArabic)
                                 {
-                                    if (item.CalendarTyp.Equals("H") || item.Incotyp.StartsWith("H"))
+                                    if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
                                         item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)
@@ -2855,7 +3003,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 else
                                 {
-                                    if (item.CalendarTyp.Equals("H") || item.Incotyp.StartsWith("H"))
+                                    if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
                                         item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)
@@ -2933,15 +3081,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             }
                         }
                     }
-
-                    var BillsAndReturnsCommitmentsLocalDueDTC = BillsAndReturnsCommitmentsLocal.Where(x => x.DueDtC != null).ToList();
-                    var BillsAndReturnsCommitmentsLocalDueDT = BillsAndReturnsCommitmentsLocal.Where(x => x.DueDt != null).ToList();
-                    BillsAndReturnsCommitmentsLocalDueDT = BillsAndReturnsCommitmentsLocalDueDT.Select(x =>
-                    { x.DueDtC = Convert.ToDateTime(x.DueDt); return x; }
-                        ).ToList();
+                    var BillsAndReturnsCommitmentsLocalDueDTC = BillsAndReturnsCommitmentsLocal.Where(x => x.dueDate != null).ToList();
+                    var BillsAndReturnsCommitmentsLocalDueDT = BillsAndReturnsCommitmentsLocal.Where(x => x.dueDate != null).ToList();
+                    //BillsAndReturnsCommitmentsLocalDueDT = BillsAndReturnsCommitmentsLocalDueDT.Select(x =>
+                    //{ x.dueDate = Convert.ToDateTime(x.dueDate);return x; }
+                    //    ).ToList() ;
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocalDueDTC.Concat(BillsAndReturnsCommitmentsLocalDueDT).ToList();
 
-                    BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderByDescending(i => i.DueDtC).ToList();
+                    BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderByDescending(i => (i.dueDate)).ToList();
                     BillsAndReturnsCommitmentsTemp.Clear();
                     BillsAndReturnsCommitments = BillsAndReturnsCommitmentsLocal;
 
@@ -2997,8 +3144,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception)
             {
-
-
                 IsLoading = false;
             }
         }
@@ -3033,18 +3178,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             try
             {
-                if (DashboardData.results != null && DashboardData.results.Count > 0)
+                if (DashboardData.data != null && DashboardData.data.Count > 0)
                 {
                     //Partially Paid Bills
                     var MyBillsChartModelsTemp = new List<MyBillsChartModel>();
 
-                    if (DashboardData.results[0] != null && DashboardData.results[0].PrbillsTot != null)
+                    if (DashboardData.data[0] != null && DashboardData.data[0].partialReturnTotalNumber != null)
                     {
                         BillTypeCorrepsondingCountAndAmount PartiallyPaidBillCountAndAmount = new BillTypeCorrepsondingCountAndAmount();
 
                         PartiallyPaidBillCountAndAmount.Status = BillType.PrbillsTot;
-                        string PartialPaidBillsstr = DashboardData.results[0].PrbillsTot.TrimStart(new char[] { '0' });
-                        string PartialPaidBillsAmountstr = DashboardData.results[0].PrbillsBetrw.TrimStart(new char[] { '0' });
+                        String PartialPaidBillsstr = DashboardData.data[0].partialReturnTotalNumber.TrimStart(new Char[] { '0' });
+                        String PartialPaidBillsAmountstr = DashboardData.data[0].partialReturnTotalNumber.TrimStart(new Char[] { '0' });
                         if (string.IsNullOrEmpty(PartialPaidBillsstr))
                         {
                             PartialPaidBillsstr = "0";
@@ -3076,13 +3221,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
 
                     //Unpaid Bills
-                    if (DashboardData.results[0] != null && DashboardData.results[0].UpbillsTot != null)
+                    if (DashboardData.data[0] != null && DashboardData.data[0].unpaidBillsTotalNumber != null)
                     {
                         BillTypeCorrepsondingCountAndAmount UnPaidBillCountAndAmount = new BillTypeCorrepsondingCountAndAmount();
 
                         UnPaidBillCountAndAmount.Status = BillType.UpbillsTot;
-                        string UnpaidBillsstr = DashboardData.results[0].UpbillsTot.TrimStart(new char[] { '0' });
-                        string UnpaidBillsAmountstr = DashboardData.results[0].UpbillsBetrw.TrimStart(new char[] { '0' });
+                        String UnpaidBillsstr = DashboardData.data[0].unpaidBillsTotalNumber.TrimStart(new Char[] { '0' });
+                        String UnpaidBillsAmountstr = DashboardData.data[0].unpaidBillsTotalNumber.TrimStart(new Char[] { '0' });
                         if (string.IsNullOrEmpty(UnpaidBillsstr))
                         {
                             UnpaidBillsstr = "0";
@@ -3129,8 +3274,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
         public class ReturnTypeAndCorrepsondingCount
@@ -3146,14 +3289,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (DashboardData != null)
                 {
-                    if (DashboardData.results != null && DashboardData.results.Count > 0)
+                    if (DashboardData.data != null && DashboardData.data.Count > 0)
                     {
                         //Submited
-                        if (DashboardData.results[0] != null && DashboardData.results[0].RtnTot != null)
+                        if (DashboardData.data[0] != null && DashboardData.data[0].returnTotalNumber != null)
                         {
                             ReturnTypeAndCorrepsondingCount SubmittedReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
+
                             SubmittedReturnTypeAndCorrepsondingCount.ReturnTypeProperty = ReturnType.RtnTot;
-                            string RtnTotstr = DashboardData.results[0].RtnTot.TrimStart(new char[] { '0' });
+                            String RtnTotstr = DashboardData.data[0].returnTotalNumber.TrimStart(new Char[] { '0' });
                             if (string.IsNullOrEmpty(RtnTotstr))
                             {
                                 RtnTotstr = "0";
@@ -3176,12 +3320,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
 
                         //Overdue
-                        if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
+                        if (DashboardData.data[0] != null && DashboardData.data[0].icrTotal != null)
                         {
                             ReturnTypeAndCorrepsondingCount OverdueReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
-
                             OverdueReturnTypeAndCorrepsondingCount.ReturnTypeProperty = ReturnType.DueIcr;
-                            string DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new char[] { '0' });
+                            String DueIcrstr = DashboardData.data[0].icrTotal.TrimStart(new Char[] { '0' });
                             if (string.IsNullOrEmpty(DueIcrstr))
                             {
                                 DueIcrstr = "0";
@@ -3198,12 +3341,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
 
                         //UnSubmitted
-                        if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
+                        if (DashboardData.data[0] != null && DashboardData.data[0].nonSubmittedReturnTotalNumber != null)
                         {
                             ReturnTypeAndCorrepsondingCount UnSubmittedReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
 
-                            UnSubmittedReturnTypeAndCorrepsondingCount.ReturnTypeProperty = Models.SyncfusionEnabledModels.ReturnType.NrtnTot;
-                            string NrtnTotstr = DashboardData.results[0].NrtnTot.TrimStart(new char[] { '0' });
+                            UnSubmittedReturnTypeAndCorrepsondingCount.ReturnTypeProperty = GAZT.Models.ReturnType.NrtnTot;
+                            String NrtnTotstr = DashboardData.data[0].nonSubmittedReturnTotalNumber.TrimStart(new Char[] { '0' });
                             if (string.IsNullOrEmpty(NrtnTotstr))
                             {
                                 NrtnTotstr = "0";
@@ -3225,10 +3368,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
             }
         }
         public void PopulateeServicesApplicableToTheTaxPayer()
@@ -3238,14 +3379,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             if (eServicesAvailableToTheTP != null)
                 eServicesAvailableToTheTP.Clear();
-            if (DashboardData.results[0].TpType != null && DashboardData.results[0].TpType != "")
+            if (DashboardData.data[0].taxpayerType != null && DashboardData.data[0].taxpayerType != "")
             {
-                UtilityManager.TPTaxAvalable = DashboardData.results[0].TpType;
-                UtilityManager.IsZakatAvailable = DashboardData.results[0].EstimateZkat;
-                string[] TpTypes = DashboardData.results[0].TpType.Split(',');
+                UtilityManager.TPTaxAvalable = DashboardData.data[0].taxpayerType;
+                UtilityManager.IsZakatAvailable = DashboardData.data[0].estimateZakat;
+                string[] TpTypes = DashboardData.data[0].taxpayerType.Split(',');
                 foreach (string ItemType in TpTypes)
                 {
-                    if (ItemType == "05" && DashboardData.results[0].EstimateZkat == "X")
+                    if (ItemType == "05" && DashboardData.data[0].estimateZakat == "X")
                     {
                         eServicesAvailableToTheTPTemp.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
                     }
@@ -3293,11 +3434,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType, true);
 
-                double tempEndProgressBar = Convert.ToDouble(HeaderSet.D.DebitAmount);
-                double startCreditProgressBar = Convert.ToDouble(HeaderSet.D.Credit.Replace("-", string.Empty));
+                double tempEndProgressBar = (Convert.ToDouble(HeaderSet.d.DebitAmount));
+                double startCreditProgressBar = (Convert.ToDouble(HeaderSet.d.Credit.Replace("-", string.Empty)));
                 double totalBalance = tempEndProgressBar + startCreditProgressBar;
 
-                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
+                AccStmtnCreditAmount = HeaderSet.d.CreditAmount.Replace("-", string.Empty);
 
                 DebitAmountEndProgressBar = tempEndProgressBar / totalBalance * 100;
                 CreditAmountStartProgressBar = startCreditProgressBar / totalBalance * 100;
@@ -3308,8 +3449,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (Exception)
             {
                 IsLoading = false;
-
-
             }
         }
 
@@ -3328,39 +3467,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     amountWithComma = _testDueAmount;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
             }
             return amountWithComma;
         }
         public async Task LogOut()
         {
 
-            if (App.TP != null)
-                App.TP = null;
-            if (App.PreviousIsArabic)
-            {
-                string langName = "ar-AE";
-                AppResources.Culture = new CultureInfo(langName);
-            }
-            else
-            {
-                string langName = "en-US";
-                AppResources.Culture = new CultureInfo(langName);
-            }
 
-            try
-            {
-                await WebServiceManager.GAZTLogOff();
-            }
-            catch (Exception)
-            {
+                if (App.TP != null)
+                    App.TP = null;
+                if (App.PreviousIsArabic)
+                {
+                    String langName = "ar-AE";
+                    AppResources.Culture = new CultureInfo(langName);
+                }
+                else
+                {
+                    String langName = "en-US";
+                    AppResources.Culture = new CultureInfo(langName);
+                }
 
-
-            }
-            MainThread.BeginInvokeOnMainThread(() =>
+                try
+                {
+                    await WebServiceManager.GAZTLogOff();
+                }
+                catch (Exception ex)
+                {
+                    
+                    
+                }
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
                 IsLoading = false;
                 App.IsLogOut = true;
@@ -3373,18 +3511,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                     App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
                 }
-                _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
-                //_navigationService.GoBack();
+                await Application.Current.MainPage.Navigation.PopToRootAsync();
             });
         }
 
         #endregion
-
         #region Survey
         bool iSEndSurvey;
         public bool ISEndSurvey { get { return iSEndSurvey; } set { iSEndSurvey = value; OnPropertyChanged(); } }
@@ -3558,10 +3692,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                      user=new CustomData()
                      {
                          CustomerSegment="TIN",
-                          mobile=App.TP.Mobile,
+                          mobile=App.TP.mobile,
                            firstName=App.TP.Name,
                            TIN=App.TP.Tin,
-                           email=App.TP.Email
+                           email=App.TP.email
                      },
                      surveyAnswers=new List<Answer>()
                      {

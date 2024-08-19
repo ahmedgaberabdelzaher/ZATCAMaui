@@ -1,6 +1,9 @@
 using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Models.AccountDetails;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
+using static ZATCAMAUI.Models.AccountDetails.AccoungtDetails;
 using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.AccountStatements
@@ -10,6 +13,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
     public partial class AccountStatementsDetailPageView : ContentPage
     {
         MyBills myBills;
+        AccountStatementDetailPageViewModel viewModel;
         public AccountStatementsDetailPageView(MyBills myBills, AccoungtDetails details_bills)
         {
 

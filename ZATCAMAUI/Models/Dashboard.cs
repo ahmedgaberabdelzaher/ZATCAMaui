@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿
+using Newtonsoft.Json;
 using Syncfusion.Maui.Charts;
 using System.Text.RegularExpressions;
 
 namespace ZATCAMAUI.Models
 {
-
     public class Dashboard
     {
-        public List<DashboardResult> results { get; set; }
+        public List<DashboardResult> data { get; set; }
     }
     
     public class DashboardMetadata
@@ -15,37 +15,36 @@ namespace ZATCAMAUI.Models
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
-    }
+    }    
     
     public class DashboardResult
     {
-        public DashboardMetadata __metadata { get; set; }
-        public string Caltype { get; set; }
-        public string EstimateZkat { get; set; }
-        public string TpType { get; set; }
-        public string Tin { get; set; }
-        public string Vktyp { get; set; }
-        public string RtnTot { get; set; }
-        public string NrtnTot { get; set; }
-        public string PrtnTot { get; set; }
-        public string UprtnTot { get; set; }
-        public string PprtnTot { get; set; }
-        public string IcrTot { get; set; }
-        public string Status { get; set; }
-        public string Text { get; set; }
-        public string Text1 { get; set; }
-        public string DueIcr { get; set; }
-        public DateTime? Begda { get; set; }
-        public DateTime? Endda { get; set; }
-        public string Persl { get; set; }
-        public string Waers { get; set; }
-        public string PbillsTot { get; set; }
-        public string PbillsBetrw { get; set; }
-        public string UpbillsTot { get; set; }
-        public string UpbillsBetrw { get; set; }
-        public string PrbillsTot { get; set; }
-        public string PrbillsBetrw { get; set; }
-        public string InsActFlg { get; set; }
+        public string calendarType { get; set; }
+        public string estimateZakat { get; set; }
+        public string TIN { get; set; }
+        public string taxpayerType { get; set; }
+        public string contractAccountType { get; set; }
+        public string returnTotalNumber { get; set; }
+        public string nonSubmittedReturnTotalNumber { get; set; }
+        public string paidReturnTotalNumber { get; set; }
+        public string unpaidReturnTotalNumber { get; set; }
+        public string partialReturnTotalNumber { get; set; }
+        public string icrTotal { get; set; }
+        public string status { get; set; }
+        public string accountCategory { get; set; }
+        public string accountCategoryDescription { get; set; }
+        public string dueTotalNumber { get; set; }
+        public string beginDate { get; set; }
+        public string endDate { get; set; }
+        public string periodkey { get; set; }
+        public string currency { get; set; }
+        public string paidBillsTotalNumber { get; set; }
+        public string paidBillsAmount { get; set; }
+        public string unpaidBillsTotalNumber { get; set; }
+        public string unpaidBillAmount { get; set; }
+        public string partialBillsTotalNumber { get; set; }
+        public string partialBillsAmount { get; set; }
+        public string instructionAction { get; set; }
 
     }
 
@@ -55,14 +54,22 @@ namespace ZATCAMAUI.Models
     public class InstalmentPlanResult
     {
         public Metadata __metadata { get; set; }
+
+        [JsonProperty("taxType")]
         public string TaxType { get; set; }
-        public string TaxTypeDes { get; set; }
-        public string TotalInstAmt { get; set; }
-        public string NextInstAmt { get; set; }
-        public DateTime? Bldat { get; set; }
-        public string Waers { get; set; }
+        [JsonProperty("taxTypeDescription")]
+        public string TaxTypeDescription { get; set; }
+        [JsonProperty("installmentTotalAmount")]
+        public string InstallmentTotalAmount { get; set; }
+        [JsonProperty("nextInstallmentAmount")]
+        public string NextInstallmentAmount { get; set; }
+        [JsonProperty("documentDate")]
+        public string DocumentDate { get; set; }
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
         //public string DayMonth { get; set; }
         private string _dayMonth;
+        [JsonProperty("dayMonth")]
         public string DayMonth
         {
             get
@@ -78,9 +85,12 @@ namespace ZATCAMAUI.Models
             }
         }
 
-        public string TotalInst { get; set; }
-        public string TotalInstPaid { get; set; }
-        public string TotalInstUnpaid { get; set; }
+        [JsonProperty("totalNumberOfInstallment")]
+        public string TotalNumberOfInstallment { get; set; }
+        [JsonProperty("totalInstallmentsPaid")]
+        public string TotalInstallmentsPaid { get; set; }
+        [JsonProperty("totalInstallmentsUnpaid")]
+        public string TotalInstallmentsUnpaid { get; set; }
 
         [JsonIgnore]
         public ChartSeriesCollection Series { get; set; }
@@ -107,17 +117,17 @@ namespace ZATCAMAUI.Models
     
     public class INSTPLANItemSet
     {
-        public List<InstalmentPlanResult> results { get; set; }
+        public List<InstalmentPlanResult> installmentPlans { get; set; }
     }
 
     
     public class DashboardInstalmentplan
     {
         public Metadata __metadata { get; set; }
-        public string Taxpayer { get; set; }
-        public string Lang { get; set; }
-        public string Inpch { get; set; }
-        public INSTPLANItemSet INST_PLAN_itemSet { get; set; }
+        public string TIN { get; set; }
+        public string language { get; set; }
+        public string inputChannel { get; set; }
+        public List<InstalmentPlanResult> installmentPlans { get; set; }
     }
 
 

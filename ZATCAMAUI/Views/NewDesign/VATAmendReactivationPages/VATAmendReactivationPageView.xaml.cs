@@ -4474,8 +4474,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -4488,8 +4488,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -4502,8 +4502,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -4515,8 +4515,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

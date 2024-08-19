@@ -212,7 +212,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         /// Invoked when the Skip button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void Skip()
+        private void Skip(object obj)
         {
             MoveToNextPage();
         }
@@ -290,7 +290,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         private void MoveToNextPage()
         {
             _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
-            // _navigationService.NavigateTo("/LoginSelectionView");
 
             //Application.Current.MainPage.Navigation.PopAsync();
         }

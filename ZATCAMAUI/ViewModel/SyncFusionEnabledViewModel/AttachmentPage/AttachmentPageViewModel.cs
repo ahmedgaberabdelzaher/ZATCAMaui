@@ -202,7 +202,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
                     {
                         string[] filetypes;
 
-                        filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForAll();
+                        filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForAll();
                         PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
 
                         var fileData = await FilePicker.PickAsync(options);
@@ -382,10 +382,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
         private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType)
         {
             AttachmentRootOject _attachment = null;
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             await Task.Run(async () =>
             {
                 try
@@ -412,10 +409,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
 
                 }
             });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+            IsLoading = false;
             return _attachment;
         }
 

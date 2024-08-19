@@ -1,6 +1,7 @@
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.NF;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.NFLogin;
 
@@ -31,7 +32,7 @@ public partial class NFLoginView : ContentPage
 					url = modelSSOID.data.Single().URL;
 					Hybridview = new HybridWebView();
 					Hybridview.Url = url;
-					RegnagaftGrid.Children.Add(Hybridview, 0, 0);
+					RegnagaftGrid.Add(Hybridview, 0, 0);
 					Hybridview.RegisterAction(async (obj) =>
 					{
 						if (obj == "navigateToVATIndividualSignupPageSSO")

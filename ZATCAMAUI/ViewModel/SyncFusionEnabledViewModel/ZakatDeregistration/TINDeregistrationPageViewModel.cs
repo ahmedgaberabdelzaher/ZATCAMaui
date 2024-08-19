@@ -1942,21 +1942,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
         private VATSignUpD _iDTypeDataModel = null;
         public VATSignUpD IDTypeDataModel
         {

@@ -17,28 +17,34 @@ namespace ZATCAMAUI.Core.Mangers
             {
                 try
                 {
-                    char LangZ = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.TaxPayerSubsidyPost;
+                    var lang = UtilityManager.GetLanguageParameter();
+                    String url = ZATCAConstants.TaxPayerSubsidyPost;
 
                     TaxPayerSubsidyModel taxPayerSubsidyModel = new TaxPayerSubsidyModel
                     {
-                        Euser = App.LoginDataRetrieved.Euser,
-                        Fbguid = App.LoginDataRetrieved.FbGuid,
-                        Langz = "" + LangZ,
-                        Source = source,//"VSUB" or 6741
-                        Partner = App.LoginDataRetrieved.TIN
+                        authenticationUser = App.LoginDataRetrieved.Euser,
+                        formBundleGUID = App.LoginDataRetrieved.FbGuid,
+                        language = lang,
+                        source = source,
+                        TIN = App.LoginDataRetrieved.TIN
                     };
 
 
-
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     var uri = new Uri(url);
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    HttpClient client = new HttpClient();
                     var serilized = JsonConvert.SerializeObject(taxPayerSubsidyModel);
-                    client.DefaultRequestHeaders.Add("Token", App.Token);
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
 
@@ -65,9 +71,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
-                    //App.IsSessionExpired = true;
                     return null;
                 }
                 return _requestResponse;

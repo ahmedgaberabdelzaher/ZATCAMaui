@@ -391,7 +391,7 @@ public partial class MoreOptionsNote : PopupPage
 						downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
 						viewModel.IsLoading = false;
-						var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
+						var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
 
 
 					}
@@ -404,7 +404,7 @@ public partial class MoreOptionsNote : PopupPage
 							try
 							{
 
-								var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
+								var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
 							}
 							catch (Exception ex)

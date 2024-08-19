@@ -34,41 +34,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             }
         }
 
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                if (_isLoading == false)
-                {
-                    IsVisiblePdfView = true;
-                }
-                else
-                {
-                    IsVisiblePdfView = false;
-                }
-                OnPropertyChanged("IsLoading");
-            }
-        }
-
-        private bool _loading = false;
-        public bool Loading
-        {
-            get
-            {
-                return _loading;
-            }
-            set
-            {
-                _loading = value;
-                OnPropertyChanged("Loading");
-            }
-        }
 
         private bool _isVisiblePdfView = false;
         public bool IsVisiblePdfView
@@ -265,8 +230,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
                                 catch (Exception ex)
                                 {
                                     IsShareButtonEnable = false;
-                                    Console.WriteLine(ex.Message);
-                                    Console.Write(ex.StackTrace.ToString());
+                                    
+                                    
                                 }
                             }
                             else
@@ -319,7 +284,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             HttpWebRequest Req = (HttpWebRequest)WebRequest.Create(downloadUrl);
             //SOAPAction  
             string deviceOs = DeviceInfo.Platform.ToString();
-            string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+            string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
             string deviceModel = DeviceInfo.Model;
             Req.Accept = "application/json";
             Req.Headers.Add("X-Session-Language", lang);

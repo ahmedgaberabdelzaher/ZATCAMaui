@@ -24,6 +24,12 @@ namespace ZATCAMAUI.Models
     
     public class UnlockAccountModelOtp : UnlockAccountModel
     {
+        [JsonProperty("TaxpayerGuid")]
+        public string TaxpayerGuid { get; set; }
+
+        [JsonProperty("Zcaptcha")]
+        public string Zcaptcha { get; set; }
+
         [JsonProperty("Otp")]
         public string Otp { get; set; }
     }

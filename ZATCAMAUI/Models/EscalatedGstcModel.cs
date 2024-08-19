@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -8,9 +9,8 @@ namespace ZATCAMAUI.Models
     public class EscalatedGstcModel
     {
         public D d { get; set; }
-
         
-        public class Metadata
+         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
@@ -26,6 +26,7 @@ namespace ZATCAMAUI.Models
         {
             public Deferred __deferred { get; set; }
         }
+
         
         public class CaseDetailsResultSet
         {
@@ -110,10 +111,6 @@ namespace ZATCAMAUI.Models
                     if (App.IsArabic)
                     {
                         ZType = TypeAr;
-                    }
-                    else
-                    {
-
                     }
                 }
             }
@@ -354,8 +351,5 @@ namespace ZATCAMAUI.Models
             [JsonProperty("CaseDetailSet")]
             public CaseDetailSet CaseDetailSet { get; set; }
         }
-
-
-
     }
 }

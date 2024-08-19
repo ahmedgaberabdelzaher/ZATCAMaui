@@ -1,11 +1,13 @@
 ﻿
 using Mopups.Services;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using static ZATCAMAUI.Models.correspdncAttchModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -16,6 +18,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public ICommand OnAttachmentClick { get; set; }
         public ICommand OnFavClicked { get; set; }
         private string _correspondenceTitle = string.Empty;
+
+        private ObservableCollection<CorrDetails> _AttChDtlsSet;
+        public ObservableCollection<CorrDetails> attChDtlsSet
+        {
+            get
+            {
+                return _AttChDtlsSet;
+            }
+            set
+            {
+                if (_AttChDtlsSet == value) return;
+                _AttChDtlsSet = value;
+                OnPropertyChanged("attChDtlsSet");
+            }
+
+        }
+        public correspdncAttchModel _attchModel;
+        public correspdncAttchModel AttchModel
+        {
+            get
+            {
+                return _attchModel;
+            }
+            set
+            {
+                if (_attchModel == value) return;
+                _attchModel = value;
+                OnPropertyChanged("attchModel");
+            }
+        }
         public string CorrespondenceTitle
         {
             get
@@ -132,7 +164,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     if (IsAttachmentEnabled)
                     {
-                        string Url = ZATCAConstants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
+                        string Url = ZATCAConstants.GAZTGetCorrespondenceAttach +  CorrespondenceD.Cokey + "&correspondenceType=" + CorrespondenceD.Cotype ;
                         ShowPdf(Url);
                     }
                 }
@@ -142,12 +174,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (CorrespondenceD.IsFav == false)
                 {
                     CorrespondenceFavoriteModel FavoriteM = new CorrespondenceFavoriteModel();
-                    FavoriteM.Begdaz = CorrespondenceD.Begdaz;
+                    DateTime formattedBegdaz = DateTime.Parse(CorrespondenceD.Begdaz);
+                    FavoriteM.Begdaz = formattedBegdaz.ToString("yyyy-MM-ddTHH:mm:ss");
                     FavoriteM.Cokey = CorrespondenceD.Cokey;
                     FavoriteM.Cotyp = CorrespondenceD.Cotype;
-                    FavoriteM.Enddaz = CorrespondenceD.Enddaz;
+                    DateTime formattedEnddaz = DateTime.Parse(CorrespondenceD.Enddaz);
+                    FavoriteM.Enddaz = formattedEnddaz.ToString("yyyy-MM-ddTHH:mm:ss");
                     FavoriteM.Gpart = CorrespondenceD.Gpart;
-                    FavoriteM.Zzfav = "1";
+                    FavoriteM.Zzfav = true;
                     FavoriteM.Vkont = CorrespondenceD.Vkont;
                     string result = WebServiceManager.GAZTSetFavCorrespondence(FavoriteM);
                     CorrespondenceD.IsFav = true;
@@ -156,12 +190,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 else if (CorrespondenceD.IsFav == true)
                 {
                     CorrespondenceFavoriteModel FavoriteM = new CorrespondenceFavoriteModel();
-                    FavoriteM.Begdaz = CorrespondenceD.Begdaz;
+                    DateTime formattedBegdaz = DateTime.Parse(CorrespondenceD.Begdaz);
+                    FavoriteM.Begdaz = formattedBegdaz.ToString("yyyy-MM-ddTHH:mm:ss");
                     FavoriteM.Cokey = CorrespondenceD.Cokey;
                     FavoriteM.Cotyp = CorrespondenceD.Cotype;
-                    FavoriteM.Enddaz = CorrespondenceD.Enddaz;
+                    DateTime formattedEnddaz = DateTime.Parse(CorrespondenceD.Enddaz);
+                    FavoriteM.Enddaz = formattedEnddaz.ToString("yyyy-MM-ddTHH:mm:ss");
                     FavoriteM.Gpart = CorrespondenceD.Gpart;
-                    FavoriteM.Zzfav = "0";
+                    FavoriteM.Zzfav = false;
                     FavoriteM.Vkont = CorrespondenceD.Vkont;
                     string result = WebServiceManager.GAZTSetFavCorrespondence(FavoriteM);
                     CorrespondenceD.IsFav = false;

@@ -284,8 +284,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 OnPropertyChanged("StepNumber");
             }
         }
-        private String _stepNumberz;
-        public String StepNumberz
+        private string _stepNumberz;
+        public string StepNumberz
         {
             get
             {
@@ -298,21 +298,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 OnPropertyChanged("StepNumberz");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
+    
         private bool _isFirstSubmission = true;
         public bool IsFirstSubmission
         {
@@ -2823,7 +2809,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 try
                 {
                     string[] filetypes;
-                    filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeString();
+                    filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeString();
 
                     PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
 

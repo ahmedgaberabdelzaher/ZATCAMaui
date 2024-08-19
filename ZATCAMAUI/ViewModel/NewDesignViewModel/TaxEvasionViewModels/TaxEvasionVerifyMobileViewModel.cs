@@ -333,7 +333,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             {
                 if (App.TP != null)
                 {
-                    if (!string.IsNullOrEmpty(App.TP.Tin))
+                    if (!string.IsNullOrEmpty(App.TP.TIN))
                     {
                         await Task.Run(() =>
                         {
@@ -408,19 +408,82 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         {
             if (letter >= 48 && letter <= 57)
             {
-                return true;
-            }
-            else
-            {
-                return false;
+                //tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
+                tesmobnoscreen.MobileNumber = "+966" + MobileNumber;
+
+                TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
+                taxEvasionSendSmsModel.mobile = tesmobnoscreen.MobileNumber;
+
+                try
+                {
+                    IsLoading = true;
+
+                    TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await TaxEvasionWebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
+
+                    IsLoading = false;
+                    if (taxEvasionSendSmsResponseModel.Status == true)
+                    {
+                        App.TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
+                        App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;
+                        App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
+                        OTPSentOnThisMobileNumber = AppResources.MobileNumber + " "  ;
+                       EncriptedMobileNumber = "xxxxxxxxxx"+ MobileNumber.Substring(MobileNumber.Length - 4, 4);
+
+                        ShowOTPForm();
+                        //_navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
+                    }
+                    else
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        });
+                    }
+                }
+                catch (GAZTException gex)
+                {
+                    // Handle the GAZT custom exception.
+                    string MessageForTheUser = gex.Message;
+                    if (gex is GAZTInvalidDataException)
+                    {
+                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    }
+
+                    if (gex is GAZTNetworkConnectivityIssueException)
+                    {
+                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                    }
+                    else if (gex is GAZTInternetException)
+                    {
+                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                    }
+                    else if (gex is GAZTSessionExpiredException)
+                    {
+                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                    }
+
+                    IsLoading = false;
+
+                     MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                }
+                catch (Exception)
+                {
+
+                    IsLoading = false;
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                }
+
+
             }
         }
+    
 
         public async Task sendOTPAsync()
         {
             try
             {
-
+                IsLoading = true;
                 ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
                 tesmobnoscreen.tes = "1";
                 tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
@@ -433,98 +496,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
                     taxEvasionSendSmsModel.mobile = tesmobnoscreen.MobileNumber;
 
-                    try
+                    TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await TaxEvasionWebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
+
+
+                    if (taxEvasionSendSmsResponseModel.Status == true)
                     {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = true;
-                        });
+                        App.TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
+                        App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;
+                        App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
+                        OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ";
+                        EncriptedMobileNumber = "xxxxxxxxxx" + MobileNumber.Substring(MobileNumber.Length - 4, 4);
 
-                        TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await TaxEvasionWebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
-
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
-
-                        if (taxEvasionSendSmsResponseModel.Status == true)
-                        {
-                            App.TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
-                            App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;
-                            App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
-                            OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ";
-                            EncriptedMobileNumber = "xxxxxxxxxx" + MobileNumber.Substring(MobileNumber.Length - 4, 4);
-
-                            ShowOTPForm();
-                            //_navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                            });
-                        }
+                        ShowOTPForm();
+                        //_navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
                     }
-                    catch (GAZTException gex)
+                    else
                     {
-                        // Handle the GAZT custom exception.
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTInvalidDataException)
-                        {
-                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                        }
-
-                        if (gex is GAZTNetworkConnectivityIssueException)
-                        {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                        }
-                        else if (gex is GAZTInternetException)
-                        {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                        }
-                        else if (gex is GAZTSessionExpiredException)
-                        {
-                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                        }
-
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
-
-                            //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            //viewModel._navigationService.GoBack();
+                            //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         });
-                    }
-                    catch (Exception)
-                    {
-
-
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
-
-                        //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        //viewModel._navigationService.GoBack();
-                    });
                     }
 
 
                 }
+                IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
-
-
+                IsLoading = false;
                 MainThread.BeginInvokeOnMainThread(async () =>
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
@@ -534,8 +535,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             }
             catch (Exception)
             {
-
-
+                IsLoading = false;
                 MainThread.BeginInvokeOnMainThread(async () =>
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
@@ -543,6 +543,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 _navigationService.GoBack();
             });
             }
+            
         }
 
         private void StartTimer(int h, int m, int sec)
@@ -645,9 +646,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                 }
                                 catch (Exception)
                                 {
-
-
-
                                 }
                                 await navigateToListPage();
                                 MobileNumber = string.Empty;
@@ -655,8 +653,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         }
                         catch (Exception)
                         {
-
-
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await Task.Run(() =>
@@ -708,6 +704,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 }
                 catch (Exception ex)
                 {
+
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await Task.Run(() =>

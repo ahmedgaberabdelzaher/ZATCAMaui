@@ -15,6 +15,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using static ZATCAMAUI.Models.ErrorMessage;
+using ZATCAMAUI.Models.NewModelAPI.AbsherOTP;
 
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 {
@@ -1622,7 +1623,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     forgotPasswordOTP3.result = d;
 
                     GenerateCaptchaGUID forgotPasswordOTP2 = await WebServiceManager.GAZTCaptchaAndGUID(d);
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         // IsLoading = false;
                         string IdTYpe = "";
@@ -1692,7 +1693,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             }
                             else
                             {
-                                //await PopupNavigation.Instance.PushAsync(new OtpPagePopUp(otpResponse));
+                                //await MopupService.Instance.PushAsync(new OtpPagePopUp(otpResponse));
                                 await viewModel.StepfivedataValidation(otpResponse);
                             }
 
@@ -1713,8 +1714,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             catch (Exception ex)
             {
                 viewModel.IsLoading = false;
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -2570,8 +2571,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                         }
                                         catch (Exception ex)
                                         {
-                                            Console.WriteLine(ex.Message);
-                                            Console.Write(ex.StackTrace.ToString());
+                                            
+                                            
                                         }
                                         //SiguupModel.ACity = viewModel.SelectCityList.CityName;
                                         //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
@@ -3144,8 +3145,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     }
                                     catch (Exception ex)
                                     {
-                                        Console.WriteLine(ex.Message);
-                                        Console.Write(ex.StackTrace.ToString());
+                                        
+                                        
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
                                     //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;

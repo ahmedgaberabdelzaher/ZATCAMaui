@@ -2,9 +2,9 @@
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EscalatedCasesGSTCPageViewModel;
 using static ZATCAMAUI.Models.EscalatedGstcModel;
 
-[XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ZATCAMAUI.Views.NewDesign.EscalatedCasesGSTC;
 
+[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class EscalatedCasesGSTCPageView : ContentPage
 {
     private EscalatedCasesGSTCPageViewModel viewModel;

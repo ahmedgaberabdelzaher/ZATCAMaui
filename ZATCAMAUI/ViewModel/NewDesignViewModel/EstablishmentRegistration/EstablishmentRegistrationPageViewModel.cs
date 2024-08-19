@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
-
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Helper;
@@ -26,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public bool isFinaceDetailsChanged { get; set; } = false;
         public string isDraftEnabled { get; set; } = "";
         private Nreg_IdItem idItem { get; set; } = null;
-        private String calType = string.Empty; 
+        private String calType = string.Empty;
         public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
         private EstablishmentRegistrationTabsEnum _currentTab;
         public EstablishmentRegistrationTabsEnum currentTab
@@ -1201,13 +1200,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private Dictionary<string, string> EnMethodList = new Dictionary<string, string>()
         {
-            {"A", AppResources.NDAccounting },
-            {"E", AppResources.NDEstimated }
+            {"Accounting Method", AppResources.NDAccounting },
+            //{"Estimated", AppResources.NDEstimated }
+            {"Estimated Method", AppResources.NDEstimated }
         };
         private Dictionary<string, string> EnCalendarTypeList = new Dictionary<string, string>()
         {
-            {"2", AppResources.Hijri },
-            {"1", AppResources.Gregorian }
+            {"Hijri", AppResources.Hijri },
+            {"Gregorian", AppResources.Gregorian }
         };
         private List<string> _methodList = new List<string>();
         public List<string> MethodList
@@ -1399,7 +1399,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _eSTLedge;
             set
             {
-                if (_eSTLedge == value) return;
+                if (_eSTLedge ==  value) return;
 
                 _eSTLedge = value;
                 OnPropertyChanged(nameof(ESTLedge));
@@ -1424,6 +1424,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         #endregion
 
+       
 
         private bool _canExecute = true;
         public bool CanExecute
@@ -1566,8 +1567,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 MopupService.Instance.PushAsync(poupWindow);
             });
 
-            // OuterListTapCommand = new Command<object>(OnOuterListTapped);
-
             #endregion
 
             #region TaxPayer Variable initialization
@@ -1628,7 +1627,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 if (newItem.Oldmst.ToString().ToUpper().Equals("X"))
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.ExistingOutletError, AppResources.Information);
 
@@ -1636,7 +1635,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (newItem.MciEntry.ToString().ToUpper().Equals("X"))
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.DeleteError, AppResources.Information);
 
@@ -1644,7 +1643,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (newItem.ActNo.Equals("00000"))
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.MainOutletError, AppResources.Information); // Main ol cannot be deleted 
 
@@ -1671,7 +1670,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         if (str == "Yes")
                         {
-                            Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
+                            MainThread.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
                         }
                     };
                     await MopupService.Instance.PushAsync(confirmPopup);
@@ -1742,7 +1741,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         try
                         {
                             taxPayerDetails.Draftfg = "X";
-                            taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                            taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                             taxPayerDetails.UserTypx = "TP";
                             var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                             if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
@@ -1780,10 +1779,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                             Tdline = notes,
                                             ByGpartz = App.LoginDataRetrieved.TIN
                                         };
-                                        taxPayerDetails?.off_notesSet.results?.Clear();
-                                        taxPayerDetails?.off_notesSet.results?.Add(note);
+                                        taxPayerDetails?.off_notesSet?.Clear();
+                                        taxPayerDetails?.off_notesSet?.Add(note);
                                         taxPayerDetails.Operationx = "04";
-                                        taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                                        taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                                         taxPayerDetails.UserTypx = "TP";
                                         taxPayerDetails.StepNumberx = string.Empty;
                                         var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
@@ -1815,11 +1814,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             {
                                 if (_cal as string == AppResources.NDGregorian)
                                 {
-                                    taxPayerDetails.Caltp = "G";
+                                    taxPayerDetails.Caltp = "Gregorian";
                                 }
                                 else if (_cal as string == AppResources.NDHijri)
                                 {
-                                    taxPayerDetails.Caltp = "H";
+                                    taxPayerDetails.Caltp = "Hijri";
                                 }
                                 updateDatePickers(currentTab);
                             };
@@ -2334,7 +2333,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
-                string[] filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
+                string[] filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForTaxEvasion();
 
                 // var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                 PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
@@ -2372,7 +2371,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         try
                                         {
                                             string attachmentType = UtilityManager.GetContentType(Extention);
-                                            await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
+                                            await SaveAttachment(stream, attachmentName, docType, attachmentType);
                                         }
                                         catch (Exception)
                                         {
@@ -2415,7 +2414,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
 
 
-        private async Task SaveAttachment(byte[] attachmentByteData, string fileName, string docType, string contentType)
+        private async Task SaveAttachment(Stream attachmentByteData, string fileName, string docType, string contentType)
         {
             try
             {
@@ -2470,7 +2469,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         IsNavigationCompletedToSuccessfulPage = false;
                     }
-                    SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
+                    SelectedReportingBranch = ReportingBranchList.Where(i => i.authorizationGroup == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
                     if (taxPayerDetails?.Tpnationality == "SAUDI")
@@ -2510,7 +2509,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
-                    idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
+                    idItem = taxPayerDetails?.Nreg_IdSet.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
                     if (idItem != null)
                     {
                         if (App.IsArabic)
@@ -2525,6 +2524,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             TitleVisibility = true;
                         }
+                        //TODO CR5784
                         Title = taxPayerDetails?.TpTitle;
                         GCCIDTypeIdNumberValue = idItem.Idnumber;
                     }
@@ -2553,7 +2553,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         IqamaDesc = "";
                     }
 
-                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    SelectedDOB = Convert.ToDateTime(taxPayerDetails?.Birthdt).ToString("yyyy/MM/dd");
+
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
                     FatherName = taxPayerDetails?.FatherName;
@@ -2575,11 +2576,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
-                    Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => i.Type == "FS0002").FirstOrDefault();
+                    Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.Where(i => i.Type == "FS0002").FirstOrDefault();
                     PassportNumber = passportItem?.Idnumber;
                     SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
-                    PassportIssueDate = passportItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                    PassportExpireDate = passportItem?.ValidDateTo?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    PassportIssueDate = Convert.ToDateTime(passportItem?.ValidDateFrom).ToString("yyyy/MM/dd");
+                    PassportExpireDate = Convert.ToDateTime(passportItem?.ValidDateTo).ToString("yyyy/MM/dd");
                     PassportAttachmentPrepopulateCheck(taxPayerDetails);
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Outlets)
@@ -2592,8 +2593,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
 
-                    if (!string.IsNullOrEmpty(taxPayerDetails?.Accmethod))
-                    {
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Accmethod)) {
 
                         SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
 
@@ -2607,7 +2607,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     else
                     {
                         CalendarType = AppResources.Gregorian;
-                        calType = "G";
+                        calType = "Gregorian";
                     }
 
                     if (!string.IsNullOrEmpty(taxPayerDetails.Fdmonth))
@@ -2619,14 +2619,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (!string.IsNullOrEmpty(taxPayerDetails.Fdday))
                     {
 
-                        if (taxPayerDetails.Fdday == "LD")
-                        {
+                        if(taxPayerDetails.Fdday == "LD") {
 
 
                             FiscalDay = AppResources.ESTFinLastDay;
                         }
-                        else
-                        {
+                        else {
 
                             FiscalDay = taxPayerDetails.Fdday;
 
@@ -2668,7 +2666,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                     }
-                    SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
+                    SelectedReportingBranch = ReportingBranchList.Where(i => i.authorizationGroup == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
                     if (taxPayerDetails?.Tpnationality == "SAUDI")
@@ -2698,7 +2696,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
-                    idItem = taxPayerDetails?.Nreg_IdSet?.results?.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
+                    idItem = taxPayerDetails?.Nreg_IdSet?.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
                     if (idItem != null)
                         if (App.IsArabic)
                         {
@@ -2709,7 +2707,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             GCCIDType = EnIDType[idItem?.Type];
                         }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
-                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Birthdt))
+                    {
+                        SelectedDOB = Convert.ToDateTime(taxPayerDetails?.Birthdt).ToString("yyyy/MM/dd");
+                    }
                     Title = taxPayerDetails?.TpTitle;
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
@@ -2759,7 +2761,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                     }
-                    SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
+                    SelectedReportingBranch = ReportingBranchList.Where(i => i.authorizationGroup == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
                     if (taxPayerDetails?.Tpnationality == "SAUDI")
@@ -2808,7 +2810,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
-                    idItem = taxPayerDetails?.Nreg_IdSet?.results?.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
+                    idItem = taxPayerDetails?.Nreg_IdSet?.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
                     if (idItem != null)
                         if (App.IsArabic)
                         {
@@ -2819,7 +2821,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             GCCIDType = EnIDType[idItem?.Type];
                         }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
-                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    SelectedDOB = taxPayerDetails?.Birthdt;   //?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     Title = taxPayerDetails?.TpTitle;
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
@@ -2842,18 +2844,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
-                    Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => i.Type == "FS0002").FirstOrDefault();
+                    Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.Where(i => i.Type == "FS0002").FirstOrDefault();
                     PassportNumber = passportItem?.Idnumber;
                     SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
-                    PassportIssueDate = passportItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                    PassportExpireDate = passportItem?.ValidDateTo?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    PassportIssueDate = passportItem?.ValidDateFrom;   //?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    PassportExpireDate = passportItem?.ValidDateTo;   //?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     PassportAttachmentPrepopulateCheck(taxPayerDetails);
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Outlets)
                 {
                     await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
-                    idItem = taxPayerDetails?.Nreg_IdSet?.results?.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
+                    idItem = taxPayerDetails?.Nreg_IdSet?.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
                     if (idItem != null)
                         if (App.IsArabic)
                         {
@@ -2864,7 +2866,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             GCCIDType = EnIDType[idItem?.Type];
                         }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
-                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    SelectedDOB = taxPayerDetails?.Birthdt;//?ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     Title = taxPayerDetails?.TpTitle;
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
@@ -2893,6 +2895,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
+                    //TODO recheck
                     SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
                     CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
                     if (taxPayerDetails?.Accmethod == "A")
@@ -2900,19 +2903,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     else
                         SelectedMethod = AppResources.NDEstimated;
 
-                    
-                        if (taxPayerDetails?.Fdcalender == "1")
-                        {
-                            CalendarType = AppResources.Gregorian;
-                            calType = "G";
-                        }
-                        
-                        else
-                        {
-                        CalendarType = AppResources.Hijri;
-                        calType = "H";
 
-                        }
+                    if (taxPayerDetails?.Fdcalender == "1")
+                    {
+                        CalendarType = AppResources.Gregorian;
+                        calType = "Gregorian";
+                    }
+
+                    else
+                    {
+                        CalendarType = AppResources.Hijri;
+                        calType = "Hijri";
+
+                    }
+                
                     udpdateDates();
                 }
             }
@@ -2938,7 +2942,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 DateTime dob = DateTime.Now;
                 ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
-                if (taxPayerDetails?.Caltp == "G")
+                if (taxPayerDetails?.Caltp == "Gregorian")
                 {
                     _selectedDOBDate?.Clear();
                     _selectedDOBDate.Add($"{dob.Day:00}");
@@ -2957,7 +2961,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
                     DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _dob);
-                    if (taxPayerDetails?.Caltp == "G")
+                    if (taxPayerDetails?.Caltp == "Gregorian")
                     {
                         SelectedDOBDate = _selectedDOBDate;
                         if (!string.IsNullOrWhiteSpace(SelectedDOB))
@@ -2967,14 +2971,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         SelectedDOBHijiriDate = _selectedDOBDate;
                         if (!string.IsNullOrWhiteSpace(SelectedDOB))
-                            DisplaySelectedDOB = HijriDateString(_dob);
+                            DisplaySelectedDOB = HijriDateString(Convert.ToDateTime(SelectedDOB));
                     }
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
                     DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _issueDate);
                     DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _expiryDate);
-                    if (taxPayerDetails?.Caltp == "G")
+                    if (taxPayerDetails?.Caltp == "Gregorian")
                     {
                         SelectedPassportIssueDate = _selectedDOBDate;
                         if (!string.IsNullOrWhiteSpace(PassportIssueDate))
@@ -2984,9 +2988,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         SelectedPassportIssueHijiriDate = _selectedDOBDate;
                         if (!string.IsNullOrWhiteSpace(PassportIssueDate))
-                            DisplayPassportIssueDate = HijriDateString(_issueDate);
+                            DisplayPassportIssueDate = HijriDateString(Convert.ToDateTime(PassportIssueDate));
                     }
-                    if (taxPayerDetails?.Caltp == "G")
+                    if (taxPayerDetails?.Caltp == "Gregorian")
                     {
                         SelectedPassportExpireDate = _selectedDOBDate;
                         if (!string.IsNullOrWhiteSpace(PassportExpireDate))
@@ -2996,7 +3000,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         SelectedPassportExpireHijiriDate = _selectedDOBDate;
                         if (!string.IsNullOrWhiteSpace(PassportExpireDate))
-                            DisplayPassportExpireDate = HijriDateString(_expiryDate);
+                            DisplayPassportExpireDate = HijriDateString(Convert.ToDateTime(PassportExpireDate));
                     }
                 }
             }
@@ -3010,7 +3014,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 DateTime dob = DateTime.Now;
                 ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
-                if (taxPayerDetails?.Caltp == "G")
+                if (taxPayerDetails?.Caltp == "Gregorian")
                 {
                     _selectedDOBDate?.Clear();
                     _selectedDOBDate.Add($"{dob.Day:00}");
@@ -3030,7 +3034,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _issueDate);
                 DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _expiryDate);
-                if (taxPayerDetails?.Caltp == "G")
+                if (taxPayerDetails?.Caltp == "Gregorian")
                 {
                     SelectedPassportIssueDate = _selectedDOBDate;
                     if (!string.IsNullOrWhiteSpace(PassportIssueDate))
@@ -3054,13 +3058,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             try
             {
                 IsLoading = true;
-                var _CalendarType = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key == "2" ? "H" : "G";
+                //TODO recheck
+                var _CalendarType = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key == "2" ? "Hijri" : "Gregorian";
                 financialDetail = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
                 {
                     ACaltype = _CalendarType,
                     ADateComm = taxPayerDetails?.Commdt
                 });
-                if (_CalendarType == "H")
+                if (_CalendarType == "Hijri")
                 {
                     string dd = financialDetail?.ACommDate.Substring(6, 2);
                     string mm = financialDetail?.ACommDate.Substring(4, 2);
@@ -3069,17 +3074,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else
                 {
-                    CommDate = string.Format("{0:0000/00/00}", long.Parse(financialDetail?.ACommDate));
+                    // CommDate = string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.ACommDate));
+                    CommDate = Convert.ToDateTime(financialDetail?.ACommDate).ToString("yyyy/MM/dd");
                 }
 
 
                 if (selectedDate == null)
                 {
-                    string dd = financialDetail?.ACommDate.Substring(6, 2);
-                    string mm = financialDetail?.ACommDate.Substring(4, 2);
+                    string dd = financialDetail?.ACommDate.Substring(8, 2);
+                    string mm = financialDetail?.ACommDate.Substring(5, 2);
                     if (dd != "01")
                     {
-                        if (taxPayerDetails?.Fdcalender == "1")
+                        if (taxPayerDetails?.Fdcalender == "Gregorian")
                         {
                             if (dd == "29" && mm == "02")
                             {
@@ -3174,12 +3180,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
                         ADateComm = taxPayerDetails?.Commdt
                     });
-                    TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
+                    //TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "Hijri" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
+                    TaxDate =_CalendarType == "Hijri" ? UtilityManager.ConvertToDateFormat(financialDetail?.ACommDate ?? "","yyyy/MM/dd") : UtilityManager.ConvertToDateFormat(financialDetail?.EIsldate??"","yyyy/MM/dd");
+                   // CommDate = Convert.ToDateTime(financialDetail?.ACommDate).ToString("yyyy/MM/dd");
 
                     if (taxPayerDetails.LastFilledRetdt != null)
                     {
 
-                        LastFulfilledReturn = taxPayerDetails.LastFilledRetdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                        LastFulfilledReturn = taxPayerDetails.LastFilledRetdt;    //?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
 
                     }
                     if (taxPayerDetails.Zyear != null)
@@ -3234,24 +3242,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         IsFinancePeriodVisible = true;
 
-                        var fincialPeriodDetials = financialDetailPeriod.PeriodSet.results;
+                        var fincialPeriodDetials = financialDetailPeriod.PeriodSet;
 
                         foreach (var s in fincialPeriodDetials)
                         {
                             var fromDate = string.Empty;
                             var toDay = string.Empty;
-                            if (_CalendarType == "H")
+                            if (_CalendarType == "Hijri")
                             {
 
-                                fromDate = s.FromDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
-                                toDay = s.ToDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                                fromDate = s.FromDate;
+                                toDay = s.ToDate;
 
                             }
                             else
                             {
 
-                                fromDate = s.FromDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                                toDay = s.ToDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                                fromDate = s.FromDate;
+                                toDay = s.ToDate;
 
                             }
 
@@ -3264,7 +3272,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         PeriodList = fincialPeriodDetials;
 
 
-
                         isDraftEnabled = financialDetailPeriod.Draft;
                         if (PeriodList.Count > 0)
                         {
@@ -3273,7 +3280,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             {
                                 TaxDate = String.Empty;
                                 SelectedPeriod = PeriodList.Where(temp => (temp.FinPeriod == taxPayerDetails.FinPeriod)).FirstOrDefault();
-                                TaxDate = SelectedPeriod.ConvretedToDate;
+                                
+                                TaxDate = SelectedPeriod?.ConvretedToDate;
 
                             }
                             else
@@ -3283,7 +3291,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
 
-
+                        }
+                        else
+                        {
+                            TaxDate = financialDetailPeriod.EIsldate;
                         }
                     }
 
@@ -3424,7 +3435,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             try
             {
 
-               
+
 
                 SelectedItem = item;
                 IsLoading = true;
@@ -3442,7 +3453,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
                 PrepareUIBranchesList(item);
                 IsLoading = false;
-                 if (btnCode == 1)
+                if (btnCode == 1)
                 {
                     if (SelectedItem != null)
                     {
@@ -3522,7 +3533,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 outletItem.ContactDetails.Clear();
                 outletItem.ContactDetails2.Clear();
-                foreach (var item in taxPayerDetails.Nreg_ActivitySet.results)
+                foreach (var item in taxPayerDetails.Nreg_ActivitySet)
                 {
                     Nreg_ActivityItem obj = new Models.EstablishmentRegistration.Nreg_ActivityItem();
                     obj.__metadata = item.__metadata;
@@ -3566,11 +3577,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     obj.Actcat = item.Actcat;
                     obj.ActMgrp = item.ActMgrp;
 
-                    obj.ActivityDesc = activityList.activitySet.results.Where(i => i.IndSector == obj.Activity).FirstOrDefault().Text;
-                    obj.ActMgrpDesc = activityList.act_groupSet.results.Where(i => i.IndSector == obj.ActMgrp).FirstOrDefault().Text;
-                    obj.ActSgrpDesc = activityList.act_subgroupSet.results.Where(i => i.IndSector == obj.ActSgrp).FirstOrDefault().Text;
-                    obj.IssuedCity = OutletDropDowns.city_dropdownSet.results.Where(i => i.CityCode == obj.CityCode).FirstOrDefault()?.CityName;
-                    obj.IssuedCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == obj.Country).FirstOrDefault()?.Landx;
+                    obj.ActivityDesc = activityList.activitySet.Where(i => i.IndSector == obj.Activity).FirstOrDefault().Text;
+                    obj.ActMgrpDesc = activityList.act_groupSet.Where(i => i.IndSector == obj.ActMgrp).FirstOrDefault().Text;
+                    obj.ActSgrpDesc = activityList.act_subgroupSet.Where(i => i.IndSector == obj.ActSgrp).FirstOrDefault().Text;
+                    obj.IssuedCity = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == obj.CityCode).FirstOrDefault()?.CityName;
+                    obj.IssuedCountry = OutletDropDowns.country_dropdownSet.Where(i => i.Land1 == obj.Country).FirstOrDefault()?.Landx;
 
                     if (App.IsArabic)
                     {
@@ -3655,7 +3666,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
 
             }
-            
+
         }
 
 
@@ -3663,7 +3674,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private void deleteOutlet(OutletItem item)
         {
             IsLoading = true;
-            var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteOutletItem(taxPayerDetails?.Fbnumx, item?.Actno, taxPayerDetails?.PortalUsrx);
+            var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteOutletItem(taxPayerDetails?.Fbnumx, item?.Actno, taxPayerDetails?.PortalUsrx).Result;
             if (!string.IsNullOrEmpty(delete) && delete == "delete")
             {
                 bindingOutletList();
@@ -3770,7 +3781,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    if (SelectedReportingBranch == null || string.IsNullOrWhiteSpace(SelectedReportingBranch.Bez50))
+                    if (SelectedReportingBranch == null || string.IsNullOrWhiteSpace(SelectedReportingBranch.branchDescription))
                     {
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateBranch));
                         return false;
@@ -3941,11 +3952,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
                     SelectedTpresidence = taxPayerDetails.Tpresidence;
-                    taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
-                    taxPayerDetails.Atype = "1";// SelectedEntityType.Equals("Individual") ? "1" : "2";
+                    taxPayerDetails.Augrp = SelectedReportingBranch?.authorizationGroup;
+                    //TODO recheck
+                    taxPayerDetails.Atype = "Individual";// SelectedEntityType.Equals("Individual") ? "1" : "2";
                     foreach (var s in NationalityMapping)
                     {
-                        if (s.Value.Equals(SelectedRegNationalityType))
+                        if(s.Value.Equals(SelectedRegNationalityType))
                         {
                             taxPayerDetails.Tpnationality = s.Key;
                         }
@@ -3954,7 +3966,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     // taxPayerDetails.Tpnationality = NationalityMapping.Where(i => i.Value == SelectedRegNationalityType).FirstOrDefault().Key;
                     taxPayerDetails.Tpnationality = string.IsNullOrEmpty(taxPayerDetails.Tpnationality) ? "" : taxPayerDetails.Tpnationality;
                     taxPayerDetails.Taxtpdetermination = "1";
-                    taxPayerDetails.Tpresidence = SelectedTpresidence;
+                    taxPayerDetails.Tpresidence = SelectedTpresidence != String.Empty ? SelectedTpresidence : taxPayerDetails.Tpresidence;
                     taxPayerDetails.Orgnonresident = string.IsNullOrEmpty(SelectedOrgNonResident) ? string.Empty : SelectedOrgNonResident;
                     taxPayerDetails.Orgnonresidentoptions = string.IsNullOrEmpty(SelectedOrgNonResidentOptions) ? string.Empty : SelectedOrgNonResidentOptions;
                     taxPayerDetails.Orgnonresidentactivity = string.IsNullOrEmpty(SelectedOrgNonResidentActivity) ? string.Empty : SelectedOrgNonResidentActivity;
@@ -3968,7 +3980,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails.Rentatt = "";
                     }
                     taxPayerDetails.StepNumberx = "01";
-                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
@@ -3978,7 +3990,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
                     DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
-                    taxPayerDetails.Birthdt = dob;
+                    taxPayerDetails.Birthdt = dob.ToString("yyyy-MM-ddThh:mm:ss");
                     taxPayerDetails.TpTitle = Title;
                     taxPayerDetails.NameFirst = FirstName;
                     taxPayerDetails.NameLast = string.IsNullOrEmpty(LastName) ? string.Empty : LastName;
@@ -4001,7 +4013,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Residence = SelectedResidence?.Land1;
 
                     taxPayerDetails.StepNumberx = "02";
-                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
@@ -4017,22 +4029,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
                     DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime expireDate);
-                    passportObj.ValidDateFrom = issueDate;
-                    passportObj.ValidDateTo = expireDate;
+                    passportObj.ValidDateFrom = issueDate.ToString("yyyy-MM-ddThh:mm:ss");
+                    passportObj.ValidDateTo = expireDate.ToString("yyyy-MM-ddThh:mm:ss");
                     passportObj.Type = "FS0002";
                     passportObj.Srcidentify = "00000";
-                    if (taxPayerDetails.Nreg_IdSet.results.Count > 0)
+                    passportObj.Gpart = App.LoginDataRetrieved.TIN;
+                    if (taxPayerDetails.Nreg_IdSet.Count > 0)
                     {
-                        taxPayerDetails.Nreg_IdSet.results[0].Srcidentify = "00000";
-                        taxPayerDetails.Nreg_IdSet.results[0].Gpart = "";
+                        taxPayerDetails.Nreg_IdSet[0].Srcidentify = "00000";
+                        taxPayerDetails.Nreg_IdSet[0].Gpart = App.LoginDataRetrieved.TIN;
 
                         Nreg_IdItem nreg_IdItem = new Nreg_IdItem();
-                        nreg_IdItem = taxPayerDetails.Nreg_IdSet.results[0];
-                        taxPayerDetails.Nreg_IdSet.results.Clear();
-                        taxPayerDetails.Nreg_IdSet.results.Add(nreg_IdItem);
+                        nreg_IdItem = taxPayerDetails.Nreg_IdSet[0];
+                        taxPayerDetails.Nreg_IdSet.Clear();
+                        taxPayerDetails.Nreg_IdSet.Add(nreg_IdItem);
 
                     }
-                    taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
+                    taxPayerDetails.Nreg_IdSet.Add(passportObj);
                     taxPayerDetails.Chkfg = "X";
                     if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
                     {
@@ -4045,7 +4058,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
 
                     taxPayerDetails.StepNumberx = "02";
-                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
@@ -4059,17 +4072,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Fdcalender = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key;
                     taxPayerDetails.Fdmonth = FiscalMonth;
                     taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
-                    taxPayerDetails.Commdt = financialDetail?.ADateComm;
+                    taxPayerDetails.Commdt = financialDetail?.ACommDate;
                     taxPayerDetails.Caltp = calType;
                     //taxPayerDetails.Fdenddt = Fdenddt;
                     taxPayerDetails.Chkfg = "X";
                     if (SelectedPeriod != null)
                     {
-                        taxPayerDetails.FinPeriod = SelectedPeriod.FinPeriod;
+                        taxPayerDetails.FinPeriod = SelectedPeriod.FinPeriodText;
                         taxPayerDetails.FromDt = SelectedPeriod.FromDate;
                         taxPayerDetails.Fdenddt = SelectedPeriod.ToDate;
                     }
-                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
                     taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
@@ -4079,10 +4092,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Declaration)
                 {
-                    taxPayerDetails?.off_notesSet?.results?.Clear();
+                    taxPayerDetails?.off_notesSet?.Clear();
                     taxPayerDetails.Decfg = "X";
                     taxPayerDetails.Operationx = "01";
-                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.UserTypx = "TP";
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
@@ -4108,7 +4121,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public void RentAttachmentPrePopulateCheck(TaxPayerDetails taxPayerDetails)
         {
             UploadedRentDocumentsList.Clear();
-            var docRentResult = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG16").ToList();
+            var docRentResult = taxPayerDetails.AttDetSet.Where(x => x.Dotyp == "RG16").ToList();
 
             foreach (AttDetItem attDetItem in docRentResult)
             {
@@ -4137,7 +4150,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public void PassportAttachmentPrepopulateCheck(TaxPayerDetails taxPayerDetails)
         {
             UploadedPassportDocumentsList.Clear();
-            var docPassportResult = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG19").ToList();
+            var docPassportResult = taxPayerDetails.AttDetSet.Where(x => x.Dotyp == "RG19").ToList();
 
             foreach (AttDetItem attDetItem in docPassportResult)
             {
@@ -4264,11 +4277,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     break;
             }
         }
-        private string HijriDateString(DateTime date)
+        private string HijriDateString(DateTime date)//01-01-0001
         {
             try
             {
                 return date.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                //UmAlQuraCalendar hijriCalendar = new UmAlQuraCalendar();
+                //DateTime hijriDateTime = hijriCalendar.ToDateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0);
+                //return $"{hijriDateTime.Year}/{hijriDateTime.Month}/{hijriDateTime.Day}";
             }
             catch (Exception)
             {

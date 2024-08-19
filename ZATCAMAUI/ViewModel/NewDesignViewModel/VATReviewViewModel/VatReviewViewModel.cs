@@ -25,6 +25,9 @@ using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 {
+
+
+
     public class VatReviewViewModel : BaseViewModel
     {
         #region Enums
@@ -80,6 +83,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         #endregion
 
+
         public DateTime lastDate;
 
         int selectedPage = (int)PagesEnum.ReviewReason;
@@ -88,8 +92,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         public string SadadlastFulfilmentDate = string.Empty;
         public string OverdueFlag = string.Empty;
 
-        private List<string> _ListOfActionButtonsApplicable;
-        public List<string> ListOfActionButtonsApplicable
+        private List<String> _ListOfActionButtonsApplicable;
+        public List<String> ListOfActionButtonsApplicable
         {
             get
             {
@@ -117,20 +121,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-        private bool _isLoading = false;
-
-        public bool IsLoading
-        {
-            get { return _isLoading; }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
-
+       
         private bool _isReviewReasonVisible = false;
 
         public bool ReviewReasonVisible
@@ -226,72 +217,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 _declarationVisible = value;
                 OnPropertyChanged("DeclarationVisible");
-            }
-        }
-
-
-        private bool _isDeclarationViewEnabled;
-        public bool IsDeclarationViewEnabled
-        {
-            get
-            {
-                return _isDeclarationViewEnabled;
-            }
-            set
-            {
-                if (_isDeclarationViewEnabled == value) return;
-
-                _isDeclarationViewEnabled = value;
-                OnPropertyChanged("IsDeclarationViewEnabled");
-            }
-        }
-
-
-        private bool _isDeclarationViewEnabledNew;
-        public bool IsDeclarationViewEnabledNew
-        {
-            get
-            {
-                return _isDeclarationViewEnabledNew;
-            }
-            set
-            {
-                if (_isDeclarationViewEnabledNew == value) return;
-
-                _isDeclarationViewEnabledNew = value;
-                OnPropertyChanged("IsDeclarationViewEnabledNew");
-            }
-        }
-
-        public VATDeregDeclaration _vatDeregDeclaration;
-        public VATDeregDeclaration VatDeregDeclaration
-        {
-            get
-            {
-                return _vatDeregDeclaration;
-            }
-            set
-            {
-                if (_vatDeregDeclaration == value) return;
-
-                _vatDeregDeclaration = value;
-                OnPropertyChanged("VatDeregDeclaration");
-            }
-        }
-
-        public string _zterms;
-        public string Zterms
-        {
-            get
-            {
-                return _zterms;
-            }
-            set
-            {
-                if (_zterms == value) return;
-
-                _zterms = value;
-                OnPropertyChanged("Zterms");
             }
         }
 
@@ -1624,6 +1549,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 OnPropertyChanged("TotalPenalities");
             }
         }
+
         public string _taxPaid = "";
         public string TaxPaid
         {
@@ -1634,19 +1560,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 _taxPaid = value;
                 OnPropertyChanged("TaxPaid");
-            }
-        }
-
-        public string _unpaidAmount = "";
-        public string UnpaidAmount
-        {
-            get { return _unpaidAmount; }
-            set
-            {
-                if (_unpaidAmount == value) return;
-
-                _unpaidAmount = value;
-                OnPropertyChanged("UnpaidAmount");
             }
         }
 
@@ -1725,6 +1638,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 OnPropertyChanged("IsTotalPenaltiesVisible");
             }
         }
+
         public DateTime? vRTIDEffectiveDateFrom = null;
         public DateTime? VRTIDEffectiveDateFrom
         {
@@ -2197,20 +2111,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 OnPropertyChanged("IsTaxPaidVisible");
             }
         }
-        private bool _isUnpaidAmtVisible = true;
-        public bool IsUnpaidAmtVisible
-        {
-            get { return _isUnpaidAmtVisible; }
-            set
-            {
-                if (_isUnpaidAmtVisible == value) return;
-
-                _isUnpaidAmtVisible = value;
-                OnPropertyChanged("IsUnpaidAmtVisible");
-            }
-        }
-
-
 
         private bool isDraftClicked = false;
         public bool IsDraftClicked
@@ -2224,7 +2124,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 OnPropertyChanged("IsDraftClicked");
             }
         }
-        private bool _isRRAmountEdit = false;
+        private bool _isRRAmountEdit = true;
         public bool IsRRAmountEdit
         {
             get { return _isRRAmountEdit; }
@@ -2661,6 +2561,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         }
 
 
+        [Preserve(AllMembers = true)]
         public class SelectionModel
         {
             public SelectionModel()
@@ -3123,6 +3024,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 OnPropertyChanged("VrVRIbanList");
             }
         }
+
         private string _optionTextLabel = AppResources.SadadBillOption;
         public string OptionTextLabel
         {
@@ -3160,7 +3062,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public VatReviewInterface vRInterface { get; set; }
 
-        public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
+        public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
 
             CloseClick = new Command(() => { _navigationService.GoBack(); });
@@ -3448,8 +3350,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception )
+            catch (Exception ex)
             {
+                
             }
         }
 
@@ -3473,7 +3376,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     modelVATReview.d.ReturnIdx));
 
             }
-            catch (GAZTUnlockAccountException)
+            catch (GAZTUnlockAccountException ex)
             {
                 
             }
@@ -3485,7 +3388,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception )
+            catch (Exception ex)
             {
                 
             }
@@ -3511,7 +3414,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     modelVATReview.d.ReturnIdx));
 
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException ex)
             {
                 
             }
@@ -3523,7 +3426,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception )
+            catch (Exception ex)
             {
                 
             }
@@ -3613,14 +3516,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 IsTaxPaidVisible = true;
             }
-            if (selectedReviewReason.ProcCD == "VTAS" && modelVATReview.d.Cr6490Fg == "X")
-            {
-                IsTotalPenaltiesVisible = true;
-            }
-            else
-            {
-                IsTotalPenaltiesVisible = false;
-            }
+
             EnableReviewDetailsConButton();
         }
 
@@ -3635,7 +3531,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 foreach (var refNum in results)
                 {
-                    if (refNum.Fbtyp == "VTPC" || refNum.Fbtyp == "VTPN")
+                    if (refNum.Fbtyp != "VTPC")
                     {
                         if (!string.IsNullOrEmpty(refNum.Opbel))
                         {
@@ -3831,7 +3727,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException ex)
             {
                 
                 
@@ -3868,6 +3764,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
+            catch (GAZTUnlockAccountException ex)
+            {
+                
+                
+            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3896,6 +3797,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
+            catch (GAZTUnlockAccountException ex)
+            {
+                
+                
+            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3922,6 +3828,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             }
+            catch (GAZTUnlockAccountException ex)
+            {
+                
+                
+            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3942,6 +3853,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
 
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3998,7 +3914,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     Convert.ToDecimal(selectedApplicationRef.Liaamt),
                     Convert.ToDecimal(selectedApplicationRef.Clramt), selectedApplicationRef.Fbnum);
             }
-            catch (Exception )
+            catch (Exception ex)
             {
                 
                 
@@ -4044,7 +3960,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                         }
 
-                        await VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu?.ToString("yyyy-MM-dd'T'HH:mm:ss"), selectedApplicationRef.Abrzo?.ToString("yyyy-MM-dd'T'HH:mm:ss"), SecamtValue, SecurityNumber, selectedApplicationRef.Persl, false);
+                        await VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu, selectedApplicationRef.Abrzo, SecamtValue, SecurityNumber, selectedApplicationRef.Persl, false);
 
                     }
                 }
@@ -4149,20 +4065,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             SecurityPaymentVisible = false;
             LateFilingObjectionsVisible = false;
             DeclarationVisible = true;
-
-            if (VatDeregDeclaration != null && VatDeregDeclaration.D != null && string.IsNullOrEmpty(VatDeregDeclaration.D.Zterms))
-            {
-                IsDeclarationViewEnabled = true;
-                IsDeclarationViewEnabledNew = false;
-            }
-            else
-            {
-                Zterms = VatDeregDeclaration.D.Zterms;
-                IsDeclarationViewEnabled = false;
-                IsDeclarationViewEnabledNew = true;
-            }
-
-
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.Declaration;
 
@@ -4222,35 +4124,42 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             if (IsGeneratingFormbundle)
             {
-
-                decimal DisamtValue = 0;
-                decimal LiaamtValue = 0;
-                decimal SecamtValue = 0;
-
-                if (modelVATReview.d.SecurityDtl.Disamt.Length > 0)
+                try
                 {
 
-                    DisamtValue = decimal.Truncate(Convert.ToDecimal(modelVATReview.d.SecurityDtl.Disamt));
+
+                    decimal DisamtValue = 0;
+                    decimal LiaamtValue = 0;
+                    decimal SecamtValue = 0;
+
+                    if (modelVATReview.d.SecurityDtl.Disamt.Length > 0)
+                    {
+
+                        DisamtValue = decimal.Truncate(Convert.ToDecimal(modelVATReview.d.SecurityDtl.Disamt));
+
+                    }
+
+                    if (modelVATReview.d.SecurityDtl.Liaamt.Length > 0)
+                    {
+
+                        LiaamtValue = decimal.Truncate(Convert.ToDecimal(modelVATReview.d.SecurityDtl.Liaamt));
+
+                    }
+                    if (modelVATReview.d.SecurityDtl.Secamt.Length > 0)
+                    {
+
+                        SecamtValue = decimal.Truncate(Convert.ToDecimal(modelVATReview.d.SecurityDtl.Secamt));
+
+                    }
+
+
+                    await VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu, selectedApplicationRef.Abrzo, SecamtValue, SecurityNumber, selectedApplicationRef.Persl, true);
 
                 }
-
-                if (modelVATReview.d.SecurityDtl.Liaamt.Length > 0)
+                catch (Exception ex)
                 {
-
-                    LiaamtValue = decimal.Truncate(Convert.ToDecimal(modelVATReview.d.SecurityDtl.Liaamt));
-
+                    Console.WriteLine(ex);
                 }
-                if (modelVATReview.d.SecurityDtl.Secamt.Length > 0)
-                {
-
-                    SecamtValue = decimal.Truncate(Convert.ToDecimal(modelVATReview.d.SecurityDtl.Secamt));
-
-                }
-
-
-                await VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu?.ToString("yyyy-MM-dd'T'HH:mm:ss"), selectedApplicationRef.Abrzo?.ToString("yyyy-MM-dd'T'HH:mm:ss"), SecamtValue, SecurityNumber, selectedApplicationRef.Persl, true);
-
-
 
             }
             else
@@ -4396,6 +4305,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 AttachmentsListViewData = attachmentsListViewData;
 
                 EnableReviewDetailsConButton();
+                EnableReportDetailsConButton();
             }
             else if (_isLateFilingAttachments)
             {
@@ -4444,8 +4354,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (Exception )
             {
-                
-                
             }
         }
         public void PopulateVatDeRegAttachments(List<Attachment> attachments)
@@ -4464,6 +4372,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public void PopulateVatDeRegSummaryDeclarationData(string idType, string iDNumber, string dateOfBirth, string contactPersonName)
         {
+            //VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>();
             List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
             try
             {
@@ -4479,7 +4388,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     SummaryData = iDNumber,
                     IsEditVisible = true
                 });
-
 
                 if (!string.IsNullOrEmpty(dateOfBirth))
                 {
@@ -4581,6 +4489,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 ResetDataAfterAppRefNumPicked();
                 setDataBasedOnAppRefNum(ApplicationRefPickerModel.SelectedValue);
 
+                
             }
         }
 
@@ -4626,20 +4535,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public async void setDataBasedOnAppRefNum(string appRefNum)
         {
+
+
+
             selectedApplicationRef = appRefNumList.Find(appRef => (appRef.Fbnum == appRefNum) || (appRef.Opbel == appRefNum));
 
-            if (selectedApplicationRef.Fbtyp == "VTPN")
-            {
-                ApplicationRefNumber = selectedApplicationRef.Opbel;
-            }
-            else if (selectedApplicationRef.Fbtyp == "VTPC")
-            {
-                ApplicationRefNumber = selectedApplicationRef.Fbnum;
-            }
-            else
-            {
-                ApplicationRefNumber = appRefNum;
-            }
+
+
 
             if (selectedApplicationRef != null)
             {
@@ -4675,7 +4577,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                 }
 
-                RequestDate = selectedApplicationRef.DecDt;
+                RequestDate = Convert.ToDateTime(selectedApplicationRef.DecDt);
 
 
                 string strRequestedDate = "";
@@ -4685,7 +4587,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     DateTime dateStart = new DateTime();
                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                     string apiDate = @"""" + selectedApplicationRef.DecDt + @"""";
-                    dateStart = (DateTime)selectedApplicationRef.DecDt;
+                    dateStart = Convert.ToDateTime(selectedApplicationRef.DecDt);
 
                     GregorianCalendar hjCalendar = new GregorianCalendar();
                     int year = hjCalendar.GetYear(dateStart);
@@ -4699,10 +4601,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     string[] dts = null;
                     dts = dateStr.Split('/');
 
-                    
-
                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-
 
 
                     strRequestedDate = dt1;
@@ -4714,8 +4613,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
                 TaxPeriodOfCase = selectedApplicationRef.Perslt;
-                TaxPeriodFrom = selectedApplicationRef.Abrzu;
-                TaxPeriodTo = selectedApplicationRef.Abrzo;
+                TaxPeriodFrom = Convert.ToDateTime(selectedApplicationRef.Abrzu);
+                TaxPeriodTo = Convert.ToDateTime(selectedApplicationRef.Abrzo);
 
                 string strTaxPeriodFrom = "";
                 if (selectedApplicationRef.Abrzu != null)
@@ -4724,7 +4623,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     {
                         DateTime dateStart = new DateTime();
 
-                        dateStart = (DateTime)selectedApplicationRef.Abrzu;
+                        dateStart = Convert.ToDateTime(selectedApplicationRef.Abrzu);
 
                         GregorianCalendar hjCalendar = new GregorianCalendar();
                         int year = hjCalendar.GetYear(dateStart);
@@ -4738,15 +4637,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         string[] dts = null;
                         dts = dateStr.Split('/');
 
-                       
+
                         dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                        
                         strTaxPeriodFrom = dt1;
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        
                     }
                 }
                 else
@@ -4771,9 +4669,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 {
                     try
                     {
-                        lastFulfilmentDate = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(selectedApplicationRef.LastFulfilledDt);
+                        lastFulfilmentDate = (selectedApplicationRef.LastFulfilledDt);
                     }
-                    catch (Exception)
+                    catch (Exception )
                     {
                         lastFulfilmentDate = "";
                     }
@@ -4781,13 +4679,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 try
                 {
-                    SadadlastFulfilmentDate = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(selectedApplicationRef.LastFulfilledDt);
+                    SadadlastFulfilmentDate = (selectedApplicationRef.LastFulfilledDt);
                 }
-                catch (Exception)
+                catch (Exception )
                 {
                     SadadlastFulfilmentDate = "";
-                }// SadadlastFulfilmentDate = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(selectedApplicationRef.LastFulfilledDt.Value.AddDays(1));
-
+                }
 
                 if (OverdueFlag == "X")
                 {
@@ -4808,7 +4705,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     DateTime dateStart = new DateTime();
                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                     string apiDate = @"""" + selectedApplicationRef.Abrzo + @"""";
-                    dateStart = (DateTime)selectedApplicationRef.Abrzo;
+                    dateStart = Convert.ToDateTime(selectedApplicationRef.Abrzo);
 
                     GregorianCalendar hjCalendar = new GregorianCalendar();
                     int year = hjCalendar.GetYear(dateStart);
@@ -4824,24 +4721,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
+                   
+
                     strTaxPeriodTo = dt1;
                 }
 
                 FormattedTaxperdioFromDate = strTaxPeriodFrom;
                 FormattedTaxperdioToDate = strTaxPeriodTo;
 
-                //draft 
-                //PenalityAmountInQuestion = modelVATReview.d.SecurityDtl.Penamount;
-
-                //New app
                 PenalityAmountInQuestion = selectedApplicationRef.Penamount;
 
                 TotalTaxLiability = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString());
                 try
+               
                 {
                     if (selectedApplicationRef.Fbtyp == "VTPC" || selectedApplicationRef.Fbtyp == "VTPN")
                     {
-                        var rejectedForm = _VATObjectionRejected.d.RejectedFormSet.results.Where(x => x.Opbel == appRefNum || x.Fbnum == appRefNum).FirstOrDefault();//x => x.Opbel == appRefNum
+                        var rejectedForm = _VATObjectionRejected.d.RejectedFormSet.Where(x => x.Opbel == appRefNum || x.Fbnum == appRefNum).FirstOrDefault();
                         if (rejectedForm != null)
                         {
                             TaxPaid = UtilityManager.GetCommaSeparatedAmount(rejectedForm.PenPaidAmt.ToString());
@@ -4851,23 +4747,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     {
                         TaxPaid = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Clramt.ToString());
                     }
-
                 }
-
-
                 catch (Exception )
                 {
+                    
+                    
                 }
-
-
                 RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString());
                 try
                 {
                     SecurityAmount =
-                   (Double.Parse(selectedApplicationRef.Liaamt) - Double.Parse(selectedApplicationRef.Clramt))
-                   .ToString();
-                    var secAmount = _VATObjectionRejected.d.RejectedFormSet.results.Where(x => x.Opbel == appRefNum || x.Fbnum == appRefNum).FirstOrDefault();//x => x.Opbel == appRefNum
-                    //var secAmount = modelVATReview.d.SecurityDtl.Secamt;
+                    (Double.Parse(selectedApplicationRef.Liaamt) - Double.Parse(selectedApplicationRef.Clramt))
+                    .ToString();
+                    var secAmount = _VATObjectionRejected.d.RejectedFormSet.Where(x => x.Opbel == appRefNum || x.Fbnum == appRefNum).FirstOrDefault();// x => x.Opbel == appRefNum
+
                     if (secAmount != null)
                     {
                         SecurityAmount = secAmount.Secamt;
@@ -4876,24 +4769,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
                 catch (Exception )
                 {
+                    
+                    
                 }
-                try
+
+
+                if (SecurityAmount == null || Double.Parse(SecurityAmount) < 0)
                 {
-                    if (Double.Parse(SecurityAmount) < 0)
-                    {
-                        SecurityAmount = "0.0";
-                    }
-
-                    if (modelVATReview.d.SecurityDtl.SeczeroFlg == "S")
-                    {
-                        SecurityAmount = "0.0";
-                    }
+                    SecurityAmount = "0.0";
                 }
-                catch (Exception )
+
+                if (modelVATReview.d.SecurityDtl.SeczeroFlg == "S")
                 {
-
+                    SecurityAmount = "0.0";
                 }
-
 
                 try
                 {
@@ -4907,10 +4796,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                     EnableSecurityPaymentsConButton();
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
                 if (selectedApplicationRef.Msgflg == "X")
@@ -4938,6 +4827,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
+
+
                         await _dialogService.ShowMessage(AppResources.VATWarningAssessment, AppResources.CRWarning, AppResources.OKText, () =>
                         {
                             //CR6490 new enhancements
@@ -4950,7 +4841,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 });
                             }
                         });
-
                         EnableReviewReasonConButton();
                     });
                 }
@@ -4959,7 +4849,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.VATWarningPenalties, AppResources.CRWarning);
-
                         EnableReviewReasonConButton();
                     });
                 }
@@ -4968,9 +4857,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     EnableReviewReasonConButton();
                 }
-
-
-
             }
 
         }
@@ -5037,7 +4923,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                             IDNumber = string.Empty;
@@ -5216,7 +5101,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             }
-            catch (Exception )
+            catch (Exception ex)
             {
                 
                 
@@ -5325,7 +5210,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             IsReportDetailsEditable = true;
             IsLateFilingDetailsEditable = true;
             DAPOptionsEditable = true;
-            IsRRAmountEdit = false;
+            IsRRAmountEdit = true;
             IsDisputeDetailsEditable = true;
             IsSecurityPOEditable = true;
 
@@ -5361,14 +5246,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public void EnableReportDetailsConButton()
         {
-            if (ReportDetails == "")
+            if (!string.IsNullOrEmpty(ReportDetails) && AttachmentsListViewData != null && AttachmentsListViewData.Count > 0)
+            {
+                IsReportDetailsEnabled = true;
+            }
+            else
+            {
+                IsReportDetailsEnabled = false;
+            }
+
+
+            /*if (ReportDetails == "")
             {
                 IsReportDetailsEnabled = false;
             }
             else
             {
                 IsReportDetailsEnabled = true;
-            }
+            }*/
         }
 
         public void EnableLateFilingsDetailsConButton()
@@ -5405,7 +5300,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             else if (IsSadadSecuritySelected)
             {
 
-                
+                /*if (SecurityAmount == "" || !IsSadadCheckBox3)
+                {
+
+                    IsSecurityPaymentEnabled = false;
+
+
+                }*/
                 if (SADADNumber == "" || !IsSadadCheckBox3)
                 {
                     IsSecurityPaymentEnabled = false;
@@ -5443,7 +5344,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 IsLoading = true;
             });
-
+            //if (attachment.Filename.Contains("."))
+            //string Extention = attachment.Filename.Split('.')[1];
             if (attachment.FileExtn.Equals("PDF") || attachment.FileExtn.Equals("pdf"))
             {
                 if (attachment.DocUrl != null)
@@ -5466,22 +5368,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public void EnableDeclarationConButton()
         {
-            if (IsDeclarationViewEnabledNew && IsDECCheckBox)
+            if (ContactPersonName == "" || !IsIDVerified || !IsDECCheckBox)
             {
-                IsDeclarationEnabled = true;
+                IsDeclarationEnabled = false;
             }
             else
             {
-                if (ContactPersonName == "" || !IsIDVerified || !IsDECCheckBox)
-                {
-                    IsDeclarationEnabled = false;
-                }
-                else
-                {
-                    IsDeclarationEnabled = true;
-                }
+                IsDeclarationEnabled = true;
             }
-
         }
         public async void ShowInstructionsDialog()
         {
@@ -5491,7 +5385,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
 
                 await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc, continueString: AppResources.CRContinue, isEditable: true,
-           _dialogType: InstructionsBottomPopUpViewModel.DialogType
+           _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                .Instructions));
 
 
@@ -5515,7 +5409,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             await fetchApplicationRefNums(SubReviewReason, modelVATReview.d.Fbnumx, modelVATReview.d.SecurityDtl.Sopbel);
-            ApplicationRefNumber = modelVATReview.d.RejFb; //cr6490
+            ApplicationRefNumber = modelVATReview.d.RejFb;
             setDataBasedOnAppRefNum(ApplicationRefNumber);
 
 
@@ -5563,7 +5457,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             var bankAttachments = new ObservableCollection<Attachment>();
             var attachments = new ObservableCollection<Attachment>();
             var lateFilngAttachments = new ObservableCollection<Attachment>();
-            foreach (var attach in modelVATReview.d.AttdetSet.results)
+            foreach (var attach in modelVATReview.d.AttdetSet)
             {
                 if (attach.Dotyp == "RAGA")
                 {
@@ -5625,11 +5519,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
 
 
-            if (modelVATReview.d.NotesSet.results.Count > 0)
+            if (modelVATReview.d.NotesSet.Count > 0)
             {
 
 
-                foreach (var note in modelVATReview.d.NotesSet.results)
+                foreach (var note in modelVATReview.d.NotesSet)
                 {
                     if (note.Rcodez == "RAVT_SDCAS" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(DisputeDetailsDesc))
                     {
@@ -5639,7 +5533,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 }
 
-                foreach (var note in modelVATReview.d.NotesSet.results)
+                foreach (var note in modelVATReview.d.NotesSet)
                 {
 
                     if (note.Rcodez == "RAVT_BOX" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(ReportDetails))
@@ -5649,7 +5543,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
 
                 }
-                foreach (var note in modelVATReview.d.NotesSet.results)
+                foreach (var note in modelVATReview.d.NotesSet)
                 {
 
                     if (note.Rcodez == "RVT_OVRDUE" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(LateFlngDetails))
@@ -5741,12 +5635,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     IsLoading = true;
                     try
                     {
+                        string date = DateTime.Parse(PickedDate).ToString("yyyy-MM-dd");
                         var resultData = await VATChangeFillingWebServiceManager.GAZTVATChangeFillingPeriodValidateIDnumber(
-                            App.LoginDataRetrieved.TIN, idType, IDNumber, "", "", PickedDate.Replace("/", ""));
+                            App.LoginDataRetrieved.TIN, idType, IDNumber, "", "", date);
                         if (resultData != null && resultData.d != null)
                         {
                             IsIDVerified = true;
-                            ContactPersonName = resultData.d.Name2 + " " + resultData.d.Name1;
+                            //ContactPersonName = resultData.d.Name2 + " " + resultData.d.Name1;
+                            ContactPersonName = resultData.d.TpTitle + " " + resultData.d.Name1 + " " + resultData.d.Name2;
                             EnableDeclarationConButton();
                         }
                         else
@@ -5807,6 +5703,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 await Task.Run(async () =>
                 {
                     IsLoading = true;
+                    //VATReview = null;
+                    //VATObjectionSummaryModel modelVATReview = new VATObjectionSummaryModel();
                     VATObjectionFormModel.VATReviewsReturnModel modelVATReviewsReturn =
                         new VATObjectionFormModel.VATReviewsReturnModel();
                     try
@@ -5816,12 +5714,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         {
 
                             modelVATReview = await VATObjectionWebServiceManager.GAZTGetVATObjectionSummary(App.selectedVATItem);
-                            VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(App.selectedVATItem);
+
                         }
                         else
                         {
                             modelVATReview = await VATObjectionWebServiceManager.GAZTGetVATObjectionSummary("");
-                            VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(modelVATReview.d.Fbnumx);
+
                         }
 
 
@@ -5829,24 +5727,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         if (modelVATReview != null && modelVATReview.d != null)
                         {
 
+                            //modelVATReviewsReturn.ListReviewReason lstReasons =new modelVATReviewsReturn.ListReviewReason;
+                            // List<Dictionary<string, string>> reasonDDL = new List<Dictionary<string, string>>();
                             List<VATObjectionFormModel.ReviewReason> reasonList =
                                 new List<VATObjectionFormModel.ReviewReason>();
-                            if (modelVATReview.d.MainReasonSet.results.Count > 0)
+                            if (modelVATReview.d.MainReasonSet.Count > 0)
                             {
 
-                                for (int i = 0; i < modelVATReview.d.MainReasonSet.results.Count; i++)
+                                for (int i = 0; i < modelVATReview.d.MainReasonSet.Count; i++)
                                 {
 
                                     VATObjectionFormModel.ReviewReason obj = new VATObjectionFormModel.ReviewReason();
-                                    obj.ProcCD = modelVATReview.d.MainReasonSet.results[i].ProcCd;
-                                    obj.Reasons = modelVATReview.d.MainReasonSet.results[i].TypeT;
-                                    if (modelVATReview.d.ReasonSet.results.Where(x =>
-                                        x.ProcCd == modelVATReview.d.MainReasonSet.results[i].ProcCd).Count() > 0)
+                                    obj.ProcCD = modelVATReview.d.MainReasonSet[i].ProcCd;
+                                    obj.Reasons = modelVATReview.d.MainReasonSet[i].TypeT;
+                                    if (modelVATReview.d.ReasonSet.Where(x =>
+                                        x.ProcCd == modelVATReview.d.MainReasonSet[i].ProcCd).Count() > 0)
                                     {
                                         List<VATObjectionFormModel.SubReason> subReasonList =
                                             new List<VATObjectionFormModel.SubReason>();
-                                        var lstSub = modelVATReview.d.ReasonSet.results.Where(x =>
-                                            x.ProcCd == modelVATReview.d.MainReasonSet.results[i].ProcCd).ToList();
+                                        var lstSub = modelVATReview.d.ReasonSet.Where(x =>
+                                            x.ProcCd == modelVATReview.d.MainReasonSet[i].ProcCd).ToList();
                                         for (int j = 0; j < lstSub.Count(); j++)
                                         {
 
@@ -5877,6 +5777,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                             }
                             setReviewReasonPickerModel();
 
+                            //CR6490 
+                            IsTotalPenaltiesVisible = (modelVATReview.d.Cr6490Fg == "X") ? true : false;
 
                         }
 
@@ -5894,11 +5796,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
+                        //throw ex;
 
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             IsLoading = false;
+                            //_navigationService.GoBack();
                         });
                     }
                     catch (InternetException ex)
@@ -5912,7 +5816,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     }
                 });
-                await Task.Run(() => { IsLoading = false; });
+                IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -5926,6 +5830,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (Exception )
             {
+                
+                
                 await Task.Run(() => { IsLoading = false; });
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -5951,11 +5857,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 VATObjectionEnableSubmitModel _VATObjectionEnableSubmit = new VATObjectionEnableSubmitModel();
                 _VATObjectionEnableSubmit = await VATObjectionWebServiceManager.GAZTGetVATObjectionEnableSubmit(statusx, rvRsn, rvSubRsn, rejFb);
 
-               
-                await Task.Run(() =>
+                if (_VATObjectionEnableSubmit != null && _VATObjectionEnableSubmit.d != null)
                 {
-                    IsLoading = false;
-                });
+                    //setApplicationRefPickerModel(_VATObjectionEnableSubmit);
+                }
+
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
@@ -5983,11 +5890,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (Exception )
             {
-                
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
         }
 
@@ -6000,10 +5903,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 string strACK = null;
                 strACK = VATObjectionWebServiceManager.GetVATObjectionDownloadAck(fbnum);
 
-                if (strACK != null)
-                {
-
-                }
+                
             }
             catch (GAZTErrorException ex)
             {
@@ -6030,16 +5930,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-
+                IsLoading = true;
                 _VATObjectionRejected = await VATObjectionWebServiceManager.GAZTGetVATObjectionFormRejected(fbustx, RvRsn, rvSubRsn, UserTypx, fbnumx, sopbel);
                 if (_VATObjectionRejected != null && _VATObjectionRejected.d != null)
                 {
-                    setApplicationRefPickerModel(_VATObjectionRejected.d.RejectedFormSet.results);
-                    
+                    setApplicationRefPickerModel(_VATObjectionRejected.d.RejectedFormSet);
                 }
                 await Task.Run(() =>
                 {
@@ -6048,19 +5943,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -6070,11 +5959,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (Exception ex)
             {
-                
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+
+                IsLoading = false;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
@@ -6088,13 +5974,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
+                var sadadGenerationObject = buildSadadRequestObject(fbnum, Disamt, Liaamt, Abrzu, Abrzo, Secamt, Security, Persl, isFlagenable);
 
                 VATObjectionGenrateSadadModel _VATObjectionGenrateSadad = new VATObjectionGenrateSadadModel();
-                _VATObjectionGenrateSadad = await VATObjectionWebServiceManager.GAZTGetVATObjectionGenrateorRefreshSADAD(fbnum, Disamt, Liaamt, Abrzu, Abrzo, Secamt, Security, Persl, isFlagenable);
+                _VATObjectionGenrateSadad = await VATObjectionWebServiceManager.GAZTGetVATObjectionGenrateorRefreshSADAD(sadadGenerationObject);
 
                 if (_VATObjectionGenrateSadad != null && _VATObjectionGenrateSadad.d != null)
                 {
@@ -6149,10 +6033,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -6160,13 +6041,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+
+                IsLoading = false;
             }
         }
 
@@ -6175,10 +6053,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
 
                 VATObjectionSecurityAmountModel _VATObjectionSecurityAmount = new VATObjectionSecurityAmountModel();
                 _VATObjectionSecurityAmount = await VATObjectionWebServiceManager.GAZTGetVATObjectionSecurityAmount(disamt, liaamt, clramt, fbnum, selectedReviewReason.ProcCD, selectedSubReviewReason.Code);
@@ -6199,7 +6074,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                         EnableSecurityPaymentsConButton();
                     }
-                    catch (Exception ex)
+                    catch (Exception )
                     {
                         
                         
@@ -6207,26 +6082,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 }
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -6234,13 +6100,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+
+                IsLoading = false; IsLoading = false;
             }
         }
 
@@ -6249,10 +6112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 idnum = null;
                 idtype = null;
                 passExpDt = null;
@@ -6260,22 +6120,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 VATObjectionValidateTaxpayerModel _VATObjectionValidateTaxpayer = new VATObjectionValidateTaxpayerModel();
                 _VATObjectionValidateTaxpayer = await VATObjectionWebServiceManager.GAZTGetVATObjectionValidateTaxPayer(idnum, idtype, passExpDt, taxpDob);
 
-                if (_VATObjectionValidateTaxpayer != null && _VATObjectionValidateTaxpayer.d != null)
-                {
-
-                }
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -6283,10 +6132,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -6294,13 +6140,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+
+                IsLoading = false;
             }
         }
 
@@ -6308,10 +6151,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 await Task.Run(async () =>
                 {
                     IsLoading = true;
@@ -6324,7 +6164,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                         if (billModelResult != null && billModelResult.d != null)
                         {
-                            foreach (var item in billModelResult.d.results)
+                            foreach (var item in billModelResult.d)
                             {
                                 VBDocumentNumber = item.Opbel;
                                 VBSadadNumber = item.Vtre2;
@@ -6348,7 +6188,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     DateTime dateStart = new DateTime();
                                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                                     string apiDate = @"""" + item.Bldat + @"""";
-                                    dateStart = (DateTime)item.Bldat;
+                                    dateStart = Convert.ToDateTime(item.Bldat);
 
                                     GregorianCalendar hjCalendar = new GregorianCalendar();
                                     int year = hjCalendar.GetYear(dateStart);
@@ -6361,10 +6201,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
+                                    
 
                                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                                  
                                     strFormatedDateofPenality = dt1;
 
                                 }
@@ -6376,7 +6216,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     DateTime dateStart = new DateTime();
                                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                                     string apiDate = @"""" + item.Studt + @"""";
-                                    dateStart = (DateTime)item.Studt;
+                                    dateStart = Convert.ToDateTime(item.Studt);
 
                                     GregorianCalendar hjCalendar = new GregorianCalendar();
                                     int year = hjCalendar.GetYear(dateStart);
@@ -6389,7 +6229,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
-                                   
+                                    
+
                                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
                                    
@@ -6404,7 +6245,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     DateTime dateStart = new DateTime();
                                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                                     string apiDate = @"""" + item.Abrzu + @"""";
-                                    dateStart = (DateTime)item.Abrzu;
+                                    dateStart = Convert.ToDateTime(item.Abrzu);
 
                                     GregorianCalendar hjCalendar = new GregorianCalendar();
                                     int year = hjCalendar.GetYear(dateStart);
@@ -6417,9 +6258,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
-                                    
+                                   
                                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
+                                   
                                     strFormatedStartDate = dt1;
 
                                 }
@@ -6431,7 +6273,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     DateTime dateStart = new DateTime();
                                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                                     string apiDate = @"""" + item.Abrzo + @"""";
-                                    dateStart = (DateTime)item.Abrzo;
+                                    dateStart = Convert.ToDateTime(item.Abrzo);
 
                                     GregorianCalendar hjCalendar = new GregorianCalendar();
                                     int year = hjCalendar.GetYear(dateStart);
@@ -6445,10 +6287,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
                                     
-
                                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                                   
+                                    
                                     strFormatedEndDate = dt1;
 
                                 }
@@ -6480,24 +6321,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 _navigationService.GoBack();
                             });
                         }
-                        IsLoading = false;
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
                     }
-
                     catch (InternetException ex)
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
                             _navigationService.GoBack();
                         });
 
                     }
                 });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -6509,20 +6352,40 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                
-                
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+
+
+                IsLoading = false;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
+        }
+
+        private SadadGenerationObject buildSadadRequestObject(string fbnum,
+    decimal Disamt, decimal Liaamt,
+    string Abrzu, string Abrzo, decimal Secamt, string Security,
+    string Persl, bool isFlagenable)
+        {
+            SadadGenerationObject sadadGenerationObject = new SadadGenerationObject();
+            sadadGenerationObject.flag = isFlagenable;
+            sadadGenerationObject.security = Security;
+            sadadGenerationObject.securityAmount = Secamt;
+            sadadGenerationObject.periodStartDate = Abrzu;
+            sadadGenerationObject.periodEndDate = Abrzo;
+            sadadGenerationObject.TIN = App.LoginDataRetrieved.TIN;
+            sadadGenerationObject.totalTaxLiability = Liaamt;
+            sadadGenerationObject.securityType = "Sadad";
+            sadadGenerationObject.periodKey = Persl;
+            sadadGenerationObject.disputedAmount = Disamt;
+
+
+
+            return sadadGenerationObject;
+
         }
 
 
@@ -6535,10 +6398,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             _postData.__metadata = modelVATReview.d.__metadata;
             _postData.Actnm = modelVATReview.d.Actnm;
             _postData.Actno = modelVATReview.d.Actno;
-            _postData.AddressSet = modelVATReview.d.AddressSet.results;
+            _postData.AddressSet = modelVATReview.d.AddressSet;
             _postData.AgreeFg = modelVATReview.d.AgreeFg;
             _postData.Appfg = modelVATReview.d.Appfg;
-            _postData.AttdetSet = modelVATReview.d.AttdetSet.results;
+            _postData.AttdetSet = modelVATReview.d.AttdetSet;
             _postData.Branchx = modelVATReview.d.Branchx;
             _postData.CalTyp = modelVATReview.d.CalTyp;
             _postData.CrNo = modelVATReview.d.CrNo;
@@ -6552,7 +6415,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             _postData.OVERDUEFG = OverdueFlag;
             _postData.DecFlg2 = modelVATReview.d.DecFlg2;
             _postData.DecIdNo = modelVATReview.d.DecIdNo;
-            _postData.Declarationdt = modelVATReview.d.DecDt;
+            //_postData.Declarationdt = modelVATReview.d.DecDt;
             _postData.Decnm = modelVATReview.d.Decnm;
             _postData.Euserx = modelVATReview.d.Euserx;
             _postData.Evstatus = modelVATReview.d.Evstatus;
@@ -6566,7 +6429,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             _postData.Golivefg = modelVATReview.d.Golivefg;
             _postData.Gpartx = App.LoginDataRetrieved.TIN;
             _postData.Iban = modelVATReview.d.Iban;
-            _postData.IdDetailSet = modelVATReview.d.IdDetailSet.results;
+            _postData.IdDetailSet = modelVATReview.d.IdDetailSet;
             _postData.IdType = modelVATReview.d.IdType;
             _postData.Langx = modelVATReview.d.Langx;
 
@@ -6574,7 +6437,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             _postData.PeriodKey = modelVATReview.d.PeriodKey;
             _postData.Persl = modelVATReview.d.Persl;
             _postData.PortalUsrx = modelVATReview.d.PortalUsrx;
-            _postData.QuesListSet = modelVATReview.d.QuesListSet.results;
+            _postData.QuesListSet = modelVATReview.d.QuesListSet;
             //_postData.ReasonSet = modelVATReview.d.ReasonSet.results;
             _postData.RejFb = modelVATReview.d.RejFb;
             _postData.ReturnIdx = modelVATReview.d.ReturnIdx;
@@ -6635,7 +6498,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             _postData.UserTypx = "TP";
 
 
-            NotesSetResults notes = new NotesSetResults();
+            NotesSetResults notes = new VatReviewModel.NotesSetResults();
             var noteSetList = new List<NotesSetResults>();
             if (ReportDetails != null)
             {
@@ -6651,9 +6514,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             Metadata _metdata = new Metadata();
 
-            _metdata.uri = ZATCAConstants.VATObjectionsNotesSet;
+            _metdata.uri = ZATCAZATCAConstants.VATObjectionsNotesSet;
             _metdata.type = "ZDP_VAT_NW_REV_SRV.Notes";
-            _metdata.id = ZATCAConstants.VATObjectionsNotesSet;
+            _metdata.id = ZATCAZATCAConstants.VATObjectionsNotesSet;
             notes.__metadata = _metdata;
             notes.AttByz = "TP";
             notes.ElemNo = 0;
@@ -6692,7 +6555,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 int lineNumber = 1;
                 IEnumerable<string> splitteNotes = input
                     .ToLookup(c => Math.Floor(k++ / partSize))
-                    .Select(e => new String(e.ToArray()));
+                    .Select(e => new string(e.ToArray()));
                 foreach (var splittedNotesData in splitteNotes)
                 {
                     notes2 = new NotesSetResults();
@@ -6781,20 +6644,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             if (IsRRAmountEdit)
             {
-                _postData.SecurityDtl.Amttp = "P";
+
+                //_postData.SecurityDtl.Amttp = "P";
+                _postData.SecurityDtl.Amttp = "F";
+
             }
             else
             {
-                _postData.SecurityDtl.Amttp = "F";
+
+                //_postData.SecurityDtl.Amttp = "F";
+                _postData.SecurityDtl.Amttp = "P";
+
             }
 
 
 
+            _postData.MainReasonSet = modelVATReview.d.MainReasonSet;
 
-            _postData.MainReasonSet = modelVATReview.d.MainReasonSet.results;
-
-            _postData.AttdetSet = modelVATReview.d.AttdetSet.results;
-            _postData.ReasonSet = modelVATReview.d.ReasonSet.results;
+            _postData.AttdetSet = modelVATReview.d.AttdetSet;
+            _postData.ReasonSet = modelVATReview.d.ReasonSet;
             _postData.MainReasonSet.Clear();
             _postData.AttdetSet.Clear();
             _postData.ReasonSet.Clear();
@@ -6880,9 +6748,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     IsLoading = true;
                 });
 
+
+                //RequestDate;
+                //TaxPeriodFrom;
+                //TaxPeriodTo;
+                //PickedDate;
+
                 modelVATReview.d.AgreeFg = true;
                 modelVATReview.d.Appfg = "N";
-                modelVATReview.d.CalTyp = "1";
+                modelVATReview.d.CalTyp = "Gregorian";
                 modelVATReview.d.DecFlg1 = IsDECCheckBox;
                 // modelVATReview.d.DecFlg2 = true;
                 modelVATReview.d.Decnm = ContactPersonName;
@@ -6902,86 +6776,98 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 if (selectedApplicationRef != null)
                 {
-
-                    modelVATReview.d.DateFrm = selectedApplicationRef.DateFrm;
-                    modelVATReview.d.DateFrmOld = selectedApplicationRef.DateFrm;
-                    modelVATReview.d.DecDt = RequestDate.ToString();
-                    modelVATReview.d.OVERDUEFG = OverdueFlag;
-
-                    var strDecDate = "";
-                    if (!string.IsNullOrEmpty(RequestDate.ToString()))
+                    try
                     {
+                        modelVATReview.d.DateFrm = selectedApplicationRef.DateFrm;
+                        modelVATReview.d.DateFrmOld = selectedApplicationRef.DateFrm;
+                        //modelVATReview.d.DecDt = DateTime.ParseExact(RequestDate.ToString(), "MM-dd-yyyy HH:mm:ss", null).ToString("yyyy-MM-ddTHH:mm:ss");
+                        modelVATReview.d.DecDt = RequestDate.ToString();
+                        //modelVATReview.d.DecDt = DateTime.ParseExact(RequestDate.ToString(), "M/d/yyyy h:mm:ss tt", null).ToString("yyyy-MM-ddTHH:mm:ss");
+                        String decDate = RequestDate.ToString();
+                        modelVATReview.d.OVERDUEFG = OverdueFlag;
+                        var strDecDate = modelVATReview.d.DecDt;
 
-                        if (!modelVATReview.d.DecDt.Contains("Date"))
+
+                        if (!string.IsNullOrEmpty(RequestDate.ToString()))
                         {
 
-
-                            DateTime dt = Convert.ToDateTime(RequestDate.ToString());
-                            dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
-                            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                            if (!decDate.Contains("Date"))
                             {
-                                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                            };
-                            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                            var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
-                            string[] dateList = jsonDateTime.Split('+');
-                            jsonDateTime = dateList[0].Replace("\"\\", "");
-                            var t = jsonDateTime.Replace("\\/\"", "");
-                            t = t + "/";
-                            modelVATReview.d.DecDt = t;
-                            strDecDate = t;
+
+
+                                DateTime dt = Convert.ToDateTime(RequestDate.ToString());
+                                dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
+                                JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                                {
+                                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                                };
+                                //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                                var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                                string[] dateList = jsonDateTime.Split('+');
+                                jsonDateTime = dateList[0].Replace("\"\\", "");
+                                var t = jsonDateTime.Replace("\\/\"", "");
+                                t = t + "/";
+                                //modelVATReview.d.DecDt = t;
+                                //strDecDate = t;
+
+
+                            }
+                        }
+
+
+
+                        if (IsSecurityPaymentsTabVisible)
+                        {
+
+                            if (IsSadadSecuritySelected)
+                            {
+
+                                modelVATReview.d.SecurityDtl.Sectp = "C";
+                                modelVATReview.d.SecurityDtl.Sopbel = SADADNumber;
+                                modelVATReview.d.SecurityDtl.ChkBank = "";
+                                modelVATReview.d.SecurityDtl.ChkCash = IsSadadCheckBox3 ? "X" : "";
+
+                            }
+                            else
+                            {
+
+                                modelVATReview.d.SecurityDtl.Sectp = "B";
+                                modelVATReview.d.SecurityDtl.ChkCash = "";
+                                modelVATReview.d.SecurityDtl.ChkBank = IsSadadCheckBox1 ? "X" : "";
+
+
+                            }
+
+                            if (!string.IsNullOrEmpty(strDecDate))
+                            {
+
+                                modelVATReview.d.SecurityDtl.Abrzo = strDecDate;
+                                modelVATReview.d.SecurityDtl.Abrzu = strDecDate;
+
+                            }
+
+                            modelVATReview.d.SecurityDtl.DataVersion = "00001";
+                            modelVATReview.d.SecurityDtl.Disamt = (Double.Parse(RequestedReviewAmount)) + "";
+                            modelVATReview.d.SecurityDtl.Liaamt = selectedApplicationRef.Liaamt;
+                            modelVATReview.d.SecurityDtl.Opbel = selectedApplicationRef.Opbel;
+                            modelVATReview.d.SecurityDtl.Penamount = selectedApplicationRef.Penamount;
+                            modelVATReview.d.SecurityDtl.Perslt = selectedApplicationRef.Perslt;
+                            modelVATReview.d.SecurityDtl.Secamt = SecurityAmount;
+                            modelVATReview.d.SecurityDtl.Clramt = selectedApplicationRef.Clramt;
+                            modelVATReview.d.SecurityDtl.Security = SecurityNumber;
+
+
+
 
 
                         }
                     }
-
-
-
-                    if (IsSecurityPaymentsTabVisible)
+                    catch (Exception ex)
                     {
-
-                        if (IsSadadSecuritySelected)
-                        {
-
-                            modelVATReview.d.SecurityDtl.Sectp = "C";
-                            modelVATReview.d.SecurityDtl.Sopbel = SADADNumber;
-                            modelVATReview.d.SecurityDtl.ChkBank = "";
-                            modelVATReview.d.SecurityDtl.ChkCash = IsSadadCheckBox3 ? "X" : "";
-
-                        }
-                        else
-                        {
-
-                            modelVATReview.d.SecurityDtl.Sectp = "B";
-                            modelVATReview.d.SecurityDtl.ChkCash = "";
-                            modelVATReview.d.SecurityDtl.ChkBank = IsSadadCheckBox1 ? "X" : "";
-
-
-                        }
-
-                        if (!string.IsNullOrEmpty(strDecDate))
-                        {
-
-                            modelVATReview.d.SecurityDtl.Abrzo = strDecDate;
-                            modelVATReview.d.SecurityDtl.Abrzu = strDecDate;
-
-                        }
-
-                        modelVATReview.d.SecurityDtl.DataVersion = "00001";
-                        modelVATReview.d.SecurityDtl.Disamt = (Double.Parse(RequestedReviewAmount)) + "";
-                        modelVATReview.d.SecurityDtl.Liaamt = selectedApplicationRef.Liaamt;
-                        modelVATReview.d.SecurityDtl.Opbel = selectedApplicationRef.Opbel;
-                        modelVATReview.d.SecurityDtl.Penamount = selectedApplicationRef.Penamount;
-                        modelVATReview.d.SecurityDtl.Perslt = selectedApplicationRef.Perslt;
-                        modelVATReview.d.SecurityDtl.Secamt = SecurityAmount;
-                        modelVATReview.d.SecurityDtl.Clramt = selectedApplicationRef.Clramt;
-                        modelVATReview.d.SecurityDtl.Security = SecurityNumber;
-
-
-
-
-
+                        
+                        
                     }
+
                 }
 
 
@@ -6989,9 +6875,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 request.Operationx = modelVATReview.d.Operationx;
 
-               
                 response = await VATObjectionWebServiceManager.SaveVatReviewObjection(request);
-
+                response.d = response.result;
 
                 if (response != null)
                 {
@@ -7000,25 +6885,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         if (response != null && response.d != null)
                         {
                         }
-                        IsLoading = false;
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
                         return response;
 
                     }
-                    catch (Exception )
+                    catch (Exception ex)
                     {
-                        IsLoading = false;
+                        
+                        
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
                         return null;
 
                     }
                 }
-                IsLoading = false;
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
                 return response;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    IsLoading = false;
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
 
                     if (CurrentIndex == 6)
@@ -7033,11 +6932,40 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 return response;
             }
 
-            catch (Exception )
+            catch (Exception ex)
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                
+                
                 return response;
             }
 
+        }
+
+        private string getStringDate(string date)
+        {
+            DateTime dateTime = DateTime.ParseExact(date, "MM/dd/yyyy h:mm:ss tt", null);
+
+            // Format DateTime as a string in the desired format
+            string formattedDateTime = dateTime.ToString("yyyy-MM-ddTHH:mm:ss");
+
+            return formattedDateTime;
+        }
+
+        private string DateToString(string date)
+        {
+            long unixTimestamp = long.Parse(date.Substring(6, date.Length - 8));
+
+            // Convert Unix timestamp to DateTime
+            DateTime dateTime = DateTimeOffset.FromUnixTimeMilliseconds(unixTimestamp).DateTime;
+
+            // Format DateTime as a string in the desired format
+            string formattedDateTime = dateTime.ToString("yyyy-MM-ddTHH:mm:ss");
+
+            return formattedDateTime;
         }
 
 
@@ -7078,40 +7006,40 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVRVATReturns(Fbguid, Fbnumz, EUser, "");
 
-                    if (_vATDeclaration != null && _vATDeclaration.d != null)
+                    if (_vATDeclaration != null && _vATDeclaration.data != null)
                     {
-                        VATinNumber = _vATDeclaration.d.Gpart;
-                        VAAccNumber = _vATDeclaration.d.Fin;
-                        VAIdnumber = _vATDeclaration.d.Idnumber;
-                        VATaxpayerName = _vATDeclaration.d.Tpnm;
-                        if (_vATDeclaration.d.ADRSet.results.Count > 0)
+                        VATinNumber = _vATDeclaration.data.Gpart;
+                        VAAccNumber = _vATDeclaration.data.Fin;
+                        VAIdnumber = _vATDeclaration.data.Idnumber;
+                        VATaxpayerName = _vATDeclaration.data.Tpnm;
+                        if (_vATDeclaration.data.ADRSet.Count > 0)
                         {
-                            VAAddress = _vATDeclaration.d.ADRSet.results[0].BuildingNo + "," +
-                                        _vATDeclaration.d.ADRSet.results[0].Street + "," +
-                                        _vATDeclaration.d.ADRSet.results[0].Addrnumber + "," +
-                                        _vATDeclaration.d.ADRSet.results[0].RegionDesc + "," +
-                                        _vATDeclaration.d.ADRSet.results[0].City + "," +
-                                        _vATDeclaration.d.ADRSet.results[0].PostalCd;
+                            VAAddress = _vATDeclaration.data.ADRSet[0].BuildingNo + "," +
+                                        _vATDeclaration.data.ADRSet[0].Street + "," +
+                                        _vATDeclaration.data.ADRSet[0].Addrnumber + "," +
+                                        _vATDeclaration.data.ADRSet[0].RegionDesc + "," +
+                                        _vATDeclaration.data.ADRSet[0].City + "," +
+                                        _vATDeclaration.data.ADRSet[0].PostalCd;
                         }
                         else
                         {
                             VAAddress = "";
                         }
 
-                        VAVATReturnType = _vATDeclaration.d.Incotext;
-                        VAVatReturnReferenceNo = _vATDeclaration.d.Fbnum;
-                        VATaxPeriod = _vATDeclaration.d.Perslt;
-                        VAVatAccountNum = _vATDeclaration.d.Fin;
-                        VASalesAmount = _vATDeclaration.d.TotalsalesAmt;
-                        VASalesVatAdjustment = _vATDeclaration.d.TotalsalesAdj;
-                        VAVatOnSales = _vATDeclaration.d.TotalsalesVat;
-                        VAPurchaseAmount = _vATDeclaration.d.TotalpurchaseAmt;
-                        VAVatOnPurchase = _vATDeclaration.d.TotalpurchaseVat;
-                        VAPurchaseVatAdjustment = _vATDeclaration.d.TotalpurchaseAdj;
-                        VATotalDueVAT = _vATDeclaration.d.TotaldueVat;
-                        VATotalCreditVAT = _vATDeclaration.d.CreditVat;
-                        VACorrrections = _vATDeclaration.d.Preperiodcorr;
-                        VANetVat = _vATDeclaration.d.NetdueVat;
+                        VAVATReturnType = _vATDeclaration.data.Incotext;
+                        VAVatReturnReferenceNo = _vATDeclaration.data.Fbnum;
+                        VATaxPeriod = _vATDeclaration.data.Perslt;
+                        VAVatAccountNum = _vATDeclaration.data.Fin;
+                        VASalesAmount = _vATDeclaration.data.TotalsalesAmt;
+                        VASalesVatAdjustment = _vATDeclaration.data.TotalsalesAdj;
+                        VAVatOnSales = _vATDeclaration.data.TotalsalesVat;
+                        VAPurchaseAmount = _vATDeclaration.data.TotalpurchaseAmt;
+                        VAVatOnPurchase = _vATDeclaration.data.TotalpurchaseVat;
+                        VAPurchaseVatAdjustment = _vATDeclaration.data.TotalpurchaseAdj;
+                        VATotalDueVAT = _vATDeclaration.data.TotaldueVat;
+                        VATotalCreditVAT = _vATDeclaration.data.CreditVat;
+                        VACorrrections = _vATDeclaration.data.Preperiodcorr;
+                        VANetVat = _vATDeclaration.data.NetdueVat;
 
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
@@ -7184,15 +7112,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                             //step 4 and 5 data set
                             if (vATRegistration.d.CONTACT_PERSONSet != null)
                             {
-                                VrVRGpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
+                                VrVRGpartFR = vATRegistration.d.CONTACT_PERSONSet[0].Gpart;
                                 //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
                                 vrVRIdnumber = string.Empty;
-                                vrVRIdnumber = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
-                                VrVRFirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
-                                VrVRLastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
-                                VrVRMobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
-                                VrVRSmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
-                                VrVRDOB = vATRegistration.d.CONTACT_PERSONSet.results[0].Dobdt;
+                                vrVRIdnumber = vATRegistration.d.CONTACT_PERSONSet[0].Idnumber;
+                                VrVRFirstnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Firstnm;
+                                VrVRLastnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Lastnm;
+                                VrVRMobNumberFR = vATRegistration.d.CONTACTDTSet[0].MobNumber;
+                                VrVRSmtpAddrFR = vATRegistration.d.CONTACTDTSet[0].SmtpAddr;
+                                VrVRDOB = vATRegistration.d.CONTACT_PERSONSet[0].Dobdt;
 
                             }
 
@@ -7202,16 +7130,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         }
                         if (vATRegistration.d.QUESTIONSSet != null)
                         {
-                            List<ResultsItemForQuestion> quest1AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "001" && s.QoptAns == "1").ToList();
+                            List<ResultsItemForQuestion> quest1AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "001" && s.QoptAns == "1").ToList();
                             VrVRquesTion1answerSelected = quest1AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
 
-                            List<ResultsItemForQuestion> quest2AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "002" && s.QoptAns == "1").ToList();
+                            List<ResultsItemForQuestion> quest2AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "002" && s.QoptAns == "1").ToList();
                             VrVRquesTion2answerSelected = quest2AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
 
-                            List<ResultsItemForQuestion> quest3AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList();
+                            List<ResultsItemForQuestion> quest3AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList();
                             VrVRquesTion3answerSelected = quest3AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
 
-                            List<ResultsItemForQuestion> quest4AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToList();
+                            List<ResultsItemForQuestion> quest4AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToList();
 
                             VrVRquesTion4answerSelected = quest3AnsList.FirstOrDefault().QoptTxt;//vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToString();
                         }
@@ -7220,7 +7148,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                             string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.VatTaxDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                             VrVRVatEligibleStartDate = Convert.ToDateTime(convertedDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                         }
-                        if (vATRegistration.d.QUESCONFIG_MSet.results.Count != 0)
+                        if (vATRegistration.d.QUESCONFIG_MSet != null && vATRegistration.d.QUESCONFIG_MSet.Count != 0)
                         {
                             VrVRMinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
                             VrVRMinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(vATRegistration.d.QUESCONFIG_MSet);
@@ -7228,7 +7156,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         VrVRIbanList = new ObservableCollection<Result2>();
                         if (vATRegistration.d.ATTDETSet != null)
                         {
-                            foreach (Attachment ItemA in vATRegistration.d.ATTDETSet.results)
+                            foreach (Attachment ItemA in vATRegistration.d.ATTDETSet)
                             {
                                 VrVRAttachmentName = ItemA.Filename;
                             }
@@ -7236,7 +7164,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                         if (vATRegistration.d.IBANSet != null)
                         {
-                            VrVRIbanList = new ObservableCollection<Result2>(vATRegistration.d.IBANSet.results);
+                            VrVRIbanList = new ObservableCollection<Result2>(vATRegistration.d.IBANSet);
                             for (int i = 0; i < VrVRIbanList.Count; i++)
                             {
                                 if (VrVRIbanList.ElementAt(i).Iban != string.Empty)
@@ -7251,7 +7179,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         {
                             VrVRImportExportText = "Exporter";
                         }
-                        else if (vATRegistration.d.ImFg == "1")
+                        else if (vATRegistration.d.ExFg == "1")
                         {
                             VrVRImportExportText = "Importer";
 
@@ -7329,17 +7257,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         if (vATDeRegistration != null && vATDeRegistration.d != null)
                         {
 
-                            if (vATDeRegistration.d.Idnumbr != null)
+                            if (vATDeRegistration.d.headerSet.Idnumbr != null)
 
                                 if (string.IsNullOrEmpty(IDType))
                                 {
 
-                                    PopulateVatDeRegSummaryDeclarationData(vATDeRegistration.d.Type, vATDeRegistration.d.Idnumbr, vATDeRegistration.d.Declaredt, vATDeRegistration.d.Contactnm);
+                                    PopulateVatDeRegSummaryDeclarationData(vATDeRegistration.d.headerSet.Type, vATDeRegistration.d.headerSet.Idnumbr, vATDeRegistration.d.headerSet.Declaredt, vATDeRegistration.d.headerSet.Contactnm);
                                 }
 
-                            PopulateVatDeRegAttachments(vATDeRegistration.d.AttdetSet.results);
+                            PopulateVatDeRegAttachments(vATDeRegistration.d.AttdetSet);
 
-                            PopulateVatDeRegSummaryReasonData(vATDeRegistration.d.Type, vATDeRegistration.d.Reason);
+                            PopulateVatDeRegSummaryReasonData(vATDeRegistration.d.headerSet.Type, vATDeRegistration.d.headerSet.Reason);
 
                             MainThread.BeginInvokeOnMainThread(() =>
                             {
@@ -7436,13 +7364,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 PIPFExemptPurchases = _VATReviewRequestTPFV.d.Pcpep;
                                 PITxablePurchases = _VATReviewRequestTPFV.d.Pctpp;
                                 PIExemptPurchases = _VATReviewRequestTPFV.d.Pcepp;
-                                if (_VATReviewRequestTPFV.d.NotesSet.results.Where(x => x.AttByz.ToUpper() == "TP").Count() > 0)
+                                if (_VATReviewRequestTPFV.d.NotesSet.Where(x => x.AttByz.ToUpper() == "TP").Count() > 0)
                                 {
                                     VITDReportDetails =
-                                        _VATReviewRequestTPFV.d.NotesSet.results.First(x => x.AttByz.ToUpper() == "TP").Strline;
+                                        _VATReviewRequestTPFV.d.NotesSet.First(x => x.AttByz.ToUpper() == "TP").Strline;
                                 }
                                 var attachmentList = new ObservableCollection<Attachment>();
-                                foreach (var attachment in _VATReviewRequestTPFV.d.AttdetSet.results)
+                                foreach (var attachment in _VATReviewRequestTPFV.d.AttdetSet)
                                 {
                                     attachmentList.Add(attachment);
                                 }
@@ -7543,23 +7471,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                             {
 
                                 _vATDREGViewApllicationViewModel.ReasonforDeRegistration = dregReasonset.d.results.
-                                Where(x => x.Reason == dregresult.d.Reason).FirstOrDefault().Rdesc;
+                                Where(x => x.Reason == dregresult.d.HeaderSet.Reason).FirstOrDefault().Rdesc;
 
-                                _vATDREGViewApllicationViewModel.ContactPersonName = dregresult.d.Contactnm;
-                                _vATDREGViewApllicationViewModel.DeclarationId = dregresult.d.Idnumbr;
+                                _vATDREGViewApllicationViewModel.ContactPersonName = dregresult.d.HeaderSet.Contactnm;
+                                _vATDREGViewApllicationViewModel.DeclarationId = dregresult.d.HeaderSet.Idnumbr;
 
-                                var declarationDate = "";
+                                var declarationDate = dregresult.d.HeaderSet.Declaredt;
 
-                                if (dregresult.d.Declaredt != null)
-                                {
-
-                                    declarationDate = dregresult.d.Declaredt?.ToString("dd MM yyyy");
-                                }
-
-
-                                PopulateVatDeRegSummaryDeclarationData(IDToNameDictionary[dregresult.d.Type], dregresult.d.Idnumbr, declarationDate, dregresult.d.Contactnm);
-                                PopulateVatDeRegAttachments(dregresult.d.AttdetSet.results);
-                                PopulateVatDeRegSummaryReasonData(dregresult.d.Reqtp, _vATDREGViewApllicationViewModel.ReasonforDeRegistration);
+                                PopulateVatDeRegSummaryDeclarationData(IDToNameDictionary[dregresult.d.HeaderSet.Type], dregresult.d.HeaderSet.Idnumbr, declarationDate, dregresult.d.HeaderSet.Contactnm);
+                                PopulateVatDeRegAttachments(dregresult.d.AttdetSet);
+                                PopulateVatDeRegSummaryReasonData(dregresult.d.HeaderSet.Reqtp, _vATDREGViewApllicationViewModel.ReasonforDeRegistration);
 
                                 MainThread.BeginInvokeOnMainThread(() =>
                                 {
@@ -7650,11 +7571,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                             try
                             {
-                                VRVGEffectivedate = _VATReviewRequestVTGR.d.EFFDATESet.results.Where(x => x.Persl == _VATReviewRequestVTGR.d.Persl).FirstOrDefault().Txt50;
+                                VRVGEffectivedate = _VATReviewRequestVTGR.d.EFFDATESet.Where(x => x.Persl == _VATReviewRequestVTGR.d.Persl).FirstOrDefault().Txt50;
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine(e);
+
                             }
 
 
@@ -7693,11 +7614,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
 
-                            if (_VATReviewRequestVTGR.d.TABLESet.results != null)
+                            if (_VATReviewRequestVTGR.d.TABLESet != null)
                             {
 
                                 var tinsListViewData = new ObservableCollection<VATReviewRequestVTGRModel.TABLESetResult>();
-                                foreach (VATReviewRequestVTGRModel.TABLESetResult tin in _VATReviewRequestVTGR.d.TABLESet.results)
+                                foreach (VATReviewRequestVTGRModel.TABLESetResult tin in _VATReviewRequestVTGR.d.TABLESet)
                                 {
 
                                     tinsListViewData.Add(tin);
@@ -7706,11 +7627,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 VRVGTinsListViewData = tinsListViewData;
                             }
 
-                            if (_VATReviewRequestVTGR.d.ATTDETSet.results != null)
+                            if (_VATReviewRequestVTGR.d.ATTDETSet != null)
                             {
 
                                 var attachmentsListViewData = new ObservableCollection<Attachment>();
-                                foreach (Attachment attachemnt in _VATReviewRequestVTGR.d.ATTDETSet.results)
+                                foreach (Attachment attachemnt in _VATReviewRequestVTGR.d.ATTDETSet)
                                 {
 
                                     attachmentsListViewData.Add(attachemnt);
@@ -7817,11 +7738,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
                                 VRVSRFSuspensionofFiling = dregReasonset.d.results.
-                                Where(x => x.Reason == dregresult.d.Reason).FirstOrDefault().Rdesc;
+                                Where(x => x.Reason == dregresult.d.HeaderSet.Reason).FirstOrDefault().Rdesc;
 
-                                VRVSContactPersonName = dregresult.d.Contactnm;
-                                VRVSIDNumber = dregresult.d.Idnumbr;
-                                VRVSIDType = IDToNameDictionary[dregresult.d.Type];
+                                VRVSContactPersonName = dregresult.d.HeaderSet.Contactnm;
+                                VRVSIDNumber = dregresult.d.HeaderSet.Idnumbr;
+                                VRVSIDType = IDToNameDictionary[dregresult.d.HeaderSet.Type];
 
                                 var settings = new JsonSerializerSettings
                                 {
@@ -7829,76 +7750,52 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     DateTimeZoneHandling = DateTimeZoneHandling.Utc
                                 };
 
-                                var startDate = "";
-                                var endDate = "";
+                                String startDate = dregresult.d.HeaderSet.StartDate ?? string.Empty;
+                                String endDate = dregresult.d.HeaderSet.EndDate ?? string.Empty;
 
-                                try
+
+                                if (startDate != string.Empty)
                                 {
+                                    string trimmedStrtDate = startDate.IndexOf('.') >= 0 ? startDate.Substring(0, startDate.IndexOf('.')) : startDate;
+                                    string trimmedEndDate = endDate.IndexOf('.') >= 0 ? endDate.Substring(0, endDate.IndexOf('.')) : endDate;
 
-                                    if (dregresult.d.StartDate != null)
-                                    {
-
-                                        var jsonstartDate = JsonConvert.SerializeObject(dregresult.d.StartDate, settings);
-                                        startDate = Regex.Replace(jsonstartDate, "[@,\\.\";'\\\\]", string.Empty);
-                                    }
-
-                                    if (dregresult.d.EndDate != null)
-                                    {
-
-                                        var jsonEndDate = JsonConvert.SerializeObject(dregresult.d.EndDate, settings);
-                                        endDate = Regex.Replace(jsonEndDate, "[@,\\.\";'\\\\]", string.Empty);
-                                    }
-
-
-
-
-
-
-                                }
-                                catch
-                                {
-
-                                }
-
-                                if (dregresult.d.StartDate != null)
-                                {
-
-
-                                    var _suspensionResult = await GetVATReviewWebServiceManager.GAZTGetVATReviewDREGSuspensionDetailSet(startDate, endDate);
+                                    var _suspensionResult = await GetVATReviewWebServiceManager.GAZTGetVATReviewDREGSuspensionDetailSet(trimmedStrtDate, trimmedEndDate);
                                     if (_suspensionResult != null & _suspensionResult.d.results.Count > 0)
                                     {
-                                        if (_suspensionResult.d.results[0].StartDate != null)
+                                        if (_suspensionResult.d.results[0].StartDate != "")
                                         {
 
-                                            VRVSStartofSuspensionPeriod = _suspensionResult.d.results[0].StartDate?.ToString("dd-MM-yyyy");
+                                            // VRVSStartofSuspensionPeriod = _suspensionResult.d.results[0].StartDate.ToString("dd-MM-yyyy");
+                                            VRVSStartofSuspensionPeriod = DateTime.ParseExact(_suspensionResult.d.results[0].StartDate, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture).ToString("dd-MM-yyyy");
 
                                         }
 
-                                        if (_suspensionResult.d.results[0].EndDate != null)
+                                        if (_suspensionResult.d.results[0].EndDate != null && _suspensionResult.d.results[0].EndDate != "")
                                         {
 
-                                            VRVSEndofSuspensionPeriod = _suspensionResult.d.results[0].EndDate?.ToString("dd-MM-yyyy");
+                                            //VRVSEndofSuspensionPeriod = _suspensionResult.d.results[0].EndDate.ToString("dd-MM-yyyy");
+                                            VRVSEndofSuspensionPeriod = DateTime.ParseExact(_suspensionResult.d.results[0].EndDate, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture).ToString("dd-MM-yyyy");
 
                                         }
 
-                                        if (_suspensionResult.d.results[0].Duedate != null)
+                                        if (_suspensionResult.d.results[0].Duedate != null && _suspensionResult.d.results[0].Duedate != "")
                                         {
 
-                                            VRVSNextfilingduedate = _suspensionResult.d.results[0].Duedate?.ToString("dd-MM-yyyy");
+                                            VRVSNextfilingduedate = DateTime.ParseExact(_suspensionResult.d.results[0].Duedate, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture).ToString("dd-MM-yyyy");
 
                                         }
 
-                                        if (_suspensionResult.d.results[0].SuspDtfrom != null)
+                                        if (_suspensionResult.d.results[0].SuspDtfrom != null && _suspensionResult.d.results[0].SuspDtfrom != "")
                                         {
 
-                                            VRVSRFSuspensionofFiling = _suspensionResult.d.results[0].SuspDtfrom?.ToString("dd-MM-yyyy") + " - " + _suspensionResult.d.results[0].SuspDtto?.ToString("dd-MM-yyyy");
+                                            VRVSRFSuspensionofFiling = DateTime.ParseExact(_suspensionResult.d.results[0].SuspDtfrom, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture).ToString("dd-MM-yyyy") + " - " + DateTime.ParseExact(_suspensionResult.d.results[0].SuspDtto, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture).ToString("dd-MM-yyyy");
 
                                         }
 
-                                        if (_suspensionResult.d.results[0].NextDtfrom != null)
+                                        if (_suspensionResult.d.results[0].NextDtfrom != null && _suspensionResult.d.results[0].NextDtfrom != "")
                                         {
 
-                                            VRVSNextfilingperiod = _suspensionResult.d.results[0].NextDtfrom?.ToString("dd-MM-yyyy") + " - " + _suspensionResult.d.results[0].NextDtto?.ToString("dd-MM-yyyy");
+                                            VRVSNextfilingperiod = DateTime.ParseExact(_suspensionResult.d.results[0].NextDtfrom, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture).ToString("dd-MM-yyyy") + " - " + DateTime.ParseExact(_suspensionResult.d.results[0].NextDtto, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture).ToString("dd-MM-yyyy");
 
                                         }
 
@@ -7907,7 +7804,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                                 }
                                 var attachmentList = new ObservableCollection<Attachment>();
-                                foreach (var attachment in dregresult.d.AttdetSet.results)
+                                foreach (var attachment in dregresult.d.AttdetSet)
                                 {
                                     attachmentList.Add(attachment);
                                 }
@@ -7929,10 +7826,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                             }
                             IsLoading = false;
                         }
-                    }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
                     }
                     catch (InternetException ex)
                     {
@@ -7960,8 +7853,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception )
+            catch (Exception ex)
             {
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -7975,8 +7870,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         }
 
 
+
+
         #endregion
     }
+
+
     public interface VatReviewInterface
     {
         void SelectDefaultPaymentOption();

@@ -8,7 +8,7 @@ using ZATCAMAUI.Platforms.Android.DependencyServices;
 [assembly: Dependency(typeof(ZATCADeviceInfo))]
 namespace ZATCAMAUI.Platforms.Android.DependencyServices
 {
-    public class ZATCADeviceInfo : Core.Interfaces.IDeviceInfo
+    public class ZATCADeviceInfo : Core.Interfaces.IDeviceInfoZATCA
     {
         public double GetDeviceHeight()
         {
@@ -120,7 +120,7 @@ namespace ZATCAMAUI.Platforms.Android.DependencyServices
         };
 
 
-        bool Core.Interfaces.IDeviceInfo.IsJailBreakDetected()
+        bool Core.Interfaces.IDeviceInfoZATCA.IsJailBreakDetected()
         {
             if (checks.Any(System.IO.File.Exists))
                 return true;

@@ -1,17 +1,23 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ZATCAMAUI.Views.NewDesign.ChangeMobile.NafathChangeMobleNumberOptionsView"
              Title="NafathChangeMobleNumberOptionsView"
              xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+            xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
             x:Name="page"
-            ios:Page.UseSafeArea="true"
-            BackgroundImageSource="partials_background.png"
-            FlowDirection="{Binding AppDirection}"
-            NavigationPage.HasNavigationBar="False">
+            FlowDirection="{Binding AppDirection}">
+
+     <Mopups:PopupPage.Animation>
+        <Animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </Mopups:PopupPage.Animation>
 
     <ContentPage.Content>
         <StackLayout>
@@ -37,4 +43,4 @@
             </Border>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</Mopups:PopupPage>

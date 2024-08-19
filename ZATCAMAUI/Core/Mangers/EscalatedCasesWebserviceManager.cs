@@ -7,8 +7,10 @@ using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Exceptions;
 using static ZATCAMAUI.Models.ErrorMessage;
 
+
 namespace ZATCAMAUI.Core.Mangers
 {
+
     public static class EscalatedCasesWebserviceManager
     {
         public static async Task<EscalatedGstcModel> GAZTGetCaseDetailSet()
@@ -25,7 +27,6 @@ namespace ZATCAMAUI.Core.Mangers
                     string lang = UtilityManager.GetLanguageParameter();
 
                     String url = ZATCAConstants.GetGstcCaseDetailsApi + "%27" + App.LoginDataRetrieved.TIN + "%27)?$expand=CaseDetailSet&$format=json";
-
                     HttpResponseMessage _requestZakatExemtionReqResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_requestZakatExemtionReqResponse != null)
                     {
@@ -74,7 +75,6 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-
                 catch (Exception)
                 {
                     App.IsSessionExpired = true;
@@ -89,5 +89,3 @@ namespace ZATCAMAUI.Core.Mangers
         }
     }
 }
-
-

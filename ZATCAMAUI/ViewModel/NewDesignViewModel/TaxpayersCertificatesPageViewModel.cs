@@ -53,9 +53,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _selectedCertificate = value;
                 OnPropertyChanged("SelectedCertificate");
-                if (SelectedCertificate != null && SelectedCertificate.Pdfurl != null)
+                if (SelectedCertificate != null && SelectedCertificate.pdfURL != null)
                 {
-                    ShowPdf(SelectedCertificate.Pdfurl);
+                    ShowPdf(SelectedCertificate.pdfURL);
                 }
             }
         }
@@ -253,30 +253,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 CertificateListToVAT = new List<Result>();
                 CertificateListToET = new List<Result>();
                 CertificateListToAll = new List<Result>();
-                allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
+                allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.userId );
                 PopToRootPage();
                 if (allCertificate != null)
                 {
-                    if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
+                    if (allCertificate.ZakatSet != null && allCertificate.ZakatSet != null && allCertificate.ZakatSet.Count > 0)
                     {
-                        CertificateListToZAKAT = allCertificate.ZakatSet.results;
+                        CertificateListToZAKAT = allCertificate.ZakatSet;
                         foreach (var Item in CertificateListToZAKAT)
                         {
                             CertificateListToAll.Add(Item);
                         }
 
                     }
-                    if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
+                    if (allCertificate.VATSet != null && allCertificate.VATSet != null && allCertificate.VATSet.Count > 0)
                     {
-                        CertificateListToVAT = allCertificate.VATSet.results;
+                        CertificateListToVAT = allCertificate.VATSet;
                         foreach (var Item in CertificateListToVAT)
                         {
                             CertificateListToAll.Add(Item);
                         }
                     }
-                    if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
+                    if (allCertificate.exciseSet != null && allCertificate.exciseSet != null && allCertificate.exciseSet.Count > 0)
                     {
-                        CertificateListToET = allCertificate.ExciseSet.results;
+                        CertificateListToET = allCertificate.exciseSet;
                         foreach (var Item in CertificateListToET)
                         {
                             CertificateListToAll.Add(Item);
@@ -295,9 +295,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 _navigationService.GoBack();
             }
-            catch (Exception)
-
+            catch (Exception ex)
             {
+                
+                
+                //   _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                 MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
         }
@@ -335,9 +337,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
 
             }
 
@@ -357,8 +358,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception)
             {
-
-
             }
 
 

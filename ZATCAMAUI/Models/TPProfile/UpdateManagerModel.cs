@@ -4,14 +4,17 @@ namespace ZATCAMAUI.Models.TPProfile
 {
 
     public class UpdateManagerModel
-	{
-        [JsonProperty("d")]
+    {
+        [JsonProperty("data")]
         public D D { get; set; }
+
+        [JsonProperty("result")]
+        public D result { set { D = value; } }
     }
     
     public class D
     {
-        [JsonProperty("results")]
+        [JsonProperty("managers")]
         public List<ManagerList> Results { get; set; }
     }
     
@@ -20,25 +23,25 @@ namespace ZATCAMAUI.Models.TPProfile
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
-        [JsonProperty("Gpart")]
+        [JsonProperty("TIN")]
         public string Gpart { get; set; }
 
-        [JsonProperty("Editfg")]
+        [JsonProperty("edit")]
         public string Editfg { get; set; }
 
-        [JsonProperty("Mgrid")]
+        [JsonProperty("managerId")]
         public string Mgrid { get; set; }
 
-        [JsonProperty("Mgrnm")]
+        [JsonProperty("managerName")]
         public string Mgrnm { get; set; }
 
-        [JsonProperty("BirthDt")]
+        [JsonProperty("birthDate")]
         public object BirthDt { get; set; }
 
-        [JsonProperty("Email")]
+        [JsonProperty("email")]
         public string Email { get; set; }
 
-        [JsonProperty("MobNo")]
+        [JsonProperty("mobileNumber")]
         public string MobNo { get; set; }
 
         [JsonIgnore]
@@ -55,37 +58,37 @@ namespace ZATCAMAUI.Models.TPProfile
     
     public class ManagerDetailsSet
     {
-        [JsonProperty("BirthDt")]
+        [JsonProperty("birthDate")]
         public object BirthDt;
 
-        [JsonProperty("Editfg")]
+        [JsonProperty("edit")]
         public string Editfg;
 
-        [JsonProperty("Email")]
+        [JsonProperty("email")]
         public string Email;
 
-        [JsonProperty("Gpart")]
+        [JsonProperty("TIN")]
         public string Gpart;
 
-        [JsonProperty("Mgrid")]
+        [JsonProperty("managerId")]
         public string Mgrid;
 
-        [JsonProperty("Mgrnm")]
+        [JsonProperty("managerName")]
         public string Mgrnm;
 
-        [JsonProperty("MobNo")]
+        [JsonProperty("mobileNumber")]
         public string MobNo;
     }
     
     public class ManagerDetailsPayload
     {
-        [JsonProperty("ManagerDetailsSet")]
+        [JsonProperty("managers")]
         public List<ManagerDetailsSet> ManagerDetailsSet;
 
-        [JsonProperty("Operation")]
+        [JsonProperty("operation")]
         public string Operation;
 
-        [JsonProperty("Taxpayer")]
+        [JsonProperty("TIN")]
         public string Taxpayer;
     }
 }

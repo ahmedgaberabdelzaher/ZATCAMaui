@@ -1,3 +1,5 @@
+using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber;
+
 namespace ZATCAMAUI.Views.NewDesign.ChangeMobile;
 
 public partial class NafathChangeMobileNumberSuccessView : ContentPage

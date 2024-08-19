@@ -9,6 +9,7 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Core.Interfaces;
+using static ZATCAMAUI.Models.correspdncAttchModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -36,6 +37,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged("ZakatCorres");
             }
         }
+
+        private ObservableCollection<CorrDetails> _AttChDtlsSet;
+        public ObservableCollection<CorrDetails> attChDtlsSet
+        {
+            get
+            {
+                return _AttChDtlsSet;
+            }
+            set
+            {
+                if (_AttChDtlsSet == value) return;
+                _AttChDtlsSet = value;
+                OnPropertyChanged("attChDtlsSet");
+            }
+
+        }
+
+        public List<object> _correspondenceobj = null;
+        public List<object> Correspondenceobj
+        {
+            get
+            {
+               return _correspondenceobj;
+            }
+            set
+            {
+                if (_correspondenceobj == value) return;
+                _correspondenceobj = value;
+               // OnPropertyChanged("Correspondenceobj");
+            }
+        }
+
 
         private CorrespondenceRootObject _vATCorres;
         public CorrespondenceRootObject VATCorres
@@ -66,6 +99,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _eTCorres = value;
                 OnPropertyChanged("ETCorres");
+            }
+        }
+        
+        private CorrespondenceRootObject _collCorres;
+        public CorrespondenceRootObject CollCorres
+        {
+            get
+            {
+                return _collCorres;
+            }
+            set
+            {
+                if (_collCorres == value) return;
+
+                _collCorres = value;
+                OnPropertyChanged("CollCorres");
             }
         }
 
@@ -210,6 +259,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _listETCorrespondance = value;
                 OnPropertyChanged("ListETCorrespondance");
+            }
+        }
+
+        private List<CorrespondanceModel> _listCorrCorrespondance = null;
+        public List<CorrespondanceModel> ListCollCorrespondance
+        {
+            get
+            {
+                return _listCorrCorrespondance;
+            }
+            set
+            {
+                if (_listCorrCorrespondance == value) return;
+
+                _listCorrCorrespondance = value;
+                OnPropertyChanged("ListCollCorrespondance");
             }
         }
 
@@ -431,10 +496,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     ZakatCorres = new CorrespondenceRootObject();
                     VATCorres = new CorrespondenceRootObject();
                     ETCorres = new CorrespondenceRootObject();
+                    CollCorres = new CorrespondenceRootObject();
 
                     ZakatCorres = WebServiceManager.GAZTGetZakatCorrespondece();
                     VATCorres = WebServiceManager.GAZTGetVATCorrespondece();
                     ETCorres = WebServiceManager.GAZTGetETCorrespondece();
+                    CollCorres = WebServiceManager.GAZTGetCollectionsCorrespondece();
                     PopToRootPage();
                 });
                 IsLoading = false;
@@ -457,7 +524,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 ListZAKATCorrespondance = new List<CorrespondanceModel>();
                 ListVATCorrespondance = new List<CorrespondanceModel>();
                 ListETCorrespondance = new List<CorrespondanceModel>();
-                if (ZakatCorres != null && ZakatCorres.d != null && ZakatCorres.d.results != null && ZakatCorres.d.results.Count > 0)
+                ListCollCorrespondance = new List<CorrespondanceModel>();
+                if (ZakatCorres != null && ZakatCorres.d!=null && ZakatCorres.d.results!=null && ZakatCorres.d.results.Count > 0)
                 {
                     foreach (CorrespondenceResult itemZakat in ZakatCorres.d.results)
                     {
@@ -466,13 +534,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         childZakat.RefNumber = itemZakat.LetterNum;
                         if (itemZakat.LetterNum != null)
                             childZakat.Cokey = itemZakat.Cokey;
-                        childZakat.Coitm = itemZakat.Coitm;
+                        childZakat.Coitm = itemZakat.Ctime;
                         childZakat.Ctime = itemZakat.Ctime;
                         childZakat.Cdate = itemZakat.Cdate;
-                        if (itemZakat.Copri != null)
-                        {
-                            childZakat.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Copri + @"""");
-                        }
+                        //if (itemZakat.Copri != null)
+                        //{
+                        //    childZakat.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Copri + @"""");
+                        //}
                         if (itemZakat.Coidt != null)
                         {
                             childZakat.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Coidt + @"""");
@@ -482,19 +550,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         childZakat.Gpart = itemZakat.Gpart;
                         childZakat.Begdaz = itemZakat.Begdaz;
                         childZakat.Enddaz = itemZakat.Enddaz;
+                        childZakat.FBnum = itemZakat.Fbnum;
                         try
                         {
                             childZakat.TaxtpFg = itemZakat.TaxtpFg;
                         }
                         catch (Exception)
                         {
-
-
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemZakat.Cdate != null)
                         {
-                            BegDate = childZakat.Cdate;
+                           // BegDate = childZakat.Cdate;
                         }
                         if (itemZakat.Zzfav == "1")
                         {
@@ -517,9 +584,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         string time = string.Empty;
                         if (App.IsArabic)
                         {
-                            if (BegDate != null)
+                            if (childZakat.StartDate != null)
                             {
-                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                StartDate = Convert.ToDateTime(childZakat.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
                                 string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
@@ -543,13 +610,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            if (BegDate != null)
+                            if (childZakat.StartDate != null)
                             {
-                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                StartDate = Convert.ToDateTime(childZakat.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
                                 string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                                 StartDate = date;
-                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                time = Convert.ToDateTime(childZakat.StartDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
                                 if (childZakat.Ctime != null)
                                 {
                                     time = childZakat.Ctime;
@@ -588,13 +655,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         childVAT.Title = itemVAT.Descript;
                         childVAT.RefNumber = itemVAT.LetterNum;
                         childVAT.Cokey = itemVAT.Cokey;
-                        childVAT.Coitm = itemVAT.Coitm;
+                        childVAT.Coitm = itemVAT.Ctime;
                         childVAT.Cdate = itemVAT.Cdate;
                         childVAT.Ctime = itemVAT.Ctime;
-                        if (itemVAT.Copri != null)
-                        {
-                            childVAT.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Copri + @"""");
-                        }
+                        //if (itemVAT.Copri != null)
+                        //{
+                        //    childVAT.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Copri + @"""");
+                        //}
                         if (itemVAT.Coidt != null)
                         {
                             childVAT.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Coidt + @"""");
@@ -603,6 +670,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         childVAT.Vkont = itemVAT.Vkont;
                         childVAT.Gpart = itemVAT.Gpart;
                         childVAT.Begdaz = itemVAT.Begdaz;
+                        childVAT.FBnum = itemVAT.Fbnum;
                         childVAT.Enddaz = itemVAT.Enddaz;
                         try
                         {
@@ -610,12 +678,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         catch (Exception)
                         {
-
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemVAT.Cdate != null)
                         {
-                            BegDate = childVAT.Cdate;
+                           // BegDate = childVAT.Cdate;
                         }
                         if (itemVAT.Zzfav == "1")
                         {
@@ -638,9 +705,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         string time = string.Empty;
                         if (App.IsArabic)
                         {
-                            if (BegDate != null)
+                            if (childVAT.StartDate != null)
                             {
-                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                StartDate = Convert.ToDateTime(childVAT.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
                                 string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                                 StartDate = date;
@@ -661,9 +728,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            if (BegDate != null)
+                            if (childVAT.StartDate != null)
                             {
-                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                StartDate = Convert.ToDateTime(childVAT.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
                                 string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                                 StartDate = date;
@@ -702,13 +769,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         childET.RefNumber = itemET.LetterNum;
                         if (itemET.LetterNum != null)
                             childET.Cokey = itemET.Cokey;
-                        childET.Coitm = itemET.Coitm;
+                        childET.Coitm = itemET.Ctime;
                         childET.Ctime = itemET.Ctime;
                         childET.Cdate = itemET.Cdate;
-                        if (itemET.Copri != null)
-                        {
-                            childET.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Copri + @"""");
-                        }
+                        //if (itemET.Copri != null)
+                        //{
+                        //    childET.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Copri + @"""");
+                        //}
                         if (itemET.Coidt != null)
                         {
                             childET.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Coidt + @"""");
@@ -718,19 +785,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         childET.Gpart = itemET.Gpart;
                         childET.Begdaz = itemET.Begdaz;
                         childET.Enddaz = itemET.Enddaz;
+                        childET.FBnum = itemET.Fbnum;
                         try
                         {
                             childET.TaxtpFg = itemET.TaxtpFg;
                         }
                         catch (Exception)
                         {
-
-
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemET.Cdate != null)
                         {
-                            BegDate = childET.Cdate;
+                           // BegDate = childET.Cdate;
                         }
                         if (itemET.Zzfav == "1")
                         {
@@ -753,9 +819,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         string time = string.Empty;
                         if (App.IsArabic)
                         {
-                            if (BegDate != null)
+                            if (childET.StartDate != null)
                             {
-                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                StartDate = Convert.ToDateTime(childET.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
                                 string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                                 StartDate = date;
@@ -776,9 +842,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            if (BegDate != null)
+                            if (childET.StartDate != null)
                             {
-                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                StartDate = Convert.ToDateTime(childET.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
                                 string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                                 StartDate = date;
@@ -807,12 +873,127 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
 
                 }
+                // Assigning data in the list
+                if (CollCorres != null && CollCorres.d != null && CollCorres.d.results != null && CollCorres.d.results.Count > 0)
+                {
+                    List<CorrespondanceModel> CollCo = new List<CorrespondanceModel>();
+                    foreach (CorrespondenceResult itemColl in CollCorres.d.results)
+                    {
+                        CorrespondanceModel childColl = new CorrespondanceModel();
+                        childColl.Title = itemColl.Descript;
+                        childColl.RefNumber = itemColl.LetterNum;
+                        if (itemColl.LetterNum != null)
+                            childColl.Cokey = itemColl.Cokey;
+                        childColl.Coitm = itemColl.Ctime;
+                        childColl.Ctime = itemColl.Ctime;
+                        childColl.Cdate = itemColl.Cdate;
+                        childColl.FBnum = itemColl.Fbnum;
+                        //if (itemColl.Copri != null)
+                        //{
+                        //    childColl.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemColl.Copri + @"""");
+                        //}
+                        if (itemColl.Coidt != null)
+                        {
+                            childColl.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemColl.Coidt + @"""");
+                        }
+                        childColl.Cotype = itemColl.Cotyp;
+                        childColl.Vkont = itemColl.Vkont;
+                        childColl.Gpart = itemColl.Gpart;
+                        childColl.Begdaz = itemColl.Begdaz;
+                        childColl.Enddaz = itemColl.Enddaz;
+                        try
+                        {
+                            childColl.TaxtpFg = itemColl.TaxtpFg;
+                        }
+                        catch (Exception ex)
+                        {
+                            
+                            
+                        }
+                        DateTime? BegDate = DateTime.Now;
+                        if (itemColl.Cdate != null)
+                        {
+                           // BegDate = childColl.Cdate;
+                        }
+                        if (itemColl.Zzfav == "1")
+                        {
+                            childColl.IsFav = true;
+                            if (App.IsArabic)
+                            {
+                                childColl.FavImg = "ic_star_180.png";
+                            }
+                            else
+                            {
+                                childColl.FavImg = "ic_star.png";
+                            }
+                        }
+                        else
+                        {
+                            childColl.IsFav = false;
+                            childColl.FavImg = "arrowRight.png";
+                        }
+                        string StartDate = string.Empty;
+                        string time = string.Empty;
+                        if (App.IsArabic)
+                        {
+                            if (childColl.StartDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(childColl.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                string[] dts = StartDate.Split('-');
+                                string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                StartDate = date;
+                                if (childColl.Ctime != null)
+                                {
+                                    time = childColl.Ctime;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes + " ";
+                                }
+                                childColl.DateToDisplay = StartDate;
+                                childColl.TimeToDisplay = time;
+                                StartDate = String.Concat(StartDate, time);
+                            }
+                        }
+                        else
+                        {
+                            if (childColl.StartDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(childColl.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                string[] dts = StartDate.Split('-');
+                                string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                StartDate = date;
+                                if (childColl.Ctime != null)
+                                {
+                                    time = childColl.Ctime;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes + " ";
+                                }
+                                childColl.DateToDisplay = StartDate;
+                                childColl.TimeToDisplay = time;
+                                StartDate = StartDate + time;
+                            }
+                        }
+                        childColl.DateAndTime = StartDate;
+                        CollCo.Add(childColl);
+                    }
+                    ListCollCorrespondance = CollCo;
+                    ListAllCorrespondance = ListAllCorrespondance.Union(ListCollCorrespondance).ToList();
+                }
+                else
+                {
+
+                }
                 SelectedDropdownItem = FilterListForDropDown.FirstOrDefault();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
             }
         }
         public void PopulateFilterDropdownList()
@@ -828,10 +1009,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 FilterListForDropDown = new List<ReturnTypes>();
                 FilterListForDropDown = FilterList;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
             }
         }
         public void PopulateDataInChips()
@@ -931,6 +1110,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     IsVisibleFavourite = false;
                 }
+                else if(SelectedTaxTypeDropdownItem.Id == "04")
+                {
+                    if (ListCollCorrespondance != null)
+                    {
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListCollCorrespondance);
+                        if (ListToDisplay != null)
+                        {
+                            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                        }
+                    }
+                    else
+                    {
+                        if(ListToDisplay!=null)
+                        {
+                            ClearList();
+                        }
+                    }
+                    IsVisibleFavourite = false;
+                }
             }
 
         }
@@ -949,18 +1147,37 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 IsLoading = true;
             });
-            await Task.Run(() =>
-            {
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    _navigationService.NavigateTo(App.TaxpayerCorrespondanceDetailPageView, CorresModel);
-                });
-            });
+
+            ObservableCollection<CorrDetails> attchModel = null;
+            Correspondenceobj = new List<object>();
+
+            // MainThread.BeginInvokeOnMainThread(() =>
+            // {
+            //attchModel = WebServiceManager.ZATCACorrespondenceDetails(CorresModel.FBnum);
+           // });
+
+           //var t = Task.Run( () =>
+           // { 
+           //     MainThread.BeginInvokeOnMainThread(() =>
+           //     {
+
+                    if (attchModel != null)
+                    {
+                        Correspondenceobj.Add(attchModel);
+                    }
+
+                    Correspondenceobj.Add(CorresModel);
+                    _navigationService.NavigateTo(App.TaxpayerCorrespondanceDetailPageView, Correspondenceobj);
+            //    });
+            //});
+            //t.Wait();
+            
             await Task.Run(() =>
             {
                 IsLoading = false;
             });
         }
+
         public void FilterOnbasisOfChipSelectedItem()
         {
             try
@@ -981,8 +1198,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception)
             {
-
-
             }
 
         }

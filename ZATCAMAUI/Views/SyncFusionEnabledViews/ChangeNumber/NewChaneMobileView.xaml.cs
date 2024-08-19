@@ -6,13 +6,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ChangeNumber;
 public partial class NewChaneMobileView : ContentPage
 {
 
-	NewChaneMobileViewModel viewModel;
 	HybridWebView Hybridview;
 	public NewChaneMobileView()
 	{
 		InitializeComponent();
-		viewModel = App.Locator.newChaneMobileViewModel;
-		this.BindingContext = viewModel;
 	}
 
 	protected override void OnAppearing()
@@ -34,14 +31,4 @@ public partial class NewChaneMobileView : ContentPage
 
 
 	}
-
-    void loadweb_Navigated(System.Object sender, Microsoft.Maui.Controls.WebNavigatedEventArgs e)
-    {
-        viewModel.IsLoading = false;
-    }
-
-    void loadweb_Navigating(System.Object sender, Microsoft.Maui.Controls.WebNavigatingEventArgs e)
-    {
-        viewModel.IsLoading = true;
-    }
 }

@@ -1,3 +1,5 @@
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
+
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages;
 
 [XamlCompilation(XamlCompilationOptions.Compile)]

@@ -127,10 +127,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         }
         public async Task email(string doguid, ZakatAttachment attachment)
         {
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-            });
+            viewModel.IsLoading = true;
             await Task.Run(() =>
             {
                 try
@@ -172,10 +169,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                 {
                 }
             });
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
+            viewModel.IsLoading = false;
         }
 
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -184,8 +178,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 ListView Document = sender as ListView;
                 ZakatAttachment attachment = (ZakatAttachment)Document.SelectedItem;
-                //attachment.DocUrl;
-                //if (attachment.Filename.Contains(".")) ;
                 string Extention = attachment.Filename.Split('.')[1];
                 if (Extention.Equals("PDF") || Extention.Equals("pdf"))
                 {
@@ -218,14 +210,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
-        private void OnObjectionReasonFocused(object sender, FocusEventArgs e)
-        {
-
-        }
-        private void OnObjectionReasonUnFocused(object sender, FocusEventArgs e)
-        {
-            
-        }
 
        
 

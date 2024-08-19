@@ -1,5 +1,7 @@
 ﻿using System.Runtime.Serialization;
 
+using Newtonsoft.Json;
+
 namespace ZATCAMAUI.Models.ZakatObjectionsModel
 {
    
@@ -243,7 +245,7 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
    
     public class ZakatBankListModel
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        [JsonProperty("data")]
         public D d { get; set; }
         public class Metadata
         {
@@ -261,18 +263,17 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public Metadata __metadata { get; set; }
             [DataMember]
-            public string Bankid { get; set; }
+            public string bankId { get; set; }
             [DataMember]
-            public string Langu { get; set; }
+            public string language { get; set; }
             [DataMember]
-            public string Bkext { get; set; }
+            public string bankDescription { get; set; }
         }
-
-       
-        public class D
+        
+        public class data
         {
             [DataMember]
-            public List<Result> results { get; set; }
+            public List<Result> banks { get; set; }
         }
     }
 
@@ -524,7 +525,8 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
    
     public class ZAKATObjectionCreateNewModel
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+        [JsonProperty("data")]
         public D d { get; set; }
        
         public class Metadata
@@ -549,88 +551,125 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public object Aedat { get; set; }
             [DataMember]
+            [JsonProperty("auditor")]
             public bool AudFlag { get; set; }
             [DataMember]
+            [JsonProperty("auditor")]
             public string Auditor { get; set; }
             [DataMember]
             public object Begda { get; set; }
             [DataMember]
+            [JsonProperty("branch")]
             public string Branch { get; set; }
             [DataMember]
             public string CalendrTyp { get; set; }
             [DataMember]
+            [JsonProperty("combination")]
             public string Comb { get; set; }
             [DataMember]
+            [JsonProperty("display")]
             public string Dispflag { get; set; }
             [DataMember]
+            [JsonProperty("dueStatus")]
             public string Due { get; set; }
             [DataMember]
             public object DueDt { get; set; }
             [DataMember]
+            [JsonProperty("dueDateCharacter")]
             public string DueDtC { get; set; }
             [DataMember]
             public object Endda { get; set; }
             [DataMember]
+            [JsonProperty("authenticationUser")]
             public string Euser { get; set; }
             [DataMember]
+            [JsonProperty("authenticationUser1")]
             public string Euser1 { get; set; }
             [DataMember]
+            [JsonProperty("authenticationUser2")]
             public string Euser2 { get; set; }
             [DataMember]
+            [JsonProperty("authenticationUser3")]
             public string Euser3 { get; set; }
             [DataMember]
+            [JsonProperty("authenticationUser4")]
             public string Euser4 { get; set; }
             [DataMember]
+            [JsonProperty("authenticationUser5")]
             public string Euser5 { get; set; }
             [DataMember]
+            [JsonProperty("formBundleGUID")]
             public string Fbguid { get; set; }
             [DataMember]
+            [JsonProperty("formBundleNumber")]
             public string Fbnum { get; set; }
             [DataMember]
+            [JsonProperty("formBundleTypeDescription")]
             public string FbtText { get; set; }
             [DataMember]
+            [JsonProperty("formBundleType")]
             public string Fbtyp { get; set; }
             [DataMember]
+            [JsonProperty("selected")]
             public string Flag { get; set; }
             [DataMember]
+            [JsonProperty("TIN")]
             public string Gpart { get; set; }
             [DataMember]
+            [JsonProperty("inboundCorrespondenceDescription")]
             public string Incotext { get; set; }
             [DataMember]
+            [JsonProperty("inboundCorrespondenceType")]
             public string Incotyp { get; set; }
             [DataMember]
+            [JsonProperty("informationMessage")]
             public string InfoMsg { get; set; }
             [DataMember]
+            [JsonProperty("language")]
             public string Lang { get; set; }
             [DataMember]
+            [JsonProperty("month")]
             public string Monthz { get; set; }
             [DataMember]
+            [JsonProperty("errorMessage")]
             public string Msg { get; set; }
             [DataMember]
+            [JsonProperty("isObjectionFiled")]
             public bool ObjFiled { get; set; }
             [DataMember]
+            [JsonProperty("obligation")]
             public string ObligFlag { get; set; }
             [DataMember]
+            [JsonProperty("isOpen")]
             public bool Open { get; set; }
             [DataMember]
+            [JsonProperty("period")]
             public string Period { get; set; }
             [DataMember]
+            [JsonProperty("periodkey")]
             public string Persl { get; set; }
             [DataMember]
+            [JsonProperty("refundFiled")]
             public bool RefundFiled { get; set; }
             [DataMember]
+            [JsonProperty("sadadBillNumber1")]
             public string SadadDoc1 { get; set; }
             [DataMember]
+            [JsonProperty("sadadBillNumber2")]
             public string SadadDoc2 { get; set; }
             [DataMember]
+            [JsonProperty("statusDescription")]
             public string Stat { get; set; }
             [DataMember]
+            [JsonProperty("dueStatus")]
             public string Statflag { get; set; }
             [DataMember]
             public string Status { get; set; }
             [DataMember]
+            [JsonProperty("taxPeriod")]
             public string TaxPeriod { get; set; }
             [DataMember]
+            [JsonProperty("contractNumber")]
             public string Vtref { get; set; }
         }
     }
@@ -639,6 +678,7 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
     public class ZakatObjectionWDDropdownModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        [JsonProperty("data")]
         public D d { get; set; }
        
         public class Metadata
@@ -657,36 +697,50 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public Metadata __metadata { get; set; }
             [DataMember]
+            [JsonProperty("FormBundleNumber")]
             public string ObjFbnum { get; set; }
             [DataMember]
+            [JsonProperty("dispute")]
             public string FlagDis { get; set; }
             [DataMember]
+            [JsonProperty("selectedRow")]
             public string ASel { get; set; }
             [DataMember]
+            [JsonProperty("referenceAssessment")]
             public string ARefNo { get; set; }
             [DataMember]
+            [JsonProperty("taxYear")]
             public string AAssnmtYr { get; set; }
             [DataMember]
+            [JsonProperty("periodFrom")]
             public string APeriodFrom { get; set; }
             [DataMember]
+            [JsonProperty("periodTo")]
             public string APeriodTo { get; set; }
             [DataMember]
+            [JsonProperty("taxType")]
             public string ATaxTy { get; set; }
             [DataMember]
+            [JsonProperty("currency")]
             public string ACurr { get; set; }
             [DataMember]
+            [JsonProperty("assessmentAmount")]
             public string AAssnmtAmt { get; set; }
             [DataMember]
+            [JsonProperty("revisedAmount")]
             public string ARevAmt { get; set; }
             [DataMember]
+            [JsonProperty("disputeAmount")]
             public string ADisputeAmt { get; set; }
             [DataMember]
+            [JsonProperty("returnDetail")]
             public string ARetDet { get; set; }
         }
 
        
         public class D
         {
+            [JsonProperty("withdrawalDetails")]
             public List<Result> results { get; set; }
         }
 
@@ -694,7 +748,7 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
    
     public class ZakatObjectionWithDrawListModel
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
         public D d { get; set; }
        
         public class Metadata
@@ -712,16 +766,19 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public Metadata __metadata { get; set; }
             [DataMember]
+            [JsonProperty("TIN")]
             public string Taxpy { get; set; }
             [DataMember]
+            [JsonProperty("objectionFormBundleNumber")]
             public string ObjFbnum { get; set; }
         }
         [Serializable]
         [DataContract]
-       
-        public class D
+        
+        public class ZakatObjectionWithDrawListModelClass
         {
             [DataMember]
+            [JsonProperty("data")]
             public List<Result> results { get; set; }
         }
 
@@ -729,7 +786,7 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
 
     public class ZakatWithdrawMainDataModel
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
         public D d { get; set; }
        
         public class Metadata

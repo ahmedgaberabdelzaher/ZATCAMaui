@@ -1,12 +1,57 @@
 ﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
 {
 
     public class VATSignUpCaseId
     {
-        [DataMember]
-        public VATSignUpCaseIdD d { get; set; }
+        public Header header { get; set; }
+        public List<Datum> data { get; set; }
+    }
+    
+    public class Datum
+    {
+        public string activityCategory { get; set; }
+        public string URL { get; set; }
+        public string external { get; set; }
+        public string captchaCode { get; set; }
+        public string mobileCountry { get; set; }
+        public string activityNumber { get; set; }
+        public string addressType { get; set; }
+        public string @internal { get; set; }
+        public string authorizationGroup { get; set; }
+        public string buildingCode { get; set; }
+        public string city { get; set; }
+        public string district { get; set; }
+        public string country { get; set; }
+        public string email { get; set; }
+        public string emailCode { get; set; }
+        public string formBundleNumber { get; set; }
+        public string firstName { get; set; }
+        public string floor { get; set; }
+        public string houseNumber1 { get; set; }
+        public string houseNumber2 { get; set; }
+        public string idNumber { get; set; }
+        public string idType { get; set; }
+        public string lastName { get; set; }
+        public string mobile { get; set; }
+        public string password { get; set; }
+        public string postCode { get; set; }
+        public string region { get; set; }
+        public string SMSCode { get; set; }
+        public string source { get; set; }
+        public string street { get; set; }
+        public string street1 { get; set; }
+        public string street2 { get; set; }
+        public string submit { get; set; }
+        public string TIN { get; set; }
+        public string type { get; set; }
+        public string GUID { get; set; }
+        public string caseGUID { get; set; }
+        public string formGUID { get; set; }
+        public bool isSameAsPhyiscal { get; set; }
+        public string CRLicenseNumber { get; set; }
     }
 
     
@@ -15,77 +60,86 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public __metadata __metadata { get; set; }
         [DataMember]
-        public string Actcat { get; set; }
+        public string activityCategory { get; set; }
         [DataMember]
-        public string Actno { get; set; }
+        public string URL { get; set; }
         [DataMember]
-        public string AddrType { get; set; }
+        public string captchaCode { get; set; }
         [DataMember]
-        public string AExternal { get; set; }
+        public string GUID { get; set; }
         [DataMember]
-        public string AInternal { get; set; }
+        public string mobileCountry { get; set; }
         [DataMember]
-        public string Augrp { get; set; }
+        public string activityNumber { get; set; }
         [DataMember]
-        public string Building { get; set; }
+        public string addressType { get; set; }
         [DataMember]
-        public string CaseGuid { get; set; }
+        public string external { get; set; }
         [DataMember]
-        public string City1 { get; set; }
+        [JsonProperty("internal")]
+        public string Internal { get; set; }
         [DataMember]
-        public string City2 { get; set; }
+        public string authorizationGroup { get; set; }
         [DataMember]
-        public string Country { get; set; }
+        public string buildingCode { get; set; }
         [DataMember]
-        public string Crlicenceno { get; set; }
+        public string caseGUID { get; set; }
         [DataMember]
-        public string Email { get; set; }
+        public string city { get; set; }
         [DataMember]
-        public string EmailCode { get; set; }
+        public string district { get; set; }
         [DataMember]
-        public string Fbnum { get; set; }
+        public string country { get; set; }
         [DataMember]
-        public string Firstname { get; set; }
+        public string CRLicenseNumber { get; set; }
         [DataMember]
-        public string Floor { get; set; }
+        public string email { get; set; }
         [DataMember]
-        public string FormGuid { get; set; }
+        public string emailCode { get; set; }
         [DataMember]
-        public string HouseNum1 { get; set; }
+        public string formBundleNumber { get; set; }
         [DataMember]
-        public string HouseNum2 { get; set; }
+        public string firstName { get; set; }
         [DataMember]
-        public string Idnumber { get; set; }
+        public string floor { get; set; }
         [DataMember]
-        public string IdType { get; set; }
+        public string formGUID { get; set; }
         [DataMember]
-        public string Lastname { get; set; }
+        public string houseNumber1 { get; set; }
         [DataMember]
-        public string Mobile { get; set; }
+        public string houseNumber2 { get; set; }
         [DataMember]
-        public string Password { get; set; }
+        public string idNumber { get; set; }
         [DataMember]
-        public string PostCode1 { get; set; }
+        public string idType { get; set; }
         [DataMember]
-        public string Region { get; set; }
+        public string lastName { get; set; }
         [DataMember]
-        public bool Sameasphy { get; set; }
+        public string mobile { get; set; }
         [DataMember]
-        public string SmsCode { get; set; }
+        public string password { get; set; }
         [DataMember]
-        public string Source { get; set; }
+        public string postCode { get; set; }
         [DataMember]
-        public string Street { get; set; }
+        public string region { get; set; }
         [DataMember]
-        public string StrSuppl1 { get; set; }
+        public bool isSameAsPhyiscal { get; set; }
         [DataMember]
-        public string StrSuppl2 { get; set; }
+        public string SMSCode { get; set; }
         [DataMember]
-        public string Submit { get; set; }
+        public string source { get; set; }
         [DataMember]
-        public string Tin { get; set; }
+        public string street { get; set; }
         [DataMember]
-        public string Type { get; set; }
+        public string street1 { get; set; }
+        [DataMember]
+        public string street2 { get; set; }
+        [DataMember]
+        public string submit { get; set; }
+        [DataMember]
+        public string TIN { get; set; }
+        [DataMember]
+        public string type { get; set; }
 
     }
 

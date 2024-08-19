@@ -1,5 +1,7 @@
+
 using Mopups.Pages;
 using ZATCAMAUI.Core.Mangers;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan;
 

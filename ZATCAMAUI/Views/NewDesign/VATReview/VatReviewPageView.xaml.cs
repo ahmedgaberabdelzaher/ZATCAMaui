@@ -77,8 +77,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -231,8 +231,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -260,8 +260,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -294,8 +294,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -344,8 +344,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -375,8 +375,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -439,8 +439,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 

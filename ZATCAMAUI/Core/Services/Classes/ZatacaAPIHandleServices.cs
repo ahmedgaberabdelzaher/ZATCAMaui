@@ -1,5 +1,6 @@
 ﻿using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Services.Interfac;
+using ZATCAMAUI.Models.ForgotModel;
 
 namespace ZATCAMAUI.Core.Services.Classes
 {

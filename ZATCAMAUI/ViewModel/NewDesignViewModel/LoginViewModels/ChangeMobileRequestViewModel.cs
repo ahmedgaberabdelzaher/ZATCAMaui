@@ -33,7 +33,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         public ICommand OnResendOTPClicked { get; set; }
         public ICommand NafathClicked { get; set; }
         public ICommand PrintFormClicked { get; set; }
-        
+
 
         private string Captcha = string.Empty;
         private string GUID = string.Empty;
@@ -41,12 +41,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         public bool IsAPICalledSuccessfully = false;
         public int OTPAttemptsCount = 0;
 
-        
+
 
         public System.Timers.Timer otpTimer;
         public int countDownSeconds;
 
-        
+
         private string _LblCountDownTimer;
         public string LblCountDownTimer
         {
@@ -112,7 +112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
-        
+
         private bool _showContinue2 = false;
         public bool ShowContinue2
         {
@@ -144,7 +144,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
-        
+
 
         private Color _resendOTPTextColor = (Color)Application.Current.Resources["ResendOTPTextColor"];
         public Color ResendOTPTextColor
@@ -353,7 +353,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 OnPropertyChanged("OtpSection1");
             }
         }
-        
+
         private bool showOTPSection = false;
         public bool ShowOTPSection
         {
@@ -386,7 +386,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
-        
+
         private bool showOTPSuccessMessage = false;
         public bool ShowOTPSuccessMessage
         {
@@ -504,10 +504,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         if (data.Item2 != null)
                         {
                             ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+                            ChangeMobModel.d = ChangeMobModel.result;
                             ShowOTPSection = true;
                             DissableSendOtp = false;
 
                             StartOTPTimer();
+                        }
+                        else
+                        {
+                            await ShowErrorWithQuitAsync(data.Item2);
                         }
                     }
                     else
@@ -525,7 +530,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 }
                 else
                 {
-                   
+
 
                     ChangeMobModel.d.Operationz = "86";
                     ChangeMobModel.d.Otp = EnteredOTP;
@@ -543,6 +548,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                             {
                                 ShowOTPSuccessMessage = true;
                                 ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+                                ChangeMobModel.d = ChangeMobModel.result;
                                 ShowOTPSection = false;
                                 if(ChangeMobModel.d.Tintyp != "A")
                                 {
@@ -552,7 +558,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                 }
                                 else
                                 {
-                                    ChangeButtonLabel = AppResources.Change;
+                                    ChangeButtonLabel = AppResources.ZVATChangeButton;
                                     ShowAttachmentSection = false;
                                     ShowSubmitForAutomatic = true;
                                 }
@@ -563,6 +569,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                     AttachmentLable = AppResources.AttachChamberOfCommerce;
                                 }
 
+                            }
+                            else
+                            {
+                                await ShowErrorWithQuitAsync(data.Item2);
                             }
                         }
                         else
@@ -589,7 +599,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                 OTPFourthDigit = string.Empty;
                                 await ShowErrorWithQuitAsync(data.Item2);
                             }
-                           
+
                         }
                     }
                 }
@@ -608,8 +618,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         if (data.Item2 != null)
                         {
                             ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+                            ChangeMobModel.d = ChangeMobModel.result;
                             ShowOTPSection = true;
                             StartOTPTimer();
+                        }
+                        else
+                        {
+                            await ShowErrorWithQuitAsync(data.Item2);
                         }
                     }
                     else
@@ -632,9 +647,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         //TODO
                         await AddAttachment("CHM1");
                     }
-                    
+
                 }
-                
+
                 else if (AttachedForms.Count != 1 || AttachedForms.Count != 1)
                 {
                     await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
@@ -643,7 +658,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             });
 
             SubmitBtnClicked = new Command(async () => {
-                string tintype = ChangeMobModel.d.Tintyp;
                 if(ShowAttachmentSection == true && AttachedForms.Count != 1)
                 {
                     await _dialogService.ShowError(AppResources.AttachmentWarnMsg, "Information", "Ok", null);
@@ -662,19 +676,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     IsLoading = false;
                     if (data.Item1.IsSuccessStatusCode)
                     {
-                        if (tintype.ToUpper().Equals("A"))
+                        ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+                        ChangeMobModel.d = ChangeMobModel.result;
+                        if (ChangeMobModel?.d != null)
                         {
-                            ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
-                            await _dialogService.ShowMessage(String.Format(AppResources.ChangeMobSuccessMsg2, ChangeMobModel.d.Gpart), AppResources.Information);
+                            await _dialogService.ShowMessage(AppResources.ChangeMobSuccessMsg + " - " + ChangeMobModel.d.Fbnumz, AppResources.Information);
                             _navigationService.GoBack();
                         }
                         else
                         {
-                            ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
-                            await _dialogService.ShowMessage(AppResources.ChangeMobSuccessMsg + " - " + ChangeMobModel.d.Fbnumz, AppResources.Information);
-                            _navigationService.GoBack();
+                            await ShowErrorWithQuitAsync(data.Item2);
                         }
-                       
                     }
                     else
                     {
@@ -686,10 +698,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             NafathClicked = new Command(async () =>{
                 try
                 {
-                    ZATCAConstants.ChangeMobNafath = ChangeMobModel.d.Link;
+                    // Constants.ChangeMobNafath = ChangeMobModel.d.Link;
                     App.GUIDFrChangeMob = "";
                     _navigationService.GoBack();
-                    _navigationService.NavigateTo(App.ChangeMobNafathLoginPage);
+                    _navigationService.NavigateTo(App.NafathLoginView,ZATCAConstants.NAFATH_COMPANY_CHANGE_MOBILE_NUMBER);
                 }
                 catch (Exception ex)
                 {
@@ -744,7 +756,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         {
             try
             {
-                string[] filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
+                string[] filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForTaxEvasion();
                 PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
                 //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
@@ -785,8 +797,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                         }
                                         catch (Exception ex)
                                         {
-                                            Console.Write(ex.ToString());
-                                            Console.Write(ex.StackTrace.ToString());
+                                            
+                                            
                                         }
                                     }
                                     else
@@ -831,8 +843,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
         }
@@ -852,8 +864,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             finally
             {
@@ -871,17 +883,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             get => _eSTLedge;
             set
             {
-               
+
                 if (_eSTLedge == value) return;
 
                 _eSTLedge = value;
              //   IsDeclarationBtnEnabled = _eSTLedge;
                 OnPropertyChanged(nameof(ESTLedge));
+
             }
         }
         private void OnDeleteAttachment(Attachment attachment)
         {
-            
+
         }
 
         private async Task SubmitRequest()
@@ -905,14 +918,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 {
                     ChangeMobModel.d.Idtyp = GetSelectedIDtype();
                 }
-                
+
                 ChangeMobModel.d.Captcha = Captcha;
 
-                ChangeMobModel.d.ATTACHSet.Results = new List<object>();
-                ChangeMobModel.d.NOTESSet.Results = new List<object>();
-                ChangeMobModel.d.MCERRORSet.Results = new List<ErrorTypes>();
-                ChangeMobModel.d.IDTYPSet.Results = new List<IDTypes>();
-                
+                ChangeMobModel.d.ATTACHSet = new List<object>();
+                ChangeMobModel.d.NOTESSet = new List<object>();
+                ChangeMobModel.d.MCERRORSet = new List<ErrorTypes>();
+                ChangeMobModel.d.IDTYPSet = new List<IDTypes>();
+
                 var data = await WebServiceManager.SaveChangeMobileNumberAsync(ChangeMobModel);
                 IsLoading = false;
                 if (data.Item1 != null)
@@ -922,36 +935,44 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         if (data.Item2 != null)
                         {
                             ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+                            ChangeMobModel.d = ChangeMobModel.result;
 
-                            ManagerName = ChangeMobModel.d.Mgrnm;
-                            TinNumber = ChangeMobModel.d.Gpart;
-                            ManagerId = ChangeMobModel.d.Mgrid;
-                            ManagerName = ChangeMobModel.d.Mgrnm;
+                            if (ChangeMobModel?.d != null)
+                            {
+                                ManagerName = ChangeMobModel.d.Mgrnm;
+                                TinNumber = ChangeMobModel.d.Gpart;
+                                ManagerId = ChangeMobModel.d.Mgrid;
+                                ManagerName = ChangeMobModel.d.Mgrnm;
 
-                            if (ChangeMobModel.d.Tintyp.ToUpper() == "N")
-                            {
-                                FieldText = AppResources.ZTEReportCompanyName;
-                                FieldValue = ChangeMobModel.d.Cmpnm;
-                            }
-                            else if (ChangeMobModel.d.Tintyp.ToUpper() == "A" || ChangeMobModel.d.Tintyp.ToUpper() == "R")
-                            {
-                                FieldText = AppResources.ZZCRName;
-                                FieldValue = ChangeMobModel.d.Crname;
-                            }
-                            if (changeMobModel.d.McErrorFg.Equals("X") && ChangeMobModel.d.MCERRORSet != null && ChangeMobModel.d.MCERRORSet.Results.Count > 0)
-                            {
-                                ShowMCIErrorAsync();
+                                if (ChangeMobModel.d.Tintyp.ToUpper() == "N")
+                                {
+                                    FieldText = AppResources.ZTEReportCompanyName;
+                                    FieldValue = ChangeMobModel.d.Cmpnm;
+                                }
+                                else if (ChangeMobModel.d.Tintyp.ToUpper() == "A" || ChangeMobModel.d.Tintyp.ToUpper() == "R")
+                                {
+                                    FieldText = AppResources.ZZCRName;
+                                    FieldValue = ChangeMobModel.d.Crname;
+                                }
+                                if (changeMobModel.d.McErrorFg.Equals("X") && ChangeMobModel.d.MCERRORSet != null && ChangeMobModel.d.MCERRORSet.Count > 0)
+                                {
+                                    ShowMCIErrorAsync();
+                                }
+                                else
+                                {
+                                    if (NafathGUID.Length > 0)
+                                    {
+                                        ChangeMobModel.d.Tintyp = "A"; // No attachment required for Automatic
+                                    }
+
+                                    ShowOtpForm = true;
+                                    OtpSection1 = true;
+                                    ShowMainForm = false;
+                                }
                             }
                             else
                             {
-                                if (NafathGUID.Length > 0)
-                                {
-                                    ChangeMobModel.d.Tintyp = "A"; // No attachment required for Automatic
-                                }
-                                
-                                ShowOtpForm = true;
-                                OtpSection1 = true;
-                                ShowMainForm = false;
+                                await ShowErrorWithQuitAsync(data.Item2);
                             }
                         }
                     }
@@ -967,7 +988,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
             catch (Exception)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                 });
@@ -981,7 +1002,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         private async Task ShowMCIErrorAsync()
         {
             string message = AppResources.MCIErrorTitleMsg+"\n";
-            foreach(var item in ChangeMobModel.d.MCERRORSet.Results)
+            foreach(var item in ChangeMobModel.d.MCERRORSet)
             {
                 message += item.Message+"\n";
             }
@@ -1002,6 +1023,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         if (data.Item2 != null)
                         {
                             ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+                            ChangeMobModel.d = ChangeMobModel.result;
                             ShowOtpForm = true;
                             OtpSection1 = true;
                             ShowMainForm = false;
@@ -1038,12 +1060,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                 }
                                 else
                                 {
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinNumberValidation)); 
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinNumberValidation));
                                 }
                             }
                             else
                             {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZTINnumberhastostartwithnumber3)); 
+
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZTINnumberhastostartwithnumber3));
                             }
                         }
                         else
@@ -1053,12 +1076,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     }
                     else
                     {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZPleaseentertheIDNumbervalue)); 
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZPleaseentertheIDNumbervalue));
                     }
                 }
                 else
                 {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDType)); 
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDType));
                 }
             }
             else
@@ -1068,20 +1091,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             return false;
         }
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
         private bool _isArabic = false;
         public bool IsArabic
         {
@@ -1159,7 +1168,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 OnPropertyChanged("ManagerId");
             }
         }
-        
+
         private string _fieldText { get; set; }
         public string FieldText
         {
@@ -1193,8 +1202,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 OnPropertyChanged("TinNumber");
             }
         }
-        
-        
+
+
         private bool _showMainForm = false;
         public bool ShowMainForm
         {
@@ -1355,7 +1364,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
-        
+
 
 
         private async Task ShowIDTypeDialogAsync()
@@ -1368,8 +1377,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -1389,7 +1398,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
             var list = new List<string>();
 
-            foreach (IDTypes dropdown in ChangeMobModel.d.IDTYPSet.Results)
+            foreach (IDTypes dropdown in ChangeMobModel.d.IDTYPSet)
             {
                 try
                 {
@@ -1410,51 +1419,82 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             SelectedIDType = "";
         }
 
-        internal async Task GetIdTypesAsync(string guid)
+        internal async Task GetIdTypesAsync(string guid, string idNumber = "")
         {
+            NafathChangeMobileNumberModelResponse nafathChmbResponse = null;
             try
             {
                 IsLoading = true;
-                var data = await WebServiceManager.GetIDTypesForChangeMobNumber(guid);
-                if (data.Item1 != null)
+                if (string.IsNullOrEmpty(guid))
                 {
-                    if (data.Item1.IsSuccessStatusCode)
-                    {
-                        if (data.Item2 != null)
-                        {
-                            ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
-
-                            ManagerName = ChangeMobModel.d.Mgrnm;
-                            ManagerId = ChangeMobModel.d.Mgrid;
-                            foreach(var item in ChangeMobModel.d.IDTYPSet.Results)
-                            {
-                                CopyIDTypes.Add(item);
-                            }
-
-                        }
-                    }else if(data.Item1.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                    {
-                        await ShowErrorWithQuitAsync(data.Item2);
-                    }
-                    else
-                    {
-                        await ShowErrorWithQuitAsync(data.Item2);
-                    }
+                    getIdTypesData(guid);
                 }
                 else
                 {
-                    //TODO
+                    NafathChangeMobileNumberModel model = new NafathChangeMobileNumberModel()
+                    {
+                        Guid = string.Empty,
+                        Idnumber = idNumber,
+                        Lang = WebServiceManager.GetLangZParameterAREN(),
+                        Scrid = string.Empty,
+                        Chmb = "X",
+                        Str = string.Empty,
+                        GuidNf = guid,
+                        mobileExtensions = new List<MOB_EXTENSet>(),
+                        taxpayerRegistrationTypes = new List<TP_REGTYPSet>()
+                    };
+                    nafathChmbResponse = await WebServiceManager.NafathChangeMobileNumber(model);
+                    IsLoading = false;
+                    if (nafathChmbResponse != null && nafathChmbResponse.d != null)
+                    {
+                        getIdTypesData(nafathChmbResponse?.d?.Guid);
+                    }
+                    else
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                    }
                 }
-
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                
             }
             finally
             {
                 IsLoading = false;
+            }
+        }
+
+
+        private async void getIdTypesData(string guidNf)
+        {
+            var data = await WebServiceManager.GetIDTypesForChangeMobNumber(guidNf);
+
+            IsLoading = false;
+            if (data.Item1 != null)
+            {
+                if (data.Item1.IsSuccessStatusCode)
+                {
+                    if (data.Item2 != null)
+                    {
+                        ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+
+                        ManagerName = ChangeMobModel.d.Mgrnm;
+                        ManagerId = ChangeMobModel.d.Mgrid;
+                        foreach(var item in ChangeMobModel.d.IDTYPSet)
+                        {
+                            CopyIDTypes.Add(item);
+                        }
+                    }
+                }
+                else if(data.Item1.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    await ShowErrorWithQuitAsync(data.Item2);
+                }
+                else
+                {
+                    await ShowErrorWithQuitAsync(data.Item2);
+                }
             }
         }
 
@@ -1468,11 +1508,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 {
                     if (i == 0)
                     {
-                        line1 = line1 + errorMesg.error.innererror.errordetails[i].message;
+                        line1 = line1 + errorMesg.error.innererror.errordetails[i].message + "\n";
                     }
                     else
                     {
-                        line1 = line1 + "\n" + errorMesg.error.innererror.errordetails[i].message;
+                        line1 = line1 + "\u2022" + errorMesg.error.innererror.errordetails[i].message + "\n";
                     }
                 }
                 String WithReplacedString = line1.Replace("An exception was raised", string.Empty);
@@ -1498,20 +1538,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
                 GetCaptcha d = new GetCaptcha();
                 d.__metadata = metadata;
-                d.Captcha = "";
-                d.Guid = "";
-                d.Taxpayer = "";
-                d.Refresh = "";
-                d.Application = CaptchaRequestCode;
+                d.captchaCode = "";
+                d.GUID = "";
+                d.taxpayer = "";
+                d.refresh = "";
+                d.applicationName = CaptchaRequestCode;
 
-                forgotPasswordOTP.d = d;
-                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
+                forgotPasswordOTP.result = d;
+                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(d);
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
+                if (forgotPasswordOTP?.result != null && !string.IsNullOrEmpty(forgotPasswordOTP.result.captchaCode))
                 {
-                    Captcha = forgotPasswordOTP.d.Captcha;
-                    GUID = forgotPasswordOTP.d.Guid;
+                    Captcha = forgotPasswordOTP.result.captchaCode;
+                    GUID = forgotPasswordOTP.result.GUID;
                     IsAPICalledSuccessfully = true;
                 }
                 else
@@ -1552,9 +1592,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
-        internal void InitCountryCodesAPI()
+        internal async void InitCountryCodesAPI()
         {
-            CountryCodesList = WebServiceManager.GAZTGetMobileRegionDropdown();
+            CountryCodesList = await WebServiceManager.GAZTGetMobileRegionDropdown();
         }
         private bool CheckOnlyNumber(char letter)
         {
@@ -1620,7 +1660,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         public void PrintForm(string fbnumz)
         {
         //https://sapgatewayd.zatca.gov.sa/sap/opu/odata/SAP/Z_DOWN_FORM_EXT_SRV/cover_formSet(Utype='',Fbnum='40000006834')/$value
-            String pdfUrl = ZATCAConstants.PrintFormUrl + "Fbnum='" + fbnumz + "')/$value";
+            String pdfUrl = ZATCAConstants.PrintFormUrl + fbnumz;
             ShowPdf(pdfUrl);
         }
         public void ShowPdf(string pdfUrl)
@@ -1642,9 +1682,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             catch (Exception ex)
             {
 
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
 
@@ -1682,7 +1722,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 otpTimer.Stop();
             }
-            
+
         }
     }
 }

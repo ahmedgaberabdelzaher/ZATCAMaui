@@ -1,8 +1,9 @@
+using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber;
+
 namespace ZATCAMAUI.Views.NewDesign.ChangeMobile;
 
 public partial class NafathChangeMobileNumberOTPView : ContentPage
-{
-	public partial class NafathChangeMobileNumberOTPView : ContentPage
 	{
 		NafathChangeMobileNumberOTPViewModel viewModel;
 		public NafathChangeMobileNumberOTPView(NafathChangeMobileNumberSendOTPResponse request)
@@ -61,4 +62,3 @@ public partial class NafathChangeMobileNumberOTPView : ContentPage
 			base.OnDisappearing();
 		}
 	}
-}

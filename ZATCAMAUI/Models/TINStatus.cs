@@ -1,15 +1,17 @@
-﻿namespace ZATCAMAUI.Models
+﻿using Newtonsoft.Json;
+
+namespace ZATCAMAUI.Models
 {
 
     public class ConsumerRegisteration
     {
-        public string Actnm { get; set; }
-        public string Tin { get; set; }
-        public string Caltyp { get; set; }
-        public string Idnumber { get; set; }
-        public string Udate { get; set; }
-        public string Status { get; set; }
-        public string StatusText { get; set; }
+        public string activityName { get; set; }
+        public string TIN { get; set; }
+        public string calendarType { get; set; }
+        public string idNumber { get; set; }
+        public string date { get; set; }
+        public string status { get; set; }
+        public string statusDescription { get; set; }
     }
     
     public class ItemSet
@@ -20,17 +22,17 @@
     public class CheckTINStatus
     {
         public Metadata __metadata { get; set; }
-        public string Langz { get; set; }
-        public string Tin { get; set; }
-        public string Caltyp { get; set; }
-        public DateTime? Udate { get; set; }
-        public string Status { get; set; }
-        public string StatusText { get; set; }
-        public ItemSet ItemSet { get; set; }
+        public string language { get; set; }
+        public string TIN { get; set; }
+        public string date { get; set; }
+        public string status { get; set; }
+        public string statusDescription { get; set; }
+        public List<ConsumerRegisteration> activities { get; set; }
     }
     
     public class TINStatus
     {
+        [JsonProperty("data")]
         public CheckTINStatus d { get; set; }
     }
 }

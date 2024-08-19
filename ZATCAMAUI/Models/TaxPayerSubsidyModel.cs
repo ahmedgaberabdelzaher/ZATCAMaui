@@ -4,11 +4,11 @@ namespace ZATCAMAUI.Models
 {
     public class TaxPayerSubsidyModel
     {
-        public string Euser { get; set; }
-        public string Fbguid { get; set; }
-        public string Langz { get; set; }
-        public string Source { get; set; }
-        public string Partner { get; set; }
+        public string authenticationUser { get; set; }
+        public string formBundleGUID { get; set; }
+        public string language { get; set; }
+        public string source { get; set; }
+        public string TIN { get; set; }
 
     }
 
@@ -26,34 +26,31 @@ namespace ZATCAMAUI.Models
 
     public class SubsidyData
     {
-        [JsonProperty("__metadata")]
-        public MetadataSubsidy Metadata { get; set; }
+        [JsonProperty("authenticationUser")]
+        public string AuthenticationUser { get; set; }
 
-        [JsonProperty("Euser")]
-        public string Euser { get; set; }
-
-        [JsonProperty("ExternalPortal")]
+        [JsonProperty("externalPortal")]
         public string ExternalPortal { get; set; }
 
-        [JsonProperty("Source")]
+        [JsonProperty("source")]
         public string Source { get; set; }
 
-        [JsonProperty("Langz")]
-        public string Langz { get; set; }
+        [JsonProperty("language")]
+        public string Language { get; set; }
 
-        [JsonProperty("Partner")]
-        public string Partner { get; set; }
+        [JsonProperty("formBundleGUID")]
+        public string FormBundleGUID { get; set; }
 
-        [JsonProperty("Fbguid")]
-        public string Fbguid { get; set; }
-
-        [JsonProperty("Guid")]
+        [JsonProperty("GUID")]
         public string Guid { get; set; }
+
+        [JsonProperty("TIN")]
+        public string TIN { get; set; }
     }
 
     public class SubsidyResponseModel
     {
-        [JsonProperty("d")]
-        public SubsidyData D { get; set; }
+        [JsonProperty("result")]
+        public SubsidyData Data { get; set; }
     }
 }

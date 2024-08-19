@@ -368,7 +368,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             string[] filetypes;
 
-            filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForAll();
+            filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForAll();
 
             PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
             //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
@@ -400,7 +400,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         string[] filetypes;
 
-                        filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForAll();
+                        filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForAll();
 
                         PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
                         //var fileData = await CrossFilePicker.Current.PickFile(filetypes);

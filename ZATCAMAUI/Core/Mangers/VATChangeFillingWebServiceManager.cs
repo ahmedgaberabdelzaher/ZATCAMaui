@@ -6,6 +6,7 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.ChageFillingPeriodModel;
+using ZATCAMAUI.Models.NewModelAPI;
 using static ZATCAMAUI.Models.ErrorMessage;
 
 namespace ZATCAMAUI.Core.Mangers
@@ -18,19 +19,27 @@ namespace ZATCAMAUI.Core.Mangers
         {
             VATChangeFillingPeriodRequestModel _vATChangeFillingPeriodRequestModel = new VATChangeFillingPeriodRequestModel();
 
+            string _VATChangeFillingPeriodRequestData = string.Empty;
             if (NetworkCheck.IsInternet())
             {
-
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.VATChangeFillingPeriodGetURL + "Fbnumz='" + fbNum + "',PortalUsrz='" + "',Langz='" + lang + "',Operationz='" + "'," +
-                  "Gpartz='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',UserTypz='" + "',Fbguid='" + "')?$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
-                    HttpResponseMessage _vATChangeFillingPeriodGetResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
-
-
-
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.VATChangeFillingPeriodGetURL + App.TP.TIN + "&language=" + lang;
+                    HttpResponseMessage _vATChangeFillingPeriodGetResponse = await client.GetAsync(url);
                     if (_vATChangeFillingPeriodGetResponse != null)
                     {
                         if (_vATChangeFillingPeriodGetResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -54,9 +63,11 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             App.Token = NewToken;
                         }
-                        string _VATChangeFillingPeriodRequestData = _vATChangeFillingPeriodGetResponse.Content.ReadAsStringAsync().Result;
-                        _vATChangeFillingPeriodRequestModel = JsonConvert.DeserializeObject<VATChangeFillingPeriodRequestModel>(_VATChangeFillingPeriodRequestData);
-
+                        _VATChangeFillingPeriodRequestData = _vATChangeFillingPeriodGetResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(_VATChangeFillingPeriodRequestData))
+                        {
+                            _vATChangeFillingPeriodRequestModel = JsonConvert.DeserializeObject<VATChangeFillingPeriodRequestModel>(_VATChangeFillingPeriodRequestData);
+                        }
                         if (!string.IsNullOrEmpty(_VATChangeFillingPeriodRequestData) && _vATChangeFillingPeriodRequestModel.d == null)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_VATChangeFillingPeriodRequestData);
@@ -105,17 +116,37 @@ namespace ZATCAMAUI.Core.Mangers
                     string LangZ = WebServiceManager.GetLangZParameterAREN();
                     string url = ZATCAConstants.VATChangeFillingPeriodPostURL;
                     var uri = new Uri(url);
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    HttpClient client = new HttpClient();
                     var serilized = JsonConvert.SerializeObject(_VATchangeFillingPeriodPostModel.d);
-                    client.DefaultRequestHeaders.Add("Token", App.Token);
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", LangZ);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
+                    string _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
                     _vATChangeFillingPeriodRequestModel = JsonConvert.DeserializeObject<VATChangeFillingPeriodRequestModel>(_contractReleasesubmitResponse);
+                    if (!string.IsNullOrEmpty(_contractReleasesubmitResponse) && _vATChangeFillingPeriodRequestModel.d == null)
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_contractReleasesubmitResponse);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            string errorMessage = string.Empty;
+                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            errorMessage = WithReplacedString;
+                            throw new GAZTVATRegistrationInProcessException(errorMessage);
+                        }
+                    }
                     return _vATChangeFillingPeriodRequestModel;
                 }
                 catch (GAZTVATChangeFillingPeriodException ex)
@@ -144,14 +175,23 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.VATChangeFillingPeriodGetDropdownURL + "Fbtypz='" + "',UserTypz='" + "',TransactionTypez='" + "',Lang='" + lang + "'," +
-                     "Gpart='" + gpart + "',Status='" + "')?$expand=UI_BTNSet,ATT_TYPSet,EffDateSet&$format=json";
-                    HttpResponseMessage _vATRefillingGetDropdownResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
-
-
-
+                    string lang = UtilityManager.GetLanguageParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.VATChangeFillingPeriodGetDropdownURL + gpart + "&language=" + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vATRefillingGetDropdownResponse = client.GetAsync(uri).Result;
+                  
                     if (_vATRefillingGetDropdownResponse != null)
                     {
                         if (_vATRefillingGetDropdownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -175,23 +215,19 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             App.Token = NewToken;
                         }
-                        string _VATRefillingRequestData = _vATRefillingGetDropdownResponse.Content.ReadAsStringAsync().Result;
-                        _vATRefillingDropdownModel = JsonConvert.DeserializeObject<VATRefillingDropdownModel>(_VATRefillingRequestData);
-
-                        if (!string.IsNullOrEmpty(_VATRefillingRequestData) && _vATRefillingDropdownModel.d == null)
+                        String _VATRefillingRequestData = _vATRefillingGetDropdownResponse.Content.ReadAsStringAsync().Result;
+                        
+                        if (!string.IsNullOrEmpty(_VATRefillingRequestData))
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_VATRefillingRequestData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            if (string.IsNullOrEmpty(_VATRefillingRequestData) != true)
                             {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                                _vATRefillingDropdownModel = JsonConvert.DeserializeObject<VATRefillingDropdownModel>(_VATRefillingRequestData);
                             }
+
+
+
                         }
+
                     }
                     return _vATRefillingDropdownModel;
                 }
@@ -227,10 +263,25 @@ namespace ZATCAMAUI.Core.Mangers
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                     char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-
-                    string Url = ZATCAConstants.GAZTVATSignUpValidateId + "(Tin='" + tin + "',Idtype='" + string.Empty + "',Idnum='" + string.Empty + "',Country='',PassExpDt='',TaxpDob='" + string.Empty + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", "EN");
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var requestModel = new ValidateVATSignupTaxpayerRequest()
+                    {
+                        TIN = tin,
+                        idType = string.Empty,
+                        idNumber = string.Empty,
+                        country = string.Empty,
+                        passExpiryDate = string.Empty,
+                        taxpayerBirthDate = string.Empty
+                    };
+                    var serilized = JsonConvert.SerializeObject(requestModel);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    String Url = ZATCAConstants.GAZTVATSignUpValidateId;
                     var uri = new Uri(Url);
-                    HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
+                    HttpResponseMessage VATSignUpIdValidateObject = await client.PostAsync(uri, contentPost);
                     if (VATSignUpIdValidateObject != null)
                     {
                         if (VATSignUpIdValidateObject.StatusCode == HttpStatusCode.Unauthorized)
@@ -296,14 +347,34 @@ namespace ZATCAMAUI.Core.Mangers
                 string SignUpCityList = string.Empty;
                 try
                 {
-                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
-                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    string lang = WebServiceManager.GetLangZParameterAREN();
+                    string url = ZATCAConstants.GAZTVATSignUpValidateId;
+                    ValidationRequest validationRequest = new ValidationRequest();
+                    validationRequest.country = country;
+                    validationRequest.TIN = tin;
+                    validationRequest.idType = idType;
+                    validationRequest.idNumber = idnum;
+                    validationRequest.passExpiryDate = passExpdt;
+                    validationRequest.taxpayerBirthDate = taxpDOB;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
 
-                    string Url = ZATCAConstants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + idType + "',Idnum='" + idnum + "',Country='',PassExpDt='',TaxpDob='" + taxpDOB + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
-                    var uri = new Uri(Url);
-                    HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
+                    // String url = Constants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='" + DBO + "',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    var uri = new Uri(url);
+                    //  HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var serilized = JsonConvert.SerializeObject(validationRequest);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage VATSignUpIdValidateObject = await client.PostAsync(url, contentPost);
                     if (VATSignUpIdValidateObject != null)
                     {
                         if (VATSignUpIdValidateObject.StatusCode == HttpStatusCode.Unauthorized)
@@ -364,10 +435,6 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
-                //catch (Exception)
-                //{
-                //    return null;
-                //}
             }
             else
             {
@@ -385,14 +452,27 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     string taxType = "VT";
-
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.VATChangeFillingListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + gpart + "',Lang='" + lang + "'," +
-                      "UserTin='" + "')?&$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
-                    HttpResponseMessage _vatChangeFillingListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
-
-
+                    string lang = UtilityManager.GetLanguageParameter();
+                    //string lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    //String url = Constants.VATChangeFillingListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + gpart + "',Lang='" + lang + "'," +
+                    //  "UserTin='" + "')?&$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
+                    String url = ZATCAConstants.VATChangeFillingListURL + gpart + "&language=" + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vatChangeFillingListResponse = client.GetAsync(uri).Result;
+                    //HttpResponseMessage _vatChangeFillingListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
                     if (_vatChangeFillingListResponse != null)
                     {
@@ -417,25 +497,29 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             App.Token = NewToken;
                         }
-                        string _vatChangeFillingListData = _vatChangeFillingListResponse.Content.ReadAsStringAsync().Result;
-                        _vATChangeFillingListModel = JsonConvert.DeserializeObject<VATChangeFillingListModel>(_vatChangeFillingListData);
 
-                        if (!string.IsNullOrEmpty(_vatChangeFillingListData) && _vATChangeFillingListModel.d == null)
+                        String _vatChangeFillingListData = _vatChangeFillingListResponse.Content.ReadAsStringAsync().Result;
+                        //_vATChangeFillingListModel = JObject.Parse(_vatChangeFillingListData)["d"].ToString();
+
+                        //if (!string.IsNullOrEmpty(_vatChangeFillingListData) && _vATChangeFillingListModel.d == null)
+                        //{
+
+                        if (!string.IsNullOrEmpty(_vatChangeFillingListData))
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vatChangeFillingListData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            // _vatChangeFillingListData = JObject.Parse(_vatChangeFillingListData)["data"].ToString();
+                            if (string.IsNullOrEmpty(_vatChangeFillingListData) != true)
                             {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                                _vATChangeFillingListModel = JsonConvert.DeserializeObject<VATChangeFillingListModel>(_vatChangeFillingListData);
                             }
+
                         }
+
                     }
+
                     return _vATChangeFillingListModel;
+
                 }
+
                 catch (GAZTVATChangeFillingPeriodException ex)
                 {
                     throw new GAZTVATChangeFillingPeriodException(ex.Message);
@@ -461,15 +545,24 @@ namespace ZATCAMAUI.Core.Mangers
 
                 try
                 {
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     string NewToken = string.Empty;
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
-                    string url = ZATCAConstants.VATChangeFillingSummaryURL + "Fbnumz='" + fbnum + "',PortalUsrz='" + "',Langz='" + lang + "'," +
-                      "Operationz='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',UserTypz='" + "',Fbguid='" + "')?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json&sap-language=" + LangZAREN;
-                    HttpResponseMessage _vatChangeFillingSumamryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
+                    String url = ZATCAConstants.VATChangeFillingSummaryURL + App.TP.TIN + "&language=" + lang + "&formBundleNumber=" + fbnum;
 
-
+                    HttpResponseMessage _vatChangeFillingSumamryResponse = await client.GetAsync(url);
                     if (_vatChangeFillingSumamryResponse != null)
                     {
                         if (_vatChangeFillingSumamryResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -493,9 +586,11 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             App.Token = NewToken;
                         }
-                        string _vatChangeFillingSummaryData = _vatChangeFillingSumamryResponse.Content.ReadAsStringAsync().Result;
-                        _vATChangeFillingSummaryModel = JsonConvert.DeserializeObject<VATChangeFillingSummaryModel>(_vatChangeFillingSummaryData);
-
+                        String _vatChangeFillingSummaryData = _vatChangeFillingSumamryResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(_vatChangeFillingSummaryData))
+                        {
+                            _vATChangeFillingSummaryModel = JsonConvert.DeserializeObject<VATChangeFillingSummaryModel>(_vatChangeFillingSummaryData);
+                        }
                         if (!string.IsNullOrEmpty(_vatChangeFillingSummaryData) && _vATChangeFillingSummaryModel.d == null)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vatChangeFillingSummaryData);

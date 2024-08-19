@@ -41,14 +41,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat
             // * OLD TP PROFILE API
             //TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
 
-            // * NEW TP PROFILE API
-            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(UserId);
+           // *NEW TP PROFILE API
+           TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileAndUpdatePasswordAPICall(UserId);
 
             if (TPProfile != null)
             {
                 App.TP = new TaxPayerProfile();
                 App.TP = TPProfile;
-                App.TP.Userid = TPProfile.Tin;
+                App.TP.userId = TPProfile.Tin;
                 try
                 {
                     if (App.LoginDataRetrieved != null)

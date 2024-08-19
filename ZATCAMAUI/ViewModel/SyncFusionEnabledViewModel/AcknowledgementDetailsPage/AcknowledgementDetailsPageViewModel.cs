@@ -17,7 +17,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
         public ICommand OnVATRefreshButtonClicked { get; set; }
         public ICommand OnDownloadFormClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
-        public ICommand GoBackClick { get; set; }
         public ICommand GoHomeClick { get; set; }
         #endregion
         #region Property
@@ -211,24 +210,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             {
                 // Call Sadad number API
             });
-            OnDownloadFormClicked = new Command(async () =>
+            OnDownloadFormClicked = new Command( () =>
             {
-                String Url = string.Empty;
-                // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
-                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
+                string Url = string.Empty;
                 Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnum + "',Utype='')/$value?saml2=enabled";
                 ShowPdf(Url);
             });
-            OnAcknowlwdgementClicked = new Command(async () =>
+            OnAcknowlwdgementClicked = new Command( () =>
             {
-                String Url = string.Empty;
-                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
+                string Url = string.Empty;
                 Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnum + "')/$value?saml2=enabled";
                 ShowPdf(Url);
-            });
-            GoBackClick = new Command(() =>
-            {
-                _navigationService.GoBack();
             });
             GoHomeClick = new Command(() =>
             {
@@ -237,7 +229,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
         }
         #endregion
         #region Method
-        public async void ShowPdf(string pdfUrl)
+        public void ShowPdf(string pdfUrl)
         {
 
             if (pdfUrl != null)
@@ -258,10 +250,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 await Task.Run(async () =>
                 {
                     var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.data.Fbnum);
@@ -300,10 +289,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
                         }
                     }
                 });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (InternetException ex)
             {

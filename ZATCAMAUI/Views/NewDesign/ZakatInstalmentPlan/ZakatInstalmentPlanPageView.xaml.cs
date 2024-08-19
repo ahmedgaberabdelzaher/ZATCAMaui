@@ -518,7 +518,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                 {
                     if (arg != null)
                     {
-                        Device.BeginInvokeOnMainThread(() =>
+                        MainThread.BeginInvokeOnMainThread(() =>
                         {
 
                             try

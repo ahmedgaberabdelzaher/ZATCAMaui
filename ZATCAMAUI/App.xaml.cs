@@ -131,6 +131,36 @@ namespace ZATCAMAUI
         public static string GAZTBankAccountManagementPageView = "BankAccountManagementPageView";
         public static string GAZTBankAccountAddOrUpdatePageView = "BankAccountAddorUpdateIBANPageView";
         // * End
+
+        public static string ZakatRejectionReasonPopupPageView = "ZakatRejectionReasonPopupPageView";
+        public static string RelationShipManagerInfoPageView = "RelationShipManagerInfoPageView";
+        public static string UpdateVatEffectiveDatePageView = "UpdateVatEffectiveDatePageView";
+        //CR328
+        public static string ZakatExemptionPageView = "ZakatExemptionPageView";
+        public static string ZakatExemptionRequestListPageView = "ZakatExemptionRequestListPageView";
+        public static string ZakatExemptionSuccessPage = "ZakatExemptionSuccessPage";
+
+        //3818
+        public static string EscalatedCasesGSTCPageView = "EscalatedCasesGSTCPageView";
+        public static String AccountsStatementObjectionDetailsPage = "AccountsStatementObjectionDetailsPage";
+
+        //CR4910 
+        public static string TINOutletDeregistrationPageView = "TINOutletDeregistrationPageView";
+        public static string TinOutletDeRegRequestPageView = "TinOutletDeRegRequestPageView";
+        public static string DeregistrationSuccessPageView = "DeregistrationSuccessPageView";
+
+        public static string FilterVatEffectiveDatePageView = "FilterVatEffectiveDatePageView";
+        public static string VatInstalmentPlanRevokePageView = "VatInstalmentPlanRevokePageView";
+        public static string VATInstalmentPopupNotesPageView = "VATInstalmentPopupNotesPageView";
+        public static string VATInstalmentPopupRevokePageView = "VATInstalmentPopupRevokePageView";
+        public static string OtpLoginPageView = "OtpLoginPageView";
+        public static string NafathLoginView = "NafathLoginView";
+        public static string NafathChangeMobileNumberView = "NafathChangeMobileNumberView";
+        public static string NafathAuthenticationView = "NafathAuthenticationView";
+        public static string NafathChangeMobileNumberOTPView = "NafathChangeMobileNumberOTPView";
+        public static string NafathChangeMobileNumberSuccessView = "NafathChangeMobileNumberSuccessView";
+        public static string AccountLockedPageView = "AccountLockedPageView";
+
         #endregion
 
         #region new design views Release2
@@ -172,7 +202,6 @@ namespace ZATCAMAUI
         public static string OldZakatInstalmentPlanListPageView = "OldZakatInstalmentPlanListPageView";
         public static string OldZakatInstalmentPlanSuccessPage = "OldZakatInstalmentPlanSuccessPage";
         public static string AddNotesPopupPageView = "AddNotesPopupPageView";
-        public static string EscalatedCasesGSTCPageView = "EscalatedCasesGSTCPageView";
 
         #endregion
 
@@ -314,7 +343,7 @@ namespace ZATCAMAUI
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
         public static string fontFamilyRoman = null;
-        public static TIN CurrentDropdownTIN;
+        public static TINModel CurrentDropdownTIN;
         public static bool IsJailBrokenDevice = false;
         public static string CalType = "G";
         public static string ACCalType = "G";
@@ -356,9 +385,16 @@ namespace ZATCAMAUI
         public static string IncomingChannel = string.Empty;
         public static bool DoesLoginNeedToBeRefreshed;
         public static string PaymentGuid = string.Empty;
+        public static string securityAuthorizationKey = string.Empty;
         public static bool isFromDashboard = false;
         public static string selectedForm12Fbguid = string.Empty;
         public static bool isMybillsRefresh = false;
+        public static string VatRevokeFBNum = "";
+        public static string MobileNumber = String.Empty;
+
+        public static List<Attachment> DeregisterAttachments = new List<Attachment>();
+        public static string DeRegRequestStatus = string.Empty;
+
         //Cr6264
 
         public static bool IsVAtProfitForGoods { get; set; }
@@ -392,6 +428,7 @@ namespace ZATCAMAUI
 
         public string acntStatementsSelectedTaxTypeFilterId = string.Empty;
         public string acntStatementsStatementFilterId = string.Empty;
+        public string guidID = string.Empty;
 
         public static ActivityIndicatorPageView ActivityIndicatorView;
         public static HttpClientHandler httpClientHandler = null;
@@ -761,7 +798,7 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
             IsJailBrokenDevice = false;
             try
             {
-                IsJailBrokenDevice = DependencyService.Get<ZATCAMAUI.Core.Interfaces.IDeviceInfo>().IsJailBreakDetected();
+                IsJailBrokenDevice = DependencyService.Get<ZATCAMAUI.Core.Interfaces.IDeviceInfoZATCA>().IsJailBreakDetected();
             }
             catch (Exception)
             {

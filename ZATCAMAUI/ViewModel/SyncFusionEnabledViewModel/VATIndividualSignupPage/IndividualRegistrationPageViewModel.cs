@@ -224,21 +224,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("IsCitizen");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
         private bool _isOTPEncripted = true;
         public bool IsOTPEncripted
         {
@@ -907,8 +892,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 }
                 OnPropertyChanged("SelectedIdType");

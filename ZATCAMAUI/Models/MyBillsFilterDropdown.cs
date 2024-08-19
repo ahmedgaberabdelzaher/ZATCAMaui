@@ -17,16 +17,15 @@ namespace ZATCAMAUI.Models
     public class MyBillsFilterDropdown
     {
         public Metadata __metadata { get; set; }
-        public string Mandt { get; set; }
-        public string Spras { get; set; }
-        public string TaxType { get; set; }
-        public DateTime FromDate { get; set; }
-        public string StatementFilter { get; set; }
-        public string Counter { get; set; }
-        public string Contractobject { get; set; }
-        public string AbtypPs { get; set; }
-        public string Txt30 { get; set; }
-        public DateTime ToDate { get; set; }
-        public string Txt30Mobile { get; set; }
+        public string language { get; set; }
+        public string systemCode { get; set; }
+        public string taxType { get; set; }
+        public DateTime fromDate { get; set; }
+        public string statementFilter { get; set; }
+        public string counter { get; set; }
+        public string contractObject { get; set; }
+        public string revenueType { get; set; }
+        public string revenueTypeDescription { get; set; }
+        public string toDate { get; set; }
     }
 }

@@ -22,8 +22,9 @@ namespace ZATCAMAUI.Models
         public string Begdaz { get; set; }
         public string Enddaz { get; set; }
         public string Ctime { get; set; }
-        public DateTime Cdate { get; set; }
+        public string Cdate { get; set; }
         public string TaxtpFg { get; set; }
+        public string FBnum { get; set; }
     }
     
     public class CorrespondenceCollection : ObservableCollection<CorrespondanceModel>

@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
 {
 
     public class EstimatedZakatReturns
     {
+        [JsonProperty("data")]
         public EstimatedZakatReturnsD d { get; set; }
     }
     
@@ -29,26 +31,25 @@ namespace ZATCAMAUI.Models
         public string Statfg { get; set; }
         public string Monthz { get; set; }
         public string UserErrFg { get; set; }
+
         public string Gpart { get; set; }
         public string Lang { get; set; }
         public string Begda { get; set; }//Date
         public string Endda { get; set; }//Date
+
         public string ObligFlag { get; set; }
         public string Vtref { get; set; }
         public string Incotyp { get; set; }
         public string Incotext { get; set; }
         public string Fbtyp { get; set; }
         public string FbtText { get; set; }
-        public string Due { get; set; }
-        public string Persl { get; set; }
         public string TaxPeriod { get; set; } //Date
-        public string DueDt { get; set; }
         public string Fbnum { get; set; }
         public string Status { get; set; }
         public string CalendrTyp { get; set; }
         public string Abrzu { get; set; } //Date
         public string Abrzo { get; set; } //Date
-        public string Stat { get; set; }
+        public string Stat { get; set; } // status
         public bool ObjFiled { get; set; }
         public bool RefundFiled { get; set; }
         public string SadadDoc1 { get; set; }
@@ -57,7 +58,6 @@ namespace ZATCAMAUI.Models
         public string Period { get; set; }
         public string Statflag { get; set; }
         public string DueDtC { get; set; }
-        public string Flag { get; set; }
         public string Comb { get; set; }
         public string Auditor { get; set; }
         public bool AudFlag { get; set; }
@@ -86,27 +86,27 @@ namespace ZATCAMAUI.Models
                 _dueDate = value;
             }
         }
-        //public string _dueDT;
-        //public string DueDt
-        //{
-        //    get
-        //    {
-        //        return _dueDT;
-        //    }
-        //    set
-        //    {
-        //        _dueDT = value;
-        //        if (_dueDT != null)
-        //        {
-        //            if (_dueDT.Contains("T"))
-        //            {
-        //                string[] _dueDate = new String[2];
-        //                _dueDate = _dueDT.Split('T');
-        //                DueDate = _dueDate[0];
-        //            }
-        //        }
-        //    }
-        //}//DueDate
+        public string _dueDT;
+        public string DueDt
+        {
+        get
+            {
+                return _dueDT;
+            }
+    set
+            {
+                _dueDT = value;
+                if (_dueDT != null)
+                {
+                    if (_dueDT.Contains("T"))
+                    {
+                        string[] _dueDate = new String[2];
+    _dueDate = _dueDT.Split('T');
+                        DueDate = _dueDate[0];
+                    }
+                }
+            }
+        }//DueDate
         //private string _statusImage;
         public string StatusImage { get; set; }
         //{
@@ -195,74 +195,197 @@ namespace ZATCAMAUI.Models
     
     public class EstimatedZakatReturnsD
     {
-        public Metadata __metadata { get; set; }
+        //public Metadata __metadata { get; set; }
+
+        [JsonProperty("userTIN")]
         public string UserTin { get; set; }
+
+        [JsonProperty("client")]
         public string Client { get; set; }
+
+        [JsonProperty("user")]
         public string Zuser { get; set; }
+
+        [JsonProperty("registrationStatus")]
         public string Zregstatus { get; set; }
+
+        [JsonProperty("fillingObligation")]
         public int Zfillingoblig { get; set; }
+
+        [JsonProperty("businessPartnerNumber")] //bussiness Partner Number
         public string Bpnum { get; set; }
-        public string Name { get; set; }
+
+        //public string Name { get; set; } // Not found
+        
+        [JsonProperty("title")]
         public string Title { get; set; }
+
+        [JsonProperty("taxType")]
         public string Taxtype { get; set; }
+
+        [JsonProperty("branchDescription")] // Branch description
         public string Branch { get; set; }
+
+        [JsonProperty("portNumber")]
         public string PortNo { get; set; }
+
+        [JsonProperty("systemName")]
         public string SystemName { get; set; }
+
+        [JsonProperty("protocol")]
         public string Protocol { get; set; }
+
+        [JsonProperty("referenceNumber")]
         public int Refnum { get; set; }
+
+        [JsonProperty("requestNumber")]
         public int Reqnum { get; set; }
+
+        [JsonProperty("correspondenceNumber")]
         public int Corrnum { get; set; }
+
+        [JsonProperty("registrationNumber")]
         public int Regnum { get; set; }
+
+        [JsonProperty("accountNumber")]
         public int Accnum { get; set; }
+
+        [JsonProperty("obligationNumber")]
         public int Oblnum { get; set; }
+
+        [JsonProperty("language")]
         public string Lang { get; set; }
+
+        [JsonProperty("auditor")]
         public string Auditor { get; set; }
+
+        [JsonProperty("isAuditorReturn")]
         public bool AudReturn { get; set; }
+
+        [JsonProperty("isAuditorObjection")]
         public bool AudObjection { get; set; }
+
+        [JsonProperty("isAuditorRequest")]
         public bool AudRequest { get; set; }
+
+        [JsonProperty("isAuditorRefund")]
         public bool AudRefund { get; set; }
+
+        [JsonProperty("calenderType")]
         public string Caltype { get; set; }
+
+        [JsonProperty("isTileOutlet")] 
         public bool TileOutlet { get; set; }
+
+        [JsonProperty("isTilePermit")]
         public bool TilePermit { get; set; }
+
+        [JsonProperty("isTileTIN")]
         public bool TileTin { get; set; }
+
+        [JsonProperty("isBankruptcy")]
         public bool IsBankruptcy { get; set; }
+
+        [JsonProperty("authenticationUser1")]
         public string Euser1 { get; set; }
+
+        [JsonProperty("authenticationUser2")]
         public string Euser2 { get; set; }
+
+        [JsonProperty("authenticationUser3")]
         public string Euser3 { get; set; }
+
+        [JsonProperty("authenticationUser4")]
         public string Euser4 { get; set; }
+
+        [JsonProperty("authenticationUser5")]
         public string Euser5 { get; set; }
+
+        [JsonProperty("authenticationUser")]
         public string Euser { get; set; }
+
+        [JsonProperty("formBundleGUID")]
         public string Fbguid { get; set; }
+
+        [JsonProperty("isAuditorRefundTransaction")]
         public bool AudRefundTrn { get; set; }
+
+        [JsonProperty("portalLink")]
         public string IntPortal { get; set; }
+
+        [JsonProperty("isUpdateRegistrationOutlet")]
         public bool UpdregOutflag { get; set; }
+
+        [JsonProperty("isDisplayShare")]
         public bool DisSharetile { get; set; }
+
+        [JsonProperty("isNotificationLog")]
         public bool NotifLogFlag { get; set; }
+
+        [JsonProperty("isEnableTile")]
         public bool EnableTile { get; set; }
-        public string Dept { get; set; }
+
+        [JsonProperty("definedArea")]
+        public string Dept { get; set; } // Not found
+
+        [JsonProperty("type")]
         public string Type { get; set; }
+
+        [JsonProperty("isEnableInstallementPlan")]
         public bool EnableInstPlan { get; set; }
+
+        [JsonProperty("overDue")]
         public string Overdue { get; set; }
+
+        [JsonProperty("interest")]
         public string Interest { get; set; }
+
+        [JsonProperty("penaltyAmount")]
         public string Penalty { get; set; }
+
+        [JsonProperty("exemptDetail")]
         public string ExeDtFlg { get; set; }
+
+        [JsonProperty("exemptApplication")]
         public string ExeAppFlg { get; set; }
+
+        [JsonProperty("hostName")]
         public string HostName { get; set; }
+
+        [JsonProperty("indirectCorrespondenceNumber")]
         public int Indcorrnum { get; set; }
-        public string Ettr { get; set; }
+
+        [JsonProperty("closelyDefinedArea")]
+        public string Ettr { get; set; } // Not found
+
+        [JsonProperty("vatDetail")]
         public string VatDtFlg { get; set; }
+
+        [JsonProperty("warehouseDetail")]
         public string WarDtFlg { get; set; }
-        public string RetItFlg { get; set; }
+
+        /*public string RetItFlg { get; set; }
         public int RetItCnt { get; set; }
         public int Actcnt { get; set; }
         public int Rencnt { get; set; }
         public int Cnlcnt { get; set; }
-        public string NregDtFlg { get; set; }
+        public string NregDtFlg { get; set; }*/
+
+        [JsonProperty("VATConfig")]
         public string VatConfFlg { get; set; }
+
+        [JsonProperty("VATIndividualSignUp")]  // vat indivisual signup
         public string VtiaSignFg { get; set; }
-        public string VtepFg { get; set; }
+
+        [JsonProperty("VATEligiblePerson")]
+        public string VtepFg { get; set; } // vat eligable persion
+
+        [JsonProperty("callService")]
         public string CallServ { get; set; }
-        public ListSet listSet { get; set; }
+
+        [JsonProperty("lists")]
+        public List<EstimatedZakatReturnsResult> results { get; set; }
+        //public List<ListSet> listSet { get; set; }
     }
     
     public class ZAKATStatus

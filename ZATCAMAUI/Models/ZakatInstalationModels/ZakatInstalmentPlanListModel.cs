@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.ZakatInstalationModels
 {
@@ -797,6 +798,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
    
     public class EvtNotif12Set
     {
+        [JsonProperty("notifications2")]
         public List<EvtNotif12SetResult> results { get; set; }
     }
 
@@ -948,9 +950,8 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
     public class ZakatRevokeValidateModel
     {
-       
-        public D d { get; set; }
-       
+        
+        [JsonProperty("data")] public D d { get; set; }
         public class __metadata
         {
             public string id { get; set; }
@@ -962,9 +963,13 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
         public class D
         {
             public __metadata __metadata { get; set; }
+            [JsonProperty("formBundleNumber")]
             public string Fbnum { get; set; }
+            [JsonProperty("validFlag")]
             public bool Valid { get; set; }
+            [JsonProperty("validSMSFlag")]
             public bool ValidSms { get; set; }
+            [JsonProperty("errorMessage")]
             public string Error { get; set; }
 
         }
@@ -973,9 +978,10 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
     public class ZakatRevokeSendSMSModel
     {
-       
-        public D d { get; set; }
-       
+        
+        [JsonProperty("data")]
+        public IList<Results> results { get; set; }
+        
         public class __metadata
         {
             public string id { get; set; }
@@ -987,12 +993,19 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
         public class Results
         {
             public __metadata __metadata { get; set; }
+            [JsonProperty("formBundleNumber")]
             public string Fbnum { get; set; }
+            [JsonProperty("errorDescription")]
             public string Error { get; set; }
+            [JsonProperty("TIN")]
             public string Tin { get; set; }
+            [JsonProperty("OTP")]
             public string Code { get; set; }
+            [JsonProperty("isValid")]
             public bool Valid { get; set; }
+            [JsonProperty("isValidSMS")]
             public bool ValidSms { get; set; }
+            [JsonProperty("isValidEmail")]
             public bool ValidEmail { get; set; }
 
         }
@@ -1008,8 +1021,8 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
     public class ZakatInstalmentValidateNewRequestModel
     {
-       
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        
+        [JsonProperty("data")]
         public D d { get; set; }
        
         public class Metadata
@@ -1023,6 +1036,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
         public class AuthServSet
         {
+            [JsonProperty("authorizationServers")]
             public List<object> results { get; set; }
         }
 
@@ -1039,20 +1053,33 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
         public class Result
         {
-            public Metadata2 __metadata { get; set; }
+            [JsonProperty("dueAmount")]
             public string DueAmt { get; set; }
+            [JsonProperty("formBundleType")]
             public string Fbtyp { get; set; }
+            [JsonProperty("paymentFrequency")]
             public string PymntFreq { get; set; }
+            [JsonProperty("submitDate")]
             public object SubmitDt { get; set; }
+            [JsonProperty("formBundleStatus")]
             public string Fbsta { get; set; }
+            [JsonProperty("userType")]
             public string UserTyp { get; set; }
+            [JsonProperty("userStatus")]
             public string Fbust { get; set; }
+            [JsonProperty("TIN")]
             public string Tin { get; set; }
+            [JsonProperty("formBundleNumber")]
             public string Fbnum { get; set; }
+            [JsonProperty("totalAmount")]
             public string TotAmt { get; set; }
+            [JsonProperty("depositedAmount")]
             public string DpAmt { get; set; }
+            [JsonProperty("planDuration")]
             public string PlanDur { get; set; }
+            [JsonProperty("currency")]
             public string Waers { get; set; }
+            [JsonProperty("statusDescription")]
             public string Status { get; set; }
         }
 
@@ -1060,6 +1087,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
        
         public class WorklistSet
         {
+            [JsonProperty("worklist")]
             public List<Result> results { get; set; }
         }
 
@@ -1067,6 +1095,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
         public class RevokeListSet
         {
+            [JsonProperty("revokeList")]
             public List<object> results { get; set; }
         }
 
@@ -1106,6 +1135,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
         public class EvtNotif1Set
         {
+            [JsonProperty("notifications1")]
             public List<Result2> results { get; set; }
         }
 
@@ -1113,61 +1143,114 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
         public class D
         {
-            public Metadata __metadata { get; set; }
+            [JsonProperty("client")]
             public string Client { get; set; }
+            [JsonProperty("taxpayerName")]
             public string TinNm { get; set; }
+            [JsonProperty("accountNumber")]
             public int Accnum { get; set; }
+            [JsonProperty("activeCount")]
             public int Actcnt { get; set; }
+            [JsonProperty("auditor")]
             public string Auditor { get; set; }
+            [JsonProperty("isAuditorObjection")]
             public bool AudObjection { get; set; }
+            [JsonProperty("isAuditorRequest")]
             public bool AudRequest { get; set; }
+            [JsonProperty("TIN")]
             public string Bpnum { get; set; }
+            [JsonProperty("branch")]
             public string Branch { get; set; }
+            [JsonProperty("callService")]
             public string CallServ { get; set; }
+            [JsonProperty("calendarType")]
             public string Caltype { get; set; }
+            [JsonProperty("cancellationCount")]
             public int Cnlcnt { get; set; }
+            [JsonProperty("department")]
             public string Dept { get; set; }
+            [JsonProperty("isEnableInstallmentPlan")]
             public bool EnableInstPlan { get; set; }
+            [JsonProperty("isEnableTile")]
             public bool EnableTile { get; set; }
+            [JsonProperty("patchLevel")]
             public string Ettr { get; set; }
+            [JsonProperty("authenticationUser")]
             public string Euser { get; set; }
+            [JsonProperty("authenticationUser1")]
             public string Euser1 { get; set; }
+            [JsonProperty("authenticationUser2")]
             public string Euser2 { get; set; }
+            [JsonProperty("authenticationUser3")]
             public string Euser3 { get; set; }
+            [JsonProperty("authenticationUser4")]
             public string Euser4 { get; set; }
+            [JsonProperty("authenticationUser5")]
             public string Euser5 { get; set; }
+            [JsonProperty("formBundleGUID")]
             public string Fbguid { get; set; }
+            [JsonProperty("formBundleNumber")]
             public string Fbnum { get; set; }
+            [JsonProperty("hostName")]
             public string HostName { get; set; }
+            [JsonProperty("portalLink")]
             public string IntPortal { get; set; }
+            [JsonProperty("isBankruptcy")]
             public bool IsBankruptcy { get; set; }
+            [JsonProperty("language")]
             public string Lang { get; set; }
+            [JsonProperty("fullName")]
             public string Name { get; set; }
+            [JsonProperty("isNotificationLog")]
             public bool NotifLogFlag { get; set; }
+            [JsonProperty("objectionNumber")]
             public int Oblnum { get; set; }
+            [JsonProperty("overdueAmount")]
             public string Overdue { get; set; }
+            //  [JsonProperty("")]
             public string Penalty { get; set; }
+            [JsonProperty("portNumber")]
             public string PortNo { get; set; }
+            [JsonProperty("protocol")]
             public string Protocol { get; set; }
+            [JsonProperty("referenceNumber")]
             public int Refnum { get; set; }
+            [JsonProperty("registrationNumber")]
             public int Regnum { get; set; }
+            [JsonProperty("renewalCount")]
             public int Rencnt { get; set; }
+            [JsonProperty("requestNumber")]
             public int Reqnum { get; set; }
+            [JsonProperty("returnCount")]
             public int RetItCnt { get; set; }
+            [JsonProperty("return")]
             public string RetItFlg { get; set; }
+            [JsonProperty("systemName")]
             public string SystemName { get; set; }
+            [JsonProperty("taxTypeDescription")]
             public string Taxtype { get; set; }
+            [JsonProperty("title")]
             public string Title { get; set; }
+            [JsonProperty("partnerCategory")]
             public string Type { get; set; }
+            [JsonProperty("isOutletUpgrade")]
             public bool UpdregOutflag { get; set; }
+            [JsonProperty("userTIN")]
             public string UserTin { get; set; }
+            [JsonProperty("userType")]
             public string UserTyp { get; set; }
+            //  [JsonProperty("")]
             public string Zuser { get; set; }
-            public AuthServSet AuthServSet { get; set; }
-            public WorklistSet WorklistSet { get; set; }
-            public RevokeListSet RevokeListSet { get; set; }
-            public EvtNotif12Set EvtNotif12Set { get; set; }
-            public EvtNotif1Set EvtNotif1Set { get; set; }
+            [JsonProperty("authorizationServers")]
+            public List<object> AuthServSet { get; set; }
+            [JsonProperty("worklist")]
+            public List<Result> WorklistSet { get; set; }
+            [JsonProperty("revokeList")]
+            public List<object> RevokeListSet { get; set; }
+            [JsonProperty("notifications2")]
+            public List<EvtNotif12SetResult> EvtNotif12Set { get; set; }
+            [JsonProperty("notifications1")]
+            public List<Result2> EvtNotif1Set { get; set; }
         }
     }
 }

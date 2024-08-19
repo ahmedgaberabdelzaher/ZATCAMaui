@@ -1,5 +1,6 @@
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM;
 
 namespace ZATCAMAUI.Views.NewDesign.SupportPages;
 

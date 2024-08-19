@@ -1,5 +1,4 @@
-﻿
-using Mopups.Services;
+﻿using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
@@ -8,6 +7,7 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Models.AccountDetails;
 using ZATCAMAUI.Models.AccountStatements;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -23,8 +23,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
         public ICommand FilterCloseClick { get; set; }
         public ICommand FilterBtnCommand { get; set; }
         public ICommand FiltersTapped { get; set; }
+        public ICommand ClickOnSort { get; set; }
 
         #endregion
+        public static string currentSortType = "default";
 
         private bool calculateMyBills = false;
         public string FromStatus = "";
@@ -234,23 +236,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 OnPropertyChanged("SelcectedBillsIndex");
             }
         }
-
-        //public List<ReturnTypes> _TaxTypeForFilter = null;
-        //public List<ReturnTypes> TaxTypeForFilter
-        //{
-        //    get
-        //    {
-        //        return _TaxTypeForFilter;
-        //    }
-        //    set
-        //    {
-        //        if (_TaxTypeForFilter == value) return;
-
-        //        _TaxTypeForFilter = value;
-        //        OnPropertyChanged("TaxTypeForFilter");
-        //    }
-        //}
-
         public ASReturnTypes _SelectedTaxTypeForFilter = null;
         public ASReturnTypes SelectedTaxTypeForFilter
         {
@@ -307,6 +292,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+
+
         private ObservableCollection<object> _todayDateNormal;
         public ObservableCollection<object> TodayDateNormal
         {
@@ -337,7 +324,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 OnPropertyChanged("isFromFilter");
             }
         }
-
+        
         private ObservableCollection<object> _todayDateinHijri;
         public ObservableCollection<object> TodayDateinHijri
         {
@@ -370,6 +357,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        private String Opbel = "";
 
         private string _txFromDate = "";
         public string TxFromDate
@@ -528,7 +516,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_myBills == value) return;
 
                 _myBills = value;
-                if (_myBills != null && calculateMyBills)
+                if (_myBills != null)
                 {
 
                     //if (_myBills.Count != 0)
@@ -540,26 +528,45 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                         //I = 1 - Partially Paid
                         //O = 2 - Unpaid
 
-                        if (item.Status == "O")
+                        if (item.Status == "Open")
                         {
                             if (item.TestDueAmount != null)
                             {
                                 Amount = Amount + Convert.ToDouble(item.TestDueAmount);
                             }
+                            item.StatusTextColor = (Color)App.Current.Resources["Error"];
+                            item.StatusBackGColor = (Color)App.Current.Resources["ErrorBg"];
                         }
-                        if (item.Status == "P")
+                        else if (item.Status == "Paid")
                         {
                             if (item.TestDueAmount != null)
                             {
-                                Amount = Amount + Convert.ToDouble(item.TestDueAmount);
+                               // Amount = Amount + Convert.ToDouble(item.TestDueAmount);
+                               
                             }
+                            item.StatusTextColor = (Color)App.Current.Resources["Success"];
+                            item.StatusBackGColor = (Color)App.Current.Resources["SuccessBg"];
                         }
-                        else if (item.Status == "I")
+                        else if (item.Status == "Partially Paid")
+                        {
+                            if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
+                            {
+                                // Amount = Amount + Convert.ToDouble(item.TotalRemainingAmount);
+                                Amount = Amount +  (Convert.ToDouble(item.BETRW) - Convert.ToDouble(item.Paidamt));
+                            }
+                            item.StatusTextColor = (Color)App.Current.Resources["Partial"];
+                            item.StatusBackGColor = (Color)App.Current.Resources["PartialBg"];
+                        }
+                        else
                         {
                             if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
                             {
                                 Amount = Amount + Convert.ToDouble(item.TotalRemainingAmount);
                             }
+                            item.StatusTextColor = (Color)App.Current.Resources["color"];
+                            item.StatusBackGColor = (Color)App.Current.Resources["gray"];
+
+                            
                         }
                     }
 
@@ -589,8 +596,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-
-
+        private ObservableCollection<AccountStatus> _myBillsSTATUS;
+        public ObservableCollection<AccountStatus> MyBillsSTATUS
+        {
+            get
+            {
+                return _myBillsSTATUS;
+            }
+            set
+            {
+                if (_myBillsSTATUS == value) return;
+                _myBillsSTATUS = value;
+                OnPropertyChanged("MyBillsSTATUS");
+            }
+        }
 
         public void FiltersClicked()
         {
@@ -598,8 +617,55 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             /*IsSortByVisible = !IsSortByVisible;*/
         }
 
+        public void ClickSorted(string type1)
+        {
+            //currentSortType += 1;
+            
+            var sortedBills = new ObservableCollection<MyBills>();
+            if (type1 == AppResources.SortDefault)
+            {
+                type1 = AppResources.SortAcending;
+                sortedBills = new ObservableCollection<MyBills>(MyBillsOriginal.ToList()); 
+            }
+            else if(type1 == AppResources.SortAcending)
+            {
+                type1 = AppResources.SortDecending;
+                sortedBills = new ObservableCollection<MyBills>(MyBills.OrderBy(temp => float.Parse(temp.TestDueAmount)).ToList());  
+            }
+            else if(type1 == AppResources.SortDecending)
+            {
+                type1 = AppResources.SortDefault;
+                sortedBills = new ObservableCollection<MyBills>(MyBills.OrderByDescending(temp => float.Parse(temp.TestDueAmount)).ToList());
+                FromStatus = AppResources.All;
+            }
+                
+            FilterOnTaxType(sortedBills);
+        }
 
-        public void onPageLoad(BillInfo billInfo)
+        private AccoungtDetails _AccDertails = null;
+        public AccoungtDetails accoungtDetails1
+        {
+            get
+            {
+                return _AccDertails;
+            }
+            set
+            {
+                if (_AccDertails == value) return;
+                _AccDertails = value;
+               OnPropertyChanged("accoungtDetails1");
+            }
+
+        }
+
+        public AccoungtDetails ObjectBills(string Opbel, string fbnum)
+        {
+            string lang = UtilityManager.GetLanguageParameter();
+            return WebServiceManager.ZATCAAccGetDetails(Opbel, fbnum, lang, "AccountStatements");
+        }
+
+
+        public async Task onPageLoad(BillInfo billInfo)
         {
             IsLoading = true;
             MyBills = null;
@@ -609,8 +675,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    MyBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang, "AccountStatements");
-                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    var tell = await WebServiceManager.GetUserBills(App.TP.TIN, lang);
+                    MyBills = await WebServiceManager.GAZTGetMyBills(App.TP.TIN, lang, "AccountStatements");
+                    MyBillsSTATUS = await WebServiceManager.GAZTGETBillsSTS(App.TP.TIN, lang, "AccountStatements");
+                    //PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (MyBills != null && MyBills.Count != 0)
                     {
@@ -619,9 +687,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                         MyBillsOriginal = sortedBills;
 
                         SelcectedBillsIndex = 0;
-
-                        int milliseconds = 1000;
-                        Thread.Sleep(milliseconds);
 
                         if (billInfo != null)
                         {
@@ -650,7 +715,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                                 myBills.IsPeriodVisible = true;
                             }
 
-                            if (myBills.Status == "I")
+                            if (myBills.Status == "Partially Paid")
                             {
                                 if (string.IsNullOrEmpty(myBills.Paidamt))
                                 {
@@ -704,7 +769,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
         {
             IsLoading = true;
             var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
-            foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.D.Results)
+            foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.d)
             {
                 aSRevenueDropDownSetDataResults.TaxType = taxType;
                 AllTransactionFilters.Add(aSRevenueDropDownSetDataResults);
@@ -721,25 +786,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
                 TaxTypeForFilter = new ObservableCollection<ASReturnTypes>();
 
-
+               
                 var tempDirectTax = new ASReturnTypes { Id = "D", TaxType = AppResources.ASAccountStatementDirectTax };
                 var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = AppResources.ASAccountStatementInDirectTax };
 
-                if (TabIdentification.D.Direct == "X")
+                if (TabIdentification.d.Direct == "X")
                 {
                     TaxTypeForFilter.Add(tempDirectTax);
                 }
 
-                if (TabIdentification.D.Indirect == "X")
+                if (TabIdentification.d.Indirect == "X")
                 {
                     TaxTypeForFilter.Add(tempInDirectTax);
                 }
 
-                // IsLoading = false;
+               // IsLoading = false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
+                
+                
+
 
             }
 
@@ -762,109 +830,115 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                   defautlValIndirectTax.TaxType = "I";
                   defautlValIndirectTax.TaxType = "I";
                   AllTransactionFilters.Insert(1, defautlValIndirectTax);*/
-                if (TabIdentification.D.Direct == "X")
+                if (TabIdentification.d!=null && TabIdentification.d.Direct == "X")
                 {
                     await PopulateDataForTransactionTypes("D");
                 }
-                if (TabIdentification.D.Indirect == "X")
+
+                if (TabIdentification.d != null && TabIdentification.d.Indirect == "X")
                 {
                     await PopulateDataForTransactionTypes("I");
                 }
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
                     (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType, false);
-
-                foreach (ASReturnTypes aSReturnTypes in TaxTypeForFilter)
+                if (HeaderSet != null)
                 {
-                    if (HeaderSet.D.TaxType == aSReturnTypes.Id)
+                    foreach (ASReturnTypes aSReturnTypes in TaxTypeForFilter)
                     {
-                        SelectedTaxTypeForFilter = aSReturnTypes;
+                        if (HeaderSet.d.TaxType == aSReturnTypes.Id)
+                        {
+                            SelectedTaxTypeForFilter = aSReturnTypes;
+                        }
+                        else
+                        {
+                            SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+                        }
                     }
-                    else
+
+
+
+                    foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.d.TaxRelationSet)
                     {
-                        SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+                        if (TabIdentification.d.Direct == "X")
+                        {
+                            if (taxRelationSetResult.StatementFilter == "10")
+                            {
+                                taxRelationSetResult.DisplayId = 01;
+                            }
+                            if (taxRelationSetResult.StatementFilter == "01")
+                            {
+                                taxRelationSetResult.DisplayId = 02;
+                            }
+
+                            if (taxRelationSetResult.StatementFilter == "02")
+                            {
+                                taxRelationSetResult.DisplayId = 03;
+                            }
+                            if (taxRelationSetResult.StatementFilter == "03")
+                            {
+                                taxRelationSetResult.DisplayId = 04;
+                            }
+                        }
+                        if (TabIdentification.d.Indirect == "X")
+                        {
+                            if (taxRelationSetResult.StatementFilter == "06")
+                            {
+                                taxRelationSetResult.DisplayId = 06;
+                            }
+                            if (taxRelationSetResult.StatementFilter == "07")
+                            {
+                                taxRelationSetResult.DisplayId = 07;
+                            }
+                            if (taxRelationSetResult.StatementFilter == "09")
+                            {
+                                taxRelationSetResult.DisplayId = 09;
+                            }
+                            if (taxRelationSetResult.StatementFilter == "10")
+                            {
+                                taxRelationSetResult.DisplayId = 01;
+                            }
+                        }
                     }
+                    if (TransactionTypeFilter == null)
+                    {
+                        TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
+                    }
+                    TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.d.TaxRelationSet.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 04 || temp.DisplayId == 06 || temp.DisplayId == 07).ToList());
+
+
+                    SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
+
+
+                    var list = new List<string>();
+
+                    foreach (TaxRelationSetResult dropdown in TransactionTypeFilter)
+                    {
+                        try
+                        {
+                            list.Add(dropdown.Txt30.ToUpper());
+                        }
+                        catch (Exception ex)
+                        {
+
+                            
+                            
+                            
+                        }
+
+
+                    }
+
+
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = list;
+                    genericPickerModel.PickerTitle = "";
+                    genericPickerModel.PickerId = "AccountStatement";
+                    genericPickerModel.SelectedValue = SelectedTransactionTypeFilter.Txt30;
+
+                    PickerModel = genericPickerModel;
                 }
-
-
-
-                foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
-                {
-                    if (TabIdentification.D.Direct == "X")
-                    {
-                        if (taxRelationSetResult.StatementFilter == "10")
-                        {
-                            taxRelationSetResult.DisplayId = 01;
-                        }
-                        if (taxRelationSetResult.StatementFilter == "01")
-                        {
-                            taxRelationSetResult.DisplayId = 02;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "02")
-                        {
-                            taxRelationSetResult.DisplayId = 03;
-                        }
-                        if (taxRelationSetResult.StatementFilter == "03")
-                        {
-                            taxRelationSetResult.DisplayId = 04;
-                        }
-                    }
-                    if (TabIdentification.D.Indirect == "X")
-                    {
-                        if (taxRelationSetResult.StatementFilter == "06")
-                        {
-                            taxRelationSetResult.DisplayId = 06;
-                        }
-                        if (taxRelationSetResult.StatementFilter == "07")
-                        {
-                            taxRelationSetResult.DisplayId = 07;
-                        }
-                        if (taxRelationSetResult.StatementFilter == "09")
-                        {
-                            taxRelationSetResult.DisplayId = 09;
-                        }
-                        if (taxRelationSetResult.StatementFilter == "10")
-                        {
-                            taxRelationSetResult.DisplayId = 01;
-                        }
-                    }
-                }
-                if (TransactionTypeFilter == null)
-                {
-                    TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
-                }
-                TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 04 || temp.DisplayId == 06 || temp.DisplayId == 07).ToList());
-
-
-                SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
-
-
-                var list = new List<string>();
-
-                foreach (TaxRelationSetResult dropdown in TransactionTypeFilter)
-                {
-                    try
-                    {
-                        list.Add(dropdown.Txt30.ToUpper());
-                    }
-                    catch (Exception)
-                    {
-                    }
-
-
-                }
-
-
-                GenericPickerModel genericPickerModel = new GenericPickerModel();
-                genericPickerModel.PickerData = list;
-                genericPickerModel.PickerTitle = "";
-                genericPickerModel.PickerId = "AccountStatement";
-                genericPickerModel.SelectedValue = SelectedTransactionTypeFilter.Txt30;
-
-                PickerModel = genericPickerModel;
-
-                //IsLoading = false;
+                IsLoading = false;
 
             }
             catch (GAZTErrorException ex)
@@ -881,19 +955,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-
-                    _navigationService.GoBack();
+             
+                _navigationService.GoBack();
                 });
-
+              
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
-
+                IsLoading = false;
             }
         }
 
@@ -901,12 +970,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
         public async void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
-
-
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             if (SelectedTransactionTypeFilter != null)
             {
 
@@ -928,22 +992,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                     if (isTaxTypeFilter)
                     {
-                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Paid" || x.Status == "Partially Paid" || x.Status == "Open").ToList());
 
                         FilterOnTaxType(MyBills);
                         ApplyFilter();
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
+                        IsLoading = false;
                         return;
 
 
                     }
                 }
-                catch (Exception)
-                {
-                }
+                catch (Exception )
+                {}
 
 
                 if (isFromFilter)
@@ -960,10 +1020,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                                 CultureInfo arCI = new CultureInfo("ar-SA");
                                 DateTime FormatedTxFromDate = DateTime.ParseExact(TxFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                                     DateTimeStyles.AllowInnerWhite);
+
                                 DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                                     DateTimeStyles.AllowInnerWhite);
 
-                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
+                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.faednDate>= FormatedTxFromDate && p.faednDate <= FormatedTxToDate));
                             }
                             else
                             {
@@ -972,14 +1033,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                                     DateTimeStyles.AllowInnerWhite);
                                 DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                                     DateTimeStyles.AllowInnerWhite);
-                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.Faedn >= FormatedTxFromDate && p.Faedn <= FormatedTxToDate));
+                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.faednDate >= FormatedTxFromDate && p.faednDate <= FormatedTxToDate));
                             }
 
                             FilterOnTaxType(MyBills);
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        
+                        
+                        
+
                     }
 
 
@@ -996,23 +1061,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                             if (IsHijriCal)
                             {
                                 CultureInfo arCI = new CultureInfo("ar-SA");
-                                DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
+                                DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                                     DateTimeStyles.AllowInnerWhite);
-                                DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
+                                DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                                     DateTimeStyles.AllowInnerWhite);
 
-                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => Convert.ToInt32(string.Format("{0:yyyy}", p.PeriodPart1)) >= Convert.ToInt32(string.Format("{0:yyyy}", FormatedTpFromDate)) && Convert.ToInt32(string.Format("{0:yyyy}", p.PeriodPart2)) <= Convert.ToInt32(string.Format("{0:yyyy}", FormatedTpToDate))));
-                            }
+                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => UtilityManager.ConvertDateStringtoDateTime(p.PeriodPart1, "yyyy/MM/dd", arCI) >= FormatedTpFromDate && UtilityManager.ConvertDateStringtoDateTime(p.PeriodPart2, "yyyy/MM/dd", arCI) <= FormatedTpToDate));
+                               }
                             else
                             {
                                 CultureInfo enCI = new CultureInfo("en-US");
-                                DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "yyyy", enCI.DateTimeFormat,
+                                DateTime FormatedTpFromDate = DateTime.ParseExact(TPFromDate, "dd/MM/yyyy", enCI.DateTimeFormat,
                                     DateTimeStyles.AllowInnerWhite);
-                                DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
+                                DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "dd/MM/yyyy", enCI.DateTimeFormat,
                                     DateTimeStyles.AllowInnerWhite);
-
-                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => Convert.ToInt32(p.PeriodPart1.Substring(p.PeriodPart1.Length - 4, 4)) >= Convert.ToInt32(string.Format("{0:yyyy}", FormatedTpFromDate)) && Convert.ToInt32(p.PeriodPart2.Substring(p.PeriodPart2.Length - 4, 4)) <= Convert.ToInt32(string.Format("{0:yyyy}", FormatedTpToDate))));
-
+                                MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => UtilityManager.ConvertDateStringtoDateTime(p.PeriodPart1, "dd/MM/yyyy", enCI) >= FormatedTpFromDate && UtilityManager.ConvertDateStringtoDateTime(p.PeriodPart2, "dd/MM/yyyy", enCI) <= FormatedTpToDate));
                             }
 
                             FilterOnTaxType(MyBills);
@@ -1020,8 +1083,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+
+                        
+                        
+                        
+
                     }
 
 
@@ -1031,13 +1099,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     {
                         var filterItems = MyBills;
                         MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => Convert.ToDouble(p.BETRW) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.BETRW) <= Convert.ToDouble(ToTxAmount)));
+
+                        FilterOnTaxType(MyBills);
+
                     }
 
 
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    IsLoading = false;
                     if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
                     {
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
@@ -1066,33 +1134,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     if (FromStatus != "")
                     {
-                        if (FromStatus.Equals(AppResources.Paid))
+                        if (FromStatus.Equals(AppResources.PAIDPR))
                         {
-                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Paid").ToList());
                         }
 
-                        if (FromStatus.Equals(AppResources.PartiallyPaid))
+                        if (FromStatus.Equals(AppResources.PARPAIDPR))
                         {
-                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Partially Paid").ToList());
                         }
 
-                        if (FromStatus.Equals(AppResources.UnPaid))
+                        if (FromStatus.Equals(AppResources.UNPAIDPR))
                         {
-                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Open").ToList());
                         }
-
+                        if (FromStatus.Equals(AppResources.TRANSFEREDPR))
+                        {
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 3)).ToList());
+                        }
+                        if (FromStatus.Equals(AppResources.REVERSEPR))
+                        {
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 4)).ToList());
+                        }
                         if (FromStatus.Equals(AppResources.All))
                         {
-                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Paid" || x.Status == "Partially Paid" || x.Status == "Open" || x.Status == Enum.GetName(typeof(BillStatus), 3) || x.Status == Enum.GetName(typeof(BillStatus), 4)).ToList());
                         }
-                        //FromStatus = "";
 
                         FilterOnTaxType(MyBills);
 
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
+                        IsLoading = false;
 
                         return;
                     }
@@ -1100,27 +1171,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     {
                         if (SearchText != "")
                         {
-                            var suggestion = MyBillsOriginal.Where(c => c.Abtypt.ToLower().Contains(SearchText.ToLower()) || c.Fbnum.ToLower().Contains(SearchText.ToLower())
-                                || c.Status.ToLower().Contains(SearchText.ToLower()) || c.StatusText.ToLower().Contains(SearchText.ToLower())
-                                || c.BETRW.ToLower().Contains(SearchText.ToLower()) || c.TestDueAmount.ToLower().Contains(SearchText.ToLower())
-                                || c.Txt30.ToLower().Contains(SearchText.ToLower())).ToList();
-
-                            MyBills = new ObservableCollection<MyBills>(suggestion);
-                            FilterOnTaxType(MyBills);
-                        }
-                        else
-                        {
-
-                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-
-                            //FromStatus = "";
-
-                            FilterOnTaxType(MyBills);
-
-                            await Task.Run(() =>
+                            try
                             {
-                                IsLoading = false;
-                            });
+                              
+                               var suggest = MyBillsOriginal.Where<MyBills>(c => c.VTRE2.ToLower().Contains(SearchText.ToLower()) || c.Fbnum.ToLower().Contains(SearchText.ToLower())).ToList();
+
+                                MyBills = new ObservableCollection<MyBills>(suggest);
+                                FilterOnTaxType(MyBills);
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+                            
+                                
+
+                           
+                        }
+                        else {
+
+                            MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Paid" || x.Status == "Partially Paid" || x.Status == "Open" || x.Status == Enum.GetName(typeof(BillStatus), 3)|| x.Status == Enum.GetName(typeof(BillStatus), 4)).ToList());
+
+                            FilterOnTaxType(MyBills);
+
+                            IsLoading = false;
 
                             return;
 
@@ -1129,23 +1203,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                     }
 
-
+                    
 
                     isFromFilter = false;
 
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    IsLoading = false;
                 }
 
             }
             else
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
 
         }
@@ -1153,16 +1221,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
         public async void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
         {
 
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
 
-            if (SelectedTransactionTypeFilter != null)
-            {
+            if (SelectedTransactionTypeFilter != null) {
 
-                try
-                {
+                try{
 
                     switch (SelectedTransactionTypeFilter.StatementFilter)
                     {
@@ -1221,14 +1284,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                             break;
                     }
                 }
-                catch (Exception)
-                {
+                catch (Exception ex) {
+
+                    
+                    
+                    
+
                 }
             }
-
-
-
-
 
             if (MyBills != null)
             {
@@ -1247,14 +1310,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
             }
 
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+            IsLoading = false;
         }
 
         public void ApplyFilter()
         {
+
             FilterIfTypeAndStausFilterSelected(false);
 
         }
@@ -1266,9 +1327,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
             SelectedTransactionTypeFilter = selectedFilter.FirstOrDefault();
 
-
-
-        }
+       }
 
         public async void showPickerDialog()
         {
@@ -1276,11 +1335,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             {
                 if (PickerModel != null)
                     await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
-            }
-            catch (GAZTUnlockAccountException)
-            {
-
-
             }
             catch (InternetException ex)
             {
@@ -1294,16 +1348,59 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
         public void populateStatusChips()
         {
-
-
             var statusList = new ObservableCollection<ChipModel>();
-            var chipmodelPaid = new ChipModel { TemplateType = "00FF00", Text = AppResources.Paid, ImageSource = null, TextColor = (Color)Application.Current.Resources["Success"] };
-            var chipmodelPartiallyPaid = new ChipModel { TemplateType = "FFFFE0", Text = AppResources.PartiallyPaid, ImageSource = null, TextColor = (Color)Application.Current.Resources["Partial"] };
-            var chipmodelUnPaid = new ChipModel { TemplateType = "FF7F50", Text = AppResources.UnPaid, ImageSource = null, TextColor = (Color)Application.Current.Resources["Error"] };
-            statusList.Add(chipmodelPaid);
-            statusList.Add(chipmodelPartiallyPaid);
-            statusList.Add(chipmodelUnPaid);
+            for (int i =0;i<MyBillsSTATUS.Count; i++)
+            {
+                var chipmodel = new ChipModel();
 
+                if (MyBillsSTATUS[i].ZtpaccSts == "PD")
+                {
+                    chipmodel = new ChipModel { TemplateType = "#1A008000",
+                        Text = MyBillsSTATUS[i].PymtStatus,
+                        ImageSource = null,
+                        ZTSTScts = MyBillsSTATUS[i].ZtpaccSts,
+                        TextColor = (Color)App.Current.Resources["Success"] };
+                }
+                if (MyBillsSTATUS[i].ZtpaccSts == "PP")
+                {
+                    chipmodel = new ChipModel { TemplateType = "#1A0996d4",
+                        Text = MyBillsSTATUS[i].PymtStatus,
+                        ImageSource = null,
+                        ZTSTScts = MyBillsSTATUS[i].ZtpaccSts,
+                        TextColor = (Color)App.Current.Resources["Partial"] };
+                }
+                if (MyBillsSTATUS[i].ZtpaccSts == "RV")
+                {
+                    chipmodel = new ChipModel
+                    {
+                        TemplateType = "#cccccc",
+                        Text = MyBillsSTATUS[i].PymtStatus,
+                        ImageSource = null,
+                        TextColor = (Color)App.Current.Resources["color"],
+                        ZTSTScts = MyBillsSTATUS[i].ZtpaccSts
+                    };
+                 }
+                if (MyBillsSTATUS[i].ZtpaccSts == "TF")
+                {
+                    chipmodel = new ChipModel
+                    {
+                        TemplateType = "#CCCCCC",
+                        Text = MyBillsSTATUS[i].PymtStatus,
+                        ImageSource = null,
+                        TextColor = (Color)App.Current.Resources["color"],
+                        ZTSTScts = MyBillsSTATUS[i].ZtpaccSts
+                    };
+                 }
+                if (MyBillsSTATUS[i].ZtpaccSts == "UP")
+                {
+                    chipmodel = new ChipModel { TemplateType = "#1AAA0C19",
+                        Text = MyBillsSTATUS[i].PymtStatus,
+                        ImageSource = null,
+                        TextColor = (Color)App.Current.Resources["Error"],
+                        ZTSTScts = MyBillsSTATUS[i].ZtpaccSts };
+                }
+                statusList.Add(chipmodel);
+            }
             ChipDataFilterlistForStatus = statusList;
 
         }
@@ -1344,7 +1441,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
         }
 
 
-
+       // ChipDataFilterlistForStatus
         public AccountStatementBillsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
@@ -1375,13 +1472,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 }
 
 
-
+            
 
             });
             FiltersTapped = new Command(() =>
             {
                 FiltersClicked();
             });
+            
+            //ClickOnSort = new Command(() =>
+            //{
+            //    ClickSorted();
+            //});
         }
 
     }

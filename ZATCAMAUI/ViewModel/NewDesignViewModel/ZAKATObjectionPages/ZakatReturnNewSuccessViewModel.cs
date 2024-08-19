@@ -146,17 +146,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #region Method
         public async Task OnPageLoad(ZakatReturnDetailsD zakatReturnDetailsD)
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             await Task.Run(async () =>
             {
                 try
                 {
                     SetSuccussMessageVisibility();
                     EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.Fbnum, ZAKATReturnDetailsViewModel.Fbguid); // Method to get the invoice
-                                                                                                                                                                                                                       //  PopToRootPage();
+                                
                     if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                     {
                         // IsMainGridVisble = true;

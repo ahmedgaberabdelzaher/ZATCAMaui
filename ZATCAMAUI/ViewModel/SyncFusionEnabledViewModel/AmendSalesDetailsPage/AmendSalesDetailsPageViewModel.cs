@@ -207,7 +207,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                 {
                     string[] filetypes;
 
-                    filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForZakat();
+                    filetypes = DependencyService.Get<IDeviceInfoZATCA>().GetAttachmentTypeStringForZakat();
 
 
                     PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
@@ -216,10 +216,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                     var stream = await fileData.OpenReadAsync();
                     var attachment = UtilityManager.ReadFully(stream as Stream);
 
-                    await Task.Run(() =>
-                    {
-                        IsLoading = true;
-                    });
+                    IsLoading = true;
                     await Task.Run(async () =>
                     {
                         try
@@ -358,10 +355,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                             });
                         }
                     });
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    IsLoading = false;
                 }
                 catch (Exception)
                 {
@@ -454,10 +448,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
         }
         public async Task DeleteSelectedAttachment(string filename, string dougUD)
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             await Task.Run(() =>
             {
                 try
@@ -486,10 +477,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                     });
                 }
             });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+            
+            IsLoading = false;
         }
         private bool IsFileAlreadyAttached(string FileName)
         {
@@ -510,7 +499,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
         }
         private void IsValueChanged()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
+            MainThread.BeginInvokeOnMainThread( () =>
             {
                 if (attachmentCount != SelectedSalesDetails.estimateZakatAttachment.Count)
                 {
