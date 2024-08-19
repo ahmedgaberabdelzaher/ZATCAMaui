@@ -48,7 +48,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         public void AddSelectionOptions()
         {
             var outletDecisionOptions = new ObservableCollection<SelectionModel>();
-            if (App.LoginDataRetrieved != null && (App.LoginDataRetrieved.VtReg == "X" || App.LoginDataRetrieved.VtReg == "R"))
+            if (App.LoginDataRetrieved != null && (App.LoginDataRetrieved.VtReg == "X" || App.LoginDataRetrieved.VtReg == "R" || App.LoginDataRetrieved.VtReg == "G") )
             {
                 outletDecisionOptions.Add(new SelectionModel
                 {

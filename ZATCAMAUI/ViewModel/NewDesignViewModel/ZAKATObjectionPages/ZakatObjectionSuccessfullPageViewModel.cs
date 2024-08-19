@@ -114,12 +114,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     PopToRootPage();
                     if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                     {
-                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Undisamt) > 0 || Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Disamt) > 0)
+                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.results[0].Undisamt) > 0 || Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.results[0].Disamt) > 0)
                         {
                             Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
                             Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
 
-                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.results[0].Sopbel))
                             {
                                 IsrefreshEnabled = true;
                                 RefreshIconImageSource = "ic_refresh.png";
@@ -128,7 +128,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             }
                             else
                             {
-                                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.results[0];
                                 IsrefreshEnabled = false;
                                 RefreshIconImageSource = "";
                                 GetUpdatedDataAfterAddingComma();
@@ -184,7 +184,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         }
         public void GetPdfUrl()
         {
-            string url = ZATCAConstants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='" + Cotyp + "')/$value?saml2=enabled";
+            string url = ZATCAConstants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "&correspondenceType=" + Cotyp;
             ShowPdf(url);
         }
         public void ShowPdf(string pdfUrl)
@@ -228,9 +228,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 }
                 catch (Exception)
                 {
-
-
-                    // Handle Exception
                 }
             }
         }

@@ -270,7 +270,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 string Url = string.Empty;
                 // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
                 // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
-                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.Tin + "',Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=enabled";
+
+                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnumz + "',Utype='')/$value?saml2=enabled";
 
                 // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value";
                 ShowPdf(Url);
@@ -279,7 +280,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 string Url = string.Empty;
                 // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
-                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='" + App.TP.Tin + "',Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=enabled";
+
+                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnumz + "')/$value?saml2=enabled";
                 ShowPdf(Url);
             });
 
@@ -315,13 +317,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public void MadaPaymentSelected()
         {
 
-            DoValidatePayment(fbNum: VATDeclarationData.d.Fbnum, "M");
-
+            DoValidatePayment(fbNum: VATDeclarationData.data.Fbnumz, "Mada Payment");
         }
 
         public void ApplePaySelected()
         {
-            DoValidatePayment(fbNum: VATDeclarationData.d.Fbnum, "A");
+            //DoProcessApplePayPayment(VATDeclarationData.d.Fbnum);
+
+            DoValidatePayment(fbNum: VATDeclarationData.data.Fbnumz, "A");
 
 
 
@@ -381,15 +384,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                         }
 
-                        if (paymentType == "M")
+
+                        if (paymentType == "Mada Payment")
                         {
-
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-
-                                _navigationService.NavigateTo(App.PaymentProcessWebview, 1);
-                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
-
+                            MainThread.BeginInvokeOnMainThread(async () => {
+                                IsLoading = true;
+                                //CR7420
+                                CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
+                                IsLoading = false;
+                                if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
+                                {
+                                    App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                                    _navigationService.NavigateTo(App.PaymentProcessWebview, 1);
+                                    //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+                                }
                             });
                         }
                         else
@@ -397,9 +405,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                             ApplePayStatus = await ProcessApplePay();
                         }
-
-
-
                     }
 
                     IsLoading = false;
@@ -445,6 +450,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
+            }
+        }
+        public async Task<CreateMadaResponseRoot> GetWebviewContent(string srcid)
+        {
+            try
+            {
+                var paymentPayload = new CreateMadaPaymentPayload
+                {
+                    GUID = App.PaymentGuid,
+                    sourceId = srcid
+                };
+
+                CreateMadaResponseRoot respose = await WebServiceManager.GAZTCreateMadaPayment(paymentPayload);
+                return respose;
+            }
+            catch (GAZTValidateMadaPaymentException ex)
+            {
+                IsLoading = false;
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
             }
         }
 
@@ -519,8 +554,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-
-
                                 MainThread.BeginInvokeOnMainThread(async () =>
                                 {
 
@@ -575,7 +608,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 });
                 await Task.Run(async () =>
                 {
-                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
+                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.data.Fbnumz);
                     PopToRootPage();
                     if (response != null && response.d != null && response.d.results.Count != 0)
                     {
@@ -583,7 +616,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         AmountPayable = response.d.results[0].Betrh;
                         if (!string.IsNullOrEmpty(SadadNumber))
                         {
-                            if (VATDeclarationData.d.RefundFg == "1")
+                            if (VATDeclarationData.data.RefundFg == "1")
                             {
                                 IsSadadNumberVisible = false;
                             }
@@ -592,7 +625,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 IsSadadNumberVisible = true;
                             }
                             IsButtonVisible = true;
-                            if (VATDeclarationData.d.EstimatedFg == "X")
+                            if (VATDeclarationData.data.EstimatedFg == "X")
                             {
                                 IsAcknowledgementButtonVisible = false;
                             }

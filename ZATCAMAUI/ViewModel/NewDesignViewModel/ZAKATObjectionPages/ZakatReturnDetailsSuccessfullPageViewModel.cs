@@ -16,8 +16,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
     public class ZakatReturnDetailsSuccessfullPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnInvoiceClicked { get; set; }
         string Cokey = "";
         public bool IsrefreshEnabled = false;
@@ -246,18 +244,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #region Constructor
         public ZakatReturnDetailsSuccessfullPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-
-
             OnInvoiceClicked = new Command(() =>
             {
                 OnDownLoadInvoiceClicked();
@@ -304,15 +290,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                                                                                                                                                                                                                        //  PopToRootPage();
                     if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                     {
-                        // IsMainGridVisble = true;
-                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Undisamt) > 0 || Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Disamt) > 0)
+                       // IsMainGridVisble = true;
+                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.results[0].Undisamt) > 0 || Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.results[0].Disamt) > 0)
                         {
                             Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
                             Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
-                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
-                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
-                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
-                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
+                            estimatedZAKATReturnsSADADNumber.d.results[0].ObjectionInvoiceVisibility = true;
+                            estimatedZAKATReturnsSADADNumber.d.results[0].InvoiceVisibility = false;
+                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.results[0];
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.results[0].Sopbel)) 
                             {
                                 IsrefreshEnabled = true;
                                 RefreshIconImageSource = "ic_refresh.png";
@@ -345,11 +331,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                         {
                             Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
                             Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
-                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = false;
-                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = true;
+                            estimatedZAKATReturnsSADADNumber.d.results[0].ObjectionInvoiceVisibility = false;
+                            estimatedZAKATReturnsSADADNumber.d.results[0].InvoiceVisibility = true;
+                          
 
-
-                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.results[0].Sopbel)) 
                             {
                                 IsrefreshEnabled = true;
                                 RefreshIconImageSource = "ic_refresh.png";
@@ -359,7 +345,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             }
                             else
                             {
-                                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.results[0];
 
                                 ReferenceNumber = EstimatedZAKATSADADNumber.Sopbel;
                                 SADADNumber = EstimatedZAKATSADADNumber.Sadadid;
@@ -396,8 +382,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             _navigationService.GoBack();
                         });
                         IsLoading = false;
-                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
-                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
+                        estimatedZAKATReturnsSADADNumber.d.results[0].ObjectionInvoiceVisibility = true;
+                        estimatedZAKATReturnsSADADNumber.d.results[0].InvoiceVisibility = false;
                     }
                 }
                 catch (InternetException ex)
@@ -419,7 +405,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
         public async Task doValidateZakatAmount()
         {
-
 
 
             ZakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(App.selectedForm12Fbguid);
@@ -448,7 +433,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
         public void GetPdfUrl()
         {
-            string url = ZATCAConstants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='" + Cotyp + "')/$value?saml2=enabled";
+            string url = ZATCAConstants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "&correspondenceType=" + Cotyp;
             // string url =  await  WebServiceManager.GAZTEstimatedZAKATReturnInvoicePdf(Cokey);
             ShowPdf(url);
         }
@@ -563,15 +548,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                         }
 
 
-                        if (paymentType == "M")
+                        if (paymentType == "Mada Payment")
                         {
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-
-                                _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
-                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
-
+                            MainThread.BeginInvokeOnMainThread(async () => {
+                            IsLoading = true;
+                            //CR7420
+                            CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
+                            IsLoading = false;
+                                if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
+                                {
+                                    App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                                    _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
+                                    //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+                                }
                             });
                         }
                         else
@@ -647,6 +637,37 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
+        public async Task<CreateMadaResponseRoot> GetWebviewContent(string srcid)
+        {
+            try
+            {
+                var paymentPayload = new CreateMadaPaymentPayload
+                {
+                    GUID = App.PaymentGuid,
+                    sourceId = srcid
+                };
+
+                CreateMadaResponseRoot respose = await WebServiceManager.GAZTCreateMadaPayment(paymentPayload);
+                return respose;
+            }
+            catch (GAZTValidateMadaPaymentException ex)
+            {
+                IsLoading = false;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                    var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         public async Task UpdateApplePayPaymentGuid()
         {
@@ -755,7 +776,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         public async Task MadaPaymentSelectedAsync()
         {
 
-            await DoValidatePayment(fbNum: ZakatReturnDetail.Fbnum, "M");
+            await DoValidatePayment(fbNum: ZakatReturnDetail.Fbnum, "Mada Payment");
 
 
         }

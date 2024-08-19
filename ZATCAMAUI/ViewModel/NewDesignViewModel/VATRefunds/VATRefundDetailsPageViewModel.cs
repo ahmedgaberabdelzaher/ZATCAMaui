@@ -289,8 +289,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
 
             VatRefundsListResultModel = vATRefundsModel;
-            VATRefundsHeaderSet = VatRefundsListResultModel.VatRefHeaderSet?.Results[0];
-            VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet.Results);
+            VATRefundsHeaderSet = VatRefundsListResultModel.VatRefHeaderSet[0];
+            VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet);
             VATRefundsHeaderSet.RequestedAmt = VATRefundsHeaderSet?.RequestedAmt?.Replace("-", string.Empty);
 
             try
@@ -300,7 +300,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     IsLoading = true;
                 });
 
-                VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(VatRefundsListResultModel.WiDtlSet.Results[0].Fbguid);
+                VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(VatRefundsListResultModel.WiDtlSet[0].Fbguid);
                 SelectedIbanTypeFromList();
 
                 IBANType selectedIdType = IBANTypesList.Where(m => m.key == VatRefundsDisplayDataModel.Idtype).FirstOrDefault();
@@ -334,8 +334,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -395,9 +393,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (Exception)
             {
-
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -454,8 +449,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -507,8 +500,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;

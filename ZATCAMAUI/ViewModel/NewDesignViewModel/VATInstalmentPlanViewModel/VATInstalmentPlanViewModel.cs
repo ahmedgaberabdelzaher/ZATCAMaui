@@ -30,6 +30,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public readonly IDialogService _dialogService;
         public List<VATResults4> selectedList = new List<VATResults4>();
 
+        public string currencyUnits = AppResources.ZSAR;
+        private bool _isLoading = false;
         
         private string _vATDueAmount = "0.00";
         public string VATDueAmount
@@ -222,6 +224,50 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 OnPropertyChanged("isNoDataLableVisible");
             }
         }
+        private bool _isArabic = false;
+        public bool IsArabic
+        {
+            get
+            {
+                return _isArabic;
+            }
+            set
+            {
+                if (_isArabic == value) return;
+                _isArabic = value;
+                RaisePropertyChanged("IsArabic");
+            }
+        }
+        private String _vatAckMsg;
+        public String VatAckMsg
+        {
+            get
+            {
+                return _vatAckMsg;
+            }
+            set
+            {
+                if (_vatAckMsg == value) return;
+
+                _vatAckMsg = value;
+                RaisePropertyChanged("VatAckMsg");
+            }
+        }
+        private String vATIPSuccsMsg;
+        public String VATIPSuccsMsg
+        {
+            get
+            {
+                return vATIPSuccsMsg;
+            }
+            set
+            {
+                if (vATIPSuccsMsg == value) return;
+
+                vATIPSuccsMsg = value;
+                RaisePropertyChanged("VATIPSuccsMsg");
+            }
+        }
         public ICommand GoBackClick { get; set; }
 
         int noOfInstalments = 5;
@@ -232,6 +278,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         double maxAmount = 2000000.0;
         string inputData = "";
         string totalAmountSAR = "0.00 SAR";
+        string netDownpayment = "0.00 SAR";
         int selectedPage = (int)PagesEnum.ZakatSelectionView;
         #endregion
 
@@ -436,7 +483,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public void EnableBillsContinue()
         {
-            if (TotalAmountSAR.Equals("0.00 SAR"))
+            if (TotalAmountSAR.Equals(currencyUnits))
             {
                 IsBillContinueEnabled = false;
             }
@@ -644,6 +691,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (totalAmountSAR != value)
                 {
                     totalAmountSAR = value;
+                    var amount = TotalAmountSAR.Replace(" " + currencyUnits, "").Replace(",", "");
+                    NetDownpayment = (Convert.ToDecimal(amount) * 20 / 100).ToString();
+
+                    NetDownpayment = String.Format("{0:N2}", Convert.ToDecimal(NetDownpayment));
+
+                    // NetDownpayment = Math.Round(Convert.ToDecimal(NetDownpayment)).ToString();
                     OnPropertyChanged("TotalAmountSAR");
                 }
             }
@@ -652,7 +705,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 return totalAmountSAR;
             }
         }
+        public string NetDownpayment
+        {
+            set
+            {
 
+
+                if (netDownpayment != value)
+                {
+                    netDownpayment = value;
+                    RaisePropertyChanged("NetDownpayment");
+                }
+            }
+            get
+            {
+                return netDownpayment;
+            }
+        }
 
         public string InputData
         {
@@ -867,7 +936,55 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 OnPropertyChanged("SelectedFilterZakatPrev");
             }
         }
+        private string _vATSADADNumber = string.Empty;
+        public string VATSADADNumber
+        {
+            get
+            {
+                return _vATSADADNumber;
+            }
+            set
+            {
+                if (_vATSADADNumber == value) return;
 
+
+
+                _vATSADADNumber = value;
+                RaisePropertyChanged("VATSADADNumber");
+            }
+        }
+        private string _vATDownpaymentAmtPayable = string.Empty;
+        public string VATDownpaymentAmtPayable
+        {
+            get
+            {
+                return _vATDownpaymentAmtPayable;
+            }
+            set
+            {
+                if (_vATDownpaymentAmtPayable == value) return;
+
+
+
+                _vATDownpaymentAmtPayable = value;
+                RaisePropertyChanged("VATDownpaymentAmtPayable");
+            }
+        }
+        private string currentDate = DateTime.Now.ToString("dd/MM/yyyy");
+
+        public string CurrentDate
+
+        {
+            get { return currentDate; }
+            set
+            {
+                if (currentDate == value) return;
+
+                currentDate = value;
+                RaisePropertyChanged("CurrentDate");
+
+            }
+        }
         private void SetStatusPickerItem()
         {
             try
@@ -879,8 +996,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
         private List<CorrespondenceFiltersModel> _corresFilterZakat;
@@ -1007,8 +1122,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
         private List<CorrespondenceFiltersModel> _subCorresFilterZakat;
@@ -1690,8 +1803,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -1832,8 +1943,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -1940,8 +2049,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
 
 
@@ -2006,6 +2113,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public VATInstalmentPlanViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            IsArabic = App.IsArabic;
+            VatAckMsg = string.Empty;
+            VATIPSuccsMsg = string.Empty;
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
@@ -2159,17 +2269,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
 
 
-            if (VatInstalments.d.VTIASet.results != null)
+            if (VatInstalments.d.VTIASet != null)
             {
-                SelectedBillsList = new ObservableCollection<VATResults4>();
-                foreach (VATResults4 bills in VatInstalments.d.VTIASet.results)
+                SelectedBillsList = new ObservableCollection<Models.VATInstalationModels.VATResults4>();
+                foreach (VATResults4 bills in VatInstalments.d.VTIASet)
                 {
                     SelectedBillsList.Add(bills);
                 }
 
 
-                BillsListVAT = VatInstalments.d.VTIASet.results;
-                BillsListVATData = VatInstalments.d.VTIASet.results;
+                BillsListVAT = VatInstalments.d.VTIASet;
+                BillsListVATData = VatInstalments.d.VTIASet;
             }
 
         }
@@ -2186,7 +2296,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     SelectedBillsList = new ObservableCollection<VATResults4>();
 
-                    foreach (VATResults4 bills in VatInstalments.d.VTIASet.results)
+                    foreach (VATResults4 bills in VatInstalments.d.VTIASet)
                     {
                         SelectedBillsList.Add(bills);
                     }
@@ -2196,18 +2306,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
 
         public void BindStatementsView()
         {
-            if (VatInstalments.d.VTISSet.results != null)
+            if (VatInstalments.result.VTISSet != null)
             {
 
                 //StatementList = null;
-                var statementList = VatInstalments.d.VTISSet.results;
+                var statementList = VatInstalments.result.VTISSet;
 
                 for (int i = 0; i < statementList.Length; i++)
                 {
@@ -2255,16 +2363,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 }
                 StatementList = statementList;
-                VATBillDueAmount = VatInstalments.d.Totdueamt;
-                VATPenalityAmount = VatInstalments.d.Peneltyamt;
-                if (StatementList != null && StatementList.ToList().Count > 0)
-                {
+                StatementList.ForEach(i => i.IsArabic = App.IsArabic);
+                VATBillDueAmount = VatInstalments.result.Totdueamt;
+                VATPenalityAmount = VatInstalments.result.Peneltyamt;
+                if(StatementList != null && StatementList.ToList().Count > 0) {
 
-                    MonthlyInstalment = VatInstalments.d.VTISSet.results[0].Betrw;
+                    MonthlyInstalment = VatInstalments.result.VTISSet[0].Betrw ;
 
                 }
 
+                //try
+                //{
 
+                //    VATPenalityAmount = Math.Abs(double.Parse(VATBillDueAmount) - double.Parse(TotalAmountSAR.Replace(" SAR", "").Replace(",", ""))) + "";
+
+                //}
+                //catch (Exception e)
+                //{
+
+                //}
             }
         }
 
@@ -2393,18 +2510,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
 
             isDraftClicked = false;
-            VatInstalments.d.Operationz = "01";
+            VatInstalments.d.Operationz = "58";
             VatInstalments.d.Decflg = "1";
 
             await Task.Run(async () =>
             {
 
                 VatInstalments = await SubmitClicked();
+                IsLoading = false;
             });
 
-            if (VatInstalments != null && VatInstalments.d != null)
+            if (VatInstalments != null && VatInstalments.result != null)
             {
-                VATReferanceNumber = VatInstalments.d.Fbnumz;
+                VATReferanceNumber = VatInstalments.result.Fbnumz;
+                VATSADADNumber = VatInstalments.result.Sopbel;
+                VATDownpaymentAmtPayable = VatInstalments.result.Totdownpymtamt;
+                VATIPSuccsMsg = AppResources.VATIPSuccsMsg;
+                VATIPSuccsMsg = VATIPSuccsMsg.Replace("XXXXX", VatInstalments.result.Partnernm);
+                VatAckMsg = String.Format(AppResources.VatAckMsg, VatInstalments.result.DpDays);
                 EnableSlectionView();
                 await Application.Current.MainPage.Navigation.PushAsync(new VatInstalmentPlanSuccessPage());
 
@@ -2439,7 +2562,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             FirstTerms = false;
             downPaymentAmount = 00.00;
             inputData = "";
-            TotalAmountSAR = "0.00 SAR";
+            TotalAmountSAR = "0.00 " + currencyUnits;
             MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
             MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
             selectedList.Clear();
@@ -2498,11 +2621,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
-
-
-
             }
             catch (InternetException ex)
             {
@@ -2522,8 +2642,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                if (TotalAmountSAR.Equals("0.00 SAR"))
+                var valAmount = NetDownpayment.Replace(" " + currencyUnits, "").Replace(",", "");
+                var amount = TotalAmountSAR.Replace(" " + currencyUnits, "").Replace(",", "");
+                var tasAmount = Convert.ToDecimal(amount);
+                var minTasAmount = (Convert.ToDecimal(amount) * 20 / 100);
+                if (string.IsNullOrEmpty(NetDownpayment))
                 {
+                    await _dialogService.ShowMessage(AppResources.NetDownpaymentErrorMsg1, AppResources.Information);
+                    NetDownpayment = minTasAmount.ToString();
+                    return;
+                }
+                else if (Convert.ToDecimal(valAmount) < minTasAmount)
+                {
+
+                    await _dialogService.ShowMessage(AppResources.NetDownpaymentErrorMsg1, AppResources.Information);
+                    NetDownpayment = minTasAmount.ToString();
+
+                }
+                else if (Convert.ToDecimal(valAmount) == tasAmount)
+                {
+                    await _dialogService.ShowMessage(AppResources.NetDownpaymentErrorMsg2, AppResources.Information);
+                    NetDownpayment = minTasAmount.ToString();
+                }
+                else if (Convert.ToDecimal(valAmount) > tasAmount)
+                {
+                    await _dialogService.ShowMessage(AppResources.NetDownpaymentErrorMsg3, AppResources.Information);
+                    NetDownpayment = minTasAmount.ToString();
+                }
+                else if (TotalAmountSAR.Equals("0.00 " + currencyUnits))
+                {
+
                     await _dialogService.ShowMessage(AppResources.VATInstalmentPlanPleaseSelectAtleastOne, AppResources.Information);
                 }
                 else
@@ -2531,12 +2679,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     EnableAgreementView();
                 }
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
-
-
-
-
             }
             catch (InternetException ex)
             {
@@ -2568,20 +2712,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     
                     setDATA();
 
-                    var amount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
+                    var amount = TotalAmountSAR.Replace(" " + currencyUnits, "").Replace(",", "");
                     VatInstalments.d.Totliablityamt = amount;
                     VatInstalments.d.StepNumberz = "03";
                     VatInstalments.d.Decflg = "0";
                     VatInstalments.d.Operationz = "10";
 
 
-                    for (int i = 0; i < VatInstalments.d.VTIASet.results.ToList().Count; i++)
-                    {
+                    //for (int i = 0; i < VatInstalments.d.VTIASet.ToList().Count; i++)
+                    //{
 
 
-                        VatInstalments.d.VTIASet.results[i].Xsele = "";
+                    //    VatInstalments.d.VTIASet[i].Xsele = "";
 
-                    }
+                    //}
 
 
                     await Task.Run(async () =>
@@ -2590,7 +2734,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                     });
 
-                    if (VatInstalments != null && VatInstalments.d != null)
+                    if (VatInstalments != null && VatInstalments.result != null)
                     {
                         EnableStatementsView();
                         BindStatementsView();
@@ -2629,10 +2773,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 EnableAttachmentsView();
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -2678,13 +2820,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 if (App.selectedVATItem != "")
                 {
-
-                    if (VatInstalments.d.AttachmentSet.results.Count > 0)
+                    if(VatInstalments.d.AttachmentSet.Count > 0)
                     {
-
                         var attch = new ObservableCollection<Attachment>();
-
-                        foreach (var attachment in VatInstalments.d.AttachmentSet.results)
+                        foreach(var attachment in VatInstalments.d.AttachmentSet) {
                         {
 
                             if (attachment.Dotyp == "ZVTA")
@@ -2709,10 +2848,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 EnableAttachmentsView();
 
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -2731,7 +2868,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             VatInstalments.d.Decflg = "1";
             if (SecondTerms)
             {
-                await EnableSucessScreenAsync();
+                //await EnableSucessScreenAsync();
             }
             else
             {
@@ -2769,6 +2906,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
+                VatInstalments.d = VatInstalments.result;
                 showTermsPopUp();
                 //Display Success Screen
                 //EnableSucessScreenAsync();
@@ -2800,7 +2938,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+              Console.WriteLine(ex.Message);
             }
             catch (InternetException ex)
             {
@@ -2812,8 +2950,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
         public async void NewAttachmentClicked()
@@ -2821,12 +2957,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             if (MopupService.Instance.PopupStack.Count > 0) return;
             try
             {
-                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(AttachmentsListViewData.ToList(), WhichAttachment.VATInstalment, VatInstalments.d.ReturnIdz));
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(AttachmentsListViewData.ToList(), Models.ZakatInstalationModels.WhichAttachment.VATInstalment, VatInstalments.result.ReturnId));
 
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
-
             }
             catch (InternetException ex)
             {
@@ -2838,8 +2973,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
         public void SummaryInstallmentDetailsBtnClicked()
@@ -2849,10 +2982,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 //   await App.Current.MainPage.DisplayAlert("Alert", "Instalment details schedule is displayed here.", "OK");
 
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -2872,9 +3003,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
-
             }
             catch (InternetException ex)
             {
@@ -2886,8 +3016,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -2900,7 +3028,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
             }
             catch (InternetException ex)
             {
@@ -2912,8 +3039,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -2954,6 +3079,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         {
                             if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
                             {
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                                 IsViewEnable = false;
                             }
                             var selectedItemFormID = await VATInstalationPlanWebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, App.selectedVATItem, App.LoginDataRetrieved.TIN, "E0045", "VTIA");
@@ -2966,9 +3092,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                 if (vATInstalment != null)
                                 {
                                     if (vATInstalment.d.NotesSet != null && vATInstalment.d.NotesSet.results.Count > 0)
+=======
+                                if(vATInstalment.d.NotesSet != null && vATInstalment.d.NotesSet.Count > 0)
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                                     {
-                                        int notesCount = vATInstalment.d.NotesSet.results.Count;
-                                        var notesText = vATInstalment.d.NotesSet.results[notesCount - 1];
+                                        int notesCount = vATInstalment.d.NotesSet.Count;
+                                        var notesText = vATInstalment.d.NotesSet[notesCount - 1];
                                         NotesText = notesText.Strline;
                                     }
 
@@ -2990,7 +3119,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             if (App.selectedVATItemFbust == "E0013")
                             {
 
-                                foreach (var notes in VatInstalments.d.NotesSet.results)
+                                foreach (var notes in VatInstalments.d.NotesSet)
                                 {
 
                                     if (string.IsNullOrEmpty(notes.Strline))
@@ -3018,28 +3147,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                         
 
+                            string instructionStr = string.Empty;
 
+                            if (VatInstalments.d.InstructionSet.Count() > 0)
+                            {
+                                foreach (var instruction in VatInstalments.d.InstructionSet)
+                                {
+                                    instructionStr = instructionStr + instruction.Zztext + "\n";
+                                }
+                            }
                             if (App.selectedVATItem != "")
                             {
                                 if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
                                 {
-                                    await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle, isEditable: true, _dialogType: InstructionsBottomPopUpViewModel.DialogType
-                            .Instructions));
+                                    await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: instructionStr, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle, isEditable: true, _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                             .Instructions));
                                 }
                                 else
                                 {
 
-                                    await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
-                                    _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                                    await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: instructionStr, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
+                                    _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                                     .Instructions));
                                 }
 
 
                             }
-                            else
-                            {
-                                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
-                                    _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                            else {
+                                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: instructionStr, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
+                                    _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                                     .Instructions));
                             }
 
@@ -3050,12 +3186,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                             if (VatInstalments.d.Xstep1Conf != null)
                             {
-                                if (VatInstalments.d.Xstep1Conf == "1")
+                                if (VatInstalments.d.Xstep1Conf == "confirm")
                                 {
                                     IsInstrunctionChecked = true;
 
                                 }
-                                if (vATInstalment.d.Xstep1Conf == "0")
+                                if (vATInstalment.d.Xstep1Conf == "not confirm")
                                 {
                                     IsInstrunctionChecked = false;
                                 }
@@ -3086,14 +3222,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                     if (App.selectedVATItem != "")
                                     {
 
-                                        if (VatInstalments.d.AttachmentSet.results.Count > 0)
+                                        if (VatInstalments.d.AttachmentSet.Count > 0)
                                         {
 
                                             AttachmentsListViewData = new ObservableCollection<Attachment>();
 
                                             var attch = new ObservableCollection<Attachment>();
 
-                                            foreach (var attachment in VatInstalments.d.AttachmentSet.results)
+                                            foreach (var attachment in VatInstalments.d.AttachmentSet)
                                             {
 
                                                 if (attachment.Dotyp == "ZVTA")
@@ -3167,8 +3303,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -3200,9 +3334,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-               
-                VatInstalments.d.Xstep1Conf = "1";
-                VatInstalments.d.Xstep2Conf = "1";
+                VatInstalments.d.Xstep1Conf = "confirm";
+                VatInstalments.d.Xstep2Conf = "confirm";
                 if (NoOfInstalments == 0)
                 {
 
@@ -3220,8 +3353,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
-
-
             }
 
 
@@ -3233,41 +3364,40 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public VatInstalmentPlanRequest BuildRequestObject()
         {
             VatInstalmentPlanRequest request = new VatInstalmentPlanRequest();
-            request.d = new VATInstalmentRequest();
-            request.d.Appchkbox = VatInstalments.d.Appchkbox;
-            request.d.Begdaz = VatInstalments.d.Begdaz;
-            request.d.Betrw = VatInstalments.d.Betrw;
-            request.d.DataVersion = VatInstalments.d.DataVersion;
-            request.d.Decflg = VatInstalments.d.Decflg;
-            request.d.Enddaz = VatInstalments.d.Enddaz;
-            request.d.Euser = VatInstalments.d.Euser;
-            request.d.EvStatus = VatInstalments.d.EvStatus;
-            request.d.Fbnumz = VatInstalments.d.Fbnumz;
-            request.d.FormGuid = VatInstalments.d.FormGuid;
-            request.d.Formprocz = VatInstalments.d.Formprocz;
-            request.d.Gpartz = VatInstalments.d.Gpartz;
-            request.d.Langz = VatInstalments.d.Langz;
-            request.d.Mandt = VatInstalments.d.Mandt;
-            request.d.Officer = VatInstalments.d.Officer;
-            request.d.OfficerTz = VatInstalments.d.OfficerTz;
-            request.d.Officerz = VatInstalments.d.Officerz;
-            request.d.Operationz = VatInstalments.d.Operationz;
-            request.d.Partner = VatInstalments.d.Partner;
-            request.d.Partnernm = VatInstalments.d.Partnernm;
-            request.d.Periodkeyz = VatInstalments.d.Periodkeyz;
-            request.d.PortalUsrz = VatInstalments.d.PortalUsrz;
-            request.d.ReturnId = VatInstalments.d.ReturnId;
-            request.d.ReturnIdz = VatInstalments.d.ReturnIdz;
-            request.d.SrcAppz = VatInstalments.d.SrcAppz;
-            request.d.Statusz = VatInstalments.d.Statusz;
+            request = new VatInstalmentPlanRequest();
+            request.Appchkbox = VatInstalments.d.Appchkbox;
+            request.Begdaz = VatInstalments.d.Begdaz;
+            request.Betrw = VatInstalments.d.Betrw;
+            request.DataVersion = VatInstalments.d.DataVersion;
+            request.Decflg = VatInstalments.d.Decflg;
+            request.Enddaz = VatInstalments.d.Enddaz;
+            request.Euser = VatInstalments.d.Euser;
+            request.EvStatus = VatInstalments.d.EvStatus;
+            request.Fbnumz = VatInstalments.d.Fbnumz;
+            request.FormGuid = VatInstalments.d.FormGuid;
+            request.Formprocz = VatInstalments.d.Formprocz;
+            //request.Gpartz = VatInstalments.d.Gpartz;
+            request.Langz = VatInstalments.d.Langz;
+            request.Mandt = VatInstalments.d.Mandt;
+            request.Officer = VatInstalments.d.Officer;
+            request.OfficerTz = VatInstalments.d.OfficerTz;
+            request.Officerz = VatInstalments.d.Officerz;
+            request.Operationz = VatInstalments.d.Operationz;
+            request.Partner = VatInstalments.d.Partner;
+            request.Partnernm = VatInstalments.d.Partnernm;
+            request.Periodkeyz = VatInstalments.d.Periodkeyz;
+            request.PortalUsrz = VatInstalments.d.PortalUsrz;
+            request.ReturnId = VatInstalments.d.ReturnId;
+            request.SrcAppz = VatInstalments.d.SrcAppz;
+            request.Statusz = VatInstalments.d.Statusz;
+            request.DpDays = VatInstalments.d.DpDays;
+            request.Sopbel = VatInstalments.d.Sopbel;
 
-
-
-            if (CurrentIndex == 1)
+            try
             {
-                VatInstalments.d.StepNumberz = "01";
-                if (VatInstalments.d.VTISSet.results.Length != 0)
+                if (CurrentIndex == 1)
                 {
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                     request.d.Noofinstallment = VatInstalments.d.VTISSet.results.Length.ToString();
                 }
                 else
@@ -3298,15 +3428,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
 
                     if (VatInstalments.d.VTISSet.results.Length != 0)
+=======
+                    VatInstalments.d.StepNumberz = "01";
+                    if (VatInstalments.d.VTISSet.Length != 0)
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                     {
-                        request.d.Noofinstallment = VatInstalments.d.VTISSet.results.Length.ToString();
+                        request.Noofinstallment = VatInstalments.d.VTISSet.Length.ToString();
                     }
                     else
                     {
-                        request.d.Noofinstallment = "00";
+                        request.Noofinstallment = "00";
                     }
 
                 }
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                 else
                 {
                     request.d.Noofinstallment = VatInstalments.d.Noofinstallment;
@@ -3328,16 +3463,57 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
 
                 if (VatInstalments.d.VTISSet.results.Length != 0)
+=======
+                else if (CurrentIndex == 2)
                 {
-                    request.d.Noofinstallment = VatInstalments.d.Noofinstallment;
+                    VatInstalments.d.StepNumberz = "03";
+                    if (VatInstalments.d.VTISSet.Length != 0)
+                    {
+                        request.Noofinstallment = VatInstalments.d.VTISSet.Length.ToString();
+                    }
+                    else
+                    {
+                        request.Noofinstallment = "00";
+                    }
+
+
+                }
+                else if (CurrentIndex == 3)
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
+                {
+                    VatInstalments.d.StepNumberz = "03";
+
+                    if (isDraftClicked)
+                    {
+
+                        if (VatInstalments.d.VTISSet.Length != 0)
+                        {
+                            request.Noofinstallment = VatInstalments.d.VTISSet.Length.ToString();
+                        }
+                        else
+                        {
+                            request.Noofinstallment = "00";
+                        }
+
+                    }
+                    else
+                    {
+                        request.Noofinstallment = VatInstalments.d.Noofinstallment;
+
+                    }
+
+
                 }
                 else
                 {
-                    request.d.Noofinstallment = "00";
+                    request.Noofinstallment = VatInstalments.d.Noofinstallment;
+
+                    VatInstalments.d.StepNumberz = "04";
+
                 }
-            }
 
 
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
             request.d.StepNumberz = VatInstalments.d.StepNumberz;
 
 
@@ -3380,34 +3556,114 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 string apiDate = VatInstalments.d.NotesSet.results[0].Erfdtz;
                 if (!apiDate.Contains("Date"))
+=======
+                if (VatInstalments.d.Operationz == "04")
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                 {
 
-                    foreach (var item in VatInstalments.d.NotesSet.results)
+                    if (VatInstalments.d.VTISSet.Length != 0)
                     {
-
-                        DateTime dt1 = Convert.ToDateTime(item.Erfdtz);
-                        JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
-                        {
-                            DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                        };
-                        //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                        var jsonDateTime1 = JsonConvert.SerializeObject(dt1.Date, microsoftDateFormatSettings2);
-                        string[] dateList1 = jsonDateTime1.Split('+');
-                        jsonDateTime1 = Regex.Replace(dateList1[0], "[@,\\.\";'\\\\]", string.Empty);
-                        jsonDateTime1 = jsonDateTime1 + ")/";
-
-                        item.Erfdtz = jsonDateTime1;
-
+                        request.Noofinstallment = VatInstalments.d.Noofinstallment;
+                    }
+                    else
+                    {
+                        request.Noofinstallment = "00";
                     }
                 }
 
-            }
 
+                request.StepNumberz = VatInstalments.d.StepNumberz;
+
+
+
+                if (!String.IsNullOrEmpty(VatInstalments.d.Peneltyamt))
+                {
+                    request.Peneltyamt = VatInstalments.d.Peneltyamt.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(VatInstalments.d.Totdueamt))
+                {
+                    request.Totdueamt = VatInstalments.d.Totdueamt.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(VatInstalments.d.TotInvAmt))
+                {
+                    request.TotInvAmt = VatInstalments.d.TotInvAmt.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(VatInstalments.d.Totliablityamt))
+                {
+                    request.Totliablityamt = VatInstalments.d.Totliablityamt.Replace(",", "");
+                }
+                var downpayment = Convert.ToDecimal(NetDownpayment.Replace(",", "").Replace("SAR", ""));
+                var totalAmount = Convert.ToDecimal(TotalAmountSAR.Replace(",", "").Replace(currencyUnits, ""));
+                var penaltyAmount = Convert.ToDecimal(request.Peneltyamt.Replace(",", "").Replace("SAR", ""));
+
+
+                request.Totdownpymtamt = downpayment.ToString();
+
+                request.Totdueamt = Convert.ToDecimal(VATBillDueAmount.Replace(",", "").Replace("SAR", "")).ToString();
+                //request.d.Totdueamt = ((totalAmount - downpayment) + penaltyAmount).ToString();
+
+
+
+
+
+                request.TxnTpz = VatInstalments.d.TxnTpz;
+                request.UserTypz = VatInstalments.d.UserTypz;
+                request.Vtref = VatInstalments.d.Vtref;
+                request.Waers = VatInstalments.d.Waers;
+                request.Xstep1Conf = VatInstalments.d.Xstep1Conf;
+                request.Xstep2Conf = VatInstalments.d.Xstep2Conf;
+                request.__metadata = VatInstalments.d.__metadata;
+                request.VTADSet = VatInstalments.d.VTADSet;
+                request.ATTACHMENTSet = VatInstalments.d.AttachmentSet;
+                request.ATTACHMENTSet.Clear();
+                request.VTISSet = VatInstalments.d.VTISSet;
+
+
+                if (VatInstalments.d.NotesSet != null && VatInstalments.d.NotesSet != null && VatInstalments.d.NotesSet.Count != 0)
+                {
+
+                    string apiDate = VatInstalments.d.NotesSet[0].Erfdtz;
+                    if (!apiDate.Contains("Date"))
+                    {
+
+                        foreach (var item in VatInstalments.d.NotesSet)
+                        {
+
+                            DateTime dt1 = Convert.ToDateTime(item.Erfdtz);
+                            JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
+                            {
+                                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                            };
+                            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                            var jsonDateTime1 = JsonConvert.SerializeObject(dt1.Date, microsoftDateFormatSettings2);
+                            string[] dateList1 = jsonDateTime1.Split('+');
+                            jsonDateTime1 = Regex.Replace(dateList1[0], "[@,\\.\";'\\\\]", string.Empty);
+                            jsonDateTime1 = jsonDateTime1 + ")/";
+
+                            item.Erfdtz = jsonDateTime1;
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+            
+
+            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0001" || App.selectedVATItemFbust == "E0013" || App.selectedVATItemFbust == "E0076")
+            {
+                request.Operationz = "01";//CR2964 Additional information.
+            }
             if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
             {
                 if (!string.IsNullOrEmpty(NotesText))
                 {
-                    if (VatInstalments.d.NotesSet.results.Count > 0)
+                    if (VatInstalments.d.NotesSet.Count > 0)
                     {
                         NotesSetPost notes = new NotesSetPost();
 
@@ -3423,10 +3679,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         notes.Erfdtz = null;
                         notes.Erfusrz = "";
                         notes.Lineno = 1;
-                        notes.Noteno = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
-                        notes.Notenoz = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
+                        notes.Noteno = (VatInstalments.d.NotesSet.Count + 1).ToString();
+                        notes.Notenoz = (VatInstalments.d.NotesSet.Count + 1).ToString();
                         notes.Rcodez = "VTIA_NOTES";
-                        notes.Refnamez = VatInstalments.d.NotesSet.results[0].Refnamez;
+                        notes.Refnamez = VatInstalments.d.NotesSet[0].Refnamez;
                         notes.Tdformat = "";
                         notes.XInvoicez = "";
                         notes.XObsoletez = "";
@@ -3434,30 +3690,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         notes.Tdline = NotesText;
                         notes.ByGpartz = App.LoginDataRetrieved.TIN;
 
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                         request.d.NOTESSet = new NotesSetPost[VatInstalments.d.NotesSet.results.Count + 1];
+=======
+                        request.NOTESSet = new NotesSetPost[VatInstalments.d.NotesSet.Count+1];
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                         int i = 0;
 
-                        foreach (NotesSetResult notesSetResult1 in VatInstalments.d.NotesSet.results)
+                        foreach (NotesSetResult notesSetResult1 in VatInstalments.d.NotesSet)
                         {
                             var serilizedNotes = JsonConvert.SerializeObject(notesSetResult1);
                             NotesSetPost notesSetLatest = JsonConvert.DeserializeObject<NotesSetPost>(serilizedNotes);
-                            request.d.NOTESSet[i] = notesSetLatest;
+                            request.NOTESSet[i] = notesSetLatest;
                             i = i + 1;
                         }
 
-                        request.d.NOTESSet[VatInstalments.d.NotesSet.results.Count] = notes;
+                        request.NOTESSet[VatInstalments.d.NotesSet.Count] = notes;
                     }
                 }
                 else
                 {
-                    request.d.NOTESSet = new NotesSetPost[VatInstalments.d.NotesSet.results.Count];
+                    request.NOTESSet = new NotesSetPost[VatInstalments.d.NotesSet.Count];
                     int i = 0;
 
-                    foreach (NotesSetResult notesSetResult1 in VatInstalments.d.NotesSet.results)
+                    foreach (NotesSetResult notesSetResult1 in VatInstalments.d.NotesSet)
                     {
                         var serilizedNotes = JsonConvert.SerializeObject(notesSetResult1);
                         NotesSetPost notesSetLatest = JsonConvert.DeserializeObject<NotesSetPost>(serilizedNotes);
-                        request.d.NOTESSet[i] = notesSetLatest;
+                        request.NOTESSet[i] = notesSetLatest;
                         i = i + 1;
                     }
                 }
@@ -3465,7 +3725,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             else
             {
-                if (VatInstalments.d.NotesSet.results.Count > 0)
+                if (VatInstalments.d.NotesSet.Count > 0)
                 {
 
                     if (!string.IsNullOrEmpty(NotesText))
@@ -3485,10 +3745,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         notes.Erfdtz = null;
                         notes.Erfusrz = "";
                         notes.Lineno = 1;
-                        notes.Noteno = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
-                        notes.Notenoz = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
+                        notes.Noteno = (VatInstalments.d.NotesSet.Count + 1).ToString();
+                        notes.Notenoz = (VatInstalments.d.NotesSet.Count + 1).ToString();
                         notes.Rcodez = "VTIA_NOTES";
-                        notes.Refnamez = VatInstalments.d.NotesSet.results[0].Refnamez;
+                        notes.Refnamez = VatInstalments.d.NotesSet[0].Refnamez;
                         notes.Tdformat = "";
                         notes.XInvoicez = "";
                         notes.XObsoletez = "";
@@ -3496,19 +3756,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         notes.Tdline = NotesText;
                         notes.ByGpartz = App.LoginDataRetrieved.TIN;
 
-                        request.d.NOTESSet = new NotesSetPost[2];
+                        request.NOTESSet = new NotesSetPost[2];
 
-                        NotesSetResult notesSetResult = VatInstalments.d.NotesSet.results[0];
+                        NotesSetResult notesSetResult = VatInstalments.d.NotesSet[0];
 
                         var serilizedNotes = JsonConvert.SerializeObject(notesSetResult);
                         NotesSetPost notesSetLatest = JsonConvert.DeserializeObject<NotesSetPost>(serilizedNotes);
 
-                        request.d.NOTESSet[0] = notesSetLatest;
-                        request.d.NOTESSet[1] = notes;
+                        request.NOTESSet[0] = notesSetLatest;
+                        request.NOTESSet[1] = notes;
                     }
                     else
                     {
-                        request.d.NOTESSet = new NotesSetPost[0];
+                        request.NOTESSet = new NotesSetPost[0];
                     }
                 }
                 else
@@ -3531,8 +3791,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         notes.Erfdtz = null;
                         notes.Erfusrz = "";
                         notes.Lineno = 1;
-                        notes.Noteno = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
-                        notes.Notenoz = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
+                        notes.Noteno = (VatInstalments.d.NotesSet.Count + 1).ToString();
+                        notes.Notenoz = (VatInstalments.d.NotesSet.Count + 1).ToString();
                         notes.Rcodez = "VTIA_NOTES";
                         notes.Refnamez = "";
                         notes.Tdformat = "";
@@ -3542,15 +3802,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         notes.Tdline = NotesText;
                         notes.ByGpartz = App.LoginDataRetrieved.TIN;
 
-                        request.d.NOTESSet = new NotesSetPost[1];
-                        request.d.NOTESSet[0] = notes;
+                        request.NOTESSet = new NotesSetPost[1];
+                        request.NOTESSet[0] = notes;
 
 
                     }
                     else
                     {
 
-                        request.d.NOTESSet = new NotesSetPost[0];
+                        request.NOTESSet = new NotesSetPost[0];
 
                     }
 
@@ -3564,49 +3824,69 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 var dataItem = selectedList[i] as VATResults4;
 
 
-                int index = VatInstalments.d.VTIASet.results.ToList().FindIndex(item => item.SadadNo == dataItem.SadadNo);
+                int index = VatInstalments.d.VTIASet.ToList().FindIndex(item => item.SadadNo == dataItem.SadadNo);
 
-                VatInstalments.d.VTIASet.results[index].Xsele = "X";
+                VatInstalments.d.VTIASet[index].Xsele = "X";
 
 
             }
 
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
             request.d.VTIASet = VatInstalments.d.VTIASet.results;
+=======
+
+            //if (selectedList.Contains(dataItem.SadadNo))
+            //    {
+            //    VatInstalments.d.VTIASet.results[i].Xsele = "X";
+
+            //    }
+            //    else
+            //    {
+            //    VatInstalments.d.VTIASet.results[i].Xsele = "";
+
+            //    }
 
 
-            if (VatInstalments.d.VTISSet.results.Length != 0)
-            {
+            //}
 
-                string apiDate = VatInstalments.d.VTISSet.results[0].Faedn;
-                if (!apiDate.Contains("Date"))
-                {
-
-                    for (int i = 0; i < VatInstalments.d.VTISSet.results.Length; i++)
-                    {
-
-                        string dateformat = "dd-MM-yyyy";
-
-                        if (App.IsArabic)
-                        {
-
-                            dateformat = "yyyy-MM-dd";
-                        }
-                        else
-                        {
-                            dateformat = "dd-MM-yyyy";
-                        }
+            request.VTIASet = VatInstalments.d.VTIASet;
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
 
 
-                        string DateAsString;
+            //if (VatInstalments.d.VTISSet.Length != 0)
+            //{
 
-                        DateTime ValidDate = DateTime.Now;
+            //    string apiDate = VatInstalments.d.VTISSet[0].Faedn;
+            //    if (!apiDate.Contains("Date"))
+            //    {
+
+            //        for (int i = 0; i < VatInstalments.d.VTISSet.Length; i++)
+            //        {
+
+            //            string dateformat = "dd-MM-yyyy";
+
+            //            if (App.IsArabic)
+            //            {
+
+            //                dateformat = "yyyy-MM-dd";
+            //            }
+            //            else
+            //            {
+            //                dateformat = "dd-MM-yyyy";
+            //            }
 
 
-                        CultureInfo provider = CultureInfo.InvariantCulture;
+            //            string DateAsString;
 
-                        DateAsString = VatInstalments.d.VTISSet.results[i].Faedn;  //which is in the format dd/MM/yyyy
+            //            DateTime ValidDate = DateTime.Now;
 
 
+            //            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            //            DateAsString = VatInstalments.d.VTISSet[i].Faedn;  //which is in the format dd/MM/yyyy
+
+
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                         try
                         {
                             ValidDate = DateTime.ParseExact(DateAsString, dateformat, provider);
@@ -3625,12 +3905,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         jsonDateTime = dateList[0].Replace("\"\\", "");
                         jsonDateTime = jsonDateTime + ")/";
                         VatInstalments.d.VTISSet.results[i].Faedn = jsonDateTime;
+=======
+            //            try
+            //            {
+            //                ValidDate = DateTime.ParseExact(DateAsString, dateformat, provider);
+            //            }
+            //            catch (Exception )
+            //            {
+            //                ValidDate = DateTime.ParseExact(DateAsString, dateformat.Replace("MM", "M"), provider);
+            //            }
 
-                    }
-                }
+            //            //  DateTime dt = DateTime.ParseExact(VatInstalments.d.VTISSet.results[i].Faedn, dateformat, provider);
+
+            //            //DateTime dt = Convert.ToDateTime(VatInstalments.d.VTISSet.results[i].Faedn);
+            //            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+            //            {
+            //                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+            //            };
+            //            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+            //            var jsonDateTime = JsonConvert.SerializeObject(ValidDate.Date, microsoftDateFormatSettings);
+            //            string[] dateList = jsonDateTime.Split('+');
+            //            jsonDateTime = dateList[0].Replace("\"\\", "");
+            //            jsonDateTime = jsonDateTime + ")/";
+            //            VatInstalments.d.VTISSet[i].Faedn = jsonDateTime;
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
+
+            //        }
+            //    }
 
 
-            }
+            //}
 
 
             return request;
@@ -3664,11 +3968,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 response = await VATInstalationPlanWebServiceManager.SaveVATInstalmentData(request);
                 PopToRootPage();
-                if (response != null && response.d != null)
+                if (response != null && response.result != null)
                 {
                     try
                     {
-                        if (response != null && response.d != null)
+                        if (response != null && response.result != null)
                         {
 
                         }
@@ -3676,11 +3980,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         return response;
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         IsLoading = false;
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
 
 
+=======
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                         return null;
                     }
                 }
@@ -3699,10 +4008,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 return response;
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
 
 
+=======
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
                 return response;
             }
 
@@ -3750,8 +4064,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         localPath =
                       Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
+=======
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
+                    }
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
 
 
                     }
@@ -3775,6 +4095,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception)
             {
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
+=======
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                throw ex;
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/VATInstalmentPlanViewModel/VATInstalmentPlanViewModel.cs
             }
         }
 
