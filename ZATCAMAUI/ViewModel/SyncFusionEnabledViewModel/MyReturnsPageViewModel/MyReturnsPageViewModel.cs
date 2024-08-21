@@ -151,15 +151,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 OnPropertyChanged("SelectedZakatReturnOverDue");
                 if (SelectedZakatReturnOverDue != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
-                    if (SelectedZakatReturnOverDue.Fbtyp.Equals("FZ12"))
+                    if (SelectedZakatReturnOverDue.formBundleType.Equals("FZ12"))
                     {
                         App.IsZakatLoadingFromMyReturns = true;
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnOverDue.Fbguid);
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnOverDue.formBundleGUID);
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
+                        MainThread.BeginInvokeOnMainThread(async () => {
                             await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                         });
                     }

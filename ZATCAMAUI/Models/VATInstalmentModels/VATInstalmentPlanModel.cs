@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.VATInstalmentModels
 {
+
     
     public class VATInstalmentPlanModel
     {
@@ -13,7 +14,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         public string ActiveOutletDecisionOptions { get; set; }
         public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
     }
-  
+    
     public class InstalmentAgreementFrequencyModel
     {
         public InstalmentAgreementFrequencyModel()
@@ -24,7 +25,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         public string FrequencyOptions { get; set; }
         public bool IsSelected { get; set; }
     }
-  
+    
     public class InstalmentAgreementAttachmentsModel
     {
         public InstalmentAgreementAttachmentsModel()
@@ -37,7 +38,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
 
         public bool IsAttachmentAttached { get; set; }
     }
-  
+    
     public class ZakatSelectBillModel
     {
         public ZakatSelectBillModel()
@@ -52,7 +53,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         public bool isSelected { get; set; }
         public string billType { get; set; }
     }
-  
+    
     public class ZakatSummaryViewModel
     {
         public ZakatSummaryViewModel()
@@ -68,7 +69,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         public string billType { get; set; }
 
     }
-  
+    
     public class InstalmentAgreementInstalmentPlansModel
     {
         public InstalmentAgreementInstalmentPlansModel()
@@ -83,14 +84,14 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
 
     //-----API Object will starts from herer-------
 
-  
+    
     public partial class Metadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-  
+    
     public partial class VatInstalmentPlanResponse
     {
         [JsonProperty("data")]
@@ -98,7 +99,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         [JsonProperty("result")]
         public VATInstalment result { get; set; }
     }
-  
+    
     public partial class VATInstalment
     {
         public Metadata __metadata { get; set; }
@@ -173,25 +174,26 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         public string Vtref { get; set; }
         [JsonProperty("currency")]
         public string Waers { get; set; }
-        [JsonProperty("sadadBillNumber")]
-        public string Sopbel { get; set; }
-        [JsonProperty("totaldownpaymentTaxpayer")]
-        public string Totdownpymtamt { get; set; }
-        [JsonProperty("downpaymentDays")]
-        public string DpDays { get; set; }
-        public object[] VTADSet { get; set; }
+        //[JsonProperty("sadadBillNumber")]
+        //public string Sopbel { get; set; }
+        //[JsonProperty("totaldownpaymentTaxpayer")]
+        //public string Totdownpymtamt { get; set; }
+        //[JsonProperty("downpaymentDays")]
+        //public string DpDays { get; set; }
+        [JsonProperty("taxpayerInformations")]
+        public List<VTADSetResult> VTADSet { get; set; }
         [JsonProperty("notes")]
         public List<NotesSetResult> NotesSet { get; set; }
         [JsonProperty("VATInstalmentSchedules")]
-        public VATResults3[] VTISSet { get; set; }
+        public List<VATResults3> VTISSet { get; set; }
         [JsonProperty("VATInstallmentAgreement")]
-        public VATResults4[] VTIASet { get; set; }
+        public List<VATResults4> VTIASet { get; set; }
         [JsonProperty("attachments")]
         public List<Attachment> AttachmentSet { get; set; }
         [JsonProperty("instructions")]
         public List<Instruction> InstructionSet { get; set; }
     }
-  
+    
     public partial class AttachmentSet
     {
         public List<Attachment> results { get; set; }
@@ -209,11 +211,95 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         public string Zztext { get; set; }
     }
     
+
+    public class VTADSetResult
+    {
+        [JsonProperty("systemCode")]
+        public string systemCode;
+
+        [JsonProperty("formGUID")]
+        public string formGUID;
+
+        [JsonProperty("returnId")]
+        public string returnId;
+
+        [JsonProperty("regionDescription")]
+        public string regionDescription;
+
+        [JsonProperty("squareBaseUnit")]
+        public string squareBaseUnit;
+
+        [JsonProperty("dataVersion")]
+        public string dataVersion;
+
+        [JsonProperty("lineNumber")]
+        public int lineNumber;
+
+        [JsonProperty("rankingOrder")]
+        public string rankingOrder;
+
+        [JsonProperty("addressType")]
+        public string addressType;
+
+        [JsonProperty("sourceIdentifier")]
+        public string sourceIdentifier;
+
+        [JsonProperty("addressNumber")]
+        public string addressNumber;
+
+        [JsonProperty("city")]
+        public string city;
+
+        [JsonProperty("quarter")]
+        public string quarter;
+
+        [JsonProperty("postalCode")]
+        public string postalCode;
+
+        [JsonProperty("street")]
+        public string street;
+
+        [JsonProperty("additionalNumber")]
+        public string additionalNumber;
+
+        [JsonProperty("buildingNumber")]
+        public string buildingNumber;
+
+        [JsonProperty("region")]
+        public string region;
+
+        [JsonProperty("longitude")]
+        public string longitude;
+
+        [JsonProperty("latitude")]
+        public string latitude;
+
+        [JsonProperty("lengthSize")]
+        public string lengthSize;
+
+        [JsonProperty("widthSize")]
+        public string widthSize;
+
+        [JsonProperty("heightSize")]
+        public string heightSize;
+
+        [JsonProperty("sizeBaseUnit")]
+        public string sizeBaseUnit;
+
+        [JsonProperty("cubicalDimensionsSize")]
+        public string cubicalDimensionsSize;
+
+        [JsonProperty("cubicBaseUnit")]
+        public string cubicBaseUnit;
+
+        [JsonProperty("squareDimensionsSize")]
+        public string squareDimensionsSize;
+    }
     public partial class NotesSet
     {
         public List<NotesSetResult> results { get; set; }
     }
-  
+    
     public partial class NotesSetResult
     {
         public Metadata __metadata { get; set; }
@@ -261,7 +347,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         [JsonProperty("startLine")]
         public string Strline { get; set; }
     }
-  
+    
     public partial class NotesSetPost
     {
         public Metadata __metadata { get; set; }
@@ -296,18 +382,18 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         [JsonProperty("startLine")]
         public string Tdline { get; set; }
     }
-  
+    
     public partial class VtadSet
     {
         public object[] results { get; set; }
     }
-  
+    
     public partial class VtiaSet
     {
         [JsonProperty("VATInstallmentAgreement")]
         public VATResults4[] results { get; set; }
     }
-  
+    
     public partial class VATResults4
     {
         public Metadata __metadata { get; set; }
@@ -358,13 +444,13 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
             }
         }
     }
-  
+    
     public partial class VtisSet
     {
         [JsonProperty("VATInstalmentSchedules")]
         public VATResults3[] results { get; set; }
     }
-  
+    
     public partial class VATResults3
     {
         public Metadata __metadata { get; set; }
@@ -381,6 +467,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         [JsonProperty("dueDate")]
         public string Faedn { get; set; }
         // public string dueDate { get; set; }
+        // [JsonProperty("")]
         public string Monat { get; set; }
         [JsonProperty("outStandingLiability")]
         public string Betrw { get; set; }
@@ -409,6 +496,11 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         }
 
     }
+    //
+    //public partial class VatInstalmentPlanRequest
+    //{
+    //    public VATInstalmentRequest d { get; set; }
+    //}
 
     
     public partial class VatInstalmentPlanRequest
@@ -488,22 +580,22 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         public string UserTypz { get; set; }
         [JsonProperty("contractNumber")]
         public string Vtref { get; set; }
-        [JsonProperty("sadadBillNumber")]
-        public string Sopbel { get; set; }
+        //[JsonProperty("sadadBillNumber")]
+        //public string Sopbel { get; set; }
         [JsonProperty("currency")]
         public string Waers { get; set; }
-        [JsonProperty("totaldownpaymentTaxpayer")]
-        public string Totdownpymtamt { get; set; }
-        [JsonProperty("downpaymentDays")]
-        public string DpDays { get; set; }
+        //[JsonProperty("totaldownpaymentTaxpayer")]
+        //public string Totdownpymtamt { get; set; }
+        //[JsonProperty("downpaymentDays")]
+        //public string DpDays { get; set; }
         [JsonProperty("taxpayerInformations")]
-        public object[] VTADSet { get; set; }
+        public List<VTADSetResult> VTADSet { get; set; }
         [JsonProperty("notes")]
         public NotesSetPost[] NOTESSet { get; set; }
         [JsonProperty("VATInstalmentSchedules")]
-        public VATResults3[] VTISSet { get; set; }
+        public List<VATResults3> VTISSet { get; set; }
         [JsonProperty("VATInstallmentAgreement")]
-        public VATResults4[] VTIASet { get; set; }
+        public List<VATResults4> VTIASet { get; set; }
         [JsonProperty("attachments")]
         public List<Attachment> ATTACHMENTSet { get; set; }
 

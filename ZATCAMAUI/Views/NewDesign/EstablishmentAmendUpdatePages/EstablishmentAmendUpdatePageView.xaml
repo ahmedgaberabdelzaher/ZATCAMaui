@@ -6,7 +6,7 @@
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:SfChipGroup="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
@@ -4026,7 +4026,7 @@
                     HorizontalScrollBarVisibility="Never"
                     Orientation="Horizontal">
 
-                    <busyindicator:SfChipGroup
+                    <SfChipGroup:SfChipGroup
                         x:Name="TabSfChipGroup"
                         Margin="0,10,0,0"
                         ChipBackground="Transparent"
@@ -4039,7 +4039,7 @@
                         SelectionChanged="SfChipGroup_SelectionChanged"
                         SelectionChanging="SfChipGroup_SelectionChanging"
                         VerticalOptions="Center">
-                        <busyindicator:SfChipGroup.ItemTemplate>
+                        <SfChipGroup:SfChipGroup.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout
                                     Margin="0"
@@ -4052,7 +4052,7 @@
                                         Text="{Binding}" />
                                 </StackLayout>
                             </DataTemplate>
-                        </busyindicator:SfChipGroup.ItemTemplate>
+                        </SfChipGroup:SfChipGroup.ItemTemplate>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal">
@@ -4067,7 +4067,7 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                    </busyindicator:SfChipGroup>
+                    </SfChipGroup:SfChipGroup>
 
                 </ScrollView>
             </StackLayout>

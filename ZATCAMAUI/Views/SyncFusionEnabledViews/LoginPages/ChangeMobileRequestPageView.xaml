@@ -6,6 +6,7 @@
              xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
             xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
             xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
             xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
@@ -178,12 +179,17 @@
 
                                 <Border Padding="10" Style="{StaticResource GreyBorderFrame}">
                                     <custom:GAZTBorderlessEntry
-                                        Keyboard="Numeric"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         MaxLength="10"
                                         HorizontalOptions="FillAndExpand"
                                         Text="{Binding TinNumber}" TextColor="{StaticResource NeutralBlack}"
                                         FontFamily="{StaticResource SomarRegular}"
-                                        />
+                                        >
+                                                      <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <behavior:OnlyNumericValuesBehaviour />
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                                                </custom:GAZTBorderlessEntry>
                                 </Border>
 
                                 </StackLayout>
@@ -522,13 +528,12 @@
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
                                                     Text="{Binding OTPFourthDigit}"
-                                                    TextChanged="OtpFourthEntry_TextChanged"
                                                     ReturnType="Next"
                                                     Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                     MaxLength="1"
                                                     IsPassword="True"
                                                     TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand"
-                                                    Unfocused="OtpFourthEntry_Unfocused">
+                                                    >
 
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behavior:OnlyNumericValuesBehaviour/>

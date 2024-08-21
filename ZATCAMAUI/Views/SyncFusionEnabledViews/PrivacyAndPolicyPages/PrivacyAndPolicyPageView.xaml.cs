@@ -26,7 +26,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PrivacyAndPolicyPages
             Padding = safeInsets;
             ChangeAeroIcon();
             BindingContext = viewModel;
-            if (Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 string baseUrl = DependencyService.Get<IBaseUrl>().Get();
                 string path = DependencyService.Get<IBaseUrl>().Get();

@@ -27,7 +27,7 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
         {
             base.OnAppearing();
 
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
             {
                 BranchLocation.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
             }
@@ -77,10 +77,10 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             BranchLocation.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -89,7 +89,7 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
                             BranchLocation.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             BranchLocation.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             BranchLocation.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";

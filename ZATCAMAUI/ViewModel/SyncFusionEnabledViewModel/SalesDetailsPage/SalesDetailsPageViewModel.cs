@@ -313,13 +313,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
                 _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                 CheckBoxStatus = false;
             });
-            GoBackClick = new Command(() =>
-            {
-                if (!IsLoading)
-                {
-                    _navigationService.GoBack();
-                }
-            });
             OnAmendReturnButtonClicked = new Command(() =>
             {
                 try

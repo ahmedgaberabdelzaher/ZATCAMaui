@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
-
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
@@ -15,6 +14,7 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.ZakatObjection;
 using ZATCAMAUI.Core.Interfaces;
+using static ZATCAMAUI.Models.ZakatObjectionsModel.ZakatObjectionWithDrawListModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 {
@@ -385,6 +385,50 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 OnPropertyChanged("RevisedAmount");
             }
         }
+
+        //CR4912
+        public string _zakatrevamt = "";
+
+        public string ZAKTREVAMt
+        {
+            get { return _zakatrevamt; }
+            set
+            {
+                if (_zakatrevamt == value) return;
+
+                _zakatrevamt = value;
+                OnPropertyChanged("ZAKTREVAMt");
+            }
+        }
+
+        public string _dispamtcit = "";
+
+        public string DispAmtCIT
+        {
+            get { return _dispamtcit; }
+            set
+            {
+                if (_dispamtcit == value) return;
+
+                _dispamtcit = value;
+                OnPropertyChanged("DispAmtCIT");
+            }
+        }
+
+        public string _dispamtZAKT = "";
+
+        public string DispAmtZAKT
+        {
+            get { return _dispamtZAKT; }
+            set
+            {
+                if (_dispamtZAKT == value) return;
+
+                _dispamtZAKT = value;
+                OnPropertyChanged("DispAmtZAKT");
+            }
+        }
+     //end CR4912
 
         public string _objectionReasons = "";
 
@@ -893,7 +937,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 });
                 if (VATReferanceNumber != null)
                 {
-                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + "'" + VATReferanceNumber + "')/$value";
+                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + VATReferanceNumber;
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
@@ -911,7 +955,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 });
                 if (VATReferanceNumber != null)
                 {
-                    string downloadurl = ZATCAConstants.ZOdownloadCoverFormFile + "'" + VATReferanceNumber + "')/$value";
+                    string downloadurl = ZATCAConstants.ZOdownloadCoverFormFile + VATReferanceNumber;
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
@@ -1312,7 +1356,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                 await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                     WithdrawAttachmentsListViewData.ToList(),
-                    WhichAttachment.ZakatObjectionsWithdrawAttachment, SummaryData.d.CaseGuid));
+                    WhichAttachment.ZakatObjectionsWithdrawAttachment, SummaryData.d.headerSet.CaseGuid));
                 //TODO: ReturnID
 
 
@@ -1320,7 +1364,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
             }
             catch (InternetException ex)
             {
@@ -1330,10 +1373,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
             }
         }
 
@@ -1351,7 +1392,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             {
                 await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                     WithdrawAttachmentsListViewDataTwo.ToList(),
-                    WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo, SummaryData.d.CaseGuid));
+                    WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo, SummaryData.d.headerSet.CaseGuid));
                 //TODO: ReturnID
 
 
@@ -1359,7 +1400,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
             }
             catch (InternetException ex)
             {
@@ -1369,10 +1409,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
             }
         }
 
@@ -1449,15 +1487,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 await Task.Run(async () =>
                 {
                     IsLoading = true;
-                    ZakatObjectionWithDrawListModel _ZAKATObjectionWithDraw = new ZakatObjectionWithDrawListModel();
+                    ZakatObjectionWithDrawListModelClass _ZAKATObjectionWithDraw = new ZakatObjectionWithDrawListModelClass();
                     try
                     {
                         _ZAKATObjectionWithDraw = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawList();
 
-                        if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
+                        if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.results != null)
                         {
 
-                            var isRefnumberAvilable = _ZAKATObjectionWithDraw.d.results.Find(appRef => (appRef.ObjFbnum == SelectedFbNum));
+                            var isRefnumberAvilable = _ZAKATObjectionWithDraw.results.Find(appRef => (appRef.ObjFbnum == SelectedFbNum));
 
                             if (isRefnumberAvilable != null)
                             {
@@ -1512,8 +1550,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1675,10 +1711,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1712,11 +1746,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         {
 
                             SummaryData = _ZakatObjectionRequestSummary;
-
-
                             BindData(_ZakatObjectionRequestSummary);
-
-
                             await GetWithdrawFBNums();
                             VATReferanceNumber = SelectedFbNum;
                         }
@@ -1759,10 +1789,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1780,10 +1808,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             var bills = new ObservableCollection<BillsModel>();
             returnBills = new ObservableCollection<BillsModel>();
 
-            if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results != null && zakatObjectionRequestSummary.d.ZNOB_ObjSet.results.Count > 0)
+            if (zakatObjectionRequestSummary.d.ZNOB_ObjSet != null && zakatObjectionRequestSummary.d.ZNOB_ObjSet.Count > 0)
             {
 
-                foreach (var objction in zakatObjectionRequestSummary.d.ZNOB_ObjSet.results)
+                foreach (var objction in zakatObjectionRequestSummary.d.ZNOB_ObjSet)
                 {
                     var billsModel = new BillsModel();
                     billsModel.FiscalYear = objction.AAssnmtYr;
@@ -1808,7 +1836,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             billsModel.FinancialPeriod = fromDate + " - " + toDate;
                         }
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
 
                     }
@@ -1843,11 +1871,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             }
                         }
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
 
                     }
 
+                    DispAmtCIT = objction.ADisputeAmtCit;
+                    DispAmtZAKT = objction.ADisputeAmt;
+                    ZAKTREVAMt = objction.ARevAmtCit;
 
                     billsModel.TaxType = objction.ATaxTy;
                     NewTaxType = objction.ATaxTy;
@@ -1884,7 +1915,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     billsModel.TaxType = AppResources.FORM5Zakat;
                 }*/
 
-                ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
+                ReferenceNum = zakatObjectionRequestSummary.d.headerSet.ARefNo;
 
 
                 /*if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
@@ -1901,36 +1932,37 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 }*/
 
 
-                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.AAssnmtAmt))
+                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.headerSet.AAssnmtAmt))
                 {
-
-                    AssessmentAmountGAZT = zakatObjectionRequestSummary.d.AAssnmtAmt;
+                    AssessmentAmountGAZT = zakatObjectionRequestSummary.d.headerSet.AAssnmtAmt;
                 }
 
-                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.ARevAmt))
+                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.headerSet.ARevAmt))
                 {
 
-                    RevisedAmount = zakatObjectionRequestSummary.d.ARevAmt;
+                    RevisedAmount = zakatObjectionRequestSummary.d.headerSet.ARevAmt;
                 }
 
-                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.ADisputeAmt))
+                if (!string.IsNullOrEmpty(zakatObjectionRequestSummary.d.headerSet.ADisputeAmt))
                 {
 
-                    DisputeAmount = zakatObjectionRequestSummary.d.ADisputeAmt;
+                    DisputeAmount = zakatObjectionRequestSummary.d.headerSet.ADisputeAmt;
                 }
 
 
-                ObjectionReasons = zakatObjectionRequestSummary.d.AObjSum;
+                
+
+                ObjectionReasons = zakatObjectionRequestSummary.d.headerSet.AObjSum;
             }
 
-            SecurityAmount = zakatObjectionRequestSummary.d.ASecam;
-            SADADNumber = zakatObjectionRequestSummary.d.AZsopbelCit;
+            SecurityAmount = zakatObjectionRequestSummary.d.headerSet.ASecam;
+            SADADNumber = zakatObjectionRequestSummary.d.headerSet.AZsopbelCit;
 
             var attachmentsList = new ObservableCollection<Attachment>();
             var bankGurraAttachList = new ObservableCollection<Attachment>();
 
 
-            foreach (var attach in zakatObjectionRequestSummary.d.AttDetSet.results)
+            foreach (var attach in zakatObjectionRequestSummary.d.AttDetSet)
             {
                 if (attach.Dotyp.ToUpper() == "ZOBG")
                 {
@@ -1949,18 +1981,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             AttachmentsListViewData = attachmentsList;
             BankGuranteeAttachmentsListViewData = bankGurraAttachList;
 
-            RepFullName = zakatObjectionRequestSummary.d.ARepName;
-            RepPhoneNo = zakatObjectionRequestSummary.d.ARepPhone;
-            RepFaxNo = zakatObjectionRequestSummary.d.ARepFax;
-            RepElectronicMail = zakatObjectionRequestSummary.d.ARepEmail;
-            RepDesignation = zakatObjectionRequestSummary.d.ARepDes;
-            RepBuildingName = zakatObjectionRequestSummary.d.ARepBldNm;
-            RepLevelStreetNumber = zakatObjectionRequestSummary.d.ARepSteetNo;
-            RepCity = zakatObjectionRequestSummary.d.ARepCity;
-            ApplicantName = zakatObjectionRequestSummary.d.AName;
-            Capacity = zakatObjectionRequestSummary.d.ACapacity;
+            RepFullName = zakatObjectionRequestSummary.d.headerSet.ARepName;
+            RepPhoneNo = zakatObjectionRequestSummary.d.headerSet.ARepPhone;
+            RepFaxNo = zakatObjectionRequestSummary.d.headerSet.ARepFax;
+            RepElectronicMail = zakatObjectionRequestSummary.d.headerSet.ARepEmail;
+            RepDesignation = zakatObjectionRequestSummary.d.headerSet.ARepDes;
+            RepBuildingName = zakatObjectionRequestSummary.d.headerSet.ARepBldNm;
+            RepLevelStreetNumber = zakatObjectionRequestSummary.d.headerSet.ARepSteetNo;
+            RepCity = zakatObjectionRequestSummary.d.headerSet.ARepCity;
+            ApplicantName = zakatObjectionRequestSummary.d.headerSet.AName;
+            Capacity = zakatObjectionRequestSummary.d.headerSet.ACapacity;
 
-            if (zakatObjectionRequestSummary.d.ASectp == "C")
+            if (zakatObjectionRequestSummary.d.headerSet.ASectp == "C")
             {
                 isBankGurantee = false;
                 EnableSadadSecurityView();
@@ -2225,8 +2257,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2301,8 +2331,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2376,10 +2404,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2451,10 +2477,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2526,10 +2550,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2600,10 +2622,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2674,10 +2694,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2748,10 +2766,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2822,10 +2838,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2897,10 +2911,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2970,10 +2982,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -3043,10 +3053,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -3116,10 +3124,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -3191,10 +3197,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -3218,12 +3222,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 await Task.Run(async () =>
                 {
                     IsLoading = true;
-                    ZakatObjectionWithDrawListModel _ZakatObjectionWithDrawList = new ZakatObjectionWithDrawListModel();
+                    ZakatObjectionWithDrawListModelClass _ZakatObjectionWithDrawList = new ZakatObjectionWithDrawListModelClass();
                     try
                     {
                         _ZakatObjectionWithDrawList = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawList();
 
-                        if (_ZakatObjectionWithDrawList != null && _ZakatObjectionWithDrawList.d != null)
+                        if (_ZakatObjectionWithDrawList != null && _ZakatObjectionWithDrawList != null)
                         {
                         }
                         else
@@ -3264,10 +3268,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -3337,10 +3339,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -3410,10 +3410,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -3476,10 +3474,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 IsLoading = false;
 
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3540,10 +3536,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 IsLoading = false;
 
                 MainThread.BeginInvokeOnMainThread(async () =>

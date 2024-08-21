@@ -14,10 +14,12 @@ using ZATCAMAUI.Models.TINOutletDeregister;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.ContractReleasePages;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.TINOutletDeregister;
 using static ZATCAMAUI.Models.ErrorMessage;
 using static ZATCAMAUI.Models.TINOutletDeregister.TinOutletDeregisterListModel;
+using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister;
 public class TinOutletDeRegRequestViewModel : BaseViewModel

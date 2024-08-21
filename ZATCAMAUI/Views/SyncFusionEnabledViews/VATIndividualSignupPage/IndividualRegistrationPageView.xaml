@@ -6,7 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:SfChipGroup="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -427,7 +427,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <busyindicator:SfChipGroup
+                                    <SfChipGroup:SfChipGroup
                                         x:Name="ChipGroup_statusFilter"
                                         Margin="0,10"
                                         ChipBackground="Transparent"
@@ -439,7 +439,7 @@
                                         SelectedChipBackground="{StaticResource PartialBg}"
                                         SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
                                         VerticalOptions="Center">
-                                        <busyindicator:SfChipGroup.ItemTemplate>
+                                        <SfChipGroup:SfChipGroup.ItemTemplate>
                                             <DataTemplate>
                                                 <StackLayout WidthRequest="80">
                                                     <Label
@@ -450,8 +450,8 @@
                                                         Text="{Binding Text}" />
                                                 </StackLayout>
                                             </DataTemplate>
-                                        </busyindicator:SfChipGroup.ItemTemplate>
-                                    </busyindicator:SfChipGroup>
+                                        </SfChipGroup:SfChipGroup.ItemTemplate>
+                                    </SfChipGroup:SfChipGroup>
 
 
                                     <inputLayout:SfTextInputLayout
@@ -2103,7 +2103,12 @@
                                             Placeholder="{x:Static ResourceManager:AppResources.EnterOTP}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding OTP}"
-                                            WidthRequest="128" />
+                                            WidthRequest="128" >
+                                             <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behaviors:OnlyNumericValuesBehaviour />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                                        </custom:GAZTBorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
 
                                     <!--  ResendOTP  -->

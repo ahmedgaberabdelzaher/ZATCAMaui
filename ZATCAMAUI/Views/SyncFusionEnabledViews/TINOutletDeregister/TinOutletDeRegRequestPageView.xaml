@@ -7,8 +7,10 @@
             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
             xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
             xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
+            xmlns:sfconverter="clr-namespace:ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister"
             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
             x:Name="page"
+            xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
             ios:Page.UseSafeArea="true"
             xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
             xmlns:view="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
@@ -19,7 +21,7 @@
 
              <ContentPage.Resources>
                 <ResourceDictionary>
-                    <converter:RotationConverter x:Key="rotationConverter"/>
+                    <sfconverter:RotationConverter x:Key="rotationConverter"/>
                     <converter:InverseBoolConverter x:Key="BoolConverter"/>
                     
                 </ResourceDictionary>

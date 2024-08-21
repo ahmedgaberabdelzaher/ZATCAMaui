@@ -9,7 +9,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
         public InstructionPopUpPageView()
         {
             InitializeComponent();
-            if (Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 string baseUrl = DependencyService.Get<IBaseUrl>().Get();
                 string path = DependencyService.Get<IBaseUrl>().Get();

@@ -542,7 +542,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                                 });
                             }
                             List<EstimatedZakatReturnsResult> myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>();
-                            myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>(GetSortedList(estimatedZakatReturnsList.d.listSet.results));
+                            myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>(GetSortedList(estimatedZakatReturnsList.d.results));
                             DateTime TodayNew = DateTime.Now;
                             List<EstimatedZakatReturnsResult> MyZakatReturnsNonSubmittedChild = new List<EstimatedZakatReturnsResult>();
                             List<EstimatedZakatReturnsResult> MyZakatReturnsSubmittedChild = new List<EstimatedZakatReturnsResult>();
@@ -718,22 +718,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             App.ICRStatus = selectedICRForStatus.Status;
                             //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
                             // the GUID will be different
-                            string SelectedICRGUID = SelectedICRVATSubmitted.Fbguid;
+                            String SelectedICRGUID = SelectedICRVATSubmitted.Fbguid;
                             EUser = SelectedICRVATSubmitted.Euser;
                             VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICRVATSubmitted.Fbguid, SelectedICRVATSubmitted.Fbnum, SelectedICRVATSubmitted.Euser, SelectedICRVATSubmitted.Persl);
                             PopToRootPage();
-                            if (_vATDeclaration != null && _vATDeclaration.d != null)
+                            if (_vATDeclaration != null && _vATDeclaration.data != null)
                             {
-                                _vATDeclaration.d.Fbguid = SelectedICRGUID;
+                                _vATDeclaration.data.Fbguid = SelectedICRGUID;
                                 VATDeclaration vATDeclaration = new VATDeclaration();
                                 VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                                Result5 result5 = new Result5();
-                                List<Result5> lst = new List<Result5>();
-                                ADRSet _aDRSet = new ADRSet();
-                                lst.Add(result5);
-                                vATDeclaration.d = vATDeclarationD;
-                                vATDeclaration.d.ADRSet = _aDRSet;
-                                vATDeclaration.d.ADRSet.results = lst;
+                                vATDeclaration.data = vATDeclarationD;
+                                vATDeclaration.data.ADRSet = new List<Result5>();
                                 MainThread.BeginInvokeOnMainThread(() =>
                                 {
                                     _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
@@ -750,7 +745,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         }
                     }
                 }
-                catch (InternetException ex)
+                catch (InternetException )
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {

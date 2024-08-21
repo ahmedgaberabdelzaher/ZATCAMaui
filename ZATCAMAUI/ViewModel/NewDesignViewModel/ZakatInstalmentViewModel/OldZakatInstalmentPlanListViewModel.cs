@@ -142,7 +142,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
                 if (SelectedFbNum != null)
                 {
-                    string downloadurl = ZATCAConstants.OldZakatdownloadCoverFormFile + "'" + SelectedFbNum + "')/$value";
+
+                    String downloadurl = ZATCAConstants.OldZakatdownloadCoverFormFile + SelectedFbNum;
                     //await WebServiceManager.FileDownload(downloadurl, "pdf");
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
@@ -164,7 +165,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
                 if (SelectedFbNum != null)
                 {
-                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + "'" + SelectedFbNum + "')/$value";
+                    String downloadurl = ZATCAConstants.ZOdownloadAckLetter + SelectedFbNum;
                     //await WebServiceManager.FileDownload(downloadurl, "pdf");
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
@@ -246,8 +247,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -302,12 +301,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             var dueInvoicesListSet12 = new ObservableCollection<EvtNotif12SetResult>();
             if (result != null && result.d != null)
             {
-                if (result.d.EvtNotif1Set != null && result.d.EvtNotif1Set.results.Count > 0)
+                if (result.d.EvtNotif1Set != null && result.d.EvtNotif1Set.Count > 0)
                 {
 
 
 
-                    foreach (ZakatInstalmentValidateNewRequestModel.Result2 result2 in result.d.EvtNotif1Set.results)
+                    foreach (ZakatInstalmentValidateNewRequestModel.Result2 result2 in result.d.EvtNotif1Set)
                     {
 
 
@@ -363,9 +362,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     DueInvoicesList = dueInvoicesList;
                     EnableDueInvoicesPage();
                 }
-                else if (result.d.EvtNotif12Set != null && result.d.EvtNotif12Set.results.Count > 0)
+                else if (result.d.EvtNotif12Set != null && result.d.EvtNotif12Set.Count > 0)
                 {
-                    foreach (EvtNotif12SetResult evtNotif12SetResult in result.d.EvtNotif12Set.results)
+                    foreach (EvtNotif12SetResult evtNotif12SetResult in result.d.EvtNotif12Set)
                     {
 
 
@@ -1176,7 +1175,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         public void BindVatInstalments()
         {
-            if (ReqVatInstalmentPlanResponseList.d.ListSet.results != null)
+            if (ReqVatInstalmentPlanResponseList.d.ListSet != null)
             {
                 if (RequestForInstalmentPlanList != null)
                 {
@@ -1187,7 +1186,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 IsZakat = Preferences.Get("isZakat", false);
 
-                RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ListSet.results;
+                RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ListSet;
 
                 //if (IsZakat)
                 //{
@@ -1412,7 +1411,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             SummarySelectedBillsList = new ObservableCollection<OldZakatSelectBillModel>();
 
-            foreach (var bill in SeletedZakatForm.d.Z_INVOICE_UI5Set.results)
+            foreach (var bill in SeletedZakatForm.d.Z_INVOICE_UI5Set)
             {
 
 
@@ -1486,9 +1485,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
 
-            for (int i = 0; i < SeletedZakatForm.d.AttDetSet.results.Count; i++)
+            for (int i = 0; i < SeletedZakatForm.d.AttDetSet.Count; i++)
             {
-                Attachments.Add(SeletedZakatForm.d.AttDetSet.results[i]);
+                Attachments.Add(SeletedZakatForm.d.AttDetSet[i]);
             }
 
 
@@ -1666,9 +1665,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (Exception)
             {
-
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1779,8 +1775,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;

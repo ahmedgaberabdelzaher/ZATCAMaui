@@ -37,10 +37,10 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             Picker_Tins.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -49,7 +49,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
                             Picker_Tins.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         Picker_Tins.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
                         Picker_Tins.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
                         Picker_Tins.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
@@ -174,7 +174,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             try
             {
                 //TODO
-                TIN selectedTinId = viewModel.TINs[e.NewValue];
+                TINModel selectedTinId = viewModel.TINs[e.NewValue];
                 //Picker_Tins.Columns[0].SelectedIndex = e.NewValue;
                 viewModel.SelectedTinId = selectedTinId;
             }
@@ -301,7 +301,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
                 base.OnAppearing();
 
 
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     Picker_Tins.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
                 }

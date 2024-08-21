@@ -23,11 +23,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
                 viewModel = App.Locator.NotesDescriptionPopUpPageView;
                 BindingContext = viewModel;
-                if (vATDeclaration != null && vATDeclaration.d != null)
+                if (vATDeclaration != null && vATDeclaration.data != null)
                 {
-                    if (vATDeclaration.d.NOTESSet.results.Count != 0)
+                    if (vATDeclaration.data.NOTESSet.Count != 0)
                     {
-                        viewModel.NoteList = vATDeclaration.d.NOTESSet.results.OrderBy(X => X.DataVersionz).ToList();
+                        viewModel.NoteList = vATDeclaration.data.NOTESSet.OrderBy(X => X.DataVersionz).ToList();
                         viewModel.IsDisplayNoteVisible = true;
                         viewModel.IsNoDataLabelVisible = false;
                     }

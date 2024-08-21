@@ -364,12 +364,10 @@
                                 x:Name="TxDateNormalCalendar"
                                 Margin="2"
                                 Background="White"
-                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
                                 Closed="TxDateNormalCalendar_Closed"
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="36"
                                 Mode="Dialog"
-                                OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"
                                 SelectedItem="{Binding TodayDateNormal}"
                                 Style="{StaticResource PickerStyle}">
 
@@ -425,12 +423,10 @@
                                 x:Name="TxDateHijriCalendar"
                                 Margin="2"
                                 Background="White"
-                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
                                 Closed="TxDateNormalCalendar_Closed"
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="36"
                                 Mode="Dialog"
-                                OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"
                                 SelectedItem="{Binding TodayDateinHijri}">
 
                                 <custom:CustomHijriDatePicker.ColumnHeaderView>
@@ -482,11 +478,11 @@
                                 x:Name="TaxPeriodDateNormalCalendar"
                                 Margin="2"
                                 Background="White"
-                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="36"
                                 Mode="Dialog"
-                                OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"
+                                
                                 SelectedItem="{Binding TodayDateNormal}"
                                 Style="{StaticResource PickerStyle}">
 
@@ -540,11 +536,11 @@
                                 x:Name="TaxPeriodDateHijriCalendar"
                                 Margin="2"
                                 Background="White"
-                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="36"
                                 Mode="Dialog"
-                                OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"
+                                
                                 SelectedItem="{Binding TodayDateinHijri}">
 
                                 <custom:CustomHijriDatePicker.SelectionView>

@@ -32,10 +32,10 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             RegionPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -56,7 +56,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                             ReportTypePicker.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
                         RegionPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         RegionPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -86,7 +86,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
             {
                 RegionPicker.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
                 CityPicker.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];

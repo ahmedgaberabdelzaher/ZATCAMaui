@@ -75,10 +75,10 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             dobPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             dobPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -114,7 +114,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
                         }
                         break;
 
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
 
                             dobPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";

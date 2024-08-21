@@ -294,9 +294,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 }
                                 else
                                 {
-                                    if (result.header.moreInformation != null && result.header.moreInformation.Errordetails != null && result.header.moreInformation.Errordetails.Count > 0)
+                                    if (result.header.moreInformation != null && result.header.moreInformation.errorDetails != null && result.header.moreInformation.errorDetails.Count > 0)
                                     {
-                                        MessageTxt = result.header.moreInformation.Errordetails[0];
+                                        MessageTxt = result.header.moreInformation.errorDetails[0].message;
                                         IsShowMsgView = true;
 
                                         return;

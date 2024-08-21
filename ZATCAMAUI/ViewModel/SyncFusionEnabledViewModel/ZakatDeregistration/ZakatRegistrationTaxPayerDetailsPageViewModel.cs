@@ -16,27 +16,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ZakatRegistrationTaxPayerDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
         }
-        public bool _isLoading { get; set; }
-        public bool isLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                OnPropertyChanged("isLoading");
-            }
-        }
+       
 
         public async Task LoadDataTaxPayerDetails()
         {
             try
             {
-                isLoading = true;
+                IsLoading = true;
                 var retVal = await FetchDataForDisplayDetailsExt(EstablishmentRegistrationTabsEnum.RegistrationType);
                 await FetchDataForDisplayDetailsExt(EstablishmentRegistrationTabsEnum.TaxpayerDetail);
 
@@ -49,7 +35,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     someThingWhentWrong.OnDone = () =>
                     {
-                        isLoading = false;
+                        IsLoading = false;
                         if (MopupService.Instance.PopupStack.Count > 0)
                             MopupService.Instance.PopAllAsync();
                         currentTab = EstablishmentRegistrationTabsEnum.Unknown;
@@ -64,7 +50,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException)
             {
-                //  isLoading = true;
+                //  IsLoading = true;
                 if (MopupService.Instance.PopupStack.Count > 0)
                     await MopupService.Instance.PopAsync(true);
 
@@ -78,7 +64,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTErrorException ex)
             {
-                isLoading = false;
+                IsLoading = false;
                 await Task.Run(() =>
                 {
                     App.HideProgressView();

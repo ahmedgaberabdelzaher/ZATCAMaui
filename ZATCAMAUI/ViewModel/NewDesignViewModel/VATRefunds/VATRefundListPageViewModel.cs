@@ -13,8 +13,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
     {
         #region Commands
 
-        public ICommand GoBackBtnTapped { get; set; }
-        public ICommand CloseBtnTapped { get; set; }
         public ICommand VATRefundSelectionChanged { get; set; }
 
         #endregion
@@ -228,10 +226,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
         public VATRefundListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
-            GoBackBtnTapped = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
 
 
             VatRefundsListResultModel = new VatRefundsListResultModel();
@@ -255,8 +249,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             try
             {
                 VatRefundsListResultModel = await VATDeregistrationWebServiceManager.GAZTGetVAtRefundList();
-                VATRefundsSet = new ObservableCollection<VatRefHeaderSetResult>(VatRefundsListResultModel.VatRefHeaderSet.Results);
-                VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet.Results);
+                VATRefundsSet = new ObservableCollection<VatRefHeaderSetResult>(VatRefundsListResultModel.VatRefHeaderSet);
+                VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet);
 
                 double total = VATRefundsSet.Sum(item => Convert.ToDouble(item.ReassessAmt));
                 TotalReassessmentAmount = string.Format("{0:0.00}", total);
@@ -287,14 +281,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
-
+                    Console.WriteLine(ex.Message);
                 });
             }
         }
@@ -305,18 +297,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
         {
             try
             {
-                VatRefHeaderSetResult[] sortedResultSet = VatRefundsListResultModel.VatRefHeaderSet.Results.Where(m => m.RefundFbnum == vatRefHeaderSetResult.RefundFbnum).ToArray();
-                VatRefundsListResultModel.VatRefHeaderSet.Results = sortedResultSet;
+                VatRefHeaderSetResult[] sortedResultSet = VatRefundsListResultModel.VatRefHeaderSet.Where(m => m.RefundFbnum == vatRefHeaderSetResult.RefundFbnum).ToArray();
+                VatRefundsListResultModel.VatRefHeaderSet = sortedResultSet;
 
-                VatRefSubItemsSetResult[] sortedSubitemsResultSet = VatRefundsListResultModel.VatRefSubItemsSet.Results.Where(m => m.RefundFbnum == vatRefHeaderSetResult.RefundFbnum).ToArray();
-                VatRefundsListResultModel.VatRefSubItemsSet.Results = sortedSubitemsResultSet;
+                VatRefSubItemsSetResult[] sortedSubitemsResultSet = VatRefundsListResultModel.VatRefSubItemsSet.Where(m => m.RefundFbnum == vatRefHeaderSetResult.RefundFbnum).ToArray();
+                VatRefundsListResultModel.VatRefSubItemsSet = sortedSubitemsResultSet;
 
-                WiDtlSetResult[] sortedWidtlSet = VatRefundsListResultModel.WiDtlSet.Results.Where(m => m.Fbnum == vatRefHeaderSetResult.RefundFbnum).ToArray();
-                VatRefundsListResultModel.WiDtlSet.Results = sortedWidtlSet;
+                WiDtlSetResult[] sortedWidtlSet = VatRefundsListResultModel.WiDtlSet.Where(m => m.Fbnum == vatRefHeaderSetResult.RefundFbnum).ToArray();
+                VatRefundsListResultModel.WiDtlSet = sortedWidtlSet;
             }
-            catch (Exception)
+            catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -332,7 +324,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
 
                 VatRefundsIbanDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundGetIbanData("");
-                IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
+                IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet);
 
                 await Task.Run(() =>
                 {
@@ -341,8 +333,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -366,14 +356,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     await _dialogService.ShowMessage(message, AppResources.Information);
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
-
+                    Console.WriteLine(ex.Message);
                 });
             }
         }

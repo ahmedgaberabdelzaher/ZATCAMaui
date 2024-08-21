@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
-using ZATCAMAUI.Models.Attachments;
+using ZATCAMAUI.Models.AttachmentRequest;
 using ZATCAMAUI.Models.EstablishmentRegistration;
 
 namespace ZATCAMAUI.Core.Mangers
@@ -96,7 +96,7 @@ namespace ZATCAMAUI.Core.Mangers
                 string DeleteToken = string.Empty;
                 try
                 {
-                    Models.Attachments.DeleteAttachmentRequest _attachment = new Models.Attachments.DeleteAttachmentRequest()
+                   DeleteAttachmentRequest _attachment = new DeleteAttachmentRequest()
                     {
                         fileName = fileName,
                         returnGUID = RetGuid,
@@ -106,10 +106,7 @@ namespace ZATCAMAUI.Core.Mangers
                     };
 
                     var lang = UtilityManager.GetLanguageParameter();
-                    // String url = Constants.GAZTDeteleAttachmentNew + aPiMethod + "/AttachMedSet(" + "RetGuid='" + RetGuid + "',Flag='N',Dotyp='"+ doType +"',SchGuid='',Srno=1,Doguid='" + doGuid + "',AttBy='TP',OutletRef='')/$value";
-                    //String url = Constants.GAZTDeteleAttachmentNew + aPiMethod + "&returnGUID="+RetGuid+ "&attachment=New"+ "&documentCategory="+doType+ "&serialNumber=1"+ "&attachedByPerson=TP"+ "&outletReference=" + "&documentId="+doGuid + "&fileName=" + fileName;
-                    String url = ZATCAConstants.GAZTDeteleAttachmentNew;
-                    // url = url.Replace("attachmentServiceurl", aPiMethod);
+                    string url = ZATCAConstants.GAZTDeteleAttachmentNew;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -117,9 +114,6 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
                     var serializeOptions = new JsonSerializerSettings
                     {
                         DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
@@ -129,18 +123,10 @@ namespace ZATCAMAUI.Core.Mangers
                     var serialized = JsonConvert.SerializeObject(_attachment, serializeOptions);
 
                     HttpContent contentPost = new StringContent(serialized, Encoding.UTF8, ZATCAConstants.ContentType);
-                    //      client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                     var responsestr = res.Content.ReadAsStringAsync().Result;
-                    // _attachment = JsonConvert.DeserializeObject<DeleteAttachmentRequest>(responsestr);
                     if (res != null)
                     {
-                        //HttpHeaders headers = res.Headers;
-                        //IEnumerable<string> values;
-                        //if (headers.TryGetValues("delete", out values))
-                        //{
-                        //    DeleteToken = values.First();
-                        //}
                         if (res.StatusCode == HttpStatusCode.NoContent || res.StatusCode == HttpStatusCode.OK)
                             DeleteToken = "X";
                     }

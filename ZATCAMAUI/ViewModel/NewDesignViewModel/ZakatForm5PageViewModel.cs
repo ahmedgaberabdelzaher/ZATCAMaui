@@ -1796,964 +1796,891 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public async Task LoadZakatForm5Data()
         {
-            // IsLoading = true;
-            await Task.Run(() =>
+            IsLoading = true;
+
+            try
             {
-                IsLoading = true;
-            });
+                ZakatForm5DataResult = null;
 
+                ZakatForm5CityDataResult ZakatForm5CityDataResults = await ZakatForm5WebServiceManager.GAZTZakatForm5CityData();
 
-
-
-            await Task.Run(async () =>
-            {
-                try
+                if (ZakatForm5CityDataResults != null)
                 {
-                    ZakatForm5DataResult = null;
 
-                    ZakatForm5CityDataResult ZakatForm5CityDataResults = await ZakatForm5WebServiceManager.GAZTZakatForm5CityData();
+                    var CityDAta = ZakatForm5CityDataResults;
+                    ZakatForm5DataResult ZakatForm5DataResult = await ZakatForm5WebServiceManager.GAZTZakatForm5Data(Fbguid);
 
-                    if (ZakatForm5CityDataResults != null)
+                    if (ZakatForm5DataResult != null)
                     {
 
-                        var CityDAta = ZakatForm5CityDataResults;
-                        ZakatForm5DataResult ZakatForm5DataResult = await ZakatForm5WebServiceManager.GAZTZakatForm5Data(Fbguid);
+                        //Bind values to UI
 
-                        if (ZakatForm5DataResult != null)
+                        //Return Detials
+                        FinancialYear = ZakatForm5DataResult.PerslText;
+                        IsConditionRadio = true;
+
+                        string CalenderType = ZakatForm5DataResult.Incotyp.Substring(0, 1);
+                        if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+                        {
+                            ZakatFromDate = ZakatForm5DataResult.AFromDt.ToString("dd-MM-yyyy", new CultureInfo("ar-SA"));
+                            string[] dts = ZakatFromDate.Split('-');
+                            string date = dts[0] + "-" + UtilityManager.GetMonthNameHijri(dts[1]) + "-" + dts[2];
+                            ZakatFromDate = date;
+                            ZakatToDate = ZakatForm5DataResult.AToDt.ToString("dd-MM-yyyy", new CultureInfo("ar-SA"));
+                            string[] dts2 = ZakatToDate.Split('-');
+                            string date2 = dts2[0] + "-" + UtilityManager.GetMonthNameHijri(dts2[1]) + "-" + dts2[2];
+                            ZakatToDate = date2;
+                            Period = ZakatFromDate + " - " + ZakatToDate;
+                        }
+                        else
                         {
 
-                            //Bind values to UI
+                            ZakatFromDate = ZakatForm5DataResult.AFromDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            string[] dts = ZakatFromDate.Split('-');
+                            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                            ZakatFromDate = date;
+                            ZakatToDate = ZakatForm5DataResult.AToDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            string[] dts2 = ZakatToDate.Split('-');
+                            string date2 = dts2[0] + "-" + UtilityManager.GetMonthName(dts2[1]) + "-" + dts2[2];
+                            ZakatToDate = date2;
+                            Period = ZakatFromDate + " - " + ZakatToDate;
+                        }
 
-                            //Return Detials
-                            FinancialYear = ZakatForm5DataResult.PerslText;
+
+                        //Taxpayer Detials
+                        Taxpayer = ZakatForm5DataResult.ACompNm;
+                        Branch = ZakatForm5DataResult.APrctr;
+                        string addAddress = ZakatForm5DataResult.Line0 + "," +
+                            ZakatForm5DataResult.Line1 + "," +
+                            ZakatForm5DataResult.Line2 + "," +
+                            ZakatForm5DataResult.Line3 + "," +
+                            ZakatForm5DataResult.Line4 + "," +
+                            ZakatForm5DataResult.Line5 + "," +
+                            ZakatForm5DataResult.Line6 + "," +
+                            ZakatForm5DataResult.Line7 + "," +
+                            ZakatForm5DataResult.Line8 + "," +
+                            ZakatForm5DataResult.Line9;
+
+                        Address = addAddress.ToString();
+                        UserEmail = ZakatForm5DataResult.AEmail;
+                        MobileNumber = ZakatForm5DataResult.AMobile;
+
+                        //Registration Information
+                        NumberOfOutlet = ZakatForm5DataResult.ANoOfOutlet.ToString();
+
+                        if (ZakatForm5DataResult.AResidency == "Resident")
+                        {
+                            if (App.IsArabic)
+                            {
+                                Residency_Status = "مقيم";
+
+                            }
+                            else
+                            {
+                                Residency_Status = "Resident";
+                            }
+                        }
+                        else if (ZakatForm5DataResult.AResidency == "مقيم")
+                        {
+                            if (App.IsArabic)
+                            {
+                                Residency_Status = "مقيم";
+
+                            }
+                            else
+                            {
+                                Residency_Status = "Resident";
+                            }
+                        }
+                        else
+                        {
+                            Residency_Status = ZakatForm5DataResult.AResidency;
+                        }
+
+                        MainOutlet = ZakatForm5DataResult.AMainact;
+                        AccountMethod = ZakatForm5DataResult.AActmethod;
+                        FinancialPeriod = ZakatForm5DataResult.AFiscalPeriod;
+                        Calendar_Type = ZakatForm5DataResult.AFiscalCalendar;
+
+                        if (ZakatForm5DataResult.Status == "E0001")
+                        {
+                            IsConditionRadio = false;
+                        }
+                        else
+                        {
                             IsConditionRadio = true;
 
-                            string CalenderType = ZakatForm5DataResult.Incotyp.Substring(0, 1);
-                            if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+                        }
+
+                        //Financial Information
+                        int ListViewFlag = 0;
+
+                        //Cabs
+                        if (ZakatForm5DataResult.SCH_GP01 != null && ZakatForm5DataResult.SCH_GP01.Any())
+                        {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
                             {
-                                ZakatFromDate = ZakatForm5DataResult.AFromDt.ToString("dd-MM-yyyy", new CultureInfo("ar-SA"));
-                                string[] dts = ZakatFromDate.Split('-');
-                                string date = dts[0] + "-" + UtilityManager.GetMonthNameHijri(dts[1]) + "-" + dts[2];
-                                ZakatFromDate = date;
-                                ZakatToDate = ZakatForm5DataResult.AToDt.ToString("dd-MM-yyyy", new CultureInfo("ar-SA"));
-                                string[] dts2 = ZakatToDate.Split('-');
-                                string date2 = dts2[0] + "-" + UtilityManager.GetMonthNameHijri(dts2[1]) + "-" + dts2[2];
-                                ZakatToDate = date2;
-                                Period = ZakatFromDate + " - " + ZakatToDate;
+                                isCabVisible = true;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
                             }
-                            else
+
+                            IsCabBtn = true;
+
+
+                            NoOFEntityList.Add("Cabs");
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP01.Count; i++)
                             {
 
-                                ZakatFromDate = ZakatForm5DataResult.AFromDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                string[] dts = ZakatFromDate.Split('-');
-                                string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                                ZakatFromDate = date;
-                                ZakatToDate = ZakatForm5DataResult.AToDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                string[] dts2 = ZakatToDate.Split('-');
-                                string date2 = dts2[0] + "-" + UtilityManager.GetMonthName(dts2[1]) + "-" + dts2[2];
-                                ZakatToDate = date2;
-                                Period = ZakatFromDate + " - " + ZakatToDate;
-                            }
+                                ZakatForm5DataResult.SCH_GP01[i].NoOfCars = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01[i].NoOfCars))).ToString();
+                                ZakatForm5DataResult.SCH_GP01[i].AgvDlyIncome = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01[i].AgvDlyIncome);
+                                ZakatForm5DataResult.SCH_GP01[i].OccRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01[i].OccRate);
+                                ZakatForm5DataResult.SCH_GP01[i].NetPftPer = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01[i].NetPftPer);
+                                ZakatForm5DataResult.SCH_GP01[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP01[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP01[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01[i].NetPft);
 
 
-                            //Taxpayer Detials
-                            Taxpayer = ZakatForm5DataResult.ACompNm;
-                            Branch = ZakatForm5DataResult.APrctr;
-                            string addAddress = ZakatForm5DataResult.Line0 + "," +
-                                ZakatForm5DataResult.Line1 + "," +
-                                ZakatForm5DataResult.Line2 + "," +
-                                ZakatForm5DataResult.Line3 + "," +
-                                ZakatForm5DataResult.Line4 + "," +
-                                ZakatForm5DataResult.Line5 + "," +
-                                ZakatForm5DataResult.Line6 + "," +
-                                ZakatForm5DataResult.Line7 + "," +
-                                ZakatForm5DataResult.Line8 + "," +
-                                ZakatForm5DataResult.Line9;
 
-                            Address = addAddress.ToString();
-                            UserEmail = ZakatForm5DataResult.AEmail;
-                            MobileNumber = ZakatForm5DataResult.AMobile;
-
-                            //Registration Information
-                            NumberOfOutlet = ZakatForm5DataResult.ANoOfOutlet.ToString();
-
-                            if (ZakatForm5DataResult.AResidency == "Resident")
-                            {
-                                if (App.IsArabic)
+                                if (ZakatForm5DataResult.SCH_GP01[i].Expenses != "0.00")
                                 {
-                                    Residency_Status = "مقيم";
+                                    //ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable =AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP01[i].IsApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP01[i].IsApplicableVisible = true;
 
                                 }
                                 else
                                 {
-                                    Residency_Status = "Resident";
+                                    // ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP01[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP01[i].IsApplicableVisible = false;
+
                                 }
                             }
-                            else if (ZakatForm5DataResult.AResidency == "مقيم")
+                            Cabs = ZakatForm5DataResult.SCH_GP01;
+                        }
+                        //Professionals
+                        if (ZakatForm5DataResult.SCH_GP02 != null && ZakatForm5DataResult.SCH_GP02.Any())
+                        {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
                             {
-                                if (App.IsArabic)
+                                isCabVisible = false;
+                                isProfessionalVisible = true;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
+                            IsProfessionBtn = true;
+
+                            NoOFEntityList.Add("Professionals");
+
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP02.Count; i++)
+                            {
+
+                                ZakatForm5DataResult.SCH_GP02[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP02[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP02[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP02[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP02[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP02[i].NetPft);
+
+
+
+                                if (ZakatForm5DataResult.SCH_GP02[i].Expenses != "0.00")
                                 {
-                                    Residency_Status = "مقيم";
+                                    ZakatForm5DataResult.SCH_GP02[i].IsApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP02[i].IsApplicableVisible = true;
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP02[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP02[i].IsApplicableVisible = false;
+
+                                }
+                            }
+                            Professionals = ZakatForm5DataResult.SCH_GP02;
+                        }
+                        //Sell & Buy
+                        if (ZakatForm5DataResult.SCH_GP03 != null && ZakatForm5DataResult.SCH_GP03.Any())
+                        {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = true;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
+                            IsSellBtn = true;
+
+
+                            NoOFEntityList.Add("Sell & Buy");
+
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP03.Count; i++)
+                            {
+                                // ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
+                                //  ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
+
+                                ZakatForm5DataResult.SCH_GP03[i].Capital = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].Capital);
+                                ZakatForm5DataResult.SCH_GP03[i].SuppCon = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].SuppCon);
+                                ZakatForm5DataResult.SCH_GP03[i].ProfitRatio = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].ProfitRatio);
+                                ZakatForm5DataResult.SCH_GP03[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].Sales);
+                                ZakatForm5DataResult.SCH_GP03[i].SalePrfRatio = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].SalePrfRatio);
+
+                                ZakatForm5DataResult.SCH_GP03[i].GenTradeI = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].GenTradeI);
+                                ZakatForm5DataResult.SCH_GP03[i].Livelihoods = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].Livelihoods);
+                                ZakatForm5DataResult.SCH_GP03[i].LiveStkAnimals = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].LiveStkAnimals);
+                                ZakatForm5DataResult.SCH_GP03[i].ExtnProc = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].ExtnProc);
+
+                                ZakatForm5DataResult.SCH_GP03[i].GenTradeI = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].GenTradeI);
+                                ZakatForm5DataResult.SCH_GP03[i].LivelihoodsI = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].LivelihoodsI);
+                                ZakatForm5DataResult.SCH_GP03[i].LiveStkAnimals = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].LiveStkAnimals);
+                                ZakatForm5DataResult.SCH_GP03[i].IntnProc = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03[i].IntnProc);
+
+
+                                if (ZakatForm5DataResult.SCH_GP03[i].SuppCon != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].IsApplicableVisible = true;
 
                                 }
                                 else
                                 {
-                                    Residency_Status = "Resident";
+                                    ZakatForm5DataResult.SCH_GP03[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].IsApplicableVisible = false;
+
+                                }
+
+                               
+
+
+                                if (ZakatForm5DataResult.SCH_GP03[i].GenTradeI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsImportVisible = true;
+
+
+                                    ZakatForm5DataResult.SCH_GP03[i].IsImport = AppResources.ZYes.ToString();
+
+                                }
+                                else if (ZakatForm5DataResult.SCH_GP03[i].Livelihoods != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsImportVisible = true;
+
+                                    ZakatForm5DataResult.SCH_GP03[i].IsImport = AppResources.ZYes.ToString();
+                                }
+                                else if (ZakatForm5DataResult.SCH_GP03[i].LiveStkAnimals != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsImportVisible = true;
+
+                                    ZakatForm5DataResult.SCH_GP03[i].IsImport = AppResources.ZYes.ToString();
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsImportVisible = false;
+                                    ZakatForm5DataResult.SCH_GP03[i].IsImport = AppResources.ZNo.ToString();
+                                }
+
+
+                                if (ZakatForm5DataResult.SCH_GP03[i].GenTradeI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsGeneralApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsGeneralApplicableVisible = true;
+
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsGeneralApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsGeneralApplicableVisible = false;
+
+                                }
+
+                                if (ZakatForm5DataResult.SCH_GP03[i].Livelihoods != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsLiveLihoodsApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsLiveLihoodsApplicableVisible = true;
+
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsLiveLihoodsApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsLiveLihoodsApplicableVisible = false;
+
+                                }
+
+                                if (ZakatForm5DataResult.SCH_GP03[i].LiveStkAnimals != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsLivestockApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsLivestockApplicableVisible = true;
+
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsLivestockApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Imp_IsLivestockApplicableVisible = false;
+
+                                }
+
+                                
+
+                                if (ZakatForm5DataResult.SCH_GP03[i].GenTradeI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsProcurement = AppResources.ZYes.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].IsProcurementVisible = true;
+                                }
+                                else if (ZakatForm5DataResult.SCH_GP03[i].LivelihoodsI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsProcurement = AppResources.ZYes.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].IsProcurementVisible = true;
+                                }
+                                else if (ZakatForm5DataResult.SCH_GP03[i].LiveStkAnimalsI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsProcurement = AppResources.ZYes.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].IsProcurementVisible = true;
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsProcurement = AppResources.ZNo.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].IsProcurementVisible = false;
+                                }
+
+
+
+
+
+                                if (ZakatForm5DataResult.SCH_GP03[i].GenTradeI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsGeneralApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsGeneralApplicableVisible = true;
+
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsGeneralApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsGeneralApplicableVisible = false;
+
+                                }
+                                if (ZakatForm5DataResult.SCH_GP03[i].LivelihoodsI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsLiveLihoodsApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsLiveLihoodsApplicableVisible = true;
+
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsLiveLihoodsApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsLiveLihoodsApplicableVisible = false;
+
+                                }
+                                if (ZakatForm5DataResult.SCH_GP03[i].LiveStkAnimalsI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsLivestockApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsLivestockApplicableVisible = true;
+
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsLivestockApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP03[i].Pro_IsLivestockApplicableVisible = false;
+
+                                }
+
+
+
+                                if (ZakatForm5DataResult.SCH_GP03[i].SuppCon != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsApplicable = AppResources.FORM5Applicable.ToString();
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP03[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
+                                }
+
+
+                            }
+
+
+                            Sell_Buy = ZakatForm5DataResult.SCH_GP03;
+                        }
+                        //Labour Occup.
+                        if (ZakatForm5DataResult.SCH_GP04 != null && ZakatForm5DataResult.SCH_GP04.Any())
+                        {
+
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = true;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
+                            IsLabourBtn = true;
+
+                            NoOFEntityList.Add("Labour Occup.");
+
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP04.Count; i++)
+                            {
+                                ZakatForm5DataResult.SCH_GP04[i].NoOfLabour = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04[i].NoOfLabour))).ToString();
+                                ZakatForm5DataResult.SCH_GP04[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP04[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP04[i].NetProfit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04[i].NetProfit);
+
+
+                                if (ZakatForm5DataResult.SCH_GP04[i].Expenses != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP04[i].IsExpensesApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP04[i].IsApplicableVisible = true;
+
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP04[i].IsExpensesApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP04[i].IsApplicableVisible = false;
+
                                 }
                             }
-                            else
+
+                            LabourOccup = ZakatForm5DataResult.SCH_GP04;
+                        }
+                        //Industry
+                        if (ZakatForm5DataResult.SCH_GP05 != null && ZakatForm5DataResult.SCH_GP05.Any())
+                        {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
                             {
-                                Residency_Status = ZakatForm5DataResult.AResidency;
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = true;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
                             }
 
-                            MainOutlet = ZakatForm5DataResult.AMainact;
-                            AccountMethod = ZakatForm5DataResult.AActmethod;
-                            FinancialPeriod = ZakatForm5DataResult.AFiscalPeriod;
-                            Calendar_Type = ZakatForm5DataResult.AFiscalCalendar;
+                            IsIndustryBtn = true;
 
-                            if (ZakatForm5DataResult.Status == "E0001")
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP05.Count; i++)
                             {
-                                IsConditionRadio = false;
-                            }
-                            else
-                            {
-                                IsConditionRadio = true;
+                                ZakatForm5DataResult.SCH_GP05[i].FundingTot = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05[i].FundingTot);
+                                ZakatForm5DataResult.SCH_GP05[i].CapitalStr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05[i].CapitalStr);
+                                ZakatForm5DataResult.SCH_GP05[i].Profit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05[i].Profit);
+                                ZakatForm5DataResult.SCH_GP05[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05[i].Sales);
 
                             }
 
-                            //Financial Information
-                            int ListViewFlag = 0;
-
-                            //Cabs
-                            if (ZakatForm5DataResult.SCH_GP01.results.Any())
+                            NoOFEntityList.Add("Industry");
+                            Industry = ZakatForm5DataResult.SCH_GP05;
+                        }
+                        // Contracting CO.
+                        if (ZakatForm5DataResult.SCH_GP06 != null && ZakatForm5DataResult.SCH_GP06.Any())
+                        {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
                             {
-                                ListViewFlag++;
-                                if (ListViewFlag == 1)
-                                {
-                                    isCabVisible = true;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = false;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = false;
-                                    isCarVisible = false;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
-                                }
-
-                                IsCabBtn = true;
-
-
-                                NoOFEntityList.Add("Cabs");
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP01.results.Count; i++)
-                                {
-
-                                    ZakatForm5DataResult.SCH_GP01.results[i].NoOfCars = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].NoOfCars))).ToString();
-                                    ZakatForm5DataResult.SCH_GP01.results[i].AgvDlyIncome = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].AgvDlyIncome);
-                                    ZakatForm5DataResult.SCH_GP01.results[i].OccRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].OccRate);
-                                    ZakatForm5DataResult.SCH_GP01.results[i].NetPftPer = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].NetPftPer);
-                                    ZakatForm5DataResult.SCH_GP01.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].Revenue);
-                                    ZakatForm5DataResult.SCH_GP01.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].Expenses);
-                                    ZakatForm5DataResult.SCH_GP01.results[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].NetPft);
-
-
-
-                                    if (ZakatForm5DataResult.SCH_GP01.results[i].Expenses != "0.00")
-                                    {
-                                        //ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable =AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP01.results[i].IsApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        // ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP01.results[i].IsApplicableVisible = false;
-
-                                    }
-                                }
-                                Cabs = ZakatForm5DataResult.SCH_GP01.results;
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = true;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
                             }
-                            //Professionals
-                            if (ZakatForm5DataResult.SCH_GP02.results.Any())
+
+                            IsContractBtn = true;
+                            NoOFEntityList.Add("Contracting CO.");
+
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP06.Count; i++)
                             {
-                                ListViewFlag++;
-                                if (ListViewFlag == 1)
+                                ZakatForm5DataResult.SCH_GP06[i].GovtContractProf = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06[i].GovtContractProf);
+                                ZakatForm5DataResult.SCH_GP06[i].CivilContrRev = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06[i].CivilContrRev);
+                                ZakatForm5DataResult.SCH_GP06[i].OtherIncome = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06[i].OtherIncome);
+                                ZakatForm5DataResult.SCH_GP06[i].TotalProfit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06[i].TotalProfit);
+                                ZakatForm5DataResult.SCH_GP06[i].Capital = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06[i].Capital);
+                                ZakatForm5DataResult.SCH_GP06[i].NoOfLabours = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06[i].NoOfLabours))).ToString();
+
+
+                                if (ZakatForm5DataResult.SCH_GP06[i].GovtContractProf != "0.00")
                                 {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = true;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = false;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = false;
-                                    isCarVisible = false;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
+                                    ZakatForm5DataResult.SCH_GP06[i].IsGovenmentApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP06[i].IsGovenmentApplicableVisible = true;
+
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP06[i].IsGovenmentApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP06[i].IsGovenmentApplicableVisible = false;
+
                                 }
 
-                                IsProfessionBtn = true;
-
-                                NoOFEntityList.Add("Professionals");
-
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP02.results.Count; i++)
+                                if (ZakatForm5DataResult.SCH_GP06[i].CivilContrRev != "0.00")
                                 {
+                                    ZakatForm5DataResult.SCH_GP06[i].IsCivilProfitApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP06[i].IsCivilProfitApplicableVisible = true;
 
-                                    ZakatForm5DataResult.SCH_GP02.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP02.results[i].Revenue);
-                                    ZakatForm5DataResult.SCH_GP02.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP02.results[i].Expenses);
-                                    ZakatForm5DataResult.SCH_GP02.results[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP02.results[i].NetPft);
-
-
-
-                                    if (ZakatForm5DataResult.SCH_GP02.results[i].Expenses != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP02.results[i].IsApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP02.results[i].IsApplicableVisible = true;
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP02.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP02.results[i].IsApplicableVisible = false;
-
-                                    }
                                 }
-                                Professionals = ZakatForm5DataResult.SCH_GP02.results;
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP06[i].IsCivilProfitApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP06[i].IsCivilProfitApplicableVisible = false;
+
+                                }
+
+                                if (ZakatForm5DataResult.SCH_GP06[i].OtherIncome != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP06[i].IsOtherProfitApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP06[i].IsOtherProfitApplicableVisible = true;
+
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP06[i].IsOtherProfitApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP06[i].IsOtherProfitApplicableVisible = false;
+
+                                }
                             }
-                            //Sell & Buy
-                            if (ZakatForm5DataResult.SCH_GP03.results.Any())
+
+
+                            Contracting = ZakatForm5DataResult.SCH_GP06;
+                        }
+                        //Invst & Real Estate
+                        if (ZakatForm5DataResult.SCH_GP07 != null && ZakatForm5DataResult.SCH_GP07.Any())
+                        {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
                             {
-                                ListViewFlag++;
-                                if (ListViewFlag == 1)
-                                {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = true;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = false;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = false;
-                                    isCarVisible = false;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
-                                }
-
-                                IsSellBtn = true;
-
-
-                                NoOFEntityList.Add("Sell & Buy");
-
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP03.results.Count; i++)
-                                {
-                                    // ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
-                                    //  ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
-
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Capital = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].Capital);
-                                    ZakatForm5DataResult.SCH_GP03.results[i].SuppCon = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].SuppCon);
-                                    ZakatForm5DataResult.SCH_GP03.results[i].ProfitRatio = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].ProfitRatio);
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].Sales);
-                                    ZakatForm5DataResult.SCH_GP03.results[i].SalePrfRatio = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].SalePrfRatio);
-
-                                    ZakatForm5DataResult.SCH_GP03.results[i].GenTrade = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].GenTrade);
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods);
-                                    ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals);
-                                    ZakatForm5DataResult.SCH_GP03.results[i].ExtnProc = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].ExtnProc);
-
-                                    ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI);
-                                    ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI);
-                                    ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals);
-                                    ZakatForm5DataResult.SCH_GP03.results[i].IntnProc = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].IntnProc);
-
-
-                                    if (ZakatForm5DataResult.SCH_GP03.results[i].SuppCon != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicableVisible = false;
-
-                                    }
-
-                                    //if ((ZakatForm5DataResult.SCH_GP03.results[i].GenTrade == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods == "0.00" )&& (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals == "0.00"))
-                                    //{
-                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
-
-                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZNo.ToString();
-                                    //}
-                                    //else
-                                    //{
-                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
-
-                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZYes.ToString();
-
-                                    //}
-
-
-                                    if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
-
-
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZYes.ToString();
-
-                                    }
-                                    else if (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
-
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZYes.ToString();
-                                    }
-                                    else if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
-
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZYes.ToString();
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZNo.ToString();
-                                    }
-
-
-                                    if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsGeneralApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsGeneralApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsGeneralApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsGeneralApplicableVisible = false;
-
-                                    }
-
-                                    if (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicableVisible = false;
-
-                                    }
-
-                                    if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicableVisible = false;
-
-                                    }
-
-                                    //if ((ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI == "0.00"))
-                                    //{
-                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
-
-                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZNo.ToString();
-
-                                    //}
-                                    //else
-                                    //{
-
-
-                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZYes.ToString();
-                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
-                                    //}
-
-                                    if (ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZYes.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
-                                    }
-                                    else if (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZYes.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
-                                    }
-                                    else if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZYes.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZNo.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
-                                    }
-
-
-
-
-
-                                    if (ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicableVisible = false;
-
-                                    }
-                                    if (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicableVisible = false;
-
-                                    }
-                                    if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicableVisible = false;
-
-                                    }
-
-
-
-                                    if (ZakatForm5DataResult.SCH_GP03.results[i].SuppCon != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable = AppResources.FORM5Applicable.ToString();
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    }
-
-
-                                }
-
-
-                                Sell_Buy = ZakatForm5DataResult.SCH_GP03.results;
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = true;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
                             }
-                            //Labour Occup.
-                            if (ZakatForm5DataResult.SCH_GP04.results.Any())
+
+                            NoOFEntityList.Add("Invst & Real Estate");
+                            IsInvestBtn = true;
+
+
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP07.Count; i++)
                             {
-                                ListViewFlag++;
-                                if (ListViewFlag == 1)
+
+                                ZakatForm5DataResult.SCH_GP07[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP07[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP07[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP07[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP07[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP07[i].NetPft);
+
+                                if (ZakatForm5DataResult.SCH_GP07[i].City != "")
                                 {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = true;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = false;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = false;
-                                    isCarVisible = false;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
-                                }
-
-                                IsLabourBtn = true;
-
-                                NoOFEntityList.Add("Labour Occup.");
-
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP04.results.Count; i++)
-                                {
-                                    ZakatForm5DataResult.SCH_GP04.results[i].NoOfLabour = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04.results[i].NoOfLabour))).ToString();
-                                    ZakatForm5DataResult.SCH_GP04.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04.results[i].Revenue);
-                                    ZakatForm5DataResult.SCH_GP04.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04.results[i].Expenses);
-                                    ZakatForm5DataResult.SCH_GP04.results[i].NetProfit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04.results[i].NetProfit);
-
-
-                                    if (ZakatForm5DataResult.SCH_GP04.results[i].Expenses != "0.00")
+                                    for (int j = 0; j < ZakatForm5CityDataResults.zcitySet.Count(); j++)
                                     {
-                                        ZakatForm5DataResult.SCH_GP04.results[i].IsExpensesApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP04.results[i].IsApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP04.results[i].IsExpensesApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP04.results[i].IsApplicableVisible = false;
-
-                                    }
-                                }
-
-                                LabourOccup = ZakatForm5DataResult.SCH_GP04.results;
-                            }
-                            //Industry
-                            if (ZakatForm5DataResult.SCH_GP05.results.Any())
-                            {
-                                ListViewFlag++;
-                                if (ListViewFlag == 1)
-                                {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = true;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = false;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = false;
-                                    isCarVisible = false;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
-                                }
-
-                                IsIndustryBtn = true;
-
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP05.results.Count; i++)
-                                {
-                                    ZakatForm5DataResult.SCH_GP05.results[i].FundingTot = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05.results[i].FundingTot);
-                                    ZakatForm5DataResult.SCH_GP05.results[i].CapitalStr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05.results[i].CapitalStr);
-                                    ZakatForm5DataResult.SCH_GP05.results[i].Profit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05.results[i].Profit);
-                                    ZakatForm5DataResult.SCH_GP05.results[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05.results[i].Sales);
-
-
-                                }
-
-                                NoOFEntityList.Add("Industry");
-                                Industry = ZakatForm5DataResult.SCH_GP05.results;
-                            }
-                            // Contracting CO.
-                            if (ZakatForm5DataResult.SCH_GP06.results.Any())
-                            {
-                                ListViewFlag++;
-                                if (ListViewFlag == 1)
-                                {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = true;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = false;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = false;
-                                    isCarVisible = false;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
-                                }
-
-                                IsContractBtn = true;
-                                NoOFEntityList.Add("Contracting CO.");
-
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP06.results.Count; i++)
-                                {
-                                    ZakatForm5DataResult.SCH_GP06.results[i].GovtContractProf = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].GovtContractProf);
-                                    ZakatForm5DataResult.SCH_GP06.results[i].CivilContrRev = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].CivilContrRev);
-                                    ZakatForm5DataResult.SCH_GP06.results[i].OtherIncome = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].OtherIncome);
-                                    ZakatForm5DataResult.SCH_GP06.results[i].TotalProfit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].TotalProfit);
-                                    ZakatForm5DataResult.SCH_GP06.results[i].Capital = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].Capital);
-                                    ZakatForm5DataResult.SCH_GP06.results[i].NoOfLabours = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].NoOfLabours))).ToString();
-
-
-                                    if (ZakatForm5DataResult.SCH_GP06.results[i].GovtContractProf != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicableVisible = false;
-
-                                    }
-
-                                    if (ZakatForm5DataResult.SCH_GP06.results[i].CivilContrRev != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicableVisible = false;
-
-                                    }
-
-                                    if (ZakatForm5DataResult.SCH_GP06.results[i].OtherIncome != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicableVisible = false;
-
-                                    }
-                                }
-
-
-                                Contracting = ZakatForm5DataResult.SCH_GP06.results;
-                            }
-                            //Invst & Real Estate
-                            if (ZakatForm5DataResult.SCH_GP07.results.Any())
-                            {
-                                ListViewFlag++;
-                                if (ListViewFlag == 1)
-                                {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = true;
-                                    isHotelVisible = false;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = false;
-                                    isCarVisible = false;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
-                                }
-
-                                NoOFEntityList.Add("Invst & Real Estate");
-                                IsInvestBtn = true;
-
-
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP07.results.Count; i++)
-                                {
-
-                                    ZakatForm5DataResult.SCH_GP07.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP07.results[i].Revenue);
-                                    ZakatForm5DataResult.SCH_GP07.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP07.results[i].Expenses);
-                                    ZakatForm5DataResult.SCH_GP07.results[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP07.results[i].NetPft);
-
-                                    if (ZakatForm5DataResult.SCH_GP07.results[i].City != "")
-                                    {
-                                        for (int j = 0; j < ZakatForm5CityDataResults.zcitySet.results.Count(); j++)
+                                        if (ZakatForm5DataResult.SCH_GP07[i].City == ZakatForm5CityDataResults.zcitySet[j].CityCode)
                                         {
-                                            if (ZakatForm5DataResult.SCH_GP07.results[i].City == ZakatForm5CityDataResults.zcitySet.results[j].CityCode)
-                                            {
-                                                ZakatForm5DataResult.SCH_GP07.results[i].City = ZakatForm5CityDataResults.zcitySet.results[j].CityName;
-                                            }
+                                            ZakatForm5DataResult.SCH_GP07[i].City = ZakatForm5CityDataResults.zcitySet[j].CityName;
                                         }
                                     }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP07.results[i].City = "-";
-                                    }
-
-
-                                    if (ZakatForm5DataResult.SCH_GP07.results[i].Expenses != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP07.results[i].IsExpencesApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP07.results[i].IsApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP07.results[i].IsExpencesApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP07.results[i].IsApplicableVisible = false;
-
-                                    }
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP07[i].City = "-";
                                 }
 
 
+                                if (ZakatForm5DataResult.SCH_GP07[i].Expenses != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP07[i].IsExpencesApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP07[i].IsApplicableVisible = true;
 
-                                InvstRealEst = ZakatForm5DataResult.SCH_GP07.results;
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP07[i].IsExpencesApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP07[i].IsApplicableVisible = false;
+
+                                }
                             }
-                            //Hotels
-                            if (ZakatForm5DataResult.SCH_GP08.results.Any())
+
+
+
+                            InvstRealEst = ZakatForm5DataResult.SCH_GP07;
+                        }
+                        //Hotels
+                        if (ZakatForm5DataResult.SCH_GP08 != null && ZakatForm5DataResult.SCH_GP08.Any())
+                        {
+                            ListViewFlag++;
+
+                            if (ListViewFlag == 1)
                             {
-                                ListViewFlag++;
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = true;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
 
-                                if (ListViewFlag == 1)
+                            NoOFEntityList.Add("Hotels");
+                            IsHotelsBtn = true;
+
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP08.Count; i++)
+                            {
+                                ZakatForm5DataResult.SCH_GP08[i].NoOfRooms = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08[i].NoOfRooms))).ToString();
+                                ZakatForm5DataResult.SCH_GP08[i].RoomRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08[i].RoomRate);
+                                ZakatForm5DataResult.SCH_GP08[i].AddRoomRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08[i].AddRoomRate);
+                                ZakatForm5DataResult.SCH_GP08[i].ServicFee = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08[i].ServicFee);
+                                ZakatForm5DataResult.SCH_GP08[i].OccRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08[i].OccRate);
+                                ZakatForm5DataResult.SCH_GP08[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP08[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP08[i].NetProfit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08[i].NetProfit);
+
+
+                                if (ZakatForm5DataResult.SCH_GP08[i].City != "")
                                 {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = true;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = false;
-                                    isCarVisible = false;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
-                                }
-
-                                NoOFEntityList.Add("Hotels");
-                                IsHotelsBtn = true;
-
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP08.results.Count; i++)
-                                {
-                                    ZakatForm5DataResult.SCH_GP08.results[i].NoOfRooms = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].NoOfRooms))).ToString();
-                                    ZakatForm5DataResult.SCH_GP08.results[i].RoomRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].RoomRate);
-                                    ZakatForm5DataResult.SCH_GP08.results[i].AddRoomRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].AddRoomRate);
-                                    ZakatForm5DataResult.SCH_GP08.results[i].ServicFee = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].ServicFee);
-                                    ZakatForm5DataResult.SCH_GP08.results[i].OccRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].OccRate);
-                                    ZakatForm5DataResult.SCH_GP08.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].Revenue);
-                                    ZakatForm5DataResult.SCH_GP08.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].Expenses);
-                                    ZakatForm5DataResult.SCH_GP08.results[i].NetProfit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].NetProfit);
-
-
-                                    if (ZakatForm5DataResult.SCH_GP08.results[i].City != "")
+                                    for (int j = 0; j < ZakatForm5CityDataResults.zcitySet.Count(); j++)
                                     {
-                                        for (int j = 0; j < ZakatForm5CityDataResults.zcitySet.results.Count(); j++)
+                                        if (ZakatForm5DataResult.SCH_GP08[i].City == ZakatForm5CityDataResults.zcitySet[j].CityCode)
                                         {
-                                            if (ZakatForm5DataResult.SCH_GP08.results[i].City == ZakatForm5CityDataResults.zcitySet.results[j].CityCode)
-                                            {
-                                                ZakatForm5DataResult.SCH_GP08.results[i].City = ZakatForm5CityDataResults.zcitySet.results[j].CityName;
-                                            }
+                                            ZakatForm5DataResult.SCH_GP08[i].City = ZakatForm5CityDataResults.zcitySet[j].CityName;
                                         }
                                     }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP08.results[i].City = "-";
-                                    }
-
-                                    if (ZakatForm5DataResult.SCH_GP08.results[i].Owned == "1")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = AppResources.ZYes.ToString();
-                                    }
-                                    //else if(ZakatForm5DataResult.SCH_GP08.results[i].Owned == "2")
-                                    //{
-                                    //    ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = AppResources.ZNo.ToString();
-                                    //}
-                                    else
-                                    {
-                                        // ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "";
-                                        ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = AppResources.ZNo.ToString();
-                                    }
-
-
-                                    if (ZakatForm5DataResult.SCH_GP08.results[i].Expenses != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP08.results[i].IsExpApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP08.results[i].IsApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP08.results[i].IsExpApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP08.results[i].IsApplicableVisible = false;
-
-                                    }
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP08[i].City = "-";
                                 }
 
-                                Hotels = ZakatForm5DataResult.SCH_GP08.results;
+                                if (ZakatForm5DataResult.SCH_GP08[i].Owned == "1")
+                                {
+                                    ZakatForm5DataResult.SCH_GP08[i].IsOwned = AppResources.ZYes.ToString();
+                                }
+                                //else if(ZakatForm5DataResult.SCH_GP08.results[i].Owned == "2")
+                                //{
+                                //    ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = AppResources.ZNo.ToString();
+                                //}
+                                else
+                                {
+                                    // ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "";
+                                    ZakatForm5DataResult.SCH_GP08[i].IsOwned = AppResources.ZNo.ToString();
+                                }
+
+
+                                if (ZakatForm5DataResult.SCH_GP08[i].Expenses != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP08[i].IsExpApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP08[i].IsApplicableVisible = true;
+
+                                }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP08[i].IsExpApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP08[i].IsApplicableVisible = false;
+
+                                }
                             }
-                            //Edu. & Health
-                            if (ZakatForm5DataResult.SCH_GP09.results.Any())
+
+                            Hotels = ZakatForm5DataResult.SCH_GP08;
+                        }
+                        //Edu. & Health
+                        if (ZakatForm5DataResult.SCH_GP09 != null && ZakatForm5DataResult.SCH_GP09.Any())
+                        {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
                             {
-                                ListViewFlag++;
-                                if (ListViewFlag == 1)
-                                {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = false;
-                                    isEducationVisible = true;
-                                    isPoultryVisible = false;
-                                    isCarVisible = false;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
-                                }
-
-                                NoOFEntityList.Add("Edu. & Health");
-                                IsEduBtn = true;
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP09.results.Count; i++)
-                                {
-                                    ZakatForm5DataResult.SCH_GP09.results[i].SubsidyVal = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09.results[i].SubsidyVal);
-                                    ZakatForm5DataResult.SCH_GP09.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09.results[i].Revenue);
-                                    ZakatForm5DataResult.SCH_GP09.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09.results[i].Expenses);
-                                    ZakatForm5DataResult.SCH_GP09.results[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09.results[i].NetPft);
-
-
-
-                                    if (ZakatForm5DataResult.SCH_GP09.results[i].Expenses != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP09.results[i].IsExpApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP09.results[i].IsApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP09.results[i].IsExpApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP09.results[i].IsApplicableVisible = false;
-
-                                    }
-                                }
-
-                                Edu_Health = ZakatForm5DataResult.SCH_GP09.results;
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = true;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
                             }
-                            //Poultry and Fish Farms Activities
-                            if (ZakatForm5DataResult.SCH_GP10.results.Any())
+
+                            NoOFEntityList.Add("Edu. & Health");
+                            IsEduBtn = true;
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP09.Count; i++)
                             {
-                                ListViewFlag++;
+                                ZakatForm5DataResult.SCH_GP09[i].SubsidyVal = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09[i].SubsidyVal);
+                                ZakatForm5DataResult.SCH_GP09[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP09[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP09[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09[i].NetPft);
 
-                                if (ListViewFlag == 1)
+
+
+                                if (ZakatForm5DataResult.SCH_GP09[i].Expenses != "0.00")
                                 {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = false;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = true;
-                                    isCarVisible = false;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
+                                    ZakatForm5DataResult.SCH_GP09[i].IsExpApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP09[i].IsApplicableVisible = true;
+
                                 }
-
-
-                                NoOFEntityList.Add("Poultry and Fish Farms Activities");
-                                IsPoultryBtn = true;
-
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP10.results.Count; i++)
+                                else
                                 {
+                                    ZakatForm5DataResult.SCH_GP09[i].IsExpApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP09[i].IsApplicableVisible = false;
 
-                                    ZakatForm5DataResult.SCH_GP10.results[i].Capital = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10.results[i].Capital);
-                                    ZakatForm5DataResult.SCH_GP10.results[i].IncrInCap = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10.results[i].IncrInCap);
-                                    ZakatForm5DataResult.SCH_GP10.results[i].CapitalRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10.results[i].CapitalRate);
-                                    ZakatForm5DataResult.SCH_GP10.results[i].Profits = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10.results[i].Profits);
-
-
-
-                                    if (ZakatForm5DataResult.SCH_GP10.results[i].IncrInCap != "0.00")
-                                    {
-                                        ZakatForm5DataResult.SCH_GP10.results[i].IsIncCapApplicable = AppResources.FORM5Applicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP10.results[i].IsApplicableVisible = true;
-
-                                    }
-                                    else
-                                    {
-                                        ZakatForm5DataResult.SCH_GP10.results[i].IsIncCapApplicable = AppResources.FORM5NotApplicable.ToString();
-                                        ZakatForm5DataResult.SCH_GP10.results[i].IsApplicableVisible = false;
-
-                                    }
                                 }
-
-                                Poultry_FishFarm = ZakatForm5DataResult.SCH_GP10.results;
                             }
-                            //Cars
-                            if (ZakatForm5DataResult.SCH_GP11.results.Any())
+
+                            Edu_Health = ZakatForm5DataResult.SCH_GP09;
+                        }
+                        //Poultry and Fish Farms Activities
+                        if (ZakatForm5DataResult.SCH_GP10 != null && ZakatForm5DataResult.SCH_GP10.Any())
+                        {
+                            ListViewFlag++;
+
+                            if (ListViewFlag == 1)
                             {
-                                ListViewFlag++;
-
-                                if (ListViewFlag == 1)
-                                {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = false;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = false;
-                                    isCarVisible = true;
-                                    isMineralVisible = false;
-                                    isAdditionalVisible = false;
-                                }
-
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP11.results.Count; i++)
-                                {
-
-                                    ZakatForm5DataResult.SCH_GP11.results[i].ShareCap = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11.results[i].ShareCap);
-                                    ZakatForm5DataResult.SCH_GP11.results[i].IntrPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11.results[i].IntrPurchase);
-                                    ZakatForm5DataResult.SCH_GP11.results[i].ForgPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11.results[i].ForgPurchase);
-                                    ZakatForm5DataResult.SCH_GP11.results[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11.results[i].Sales);
-                                    ZakatForm5DataResult.SCH_GP11.results[i].PerSalesGain = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11.results[i].PerSalesGain);
-
-                                }
-
-                                IsCarBtn = true;
-
-                                NoOFEntityList.Add("Cars");
-                                Cars = ZakatForm5DataResult.SCH_GP11.results;
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = true;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
                             }
-                            //Minerals
-                            if (ZakatForm5DataResult.SCH_GP12.results.Any())
+
+
+                            NoOFEntityList.Add("Poultry and Fish Farms Activities");
+                            IsPoultryBtn = true;
+
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP10.Count; i++)
                             {
-                                ListViewFlag++;
 
-                                if (ListViewFlag == 1)
+                                ZakatForm5DataResult.SCH_GP10[i].Capital = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10[i].Capital);
+                                ZakatForm5DataResult.SCH_GP10[i].IncrInCap = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10[i].IncrInCap);
+                                ZakatForm5DataResult.SCH_GP10[i].CapitalRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10[i].CapitalRate);
+                                ZakatForm5DataResult.SCH_GP10[i].Profits = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10[i].Profits);
+
+
+
+                                if (ZakatForm5DataResult.SCH_GP10[i].IncrInCap != "0.00")
                                 {
-                                    isCabVisible = false;
-                                    isProfessionalVisible = false;
-                                    isBuyVisible = false;
-                                    isLabourOccupancyVisible = false;
-                                    isIndustryVisible = false;
-                                    isContractingVisible = false;
-                                    isRealEstateVisible = false;
-                                    isHotelVisible = false;
-                                    isEducationVisible = false;
-                                    isPoultryVisible = false;
-                                    isCarVisible = false;
-                                    isMineralVisible = true;
-                                    isAdditionalVisible = false;
-                                }
-
-                                for (int i = 0; i < ZakatForm5DataResult.SCH_GP12.results.Count; i++)
-                                {
-
-
-                                    ZakatForm5DataResult.SCH_GP12.results[i].ShareCap = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12.results[i].ShareCap);
-                                    ZakatForm5DataResult.SCH_GP12.results[i].IntrPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12.results[i].IntrPurchase);
-                                    ZakatForm5DataResult.SCH_GP12.results[i].ForgPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12.results[i].ForgPurchase);
-                                    ZakatForm5DataResult.SCH_GP12.results[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12.results[i].Sales);
-                                    ZakatForm5DataResult.SCH_GP12.results[i].PerSalesGain = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12.results[i].PerSalesGain);
+                                    ZakatForm5DataResult.SCH_GP10[i].IsIncCapApplicable = AppResources.FORM5Applicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP10[i].IsApplicableVisible = true;
 
                                 }
+                                else
+                                {
+                                    ZakatForm5DataResult.SCH_GP10[i].IsIncCapApplicable = AppResources.FORM5NotApplicable.ToString();
+                                    ZakatForm5DataResult.SCH_GP10[i].IsApplicableVisible = false;
 
-                                IsMineralsBtn = true;
-                                NoOFEntityList.Add("Minerals");
-                                Minerals = ZakatForm5DataResult.SCH_GP12.results;
+                                }
                             }
-                            //   var AdditionalInfo = ZakatForm5DataResult..Results.ToList();
 
-                            //Additional Information
-                            NoOFEntityList.Add("Additional Information");
+                            Poultry_FishFarm = ZakatForm5DataResult.SCH_GP10;
+                        }
+                        //Cars
+                        if (ZakatForm5DataResult.SCH_GP11 != null && ZakatForm5DataResult.SCH_GP11.Any())
+                        {
+                            ListViewFlag++;
+
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = true;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP11.Count; i++)
+                            {
+
+                                ZakatForm5DataResult.SCH_GP11[i].ShareCap = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11[i].ShareCap);
+                                ZakatForm5DataResult.SCH_GP11[i].IntrPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11[i].IntrPurchase);
+                                ZakatForm5DataResult.SCH_GP11[i].ForgPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11[i].ForgPurchase);
+                                ZakatForm5DataResult.SCH_GP11[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11[i].Sales);
+                                ZakatForm5DataResult.SCH_GP11[i].PerSalesGain = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11[i].PerSalesGain);
+
+                            }
+
+                            IsCarBtn = true;
+
+                            NoOFEntityList.Add("Cars");
+                            Cars = ZakatForm5DataResult.SCH_GP11;
+                        }
+                        //Minerals
+                        if (ZakatForm5DataResult.SCH_GP12 != null && ZakatForm5DataResult.SCH_GP12.Any())
+                        {
                             ListViewFlag++;
 
                             if (ListViewFlag == 1)
@@ -2769,344 +2696,352 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 isEducationVisible = false;
                                 isPoultryVisible = false;
                                 isCarVisible = false;
-                                isMineralVisible = false;
-                                isAdditionalVisible = true;
-                            }
-                            //Share in Persons Companies
-                            IsAddBtn = true;
-
-                            var OtherCompanyCheck = ZakatForm5DataResult.APlShareChk;
-
-                            if (ZakatForm5DataResult.APlShareChk == "1")
-                            {
-                                ZakatForm5DataResult.IsOtherShareApplicable = AppResources.FORM5Applicable.ToString();
-                                ZakatForm5DataResult.IsOtherShareApplicableVisible = true;
-
-                            }
-                            else
-                            {
-                                ZakatForm5DataResult.IsOtherShareApplicable = AppResources.FORM5NotApplicable.ToString();
-                                ZakatForm5DataResult.IsOtherShareApplicableVisible = false;
-
+                                isMineralVisible = true;
+                                isAdditionalVisible = false;
                             }
 
-                            OtherCompanyShare = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.APlShare);
-                            IsOtherComShareApp = ZakatForm5DataResult.IsOtherShareApplicable;
-                            IsOtherComShareAppVisible = ZakatForm5DataResult.IsOtherShareApplicableVisible;
-                            ZakatBase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ACapital);
-
-
-
-                            //Declaration
-                            NoOfBranch = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ANoBranches))).ToString();
-                            NoofEmp = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ANoEmp))).ToString();
-                            YearRent = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AAnnualRent);
-                            TotalAnnualSalary = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ATotAnnualSal);
-
-                            //Zakat Details
-
-                            Zakatable = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AZakat);
-                            Zakat = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AZakat51);
-                            ZakatPaid = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AReleaseOfContract);
-                            NewTaxAmt = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ANetTaxableAmount);
-
-
-                            // Zakat Estimation API Call
-
-
-                            ZakatForm5SummaryResult ZakatForm5SummaryDataResult = await ZakatForm5WebServiceManager.GAZTZakatForm5DataSummary(ZakatForm5DataResult.Fbnum);
-
-                            if (ZakatForm5SummaryDataResult != null)
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP12.Count; i++)
                             {
 
-                                //IsZakatEstListVisible = true;
-                                int IsZakatFlag = 0;
-                                // information
-                                ReferenceNumber = ZakatForm5DataResult.Fbnum.ToString();
-                                //DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatForm5DataResult.AFromDt + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
-                                //DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatForm5DataResult.AToDt + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
 
-                                //////DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
-                                //////DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
+                                ZakatForm5DataResult.SCH_GP12[i].ShareCap = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12[i].ShareCap);
+                                ZakatForm5DataResult.SCH_GP12[i].IntrPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12[i].IntrPurchase);
+                                ZakatForm5DataResult.SCH_GP12[i].ForgPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12[i].ForgPurchase);
+                                ZakatForm5DataResult.SCH_GP12[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12[i].Sales);
+                                ZakatForm5DataResult.SCH_GP12[i].PerSalesGain = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12[i].PerSalesGain);
 
-
-                                //////string CalenderType = ZakatForm5DataResult.Incotyp.Substring(0, 1);
-                                //////if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
-                                //////{
-                                //////    ZakatFromDate = UtilityManager.Converthijri(fromDate); ;// Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                //////    ZakatToDate = UtilityManager.Converthijri(toDate); ;// Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                                //////}
-                                //////else
-                                //////{
-                                //////    ZakatFromDate = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                //////    string[] dts = ZakatFromDate.Split('-');
-                                //////    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                                //////    ZakatFromDate = date;
-                                //////    ZakatToDate = Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                //////    string[] dts2 = ZakatToDate.Split('-');
-                                //////    string date2 = dts2[0] + "-" + UtilityManager.GetMonthName(dts2[1]) + "-" + dts2[2];
-                                //////    ZakatToDate = date2;
-                                //////}
-                                /// use same period property for which is used in Basic Information section.
-
-                                AknowledgementList = ZakatForm5SummaryDataResult.SadadSet.results;
-
-                                if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
-                                {
-                                    //Cabs GP1
-
-                                    CabsSummary = ZakatForm5SummaryDataResult.SchGP01Set.results;
-                                    CabsSummaryIsVisible = true;
-                                    NoOFZakatList.Add("Cabs");
-                                    IsZakatFlag++;
-
-                                    ZakatForm5SummaryDataResult.SchGP01Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP01Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP01Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP01Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set.results[0].ZakatBaseRr);
-
-
-
-                                }
-
-                                if (ZakatForm5SummaryDataResult.SchGP02Set.results.Any())
-                                {
-                                    //Professionals
-                                    ProfessionalsSummary = ZakatForm5SummaryDataResult.SchGP02Set.results;
-                                    ProfessionalsSummaryIsVisible = true;
-
-                                    NoOFZakatList.Add("Professionals");
-                                    IsZakatFlag++;
-
-                                    ZakatForm5SummaryDataResult.SchGP02Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP02Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP02Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP02Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set.results[0].ZakatBaseRr);
-
-                                }
-                                if (ZakatForm5SummaryDataResult.SchGP03Set.results.Any())
-                                {
-                                    //Sell & Buy
-                                    Sell_BuySummary = ZakatForm5SummaryDataResult.SchGP03Set.results;
-                                    Sell_BuySummaryIsVisible = true;
-                                    NoOFZakatList.Add("SellesAndBuy");
-                                    IsZakatFlag++;
-
-                                    ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityCapitalTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityCapitalTp);
-                                    ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityCapitalRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityCapitalRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP03Set.results[0].ExternalImportTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ExternalImportTp);
-                                    ZakatForm5SummaryDataResult.SchGP03Set.results[0].ExternalImportRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ExternalImportRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP03Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP03Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ZakatBaseRr);
-
-
-                                }
-                                if (ZakatForm5SummaryDataResult.SchGP04Set.results.Any())
-                                {
-                                    //Labour Occup.
-                                    LabourOccupSummary = ZakatForm5SummaryDataResult.SchGP04Set.results;
-                                    LabourOccupSummaryIsVisble = true;
-                                    NoOFZakatList.Add("Labour");
-                                    IsZakatFlag++;
-
-                                    ZakatForm5SummaryDataResult.SchGP04Set.results[0].NoLaboursTp = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].NoLaboursTp))).ToString();
-                                    ZakatForm5SummaryDataResult.SchGP04Set.results[0].NoLaboursRr = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].NoLaboursRr))).ToString();
-
-                                    ZakatForm5SummaryDataResult.SchGP04Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP04Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP04Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP04Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].ZakatBaseRr);
-
-                                }
-                                if (ZakatForm5SummaryDataResult.SchGP05Set.results.Any())
-                                {
-                                    //Industry
-                                    IndustrySummary = ZakatForm5SummaryDataResult.SchGP05Set.results;
-                                    IndustrySummaryIsVisible = true;
-                                    NoOFZakatList.Add("Industry");
-                                    IsZakatFlag++;
-
-
-                                    ZakatForm5SummaryDataResult.SchGP05Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP05Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP05Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP05Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set.results[0].ZakatBaseRr);
-
-                                }
-                                if (ZakatForm5SummaryDataResult.SchGP06Set.results.Any())
-                                {
-                                    //Contracting CO.
-                                    ContractingSummary = ZakatForm5SummaryDataResult.SchGP06Set.results;
-                                    ContractingSummaryIsVisible = true;
-                                    NoOFZakatList.Add("Contracting");
-                                    IsZakatFlag++;
-
-                                    ZakatForm5SummaryDataResult.SchGP06Set.results[0].GovtContractProfTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].GovtContractProfTp);
-                                    ZakatForm5SummaryDataResult.SchGP06Set.results[0].GovtContractProfRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].GovtContractProfRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP06Set.results[0].CivilContrRevTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].CivilContrRevTp);
-                                    ZakatForm5SummaryDataResult.SchGP06Set.results[0].CivilContrRevRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].CivilContrRevRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP06Set.results[0].NoLaboursTp = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].NoLaboursTp))).ToString();
-                                    ZakatForm5SummaryDataResult.SchGP06Set.results[0].NoLaboursRr = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].NoLaboursRr))).ToString();
-
-                                    ZakatForm5SummaryDataResult.SchGP06Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP06Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP06Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP06Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].ZakatBaseRr);
-
-                                }
-                                if (ZakatForm5SummaryDataResult.SchGP07Set.results.Any())
-                                {
-                                    //Invst & Real Estate
-                                    InvstRealEstSummary = ZakatForm5SummaryDataResult.SchGP07Set.results;
-                                    InvstRealEstSummaryIsVisible = true;
-                                    NoOFZakatList.Add("Invest");
-                                    IsZakatFlag++;
-
-                                    ZakatForm5SummaryDataResult.SchGP07Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP07Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP07Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP07Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set.results[0].ZakatBaseRr);
-
-                                }
-
-                                if (ZakatForm5SummaryDataResult.SchGP08Set.results.Any())
-                                {
-                                    //Hotels
-                                    HotelsSummary = ZakatForm5SummaryDataResult.SchGP08Set.results;
-                                    HotelsSummaryIsVisible = true;
-                                    NoOFZakatList.Add("Hotels");
-                                    IsZakatFlag++;
-
-                                    ZakatForm5SummaryDataResult.SchGP08Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP08Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP08Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP08Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set.results[0].ZakatBaseRr);
-
-                                }
-                                if (ZakatForm5SummaryDataResult.SchGP09Set.results.Any())
-                                {
-                                    //Edu. & Health
-                                    Edu_HealthSummary = ZakatForm5SummaryDataResult.SchGP09Set.results;
-                                    Edu_HealthSummaryIsVisible = true;
-                                    NoOFZakatList.Add("edu");
-                                    IsZakatFlag++;
-
-
-                                    ZakatForm5SummaryDataResult.SchGP09Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP09Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP09Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP09Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set.results[0].ZakatBaseRr);
-
-                                }
-
-                                if (ZakatForm5SummaryDataResult.SchGP10Set.results.Any())
-                                {
-                                    //Poultry and Fish Farms Activities
-                                    Poultry_FishFarmSummary = ZakatForm5SummaryDataResult.SchGP10Set.results;
-                                    Poultry_FishFarmSummaryIsVisible = true;
-                                    NoOFZakatList.Add("Poultry");
-                                    IsZakatFlag++;
-
-
-                                    ZakatForm5SummaryDataResult.SchGP10Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP10Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP10Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP10Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set.results[0].ZakatBaseRr);
-
-                                }
-
-                                if (ZakatForm5SummaryDataResult.SchGP11Set.results.Any())
-                                {
-                                    //Cars
-                                    CarsSummary = ZakatForm5SummaryDataResult.SchGP11Set.results;
-                                    CarsSummaryIsVisible = true;
-                                    NoOFZakatList.Add("Cars");
-                                    IsZakatFlag++;
-
-                                    ZakatForm5SummaryDataResult.SchGP11Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP11Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP11Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP11Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set.results[0].ZakatBaseRr);
-
-                                }
-
-
-                                if (ZakatForm5SummaryDataResult.SchGP12Set.results.Any())
-                                {
-                                    //Minerls
-                                    MineralsSummary = ZakatForm5SummaryDataResult.SchGP12Set.results;
-                                    MineralsSummaryIsVisible = true;
-                                    NoOFZakatList.Add("Minerls");
-                                    IsZakatFlag++;
-
-                                    ZakatForm5SummaryDataResult.SchGP12Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set.results[0].ActivityProfitTp);
-                                    ZakatForm5SummaryDataResult.SchGP12Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set.results[0].ActivityProfitRr);
-
-                                    ZakatForm5SummaryDataResult.SchGP12Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set.results[0].ZakatBaseTp);
-                                    ZakatForm5SummaryDataResult.SchGP12Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set.results[0].ZakatBaseRr);
-
-                                }
-
-                                if (IsZakatFlag != 0)
-                                {
-                                    IsZakatEstListVisible = true;
-                                }
-                                else
-                                {
-                                    IsZakatEstListVisible = false;
-                                }
                             }
 
-                            //  IsLoading = false;
+                            IsMineralsBtn = true;
+                            NoOFEntityList.Add("Minerals");
+                            Minerals = ZakatForm5DataResult.SCH_GP12;
+                        }
+                        //   var AdditionalInfo = ZakatForm5DataResult..Results.ToList();
+
+                        //Additional Information
+                        NoOFEntityList.Add("Additional Information");
+                        ListViewFlag++;
+
+                        if (ListViewFlag == 1)
+                        {
+                            isCabVisible = false;
+                            isProfessionalVisible = false;
+                            isBuyVisible = false;
+                            isLabourOccupancyVisible = false;
+                            isIndustryVisible = false;
+                            isContractingVisible = false;
+                            isRealEstateVisible = false;
+                            isHotelVisible = false;
+                            isEducationVisible = false;
+                            isPoultryVisible = false;
+                            isCarVisible = false;
+                            isMineralVisible = false;
+                            isAdditionalVisible = true;
+                        }
+                        //Share in Persons Companies
+                        IsAddBtn = true;
+
+                        var OtherCompanyCheck = ZakatForm5DataResult.APlShareChk;
+
+                        if (ZakatForm5DataResult.APlShareChk == "1")
+                        {
+                            ZakatForm5DataResult.IsOtherShareApplicable = AppResources.FORM5Applicable.ToString();
+                            ZakatForm5DataResult.IsOtherShareApplicableVisible = true;
 
                         }
                         else
                         {
-                            isNoDataLableVisible = true;
-                            //   IsLoading = false;
+                            ZakatForm5DataResult.IsOtherShareApplicable = AppResources.FORM5NotApplicable.ToString();
+                            ZakatForm5DataResult.IsOtherShareApplicableVisible = false;
+
                         }
+
+                        OtherCompanyShare = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.APlShare);
+                        IsOtherComShareApp = ZakatForm5DataResult.IsOtherShareApplicable;
+                        IsOtherComShareAppVisible = ZakatForm5DataResult.IsOtherShareApplicableVisible;
+                        ZakatBase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ACapital);
+
+
+
+                        //Declaration
+                        NoOfBranch = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ANoBranches))).ToString();
+                        NoofEmp = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ANoEmp))).ToString();
+                        YearRent = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AAnnualRent);
+                        TotalAnnualSalary = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ATotAnnualSal);
+
+                        //Zakat Details
+
+                        Zakatable = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AZakat);
+                        Zakat = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AZakat51);
+                        ZakatPaid = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AReleaseOfContract);
+                        NewTaxAmt = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ANetTaxableAmount);
+
+
+                        // Zakat Estimation API Call
+
+
+                        ZakatForm5SummaryResult ZakatForm5SummaryDataResult = await ZakatForm5WebServiceManager.GAZTZakatForm5DataSummary(ZakatForm5DataResult.Fbnum);
+
+                        if (ZakatForm5SummaryDataResult != null)
+                        {
+
+                            //IsZakatEstListVisible = true;
+                            int IsZakatFlag = 0;
+                            // information
+                            ReferenceNumber = ZakatForm5DataResult.Fbnum.ToString();
+                            
+
+                            AknowledgementList = ZakatForm5SummaryDataResult.SadadSet;
+
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.Any())
+                            {
+                                //Cabs GP1
+
+                                CabsSummary = ZakatForm5SummaryDataResult.SchGP01Set;
+                                CabsSummaryIsVisible = true;
+                                NoOFZakatList.Add("Cabs");
+                                IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP01Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP01Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP01Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP01Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set[0].ZakatBaseRr);
+
+
+
+                            }
+
+                            if (ZakatForm5SummaryDataResult.SchGP02Set.Any())
+                            {
+                                //Professionals
+                                ProfessionalsSummary = ZakatForm5SummaryDataResult.SchGP02Set;
+                                ProfessionalsSummaryIsVisible = true;
+
+                                NoOFZakatList.Add("Professionals");
+                                IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP02Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP02Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP02Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP02Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set[0].ZakatBaseRr);
+
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP03Set.Any())
+                            {
+                                //Sell & Buy
+                                Sell_BuySummary = ZakatForm5SummaryDataResult.SchGP03Set;
+                                Sell_BuySummaryIsVisible = true;
+                                NoOFZakatList.Add("SellesAndBuy");
+                                IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP03Set[0].ActivityCapitalTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set[0].ActivityCapitalTp);
+                                ZakatForm5SummaryDataResult.SchGP03Set[0].ActivityCapitalRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set[0].ActivityCapitalRr);
+
+                                ZakatForm5SummaryDataResult.SchGP03Set[0].ExternalImportTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set[0].ExternalImportTp);
+                                ZakatForm5SummaryDataResult.SchGP03Set[0].ExternalImportRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set[0].ExternalImportRr);
+
+                                ZakatForm5SummaryDataResult.SchGP03Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP03Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP03Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP03Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set[0].ZakatBaseRr);
+
+
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP04Set.Any())
+                            {
+                                //Labour Occup.
+                                LabourOccupSummary = ZakatForm5SummaryDataResult.SchGP04Set;
+                                LabourOccupSummaryIsVisble = true;
+                                NoOFZakatList.Add("Labour");
+                                IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP04Set[0].NoLaboursTp = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set[0].NoLaboursTp))).ToString();
+                                ZakatForm5SummaryDataResult.SchGP04Set[0].NoLaboursRr = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set[0].NoLaboursRr))).ToString();
+
+                                ZakatForm5SummaryDataResult.SchGP04Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP04Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP04Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP04Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set[0].ZakatBaseRr);
+
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP05Set.Any())
+                            {
+                                //Industry
+                                IndustrySummary = ZakatForm5SummaryDataResult.SchGP05Set;
+                                IndustrySummaryIsVisible = true;
+                                NoOFZakatList.Add("Industry");
+                                IsZakatFlag++;
+
+
+                                ZakatForm5SummaryDataResult.SchGP05Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP05Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP05Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP05Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set[0].ZakatBaseRr);
+
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP06Set.Any())
+                            {
+                                //Contracting CO.
+                                ContractingSummary = ZakatForm5SummaryDataResult.SchGP06Set;
+                                ContractingSummaryIsVisible = true;
+                                NoOFZakatList.Add("Contracting");
+                                IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP06Set[0].GovtContractProfTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set[0].GovtContractProfTp);
+                                ZakatForm5SummaryDataResult.SchGP06Set[0].GovtContractProfRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set[0].GovtContractProfRr);
+
+                                ZakatForm5SummaryDataResult.SchGP06Set[0].CivilContrRevTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set[0].CivilContrRevTp);
+                                ZakatForm5SummaryDataResult.SchGP06Set[0].CivilContrRevRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set[0].CivilContrRevRr);
+
+                                ZakatForm5SummaryDataResult.SchGP06Set[0].NoLaboursTp = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set[0].NoLaboursTp))).ToString();
+                                ZakatForm5SummaryDataResult.SchGP06Set[0].NoLaboursRr = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set[0].NoLaboursRr))).ToString();
+
+                                ZakatForm5SummaryDataResult.SchGP06Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP06Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP06Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP06Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set[0].ZakatBaseRr);
+
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP07Set.Any())
+                            {
+                                //Invst & Real Estate
+                                InvstRealEstSummary = ZakatForm5SummaryDataResult.SchGP07Set;
+                                InvstRealEstSummaryIsVisible = true;
+                                NoOFZakatList.Add("Invest");
+                                IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP07Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP07Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP07Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP07Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set[0].ZakatBaseRr);
+
+                            }
+
+                            if (ZakatForm5SummaryDataResult.SchGP08Set.Any())
+                            {
+                                //Hotels
+                                HotelsSummary = ZakatForm5SummaryDataResult.SchGP08Set;
+                                HotelsSummaryIsVisible = true;
+                                NoOFZakatList.Add("Hotels");
+                                IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP08Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP08Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP08Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP08Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set[0].ZakatBaseRr);
+
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP09Set.Any())
+                            {
+                                //Edu. & Health
+                                Edu_HealthSummary = ZakatForm5SummaryDataResult.SchGP09Set;
+                                Edu_HealthSummaryIsVisible = true;
+                                NoOFZakatList.Add("edu");
+                                IsZakatFlag++;
+
+
+                                ZakatForm5SummaryDataResult.SchGP09Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP09Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP09Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP09Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set[0].ZakatBaseRr);
+
+                            }
+
+                            if (ZakatForm5SummaryDataResult.SchGP10Set.Any())
+                            {
+                                //Poultry and Fish Farms Activities
+                                Poultry_FishFarmSummary = ZakatForm5SummaryDataResult.SchGP10Set;
+                                Poultry_FishFarmSummaryIsVisible = true;
+                                NoOFZakatList.Add("Poultry");
+                                IsZakatFlag++;
+
+
+                                ZakatForm5SummaryDataResult.SchGP10Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP10Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP10Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP10Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set[0].ZakatBaseRr);
+
+                            }
+
+                            if (ZakatForm5SummaryDataResult.SchGP11Set.Any())
+                            {
+                                //Cars
+                                CarsSummary = ZakatForm5SummaryDataResult.SchGP11Set;
+                                CarsSummaryIsVisible = true;
+                                NoOFZakatList.Add("Cars");
+                                IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP11Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP11Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP11Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP11Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set[0].ZakatBaseRr);
+
+                            }
+
+
+                            if (ZakatForm5SummaryDataResult.SchGP12Set.Any())
+                            {
+                                //Minerls
+                                MineralsSummary = ZakatForm5SummaryDataResult.SchGP12Set;
+                                MineralsSummaryIsVisible = true;
+                                NoOFZakatList.Add("Minerls");
+                                IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP12Set[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP12Set[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP12Set[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP12Set[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set[0].ZakatBaseRr);
+
+                            }
+
+                            if (IsZakatFlag != 0)
+                            {
+                                IsZakatEstListVisible = true;
+                            }
+                            else
+                            {
+                                IsZakatEstListVisible = false;
+                            }
+                        }
+
+                        //  IsLoading = false;
+
                     }
                     else
                     {
                         isNoDataLableVisible = true;
-                        // IsLoading = false;
+                        //   IsLoading = false;
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-                    IsLoading = false;
+                    isNoDataLableVisible = true;
+                    // IsLoading = false;
                 }
-            });
-
-            await Task.Run(() =>
+            }
+            catch (Exception ex)
             {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
                 IsLoading = false;
-            });
-            //IsLoading = false;
+            }
+
+            IsLoading = false;
         }
 
         public new void PopToRootPage()

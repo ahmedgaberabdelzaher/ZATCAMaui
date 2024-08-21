@@ -121,9 +121,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                         }
                         return true;
                     }
-                    else if (!string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
+                    else if (!string.IsNullOrWhiteSpace(data?.header?.moreInformation?.backendErrors))
                     {
-                        MessageTxt = data.moreInformation?.backendErrors;
+                        MessageTxt = data?.header?.moreInformation?.backendErrors;
                         IsShowMsgView = true;
                         IsLoading = false;
                     }

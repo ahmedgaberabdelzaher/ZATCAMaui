@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Models.VATRefunds;
@@ -23,9 +22,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
 
             viewModel = App.Locator.VATRefundDetailsPageView;
             vatRefundsListResultModel = vATRefundsModel;
-
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
         }
 
@@ -37,8 +33,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             vatRefundsListResultModel = null;
             vatRefundsSaveDataModel = vATRefundsSaveModel;
 
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             if (viewModel.AcknowledgementChecked && viewModel.CBTermsAndConditionsChecked)
                 //btnConfirmSummary.IsEnabled = true;
@@ -54,11 +48,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-            ChangeArrowDirection();
 
             try
             {
@@ -134,30 +123,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             MessagingCenter.Unsubscribe<YesNoAlertPopupView, bool>(this, "YesNoAlertPopupResponse");
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-
-        public void ChangeArrowDirection()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+       
 
         void ConfirmButton_Tapped(object sender, EventArgs e)
         {
@@ -326,8 +292,5 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             MopupService.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundSummaryTermsandConditions, AppResources.ZVatRefundTermsAndConditions));
         }
 
-        void btnConfirmSummary_Clicked(object sender, EventArgs e)
-        {
-        }
     }
 }

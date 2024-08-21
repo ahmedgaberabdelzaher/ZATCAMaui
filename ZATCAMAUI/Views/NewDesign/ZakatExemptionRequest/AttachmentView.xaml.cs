@@ -20,7 +20,7 @@ public partial class AttachmentView : ContentView
 
 	public AttachmentView(string title, string id, Action<string, bool> update)
 	{
-		viewModel = new AttachmentViewModel();
+		viewModel = App.Locator.AttachmentViewModel;
 		BindingContext = viewModel;
 		InitializeComponent();
 		Title = title;
@@ -59,7 +59,7 @@ public partial class AttachmentView : ContentView
 
 	public async void NewCompanyArticalsAttachmentsPopup()
 	{
-		if (Rg.Plugins.Popup.Services.MopupService.Instance.PopupStack.Count > 0) return;
+		if (MopupService.Instance.PopupStack.Count > 0) return;
 		if (viewModel.AttachmentsListViewData == null)
 		{
 			viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();

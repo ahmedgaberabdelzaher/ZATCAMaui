@@ -14,8 +14,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.VATIndividualSignupTnCPageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
-            if (Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 string baseUrl = DependencyService.Get<IBaseUrl>().Get();
                 string path = DependencyService.Get<IBaseUrl>().Get();
@@ -50,16 +49,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
             viewModel.IsLoading = false;
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
+       
     }
 }

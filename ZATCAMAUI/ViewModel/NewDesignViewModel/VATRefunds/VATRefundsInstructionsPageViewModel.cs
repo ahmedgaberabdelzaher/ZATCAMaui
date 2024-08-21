@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
-
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
@@ -80,7 +79,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             set
             {
                 if (_vatRefundsDisplayDataModel == value) return;
-
                 _vatRefundsDisplayDataModel = value;
                 OnPropertyChanged("VatRefundsDisplayDataModel");
             }
@@ -93,6 +91,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 _navigationService.GoBack();
             });
 
+            
+
             IsInstructionsChecked = false;
             VATRefundInstructionsConfirmedBtnClicked = new Command(VATRefundInstructionsConfirmedBtnTapped);
         }
@@ -104,10 +104,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 await MopupService.Instance.PopAsync();
                 MessagingCenter.Send<object, string>(this, "InstructionsConfirmed", "NavigateToNewRequestPageView");
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -125,6 +123,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             {
                 App.DisplayProgressView();
                 VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
+                
                 App.HideProgressView();
                 IsInstructionsVisible = true;
 
@@ -132,8 +131,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
-
-
                 App.HideProgressView();
 
                 try
@@ -147,8 +144,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     });
 
                 }
-                catch (Exception)
+                catch (Exception mex)
                 {
+                    Console.WriteLine(mex.Message);
                 }
             }
             catch (GAZTErrorException ex)
@@ -180,14 +178,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     await _dialogService.ShowMessage(message, AppResources.Information);
                     await MopupService.Instance.PopAsync();
                 }
-                catch (Exception)
+
+                catch (Exception mex)
                 {
+                    Console.WriteLine(mex.Message);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 try
                 {
                     App.HideProgressView();
@@ -200,8 +200,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     });
 
                 }
-                catch (Exception)
+                catch (Exception mex)
                 {
+                    Console.WriteLine(mex.Message);
                 }
             }
         }

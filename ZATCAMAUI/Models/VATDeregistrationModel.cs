@@ -47,7 +47,7 @@ namespace ZATCAMAUI.Models
 
         public string ActiveOutletDocumentOptions { get; set; }
         public bool ActiveOutletDocumentOptionsIsSelected { get; set; }
-        private Color textCol = (Color)Application.Current.Resources["Primary"];
+        private Color textCol = (Color)App.Current.Resources["Primary"];
         public Color TextCol
         {
             get { return textCol; }
@@ -117,9 +117,10 @@ namespace ZATCAMAUI.Models
 
     }
     
+
     public class VATDeRegistrationAttachmentDropdownDetails
     {
-        
+
         public Metadata Metadata { get; set; }
 
         [JsonProperty("eligibleDocuments")]
@@ -148,14 +149,13 @@ namespace ZATCAMAUI.Models
     public class VATDeregSuspendedDateRootObjectDetailsResult
     {
         public __metadata __metadata { get; set; }
-
         public string TIN { get; set; }
         [JsonProperty("startDate")]
         public string StartDate { get; set; }
         [JsonProperty("endDate")]
         public string EndDate { get; set; }
         [JsonProperty("suspensionDateFrom")]
-        public string SuspDtfrom { get;set; }
+        public string SuspDtfrom { get; set; }
         [JsonProperty("suspensionDateTo")]
         public string SuspDtto { get; set; }
         [JsonProperty("nextDateFrom")]
@@ -212,7 +212,7 @@ namespace ZATCAMAUI.Models
         public string EndDt { get; set; }
         [JsonProperty("name")]
         public string Txt50 { get; set; }
-        private Color textCol = (Color)Application.Current.Resources["Primary"];
+        private Color textCol = (Color)App.Current.Resources["Primary"];
         public Color TextCol
         {
             get { return textCol; }
@@ -265,6 +265,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("questionListSet")]
         public List<string> QuesListSet { get; set; }
     }
+
     
     public class VATDeregAttachmentRootOject
     {
@@ -273,9 +274,10 @@ namespace ZATCAMAUI.Models
     
     public class QuesListSet
     {
-       
+
         public List<string> results { get; set; }
     }
+
     public class HeaderSet
     {
         [JsonProperty("isCase")]
@@ -596,7 +598,6 @@ namespace ZATCAMAUI.Models
         public string SummaryData { get; set; }
         public bool IsEditVisible { get; set; }
     }
-
 
 
 }

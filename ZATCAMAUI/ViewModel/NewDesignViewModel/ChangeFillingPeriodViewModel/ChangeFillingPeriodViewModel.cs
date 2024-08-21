@@ -51,20 +51,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public PickerEnum selectedPicker = PickerEnum.EffectiveDate;
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
+     
 
         private bool _isFrequencyDetailsChecked = false;
         public bool IsFrequencyDetailsChecked
@@ -1256,7 +1243,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             try
             {
-                if (Rg.Plugins.Popup.Services.MopupService.Instance.PopupStack.Count > 0) return;
+                if (MopupService.Instance.PopupStack.Count > 0) return;
                 if (SelectedOutletOptionIndex == 0)
                 {
                     if (YearsattachmentsListViewData == null)

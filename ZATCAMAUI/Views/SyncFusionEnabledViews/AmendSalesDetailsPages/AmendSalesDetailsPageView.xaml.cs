@@ -75,12 +75,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
                 viewModel.IsLoading = true;
 
                 AttachmentDocumentModel attachmentDocumentModel = await WebServiceManager.GAZTGetAllAttachments(retGuid, fbNum);
-                foreach (AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D.Results)
+                foreach (AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D)
                 {
                     if (attachment.Filename == tempAttachmentDocumentModel.Filename)
                     {
                         var platform = DeviceInfo.Platform;
-                        if (Device.RuntimePlatform == Device.iOS)
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
                             downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 

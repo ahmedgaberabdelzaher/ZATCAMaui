@@ -8,9 +8,12 @@ using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Models.ForgotModel;
+using ZATCAMAUI.Models.UnlockAccount;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
+using Result = ZATCAMAUI.Models.UnlockAccount.Result;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 {
@@ -34,7 +37,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         int TotalSec;
         public bool StopTimer = false;
         public int totalAttempts = 0;
-
+        public static string otpValidate = "";
 
         public int numberOfSeconds = 120;
 
@@ -734,7 +737,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 {
                     if (App.IsComingFromSleepMode)
                     {
-                        if (Device.RuntimePlatform == Device.iOS)
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
                             TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                             App.IsComingFromSleepMode = false;

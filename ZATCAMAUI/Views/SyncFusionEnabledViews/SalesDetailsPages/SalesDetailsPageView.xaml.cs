@@ -175,10 +175,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
             viewModel.InvoicePopUpVisibility = false;
             viewModel._navigationService.GoBack();
         }
-        protected async void OnOnInvoiceClicked(object sender, EventArgs e)
-        {
-
-        }
+       
         protected async void OnEditImageClicked(object sender, EventArgs e)
         {
             Image EditImage = sender as Image;
@@ -187,11 +184,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
             if (!viewModel.ConfirmButtonVisibility)
             {
                 double d = Convert.ToDouble(viewModel.zakatReturnDetailsD.d.TvtslI);
-                double d1 = Convert.ToDouble(viewModel.zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
+                double d1 = Convert.ToDouble(viewModel.zakatReturnDetailsD.d.ThresholdSet[0].Value);
                 bool IsThresholdGreaterLessVATAmount = d1 < d;
-                if (Convert.ToDouble(viewModel.zakatReturnDetailsD.d.TvtslI) > Convert.ToDouble(viewModel.zakatReturnDetailsD.d.ThresholdSet.results[0].Value))
+                if (Convert.ToDouble(viewModel.zakatReturnDetailsD.d.TvtslI) > Convert.ToDouble(viewModel.zakatReturnDetailsD.d.ThresholdSet[0].Value))
                 {
-                    if (selectedSalesDetails != null && viewModel.SubmitButtonVisibility)
+                    if ((selectedSalesDetails != null) && (viewModel.SubmitButtonVisibility))
                     {
                         if (selectedSalesDetails.SalesType.Equals("Total VAT Sales") || selectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
                         {
@@ -201,7 +198,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
                 }
                 else
                 {
-                    if (selectedSalesDetails != null && viewModel.SubmitButtonVisibility)
+                    if ((selectedSalesDetails != null) && (viewModel.SubmitButtonVisibility))
                     {
                         if (selectedSalesDetails != null && !selectedSalesDetails.SalesType.Equals("Total VAT Sales") || selectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
                         {

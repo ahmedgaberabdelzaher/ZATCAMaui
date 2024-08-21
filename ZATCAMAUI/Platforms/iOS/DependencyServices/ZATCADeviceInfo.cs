@@ -1,4 +1,5 @@
 ﻿
+using Foundation;
 using MobileCoreServices;
 using UIKit;
 using ZATCAMAUI.Platforms.iOS.DependencyServices;

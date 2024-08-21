@@ -25,10 +25,10 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             TaxTypeDownPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             TaxTypeDownPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -38,7 +38,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
 
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         TaxTypeDownPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         TaxTypeDownPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         TaxTypeDownPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -80,7 +80,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
                 base.OnAppearing();
                 await PageLoad();
 
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     TaxTypeDownPicker.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
                 }

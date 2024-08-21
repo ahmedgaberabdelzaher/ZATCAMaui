@@ -26,16 +26,16 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         TinsPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                         TinsPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                         TinsPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
                         TinsPicker.TextStyle.FontFamily = "Somar-SemiBold";
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         TinsPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         TinsPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         TinsPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -108,11 +108,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
         {
             try
             {
-                TIN selectedtin = viewModel.TINs[TinsPicker.Columns[0].SelectedIndex];
+                TINModel selectedtin = viewModel.TINs[TinsPicker.Columns[0].SelectedIndex];
                 //TinsPicker.SelectedItem = selectedtin;//TINID
                 viewModel.SelectedTinId = selectedtin;//selectedregion
                 viewModel.SelectedTinIdPrev = selectedtin;//selectedregion
-                viewModel.TINID = selectedtin.Tin;
+                viewModel.TINID = selectedtin.TIN;
+
             }
             catch (Exception)
             {

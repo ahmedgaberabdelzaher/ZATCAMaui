@@ -493,14 +493,14 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
                 CreateClientHandler();
                 ResetAndContinueSession();
 
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             IncomingChannel = "241";
                         }
                         break;
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             IncomingChannel = "242";
                         }
@@ -638,15 +638,15 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
                 }
                 if (PreviousIsArabic)
                 {
-                    switch (Device.RuntimePlatform)
+                    switch (DeviceInfo.Platform)
                     {
-                        case Device.iOS:
+                        case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                             fontFamilyBold = "Somar-Bold";
                             fontFamilyMedium = "Somar-SemiBold";
                             fontFamilyLight = "Somar-Light";
                             fontFamilyRoman = "Somar-Regular";
                             break;
-                        case Device.Android:
+                        case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                             fontFamilyBold = "Somar-Bold.otf#Somar-Bold";
                             fontFamilyMedium = "Somar-SemiBold.otf#Somar-SemiBold";//GE_SS_Two_Medium
                             fontFamilyLight = "Somar-Light.otf#Somar-Light";
@@ -656,15 +656,15 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
                 }
                 else
                 {
-                    switch (Device.RuntimePlatform)
+                    switch (DeviceInfo.Platform)
                     {
-                        case Device.iOS:
+                        case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                             fontFamilyBold = "Somar-Bold";
                             fontFamilyMedium = "Somar-SemiBold";
                             fontFamilyLight = "Somar-Light";
                             fontFamilyRoman = "Somar-Regular";
                             break;
-                        case Device.Android:
+                        case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                             fontFamilyBold = "Somar-Bold.otf#Somar-Bold";
                             fontFamilyMedium = "Somar-SemiBold.otf#SomarSemiBold";
                             fontFamilyLight = "Somar-Light.otf#Somar-Light";
@@ -709,9 +709,9 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
                 //SYNCFUSION INTEGRATION
                 if (App.IsArabic)
                 {
-                    switch (Device.RuntimePlatform)
+                    switch (DeviceInfo.Platform)
                     {
-                        case Device.Android:
+                        case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                             Current.Resources.TryGetValue("GAZT_Arabic_FONT_BOLD", out var GAZT_Arabic_FONT_BOLD);
                             var afb = (OnPlatform<string>)GAZT_Arabic_FONT_BOLD;
                             Current.Resources["GAZT_FONT_BOLD"] = afb.Platforms[0].Value;
@@ -726,7 +726,7 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
 
                             break;
 
-                        case Device.iOS:
+                        case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                             Current.Resources.TryGetValue("GAZT_Arabic_FONT_BOLD", out var GAZT_Arabic_FONTBOLD);
                             var iafb = (OnPlatform<string>)GAZT_Arabic_FONTBOLD;
                             Current.Resources["GAZT_FONT_BOLD"] = iafb.Platforms[1].Value;
@@ -743,9 +743,9 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
                 }
                 else
                 {
-                    switch (Device.RuntimePlatform)
+                    switch (DeviceInfo.Platform)
                     {
-                        case Device.Android:
+                        case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
                             Current.Resources.TryGetValue("GAZT_English_FONT_REGULAR", out var GAZT_English_FONT_REGULAR_test);
                             var afrt = (OnPlatform<string>)GAZT_English_FONT_REGULAR_test;
@@ -765,7 +765,7 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
 
                             break;
 
-                        case Device.iOS:
+                        case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                             Current.Resources.TryGetValue("GAZT_English_FONT_REGULAR", out var GAZT_English_FONT_REGULARtest);
                             var iafrt = (OnPlatform<string>)GAZT_English_FONT_REGULARtest;
                             Current.Resources["LargeLabelTest"] = iafrt.Platforms[1].Value;
@@ -1096,7 +1096,7 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
         private static void DisplayCrashReport()
         {
             const string errorFilename = "Fatal.log";
-            var libraryPath = Environment.GetFolderPath(Device.RuntimePlatform == Device.iOS ? Environment.SpecialFolder.Resources : Environment.SpecialFolder.Personal);
+            var libraryPath = Environment.GetFolderPath(DeviceInfo.Platform == DevicePlatform.iOS ? Environment.SpecialFolder.Resources : Environment.SpecialFolder.Personal);
             var errorFilePath = Path.Combine(libraryPath, errorFilename);
 
             if (!File.Exists(errorFilePath))

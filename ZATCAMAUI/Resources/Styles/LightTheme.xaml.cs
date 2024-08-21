@@ -42,14 +42,14 @@ namespace ZATCAMAUI.Resources.Styles
             }
             else
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         strGAZTFontBold = "Somar-SemiBold";
                         strGAZTFontMedium = "Somar-SemiBold";
                         strGAZTFontRegular = "Somar-Light";
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         strGAZTFontBold = "Somar-SemiBold.otf#Somar-SemiBold";
                         strGAZTFontMedium = "Somar-SemiBold.otf#SomarSemiBold";
                         strGAZTFontRegular = "Somar-Light.otf#Somar-Light";

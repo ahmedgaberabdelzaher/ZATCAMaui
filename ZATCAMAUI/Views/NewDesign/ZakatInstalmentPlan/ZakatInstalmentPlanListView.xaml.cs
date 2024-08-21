@@ -1,15 +1,11 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Models.InstalmentPlanModel;
 using ZATCAMAUI.Models.ZakatInstalationModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
-using Application = Microsoft.Maui.Controls.Application;
-using ItemTappedEventArgs = Syncfusion.Maui.ListView.ItemTappedEventArgs;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 {
-   
+
     public partial class ZakatInstalmentPlanListPageView : ContentPage
     {
 
@@ -27,11 +23,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             {
                 InitializeComponent();
 
-                NavigationPage.SetBackButtonTitle(this, "");
-
-                //App.IsArabic = true;
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
 
                 viewModel = App.Locator.ZakatInstalmentPlanListPageView;
                 BindingContext = viewModel;
@@ -46,18 +37,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             }
 
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-
+     
         async void outletDecisionOptionsListView_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
         {
             try
@@ -143,18 +123,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
-        private void RevokListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
-        {
-           
-        }
-
-
-        private void DisplayListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
-        }
-
-
         void OtpFirstEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (viewModel.OTPFirstDigit.Length > 0)
@@ -177,14 +145,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             {
                 OTPFourthEntry.Focus();
             }
-        }
-        void OtpFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        void OtpFourthEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-
         }
 
     }

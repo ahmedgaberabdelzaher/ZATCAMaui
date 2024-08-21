@@ -43,7 +43,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 viewModel.TxtLOrCIssuedBy = string.Empty;
                 viewModel.TxtCountryCode = "+966";
                 viewModel.MobileCountryCode = "SA";
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     IntnlCodes.Margin = new Thickness(0);
                 }
@@ -52,7 +52,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     IntnlCodes.Margin = new Thickness(12, -12, 12, -12);
                 }
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     string baseUrl = DependencyService.Get<IBaseUrl>().Get();
                     string path = DependencyService.Get<IBaseUrl>().Get();
@@ -94,10 +94,10 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             IDTypePicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             IDTypePicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -128,7 +128,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                         }
                         break;
 
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
                         IDTypePicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         IDTypePicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -278,7 +278,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             base.OnAppearing();
             await loadPageData();
 
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
             {
                 IDTypePicker.Background = (Color)Application.Current.Resources["PickerBgGray"];
                 ddlLIssuedBy.Background = (Color)Application.Current.Resources["PickerBgGray"];
@@ -329,9 +329,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
             try
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+                    mobileData =await WebServiceManager.GAZTGetMobileRegionDropdown();
                 });
 
             }
@@ -745,7 +745,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
         private void IDTypePicker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
         {
-            SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
+            SignUpUsing signUpUsing = viewModel.SignUpUsingList[e.NewValue];
             viewModel.SelectedSignUpUsing = signUpUsing;
             viewModel.TxtIDType = signUpUsing.SUType;
             if (viewModel.TxtIDType == "National ID")

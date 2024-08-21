@@ -3,10 +3,8 @@
     x:Class="ZATCAMAUI.Views.NewDesign.TaxpayerProfile.UpdateMobilePopUp"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -132,8 +130,7 @@
                                         MaxLength="{Binding MaxDigids}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding NewMobileNumberEntryText}"
-                                        TextColor="{StaticResource PrimaryColor}"
-                                        Unfocused="Mobile_entry_Unfocused">
+                                        TextColor="{StaticResource PrimaryColor}">
                                         <custom:GAZTBorderlessEntry.Behaviors>
                                             <behaviors:OnlyNumericValuesBehaviour />
                                         </custom:GAZTBorderlessEntry.Behaviors>
@@ -329,7 +326,7 @@
                                             Text="{Binding OTPFourthDigit}"
                                             TextChanged="OtpFourthEntry_TextChanged"
                                             TextColor="#bbbbbb"
-                                            Unfocused="OtpFourthEntry_Unfocused"
+                                            
                                             WidthRequest="100" >
                                              <custom:GAZTBorderlessEntry.Behaviors>
                                                 <behaviors:OnlyNumericValuesBehaviour/>

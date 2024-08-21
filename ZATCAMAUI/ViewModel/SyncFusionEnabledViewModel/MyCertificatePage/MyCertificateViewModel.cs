@@ -243,7 +243,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                 // _dialogService.ShowMessageBox("Please Wait Pdf Is Loading", AppResources.Information);
                 if (_PdfSelected != null)
                 {
-                    if (Device.RuntimePlatform == Device.Android)
+                    if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         _navigationService.NavigateTo(App.PdfView);
                     }
@@ -369,7 +369,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             Stream stream = null;
             try
             {
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     var dependency = DependencyService.Get<ILocalFileProvider>();
                     if (dependency == null)
@@ -408,7 +408,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                         return;
                     }
                 }
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                     PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
                 //else
                 //    Path = url;
@@ -420,7 +420,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
         }
         public async void ShowPdf(string pdfUrl)
         {
-            if (Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 if (pdfUrl != null)
                 {

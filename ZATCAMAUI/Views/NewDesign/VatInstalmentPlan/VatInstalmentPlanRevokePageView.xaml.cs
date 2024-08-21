@@ -1,4 +1,5 @@
 using ZATCAMAUI.Models.VATInstalmentModels;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan;
 

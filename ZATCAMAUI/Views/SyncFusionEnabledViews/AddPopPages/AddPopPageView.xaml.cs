@@ -21,7 +21,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages
                     InitializeComponent();
                     if (objPopUP.isFontSet)
                     {
-                        if (Device.RuntimePlatform == Device.Android)
+                        if (DeviceInfo.Platform == DevicePlatform.Android)
                         {
                             Message_label.FontFamily = "Somar-Bold.otf#SomarBold";
                         }

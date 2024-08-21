@@ -17,7 +17,6 @@ using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public class ChangeMobileRequestViewModel : BaseViewModel
     {
 

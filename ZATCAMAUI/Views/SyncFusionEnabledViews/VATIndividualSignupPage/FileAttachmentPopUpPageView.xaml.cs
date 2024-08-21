@@ -54,11 +54,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.VATRegistrationDetailsForAttach = vATRegistrationDetails;
                 SetDocType();
-                if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet != null && viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results != null)
+                if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet != null && viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet != null)
                 {
-                    if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
+                    if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.Count != 0)
                     {
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
 
                         try
@@ -72,10 +72,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 }
                             }
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-
+                            Console.Write(ex.ToString());
+                            Console.Write(ex.StackTrace.ToString());
                         }
 
                         viewModel.filterList();
@@ -88,11 +88,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Send<object, ATTDETSet>(this, "AttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet);
+            MessagingCenter.Send<Object, List<Attachment>>(this, "AttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet);
             MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToDeleteAttachment");
             MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToDeleteAttachment");
-            //comment because main button remains enabled
-            //  viewModel.IsSwichButtonEnable = false;
             viewModel.IsLoading = false;
         }
         public void SetDocType()
@@ -279,14 +277,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = true;
                 await Task.Run(() =>
                 {
                     if (result)
                     {
+                        // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
                         string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
                         PopToRootPage();
                         if (results == "X")
@@ -294,12 +290,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             Attachment listitem = (from itm in viewModel.VatAttachmentsList
                                                    where itm.Doguid == attachment.Doguid.ToString()
                                                    select itm)
-                                            .FirstOrDefault();
+                                            .FirstOrDefault<Attachment>();
 
                             VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
                                                          where itm.Doguid == attachment.Doguid.ToString()
                                                          select itm)
-                                            .FirstOrDefault();
+                                            .FirstOrDefault<VATAttachment>();
 
                             if (listitem != null)
                                 viewModel.VatAttachmentsList.Remove(listitem);
@@ -310,8 +306,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (listitemTwo != null)
                                 viewModel.AttachmentList.Remove(listitemTwo);
 
-                            viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+                            viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.Remove(listitem);
 
+
+                            //if (indexToReduceTheSize != -1)
+                            // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                             viewModel.AttachmentCount--;
                             viewModel.filterList();
                             viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
@@ -320,10 +319,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                     }
                 });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {

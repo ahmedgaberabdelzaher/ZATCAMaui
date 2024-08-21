@@ -1,5 +1,6 @@
 using Mopups.Pages;
 using Mopups.Services;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatRejectionPopUpViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatRejectPopUp;
 

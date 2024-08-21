@@ -2,6 +2,7 @@ using System;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
+using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
@@ -77,7 +78,6 @@ public class NafathLoginViewModel : BaseViewModel
         catch (Exception ex)
         {
             IsLoading = false;
-            Console.WriteLine(ex.ToString());
         }
     }
 
@@ -102,25 +102,15 @@ public class NafathLoginViewModel : BaseViewModel
         return true;
     }
 
-    void GoBack()
-    {
-        _navigationService.GoBack();
-    }
 
     private async Task<NafathLoginResponseModel> Login()
     {
         NafathLoginRequestModel model = new NafathLoginRequestModel()
         {
-            //ApiCall = "1",
             Idnumber = NafathId,
             Inpchz = App.IncomingChannel,
             Langz = WebServiceManager.GetLangZParameterAREN(),
             processType = navigation
-            //RanNum = "",
-            //ReturnIdz = "",
-            //ResTime="",
-            //StatusDesc="",
-            //StatusCode=""
         };
 
         var result = await WebServiceManager.NafathLogin(model);

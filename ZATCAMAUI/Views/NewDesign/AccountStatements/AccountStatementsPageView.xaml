@@ -803,7 +803,6 @@
                                                             Binding="{Binding TransactionDateFilterItem}"
                                                             TargetType="buttons:SfButton"
                                                             Value="">
-                                                            <Setter Property="ImageSource" Value="" />
                                                             <Setter Property="Background" Value="White" />
                                                             <Setter Property="ShowIcon" Value="False" />
                                                         </DataTrigger>
@@ -846,7 +845,7 @@
                                                             Binding="{Binding TaxperiodFilterItem}"
                                                             TargetType="buttons:SfButton"
                                                             Value="">
-                                                            <Setter Property="ImageSource" Value="" />
+                                                            
                                                             <Setter Property="Background" Value="White" />
                                                             <Setter Property="ShowIcon" Value="False" />
 
@@ -890,7 +889,7 @@
                                                             Binding="{Binding DueDateFilterItem}"
                                                             TargetType="buttons:SfButton"
                                                             Value="">
-                                                            <Setter Property="ImageSource" Value="" />
+                                                            
                                                             <Setter Property="Background" Value="White" />
                                                             <Setter Property="ShowIcon" Value="False" />
 
@@ -934,7 +933,7 @@
                                                             Binding="{Binding BillDescriptionFilterItem}"
                                                             TargetType="buttons:SfButton"
                                                             Value="">
-                                                            <Setter Property="ImageSource" Value="" />
+                                                            
                                                             <Setter Property="Background" Value="White" />
                                                             <Setter Property="ShowIcon" Value="False" />
 
@@ -978,7 +977,7 @@
                                                             Binding="{Binding BillAmountFilterItem}"
                                                             TargetType="buttons:SfButton"
                                                             Value="">
-                                                            <Setter Property="ImageSource" Value="" />
+                                                            
                                                             <Setter Property="Background" Value="White" />
                                                             <Setter Property="ShowIcon" Value="False" />
 

@@ -352,10 +352,10 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             CommitmentsPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             CommitmentsPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -363,7 +363,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                             CommitmentsPicker.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             CommitmentsPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             CommitmentsPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";

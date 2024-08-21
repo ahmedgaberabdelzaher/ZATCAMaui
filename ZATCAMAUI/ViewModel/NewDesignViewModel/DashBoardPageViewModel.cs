@@ -16,6 +16,7 @@ using ZATCAMAUI.Models.AccountStatements;
 using ZATCAMAUI.Models.PaymentModel;
 using ZATCAMAUI.Models.SurveyModels;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
+using ZATCAMAUI.Views.NewDesign.DashBoardPages;
 using ZATCAMAUI.Views.NewDesign.DashBoardPages.PopUpPages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.MyBillsPages;
@@ -490,7 +491,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 if(dashBoardUpdateViewResponse != null && dashBoardUpdateViewResponse.d!=null&&dashBoardUpdateViewResponse.d.results!=null
                 && dashBoardUpdateViewResponse.d.results.Count>0&& dashBoardUpdateViewResponse.d.results[0]!=null
                 && !string.IsNullOrEmpty(dashBoardUpdateViewResponse.d.results[0].Msg))
-                MopupService.Instance.PushAsync(new UpdateActivityInstructionsPageView(false, dashBoardUpdateViewResponse.d.results[0].Msg));
+                await MopupService.Instance.PushAsync(new UpdateActivityInstructionsPageView(false, dashBoardUpdateViewResponse.d.results[0].Msg));
             });
 
         }
@@ -2061,11 +2062,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                     var platform = "";
 
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         platform = "C4";
                     }
-                    else if (Device.RuntimePlatform == Device.Android)
+                    else if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         platform = "C3";
                     }
@@ -2207,11 +2208,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                     var platform = string.Empty;
 
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         platform = "C4";
                     }
-                    else if (Device.RuntimePlatform == Device.Android)
+                    else if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         platform = "C3";
                     }
@@ -3345,8 +3346,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                         {
                             ReturnTypeAndCorrepsondingCount UnSubmittedReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
 
-                            UnSubmittedReturnTypeAndCorrepsondingCount.ReturnTypeProperty = GAZT.Models.ReturnType.NrtnTot;
-                            String NrtnTotstr = DashboardData.data[0].nonSubmittedReturnTotalNumber.TrimStart(new Char[] { '0' });
+                            UnSubmittedReturnTypeAndCorrepsondingCount.ReturnTypeProperty = ReturnType.NrtnTot;
+                            string NrtnTotstr = DashboardData.data[0].nonSubmittedReturnTotalNumber.TrimStart(new Char[] { '0' });
                             if (string.IsNullOrEmpty(NrtnTotstr))
                             {
                                 NrtnTotstr = "0";

@@ -31,12 +31,12 @@
                         Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="Center">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="BackCommand" />
+                            <TapGestureRecognizer Command="{Binding BackCommand}" />
                         </Image.GestureRecognizers>
                     </Image>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="BackCommand" />
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
 
                 </StackLayout>

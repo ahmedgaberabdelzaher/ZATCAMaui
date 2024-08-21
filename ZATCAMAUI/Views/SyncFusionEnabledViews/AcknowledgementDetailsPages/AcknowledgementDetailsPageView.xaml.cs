@@ -24,22 +24,22 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
                     viewModel.TPName = App.TP.Name;
-                    viewModel.ReturnReferenceNumber = viewModel.VATDeclarationData.d.Fbnum;
-                    viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Perslt;
+                    viewModel.ReturnReferenceNumber = viewModel.VATDeclarationData.data.Fbnum;
+                    viewModel.TaxablePeriod = viewModel.VATDeclarationData.data.Perslt;
                     string ReceiptDate;
                     viewModel.SadadNumber = string.Empty;
                     viewModel.IsSadadNumberVisible = false;
                     viewModel.IsButtonVisible = false;
                     viewModel.IsAcknowledgementButtonVisible = false;
-                    if (App.ICRStatus == "E0045" && viewModel.VATDeclarationData.d.RefundFg != "1")
+                    if (App.ICRStatus == "E0045" && viewModel.VATDeclarationData.data.RefundFg != "1")
                     {
-                        if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                        if (Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) <= 0)
                         {
                             viewModel.IsSadadNumberVisible = false;
                             viewModel.IsSadadNoteVisible = false;
                             viewModel.IsRefreshButtonVisible = false;
                             viewModel.IsButtonVisible = true;
-                            if (vATDeclaration.d.EstimatedFg == "X")
+                            if (vATDeclaration.data.EstimatedFg == "X")
                             {
                                 viewModel.IsAcknowledgementButtonVisible = false;
                             }
@@ -55,13 +55,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages
                     }
                     else
                     {
-                        if (App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0 || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0 || App.ICRStatus == "E0055" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                        if (App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) <= 0 || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) <= 0 || App.ICRStatus == "E0055" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) <= 0)
                         {
                             viewModel.IsSadadNumberVisible = false;
                             viewModel.IsSadadNoteVisible = false;
                             viewModel.IsRefreshButtonVisible = false;
                             viewModel.IsButtonVisible = true;
-                            if (vATDeclaration.d.EstimatedFg == "X")
+                            if (vATDeclaration.data.EstimatedFg == "X")
                             {
                                 viewModel.IsAcknowledgementButtonVisible = false;
                             }
@@ -72,7 +72,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages
                         }
                         else
                         {
-                            if (App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0 || App.ICRStatus == "E0056" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0 || App.ICRStatus == "E0001" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0 || App.ICRStatus == "E0013" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0)
+                            if (App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) > 0 || App.ICRStatus == "E0056" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) > 0 || App.ICRStatus == "E0001" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) > 0 || App.ICRStatus == "E0013" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) > 0)
                             {
                                 RefreshForSadad();
                             }
@@ -82,13 +82,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages
                             }
                         }
                     }
-                    if (viewModel.VATDeclarationData.d.RefundFg == "1")
+                    if (viewModel.VATDeclarationData.data.RefundFg == "1")
                     {
                         viewModel.IsSadadNumberVisible = false;
                         viewModel.IsSadadNoteVisible = false;
                         viewModel.IsRefreshButtonVisible = false;
                         viewModel.IsButtonVisible = true;
-                        if (vATDeclaration.d.EstimatedFg == "X")
+                        if (vATDeclaration.data.EstimatedFg == "X")
                         {
                             viewModel.IsAcknowledgementButtonVisible = false;
                         }
@@ -97,7 +97,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages
                             viewModel.IsAcknowledgementButtonVisible = true;
                         }
                     }
-                    viewModel.ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    viewModel.ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.data.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
                 }
             }

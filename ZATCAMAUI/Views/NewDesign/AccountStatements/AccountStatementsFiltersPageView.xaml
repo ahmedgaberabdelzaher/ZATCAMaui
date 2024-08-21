@@ -58,9 +58,6 @@
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="Sort Descending"
                                             VerticalOptions="CenterAndExpand" />
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="SortDescending_Tapped"/>
-                                        </StackLayout.GestureRecognizers>
                                     </StackLayout>
                                 </Grid>
                                 <BoxView

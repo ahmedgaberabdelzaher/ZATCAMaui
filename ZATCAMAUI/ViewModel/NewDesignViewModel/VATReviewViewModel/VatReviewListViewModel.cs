@@ -392,7 +392,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-        private List<Result3> _vatReviewListSet;
+        private bool _lateFilingObjectionsSummaryVisible = true;
+        public bool LateFilingObjectionsSummaryVisible
+        {
+            get { return _lateFilingObjectionsSummaryVisible; }
+            set
+            {
+                if (_lateFilingObjectionsSummaryVisible == value) return;
+
+                _lateFilingObjectionsSummaryVisible = value;
+                OnPropertyChanged("LateFilingObjectionsSummaryVisible");
+            }
+        }
+
+        private List<VATObjectionListModel.Result3> _vatReviewListSet;
 
         public List<Result3> VATReviewListSet
         {
@@ -547,6 +560,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        public ObservableCollection<Attachment> _lateFilingAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> LateFilingAttachmentsListViewData
+        {
+            get { return _lateFilingAttachmentsListViewData; }
+
+            set
+            {
+                if (_lateFilingAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                _lateFilingAttachmentsListViewData = value;
+                OnPropertyChanged("LateFilingAttachmentsListViewData");
+            }
+        }
+
+
         private bool isSecurityPaymentsTabVisible = false;
         public bool IsSecurityPaymentsTabVisible
         {
@@ -584,6 +616,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        public string _lateFlngDetails = "";
+        public string LateFlngDetails
+        {
+            get { return _lateFlngDetails; }
+            set
+            {
+                if (_lateFlngDetails == value) return;
+
+                _lateFlngDetails = value;
+                OnPropertyChanged("LateFlngDetails");
+            }
+        }
         public ObservableCollection<Attachment> bankGuranteeAttachmentsListViewData { get; set; }
 
         public ObservableCollection<Attachment> BankGuranteeAttachmentsListViewData
@@ -602,10 +646,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-        public VatReviewListViewModel(INavigationService navigationService, IDialogService dialogService) : base(
-            navigationService, dialogService)
+        public VatReviewListViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-
             GoBackClick = new Command(() =>
             {
                 if (IsVatListVisible)
@@ -623,7 +665,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 if (!isNewRequestCreated)
                 {
                     isNewRequestCreated = true;
-                    ShowVatReviewPage();
+                    ShowVatReviewPageAsync();
                 }
             });
         }
@@ -649,7 +691,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             //AddOutletDecisionOptions();
         }
 
-        public async Task ShowVatReviewPage()
+        public async Task ShowVatReviewPageAsync()
         {
 
             App.selectedVATItem = "";
@@ -762,10 +804,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() => { IsLoading = false; });
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -792,7 +834,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                         if (_VATObjectionList != null && _VATObjectionList.d != null)
                         {
-                            var selectedAssets = _VATObjectionList.d.ASSLISTSet.results
+                            var selectedAssets = _VATObjectionList.d.ASSLISTSet
                                 .Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                             // PopulateVATReviewList();
                             VATReviewListSet = selectedAssets;
@@ -837,10 +879,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() => { IsLoading = false; });
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -865,22 +907,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         private async void BindSummaryData(VATObjectionSummaryModel responseModel)
         {
-            List<ReviewReason> reasonList =
-                new List<ReviewReason>();
-            if (responseModel.d.MainReasonSet.results.Count > 0)
+            List<VATObjectionFormModel.ReviewReason> reasonList =
+                new List<VATObjectionFormModel.ReviewReason>();
+            if (responseModel.d.MainReasonSet.Count > 0)
             {
-                for (int i = 0; i < responseModel.d.MainReasonSet.results.Count; i++)
+                for (int i = 0; i < responseModel.d.MainReasonSet.Count; i++)
                 {
-                    ReviewReason obj = new ReviewReason();
-                    obj.ProcCD = responseModel.d.MainReasonSet.results[i].ProcCd;
-                    obj.Reasons = responseModel.d.MainReasonSet.results[i].TypeT;
-                    if (responseModel.d.ReasonSet.results.Where(x =>
-                        x.ProcCd == responseModel.d.MainReasonSet.results[i].ProcCd).Count() > 0)
+                    VATObjectionFormModel.ReviewReason obj = new VATObjectionFormModel.ReviewReason();
+                    obj.ProcCD = responseModel.d.MainReasonSet[i].ProcCd;
+                    obj.Reasons = responseModel.d.MainReasonSet[i].TypeT;
+                    if (responseModel.d.ReasonSet.Where(x =>
+                        x.ProcCd == responseModel.d.MainReasonSet[i].ProcCd).Count() > 0)
                     {
-                        List<SubReason> subReasonList =
-                            new List<SubReason>();
-                        var lstSub = responseModel.d.ReasonSet.results.Where(x =>
-                            x.ProcCd == responseModel.d.MainReasonSet.results[i].ProcCd).ToList();
+                        List<VATObjectionFormModel.SubReason> subReasonList =
+                            new List<VATObjectionFormModel.SubReason>();
+                        var lstSub = responseModel.d.ReasonSet.Where(x =>
+                            x.ProcCd == responseModel.d.MainReasonSet[i].ProcCd).ToList();
                         for (int j = 0; j < lstSub.Count(); j++)
                         {
                             SubReason sub = new SubReason();
@@ -895,6 +937,43 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     reasonList.Add(obj);
                 }
             }
+            foreach (var note in responseModel.d.NotesSet)
+            {
+
+                if (note.Rcodez == "RVT_OVRDUE" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(LateFlngDetails))
+                {
+                    LateFlngDetails = string.Concat(LateFlngDetails, note.Strline);
+
+                }
+
+            }
+
+
+
+            var lateFilngAttachments = new ObservableCollection<Attachment>();
+            if (responseModel.d.OVERDUEFG=="X")
+            {
+                LateFilingObjectionsSummaryVisible = true;
+                lateFilngAttachments = new ObservableCollection<Attachment>();
+                foreach (var attach in responseModel.d.AttdetSet)
+                {
+
+                    if (attach.Dotyp == "ZVRA")
+                    {
+                        lateFilngAttachments.Add(attach);
+                    }
+                }
+
+                LateFilingAttachmentsListViewData = lateFilngAttachments;
+
+            }
+            else
+            {
+                LateFilingObjectionsSummaryVisible = false;
+            }
+
+
+
 
             modelVATReviewsReturn.ListReviewReason = reasonList;
 
@@ -913,7 +992,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             //Step3 Details
 
-            var selectedReason = reasonList.First(x => x.ProcCD == responseModel.d.RvRsn);
+            var selectedReason = reasonList.FirstOrDefault(x => x.ProcCD == responseModel.d.RvRsn);
 
             if (selectedReason.ProcCD == "VTPC" || selectedReason.ProcCD == "VTPN" || selectedReason.ProcCD == "VTAS")
             {
@@ -1080,7 +1159,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             var bankAttachments = new ObservableCollection<Attachment>();
             var attachments = new ObservableCollection<Attachment>();
 
-            foreach (var attach in responseModel.d.AttdetSet.results)
+            foreach (var attach in responseModel.d.AttdetSet)
             {
                 if (attach.Dotyp == "RAGA")
                 {
@@ -1131,15 +1210,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                     catch (Exception)
                     {
-
-
                     }
 
                 });
 
             }
 
-            foreach (var note in responseModel.d.NotesSet.results)
+            foreach (var note in responseModel.d.NotesSet)
             {
                 if (note.Rcodez == "RAVT_SDCAS")
                 {

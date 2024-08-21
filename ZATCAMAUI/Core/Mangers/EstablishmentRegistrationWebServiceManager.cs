@@ -10,8 +10,8 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.ErrorMessage;
-using ZATCAMAUI.Models.Attachments;
 using ZATCAMAUI.Models.ESTOutletAddress;
+using ZATCAMAUI.Models.AttachmentRequest;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -75,21 +75,9 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException)
-                {
-                    throw new GAZTInvalidDataException();
-                }
-                catch (HttpRequestException ex)
-                {
-                    throw ex;
-                }
-                catch (GAZTException gex)
-                {
-                    throw gex;
-                }
                 catch (Exception)
                 {
-                    // throw new GAZTNetworkConnectivityIssueException();
+                    
                 }
             }
             else
@@ -192,22 +180,6 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (GAZTErrorException ex)
-                {
-                   
-                }
-                catch (JsonReaderException)
-                {
-                    throw new GAZTInvalidDataException();
-                }
-                catch (HttpRequestException ex)
-                {
-                   
-                }
-                catch (GAZTException )
-                {
-                    
-                }
                 catch (Exception )
                 {
                 }
@@ -307,21 +279,9 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (GAZTErrorException)
-                {
-                }
                 catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
-                }
-                catch (HttpRequestException )
-                {
-                }
-                catch (GAZTException )
-                {
-                }
-                catch (Exception )
-                {
                 }
             }
             else
@@ -613,7 +573,7 @@ namespace ZATCAMAUI.Core.Mangers
                 string DeleteToken = string.Empty;
                 try
                 {
-                    Models.Attachments.DeleteAttachmentRequest _attachmentReq = new Models.Attachments.DeleteAttachmentRequest()
+                    DeleteAttachmentRequest _attachmentReq = new DeleteAttachmentRequest()
                     {
                         fileName = fileName,
                         returnGUID = RetGuid,

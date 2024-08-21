@@ -1123,7 +1123,7 @@
                                             <Grid.Resources>
                                                 <ResourceDictionary>
                                                     <Style TargetType="custom:GAZTBorderlessEntry">
-                                                        <Setter Property="Keyboard" Value="Numeric" />
+                                                        <Setter Property="Keyboard" Value="{OnPlatform Android=Numeric, iOS=Default}" />
                                                         <Setter Property="FontAttributes" Value="Bold" />
                                                         <Setter Property="FontSize" Value="Small" />
                                                         <Setter Property="WidthRequest" Value="8" />

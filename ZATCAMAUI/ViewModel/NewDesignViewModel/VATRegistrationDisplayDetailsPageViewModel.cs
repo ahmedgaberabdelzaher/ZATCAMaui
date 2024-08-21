@@ -475,6 +475,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     try
                     {
                         vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDisplayDetailsData();
+                        if(vATRegistration.d.PendingIbanMsg != "")
+                        {
+                            await Task.Run(() =>
+                            {
+                                _ = _dialogService.ShowMessage("IBAN INCOMPLETE", AppResources.NDIBANIncomplete);
+                                return;
+                            });
+                        }
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                         if (vATRegistration != null && vATRegistration.d != null)
@@ -483,20 +491,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             //step 4 and 5 data set
                             if (vATRegistration.d.CONTACT_PERSONSet != null)
                             {
-                                GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
-                                //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
+                                GpartFR = vATRegistration.d.CONTACT_PERSONSet[0].Gpart;
+                                //  VATRegistrationDetailsData.d.CONTACT_PERSONSet[0].Type = SelectedIdTypeFR.ID;
                                 idnumber = string.Empty;
-                                idnumber = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
-                                FirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
-                                LastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
-                                MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
-                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
-                                DOB = vATRegistration.d.CONTACT_PERSONSet.results[0].Dobdt;
-                                if (vATRegistration.d.CONTACT_PERSONSet.results[0].Type.Equals("ZS0003"))
+
+                                idnumber = vATRegistration.d.CONTACT_PERSONSet[0].Idnumber;
+                                FirstnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Firstnm;
+                                LastnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Lastnm;
+                                MobNumberFR = vATRegistration.d.CONTACTDTSet[0].MobNumber;
+                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet[0].SmtpAddr;
+                                DOB = vATRegistration.d.CONTACT_PERSONSet[0].Dobdt;
+                                if(vATRegistration.d.CONTACT_PERSONSet[0].Type.Equals("ZS0003"))
                                 {
                                     TxtIDTypeFR = AppResources.ZZGCCID;
                                 }
-                                else if (vATRegistration.d.CONTACT_PERSONSet.results[0].Type.Equals("ZS0002"))
+                                else if(vATRegistration.d.CONTACT_PERSONSet[0].Type.Equals("ZS0002"))
                                 {
                                     TxtIDTypeFR = AppResources.ZZIqamaID;
 
@@ -531,7 +540,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                         if (vATRegistration.d.IBANSet != null)
                         {
-                            IbanList = new ObservableCollection<Result2>(vATRegistration.d.IBANSet.results);
+                            IbanList = new ObservableCollection<Result2>(vATRegistration.d.IBANSet);
                             for (int i = 0; i < IbanList.Count; i++)
                             {
                                 if (!string.IsNullOrEmpty(IbanList.ElementAt(i).Iban))
@@ -549,22 +558,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         if (vATRegistration.d.QUESTIONSSet != null)
                         {
-                            List<ResultsItemForQuestion> quest1AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "001" && s.QoptAns == "1").ToList();
+                            List<ResultsItemForQuestion> quest1AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "001" && s.QoptAns == "1").ToList();
                             if (quest1AnsList.Count > 0)
                             {
                                 quesTion1answerSelected = quest1AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
                             }
-                            List<ResultsItemForQuestion> quest2AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "002" && s.QoptAns == "1").ToList();
+                            List<ResultsItemForQuestion> quest2AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "002" && s.QoptAns == "1").ToList();
                             if (quest2AnsList.Count > 0)
                             {
                                 quesTion2answerSelected = quest2AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
                             }
-                            List<ResultsItemForQuestion> quest3AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList();
-                            if (quest3AnsList.Count > 0)
-                            {
-                                quesTion3answerSelected = quest3AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
-                            }
-                            List<ResultsItemForQuestion> quest4AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToList();
+
+                            List<ResultsItemForQuestion> quest3AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList();
+                            if (quest3AnsList.Count > 0) { 
+                            quesTion3answerSelected = quest3AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+                                 }
+                            List<ResultsItemForQuestion> quest4AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToList();
                             if (quest4AnsList.Count > 0)
                             {
                                 quesTion4answerSelected = quest3AnsList.FirstOrDefault().QoptTxt;//vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToString();
@@ -575,14 +584,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.VatTaxDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                             VatEligibleStartDate = Convert.ToDateTime(convertedDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                         }
-                        if (vATRegistration.d.QUESCONFIG_MSet.results.Count != 0)
+                        if (vATRegistration.d.QUESCONFIG_MSet != null && vATRegistration.d.QUESCONFIG_MSet.Count > 0)
                         {
                             MinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
                             MinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(vATRegistration.d.QUESCONFIG_MSet);
                         }
                         if (vATRegistration.d.ATTDETSet != null)
                         {
-                            foreach (Attachment ItemA in vATRegistration.d.ATTDETSet.results)
+                            foreach (Attachment ItemA in vATRegistration.d.ATTDETSet)
                             {
                                 AttachmentName = ItemA.Filename;
                             }
@@ -609,8 +618,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     catch (InternetException ex)
                     {
-
-
                        MainThread.BeginInvokeOnMainThread(() =>
                         {
                             //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -631,8 +638,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (GAZTVATRegistrationInProcessException ex)
             {
                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    IsLoading = false;
+               {
+                   IsLoading = false;
                 });
 
             }

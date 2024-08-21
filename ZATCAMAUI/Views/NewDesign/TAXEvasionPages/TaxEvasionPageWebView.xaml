@@ -4,7 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -44,37 +43,9 @@
 
                 </Grid>
             </Border>
-            <Grid
-                x:Name="loadingIndicator"
-                Grid.Row="1"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand">
-                <StackLayout
-                    BackgroundColor="Transparent"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="True"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
+
+             <custom:Loader IsVisible="{Binding IsLoading}"/>
+         
 
             <Grid Grid.Row="0" Padding="20,5,20,5">
                 <Grid.ColumnDefinitions>

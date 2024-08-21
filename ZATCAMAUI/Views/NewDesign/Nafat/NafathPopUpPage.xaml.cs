@@ -11,8 +11,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
         public NafathPopUpPage()
         {
             InitializeComponent();
-            viewModel = App.Locator.NafathPopupPage;
-            BindingContext = viewModel;
+            BindingContext = viewModel =App.Locator.NafathPopupPageViewModel;
         }
 
         private async void TappedGulf(object sender, EventArgs e)

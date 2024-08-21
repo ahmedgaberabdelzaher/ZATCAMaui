@@ -819,138 +819,158 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 }
             });
-
-
         }
         #endregion
 
 
         #region Method
-        public async Task OnPageLoad(string fbguid)
+        public async Task OnPageLoad(string fbnum)
         {
             try
             {
-                IsLoading = true;
-
-                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
-
-                ZakatReturnDetailToCompare = zakatReturnDetails.d;
-                PopToRootPage();
-                if (zakatReturnDetails != null && zakatReturnDetails.d != null)
+                // Fbguid = fbguid;
+                await Task.Run(() =>
                 {
-
-                    ZakatReturnDetails = zakatReturnDetails;
-                    ZakatReturnDetail = zakatReturnDetails.d;
-                    GetDataAfterAddingComma();
-                    existingZakatBase = Convert.ToDouble(ZakatReturnDetails.d.Zkamt);
-                    GetUpdatedDataAfterAddingComma();
-                    SetICRStatus();
-                    DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzu + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
-                    DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzo + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
-
-                    string CalenderType = ZakatReturnDetail.Incotyp.Substring(0, 1);
-                    if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
-                    {
-                        FromDate = UtilityManager.Converthijri(fromDate);// fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        ToDate = UtilityManager.Converthijri(toDate);// " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    }
-                    else
-                    {
-                        FromDate = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        string[] dts = FromDate.Split('-');
-                        string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                        FromDate = date;
-
-                        ToDate = " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                        string[] dts2 = ToDate.Split('-');
-                        string date2 = dts2[1] + "-" + UtilityManager.GetMonthName(dts2[2]) + "-" + dts2[3];
-                        ToDate = date2;
-
-                    }
-
-                    var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
-
-
-
-                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                    SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
-                    isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales(ZakatReturnDetails.d.TvtslI);
-                    if (isThresholdValueLessThanTotalVATSales)
-                    {
-                        SetReadOnlyToOtherThanTotalVATSales = true;
-                        SetReadOnlyToTotalVATSales = false;
-                    }
-                    else
-                    {
-                        SetReadOnlyToOtherThanTotalVATSales = false;
-                        SetReadOnlyToTotalVATSales = true;
-                    }
-                    // Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
-                    if (zakatReturnDetails.d.RestFlg == "X")
-                    {
-                        IsRealEstateViewVisible = true;
-                    }
-                    else
-                    {
-                        IsRealEstateViewVisible = false;
-                    }
-                    SetLabelsText();
-
-                }
-                else
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
                 {
-                    //  IsLoading = false;
-                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbnum);
+                    ZakatReturnDetails obj = await WebServiceManager.GAZTGetZAKATReturn(fbnum);
+
+                    ZakatReturnDetailToCompare = obj.d;
+                    PopToRootPage();
+                    if (zakatReturnDetails != null && zakatReturnDetails.d != null)
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
+
+                        ZakatReturnDetails = zakatReturnDetails;
+                        ZakatReturnDetail = zakatReturnDetails.d;
+                        GetDataAfterAddingComma();
+                        existingZakatBase = Convert.ToDouble(ZakatReturnDetails.d.Zkamt);
+                        GetUpdatedDataAfterAddingComma();
+                        SetICRStatus();
+                        DateTime fromDate = Convert.ToDateTime(ZakatReturnDetail.Abrzu); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
+                        DateTime toDate = Convert.ToDateTime(ZakatReturnDetail.Abrzo);// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
+
+                        string CalenderType = ZakatReturnDetail.Incotyp.Substring(0, 1);
+                        if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
                         {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                            FromDate = UtilityManager.Converthijri(fromDate);// fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            ToDate = UtilityManager.Converthijri(toDate);// " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        }
+                        else
+                        {
+                            FromDate = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            string[] dts = FromDate.Split('-');
+                            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                            FromDate = date;
 
-                            //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            _navigationService.GoBack();
-                        });
+                            ToDate = " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                            string[] dts2 = ToDate.Split('-');
+                            string date2 = dts2[1] + "-" + UtilityManager.GetMonthName(dts2[2]) + "-" + dts2[3];
+                            ToDate = date2;
+
+                        }
+
+                        var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                        //if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                        //{
+                        //    IsPayNowVisible = false;
+                        //}
+                        //else
+                        //{
+                        //    IsPayNowVisible = true;
+                        //}
+
+
+
+
+                        SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                        SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
+                        isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales(ZakatReturnDetails.d.TvtslI);
+                        if (isThresholdValueLessThanTotalVATSales)
+                        {
+                            SetReadOnlyToOtherThanTotalVATSales = true;
+                            SetReadOnlyToTotalVATSales = false;
+                        }
+                        else
+                        {
+                            SetReadOnlyToOtherThanTotalVATSales = false;
+                            SetReadOnlyToTotalVATSales = true;
+                        }
+                        // Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
+                        if (zakatReturnDetails.d.RestFlg == "X")
+                        {
+                            IsRealEstateViewVisible = true;
+                        }
+                        else
+                        {
+                            IsRealEstateViewVisible = false;
+                        }
+                        SetLabelsText();
+
                     }
                     else
                     {
-                        //     Dear taxpayer, the return is under GAZT review and cannot be amended.
-
-                        //Dear taxpayer, the return is under ZATCA review and cannot be amended.
-                        if (WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under ZATCA review and cannot be amended."))// message is always coming in english from the server
+                        //  IsLoading = false;
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                                if (App.IsArabic)
-                                {
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
-                                    // await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
-                                    _navigationService.GoBack();
-                                    WebServiceManager.ErrorMessage = string.Empty;
-                                }
-                                else
-                                {
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
-
-                                    //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
-                                    _navigationService.GoBack();
-                                    WebServiceManager.ErrorMessage = string.Empty;
-                                }
+                                //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
                             });
                         }
+                        else
+                        {
+                            //     Dear taxpayer, the return is under GAZT review and cannot be amended.
+
+                            //Dear taxpayer, the return is under ZATCA review and cannot be amended.
+                            if (WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under ZATCA review and cannot be amended."))// message is always coming in english from the server
+                            {
+                                MainThread.BeginInvokeOnMainThread(async () =>
+                                {
+                                    if (App.IsArabic)
+                                    {
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended));
+
+                                        // await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
+                                        _navigationService.GoBack();
+                                        WebServiceManager.ErrorMessage = string.Empty;
+                                    }
+                                    else
+                                    {
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+
+                                        //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                        _navigationService.GoBack();
+                                        WebServiceManager.ErrorMessage = string.Empty;
+                                    }
+                                });
+                            }
+                        }
                     }
-                }
-                IsLoading = false;
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
             catch (InternetException ex)
             {
-                IsLoading = false;
-
                 MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                {
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                 });
+                    //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
         }
 
@@ -960,11 +980,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         private void AssignCalculatedValueAfterSubmission()
         {
             //Updated data to post on the server
-            ZakatReturnDetails.d.Zbamt = _zakatReturnDetails.d.Zbamt;
-            ZakatReturnDetails.d.Zkamt = _zakatReturnDetails.d.Zkamt;
+            ZakatReturnDetails.d.Zbamt = _zakatReturnDetails.result.Zbamt;
+            ZakatReturnDetails.d.Zkamt = _zakatReturnDetails.result.Zkamt;
             //Updated data to show on UI
-            ZakatReturnDetail.Zbamt = _zakatReturnDetails.d.Zbamt;
-            ZakatReturnDetail.Zkamt = _zakatReturnDetails.d.Zkamt;
+            ZakatReturnDetail.Zbamt = _zakatReturnDetails.result.Zbamt;
+            ZakatReturnDetail.Zkamt = _zakatReturnDetails.result.Zkamt;
 
         }
 
@@ -985,7 +1005,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                     {
 
-                        ZakatReturnDetail.Fbguid = Fbguid;
+                        ZakatReturnDetail.Fbnum = ZAKATReturnDetailsViewModel.Fbguid;
                         App.ZakatReturnBilldetails = false;
                         _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                     }
@@ -1178,11 +1198,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 var platform = "";
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     platform = "C4";
                 }
-                else if (Device.RuntimePlatform == Device.Android)
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     platform = "C3";
                 }
@@ -1209,7 +1229,74 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     if (PaymentData.d.Guid != null)
                     {
 
-                        App.PaymentGuid = PaymentData.d.Guid;
+                        if (PaymentData.d.Guid != null&&PaymentData.d.Guid == "")
+                        {
+                            await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
+                            return;
+                        }
+                        
+                        if (PaymentData.d.Guid != null)
+                        {
+
+                            App.PaymentGuid = PaymentData.d.Guid;
+
+                        }
+
+
+                        if (paymentType == "Mada Payment")
+                        {
+
+                            MainThread.BeginInvokeOnMainThread(async () => {
+                            IsLoading = true;
+                            //CR7420
+                            CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
+                            IsLoading = false;
+                                if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
+                                {
+                                    App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                                    _navigationService.NavigateTo(App.PaymentProcessWebview, 0);
+                                    //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+                                }
+                            });
+                        }
+                        else
+                        {
+                            var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+
+                              await ProcessApplePay();
+                        }
+
+
+
+                        //if (ZakatReturnDetails.d.MadabutFg == "X")
+                        //{
+
+                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                        //}
+                        //else
+                        //{
+
+                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
+
+
+                        //var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                        //if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                        //{
+                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
+                        //else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
+                        //{
+                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
+                        //else
+                        //{
+                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ZakatReturnDetails.d.OpenliMsg));
+
+                        //}
 
                     }
 
@@ -1281,6 +1368,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
 
 
+        public async Task<CreateMadaResponseRoot> GetWebviewContent(string srcid)
+        {
+            try
+            {
+                var paymentPayload = new CreateMadaPaymentPayload
+                {
+                    GUID = App.PaymentGuid,
+                    sourceId = srcid
+                };
+                CreateMadaResponseRoot respose = await WebServiceManager.GAZTCreateMadaPayment(paymentPayload);
+                return respose;
+            }
+            catch (GAZTValidateMadaPaymentException ex)
+            {
+                IsLoading = false;
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public async Task UpdateApplePayPaymentGuid()
         {
             try
@@ -1290,11 +1406,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 string platform = string.Empty;
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     platform = "C4";
                 }
-                else if (Device.RuntimePlatform == Device.Android)
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     platform = "C3";
                 }
@@ -1370,8 +1486,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             if (ZakatReturnDetails.d.MadabutFg == "X")
             {
-
-                await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum, "M");
+                 await DoValidatePayment(fbNum: ZakatReturnDetails.d.Fbnum, "Mada Payment");
             }
             else
             {
@@ -1408,90 +1523,130 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public async Task ReleaseEstimateZakatReturn()
         {
-            await Task.Run(async () =>
+            try
             {
-                try
+                await Task.Run(() =>
                 {
                     IsLoading = true;
-                    WebServiceManager.ErrorMessage = string.Empty;
-                    ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
-
-                    ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, "59");
-                    if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                });
+                await Task.Run(async () =>
+                {
+                    try
                     {
-                        try
+                        //  GetUpdatedDataAfterRemovingComma();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                        ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+
+                        ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, "59");
+                        if (_zakatReturnDetails != null && _zakatReturnDetails.result != null)
                         {
-                            //Layout visibiliy changed after releasing the ICR
-                            isEditVisible = false;
-                            UnSetEditImage();
-                            isLabelVisible = true;
-                            IsEditTextVisible = false;
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                             {
-                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZReleasedSuccessfully));
-                             });
-
-                        }
-                        catch (Exception)
-                        {
-
-
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                             {
-                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
-                                 _navigationService.GoBack();
-                                 WebServiceManager.ErrorMessage = string.Empty;
-                                 IsLoading = false;
-
-                             });
-                        }
-                        catch (Exception)
-                        {
-
-
-                        }
-                    }
-                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
-                    {
-                        ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
-                        PopToRootPage();
-                        if (zakatReturnDetails != null)
-                        {
-                            ZakatReturnDetails = zakatReturnDetails;
-                            if (zakatReturnDetails.d != null)
+                            try
                             {
-                                ZakatReturnDetail = zakatReturnDetails.d;
-                                GetUpdatedDataAfterAddingComma();
-                                var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                                //Layout visibiliy changed after releasing the ICR
+                                isEditVisible = false;
+                                UnSetEditImage();
+                                isLabelVisible = true;
+                                IsEditTextVisible = false;
+                                MainThread.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZReleasedSuccessfully));
+                                    // await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZNotification);
+                                });
 
-                                SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                                Console.Write(ex.StackTrace.ToString());
                             }
                         }
+                        else
+                        {
+                            try
+                            {
+                                //if (WebServiceManager.ErrorMessage.Equals(""))// message is always coming in english from the server
+                                //{
+                                MainThread.BeginInvokeOnMainThread(async () =>
+                                {
+                                    //if (App.IsArabic)
+                                    //{
+                                    //    await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
+                                    //    _navigationService.GoBack();
+                                    //    WebServiceManager.ErrorMessage = string.Empty;
+                                    //}
+                                    //else
+                                    //{
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+
+                                    //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                    IsLoading = false;
+
+                                    //}
+                                });
+                                //}
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                                Console.Write(ex.StackTrace.ToString());
+                            }
+                            //MainThread.BeginInvokeOnMainThread(async () => {
+                            //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
+                            //    _navigationService.GoBack();
+                            //});
+                        }
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                        {
+                            ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
+                            PopToRootPage();
+                            //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                            if (zakatReturnDetails != null)
+                            {
+                                ZakatReturnDetails = zakatReturnDetails;
+                                if (zakatReturnDetails.d != null)
+                                {
+                                    ZakatReturnDetail = zakatReturnDetails.d;
+                                    GetUpdatedDataAfterAddingComma();
+                                    var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                                    //if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
+                                    //{
+                                    //    IsPayNowVisible = false;
+                                    //}
+                                    //else
+                                    //{
+                                    //    IsPayNowVisible = true;
+                                    //}
+
+
+                                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                                }
+                            }
+                        }
+
                     }
-                    IsLoading = false;
-                }
-                catch (InternetException ex)
+                    catch (InternetException ex)
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                            // _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                });
+                await Task.Run(() =>
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                     {
-                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                     });
-                }
-                catch (Exception)
-                {
-
-
                     IsLoading = false;
-                }
-
-            });
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+                IsLoading = false;
+            }
         }
         public async Task SubmitReturn()
         {
@@ -1503,12 +1658,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
                 //  zakatReturnDetailsD.d.Cpamt = SalesDetailsList[7].InformationFromPartie.Replace(",", "");
                 _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, SubmitPostOperation);
-                if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                if (_zakatReturnDetails != null && _zakatReturnDetails.result != null)
                 {
                     SetUpdatdDatatoTheUI(_zakatReturnDetails);
-                    Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
+                    Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.result.Estsl);
                     //  IsCurrentZAKATTaxLess = existingZakatBase >= Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
-                    if (existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt))
+                    if (existingZakatBase > Convert.ToDouble(_zakatReturnDetails.result.Zkamt))
                     {
                         AssignCalculatedValueAfterSubmission();
 
@@ -1567,7 +1722,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
         private void SetUpdatdDatatoTheUI(ZakatReturnDetails _ZakatReturnDetails)
         {
-            ZakatReturnDetail = _ZakatReturnDetails.d;
+            ZakatReturnDetail = _ZakatReturnDetails.result;
         }
 
         public async Task ConfirmClicked(string PostOperation)
@@ -1577,7 +1732,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 IsLoading = true;
                 ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
                 _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, PostOperation);
-                if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                if (_zakatReturnDetails != null && _zakatReturnDetails.result != null)
                 {
                     SetConfirmButtonVisibility = false;
                     DesClaimerVisibility = false;
@@ -1851,8 +2006,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -2202,7 +2355,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 TotalVatSalesAmount = ZakatReturnDetails.d.TvtslI;
             }
             double totalVatSalesAmount = Convert.ToDouble(TotalVatSalesAmount);
-            if (totalVatSalesAmount > Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value))
+            if (totalVatSalesAmount > Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet[0].Value))
             {
                 return true;
             }
@@ -2255,9 +2408,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
             }
 
-            AttachSet attachSet = new AttachSet();
-            attachSet.results = EstimateZakatAttachmentList;
-            ZakatReturnDetails.d.AttachSet = attachSet;
+            //AttachSet attachSet = new AttachSet();
+            //attachSet.results = EstimateZakatAttachmentList;
+            ZakatReturnDetails.d.AttachSet = EstimateZakatAttachmentList;
 
         }
 

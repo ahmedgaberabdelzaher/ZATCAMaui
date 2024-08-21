@@ -1,7 +1,5 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
-using Syncfusion.Maui.ListView;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -24,8 +22,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
 
             viewModel = App.Locator.VATRefundsNewRequestPageView;
 
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             DraftsRequestDataModel = null;
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
@@ -42,8 +38,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
 
             viewModel = App.Locator.VATRefundsNewRequestPageView;
 
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             DraftsRequestDataModel = draftsRequestData;
 
@@ -58,13 +52,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
             string message = string.Empty;
-            ChangeArrowDirection();
             MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
             {
                 if (arg != null)
@@ -312,36 +300,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
         }
 
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-
-        public void ChangeArrowDirection()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-
-        void BankOptionsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
-        {
-            //TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
-            //viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
-        }
+       
 
         private void NewAccount_Clicked(object sender, EventArgs e)
         {

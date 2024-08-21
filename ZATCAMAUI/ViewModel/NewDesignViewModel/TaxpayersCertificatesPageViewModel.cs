@@ -370,7 +370,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
              });
 
 
-            if (Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 if (pdfUrl != null)
                 {

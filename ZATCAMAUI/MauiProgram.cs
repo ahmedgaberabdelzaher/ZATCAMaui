@@ -19,6 +19,7 @@ using ZXing.Net.Maui.Controls;
 using IDeviceInfoZATCA = ZATCAMAUI.Core.Interfaces.IDeviceInfoZATCA;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Maui.GoogleMaps.Hosting;
+using ZXing.Net.Maui;
 
 namespace ZATCAMAUI;
 

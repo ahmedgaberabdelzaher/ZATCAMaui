@@ -23,6 +23,8 @@ using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using Application = Microsoft.Maui.Controls.Application;
 using Page = Microsoft.Maui.Controls.Page;
 using Slider = Microsoft.Maui.Controls.Slider;
+using System;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 {
@@ -292,34 +294,50 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private async void btnContinue_Clicked(object sender, EventArgs e)
         {
-            if (viewModel.IsContinueButtonEnable)
+            try
             {
-                if (viewModel.CurrentStep == AppResources.VATRStep1)
+                if (viewModel.IsContinueButtonEnable)
                 {
-                    viewModel.CurrentStep = AppResources.VATRStep2;
-                    viewModel.SetVisibility();
-                    viewModel.IsTaxPayersVisible = true;
-                    SetsecondBoxColor();
-                }
-                else if (viewModel.CurrentStep == AppResources.VATRStep2)
-                {
-                    step2Validation();
-                    setAttachmentImporterExporterVisibility();
-
-                    if (App.isVatEffectDateNav)
+                    if (viewModel.CurrentStep == AppResources.VATRStep1)
                     {
-                        viewModel.CheckCR1450FieldsValid();
+                        viewModel.CurrentStep = AppResources.VATRStep2;
+                        viewModel.SetVisibility();
+                        viewModel.IsTaxPayersVisible = true;
+                        SetsecondBoxColor();
                     }
-                }
-                else if (viewModel.CurrentStep == AppResources.VATRStep3)
-                {
-                    step3Validation();
-                }
-                else if (viewModel.CurrentStep == AppResources.VATRStep4)
-                {
-                    if (viewModel.RegTypeCode == "N")
+                    else if (viewModel.CurrentStep == AppResources.VATRStep2)
                     {
-                        if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.results.Count > 0)
+                        step2Validation();
+                        setAttachmentImporterExporterVisibility();
+
+                        if (App.isVatEffectDateNav)
+                        {
+                            viewModel.CheckCR1450FieldsValid();
+                        }
+                    }
+                    else if (viewModel.CurrentStep == AppResources.VATRStep3)
+                    {
+                        step3Validation();
+                    }
+                    else if (viewModel.CurrentStep == AppResources.VATRStep4)
+                    {
+                        if (viewModel.RegTypeCode == "N")
+                        {
+                            if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.Count > 0)
+                            {
+                                viewModel.CurrentStep = AppResources.VATRStep5;
+                                viewModel.SetVisibility();
+                                viewModel.IsFinancialVisible = true;
+                                SetfourthBoxColor();
+                                if (viewModel.CurrentIndex == 3)
+                                    viewModel.CurrentIndex++;
+                            }
+                            else
+                            {
+                                FrmNewAttachment.HasError = true;
+                            }
+                        }
+                        else
                         {
                             viewModel.CurrentStep = AppResources.VATRStep5;
                             viewModel.SetVisibility();
@@ -328,97 +346,59 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             if (viewModel.CurrentIndex == 3)
                                 viewModel.CurrentIndex++;
                         }
+                    }
+                    else if (viewModel.CurrentStep == AppResources.VATRStep5)
+                    {
+                        if (viewModel.IsNewFinancialRepVisible)
+                        {
+                            bool validFlag = await step4Validation();
+                            if (!validFlag)
+                            {
+                                return;
+                            }
+                        }
                         else
                         {
-                            FrmNewAttachment.HasError = true;
+
+                            viewModel.GpartSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet[0].Gpart;
+                            viewModel.IdnumberSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet[0].Idnumber;
+                            viewModel.FirstnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet[0].Firstnm;
+                            viewModel.LastnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet[0].Lastnm;
+                            viewModel.MobNumberSum = viewModel.ListFinanceRepresenatives[0].MobNumberFR;
+                            viewModel.SmtpAddrSum = viewModel.ListFinanceRepresenatives[0].SmtpAddrFR;
+                            viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet[0].Type).FirstOrDefault()?.Name;
+
                         }
-                    }
-                    else
-                    {
-                        viewModel.CurrentStep = AppResources.VATRStep5;
+                        viewModel.CurrentStep = AppResources.ZTEReportCategorySubmitBtn;
                         viewModel.SetVisibility();
-                        viewModel.IsFinancialVisible = true;
-                        SetfourthBoxColor();
-                        if (viewModel.CurrentIndex == 3)
+                        viewModel.IsSummaryVisible = true;
+                        SetfifthBoxColor();
+                        if (viewModel.CurrentIndex == 4)
                             viewModel.CurrentIndex++;
-                    }
-                }
-                else if (viewModel.CurrentStep == AppResources.VATRStep5)
-                {
-                    if (viewModel.IsNewFinancialRepVisible)
-                    {
-                        bool validFlag = await step4Validation();
-                        if (!validFlag)
+                        if (viewModel.IsDeclarationChecked)
                         {
-                            return;
-                        }
-                    }
-                    else
-                    {
-
-                        viewModel.GpartSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Gpart;
-                        viewModel.IdnumberSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Idnumber;
-                        viewModel.FirstnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Firstnm;
-                        viewModel.LastnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Lastnm;
-                        viewModel.MobNumberSum = viewModel.ListFinanceRepresenatives[0].MobNumberFR;
-                        viewModel.SmtpAddrSum = viewModel.ListFinanceRepresenatives[0].SmtpAddrFR;
-                        viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
-
-                    }
-                    viewModel.CurrentStep = AppResources.ZTEReportCategorySubmitBtn;
-                    viewModel.SetVisibility();
-                    viewModel.IsSummaryVisible = true;
-
-                    if (viewModel.VatDeregDeclaration != null && viewModel.VatDeregDeclaration.D != null && string.IsNullOrEmpty(viewModel.VatDeregDeclaration.D.Zterms))
-                    {
-                        viewModel.IsDeclarationViewEnabled = true;
-                        viewModel.IsDeclarationViewEnabledNew = false;
-                    }
-                    else
-                    {
-                        viewModel.IsDeclarationViewEnabled = false;
-                        viewModel.IsDeclarationViewEnabledNew = true;
-                        viewModel.Zterms = viewModel.VatDeregDeclaration.D.Zterms;
-                        if (App.IsArabic)
-                        {
-                            viewModel.ShouldShowAR = true;
-                            viewModel.ShouldShowEN = false;
-                            if (Device.RuntimePlatform == Device.Android)
-                            {
-                                viewModel.TermsAlignment = TextAlignment.Start;
-                            }
-                            else
-                            {
-                                viewModel.TermsAlignment = TextAlignment.End;
-                            }
+                            viewModel.IsContinueButtonEnable = true;
                         }
                         else
                         {
-                            viewModel.ShouldShowEN = true;
-                            viewModel.ShouldShowAR = false;
+                            viewModel.IsContinueButtonEnable = false;
                         }
                     }
+                    else if (viewModel.CurrentStep == AppResources.ZTEReportCategorySubmitBtn)
+                    {
+                        if (viewModel.IsContinueButtonEnable)
+                        {
+                            step5Validation();
+                        }
+                    }
+                }
 
-                    SetfifthBoxColor();
-                    if (viewModel.CurrentIndex == 4)
-                        viewModel.CurrentIndex++;
-                    if (viewModel.IsDeclarationChecked)
-                    {
-                        viewModel.IsContinueButtonEnable = true;
-                    }
-                    else
-                    {
-                        viewModel.IsContinueButtonEnable = false;
-                    }
-                }
-                else if (viewModel.CurrentStep == AppResources.ZTEReportCategorySubmitBtn)
-                {
-                    if (viewModel.IsContinueButtonEnable)
-                    {
-                        step5Validation();
-                    }
-                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
         public void setdefaultvalueforTPDetailscreen()
         {
@@ -549,29 +529,26 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 bool flag = true;
                 if (App.VATType == PageExecutionType.Reactivation)
                 {
-                    if (!viewModel.IsDeclarationViewEnabledNew) //When Zterms is empty then only do the validation of ID Details.
+                    if (viewModel.SelectedIdTypeSR == null)
                     {
-                        if (viewModel.SelectedIdTypeSR == null)
-                        {
-                            flag = false;
-                        }
-                        if (string.IsNullOrEmpty(viewModel.IdNumberSR))
-                        {
-                            flag = false;
-                            viewModel.FrameContactIDError = true;
-                        }
-                        if (string.IsNullOrEmpty(viewModel.FirstNameSR))
-                        {
-                            flag = false;
-                            FrmContactName.HasError = true;
+                        flag = false;
+                    }
+                    if (string.IsNullOrEmpty(viewModel.IdNumberSR))
+                    {
+                        flag = false;
+                        viewModel.FrameContactIDError = true;
+                    }
+                    if (string.IsNullOrEmpty(viewModel.FirstNameSR))
+                    {
+                        flag = false;
+                        FrmContactName.HasError = true;
 
-                        }
-                        if (btnSR.IsVisible && string.IsNullOrEmpty(viewModel.ContactDOB))
-                        {
-                            flag = false;
-                            viewModel.FrameContactDOBError = true;
+                    }
+                    if (btnSR.IsVisible && string.IsNullOrEmpty(viewModel.ContactDOB))
+                    {
+                        flag = false;
+                        viewModel.FrameContactDOBError = true;
 
-                        }
                     }
                 }
                 if (flag)
@@ -593,8 +570,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
                     }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "01";
-
-                    Models.VATRegistrationDetails response = await viewModel.SubmitClicked();
+                    Models.VATRegistrationDetails response = new Models.VATRegistrationDetails();
+                    response.d = await viewModel.SubmitClicked();
                     if (response != null)
                     {
                         if (response.d.Operationz.Equals("25"))
@@ -740,7 +717,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             if (viewModel.answer3selectedcount == 0)
             {
-                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                 {
                     if (item.QueNo == "003" && item.QoptNo == "031")
                     {
@@ -754,7 +731,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.quesTion3answerSelected = viewModel.TextQuestion3First;
                 viewModel.setQuestionImage();
                 viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+                registrationDetails.d = await viewModel.SubmitClicked();
 
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
@@ -793,11 +771,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
+
         public async void setDefaultansForAnswer4()
         {
             if (viewModel.answer4selectedcount == 0)
             {
-                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                 {
                     if (item.QueNo == "004" && item.QoptNo == "041")
                     {
@@ -811,7 +790,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
                 viewModel.setQuestionImage();
                 viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+                registrationDetails.d = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
                     viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -854,12 +834,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 try
                 {
-                    string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "001" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
+                    string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.Where(x => x.QueNo == "001" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
                     int a = UtilityManager.FindTheAnswerIndexBasedOntheAnswerId("001", AnswerID, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                     Slider_Answer1.Value = Convert.ToDouble(a);
                     QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", Convert.ToDouble(a), viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                     viewModel.SliderLable1 = obj.QoptTxt;
-                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                     {
                         if (item.QueNo == "001")
                         {
@@ -874,7 +854,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                     }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+                    registrationDetails.d = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
                         viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -910,7 +891,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     await Task.Run(() =>
                     {
@@ -926,7 +907,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     Slider_Answer1.Value = value;
                     QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                     viewModel.SliderLable1 = obj.QoptTxt;
-                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                     {
                         if (item.QueNo == "001")
                         {
@@ -942,7 +923,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                     }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+                    registrationDetails.d = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
                         viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -978,7 +960,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     await Task.Run(() =>
                     {
@@ -996,12 +978,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 try
                 {
 
-                    string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "002" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
+                    string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.Where(x => x.QueNo == "002" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
                     int a = UtilityManager.FindTheAnswerIndexBasedOntheAnswerId("002", AnswerID, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                     Slider_Answer2.Value = Convert.ToDouble(a);
                     QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", Convert.ToDouble(a), viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                     viewModel.SliderLable2 = obj.QoptTxt;
-                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                     {
                         if (item.QueNo == "002")
                         {
@@ -1016,7 +998,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                     }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+                    registrationDetails.d = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
                         viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -1052,7 +1035,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                 }
@@ -1065,7 +1048,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     Slider_Answer2.Value = value;
                     QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                     viewModel.SliderLable2 = obj.QoptTxt;
-                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                     {
                         if (item.QueNo == "002")
                         {
@@ -1080,7 +1063,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                     }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+                    registrationDetails.d = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
                         viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -1116,12 +1100,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                 }
             }
         }
+
 
         protected override void OnDisappearing()
         {
@@ -1146,7 +1131,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 base.OnAppearing();
 
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     DDlIDType.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
                     DDlContactIDType.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
@@ -1209,7 +1194,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     else
                         viewModel.getVatEligibleDate(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
                 });
-                MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
+               MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {
@@ -1226,7 +1211,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 if (viewModel.VATRegistrationDetailsData != null && viewModel.VATRegistrationDetailsData.d != null && viewModel.VATRegistrationDetailsData.d.IBANSet != null)
                                 {
                                     viewModel.IbanList.Clear();
-                                    foreach (var item in viewModel.VATRegistrationDetailsData.d.IBANSet.results)
+                                    foreach (var item in viewModel.VATRegistrationDetailsData.d.IBANSet)
                                     {
                                         if (!string.IsNullOrEmpty(item.Bkvid))
                                         {
@@ -1242,14 +1227,14 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 triggerIban(message);
                             }
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                         }
                     }
                 });
 
-                MessagingCenter.Subscribe<object, ATTDETSet>(this, "AttachmentReceived", (sender, arg) =>
+                MessagingCenter.Subscribe<object, List<Attachment>>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {
@@ -1258,7 +1243,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         viewModel.ATTDETSetObject = viewModel.VATRegistrationDetailsData.d.ATTDETSet;
                     }
                 });
-                MessagingCenter.Subscribe<object, ELGBL_DOCSetforsubmit>(this, "EligibilitySetAttachmentReceived", (sender, arg) =>
+              MessagingCenter.Subscribe<object, List<ResultsItemForDOCSetforsubmit>>(this, "EligibilitySetAttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {
@@ -1348,11 +1333,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 });
                 viewModel.IsNewFinancialRepVisible = viewModel.IsAddNewRepresentativeChecked;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
         }
+
         public async Task GetVatRegistrationData()
         {
             try
@@ -2227,16 +2213,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         else
                         {
                             result = true;
-                            viewModel.GpartFR = vATSignUpData.d.Tin;
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                            viewModel.LastnmFR = vATSignUpData.d.Name2;
+                            viewModel.GpartFR = vATSignUpData.d.TIN;
+                            viewModel.FirstnmFR = vATSignUpData.d.name1;
+                            viewModel.LastnmFR = vATSignUpData.d.name2;
 
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
-                            viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                            viewModel.SmtpAddrFR = vATSignUpData.d.email;
                             viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
-                            if (vATSignUpData.d.Mobile != null && !string.IsNullOrEmpty(vATSignUpData.d.Mobile))
+                            if (vATSignUpData.d.mobile != null && !string.IsNullOrEmpty(vATSignUpData.d.mobile))
                             {
-                                viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
+                                viewModel.MobNumberFR = vATSignUpData.d.mobile.Substring(5);
                             }
                             FrmFirstName.IsEnabled = false;
                             FrmLastName.IsEnabled = false;
@@ -2312,7 +2298,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
@@ -2350,12 +2336,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         else
                         {
                             result = true;
-                            viewModel.GpartFR = vATSignUpData.d.Tin;
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                            viewModel.LastnmFR = vATSignUpData.d.Name2;
+                            viewModel.GpartFR = vATSignUpData.d.TIN;
+                            viewModel.FirstnmFR = vATSignUpData.d.name1;
+                            viewModel.LastnmFR = vATSignUpData.d.name2;
 
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
-                            viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                            viewModel.SmtpAddrFR = vATSignUpData.d.email;
                             FrmFirstName.IsEnabled = false;
                             FrmLastName.IsEnabled = false;
                             FrmEmailAddress.IsEnabled = false;
@@ -2430,7 +2416,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
@@ -2478,12 +2464,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         else
                         {
                             result = true;
-                            viewModel.GpartFR = vATSignUpData.d.Tin;
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                            viewModel.LastnmFR = vATSignUpData.d.Name2;
+                            viewModel.GpartFR = vATSignUpData.d.TIN;
+                            viewModel.FirstnmFR = vATSignUpData.d.name1;
+                            viewModel.LastnmFR = vATSignUpData.d.name2;
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
-                            viewModel.SmtpAddrFR = vATSignUpData.d.Email;
-                            viewModel.MobNumberFR = vATSignUpData.d.Mobile;
+                            viewModel.SmtpAddrFR = vATSignUpData.d.email;
+                            viewModel.MobNumberFR = vATSignUpData.d.mobile;
                             if (string.IsNullOrEmpty(viewModel.FirstnmFR) && string.IsNullOrEmpty(viewModel.LastnmFR) && string.IsNullOrEmpty(viewModel.MobNumberFR) && string.IsNullOrEmpty(viewModel.SmtpAddrFR))
                             {
                                 FrmFirstName.IsEnabled = true;
@@ -2568,7 +2554,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
@@ -2588,9 +2574,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             });
             return await Task.FromResult(result);
         }
+
         public async void ValidateIDNumberSR()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
+           MainThread.BeginInvokeOnMainThread(async () =>
             {
                 await Task.Run(() =>
                 {
@@ -2623,7 +2610,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-                            viewModel.FirstNameSR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            viewModel.FirstNameSR = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
                             viewModel.FrameIDError = false;
                         }
                     }
@@ -2665,7 +2652,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
@@ -2674,7 +2661,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                         catch (InternetException ex)
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
@@ -2687,16 +2674,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
@@ -2730,7 +2717,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-                            viewModel.FirstNameSR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            viewModel.FirstNameSR = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
                             viewModel.FrameIDError = false;
                         }
                     }
@@ -2772,7 +2759,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
@@ -2781,7 +2768,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                         catch (InternetException ex)
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
@@ -2794,16 +2781,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
@@ -2841,7 +2828,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-                            viewModel.FirstNameSR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            viewModel.FirstNameSR = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
                             if (App.VATType == PageExecutionType.Reactivation)
                             {
                                 if (viewModel.FirstNameSR.Contains(string.Empty))
@@ -2897,7 +2884,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
@@ -2906,7 +2893,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                         catch (InternetException ex)
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
@@ -2919,16 +2906,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
@@ -2936,7 +2923,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            MainThread.BeginInvokeOnMainThread(async () =>
+           MainThread.BeginInvokeOnMainThread(async () =>
             {
                 await Task.Run(() =>
                 {
@@ -2944,6 +2931,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 });
             });
         }
+
 
         private void btnDate_Clicked(object sender, EventArgs e)
         {
@@ -3281,7 +3269,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-                            viewModel.FirstNameSR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            viewModel.FirstNameSR = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
                             viewModel.FrameContactIDError = false;
                         }
                     }
@@ -3351,7 +3339,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3389,7 +3377,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-                            viewModel.FirstNameSR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            viewModel.FirstNameSR = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
                             viewModel.FrameContactIDError = false;
                         }
                     }
@@ -3459,7 +3447,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3516,12 +3504,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         NewFRDOBField.IsVisible = false;
                         viewModel.FrameDOBError = false;
                     }
-                    viewModel.DOB = vATSignUpData.d.Birthdt10;
-                    viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                    viewModel.LastnmFR = vATSignUpData.d.Name2;
-                    viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
+                    viewModel.DOB = vATSignUpData.d.birthDate10;
+                    viewModel.FirstnmFR = vATSignUpData.d.name1;
+                    viewModel.LastnmFR = vATSignUpData.d.name2;
+                    viewModel.MobNumberFR = vATSignUpData.d.mobile.Substring(5);
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
-                    viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                    viewModel.SmtpAddrFR = vATSignUpData.d.email;
                     FrmTINNumber.HasError = false;
                     FrmFirstName.IsEnabled = false;
                     FrmLastName.IsEnabled = false;
@@ -3597,7 +3585,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3608,6 +3596,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 }
             }
         }
+
 
 
         private void slider1_completed(object sender, EventArgs e)
@@ -3628,7 +3617,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
                 QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                 viewModel.SliderLable1 = obj.QoptTxt;
-                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                 {
                     if (item.QueNo == "001")
                     {
@@ -3644,7 +3633,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
                 viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+                registrationDetails.d = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
                     viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -3680,7 +3670,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {
@@ -3705,7 +3695,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                 viewModel.SliderLable2 = obj.QoptTxt;
 
-                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                 {
                     if (item.QueNo == "002")
                     {
@@ -3720,7 +3710,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
                 viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+                registrationDetails.d = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
                     viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -3756,7 +3747,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -3764,7 +3755,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private async void TapppedOnQuestion3First(object sender, EventArgs e)
         {
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
             {
                 if (item.QueNo == "003" && item.QoptNo == "031")
                 {
@@ -3778,7 +3769,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             viewModel.quesTion3answerSelected = viewModel.TextQuestion3First;
             viewModel.setQuestionImage();
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+            registrationDetails.d = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
                 viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -3821,7 +3813,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private async void TapppedOnQuestion3Second(object sender, EventArgs e)
         {
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
             {
                 if (item.QueNo == "003" && item.QoptNo == "031")
                 {
@@ -3834,7 +3826,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
             viewModel.setQuestionImage();
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+            registrationDetails.d = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
                 viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -3877,7 +3870,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private async void TapppedOnQuestion4First(object sender, EventArgs e)
         {
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
             {
                 if (item.QueNo == "004" && item.QoptNo == "041")
                 {
@@ -3891,7 +3884,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
             viewModel.setQuestionImage();
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+            registrationDetails.d = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
                 viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -3934,7 +3928,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private async void TapppedOnQuestion4Second(object sender, EventArgs e)
         {
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
             {
                 if (item.QueNo == "004" && item.QoptNo == "041")
                 {
@@ -3948,7 +3942,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             viewModel.setQuestionImage();
             viewModel.quesTion4answerSelected = viewModel.TextQuestion4Second;
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            Models.VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+            registrationDetails.d = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
                 viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -4224,7 +4219,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         }
         private void EntryEmail_Unfocused(object sender, FocusEventArgs e)
         {
-            if (viewModel.VATRegistrationDetailsData.d.CONTACTDTSet.results != null)
+            if (viewModel.VATRegistrationDetailsData.d.CONTACTDTSet != null)
             {
                 //bool flag1 = IsValid(viewModel.ListFinanceRepresenatives[0].SmtpAddrFR);
                 bool flag = IsValid(viewModel.SmtpAddrFR);
@@ -4361,19 +4356,20 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         viewModel.IsNewFinancialRepVisible = false;
                         viewModel.IsAddNewRepresentativeChecked = false;
 
-                        viewModel.GpartSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Gpart;
-                        viewModel.IdnumberSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Idnumber;
-                        viewModel.FirstnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Firstnm;
-                        viewModel.LastnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Lastnm;
-                        viewModel.MobNumberSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].MobNumber;
-                        viewModel.SmtpAddrSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].SmtpAddr;
-                        viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
+                        viewModel.GpartSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet[0].Gpart;
+                        viewModel.IdnumberSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet[0].Idnumber;
+                        viewModel.FirstnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet[0].Firstnm;
+                        viewModel.LastnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet[0].Lastnm;
+                        viewModel.MobNumberSum = viewModel.VATRegistrationData.d.CONTACTDTSet[0].MobNumber;
+                        viewModel.SmtpAddrSum = viewModel.VATRegistrationData.d.CONTACTDTSet[0].SmtpAddr;
+                        viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet[0].Type).FirstOrDefault()?.Name;
                         Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                     }
                 };
                 await MopupService.Instance.PushAsync(confirmPopup);
             }
         }
+
 
         private void ChangeMobileNumber_Tapped(object sender, EventArgs e)
         {
@@ -4386,11 +4382,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 cbAddRepresentative.IsEnabled = true;
             }
-
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
 
         }
 
@@ -4419,7 +4410,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             viewModel.CurrentIndex = 4;
             if (viewModel.RegTypeCode == "N")
             {
-                if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.results.Count > 0)
+                if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.Count > 0)
                 {
                     viewModel.CurrentStep = AppResources.VATRStep5;
 

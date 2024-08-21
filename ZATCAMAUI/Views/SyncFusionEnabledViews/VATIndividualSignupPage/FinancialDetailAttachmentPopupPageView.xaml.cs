@@ -33,28 +33,20 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.VATRegistrationDetailsData = new VATRegistrationDetails();
                 viewModel.VATRegistrationDetailsData = sendtoPopup.VATRegistrationDetailsDatatoPopup;
                 viewModel.VATRegistrationOtherDetails = new VATRegistrationOtherDetails();
-                viewModel.VATRegistrationOtherDetails = sendtoPopup.vatRegOthrDetailtoPopup;
-                viewModel.ELGBL_DOCSet = new ELGBL_DOCSet();
+                viewModel.VATRegistrationOtherDetails.d = sendtoPopup.vatRegOthrDetailtoPopup.d;
+                viewModel.ELGBL_DOCSet = new List<ResultsItemForElgblDocSet>();
                 viewModel.ResultsItemForDOCSet = new List<ResultsItemForElgblDocSet>();
                 viewModel.VATRegistrationDetailsForAttach = new VATRegistrationDetails();
 
                 viewModel.VATRegistrationDetailsForAttach = sendtoPopup.VATRegistrationDetailsDatatoPopup;
                 viewModel.ELGBL_DOCSet = viewModel.VATRegistrationOtherDetails.d.ELGBL_DOCSet;
-                try
+                viewModel.ResultsItemForDOCSet = viewModel.ELGBL_DOCSet;
+                onPageLoad();
+
+                if (viewModel.ResultsItemForDOCSet != null)
                 {
-                    viewModel.ResultsItemForDOCSet = viewModel.ELGBL_DOCSet.results;
-                    onPageLoad();
-
-                    if (viewModel.ResultsItemForDOCSet != null)
-                    {
-                        viewModel.SelectedAttachmentType = 1;
-                        //AttachmentTypePicker.SelectedItem = "1";
-                    }
-                }
-                catch (Exception)
-                {
-
-
+                    viewModel.SelectedAttachmentType = 1;
+                    //AttachmentTypePicker.SelectedItem = "1";
                 }
                 if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                 {
@@ -69,7 +61,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.RegAttachmentTitle = true;
 
                 }
-
             }
             catch (Exception)
             {
@@ -91,27 +82,18 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.VATRegistrationDetailsData = sendtoPopup.VATRegistrationDetailsDatatoPopup;
                 viewModel.VATRegistrationOtherDetails = new VATRegistrationOtherDetails();
                 viewModel.VATRegistrationOtherDetails = sendtoPopup.vatRegOthrDetailtoPopup;
-                viewModel.ELGBL_DOCSet = new ELGBL_DOCSet();
+                viewModel.ELGBL_DOCSet = new List<ResultsItemForElgblDocSet>();
                 viewModel.ResultsItemForDOCSet = new List<ResultsItemForElgblDocSet>();
                 viewModel.VATRegistrationDetailsForAttach = new VATRegistrationDetails();
 
                 viewModel.VATRegistrationDetailsForAttach = sendtoPopup.VATRegistrationDetailsDatatoPopup;
                 viewModel.ELGBL_DOCSet = viewModel.VATRegistrationOtherDetails.d.ELGBL_DOCSet;
-                try
+                viewModel.ResultsItemForDOCSet = viewModel.ELGBL_DOCSet;
+                onPageLoad();
+
+                if (viewModel.ResultsItemForDOCSet != null)
                 {
-                    viewModel.ResultsItemForDOCSet = viewModel.ELGBL_DOCSet.results;
-                    onPageLoad();
-
-                    if (viewModel.ResultsItemForDOCSet != null)
-                    {
-                        viewModel.SelectedAttachmentType = 1;
-                        //AttachmentTypePicker.SelectedItem = "1";
-                    }
-                }
-                catch (Exception)
-                {
-
-
+                    viewModel.SelectedAttachmentType = 1;
                 }
 
                 viewModel.IsComeForWhichAttachment = attachment;
@@ -128,10 +110,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             AttachmentTypePicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             AttachmentTypePicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -140,7 +122,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             AttachmentTypePicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             AttachmentTypePicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -161,15 +143,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                //viewModel.IsComeFromForAttachment = VATRegistrationPageViewModel.IsComeFromForAttachment;
                 if (viewModel.VATRegistrationDetailsForAttach != null && viewModel.VATRegistrationDetailsForAttach.d != null)
                 {
 
-                    // viewModel.VATRegistrationDetailsForAttach = vATRegistrationDetails;
-                    //SetDocType();
-                    if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
+                    if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.Count != 0)
                     {
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
 
                         foreach (var item in viewModel.VatAttachmentsList)
@@ -196,12 +175,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             base.OnDisappearing();
             try
             {
-                MessagingCenter.Send<object, ATTDETSet>(this, "AttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet);
+                MessagingCenter.Send<Object, List<Attachment>>(this, "AttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet);
                 MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToDeleteFinancialAttachment");
                 MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToDeleteFinancialAttachment");
 
 
-                MessagingCenter.Send<object, ELGBL_DOCSetforsubmit>(this, "EligibilitySetAttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet);
+                MessagingCenter.Send<Object, List<ResultsItemForDOCSetforsubmit>>(this, "EligibilitySetAttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet);
 
             }
             catch (Exception)
@@ -214,33 +193,21 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                try
+                if (sender != null)
                 {
-
-
-                    if (sender != null)
+                    viewModel.VATAttachmentObj = new VATAttachment();
+                    Image arrowImage = sender as Image;
+                    viewModel.VATAttachmentObj = (VATAttachment)arrowImage.BindingContext;
+                    string var = string.Empty;
+                    if (App.IsArabic)
                     {
-                        viewModel.VATAttachmentObj = new VATAttachment();
-                        Image arrowImage = sender as Image;
-                        viewModel.VATAttachmentObj = (VATAttachment)arrowImage.BindingContext;
-                        string var = string.Empty;
-                        if (App.IsArabic)
-                        {
-                            var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ؟ ";
-                        }
-                        else
-                        {
-                            var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ? ";
-                        }
-                        await MopupService.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FinancialDetailAttachmentPopupPageView"));
+                        var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ؟ ";
                     }
-
-
-                }
-                catch (Exception)
-                {
-
-
+                    else
+                    {
+                        var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ? ";
+                    }
+                    await MopupService.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FinancialDetailAttachmentPopupPageView"));
                 }
             }
             catch (InternetException ex)
@@ -255,10 +222,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = true;
                 await Task.Run(() =>
                 {
                     if (result)
@@ -280,40 +244,19 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                             viewModel.VatAttachmentsList.Remove(listitem);
                             viewModel.AttachmentList.Remove(listitemTwo);
-                            viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+                            viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.Remove(listitem);
                             viewModel.VatAttachmentsList.Clear();
                             viewModel.filterList();
                             viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
-                            try
-                            {
+                            ResultsItemForDOCSetforsubmit _eligibledocset = new
+                                  ResultsItemForDOCSetforsubmit();
+                            _eligibledocset = viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault();
+                            viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.Remove(_eligibledocset);
 
-                                ResultsItemForDOCSetforsubmit _eligibledocset = new
-                                ResultsItemForDOCSetforsubmit();
-                                try
-                                {
-                                    _eligibledocset = viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault();
-                                    viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Remove(_eligibledocset);
-                                }
-                                catch
-                                {
-
-                                }
-
-
-
-
-                            }
-                            catch (Exception)
-                            {
-
-                            }
                         }
                     }
                 });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {

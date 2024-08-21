@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:SfChipGroup="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
@@ -440,7 +440,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <busyindicator:SfChipGroup
+                                    <SfChipGroup:SfChipGroup
                                         x:Name="ChipGroup_statusFilter"
                                         Margin="0,10"
                                         ChipBackground="Transparent"
@@ -452,7 +452,7 @@
                                         SelectedChipBackground="{StaticResource PartialBg}"
                                         SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
                                         VerticalOptions="Center">
-                                        <busyindicator:SfChipGroup.ItemTemplate>
+                                        <SfChipGroup:SfChipGroup.ItemTemplate>
                                             <DataTemplate>
                                                 <StackLayout WidthRequest="80">
                                                     <Label
@@ -463,8 +463,8 @@
                                                         Text="{Binding Text}" />
                                                 </StackLayout>
                                             </DataTemplate>
-                                        </busyindicator:SfChipGroup.ItemTemplate>
-                                    </busyindicator:SfChipGroup>
+                                        </SfChipGroup:SfChipGroup.ItemTemplate>
+                                    </SfChipGroup:SfChipGroup>
 
                                     <inputLayout:SfTextInputLayout
                                         x:Name="FrmDBO"

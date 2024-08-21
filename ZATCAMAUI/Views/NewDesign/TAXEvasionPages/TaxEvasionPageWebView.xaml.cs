@@ -13,7 +13,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             InitializeComponent();
             viewModel = App.Locator.TaxEvasionPageWebView;
             BindingContext = viewModel;
-            loadingIndicator.IsVisible = true;
+            viewModel.IsLoading = true;
             SetLanguage();
         }
 
@@ -53,27 +53,27 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
         private void taxEvasionWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
 
-            loadingIndicator.IsVisible = false;
+            viewModel.IsLoading = false;
         }
 
         private void taxEvasionWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
-            loadingIndicator.IsVisible = true;
+            viewModel.IsLoading = true;
         }
 
         void taxEvasionHybridWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
-            loadingIndicator.IsVisible = false;
+            viewModel.IsLoading = false;
         }
 
         void taxEvasionHybridWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
             if (e.Url == "https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx")
             {
-                loadingIndicator.IsVisible = false;
+                viewModel.IsLoading = false;
                 return;
             }
-            loadingIndicator.IsVisible = false;
+            viewModel.IsLoading = false;
         }
     }
 }

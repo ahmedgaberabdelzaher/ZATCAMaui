@@ -5,6 +5,7 @@ using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.Models.TINOutletDeregister;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
+using DetailsContactInfo = ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister.DetailsContactInfo;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.TINOutletDeregister;
 
@@ -200,7 +201,7 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 
 
         }
-		catch (Exception ex)
+		catch (Exception )
 		{
 			
 			
@@ -270,7 +271,7 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 
 
 		}
-		catch (Exception ex)
+		catch (Exception )
 		{
 			
 			

@@ -12,7 +12,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
+    xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector" xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -1001,7 +1001,12 @@
                                                             TextChanged="IdNumberTextChanged"
                                                             TextColor="{StaticResource PrimaryColor}"
                                                             Unfocused="OnIDNumberFocusChanged"
-                                                            VerticalOptions="CenterAndExpand" />
+                                                            VerticalOptions="CenterAndExpand" >
+                                                          <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <behaviour:OnlyNumericValuesBehaviour />
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                                                    </custom:GAZTBorderlessEntry>
 
                                                     </StackLayout>
                                                 </Border>

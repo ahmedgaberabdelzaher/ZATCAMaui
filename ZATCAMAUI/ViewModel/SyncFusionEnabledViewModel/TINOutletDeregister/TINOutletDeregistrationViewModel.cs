@@ -272,11 +272,12 @@ public class TINOutletDeregistrationViewModel : BaseViewModel
 
     public async Task GetTinOutletDeregisteredRequests()
     {
-        IsLoading = true;
-        Thread.Sleep(1000);
+        
 
         try
         {
+            IsLoading = true;
+            Thread.Sleep(1000);
             if (CopiedPreviousRequestList != null)
             {
                 CopiedPreviousRequestList.Clear();
@@ -284,17 +285,13 @@ public class TINOutletDeregistrationViewModel : BaseViewModel
 
             tinOutletPrevousRequestsModel = await TINDeregistrationWebServiceManager.GetTinOutletDeRegisterPreviousRequests();
 
-            if (tinOutletPrevousRequestsModel != null && D != null && D.WIItemSet.Count > 0)
+            if (tinOutletPrevousRequestsModel != null && tinOutletPrevousRequestsModel.D != null && tinOutletPrevousRequestsModel.D.WIItemSet.Count > 0)
             {
-                PreviousRequestList = new ObservableCollection<PreviousRequests>(D.WIItemSet);
+                PreviousRequestList = new ObservableCollection<TinOutletPrevousRequestsModel.PreviousRequests>(tinOutletPrevousRequestsModel.D.WIItemSet);
                 CopiedPreviousRequestList.Clear();
                 CopiedPreviousRequestList = PreviousRequestList;
 
 
-            }
-            else
-            {
-                //IsListVisible = false;
             }
             IsLoading = false;
         }

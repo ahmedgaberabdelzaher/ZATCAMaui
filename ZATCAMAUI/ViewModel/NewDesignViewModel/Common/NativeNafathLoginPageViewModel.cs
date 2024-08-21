@@ -84,9 +84,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                             }
                         }
                     }
-                    else if (!string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
+                    else if (!string.IsNullOrWhiteSpace(data.header.moreInformation?.errorDetails[0].message))
                     {
-                        MessageTxt = data.header.moreInformation?.backendErrors;
+                        MessageTxt = data.header.moreInformation?.errorDetails[0].message;
                         IsShowMsgView = true;
                         IsLoading = false;
 
@@ -153,9 +153,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                             }
                         }
                     }
-                    else if (!string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
+                    else if (!string.IsNullOrWhiteSpace(data.header.moreInformation?.errorDetails[0].message))
                     {
-                        MessageTxt = data.header.moreInformation?.backendErrors;
+                        MessageTxt = data.header.moreInformation?.errorDetails[0].message;
                         IsShowMsgView = true;
                         IsLoading = false;
                     }

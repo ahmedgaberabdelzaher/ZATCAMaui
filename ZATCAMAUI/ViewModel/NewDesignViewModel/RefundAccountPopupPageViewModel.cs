@@ -560,19 +560,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged("IBANList");
             }
         }
-        private bool _isNewLoading = false;
-        public bool IsNewLoading
-        {
-            get
-            {
-                return _isNewLoading;
-            }
-            set
-            {
-                _isNewLoading = value;
-                OnPropertyChanged("IsNewLoading");
-            }
-        }
 
         public bool _IsCarriedForwandReviewMessageForRefund;
         public bool IsCarriedForwandReviewMessageForRefund

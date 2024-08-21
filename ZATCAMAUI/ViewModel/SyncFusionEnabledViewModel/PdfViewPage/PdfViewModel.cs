@@ -15,7 +15,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
     public class PdfViewModel : BaseViewModel
     {
         #region Variable
-        public ICommand GoBackClick { get; set; }
         public string pdfUrl;
         #endregion
 
@@ -127,11 +126,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
         public PdfViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
-            GoBackClick = new Command(() =>
-            {
-                _navigationService.GoBack();
-
-            });
         }
 
         #endregion

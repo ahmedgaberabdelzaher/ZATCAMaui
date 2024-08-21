@@ -2347,7 +2347,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void PopulateUI()
         {
-            var selectedEditOutletIndex = TinDeregistrationData.OutletSet.IndexOf(SelectedOutletForCloseTranser);
+            var selectedEditOutletIndex = TinDeregistrationData.OutletSet.FindIndex(SelectedOutletForCloseTranser);
             if (SelectedOutletForCloseTranser.AOutletDregOptTb == "1")
             {
                 SelectedPermitTypeOutletOption = PermitOutletDecisionOptions[0];
@@ -3800,8 +3800,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         catch (Exception)
                         {
-                            Console.Write("---------------------------");
-
 
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(resultData);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
@@ -3890,10 +3888,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             }
                         }
                         IsLoading = false;
-                    }
-                    catch (GAZTVATChangeFillingPeriodException ex)
-                    {
-                        throw ex;
                     }
                     catch (InternetException ex)
                     {
@@ -4072,7 +4066,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
@@ -4611,7 +4605,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 }
                                 catch (Exception)
                                 {
-                                    Console.WriteLine(ex);
                                 }
 
 
@@ -5124,7 +5117,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -5686,7 +5679,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public async void NewAttachmentClicked()
         {
 
-            if (Rg.Plugins.Popup.Services.MopupService.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             try
             {
                 foreach (TinDeregestrationAttachmentsModel tinDeregestrationAttachmentsModel in AttachmentsListViewData)
@@ -5724,7 +5717,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
                 numberOfAttachmentSentToAttachmentPopUp = attachmentsList.Count;
-                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(attachmentsList, Models.ZakatInstalationModels.WhichAttachment.TINDeregistration
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(attachmentsList, WhichAttachment.TINDeregistration
                         , TinDeregistrationData.CaseGuid, SelectedAttachment.DocType));
 
             }

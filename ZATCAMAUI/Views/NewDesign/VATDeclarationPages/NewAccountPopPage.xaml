@@ -63,7 +63,6 @@
                         <StackLayout Padding="0,5,0,5" Orientation="Horizontal">
                             <custom:GAZTBorderlessEntry
                                 x:Name="IbanOne"
-                                Focused="IbanOneFocused"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
                                 Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
@@ -71,14 +70,19 @@
                                 Placeholder="03"
                                 ReturnType="Next"
                                 Text="{Binding IbanPartOne}"
-                                TextChanged="IbanOne_TextChanged" />
+                                TextChanged="IbanOne_TextChanged" >
+
+                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behavior:OnlyNumericValuesBehaviour />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
                             <BoxView
                                 BackgroundColor="LightGray"
                                 HeightRequest="30"
                                 WidthRequest="1" />
                             <custom:GAZTBorderlessEntry
                                 x:Name="IbanTwo"
-                                Focused="IbanTwoFocused"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
                                 Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
@@ -88,6 +92,7 @@
                                 Text="{Binding IbanPartTwo}"
                                 TextChanged="IbanTwo_TextChanged">
                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behavior:OnlyNumericValuesBehaviour />
                                     <behavior:EntryFocusBehaviour NextFocusElementName="IbanThree" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
@@ -98,7 +103,6 @@
                                 WidthRequest="1" />
                             <custom:GAZTBorderlessEntry
                                 x:Name="IbanThree"
-                                Focused="IbanThreeFocused"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
                                 Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
@@ -108,6 +112,7 @@
                                 Text="{Binding IbanPartThree}"
                                 TextChanged="IbanThree_TextChanged">
                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                     <behavior:OnlyNumericValuesBehaviour />
                                     <behavior:EntryFocusBehaviour NextFocusElementName="IbanFour" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
@@ -118,7 +123,6 @@
                                 WidthRequest="1" />
                             <custom:GAZTBorderlessEntry
                                 x:Name="IbanFour"
-                                Focused="IbanFourFocused"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
                                 Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
@@ -128,6 +132,7 @@
                                 Text="{Binding IbanPartFour}"
                                 TextChanged="IbanFour_TextChanged">
                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behavior:OnlyNumericValuesBehaviour />
                                     <behavior:EntryFocusBehaviour NextFocusElementName="IbanFive" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
@@ -138,14 +143,19 @@
                                 WidthRequest="1" />
                             <custom:GAZTBorderlessEntry
                                 x:Name="IbanFive"
-                                Focused="IbanFiveFocused"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
                                 Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="4"
                                 Placeholder="0000"
                                 Text="{Binding IbanPartFive}"
-                                TextChanged="IbanFive_TextChanged" />
+                                TextChanged="IbanFive_TextChanged" >
+
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behavior:OnlyNumericValuesBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
 
                         </StackLayout>
                     </StackLayout>

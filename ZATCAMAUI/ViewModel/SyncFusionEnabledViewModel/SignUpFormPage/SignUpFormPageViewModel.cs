@@ -832,11 +832,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
         }
         public async Task SetCityList()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                IsLoading = true;
-
-            });
+            IsLoading = true;
 
             try
             {
@@ -845,7 +841,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                 List<SignupCityResult> CityR = new List<SignupCityResult>();
                 IsCRChecked = true;
                 IsLNChecked = false;
-                CityR = CityListSignup.d.city_dropdownSet.results;
+                CityR = CityListSignup.d.cities;
                 CityList = CityR;
             }
             catch (GAZTException gex)

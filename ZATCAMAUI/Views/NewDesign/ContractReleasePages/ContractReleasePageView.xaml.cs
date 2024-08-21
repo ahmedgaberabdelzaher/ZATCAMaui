@@ -28,7 +28,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 
             Task.Run(async () =>
             {
-                viewModel.IsLoading1 = true;
+                viewModel.IsLoading = true;
                 await GetContractReleaseData();
 
             });
@@ -60,12 +60,12 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
 
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
 
@@ -87,7 +87,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
                             EndDateHijriCalendar.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
 
                         NormalCalendar.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -124,7 +124,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             {
                 await Task.Run(() =>
                 {
-                    viewModel.IsLoading1 = true;
+                    viewModel.IsLoading = true;
                 });
                 await Task.Run(async () =>
                 {

@@ -43,7 +43,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 });
                 if (objRefNumber != null)
                 {
-                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + "'" + objRefNumber + "')/$value";
+                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + objRefNumber ;
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
@@ -62,7 +62,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 });
                 if (objRefNumber != null)
                 {
-                    string downloadurl = ZATCAConstants.ZOdownloadCoverFormFile + "'" + objRefNumber + "')/$value";
+                    string downloadurl = ZATCAConstants.ZOdownloadCoverFormFile + objRefNumber ;
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
@@ -428,7 +428,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         {
             var attachmentsListViewData1 = new ObservableCollection<Attachment>();
 
-            foreach (Attachment attachment in _ZakatObjectionRequestSummary.d.AttDetSet.results)
+            foreach (Attachment attachment in _ZakatObjectionRequestSummary.d.AttDetSet)
             {
                 attachmentsListViewData1.Add(attachment);
             }
@@ -460,49 +460,49 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         var objectionsList = new ObservableCollection<ZakatObjectionListModel.Result>();
                         if (_ZAKATObjectionList != null && _ZAKATObjectionList.d != null)
                         {
-                            foreach (var objection in _ZAKATObjectionList.d.ListSet.results)
+                            foreach (var objection in _ZAKATObjectionList.d.ListSet)
                             {
 
 
-                                string strRequestedDate = objection.Erfdate;
-                                if (objection.Erfdate != null)
-                                {
+                                //string strRequestedDate = objection.Erfdate;
+                                //if (objection.Erfdate != null)
+                                //{
 
-                                    DateTime dateStart = new DateTime();
-                                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                                    string apiDate = @"""" + objection.Erfdate + @"""";
-                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                                //    DateTime dateStart = new DateTime();
+                                //    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                                //    string apiDate = @"""" + objection.Erfdate + @"""";
+                                //    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
 
-                                    GregorianCalendar hjCalendar = new GregorianCalendar();
-                                    int year = hjCalendar.GetYear(dateStart);
-                                    int month = hjCalendar.GetMonth(dateStart);
-                                    int day = hjCalendar.GetDayOfMonth(dateStart);
+                                //    GregorianCalendar hjCalendar = new GregorianCalendar();
+                                //    int year = hjCalendar.GetYear(dateStart);
+                                //    int month = hjCalendar.GetMonth(dateStart);
+                                //    int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-
-                                    string dt1 = string.Empty;
-                                    string[] dts = null;
-                                    dts = dateStr.Split('/');
-
-                                    if (App.IsArabic)
-                                    {
-
-                                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-
-                                    }
-                                    else
-                                    {
-
-                                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-
-                                    }
+                                //    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
 
 
-                                    strRequestedDate = dt1;
-                                }
+                                //    string dt1 = string.Empty;
+                                //    string[] dts = null;
+                                //    dts = dateStr.Split('/');
 
-                                objection.Erfdate = strRequestedDate;
+                                //    if (App.IsArabic)
+                                //    {
+
+                                //        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                                //    }
+                                //    else
+                                //    {
+
+                                //        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                                //    }
+
+
+                                //    strRequestedDate = dt1;
+                                //}
+
+                                //objection.Erfdate = strRequestedDate;
 
 
 
@@ -554,19 +554,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 });
             }
             catch (Exception)
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-Before:
-            {
-                
-                
-                await Task.Run(() =>
-After:
-            {
-
-
-                await Task.Run(() =>
-*/
             {
 
 
@@ -610,19 +597,6 @@ After:
                 });
             }
             catch (Exception)
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-Before:
-            {
-                
-                
-                await Task.Run(() =>
-After:
-            {
-
-
-                await Task.Run(() =>
-*/
             {
 
 
@@ -715,8 +689,6 @@ After:
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -750,15 +722,19 @@ After:
 
                         if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
                         {
-                            DateTime dateStart = new DateTime();
+                           // DateTime dateStart = new DateTime();
                             CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                            string apiDate = @"""" + _ZAKATObjectionWithDraw.d.results[0].APeriodFrom + @"""";
+                            /*string apiDate = @"""" + _ZAKATObjectionWithDraw.d.results[0].APeriodFrom + @"""";
                             dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
                             GregorianCalendar hjCalendar = new GregorianCalendar();
                             int year = hjCalendar.GetYear(dateStart);
                             int month = hjCalendar.GetMonth(dateStart);
-                            int day = hjCalendar.GetDayOfMonth(dateStart);
-                            string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                            int day = hjCalendar.GetDayOfMonth(dateStart);*/
+
+                            DateTime dateTime = DateTime.ParseExact(_ZAKATObjectionWithDraw.d.results[0].APeriodFrom, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
+                            string dateStr = dateTime.ToString("MM/dd/yyyy");
+
+                           // string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
                             _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dateStr;
                             string dt1 = string.Empty;
                             string formatedDate1 = string.Empty;
@@ -781,15 +757,19 @@ After:
                             }
                             _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dt1;
 
-                            DateTime dateStart1 = new DateTime();
+                            //DateTime dateStart1 = new DateTime();
                             CultureInfo cultureInfo1 = new CultureInfo("ar-SA");
-                            string apiDate1 = @"""" + _ZAKATObjectionWithDraw.d.results[0].APeriodTo + @"""";
+                            /*string apiDate1 = @"""" + _ZAKATObjectionWithDraw.d.results[0].APeriodTo + @"""";
                             dateStart1 = JsonConvert.DeserializeObject<DateTime>(apiDate1);
                             GregorianCalendar hjCalendar1 = new GregorianCalendar();
                             int year1 = hjCalendar1.GetYear(dateStart1);
                             int month1 = hjCalendar1.GetMonth(dateStart1);
-                            int day1 = hjCalendar1.GetDayOfMonth(dateStart1);
-                            string dateStr1 = string.Format("{0:00}/{1}/{2}", day1, month1, year1);
+                            int day1 = hjCalendar1.GetDayOfMonth(dateStart1);*/
+
+                            DateTime dateTime2 = DateTime.ParseExact(_ZAKATObjectionWithDraw.d.results[0].APeriodTo, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
+                            string dateStr1 = dateTime2.ToString("MM/dd/yyyy");
+
+                            //string dateStr1 = string.Format("{0:00}/{1}/{2}", day1, month1, year1);
                             _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dateStr1;
                             string dt11 = string.Empty;
                             string formatedDate11 = string.Empty;
@@ -875,19 +855,6 @@ After:
                 });
             }
             catch (Exception)
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-Before:
-            {
-                
-                
-                await Task.Run(() =>
-After:
-            {
-
-
-                await Task.Run(() =>
-*/
             {
 
 
@@ -971,8 +938,6 @@ After:
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;

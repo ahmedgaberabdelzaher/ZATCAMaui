@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.AccountDetails;
+using ZATCAMAUI.Views.NewDesign.AccountStatements;
 using static ZATCAMAUI.Models.AccountDetails.AccoungtDetails;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements

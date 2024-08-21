@@ -548,7 +548,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                     }
                 });
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     //iOS stuff
                     BillsVATListVIew.IsScrollingEnabled = false;
@@ -556,7 +556,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
 
                 }
-                else if (Device.RuntimePlatform == Device.Android)
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
 
                 }

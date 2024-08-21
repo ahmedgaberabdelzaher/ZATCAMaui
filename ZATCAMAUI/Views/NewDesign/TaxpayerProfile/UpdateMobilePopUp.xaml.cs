@@ -1,5 +1,4 @@
-﻿
-using Mopups.Pages;
+﻿using Mopups.Pages;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
@@ -33,7 +32,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                 Label_InternationalnoCode.StyleId = "RTLLabelText";
             }
 
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
                 Label_InternationalnoCode.Margin = new Thickness(0);
             else
                 Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
@@ -140,11 +139,11 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             {
                 // * Update TP Profile Object
                 App.TP = TPAPIResponse;
-                App.TP.Userid = TPAPIResponse.Tin;
+                App.TP.userId = TPAPIResponse.TIN;
 
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    CloseAllPopup();
+                    this.CloseAllPopup();
                     viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 2);
                 });
             }
@@ -210,22 +209,21 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
                 Label_InternationalnoCode.Margin = new Thickness(0);
             else
                 Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
 
             try
             {
-                if (App.TP.Mobile.Length < 12)
-                    viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
+                if (App.TP.mobile.Length < 12)
+                    viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.mobile.Remove(0, 2);
                 else
-                    viewModel.CurrentMobileNumberEntryText = "+" + App.TP.Mobile.Remove(0, 2);
+                    viewModel.CurrentMobileNumberEntryText = "+" + App.TP.mobile.Remove(0, 2);
             }
-            catch (Exception)
+            catch (Exception )
             {
-
+                
             }
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
@@ -239,6 +237,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
             RefreshControlsData();
         }
+
 
         protected override void OnDisappearing()
         {

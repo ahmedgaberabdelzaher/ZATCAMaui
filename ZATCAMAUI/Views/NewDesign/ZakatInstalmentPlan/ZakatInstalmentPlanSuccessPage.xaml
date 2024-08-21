@@ -5,10 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
@@ -130,40 +132,8 @@
                             </Label>
                         </StackLayout>
                     </Border>
-
-                    <Grid BackgroundColor="Transparent" IsVisible="{Binding IsLoading}">
-                        <StackLayout
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            BackgroundColor="Black"
-                            Opacity="0.4"
-                            Orientation="Vertical"
-                            VerticalOptions="FillAndExpand" />
-                        <StackLayout
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Padding="15,15"
-                            BackgroundColor="Transparent"
-                            HorizontalOptions="Center"
-                            Opacity="0.8"
-                            Orientation="Vertical"
-                            VerticalOptions="Center">
-                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                <busyindicator:SfBusyIndicator
-                                    x:Name="busyindicatorForLanding"
-                                    AnimationType="Cupertino"
-                                    HeightRequest="70"
-                                    HorizontalOptions="CenterAndExpand"
-                                    IndicatorColor="{StaticResource Secondary}"
-                                    IsRunning="True"
-                                    SizeFactor="0.6"
-                                    TitlePlacement="Bottom"
-                                    VerticalOptions="CenterAndExpand"
-                                    WidthRequest="70" />
-                                <!--  Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"  -->
-                            </StackLayout>
-                        </StackLayout>
-                    </Grid>
+                    <custom:Loader IsVisible="{Binding IsLoading}"/>
+                   
                 </Grid>
             </ScrollView>
         </StackLayout>

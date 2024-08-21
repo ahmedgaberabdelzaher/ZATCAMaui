@@ -1,9 +1,7 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
 {
@@ -16,55 +14,20 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
         {
             InitializeComponent();
 
-            NavigationPage.SetBackButtonTitle(this, "");
-
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
             viewModel = App.Locator.ZakatObjectionView;
             BindingContext = viewModel;
-            //viewModel.showInstructionsDialog();
             viewModel.ResetData();
             _ = GetZakatObjectionsData();
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-
-        private void IdNumberTextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void OnIDNumberFocusChanged(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void ContactPersonTextUnFocus(object sender, FocusEventArgs e)
-        {
-
-        }
+       
+        
         private async void SummaryAttachments_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = true;
                 var attachment = e.DataItem as Attachment;
 
                 //if (attachment.Filename.Contains(".")) ;
@@ -83,10 +46,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
 
 
 
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
@@ -136,17 +96,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    //                    viewModel.IsLoading = true;
-
-                });
-                await Task.Run(() =>
-                {
-                    viewModel.OnPageLoad();
-
-                });
-
+                viewModel.OnPageLoad();
             }
             catch (Exception)
             {
@@ -170,9 +120,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
             {
                 base.OnAppearing();
 
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
 
                 MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {

@@ -431,13 +431,13 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
 
 
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     //iOS stuff
                     BillsVATListVIew.IsScrollingEnabled = false;
                     StatementListView.IsScrollingEnabled = false;
                 }
-                else if (Device.RuntimePlatform == Device.Android)
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
 
                 }

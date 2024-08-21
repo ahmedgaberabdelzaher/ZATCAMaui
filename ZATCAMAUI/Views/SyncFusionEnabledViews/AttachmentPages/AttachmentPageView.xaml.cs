@@ -34,14 +34,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
             double ht = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceHeight();
             ht = ht * 45 / 100;
             AttachmentList.HeightRequest = ht;
-            ChangeAeroIcon();
             list.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
                 if (sender is ListView lv) lv.SelectedItem = null;
             };
-            On<iOS>().SetUseSafeArea(true);
             try
             {
 
@@ -50,16 +48,16 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
 
                 viewModel.VatAttachmentsList = null;
                 viewModel.ClearData();
-                if (vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
-                    viewModel.NumberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.d.ATTACHSet.results.Count;
+                if (vATDeclaration.data.ATTACHSet != null && vATDeclaration.data.ATTACHSet != null && vATDeclaration.data.ATTACHSet.Count > 0)
+                    viewModel.NumberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.data.ATTACHSet.results.Count;
                 viewModel.TotalAttachmentSize = AttachmentPageViewModel.AttachmentUploadedSize;
                 viewModel.IsAmendClickedOnVAT = VATReturnsPageViewModelEX.IsAmend;
-                if (vATDeclaration != null && vATDeclaration.d != null)
+                if (vATDeclaration != null && vATDeclaration.data != null)
                 {
                     viewModel.VATDeclarationDataForAttch = vATDeclaration;
-                    if (viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Count != 0)
+                    if (viewModel.VATDeclarationDataForAttch.data.ATTACHSet.Count != 0)
                     {
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.data.ATTACHSet as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
                         int AttachmentCount = 0;
                         foreach (var item in viewModel.VatAttachmentsList)
@@ -192,7 +190,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
 
                             viewModel.VatAttachmentsList.Remove(listitem);
                             viewModel.AttachmentList.Remove(listitemTwo);
-                            viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
+                            viewModel.VATDeclarationDataForAttch.data.ATTACHSet.Remove(listitem);
                             if (indexToReduceTheSize != -1)
                                 viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                         }
@@ -228,18 +226,18 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
                 viewModel.VATDeclarationDataForAttch = vatDec;
 
                 string retGuid = attachment.RetGuid;
-                string fbNum = viewModel.VATDeclarationDataForAttch.d.Fbnum;
+                string fbNum = viewModel.VATDeclarationDataForAttch.data.Fbnum;
 
                 viewModel.IsLoading = true;
                 Models.AttachmentDocumentModel attachmentDocumentModel = await WebServiceManager.GAZTGetAllAttachments(retGuid, fbNum);
 
-                foreach (Models.AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D.Results)
+                foreach (Models.AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D)
                 {
 
                     if (attachment.Filename == tempAttachmentDocumentModel.Filename)
                     {
                         var platform = DeviceInfo.Platform;
-                        if (Device.RuntimePlatform == Device.iOS)
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
                             downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 

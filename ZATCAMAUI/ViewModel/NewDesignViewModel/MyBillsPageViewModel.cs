@@ -963,11 +963,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     var platform = "";
 
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         platform = "C4";
                     }
-                    else if (Device.RuntimePlatform == Device.Android)
+                    else if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         platform = "C3";
                     }
@@ -1113,11 +1113,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     var platform = string.Empty;
 
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         platform = "C4";
                     }
-                    else if (Device.RuntimePlatform == Device.Android)
+                    else if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         platform = "C3";
                     }

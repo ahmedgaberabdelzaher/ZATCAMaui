@@ -2655,7 +2655,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (App.IsComingFromSleepMode)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;

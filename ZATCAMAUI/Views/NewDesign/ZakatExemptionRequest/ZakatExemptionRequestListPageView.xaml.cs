@@ -1,4 +1,5 @@
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatExemptionRequest;

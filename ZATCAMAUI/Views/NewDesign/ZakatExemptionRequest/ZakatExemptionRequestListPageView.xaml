@@ -114,7 +114,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                                <Border StrokeShape="RoundREctangle 15" HorizontalOptions="FillAndExpand" Padding="12" Style="{StaticResource GreyBorderFrameWithShadow}" VerticalOptions="FillAndExpand">
+                                <Border StrokeShape="RoundRectangle 15" HorizontalOptions="FillAndExpand" Padding="12" Style="{StaticResource GreyBorderFrameWithShadow}" VerticalOptions="FillAndExpand">
                                     <Grid  x:Name="grid">
                                        
                                         <Grid.RowDefinitions>

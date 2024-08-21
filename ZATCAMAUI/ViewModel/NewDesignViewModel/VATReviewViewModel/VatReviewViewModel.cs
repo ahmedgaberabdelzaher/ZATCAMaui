@@ -62,7 +62,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         public ICommand SecurityPaymentConBtnTapped { get; set; }
         public ICommand DeclarationConBtnTapped { get; set; }
         public ICommand SummaryConBtnTapped { get; set; }
-        public ICommand CloseClick { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand GoBackToReviewReason { get; set; }
         public ICommand GoBackToReviewDetails { get; set; }
@@ -2561,7 +2560,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         }
 
 
-        [Preserve(AllMembers = true)]
+        
         public class SelectionModel
         {
             public SelectionModel()
@@ -3065,7 +3064,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
 
-            CloseClick = new Command(() => { _navigationService.GoBack(); });
 
             GoBackClick = new Command(() => { BackNavigations(); });
 
@@ -3566,9 +3564,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
-            catch (GAZTUnlockAccountException)
-            {
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3586,11 +3581,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             try
             {
                 await MopupService.Instance.PushAsync(new PickerPageView(IDTypePickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
             }
             catch (InternetException ex)
             {
@@ -3613,11 +3603,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3639,11 +3624,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3664,11 +3644,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 }
 
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
             }
             catch (InternetException ex)
             {
@@ -3693,11 +3668,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 }
 
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
             }
             catch (InternetException ex)
             {
@@ -3726,11 +3696,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 }
 
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
             }
             catch (InternetException ex)
             {
@@ -3764,11 +3729,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3797,11 +3757,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3828,11 +3783,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3853,11 +3803,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
 
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
             }
             catch (InternetException ex)
             {
@@ -4158,7 +4103,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
                 }
 
             }
@@ -5255,15 +5199,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 IsReportDetailsEnabled = false;
             }
 
-
-            /*if (ReportDetails == "")
-            {
-                IsReportDetailsEnabled = false;
-            }
-            else
-            {
-                IsReportDetailsEnabled = true;
-            }*/
         }
 
         public void EnableLateFilingsDetailsConButton()
@@ -5300,13 +5235,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             else if (IsSadadSecuritySelected)
             {
 
-                /*if (SecurityAmount == "" || !IsSadadCheckBox3)
-                {
-
-                    IsSecurityPaymentEnabled = false;
-
-
-                }*/
                 if (SADADNumber == "" || !IsSadadCheckBox3)
                 {
                     IsSecurityPaymentEnabled = false;
@@ -5385,7 +5313,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
 
                 await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc, continueString: AppResources.CRContinue, isEditable: true,
-           _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+           _dialogType: InstructionsBottomPopUpViewModel.DialogType
                .Instructions));
 
 
@@ -6498,7 +6426,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             _postData.UserTypx = "TP";
 
 
-            NotesSetResults notes = new VatReviewModel.NotesSetResults();
+            NotesSetResults notes = new NotesSetResults();
             var noteSetList = new List<NotesSetResults>();
             if (ReportDetails != null)
             {
@@ -6514,9 +6442,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             Metadata _metdata = new Metadata();
 
-            _metdata.uri = ZATCAZATCAConstants.VATObjectionsNotesSet;
+            _metdata.uri = ZATCAConstants.VATObjectionsNotesSet;
             _metdata.type = "ZDP_VAT_NW_REV_SRV.Notes";
-            _metdata.id = ZATCAZATCAConstants.VATObjectionsNotesSet;
+            _metdata.id = ZATCAConstants.VATObjectionsNotesSet;
             notes.__metadata = _metdata;
             notes.AttByz = "TP";
             notes.ElemNo = 0;

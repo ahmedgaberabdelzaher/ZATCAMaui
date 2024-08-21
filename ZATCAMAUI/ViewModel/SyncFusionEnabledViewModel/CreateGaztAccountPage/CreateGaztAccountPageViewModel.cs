@@ -9,6 +9,7 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using static ZATCAMAUI.Models.ErrorMessage;
+using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
 {
@@ -343,7 +344,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             {
                 if (App.IsComingFromSleepMode)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;

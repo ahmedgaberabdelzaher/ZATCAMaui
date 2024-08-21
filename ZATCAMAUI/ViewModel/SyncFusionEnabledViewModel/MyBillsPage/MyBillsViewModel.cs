@@ -3,13 +3,13 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
-using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
 {

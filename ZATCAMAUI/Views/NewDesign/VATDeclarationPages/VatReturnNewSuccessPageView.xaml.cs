@@ -27,7 +27,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
             else
             {
-                viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Persl;
+                viewModel.TaxablePeriod = viewModel.VATDeclarationData.data.Persl;
             }
 
             BindingContext = viewModel;

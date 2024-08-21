@@ -4,8 +4,9 @@
              x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.MoreOptionsNote"
              Title="MoreOptionsNote"
              xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+             xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
              xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
             xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
             xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
@@ -59,10 +60,9 @@
                                                     x:Name="NoteDetail"
                                                     Text="{Binding NoteText}"
                                                     HorizontalOptions="FillAndExpand"
-                                                    AutoSize="TextChanges"
-                                                    Unfocused="NoteDetail_Unfocused1"></Editor>
+                                                    AutoSize="TextChanges"/>
 
-                        <Label  Text="{Binding
+                                <Label  Text="{Binding
                                                         Source={x:Reference NoteDetail},
                                                         Path=Text.Length, StringFormat='{0}/999'}"
                                                         Style="{StaticResource CaptionLabelGrey}"

@@ -41,16 +41,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                 viewModel.VatAttachmentsList = null;
                 viewModel.ClearData();
-                if (vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
+                if (vATDeclaration.data.ATTACHSet != null && vATDeclaration.data.ATTACHSet != null && vATDeclaration.data.ATTACHSet.Count > 0)
                     viewModel.NumberOfAttachmentComingFromServer = GAZTNewDesignMyReturnsNewPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.d.ATTACHSet.results.Count;
                 viewModel.TotalAttachmentSize = AttachmentPageViewModel.AttachmentUploadedSize;
                 viewModel.IsAmendClickedOnVAT = GAZTNewDesignVATReturnUpdatedUIPageViewModel.IsAmend;
-                if (vATDeclaration != null && vATDeclaration.d != null)
+                if (vATDeclaration != null && vATDeclaration.data != null)
                 {
                     viewModel.VATDeclarationDataForAttch = vATDeclaration;
-                    if (viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Count != 0)
+                    if (viewModel.VATDeclarationDataForAttch.data.ATTACHSet.Count != 0)
                     {
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.data.ATTACHSet as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
                         int AttachmentCount = 0;
                         foreach (var item in viewModel.VatAttachmentsList)
@@ -219,7 +219,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                         viewModel.VatAttachmentsList.Remove(listitem);
                         viewModel.AttachmentList.Remove(listitemTwo);
-                        viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
+                        viewModel.VATDeclarationDataForAttch.data.ATTACHSet.Remove(listitem);
                         if (indexToReduceTheSize != -1)
                             viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                     }
@@ -255,18 +255,18 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel.VATDeclarationDataForAttch = vatDec;
 
                 string retGuid = attachment.RetGuid;
-                string fbNum = viewModel.VATDeclarationDataForAttch.d.Fbnum;
+                string fbNum = viewModel.VATDeclarationDataForAttch.data.Fbnum;
 
                 viewModel.IsLoading = true;
                 Models.AttachmentDocumentModel attachmentDocumentModel = await WebServiceManager.GAZTGetAllAttachments(retGuid, fbNum);
 
-                foreach (Models.AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D.Results)
+                foreach (Models.AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D)
                 {
 
                     if (attachment.Filename == tempAttachmentDocumentModel.Filename)
                     {
                         var platform = DeviceInfo.Platform;
-                        if (Device.RuntimePlatform == Device.iOS)
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
                             downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 

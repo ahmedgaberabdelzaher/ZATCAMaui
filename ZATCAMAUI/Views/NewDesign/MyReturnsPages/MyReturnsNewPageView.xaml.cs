@@ -2,7 +2,6 @@
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
-using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
 
 namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
@@ -14,24 +13,30 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
         GAZTNewDesignMyReturnsNewPageViewModel viewModel;
         public GAZTNewDesignMyReturnsNewPageView(int Index)
         {
+      
+
             InitializeComponent();
 
             viewModel = App.Locator.GAZTNewDesignMyReturnsNewPageView;
-            BindingContext = viewModel;
+            this.BindingContext = viewModel;
             viewModel.Index = Index;
             viewModel.PopulateReturnTypeList();
-            viewModel.PopulateDataInChips();
             viewModel.SelectedChipFilterItem = null;
             ListView_Returns.ItemTapped += (sender, e) =>
             {
-                MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
-                viewModel.SelectedListItem = SelectedItem;
-                viewModel.PopulateData();
-                if (e.Item == null)
+                try
                 {
-                    return;
-                } ((ListView)sender).SelectedItem = null;
+                    MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
+                    viewModel.SelectedListItem = SelectedItem;
 
+                    if (e.Item == null)
+                    {
+                        return;
+                    } ((ListView)sender).SelectedItem = null;
+                }
+                catch (Exception)
+                {
+                }
             };
         }
 

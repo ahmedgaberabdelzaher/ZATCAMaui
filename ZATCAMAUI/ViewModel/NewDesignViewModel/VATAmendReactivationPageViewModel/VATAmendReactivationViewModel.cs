@@ -2,10 +2,8 @@
 
 using Newtonsoft.Json;
 using Mopups.Services;
-using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using ZATCAMAUI.Core.
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -25,8 +23,6 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
     // public bool isNewEligibleStartDateIsValid = false;
 
     public int DefaultMonth;
-    public readonly INavigationService _navigationService;
-    public readonly IDialogService _dialogService;
     public static IsComeFromForAttachment IsComeFromForAttachment;
     public string _pageTitle;
     public string PageTitle
@@ -1283,22 +1279,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
         {
             if (_IsChangeEmailCheckBoxEnabled == value) return;
 
-            //bool isFinancialRepresentativeAvailable = IsFinancialRepresentativeDataAvailable(ListFinanceRepresenatives);
-            //if (isFinancialRepresentativeAvailable == true)
-            //{
-            //    _IsChangeEmailCheckBoxEnabled = value;
-            //    MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", true);
-            //    IsChangeEmailChecked = true;
-            //    IsChangeEmailCheckBoxEnabled = true;
-            //}
-            //else
-            //{
-            //    IsChangeEmailCheckBoxEnabled = false;
-            //    IsChangeEmailChecked = false;
-            //    MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", false);
-
-
-            //}
+            
             _IsChangeEmailCheckBoxEnabled = value;
 
 
@@ -2521,19 +2502,8 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
     }
 
 
-    public VATAmendReactivationPageViewModel(INavigationService navigationService, IDialogService dialogService)
+    public VATAmendReactivationPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
     {
-        if (navigationService == null)
-        {
-            throw new ArgumentNullException("navigationService");
-        }
-        _navigationService = navigationService;
-
-        if (dialogService == null)
-        {
-            throw new ArgumentNullException("dialogService");
-        }
-        _dialogService = dialogService;
 
         if (App.VATType == PageExecutionType.Amend)
         {

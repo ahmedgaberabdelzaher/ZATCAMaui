@@ -57,10 +57,10 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             validFromPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             validFromPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -83,7 +83,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
                             crValidFromHijiriPicker.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
 
                             validFromPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";

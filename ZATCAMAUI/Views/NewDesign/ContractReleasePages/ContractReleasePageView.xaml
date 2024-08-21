@@ -5,8 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:SfChipGroup="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
@@ -16,7 +15,7 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False">
 
@@ -232,7 +231,13 @@
                                                     Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                     TextChanged="OnTextChanged"
                                                     TextColor="{StaticResource NeutralBlack}"
-                                                    Unfocused="ContractNumberUnfocused" />
+                                                    Unfocused="ContractNumberUnfocused" >
+
+                                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behavior:OnlyNumericValuesBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                                            </custom:GAZTBorderlessEntry>
                                             </Border>
 
                                         </Grid>
@@ -308,7 +313,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Orientation="Vertical">
 
-                                                <busyindicator:SfChipGroup
+                                                <SfChipGroup:SfChipGroup
                                                     x:Name="ChipGroup_statusFilter"
                                                     ChipBackground="Transparent"
                                                     ChipStroke="{StaticResource NeutralLightGrey}"
@@ -319,7 +324,7 @@
                                                     SelectedChipBackground="{StaticResource PartialBg}"
                                                     SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
                                                     VerticalOptions="Center">
-                                                    <busyindicator:SfChipGroup.ItemTemplate>
+                                                    <SfChipGroup:SfChipGroup.ItemTemplate>
                                                         <DataTemplate>
                                                             <StackLayout WidthRequest="80">
                                                                 <Label
@@ -330,8 +335,8 @@
                                                                     Text="{Binding Text}" />
                                                             </StackLayout>
                                                         </DataTemplate>
-                                                    </busyindicator:SfChipGroup.ItemTemplate>
-                                                </busyindicator:SfChipGroup>
+                                                    </SfChipGroup:SfChipGroup.ItemTemplate>
+                                                </SfChipGroup:SfChipGroup>
 
                                                 <Label HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlack}">
                                                     <Label.FormattedText>
@@ -391,14 +396,11 @@
                                                 x:Name="NormalCalendar"
                                                 Margin="2"
                                                 Background="White"
-                                                CancelButtonClicked="NormalCalendar_CancelButtonClicked"
                                                 Closed="NormalCalendar_Closed"
                                                 HorizontalOptions="FillAndExpand"
                                                 ItemHeight="36"
                                                 Mode="Dialog"
-                                                OkButtonClicked="NormalCalendar_OkButtonClicked"
                                                 SelectedItem="{Binding TodayDateStart}"
-                                                SelectionChanged="NormalCalendar_SelectionChanged"
                                                 Style="{StaticResource PickerStyle}">
 
                                                 <custom:CustomDatePicker.ColumnHeaderView>
@@ -444,14 +446,11 @@
                                                 x:Name="HijriCalendar"
                                                 Margin="2"
                                                 Background="White"
-                                                CancelButtonClicked="NormalCalendar_CancelButtonClicked"
                                                 Closed="NormalCalendar_Closed"
                                                 HorizontalOptions="FillAndExpand"
                                                 ItemHeight="36"
                                                 Mode="Dialog"
-                                                OkButtonClicked="NormalCalendar_OkButtonClicked"
                                                 SelectedItem="{Binding TodayDateinHijriStart}"
-                                                SelectionChanged="NormalCalendar_SelectionChanged"
                                                 Style="{StaticResource PickerStyle}">
 
                                                 <custom:CustomHijriDatePicker.SelectionView>
@@ -555,14 +554,14 @@
                                                 x:Name="EndDateNormalCalendar"
                                                 Margin="2"
                                                 Background="White"
-                                                CancelButtonClicked="EndDateNormalCalendar_CancelButtonClicked"
+                                                
                                                 Closed="EndDateNormalCalendar_Closed"
                                                 HorizontalOptions="FillAndExpand"
                                                 ItemHeight="36"
                                                 Mode="Dialog"
-                                                OkButtonClicked="EndDateNormalCalendar_OkButtonClicked"
+                                                
                                                 SelectedItem="{Binding TodayDateEnd}"
-                                                SelectionChanged="EndDateNormalCalendar_SelectionChanged"
+                                                
                                                 Style="{StaticResource PickerStyle}">
 
                                                 <custom:CustomDatePicker.ColumnHeaderView>
@@ -608,14 +607,14 @@
                                                 x:Name="EndDateHijriCalendar"
                                                 Margin="2"
                                                 Background="White"
-                                                CancelButtonClicked="EndDateNormalCalendar_CancelButtonClicked"
+                                                
                                                 Closed="EndDateNormalCalendar_Closed"
                                                 HorizontalOptions="FillAndExpand"
                                                 ItemHeight="36"
                                                 Mode="Dialog"
-                                                OkButtonClicked="EndDateNormalCalendar_OkButtonClicked"
+                                                
                                                 SelectedItem="{Binding TodayDateinHijriEnd}"
-                                                SelectionChanged="EndDateNormalCalendar_SelectionChanged"
+                                                
                                                 Style="{StaticResource PickerStyle}">
 
                                                 <custom:CustomHijriDatePicker.SelectionView>
@@ -683,7 +682,12 @@
                                                     HorizontalOptions="FillAndExpand"
                                                     Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                     TextColor="{StaticResource NeutralBlack}"
-                                                    Unfocused="TotalAmountUnFocused" />
+                                                    Unfocused="TotalAmountUnFocused" >
+                                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behavior:OnlyNumericValuesBehaviour />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                                            </custom:GAZTBorderlessEntry>
                                             </Border>
 
                                         </Grid>
@@ -717,7 +721,12 @@
                                                     HorizontalOptions="FillAndExpand"
                                                     Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                     TextColor="{StaticResource NeutralBlack}"
-                                                    Unfocused="AmountToReleaseUnfocused" />
+                                                    Unfocused="AmountToReleaseUnfocused" >
+                                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behavior:OnlyNumericValuesBehaviour />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                                            </custom:GAZTBorderlessEntry>
                                             </Border>
 
                                         </Grid>
@@ -1328,7 +1337,6 @@
                                                 ItemsSource="{Binding ContractCopyAttachmentsListViewData}"
                                                 ScrollBarVisibility="Never"
                                                 SelectionBackground="Transparent"
-                                                SelectionChanged="ContractAttach_SelectionChanged"
                                                 SelectionMode="SingleDeselect"
                                                 TapCommand="{Binding NewContractCopyAttachmentTapped}"
                                                 VerticalOptions="Center">
@@ -1477,7 +1485,6 @@
                                                 ItemsSource="{Binding InvoiceAttachmentsListViewData}"
                                                 ScrollBarVisibility="Never"
                                                 SelectionBackground="Transparent"
-                                                SelectionChanged="invoiceAttachments_SelectionChanged"
                                                 SelectionMode="SingleDeselect"
                                                 TapCommand="{Binding NewInvoiceAttachmentTapped}"
                                                 VerticalOptions="Center">

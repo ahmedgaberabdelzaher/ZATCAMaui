@@ -22,11 +22,16 @@ namespace ZATCAMAUI.Core.Enums
         OldZakatInstalmentBankStatements = 17,
         OldZakatInstalmentFinance = 18,
         VatReviewLateFiling = 19,
-        IBANBankAccountOne = 28,
-        IBANBankAccountTwo = 29,
-
-
-
+        ZakatExemtionAttachmentOne = 20,
+        ZakatExemtionAttachmentTwo = 21,
+        ZakatExemtionAttachmentThree = 22,
+        ZakatExemtionAttachmentFour = 23,
+        ZakatExemtionAttachmentFive = 24,
+        ZakatExemtionAttachmentSix = 25,
+        ZakatExemtionAttachmentSeven = 26,
+        TINOutletDeregisterAttachment = 27,
+        ZakatExemtionDynamicAttachment = 28,
+        IBANBankAccountOne = 29,
+        IBANBankAccountTwo = 30,
     }
-
 }

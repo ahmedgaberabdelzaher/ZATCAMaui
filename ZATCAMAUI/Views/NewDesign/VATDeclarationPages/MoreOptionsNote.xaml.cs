@@ -386,7 +386,7 @@ public partial class MoreOptionsNote : PopupPage
 				if (attachment.Filename == tempAttachmentDocumentModel.Filename)
 				{
 					var platform = DeviceInfo.Platform;
-					if (Device.RuntimePlatform == Device.iOS)
+					if (DeviceInfo.Platform == DevicePlatform.iOS)
 					{
 						downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 

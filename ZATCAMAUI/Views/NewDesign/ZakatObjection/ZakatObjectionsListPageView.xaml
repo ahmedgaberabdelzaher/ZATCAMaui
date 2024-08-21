@@ -4,13 +4,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -22,12 +20,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+           
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
         </ResourceDictionary>
@@ -35,595 +28,370 @@
 
     </ContentPage.Resources>
 
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <Grid BackgroundColor="Transparent">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Border
-                        Grid.Row="1"
-                        Padding="0"
-                        BackgroundColor="Black"
-                        StrokeShape="RoundRectangle 15,15,0,0">
-                        <Grid
-                            x:Name="VATRMainGrid"
-                            Margin="0"
-                            Padding="0,0,0,0"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand">
-                            <Grid.RowDefinitions>
-                                <!--<RowDefinition Height="10*" />-->
-                                <RowDefinition Height="100*" />
-                            </Grid.RowDefinitions>
-                            <ContentPresenter
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" />
-                        </Grid>
-                    </Border>
-                    <Grid Grid.Row="0" Padding="24,10,24,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="auto" />
-                        </Grid.ColumnDefinitions>
-
-
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Margin="10,0,0,0"
-                            FontSize="19"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource SectionTitleWhiteBold}"
-                            Text="{x:Static ResourceManager:AppResources.ZakatIncomeTaxObjection}"
-                            VerticalOptions="StartAndExpand" />
-
-
-                        <Image
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Margin="-5,0,-5,0"
-                            HorizontalOptions="StartAndExpand"
-                            Source="arrowLeftwhite"
-                            Style="{DynamicResource BackButtonArrow}"
-                            VerticalOptions="CenterAndExpand">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" />
-                            </Image.GestureRecognizers>
-                        </Image>
-
-                    </Grid>
-                </Grid>
-            </Grid>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
+  
 
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid>
 
-                <StackLayout IsVisible="{Binding CreateZakatInstalmentBtnVisible}">
-                    <Grid
-                        Margin="20,10,20,0"
-                        BackgroundColor="Transparent"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+        <Grid RowDefinitions="Auto,*">
 
-                        <Grid Grid.Row="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Padding="0,5,0,0"
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource PageTitleBlack}"
-                                Text="{x:Static ResourceManager:AppResources.ZakatObjection}" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Padding="0,5,0,0"
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource BodyLabelGrey}"
-                                Text="{Binding ObjectionsCount}" />
-                            <BoxView
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
 
-                        </Grid>
+                <StackLayout>
 
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
 
-                        <cards:SfCardView
-                            Grid.Row="1"
-                            Margin="0,20,0,0"
-                            Padding="12"
-                            BorderColor="Gray"
-                            BorderWidth="0.2"
-                            CornerRadius="15"
-                            IsVisible="false">
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
 
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Image
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    HeightRequest="30"
-                                    HorizontalOptions="Start"
-                                    Source="add"
-                                    WidthRequest="30" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource GAZTSmallGreenLabelStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.ZakatObjection}" />
-                                <Grid.GestureRecognizers />
-                            </Grid>
+                    </Image>
 
-                        </cards:SfCardView>
-
-                        <!--  Display Submitted list  -->
-
-
-                        <listView:SfListView
-                            x:Name="VATInstalmentPlanListViewPage"
-                            Grid.Row="2"
-                            Margin="0"
-                            Padding="0"
-                            AutoFitMode="Height"
-                            HorizontalOptions="CenterAndExpand"
-                            IsScrollingEnabled="False"
-                            ItemSpacing="0"
-                            ItemTapped="Objection_ItemTapped"
-                            ItemsSource="{Binding ObjectionsList}"
-                            ScrollBarVisibility="Never"
-                            SelectionBackground="Transparent"
-                            SelectionMode="Single"
-                            VerticalOptions="StartAndExpand">
-                            <listView:SfListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border
-                                        Grid.Column="0"
-                                        Margin="0,15,0,0"
-                                        Padding="10"
-                                        StrokeShape="RoundRectangle 15,15,15,15"
-                                        Style="{StaticResource GreyBorderFrameWithShadow}">
-                                        <Grid
-                                            Margin="0"
-                                            Padding="0"
-                                            RowSpacing="5">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="1" />
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="50*" />
-                                                <ColumnDefinition Width="50*" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <StackLayout
-                                                Grid.Row="0"
-                                                Grid.ColumnSpan="2"
-                                                Orientation="Vertical">
-                                                <Label
-                                                    Margin="0"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource SectionTitleBlack}"
-                                                    Text="{x:Static ResourceManager:AppResources.NDZakatObjection}" />
-
-
-
-                                                <Label
-                                                    Padding="0,5,0,0"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    HorizontalTextAlignment="Start"
-                                                    Style="{StaticResource ValueLabelGrey}"
-                                                    Text="{Binding Fbnum}"
-                                                    VerticalOptions="CenterAndExpand" />
-                                            </StackLayout>
-                                            <StackLayout
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand">
-
-
-
-                                                <Border
-                                                    Padding="8,3,8,3"
-                                                    BackgroundColor="{StaticResource PartialBg}"
-                                                    HorizontalOptions="Center"
-                                                    StrokeShape="RoundRectangle 14,14,14,14"
-                                                    StrokeThickness="1"
-                                                    VerticalOptions="CenterAndExpand">
-
-                                                    <Label
-                                                        HorizontalOptions="CenterAndExpand"
-                                                        HorizontalTextAlignment="Center"
-                                                        Style="{StaticResource CaptionLabelBlack}"
-                                                        Text="{Binding StatText}"
-                                                        TextColor="{StaticResource Partial}"
-                                                        VerticalOptions="CenterAndExpand">
-                                                        <Label.Triggers>
-
-
-
-                                                            <DataTrigger
-                                                                Binding="{Binding StatText}"
-                                                                TargetType="Label"
-                                                                Value="{x:Static ResourceManager:AppResources.Submitted}">
-                                                                <Setter Property="Text" Value="Submitted" />
-                                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                                <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                                            </DataTrigger>
-
-
-
-                                                        </Label.Triggers>
-                                                    </Label>
-                                                </Border>
-                                            </StackLayout>
-
-                                            <BoxView
-                                                Grid.Row="1"
-                                                Grid.Column="0"
-                                                Grid.ColumnSpan="2"
-                                                Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-
-                                            <StackLayout Grid.Row="2" Grid.Column="0">
-                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZOObjectionType}" />
-                                                <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding FbtText}" />
-                                            </StackLayout>
-                                            <StackLayout
-                                                Grid.Row="2"
-                                                Grid.Column="1"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand">
-                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OZObjectionDate}" />
-                                                <Label
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding Erfdate}"
-                                                    VerticalOptions="FillAndExpand" />
-                                            </StackLayout>
-
-
-
-                                        </Grid>
-                                    </Border>
-                                </DataTemplate>
-                            </listView:SfListView.ItemTemplate>
-
-
-
-                        </listView:SfListView>
-                    </Grid>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackClick}" />
+                    </StackLayout.GestureRecognizers>
 
                 </StackLayout>
 
-                <Grid
-                    Margin="20,10,20,0"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="{Binding IsSummaryEnable}"
-                    VerticalOptions="FillAndExpand">
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                     Text="{x:Static ResourceManager:AppResources.ZakatIncomeTaxObjection}"
+                    VerticalOptions="Center" />
 
-                    <StackLayout Orientation="Vertical">
+            </Grid>
+            <!--#endregion Header-->
 
-                        <Grid Margin="0,5,0,10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource PageTitleBlack}"
-                                Text="{x:Static ResourceManager:AppResources.CRSummary}" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Margin="0,-10,0,15"
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource BodyLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.CRReviewthebelowinformation}" />
-                            <BoxView
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+            <!--#region Body-->
+            <Border Grid.Row="1"
+                    Padding="10,0"
+                    Style="{StaticResource CommonTopCurves}">
 
-                        </Grid>
+               <Grid RowDefinitions="*" >
 
-                        <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                            <StackLayout Orientation="Vertical">
+                        <Grid>
 
-                                <Grid Padding="5" RowSpacing="0">
+                            <StackLayout IsVisible="{Binding CreateZakatInstalmentBtnVisible}">
+                                <Grid
+                                    Margin="20,10,20,0"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="*" />
 
-                                    </Grid.ColumnDefinitions>
-
-
-                                    <StackLayout
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Padding="3,0"
-                                        HorizontalOptions="FillAndExpand"
-                                        Orientation="Horizontal">
-                                        <Image
-                                            Grid.Row="0"
-                                            Grid.Column="0"
-                                            Aspect="AspectFit"
-                                            HeightRequest="24"
-                                            HorizontalOptions="Center"
-                                            Source="establishments"
-                                            VerticalOptions="Center"
-                                            WidthRequest="24" />
-                                        <Label
-                                            Padding="8,0"
-                                            HorizontalOptions="FillAndExpand"
-                                            Style="{StaticResource SectionTitleBlackBold}"
-                                            Text="{x:Static ResourceManager:AppResources.ZOObjectionDetails}"
-                                            VerticalOptions="CenterAndExpand" />
-                                    </StackLayout>
-                                    <StackLayout
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        Padding="3,0"
-                                        HorizontalOptions="End"
-                                        IsVisible="False">
-                                        <Label
-                                            FontSize="Medium"
-                                            HorizontalOptions="End"
-                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}"
-                                            Text="{x:Static ResourceManager:AppResources.ZOViewReturn}"
-                                            VerticalOptions="CenterAndExpand" />
-                                    </StackLayout>
-                                </Grid>
-
-                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-
-                                <StackLayout Padding="5">
-
-                                    <Grid>
+                                    <Grid Grid.Row="0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-
                                         <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
-                                            Style="{StaticResource ValueLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ZORefNumberOfAssessmen}" />
-                                        <Label
-                                            Grid.Row="0"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            HorizontalTextAlignment="End"
-                                            Style="{StaticResource ValueLabelBlack}"
-                                            Text="{Binding ReferenceNumberOfAssessment}" />
-
+                                            Padding="0,5,0,0"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource PageTitleBlack}"
+                                            Text="{x:Static ResourceManager:AppResources.ZakatObjection}" />
                                         <Label
                                             Grid.Row="1"
                                             Grid.Column="0"
-                                            Style="{StaticResource ValueLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ZOAssessmentYear}" />
-                                        <Label
-                                            Grid.Row="1"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            HorizontalTextAlignment="End"
-                                            Style="{StaticResource ValueLabelBlack}"
-                                            Text="{Binding AssessmentYear}" />
-
-
-                                        <Label
+                                            Padding="0,5,0,0"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}"
+                                            Text="{Binding ObjectionsCount}" />
+                                        <BoxView
                                             Grid.Row="2"
                                             Grid.Column="0"
-                                            Style="{StaticResource ValueLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ZOPeriodFrom}" />
-                                        <Label
-                                            Grid.Row="2"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            HorizontalTextAlignment="End"
-                                            Style="{StaticResource ValueLabelBlack}"
-                                            Text="{Binding PeriodFrom}" />
+                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-
-                                        <Label
-                                            Grid.Row="3"
-                                            Grid.Column="0"
-                                            Style="{StaticResource ValueLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ZOPeriodTo}" />
-                                        <Label
-                                            Grid.Row="3"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            HorizontalTextAlignment="End"
-                                            Style="{StaticResource ValueLabelBlack}"
-                                            Text="{Binding PeriodTo}" />
-
-
-                                        <Label
-                                            Grid.Row="4"
-                                            Grid.Column="0"
-                                            Style="{StaticResource ValueLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ZOTaxType}" />
-                                        <Label
-                                            Grid.Row="4"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            HorizontalTextAlignment="End"
-                                            Style="{StaticResource ValueLabelBlack}"
-                                            Text="{Binding DisplaTaxType}" />
-
-                                        <Label
-                                            Grid.Row="5"
-                                            Grid.Column="0"
-                                            Style="{StaticResource ValueLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ZOCurrency}" />
-                                        <Label
-                                            Grid.Row="5"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            HorizontalTextAlignment="End"
-                                            Style="{StaticResource ValueLabelBlack}"
-                                            Text="{Binding Currency}" />
-
-                                        <Label
-                                            Grid.Row="6"
-                                            Grid.Column="0"
-                                            Style="{StaticResource ValueLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ZOAssessmentAmount}" />
-                                        <Label
-                                            Grid.Row="6"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            HorizontalTextAlignment="End"
-                                            Style="{StaticResource ValueLabelBlack}"
-                                            Text="{Binding AssessmentAmount, Converter={StaticResource commaSeparatorConverter}}" />
-
-                                        <Label
-                                            Grid.Row="7"
-                                            Grid.Column="0"
-                                            Style="{StaticResource ValueLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ZORevisedAmount}" />
-                                        <Label
-                                            Grid.Row="7"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            HorizontalTextAlignment="End"
-                                            Style="{StaticResource ValueLabelBlack}"
-                                            Text="{Binding DisplayRevisedAmount, Converter={StaticResource commaSeparatorConverter}}" />
-
-
-                                        <Label
-                                            Grid.Row="8"
-                                            Grid.Column="0"
-                                            Style="{StaticResource ValueLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ZODisputeAmount}" />
-                                        <Label
-                                            Grid.Row="8"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            HorizontalTextAlignment="End"
-                                            Style="{StaticResource ValueLabelBlack}"
-                                            Text="{Binding DisplayDisputeAmount, Converter={StaticResource commaSeparatorConverter}}" />
                                     </Grid>
 
-                                </StackLayout>
-                            </StackLayout>
 
-                        </Border>
+                                    <cards:SfCardView
+                                        Grid.Row="1"
+                                        Margin="0,20,0,0"
+                                        Padding="12"
+                                        BorderColor="Gray"
+                                        BorderWidth="0.2"
+                                        CornerRadius="15"
+                                        IsVisible="false">
 
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                HorizontalOptions="Start"
+                                                Source="add"
+                                                WidthRequest="30" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource GAZTSmallGreenLabelStyle}"
+                                                Text="{x:Static ResourceManager:AppResources.ZakatObjection}" />
+                                            <Grid.GestureRecognizers />
+                                        </Grid>
 
+                                    </cards:SfCardView>
 
-                        <Border
-                            Margin="0,16,0,10"
-                            Padding="0,0,0,16"
-                            IsVisible="{Binding IsAttachmentsVisible}"
-                            Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <!--  Display Submitted list  -->
 
-                            <StackLayout Orientation="Vertical">
-
-                                <Grid Padding="15" RowSpacing="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <StackLayout
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Padding="8,0"
-                                        HorizontalOptions="FillAndExpand"
-                                        Orientation="Horizontal">
-                                        <Image
-                                            Grid.Row="0"
-                                            Grid.Column="0"
-                                            Aspect="AspectFit"
-                                            HeightRequest="24"
-                                            HorizontalOptions="Start"
-                                            Source="establishments"
-                                            VerticalOptions="Center"
-                                            WidthRequest="24" />
-                                        <Label
-                                            Padding="8,0"
-                                            Style="{StaticResource SectionTitleBlackBold}"
-                                            Text="{x:Static ResourceManager:AppResources.Attachments}"
-                                            VerticalOptions="CenterAndExpand" />
-                                    </StackLayout>
-                                    <StackLayout
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        Padding="8,0"
-                                        HorizontalOptions="End">
-                                        <Label
-                                            FontSize="Medium"
-                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}"
-                                            Text="{x:Static ResourceManager:AppResources.CREdit}"
-                                            VerticalOptions="CenterAndExpand">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding GoBackToDeclaration}" />
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                    </StackLayout>
-                                </Grid>
-
-                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-
-                                <StackLayout Padding="15,15,15,0">
 
                                     <listView:SfListView
-                                        Grid.Row="0"
-                                        HorizontalOptions="Center"
+                                        x:Name="VATInstalmentPlanListViewPage"
+                                        Grid.Row="2"
+                                        Margin="0"
+                                        Padding="0"
+                                        AutoFitMode="Height"
+                                        HorizontalOptions="CenterAndExpand"
                                         IsScrollingEnabled="False"
-                                        ItemsSource="{Binding AttachmentsListViewData}"
+                                        ItemSpacing="0"
+                                        ItemTapped="Objection_ItemTapped"
+                                        ItemsSource="{Binding ObjectionsList}"
                                         ScrollBarVisibility="Never"
                                         SelectionBackground="Transparent"
-                                        SelectionMode="None"
-                                        VerticalOptions="Center">
+                                        SelectionMode="Single"
+                                        VerticalOptions="StartAndExpand">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
+                                                <Border
+                                                    Grid.Column="0"
+                                                    Margin="0,15,0,0"
+                                                    Padding="10"
+                                                    StrokeShape="RoundRectangle 15,15,15,15"
+                                                    Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Grid
+                                                        Margin="0"
+                                                        Padding="0"
+                                                        RowSpacing="5">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="1" />
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50*" />
+                                                            <ColumnDefinition Width="50*" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.ColumnSpan="2"
+                                                            Orientation="Vertical">
+                                                            <Label
+                                                                Margin="0"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                Style="{StaticResource SectionTitleBlack}"
+                                                                Text="{x:Static ResourceManager:AppResources.NDZakatObjection}" />
+
+
+
+                                                            <Label
+                                                                Padding="0,5,0,0"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelGrey}"
+                                                                Text="{Binding Fbnum}"
+                                                                VerticalOptions="CenterAndExpand" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="FillAndExpand">
+
+
+
+                                                            <Border
+                                                                Padding="8,3,8,3"
+                                                                BackgroundColor="{StaticResource PartialBg}"
+                                                                HorizontalOptions="Center"
+                                                                StrokeShape="RoundRectangle 14,14,14,14"
+                                                                StrokeThickness="1"
+                                                                VerticalOptions="CenterAndExpand">
+
+                                                                <Label
+                                                                    HorizontalOptions="CenterAndExpand"
+                                                                    HorizontalTextAlignment="Center"
+                                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                                    Text="{Binding StatText}"
+                                                                    TextColor="{StaticResource Partial}"
+                                                                    VerticalOptions="CenterAndExpand">
+                                                                    <Label.Triggers>
+
+
+
+                                                                        <DataTrigger
+                                                                            Binding="{Binding StatText}"
+                                                                            TargetType="Label"
+                                                                            Value="{x:Static ResourceManager:AppResources.Submitted}">
+                                                                            <Setter Property="Text" Value="Submitted" />
+                                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                                            <Setter Property="HorizontalTextAlignment" Value="Center" />
+                                                                        </DataTrigger>
+
+
+
+                                                                    </Label.Triggers>
+                                                                </Label>
+                                                            </Border>
+                                                        </StackLayout>
+
+                                                        <BoxView
+                                                            Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            Grid.ColumnSpan="2"
+                                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                                        <StackLayout Grid.Row="2" Grid.Column="0">
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZOObjectionType}" />
+                                                            <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding FbtText}" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="2"
+                                                            Grid.Column="1"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="FillAndExpand">
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OZObjectionDate}" />
+                                                            <Label
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding Erfdate}"
+                                                                VerticalOptions="FillAndExpand" />
+                                                        </StackLayout>
+
+
+
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </listView:SfListView.ItemTemplate>
+
+
+
+                                    </listView:SfListView>
+                                </Grid>
+
+                            </StackLayout>
+
+                            <Grid
+                                Margin="20,10,20,0"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding IsSummaryEnable}"
+                                VerticalOptions="FillAndExpand">
+
+                                <StackLayout Orientation="Vertical">
+
+                                    <Grid Margin="0,5,0,10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource PageTitleBlack}"
+                                            Text="{x:Static ResourceManager:AppResources.CRSummary}" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Margin="0,-10,0,15"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.CRReviewthebelowinformation}" />
+                                        <BoxView
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                    </Grid>
+
+                                    <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                        <StackLayout Orientation="Vertical">
+
+                                            <Grid Padding="5" RowSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="*" />
+
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <StackLayout
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Padding="3,0"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Orientation="Horizontal">
+                                                    <Image
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        Aspect="AspectFit"
+                                                        HeightRequest="24"
+                                                        HorizontalOptions="Center"
+                                                        Source="establishments"
+                                                        VerticalOptions="Center"
+                                                        WidthRequest="24" />
+                                                    <Label
+                                                        Padding="8,0"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Style="{StaticResource SectionTitleBlackBold}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZOObjectionDetails}"
+                                                        VerticalOptions="CenterAndExpand" />
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Padding="3,0"
+                                                    HorizontalOptions="End"
+                                                    IsVisible="False">
+                                                    <Label
+                                                        FontSize="Medium"
+                                                        HorizontalOptions="End"
+                                                        Style="{StaticResource GAZTCaptionGreenLabelStyle}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZOViewReturn}"
+                                                        VerticalOptions="CenterAndExpand" />
+                                                </StackLayout>
+                                            </Grid>
+
+                                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                            <StackLayout Padding="5">
 
                                                 <Grid>
                                                     <Grid.RowDefinitions>
@@ -633,124 +401,316 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="*" />
                                                     </Grid.ColumnDefinitions>
+
                                                     <Label
+                                                        Grid.Row="0"
                                                         Grid.Column="0"
                                                         Style="{StaticResource ValueLabelGrey}"
-                                                        Text="{x:Static ResourceManager:AppResources.VRAttachment}" />
+                                                        Text="{x:Static ResourceManager:AppResources.ZORefNumberOfAssessmen}" />
                                                     <Label
+                                                        Grid.Row="0"
                                                         Grid.Column="1"
                                                         HorizontalOptions="EndAndExpand"
                                                         HorizontalTextAlignment="End"
                                                         Style="{StaticResource ValueLabelBlack}"
-                                                        Text="{Binding Filename}" />
+                                                        Text="{Binding ReferenceNumberOfAssessment}" />
+
+                                                    <Label
+                                                        Grid.Row="1"
+                                                        Grid.Column="0"
+                                                        Style="{StaticResource ValueLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZOAssessmentYear}" />
+                                                    <Label
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        HorizontalTextAlignment="End"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding AssessmentYear}" />
+
+
+                                                    <Label
+                                                        Grid.Row="2"
+                                                        Grid.Column="0"
+                                                        Style="{StaticResource ValueLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZOPeriodFrom}" />
+                                                    <Label
+                                                        Grid.Row="2"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        HorizontalTextAlignment="End"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding PeriodFrom}" />
+
+
+                                                    <Label
+                                                        Grid.Row="3"
+                                                        Grid.Column="0"
+                                                        Style="{StaticResource ValueLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZOPeriodTo}" />
+                                                    <Label
+                                                        Grid.Row="3"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        HorizontalTextAlignment="End"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding PeriodTo}" />
+
+
+                                                    <Label
+                                                        Grid.Row="4"
+                                                        Grid.Column="0"
+                                                        Style="{StaticResource ValueLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZOTaxType}" />
+                                                    <Label
+                                                        Grid.Row="4"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        HorizontalTextAlignment="End"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding DisplaTaxType}" />
+
+                                                    <Label
+                                                        Grid.Row="5"
+                                                        Grid.Column="0"
+                                                        Style="{StaticResource ValueLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZOCurrency}" />
+                                                    <Label
+                                                        Grid.Row="5"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        HorizontalTextAlignment="End"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding Currency}" />
+
+                                                    <Label
+                                                        Grid.Row="6"
+                                                        Grid.Column="0"
+                                                        Style="{StaticResource ValueLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZOAssessmentAmount}" />
+                                                    <Label
+                                                        Grid.Row="6"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        HorizontalTextAlignment="End"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding AssessmentAmount, Converter={StaticResource commaSeparatorConverter}}" />
+
+                                                    <Label
+                                                        Grid.Row="7"
+                                                        Grid.Column="0"
+                                                        Style="{StaticResource ValueLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZORevisedAmount}" />
+                                                    <Label
+                                                        Grid.Row="7"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        HorizontalTextAlignment="End"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding DisplayRevisedAmount, Converter={StaticResource commaSeparatorConverter}}" />
+
+
+                                                    <Label
+                                                        Grid.Row="8"
+                                                        Grid.Column="0"
+                                                        Style="{StaticResource ValueLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZODisputeAmount}" />
+                                                    <Label
+                                                        Grid.Row="8"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        HorizontalTextAlignment="End"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding DisplayDisputeAmount, Converter={StaticResource commaSeparatorConverter}}" />
                                                 </Grid>
 
-                                            </DataTemplate>
-                                        </listView:SfListView.ItemTemplate>
-                                    </listView:SfListView>
+                                            </StackLayout>
+                                        </StackLayout>
 
+                                    </Border>
+
+
+
+                                    <Border
+                                        Margin="0,16,0,10"
+                                        Padding="0,0,0,16"
+                                        IsVisible="{Binding IsAttachmentsVisible}"
+                                        Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                        <StackLayout Orientation="Vertical">
+
+                                            <Grid Padding="15" RowSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackLayout
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Padding="8,0"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Orientation="Horizontal">
+                                                    <Image
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        Aspect="AspectFit"
+                                                        HeightRequest="24"
+                                                        HorizontalOptions="Start"
+                                                        Source="establishments"
+                                                        VerticalOptions="Center"
+                                                        WidthRequest="24" />
+                                                    <Label
+                                                        Padding="8,0"
+                                                        Style="{StaticResource SectionTitleBlackBold}"
+                                                        Text="{x:Static ResourceManager:AppResources.Attachments}"
+                                                        VerticalOptions="CenterAndExpand" />
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Padding="8,0"
+                                                    HorizontalOptions="End">
+                                                    <Label
+                                                        FontSize="Medium"
+                                                        Style="{StaticResource GAZTCaptionGreenLabelStyle}"
+                                                        Text="{x:Static ResourceManager:AppResources.CREdit}"
+                                                        VerticalOptions="CenterAndExpand">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding GoBackToDeclaration}" />
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+                                                </StackLayout>
+                                            </Grid>
+
+                                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                            <StackLayout Padding="15,15,15,0">
+
+                                                <listView:SfListView
+                                                    Grid.Row="0"
+                                                    HorizontalOptions="Center"
+                                                    IsScrollingEnabled="False"
+                                                    ItemsSource="{Binding AttachmentsListViewData}"
+                                                    ScrollBarVisibility="Never"
+                                                    SelectionBackground="Transparent"
+                                                    SelectionMode="None"
+                                                    VerticalOptions="Center">
+                                                    <listView:SfListView.ItemTemplate>
+                                                        <DataTemplate>
+
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="auto" />
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Label
+                                                                    Grid.Column="0"
+                                                                    Style="{StaticResource ValueLabelGrey}"
+                                                                    Text="{x:Static ResourceManager:AppResources.VRAttachment}" />
+                                                                <Label
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    HorizontalTextAlignment="End"
+                                                                    Style="{StaticResource ValueLabelBlack}"
+                                                                    Text="{Binding Filename}" />
+                                                            </Grid>
+
+                                                        </DataTemplate>
+                                                    </listView:SfListView.ItemTemplate>
+                                                </listView:SfListView>
+
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Border>
+
+                                    <Border
+                                        Margin="0,16,0,10"
+                                        Padding="10"
+                                        Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                        <Grid>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50*" />
+                                                <ColumnDefinition Width="50*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Style="{StaticResource ValueLabelGrey}"
+                                                Text="{x:Static ResourceManager:AppResources.ZOWithdrawlRemarks}" />
+
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                HorizontalOptions="Center"
+                                                HorizontalTextAlignment="End"
+                                                Style="{StaticResource ValueLabelBlack}"
+                                                Text="{Binding DisplayRemarks}" />
+
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Style="{StaticResource ValueLabelGrey}"
+                                                Text="{x:Static ResourceManager:AppResources.ZOWithdrawlDetailDescription}" />
+
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                HorizontalOptions="Center"
+                                                HorizontalTextAlignment="End"
+                                                Style="{StaticResource ValueLabelBlack}"
+                                                Text="{Binding DisplayDetailDescription}" />
+                                        </Grid>
+
+
+                                    </Border>
+
+
+                                    <buttons:SfButton
+                                        Margin="0,16,0,16"
+                                        Command="{Binding Download_Acknowledgement}"
+                                        Style="{StaticResource PrimaryButtonStyle}"
+                                        Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}" />
+
+
+                                    <buttons:SfButton
+                                        Margin="0,16,0,16"
+                                        Command="{Binding ZDownloadForm}"
+                                        Style="{StaticResource PrimaryButtonStyle}"
+                                        Text="{x:Static ResourceManager:AppResources.ZDownloadForm}" />
                                 </StackLayout>
-                            </StackLayout>
-                        </Border>
-
-                        <Border
-                            Margin="0,16,0,10"
-                            Padding="10"
-                            Style="{StaticResource GreyBorderFrameWithShadow}">
-
-                            <Grid>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50*" />
-                                    <ColumnDefinition Width="50*" />
-                                </Grid.ColumnDefinitions>
-
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Style="{StaticResource ValueLabelGrey}"
-                                    Text="{x:Static ResourceManager:AppResources.ZOWithdrawlRemarks}" />
-
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="End"
-                                    Style="{StaticResource ValueLabelBlack}"
-                                    Text="{Binding DisplayRemarks}" />
-
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Style="{StaticResource ValueLabelGrey}"
-                                    Text="{x:Static ResourceManager:AppResources.ZOWithdrawlDetailDescription}" />
-
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="End"
-                                    Style="{StaticResource ValueLabelBlack}"
-                                    Text="{Binding DisplayDetailDescription}" />
                             </Grid>
 
+                           
 
-                        </Border>
+                        </Grid>
 
+                    </ScrollView>
 
-                        <buttons:SfButton
-                            Margin="0,16,0,16"
-                            Command="{Binding Download_Acknowledgement}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}" />
-
-
-                        <buttons:SfButton
-                            Margin="0,16,0,16"
-                            Command="{Binding ZDownloadForm}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZDownloadForm}" />
-                    </StackLayout>
                 </Grid>
 
-                <Grid BackgroundColor="Transparent" IsVisible="{Binding IsLoading}">
-                    <StackLayout
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        BackgroundColor="Black"
-                        Opacity="0.4"
-                        Orientation="Vertical"
-                        VerticalOptions="FillAndExpand" />
-                    <StackLayout
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Padding="15,15"
-                        BackgroundColor="Transparent"
-                        HorizontalOptions="Center"
-                        Opacity="0.8"
-                        Orientation="Vertical"
-                        VerticalOptions="EndAndExpand">
-                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                            <busyindicator:SfBusyIndicator
-                                x:Name="busyindicatorForLanding"
-                                AnimationType="Cupertino"
-                                HeightRequest="70"
-                                HorizontalOptions="CenterAndExpand"
-                                IndicatorColor="{StaticResource Secondary}"
-                                IsRunning="True"
-                                SizeFactor="0.6"
-                                TitlePlacement="Bottom"
-                                VerticalOptions="EndAndExpand"
-                                WidthRequest="70" />
-                        </StackLayout>
-                    </StackLayout>
-                </Grid>
+            </Border>
+            <!--#endregion Body-->
 
-            </Grid>
-        </ScrollView>
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+        </Grid>
+
+      
     </ContentPage.Content>
 </ContentPage>

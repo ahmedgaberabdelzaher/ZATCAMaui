@@ -77,7 +77,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
                 newHTMLContent = newHTMLContent.Replace("</html>", "<head><style type='text/css'>@font-face {font-family: MyFont;src:url('Somar-Regular.otf') format('opentype');}body { font-family: MyFont }</style></head></html>");
 
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:40px;margin:15;color:#042e66'>");
                     var htmlSource = new HtmlWebViewSource();

@@ -25,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public bool isFinaceDetailsChanged { get; set; } = false;
         public string isDraftEnabled { get; set; } = "";
         private Nreg_IdItem idItem { get; set; } = null;
-        private String calType = string.Empty;
+        private string calType = string.Empty;
         public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
         private EstablishmentRegistrationTabsEnum _currentTab;
         public EstablishmentRegistrationTabsEnum currentTab

@@ -379,7 +379,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
 
             }
         }
-        private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType)
+
+        private async Task<AttachmentRootOject> SaveAttachment(Stream attachmentByteData, string contentType)
         {
             AttachmentRootOject _attachment = null;
             IsLoading = true;

@@ -3,10 +3,10 @@
     x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages.PdfView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:sfcustom="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.PdfViewer;assembly=Syncfusion.Maui.PdfViewer"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     BackgroundColor="White"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -36,41 +36,8 @@
                     VerticalOptions="Center" />
             </Grid>
             <!--  Acticity indicator layout start  -->
-            <Grid
-                Grid.Row="0"
-                Grid.Column="0"
-                IsVisible="{Binding Loading}">
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    BackgroundColor="Black"
-                    Opacity="0.4"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="True"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
+            <custom:Loader IsVisible="{Binding IsLoading}"/>
+          
             <!--  Acticity indicator layout end  -->
         </Grid>
     </ContentPage.Content>
@@ -84,7 +51,7 @@
                     <sfcustom:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
-                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            Command="{TemplateBinding BindingContext.BackCommand}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
                             Style="{StaticResource IconButtonStyle}"

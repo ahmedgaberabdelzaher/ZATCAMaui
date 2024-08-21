@@ -13,6 +13,9 @@ using Org.BouncyCastle.Crypto.Parameters;
 using System.Security.Cryptography;
 using Org.BouncyCastle.Math;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
+using ZATCAMAUI.Models.Authentication;
+using Newtonsoft.Json;
+using ZATCAMAUI.Views.NewDesign.ChangeMobile;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 {
@@ -56,9 +59,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                             await DependencyService.Get<IForceUpdate>().FetchAndActivateAsync();
                             var hasForceUpdateResult = bool.Parse(DependencyService.Get<IForceUpdate>().GetValue("IsForceUpdate"));
 
-                            switch (Device.RuntimePlatform)
+                            switch (DeviceInfo.Platform)
                             {
-                                case Device.Android:
+                                case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
                                     var currentAndroidBuild = int.Parse(VersionTracking.CurrentBuild);
                                     var firebaseAndroidBuild = int.Parse(DependencyService.Get<IForceUpdate>().GetValue("BuildNumber_Android"));
@@ -72,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                                     break;
 
 
-                                case Device.iOS:
+                                case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                                     var currentiOSBuild = VersionTracking.CurrentBuild;
                                     var currentiOSBuildInt = Array.ConvertAll(currentiOSBuild.Split('.'), int.Parse);
 
@@ -128,7 +131,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 
             SignUpCommand = new Command(SignUpClicked);
             ForgotPasswordCommand = new Command(ForgotPasswordClicked);
-            SocialMediaLoginCommand = new Command(SocialLoggedIn);
             HamburgerMenuClickedCommand = new Command(HamburgerMenuClicked);
             this.LoginClickedCommand = new Command(async () => await LoginButtonClicked());
             this.ChangeMCommand = new Command(this.ChangeMobileClicked);

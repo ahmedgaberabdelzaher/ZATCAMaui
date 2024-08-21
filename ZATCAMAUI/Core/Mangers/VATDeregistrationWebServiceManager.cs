@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
-using ZATCAMAUI.Models.Attachments;
+using ZATCAMAUI.Models.AttachmentRequest;
 using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.Models.VATRefunds;
 using static ZATCAMAUI.Models.ErrorMessage;
@@ -44,12 +44,6 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", fileName);
-                    //StreamContent baContent = new StreamContent(AttachmentByte);
-                    //if (!string.IsNullOrEmpty(contentType))
-                    //    baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
                     var serializeOptions = new JsonSerializerSettings
                     {
                         DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
@@ -82,7 +76,7 @@ namespace ZATCAMAUI.Core.Mangers
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     string LangZ = WebServiceManager.GetLangZParameterAREN();
                     string AttBy = "TP";
-                    Models.Attachments.DeleteAttachmentRequest _attachmentReq = new Models.Attachments.DeleteAttachmentRequest()
+                    DeleteAttachmentRequest _attachmentReq = new DeleteAttachmentRequest()
                     {
                         fileName = fileName,
                         returnGUID = "",

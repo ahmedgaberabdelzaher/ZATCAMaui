@@ -49,10 +49,10 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             CalendarTitle.FontFamily = "Somar-SemiBold";
                             FutureCalendarTitle.FontFamily = "Somar-SemiBold";
@@ -71,7 +71,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
                             futureCalendarPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
                         CalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
                         FutureCalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";

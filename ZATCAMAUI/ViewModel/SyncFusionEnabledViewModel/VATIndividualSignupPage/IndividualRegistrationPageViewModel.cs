@@ -17,6 +17,8 @@ using Metadata = ZATCAMAUI.Models.Metadata;
 using ZATCAMAUI.Core.Interfaces;
 using static ZATCAMAUI.Models.ErrorMessage;
 using Application = Microsoft.Maui.Controls.Application;
+using static ZATCAMAUI.Models.LoginSSOModelERAD;
+using ZATCAMAUI.Models.SignUP;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
@@ -1581,7 +1583,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_ModelSSOID == value) return;
 
                 _ModelSSOID = value;
-                OnPropertyChanged(() => modelSSOID);
+                OnPropertyChanged(nameof(modelSSOID));
             }
         }
 
@@ -3261,7 +3263,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 if (App.IsComingFromSleepMode)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;

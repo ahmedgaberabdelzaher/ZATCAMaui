@@ -84,7 +84,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    viewModel.IsLoading1 = true;
+                    viewModel.IsLoading = true;
                 });
 
                 string downloadurl = ZATCAConstants.CRDownloadAcknowledementFile + viewModel.ContractReleaseData.d.Fbnumz;
@@ -92,7 +92,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    viewModel.IsLoading1 = false;
+                    viewModel.IsLoading = false;
                 });
             }
         }
@@ -103,14 +103,14 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    viewModel.IsLoading1 = true;
+                    viewModel.IsLoading = true;
                 });
                 string downloadurl = ZATCAConstants.CRDownloadCoverFormFile + viewModel.ContractReleaseData1.d.Fbnumz;
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    viewModel.IsLoading1 = false;
+                    viewModel.IsLoading = false;
                 });
             }
         }

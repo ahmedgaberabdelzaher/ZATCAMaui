@@ -24,7 +24,6 @@ using static ZATCAMAUI.Models.Nafat.LoginSSOModel;
 using static ZATCAMAUI.Models.VATgoodsOnprofit.NewYesorNoPageModel;
 using static ZATCAMAUI.Models.correspdncAttchModel;
 using ZATCAMAUI.Models.AccountDetails;
-using ZATCAMAUI.Models.Attachments;
 using ZATCAMAUI.Models.NewModelAPI.AbsherOTP;
 using ZATCAMAUI.Models.ForgotModel;
 using static ZATCAMAUI.Models.LoginSSOModelERAD;
@@ -32,6 +31,7 @@ using ZATCAMAUI.Models.NewModelAPI;
 using ZATCAMAUI.Models.SignUP;
 using ZATCAMAUI.Models.Authentication;
 using ZATCAMAUI.Models.NewModelAPI.Logout;
+using ZATCAMAUI.Models.AttachmentRequest;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -1398,9 +1398,9 @@ namespace ZATCAMAUI.Core.Mangers
                     VATDeclaration _vATDeclaration = new VATDeclaration();
                     char LangZ = GetLangZParameter();
                     String Lang = UtilityManager.GetLanguageParameter();
-                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
-                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    string deviceOs = DependencyService.Get<IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<IDeviceInfoZATCA>().Model;
                     String url = ZATCAConstants.GAZTGetAllVATDeclarationReturnData + EUser + "&formBundleGUID=" + Fbguid + "&TIN=" + App.TP.TIN + "&language=" + Lang + "&periodKey=" + PeriodCode;
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -1601,8 +1601,8 @@ namespace ZATCAMAUI.Core.Mangers
         #region
         public static async Task<ObservableCollection<InternationalMobileData>> GAZTGetMobileRegionDropdown()
         {
-            if (NetworkCheck.IsInternet())
-            {
+             if (NetworkCheck.IsInternet())
+                {
                 ObservableCollection<InternationalMobileData> internationalCodes = new ObservableCollection<InternationalMobileData>();
                 string NewToken = string.Empty;
                 try
@@ -1669,8 +1669,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -1909,7 +1907,7 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     AttachmentRootOject _attachment = new AttachmentRootOject();
-                    Models.Attachments.AttachmentRequest attachment = new Models.Attachments.AttachmentRequest();
+                    AttachmentRequest attachment = new AttachmentRequest();
                     var content = new MultipartFormDataContent();
                     var fileContent = new StreamContent(AttachmentByte);
                     fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
@@ -2049,7 +2047,7 @@ namespace ZATCAMAUI.Core.Mangers
                     char LangZ = GetLangZParameter();
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
-                    Models.Attachments.DeleteAttachmentRequest _attachmentReq = new Models.Attachments.DeleteAttachmentRequest()
+                    DeleteAttachmentRequest _attachmentReq = new DeleteAttachmentRequest()
                     {
                         fileName = fileName,
                         returnGUID = "",
@@ -2059,8 +2057,6 @@ namespace ZATCAMAUI.Core.Mangers
                         serialNumber = "1",
                         attachedByPerson = AttBy
                     };
-
-                    //String url = ZATCAConstants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// ZATCAConstants.SaveVATDeclarationData;
                     String url = ZATCAConstants.GAZTDeteleAttachment;
                     var uri = new Uri(url);
                     var lang = UtilityManager.GetLanguageParameter();
@@ -2708,7 +2704,7 @@ namespace ZATCAMAUI.Core.Mangers
                     string LangZ = WebServiceManager.GetLangZParameterAREN();
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
-                    Models.Attachments.DeleteAttachmentRequest _attachmentReq = new Models.Attachments.DeleteAttachmentRequest()
+                    DeleteAttachmentRequest _attachmentReq = new DeleteAttachmentRequest()
                     {
                         fileName = fileName,
                         returnGUID = "",
@@ -2718,7 +2714,6 @@ namespace ZATCAMAUI.Core.Mangers
                         serialNumber = "1",
                         attachedByPerson = AttBy
                     };
-                    // String url = ZATCAConstants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + DocumentID + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled";
                     String url = ZATCAConstants.GAZTDeteleAttachment;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
@@ -2732,23 +2727,8 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpResponseMessage res = client.PostAsync(url, contentPost).Result;
                     var responsestr = res.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-                    //HttpContent contentPost = new StringContent(serialized, Encoding.UTF8, ZATCAConstants.ContentType);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", fileName);
-
-                    //client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
-                    //HttpResponseMessage res = client.DeleteAsync(url).Result;
-                    //var responsestr = res.Content.ReadAsStringAsync().Result;
-                    //_attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     if (res != null)
                     {
-                        //HttpHeaders headers = res.Headers;
-                        //IEnumerable<string> values;
-                        //if (headers.TryGetValues("delete", out values))
-                        //{
-                        //    DeleteToken = values.First();
-                        //}
                         if (res.StatusCode == HttpStatusCode.NoContent || res.StatusCode == HttpStatusCode.OK)
                             DeleteToken = "X";
                     }
@@ -2838,12 +2818,6 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    //string lang = UtilityManager.GetLanguageParameter();
-                    //HttpClient client = new HttpClient(App.httpClientHandler);
-                    //DateTime DateTimeNow = DateTime.Now;
-                    //string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm");
-                    // String url = ZATCAConstants.GAZTGetCorrespondence + "'" + App.TP.TIN + "' and Langz eq '" + lang + "' and UserTin eq '' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq '' and Auditor eq ''";
-                    //var uri = new Uri(url);
                     string lang = UtilityManager.GetLanguageParameter();
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -5113,7 +5087,7 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             Cookie cookie = new Cookie();
 
-                            if (Device.RuntimePlatform == Device.iOS)
+                            if (DeviceInfo.Platform == DevicePlatform.iOS)
                             {
                                 if (cookieModel.Domain.StartsWith(".") == false)
                                 {
@@ -5124,7 +5098,7 @@ namespace ZATCAMAUI.Core.Mangers
                                     cookie.Domain = cookieModel.Domain;
                                 }
                             }
-                            else if (Device.RuntimePlatform == Device.Android)
+                            else if (DeviceInfo.Platform == DevicePlatform.Android)
                             {
                                 cookie.Domain = ZATCAConstants.DevPartialDomainForCookies;
                             }
@@ -7052,7 +7026,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
 
                 {
 
@@ -7060,7 +7034,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                else if (Device.RuntimePlatform == Device.Android)
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
 
                 {
 
@@ -8667,15 +8641,7 @@ namespace ZATCAMAUI.Core.Mangers
                 string DeleteToken = string.Empty;
                 try
                 {
-                    //https://sapgatewayd.zatca.gov.sa/sap/opu/odata/SAP/Z_SIGNUP_ATTACH_SRV/AttachMedSet(RetGuid='005056B1365C1EEE9BA8E9D923855F5F',Flag='N',OutletRef='',Dotyp='CHM2',SchGuid='',Srno=1,Doguid='005056B1365C1EEE9BA8EC8B83875F5F',AttBy='TP')/$value
-
-                    /*var attachment = new EGAZT.Models.Attachment();
-                    attachment.RetGuid = RetGuid;
-                    attachment.Dotyp = docType;
-                    attachment.Doguid = docguid;
-                    attachment.Srno = 1;
-                    attachment.AttBy = "X";
-                    attachment.attachment = "New";*/
+                    
 
                     var attachment = new Dictionary<string, object>
             {
@@ -8687,8 +8653,7 @@ namespace ZATCAMAUI.Core.Mangers
                 { "attachedByPerson", "X" },
             };
 
-                    /*var uri = new Uri(string.Format("{0}(RetGuid='{1}',Flag='N',OutletRef='',Dotyp='{2}',SchGuid='',Srno=1,Doguid='{3}',AttBy='X')/$value",
-                        ZATCAConstants.ChangeMobDeleteAttachment, RetGuid, docType, docguid));*/
+                    
 
                     var uri = new Uri(ZATCAConstants.ChangeMobPostAttachment + "/deletion");
 
@@ -8736,18 +8701,7 @@ namespace ZATCAMAUI.Core.Mangers
             {
                 try
                 {
-
-
-                    // OutletRef = '',RetGuid = '" + returnid + "',Flag='N',Dotyp='" + doctype + "',SchGuid='',Srno=1,Doguid='',AttBy='TP'
-
-
-                    //var uri = new Uri(string.Format("{0}(RetGuid='{1}',OutletRef='',Flag='N',Dotyp='{2}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
-                    //    ZATCAConstants.ChangeMobPostAttachment, RetGuid, Doctype));
                     var uri = new Uri(ZATCAConstants.ChangeMobPostAttachment + "?returnGUID=" + RetGuid + "&documentCategory=" + Doctype + "&attachmentFlag=New&serialNumber=1&attachedByPerson=TP&fileName=" + fileName);
-                    // var uri = ZATCAConstants.ChangeMobPostAttachment + "?returnGUID=" + RetGuid + "&documentCategory=" + Doctype + "&attachmentFlag=New&serialNumber=1&attachedByPerson=TP";
-
-                    /*  var uri = new Uri(string.Format("{0}(?returnGUID='{1}'&attachmentFlag='New'&documentCategory=='{2}'&serialNumber=1&attachedByPerson='TP')",
-                          ZATCAConstants.ChangeMobPostAttachment, RetGuid, Doctype));*/
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
@@ -8758,10 +8712,6 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
                     client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
                     client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
-
-                    /*ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    if (!string.IsNullOrEmpty(contentType))
-                        baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);*/
 
 
                     var content = new MultipartFormDataContent();

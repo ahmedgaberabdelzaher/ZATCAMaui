@@ -6,56 +6,55 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.Common;
 namespace ZATCAMAUI.Views.NewDesign.Common
 {
 
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ViewNotesPopUpPageView : PopupPage
-    {
-        public ViewNotePopUpViewModel viewModel;
-
-        public ViewNotesPopUpPageView(NotesSet notesSet)
+   
+        [XamlCompilation(XamlCompilationOptions.Compile)]
+        public partial class ViewNotesPopUpPageView : PopupPage
         {
+            public ViewNotePopUpViewModel viewModel;
 
-            try
+            public ViewNotesPopUpPageView(List<NotesSetResult> notesSet)
             {
                 InitializeComponent();
-                viewModel = App.Locator.ViewNotePopUpViewModel;
-                BindingContext = viewModel;
-                if (notesSet != null)
+
+                try
                 {
-                    if (notesSet.results.Count != 0)
+                    viewModel = App.Locator.ViewNotePopUpViewModel;
+                    BindingContext = viewModel;
+                    if (notesSet != null)
                     {
-                        viewModel.NoteList = notesSet.results.OrderBy(X => X.DataVersionz).ToList();
-                        viewModel.IsDisplayNoteVisible = true;
-                        viewModel.IsNoDataLabelVisible = false;
+                        if (notesSet.Count != 0)
+                        {
+                            viewModel.NoteList = notesSet.OrderBy(X => X.DataVersionz).ToList();
+                            viewModel.IsDisplayNoteVisible = true;
+                            viewModel.IsNoDataLabelVisible = false;
+                        }
+                        else
+                        {
+                            viewModel.IsDisplayNoteVisible = false;
+                            viewModel.IsNoDataLabelVisible = true;
+                        }
                     }
-                    else
-                    {
-                        viewModel.IsDisplayNoteVisible = false;
-                        viewModel.IsNoDataLabelVisible = true;
-                    }
+
+                }
+                catch (Exception )
+                {
+                }
+
+            }
+
+            #region Methods
+            #endregion
+
+            private async void OnCloseTapped(object sender, EventArgs e)
+            {
+                try
+                {
+                    await MopupService.Instance.PopAsync();
+                }
+                catch (Exception )
+                {
                 }
             }
-            catch (Exception)
-            {
-
-
-            }
-
         }
-
-        #region Methods
-        #endregion
-
-        private async void OnCloseTapped(object sender, EventArgs e)
-        {
-            try
-            {
-                await MopupService.Instance.PopAsync();
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-    }
+    
 }
