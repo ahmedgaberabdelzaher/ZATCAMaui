@@ -147,7 +147,7 @@
                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                         <custom:GAZTBorderlessEntry
                             x:Name="quantityEntry"
-                            Keyboard="Numeric"
+                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                             Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
                             Style="{StaticResource DefaultEntry}"
                             Text="{Binding Quantity}"
@@ -188,7 +188,7 @@
                             <inputLayout:LabelStyle TextColor="#B00020" />
                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                         <custom:GAZTBorderlessEntry
-                            Keyboard="Numeric"
+                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                             Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
                             Style="{StaticResource DefaultEntry}"
                             Text="{Binding TotalValue}"

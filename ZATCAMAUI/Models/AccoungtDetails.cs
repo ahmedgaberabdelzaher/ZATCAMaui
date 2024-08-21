@@ -2,16 +2,16 @@
 using System;
 using System.Globalization;
 using System.Collections.Generic;
-using Foundation;
+
 
 namespace ZATCAMAUI.Models.AccountDetails
 {
-    [Preserve(AllMembers = true)]
+    
     public class AccoungtDetails
     {
         [JsonProperty("data")]
         public D d { get; set; }
-        [Preserve(AllMembers = true)]
+        
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -29,31 +29,31 @@ namespace ZATCAMAUI.Models.AccountDetails
             public List<Result_Obj> OBJ_DTLSet { get; set; }
     
         }
-        [Preserve(AllMembers = true)]
+        
         public class RETDTLSet
         {
             [JsonProperty("returnDetails")]
             public List<Result_RET> results { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class INSTLDTLSet
         {
             [JsonProperty("installmentDetails")]
             public List<Result_InST> results { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class OBJDTLSet
         {
             [JsonProperty("objectionDetails")]
             public List<Result_Obj> results { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class BILLDTLSet
         {
             [JsonProperty("billsDetails")]
             public List<Result_Bill> results { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class Metadata
         {
             [JsonProperty("id")]
@@ -63,7 +63,7 @@ namespace ZATCAMAUI.Models.AccountDetails
             [JsonProperty("type")]
             public string type { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class Result_InST
         {
             //Instalment DTL SET
@@ -104,7 +104,7 @@ namespace ZATCAMAUI.Models.AccountDetails
            
             
         }
-        [Preserve(AllMembers = true)]
+        
         public class Result_Obj
         {
 
@@ -123,7 +123,7 @@ namespace ZATCAMAUI.Models.AccountDetails
             public string RetFbtypTxt { get; set; }
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class Result_Bill
         {
             // BillDTL SET
@@ -192,7 +192,7 @@ namespace ZATCAMAUI.Models.AccountDetails
             public string BillDesc { get; set; }
 
         }
-        [Preserve(AllMembers = true)]
+        
         public class Result_RET
         {
            // [JsonProperty("__metadata")]

@@ -15,6 +15,10 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.Nafat.LoginSSOModel;
 using Metadata = ZATCAMAUI.Models.Metadata;
 using ZATCAMAUI.Core.Interfaces;
+using static ZATCAMAUI.Models.ErrorMessage;
+using Application = Microsoft.Maui.Controls.Application;
+using static ZATCAMAUI.Models.LoginSSOModelERAD;
+using ZATCAMAUI.Models.SignUP;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
@@ -220,21 +224,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 _isCitizen = value;
                 OnPropertyChanged("IsCitizen");
-            }
-        }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
             }
         }
         private bool _isOTPEncripted = true;
@@ -461,21 +450,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 _frameMobileNumberError = value;
                 OnPropertyChanged("FrameMobileNumberError");
-            }
-        }
-        private bool _frameCaptchaError = false;
-        public bool FrameCaptchaError
-        {
-            get
-            {
-                return _frameCaptchaError;
-            }
-            set
-            {
-                if (_frameCaptchaError == value) return;
-
-                _frameCaptchaError = value;
-                OnPropertyChanged("FrameCaptchaError");
             }
         }
         private bool _frameNameError = false;
@@ -918,10 +892,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
                         TxtIDType = _selectedIdType.Name;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-
-
+                        
+                        
                     }
                 }
                 OnPropertyChanged("SelectedIdType");
@@ -1597,8 +1571,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
         //6094 Nafath
-        private LoginSSOModelClass _ModelSSOID;
-        public LoginSSOModelClass modelSSOID
+        private LoginSSOModelClassERAD _ModelSSOID;
+        public LoginSSOModelClassERAD modelSSOID
         {
             get
             {
@@ -1660,21 +1634,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("Captcha");
             }
         }
-        private string mobileCountry = string.Empty;
-        public string MobileCountry
-        {
-            get
-            {
-                return mobileCountry;
-            }
-            set
-            {
-                if (mobileCountry == value) return;
-
-                mobileCountry = value;
-                OnPropertyChanged("MobileCountry");
-            }
-        }
         private string guid = string.Empty;
         public string Guid
         {
@@ -1688,6 +1647,99 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 guid = value;
                 OnPropertyChanged("Guid");
+            }
+        }
+        public bool IsAPICalledSuccessfully = true;
+        private object date1DOB;
+
+        private bool _titleVisibility = false;
+        public bool TitleVisibility
+        {
+            get
+            {
+                return _titleVisibility;
+            }
+            set
+            {
+                if (_titleVisibility == value) return;
+
+                _titleVisibility = value;
+                OnPropertyChanged("TitleVisibility");
+            }
+        }
+        private string _title = string.Empty;
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                if (_title == value) return;
+
+                _title = value;
+                OnPropertyChanged("Title");
+            }
+        }
+
+        private string _iqamaTypeDesc = string.Empty;
+        public string IqamaTypeDesc
+        {
+            get
+            {
+                return _iqamaTypeDesc;
+            }
+            set
+            {
+                _iqamaTypeDesc = value;
+                OnPropertyChanged("IqamaTypeDesc");
+            }
+        }
+
+        private bool _showIqamaTypeDesc = false;
+        public bool ShowIqamaTypeDesc
+        {
+            get
+            {
+                return _showIqamaTypeDesc;
+            }
+            set
+            {
+                _showIqamaTypeDesc = value;
+                OnPropertyChanged("ShowIqamaTypeDesc");
+            }
+        }
+
+        private bool _frameCaptchaError = false;
+        public bool FrameCaptchaError
+        {
+            get
+            {
+                return _frameCaptchaError;
+            }
+            set
+            {
+                if (_frameCaptchaError == value) return;
+
+                _frameCaptchaError = value;
+                OnPropertyChanged("FrameCaptchaError");
+            }
+        }
+
+        private string mobileCountry = string.Empty;
+        public string MobileCountry
+        {
+            get
+            {
+                return mobileCountry;
+            }
+            set
+            {
+                if (mobileCountry == value) return;
+
+                mobileCountry = value;
+                OnPropertyChanged("MobileCountry");
             }
         }
 
@@ -1729,41 +1781,69 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("LgId");
             }
         }
-        public bool IsAPICalledSuccessfully = true;
-        private object date1DOB;
 
-        private string _iqamaTypeDesc = string.Empty;
-        public string IqamaTypeDesc
+        private string _birthdate = null;
+        public string BirthDate
         {
             get
             {
-                return _iqamaTypeDesc;
+                return _birthdate;
             }
             set
             {
-                _iqamaTypeDesc = value;
-                OnPropertyChanged("IqamaTypeDesc");
+                _birthdate = value;
+                OnPropertyChanged("BirthDate");
             }
         }
 
-        private bool _showIqamaTypeDesc = false;
-        public bool ShowIqamaTypeDesc
+        private string _begindate = null;
+        public string Begindate
         {
             get
             {
-                return _showIqamaTypeDesc;
+                return _begindate;
             }
             set
             {
-                _showIqamaTypeDesc = value;
-                OnPropertyChanged("ShowIqamaTypeDesc");
+                _begindate = value;
+                OnPropertyChanged("Begindate");
             }
         }
+
+        private string _enddate = null;
+        public string EndDate
+        {
+            get
+            {
+                return _enddate;
+            }
+            set
+            {
+                _enddate = value;
+                OnPropertyChanged("EndDate");
+            }
+        }
+
+
+        private string _postCode = null;
+        public string PostCode
+        {
+            get
+            {
+                return _postCode;
+            }
+            set
+            {
+                _postCode = value;
+                OnPropertyChanged("PostCode");
+            }
+        }
+
 
         #endregion
 
         #region Constructor
-        public IndividualRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
+        public IndividualRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
             OnContinueButtonClick = new Command(async () =>
@@ -1839,7 +1919,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             ConfirmPassword = string.Empty;
             DOBddyymm = string.Empty;
             OTP = string.Empty;
-
+            Title = string.Empty;
+            ShowIqamaTypeDesc = false;
+            IqamaTypeDesc = string.Empty;
 
         }
         public void SetBackFormVisibility()
@@ -2553,8 +2635,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 if (!SelectedIdType.ID.Equals("ZS0018"))
                 {
-                    RegionList = vATSignUpData.d.State_dropdownSet.results;
-                    RegionList = vATSignUpData.d.State_dropdownSet.results.Where(x => x.Land1 == "SA").ToList();
+                    RegionList = vATSignUpData.d.State_dropdownSet;
+                    RegionList = vATSignUpData.d.State_dropdownSet.Where(x => x.Land1 == "SA").ToList();
                 }
             }
             catch (Exception)
@@ -2573,10 +2655,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (!SelectedIdType.ID.Equals("ZS0018"))
                 {
 
-                    CityList = vATSignUpData.d.city_dropdownSet.results;
+                    CityList = vATSignUpData.d.city_dropdownSet;
                     string selectedRegioncode = SelectedRegion.Bland;
 
-                    CityList = vATSignUpData.d.city_dropdownSet.results.Where(x => x.Region == selectedRegioncode).ToList();
+                    CityList = vATSignUpData.d.city_dropdownSet.Where(x => x.Region == selectedRegioncode).ToList();
                     if (CityList != null)
                     {
                         CityList = CityList.Where(c => c.Country == "SA").ToList();
@@ -2622,10 +2704,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         }
 
-        public void GetCityList(string Bland)
-        {
-
-        }
 
         public void GetVATSignUpGCCList()
         {
@@ -2646,32 +2724,29 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public async Task GetCaptchImage()
         {
             IsLoading = true;
-            string result = await WebServiceManager.GetCaptchaImage("C6", LgId);
-            JObject data = JObject.Parse(result);
-            if (data != null)
+            ImageCaptchaModel result = await WebServiceManager.GetCaptchaImage("C6", LgId);
+            if (result != null)
             {
-                ImageBase64 = data.GetValue("cval").ToString();
-                LgId = data.GetValue("lgid").ToString();
+                ImageBase64 = result.data.cval;
+                LgId = result.data.GUID;
             }
 
             IsLoading = false;
         }
-        
 
 
         public async Task SetRequestObjectFirst()
         {
             try
             {
-
                 var Bdt1 = string.Empty;
                 string date1 = DOB;
                 DateTime dt = Convert.ToDateTime(date1);
-                dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
-                long unixTimestamp = ((long)(dt.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
-                unixTimestamp = unixTimestamp * 1000;
-                Bdt1 = "" + "/Date(" + unixTimestamp + ")/";
 
+                JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                {
+                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                };
 
                 string _City = string.Empty;
                 string _Region = string.Empty;
@@ -2706,10 +2781,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 var Mguid = string.Empty;
                 if (IsCitizen)
                 {
-                    List<string> strings = new List<string>(
-     App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None));
-                    var guid = strings[1];
-                    Mguid = guid;
+
+                    Mguid = App.GUIDFrSSO;
                 }
                 else
                 {
@@ -2718,9 +2791,47 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
                 string newCountryCodeString = TxtCountryCode.Replace("+", "00");
+                CreateVatSignUPRequest createVatSignUPRequest = new CreateVatSignUPRequest();
+                createVatSignUPRequest.taxpayerTitle = "";
+                createVatSignUPRequest.type = "1";
+                createVatSignUPRequest.idType = SelectedIdType.ID;
+                createVatSignUPRequest.idNumber = IdNumber;
+                createVatSignUPRequest.firstName = Name;
+                createVatSignUPRequest.lastName = string.Empty;
+                createVatSignUPRequest.postCode = PostCode;
+                createVatSignUPRequest.city = _City;
+                createVatSignUPRequest.region = _Region;
+                createVatSignUPRequest.country = _Country;
+                createVatSignUPRequest.mobileCountry = MobileCountry;
+                createVatSignUPRequest.buildingCode = BuildingNumber;
+                createVatSignUPRequest.floor = UnitNumber;
+                createVatSignUPRequest.street = Neighborhood;
+                createVatSignUPRequest.beginDate = Begindate;
+                createVatSignUPRequest.endDate = EndDate;
+                createVatSignUPRequest.email = Email;
+                if (IsGulfER)
+                {
+                    createVatSignUPRequest.birthDate = date1 + "T00:00:00";
+                }
+                else
+                {
+                    createVatSignUPRequest.birthDate = BirthDate;
+                }
+                createVatSignUPRequest.password = Password;
+                createVatSignUPRequest.SMSCode = OTP;
+                createVatSignUPRequest.emailCode = "";
+                createVatSignUPRequest.submit = submitValue;
+                createVatSignUPRequest.captchaCode = Captcha;
+                createVatSignUPRequest.mobile = newCountryCodeString + MobileNumber;
+                createVatSignUPRequest.caseGUID = LgId;
+                createVatSignUPRequest.GUID = Mguid;
+
+
+
 
                 VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
                 {
+                    // {"Type":"1","IdType":"ZS0018","Idnumber":"11111111111","Firstname":"Ashish","Lastname":"Ranjan","PostCode1":"00000","City1":"","Country":"OM","Region":"","Building":" ","Floor":" ","Street":" ","Begda":"\/Date(1593139376000)\/","Endda":"\/Date(253402251010000)\/","Email":"ashish.ranjan@parallelminds.in","Mobile":"00966546825230","CaseGuid":"005056B1FE5D1EEAADC647121D569A67","Birthdt":"\/Date(1577846576000)\/","Password":"Init@1234","SmsCode":"6506","EmailCode":"","Submit":"X"}
                     Type = "1",
                     IdType = SelectedIdType.ID,//"ZS0018",
                     Idnumber = IdNumber,
@@ -2728,10 +2839,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Lastname = string.Empty,
                     PostCode1 = "00000",
                     City1 = _City,
-                    //Country = SelectedCountry.Land1,
-                    //Region = SelectedRegion.Land1,
                     Region = _Region,
-                    //Country = SelectedGCCCountry.CountryCode,
                     Country = _Country,
                     MobileCountry = MobileCountry,
 
@@ -2742,8 +2850,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Endda = "/Date(253402251010000)/",
                     Email = Email,
                     Mobile = newCountryCodeString + MobileNumber,
-                    //Mobile = "00966" + MobileNumber,
-                    //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
                     CaseGuid = LgId,
 
                     Birthdt = Bdt1,//"/Date(1577846576000)/",
@@ -2754,32 +2860,111 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Captcha = Captcha,
                     Mguid = Mguid
 
-
                 };
 
-                string response = await TaxEvasionWebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
-
-                VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
-                VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
-                if (VatSignUpSubmitResponse.d == null)
+                if (!string.IsNullOrEmpty(IqamaTypeDesc)) //CR6407
                 {
+                    vATSignUpSubmit.AIqamaDesc = IqamaTypeDesc;
+                    vATSignUpSubmit.AIqamaFg = "X";
+                }
+                else
+                {
+                    vATSignUpSubmit.AIqamaDesc = "";
+                    vATSignUpSubmit.AIqamaFg = "";
+                }
 
+                //  VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
+                var res = await TaxEvasionWebServiceManager.VatSignUP(createVatSignUPRequest);
+                var response = JsonConvert.DeserializeObject<CreateVatSignUPResponse>(res);
+                response.data = response.Result;
+                if (response.data == null)
+                {
+                    ErrorObj SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<ErrorObj>(res);
 
-                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(response);
                     StringBuilder Message = new StringBuilder();
-                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                    foreach (Errordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
                     {
-                        Message.AppendLine(itemerror.message);
+                        if (itemerror.code.Contains("ZD_ZVTX/006"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage6);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/007"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage7);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/008"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage8);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/009"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage9);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/0010"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage10);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/0011"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage11);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/001"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage1);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/002"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage2);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/003"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage3);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/004"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage4);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/005"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage5);
+                        }
+
+                        if (itemerror.code.Contains("ZD_ZREG/303"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErrorMessage303);
+                        }
+                        else
+                        {
+                            Message.AppendLine(itemerror.message);
+                        }
                     }
                     Message = Message.Replace("An exception was raised", "");
                     OTP = string.Empty;
+
+
+                    //_dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+
+
                 }
                 else
                 {
                     if (currentStep == 4)
                     {
-                        Captcha = VatSignUpSubmitResponse.d.Captcha;
+                        Captcha = response.data.captchaCode;
+                        Mguid = response.data.GUID;
                         SummeryView = false;
                         PasswordView = true;
                         if (IsCitizen)
@@ -2798,16 +2983,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         PasswordView = false;
                         currentStep = 1;
-                        string TinNumber = VatSignUpSubmitResponse.d.Tin;
+                        string TinNumber = response.data.TIN;
                         _navigationService.NavigateTo(App.RegistrationSuccessfulPageView, TinNumber);
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-
-
                 string MessageForTheUser = AppResources.Somethingwentwrong;
 
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -2818,11 +3000,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                 });
-                ///only for dev purpose
-                ///
-#if DEBUG
-                await App.Current.MainPage.DisplayAlert("Error", ex.ToString(), "OK");
-#endif
 
             }
         }
@@ -2862,9 +3039,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 var Mguid = string.Empty;
                 if (IsCitizen)
                 {
-                    List<string> strings = new List<string>(
-                        App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None));
-                    var guid = strings[1];
+                    var guid = App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None)[1];
                     Mguid = guid;
                 }
                 else
@@ -2886,8 +3061,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Building = BuildingNumber,
                     Floor = UnitNumber,
                     Street = Neighborhood,
-                    Begda = "/Date(1593139376000)/",
-                    Endda = "/Date(253402251010000)/",
+                    Begda = "2003-02-23T08:05:26",
+                    Endda = "2024-02-23T08:05:26",
                     Email = Email,
                     Mobile = newCountryCodeString + MobileNumber,
                     CaseGuid = LgId,
@@ -2899,6 +3074,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Captcha = Captcha,
                     Mguid = Mguid,
                 };
+
+                if (!string.IsNullOrEmpty(IqamaTypeDesc)) //CR6407
+                {
+                    vATSignUpSubmit.AIqamaDesc = IqamaTypeDesc;
+                    vATSignUpSubmit.AIqamaFg = "X";
+                }
+                else
+                {
+                    vATSignUpSubmit.AIqamaDesc = "";
+                    vATSignUpSubmit.AIqamaFg = "";
+                }
+
 
                 string response = await TaxEvasionWebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
                 if (response != null)
@@ -2921,9 +3108,73 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     StringBuilder Message = new StringBuilder();
                     foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
                     {
-                        Message.AppendLine(itemerror.message);
+                        if (itemerror.code.Contains("ZD_ZVTX/006"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage6);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/007"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage7);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/008"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage8);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/009"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage9);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/0010"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage10);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/0011"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage11);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/001"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage1);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/002"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage2);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/003"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage3);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/004"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage4);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/005"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage5);
+                        }
+                        if (itemerror.code.Contains("ZD_ZVTX/005"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErroMessage5);
+                        }
+                        if (itemerror.code.Contains("ZD_ZREG/303"))
+                        {
+
+                            Message.AppendLine(AppResources.ZZZZErrorMessage303);
+                        }
+
                     }
-                    Message = Message.Replace("An exception was raised", "");
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                 }
                 else
@@ -2950,7 +3201,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-       
+
         public void SetcolorForDots(string visiliblityItemName)
         {
             if (visiliblityItemName.Equals("IndividualRegistrationView"))
@@ -3012,7 +3263,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 if (App.IsComingFromSleepMode)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;

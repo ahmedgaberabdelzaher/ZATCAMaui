@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.NewDesign.ChangeMobile.NafathChangeMobileNumberView"
+             Title="NafathChangeMobileNumberView"
+             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            x:Name="page"
+            ios:Page.UseSafeArea="true"
+            BackgroundImageSource="partials_background.png"
+            FlowDirection="{Binding AppDirection}"
+            NavigationPage.HasNavigationBar="False">
+            
+            
+    <ContentPage.Content>
+
+      <Grid RowDefinitions="auto,*">
+
+         <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.ResetMobileNumber}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <Border Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
+                <StackLayout BackgroundColor="White" Padding="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Image Source="logo_gazt.png"/>
+                    <StackLayout VerticalOptions="Start" Spacing="16">
+                    <Label Text="{x:Static ResourceManager:AppResources.PleaseChooseTinNumber}" />
+
+                        <Border Padding="4" Style="{StaticResource GreyBorderFrame}">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="8,0">
+                                <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding SelectedTIN}" FontFamily="{StaticResource SomarBold}"
+                                                            FontSize="Small" TextColor="{StaticResource PrimaryColor}" HorizontalOptions="FillAndExpand"/>
+                                <Image Source="arrowDropdown.png" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SnipperTappedCommand}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Border>
+                        <Label Text="{Binding TinError}" IsVisible="{Binding IsError}" TextColor="{StaticResource ErrorColor}"/>
+                        <Label Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" Margin="0,32,0,0" />
+                        <Border Padding="4" Style="{StaticResource GreyBorderFrame}">
+                        <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="CenterAndExpand" Padding="0">
+                                <Image Source="arrowDropdown.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CountryCodesCommand}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <buttons:SfButton TextColor="{StaticResource PrimaryColor}" Text="{Binding CountryCode}" Background="Transparent" Command="{Binding CountryCodesCommand}"/>
+                                <custom:GAZTBorderlessEntry Keyboard="{OnPlatform Android=Telephone, iOS=Default}"
+                                TextColor="{StaticResource PrimaryColor}" Style="{StaticResource DefaultEntry}" Text="{Binding MobileNumber}" Margin="5,0,0,0">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behaviors:OnlyNumericValuesBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
+                            </StackLayout>
+                        </Border>
+                        <Label Text="{Binding MobileNumberError}" IsVisible="{Binding IsError}" TextColor="{StaticResource ErrorColor}"/>
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZNext}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding NextCommand}" Margin="0,32,0,0"/>
+                    </StackLayout>
+                </StackLayout>
+
+            </Border>
+            <!--#endregion Body-->
+      </Grid>
+    </ContentPage.Content>
+</ContentPage>

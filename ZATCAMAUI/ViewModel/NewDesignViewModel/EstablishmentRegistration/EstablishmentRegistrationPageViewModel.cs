@@ -25,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public bool isFinaceDetailsChanged { get; set; } = false;
         public string isDraftEnabled { get; set; } = "";
         private Nreg_IdItem idItem { get; set; } = null;
-        private String calType = string.Empty;
+        private string calType = string.Empty;
         public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
         private EstablishmentRegistrationTabsEnum _currentTab;
         public EstablishmentRegistrationTabsEnum currentTab
@@ -1627,7 +1627,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 if (newItem.Oldmst.ToString().ToUpper().Equals("X"))
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.ExistingOutletError, AppResources.Information);
 
@@ -1635,7 +1635,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (newItem.MciEntry.ToString().ToUpper().Equals("X"))
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.DeleteError, AppResources.Information);
 
@@ -1643,7 +1643,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (newItem.ActNo.Equals("00000"))
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.MainOutletError, AppResources.Information); // Main ol cannot be deleted 
 
@@ -1670,7 +1670,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         if (str == "Yes")
                         {
-                            Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
+                            MainThread.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
                         }
                     };
                     await MopupService.Instance.PushAsync(confirmPopup);
@@ -2333,7 +2333,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
-                string[] filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
+                string[] filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForTaxEvasion();
 
                 // var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                 PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);

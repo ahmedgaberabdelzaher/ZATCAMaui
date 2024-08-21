@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration;
@@ -20,28 +19,21 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;
             viewModel.currentTab = outletNavigation.openedTab;
             BindingContext = viewModel;
-            ChangeAeroIcon();
-        }
-
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
+            if (outletNavigation.selectedOutletItem.MciEntry == "X" || !string.IsNullOrEmpty(outletNavigation.selectedOutletItem.Actnm))
             {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+                viewModel.isEditable = false;
             }
             else
             {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+                viewModel.isEditable = true;
             }
         }
+
+
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             viewModel?.OnAppearing();
             if (!viewModel.PostalAsPhysical)

@@ -30,9 +30,9 @@ namespace ZATCAMAUI.Core.Mangers
                     };
 
 
-                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
-                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     var serilized = JsonConvert.SerializeObject(taxPayerSubsidyModel);

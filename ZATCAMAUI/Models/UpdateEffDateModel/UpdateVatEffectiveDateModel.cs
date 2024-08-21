@@ -1,16 +1,16 @@
 ﻿
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.UpdateEffDateModel
 {
-    [Preserve(AllMembers = true)]
+    
     public class UpdateVatEffectiveDateModel
     {
         [JsonProperty("data")]
         public D d { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class D
     {
         public Metadata Metadata { get; set; }
@@ -62,12 +62,12 @@ namespace ZATCAMAUI.Models.UpdateEffDateModel
        // public ItemSet[] ItemSet { get; set; }
         public List<ItemSetResult> ItemSet { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public  class ItemSet
     {
         public List<ItemSetResult> results { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public partial class ItemSetResult
     {
         public Metadata Metadata { get; set; }
@@ -96,7 +96,7 @@ namespace ZATCAMAUI.Models.UpdateEffDateModel
         [JsonProperty("userType")]
         public string UserType { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public partial class Metadata
     {
         public Uri Id { get; set; }

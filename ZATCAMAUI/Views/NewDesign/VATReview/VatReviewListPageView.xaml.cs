@@ -1,7 +1,4 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.VATReviewModel;
@@ -20,12 +17,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         {
             InitializeComponent();
 
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             _viewModel = App.Locator.VatReviewListView;
 
@@ -39,27 +30,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             _viewModel.isNewRequestCreated = false;
             await _viewModel.VATObjectionList();
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-
+      
         private async void Reviews_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
         {
 

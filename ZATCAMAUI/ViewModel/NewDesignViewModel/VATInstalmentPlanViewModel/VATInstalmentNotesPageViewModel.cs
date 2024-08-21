@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Timers;
+﻿using System.Timers;
 using System.Windows.Input;
-using EGAZT.Models.InstalmentPlanModel;
-using EGAZT.Views.NewDesign.InstalmentPlan;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
-using GAZT.Helper;
-using GAZTeServicesBusinessLibrary.GAZTExceptions;
-using Rg.Plugins.Popup.Services;
-using Xamarin.Forms;
-using Xamarin.Forms.Internals;
+using Mopups.Services;
+using ZATCAMAUI;
+using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
-namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
+namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 {
-    [Preserve(AllMembers = true)]
-    public class VATInstalmentNotesPageViewModel : ViewModelBase
+
+    public class VATInstalmentNotesPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -27,20 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public System.Timers.Timer otpTimer;
         public int countDownSeconds;
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private bool _notesPageVisible = false;
         public bool NotesPageVisible
         {
@@ -53,7 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_notesPageVisible == value) return;
 
                 _notesPageVisible = value;
-                RaisePropertyChanged("NotesPageVisible");
+                OnPropertyChanged("NotesPageVisible");
             }
         }
         private bool _isOtpPageVisible = false;
@@ -68,7 +47,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isOtpPageVisible == value) return;
 
                 _isOtpPageVisible = value;
-                RaisePropertyChanged("IsOtpPageVisible");
+                OnPropertyChanged("IsOtpPageVisible");
             }
         }
 
@@ -84,7 +63,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isConfirmationPageVisible == value) return;
 
                 _isConfirmationPageVisible = value;
-                RaisePropertyChanged("IsConfirmationPageVisible");
+                OnPropertyChanged("IsConfirmationPageVisible");
             }
         }
 
@@ -100,7 +79,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_noteEditor == value) return;
 
                 _noteEditor = value;
-                RaisePropertyChanged("NoteEditor");
+                OnPropertyChanged("NoteEditor");
             }
         }
         private string _oTPFirstDigit;
@@ -124,7 +103,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                 }
 
-                RaisePropertyChanged("OTPFirstDigit");
+                OnPropertyChanged("OTPFirstDigit");
             }
         }
 
@@ -148,7 +127,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         OTPSecondDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPSecondDigit");
+                OnPropertyChanged("OTPSecondDigit");
             }
         }
 
@@ -172,7 +151,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         OTPThirdDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPThirdDigit");
+                OnPropertyChanged("OTPThirdDigit");
             }
         }
 
@@ -196,7 +175,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         OTPFourthDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPFourthDigit");
+                OnPropertyChanged("OTPFourthDigit");
             }
         }
 
@@ -212,7 +191,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_enteredOTP == value) return;
 
                 _enteredOTP = value;
-                RaisePropertyChanged("EnteredOTP");
+                OnPropertyChanged("EnteredOTP");
             }
         }
 
@@ -228,7 +207,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_nextSubmitText == value) return;
 
                 _nextSubmitText = value;
-                RaisePropertyChanged("NextSubmitText");
+                OnPropertyChanged("NextSubmitText");
             }
         }
 
@@ -244,7 +223,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_vATRevokeMessage == value) return;
 
                 _vATRevokeMessage = value;
-                RaisePropertyChanged("VATRevokeMessage");
+                OnPropertyChanged("VATRevokeMessage");
             }
         }
 
@@ -260,7 +239,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_applicationNUmber == value) return;
 
                 _applicationNUmber = value;
-                RaisePropertyChanged("ApplicationNumber");
+                OnPropertyChanged("ApplicationNumber");
             }
         }
 
@@ -276,7 +255,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_LblCountDownTimer == value) return;
 
                 _LblCountDownTimer = value;
-                RaisePropertyChanged("LblCountDownTimer");
+                OnPropertyChanged("LblCountDownTimer");
             }
         }
 
@@ -292,7 +271,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_mobileNumber == value) return;
 
                 _mobileNumber = value;
-                RaisePropertyChanged("MobileNumber");
+                OnPropertyChanged("MobileNumber");
             }
         }
 
@@ -310,7 +289,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isResendOTPEnabled == value) return;
 
                 _isResendOTPEnabled = value;
-                RaisePropertyChanged("IsResendOTPEnabled");
+                OnPropertyChanged("IsResendOTPEnabled");
             }
         }
 
@@ -326,7 +305,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_resendOTPTextColor == value) return;
 
                 _resendOTPTextColor = value;
-                RaisePropertyChanged("ResendOTPTextColor");
+                OnPropertyChanged("ResendOTPTextColor");
             }
         }
 
@@ -335,10 +314,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             countDownSeconds--;
 
-            /*if (countDownSeconds <= 9)
-                LblCountDownTimer = "0:0" + countDownSeconds.ToString();
-            else
-                LblCountDownTimer = "0:" + countDownSeconds.ToString();*/
 
 
             if (countDownSeconds <= 9 && countDownSeconds > 0)
@@ -385,31 +360,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public ICommand ContinueClick { get; set; }
         public ICommand CancelButton { get; set; }
 
-        public VATInstalmentNotesPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATInstalmentNotesPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
+           
             ContinueClick = new Command(async () =>
             {
                 await ContinueAsync();
             });
             CancelButton = new Command(async () =>
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
             });
             IsConfirmationPageVisible = true;
 
 
-            OnResendOTPClicked = new Command(async () =>
+            OnResendOTPClicked = new Command( () =>
             {
                 if (IsResendOTPEnabled)
                 {
@@ -477,7 +442,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 //Close here
             }
-            //await PopupNavigation.Instance.PopAsync();
+            //await MopupService.Instance.PopAsync();
             //MessagingCenter.Send<Object, Boolean>(this, "ISCallBackFromConfirmmessage", true);
         }
 

@@ -43,66 +43,65 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                 TaxPayerProfile TPAPIResponse = await UpdateEmailAdddress();
                 if (TPAPIResponse != null)
                 {
-                    App.TP.Email = TPAPIResponse.Email;
-                    CloseAllPopup();
-                    if (TPAPIResponse.Login == "X")
+                    App.TP.email = TPAPIResponse.email;
+                    this.CloseAllPopup();
+                    if (TPAPIResponse.login == "X")
                     {
                         var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.TPUpdateEmailSuccessConfirmation);
-                        confirmPopup.OnSelect = async (result) =>
-                         {
-                             if (result == "Yes")
-                             {
-                                 MainThread.BeginInvokeOnMainThread(async () =>
-                                 {
-                                     await Task.Run(() =>
-                                     {
-                                         App.DisplayProgressView();
-                                     });
-                                     if (App.TP != null)
-                                         App.TP = null;
-                                     if (App.PreviousIsArabic)
-                                     {
-                                         string langName = "ar-AE";
-                                         AppResources.Culture = new CultureInfo(langName);
-                                     }
-                                     else
-                                     {
-                                         string langName = "en-US";
-                                         AppResources.Culture = new CultureInfo(langName);
-                                     }
+                        confirmPopup.OnSelect =  (result) =>
+                        {
+                            if (result == "Yes")
+                            {
+                                MainThread.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await Task.Run(() =>
+                                    {
+                                        App.DisplayProgressView();
+                                    });
+                                    if (App.TP != null)
+                                        App.TP = null;
+                                    if (App.PreviousIsArabic)
+                                    {
+                                        string langName = "ar-AE";
+                                        AppResources.Culture = new CultureInfo(langName);
+                                    }
+                                    else
+                                    {
+                                        string langName = "en-US";
+                                        AppResources.Culture = new CultureInfo(langName);
+                                    }
 
-                                     try { await WebServiceManager.GAZTLogOff(); }
-                                     catch { }
+                                    try { await WebServiceManager.GAZTLogOff(); }
+                                    catch { }
 
-                                     await Task.Run(() =>
-                                     {
-                                         App.HideProgressView();
-                                     });
+                                    await Task.Run(() =>
+                                    {
+                                        App.HideProgressView();
+                                    });
 
-                                     App.IsLogOut = true;
-                                     App.IsLoginCalled = false;
-                                     App.IsSamlApiCalledAndroid = false;
+                                    App.IsLogOut = true;
+                                    App.IsLoginCalled = false;
+                                    App.IsSamlApiCalledAndroid = false;
 
-                                     try
-                                     {
-                                         App.httpClientHandler = new HttpClientHandler();
-                                         App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                                         App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-                                     }
-                                     catch (Exception)
-                                     {
-                                     }
-                                     await Application.Current.MainPage.Navigation.PopToRootAsync();
-                                 });
-                                 //MessagingCenter.Send<UpdateEmailPopUp>(this, "redirectToLogin");
-                             }
-                         };
+                                    try
+                                    {
+                                        App.httpClientHandler = new HttpClientHandler();
+                                        App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                                        App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                    }
+                                    await App.Current.MainPage.Navigation.PopToRootAsync();
+                                });
+                                //MessagingCenter.Send<UpdateEmailPopUp>(this, "redirectToLogin");
+                            }
+                        };
                         await MopupService.Instance.PushAsync(confirmPopup);
                     }
                     else
                     {
 
-                        System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
                         viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 1);
                     }
                 }
@@ -281,7 +280,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             base.OnAppearing();
 
             // Show existing email
-            viewModel.CurrentEmailText = App.TP?.Email;
+            viewModel.CurrentEmailText = App.TP?.email;
             RefreshControlsData();
         }
 

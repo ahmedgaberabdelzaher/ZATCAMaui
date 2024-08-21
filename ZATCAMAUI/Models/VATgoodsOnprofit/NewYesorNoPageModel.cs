@@ -56,7 +56,6 @@ namespace ZATCAMAUI.Models.VATgoodsOnprofit
             public ProfitGoods d { get; set; }
         }
 
-        // [Preserve(AllMembers = true)]
         public class VATFoodResults
         {
 
@@ -71,9 +70,5 @@ namespace ZATCAMAUI.Models.VATgoodsOnprofit
             public ProfitGoods data { get; set; }
         }
     }
-
-
-
-
 }
 

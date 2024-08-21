@@ -2292,155 +2292,54 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             InstallmentDetailsBtnTapped = new Command(async () =>
             {
 
-                var totalamount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
-                var instalmentamount = VATBillDueAmount.Replace(" SAR", "").Replace(",", "");
-                ZakatInstalments.d.DpAmt = DownPaymentAmount.ToString();
-                ZakatInstalments.d.TotAmt = instalmentamount.ToString();
-                ZakatInstalments.d.Operation = "51";
-                ZakatInstalments.d.StepNumber = "03";
-                ZakatInstalments.d.PlanDur = noOfInstalments.ToString();
-                ZakatInstalments.d.PymntFreq = SelectedFrequencyType;
+                try
+                {
+                    var totalamount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
+                    var instalmentamount = VATBillDueAmount.Replace(" SAR", "").Replace(",", "");
+                    ZakatInstalments.d.DpAmt = Math.Round(DownPaymentAmount).ToString();
+                    ZakatInstalments.d.TotAmt = instalmentamount.ToString();
+                    ZakatInstalments.d.Operation = "51";
+                    ZakatInstalments.d.StepNumber = "03";
+                    ZakatInstalments.d.PlanDur = noOfInstalments.ToString();
+                    ZakatInstalments.d.PymntFreq = SelectedFrequencyType;
 
+                    //Supress Null values *Cr205 submit 
+                    ZakatInstalments.d.DownPayReq = "";
+                    /* ZakatInstalments.d.PaymtDt = "/Date(189282600)/";//1976-01-01 00:00:00
+                     ZakatInstalments.d.InsDtOff = "/Date(189282600)/";//1976-01-01 00:00:00*/
+                    ZakatInstalments.d.PaymtDt = "1976-01-01T00:00:00";//1976-01-01 00:00:00
+                    ZakatInstalments.d.InsDtOff = "1976-01-01T00:00:00";//1976-01-01 00:00:00
+                    ZakatInstalments.d.OfcReason = "";
 
-                ZakatInstalments.d.insPlan_OffSet = new InsPlanOffSet();
-                ZakatInstalments.d.NotesSet = new NotesSetResult();
-                ZakatInstalments.d.insPlanSet = new InsPlanSet();
-                ZakatInstalments.d.retmsgSet = new RetmsgSet();
-                ZakatInstalments.d.FnDtlSet = new FnDtlSet();
-                ZakatInstalments.d.AttachSet = new AttachSet();
+                    ZakatInstalments.d.insPlan_OffSet = new List<object>();
+                    ZakatInstalments.d.NotesSet = new List<Models.ZakatInstalationModels.NotesSet>();
+                    ZakatInstalments.d.insPlanSet = new List<Models.ZakatInstalationModels.Results4>();
+                    ZakatInstalments.d.retmsgSet = new List<object>();
+                    ZakatInstalments.d.FnDtlSet = new List<FnDtlSetObject>();
+                    ZakatInstalments.d.AttachSet = new List<Attachment>();
 
-                if (IsInitialDraft || App.selectedZakatItem != "")
-                    try
+                   
+
+                    await Task.Run(async () =>
+                    {
+                        ZakatInstalments = await SubmitClicked();
+                    });
+
+                    if (ZakatInstalments.result != null)
                     {
 
 
-                        EnableDeclarationContinue();
-
-                        if (Preferences.Get("isZakat", false))
-                        {
-                            ZakatTitle = AppResources.ZakatInstalmetSelectTypeZakat;
-                        }
-                        else
-                        {
-                            ZakatTitle = AppResources.ZakatInstalmetSelectTypeIncomeTax;
-                        }
-
-                        GoBackClick = new Command(() =>
-                        {
-                            Backnavigations();
-                        });
-                        onMoreOptionClicked = new Command(async () =>
-                        {
-                            await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
-                        });
-
-                        CloseClick = new Command(() =>
-                        {
-                            CurrentIndex = 1;
-                            EnableSlectionView();
-                        });
-                        GoBackToBills = new Command(() =>
-                        {
-                            EnableVATBillView();
-                        });
-                        GoBackToAggrement = new Command(() =>
-                        {
-                            EnableAgreementView();
-                        });
-                        GoBackToAttachments = new Command(() =>
-                        {
-                            EnableAttachmentsView();
-                        });
-
-                        VATInstalationClicked = new Command(this.VATInstalationTapped);
-                        ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
-
-                        AggrementContinueBtnTapped = new Command(this.AggrementContinueBtnClicked);
-                        BillContinueBtnTapped = new Command(this.BillContinueBtnClicked);
-                        AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
-                        StatementsContinueBtnTapped = new Command(this.StatementsContinueBtnClicked);
-                        SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
-                        SummaryInstallmentDetailsBtnTapped = new Command(this.SummaryInstallmentDetailsBtnClicked);
-                        DisplayDetailsButtonTapped = new Command(this.DisplayDetailsButtonClicked);
-                        OnZakatInstalmentReasonTapped = new Command(this.OnZakatInstalmentReasonClicked);
-                        NewAttachmentTapped = new Command(this.NewAttachmentClicked);
-                        BankStatementsAttachmentTapped = new Command(BankStatementsAttachmentClicked);
-                        FinanceAttachmentTapped = new Command(FinanceAttachmentClicked);
-
-                        InstallmentDetailsBtnTapped = new Command(async () =>
-                        {
-
-                            try
-                            {
-                                var totalamount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
-                                var instalmentamount = VATBillDueAmount.Replace(" SAR", "").Replace(",", "");
-                                ZakatInstalments.d.DpAmt = Math.Round(DownPaymentAmount).ToString();
-                                ZakatInstalments.d.TotAmt = instalmentamount.ToString();
-                                ZakatInstalments.d.Operation = "51";
-                                ZakatInstalments.d.StepNumber = "03";
-                                ZakatInstalments.d.PlanDur = noOfInstalments.ToString();
-                                ZakatInstalments.d.PymntFreq = SelectedFrequencyType;
-
-                                //Supress Null values *Cr205 submit 
-                                ZakatInstalments.d.DownPayReq = "";
-                                /* ZakatInstalments.d.PaymtDt = "/Date(189282600)/";//1976-01-01 00:00:00
-                                 ZakatInstalments.d.InsDtOff = "/Date(189282600)/";//1976-01-01 00:00:00*/
-                                ZakatInstalments.d.PaymtDt = "1976-01-01T00:00:00";//1976-01-01 00:00:00
-                                ZakatInstalments.d.InsDtOff = "1976-01-01T00:00:00";//1976-01-01 00:00:00
-                                ZakatInstalments.d.OfcReason = "";
-
-                                ZakatInstalments.d.insPlan_OffSet = new List<object>();
-                                ZakatInstalments.d.NotesSet = new List<NotesSet>();
-                                ZakatInstalments.d.insPlanSet = new List<Results4>();
-                                ZakatInstalments.d.retmsgSet = new List<object>();
-                                ZakatInstalments.d.FnDtlSet = new List<FnDtlSetObject>();
-                                ZakatInstalments.d.AttachSet = new List<Attachment>();
-
-                                if (IsInitialDraft || App.selectedZakatItem != "")
-                                {
-
-                                }
-                                else
-                                {
-                                    //ZakatInstalments.d.Fbnum = "";
-                                    //ZakatInstalments.d.Status = "E0001";
-                                }
-
-                                await Task.Run(async () =>
-                                {
-                                    ZakatInstalments = await SubmitClicked();
-                                });
-
-                                if (ZakatInstalments.result != null)
-                                {
+                        VATPenalityAmount = string.Format("{0:N2}", ZakatInstalments.result.PenlAmt) + " SAR";
+                        EnableDisplayInstalmentsView();
+                        BindStatementsView();
 
 
-                                    VATPenalityAmount = string.Format("{0:N2}", ZakatInstalments.result.PenlAmt) + " SAR";
-                                    EnableDisplayInstalmentsView();
-                                    BindStatementsView();
 
-
-                                    //EnableStatementsView();
-
-                                }
-                                //                EnableInstalmentsScheduleView();
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.Message);
-                            }
-
-
-                        });
-                        ZakatInstalmentPlanModel = new ZakatInstalmentPlanModel();
-                        SelectedOutletOption = new ZakatInstalmentPlanModel();
-                        AddOutletDecisionOptions();
-                        AddFrequencyOptions();
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
+                }
+                catch (Exception )
+                {
+                }
 
             });
          }

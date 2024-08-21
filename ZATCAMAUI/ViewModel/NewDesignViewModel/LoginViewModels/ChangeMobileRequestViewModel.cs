@@ -17,7 +17,6 @@ using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public class ChangeMobileRequestViewModel : BaseViewModel
     {
 
@@ -756,7 +755,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         {
             try
             {
-                string[] filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
+                string[] filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForTaxEvasion();
                 PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
                 //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
@@ -797,8 +796,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                         }
                                         catch (Exception ex)
                                         {
-                                            Console.Write(ex.ToString());
-                                            Console.Write(ex.StackTrace.ToString());
+                                            
+                                            
                                         }
                                     }
                                     else
@@ -843,8 +842,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
         }
@@ -864,8 +863,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             finally
             {
@@ -988,7 +987,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
             catch (Exception)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                 });
@@ -1091,20 +1090,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             return false;
         }
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
         private bool _isArabic = false;
         public bool IsArabic
         {
@@ -1391,8 +1376,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -1471,7 +1456,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             finally
             {
@@ -1696,9 +1681,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             catch (Exception ex)
             {
 
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
 

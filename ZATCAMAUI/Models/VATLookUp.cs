@@ -1,4 +1,4 @@
-﻿using Foundation;
+﻿
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -45,7 +45,7 @@ namespace ZATCAMAUI.Models
         public string EinvEnfDt { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class VATLookUpD
     {
         [JsonProperty("lookups")]

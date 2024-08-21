@@ -4,8 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
@@ -13,452 +11,411 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="{x:Static ResourceManager:AppResources.ZZakatReturnListing}"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-
-            <Grid>
-                <StackLayout>
-                    <Grid Padding="0,5,0,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*" />
-                            <ColumnDefinition Width="60*" />
-                            <ColumnDefinition Width="20*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            FontSize="Large"
-                            HorizontalOptions="CenterAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.EstimateZakat}"
-                            TextColor="White"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            HorizontalOptions="StartAndExpand"
-                            IsVisible="{Binding IsBackStepButtonVisible}"
-                            Style="{StaticResource IconLabelStyle}"
-                            Text="{DynamicResource StyleReverseBack}"
-                            TextColor="White"
-                            VerticalOptions="CenterAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.BackButtonClicked}" />
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </Grid>
-
-                    <Border
-                        Padding="0"
-                        BackgroundColor="Black"
-                        StrokeShape="RoundRectangle 32,32,0,0">
-                        <Grid
-                            x:Name="VATRMainGrid"
-                            Margin="0"
-                            Padding="0,15,0,0"
-                            BackgroundColor="White"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand">
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="10*" />
-                                <RowDefinition Height="90*" />
-
-                            </Grid.RowDefinitions>
-                            <ContentPresenter
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" />
-                        </Grid>
-                    </Border>
-                </StackLayout>
-
-            </Grid>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
+   
     <ContentPage.Content>
 
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid
-                x:Name="ParentGrid"
-                Margin="0"
-                Padding="0,0,0,10"
-                ColumnSpacing="10"
-                HorizontalOptions="FillAndExpand"
-                RowSpacing="0"
-                VerticalOptions="FillAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="12*" />
-                    <RowDefinition Height="88*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="18*" />
-                    <ColumnDefinition Width="14*" />
-                </Grid.ColumnDefinitions>
-                <inputLayout:SfTextInputLayout
-                    x:Name="FrmLicenseIssuedBy"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="7"
-                    Margin="10,0,10,-6"
-                    ContainerType="Outlined"
-                    HasError="False"
-                    IsHintAlwaysFloated="True"
-                    OutlineCornerRadius="8"
-                    Stroke="{StaticResource Primary}">
-                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <inputLayout:LabelStyle TextColor="#B00020" />
-                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    <custom:GAZTBorderlessEntry
-                        FontAttributes="Bold"
-                        FontSize="Small"
-                        IsSpellCheckEnabled="False"
-                        Text="{Binding TxtSelectedStatus}" />
-                </inputLayout:SfTextInputLayout>
-                <buttons:SfButton
-                    x:Name="BPickerButton"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="7"
-                    Margin="10,0,10,0"
-                    Background="Transparent"
-                    Clicked="BPickerButton_Clicked" />
+        <Grid RowDefinitions="Auto,*">
 
-                <syncfusion:SfPicker
-                    x:Name="BPicker"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="7"
-                    Background="#EAF7CC"
-                    CancelButtonClicked="BPicker_CancelButtonClicked"
-                    ItemHeight="40"
-                    Mode="Dialog"
-                    OkButtonClicked="BPicker_OkButtonClicked"
-                    SelectionChanged="ICRStatusChnaged">
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
 
+                <StackLayout>
 
-                    <syncfusion:SfPicker.SelectionView>
-                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                    </syncfusion:SfPicker.SelectionView>
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        IsVisible="{Binding IsBackStepButtonVisible}"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
 
-                    <syncfusion:SfPicker.SelectedTextStyle>
-                        <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource Primary}" />
-                    </syncfusion:SfPicker.SelectedTextStyle>
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
 
-                    <syncfusion:SfPicker.TextStyle>
-                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
-                    </syncfusion:SfPicker.TextStyle>
+                    </Image>
 
-                    <syncfusion:SfPicker.Columns>
-                        <syncfusion:PickerColumn
-                            Width="270"
-                            DisplayMemberPath="Value"
-                            ItemsSource="{Binding ICRStatusList}"
-                            SelectedIndex="{Binding SelectedIndex}" />
-                    </syncfusion:SfPicker.Columns>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
 
-                    <syncfusion:SfPicker.HeaderView>
+                </StackLayout>
 
-                        <syncfusion:PickerHeaderView
-                            Height="40"
-                            Background="{StaticResource Primary}"
-                            Text="{x:Static ResourceManager:AppResources.ZZReturnStatus}">
-                            <syncfusion:PickerHeaderView.TextStyle>
-                                <syncfusion:PickerTextStyle TextColor="White" />
-                            </syncfusion:PickerHeaderView.TextStyle>
-                        </syncfusion:PickerHeaderView>
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.EstimateZakat}"
+                    VerticalOptions="Center" />
 
-                    </syncfusion:SfPicker.HeaderView>
+            </Grid>
+            <!--#endregion Header-->
 
-                    <syncfusion:SfPicker.FooterView>
+            <!--#region Body-->
+            <Border Grid.Row="1"
+                    Padding="10,0"
+                    Style="{StaticResource CommonTopCurves}">
 
-                        <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                            <syncfusion:PickerFooterView.TextStyle>
-                                <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
-                            </syncfusion:PickerFooterView.TextStyle>
-
-                        </syncfusion:PickerFooterView>
-
-                    </syncfusion:SfPicker.FooterView>
-
-                </syncfusion:SfPicker>
-
-                <StackLayout
-                    x:Name="ZakatICRListLayout"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="7"
-                    Margin="0,-2,0,0"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
-                    <ListView
-                        x:Name="ZakatICRList"
-                        BackgroundColor="White"
-                        HasUnevenRows="True"
+                    <Grid
+                        x:Name="ParentGrid"
+                        Margin="0"
+                        Padding="0,0,0,10"
+                        ColumnSpacing="10"
                         HorizontalOptions="FillAndExpand"
-                        ItemTapped="Bills_ItemTapped"
-                        ItemsSource="{Binding MyZakatReturns}"
-                        SelectedItem="{Binding SelectedZakatReturn}"
-                        SeparatorVisibility="None"
+                        RowSpacing="0"
                         VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="12*" />
+                            <RowDefinition Height="88*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="18*" />
+                            <ColumnDefinition Width="14*" />
+                        </Grid.ColumnDefinitions>
+                        <inputLayout:SfTextInputLayout
+                            x:Name="FrmLicenseIssuedBy"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="7"
+                            Margin="10,0,10,-6"
+                            ContainerType="Outlined"
+                            HasError="False"
+                            IsHintAlwaysFloated="True"
+                            OutlineCornerRadius="8"
+                            Stroke="{StaticResource Primary}">
+                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <inputLayout:LabelStyle TextColor="#B00020" />
+                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <custom:GAZTBorderlessEntry
+                                FontAttributes="Bold"
+                                FontSize="Small"
+                                IsSpellCheckEnabled="False"
+                                Text="{Binding TxtSelectedStatus}" />
+                        </inputLayout:SfTextInputLayout>
+                        <buttons:SfButton
+                            x:Name="BPickerButton"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="7"
+                            Margin="10,0,10,0"
+                            Background="Transparent"
+                            Clicked="BPickerButton_Clicked" />
+
+                        <syncfusion:SfPicker
+                            x:Name="BPicker"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="7"
+                            Background="#EAF7CC"
+                            CancelButtonClicked="BPicker_CancelButtonClicked"
+                            ItemHeight="40"
+                            Mode="Dialog"
+                            OkButtonClicked="BPicker_OkButtonClicked"
+                            SelectionChanged="ICRStatusChnaged">
 
 
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <!--  Margin="10"  -->
-                                    <cards:SfCardView
-                                        Margin="0,10,0,10"
-                                        BackgroundColor="White"
-                                        BorderColor="{StaticResource EntryTextColor}"
-                                        BorderWidth=".05"
-                                        CornerRadius="3"
-                                        IndicatorColor="{Binding BorderColour}"
-                                        IndicatorPosition="Left"
-                                        IndicatorThickness="5"
-                                        Opacity=".9">
-                                        <StackLayout
-                                            Margin="5,0,5,0"
-                                            Padding="5,10,5,10"
-                                            HorizontalOptions="FillAndExpand"
-                                            Orientation="Horizontal">
+                            <syncfusion:SfPicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                            </syncfusion:SfPicker.SelectionView>
 
-                                            <Grid
+                            <syncfusion:SfPicker.SelectedTextStyle>
+                                <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource Primary}" />
+                            </syncfusion:SfPicker.SelectedTextStyle>
+
+                            <syncfusion:SfPicker.TextStyle>
+                                <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                            </syncfusion:SfPicker.TextStyle>
+
+                            <syncfusion:SfPicker.Columns>
+                                <syncfusion:PickerColumn
+                                    Width="270"
+                                    DisplayMemberPath="Value"
+                                    ItemsSource="{Binding ICRStatusList}"
+                                    SelectedIndex="{Binding SelectedIndex}" />
+                            </syncfusion:SfPicker.Columns>
+
+                            <syncfusion:SfPicker.HeaderView>
+
+                                <syncfusion:PickerHeaderView
+                                    Height="40"
+                                    Background="{StaticResource Primary}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZReturnStatus}">
+                                    <syncfusion:PickerHeaderView.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                    </syncfusion:PickerHeaderView.TextStyle>
+                                </syncfusion:PickerHeaderView>
+
+                            </syncfusion:SfPicker.HeaderView>
+
+                            <syncfusion:SfPicker.FooterView>
+
+                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+
+                                    <syncfusion:PickerFooterView.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                    </syncfusion:PickerFooterView.TextStyle>
+
+                                </syncfusion:PickerFooterView>
+
+                            </syncfusion:SfPicker.FooterView>
+
+                        </syncfusion:SfPicker>
+
+                        <StackLayout
+                            x:Name="ZakatICRListLayout"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="7"
+                            Margin="0,-2,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                            <ListView
+                                x:Name="ZakatICRList"
+                                BackgroundColor="White"
+                                HasUnevenRows="True"
+                                HorizontalOptions="FillAndExpand"
+                                ItemTapped="Bills_ItemTapped"
+                                ItemsSource="{Binding MyZakatReturns}"
+                                SelectedItem="{Binding SelectedZakatReturn}"
+                                SeparatorVisibility="None"
+                                VerticalOptions="FillAndExpand">
+
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <!--  Margin="10"  -->
+                                            <cards:SfCardView
+                                                Margin="0,10,0,10"
                                                 BackgroundColor="White"
-                                                ColumnSpacing="0"
-                                                HorizontalOptions="FillAndExpand"
-                                                RowSpacing="0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="90*" />
-                                                    <ColumnDefinition Width="10*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    FontFamily="{StaticResource SomarSemiBold}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                    Text="{Binding FbtText}"
-                                                    VerticalOptions="StartAndExpand" />
-                                                <Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="0"
-                                                    Margin="0"
-                                                    FontFamily="{StaticResource SomarSemiBold}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                    Text="{Binding TaxPeriod}"
-                                                    VerticalOptions="CenterAndExpand" />
-
+                                                BorderColor="{StaticResource EntryTextColor}"
+                                                BorderWidth=".05"
+                                                CornerRadius="3"
+                                                IndicatorColor="{Binding BorderColour}"
+                                                IndicatorPosition="Left"
+                                                IndicatorThickness="5"
+                                                Opacity=".9">
                                                 <StackLayout
-                                                    Grid.Row="2"
-                                                    Grid.Column="0"
-                                                    Grid.ColumnSpan="2"
-                                                    Margin="0"
-                                                    Orientation="Horizontal"
-                                                    Spacing="0">
-
-                                                    <Label
-                                                        Margin="0,0,0,0"
-                                                        FontFamily="{StaticResource SomarSemiBold}"
-                                                        LineBreakMode="CharacterWrap"
-                                                        VerticalOptions="CenterAndExpand">
-                                                        <Label.FormattedText>
-                                                            <FormattedString>
-                                                                <Span
-                                                                    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                                                    Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                                    Text="{x:Static ResourceManager:AppResources.ReturnPeriod}" />
-                                                                <Span
-                                                                    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                                                    Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                                    Text=" : " />
-                                                            </FormattedString>
-                                                        </Label.FormattedText>
-                                                    </Label>
-                                                    <Label
-                                                        Margin="0,0,0,0"
-                                                        FlowDirection="LeftToRight"
-                                                        FontFamily="{StaticResource SomarSemiBold}"
-                                                        HorizontalOptions="StartAndExpand"
-                                                        LineBreakMode="CharacterWrap"
-                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
-                                                        Text="{Binding Period}"
-                                                        VerticalOptions="CenterAndExpand" />
-                                                </StackLayout>
-
-
-
-
-
-                                                <StackLayout
-                                                    Grid.Row="3"
-                                                    Grid.Column="0"
-                                                    Margin="0"
+                                                    Margin="5,0,5,0"
+                                                    Padding="5,10,5,10"
+                                                    HorizontalOptions="FillAndExpand"
                                                     Orientation="Horizontal">
 
-                                                    <Label
-                                                        Margin="0,0,0,0"
-                                                        FontFamily="{StaticResource SomarSemiBold}"
-                                                        LineBreakMode="CharacterWrap"
-                                                        VerticalOptions="CenterAndExpand">
-                                                        <Label.FormattedText>
-                                                            <FormattedString>
-                                                                <Span
-                                                                    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                                                    Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                                    Text="{x:Static ResourceManager:AppResources.DueDate}" />
-                                                                <Span
-                                                                    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                                                    Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                                    Text=" : " />
-                                                            </FormattedString>
-                                                        </Label.FormattedText>
-                                                    </Label>
-                                                    <Label
-                                                        Margin="0"
-                                                        FlowDirection="LeftToRight"
-                                                        FontFamily="{StaticResource SomarSemiBold}"
-                                                        HorizontalOptions="StartAndExpand"
-                                                        LineBreakMode="CharacterWrap"
-                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
-                                                        Text="{Binding DueDtC}"
-                                                        VerticalOptions="CenterAndExpand" />
+                                                    <Grid
+                                                        BackgroundColor="White"
+                                                        ColumnSpacing="0"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        RowSpacing="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="90*" />
+                                                            <ColumnDefinition Width="10*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            FontFamily="{StaticResource SomarSemiBold}"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                            Text="{Binding FbtText}"
+                                                            VerticalOptions="StartAndExpand" />
+                                                        <Label
+                                                            Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            Margin="0"
+                                                            FontFamily="{StaticResource SomarSemiBold}"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                            Text="{Binding TaxPeriod}"
+                                                            VerticalOptions="CenterAndExpand" />
+
+                                                        <StackLayout
+                                                            Grid.Row="2"
+                                                            Grid.Column="0"
+                                                            Grid.ColumnSpan="2"
+                                                            Margin="0"
+                                                            Orientation="Horizontal"
+                                                            Spacing="0">
+
+                                                            <Label
+                                                                Margin="0,0,0,0"
+                                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                                LineBreakMode="CharacterWrap"
+                                                                VerticalOptions="CenterAndExpand">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span
+                                                                            FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                                            Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                                            Text="{x:Static ResourceManager:AppResources.ReturnPeriod}" />
+                                                                        <Span
+                                                                            FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                                            Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                                            Text=" : " />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label
+                                                                Margin="0,0,0,0"
+                                                                FlowDirection="LeftToRight"
+                                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                LineBreakMode="CharacterWrap"
+                                                                Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                                Text="{Binding Period}"
+                                                                VerticalOptions="CenterAndExpand" />
+                                                        </StackLayout>
+
+
+
+
+
+                                                        <StackLayout
+                                                            Grid.Row="3"
+                                                            Grid.Column="0"
+                                                            Margin="0"
+                                                            Orientation="Horizontal">
+
+                                                            <Label
+                                                                Margin="0,0,0,0"
+                                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                                LineBreakMode="CharacterWrap"
+                                                                VerticalOptions="CenterAndExpand">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span
+                                                                            FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                                            Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                                            Text="{x:Static ResourceManager:AppResources.DueDate}" />
+                                                                        <Span
+                                                                            FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                                            Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                                            Text=" : " />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label
+                                                                Margin="0"
+                                                                FlowDirection="LeftToRight"
+                                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                LineBreakMode="CharacterWrap"
+                                                                Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                                Text="{Binding DueDtC}"
+                                                                VerticalOptions="CenterAndExpand" />
+                                                        </StackLayout>
+
+                                                        <Label
+                                                            Grid.Row="4"
+                                                            Grid.Column="0"
+                                                            Margin="0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            VerticalOptions="CenterAndExpand">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span
+                                                                        FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZStatus}" />
+                                                                    <Span
+                                                                        FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                                        Text=" : " />
+                                                                    <Span
+                                                                        FontFamily="{StaticResource SomarSemiBold}"
+                                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                                        Text="{Binding Status}" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                        <Label
+                                                            Grid.Row="5"
+                                                            Grid.Column="0"
+                                                            Margin="0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            VerticalOptions="CenterAndExpand">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span
+                                                                        FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZReferenceNumber}" />
+                                                                    <Span
+                                                                        FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                                        Text=" : " />
+                                                                    <Span
+                                                                        FontFamily="{StaticResource SomarSemiBold}"
+                                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                                        Text="{Binding Fbnum}" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                        <Image
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            Source="{Binding StatusImage}"
+                                                            VerticalOptions="StartAndExpand" />
+                                                    </Grid>
                                                 </StackLayout>
+                                            </cards:SfCardView>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
 
-                                                <Label
-                                                    Grid.Row="4"
-                                                    Grid.Column="0"
-                                                    Margin="0"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    VerticalOptions="CenterAndExpand">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span
-                                                                FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                                                Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                                Text="{x:Static ResourceManager:AppResources.ZStatus}" />
-                                                            <Span
-                                                                FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                                                Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                                Text=" : " />
-                                                            <Span
-                                                                FontFamily="{StaticResource SomarSemiBold}"
-                                                                Style="{StaticResource MicroGrayLabelStyleNewEn}"
-                                                                Text="{Binding Status}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <Label
-                                                    Grid.Row="5"
-                                                    Grid.Column="0"
-                                                    Margin="0"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    VerticalOptions="CenterAndExpand">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span
-                                                                FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                                                Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                                Text="{x:Static ResourceManager:AppResources.ZReferenceNumber}" />
-                                                            <Span
-                                                                FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                                                Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                                Text=" : " />
-                                                            <Span
-                                                                FontFamily="{StaticResource SomarSemiBold}"
-                                                                Style="{StaticResource MicroGrayLabelStyleNewEn}"
-                                                                Text="{Binding Fbnum}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    Source="{Binding StatusImage}"
-                                                    VerticalOptions="StartAndExpand" />
-                                            </Grid>
-                                        </StackLayout>
-                                    </cards:SfCardView>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="7"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding SetNoDataLabelVisibility}"
+                            Style="{StaticResource MiniBlackLabelStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZZReturnsNotFound}"
+                            VerticalOptions="Center" />
+                    </Grid>
 
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="7"
-                    HorizontalOptions="Center"
-                    IsVisible="{Binding SetNoDataLabelVisibility}"
-                    Style="{StaticResource MiniBlackLabelStyle}"
-                    Text="{x:Static ResourceManager:AppResources.ZZZReturnsNotFound}"
-                    VerticalOptions="Center" />
-            </Grid>
-            <!--  Acticity indicator layout start  -->
-            <Grid
-                Grid.Row="0"
-                Grid.Column="0"
-                IsVisible="{Binding IsLoading}">
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    BackgroundColor="Black"
-                    Opacity="0.4"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="True"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
-            <!--  Acticity indicator layout end  -->
+                </Grid>
+
+            </Border>
+            <!--#endregion Body-->
+
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
         </Grid>
+       
     </ContentPage.Content>
 </ContentPage>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.NewDesign.ChangeMobile.NafathChangeMobleNumberOptionsView"
+             Title="NafathChangeMobleNumberOptionsView"
+             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+            xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+            x:Name="page"
+            FlowDirection="{Binding AppDirection}">
+
+     <Mopups:PopupPage.Animation>
+        <Animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </Mopups:PopupPage.Animation>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Border VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Style="{StaticResource CommonTopCurves}" BackgroundColor="Green" Padding="0">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Orange">
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" >
+                        <Grid BackgroundColor="{StaticResource Secondary}" HorizontalOptions="FillAndExpand">
+                            <Label Text="{x:Static ResourceManager:AppResources.ChangeMobileNumber}" Style="{StaticResource SectionTitleWhiteBold}" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center"/>
+                            <Image Source="ic_close.png" BackgroundColor="Transparent" HorizontalOptions="End" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CloseCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                        <StackLayout Padding="20">
+                            <RadioButton Content="{x:Static ResourceManager:AppResources.IndividualOrEstablishment}" IsChecked="{Binding IndividualEnabled, Mode=TwoWay}" Style="{StaticResource SectionTitleBlackBold}"/>
+                            <RadioButton Content="{x:Static ResourceManager:AppResources.NDCompany}" IsChecked="{Binding CompanyEnabled, Mode=TwoWay}" Style="{StaticResource SectionTitleBlackBold}"/>
+                            <Label Text="{Binding ErrorMessage}" IsVisible="{Binding IsError}" TextColor="{StaticResource ErrorColor}"/>
+                            <buttons:SfButton Margin="10" Text="{x:Static ResourceManager:AppResources.OKText}" Command="{Binding ChangeMobileNumberCommand}" Style="{StaticResource PrimaryButtonStyle}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Border>
+        </StackLayout>
+    </ContentPage.Content>
+</Mopups:PopupPage>

@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Pages;
 using Mopups.Services;
 using Syncfusion.Maui.Picker;
@@ -41,7 +40,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             viewModel.PickerItemSource = viewModel.DataSource.PickerData;
             viewModel.DatePickerTitle = viewModel.DataSource.DatePickerTitle;
 
-            On<iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetPickerFont();
 
@@ -51,10 +49,10 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             CalendarTitle.FontFamily = "Somar-SemiBold";
                             FutureCalendarTitle.FontFamily = "Somar-SemiBold";
@@ -73,7 +71,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
                             futureCalendarPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
                         CalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
                         FutureCalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
@@ -113,7 +111,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             viewModel.PickerItemSource = viewModel.DataSource.PickerData;
             viewModel.DatePickerTitle = viewModel.DataSource.DatePickerTitle;
 
-            On<iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetPickerFont();
         }

@@ -1,10 +1,8 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Mopups.Services;
 using ZATCAMAUI.Models.PaymentModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Application = Microsoft.Maui.Controls.Application;
 
@@ -50,7 +48,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
                 BindingContext = _dashBoardPageViewModel;
             }
-            ChangeAeroIcon();
         }
 
         private async void OnCopyReferenceNumberButtonClicked(object sender, EventArgs e)
@@ -100,29 +97,11 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
                 viewModel._navigationService.GoBack();
             }
-            //viewModel._navigationService.GoBack();
 
 
 
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
 
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
     }
 }

@@ -7,22 +7,8 @@
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    <ContentPage.Resources>
-        <ResourceDictionary>
 
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
 
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid BackgroundColor="Transparent">
@@ -57,7 +43,7 @@
                             Grid.Column="0"
                             HeightRequest="24"
                             HorizontalOptions="StartAndExpand"
-                            IsVisible="{Binding IsBackStepButtonVisible}"
+                            
                             Source="arrowLeftwhite"
                             Style="{DynamicResource BackButtonArrow}"
                             VerticalOptions="StartAndExpand"
@@ -76,20 +62,52 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-        <Grid HeightRequest="850">
+         <Grid RowDefinitions="Auto,*">
 
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*">
 
-            <Grid
-                x:Name="WebviewGrid"
-                ColumnDefinitions="100*"
-                RowDefinitions="100*">
+                <StackLayout>
 
-                <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        IsVisible="{Binding IsBackStepButtonVisible}"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
 
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+            </Grid>
+            <!--#endregion Header-->
+
+             <Grid HeightRequest="850">
+
+                <Grid
+                    x:Name="WebviewGrid"
+                    ColumnDefinitions="100*"
+                    RowDefinitions="100*"/>
 
             </Grid>
 
-
+             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
         </Grid>
+       
     </ContentPage.Content>
 </ContentPage>

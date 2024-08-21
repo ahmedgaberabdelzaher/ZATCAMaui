@@ -1,9 +1,9 @@
 ﻿
-using Foundation;
+
 
 namespace ZATCAMAUI.Models
 {
-    [Preserve(AllMembers = true)]
+    
     public class TINModel
     {
         public string client { get; set; }

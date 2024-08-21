@@ -25,42 +25,20 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
         {
             InitializeComponent();
             viewModel = App.Locator.VATDeregistrationDetailsPage;
-            BindingContext = viewModel;
-            ChangeAeroIcon();
-            ChangeArrowDirection();
+            this.BindingContext = viewModel;
 
 
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
-                //viewModel.EnableReasonView();
                 await GetVatDeRegistrationData();
             });
 
             viewModel.VoidIsVisible = false;
             ContactName.IsEnabled = true;
-            if (App.IsArabic && Device.RuntimePlatform == Device.iOS)
-            {
-                viewModel.TermsAlignment = TextAlignment.End;
-            }
-            else
-            {
-                viewModel.TermsAlignment = TextAlignment.Start;
-            }
 
         }
 
-        public void ChangeArrowDirection()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
         private void MessagingCenterCallBacks()
         {
@@ -234,14 +212,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
         {
             base.OnAppearing();
             viewModel.IsSummaryViewEnabled = false;
-            ChangeArrowDirection();
             MessagingCenterCallBacks();
 
             if (viewModel.VATDeRegistrationDetailsData != null)
             {
                 if (viewModel.VATDeRegistrationDetailsData.d != null)
                 {
-                    if (viewModel.VATDeRegistrationDetailsData.d.Fbnumx == string.Empty)
+                    if (viewModel.VATDeRegistrationDetailsData.data.Fbnumx == string.Empty)
                     {
                         viewModel.VoidIsVisible = false;
                     }
@@ -283,7 +260,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                     viewModel.IsLoading = true;
                 });
             });
-            string dob = viewModel.DOB.Replace("/", "");
+            string dob = viewModel.DOB.Replace("/", "-");
 
             if (viewModel.IDType == AppResources.NationaID)
             {
@@ -321,7 +298,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                         }
                         else
                         {
-                            viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            //viewModel.ContactPersonName = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
+                            viewModel.ContactPersonName = vATSignUpData.d.taxpayerFullName; ;
                             ContactName.IsEnabled = false;
 
                             viewModel.FrameIDError = false;
@@ -409,10 +387,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
@@ -462,7 +440,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                         }
                         else
                         {
-                            viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            viewModel.ContactPersonName = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
                             ContactName.IsEnabled = false;
                             viewModel.FrameIDError = false;
                             // viewModel.FrameContactIDError = false;
@@ -548,10 +526,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-
+                          
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
@@ -598,17 +575,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             return Math.Abs(monthsApart);
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
 
         void outletDecisionOptionsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
@@ -649,11 +615,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             {
                 viewModel.VATDeRegistrationDetailsForAttach = vATDeRegistrationDetails;
                 SetDocType();
-                if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet != null && viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results != null)
+                if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet != null && viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet != null)
                 {
-                    if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results.Count != 0)
+                    if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.Count != 0)
                     {
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results as List<Attachment>);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
 
                         try
@@ -731,7 +697,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                                 viewModel.VatAttachmentsList.Remove(listitem);
 
 
-                            viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results.Remove(listitem);
+                            viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.Remove(listitem);
 
 
                             //if (indexToReduceTheSize != -1)
@@ -1126,7 +1092,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
         {
             viewModel.IsLoading = true;
 
-            string dob = viewModel.DOB.Replace("/", "");
+            string dob = viewModel.DOB.Replace("/", "-");
             ContactName.IsEnabled = true;
             if (viewModel.IDType == AppResources.NationaID)
             {
@@ -1161,7 +1127,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                         }
                         else
                         {
-                            viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            viewModel.ContactPersonName = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
                             //  viewModel.DOB = vATSignUpData.d.Birthdt10;
 
                             // viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
@@ -1249,10 +1215,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
@@ -1386,10 +1352,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
@@ -1510,7 +1474,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                 {
                     if (viewModel.VATDeRegistrationDetailsData.d != null)
                     {
-                        if (viewModel.VATDeRegistrationDetailsData.d.Fbnumx != string.Empty)
+                        if (viewModel.VATDeRegistrationDetailsData.data.Fbnumx != string.Empty)
                         {
                             viewModel.setDATA("04");
                             await viewModel.saveAsDraftVoidAPIMethodCall();

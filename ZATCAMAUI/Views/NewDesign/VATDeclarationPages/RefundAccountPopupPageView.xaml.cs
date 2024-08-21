@@ -22,7 +22,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel = App.Locator.RefundAccountPopupPageView;
                 this.BindingContext = viewModel;
                 SetPickerFont();
-                if (vATDeclaration != null && vATDeclaration.d != null)
+                if (vATDeclaration != null && vATDeclaration.data != null)
                 {
                     viewModel.VATDeclarationDetails = vATDeclaration;
                     onPageLoad();
@@ -35,7 +35,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                     if (App.ICRStatus != "E0001" && App.ICRStatus != "E0013")
                     {
-                        if (viewModel.VATDeclarationDetails.d.EstimatedFg == "A")
+                        if (viewModel.VATDeclarationDetails.data.EstimatedFg == "A")
                         {
                             ManageEnabledProperties(true);
                         }
@@ -63,10 +63,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             IDTypeDropdown.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -82,7 +82,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
                         IDTypeDropdown.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         IDTypeDropdown.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -124,7 +124,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         }
         protected override void OnAppearing()
         {
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
             {
                 IDTypeDropdown.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
                 IDNumberDropdown.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
@@ -164,8 +164,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 viewModel.IBANList.Clear();
                             }
                             viewModel.IBANList = null;
-                            viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.d.IBANSet.results);
-                            // viewModel.VATDeclarationDetails.d.OptIban = String.Empty;
+                            viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.data.IBANSet);
+                            // viewModel.VATDeclarationDetails.data.OptIban = String.Empty;
                             viewModel.NewAccountText = AppResources.ZTERNewAccount;
                         }
                         else
@@ -211,7 +211,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             {
                                 isExist = true;
                                 result.Iban = message;
-                                viewModel.VATDeclarationDetails.d.Iban = message;
+                                viewModel.VATDeclarationDetails.data.Iban = message;
                                 viewModel.NewAccountText = AppResources.VATREditAccount;
                             }
                             results1D.Add(result);
@@ -228,7 +228,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                         if (!isExist)
                         {
-                            viewModel.VATDeclarationDetails.d.Iban = message;
+                            viewModel.VATDeclarationDetails.data.Iban = message;
                             Result2 result2 = new Result2();
                             result2.Iban = message;
                             List<Result2> results = new List<Result2>();
@@ -268,10 +268,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel.createIBANType();
                 if (App.ICRStatus == "E0001")
                 {
-                    if (viewModel.VATDeclarationDetails.d.IBANSet.results != null && viewModel.VATDeclarationDetails.d.IBANSet.results.Count() != 0)
+                    if (viewModel.VATDeclarationDetails.data.IBANSet != null && viewModel.VATDeclarationDetails.data.IBANSet.Count() != 0)
                     {
                         viewModel.IBANList = new ObservableCollection<Result2>();
-                        viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.d.IBANSet.results);
+                        viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.data.IBANSet);
                         viewModel.IsVATRefunCheckedVisible = false;
                         viewModel.IsEnableCheckedRefund = false;
                         viewModel.IsNewAccountButtonVisible = false;
@@ -291,7 +291,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 bool value = IsCheckedDraftMode();
                 if (value || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
                 {
-                    if (viewModel.VATDeclarationDetails.d.TcFlg == "1")
+                    if (viewModel.VATDeclarationDetails.data.TcFlg == "1")
                     {
                         viewModel.IsDeclarationCheckedForRefund = true;
                     }
@@ -300,21 +300,21 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                         viewModel.IsDeclarationCheckedForRefund = false;
                     }
 
-                    if (viewModel.VATDeclarationDetails.d.RefundFg == "1")
+                    if (viewModel.VATDeclarationDetails.data.RefundFg == "1")
                     {
                         viewModel.IsSwichButtonEnable = true;
 
-                        if (viewModel.VATDeclarationDetails.d.IbanCb == "1")// IbanCb is equal to 1 if there is no data in IBan List as per Vinay
+                        if (viewModel.VATDeclarationDetails.data.IbanCb == "1")// IbanCb is equal to 1 if there is no data in IBan List as per Vinay
                         {
                             viewModel.IsNewAccountButtonVisible = true;
-                            if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Iban))
+                            if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.data.Iban))
                             {
-                                viewModel.IbanNumberText = viewModel.VATDeclarationDetails.d.Iban;
+                                viewModel.IbanNumberText = viewModel.VATDeclarationDetails.data.Iban;
                                 viewModel.IBANList = new ObservableCollection<Result2>();
                                 Result2 result = new Result2();
-                                result.Iban = viewModel.VATDeclarationDetails.d.Iban;
+                                result.Iban = viewModel.VATDeclarationDetails.data.Iban;
                                 viewModel.IBANList.Add(result);
-                                viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
+                                viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.data.Iban).FirstOrDefault();
                                 viewModel.NewAccountText = AppResources.VATREditAccount;
                             }
                             else
@@ -328,16 +328,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             viewModel.IsTextBoxVisibleForIban = false;
                             viewModel.IsDropdownVisibleForIban = true;
                             viewModel.IsNewAccountButtonVisible = false;
-                            if (viewModel.VATDeclarationDetails.d.IBANSet.results != null && viewModel.VATDeclarationDetails.d.IBANSet.results.Count() != 0)
+                            if (viewModel.VATDeclarationDetails.data.IBANSet != null && viewModel.VATDeclarationDetails.data.IBANSet.Count() != 0)
                             {
                                 viewModel.IBANList = new ObservableCollection<Result2>();
-                                viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.d.IBANSet.results);
+                                viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.data.IBANSet);
                             }
-                            if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Iban))
+                            if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.data.Iban))
                             {
                                 MainThread.BeginInvokeOnMainThread(() =>
                                 {
-                                    viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
+                                    viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.data.Iban).FirstOrDefault();
 
                                 });
                             }
@@ -350,19 +350,19 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 viewModel.IsVATRefunCheckedVisible = true;
                             }
                         }
-                        if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Idtype))
+                        if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.data.Idtype))
                         {
-                            viewModel.SelectedIBANType = viewModel.IBANTypesList.Where(x => x.key == viewModel.VATDeclarationDetails.d.Idtype).FirstOrDefault();
+                            viewModel.SelectedIBANType = viewModel.IBANTypesList.Where(x => x.key == viewModel.VATDeclarationDetails.data.Idtype).FirstOrDefault();
                             if (viewModel.SelectedIBANType != null)
                             {
                                 await viewModel.SetIBANIdNumber();
                             }
                         }
-                        if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Idnum))
+                        if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.data.Idnum))
                         {
                             if (viewModel.IBANIDNumberList != null && viewModel.IBANIDNumberList.Count != 0)
                             {
-                                viewModel.SelectedIBANIDNumber = viewModel.IBANIDNumberList.Where(x => x.Idnumber == viewModel.VATDeclarationDetails.d.Idnum).FirstOrDefault();
+                                viewModel.SelectedIBANIDNumber = viewModel.IBANIDNumberList.Where(x => x.Idnumber == viewModel.VATDeclarationDetails.data.Idnum).FirstOrDefault();
                             }
                         }
                     }
@@ -384,7 +384,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         public void ManageValidations()
         {
             //Est flag = "A"--Enable
-            if (viewModel.VATDeclarationDetails.d.IBANSet != null && viewModel.VATDeclarationDetails.d.IBANSet.results.Count != 0)
+            if (viewModel.VATDeclarationDetails.data.IBANSet != null && viewModel.VATDeclarationDetails.data.IBANSet.Count != 0)
             {
                 viewModel.IsNewAccountButtonVisible = false;
             }
@@ -626,7 +626,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            MopupService.Instance.PushAsync(new NewAccountPopPage(viewModel.VATDeclarationDetails.d.Iban));
+            MopupService.Instance.PushAsync(new NewAccountPopPage(viewModel.VATDeclarationDetails.data.Iban));
         }
 
         private void SfButton_Clicked(object sender, EventArgs e)
@@ -729,11 +729,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 {
                     viewModel.IsCarriedForwandReviewMessageForRefund = true;
                     decimal FourteenA = 0;
-                    if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.TotaldueVat) && !string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Preperiodcorr))
+                    if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.data.TotaldueVat) && !string.IsNullOrEmpty(viewModel.VATDeclarationDetails.data.Preperiodcorr))
                     {
-                        FourteenA = Convert.ToDecimal(viewModel.VATDeclarationDetails.d.TotaldueVat) + Convert.ToDecimal(viewModel.VATDeclarationDetails.d.Preperiodcorr);
+                        FourteenA = Convert.ToDecimal(viewModel.VATDeclarationDetails.data.TotaldueVat) + Convert.ToDecimal(viewModel.VATDeclarationDetails.data.Preperiodcorr);
                     }
-                    if (viewModel.IsSwichButtonEnable == false && FourteenA < 5000 && Convert.ToDecimal(viewModel.VATDeclarationDetails.d.NetdueVat) < 0 || viewModel.IsSwichButtonEnable == true && FourteenA < 0)
+                    if (viewModel.IsSwichButtonEnable == false && FourteenA < 5000 && Convert.ToDecimal(viewModel.VATDeclarationDetails.data.NetdueVat) < 0 || viewModel.IsSwichButtonEnable == true && FourteenA < 0)
                     {
 
 
@@ -769,13 +769,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     {
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            viewModel.IsNewLoading = true;
+                            viewModel.IsLoading = true;
                             this.CloseWhenBackgroundIsClicked = false;
                         });
                         await viewModel.SubmitClicked();
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            viewModel.IsNewLoading = false;
+                            viewModel.IsLoading = false;
                             this.CloseWhenBackgroundIsClicked = true;
                         });
                     }
@@ -785,13 +785,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 {
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        viewModel.IsNewLoading = true;
+                        viewModel.IsLoading = true;
                         this.CloseWhenBackgroundIsClicked = false;
                     });
                     await viewModel.SubmitClicked();
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        viewModel.IsNewLoading = false;
+                        viewModel.IsLoading = false;
                         this.CloseWhenBackgroundIsClicked = true;
                     });
                 }
@@ -811,7 +811,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                     headerAmountInfo.HeaderText = AppResources.ZZZConfirmationMsg;
                     headerAmountInfo.IsLinkAvailable = false;
-                    if (viewModel.VATDeclarationDetails != null && viewModel.VATDeclarationDetails.d != null && viewModel.VATDeclarationDetails.d.GoliveFg == "X")
+                    if (viewModel.VATDeclarationDetails != null && viewModel.VATDeclarationDetails.data != null && viewModel.VATDeclarationDetails.data.GoliveFg == "X")
                     {
                         headerAmountInfo.Message = AppResources.ZZZRefundYesMsgForFiteenPercent;
                     }

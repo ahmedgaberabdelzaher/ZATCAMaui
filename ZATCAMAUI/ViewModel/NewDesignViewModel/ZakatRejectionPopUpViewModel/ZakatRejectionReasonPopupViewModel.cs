@@ -1,10 +1,9 @@
 ﻿
-using Foundation;
 using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatRejectionPopUpViewModel
 {
-    [Preserve(AllMembers = true)]
+    
     public class ZakatRejectionReasonPopupViewModel : BaseViewModel
     {
         public string _rejectReasonText = string.Empty;
@@ -25,14 +24,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatRejectionPopUpViewModel
 
         public ZakatRejectionReasonPopupViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
+           
         }
     }
 }

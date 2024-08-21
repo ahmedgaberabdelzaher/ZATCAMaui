@@ -12,7 +12,7 @@ namespace ZATCAMAUI.Core.Mangers
 
     public static class VatRegistrationWebServiceManager
     {
-        #region VatRegistration
+       
 
         public async static Task<VatCommencementDateFormat> GAZTGetVATEligibilityDate(string vatEligibleStartDate, string txntpz)
         {
@@ -24,9 +24,9 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     string langz = UtilityManager.GetLanguageParameter();
-                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
-                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     String url = ZATCAConstants.GetVatEligilibilityDate + App.LoginDataRetrieved.TIN + "&VATTaxableDate=" + vatEligibleStartDate + "&transactionType=" + txntpz;
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -113,9 +113,9 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
-                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     var lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient();
                     String url = ZATCAConstants.GAZTGetVATRegistrationData + App.LoginDataRetrieved.TIN + "&language=" + lang + "&transactionType=" + "04";
@@ -197,9 +197,9 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
-                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     var lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient();
                     String url = ZATCAConstants.GAZTGetVATRegistrationData + App.LoginDataRetrieved.TIN + "&language=" + lang + "&transactionType=" + pageType;
@@ -279,9 +279,9 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
-                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     var lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient();
                     String url = ZATCAConstants.GAZTGetVATRegistrationData + App.LoginDataRetrieved.TIN + "&language=" + lang + "&transactionType=CRE_RGVT";
@@ -360,9 +360,9 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
-                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     var lang = UtilityManager.GetLanguageParameter();
                     bool isReview = false;
                     HttpClient client = new HttpClient();
@@ -443,9 +443,9 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
-                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     var lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -542,9 +542,9 @@ namespace ZATCAMAUI.Core.Mangers
                         string lang = UtilityManager.GetLanguageParameter();
                         String url = ZATCAConstants.SaveVATRegistration;
                         HttpClient client = new HttpClient();
-                        string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
-                        string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
-                        string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                        string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                        string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                        string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                         client.DefaultRequestHeaders.Add("Accept", "application/json");
                         client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                         client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -651,8 +651,8 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             catch (Exception ex)
                             {
-                                Console.WriteLine(ex.Message);
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                                 return null;
                             }
 
@@ -704,9 +704,9 @@ namespace ZATCAMAUI.Core.Mangers
                         //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                         //client.DefaultRequestHeaders.Add("Accept", "application/json");
                         HttpClient client = new HttpClient(App.httpClientHandler);
-                        string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
-                        string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
-                        string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                        string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                        string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                        string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
 
                         client.DefaultRequestHeaders.Add("Accept", "application/json");
                         client.DefaultRequestHeaders.Add("X-Session-Language", lang);
@@ -1036,8 +1036,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -1091,10 +1091,8 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTUnlockAccountException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -1125,12 +1123,11 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
 
                     var serilized = JsonConvert.SerializeObject(unlockAccountChangePwd);
-                    Console.WriteLine("API for UnlockaccountOTPResponse+ ----------------" + serilized);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(url, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     var dataresponse = JsonConvert.DeserializeObject<UnlockAccountValidateRes>(detailJson);
-                    Console.WriteLine("API for UnlockaccountOTPResponse+ ----------------" + detailJson);
+                  
 
                     if (!string.IsNullOrEmpty(detailJson) && dataresponse?.result == null)
                     {
@@ -1140,7 +1137,7 @@ namespace ZATCAMAUI.Core.Mangers
                             string errorMessage = string.Empty;
                             errorMessage = errorMesg.error.innererror.errordetails[0].message;
                             errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
                             throw new GAZTUnlockAccountException(errorMessage);
                         }
@@ -1153,8 +1150,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }

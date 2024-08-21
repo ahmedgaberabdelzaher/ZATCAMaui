@@ -81,21 +81,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                 OnPropertyChanged("CaseDetailedListViewData");
             }
         }
-
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
         public ObservableCollection<GeneralServicesListModel> _fillingFrquencyMenuList { get; set; }
         public ObservableCollection<GeneralServicesListModel> FillingFrquencyMenuList
         {
@@ -287,7 +272,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             {
                 IsLoading = false;
 
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();

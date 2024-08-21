@@ -137,7 +137,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         //    set
         //    {
         //        _colorOf = value;
-        //        RaisePropertyChanged("ColorOf");
+        //        OnPropertyChanged("ColorOf");
         //    }
         //}
 
@@ -253,7 +253,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                     {
                         string[] filetypes;
 
-                        filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForAll();
+                        filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForAll();
                         PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
                         //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 

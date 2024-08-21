@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -9,7 +8,7 @@ using Page = Microsoft.Maui.Controls.Page;
 
 namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 {
-   
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATReturnSuccessfullPageView : ContentPage
     {
@@ -23,9 +22,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 InitializeComponent();
                 viewModel = App.Locator.VATReturnSuccessfullPageView;
                 BindingContext = viewModel;
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
-                if (vATDeclaration != null && vATDeclaration.d != null)
+                if (vATDeclaration != null && vATDeclaration.data != null)
                 {
                     viewModel.SadadNumber = string.Empty;
                     viewModel.IsSadadNumberVisible = false;
@@ -33,17 +30,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     viewModel.IsAcknowledgementButtonVisible = false;
                     viewModel.IsCreditCarriedTextVisible = false;
                     viewModel.VATDeclarationData = vATDeclaration;
-                    viewModel.ReturnReferenceNumber = vATDeclaration.d.Fbnum;
-                    viewModel.TaxablePeriod = vATDeclaration.d.Perslt;
+                    viewModel.ReturnReferenceNumber = vATDeclaration.data.Fbnum;
+                    viewModel.TaxablePeriod = vATDeclaration.data.Perslt;
 
-                    if (App.ICRStatus == "E0045" && viewModel.VATDeclarationData.d.RefundFg != "1")
+                    if (App.ICRStatus == "E0045" && viewModel.VATDeclarationData.data.RefundFg != "1")
                     {
-                        if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                        if (Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) <= 0)
                         {
                             viewModel.IsSadadNumberVisible = false;
                             viewModel.IsRefreshButtonVisible = false;
                             viewModel.IsButtonVisible = true;
-                            if (vATDeclaration.d.EstimatedFg == "X")
+                            if (vATDeclaration.data.EstimatedFg == "X")
                             {
                                 viewModel.IsAcknowledgementButtonVisible = false;
                             }
@@ -59,13 +56,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     }
                     else
                     {
-                        if (App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0 || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0 || App.ICRStatus == "E0055" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                        if (App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) <= 0 || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) <= 0 || App.ICRStatus == "E0055" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) <= 0)
                         {
                             viewModel.IsSadadNumberVisible = false;
                             viewModel.IsRefreshButtonVisible = false;
                             viewModel.IsButtonVisible = true;
                             viewModel.IsCreditCarriedTextVisible = true;
-                            if (vATDeclaration.d.EstimatedFg == "X")
+                            if (vATDeclaration.data.EstimatedFg == "X")
                             {
                                 viewModel.IsAcknowledgementButtonVisible = false;
                             }
@@ -76,7 +73,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                         }
                         else
                         {
-                            if (App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0 || App.ICRStatus == "E0056" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0 || App.ICRStatus == "E0001" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0 || App.ICRStatus == "E0013" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0)
+                            if (App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) > 0 || App.ICRStatus == "E0056" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) > 0 || App.ICRStatus == "E0001" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) > 0 || App.ICRStatus == "E0013" && Convert.ToDouble(viewModel.VATDeclarationData.data.NetdueVat) > 0)
                             {
                                 RefreshForSadad();
                             }
@@ -86,12 +83,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             }
                         }
                     }
-                    if (viewModel.VATDeclarationData.d.RefundFg == "1")
+                    if (viewModel.VATDeclarationData.data.RefundFg == "1")
                     {
                         viewModel.IsSadadNumberVisible = false;
                         viewModel.IsRefreshButtonVisible = false;
                         viewModel.IsButtonVisible = true;
-                        if (vATDeclaration.d.EstimatedFg == "X")
+                        if (vATDeclaration.data.EstimatedFg == "X")
                         {
                             viewModel.IsAcknowledgementButtonVisible = false;
                         }
@@ -114,8 +111,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
 
             try
             {
@@ -148,33 +143,23 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
             }
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
         public async void RefreshForSadad()
         {
             try
             {
-               await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                await Task.Run(() =>
+                 {
+                     viewModel.IsLoading = true;
+                 });
                 await Task.Run(async () =>
                 {
                     await viewModel.OnRefreshClick();
                 });
-               await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                await Task.Run(() =>
+                 {
+                     viewModel.IsLoading = false;
+                 });
             }
             catch (Exception)
             {
@@ -256,17 +241,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         public async Task doValidateVATReturnAmount()
         {
 
-            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(viewModel.VATDeclarationData.d.Fbguid, viewModel.VATDeclarationData.d.Fbnum, App.TP.Tin, viewModel.VATDeclarationData.d.Persl);
+            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(viewModel.VATDeclarationData.data.Fbguid, viewModel.VATDeclarationData.data.Fbnum, App.TP.Tin, viewModel.VATDeclarationData.data.Persl);
 
 
-            if (_vATDeclaration.d.MadabutFg == "X")
+            if (_vATDeclaration.data.MadabutFg == "X")
             {
-               await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
             }
             else
             {
 
-               await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, _vATDeclaration.d.OpenliMsg));
+                await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, _vATDeclaration.data.OpenliMsg));
 
             }
 

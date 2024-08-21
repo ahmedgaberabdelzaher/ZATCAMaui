@@ -85,8 +85,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             catch (GAZTUnlockAccountException ex)
             {
 
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
             catch (InternetException ex)
@@ -200,10 +200,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         {
             // MainListData = new ObservableCollection<IbanListSetResult>();
             MainListData.Clear();
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
 
             await Task.Run(async () =>
             {
@@ -293,8 +290,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     }
                     catch (Exception ex)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         IsLoading = false;
                     }
                 }

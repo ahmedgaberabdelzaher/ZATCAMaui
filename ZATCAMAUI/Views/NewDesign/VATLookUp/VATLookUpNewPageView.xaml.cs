@@ -41,7 +41,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
 
                 TryHarder = true,
                 AutoRotate = false,
-                TryInverted = true,
 
             };
             viewModel.IsShowScanView = false;
@@ -52,10 +51,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             PPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             PPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -64,7 +63,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
 
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             PPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             PPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";

@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-using Foundation;
+
 
 namespace ZATCAMAUI.Models
 {
@@ -108,7 +108,7 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public Header header { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class ErrorDetail
     {
         [DataMember]
@@ -116,7 +116,7 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public string message { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class Header
     {
         [DataMember]
@@ -126,12 +126,12 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public MoreInformation moreInformation { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class MoreInformation
     {
         public List<ErrorDetail> errorDetails { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class Status
     {
         [DataMember]

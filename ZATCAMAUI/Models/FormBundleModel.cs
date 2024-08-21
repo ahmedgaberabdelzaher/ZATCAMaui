@@ -1,4 +1,4 @@
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -75,13 +75,13 @@ namespace ZATCAMAUI.Models
         [JsonProperty("returnsStatus")]
         public List<FormBundleApplicationNumberModelResult> results { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class FormBundleApplicationNumberModel
     {
         [JsonProperty("data")]
         public FormBundleApplicationNumberModelD d { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class FbnumDetailList
     {
         public string Fbnum { get; set; }

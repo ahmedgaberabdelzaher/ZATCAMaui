@@ -1,7 +1,4 @@
-﻿using Syncfusion.Maui.Picker;
-using System.Globalization;
-using System.Resources;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
 
@@ -22,7 +19,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
             InitializeComponent();
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
             SetPickerFont();
-            SetLTR();
             //TinsPicker
 
         }
@@ -30,16 +26,16 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         TinsPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                         TinsPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                         TinsPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
                         TinsPicker.TextStyle.FontFamily = "Somar-SemiBold";
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         TinsPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         TinsPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         TinsPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -54,23 +50,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
             }
 
         }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                //this.FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-            }
-            else
-            {
-                //this.FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-            }
-        }
+
         private void TINs_Clicked(object sender, EventArgs e)
         {
             TinsPicker.IsOpen = true;
@@ -128,11 +108,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
         {
             try
             {
-                TIN selectedtin = viewModel.TINs[TinsPicker.Columns[0].SelectedIndex];
+                TINModel selectedtin = viewModel.TINs[TinsPicker.Columns[0].SelectedIndex];
                 //TinsPicker.SelectedItem = selectedtin;//TINID
                 viewModel.SelectedTinId = selectedtin;//selectedregion
                 viewModel.SelectedTinIdPrev = selectedtin;//selectedregion
-                viewModel.TINID = selectedtin.Tin;
+                viewModel.TINID = selectedtin.TIN;
+
             }
             catch (Exception)
             {
@@ -142,7 +123,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
         }
         private void TinsPicker_CancelButtonClicked(object sender, EventArgs e)
         {
-           // TinsPicker.SelectedItem = viewModel.SelectedTinIdPrev;//TINID
+            // TinsPicker.SelectedItem = viewModel.SelectedTinIdPrev;//TINID
             viewModel.SelectedTinId = viewModel.SelectedTinIdPrev;//selectedregion
             if (viewModel.SelectedTinIdPrev == null)
             {

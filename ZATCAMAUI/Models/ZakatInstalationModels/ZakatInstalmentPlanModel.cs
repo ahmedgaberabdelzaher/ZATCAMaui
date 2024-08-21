@@ -1,4 +1,4 @@
-using Foundation;
+
 using Newtonsoft.Json;
 using static ZATCAMAUI.Models.ZakatInstalationModels.ZAKATRequestPlanModel;
 namespace ZATCAMAUI.Models.ZakatInstalationModels
@@ -732,7 +732,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
     
     public class ZakatInstalmentPlanRequestListModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
         
@@ -791,7 +791,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
             public string IptypeFg { get; set; }
 
         }
-        [Preserve(AllMembers = true)]
+        
         public class WorklistSet
         {
             [JsonProperty("worklist")]
@@ -1198,11 +1198,11 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
     {
         public List<object> results { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
 
     public class ZakatSummaryInputModel
     {
-        [Preserve(AllMembers = true)]
+        
         public class Metadata
         {
             public string id { get; set; }
@@ -1314,18 +1314,18 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
             [JsonProperty("taxOfficerUID")]
             public string TaxOffUid { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
 
 
 
     }
-    [Preserve(AllMembers = true)]
+    
     public class ZakatSummaryInputModel1
     {
 
-        [Preserve(AllMembers = true)]
+        
 
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
@@ -1336,7 +1336,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
             public string uri { get; set; }
             public string type { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class InvoicesUI5
         {
             public string amount { get; set; }
@@ -1349,7 +1349,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
             public string invoice { get; set; }
             public string taxType { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class D
         {
             public string taxPeriod { get; set; }
@@ -1390,7 +1390,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
             public bool auditorNumber { get; set; }
             public string contractNumber { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
     }
@@ -1709,10 +1709,10 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
     public class ZakatInstalmentInvListModel
     {
 
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public List<Result> d { get; set; }
-        [Preserve(AllMembers = true)]
+        
         public class Metadata
         {
             public string id { get; set; }
@@ -1774,7 +1774,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
             [JsonProperty("currency")]
             public string Waers { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class D
         {
             
@@ -2022,7 +2022,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
             public List<Result> AttachSet { get; set; }
             
         }
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
 

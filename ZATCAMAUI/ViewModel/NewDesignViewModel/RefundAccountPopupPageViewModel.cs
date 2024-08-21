@@ -126,7 +126,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     { 
                         if (VATDeclarationDetails.data.PendingIbanMsg != "")
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -558,19 +558,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 _iBANList = value;
                 OnPropertyChanged("IBANList");
-            }
-        }
-        private bool _isNewLoading = false;
-        public bool IsNewLoading
-        {
-            get
-            {
-                return _isNewLoading;
-            }
-            set
-            {
-                _isNewLoading = value;
-                OnPropertyChanged("IsNewLoading");
             }
         }
 
@@ -1075,7 +1062,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         //newDesignPopUp.HeaderWithInfos = headerWithInfos;
                         //newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        //PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        //MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                         result = true;
 

@@ -1,4 +1,4 @@
-﻿using Foundation;
+﻿
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -83,7 +83,7 @@ namespace ZATCAMAUI.Models
         public string CityName { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class SignupCityRootObject
     {
         [JsonProperty("data")]

@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿
+using Foundation;
 using MobileCoreServices;
 using UIKit;
 using ZATCAMAUI.Platforms.iOS.DependencyServices;
@@ -6,7 +7,7 @@ using ZATCAMAUI.Platforms.iOS.DependencyServices;
 [assembly: Dependency(typeof(ZATCADeviceInfo))]
 namespace ZATCAMAUI.Platforms.iOS.DependencyServices
 {
-    public class ZATCADeviceInfo : Core.Interfaces.IDeviceInfo
+    public class ZATCADeviceInfo : Core.Interfaces.IDeviceInfoZATCA
     {
         public string Model => throw new NotImplementedException();
 
@@ -140,7 +141,7 @@ namespace ZATCAMAUI.Platforms.iOS.DependencyServices
             }
         }
 
-        bool Core.Interfaces.IDeviceInfo.IsJailBreakDetected()
+        bool Core.Interfaces.IDeviceInfoZATCA.IsJailBreakDetected()
         {
             try
             {

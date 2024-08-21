@@ -57,7 +57,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             viewModel.IsLoading = true;
             viewModel.IndividualBackImg = "vat_tile_listofsignup.png";
             viewModel.EstablishmentBackImg = "vat_tile_listofsignup_W.png";
-           await MopupService.Instance.PushAsync(new NafathPopUpPage());//CR6094
+            await MopupService.Instance.PushAsync(new NafathPopUpPage());//CR6094
         }
 
         private void OnBackArrowTapped(object sender, TappedEventArgs e)

@@ -389,7 +389,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     string[] filetypes;
 
-                    filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForAll();
+                    filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForAll();
 
                     var customFileType = new FilePickerFileType(
                         new Dictionary<DevicePlatform, IEnumerable<string>>
@@ -445,7 +445,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         string[] filetypes;
 
 
-                        filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForAll();
+                        filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForAll();
 
                         if (IsComeForWhichAttachment == WhichAttachment.VATDeregistration ||
                         IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
@@ -637,7 +637,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                                 }
                                                                 catch (Exception ex)
                                                                 {
-                                                                    Console.WriteLine(ex.Message);
+                                                                    
                                                                     AttachmentName = string.Empty;
                                                                     await Task.Run(() =>
                                                                     {
@@ -647,7 +647,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                                 }
 
                                                                 ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(AttachmentsList.results);
-                                                                Device.BeginInvokeOnMainThread(() =>
+                                                                MainThread.BeginInvokeOnMainThread(() =>
                                                                 {
                                                                     VatAttachmentsList = myCollection;
 
@@ -677,8 +677,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                                     }
                                                                     catch (Exception ex)
                                                                     {
-                                                                        Console.WriteLine(ex.Message);
-                                                                        Console.Write(ex.StackTrace.ToString());
+                                                                        
+                                                                        
                                                                         await Task.Run(() =>
                                                                         {
                                                                             IsLoading = false;

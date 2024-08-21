@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Foundation;
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -8,21 +7,18 @@ using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Manager;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.UpdateEffDateModel;
-using ZATCAMAUI.Models.VATRefunds;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using static ZATCAMAUI.Models.ZakatExemptionListModel;
 using StatusSetResult = ZATCAMAUI.Models.ZakatExemptionListModel.StatusSetResult;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
-    [Preserve(AllMembers = true)]
+    
     public class ZakatExemptionRequestListViewModel : BaseViewModel
     {
         public ZakatExemptionListModel zakatExemptionListModel;
         public ZakatExemptionModel zakatExemptionModel;
 
-
-        public ICommand GoBackBtnTapped { get; set; }
         public ICommand CreateNewRequestTapped { get; set; }
         private Command itemTappedCommand;
 
@@ -257,11 +253,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #region Constructor
         public ZakatExemptionRequestListViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-
-            GoBackBtnTapped = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
 
             CreateNewRequestTapped = new Command(this.CreateNewRequest);
             itemTappedCommand = new Command(OnItemTapped);

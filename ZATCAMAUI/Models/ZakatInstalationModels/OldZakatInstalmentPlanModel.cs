@@ -1,4 +1,4 @@
-using Foundation;
+
 using Newtonsoft.Json;
 using static ZATCAMAUI.Models.ZakatInstalationModels.ZAKATRequestPlanModel;
 
@@ -861,7 +861,7 @@ After:
 
     public class OldZakatInstalmentPlanRequestListModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
         
@@ -1688,7 +1688,7 @@ After:
             public string Waers { get; set; }
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class D
         {
             public List<Result> results { get; set; }

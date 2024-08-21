@@ -14,24 +14,10 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
         public VerificationPageView(UpdateEmailDataModel updateEmailData)
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
             viewModel = App.Locator.VerificationPageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
             viewModel._updateEmailData = updateEmailData;
 
-        }
-
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
         }
 
         private async void VerifyBtnClicked(object sender, EventArgs e)

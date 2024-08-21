@@ -6,7 +6,6 @@
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
@@ -21,7 +20,6 @@
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    NavigationPage.BackButtonTitle=""
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <!--  ZZZZVatRegistrationTile  -->
@@ -31,12 +29,7 @@
 
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+            
             <Style TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="10" />
                 <Setter Property="WidthRequest" Value="10" />
@@ -645,13 +638,11 @@
                                                             <StackLayout Orientation="Horizontal">
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="DateEntry"
-                                                                    Focused="DateEntry_Focused"
                                                                     IsEnabled="False"
                                                                     Placeholder="{x:Static ResourceManager:AppResources.ddmmyyyyformat}"
                                                                     Style="{StaticResource DefaultEntry}"
                                                                     Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
-                                                                    TextChanged="DateEntry_TextChanged_1"
-                                                                    Unfocused="DateEntry_Unfocused" />
+                                                                    TextChanged="DateEntry_TextChanged_1" />
                                                                 <Image HorizontalOptions="EndAndExpand">
                                                                     <Image.Source>
                                                                         <FontImageSource
@@ -680,7 +671,7 @@
                                                             Mode="Dialog"
                                                             OkButtonClicked="DpEStartDate_OkButtonClicked"
                                                             SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
-                                                            SelectionChanged="DpEStartDate_SelectionChanged">
+                                                            >
 
                                                             <custom:CustomDatePicker.ColumnHeaderView>
                                                                 <syncfusion:PickerColumnHeaderView Height="46" />
@@ -1790,7 +1781,7 @@
                                                             <custom:GAZTBorderlessEntry
                                                                 x:Name="EntryIDNo"
                                                                 IsSpellCheckEnabled="False"
-                                                                Keyboard="Numeric"
+                                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                                 MaxLength="{Binding MaxLengthID}"
                                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                 Style="{StaticResource DefaultEntry}"
@@ -1858,14 +1849,11 @@
                                                                 <StackLayout IsVisible="{Binding DOBMandatoryVisibility}" Orientation="Horizontal">
                                                                     <custom:GAZTBorderlessEntry
                                                                         x:Name="DateEntryFR"
-                                                                        Focused="DateEntry_Focused_1"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         IsEnabled="False"
-                                                                        Placeholder="YYYY/MM/DD"
+                                                                        Placeholder="DD/MM/YYYY"
                                                                         Style="{StaticResource DefaultEntry}"
-                                                                        Text="{Binding DOB}"
-                                                                        TextChanged="DateEntry_TextChanged"
-                                                                        Unfocused="DateEntry_Unfocused_1" />
+                                                                        Text="{Binding DOB}" />
                                                                     <Image HorizontalOptions="End">
                                                                         <Image.Source>
                                                                             <FontImageSource
@@ -2436,8 +2424,7 @@
                                                                 Background="White"
                                                                 ItemHeight="40"
                                                                 Mode="Dialog"
-                                                                OkButtonClicked="DDlIDTypeSR_OkayButtonClicked"
-                                                                SelectionChanged="DDlContactIDType_SelectionChanged_1">
+                                                                OkButtonClicked="DDlIDTypeSR_OkayButtonClicked">
 
                                                                 <syncfusion:SfPicker.TextStyle>
                                                                     <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
@@ -2517,7 +2504,7 @@
                                                             <custom:GAZTBorderlessEntry
                                                                 x:Name="EntryContactIDNumber"
                                                                 IsSpellCheckEnabled="False"
-                                                                Keyboard="Numeric"
+                                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                                 MaxLength="{Binding MaxLengthIDSR}"
                                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                 Style="{StaticResource DefaultEntry}"
@@ -2886,42 +2873,8 @@
                 </Image>
             </Grid>
 
-            <Grid
-                Grid.Row="0"
-                Grid.RowSpan="2"
-                Grid.Column="0"
-                IsVisible="{Binding IsLoading}">
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    BackgroundColor="Black"
-                    Opacity="0.4"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="{Binding IsLoading}"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
+     
         </Grid>
 
 

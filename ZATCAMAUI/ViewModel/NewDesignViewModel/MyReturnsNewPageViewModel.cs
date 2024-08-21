@@ -10,6 +10,7 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
+using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -67,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _SelectedTaxTypeForFilter = value;
                 if (_SelectedTaxTypeForFilter != null)
                 {
-                    FilterLabelText = _SelectedTaxTypeForFilter.Txt30;
+                    FilterLabelText = _SelectedTaxTypeForFilter.revenueTypeDescription;
                     FilterOnBasisOfTaxType();
 
                 }
@@ -133,7 +134,164 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _selectedListItem = value;
 
-                
+                if (_selectedListItem != null)
+                {
+
+                    Task.Run(async () =>
+                    {
+                        IsLoading = true;
+
+                        if (_selectedListItem.error2064 == "X")
+                        {
+
+                           MainThread.BeginInvokeOnMainThread(async () =>
+                            {
+                                IsLoading = false;
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZakatReturnsErrorMessage));
+                            });
+                        }
+                        else
+                        {
+
+                            if (_selectedListItem.isOpen)
+                            {
+                                if (_selectedListItem.taxType.Equals("ITAX") || _selectedListItem.taxType.Equals("ZAKT"))
+                                {
+                                    //zakat
+
+                                    if (_selectedListItem.formBundleType.Equals("FZ12"))
+                                    {
+                                        App.IsZakatLoadingFromMyReturns = true;
+                                       MainThread.BeginInvokeOnMainThread(() =>
+                                        {
+                                            App.selectedForm12Fbguid = _selectedListItem.formBundleGUID;
+                                            _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.formBundleGUID);
+                                        });
+
+                                    }
+                                    else if (_selectedListItem.formBundleType.Equals("ZKTE"))
+                                    {
+
+                                        App.IsZakatLoadingFromMyReturns = true;
+                                       MainThread.BeginInvokeOnMainThread(() =>
+                                        {
+                                            _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.formBundleGUID);
+                                        });
+                                    }
+                                    else
+                                    {
+
+                                       MainThread.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            IsLoading = false;
+                                            var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                                            if (App.IsArabic)
+                                            {
+                                                VisitPortalPopup.OnGotoPortal = () =>
+                                                {
+
+                                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
+
+                                                };
+                                            }
+                                            else
+                                            {
+                                                VisitPortalPopup.OnGotoPortal = () =>
+                                                {
+
+                                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
+
+                                                };
+                                            }
+                                            await MopupService.Instance.PushAsync(VisitPortalPopup);
+                                        });
+                                    }
+                                }
+
+                                if (_selectedListItem.taxType.Equals("VATX") || _selectedListItem.taxType.Equals("VTEP"))
+                                {
+                                    //Vat
+                                    await GetVATAllReturnsAsync(_selectedListItem);
+                                }
+                                if (_selectedListItem.taxType.Equals("ETAX"))
+                                {
+                                    //ET
+                                   MainThread.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        IsLoading = false;
+
+                                        var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                                        if (App.IsArabic)
+                                        {
+                                            VisitPortalPopup.OnGotoPortal = () =>
+                                            {
+                                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
+
+                                            };
+                                        }
+                                        else
+                                        {
+                                            VisitPortalPopup.OnGotoPortal = () =>
+                                            {
+
+                                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
+
+                                            };
+                                        }
+
+                                        await MopupService.Instance.PushAsync(VisitPortalPopup);
+                                    });
+
+                                }
+                                if (_selectedListItem.taxType.Equals("WHTX"))
+                                {
+                                    //WT
+                                   MainThread.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        IsLoading = false;
+
+                                        var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                                        if (App.IsArabic)
+                                        {
+                                            VisitPortalPopup.OnGotoPortal = () =>
+                                            {
+
+                                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
+
+                                            };
+                                        }
+                                        else
+                                        {
+                                            VisitPortalPopup.OnGotoPortal = () =>
+                                            {
+
+                                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
+
+                                            };
+                                        }
+
+                                        await MopupService.Instance.PushAsync(VisitPortalPopup);
+                                    });
+
+                                }
+                            }
+                            else
+                            {
+                               MainThread.BeginInvokeOnMainThread(async () =>
+                                {
+                                    IsLoading = false;
+                                    string messageTodisplay = string.Empty;
+                                    messageTodisplay = _selectedListItem.message;
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(messageTodisplay));
+                                });
+
+                            }
+                        }
+
+                    });
+
+                }
+
                 OnPropertyChanged("SelectedListItem");
 
             }
@@ -206,7 +364,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged("FilterLabelText");
             }
         }
-        
 
         private bool _isArabic = false;
         public bool IsArabic
@@ -261,6 +418,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
+        private MyReturnsResult _selectedReturnsVATItem;
+        public MyReturnsResult selectedReturnsVATItem
+        {
+            get
+            {
+                return _selectedReturnsVATItem;
+            }
+            set
+            {
+                if (_selectedReturnsVATItem == value) return;
+
+                _selectedReturnsVATItem = value;
+                OnPropertyChanged("selectedReturnsVATItem");
+
+            }
+        }
         private GenericPickerModel _pickerModel { get; set; }
         public GenericPickerModel PickerModel
         {
@@ -274,173 +447,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
+       
         #endregion
 
         #region Constructor
-        public GAZTNewDesignMyReturnsNewPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public GAZTNewDesignMyReturnsNewPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
-            OnBackButtonClicked = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
+           
 
         }
         #endregion
 
         #region Method
 
-        public void PopulateData()
-        {
-            MainThread.BeginInvokeOnMainThread(async() =>
-            {
-                if (_selectedListItem != null)
-                {
-
-                    IsLoading = true;
-
-                    if (_selectedListItem.Open)
-                    {
-                        if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
-                        {
-                            //zakat
-
-                            if (_selectedListItem.Fbtyp.Equals("FZ12"))
-                            {
-                                App.IsZakatLoadingFromMyReturns = true;
-
-                                App.selectedForm12Fbguid = _selectedListItem.Fbguid;
-                                _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
-
-
-                            }
-                            else if (_selectedListItem.Fbtyp.Equals("ZKTE"))
-                            {
-
-                                App.IsZakatLoadingFromMyReturns = true;
-
-                                _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
-
-                            }
-                            else
-                            {
-
-                                var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
-                                if (App.IsArabic)
-                                {
-                                    VisitPortalPopup.OnGotoPortal = () =>
-                                    {
-
-                                        Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
-
-                                    };
-                                }
-                                else
-                                {
-                                    VisitPortalPopup.OnGotoPortal = () =>
-                                    {
-
-                                        Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
-
-                                    };
-                                }
-                                await MopupService.Instance.PushAsync(VisitPortalPopup);
-
-                            }
-                        }
-
-                        if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
-                        {
-                            //Vat
-                            await GetVATAllReturnsAsync(_selectedListItem);
-                        }
-                        if (_selectedListItem.TaxType.Equals("ETAX"))
-                        {
-                            //ET
-
-
-                            var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
-                            if (App.IsArabic)
-                            {
-                                VisitPortalPopup.OnGotoPortal = () =>
-                                {
-
-                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
-
-                                };
-                            }
-                            else
-                            {
-                                VisitPortalPopup.OnGotoPortal = () =>
-                                {
-
-                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
-
-                                };
-                            }
-
-                            await MopupService.Instance.PushAsync(VisitPortalPopup);
-
-                        }
-                        if (_selectedListItem.TaxType.Equals("WHTX"))
-                        {
-                            //WT
-
-
-                            var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
-                            if (App.IsArabic)
-                            {
-                                VisitPortalPopup.OnGotoPortal = () =>
-                                {
-
-                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
-
-                                };
-                            }
-                            else
-                            {
-                                VisitPortalPopup.OnGotoPortal = () =>
-                                {
-
-                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
-
-                                };
-                            }
-
-                            await MopupService.Instance.PushAsync(VisitPortalPopup);
-
-
-                        }
-                    }
-                    else
-                    {
-                        string messageTodisplay = string.Empty;
-                        messageTodisplay = _selectedListItem.Msg;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(messageTodisplay));
-
-
-                    }
-
-                    IsLoading = false;
-                }
-            });
-           
-
-        }
         public async Task GetVATAllReturnsAsync(MyReturnsResult SelectedReturnsVAT)
         {
             IsLoading = true;
@@ -449,63 +468,41 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
         private async Task GetVATAllReturns(MyReturnsResult SelectedReturnsVAT)
         {
-           
+            
             try
             {
                 IsLoading = true;
-
+                selectedReturnsVATItem = SelectedReturnsVAT;
                 if (SelectedReturnsVAT != null)
                 {
                     if (isStatusNotValid(SelectedReturnsVAT))
                     {
-                        String SelectedICRGUID = SelectedReturnsVAT.Fbguid;
-                        App.ICRStatus = SelectedReturnsVAT.Stat;
-                        App.VATDeclrationFbguid = SelectedReturnsVAT.Fbguid;
-                        VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.Fbguid, SelectedReturnsVAT.Fbnum, App.TP.Tin, SelectedReturnsVAT.Persl);
-                        PopToRootPage();
-                        if (_vATDeclaration != null && _vATDeclaration.d != null)
-                        {
-                            _vATDeclaration.d.Fbguid = SelectedICRGUID;
-                            VATDeclaration vATDeclaration = new VATDeclaration();
-                            VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                            if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
-                                numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
-                            Result5 result5 = new Result5();
-                            List<Result5> lst = new List<Result5>();
-                            ADRSet _aDRSet = new ADRSet();
-                            lst.Add(result5);
-                            vATDeclaration.d = vATDeclarationD;
-                            vATDeclaration.d.ADRSet = _aDRSet;
-                            vATDeclaration.d.ADRSet.results = lst;
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                _navigationService.NavigateTo(App.GAZTNewDesignVATReturnUpdatedUIPageView, _vATDeclaration);
-                                // _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
-                            });
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
-                            });
-
-                        }
+                        await GetVatAllReturnsForSelectedItem(SelectedReturnsVAT, false);
                     }
                     else
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             IsLoading = false;
-                            if (SelectedReturnsVAT.Stat == "E0020")
+
+                            //await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
+                            if (SelectedReturnsVAT.userStatus == "E0020")
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZGotothePortalForVAT));
                             }
                             else
                             {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZReturnUnderReview));
+                                if (SelectedReturnsVAT.CR2215GoLive != null && SelectedReturnsVAT.CR2215GoLive == "X")
+                                {
+                                    MessagingCenter.Subscribe<App, string>(this, "OnlyAddAttachments", async (sender, arg) => {
+                                        IsLoading = true;
+                                        await GetVatAllReturnsForSelectedItem(selectedReturnsVATItem, true);
+                                        MessagingCenter.Unsubscribe<App, string>(this, "OnlyAddAttachments");
+                                    });
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZReturnUnderReviewAddAttachments));
+                                }
+                                else
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZReturnUnderReview));
                             }
                         });
 
@@ -519,6 +516,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
+                    //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
@@ -526,21 +524,75 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             
         }
 
+        public async Task GetVatAllReturnsForSelectedItem(MyReturnsResult SelectedReturnsVAT, bool navigateToAttachments)
+        {
+            String SelectedICRGUID = SelectedReturnsVAT.formBundleGUID;
+            App.ICRStatus = SelectedReturnsVAT.userStatus;
+            App.VATDeclrationFbguid = SelectedReturnsVAT.formBundleGUID;
+            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.formBundleGUID, SelectedReturnsVAT.formBundleNumber, App.TP.TIN, SelectedReturnsVAT.periodKey);
+            IsLoading = false;
+            PopToRootPage();
+            if (_vATDeclaration != null && _vATDeclaration.data != null)
+            {
+                _vATDeclaration.data.Fbguid = SelectedICRGUID;
+                VATDeclaration vATDeclaration = new VATDeclaration();
+                VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                if (_vATDeclaration.data.ATTACHSet != null && _vATDeclaration.data.ATTACHSet != null && _vATDeclaration.data.ATTACHSet.Count > 0)
+                    numberOfAttachmentComingFromServer = _vATDeclaration.data.ATTACHSet.Count;
+                // Result5 result5 = new Result5();
+                //List<Result5> lst = new List<Result5>();
+                //ADRSet _aDRSet = new ADRSet();
+                //lst.Add(result5);
+                vATDeclaration.data = vATDeclarationD;
+                vATDeclaration.data.ADRSet = new List<Result5>();
+                //  vATDeclaration.data.ADRSet = lst;
+               MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    if (navigateToAttachments)
+                    {
+                        _vATDeclaration.data.Cr2215 = SelectedReturnsVAT.CR2215GoLive;
+                        // MopupService.Instance.PushAsync(new VATDeclarationAttachmentPageView(_vATDeclaration));
+                        //MessagingCenter.Send<Object, string>(this, "IsCR2215AttachmentEnable", SelectedReturnsVAT.Cr2215);
+                        MopupService.Instance.PushAsync(new MoreOptionsNote(_vATDeclaration));
+
+                    }
+                    else
+                        _navigationService.NavigateTo(App.GAZTNewDesignVATReturnUpdatedUIPageView, _vATDeclaration);
+                    // _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
+                });
+            }
+            else
+            {
+               MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+
+                    // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
+                });
+
+            }
+        }
+
+
+
+
+
         public bool isStatusNotValid(MyReturnsResult SelectedReturnsVAT)
         {
             bool isValid = true;
-            if (SelectedReturnsVAT.Stat == "E0020" || SelectedReturnsVAT.Stat == "E0057" || SelectedReturnsVAT.Stat == "E0076" || SelectedReturnsVAT.Stat == "E0077" || SelectedReturnsVAT.Stat == "E0078" || SelectedReturnsVAT.Stat == "E0089" || SelectedReturnsVAT.Stat == "E0090")
+            if (SelectedReturnsVAT.userStatus == "E0020" || SelectedReturnsVAT.userStatus == "E0057" || SelectedReturnsVAT.userStatus == "E0076" || SelectedReturnsVAT.userStatus == "E0077" || SelectedReturnsVAT.userStatus == "E0078" || SelectedReturnsVAT.userStatus == "E0089" || SelectedReturnsVAT.userStatus == "E0090")
             {
                 isValid = false;
             }
             return isValid;
         }
-
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+               MainThread.BeginInvokeOnMainThread(() =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
@@ -551,30 +603,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             break;
                         }
                     }
+                    //_navigationService.NavigateTo(App.SFLoginPageView);
+                    //_navigation.NavigationStack.ToList().Clear();
 
                     _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                     _navigation.NavigationStack.ToList().Clear();
-
+                    //var _navigation = Application.Current.MainPage.Navigation;
+                    //_navigation.PopToRootAsync();
                 });
             }
         }
         public async Task OnPageLoad()
         {
             List<MyReturnsResult> AllReturns = new List<MyReturnsResult>();
-           
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
 
             try
             {
-                IsLoading = true;
-                MyReturns = await WebServiceManager.GAZTGetReturnData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-
+                MyReturns = await WebServiceManager.GAZTGetReturnData(App.TP.TIN);
                 SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
-                IsLoading = false;
+                
             }
             catch (AggregateException ae)
             {
-                IsLoading = false;
-
                 foreach (var gex in ae.InnerExceptions)
                 {
                     // Handle the GAZT custom exception.
@@ -593,15 +647,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                         }
-                        MainThread.BeginInvokeOnMainThread(async () =>
+                       MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
                             {
+                                //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 _navigationService.GoBack();
                             }
                             else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
                             {
+                                //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 _navigationService.GoBack();
                             }
@@ -615,225 +671,157 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (GAZTSessionExpiredException)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+               MainThread.BeginInvokeOnMainThread(async () =>
                 {
-
+                    //await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZYourSessionhasexpiredPleaseLoginagain));
                     PopToRootPage();
                 });
             }
-            catch (Exception)
+            catch (Exception )
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                
+                
+               MainThread.BeginInvokeOnMainThread(async () =>
                 {
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     PopToRootPage();
                 });
             }
 
-            
+            IsLoading = false;
         }
 
         public void FilterAllData()
         {
             try
             {
-                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT" || x.TaxType == "VATX" || x.TaxType == "VTEP" || x.TaxType == "ETAX" || x.TaxType == "WHTX"));
+                    //AllReturns = MyReturns.d.results;
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "ITAX" || x.taxType == "ZAKT" || x.taxType == "VATX" || x.taxType == "VTEP" || x.taxType == "ETAX" || x.taxType == "WHTX"));
                     if (_selectedChipFilterItem != null)
                     {
-                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.RetStatTxt == _selectedChipFilterItem.Text));
+                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.returnStatusDescription == _selectedChipFilterItem.Text));
                     }
+
+
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 
+                
             }
-
         }
 
         public void FilterZakatData()
         {
             try
             {
-                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ZAKT"));
+                    //AllReturns = MyReturns.d.results;
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "ZAKT"));
                     if (_selectedChipFilterItem != null)
                     {
-                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.RetStatTxt == _selectedChipFilterItem.Text));
-
+                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.returnStatusDescription == _selectedChipFilterItem.Text));
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                
                 
             }
 
         }
+
         public void FilterIncomeTaxData()
         {
             try
             {
-                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
                     //AllReturns = MyReturns.d.results;
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX"));
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "ITAX"));
                     if (_selectedChipFilterItem != null)
                     {
-                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.RetStatTxt == _selectedChipFilterItem.Text));
-
+                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.returnStatusDescription == _selectedChipFilterItem.Text));
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-               
+                
+                
             }
-
         }
+
         public void FilterVatData()
         {
             try
             {
-
-                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "VATX" || x.TaxType == "VTEP"));
-
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "VATX" || x.taxType == "VTEP"));
                     if (_selectedChipFilterItem != null)
-
                     {
-                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.RetStatTxt == _selectedChipFilterItem.Text));
-
+                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.returnStatusDescription == _selectedChipFilterItem.Text));
                     }
-
                 }
-
             }
-
-            catch (Exception)
-
+            catch (Exception ex)
             {
-
+                
+                
             }
-
         }
+
         public void FilterETData()
         {
-
             try
             {
-
-                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
                     //AllReturns = MyReturns.d.results;
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ETAX"));
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "ETAX"));
                     if (_selectedChipFilterItem != null)
                     {
-                        if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
-                        {
-
-                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
-                            if (ListToDisplay != null)
-                            {
-                                foreach (var item in ListToDisplay)
-                                {
-                                    item.StatusMessage = "submitted";
-                                }
-
-                            }
-                        }
-                        if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
-                        {
-
-                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
-                            if (ListToDisplay != null)
-                            {
-                                foreach (var item in ListToDisplay)
-                                {
-                                    item.StatusMessage = "unsubmitted";
-                                }
-                            }
-                        }
-
-                        if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
-                        {
-                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
-
-
-                            if (ListToDisplay != null)
-                            {
-                                foreach (var item in ListToDisplay)
-                                {
-                                    item.StatusMessage = "overdue";
-                                }
-                            }
-
-                        }
-
-                        if (_selectedChipFilterItem.TemplateType.Equals("All"))
-                        {
-                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay);
-
-
-                            if (ListToDisplay != null)
-                            {
-                                foreach (var item in ListToDisplay)
-                                {
-                                    if (item.StatusTxt == "Non Submitted")
-                                    {
-                                        item.StatusMessage = "unsubmitted";
-
-                                    }
-                                    if (item.StatusTxt == "Non Submitted" && item.Due == "X")
-                                    {
-                                        item.StatusMessage = "overdue";
-                                    }
-                                    if (item.StatusTxt == "Submitted")
-                                    {
-                                        item.StatusMessage = "submitted";
-                                    }
-
-
-
-                                }
-                            }
-
-                        }
+                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.returnStatusDescription == _selectedChipFilterItem.Text));
 
                     }
                 }
             }
-            catch (Exception )
+            catch (Exception ex)
             {
+                
+                
             }
         }
+
         public void FilterWTData()
         {
-
             try
             {
-
-                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
                     //AllReturns = MyReturns.d.results;
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "WHTX"));
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "WHTX"));
                     if (_selectedChipFilterItem != null)
                     {
-                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.RetStatTxt == _selectedChipFilterItem.Text));
-
+                        ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.returnStatusDescription == _selectedChipFilterItem.Text));
                     }
                 }
             }
-            catch (Exception )
+            catch (Exception ex)
             {
+                
+                
             }
         }
-        
+
         public void PopulateReturnTypeList()
         {
 
@@ -841,7 +829,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             try
             {
                 string lang = UtilityManager.GetLanguageParameter();
-                var FilterValues = WebServiceManager.GAZTGetMyBillsFilterDropdownValues(App.TP.Tin, lang);
+                var FilterValues = WebServiceManager.GAZTGetMyBillsFilterDropdownValues(App.TP.TIN, lang);
                 if (FilterValues != null)
                 {
                     TaxTypeForFilter = FilterValues;
@@ -854,11 +842,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         try
                         {
-                            list.Add(dropdown.Txt30.ToUpper());
+                            list.Add(dropdown.revenueTypeDescription.ToUpper());
                         }
-                        catch (Exception )
+                        catch (Exception ex)
                         {
-                           
+                            
+                            
                         }
 
 
@@ -869,26 +858,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     genericPickerModel.PickerData = list;
                     genericPickerModel.PickerTitle = "";
                     genericPickerModel.PickerId = "MyReturns";
-                    genericPickerModel.SelectedValue = SelectedTaxTypeForFilter.Txt30;
+                    genericPickerModel.SelectedValue = SelectedTaxTypeForFilter.revenueTypeDescription;
 
                     PickerModel = genericPickerModel;
                 }
 
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-              
+                
+                
             }
 
-
-          
 
         }
 
         public void updatePicker()
         {
 
-            var selectedFilter = new ObservableCollection<MyBillsFilterDropdown>(TaxTypeForFilter.Where(temp => temp.Txt30.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
+            var selectedFilter = new ObservableCollection<MyBillsFilterDropdown>(TaxTypeForFilter.Where(temp => temp.revenueTypeDescription.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
 
             SelectedTaxTypeForFilter = selectedFilter.FirstOrDefault();
 
@@ -901,13 +889,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (PickerModel != null)
                     await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
             }
-            catch (GAZTUnlockAccountException)
+            catch (GAZTUnlockAccountException ex)
             {
-              
+                
+                
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+               MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
@@ -918,31 +907,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-                var ChipData = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT" || x.TaxType == "VATX" || x.TaxType == "VTEP" || x.TaxType == "ETAX" || x.TaxType == "WHTX"))
-                        .Select(x => new { x.RetStatTxt, x.StatusTxt }).Distinct().ToList();
+                var ChipData = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "ITAX" || x.taxType == "ZAKT" || x.taxType == "VATX" || x.taxType == "VTEP" || x.taxType == "ETAX" || x.taxType == "WHTX"))
+                        .Select(x => new { x.returnStatusDescription, x.statusDescription }).Distinct().ToList();
                 ChipDataFilterlist.Clear();
                 if (ChipData != null && ChipData.Count() > 0)
                 {
                     ChipModel model = new ChipModel();
                     foreach (var item in ChipData)
                     {
-                        model.Text = item.RetStatTxt;
-                        if (item.StatusTxt.ToLower().Equals("submitted"))
+                        model.Text = item.returnStatusDescription;
+                        if (item.statusDescription.ToLower().Equals("submitted"))
                         {
-                            ChipDataFilterlist.Add(new ChipModel() { Text = item.RetStatTxt, TemplateType = "Submitted", ImageSource = "submited.png", TextColor = (Color)App.Current.Resources["Success"] });
-
+                            ChipDataFilterlist.Add(new ChipModel() { Text = item.returnStatusDescription, TemplateType = "Submitted", ImageSource = "submited.png", TextColor = (Color)App.Current.Resources["Success"] });
                         }
-                        else if (item.StatusTxt.ToLower().Equals("non submitted"))
+                        else if (item.statusDescription.ToLower().Equals("non submitted"))
                         {
-                            ChipDataFilterlist.Add(new ChipModel() { Text = item.RetStatTxt, TemplateType = "UnSubmitted", ImageSource = "unsubmitted.png", TextColor = (Color)App.Current.Resources["Error"] });
-
+                            ChipDataFilterlist.Add(new ChipModel() { Text = item.returnStatusDescription, TemplateType = "UnSubmitted", ImageSource = "unsubmitted.png", TextColor = (Color)App.Current.Resources["Error"] });
                         }
-                        else if (item.StatusTxt.ToLower().Equals("overdue"))
+                        else if (item.statusDescription.ToLower().Equals("overdue"))
                         {
-                            ChipDataFilterlist.Add(new ChipModel() { Text = item.RetStatTxt, TemplateType = "OverDue", ImageSource = "clockNew.png", TextColor = (Color)App.Current.Resources["Error"] });
-
+                            ChipDataFilterlist.Add(new ChipModel() { Text = item.returnStatusDescription, TemplateType = "OverDue", ImageSource = "clockNew.png", TextColor = (Color)App.Current.Resources["Error"] });
                         }
 
+                        //ChipDataFilterlist.Add(model);
                     }
                 }
             }
@@ -951,35 +938,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             }
 
-
-
         }
 
 
         public void FilterOnBasisOfTaxType()
         {
-            if (SelectedTaxTypeForFilter.StatementFilter == "10")
+            if (SelectedTaxTypeForFilter.statementFilter == "10")
             {
                 FilterAllData();
             }
-            if (SelectedTaxTypeForFilter.StatementFilter == "02")
+            if (SelectedTaxTypeForFilter.statementFilter == "02")
             {
                 FilterZakatData();
             }
-            if (SelectedTaxTypeForFilter.StatementFilter == "01")
+            if (SelectedTaxTypeForFilter.statementFilter == "01")
             {
                 FilterIncomeTaxData();
             }
-            if (SelectedTaxTypeForFilter.StatementFilter == "06")
+            if (SelectedTaxTypeForFilter.statementFilter == "06")
             {
                 FilterVatData();
             }
-            if (SelectedTaxTypeForFilter.StatementFilter == "07")
+            if (SelectedTaxTypeForFilter.statementFilter == "07")
             {
                 FilterETData();
 
             }
-            if (SelectedTaxTypeForFilter.StatementFilter == "03")
+            if (SelectedTaxTypeForFilter.statementFilter == "03")
             {
                 FilterWTData();
             }

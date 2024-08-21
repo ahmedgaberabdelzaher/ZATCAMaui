@@ -34,11 +34,11 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                 {
                     // * NEW TP PROFILE API
                     viewModel.IsLoading = true;
-                    TaxPayerProfile TPProfile = await WebServiceManager.ChangeTPProfilePasswordAPICall(viewModel.CurrentPasswordEntry, viewModel.NewPasswordEntry);
-                    if (TPProfile != null)
+                    var response = await WebServiceManager.ChangeTPProfilePasswordAPICall(viewModel.CurrentPasswordEntry, viewModel.NewPasswordEntry);
+                    if (response)
                     {
                         // * Navigating to Verification Screen
-                        CloseAllPopup();
+                        this.CloseAllPopup();
 
                         MainThread.BeginInvokeOnMainThread(() =>
                         {

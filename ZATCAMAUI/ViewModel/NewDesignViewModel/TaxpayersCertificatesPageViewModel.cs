@@ -297,8 +297,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 //   _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                 MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
@@ -370,7 +370,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
              });
 
 
-            if (Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 if (pdfUrl != null)
                 {

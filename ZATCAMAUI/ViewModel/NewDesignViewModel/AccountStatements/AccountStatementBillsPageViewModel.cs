@@ -653,7 +653,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             {
                 if (_AccDertails == value) return;
                 _AccDertails = value;
-               RaisePropertyChanged("accoungtDetails1");
+               OnPropertyChanged("accoungtDetails1");
             }
 
         }
@@ -805,8 +805,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             catch (Exception ex)
             {
                 IsLoading = false;
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
 
             }
@@ -921,9 +921,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                         catch (Exception ex)
                         {
 
-                            Console.WriteLine(ex.Message);
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
+                            
                         }
 
 
@@ -960,17 +960,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 });
               
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
-
+                IsLoading = false;
             }
         }
 
@@ -978,11 +970,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
         public async void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-            if(SelectedTransactionTypeFilter != null)
+            IsLoading = true;
+            if (SelectedTransactionTypeFilter != null)
             {
 
 
@@ -1007,22 +996,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                         FilterOnTaxType(MyBills);
                         ApplyFilter();
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
+                        IsLoading = false;
                         return;
 
 
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
-
-                }
+                catch (Exception )
+                {}
 
 
                 if (isFromFilter)
@@ -1060,9 +1041,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
+                        
 
                     }
 
@@ -1105,9 +1086,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     catch (Exception ex)
                     {
 
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
+                        
 
                     }
 
@@ -1124,10 +1105,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     }
 
 
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    IsLoading = false;
                     if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
                     {
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
@@ -1185,10 +1163,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                         FilterOnTaxType(MyBills);
 
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
+                        IsLoading = false;
 
                         return;
                     }
@@ -1196,18 +1171,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     {
                         if (SearchText != "")
                         {
-                            // suggestion ;
-
                             try
                             {
-                                //MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where<MyBills>(c => c.VTRE2.ToLower() == (SearchText.ToLower()) || c.Fbnum.ToLower() == (SearchText.ToLower())|| c.Status.ToLower().Contains(SearchText.ToLower()) || c.StatusText.ToLower().Contains(SearchText.ToLower())|| c.BETRW.ToLower().Contains(SearchText.ToLower()) || c.TestDueAmount.ToLower().Contains(SearchText.ToLower())|| c.Txt30.ToLower().Contains(SearchText.ToLower()) || c.Abtypt.ToLower().Contains(SearchText.ToLower())).ToList());
-
+                              
                                var suggest = MyBillsOriginal.Where<MyBills>(c => c.VTRE2.ToLower().Contains(SearchText.ToLower()) || c.Fbnum.ToLower().Contains(SearchText.ToLower())).ToList();
 
                                 MyBills = new ObservableCollection<MyBills>(suggest);
                                 FilterOnTaxType(MyBills);
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
 
                             }
@@ -1222,10 +1194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                             FilterOnTaxType(MyBills);
 
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
+                            IsLoading = false;
 
                             return;
 
@@ -1238,19 +1207,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                     isFromFilter = false;
 
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    IsLoading = false;
                 }
 
             }
             else
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
 
         }
@@ -1258,12 +1221,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
         public async void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
         {
 
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
 
-            if(SelectedTransactionTypeFilter != null) {
+            if (SelectedTransactionTypeFilter != null) {
 
                 try{
 
@@ -1326,9 +1286,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 }
                 catch (Exception ex) {
 
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
+                    
 
                 }
             }
@@ -1350,19 +1310,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
             }
 
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+            IsLoading = false;
         }
 
         public void ApplyFilter()
         {
 
-            //if (FromStatus != "")
-            //{
-                FilterIfTypeAndStausFilterSelected(false);
-            //}
+            FilterIfTypeAndStausFilterSelected(false);
 
         }
 
@@ -1382,11 +1336,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (PickerModel != null)
                     await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
             }
-            catch (GAZTUnlockAccountException)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -1403,9 +1352,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             for (int i =0;i<MyBillsSTATUS.Count; i++)
             {
                 var chipmodel = new ChipModel();
-            //     < Color x: Key = "SuccessBg" >#1A008000</Color>
-            //< Color x: Key = "PartialBg" >#1A0996d4</Color>
-            //< Color x: Key = "ErrorBg" >#1AAA0C19</Color>
 
                 if (MyBillsSTATUS[i].ZtpaccSts == "PD")
                 {

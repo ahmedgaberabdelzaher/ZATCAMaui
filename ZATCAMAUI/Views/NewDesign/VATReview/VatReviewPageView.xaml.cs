@@ -18,7 +18,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         {
             InitializeComponent();
 
-            ChangeAeroIcon();
 
             viewModel = App.Locator.VatReviewView;
             this.BindingContext = viewModel;
@@ -32,24 +31,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
         protected override void OnAppearing()
         {
@@ -72,10 +53,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
 
             try
@@ -98,8 +77,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -252,8 +231,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -281,8 +260,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -315,8 +294,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -365,8 +344,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -396,8 +375,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -460,8 +439,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             catch (Exception ex)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 

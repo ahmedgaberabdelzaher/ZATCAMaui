@@ -16,14 +16,10 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
             zxing.Options = new BarcodeReaderOptions()
             {
                 Formats = BarcodeFormats.All,
-
                 TryHarder = true,
                 AutoRotate = false,
-                TryInverted = true,
 
             };
-
-           
         }
         protected override async void OnAppearing()
         {
@@ -40,7 +36,6 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
                 zxing.IsDetecting = false;
                 foreach (var barcode in e.Results)
                 {
-                    Console.WriteLine($"Barcodes: {barcode.Format} -> {barcode.Value}");
                     barcodeResultValue = barcode.Value;
                 }
                 MainThread.BeginInvokeOnMainThread(async () =>

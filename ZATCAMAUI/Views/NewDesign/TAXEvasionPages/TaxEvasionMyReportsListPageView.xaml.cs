@@ -1,12 +1,11 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
 using ListView = Microsoft.Maui.Controls.ListView;
 
 namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
 {
-   
+
     public partial class TaxEvasionMyReportsListPageView : ContentPage
     {
         TaxEvasionMyReportsListPageViewModel viewModel;
@@ -20,7 +19,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             viewModel.PopulateDataInChips();
             viewModel.SelectedChipFilterItemList = new List<ChipModel>();
 
-            On<iOS>().SetUseSafeArea(true);
 
 
         }
@@ -31,7 +29,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
 
             try
             {
-                ChangeAeroIcon();
 
                 await Task.Run(() =>
                 {
@@ -55,20 +52,10 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                     viewModel.IsLoading = false;
                 });
             }
-          
+
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
         private async void ChipGroup_statusFilter_SelectionChanging(object sender, Syncfusion.Maui.Core.Chips.SelectionChangingEventArgs e)
         {
             try
@@ -114,7 +101,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             }
             return;
         }
-        protected override bool OnBackButtonPressed() => true;
         private async void AddReport_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() =>

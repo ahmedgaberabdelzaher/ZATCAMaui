@@ -36,10 +36,8 @@
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         x:Name="ObjectionReason"
-                                        Focused="OnObjectionReasonFocused"
                                         Style="{StaticResource InputTableEntryLayoutStyle}"
-                                        Text="{Binding ObjectionReason}"
-                                        Unfocused="OnObjectionReasonUnFocused" />
+                                        Text="{Binding ObjectionReason}"/>
                                 </custom:CustomSfTextInputView.TextInputView>
                             </custom:CustomSfTextInputView>
 

@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.NewDesign.ChangeMobile.NafathChangeMobileNumberOTPView"
+             Title="NafathChangeMobileNumberOTPView"
+             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            x:Name="page"
+            ios:Page.UseSafeArea="true"
+            BackgroundImageSource="partials_background.png"
+            FlowDirection="{Binding AppDirection}"
+            NavigationPage.HasNavigationBar="False">
+            
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,*">
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.ResetMobileNumber}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <Border Grid.Row="1"
+                    Padding="10,0"
+                    Style="{StaticResource CommonTopCurves}">
+
+                <StackLayout Padding="16" Spacing="30">
+
+                    <Label Text="{x:Static ResourceManager:AppResources.EnterVerificationCodeSentToMobile}"
+                     Padding="8" 
+                     TextColor="Black" />
+
+                    <Label Text="{Binding ErrorMessage}"
+                     IsVisible="{Binding IsError}"
+                      TextColor="{StaticResource ErrorColor}" 
+                      Padding="8"/>
+
+                    <Grid ColumnSpacing="8"
+                        ColumnDefinitions="*,*,*,*,*,*"
+                        Padding="10,0">
+
+                        <Border StrokeShape="RoundRectangle 10"
+                            Stroke="Gray"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            Grid.Column="0"
+                            VerticalOptions="Start">
+
+                            <custom:GAZTBorderlessEntry x:Name="FirstDigitEntry"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding FirstDigit}"
+                                ReturnType="Next" 
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                IsPassword="True"
+                                MaxLength="1" 
+                                HorizontalOptions="CenterAndExpand"
+                                WidthRequest="100" 
+                                TextChanged="OtpFirstEntry_TextChanged">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <behaviors:OnlyNumericValuesBehaviour />
+                                <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
+
+                        </Border>
+
+                        <Border StrokeShape="RoundRectangle 10"
+                            Stroke="Gray"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            Grid.Column="1"
+                            VerticalOptions="Start">
+
+                            <custom:GAZTBorderlessEntry x:Name="SecondDigitEntry"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding SecondDigit}"
+                                ReturnType="Next" 
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                IsPassword="True"
+                                MaxLength="1" 
+                                HorizontalOptions="CenterAndExpand"
+                                WidthRequest="100" 
+                                TextChanged="OtpSecondEntry_TextChanged">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <behaviors:OnlyNumericValuesBehaviour />
+                                <behaviors:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
+
+                        </Border>
+
+                        <Border StrokeShape="RoundRectangle 10"
+                            Stroke="Gray"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            Grid.Column="2"
+                            VerticalOptions="Start">
+
+                            <custom:GAZTBorderlessEntry x:Name="ThirdDigitEntry"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding ThirdDigit}"
+                                ReturnType="Next" 
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                IsPassword="True"
+                                MaxLength="1" 
+                                HorizontalOptions="CenterAndExpand"
+                                WidthRequest="100" 
+                                TextChanged="OtpThirdEntry_TextChanged">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <behaviors:OnlyNumericValuesBehaviour />
+                                <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
+
+                        </Border>
+
+                        <Border StrokeShape="RoundRectangle 10"
+                            Stroke="Gray"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            Grid.Column="3"
+                            VerticalOptions="Start">
+
+                            <custom:GAZTBorderlessEntry x:Name="FourthDigitEntry"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding FourthDigit}"
+                                ReturnType="Next" 
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                IsPassword="True"
+                                MaxLength="1" 
+                                HorizontalOptions="CenterAndExpand"
+                                WidthRequest="100" 
+                                TextChanged="OtpFourthEntry_TextChanged">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <behaviors:OnlyNumericValuesBehaviour />
+                                <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFifthEntry"/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
+
+                        </Border>
+
+                        <Border StrokeShape="RoundRectangle 10"
+                            Stroke="Gray"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            Grid.Column="4"
+                            VerticalOptions="Start">
+
+                            <custom:GAZTBorderlessEntry x:Name="FifthDigitEntry"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding FifthDigit}"
+                                ReturnType="Next" 
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                IsPassword="True"
+                                MaxLength="1" 
+                                HorizontalOptions="CenterAndExpand"
+                                WidthRequest="100" 
+                                TextChanged="OtpFifthEntry_TextChanged">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <behaviors:OnlyNumericValuesBehaviour />
+                                <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSixthEntry"/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
+
+                        </Border>
+
+                        <Border StrokeShape="RoundRectangle 10"
+                            Stroke="Gray"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            Grid.Column="4"
+                            VerticalOptions="Start">
+
+                            <custom:GAZTBorderlessEntry x:Name="SixthDigitEntry"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding SixthDigit}"
+                                ReturnType="Next" 
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                IsPassword="True"
+                                MaxLength="1" 
+                                HorizontalOptions="CenterAndExpand"
+                                WidthRequest="100" >
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <behaviors:OnlyNumericValuesBehaviour />
+                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
+
+                        </Border>
+
+                    </Grid>
+
+                    <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="CenterAndExpand">
+                 
+                        <Image Source="clock"/>
+                    
+                        <Label Text="{Binding Time}"
+                         Style="{StaticResource CaptionLabelGrey}"
+                         TextColor="Black" 
+                         VerticalOptions="Center"/>
+
+                    </StackLayout>
+                
+                    <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
+                                    IsEnabled="{Binding IsResendEnabled}"
+                                     TextColor="{Binding ResendOtpColor}" 
+                                    VerticalOptions="Center" 
+                                    Background="Transparent"
+                                     Command="{Binding ResendCommand}"/>
+                
+                    <buttons:SfButton Text="{x:Static ResourceManager:AppResources.VerifyOtp}"
+                                        Style="{StaticResource PrimaryButtonStyle}" 
+                                        Command="{Binding VerifyOTPCommand}"/>
+
+
+
+                </StackLayout>
+
+            </Border>
+            <!--#endregion Body-->
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

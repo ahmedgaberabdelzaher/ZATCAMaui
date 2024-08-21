@@ -1,8 +1,8 @@
-﻿using Foundation;
+﻿
 using Newtonsoft.Json;
 namespace ZATCAMAUI.Models
 {
-    [Preserve(AllMembers = true)]
+    
     public class NafathLoginRequestModel
     {
         //public string ApiCall { get; set; }

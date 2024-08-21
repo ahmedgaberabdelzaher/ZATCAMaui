@@ -1,8 +1,7 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Services;
+﻿using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
@@ -41,11 +40,21 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                 viewModel.TotalAmount = viewModel.selectedAmount;
                 BindingContext = viewModel;
             }
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
 
         }
+        public MyBillsSadadDetailsPageView(GAZTNewDesignMyBillsPageViewModel data)
+        {
+            InitializeComponent();
 
+            if (data != null)
+            {
+                viewModel = data;
+                viewModel.SadadBindNumber = viewModel.selectedSadadNo;
+                viewModel.TotalAmount = viewModel.selectedAmount;
+                this.BindingContext = viewModel;
+            }
+            screenIndex = 1;
+        }
         public MyBillsSadadDetailsPageView(VATDeclaration vATDeclaration)
         {
             try
@@ -54,9 +63,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                 _VatReturnSuccessPageViewModel = App.Locator.VATReturnSuccessfullPageView;
                 screenIndex = 2;
                 BindingContext = _VatReturnSuccessPageViewModel;
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
-                if (vATDeclaration != null && vATDeclaration.d != null)
+                if (vATDeclaration != null && vATDeclaration.data != null)
                 {
                     _VatReturnSuccessPageViewModel.SadadNumber = string.Empty;
                     _VatReturnSuccessPageViewModel.IsSadadNumberVisible = false;
@@ -64,19 +71,19 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                     _VatReturnSuccessPageViewModel.IsAcknowledgementButtonVisible = false;
                     _VatReturnSuccessPageViewModel.IsCreditCarriedTextVisible = false;
                     _VatReturnSuccessPageViewModel.VATDeclarationData = vATDeclaration;
-                    _VatReturnSuccessPageViewModel.ReturnReferenceNumber = vATDeclaration.d.Fbnum;
-                    _VatReturnSuccessPageViewModel.TaxablePeriod = vATDeclaration.d.Perslt;
+                    _VatReturnSuccessPageViewModel.ReturnReferenceNumber = vATDeclaration.data.Fbnum;
+                    _VatReturnSuccessPageViewModel.TaxablePeriod = vATDeclaration.data.Perslt;
 
-                  
 
-                    if (App.ICRStatus == "E0045" && _VatReturnSuccessPageViewModel.VATDeclarationData.d.RefundFg != "1")
+
+                    if ((App.ICRStatus == "E0045") && _VatReturnSuccessPageViewModel.VATDeclarationData.data.RefundFg != "1")
                     {
-                        if (Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                        if (Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.data.NetdueVat) <= 0)
                         {
                             _VatReturnSuccessPageViewModel.IsSadadNumberVisible = false;
                             _VatReturnSuccessPageViewModel.IsRefreshButtonVisible = false;
                             _VatReturnSuccessPageViewModel.IsButtonVisible = true;
-                            if (vATDeclaration.d.EstimatedFg == "X")
+                            if (vATDeclaration.data.EstimatedFg == "X")
                             {
                                 _VatReturnSuccessPageViewModel.IsAcknowledgementButtonVisible = false;
                             }
@@ -92,13 +99,13 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                     }
                     else
                     {
-                        if (App.ICRStatus == "E0006" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.d.NetdueVat) <= 0 || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.d.NetdueVat) <= 0 || App.ICRStatus == "E0055" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                        if ((App.ICRStatus == "E0006" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.data.NetdueVat) <= 0) || ((App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && (Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.data.NetdueVat) <= 0)) || (App.ICRStatus == "E0055" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.data.NetdueVat) <= 0))
                         {
                             _VatReturnSuccessPageViewModel.IsSadadNumberVisible = false;
                             _VatReturnSuccessPageViewModel.IsRefreshButtonVisible = false;
                             _VatReturnSuccessPageViewModel.IsButtonVisible = true;
                             _VatReturnSuccessPageViewModel.IsCreditCarriedTextVisible = true;
-                            if (vATDeclaration.d.EstimatedFg == "X")
+                            if (vATDeclaration.data.EstimatedFg == "X")
                             {
                                 _VatReturnSuccessPageViewModel.IsAcknowledgementButtonVisible = false;
                             }
@@ -109,7 +116,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                         }
                         else
                         {
-                            if (App.ICRStatus == "E0006" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.d.NetdueVat) > 0 || App.ICRStatus == "E0056" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.d.NetdueVat) > 0 || App.ICRStatus == "E0001" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.d.NetdueVat) > 0 || App.ICRStatus == "E0013" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.d.NetdueVat) > 0)
+                            if ((App.ICRStatus == "E0006" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.data.NetdueVat) > 0) || (App.ICRStatus == "E0056" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.data.NetdueVat) > 0) || (App.ICRStatus == "E0001" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.data.NetdueVat) > 0) || (App.ICRStatus == "E0013" && Convert.ToDouble(_VatReturnSuccessPageViewModel.VATDeclarationData.data.NetdueVat) > 0))
                             {
                                 RefreshForSadad();
                             }
@@ -119,12 +126,12 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                             }
                         }
                     }
-                    if (_VatReturnSuccessPageViewModel.VATDeclarationData.d.RefundFg == "1")
+                    if (_VatReturnSuccessPageViewModel.VATDeclarationData.data.RefundFg == "1")
                     {
                         _VatReturnSuccessPageViewModel.IsSadadNumberVisible = false;
                         _VatReturnSuccessPageViewModel.IsRefreshButtonVisible = false;
                         _VatReturnSuccessPageViewModel.IsButtonVisible = true;
-                        if (vATDeclaration.d.EstimatedFg == "X")
+                        if (vATDeclaration.data.EstimatedFg == "X")
                         {
                             _VatReturnSuccessPageViewModel.IsAcknowledgementButtonVisible = false;
                         }
@@ -148,11 +155,8 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
             InitializeComponent();
             _ZakatReturnSuccessPageViewModel = App.Locator.ZakatReturnDetailsSuccessfullPageView;
             screenIndex = 3;
-            // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
             _zakatReturnDetail = ZakatReturnDetail;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = _ZakatReturnSuccessPageViewModel;
-            ChangeAeroIcon();
 
             _ = _ZakatReturnSuccessPageViewModel.OnPageLoad(ZakatReturnDetail);
 
@@ -235,25 +239,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
             }
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
     }
 }

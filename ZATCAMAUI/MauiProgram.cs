@@ -16,9 +16,10 @@ using ZATCAMAUI.Platforms.Android.CustomRenderer;
 
 using ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages;
 using ZXing.Net.Maui.Controls;
-using IDeviceInfo = ZATCAMAUI.Core.Interfaces.IDeviceInfo;
+using IDeviceInfoZATCA = ZATCAMAUI.Core.Interfaces.IDeviceInfoZATCA;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Maui.GoogleMaps.Hosting;
+using ZXing.Net.Maui;
 
 namespace ZATCAMAUI;
 
@@ -88,12 +89,12 @@ public static class MauiProgram
             DependencyService.Register<IForceUpdate, ForceUpdate>();
             DependencyService.Register<ILocalFileProvider, LocalFileProvider>();
             DependencyService.Register<IStatusBar, StatusBarImplementation>();
-            DependencyService.Register<IDeviceInfo, ZATCADeviceInfo>();
+            DependencyService.Register<IDeviceInfoZATCA, ZATCADeviceInfo>();
 #endif
 
 #if IOS
             DependencyService.Register<IForceUpdate, ForceUpdate>();
-            DependencyService.Register<IDeviceInfo, ZATCADeviceInfo>();
+            DependencyService.Register<IDeviceInfoZATCA, ZATCADeviceInfo>();
             DependencyService.Register<IApplePayAuthorizer, ApplePayAuthorizer>();
             DependencyService.Register<IBaseUrl, BaseUrl_iOS>();
             DependencyService.Register<IPrintService, IOSDownloader>();

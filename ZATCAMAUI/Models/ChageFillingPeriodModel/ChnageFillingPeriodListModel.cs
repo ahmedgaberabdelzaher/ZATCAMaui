@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.ChageFillingPeriodModel
@@ -7,7 +7,7 @@ namespace ZATCAMAUI.Models.ChageFillingPeriodModel
 
     public class VATChangeFillingListModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
        
@@ -53,7 +53,7 @@ namespace ZATCAMAUI.Models.ChageFillingPeriodModel
             public object Ldate { get; set; }
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class REQTYPSet
         {
 
@@ -105,7 +105,7 @@ namespace ZATCAMAUI.Models.ChageFillingPeriodModel
             public List<Result2> results { get; set; }
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class Metadata4
         {
             [DataMember]
@@ -316,7 +316,7 @@ namespace ZATCAMAUI.Models.ChageFillingPeriodModel
    
     public class VATChangeFillingSummaryModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
        

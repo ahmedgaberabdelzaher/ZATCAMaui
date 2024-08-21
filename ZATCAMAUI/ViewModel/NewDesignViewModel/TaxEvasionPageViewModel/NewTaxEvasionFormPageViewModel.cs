@@ -1569,7 +1569,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                             var imagePath = file.Path;
                             var imageName = Path.GetFileName(imagePath);
-                            byte[] baseString = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetImagePathByteArray(file.Path);
+                            byte[] baseString = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetImagePathByteArray(file.Path);
                                 //imageArray = System.Convert.FromBase64String(baseString);
                                 imageArray = baseString;
                             FileName = imageName;
@@ -1638,8 +1638,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                                             }
                                                         catch (Exception ex)
                                                         {
-                                                            Console.Write(ex.ToString());
-                                                            Console.Write(ex.StackTrace.ToString());
+                                                            
+                                                            
                                                         }
                                                     }
                                                     else
@@ -1671,8 +1671,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
 
@@ -1733,7 +1733,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                             var imagePath = file.Path;
                             var imageName = Path.GetFileName(imagePath);
-                            byte[] baseString = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetImagePathByteArray(file.Path);
+                            byte[] baseString = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetImagePathByteArray(file.Path);
                             //imageArray = System.Convert.FromBase64String(baseString);
                             imageArray = baseString;
                             FileName = imageName;

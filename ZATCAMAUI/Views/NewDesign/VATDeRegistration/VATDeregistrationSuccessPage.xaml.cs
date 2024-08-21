@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
@@ -13,28 +12,19 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
         {
             InitializeComponent();
             viewModel = App.Locator.VATDeregistrationSuccessPage;
-            On<iOS>().SetUseSafeArea(true);
-            BindingContext = viewModel;
+            this.BindingContext = viewModel;
+
             if (response != null)
             {
                 if (response.d != null)
                 {
-                    Label_Name.Text = response.d.Contactnm;
-                    Label_ApplicationNumber.Text = response.d.Fbnumx;
-                    viewModel.FBNumber = response.d.Fbnumx;
-                    //string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    Label_Name.Text = response.d.headerSet.Contactnm;
+                    Label_ApplicationNumber.Text = response.d.headerSet.Fbnumx;
+                    viewModel.FBNumber = response.d.headerSet.Fbnumx;
                     string StartdateToshow = DateTime.Today.Date.ToString("yyyy/MM/dd").Replace('-', '/');
                     Label_Date.Text = StartdateToshow;
                 }
             }
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
         }
         private void btnVATRegistration_Clicked(object sender, EventArgs e)
         {

@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
@@ -11,7 +9,6 @@ using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 using Application = Microsoft.Maui.Controls.Application;
 using Syncfusion.Maui.ListView;
-using Syncfusion.Maui.Picker;
 using Entry = Microsoft.Maui.Controls.Entry;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
@@ -30,15 +27,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             viewModel = App.Locator.TINDeregistrationPageView;
 
             viewModel.ClearData();
-            ChangeAeroIcon();
-
-            On<iOS>().SetUseSafeArea(true);
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
-            //viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>();
             BindingContext = viewModel;
             viewModel.LoadReasonSet();
-            //   GetSelectedDataTemplate();
-            // outletDecisionOptionsListView.Selected
             viewModel.PopulateAttachmentsListViewTemplate();
             if (viewModel.TinDeregistrationData != null)
             {
@@ -76,24 +67,10 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             viewModel.IsSummaryViewEnabled = false;
         }
 
-        public void ChangeArrowDirection()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+      
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-            ChangeArrowDirection();
             SetDate();
 
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton", (sender, args) =>
@@ -127,10 +104,10 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
                 if (arg.PickerId == "reasonPicker")
                 {
-                    viewModel.TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
+                    viewModel.TinDeregistrationData.AttDetSet = new List<Attachment>();
                     if (arg.SelectedValue == string.Empty)
                     {
-                        viewModel.TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
+                        viewModel.TinDeregistrationData.AttDetSet = new List<Attachment>();
                         viewModel.IsOption1Visible = false;
                         FrmDBO.IsVisible = false;
                         CalLabel.IsVisible = false;
@@ -158,7 +135,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             {
                 if (arg != null && arg.results != null && arg.results.Count > 0)
                 {
-                    viewModel.TinDeregistrationData.AttDetSet.Results = arg.results;
+                    viewModel.TinDeregistrationData.AttDetSet = arg.results;
                     if (TINDeregistrationPageViewModel.numberOfAttachmentSentToAttachmentPopUp != arg.results.Count)
                     {
                         viewModel.isSaveAsDraftCalledForAttachment = false;
@@ -167,7 +144,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     var obj = viewModel.AttachmentsListViewData;
                     viewModel.PopulateAttachments(null);
 
-                    foreach (Attachment attachment in viewModel.TinDeregistrationData.AttDetSet.Results)
+                    foreach (Attachment attachment in viewModel.TinDeregistrationData.AttDetSet)
                     {
                         if (attachment.Dotyp == "DR01")
                         {
@@ -281,22 +258,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             GC.Collect();
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-
-        void SfListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
-        {
-
-        }
 
 
 
@@ -307,22 +268,23 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
                 viewModel.SelectedOutletOption = selectedItem;
 
+                viewModel.SetDataAsitis();//CR3994
+                DateLbl2.Text = viewModel.PickerDobToDisplay;
+
                 viewModel.SetDefaultReasonLayout();
-
-
                 viewModel.SelectedIdtype = string.Empty;
                 viewModel.SelectedIdNumber = string.Empty;
                 viewModel.TINNumber = string.Empty;
                 if (viewModel.IDTypeDataModel != null)
                 {
-                    viewModel.IDTypeDataModel.Name2 = string.Empty;
+                    viewModel.IDTypeDataModel.name2 = string.Empty;
                     viewModel.FirstNameFromIdType = string.Empty;
-                    viewModel.IDTypeDataModel.FatherName = string.Empty;
-                    viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
-                    viewModel.IDTypeDataModel.FamilyName = string.Empty;
+                    viewModel.IDTypeDataModel.fatherName = string.Empty;
+                    viewModel.IDTypeDataModel.grandfatherName = string.Empty;
+                    viewModel.IDTypeDataModel.familyName = string.Empty;
                 }
 
-                viewModel.TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
+                viewModel.TinDeregistrationData.AttDetSet = new List<Attachment>();
             }
             catch (Exception)
             {
@@ -760,7 +722,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 {
                     if (viewModel != null)
                     {
-                        Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
+                        MainThread.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
                     }
                 }
                 catch (Exception)
@@ -812,7 +774,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
             finally
             {
-                Device.BeginInvokeOnMainThread(() => HijriCalSwitch1.IsToggled = viewModel.IsDOBHijriCal);
+                MainThread.BeginInvokeOnMainThread(() => HijriCalSwitch1.IsToggled = viewModel.IsDOBHijriCal);
             }
         }
 
@@ -931,7 +893,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     isHIjri = false;
                 }
 
-                List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(viewModel.TinDeregistrationData.PermitSet.Results);
+                List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(viewModel.TinDeregistrationData.PermitSet);
                 string sortedDate = string.Empty;
                 string datetype = string.Empty;
                 foreach (PermitSetResult permitInfo in allPermitTypes)
@@ -1308,9 +1270,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             DpDbo2.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -1319,7 +1281,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             DpDbo2.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             DpDbo2.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             DpDbo2.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -1342,9 +1304,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             DpDbo.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -1353,7 +1315,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             DpDbo.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             DpDbo.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             DpDbo.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -1376,9 +1338,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             DpDboHijri.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -1387,7 +1349,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             DpDboHijri.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             DpDboHijri.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             DpDboHijri.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -1410,9 +1372,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             DpDboHijri2.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -1421,7 +1383,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             DpDboHijri2.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             DpDboHijri2.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             DpDboHijri2.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -1445,9 +1407,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             DpDbo3.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -1456,7 +1418,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             DpDbo3.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             DpDbo3.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             DpDbo3.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -1480,9 +1442,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             DpDboHijri3.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -1491,7 +1453,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             DpDboHijri3.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             DpDboHijri3.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             DpDboHijri3.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -1586,11 +1548,10 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                var obj1 = viewModel.TinDeregistrationData.AttDetSet.Results;
+                var obj1 = viewModel.TinDeregistrationData.AttDetSet;
                 TinDeregestrationAttachmentsModel selectedOutlet = (TinDeregestrationAttachmentsModel)(e as TappedEventArgs).Parameter;
                 viewModel.SelectedAttachment = selectedOutlet;
-                //viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
-                var obj = viewModel.TinDeregistrationData.AttDetSet.Results;
+                var obj = viewModel.TinDeregistrationData.AttDetSet;
                 viewModel.NewAttachmentClicked();
             }
             catch (Exception)
@@ -1609,16 +1570,14 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 var list = viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Any(q => q.Filename == selectedAttachment.Filename)).Select(f => f.AttachmentTypeList).FirstOrDefault();
                 list.Remove(selectedAttachment);
                 list = new List<Attachment>(list);
-                // viewModel.PopulateAttachments(viewModel.AttachmentTypeList);
-                //   viewModel.AttachmentsListViewData = JsonConvert.DeserializeObject<List<TinDeregestrationAttachmentsModel>>(viewModel.attachmentsListViewDataString);
                 string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, viewModel.TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
                 if (results == "X")
                 {
-                    foreach (Attachment attachment in viewModel.TinDeregistrationData.AttDetSet.Results)
+                    foreach (Attachment attachment in viewModel.TinDeregistrationData.AttDetSet)
                     {
                         if (attachment.Doguid.Equals(selectedAttachment.Doguid))
                         {
-                            viewModel.TinDeregistrationData.AttDetSet.Results.Remove(attachment);
+                            viewModel.TinDeregistrationData.AttDetSet.Remove(attachment);
                             break;
                         }
                     }
@@ -1739,9 +1698,5 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             viewModel.OnTinRegisrtationReasonClicked();
         }
 
-        public void SetDefaultDateToPicker()
-        {
-
-        }
     }
 }

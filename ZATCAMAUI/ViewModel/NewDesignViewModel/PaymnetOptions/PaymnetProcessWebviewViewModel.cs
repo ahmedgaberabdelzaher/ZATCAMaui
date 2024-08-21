@@ -61,11 +61,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
 
                 var platform = "";
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     platform = "Mobile IOS";
                 }
-                else if (Device.RuntimePlatform == Device.Android)
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     platform = "Mobile Android";
                 }
@@ -152,11 +152,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
                 IsLoading = true;
                 var platform = "";
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     platform = "C4";
                 }
-                else if (Device.RuntimePlatform == Device.Android)
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     platform = "C3";
                 }

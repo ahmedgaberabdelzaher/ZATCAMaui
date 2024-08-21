@@ -1,19 +1,15 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Foundation;
+
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.AccountDetails;
-using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using static ZATCAMAUI.Models.AccountDetails.AccoungtDetails;
 
-namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
+namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 {
-    [Preserve(AllMembers = true)]
+    
     public class AccountStatementObjectiondetailVM : BaseViewModel
     {
-        public ICommand GoToBackbutton{ get; set;}
-
-
         private AccoungtDetails _AccDertails = null;
         public AccoungtDetails accountDetails
         {
@@ -227,9 +223,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         public AccountStatementObjectiondetailVM(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoToBackbutton = new Command(() => {
-                _navigationService.GoBack();
-            });
         }
 
 

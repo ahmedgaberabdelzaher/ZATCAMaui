@@ -1,12 +1,14 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ReturnType = ZATCAMAUI.Models.SyncfusionEnabledModels.ReturnType;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
 {
@@ -14,7 +16,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
     /// <summary>
     /// ViewModel for article list page.
     /// </summary> 
-    public class MyCommitmentsPageViewModel : ViewModelBase
+    public class MyCommitmentsPageViewModel : BaseViewModel
     {
         #region Fields
 
@@ -28,8 +30,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         private ObservableCollection<BillInfo> _PaymentInfoItems = null;
         private CalendarEventCollection _BillsAndReturnsSchedule = null;
         private ICommand EserviceCommand { get; set; }
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
 
         public DateTime lastTapped;
 
@@ -56,17 +56,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
             {
                 GetDashboardDataTask = Task.Run(async () =>
                 {
-                    DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                    DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.userId);
                 });
 
                 Task GetUnsubmittedReturnDataTask = Task.Run(async () =>
                 {
-                    listUnsubmittedReturn = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                    listUnsubmittedReturn = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(UtilityManager.GetLanguageParameter(), App.TP.userId);
                 });
 
                 Task GetOverduePaymentDataTask = Task.Run(async () =>
                 {
-                    listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                    listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(UtilityManager.GetLanguageParameter(), App.TP.userId);
                 });
             }
 
@@ -117,13 +117,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     PopToRootPage();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 IsLoading = false;
-
-
-
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -151,22 +151,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
 
         }
 
-        public MyCommitmentsPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
+        public MyCommitmentsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
 
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
-            ShowOptionsCommand = new Command(ShowOptionsCommandClicked);
-            ItemSelectedCommand = new Command(ItemSelected);
+            this.ShowOptionsCommand = new Command(this.ShowOptionsCommandClicked);
+            this.ItemSelectedCommand = new Command(this.ItemSelected);
         }
 
         #endregion
@@ -177,13 +166,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         {
             get
             {
-                return _eServicesItems;
+                return this._eServicesItems;
             }
 
             set
             {
-                _eServicesItems = value;
-                RaisePropertyChanged("eServicesAvailableToTheTP");
+                this._eServicesItems = value;
+                this.OnPropertyChanged("eServicesAvailableToTheTP");
             }
         }
 
@@ -193,13 +182,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         {
             get
             {
-                return _listUnsubmittedReturn;
+                return this._listUnsubmittedReturn;
             }
 
             set
             {
-                _listUnsubmittedReturn = value;
-                RaisePropertyChanged("listUnsubmittedReturn");
+                this._listUnsubmittedReturn = value;
+                this.OnPropertyChanged("listUnsubmittedReturn");
             }
         }
 
@@ -207,13 +196,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         {
             get
             {
-                return _listOverduePaymentReturn;
+                return this._listOverduePaymentReturn;
             }
 
             set
             {
-                _listOverduePaymentReturn = value;
-                RaisePropertyChanged("listOverduePaymentReturn");
+                this._listOverduePaymentReturn = value;
+                this.OnPropertyChanged("listOverduePaymentReturn");
             }
         }
 
@@ -221,13 +210,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         {
             get
             {
-                return _listofPaymentReturn;
+                return this._listofPaymentReturn;
             }
 
             set
             {
-                _listofPaymentReturn = value;
-                RaisePropertyChanged("listofPaymentReturn");
+                this._listofPaymentReturn = value;
+                this.OnPropertyChanged("listofPaymentReturn");
             }
         }
 
@@ -235,13 +224,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         {
             get
             {
-                return _isButtonEnabled;
+                return this._isButtonEnabled;
             }
 
             set
             {
-                _isButtonEnabled = value;
-                RaisePropertyChanged("IsButtonEnabled");
+                this._isButtonEnabled = value;
+                this.OnPropertyChanged("IsButtonEnabled");
             }
         }
 
@@ -253,13 +242,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         {
             get
             {
-                return _ReturnInfoItems;
+                return this._ReturnInfoItems;
             }
 
             set
             {
-                _ReturnInfoItems = value;
-                RaisePropertyChanged("ReturnInfoItems");
+                this._ReturnInfoItems = value;
+                this.OnPropertyChanged("ReturnInfoItems");
             }
         }
 
@@ -270,12 +259,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         {
             get
             {
-                return _PaymentInfoItems;
+                return this._PaymentInfoItems;
             }
             set
             {
-                _PaymentInfoItems = value;
-                RaisePropertyChanged("BillsInfoItems");
+                this._PaymentInfoItems = value;
+                this.OnPropertyChanged("BillsInfoItems");
             }
         }
 
@@ -286,18 +275,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         {
             get
             {
-                return _BillsAndReturnsSchedule;
+                return this._BillsAndReturnsSchedule;
             }
 
             set
             {
-                if (_BillsAndReturnsSchedule == value)
+                if (this._BillsAndReturnsSchedule == value)
                 {
                     return;
                 }
 
-                _BillsAndReturnsSchedule = value;
-                RaisePropertyChanged("BillsAndReturnsSchedule");
+                this._BillsAndReturnsSchedule = value;
+                this.OnPropertyChanged("BillsAndReturnsSchedule");
             }
         }
 
@@ -306,13 +295,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         {
             get
             {
-                return _TaxPayerProfile;
+                return this._TaxPayerProfile;
             }
 
             set
             {
-                _TaxPayerProfile = value;
-                RaisePropertyChanged("TaxPayerProfile");
+                this._TaxPayerProfile = value;
+                this.OnPropertyChanged("TaxPayerProfile");
             }
         }
 
@@ -330,21 +319,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         /// </summary>
         public Command ItemSelectedCommand { get; set; }
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
-
+        
 
         #endregion
 
@@ -384,10 +359,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     amountWithComma = _testDueAmount;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
             return amountWithComma;
@@ -403,14 +378,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
 
                 if (DashboardData != null)
                 {
-                    if (DashboardData.results != null && DashboardData.results.Count > 0)
+                    if (DashboardData.data != null && DashboardData.data.Count > 0)
                     {
-                        if (DashboardData.results[0] != null && DashboardData.results[0].RtnTot != null)
+                        if (DashboardData.data[0] != null && DashboardData.data[0].returnTotalNumber != null)
                         {
                             ReturnInfo objReturnInfoRtnTot = new ReturnInfo();
                             objReturnInfoRtnTot.ReturnTypeProperty = ReturnType.RtnTot;
 
-                            string RtnTotstr = DashboardData.results[0].RtnTot.TrimStart(new char[] { '0' });
+                            String RtnTotstr = DashboardData.data[0].returnTotalNumber.TrimStart(new Char[] { '0' });
 
                             if (string.IsNullOrEmpty(RtnTotstr))
                             {
@@ -440,12 +415,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                             // ReturnInfoItems.Add(objReturnInfoRtnTot);
                         }
 
-                        if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
+                        if (DashboardData.data[0] != null && DashboardData.data[0].nonSubmittedReturnTotalNumber != null)
                         {
                             ReturnInfo objReturnInfoNrtnTot = new ReturnInfo();
-                            objReturnInfoNrtnTot.ReturnTypeProperty =ReturnType.NrtnTot;
+                            objReturnInfoNrtnTot.ReturnTypeProperty = ReturnType.NrtnTot;
 
-                            string NrtnTotstr = DashboardData.results[0].NrtnTot.TrimStart(new char[] { '0' });
+                            String NrtnTotstr = DashboardData.data[0].nonSubmittedReturnTotalNumber.TrimStart(new Char[] { '0' });
                             if (string.IsNullOrEmpty(NrtnTotstr))
                             {
                                 NrtnTotstr = "0";
@@ -466,13 +441,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                         }
 
 
-                        if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
+                        if (DashboardData.data[0] != null && DashboardData.data[0].dueTotalNumber != null)
                         {
 
                             ReturnInfo objReturnInfoDueIcr = new ReturnInfo();
                             objReturnInfoDueIcr.ReturnTypeProperty = ReturnType.DueIcr;
 
-                            string DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new char[] { '0' });
+                            String DueIcrstr = DashboardData.data[0].dueTotalNumber.TrimStart(new Char[] { '0' });
                             if (string.IsNullOrEmpty(DueIcrstr))
                             {
                                 DueIcrstr = "0";
@@ -494,10 +469,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -507,18 +482,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
 
             try
             {
-                if (DashboardData.results != null && DashboardData.results.Count > 0)
+                if (DashboardData.data != null && DashboardData.data.Count > 0)
                 {
 
                     //Paid Bills
-                    if (DashboardData.results[0] != null && DashboardData.results[0].PbillsTot != null)
+                    if (DashboardData.data[0] != null && DashboardData.data[0].paidBillsTotalNumber != null)
                     {
                         BillInfo objBillInfoPbillsTot = new BillInfo();
 
                         objBillInfoPbillsTot.BillTypeProperty = BillType.PbillsTot;
 
-                        string PaidBillsstr = DashboardData.results[0].PbillsTot.TrimStart(new char[] { '0' });
-                        string PaidBillsAmountstr = DashboardData.results[0].PbillsBetrw.TrimStart(new char[] { '0' });
+                        String PaidBillsstr = DashboardData.data[0].paidBillsTotalNumber.TrimStart(new Char[] { '0' });
+                        String PaidBillsAmountstr = DashboardData.data[0].paidBillsTotalNumber.TrimStart(new Char[] { '0' });
 
                         //PaidBillsstr = Convert.ToDouble(PaidBillsstr).ToString();
 
@@ -556,13 +531,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
 
                     //Partially Paid Bills
 
-                    if (DashboardData.results[0] != null && DashboardData.results[0].PrbillsTot != null)
+                    if (DashboardData.data[0] != null && DashboardData.data[0].partialBillsTotalNumber != null)
                     {
                         BillInfo objBillInfoPrbillsTot = new BillInfo();
 
                         objBillInfoPrbillsTot.BillTypeProperty = BillType.PrbillsTot;
-                        string PartialPaidBillsstr = DashboardData.results[0].PrbillsTot.TrimStart(new char[] { '0' });
-                        string PartialPaidBillsAmountstr = DashboardData.results[0].PrbillsBetrw.TrimStart(new char[] { '0' });
+                        String PartialPaidBillsstr = DashboardData.data[0].partialBillsTotalNumber.TrimStart(new Char[] { '0' });
+                        String PartialPaidBillsAmountstr = DashboardData.data[0].partialBillsTotalNumber.TrimStart(new Char[] { '0' });
 
                         if (string.IsNullOrEmpty(PartialPaidBillsstr))
                         {
@@ -592,13 +567,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     }
 
                     //Unpaid Bills
-                    if (DashboardData.results[0] != null && DashboardData.results[0].UpbillsTot != null)
+                    if (DashboardData.data[0] != null && DashboardData.data[0].unpaidBillsTotalNumber != null)
                     {
                         BillInfo objBillInfoUpbillsTot = new BillInfo();
 
                         objBillInfoUpbillsTot.BillTypeProperty = BillType.UpbillsTot;
-                        string UnpaidBillsstr = DashboardData.results[0].UpbillsTot.TrimStart(new char[] { '0' });
-                        string UnpaidBillsAmountstr = DashboardData.results[0].UpbillsBetrw.TrimStart(new char[] { '0' });
+                        String UnpaidBillsstr = DashboardData.data[0].unpaidBillsTotalNumber.TrimStart(new Char[] { '0' });
+                        String UnpaidBillsAmountstr = DashboardData.data[0].unpaidBillsTotalNumber.TrimStart(new Char[] { '0' });
                         if (string.IsNullOrEmpty(UnpaidBillsstr))
                         {
                             UnpaidBillsstr = "0";
@@ -627,10 +602,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -663,26 +638,26 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     BillOrReturnDueEvent.StartTime = item.DueDateDateTime;
                     BillOrReturnDueEvent.EndTime = item.DueDateDateTime;
 
-                    if (item.IcrStatus == "O")
+                    if (item.ICRStatus == "O")
                     {
-                        BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount
-                            + " | " + item.Txt50;
+                        BillOrReturnDueEvent.Subject = item.inboundCorrespondenceTypeDescription + " | " + AppResources.SADADNumber + " : " + item.formBundleNumber + " | " + AppResources.ZStatus + " : " + item.ICRStatus + " | " + AppResources.ZSAR + " " + item.amount
+                            + " | " + item.periodDescription;
 
                         BillOrReturnDueEvent.Color = (Color)Application.Current.Resources["ErrorColor"];
                     }
                     else
                     {
-                        BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + item.Txt50;
+                        BillOrReturnDueEvent.Subject = item.inboundCorrespondenceTypeDescription + " | " + AppResources.SADADNumber + " : " + item.formBundleNumber + " | " + AppResources.ZStatus + " : " + item.ICRStatus + " | " + item.periodDescription;
                         BillOrReturnDueEvent.Color = (Color)Application.Current.Resources["ForgotPasswordGrayTextColor"];
                     }
 
                     BillsAndReturnsSchedule.Add(BillOrReturnDueEvent);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -691,14 +666,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
             //Call the API to get the eSevrices applicable to the TP
 
             eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();
-            if (DashboardData.results[0].TpType != null && DashboardData.results[0].TpType != "")
+            if (DashboardData.data[0].taxpayerType != null && DashboardData.data[0].taxpayerType != "")
             {
-                UtilityManager.TPTaxAvalable = DashboardData.results[0].TpType;
-                UtilityManager.IsZakatAvailable = DashboardData.results[0].EstimateZkat;
-                string[] TpTypes = DashboardData.results[0].TpType.Split(',');
+                UtilityManager.TPTaxAvalable = DashboardData.data[0].taxpayerType;
+                UtilityManager.IsZakatAvailable = DashboardData.data[0].estimateZakat;
+                string[] TpTypes = DashboardData.data[0].taxpayerType.Split(',');
                 foreach (string ItemType in TpTypes)
                 {
-                    if (ItemType == "05" && DashboardData.results[0].EstimateZkat == "X")
+                    if (ItemType == "05" && DashboardData.data[0].estimateZakat == "X")
                     {
 
                         eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_Estimated_Zakat_Returns.png" });

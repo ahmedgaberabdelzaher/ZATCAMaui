@@ -1,4 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using Mopups.Animations;
+using Mopups.Enums;
+using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
@@ -47,7 +50,26 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
 
 
         }
+        private async void LoadAccountStatements()
+        {
+            try
+            {
+                BillInfo billInfo = new BillInfo();
+                await viewModel.onPageLoad(billInfo);
+                if (viewModel.MyBillsOriginal != null)
+                {
+                    viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "Paid"));
+                }
 
+                await viewModel.PopulateReturnTypeList();
+                await viewModel.PopulateASFilterData();
+                viewModel.populateStatusChips();
+
+            }
+            catch (Exception)
+            {
+            }
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -56,6 +78,11 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             {
                 viewModel.PickerModel = arg;
                 viewModel.updatePicker();
+            });
+
+            MessagingCenter.Subscribe<object, string>(this, "SortingTappedforAcc", (sender, arg) =>
+            {
+                viewModel.ClickSorted(arg);
             });
 
         }
@@ -80,7 +107,18 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             {
                 viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
             }
-            /*viewModel.IsVisible_SearchList = false;*/
+        }
+        async void ClickOnSorting(System.Object sender, System.EventArgs e)
+        {
+            var pr = new SortingPopupPage();
+            var scaleAnimation = new ScaleAnimation
+            {
+                PositionIn = MoveAnimationOptions.Right,
+                PositionOut = MoveAnimationOptions.Left
+            };
+
+            pr.Animation = scaleAnimation;
+            await MopupService.Instance.PushAsync(pr);
         }
 
         void CloseSearchButton_Tapped(object sender, EventArgs e)
@@ -93,11 +131,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
 
         private void btn_Clicked(object sender, EventArgs e)
         {
-
-
             viewModel.showPickerDialog();
-
-           
         }
 
         private void ChipsData_Tapped(object sender, EventArgs e)
@@ -106,14 +140,14 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             ChipModel chipModel = (ChipModel)chipGrid.BindingContext;
             if (chipModel != null)
             {
-                if (viewModel.FromStatus == chipModel.Text)
+                if (viewModel.FromStatus == chipModel.ZTSTScts)
                 {
                     viewModel.FromStatus = "";
 
                 }
                 else
                 {
-                    viewModel.FromStatus = chipModel.Text;
+                    viewModel.FromStatus = chipModel.ZTSTScts;
                 }
 
 
@@ -124,30 +158,39 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
 
         void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var keyword = e.NewTextValue;
-            if (keyword.Length >= 1)
+            try
             {
-                try
+                var keyword = e.NewTextValue;
+                if (keyword.Length >= 1)
                 {
                     viewModel.SearchText = keyword;
                     viewModel.FilterIfTypeAndStausFilterSelected(false);
                 }
-                catch (Exception)
+                else
                 {
+                    viewModel.FilterIfTypeAndStausFilterSelected(false);
                 }
             }
-            else
+            catch (Exception)
             {
-                viewModel.FilterIfTypeAndStausFilterSelected(false);
             }
+
         }
 
-        async void LVNormalStatements_ItemTapped(object sender,ItemTappedEventArgs e)
+        async void LVNormalStatements_ItemTapped(System.Object sender, ItemTappedEventArgs e)
         {
             try
             {
                 var item = e.Item as MyBills;
-                await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));
+                viewModel.accoungtDetails1 = viewModel.ObjectBills(item.Opbel, item.Fbnum);
+
+                if (viewModel.accoungtDetails1 == null)
+                {
+                    viewModel.accoungtDetails1 = new Models.AccountDetails.AccoungtDetails();
+                }
+
+
+                await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item, viewModel.accoungtDetails1));
 
                 if (e.Item == null) return;
                 if (sender is ListView lv) lv.SelectedItem = null;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Newtonsoft.Json;
-namespace EGAZT.Models.VATInstalmentModels
+namespace ZATCAMAUI.Models.VATInstalmentModels
 {
     public class VATRevokeUiListModel : INotifyPropertyChanged
     {

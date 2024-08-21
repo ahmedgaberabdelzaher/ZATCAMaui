@@ -7,6 +7,7 @@ using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Common;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels;
@@ -38,6 +39,7 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Template;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VAT;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
@@ -46,9 +48,11 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatRejectionPopUpViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatyViewModels;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AccountCreatedPage;
@@ -79,6 +83,7 @@ using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage;
@@ -132,6 +137,7 @@ using ZATCAMAUI.Views.NewDesign.TaxpayerProfile;
 using ZATCAMAUI.Views.NewDesign.TaxpayersCertificatesPages;
 using ZATCAMAUI.Views.NewDesign.Template;
 using ZATCAMAUI.Views.NewDesign.TrackShipment;
+using ZATCAMAUI.Views.NewDesign.UpdateVatEffectiveDate;
 using ZATCAMAUI.Views.NewDesign.VAT;
 using ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
@@ -144,10 +150,12 @@ using ZATCAMAUI.Views.NewDesign.VATRegistrationDetails;
 using ZATCAMAUI.Views.NewDesign.VATReview;
 using ZATCAMAUI.Views.NewDesign.VATServices;
 using ZATCAMAUI.Views.NewDesign.ZakatDeregistration;
+using ZATCAMAUI.Views.NewDesign.ZakatExemptionRequest;
 using ZATCAMAUI.Views.NewDesign.ZakatForm5;
 using ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan;
 using ZATCAMAUI.Views.NewDesign.ZakatObjection;
 using ZATCAMAUI.Views.NewDesign.ZAKATObjectionPages;
+using ZATCAMAUI.Views.NewDesign.ZakatRejectPopUp;
 using ZATCAMAUI.Views.NewDesign.Zakaty;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AboutUsPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages;
@@ -165,6 +173,7 @@ using ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.PrivacyAndPolicyPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.TINOutletDeregister;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
@@ -178,7 +187,7 @@ namespace ZATCAMAUI.Core.Helper
 
         public ViewModelLocator()
         {
-           
+
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
                 .AddSingleton<INavigationService, NavigationService>()
@@ -201,7 +210,7 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<EDeclerationSubmitModel>()
                 .AddSingleton<BankAccountManagementPageViewModel>()
                 .AddSingleton<BankAccountAddorUpdateIBANViewModel>()
-                #region NewDesignIOC
+            #region NewDesignIOC
                 .AddSingleton<GAZTNewDesignRecoverUsernameViewModel>()
                 .AddSingleton<GAZTNewDesignRecoverPasswordPageViewModel>()
 
@@ -261,9 +270,9 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>()
                 .AddSingleton<TaxEvasionPageWebViewModel>()
                 .AddSingleton<TaxpayerSubsidyViewModel>()
-                #endregion
+            #endregion
 
-                #region NewDesignRelease2IOC
+            #region NewDesignRelease2IOC
                 .AddSingleton<ZakatInstalmentPlanViewModel>()
                 .AddSingleton<ZakatInstalmentPlanListViewModel>()
                 .AddSingleton<OldZakatInstalmentPlanViewModel>()
@@ -299,18 +308,32 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<VATRegistrationDisplayDetailsPageViewModel>()
 
                 //CR6094
-                .AddSingleton<NafathPopupPageViewModel>()
-                .AddSingleton<NafathLoginPageViewModel>()
                 .AddSingleton<EscalatedCasesGSTCPageViewModel>()
+                .AddSingleton<RelationShipManagerInfoPageViewModel>()
+                .AddSingleton<ZakatRejectionReasonPopupViewModel>()
+                .AddSingleton<FilterVatEffectiveDatePageViewModel>()
+                .AddSingleton<ZakatExemptionPageViewModel>()
+                .AddSingleton<UpdateActivityInstructionsPageViewModel>()
+                .AddSingleton<NafathChangeMobileNumberOptionsViewModel>()
+                .AddSingleton<NafathChangeMobileNumberViewModel>()
+                .AddSingleton<NafathLoginViewModel>()
+                .AddSingleton<NafathAuthenticationViewModel>()
+                .AddSingleton<NafathChangeMobileNumberOTPViewModel>()
+                .AddSingleton<NafathChangeMobileNumberSuccessViewModel>()
+                .AddSingleton<VATInstalmentNotesPageViewModel>()
+                .AddSingleton<VATInstalmentPlanRevokeViewModel>()
+                .AddSingleton<OTPPageViewModel>()
+                .AddSingleton<AccountLockedViewModel>()
+                .AddSingleton<AttachmentViewModel>()
 
-                #endregion
+            #endregion
 
-                #region PaymentImplementation
+            #region PaymentImplementation
                 .AddSingleton<PaymnetProcessWebviewViewModel>()
 
-                #endregion
+            #endregion
 
-                #region OldIOC
+            #region OldIOC
 
                 .AddSingleton<SFLoginPageViewModel>()
                 .AddSingleton<PdfViewModel>()
@@ -403,9 +426,9 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<NewYesorNoPageViewModel>()
                 //AccountStatementsDownloadPageView
                 //
-                #endregion
+            #endregion
 
-                #region Customs Service IoC
+            #region Customs Service IoC
                 .AddSingleton<InquiryAboutCustomsDeclarationViewModel>()
                 .AddSingleton<TraifSectionsViewModel>()
                 .AddSingleton<ReportFinancialViolationViewModel>()
@@ -451,18 +474,59 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<InquiryaboutCustomsIssuesViewModel>()
 
                 .AddSingleton<UpdateManagerViewModel>()
-                .AddSingleton<ChangeMobNafathPageViewMode>()
                 .AddSingleton<ChangeMobileRequestViewModel>()
+                .AddSingleton<NafathPopupPageViewModel>()
 
-            
-                #endregion
+
+            #endregion
 
                 .BuildServiceProvider());
             this.CreateNavigationService();
         }
 
         #region NewDesignViewModel
-
+        public ZakatExemptionRequestListViewModel ZakatExemptionRequestListPageView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<ZakatExemptionRequestListViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public TINOutletDeregistrationViewModel TINOutletDeregistrationPageView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<TINOutletDeregistrationViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public TinOutletDeRegRequestViewModel TinOutletDeRegRequestPageView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<TinOutletDeRegRequestViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
         public EscalatedCasesGSTCPageViewModel EscalatedCasesGSTCPageView
         {
             get
@@ -496,28 +560,13 @@ namespace ZATCAMAUI.Core.Helper
         }
 
         //CR6094
-        public NafathPopupPageViewModel NafathPopupPage
+        public ZakatExemptionPageViewModel ZakatExemptionPageView
         {
             get
             {
                 try
                 {
-                    return Ioc.Default.GetService<NafathPopupPageViewModel>();
-                }
-                catch (Exception)
-                {
-
-                    return null;
-                }
-            }
-        }
-        public NafathLoginPageViewModel NafathLoginPageView
-        {
-            get
-            {
-                try
-                {
-                    return Ioc.Default.GetService<NafathLoginPageViewModel>();
+                    return Ioc.Default.GetService<ZakatExemptionPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -525,6 +574,78 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
+        public AccountStatementDetailPageViewModel AccPageDetailVM
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<AccountStatementDetailPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public AccountStatementObjectiondetailVM AccPageObjDetailVM
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<AccountStatementObjectiondetailVM>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public UpdateVatEffectiveDateViewModel UpdateVatEffectiveDateView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<UpdateVatEffectiveDateViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+      
+        public VATInstalmentPlanRevokeViewModel VatInstalmentPlanRevokePageView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<VATInstalmentPlanRevokeViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public VATInstalmentNotesPageViewModel VATInstalmentPopupNotesPageView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<VATInstalmentNotesPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        
         public NativeNafathLoginPageViewModel NativeNafathLoginPageViewModel
         {
             get
@@ -2620,6 +2741,19 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.VRSuspensionViewAppPageView, typeof(VRSuspensionViewAppPageView));
             navigationService.Configure(App.VRVatRegViewPageView, typeof(VRVatRegViewPageView));
             navigationService.Configure(App.VRVatGroupPageView, typeof(VRVatGroupPageView));
+            navigationService.Configure(App.ZakatRejectionReasonPopupPageView, typeof(ZakatRejectionReasonPopupPageView));
+            navigationService.Configure(App.RelationShipManagerInfoPageView, typeof(RelationShipManagerInfoPageView));
+            navigationService.Configure(App.UpdateVatEffectiveDatePageView, typeof(UpdateVatEffectiveDatePageView));
+            navigationService.Configure(App.ZakatExemptionPageView, typeof(ZakatExemptionPageView));
+
+            navigationService.Configure(App.TINOutletDeregistrationPageView, typeof(TINOutletDeregistrationPageView));
+            navigationService.Configure(App.TinOutletDeRegRequestPageView, typeof(TinOutletDeRegRequestPageView));
+            navigationService.Configure(App.FilterVatEffectiveDatePageView, typeof(FilterVatEffectiveDatePageView));
+            navigationService.Configure(App.VATInstalmentPopupRevokePageView, typeof(VATInstalmentPopupRevokePageView));
+            navigationService.Configure(App.VatInstalmentPlanRevokePageView, typeof(VatInstalmentPlanRevokePageView));
+            navigationService.Configure(App.VATInstalmentPopupNotesPageView, typeof(VATInstalmentPopupNotesPageView));
+
+
             #endregion
 
             #region Payment Implementatoin
@@ -2801,18 +2935,17 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
             navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
             navigationService.Configure("UploadingPopup", typeof(UploadingPopup));
-            //CR6094
-            navigationService.Configure(App.NafathPopUpPage, typeof(NafathPopUpPage));
-            navigationService.Configure(App.NafathLoginPageView, typeof(NafathLoginPageView));
             navigationService.Configure(App.NewYesorNoPageView, typeof(NewYesorNoPageView));//Cr6264
             navigationService.Configure("FasahLoginView", typeof(FasahLoginView));
             navigationService.Configure("InquiryaboutCustomsIssuesView", typeof(InquiryaboutCustomsIssuesView));
 
             //CR6003
             navigationService.Configure(App.ChangeMobileRequestPageView, typeof(ChangeMobileRequestPageView));
-            navigationService.Configure(App.ChangeMobNafathLoginPage, typeof(ChangeMobNafathLoginPage));
             navigationService.Configure(App.UpdateManagerDetailsPopUp, typeof(UpdateManagerDetailsPopUp));
             navigationService.Configure(App.EscalatedCasesGSTCPageView, typeof(EscalatedCasesGSTCPageView));//CR4820
+
+            navigationService.Configure(App.ZakatExemptionRequestListPageView, typeof(ZakatExemptionRequestListPageView));
+            navigationService.Configure(App.NafathPopUpPage,typeof(NafathPopUpPage));
 
             #endregion
 
@@ -4187,20 +4320,6 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
-        public ChangeMobNafathPageViewMode ChangeMobNafathLoginPage
-        {
-            get
-            {
-                try
-                {
-                    return Ioc.Default.GetService<ChangeMobNafathPageViewMode>();
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-        }
         public UpdateManagerViewModel UpdateManagerPopUp
         {
             get
@@ -4244,7 +4363,233 @@ namespace ZATCAMAUI.Core.Helper
             }
         }
 
-        //
+        public RelationShipManagerInfoPageViewModel RelationShipManagerInfoPageView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<RelationShipManagerInfoPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatRejectionReasonPopupViewModel ZakatRejectionReasonPopupPageView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<ZakatRejectionReasonPopupViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public FilterVatEffectiveDatePageViewModel FilterVatEffectiveDatePageView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<FilterVatEffectiveDatePageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public UpdateActivityInstructionsPageViewModel UpdateActivityInstructionsPage
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<UpdateActivityInstructionsPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public NafathChangeMobileNumberOptionsViewModel NafathChangeMobileNumberOptionsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<NafathChangeMobileNumberOptionsViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public NafathLoginViewModel NafathLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<NafathLoginViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public NafathAuthenticationViewModel NafathAuthenticationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<NafathAuthenticationViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public NafathChangeMobileNumberViewModel NafathChangeMobileNumberViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<NafathChangeMobileNumberViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public NafathChangeMobileNumberOTPViewModel NafathChangeMobileNumberOTPViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<NafathChangeMobileNumberOTPViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public NafathChangeMobileNumberSuccessViewModel NafathChangeMobileNumberSuccessViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<NafathChangeMobileNumberSuccessViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public ViewModel.NewDesignViewModel.VATDeclarationPagesVM.MoreOptionsVIewModel vIewModelOptions
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<ViewModel.NewDesignViewModel.VATDeclarationPagesVM.MoreOptionsVIewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public ZakatInstalmentPlanViewModel ZakatInstalmentPlanPageView1
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<ZakatInstalmentPlanViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public OTPPageViewModel OtpPageViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<OTPPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public AccountLockedViewModel AccountLockedViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<AccountLockedViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public AttachmentViewModel AttachmentViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<AttachmentViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public NafathPopupPageViewModel NafathPopupPageViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<NafathPopupPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
     }
 
 

@@ -27,28 +27,19 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 viewModel = App.Locator.VATRegistrationPageView;
                 this.BindingContext = viewModel;
-                ChangeAeroIcon();
                 clearDATA();
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
                 viewModel.CurrentStep = AppResources.VATRStep2;
                 viewModel.IsNewAccountClicked = false;
                 viewModel.IsInstrunctionChecked = false;
+                viewModel.ShouldLoad = true;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
                 viewModel.SetDefaultDate();
-                SetLTR();
 
 
 
                 SetPickerFont();
-                if (App.IsArabic && Device.RuntimePlatform == Device.iOS)
-                {
-                    viewModel.TermsAlignment = TextAlignment.End;
-                }
-                else
-                {
-                    viewModel.TermsAlignment = TextAlignment.Start;
-                }
             }
             catch (Exception)
             {
@@ -61,10 +52,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             DDlIDType.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -96,7 +87,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         DDlIDType.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         DDlIDType.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         DDlIDType.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -133,6 +124,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
 
         }
+
         public void clearDATA()
         {
             viewModel.StartdateToshow = string.Empty;
@@ -154,27 +146,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
 
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
         private async void DpEStartDate_Closed(object sender, EventArgs e)
         {
             try
@@ -297,9 +269,25 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
+        public bool step4Validation()
+        {   // condition when only one Question is visible
+            if (!viewModel.IsResident)
+            {
+                Question1_Error.IsVisible = false;
+                Question3_Error.IsVisible = false;
+                Question4_Error.IsVisible = false;
+            }
 
+            // Condition when all four questions are visible
+            if (Question1_Error.IsVisible || Question2_Error.IsVisible || Question3_Error.IsVisible || Question4_Error.IsVisible)
+            {
+                return false;
+            }
+            return true;
 
-        private async void btnContinue_Clicked(object sender, EventArgs e)
+        }
+
+        private  void btnContinue_Clicked(object sender, EventArgs e)
         {
 
 
@@ -311,10 +299,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.CurrentStep = AppResources.VATRStep2;
                     viewModel.SetVisibility();
                     viewModel.IsTaxPayersVisible = true;
+
+
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep2)
-                {//viewModel.IsSalesVisible = true;
-                 //SetthirdBoxColor();
+                {
                     step2Validation();
                     setAttachmentImporterExporterVisibility();
 
@@ -328,12 +317,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep4)
                 {
-
                     if (step4Validation())
                     {
                         if (viewModel.RegTypeCode == "N")
                         {
-                            if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.results.Count > 0)
+                            if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.Count > 0)
                             {
                                 viewModel.CurrentStep = AppResources.VATRStep5;
 
@@ -349,7 +337,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             viewModel.CurrentStep = AppResources.VATRStep5;
                             viewModel.SetVisibility();
-
                             viewModel.IsFinancialVisible = true;
                         }
                     }
@@ -357,25 +344,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         viewModel.CurrentStep = AppResources.VATRStep4;
                     }
-
                 }
-
                 else if (viewModel.CurrentStep == AppResources.VATRStep5)
                 {
                     viewModel.CurrentStep = AppResources.ZTEReportCategorySubmitBtn;
                     viewModel.SetVisibility();
                     viewModel.IsSummaryVisible = true;
-
-                    if (viewModel.VatDeregDeclaration != null && viewModel.VatDeregDeclaration.D != null && string.IsNullOrEmpty(viewModel.VatDeregDeclaration.D.Zterms))
-                    {
-                        viewModel.IsDeclarationViewEnabled = true;
-                        viewModel.Zterms = "";
-                    }
-                    else
-                    {
-                        viewModel.IsDeclarationViewEnabledNew = true;
-                        viewModel.Zterms = viewModel.VatDeregDeclaration.D.Zterms;
-                    }
 
                     if (viewModel.IsDeclarationChecked)
                     {
@@ -402,6 +376,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
         }
+
         public void setdefaultvalueforTPDetailscreen()
         {
             try
@@ -459,13 +434,14 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
+
         public async void step5Validation()
         {
-            if (viewModel.IsDeclarationChecked == true)
+            try
             {
-                bool flag = true;
-                if (!viewModel.IsDeclarationViewEnabledNew) //When Zterms is empty then only do the validation of ID Details.
+                if (viewModel.IsDeclarationChecked == true)
                 {
+                    bool flag = true;
                     if (viewModel.SelectedIdTypeSR == null)
                     {
                         flag = false;
@@ -481,62 +457,68 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         FrmContactName.HasError = true;
 
                     }
-                }
-                if (flag)
-                {
 
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "01";
-
-                    VATRegistrationDetails response = await viewModel.SubmitClicked();
-                    if (response != null)
+                    if (flag)
                     {
-                        if (response.d.Operationz.Equals("25"))
-                        {
-                            if (Navigation.NavigationStack.Count > 0)
-                            {
-                                Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                                Navigation.RemovePage(pg1);
-                               await this.Navigation.PopAsync();
-                            }
-                        }
-                        else
-                        {
-                            viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
-                        }
-                        App.HasToRefreshLoaderOnDashboard = true;
-                        App.LoginDataRetrieved.VtReg = "X";
-                        
-                    }
-                }
-                else
-                {
-                   await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
-                }
 
-            }
-            else
-            {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.VATRAcceptDeclarationToSubmit;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                    popUp.isFontSet = true;
+                        viewModel.VATRegistrationDetailsData.d.Operationz = "01";
+                        VATRegistrationDetails response = new VATRegistrationDetails();
+                        response.d = await viewModel.SubmitClicked();
+                        if (response != null)
+                        {
+                            if (response.d.Operationz.Equals("25"))
+                            {
+                                if (Navigation.NavigationStack.Count > 0)
+                                {
+                                    Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                                    Navigation.RemovePage(pg1);
+                                    this.Navigation.PopAsync();
+                                }
+                                //viewModel._navigationService.GoBack();
+                            }
+                            else
+                            {
+                                viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
+                            }
+                            App.HasToRefreshLoaderOnDashboard = true;
+                            App.LoginDataRetrieved.VtReg = "X";
+                        }
+                    }
+                    else
+                    {
+                      await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                    }
+
                 }
                 else
                 {
-                    popUp.FlowDirections = "LeftToRight";
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.VATRAcceptDeclarationToSubmit;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATRAcceptDeclarationToSubmit));
+                    chkDeclaration.Focus();
                 }
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATRAcceptDeclarationToSubmit));
-                chkDeclaration.Focus();
             }
+            catch (Exception )
+            {
+            }
+
 
 
         }
+
         public async void step2Validation()
         {
             if (viewModel.IsInstrunctionChecked == true)
@@ -591,6 +573,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
         }
+
         public void step3Validation()
         {
 
@@ -643,11 +626,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
 
         }
+
         public async void setDefaultAnswerThree()
         {
             if (viewModel.answer3selectedcount == 0)
             {
-                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                 {
                     if (item.QueNo == "003" && item.QoptNo == "031")
                     {
@@ -661,7 +645,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.quesTion3answerSelected = viewModel.TextQuestion3First;
                 viewModel.setQuestionImage();
                 viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+                registrationDetails.d = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
                     viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -669,84 +654,26 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     string eligibilityText = string.Empty;
                     viewModel.Attachments = AppResources.Attachments;
 
-                    if (code.Equals("L"))
+                    if (code.Equals("Mandatory Registration large taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     }
-                    else if (code.Equals("S"))
+                    else if (code.Equals("Mandatory Registration small taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     }
-                    else if (code.Equals("V"))
+                    else if (code.Equals("Voluntary Registration"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     }
-                    else if (code.Equals("N"))
-                    {
-                        eligibilityText = AppResources.ZZZZEligibilitylableTestne;
-                        viewModel.Attachments = AppResources.Attachments + "*";
-
-                    }
-                    else if (code.Equals("M"))
-                    {
-                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
-                    }
-                    viewModel.SliderLable1EligibilityText = eligibilityText;
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
-                }
-            }
-        }
-
-
-        public async void setDefaultansForAnswer4()
-        {
-            if (viewModel.answer4selectedcount == 0)
-            {
-                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
-                {
-                    if (item.QueNo == "004" && item.QoptNo == "041")
-                    {
-                        item.QoptAns = "1";
-                    }
-                    if (item.QueNo == "004" && item.QoptNo == "042")
-                    {
-                        item.QoptAns = "0";
-                    }
-                }
-                viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
-                viewModel.setQuestionImage();
-                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
-                if (registrationDetails != null & registrationDetails.d != null)
-                {
-                    viewModel.RegTypeCode = registrationDetails.d.RegTy;
-                    string code = registrationDetails.d.RegTy;
-                    string eligibilityText = string.Empty;
-                    viewModel.Attachments = AppResources.Attachments;
-
-                    if (code.Equals("L"))
-                    {
-                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
-                    }
-                    else if (code.Equals("S"))
-                    {
-                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
-                    }
-                    else if (code.Equals("V"))
-                    {
-                        eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
-                    }
-                    else if (code.Equals("N"))
+                    else if (code.Equals("Not Eligible"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                         viewModel.Attachments = AppResources.Attachments + "*";
 
                         // eligibilityText = "Not Eligible";
                     }
-                    else if (code.Equals("M"))
+                    else if (code.Equals("Mandatory Registration medium taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
@@ -759,36 +686,30 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
             }
         }
-        public async void setAnsWerOneSlider()
+
+        public async void setDefaultansForAnswer4()
         {
-            if (viewModel.answer1selectedcount != 0)
+            try
             {
-                try
+                if (viewModel.answer4selectedcount == 0)
                 {
-
-                    //double   value = 2;
-                    string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "001" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
-                    int a = UtilityManager.FindTheAnswerIndexBasedOntheAnswerId("001", AnswerID, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
-                    Slider_Answer1.Value = Convert.ToDouble(a);
-                    QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", Convert.ToDouble(a), viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
-                    viewModel.SliderLable1 = obj.QoptTxt;
-                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                     {
-                        if (item.QueNo == "001")
+                        if (item.QueNo == "004" && item.QoptNo == "041")
                         {
-                            if (item.QoptNo == obj.QoptNo)
-                            {
-
-                                item.QoptAns = "1";
-                            }
-                            else
-                            {
-                                item.QoptAns = "0";
-                            }
+                            item.QoptAns = "1";
+                        }
+                        if (item.QueNo == "004" && item.QoptNo == "042")
+                        {
+                            item.QoptAns = "0";
                         }
                     }
+                    viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
+                    viewModel.setQuestionImage();
                     viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+                    registrationDetails.d = await viewModel.SubmitClicked();
+
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
                         viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -796,26 +717,26 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         string eligibilityText = string.Empty;
                         viewModel.Attachments = AppResources.Attachments;
 
-                        if (code.Equals("L"))
+                        if (code.Equals("Mandatory Registration large taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         }
-                        else if (code.Equals("S"))
+                        else if (code.Equals("Mandatory Registration small taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
-                        else if (code.Equals("V"))
+                        else if (code.Equals("Voluntary Registration"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         }
-                        else if (code.Equals("N"))
+                        else if (code.Equals("Not Eligible"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                             viewModel.Attachments = AppResources.Attachments + "*";
 
                             // eligibilityText = "Not Eligible";
                         }
-                        else if (code.Equals("M"))
+                        else if (code.Equals("Mandatory Registration medium taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                             // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
@@ -826,29 +747,27 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.IsLoading = false;
                         });
                     }
-                    //  viewModel.SliderLable1EligibilityText = eligibilityText;
-                }
-                catch (Exception)
-                {
-
-
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
-
                 }
             }
-            else
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public async void setAnsWerOneSlider()
+        {
+            if (viewModel.answer1selectedcount != 0)
             {
                 try
                 {
 
-                    double value = 0;
-                    Slider_Answer1.Value = value;
-                     QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    //double   value = 2;
+                    string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.Where(x => x.QueNo == "001" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
+                    int a = UtilityManager.FindTheAnswerIndexBasedOntheAnswerId("001", AnswerID, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    Slider_Answer1.Value = Convert.ToDouble(a);
+                    QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", Convert.ToDouble(a), viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                     viewModel.SliderLable1 = obj.QoptTxt;
-                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                     {
                         if (item.QueNo == "001")
                         {
@@ -864,7 +783,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                     }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    Models.VATRegistrationDetails registrationDetails = new Models.VATRegistrationDetails();
+                    registrationDetails.d = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
                         viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -872,24 +792,91 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         string eligibilityText = string.Empty;
                         viewModel.Attachments = AppResources.Attachments;
 
-                        if (code.Equals("L"))
+                        if (code.Equals("Mandatory Registration large taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         }
-                        else if (code.Equals("S"))
+                        else if (code.Equals("Mandatory Registration small taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
-                        else if (code.Equals("V"))
+                        else if (code.Equals("Voluntary Registration"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         }
-                        else if (code.Equals("N"))
+                        else if (code.Equals("Not Eligible"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                            viewModel.Attachments = AppResources.Attachments + "*";
+
+                            // eligibilityText = "Not Eligible";
+                        }
+                        else if (code.Equals("Mandatory Registration medium taxpayer group"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                            // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                        }
+                        viewModel.SliderLable1EligibilityText = eligibilityText;
+                        viewModel.IsLoading = false;
+                    }
+                }
+                catch (Exception )
+                {
+                    viewModel.IsLoading = false;
+                }
+            }
+            else
+            {
+                try
+                {
+
+                    double value = 0;
+                    Slider_Answer1.Value = value;
+                    QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    viewModel.SliderLable1 = obj.QoptTxt;
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
+                    {
+                        if (item.QueNo == "001")
+                        {
+                            if (item.QoptNo == obj.QoptNo)
+                            {
+
+                                item.QoptAns = "1";
+                            }
+                            else
+                            {
+                                item.QoptAns = "0";
+                            }
+                        }
+                    }
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                    VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+                    registrationDetails.d = await viewModel.SubmitClicked();
+                    if (registrationDetails != null & registrationDetails.d != null)
+                    {
+                        viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                        string code = registrationDetails.d.RegTy;
+                        string eligibilityText = string.Empty;
+                        viewModel.Attachments = AppResources.Attachments;
+
+                        if (code.Equals("Mandatory Registration large taxpayer group"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                        }
+                        else if (code.Equals("Mandatory Registration small taxpayer group"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                        }
+                        else if (code.Equals("Voluntary Registration"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                        }
+                        else if (code.Equals("Not Eligible"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                             viewModel.Attachments = AppResources.Attachments + "*";
                         }
-                        else if (code.Equals("M"))
+                        else if (code.Equals("Mandatory Registration medium taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
@@ -900,18 +887,14 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         });
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                    viewModel.IsLoading = false;
 
                 }
             }
         }
+
         public async void setAnsWertwoSlider()
         {
             if (viewModel.answer2selectedcount != 0)
@@ -920,14 +903,14 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 try
                 {
 
-                    string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "002" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
+                    string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.Where(x => x.QueNo == "002" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
                     int a = UtilityManager.FindTheAnswerIndexBasedOntheAnswerId("002", AnswerID, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                     Slider_Answer2.Value = Convert.ToDouble(a);
                     //  viewModel.SliderCurrentValue2 = value; ;
                     QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", Convert.ToDouble(a), viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                     viewModel.SliderLable2 = obj.QoptTxt;
 
-                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                     {
                         if (item.QueNo == "002")
                         {
@@ -942,7 +925,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                     }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+                    registrationDetails.d = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
                         viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -950,41 +934,36 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         string eligibilityText = string.Empty;
                         viewModel.Attachments = AppResources.Attachments;
 
-                        if (code.Equals("L"))
+                        if (code.Equals("Mandatory Registration large taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         }
-                        else if (code.Equals("S"))
+                        else if (code.Equals("Mandatory Registration small taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
-                        else if (code.Equals("V"))
+                        else if (code.Equals("Voluntary Registration"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         }
-                        else if (code.Equals("N"))
+                        else if (code.Equals("Not Eligible"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                             viewModel.Attachments = AppResources.Attachments + "*";
 
                             // eligibilityText = "Not Eligible";
                         }
-                        else if (code.Equals("M"))
+                        else if (code.Equals("Mandatory Registration medium taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                             // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
                         }
                         viewModel.SliderLable1EligibilityText = eligibilityText;
-                        await Task.Run(() =>
-                        {
-                            viewModel.IsLoading = false;
-                        });
+                        viewModel.IsLoading = false;
                     }
                 }
-                catch (Exception)
+                catch (Exception )
                 {
-
-
                 }
 
             }
@@ -998,7 +977,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                     viewModel.SliderLable2 = obj.QoptTxt;
 
-                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                     {
                         if (item.QueNo == "002")
                         {
@@ -1013,7 +992,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                     }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+                    registrationDetails.d = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
                         viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -1021,45 +1001,45 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         string eligibilityText = string.Empty;
                         viewModel.Attachments = AppResources.Attachments;
 
-                        if (code.Equals("L"))
+                        if (code.Equals("Mandatory Registration large taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         }
-                        else if (code.Equals("S"))
+                        else if (code.Equals("Mandatory Registration small taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
-                        else if (code.Equals("V"))
+                        else if (code.Equals("Voluntary Registration"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         }
-                        else if (code.Equals("N"))
+                        else if (code.Equals("Not Eligible"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                             viewModel.Attachments = AppResources.Attachments + "*";
 
                             // eligibilityText = "Not Eligible";
                         }
-                        else if (code.Equals("M"))
+                        else if (code.Equals("Mandatory Registration medium taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                             // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
                         }
                         viewModel.SliderLable1EligibilityText = eligibilityText;
-                        await Task.Run(() =>
-                        {
-                            viewModel.IsLoading = false;
-                        });
+                        viewModel.IsLoading = false;
+                    }
+                    else
+                    {
+                        viewModel.Attachments = AppResources.Attachments;
                     }
                 }
-                catch (Exception)
+                catch (Exception )
                 {
-
-
                 }
             }
 
         }
+
 
         protected override void OnDisappearing()
         {
@@ -1080,13 +1060,15 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 base.OnAppearing();
 
 
-               await Task.Run(async () =>
+
+                if (viewModel.ShouldLoad)
                 {
+                    viewModel.ShouldLoad = false;
                     viewModel.IsLoading = true;
                     await GetVatRegistrationData();
-                });
+                }
 
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     DDlIDType.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
                     DDlContactIDType.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
@@ -1122,7 +1104,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 viewModel.IbanList = null;
                                 if (viewModel.VATRegistrationDetailsData != null && viewModel.VATRegistrationDetailsData.d != null && viewModel.VATRegistrationDetailsData.d.IBANSet != null)
                                 {
-                                    viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet.results);
+                                    viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet);
                                 }
                                 viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
                                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
@@ -1132,17 +1114,15 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 triggerIban(message);
                             }
                         }
-                        catch (Exception)
+                        catch (Exception )
                         {
-
-
                         }
 
 
                     }
                 });
 
-                MessagingCenter.Subscribe<object, ATTDETSet>(this, "AttachmentReceived", (sender, arg) =>
+                MessagingCenter.Subscribe<object, List<Attachment>>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {
@@ -1151,7 +1131,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         viewModel.ATTDETSetObject = viewModel.VATRegistrationDetailsData.d.ATTDETSet;
                     }
                 });
-                MessagingCenter.Subscribe<object, ELGBL_DOCSetforsubmit>(this, "EligibilitySetAttachmentReceived", (sender, arg) =>
+                MessagingCenter.Subscribe<object, List<ResultsItemForDOCSetforsubmit>>(this, "EligibilitySetAttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {
@@ -1243,7 +1223,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                                 viewModel.VoidMsg();
 
-                                
+                              
                             }
                             else
                             {
@@ -1252,11 +1232,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                     }
                 });
+
             }
-            catch (Exception)
+            catch (Exception )
             {
-
-
             }
         }
 
@@ -1320,22 +1299,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    if (!viewModel.isLoadedAlready)
-                    {
-                        await viewModel.onPageLoad();
-                        setIban();
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = true;
+                await viewModel.onPageLoad();
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
@@ -1343,6 +1309,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
+
         public void setIban()
         {
             if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.OptIban))
@@ -1355,21 +1322,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 triggerIban(viewModel.VATRegistrationDetailsData.d.OptIban);
             }
         }
-        private void DateEntry_Focused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void DateEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void DpEStartDate_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-
-        }
-
+       
         private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
         {
             try
@@ -1651,13 +1604,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        
+
 
         private void btnContactID_Clicked(object sender, EventArgs e)
         {
             DDlContactIDType.IsOpen = true;
         }
-        
+
 
         private void TappedOnBackButton(object sender, EventArgs e)
         {
@@ -1666,7 +1619,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
                 viewModel.CurrentStep = AppResources.VATRStep2;
-               
+
                 if (viewModel.IsInstrunctionChecked)
                 {
                     viewModel.IsContinueButtonEnable = true;
@@ -1773,6 +1726,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
+
         public void setAttachmentImporterExporterVisibility()
         {
             if (viewModel.VATRegistrationDetailsData.d.ExFg == "0" && viewModel.VATRegistrationDetailsData.d.ImFg == "0")
@@ -1810,11 +1764,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
+
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
             await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(viewModel.ListOfActionButtonsApplicable));
 
         }
+
         private void DDlIDTypeSR_OkayButtonClicked(object sender, EventArgs e)
         {
             try
@@ -1946,7 +1902,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
-              await  MopupService.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData));
+                await MopupService.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData));
             }
             catch (Exception)
             {
@@ -1954,7 +1910,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
-
 
 
         private void OnPageSelectedForIban(object sender, SelectionChangedEventArgs e)
@@ -1972,21 +1927,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private void DateEntry_Focused_1(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void DateEntry_Unfocused_1(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void DateEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         public async void ValidateIDNumber()
         {
             MainThread.BeginInvokeOnMainThread(async () =>
@@ -1996,7 +1936,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IsLoading = true;
                 });
             });
-            string dob = viewModel.DOB.Replace("/", "");
+            string dob = viewModel.DOB.Replace("/", "-");
             // EntryName.IsEnabled = true;
             if (viewModel.SelectedIdTypeFR.ID == "ZS0001")
             {
@@ -2015,26 +1955,27 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
                         {
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                            viewModel.LastnmFR = vATSignUpData.d.Name2;
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                            viewModel.LastnmFR = vATSignUpData.d.Name2;
+                            //viewModel.Title = vATSignUpData.d.taxpayerTitle;
+                            viewModel.FirstnmFR = vATSignUpData.d.name1;
+                            viewModel.LastnmFR = vATSignUpData.d.name2;
+                            viewModel.FirstnmFR = vATSignUpData.d.name1;
+                            viewModel.LastnmFR = vATSignUpData.d.name2;
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
-                            viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                            viewModel.SmtpAddrFR = vATSignUpData.d.email;
                             viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
-                            if (vATSignUpData.d.Mobile != null && !string.IsNullOrEmpty(vATSignUpData.d.Mobile))
+                            if (vATSignUpData.d.mobile != null && !string.IsNullOrEmpty(vATSignUpData.d.mobile))
                             {
-                                viewModel.MobNumberFR = vATSignUpData.d.Mobile;
+                                viewModel.MobNumberFR = vATSignUpData.d.mobile;
                             }
                             viewModel.FrameIDError = false;
                         }
@@ -2048,12 +1989,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2088,7 +2029,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -2104,10 +2045,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-
+                            
+                            
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
@@ -2133,23 +2074,23 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
                         {
 
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                            viewModel.LastnmFR = vATSignUpData.d.Name2;
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                            viewModel.LastnmFR = vATSignUpData.d.Name2;
+                            viewModel.FirstnmFR = vATSignUpData.d.name1;
+                            viewModel.LastnmFR = vATSignUpData.d.name2;
+                            viewModel.FirstnmFR = vATSignUpData.d.name1;
+                            viewModel.LastnmFR = vATSignUpData.d.name2;
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
-                            viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                            viewModel.SmtpAddrFR = vATSignUpData.d.email;
                             viewModel.FrameIDError = false;
                         }
                     }
@@ -2162,7 +2103,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
@@ -2209,7 +2150,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 });
                             });
                         }
-                        catch (HttpRequestException ex)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2218,10 +2159,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception )
                         {
-
-
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
@@ -2231,14 +2170,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
             }
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            });
+            viewModel.IsLoading = false;
         }
+
         private void btnDate_Clicked(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(EntryTINNumber.Text))
@@ -2553,14 +2487,14 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         public async void ValidateIDNumberContact()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
+           MainThread.BeginInvokeOnMainThread(async () =>
             {
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
                 });
             });
-            string dob = viewModel.ContactDOB.Replace("/", "");
+            string dob = viewModel.ContactDOB.Replace("/", "-");
             if (viewModel.SelectedIdTypeSR.ID == "ZS0001")
             {
                 if (!string.IsNullOrEmpty(viewModel.IdNumberSR))
@@ -2568,7 +2502,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     try
                     {
 
-                        //  string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdNumberSR, dob);
                         string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDDeclaration("ZS0001", viewModel.IdNumberSR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
@@ -2578,17 +2511,18 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameContactIDError = true;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                viewModel.FrameContactIDError = true;
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameContactIDError = false;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
                         {
-                            viewModel.FirstNameSR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            viewModel.FirstNameSR = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
                             viewModel.FrameContactIDError = false;
                         }
                     }
@@ -2596,14 +2530,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            // string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.IdNumberSR, dob);
                             string Result = await WebServiceManager.GAZTValidateIDTypesDelecration("ZS0001", viewModel.IdNumberSR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameContactIDError = true;
                                 viewModel.IdNumberSR = string.Empty;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
@@ -2611,7 +2544,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 viewModel.FrameContactIDError = false;
 
                                 //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2635,7 +2568,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
 
@@ -2645,7 +2578,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         catch (InternetException ex)
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
@@ -2654,21 +2587,21 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 });
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException ex)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-
+                            
+                            
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
@@ -2683,7 +2616,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     try
                     {
 
-                        // string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdNumberSR, dob);
                         string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDDeclaration("ZS0002", viewModel.IdNumberSR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
@@ -2694,17 +2626,17 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 viewModel.FrameContactIDError = true;
                                 viewModel.IdNumberSR = string.Empty;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameContactIDError = false;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
                         {
-                            viewModel.FirstNameSR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            viewModel.FirstNameSR = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
                             viewModel.FrameContactIDError = false;
                         }
                     }
@@ -2712,19 +2644,18 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            // string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.IdNumberSR, dob);
                             string Result = await WebServiceManager.GAZTValidateIDTypesDelecration("ZS0002", viewModel.IdNumberSR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameContactIDError = true;
                                 viewModel.IdNumberSR = string.Empty;
-                              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameContactIDError = false;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2748,7 +2679,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
@@ -2757,9 +2688,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         catch (InternetException ex)
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -2770,17 +2701,17 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-
+                            
+                            
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                           MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
@@ -2788,13 +2719,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
             }
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            });
+            viewModel.IsLoading = false;
         }
 
         public async void ValidateTinNumber(string TinNumber)
@@ -2828,12 +2753,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 else
                 {
                     viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(obj => obj.ID == vATSignUpData.d.Idtype).FirstOrDefault();
-                    viewModel.DOB = vATSignUpData.d.Birthdt10;
-                    viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                    viewModel.LastnmFR = vATSignUpData.d.Name2;
-                    viewModel.MobNumberFR = vATSignUpData.d.Mobile;
+                    viewModel.DOB = vATSignUpData.d.birthDate10;
+                    viewModel.FirstnmFR = vATSignUpData.d.name1;
+                    viewModel.LastnmFR = vATSignUpData.d.name2;
+                    viewModel.MobNumberFR = vATSignUpData.d.mobile;
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
-                    viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                    viewModel.SmtpAddrFR = vATSignUpData.d.email;
                     FrmTINNumber.HasError = false;
                 }
             }
@@ -2880,7 +2805,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         viewModel.IsLoading = false;
 
-                        //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         viewModel._navigationService.GoBack();
                     });
@@ -2889,7 +2813,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                      await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                       await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                         await Task.Run(() =>
                         {
                             viewModel.IsLoading = false;
@@ -2905,10 +2829,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    
+                    
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -2917,6 +2841,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
             }
         }
+
 
         private void slider1_completed(object sender, EventArgs e)
         {
@@ -2936,7 +2861,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 Question1_Error.IsVisible = false;
                 QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                 viewModel.SliderLable1 = obj.QoptTxt;
-                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                 {
                     if (item.QueNo == "001")
                     {
@@ -2951,8 +2877,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                     }
                 }
+
                 viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+                registrationDetails.d = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
                     viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -2960,27 +2888,27 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     string eligibilityText = string.Empty;
                     viewModel.Attachments = AppResources.Attachments;
 
-                    if (code.Equals("L"))
+                    if (code.Equals("Mandatory Registration large taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("S"))
+                    else if (code.Equals("Mandatory Registration small taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("V"))
+                    else if (code.Equals("Voluntary Registration"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("N"))
+                    else if (code.Equals("Not Eligible"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                         viewModel.Attachments = AppResources.Attachments + "*";
                     }
-                    else if (code.Equals("M"))
+                    else if (code.Equals("Mandatory Registration medium taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         FrmNewAttachment.HasError = false;
@@ -2988,19 +2916,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = false;
 
 
             }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-            });
+            viewModel.IsLoading = false;
 
         }
 
@@ -3010,11 +2932,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 double value = ((Slider)sender).Value;
                 viewModel.SliderCurrentValue2 = value;
-
+                //await DisplayAlert("ok", viewModel.SliderCurrentValue2.ToString(), "ok");
                 QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                 viewModel.SliderLable2 = obj.QoptTxt;
                 Question2_Error.IsVisible = false;
-                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
                 {
                     if (item.QueNo == "002")
                     {
@@ -3029,7 +2951,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
                 viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+                registrationDetails.d = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
                     viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -3037,27 +2960,27 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     string eligibilityText = string.Empty;
                     viewModel.Attachments = AppResources.Attachments;
 
-                    if (code.Equals("L"))
+                    if (code.Equals("Mandatory Registration large taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("S"))
+                    else if (code.Equals("Mandatory Registration small taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("V"))
+                    else if (code.Equals("Voluntary Registration"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("N"))
+                    else if (code.Equals("Not Eligible"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                         viewModel.Attachments = AppResources.Attachments + "*";
                     }
-                    else if (code.Equals("M"))
+                    else if (code.Equals("Mandatory Registration medium taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         FrmNewAttachment.HasError = false;
@@ -3065,17 +2988,17 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
             }
         }
 
         private async void TapppedOnQuestion3First(object sender, EventArgs e)
         {
             Question3_Error.IsVisible = false;
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
             {
                 if (item.QueNo == "003" && item.QoptNo == "031")
                 {
@@ -3089,7 +3012,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.quesTion3answerSelected = viewModel.TextQuestion3First;
             viewModel.setQuestionImage();
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+            registrationDetails.d = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
                 viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -3097,27 +3021,27 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 string eligibilityText = string.Empty;
                 viewModel.Attachments = AppResources.Attachments;
 
-                if (code.Equals("L"))
+                if (code.Equals("Mandatory Registration large taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("S"))
+                else if (code.Equals("Mandatory Registration small taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("V"))
+                else if (code.Equals("Voluntary Registration"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("N"))
+                else if (code.Equals("Not Eligible"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                     viewModel.Attachments = AppResources.Attachments + "*";
                 }
-                else if (code.Equals("M"))
+                else if (code.Equals("Mandatory Registration medium taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
@@ -3133,7 +3057,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private async void TapppedOnQuestion3Second(object sender, EventArgs e)
         {
             Question3_Error.IsVisible = false;
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+            //await DisplayAlert("ok", viewModel.answer3selectedcount.ToString()+viewModel.quesTion3answerSelected, "ok");
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
             {
                 if (item.QueNo == "003" && item.QoptNo == "031")
                 {
@@ -3147,7 +3072,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.setQuestionImage();
             viewModel.quesTion3answerSelected = viewModel.TextQuestion3Second;
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+            registrationDetails.d = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
                 viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -3155,27 +3081,27 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 string eligibilityText = string.Empty;
                 viewModel.Attachments = AppResources.Attachments;
 
-                if (code.Equals("L"))
+                if (code.Equals("Mandatory Registration large taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("S"))
+                else if (code.Equals("Mandatory Registration small taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("V"))
+                else if (code.Equals("Voluntary Registration"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("N"))
+                else if (code.Equals("Not Eligible"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                     viewModel.Attachments = AppResources.Attachments + "*";
                 }
-                else if (code.Equals("M"))
+                else if (code.Equals("Mandatory Registration medium taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
@@ -3191,7 +3117,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private async void TapppedOnQuestion4First(object sender, EventArgs e)
         {
             Question4_Error.IsVisible = false;
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
             {
                 if (item.QueNo == "004" && item.QoptNo == "041")
                 {
@@ -3205,7 +3131,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
             viewModel.setQuestionImage();
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+            registrationDetails.d = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
                 viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -3213,27 +3140,27 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 string eligibilityText = string.Empty;
                 viewModel.Attachments = AppResources.Attachments;
 
-                if (code.Equals("L"))
+                if (code.Equals("Mandatory Registration large taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("S"))
+                else if (code.Equals("Mandatory Registration small taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("V"))
+                else if (code.Equals("Voluntary Registration"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("N"))
+                else if (code.Equals("Not Eligible"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                     viewModel.Attachments = AppResources.Attachments + "*";
                 }
-                else if (code.Equals("M"))
+                else if (code.Equals("Mandatory Registration medium taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
@@ -3249,7 +3176,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private async void TapppedOnQuestion4Second(object sender, EventArgs e)
         {
             Question4_Error.IsVisible = false;
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet)
             {
                 if (item.QueNo == "004" && item.QoptNo == "041")
                 {
@@ -3260,10 +3187,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     item.QoptAns = "1";
                 }
             }
+
             viewModel.setQuestionImage();
             viewModel.quesTion4answerSelected = viewModel.TextQuestion4Second;
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            VATRegistrationDetails registrationDetails = new VATRegistrationDetails();
+            registrationDetails.d = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
                 viewModel.RegTypeCode = registrationDetails.d.RegTy;
@@ -3271,29 +3200,29 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 string eligibilityText = string.Empty;
                 viewModel.Attachments = AppResources.Attachments;
 
-                if (code.Equals("L"))
+                if (code.Equals("Mandatory Registration large taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("S"))
+                else if (code.Equals("Mandatory Registration small taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("V"))
+                else if (code.Equals("Voluntary Registration"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("N"))
+                else if (code.Equals("Not Eligible"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                     viewModel.Attachments = AppResources.Attachments + "*";
 
                     // eligibilityText = "Not Eligible";
                 }
-                else if (code.Equals("M"))
+                else if (code.Equals("Mandatory Registration medium taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
@@ -3345,10 +3274,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void DateEntry_TextChanged_2(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         private void EntryContactIDNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -3419,6 +3344,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         popUp.FlowDirections = "LeftToRight";
                     }
                     MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+
                     EntryPhoneNumber.Text = string.Empty;
                 }
             }
@@ -3431,10 +3357,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
                 viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
             }
         }
 
@@ -3453,10 +3379,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 ValidateIDNumber();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
             }
         }
 
@@ -3473,10 +3399,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 ValidateIDNumberContact();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
             }
         }
 
@@ -3485,77 +3411,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel._navigationService.GoBack();
         }
 
-        void DDlContactIDType_SelectionChanged_1(System.Object sender, Syncfusion.Maui.Picker.PickerSelectionChangedEventArgs e)
+        private void IBANAccManagementTapped(object sender, EventArgs e)
         {
-            try
-            {
-                if (viewModel.IdTypeListFR[viewModel.IDTypeIndexSR].ID.Equals("00000"))
-                {
-                    viewModel.IDTypeIndexFR = 0;
-                    viewModel.TxtIDTypeSR = string.Empty;
-
-                    viewModel.IDNumberNonMandatoryVisibility = true;
-                    viewModel.IDNumberMandatoryVisibility = false;
-
-                    viewModel.DOBNonMandatoryVisibility = true;
-                    viewModel.DOBMandatoryVisibilitySM = false;
-                    viewModel.DOBMandatoryVisibility = false;
-
-                }
-                else
-                {
-                    viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
-                    viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
-                    EntryContactIDNumber.Text = string.Empty;
-
-                    viewModel.IDNumberNonMandatoryVisibility = false;
-                    viewModel.IDNumberMandatoryVisibility = true;
-
-
-                    // For GCC ID DOB is not mandatory
-                    if (viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].ID.Equals("ZS0003"))
-                    {
-                        viewModel.DOBNonMandatoryVisibility = true;
-                        viewModel.DOBMandatoryVisibilitySM = false;
-                        viewModel.DOBMandatoryVisibility = false;
-
-                    }
-                    else
-                    {
-                        viewModel.DOBNonMandatoryVisibility = false;
-                        viewModel.DOBMandatoryVisibilitySM = true;
-                        viewModel.DOBMandatoryVisibility = false;
-
-                    }
-
-
-                }
-
-            }
-            catch (Exception)
-            {
-
-
-
-            }
-        }
-        public bool step4Validation()
-        {   // condition when only one Question is visible
-            if (!viewModel.IsResident)
-            {
-                Question1_Error.IsVisible = false;
-                Question3_Error.IsVisible = false;
-                Question4_Error.IsVisible = false;
-            }
-
-            // Condition when all four questions are visible
-            if (Question1_Error.IsVisible || Question2_Error.IsVisible || Question3_Error.IsVisible || Question4_Error.IsVisible)
-            //if(viewModel.answer1selectedcount == 0 || viewModel.answer2selectedcount == 0 || viewModel.answer3selectedcount == 0 || viewModel.answer4selectedcount == 0)
-            {
-                return false;
-            }
-            return true;
+            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
 
         }
+
     }
 }

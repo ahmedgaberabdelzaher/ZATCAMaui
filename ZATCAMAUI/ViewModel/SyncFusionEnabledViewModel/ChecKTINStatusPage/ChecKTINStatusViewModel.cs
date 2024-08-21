@@ -167,7 +167,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
         //Replace the below method
         public ChecKTINStatusViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnClickLessOrMore = new Command( () =>
+            OnClickLessOrMore = new Command(() =>
             {
                 ShowLessOrMore = string.Empty;
                 if (IsVisibleListItems == false)
@@ -180,11 +180,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
                     IsVisibleListItems = false;
                     ShowLessOrMore = AppResources.ZShowmoredetails;
                 }
-            });
-            BackButtonClicked = new Command(() =>
-            {
-                // _navigationService.NavigateTo(App.SFLandingPageView);
-                _navigationService.GoBack();
             });
         }
         //@Divya Jannapureddy adding line number
@@ -200,45 +195,45 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
                 {
                     if (NetworkCheck.IsInternet())
                     {
-                        ListTINStatus = await WebServiceManager.GAZTGetTinStatus(Lang, App.TP.Tin);
+                        ListTINStatus = await WebServiceManager.GAZTGetTinStatus(Lang, App.TP.TIN);
                         PopToRootPage();
-                        TIN = ListTINStatus.d.Tin;
-                        TINStatus = ListTINStatus.d.StatusText;
-                        if (ListTINStatus.d.Udate != null)
+                        TIN = ListTINStatus.d.TIN;
+                        TINStatus = ListTINStatus.d.statusDescription;
+                        if (ListTINStatus.d.date != null)
                         {
                             if (App.IsArabic)
                             {
-                                string dateLU = UtilityManager.FormatAccordingToDevice(ListTINStatus.d.Udate.ToString().Split(' ')[0]);
+                                string dateLU = UtilityManager.FormatAccordingToDevice(ListTINStatus.d.date.ToString().Split(' ')[0]);
                                 LastUpdate = dateLU;
                                 //LastUpdate = UtilityManager.ToArabicDate(LastUpdate);
                             }
                             else
                             {
-                                string dateLU = UtilityManager.FormatAccordingToDevice(ListTINStatus.d.Udate.ToString().Split(' ')[0]);
+                                string dateLU = UtilityManager.FormatAccordingToDevice(ListTINStatus.d.date.ToString().Split(' ')[0]);
                                 LastUpdate = dateLU;
                             }
                         }
-                        ConsumerRegisteration = ListTINStatus.d.ItemSet.results;
+                        ConsumerRegisteration = ListTINStatus.d.activities;
                         if (ConsumerRegisteration.Count > 0)
                         {
                             IsShowLessMoreLblVisible = true;
                             IsLabelVisible = false;
                             if (ConsumerRegisteration != null)
                             {
-                                if (ListTINStatus.d.ItemSet.results != null)
+                                if (ListTINStatus.d.activities != null)
                                 {
-                                    foreach (ConsumerRegisteration itemCR in ListTINStatus.d.ItemSet.results)
+                                    foreach (ConsumerRegisteration itemCR in ListTINStatus.d.activities)
                                     {
-                                        if (itemCR.Udate != null)
+                                        if (itemCR.date != null)
                                         {
                                             if (App.IsArabic)
                                             {
-                                                itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                itemCR.date = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.date + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                                 //itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
                                             }
                                             else
                                             {
-                                                itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                itemCR.date = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.date + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                             }
                                         }
                                     }

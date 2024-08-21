@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.AccountStatements;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
@@ -18,10 +16,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             InitializeComponent();
 
             viewModel = App.Locator.AccountStatementsPageView;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
-            ChangeAeroIcon();
-            ChangeArrowDirection();
             Task.Run(async () =>
             {
                 try
@@ -36,47 +31,11 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             });
         }
 
-        public void ChangeArrowDirection()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
 
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
-
-
-        public void ChangeAeroIcon()
-        {
-            if (!App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            //var safeInsets = On<iOS>().SafeAreaInsets();
-            //safeInsets.Bottom = -10;
-            //Padding = safeInsets;
 
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
@@ -107,7 +66,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             viewModel.IsSearchButtonVisible = true;
             viewModel.IsCloseButtonVisible = false;
             viewModel.FiltersClicked();
-            viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results);
+            viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet);
             viewModel.IsVisible_SearchList = false;
         }
 
@@ -115,30 +74,33 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
         {
             viewModel.IsSearchButtonVisible = true;
             viewModel.IsCloseButtonVisible = false;
-            viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results);
+            viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet);
             viewModel.IsVisible_SearchList = false;
         }
 
         void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            viewModel.IsSortByVisible = false;
-            var keyword = e.NewTextValue;
-            if (keyword.Length >= 1)
+            try
             {
-                try
+                viewModel.IsSortByVisible = false;
+                var keyword = e.NewTextValue;
+                if (keyword.Length >= 1)
                 {
-                    var suggestion = viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.Where(c => c.Desc.ToLower().Contains(keyword.ToLower()) || c.PeriodTxt.ToLower().Contains(keyword.ToLower())
+
+                    var suggestion = viewModel.HeaderSet.d.StatmenetLineItemsSet.Where(c => c.Desc.ToLower().Contains(keyword.ToLower()) || c.PeriodTxt.ToLower().Contains(keyword.ToLower())
                     || c.FormattedBldat2.ToLower().Contains(keyword.ToLower()) || c.FormattedBldat.ToLower().Contains(keyword.ToLower())).ToList();
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(suggestion);
+
                 }
-                catch (Exception)
+                else
                 {
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet);
                 }
             }
-            else
+            catch (Exception)
             {
-                viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results);
             }
+
         }
 
         void btnTransactionTypePicker_Clicked(object sender, EventArgs e)
@@ -181,11 +143,11 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                 case "":
                     viewModel.TransactionDateFilterItem = "ascending";
                     var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Bldat).ToList();
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.OrderBy(x => x.Bldat).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet.OrderBy(x => x.Bldat).ToList());
                     break;
                 case "ascending":
                     viewModel.TransactionDateFilterItem = string.Empty;
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.OrderByDescending(x => x.Bldat).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet.OrderByDescending(x => x.Bldat).ToList());
                     viewModel.TransactionDateFilterItem = "descending";
                     break;
                 case "descending":
@@ -197,17 +159,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             }
         }
 
-        void Button_TaxTypeFilter_Clicked(object sender, EventArgs e)
-        {
-        }
-
-        void Button_FBNumFilter_Clicked(object sender, EventArgs e)
-        {
-        }
-
-        void Button_SadadBillNumFilter_Clicked(object sender, EventArgs e)
-        {
-        }
 
         void Button_TaxPeriodFilter_Clicked(object sender, EventArgs e)
         {
@@ -225,11 +176,11 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                 case "":
                     viewModel.TaxperiodFilterItem = "ascending";
                     var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Persl).ToList();
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.OrderBy(x => x.Persl).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet.OrderBy(x => x.Persl).ToList());
                     break;
                 case "ascending":
                     viewModel.TaxperiodFilterItem = string.Empty;
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.OrderByDescending(x => x.Persl).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet.OrderByDescending(x => x.Persl).ToList());
                     viewModel.TaxperiodFilterItem = "descending";
                     break;
                 case "descending":
@@ -257,11 +208,11 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                 case "":
                     viewModel.DueDateFilterItem = "ascending";
                     var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Bldat2).ToList();
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.OrderBy(x => x.Bldat2).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet.OrderBy(x => x.Bldat2).ToList());
                     break;
                 case "ascending":
                     viewModel.DueDateFilterItem = string.Empty;
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.OrderByDescending(x => x.Bldat2).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet.OrderByDescending(x => x.Bldat2).ToList());
                     viewModel.DueDateFilterItem = "descending";
                     break;
                 case "descending":
@@ -288,11 +239,11 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                 case "":
                     viewModel.BillDescriptionFilterItem = "ascending";
                     var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Desc).ToList();
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.OrderBy(x => x.Desc).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet.OrderBy(x => x.Desc).ToList());
                     break;
                 case "ascending":
                     viewModel.BillDescriptionFilterItem = string.Empty;
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.OrderByDescending(x => x.Desc).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet.OrderByDescending(x => x.Desc).ToList());
                     viewModel.BillDescriptionFilterItem = "descending";
                     break;
                 case "descending":
@@ -304,9 +255,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             }
         }
 
-        void Button_BillDiscriptionFilter_Clicked_1(object sender, EventArgs e)
-        {
-        }
 
         void Button_BillAmountFilter_Clicked(object sender, EventArgs e)
         {
@@ -323,11 +271,11 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                 case "":
                     viewModel.BillAmountFilterItem = "ascending";
                     var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Betrh).ToList();
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.OrderBy(x => x.Betrh).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet.OrderBy(x => x.Betrh).ToList());
                     break;
                 case "ascending":
                     viewModel.BillAmountFilterItem = string.Empty;
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results.OrderByDescending(x => x.Betrh).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.d.StatmenetLineItemsSet.OrderByDescending(x => x.Betrh).ToList());
                     viewModel.BillAmountFilterItem = "descending";
                     break;
                 case "descending":
@@ -339,14 +287,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             }
         }
 
-        void Button_BillStatusFilter_Clicked(object sender, EventArgs e)
-        {
-        }
-
-        void Bills_ScrollToRequested(object sender, ScrollToRequestEventArgs e)
-        {
-
-        }
 
         async void LvwContacts_ItemTapped(object sender, ItemTappedEventArgs e)
         {

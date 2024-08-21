@@ -549,25 +549,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
         }
 
-        public async void IBANBankAccountFormGUID()
+        public async Task IBANBankAccountFormGUID()
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    IBANAccountDataFormGuid = await IBanManagmentWebserviceManager.GAZTGetIBanAccountsFormGUID();
+                IsLoading = true;
 
-                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    IsLoading = false;
-                });
+                IBANAccountDataFormGuid = await IBanManagmentWebserviceManager.GAZTGetIBanAccountsFormGUID();
+
+                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                IsLoading = false;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                Console.WriteLine(ex.Message);
+                
             }
 
         }
@@ -588,10 +584,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                      WhichAttachment.IBANBankAccountOne, IBANAccountDataFormGuid.d.FormGuid
                     ));
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -599,10 +591,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
             }
         }
         public async Task AddAttachmentTestTwo()
@@ -623,7 +611,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             catch (InternetException ex)
             {
@@ -635,7 +623,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -853,8 +841,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -1008,8 +996,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

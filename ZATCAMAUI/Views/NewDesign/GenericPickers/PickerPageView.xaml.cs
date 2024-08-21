@@ -9,6 +9,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
     public partial class PickerPageView : PopupPage
     {
+        int _pageCode = 0;
         PickerPageViewModel viewModel;
         public PickerPageView(List<string> _pickerSource)
         {
@@ -16,7 +17,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
             viewModel = App.Locator.PickerPageView;
             viewModel.PickerItemSource = _pickerSource;
-            ChangeAeroIcon();
 
             this.BindingContext = viewModel;
 
@@ -63,17 +63,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
 
         public PickerPageView(GenericPickerModel _pickerSource)
         {
@@ -96,7 +85,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             catch (Exception)
             {
             }
-           
+
         }
 
         void genericPicker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
@@ -121,7 +110,14 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
             try
             {
-                MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
+                if (_pageCode == 1)
+                {
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelected", viewModel.DataSource);
+                }
+                else
+                {
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
+                }
 
             }
             catch (Exception)

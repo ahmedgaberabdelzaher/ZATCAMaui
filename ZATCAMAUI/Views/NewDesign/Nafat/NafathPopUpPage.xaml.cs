@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Pages;
 using Mopups.Services;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat;
@@ -12,9 +11,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
         public NafathPopUpPage()
         {
             InitializeComponent();
-            viewModel = App.Locator.NafathPopupPage;
-            BindingContext = viewModel;
-            On<iOS>().SetUseSafeArea(true);
+            BindingContext = viewModel =App.Locator.NafathPopupPageViewModel;
         }
 
         private async void TappedGulf(object sender, EventArgs e)

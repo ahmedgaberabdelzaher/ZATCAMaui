@@ -112,8 +112,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
                         }
 
                         App.IsZakatLoadingFromMyReturns = false;
-                        //ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbnum);
                     }
                     else
                     {
@@ -168,7 +167,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
                 OnPropertyChanged("SelectedZakatStatus");
             }
         }
-       
+
         private int _selectedIndex;
         public int SelectedIndex
         {
@@ -329,7 +328,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             try
             {
                 List<EstimatedZakatReturnsResult> myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>();
-                myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>(GetSortedList(estimatedZakatReturnsList.d.listSet.results));
+                myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>(GetSortedList(estimatedZakatReturnsList.d.results));
                 if (myZakatReturnsListTemp != null && myZakatReturnsListTemp.Count > 0)
                 {
                     for (int i = 0; i < myZakatReturnsListTemp.Count; i++)
@@ -338,7 +337,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
                         if (myZakatReturnsListTemp[i].Period.Contains("-"))
                         {
                             //FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            DateTime _dueDate = JsonConvert.DeserializeObject<DateTime>(@"""" + myZakatReturnsListTemp[i].DueDt + @"""");
+                            DateTime _dueDate = JsonConvert.DeserializeObject<DateTime>(@"""" + myZakatReturnsListTemp[i].DueDate + @"""");
                             // Convert.ToDateTime(myZakatReturnsListTemp[i].DueDt);
                             string DueDate = _dueDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 

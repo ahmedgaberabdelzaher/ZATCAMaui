@@ -1,6 +1,4 @@
 ﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Mangers;
@@ -10,7 +8,7 @@ using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 {
-   
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxpayerProfilePageView : ContentPage
     {
@@ -20,16 +18,14 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
         public TaxpayerProfilePageView()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
 
             viewModel = App.Locator.TaxpayerProfilePageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
 
             TpProfileTaxpaayertypeRefresh();
             try
             {
-                viewModel.ResidenceText = App.TP.TpType;
+                viewModel.ResidenceText = App.TP.taxpayerType;
             }
             catch (Exception)
             {
@@ -37,19 +33,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
             }
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                MobileNumberCodeEntry.HorizontalTextAlignment = TextAlignment.End;
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                MobileNumberCodeEntry.HorizontalTextAlignment = TextAlignment.Start;
-            }
-        }
+
 
 
         public async void TpProfileTaxpaayertypeRefresh()
@@ -58,14 +42,15 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             {
 
                 viewModel.IsLoading = true;
-                TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(App.TP.Tin);
+                TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileAndUpdatePasswordAPICall(App.TP.TIN);
 
                 if (TPProfile != null)
                 {
+                    
                     if (App.TP != null)
                     {
-                        App.TP.TpType = TPProfile.TpType;
-                        viewModel.ResidenceText = App.TP.TpType;
+                        App.TP.taxpayerType = TPProfile.taxpayerType;
+                        viewModel.ResidenceText = App.TP.taxpayerType;
                     }
 
                 }
@@ -77,23 +62,20 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             }
         }
 
-        private void OnMobileEditTapped(object sender, EventArgs e)
+        private async void OnMobileEditTapped(object sender, EventArgs e)
         {
             viewModel.IsLoading = true;
 
             try
             {
                 if (mobileData == null)
-                    mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+                    mobileData = await WebServiceManager.GAZTGetMobileRegionDropdown();
 
                 viewModel.IsLoading = false;
-                MopupService.Instance.PushAsync(new UpdateMobilePopUp(mobileData));
+               await MopupService.Instance.PushAsync(new UpdateMobilePopUp(mobileData));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
-
                 viewModel.IsLoading = false;
             }
         }
@@ -111,57 +93,38 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
         {
             MopupService.Instance.PushAsync(new UpdateManagerDetailsPopUp());
         }
-        private void OnBackArrowBtnTapped(object sender, EventArgs e)
-        {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                viewModel._navigationService.GoBack();
-            });
-        }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
             try
             {
 
 
                 if (App.TP != null)
                 {
-                    //viewModel.TPProfileNameLbl = App.TP.Name;
 
-                    if (App.TP.TypeChk == "X")
+                    if (App.TP.typeCheck == "X")
                     {
-                        viewModel.TPProfileNameLbl = App.TP.NameFirst + " " + App.TP.NameLast;
+                        viewModel.TPProfileNameLbl = App.TP.TpTitle + " " + App.TP.firstName + " " + App.TP.lastName;
                     }
                     else
                     {
-                        viewModel.TPProfileNameLbl = App.TP.NameOrg1;
+                        viewModel.TPProfileNameLbl = App.TP.organizationName;
                     }
 
-                    viewModel.TINLabel = App.TP.Tin;
-                    try
+                    viewModel.TINLabel = App.TP.TIN;
+                    if (!string.IsNullOrEmpty(App.TP.mobile))
                     {
-                        if (!string.IsNullOrEmpty(App.TP.Mobile))
-                        {
-                            if (App.TP.Mobile.Length < 12)
-                                viewModel.MobileNumber = "+966" + App.TP.Mobile.Remove(0, 2);
-                            else
-                                viewModel.MobileNumber = "+" + App.TP.Mobile.Remove(0, 2);
-
-                        }
-                    }
-                    catch (Exception)
-                    {
-
+                        if (App.TP.mobile.Length < 12)
+                            viewModel.MobileNumber = "+966" + App.TP.mobile.Remove(0, 2);
+                        else
+                            viewModel.MobileNumber = "+" + App.TP.mobile.Remove(0, 2);
 
                     }
 
 
-                    viewModel.EmailEntry = App.TP.Email;
+                    viewModel.EmailEntry = App.TP.email;
                     viewModel.PasswordEntry = "********";
 
                     MainThread.BeginInvokeOnMainThread(async () =>
@@ -172,10 +135,8 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
             }
 
         }

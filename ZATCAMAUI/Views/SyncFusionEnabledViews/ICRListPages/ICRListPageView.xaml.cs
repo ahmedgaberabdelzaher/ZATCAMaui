@@ -173,10 +173,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ICRListPages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             BPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             BPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -184,7 +184,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ICRListPages
                             BPicker.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             BPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             BPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";

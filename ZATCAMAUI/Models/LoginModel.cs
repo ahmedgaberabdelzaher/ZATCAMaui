@@ -114,7 +114,7 @@ namespace ZATCAMAUI.Models
         public string count { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class LoginParametersModelSSO
     {
         public string Idnumber { get; set; }
@@ -123,7 +123,6 @@ namespace ZATCAMAUI.Models
        
     }
 
-    [Preserve]
     public class LoginRequestModel
     {
         [JsonProperty("userId")]

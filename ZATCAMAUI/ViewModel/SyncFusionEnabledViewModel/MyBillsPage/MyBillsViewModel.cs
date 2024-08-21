@@ -3,13 +3,13 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
-using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
 {
@@ -22,7 +22,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
         public ICommand onPartiallyPaidLabelClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
         public ICommand OnHomeButtonClicked { get; set; }
-        public ICommand OnBackButtonClicked { get; set; }
         private ChartColorCollection _colors = null;
         public ChartColorCollection Colors
         {
@@ -240,7 +239,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                 OnPropertyChanged("MyBillsPartiallyPaid");
             }
         }
-       
+
         private bool _setNoDataLabelVisibility = false;
         public bool SetNoDataLabelVisibility
         {
@@ -355,10 +354,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-            OnBackButtonClicked = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
         }
         public void onPageLoad(BillInfo billInfo)
         {
@@ -373,8 +368,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    myBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang, "Bills");
 
+                    var tell = WebServiceManager.GetUserBills(App.TP.TIN, lang);
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (myBills != null && myBills.Count != 0)
@@ -387,13 +382,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                         MyBills = new ObservableCollection<MyBills>();
                         MyBills = myBills;
                         MyBillsOriginal = myBills;
-                        MyBillsPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
-                        MyBillsUnPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
-                        MyBillsPartiallyPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
+                        MyBillsPaid = MyBillsOriginal.Where(x => x.Status == "Paid").ToList();
+                        MyBillsUnPaid = MyBillsOriginal.Where(x => x.Status == "Open").ToList();
+                        MyBillsPartiallyPaid = MyBillsOriginal.Where(x => x.Status == "Partially Paid").ToList();
                         ObservableCollection<MyBillsChartModel> myBillsChartModels = new ObservableCollection<MyBillsChartModel>();
-                        GroupValue = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count;
+                        GroupValue = MyBillsOriginal.Where(x => x.Status == "Paid").ToList().Count + MyBillsOriginal.Where(x => x.Status == "Open").ToList().Count + MyBillsOriginal.Where(x => x.Status == "Partially Paid").ToList().Count;
                         int iBillsCount = -1;
-                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count) > 0)
+                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == "Paid").ToList().Count) > 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = (Color)Application.Current.Resources["Primary"] });
                             ColorsChild.Add(Color.FromRgb(0, 100, 80));
@@ -406,7 +401,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                             SetNoDataLabelVisibilityPAID = true;
                             SetNoDataLabelVisibilityPAIDList = false;
                         }
-                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) > 0)
+                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == "Open").ToList().Count) > 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = (Color)Application.Current.Resources["ErrorColor"] });
                             ColorsChild.Add(Color.FromRgb(170, 12, 25));
@@ -418,7 +413,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                             SetNoDataLabelVisibilityUNPAID = true;
                             SetNoDataLabelVisibilityUNPAIDList = false;
                         }
-                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) > 0)
+                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == "Partially Paid").ToList().Count) > 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = (Color)Application.Current.Resources["Secondary"] });
                             //ColorsChild.Add(System.Drawing.Color.FromArgb(243, 108, 33));

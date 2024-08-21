@@ -1,25 +1,18 @@
 ﻿using System.Windows.Input;
-using Foundation;
 using Mopups.Services;
-using ZATCAMAUI;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
-using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
-namespace EGAZT.ViewModel.NewDesignViewModel.SupportPageVM
+namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
 {
-    [Preserve(AllMembers = true)]
-   public class RelationShipManagerInfoPageViewModel : BaseViewModel
+
+    public class RelationShipManagerInfoPageViewModel : BaseViewModel
     {
 
         RMContactDetailsBaseModel RmContactsdetailsBaseModel;
         public RelationShipManagerInfoPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackBtnTapped = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
 
             ShareOpenionClicked = new Command(async () =>
             {
@@ -27,34 +20,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SupportPageVM
             });
         }
 
-        private async Task CheckTxPayerIsEligibleForSurveyOrNot()
-        {
-            VocEData edata = new VocEData();
-            edata.phone= RmContactsdetailsBaseModel.d.TpMobile;
-            edata.TIN= App.LoginDataRetrieved.TIN;
-
-            VocTimeFilter vocTimeFilter = new VocTimeFilter();
-            vocTimeFilter.amount = 0;
-            vocTimeFilter.period = "month";
-            vocTimeFilter.type = "relative";
-
-
-            CheckVocAvailabilityModel checkAvailabilityModel = new CheckVocAvailabilityModel();
-            checkAvailabilityModel.surId = RmContactsdetailsBaseModel.d.SurveyId;
-            checkAvailabilityModel.eData = edata;
-            checkAvailabilityModel.timeFilter = vocTimeFilter;
-
-
-
-
-            //string check =  await RMContactDetailsWebServiceManager.GetVocSurveyCheckAvailability(checkAvailabilityModel);
-        }
-
+       
         public ICommand ShareOpenionClicked { get; set; }
-
-
-        public ICommand GoBackBtnTapped { get; set; }
-
        
        /* RM Details*/
         private string _RMName = string.Empty;
@@ -190,8 +157,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SupportPageVM
                     }
                     catch (Exception ex)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         IsLoading = false;
                     }
                 }

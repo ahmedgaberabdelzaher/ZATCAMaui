@@ -1,10 +1,10 @@
 ﻿using System.Collections.ObjectModel;
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
 {
-    [Preserve(AllMembers = true)]
+    
     public class ZakatExemptionModel
     {
         [JsonProperty("result")]

@@ -1,17 +1,17 @@
-﻿using Foundation;
+﻿
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
 {
     
-    [Preserve(AllMembers = true)]
+    
     public class Metadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class ForgotPasswordOTP1
     {
         [JsonProperty("action")]
@@ -42,7 +42,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("radioButtonType")]
         public string RdBt { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class D
     {
         [JsonProperty("action")]
@@ -90,7 +90,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("hyperlink")]
         public string Hyperlink { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class ForgotPasswordOTP
     {
         [JsonProperty("result")]
@@ -103,7 +103,7 @@ namespace ZATCAMAUI.Models
 
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class GetCaptcha
     {
         public Metadata __metadata { get; set; }

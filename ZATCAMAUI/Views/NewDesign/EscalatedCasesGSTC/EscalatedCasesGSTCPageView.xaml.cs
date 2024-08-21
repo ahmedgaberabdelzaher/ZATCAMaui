@@ -4,6 +4,7 @@ using static ZATCAMAUI.Models.EscalatedGstcModel;
 
 namespace ZATCAMAUI.Views.NewDesign.EscalatedCasesGSTC;
 
+[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class EscalatedCasesGSTCPageView : ContentPage
 {
     private EscalatedCasesGSTCPageViewModel viewModel;
@@ -47,7 +48,7 @@ public partial class EscalatedCasesGSTCPageView : ContentPage
         try
         {
             searchBar = (sender as SearchBar);
-        
+
             viewModel.SearchText = searchBar.Text;
             viewModel.FilterWithReferenceNumber();
         }

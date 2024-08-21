@@ -822,9 +822,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                                     .GroupBy(p => p.Bldat?.ToString("MMMM"))
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
 
-                                Console.WriteLine(ex.Message);
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
+                                
                             }
                         }
 
@@ -1883,19 +1883,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 StatementsLineItems.Clear();
                 GroupedStatements.Clear();
 
-                await Task.Run(() =>
-                {
-                    //IsLoading = false;
-                });
+               
             }
             catch (Exception)
-            {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
-        }
+            { IsLoading = false;
+            }
         }
 
         public async Task PopulateDataForTransactionTypes(string taxType)

@@ -147,17 +147,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 string[] filetypes;
 
-                filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForZakat();
+                filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForZakat();
                 PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
                 //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                 var fileData = await FilePicker.PickAsync(options);
                 var stream = await fileData.OpenReadAsync();
                 attachment = UtilityManager.ReadFully(stream as Stream);
                 //attachment = fileData.DataArray;
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 await Task.Run(async () =>
                 {
                     try
@@ -306,26 +303,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                            //  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         });
                     }
                 });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (Exception)
             {
             }
 
         }
-
-        public void DeleteAttachment()
-        {
-
-        }
-
 
         public void PopToRootPage()
         {
@@ -359,10 +346,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public async Task DeleteSelectedAttachment(string filename, string dougUD)
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             await Task.Run(() =>
             {
                 try
@@ -377,11 +361,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             {
                                 SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment.RemoveAt(i);
                                 ZakatReturnAttachmentsList.RemoveAt(i);
-                                //    SelectedSalesDetails.estimateZakatAttachment.RemoveAt(i);
                             }
                         }
-                        //IsValueChanged();
-                        //SetSaveButtonVisibility();
                     }
                 }
                 catch (InternetException ex)
@@ -389,59 +370,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                        //  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
                 }
             });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+            IsLoading = false;
         }
 
 
         public async Task ClearAllAttachment(string filename, string dougUD)
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             await Task.Run(() =>
             {
                 try
                 {
                     string res = WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
                     PopToRootPage();
-                    if (res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
-                    {
-                        for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
-                        {
-                            if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
-                            {
-                                //AttachmentPopUpViewModel.SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment.RemoveAt(i);
-                                //  ZakatReturnAttachmentsList.RemoveAt(i);
-                                //    SelectedSalesDetails.estimateZakatAttachment.RemoveAt(i);
-                            }
-                        }
-                        //IsValueChanged();
-                        //SetSaveButtonVisibility();
-                    }
+                    
                 }
                 catch (InternetException ex)
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                        //  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
                 }
             });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+            IsLoading = false;
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using Mopups.Services;
 using System.Net;
+using System.Web;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -24,7 +25,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             viewModel = App.Locator.PaymentProcessWebview;
 
             this.BindingContext = viewModel;
-            ChangeAeroIcon();
             viewModel.PaymentType = type;
 
         }
@@ -42,22 +42,22 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
             var platform = "";
 
-            if (Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 platform = "C4";
             }
-            else if (Device.RuntimePlatform == Device.Android)
+            else if (DeviceInfo.Platform == DevicePlatform.Android)
             {
                 platform = "C3";
             }
 
             var PaymentSAPClient = "300";
-            if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.DevBaseUrlForODataServices))
+            if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.PaymentDevBaseUrlForODataServices))
             {
 
                 PaymentSAPClient = ZATCAConstants.DevPaymentSapClinet;
             }
-            else if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.QABaseUrlForODataServices))
+            if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.PaymentQABaseUrlForODataServices))
             {
                 PaymentSAPClient = ZATCAConstants.QAPaymentSapClinet;
 
@@ -85,7 +85,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
                 foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                 {
                     Cookie cookie = new Cookie();
-                    cookie.Domain = ZATCAConstants.PartialDomainUrlForCookies;
+                    cookie.Domain = ZATCAConstants.DevPartialDomainForCookies;
                     cookie.Comment = cookieModel.Comment;
                     cookie.Version = cookieModel.Version;
                     cookie.HttpOnly = cookieModel.IsHttpOnly;
@@ -99,7 +99,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
             }
 
-            catch (Exception )
+            catch (Exception)
             {
             }
 
@@ -107,7 +107,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             Uri uri = new Uri(paymentUrl, UriKind.RelativeOrAbsolute);
             webView.Cookies = cookieContainer;
             webView.Source = new UrlWebViewSource { Url = uri.ToString() };
-
+            webView.Source = new HtmlWebViewSource { Html = HttpUtility.HtmlDecode(App.securityAuthorizationKey) };
 
 
             //webView.Source = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
@@ -123,18 +123,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             WebviewGrid.Insert(WebviewGrid.Count, webView);
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
 
         protected override void OnDisappearing()
@@ -161,11 +149,11 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
                 var platform = "";
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     platform = "C4";
                 }
-                else if (Device.RuntimePlatform == Device.Android)
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     platform = "C3";
                 }
@@ -178,7 +166,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
                     foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                     {
                         Cookie cookie = new Cookie();
-                        cookie.Domain = ZATCAConstants.PartialDomainUrlForCookies;
+                        cookie.Domain = ZATCAConstants.DevPartialDomainForCookies;
                         cookie.Comment = cookieModel.Comment;
                         cookie.Version = cookieModel.Version;
                         cookie.HttpOnly = cookieModel.IsHttpOnly;
@@ -197,12 +185,12 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
                 Uri uri = new Uri(paymentUrl, UriKind.RelativeOrAbsolute);
                 webView.Cookies = cookieContainer;
-                webView.Source = new UrlWebViewSource { Url = uri.ToString() };
+                webView.Source = new HtmlWebViewSource { Html = HttpUtility.HtmlDecode(App.securityAuthorizationKey) };
                 webView.Navigated += OnNavigated;
                 webView.Navigating += OnNavigating;
 
                 WebviewGrid.Add(webView, 0, 0);
-                WebviewGrid.Insert(WebviewGrid.Count,webView);
+                WebviewGrid.Insert(WebviewGrid.Count, webView);
                 isLoginLoaded = false;
 
                 viewModel.IsLoading = true;
@@ -216,9 +204,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
         }
         protected async void OnNavigating(object sender, WebNavigatingEventArgs e)
         {
-            Console.WriteLine("WebViewURL: " + e.Url);
-
-
             isLoginLoaded = false;
 
 
@@ -268,7 +253,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
                 }
 
             }
-            else if (e.Url.Contains(ZATCAConstants.DomainUrlForCookies) && (!(e.Url.Contains("madapmnt.Madaconfirm"))))
+            else if (e.Url.Contains(ZATCAConstants.DevDomainForCookies) && (!(e.Url.Contains("madapmnt.Madaconfirm"))))
             {
 
                 isLoginLoaded = true;
@@ -277,6 +262,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
         }
         // https://tstdp1as1.mygazt.gov.sa:50001/irj/servlet/prt/portal/prtroot/madapmnt.Madaconfirm/005056B1365C1EEDBEA6B961D6E7A95C/C4/A/EN
-        
+
     }
 }

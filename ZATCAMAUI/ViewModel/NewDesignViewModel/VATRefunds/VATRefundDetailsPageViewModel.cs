@@ -15,8 +15,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
     {
         #region Commands
 
-        public ICommand GoBackBtnTapped { get; set; }
-        public ICommand CloseBtnTapped { get; set; }
 
         #endregion
 
@@ -267,11 +265,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
         public VATRefundDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-
-            GoBackBtnTapped = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
 
             VATRefundsHeaderSet = new VatRefHeaderSetResult();
             VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>();

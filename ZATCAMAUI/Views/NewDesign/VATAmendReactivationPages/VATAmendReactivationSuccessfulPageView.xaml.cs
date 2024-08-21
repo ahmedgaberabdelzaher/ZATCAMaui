@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
@@ -16,7 +15,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             InitializeComponent();
             viewModel = App.Locator.VATAmendReactivationSuccesssulPageView;
             BindingContext = viewModel;
-            On<iOS>().SetUseSafeArea(true);
             if (response != null)
             {
                 if (response.d != null)
@@ -32,13 +30,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
 
         }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-        }
+
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
             int dashboard = 0, stackCount = Navigation.NavigationStack.Count;

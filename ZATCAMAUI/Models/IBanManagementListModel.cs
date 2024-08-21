@@ -1,4 +1,4 @@
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -197,7 +197,7 @@ namespace ZATCAMAUI.Models
             public string Actnm { get; set; }
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class IdNumberListSet
         {
             
@@ -307,7 +307,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("data")]
         public IBanFormGUIDModel d { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class IBANPostRequest
     {
         [JsonProperty("action")]

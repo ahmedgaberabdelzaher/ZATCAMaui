@@ -2726,7 +2726,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             ContinueText = AppResources.ZZZZContinue;
 
-            openAttchments = new Xamarin.Forms.Command(() =>
+            openAttchments = new Command(() =>
             {
                  MopupService.Instance.PushAsync(new MoreOptionsNote(VATDeclarationData));
             });
@@ -6182,11 +6182,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     var platform = "";
 
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         platform = "C4";
                     }
-                    else if (Device.RuntimePlatform == Device.Android)
+                    else if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         platform = "C3";
                     }
@@ -6309,10 +6309,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (GAZTValidateMadaPaymentException ex)
             {
                 IsLoading = false;
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     //_navigationService.GoBack();
                 });
@@ -6335,11 +6335,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     var platform = "";
 
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         platform = "C4";
                     }
-                    else if (Device.RuntimePlatform == Device.Android)
+                    else if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         platform = "C3";
                     }
@@ -6367,19 +6367,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
 
-                        //var VatAmount = NetdueVat.Replace(",", "");
-                        //if (String.IsNullOrEmpty(VatAmount) || Double.Parse(VatAmount) == 0)
-                        //{
-                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, true, false,""));
-                        //}
-                        //else if (!String.IsNullOrEmpty(VatAmount) && Double.Parse(VatAmount) > 20000)
-                        //{
-                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true,""));
-                        //}
-                        //else
-                        //{
-                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false,""));
-                        //}
 
                     }
 
@@ -6430,11 +6417,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     string platform = "C4";
 
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         platform = "C4";
                     }
-                    else if (Device.RuntimePlatform == Device.Android)
+                    else if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         platform = "C3";
                     }
@@ -6499,7 +6486,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
 
-                        //Device.BeginInvokeOnMainThread(() =>
+                        //MainThread.BeginInvokeOnMainThread(() =>
                         //{
 
                         //    //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
@@ -6566,7 +6553,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             DoValidatePayment(fbNum: VATDeclarationData.data.Fbnum, "Mada Payment");
 
-            //Device.BeginInvokeOnMainThread(async () => {
+            //MainThread.BeginInvokeOnMainThread(async () => {
 
             //    _navigationService.NavigateTo(App.PaymentProcessWebview,1);
             //    //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());

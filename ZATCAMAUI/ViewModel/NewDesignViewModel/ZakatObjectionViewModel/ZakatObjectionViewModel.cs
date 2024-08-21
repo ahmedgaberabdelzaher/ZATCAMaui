@@ -14,6 +14,7 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.ZakatObjection;
 using ZATCAMAUI.Core.Interfaces;
+using static ZATCAMAUI.Models.ZakatObjectionsModel.ZakatObjectionWithDrawListModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 {
@@ -396,7 +397,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (_zakatrevamt == value) return;
 
                 _zakatrevamt = value;
-                RaisePropertyChanged("ZAKTREVAMt");
+                OnPropertyChanged("ZAKTREVAMt");
             }
         }
 
@@ -410,7 +411,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (_dispamtcit == value) return;
 
                 _dispamtcit = value;
-                RaisePropertyChanged("DispAmtCIT");
+                OnPropertyChanged("DispAmtCIT");
             }
         }
 
@@ -424,7 +425,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (_dispamtZAKT == value) return;
 
                 _dispamtZAKT = value;
-                RaisePropertyChanged("DispAmtZAKT");
+                OnPropertyChanged("DispAmtZAKT");
             }
         }
      //end CR4912

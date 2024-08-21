@@ -1,14 +1,7 @@
-<<<<<<< HEAD:ZATCAMAUI/Models/CorrespondenceFavoriteModel.cs
-﻿namespace ZATCAMAUI.Models
-=======
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms.Internals;
 
-namespace GAZT.Models
->>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/Models/CorrespondenceFavoriteModel.cs
+using Newtonsoft.Json;
+
+namespace ZATCAMAUI.Models
 {
 
     public class CorrespondenceFavoriteModel

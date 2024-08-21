@@ -1,11 +1,11 @@
-using Foundation;
+
 using Newtonsoft.Json;
 using static ZATCAMAUI.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.DisplayInstallmentAgreementSchedulePlan;
 using static ZATCAMAUI.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.VATInstalmentScheduleDetailsModel;
 
 namespace ZATCAMAUI.Models.VATInstalmentModels
 {
-    [Preserve(AllMembers = true)]
+    
     public class VATInstalmentPlanListModel
     {
         public VATInstalmentPlanListModel()
@@ -143,14 +143,14 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
     
     public class RequestToVATInstallmentPlanDetails
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
 
         [JsonProperty("result")]
         public D result { set { d = value; } }
 
-        [Preserve(AllMembers = true)]
+        
         public class __metadata
         {
             public string id { get; set; }
@@ -264,7 +264,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
             public List<NOTESSetResults> results { get; set; }
 
         }
-        [Preserve(AllMembers = true)]
+        
         public class VATNOTESSets
         {
             public List<NOTES> results { get; set; }
@@ -319,7 +319,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
             public string Tdline;
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class VTISSetResults
         {
             public __metadata __metadata { get; set; }
@@ -571,7 +571,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
             public string Zztext;
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class taxtypedrpdwnSet
         {
             [JsonProperty("__deferred")]
@@ -579,7 +579,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
 
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class QuesListSet
         {
             public List<QuesSet> results { get; set; }
@@ -608,7 +608,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
             [JsonProperty("QnnoDesc")]
             public string QnnoDesc;
         }
-        [Preserve(AllMembers = true)]
+        
         public class PednRtn
         {
             public Metadata __metadata { get; set; }
@@ -617,7 +617,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
             public string Taxtp { get; set; }
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class RevokeSet
         {
 
@@ -673,13 +673,13 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
             public string IptypeFg;
 
         }
-        [Preserve(AllMembers = true)]
+        
         public class PednRtnSet
         {
             public List<PednRtn> results { get; set; }
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class RevokeListSet
         {
             [JsonProperty("results")]
@@ -1113,7 +1113,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
             }
 
 
-            [Preserve(AllMembers = true)]
+            
             [JsonProperty("data")]
             public D d { get; set; }
 
@@ -1121,7 +1121,7 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         
         public class VATInstalmentScheduleDetailsModel
         {
-            [Preserve(AllMembers = true)]
+            
             [JsonProperty("data")]
             public D d { get; set; }
 

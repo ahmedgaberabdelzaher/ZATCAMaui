@@ -1,8 +1,4 @@
-﻿
-
-using Mopups.Services;
-using System.Windows.Input;
-using ZATCAMAUI.Core.Interfaces;
+﻿using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
@@ -12,7 +8,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     {
         public static string ValidTypeIban;
 
-        public ICommand GoButtonClick { get; set; }
 
         #region Property
         private string _ibanNumberText;
@@ -147,10 +142,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public NewAccountPopUpPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoButtonClick = new Command(() =>
-            {
-                MopupService.Instance.PopAsync();
-            });
+
         }
     }
 }

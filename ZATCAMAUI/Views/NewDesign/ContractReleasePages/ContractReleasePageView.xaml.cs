@@ -1,17 +1,12 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Syncfusion.Maui.ListView;
-using Syncfusion.Maui.Picker;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 {
-   
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContractReleasePageView : ContentPage, ContractReleaseInterface
     {
@@ -22,12 +17,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         public ContractReleasePageView()
         {
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
-
-            //App.IsArabic = false;
-            ChangeAeroIcon();
             SetPickerFont();
-            On<iOS>().SetUseSafeArea(true);
 
 
 
@@ -38,7 +28,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 
             Task.Run(async () =>
             {
-                viewModel.IsLoading1 = true;
+                viewModel.IsLoading = true;
                 await GetContractReleaseData();
 
             });
@@ -70,14 +60,14 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
 
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
-                     
+
 
                             NormalCalendar.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             NormalCalendar.SelectedTextStyle.FontFamily = "Somar-SemiBold";
@@ -97,7 +87,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
                             EndDateHijriCalendar.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
 
                         NormalCalendar.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -134,7 +124,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             {
                 await Task.Run(() =>
                 {
-                    viewModel.IsLoading1 = true;
+                    viewModel.IsLoading = true;
                 });
                 await Task.Run(async () =>
                 {
@@ -153,16 +143,11 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-
-
-            MainThread.BeginInvokeOnMainThread(() => Padding = safeInsets);
 
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem",
                 (sender, arg) =>
                 {
-                  
+
                 });
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
@@ -189,17 +174,6 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
 
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
         }
 
         private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Maui.Core.Chips.SelectionChangedEventArgs e)
@@ -290,21 +264,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             }
         }
 
-        private void HandleTotalAmount(object sender, TextChangedEventArgs e)
-        {
 
-
-        }
-
-        private void ContractAttach_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void invoiceAttachments_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
-        {
-
-        }
 
         private void RemarksTextChanged(object sender, TextChangedEventArgs e)
         {
@@ -484,37 +444,6 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 
             }
 
-        }
-
-        private void NormalCalendar_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-
-        }
-        private void EndDateNormalCalendar_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void NormalCalendar_OkButtonClicked(object sender, EventArgs e)
-        {
-            
-        }
-        private void EndDateNormalCalendar_OkButtonClicked(object sender, EventArgs e)
-        {
-            
-        }
-        private void EndDateNormalCalendar_CancelButtonClicked(object sender, EventArgs e)
-        {
-         
-        }
-
-        void SubmitClicked(object sender, EventArgs e)
-        {
-            
-        }
-
-        void NormalCalendar_CancelButtonClicked(System.Object sender, System.EventArgs e)
-        {
         }
     }
 }

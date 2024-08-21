@@ -17,7 +17,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         public MyReturnsRootObject MyReturns { get; set; }
         #endregion
         #region Properties
-       
+
         private bool _isArabic = false;
         public bool IsArabic
         {
@@ -95,10 +95,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 OnPropertyChanged("SelectedZakatReturnSubmitted");
                 if (SelectedZakatReturnSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
-                    if (SelectedZakatReturnSubmitted.Fbtyp.Equals("FZ12"))
+                    if (SelectedZakatReturnSubmitted.formBundleType.Equals("FZ12"))
                     {
                         App.IsZakatLoadingFromMyReturns = true;
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnSubmitted.Fbguid);
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnSubmitted.formBundleGUID);
                     }
                     else
                     {
@@ -123,10 +123,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 OnPropertyChanged("SelectedZakatReturnNonSubmitted");
                 if (SelectedZakatReturnNonSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
-                    if (SelectedZakatReturnNonSubmitted.Fbtyp.Equals("FZ12"))
+                    if (SelectedZakatReturnNonSubmitted.formBundleType.Equals("FZ12"))
                     {
                         App.IsZakatLoadingFromMyReturns = true;
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnNonSubmitted.Fbguid);
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnNonSubmitted.formBundleGUID);
                     }
                     else
                     {
@@ -151,15 +151,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 OnPropertyChanged("SelectedZakatReturnOverDue");
                 if (SelectedZakatReturnOverDue != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
-                    if (SelectedZakatReturnOverDue.Fbtyp.Equals("FZ12"))
+                    if (SelectedZakatReturnOverDue.formBundleType.Equals("FZ12"))
                     {
                         App.IsZakatLoadingFromMyReturns = true;
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnOverDue.Fbguid);
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnOverDue.formBundleGUID);
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
+                        MainThread.BeginInvokeOnMainThread(async () => {
                             await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                         });
                     }
@@ -810,7 +809,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         #region Custructor
         public MyReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackClick = new Command( () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -1021,22 +1020,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                     {
                         if (isStatusNotValid(SelectedReturnsVAT))
                         {
-                            string SelectedICRGUID = SelectedReturnsVAT.Fbguid;
-                            App.ICRStatus = SelectedReturnsVAT.Stat;
-                            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.Fbguid, SelectedReturnsVAT.Fbnum, App.TP.Tin, SelectedReturnsVAT.Persl);
+                            string SelectedICRGUID = SelectedReturnsVAT.formBundleGUID;
+                            App.ICRStatus = SelectedReturnsVAT.userStatus;
+                            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.formBundleGUID, SelectedReturnsVAT.formBundleNumber, App.TP.TIN, SelectedReturnsVAT.periodKey);
                             PopToRootPage();
-                            if (_vATDeclaration != null && _vATDeclaration.d != null)
+                            if (_vATDeclaration != null && _vATDeclaration.data != null)
                             {
-                                _vATDeclaration.d.Fbguid = SelectedICRGUID;
+                                _vATDeclaration.data.Fbguid = SelectedICRGUID;
                                 VATDeclaration vATDeclaration = new VATDeclaration();
                                 VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                                Result5 result5 = new Result5();
-                                List<Result5> lst = new List<Result5>();
-                                ADRSet _aDRSet = new ADRSet();
-                                lst.Add(result5);
-                                vATDeclaration.d = vATDeclarationD;
-                                vATDeclaration.d.ADRSet = _aDRSet;
-                                vATDeclaration.d.ADRSet.results = lst;
+                                vATDeclaration.data = vATDeclarationD;
+                                vATDeclaration.data.ADRSet = new List<Result5>();
                                 MainThread.BeginInvokeOnMainThread(() =>
                                 {
                                     _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
@@ -1053,7 +1047,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                         }
                     }
                 }
-                catch (InternetException ex)
+                catch (InternetException)
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -1062,7 +1056,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                     });
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -1074,7 +1068,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         public bool isStatusNotValid(MyReturnsResult SelectedReturnsVAT)
         {
             bool isValid = true;
-            if (SelectedReturnsVAT.Stat == "E0020" || SelectedReturnsVAT.Stat == "E0057" || SelectedReturnsVAT.Stat == "E0076" || SelectedReturnsVAT.Stat == "E0077" || SelectedReturnsVAT.Stat == "E0078" || SelectedReturnsVAT.Stat == "E0089" || SelectedReturnsVAT.Stat == "E0090")
+            if (SelectedReturnsVAT.userStatus == "E0020" || SelectedReturnsVAT.userStatus == "E0057" || SelectedReturnsVAT.userStatus == "E0076" || SelectedReturnsVAT.userStatus == "E0077" || SelectedReturnsVAT.userStatus == "E0078" || SelectedReturnsVAT.userStatus == "E0089" || SelectedReturnsVAT.userStatus == "E0090")
             {
                 isValid = false;
             }
@@ -1135,7 +1129,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             Task GetReturnDataTask = null;
             GetReturnDataTask = Task.Run(async () =>
             {
-                MyReturns = await WebServiceManager.GAZTGetReturnData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                MyReturns = await WebServiceManager.GAZTGetReturnData(App.TP.userId);
             });
             try
             {
@@ -1226,65 +1220,65 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                     }
                 }
             }
-            if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+            if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
             {
-                foreach (MyReturnsResult ItemR in MyReturns.d.results)
+                foreach (MyReturnsResult ItemR in MyReturns.ICRReturns)
                 {
-                    if (0 == string.Compare(ItemR.TaxType, "ITAX", true) || 0 == string.Compare(ItemR.TaxType, "ZAKT", true))
+                    if ((0 == string.Compare(ItemR.taxType, "ITAX", true)) || (0 == string.Compare(ItemR.taxType, "ZAKT", true)))
                     {
-                        if (0 == string.Compare(ItemR.StatusTxt, "Submitted", true))
+                        if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
                         {
                             ReturnsZakatSubmitedChild.Add(ItemR);
                         }
-                        else if (0 == string.Compare(ItemR.StatusTxt, "Non Submitted", true))
+                        else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
                         {
                             ReturnsZakatNonSubmitedChild.Add(ItemR);
-                            if (0 == string.Compare(ItemR.Due, "X", true))
+                            if (0 == string.Compare(ItemR.dueStatus, "X", true))
                             {
                                 ReturnsZakatOverDueChild.Add(ItemR);
                             }
                         }
                     }
-                    if (0 == string.Compare(ItemR.TaxType, "VATX", true) || 0 == string.Compare(ItemR.TaxType, "VTEP", true))
+                    if ((0 == string.Compare(ItemR.taxType, "VATX", true)) || (0 == string.Compare(ItemR.taxType, "VTEP", true)))
                     {
-                        if (0 == string.Compare(ItemR.StatusTxt, "Submitted", true))
+                        if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
                         {
                             ReturnsVATSubmitedChild.Add(ItemR);
                         }
-                        else if (0 == string.Compare(ItemR.StatusTxt, "Non Submitted", true))
+                        else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
                         {
                             ReturnsVATNonSubmitedChild.Add(ItemR);
-                            if (0 == string.Compare(ItemR.Due, "X", true))
+                            if (0 == string.Compare(ItemR.dueStatus, "X", true))
                             {
                                 ReturnsVATOverDueChild.Add(ItemR);
                             }
                         }
                     }
-                    if (0 == string.Compare(ItemR.TaxType, "ETAX", true))
+                    if ((0 == string.Compare(ItemR.taxType, "ETAX", true)))
                     {
-                        if (0 == string.Compare(ItemR.StatusTxt, "Submitted", true))
+                        if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
                         {
                             ReturnsETSubmitedChild.Add(ItemR);
                         }
-                        else if (0 == string.Compare(ItemR.StatusTxt, "Non Submitted", true))
+                        else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
                         {
                             ReturnsETNonSubmitedChild.Add(ItemR);
-                            if (0 == string.Compare(ItemR.Due, "X", true))
+                            if (0 == string.Compare(ItemR.dueStatus, "X", true))
                             {
                                 ReturnsETOverDueChild.Add(ItemR);
                             }
                         }
                     }
-                    if (0 == string.Compare(ItemR.TaxType, "WHTX", true))
+                    if ((0 == string.Compare(ItemR.taxType, "WHTX", true)))
                     {
-                        if (0 == string.Compare(ItemR.StatusTxt, "Submitted", true))
+                        if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
                         {
                             ReturnsWHSubmitedChild.Add(ItemR);
                         }
-                        else if (0 == string.Compare(ItemR.StatusTxt, "Non Submitted", true))
+                        else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
                         {
                             ReturnsWHNonSubmitedChild.Add(ItemR);
-                            if (0 == string.Compare(ItemR.Due, "X", true))
+                            if (0 == string.Compare(ItemR.dueStatus, "X", true))
                             {
                                 ReturnsWHOverDueChild.Add(ItemR);
                             }
@@ -1293,7 +1287,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsZakatNonSubmitedChild.Count > 0)
                 {
-                    ReturnsZakatNonSubmited = ReturnsZakatNonSubmitedChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsZakatNonSubmited = ReturnsZakatNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleZakatNonSumbitted = true;
                     IsVisibleZakatNonSumbittedLabel = false;
                     NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatNonSubmitedChild.Count + ")";
@@ -1306,7 +1300,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsZakatOverDueChild.Count > 0)
                 {
-                    ReturnsZakatOverDue = ReturnsZakatOverDueChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsZakatOverDue = ReturnsZakatOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleZakatOverDue = true;
                     IsVisibleZakatOverDueLabel = false;
                     OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatOverDueChild.Count + ")";
@@ -1319,7 +1313,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsZakatSubmitedChild.Count > 0)
                 {
-                    ReturnsZakatSubmited = ReturnsZakatSubmitedChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsZakatSubmited = ReturnsZakatSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleZakatSumbitted = true;
                     IsVisibleZakatSumbittedLabel = false;
                     SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatSubmitedChild.Count + ")";
@@ -1332,7 +1326,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsVATNonSubmitedChild.Count > 0)
                 {
-                    ReturnsVATNonSubmited = ReturnsVATNonSubmitedChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsVATNonSubmited = ReturnsVATNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleVATNonSumbitted = true;
                     IsVisibleVATNonSumbittedLabel = false;
                     NonSubmittedVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATNonSubmitedChild.Count + ")";
@@ -1345,7 +1339,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsVATOverDueChild.Count > 0)
                 {
-                    ReturnsVATOverDue = ReturnsVATOverDueChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsVATOverDue = ReturnsVATOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleVATOverDue = true;
                     IsVisibleVATOverDueLabel = false;
                     OverDueVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATOverDueChild.Count + ")";
@@ -1358,7 +1352,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsVATSubmitedChild.Count > 0)
                 {
-                    ReturnsVATSubmited = ReturnsVATSubmitedChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsVATSubmited = ReturnsVATSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleVATSumbitted = true;
                     IsVisibleVATSumbittedLabel = false;
                     SubmittedVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATSubmitedChild.Count + ")";
@@ -1371,7 +1365,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsETNonSubmitedChild.Count > 0)
                 {
-                    ReturnsETNonSubmited = ReturnsETNonSubmitedChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsETNonSubmited = ReturnsETNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleETNonSumbitted = true;
                     IsVisibleETNonSumbittedLabel = false;
                     NonSubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETNonSubmitedChild.Count + ")";
@@ -1384,7 +1378,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsETOverDueChild.Count > 0)
                 {
-                    ReturnsETOverDue = ReturnsETOverDueChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsETOverDue = ReturnsETOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleETOverDue = true;
                     IsVisibleETOverDueLabel = false;
                     OverDueETReturnsCount = AppResources.ETReturns + "(" + ReturnsETOverDueChild.Count + ")";
@@ -1397,7 +1391,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsETSubmitedChild.Count > 0)
                 {
-                    ReturnsETSubmited = ReturnsETSubmitedChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsETSubmited = ReturnsETSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleETSumbitted = true;
                     IsVisibleETSumbittedLabel = false;
                     SubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETSubmitedChild.Count + ")";
@@ -1410,7 +1404,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsWHNonSubmitedChild.Count > 0)
                 {
-                    ReturnsWHNonSubmited = ReturnsWHNonSubmitedChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsWHNonSubmited = ReturnsWHNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleWHNonSumbitted = true;
                     IsVisibleWHNonSumbittedLabel = false;
                     NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHNonSubmitedChild.Count + ")";
@@ -1423,7 +1417,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsWHOverDueChild.Count > 0)
                 {
-                    ReturnsWHOverDue = ReturnsWHOverDueChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsWHOverDue = ReturnsWHOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleWHOverDue = true;
                     IsVisibleWHOverDueLabel = false;
                     OverDueWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHOverDueChild.Count + ")";
@@ -1436,7 +1430,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsWHSubmitedChild.Count > 0)
                 {
-                    ReturnsWHSubmited = ReturnsWHSubmitedChild.OrderByDescending(a => a.DueDt).ToList();
+                    ReturnsWHSubmited = ReturnsWHSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
                     IsVisibleWHSumbitted = true;
                     IsVisibleWHSumbittedLabel = false;
                     SubmittedWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHSubmitedChild.Count + ")";

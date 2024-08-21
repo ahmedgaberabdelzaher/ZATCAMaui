@@ -48,7 +48,7 @@ namespace ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls
             ColumnSpacing = 2;
             RowSpacing = 8;
             Padding = new Thickness(0, 8, 0, 0);
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
             {
                 ColumnDefinitions = new ColumnDefinitionCollection
             {
@@ -202,9 +202,9 @@ namespace ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls
                     TextColor = (Color)Application.Current.Resources["Primary"],
                     FontSize = 16,
                     Margin = new Thickness(0, 8),
-                    FontFamily = Device.RuntimePlatform == Device.Android
+                    FontFamily = DeviceInfo.Platform == DevicePlatform.Android
                             ? "GAZT_FONT_BOLD"
-                            : Device.RuntimePlatform == Device.iOS
+                            : DeviceInfo.Platform == DevicePlatform.iOS
                                 ? "GAZT_FONT_BOLD"
                                 : "Assets/Somar-SemiBold.otf#Somar-SemiBold",
                     HorizontalTextAlignment = TextAlignment.Center,
@@ -213,7 +213,7 @@ namespace ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls
                     HorizontalOptions = LayoutOptions.Center,
                     LineBreakMode = LineBreakMode.WordWrap
                 };
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     titleView.titleLabel.LineHeight = 1.5;
                 }

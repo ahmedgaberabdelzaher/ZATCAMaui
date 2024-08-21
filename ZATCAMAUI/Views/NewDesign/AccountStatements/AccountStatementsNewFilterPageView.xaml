@@ -16,29 +16,6 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-
-                    <Style x:Key="FilterArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="FilterArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
-
     <ContentPage.Content>
 
         <Grid RowDefinitions="auto,*">
@@ -105,21 +82,39 @@
 
                                         <Grid ColumnDefinitions="*,auto,*" HorizontalOptions="FillAndExpand">
 
-                                            <custom:GAZTBorderlessEntry
-                                                x:Name="TxFromAmountEntry"
-                                                Grid.Column="0"
-                                                Keyboard="Numeric"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"
-                                                Text="{Binding FromAmount}"
-                                                TextChanged="From_Amount_Changed"
-                                                Unfocused="From_Amount_Unfocused">
+                                           <Border Stroke="#B1B1B1"
+                                                   StrokeThickness="1" 
+                                                   Padding="5,8,5,8"
+                                                   Style="{StaticResource GreyBorderFrame}">
 
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behaviour:OnlyNumericValuesBehaviour />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                                <StackLayout Orientation="Horizontal">
 
-                                            </custom:GAZTBorderlessEntry>
+                                                    <custom:GAZTBorderlessEntry
+                                                        x:Name="TxFromAmountEntry"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"
+                                                        Text="{Binding FromAmount}"
+                                                        TextChanged="From_Amount_Changed"
+                                                        Unfocused="From_Amount_Unfocused">
 
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <behaviour:OnlyNumericValuesBehaviour />
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                        <Image  Margin="5,0"
+                                                            Source="close"
+                                                            HeightRequest="14"
+                                                            WidthRequest="14">
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="FromAmount_Tapped" />
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                </StackLayout>
+
+                                           </Border>
+                                            
                                             <StackLayout
                                                 Grid.Column="1"
                                                 HorizontalOptions="EndAndExpand"
@@ -136,23 +131,40 @@
 
                                             </StackLayout>
 
-                                            <custom:GAZTBorderlessEntry
-                                                x:Name="TxToAmountEntry"
-                                                Grid.Column="2"
-                                                Keyboard="Numeric"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}"
-                                                Text="{Binding ToAmount}"
-                                                TextChanged="To_Amount_Changed"
-                                                Unfocused="To_Amount_Unfocused">
+                                            <Border Stroke="#B1B1B1"
+                                                   StrokeThickness="1" 
+                                                   Padding="5,8,5,8"
+                                                   Grid.Column="2"
+                                                   Style="{StaticResource GreyBorderFrame}">
 
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behaviour:OnlyNumericValuesBehaviour />
+                                                <StackLayout Orientation="Horizontal">
 
-                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom:GAZTBorderlessEntry
+                                                            x:Name="TxToAmountEntry"
+                                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                            Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}"
+                                                            Text="{Binding ToAmount}"
+                                                            TextChanged="To_Amount_Changed"
+                                                            Unfocused="To_Amount_Unfocused">
 
-                                            </custom:GAZTBorderlessEntry>
+                                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                                <behaviour:OnlyNumericValuesBehaviour />
 
+                                                            </custom:GAZTBorderlessEntry.Behaviors>
 
+                                                        </custom:GAZTBorderlessEntry>
+
+                                                        <Image  Margin="5,0"
+                                                            Source="close"
+                                                            HeightRequest="14"
+                                                            WidthRequest="14">
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="ToAmount_Tapped" />
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                </StackLayout>
+
+                                           </Border>
                                         </Grid>
                                     </StackLayout>
 
@@ -352,12 +364,10 @@
                                 x:Name="TxDateNormalCalendar"
                                 Margin="2"
                                 Background="White"
-                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
                                 Closed="TxDateNormalCalendar_Closed"
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="36"
                                 Mode="Dialog"
-                                OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"
                                 SelectedItem="{Binding TodayDateNormal}"
                                 Style="{StaticResource PickerStyle}">
 
@@ -413,12 +423,10 @@
                                 x:Name="TxDateHijriCalendar"
                                 Margin="2"
                                 Background="White"
-                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
                                 Closed="TxDateNormalCalendar_Closed"
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="36"
                                 Mode="Dialog"
-                                OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"
                                 SelectedItem="{Binding TodayDateinHijri}">
 
                                 <custom:CustomHijriDatePicker.ColumnHeaderView>
@@ -470,11 +478,11 @@
                                 x:Name="TaxPeriodDateNormalCalendar"
                                 Margin="2"
                                 Background="White"
-                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="36"
                                 Mode="Dialog"
-                                OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"
+                                
                                 SelectedItem="{Binding TodayDateNormal}"
                                 Style="{StaticResource PickerStyle}">
 
@@ -528,11 +536,11 @@
                                 x:Name="TaxPeriodDateHijriCalendar"
                                 Margin="2"
                                 Background="White"
-                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="36"
                                 Mode="Dialog"
-                                OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"
+                                
                                 SelectedItem="{Binding TodayDateinHijri}">
 
                                 <custom:CustomHijriDatePicker.SelectionView>
@@ -579,10 +587,16 @@
                                 </custom:CustomHijriDatePicker.FooterView>
                             </custom:CustomHijriDatePicker>
 
+                             <buttons:SfButton
+                                x:Name="btnReasonClear"
+                                Margin="0,60"
+                                Clicked="Clearfields" 
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.ACFilterClear}"
+                                VerticalOptions="End" />
+
                             <buttons:SfButton
                                 x:Name="btnReasonContinue"
-                                Grid.Row="3"
-                                Grid.Column="0"
                                 Margin="0,60"
                                 Command="{Binding FilterBtnCommand}"
                                 Style="{StaticResource PrimaryButtonStyle}"

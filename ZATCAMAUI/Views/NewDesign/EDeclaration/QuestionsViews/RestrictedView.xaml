@@ -156,7 +156,7 @@
            <custom:CustomSfTextInputView.TextInputView>
 
              <custom:GAZTBorderlessEntry
-                Keyboard="Numeric"
+                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                 Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
                 Style="{StaticResource DefaultEntry}"
                 Text="{Binding Quantity}"
@@ -293,7 +293,7 @@
            <custom:CustomSfTextInputView.TextInputView>
 
             <custom:GAZTBorderlessEntry
-                Keyboard="Numeric"
+                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                 Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
                 Style="{StaticResource DefaultEntry}"
                 Text="{Binding TotalValue}"

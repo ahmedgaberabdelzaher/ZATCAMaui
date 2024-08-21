@@ -776,8 +776,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -804,9 +804,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             catch (Exception ex)
             {
 
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
 
             GenericPickerModel genericPickerModel = new GenericPickerModel();

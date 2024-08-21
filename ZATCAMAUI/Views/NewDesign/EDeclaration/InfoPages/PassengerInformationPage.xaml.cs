@@ -10,9 +10,6 @@ namespace ZATCAMAUI.Views.NewDesign.EDeclaration.InfoPages
             InitializeComponent();
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
-
-           
-
         }
         protected override void OnDisappearing()
         {

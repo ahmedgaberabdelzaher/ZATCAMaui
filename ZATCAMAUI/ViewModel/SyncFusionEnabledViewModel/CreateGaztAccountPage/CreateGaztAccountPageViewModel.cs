@@ -1,12 +1,15 @@
 ﻿
 
 using Newtonsoft.Json;
+using System.Text;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using static ZATCAMAUI.Models.ErrorMessage;
+using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
 {
@@ -22,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
         #endregion
         #region Properties
 
-       
+
 
         private bool _isOTPEntryEnable = true;
         public bool IsOTPEntryEnable
@@ -34,7 +37,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _isOTPEntryEnable = value;
-                OnPropertyChanged(nameof( IsOTPEntryEnable));
+                OnPropertyChanged(nameof(IsOTPEntryEnable));
             }
         }
         private string _oTPValidDuration;
@@ -248,7 +251,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
                     }
 
                 });
-                GoBackClick = new Command( () =>
+                GoBackClick = new Command(() =>
                 {
                     _navigationService.GoBack();
                 });
@@ -276,26 +279,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
                 await Task.Run(async () =>
                 {
                     SignUpNextBodyModel CreateModel = new SignUpNextBodyModel();
-                    CreateModel.ABirthdt = SignUpModelRootObjectM.d.ABirthdt;
-                    CreateModel.ACity = SignUpModelRootObjectM.d.ACity;
-                    CreateModel.ACityCode = SignUpModelRootObjectM.d.ACityCode;
-                    CreateModel.ACommId = SignUpModelRootObjectM.d.ACommId;
-                    CreateModel.AEmail = SignUpModelRootObjectM.d.AEmail;
-                    CreateModel.AFirstname = SignUpModelRootObjectM.d.AFirstname;
-                    CreateModel.AIdnumber = SignUpModelRootObjectM.d.AIdnumber;
-                    CreateModel.AIdtype = SignUpModelRootObjectM.d.AIdtype;
-                    CreateModel.AIssuedBy = SignUpModelRootObjectM.d.AIssuedBy;
-                    CreateModel.ALang = SignUpModelRootObjectM.d.ALang;
-                    CreateModel.ALastname = SignUpModelRootObjectM.d.ALastname;
-                    CreateModel.ALicenceNo = SignUpModelRootObjectM.d.ALicenceNo;
-                    CreateModel.AMobile = SignUpModelRootObjectM.d.AMobile;
-                    CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
+                    CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
+                    CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
+                    CreateModel.ACityCode = SignUpModelRootObjectM.d.signupD.ACityCode;
+                    CreateModel.ACommId = SignUpModelRootObjectM.d.signupD.ACommId;
+                    CreateModel.AEmail = SignUpModelRootObjectM.d.signupD.AEmail;
+                    CreateModel.AFirstname = SignUpModelRootObjectM.d.signupD.AFirstname;
+                    CreateModel.AIdnumber = SignUpModelRootObjectM.d.signupD.AIdnumber;
+                    CreateModel.AIdtype = SignUpModelRootObjectM.d.signupD.AIdtype;
+                    CreateModel.AIssuedBy = SignUpModelRootObjectM.d.signupD.AIssuedBy;
+                    CreateModel.ALang = SignUpModelRootObjectM.d.signupD.ALang;
+                    CreateModel.ALastname = SignUpModelRootObjectM.d.signupD.ALastname;
+                    CreateModel.ALicenceNo = SignUpModelRootObjectM.d.signupD.ALicenceNo;
+                    CreateModel.AMobile = SignUpModelRootObjectM.d.signupD.AMobile;
+                    CreateModel.ACountry = SignUpModelRootObjectM.d.signupD.ACountry;
 
-                    CreateModel.APhone = SignUpModelRootObjectM.d.APhone;
-                    CreateModel.ATin = SignUpModelRootObjectM.d.ATin;
-                    CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
-                    CreateModel.AType = SignUpModelRootObjectM.d.AType;
-                    CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
+                    CreateModel.APhone = SignUpModelRootObjectM.d.signupD.APhone;
+                    CreateModel.ATin = SignUpModelRootObjectM.d.signupD.ATin;
+                    CreateModel.ATinExist = SignUpModelRootObjectM.d.signupD.ATinExist;
+                    CreateModel.AType = SignUpModelRootObjectM.d.signupD.AType;
+                    CreateModel.CaseGuid = SignUpModelRootObjectM.d.signupD.CaseGuid;
+                    CreateModel.ACaptcha = SignUpModelRootObjectM.d.signupD.ACaptcha;
                     string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
                     SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                     if (ResultFirstSubmitModel.d == null)
@@ -340,7 +344,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             {
                 if (App.IsComingFromSleepMode)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
@@ -407,30 +411,30 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
                     IsLoading = true;
                 });
                 CreateGaztAccountModel CreateModel = new CreateGaztAccountModel();
-                CreateModel.ABirthdt = SignUpModelRootObjectM.d.ABirthdt;
-                CreateModel.ACity = SignUpModelRootObjectM.d.ACity;
-                CreateModel.ACityCode = SignUpModelRootObjectM.d.ACityCode;
-                CreateModel.ACommId = SignUpModelRootObjectM.d.ACommId;
-                CreateModel.AEmail = SignUpModelRootObjectM.d.AEmail;
-                CreateModel.AFirstname = SignUpModelRootObjectM.d.AFirstname;
-                CreateModel.AIdnumber = SignUpModelRootObjectM.d.AIdnumber;
-                CreateModel.AIdtype = SignUpModelRootObjectM.d.AIdtype;
-                CreateModel.AIssuedBy = SignUpModelRootObjectM.d.AIssuedBy;
-                CreateModel.ALang = SignUpModelRootObjectM.d.ALang;
-                CreateModel.ALastname = SignUpModelRootObjectM.d.ALastname;
-                CreateModel.ALicenceNo = SignUpModelRootObjectM.d.ALicenceNo;
-                CreateModel.AMobile = SignUpModelRootObjectM.d.AMobile;
-                CreateModel.APhone = SignUpModelRootObjectM.d.APhone;
-                CreateModel.ATin = SignUpModelRootObjectM.d.ATin;
-                CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
-                CreateModel.AType = SignUpModelRootObjectM.d.AType;
-                CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
+                CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
+                CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
+                CreateModel.ACityCode = SignUpModelRootObjectM.d.signupD.ACityCode;
+                CreateModel.ACommId = SignUpModelRootObjectM.d.signupD.ACommId;
+                CreateModel.AEmail = SignUpModelRootObjectM.d.signupD.AEmail;
+                CreateModel.AFirstname = SignUpModelRootObjectM.d.signupD.AFirstname;
+                CreateModel.AIdnumber = SignUpModelRootObjectM.d.signupD.AIdnumber;
+                CreateModel.AIdtype = SignUpModelRootObjectM.d.signupD.AIdtype;
+                CreateModel.AIssuedBy = SignUpModelRootObjectM.d.signupD.AIssuedBy;
+                CreateModel.ALang = SignUpModelRootObjectM.d.signupD.ALang;
+                CreateModel.ALastname = SignUpModelRootObjectM.d.signupD.ALastname;
+                CreateModel.ALicenceNo = SignUpModelRootObjectM.d.signupD.ALicenceNo;
+                CreateModel.AMobile = SignUpModelRootObjectM.d.signupD.AMobile;
+                CreateModel.APhone = SignUpModelRootObjectM.d.signupD.APhone;
+                CreateModel.ATin = SignUpModelRootObjectM.d.signupD.ATin;
+                CreateModel.ATinExist = SignUpModelRootObjectM.d.signupD.ATinExist;
+                CreateModel.AType = SignUpModelRootObjectM.d.signupD.AType;
+                CreateModel.CaseGuid = SignUpModelRootObjectM.d.signupD.CaseGuid;
                 CreateModel.APassword = TxtPassword;
                 CreateModel.ASmsCode = TxtMobileNumberCode;
                 CreateModel.AEmailCode = TxtEmailCode;
-                CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
+                CreateModel.ACountry = SignUpModelRootObjectM.d.signupD.ACountry;
                 CreateModel.ASubmit = "X";
-                CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
+                CreateModel.Fbnum = SignUpModelRootObjectM.d.signupD.Fbnum;
                 string ResultFirstSubmit = await WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
                 if (ResultFirstSubmit != null)
                 {
@@ -441,10 +445,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
                         {
                             IsLoading = false;
                         });
-                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                        ErrorObj SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<ErrorObj>(ResultFirstSubmit);
+
+                        StringBuilder message = new StringBuilder();
+                        foreach (Errordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                        {
+                            message.AppendLine(itemerror.message);
+                        }
+                        message = message.Replace("An exception was raised", string.Empty);
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                            _dialogService.ShowMessage(message.ToString(), AppResources.Information);
                         });
                     }
                     else

@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models.ChageFillingPeriodModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
@@ -22,10 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             try
             {
                 InitializeComponent();
-
-                NavigationPage.SetBackButtonTitle(this, "");
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.ChangeFillingPeriodListPageView;
                 BindingContext = viewModel;
             }
@@ -41,10 +36,6 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             try
             {
                 base.OnAppearing();
-
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
                 viewModel.ResetData();
                 _ = viewModel.GetVATChangeFillingList();
             }
@@ -54,18 +45,6 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             }
         }
 
-       
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
         async void Request_Item_Tapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
         {
@@ -81,25 +60,14 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                 else
                 {
 
-                    try
+                    await viewModel.GetVATChangeFillingSummary(item);
+
+                    if (viewModel.vATChangingSummaryData != null)
                     {
 
-                        await viewModel.GetVATChangeFillingSummary(item);
-
-                        if (viewModel.vATChangingSummaryData != null)
-                        {
-
-                            viewModel.EnableSummaryView();
-
-                        }
+                        viewModel.EnableSummaryView();
 
                     }
-                    catch (Exception)
-                    {
-
-                    }
-
-
 
                 }
             }
@@ -116,7 +84,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             if (viewModel.vATChangingSummaryData.Fbnum != null)
             {
 
-                string downloadurl = ZATCAConstants.downloadFile + "'" + viewModel.vATChangingSummaryData.Fbnum + "')/$value";
+                String downloadurl = ZATCAConstants.downloadFile + viewModel.vATChangingSummaryData.Fbnum;
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
             }
         }

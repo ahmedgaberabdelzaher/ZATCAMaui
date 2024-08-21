@@ -1,18 +1,17 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 {
-   
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EstablishmentAmendUpdateSuccessfulPage : ContentPage
     {
         private EstablishmentAmendUpdateSuccessfulPageViewModel viewModel;
         public EstablishmentAmendUpdateSuccessfulPage(TaxPayerDetails taxpayerProfile)
         {
-            InitializeComponent(); 
+            InitializeComponent();
             viewModel = App.Locator.EstablishmentAmendUpdateSuccessfulPage;
             viewModel.taxPayerDetails = taxpayerProfile;
             BindingContext = viewModel;
@@ -20,9 +19,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
             viewModel?.OnAppearing();
         }
 

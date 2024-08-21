@@ -11,6 +11,8 @@
     Title="{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
+     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 

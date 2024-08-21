@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -9,25 +9,25 @@ namespace ZATCAMAUI.Models
     public class EscalatedGstcModel
     {
         public D d { get; set; }
-        [Preserve(AllMembers = true)]
+        
          public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class Deferred
         {
             public string uri { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class TINSet
         {
             public Deferred __deferred { get; set; }
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class CaseDetailsResultSet
         {
             public Metadata __metadata { get; set; }
@@ -331,12 +331,12 @@ namespace ZATCAMAUI.Models
             public string ZStatusName { get; set; }
 
         }
-        [Preserve(AllMembers = true)]
+        
         public class CaseDetailSet
         {
             public List<CaseDetailsResultSet> results { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class D
         {
             public Metadata __metadata { get; set; }

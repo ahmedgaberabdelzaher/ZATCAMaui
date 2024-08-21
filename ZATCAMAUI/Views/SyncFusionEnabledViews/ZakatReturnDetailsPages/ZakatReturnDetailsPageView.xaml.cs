@@ -4,10 +4,6 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnListPages;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
-using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnDetailsPages
 {
@@ -28,10 +24,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnDetailsPages
                 InitializeComponent();
                 viewModel.ClearData();
                 Fbguid = fbguid;
-                On<iOS>().SetUseSafeArea(true);
                 BindingContext = viewModel;
-                NavigationPage.SetBackButtonTitle(this, "");
-                ChangeAeroIcon();
             }
             catch (Exception)
             {
@@ -40,17 +33,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnDetailsPages
         #endregion
 
         #region Method
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
         protected async override void OnAppearing()
         {
             base.OnAppearing();

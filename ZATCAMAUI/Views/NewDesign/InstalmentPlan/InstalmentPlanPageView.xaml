@@ -80,77 +80,83 @@
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    VerticalScrollBarVisibility="Never">
+                <Grid RowDefinitions="*">
+                    
 
-                    <!--  Code for Zakat & VAT options  -->
-                    <Grid
-                        HorizontalOptions="FillAndExpand"
-                        RowDefinitions="auto,auto"
-                        VerticalOptions="FillAndExpand">
+                    <ScrollView
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            VerticalScrollBarVisibility="Never">
 
+                        <!--  Code for Zakat & VAT options  -->
                         <Grid
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            RowDefinitions="auto,auto,auto">
-                            <Label
+                            HorizontalOptions="FillAndExpand"
+                            RowDefinitions="auto,auto"
+                            VerticalOptions="FillAndExpand">
+
+                            <Grid
                                 Grid.Row="0"
                                 Grid.Column="0"
-                                FontSize="28"
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource SectionTitleBlackBold}"
-                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPlan}" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource BodyLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmetChooseTaxTypeText}" />
-                            <BoxView
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                HeightRequest="1"
-                                Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                RowDefinitions="auto,auto,auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontSize="28"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource SectionTitleBlackBold}"
+                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPlan}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmetChooseTaxTypeText}" />
+                                <BoxView
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HeightRequest="1"
+                                    Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                            </Grid>
+
+                            <Grid Grid.Row="1" RowDefinitions="*">
+
+                                <listView:SfListView
+                                    x:Name="outletDecisionOptionsListView"
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    AutoFitMode="DynamicHeight"
+                                    CachingStrategy="RecycleTemplate"
+                                    HorizontalOptions="Center"
+                                    IsScrollingEnabled="False"
+                                    ItemSpacing="12"
+                                    ItemTemplate="{StaticResource UnselectedItemTemplateSelector}"
+                                    ItemsSource="{Binding OutletDecisionOptions}"
+                                    ScrollBarVisibility="Never"
+                                    SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"
+                                    SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
+                                    SelectionBackground="Transparent"
+                                    SelectionChanged="outletDecisionOptionsListView_SelectionChanged"
+                                    SelectionMode="Single"
+                                    VerticalOptions="Center">
+
+                                    <listView:SfListView.ItemsLayout>
+
+                                        <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+
+                                    </listView:SfListView.ItemsLayout>
+
+                                </listView:SfListView>
+
+                            </Grid>
 
                         </Grid>
 
-                        <Grid Grid.Row="1" RowDefinitions="*">
+                    </ScrollView>
 
-                            <listView:SfListView
-                                x:Name="outletDecisionOptionsListView"
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                AutoFitMode="DynamicHeight"
-                                CachingStrategy="RecycleTemplate"
-                                HorizontalOptions="Center"
-                                IsScrollingEnabled="False"
-                                ItemSpacing="12"
-                                ItemTemplate="{StaticResource UnselectedItemTemplateSelector}"
-                                ItemsSource="{Binding OutletDecisionOptions}"
-                                ScrollBarVisibility="Never"
-                                SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"
-                                SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
-                                SelectionBackground="Transparent"
-                                SelectionChanged="outletDecisionOptionsListView_SelectionChanged"
-                                SelectionMode="Single"
-                                VerticalOptions="Center">
 
-                                <listView:SfListView.ItemsLayout>
-
-                                    <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
-
-                                </listView:SfListView.ItemsLayout>
-
-                            </listView:SfListView>
-
-                        </Grid>
-
-                    </Grid>
-
-                </ScrollView>
+                </Grid>
 
             </Border>
 

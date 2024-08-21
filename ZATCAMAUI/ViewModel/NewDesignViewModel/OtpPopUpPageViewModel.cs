@@ -1,17 +1,13 @@
 ﻿using System.Windows.Input;
-using EGAZT.Models.NewModelAPI.AbsherOTP;
-using Foundation;
 using Mopups.Services;
-using ZATCAMAUI;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
-using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ZATCAMAUI.Models.NewModelAPI.AbsherOTP;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
-    [Preserve(AllMembers = true)]
     public class OtpPopUpPageViewModel : BaseViewModel
 	{
         public int CurrentAttempt = 0;
@@ -34,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (App.IsComingFromSleepMode)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
@@ -383,7 +379,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     IsLoading = false;
                     IsVerifyOTPEnabled = true;
-                 //   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("OTP Enabled"));
+                 //   await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("OTP Enabled"));
 
                 });
             }
@@ -413,7 +409,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-                Task.Run(async () =>
+                Task.Run( () =>
                 {
                     otpRecvided = otpResponse;
                 });

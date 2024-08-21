@@ -60,9 +60,9 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             TaxTypePicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             TaxTypePicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -70,7 +70,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
                             TaxTypePicker.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         {
                             TaxTypePicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                             TaxTypePicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -104,10 +104,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
         }
 
-        void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            //Dissapear();
-        }
 
         void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
         {

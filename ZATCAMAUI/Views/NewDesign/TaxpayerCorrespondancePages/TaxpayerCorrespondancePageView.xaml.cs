@@ -1,14 +1,11 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Syncfusion.Maui.Picker;
+﻿using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
 {
-   
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxpayerCorrespondancePageView : ContentPage
     {
@@ -18,7 +15,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             InitializeComponent();
             viewModel = App.Locator.TaxpayerCorrespondancePageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
             viewModel.SelectedChipFilterItemList = new List<ChipModel>();
             PopulateReturnTypeList();
             viewModel.PopulateFilterDropdownList();
@@ -29,10 +25,10 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             TaxTypeDownPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             TaxTypeDownPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -42,7 +38,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
 
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
                         TaxTypeDownPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         TaxTypeDownPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         TaxTypeDownPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -57,27 +53,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             }
 
         }
-        public void ChangeAeroIcon()
-        {
-            try
-            {
-                if (App.IsArabic)
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                }
-                else
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                }
 
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
         public async Task PageLoad()
         {
 
@@ -104,7 +80,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
                 base.OnAppearing();
                 await PageLoad();
 
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     TaxTypeDownPicker.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
                 }
@@ -115,7 +91,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
 
 
                 //if (TaxTypeDownPicker.SelectedItem != null)
-                if(TaxTypeDownPicker.Columns[0].SelectedIndex != 0)
+                if (TaxTypeDownPicker.Columns[0].SelectedIndex != 0)
                 {
                     //viewModel.SelectedTaxTypeDropdownItem = (ReturnTypes)TaxTypeDownPicker.SelectedItem;
                     viewModel.SelectedTaxTypeDropdownItem = viewModel.TaxTypeListForDropDown[TaxTypeDownPicker.Columns[0].SelectedIndex];
@@ -135,9 +111,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             }
         }
 
-        private void btn_Clicked(object sender, EventArgs e)
-        {
-        }
+
 
         public void PopulateReturnTypeList()
         {

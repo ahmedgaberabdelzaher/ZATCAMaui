@@ -1,8 +1,6 @@
 ﻿
 
 using Maui.GoogleMaps;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
@@ -22,8 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             InitializeComponent();
             viewModel = App.Locator.NewTaxEvasionFormPageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
             SetPickerFont();
             ClearFields();
             SetDataToUI();
@@ -36,10 +32,10 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
                             RegionPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -60,7 +56,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                             ReportTypePicker.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
                         RegionPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         RegionPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -90,7 +86,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
             {
                 RegionPicker.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
                 CityPicker.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
@@ -164,17 +160,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             }
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
 
         #region Method
         public void ClearFields()
@@ -282,24 +268,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
 
 
                 }
-                catch (FeatureNotSupportedException ex)
-                {
-                    // Handle not supported on device exception
 
-
-                }
-                catch (FeatureNotEnabledException ex)
-                {
-                    // Handle not enabled on device exception
-
-
-                }
-                catch (PermissionException ex)
-                {
-                    // Handle permission exception
-
-
-                }
                 catch (Exception)
                 {
                     // Unable to get location
@@ -357,18 +326,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
 
 
                 }
-                catch (FeatureNotSupportedException)
-                {
-                    // Handle not supported on device exception
-                }
-                catch (FeatureNotEnabledException)
-                {
-                    // Handle not enabled on device exception
-                }
-                catch (PermissionException)
-                {
-                    // Handle permission exception
-                }
+
                 catch (Exception)
                 {
                     // Unable to get location
@@ -481,7 +439,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
         {
             try
             {
-               
+
                 Pin pin = new Pin();
                 pin.Label = "Your Location";
                 pin.Type = PinType.Place;
@@ -526,7 +484,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             RegionPicker.IsOpen = true;
         }
 
-        void RegionPicker_SelectionChanged(object sender,PickerSelectionChangedEventArgs e)
+        void RegionPicker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
         {
             //TODO
             TaxEvasionRegionCityDatum taxEvasionRegionCityDatum = viewModel.RList[e.NewValue];
@@ -639,7 +597,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
         void ReportTypePicker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
         {
             //TODO
-            TaxEvasionCategoriesDataModel selectedReportType =viewModel.ReportTypes[e.NewValue];
+            TaxEvasionCategoriesDataModel selectedReportType = viewModel.ReportTypes[e.NewValue];
             //ReportTypePicker.SelectedItem = selectedReportType;
             viewModel.SelectedReportTypeListItem = selectedReportType;
             viewModel.SelectedCategory = selectedReportType.Title;

@@ -6,11 +6,11 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Exceptions;
 using static ZATCAMAUI.Models.ErrorMessage;
-using Foundation;
+
 
 namespace ZATCAMAUI.Core.Mangers
 {
-[Preserve(AllMembers = true)]
+
     public static class EscalatedCasesWebserviceManager
     {
         public static async Task<EscalatedGstcModel> GAZTGetCaseDetailSet()

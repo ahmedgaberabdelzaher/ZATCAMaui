@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.Form5Models
@@ -263,7 +263,7 @@ namespace ZATCAMAUI.Models.Form5Models
         public List<Results17> results { get; set; }
 
     }
-    [Preserve(AllMembers = true)]
+    
     public class ZakatForm5CityDataResult
     {
 

@@ -365,7 +365,7 @@
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
                                     <custom:GAZTBorderlessEntry
-                                        Keyboard="Numeric"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         Placeholder="{x:Static ResourceManager:AppResources.Buildingnumber}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding BuildingNo}"

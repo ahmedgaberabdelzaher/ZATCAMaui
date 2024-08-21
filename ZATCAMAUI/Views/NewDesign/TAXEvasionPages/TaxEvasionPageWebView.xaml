@@ -4,25 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+   
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -41,19 +29,7 @@
 
                     <!--  FAQ View Starts  -->
                     <StackLayout>
-                        <!--   <OnPlatform x:TypeArguments="View">
-
-                            <On Platform="Android">
-                                  <ResourceManager:HybridWebView
-                            x:Name="taxEvasionHybridWebView"
-                            Margin="-20,-40,-20,0"
-                            HorizontalOptions="FillAndExpand"
-                            Navigated="taxEvasionHybridWebView_Navigated"
-                            Navigating="taxEvasionHybridWebView_Navigating"
-                            VerticalOptions="FillAndExpand" />
-                            </On>
-
-                             <On Platform="iOS">-->
+                       
                         <WebView
                             x:Name="taxEvasionWebView"
                             Margin="-20,-40,-20,0"
@@ -61,44 +37,15 @@
                             Navigated="taxEvasionWebView_Navigated"
                             Navigating="taxEvasionWebView_Navigating"
                             VerticalOptions="FillAndExpand" />
-                        <!-- </On>
-                        </OnPlatform>-->
+                    
 
                     </StackLayout>
 
                 </Grid>
             </Border>
-            <Grid
-                x:Name="loadingIndicator"
-                Grid.Row="1"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand">
-                <StackLayout
-                    BackgroundColor="Transparent"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="True"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
+
+             <custom:Loader IsVisible="{Binding IsLoading}"/>
+         
 
             <Grid Grid.Row="0" Padding="20,5,20,5">
                 <Grid.ColumnDefinitions>

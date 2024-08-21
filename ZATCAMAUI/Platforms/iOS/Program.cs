@@ -60,10 +60,6 @@ public class CustomApplication : UIKit.UIApplication
             if (uievent.AllTouches.Cast<UIKit.UITouch>().Any(t => t.Phase == UIKit.UITouchPhase.Began))
             {
                 Preferences.Default.Set("timeOut", DateTime.Now);
-                //App.ResetAndContinueSession();
-
-                //EGAZT.App.stopWatch.Reset();
-                //EGAZT.App.stopWatch.Start();
             }
         }
 

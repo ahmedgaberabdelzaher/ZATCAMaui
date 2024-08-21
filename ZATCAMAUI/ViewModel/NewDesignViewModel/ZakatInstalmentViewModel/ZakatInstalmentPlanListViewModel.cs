@@ -15,6 +15,7 @@ using Timer = System.Timers.Timer;
 using ZATCAMAUI.Core.Interfaces;
 using static ZATCAMAUI.Models.ZakatInstalationModels.OldZAKATRequestPlanModel;
 using Metadata = ZATCAMAUI.Models.ZakatInstalationModels.Metadata;
+using ZATCAMAUI.Views.NewDesign.ZakatRejectPopUp;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
@@ -45,7 +46,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         public ICommand GoBackClick { get; set; }
         public ICommand CloseClick { get; set; }
         public ICommand OnContinueClick { get; set; }
-        public ICommand SummaryContinueBtnTapped { get; set; }
         public ICommand SummaryRevokeBtnTapped { get; set; }
         public ICommand ApproveButtonTapped { get; set; }
         public ICommand RejecteButtonTapped { get; set; }
@@ -137,16 +137,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             });
 
 
-            ReqInstalmentBtnTapped = new Command(() =>
+            ReqInstalmentBtnTapped = new Command(async() =>
             {
-                CheckDueInvoicesAsync();
-                // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
+              await  CheckDueInvoicesAsync();
             });
             ApproveButtonTapped = new Command((Object Item) =>
             {
                 ZakatListObjec = Item as ZakatListModel;
 
-                // onApproveTappedOperation(obj);
                 Task.Run(async () => await GetZakatInstalmentData(1, ""));
 
             });
@@ -156,15 +154,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 MopupService.Instance.PushAsync(new ZakatRejectionReasonPopupPageView());
             });
 
-            // ApproveButtonTapped = new Command(OnGridTapped);
-            /* ApproveButtonTapped = new Command(async () =>
-             {
-                 await GetZakatInstalmentData();
-             });*/
-            SummaryContinueBtnTapped = new Command(() =>
-            {
-                //EnableOTPPage();
-            });
 
             SummaryRevokeBtnTapped = new Command(async () =>
             {
@@ -498,7 +487,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             if (ZakatInstalmentsData.d.FnDtlSet == null || ZakatInstalmentsData.d.Operation == "04")
             {
-                _postData.FnDtlSet = new List<FnDtlSetObject>();
+                _postData.FnDtlSet = new List<ZAKATRequestPlanModel.FnDtlSetObject>();
             }
             else
             {

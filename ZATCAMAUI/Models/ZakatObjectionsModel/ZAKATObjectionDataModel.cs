@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.ZakatObjectionsModel
@@ -269,7 +269,7 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public string bankDescription { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class data
         {
             [DataMember]
@@ -774,7 +774,7 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
         }
         [Serializable]
         [DataContract]
-        [Preserve(AllMembers = true)]
+        
         public class ZakatObjectionWithDrawListModelClass
         {
             [DataMember]

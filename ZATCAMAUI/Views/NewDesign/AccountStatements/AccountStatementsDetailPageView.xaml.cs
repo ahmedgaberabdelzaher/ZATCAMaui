@@ -1,7 +1,9 @@
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Models.AccountDetails;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
+using static ZATCAMAUI.Models.AccountDetails.AccoungtDetails;
 using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.AccountStatements
@@ -11,52 +13,30 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
     public partial class AccountStatementsDetailPageView : ContentPage
     {
         MyBills myBills;
-        public AccountStatementsDetailPageView(MyBills myBills)
+        AccountStatementDetailPageViewModel viewModel;
+        public AccountStatementsDetailPageView(MyBills myBills, AccoungtDetails details_bills)
         {
+
+            viewModel = App.Locator.AccPageDetailVM;
+            this.BindingContext = viewModel;
+
+            viewModel.accoungtDetails = details_bills;
+
             InitializeComponent();
-            ChangeAeroIcon();
             this.myBills = myBills;
-        }
-
-        private async void backButton_Tapped(object sender, EventArgs e)
-        {
-            await Application.Current.MainPage.Navigation.PopAsync();
-        }
-
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
+            this.reload();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
             LableTaxPeriod.Text = "" + myBills.PeriodPart1 + " - " + myBills.PeriodPart2;
-            //LableFbNum.Text = "" + myBills.Fbnum;
             LableFbNum.Text = AppResources.ASFBNum + " : " + myBills.Fbnum;
-            LableDueDate.Text = "" + myBills.FormatedFaedn;
+            LableDueDate.Text = "" + myBills.ACSFormatedFaedn;
             LableSadadNum.Text = "" + myBills.VTRE2;
-            //LableTransactionDate.Text = "" + myBills.FormatedFaedn;
-            // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
-            LableCardStatus.Text = "" + myBills.StatusText;
+            LableCardStatus.Text = "" + myBills.PymtStatus;
             LableCardTitle.Text = "" + myBills.BillTitle;
-            //LableCardSubTitle.Text = "" + aSResult.Desc;
-
-
-
-            // LableTaxType.Text = myBills.Abtypt + " - " + str;
             LableTaxType.Text = myBills.Txt30;
 
 
@@ -66,11 +46,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             CardAmount.BackgroundColor = color;
             CardAmountRemaining.BackgroundColor = color;
             LableCardStatus.TextColor = color;
-
-
-
-
-
 
             if (myBills.IsPartiallyPaidVisibile)
             {
@@ -121,12 +96,22 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                 }
 
             }
-
-
-
+            this.reload();
 
         }
+        public void reload()
+        {
+            viewModel.oBJDTLSets = new ObservableCollection<Result_Obj>(viewModel.accoungtDetails.d.OBJ_DTLSet);
+            viewModel.RETDTLSets = new ObservableCollection<Result_RET>(viewModel.accoungtDetails.d.RET_DTLSet);
+            viewModel.instDTLSET = new ObservableCollection<Result_InST>(viewModel.accoungtDetails.d.INSTL_DTLSet);
+            viewModel.billDetails = new ObservableCollection<Result_Bill>(viewModel.accoungtDetails.d.BILL_DTLSet);
 
+
+            ObjectionDetails.IsVisible = viewModel.isObjectionDetailsVisible;
+            ReturnDetails.IsVisible = viewModel.isRetunVisible;
+            ISTPlanDetails.IsVisible = viewModel.isInstalmentDetailsVisible;
+            InstPlanOBDetials.IsVisible = viewModel.isBIllDetialsVisble;
+        }
         private Color stringToColor(string value)
         {
             Color StatusColor;

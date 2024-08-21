@@ -14,6 +14,7 @@ using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.NewModelAPI.AbsherOTP;
 using static ZATCAMAUI.Models.ErrorMessage;
 using System.Text;
+using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
@@ -48,20 +49,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-        //private OTPModelvalidatedD _otpMDl;
-        //public OTPModelvalidatedD OtpMDl
-        //{
-        //    get
-        //    {
-        //        return _otpMDl;
-        //    }
-        //    set
-        //    {
-        //        if (_otpMDl == value) return;
-        //        _otpMDl = value;
-        //        OnPropertyChanged("OtpMDl");
-        //    }
-        //}
+       
 
 
         private string _txtConfirmPassword = string.Empty;
@@ -1078,8 +1066,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                     catch (Exception ex)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 }
                 OnPropertyChanged("SelectedIdType");
@@ -2012,35 +2000,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("OtpMDl");
             }
         }
-        //private string _iqamaTypeDesc = string.Empty;
-        //public string IqamaTypeDesc
-        //{
-        //    get
-        //    {
-        //        return _iqamaTypeDesc;
-        //    }
-        //    set
-        //    {
-        //        _iqamaTypeDesc = value;
-        //        OnPropertyChanged("IqamaTypeDesc");
-        //    }
-        //}
-
-        //private bool _showIqamaTypeDesc = false;
-        //public bool ShowIqamaTypeDesc
-        //{
-        //    get
-        //    {
-        //        return _showIqamaTypeDesc;
-        //    }
-        //    set
-        //    {
-        //        _showIqamaTypeDesc = value;
-        //        OnPropertyChanged("ShowIqamaTypeDesc");
-        //    }
-        //}
-
-        // * End
+       
         #endregion
 
         #region Constructor
@@ -2134,23 +2094,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("IsAllValidCRNumberEntered");
             }
         }
-        private string _title = string.Empty;
-        public string Title
-        {
-            get
-            {
-                return _title;
-            }
-            set
-            {
-                if (_title == value) return;
-
-
-
-                _title = value;
-                OnPropertyChanged("Title");
-            }
-        }
+       
 
         private bool _titleVisibility = false;
         public bool TitleVisibility
@@ -2282,16 +2226,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         BodyText = AppResources.CRReviewthebelowinformation;
                         NextBTN = AppResources.ZZZZContinue;
                         CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
-                        //PageTitle = AppResources.VerificationCode;
-                        //BodyText = AppResources.ZZPleaseenteraccessCode;
-                        //NextBTN = AppResources.ZZZZContinue;
-                        //                        CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
-                        //StartTimer(0, 2, 0);
-                        //TimerStart(numberOfSeconds);
+                     
                     }
                     else
                     {
-                        // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                     }
 
@@ -2302,18 +2240,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     BodyText = AppResources.ZZPleaseenteraccessCode;
                     NextBTN = AppResources.ZZZZContinue;
                     CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
-                    //StartTimer(0, 2, 0);
-                    //ResendOTPAsync();
+                   
                     TimerStart(numberOfSeconds);
                     break;
 
-                    //case EstablishmentSignUPTabEnum.MobileVerification:
-                    //    PageTitle = AppResources.Password;
-                    //    BodyText = AppResources.CreateASecurePassword;
-                    //    NextBTN = AppResources.Confirm;
-
-                    //    CurrentTab = EstablishmentSignUPTabEnum.Password;
-                    //    break;
+                   
             }
         }
 
@@ -2356,8 +2287,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                     
                     CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
@@ -2484,55 +2415,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-        //private void StartTimer(int h, int m, int sec)
-        //{
-        //    int hour = h;
-        //    int mins = m;
-        //    int counter = sec;
-        //    Device.StartTimer(new TimeSpan(0, 0, 1), () =>
-        //    {
-        //        if (IsTimerCancel)
-        //        {
-        //            return false;
-        //        }
-        //        else
-        //        {
-        //            Device.BeginInvokeOnMainThread(() =>
-        //            {
-        //                counter = counter - 1;
-        //                if (counter < 0)
-        //                {
-        //                    counter = 59;
-        //                    mins = mins - 1;
-        //                    if (mins < 0)
-        //                    {
-        //                        mins = 59;
-        //                        hour = hour - 1;
-        //                        if (hour < 0)
-        //                        {
-        //                            hour = 0;
-        //                            mins = 0;
-        //                            counter = 0;
-        //                        }
-        //                    }
-        //                }
-        //                IsResendOTPEnabled = false;
-        //                LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
-        //            });
-        //            if (hour == 0 && mins == 0 && counter == 0)
-        //            {
-        //                IsResendOTPEnabled = true;
-        //                return false;
-        //            }
-        //            else
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    });
-
-        //}
-
+       
         public async Task GetCaptchAndGUID()
         {
             try
@@ -2582,15 +2465,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-
-                    //SetIDNumberEnability = true;
-                    //IDNumber = String.Empty;
-                    // UserIDLayoutVisibility = true;
-                });
+                IsLoading = false;
             }
         }
 
@@ -2666,7 +2541,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou));
                                 });
 
-                                ButtonDisableColor =  (Colors)Application.Current.Resources["ButtonGray"];
+                                ButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                                 ButtonDisableTextColor = Colors.Gray;
                                 VerifyButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                                 VerifyButtonDisableTextColor = Colors.White;
@@ -2742,8 +2617,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 }
                 catch (Exception ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 IsLoading = false;
             }
@@ -2858,70 +2733,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
 
             }
-            try
-            {
-                if (!App.IsArabic)
-                {
-                    foreach (var item in EnIssueBy)
-                    {
-
-                    }
-                }
-                else
-                {
-
-                }
-            }
-            catch (GAZTException gex)
-            {
-                // Handle the GAZT custom exception.
-                string MessageForTheUser = gex.Message;
-                if (gex is GAZTInvalidDataException)
-                {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                }
-                if (gex is GAZTNetworkConnectivityIssueException)
-                {
-                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                }
-                else if (gex is GAZTInternetException)
-                {
-                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                }
-                else if (gex is GAZTSessionExpiredException)
-                {
-                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                }
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
-            }
-
-            catch (HttpRequestException)
-            {
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
-            }
-            catch (Exception)
-            {
-
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
-            }
+           
 
             IsLoading = false;
 
@@ -2947,11 +2759,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     CityList = new ObservableCollection<SignupCityResult>(CityListSignup.d.cities);
                 }
-                //foreach(var item in CityR)
-                //{
-                //    CityList.Add(item);
-                //}
-                //CityList = CityR;
+             
            
             }
             catch (GAZTException gex)
@@ -2995,8 +2803,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -3022,7 +2830,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 if (App.IsComingFromSleepMode)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
@@ -3137,21 +2945,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("TxtEmailCode");
             }
         }
-        //private string captcha = string.Empty;
-        //public string Captcha
-        //{
-        //    get
-        //    {
-        //        return captcha;
-        //    }
-        //    set
-        //    {
-        //        if (captcha == value) return;
-
-        //        captcha = value;
-        //        OnPropertyChanged("Captcha");
-        //    }
-        //}
         public async void CreateGaZTAccount()
         {
             try

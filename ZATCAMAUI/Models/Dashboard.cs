@@ -1,4 +1,4 @@
-﻿using Foundation;
+﻿
 using Newtonsoft.Json;
 using Syncfusion.Maui.Charts;
 using System.Text.RegularExpressions;
@@ -16,7 +16,7 @@ namespace ZATCAMAUI.Models
         public string uri { get; set; }
         public string type { get; set; }
     }    
-    [Preserve(AllMembers = true)]
+    
     public class DashboardResult
     {
         public string calendarType { get; set; }

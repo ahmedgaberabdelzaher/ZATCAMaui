@@ -1,29 +1,22 @@
-﻿
-using System.Windows.Input;
-
+﻿using System.Windows.Input;
 using Newtonsoft.Json;
-
 using System.Collections.ObjectModel;
 using System.Globalization;
-using Foundation;
-using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.Interfaces;
 using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
-using ZATCAMAUI;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Core.Exceptions;
-using ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using ZATCAMAUI.Core.Helper;
 
-namespace EGAZT.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
+namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
 {
-    [Preserve(AllMembers = true)]
+
     public class MoreOptionsVIewModel : BaseViewModel
     {
-        private List<String> _vatReturnUIButtons;
+        private List<string> _vatReturnUIButtons;
         public List<String> VatReturnUIButtons
         {
             get
@@ -59,19 +52,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         public int NumberOfAttachmentComingFromServer = 0;
 
       
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
-            }
-        }
         private bool _attachmentSizeVisibility = attachmentSizeVisibility;
         public bool AttachmentSizeVisibility
         {
@@ -177,7 +157,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         //    set
         //    {
         //        _colorOf = value;
-        //        RaisePropertyChanged("ColorOf");
+        //        OnPropertyChanged("ColorOf");
         //    }
         //}
 
@@ -394,7 +374,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                     {
                         string[] filetypes;
 
-                        filetypes = DependencyService.Get<ZATCAMAUI.Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForAll();
+                        filetypes = DependencyService.Get<ZATCAMAUI.Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForAll();
                         PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
                         //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
@@ -550,7 +530,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -815,8 +795,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
         }
@@ -871,8 +851,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
         }
@@ -938,8 +918,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
         }
@@ -955,7 +935,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             VATDeclarationData1.data.UserTypz = "TP";
             VATDeclarationData1.data.Operationz = operation;
             VATDeclaration response = await WebServiceManager.SaveVATDeclarationData(VATDeclarationData1);
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
         }
     }
 }

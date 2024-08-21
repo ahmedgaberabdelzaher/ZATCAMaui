@@ -1,13 +1,10 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Services;
+﻿using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.AccountStatements;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
-using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.AccountStatements
 {
@@ -19,8 +16,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
         {
             InitializeComponent();
             viewModel = App.Locator.AccountStatementsPageView;
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
 
             viewModel.GroupedDataForDownload = Data.GroupedDataForDownload;
@@ -37,9 +32,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
             {
@@ -77,19 +69,9 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
         }
 
-       
 
-        public void ChangeAeroIcon()
-        {
-            if (!App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+
+
 
         async void StartDateClicked(object sender, EventArgs e)
         {

@@ -8,6 +8,8 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     BackgroundClicked="OnBackGroundClicked"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     FlowDirection="{Binding AppDirection}">
     <Border
         BackgroundColor="White"

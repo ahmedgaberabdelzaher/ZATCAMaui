@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.ForgotModel;
 using ZATCAMAUI.Models.SignUP;
+using ZATCAMAUI.Core.Services.Interfac;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -19,8 +20,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public readonly IZatacaAPIHAndle _zatacaAPIHAndle;
         private string captcha = string.Empty;
         private string GUID = string.Empty;
@@ -1159,7 +1158,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    Device.BeginInvokeOnMainThread(() =>
+                    MainThread.BeginInvokeOnMainThread(() =>
                     {
                         ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
                         VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -1622,17 +1621,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #endregion
         #region Constructor
         public GAZTNewDesignForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
-        {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;          
+        {      
             OnContinueClick = new Command(async () =>
             {
                 if (StartPage == 2)
@@ -1753,10 +1742,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 else if (IsUserNameCardTapped == false && IsPasswordCardTapped == false)
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZPleaseSelect));
-
-                }
-                else
-                {
 
                 }
 
@@ -2388,8 +2373,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             }
                             catch (Exception ex)
                             {
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
                         });
                     }
@@ -2515,7 +2500,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         private void navigateLogin()
         {
-            Device.BeginInvokeOnMainThread(async () =>
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
                 try
                 {
@@ -2670,7 +2655,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (App.IsComingFromSleepMode)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;

@@ -1,4 +1,4 @@
-﻿using Foundation;
+﻿
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.PaymentModel
@@ -88,14 +88,14 @@ namespace ZATCAMAUI.Models.PaymentModel
         [JsonProperty("data")]
         public MadaPayment d { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class MadaPaymentRequest
     {
         public string caseGUID { get; set; }
         public string paymentSourceId { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class CreateMadaResponseRoot
     {
 
@@ -106,7 +106,7 @@ namespace ZATCAMAUI.Models.PaymentModel
         public CreateMadaResponse result { get; set; }
 
     }
-    [Preserve(AllMembers = true)]
+    
     public class CreateMadaResponse
     {
         [JsonProperty("securityAuthorizationKey")]
@@ -245,7 +245,7 @@ namespace ZATCAMAUI.Models.PaymentModel
         [JsonProperty("result")]
         public CancelPayment d { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class CancelPaymentRequest
     {
         public string sourceId { get; set; }
@@ -312,7 +312,7 @@ namespace ZATCAMAUI.Models.PaymentModel
 
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class ValidatePaymentRequestModel
     {
         public int amount { get; set; }
@@ -328,7 +328,7 @@ namespace ZATCAMAUI.Models.PaymentModel
 
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class CreateMadaPaymentPayload
     {
         public string sourceId { get; set; }

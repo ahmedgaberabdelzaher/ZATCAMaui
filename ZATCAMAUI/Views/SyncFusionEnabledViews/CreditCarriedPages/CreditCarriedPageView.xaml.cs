@@ -16,19 +16,17 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.CreditCarriedPages
             try
             {
                 InitializeComponent();
-                On<iOS>().SetUseSafeArea(true);
-                ChangeAeroIcon();
                 viewModel = App.Locator.CreditCarriedPageView;
                 BindingContext = viewModel;
-                if (vATDeclaration.d != null)
+                if (vATDeclaration.data != null)
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
                 }
-                if (viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.CFSet.results != null && viewModel.VATDeclarationData.d.ADRSet.results.Count != 0)
+                if (viewModel.VATDeclarationData.data != null && viewModel.VATDeclarationData.data.CFSet != null && viewModel.VATDeclarationData.data.ADRSet.Count != 0)
                 {
-                    if (viewModel.VATDeclarationData.d.CFSet.results.Count() != 0)
+                    if (viewModel.VATDeclarationData.data.CFSet.Count() != 0)
                     {
-                        viewModel.CreditCarriedsList = viewModel.VATDeclarationData.d.CFSet.results;
+                        viewModel.CreditCarriedsList = viewModel.VATDeclarationData.data.CFSet;
                         viewModel.IsListViewVisible = true;
                         viewModel.IsNoDataLabelVisible = false;
                     }
@@ -43,16 +41,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.CreditCarriedPages
             {
             }
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+        
     }
 }

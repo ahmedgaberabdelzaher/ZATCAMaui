@@ -1,4 +1,4 @@
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.VATReviewModel
@@ -74,7 +74,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
 
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class SadadGenerationObject
     {
         [JsonProperty("periodKey")]
@@ -189,7 +189,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
  
     public class VATObjectionGenrateSadadModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("result")] public D d { get; set; }
         public class D
         {
@@ -251,7 +251,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
  
     public class VATObjectionListModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
 
@@ -277,7 +277,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
             [JsonProperty("lastDate")]
             public string Ldate { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class REQTYPSet
         {
             [JsonProperty("requestTypeList")]
@@ -446,7 +446,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
  
     public class VATObjectionRejectedFormModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
@@ -534,7 +534,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
 
         }
 
-        [Preserve(AllMembers = true)]
+        
         public class RejectedFormSet
         {
             [JsonProperty("rejectedFormList")]
@@ -574,7 +574,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
  
     public class VATObjectionSecurityAmountModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -770,7 +770,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
         public string Tdline { get; set; }
 
     }
-    [Preserve(AllMembers = true)]
+    
     public partial class SecurityDtl
     {
         //public Metadata __metadata { get; set; }
@@ -879,7 +879,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
 
     public class VATObjectionSummaryModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
 
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -888,7 +888,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
         [JsonProperty("result")]
         public D result { get; set; }
 
-        [Preserve(AllMembers = true)]
+        
         public class Metadata2
         {
             public string id { get; set; }
@@ -1063,7 +1063,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
 
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class VATObjectionValidateTaxpayerModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -1123,11 +1123,11 @@ namespace ZATCAMAUI.Models.VATReviewModel
  
     public class VATObjectionViewbillModel
     {
-        [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         [JsonProperty("data")]
         public List<ResultBill> d { get; set; }
 
-        [Preserve(AllMembers = true)]
+        
         public class ResultBill
         {
             // public Metadata __metadata { get; set; }
@@ -1409,7 +1409,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
      
         public class VATReviewRequestTPFVModel
         {
-            [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+             // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
             [JsonProperty("data")]
             public D d { get; set; }
          
@@ -2400,7 +2400,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
                 public string Visdel { get; set; }
                 public string Erftm { get; set; }
             }
-            [Preserve(AllMembers = true)]
+            
             public class AttdetSet
             {
                 public List<Attachment> results { get; set; }
@@ -2410,7 +2410,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
             {
                 public List<object> results { get; set; }
             }
-            [Preserve(AllMembers = true)]
+            
             public class HeaderSet
             {
                 [JsonProperty("isCase")]
@@ -2555,7 +2555,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
                 public string UserTypx { get; set; }
             }
 
-            [Preserve(AllMembers = true)]
+            
             public class D
             {
 

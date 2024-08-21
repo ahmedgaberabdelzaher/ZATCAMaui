@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -11,7 +11,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("result")]
         public VATSignUpD d { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class ValidateVATSignupTaxpayerRequest
     {
         [DataMember]
@@ -29,7 +29,7 @@ namespace ZATCAMAUI.Models
     }
 
 
-    //[Preserve(AllMembers = true)]
+    //
     //public class __metadata
     //{
     //    [DataMember]

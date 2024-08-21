@@ -17,7 +17,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
         public readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
         public ICommand OnHomeButtonClicked { get; set; }
-        public ICommand BackButtonClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnLoginButtonClicked { get; set; }
         public ICommand OnBellClicked { get; set; }
@@ -42,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                 OnPropertyChanged("SelectedTab");
             }
         }
-        
+
         private bool _isCertificateAvailableZakat = false;
         public bool IsCertificateAvailableZakat
         {
@@ -223,9 +222,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             {
                 _selectedCertificate = value;
                 OnPropertyChanged("SelectedCertificate");
-                if (SelectedCertificate != null && SelectedCertificate.Pdfurl != null)
+                if (SelectedCertificate != null && SelectedCertificate.pdfURL != null)
                 {
-                    ShowPdf(SelectedCertificate.Pdfurl);
+                    ShowPdf(SelectedCertificate.pdfURL);
                 }
             }
         }
@@ -244,7 +243,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                 // _dialogService.ShowMessageBox("Please Wait Pdf Is Loading", AppResources.Information);
                 if (_PdfSelected != null)
                 {
-                    if (Device.RuntimePlatform == Device.Android)
+                    if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         _navigationService.NavigateTo(App.PdfView);
                     }
@@ -347,10 +346,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            OnLoginButtonClicked = new RelayCommand( () =>
-            {
-            });
-           
+
             OnHomeButtonClicked = new Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
@@ -359,14 +355,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-            BackButtonClicked = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
-           
-            OnBellClicked = new Command( () =>
-            {
-            });
+
             OnHomeIconClicked = new Command(() =>
             {
                 _navigationService.GoBack();
@@ -380,7 +369,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             Stream stream = null;
             try
             {
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     var dependency = DependencyService.Get<ILocalFileProvider>();
                     if (dependency == null)
@@ -419,7 +408,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                         return;
                     }
                 }
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                     PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
                 //else
                 //    Path = url;
@@ -431,7 +420,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
         }
         public async void ShowPdf(string pdfUrl)
         {
-            if (Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 if (pdfUrl != null)
                 {
@@ -471,16 +460,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
 
                 string lang = UtilityManager.GetLanguageParameter();
                 TaxPayerProfile = App.TP;
-                allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
+                allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.userId);
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 bool Flag = false;
                 if (allCertificate != null)
                 {
-                    if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
+                    if (allCertificate.ZakatSet != null && allCertificate.ZakatSet != null && allCertificate.ZakatSet.Count > 0)
                     {
                         CertificateType = AppResources.ZakatCertificates;
                         // SetCertificateListViewVisibility();
-                        CertificateListZakat = allCertificate.ZakatSet.results;
+                        CertificateListZakat = allCertificate.ZakatSet;
                         SelectedTab = 0;
                         Flag = true;
                         IsCertificateAvailableZakat = true;
@@ -491,11 +480,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                         IsCertificateAvailableZakat = false;
                         SetNoDataLabelVisibilityZakat = true;
                     }
-                    if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
+                    if (allCertificate.VATSet != null && allCertificate.VATSet != null && allCertificate.VATSet.Count > 0)
                     {
                         CertificateType = AppResources.VATCertificates;
                         //  SetCertificateListViewVisibility();
-                        CertificateListVAT = allCertificate.VATSet.results;
+                        CertificateListVAT = allCertificate.VATSet;
                         if (Flag == false)
                         {
                             SelectedTab = 1;
@@ -508,11 +497,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                         IsCertificateAvailableVAT = false;
                         SetNoDataLabelVisibilityVAT = true;
                     }
-                    if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
+                    if (allCertificate.exciseSet != null && allCertificate.exciseSet != null && allCertificate.exciseSet.Count > 0)
                     {
                         CertificateType = AppResources.ExciseCertificates;
                         //   SetCertificateListViewVisibility();
-                        CertificateListET = allCertificate.ExciseSet.results;
+                        CertificateListET = allCertificate.exciseSet;
                         if (Flag == false)
                         {
                             SelectedTab = 2;
@@ -533,7 +522,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                     SetNoDataLabelVisibilityVAT = true;
                     SetNoDataLabelVisibilityZakat = true;
 
-
                 }
             }
             catch (InternetException ex)
@@ -542,7 +530,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                 _navigationService.GoBack();
             }
         }
-
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)

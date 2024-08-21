@@ -1,10 +1,13 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.Diagnostics;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using ZATCAMAUI.Core.AppConfigurations;
+using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.Core.Helper
 {
@@ -257,7 +260,7 @@ namespace ZATCAMAUI.Core.Helper
             }
             else
             {
-                var authData = string.Format("{0}:{1}", ZATCAConstants.CustomUserNameAuthorization, ZATCAConstants.CustomPasswordAuthorization);
+                var authData = string.Format("{0}:{1}",ZATCAConstants.CustomUserNameAuthorization,ZATCAConstants.CustomPasswordAuthorization);
                 var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
             }
@@ -436,6 +439,68 @@ namespace ZATCAMAUI.Core.Helper
                 return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.BadRequest, ReasonPhrase = AppResources.ServerErrorOrNoInternetConnection };
             }
 
+        }
+
+
+        public static async Task<TR> PostAsync<T, TR>(string uri, T data)
+        {
+            JsonSerializerSettings _jsonSerializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+                NullValueHandling = NullValueHandling.Ignore,
+            };
+
+
+            HttpClient httpClient = CreateHttpClient();
+            var jsonData = JsonConvert.SerializeObject(data);
+            System.Diagnostics.Debug.WriteLine("Request Body" + jsonData);
+            var content = new StringContent(jsonData);
+            var sValueContent = content.ReadAsStringAsync();
+
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            HttpResponseMessage response = await httpClient.PostAsync(uri, content);
+
+            await HandleResponse(response);
+            string serialized = await response.Content.ReadAsStringAsync();
+
+
+
+            string member = JsonConvert.DeserializeObject(serialized).ToString();
+            TR result = await Task.Run(() =>
+
+             JsonConvert.DeserializeObject<TR>(member, _jsonSerializerSettings));
+            return result;
+
+
+        }
+
+        private static HttpClient CreateHttpClient()
+        {
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("X-Session-Language", "EN");
+
+            client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+            client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+
+
+            return client;
+        }
+
+        private static async Task HandleResponse(HttpResponseMessage response)
+        {
+            if (!response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == HttpStatusCode.Forbidden ||
+                    response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new ServiceAuthenticationException(content);
+                }
+
+                throw new HttpRequestExceptionEx(response.StatusCode, content);
+            }
         }
 
     }

@@ -461,7 +461,7 @@
                                     <custom:CustomSfTextInputView>
                                         <custom:CustomSfTextInputView.TextInputView>
                                               <custom:GAZTBorderlessEntry
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 MaxLength="10"
                                                 Placeholder="{x:Static ResourceManager:AppResources.DeclarationNumber}"
                                                 Style="{StaticResource DefaultEntry}"
@@ -590,7 +590,7 @@
                                     <custom:CustomSfTextInputView>
                                         <custom:CustomSfTextInputView.TextInputView>
                                               <custom:GAZTBorderlessEntry
-                                                Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 MaxLength="10"
                                                 Placeholder="{x:Static ResourceManager:AppResources.Billofladingnumber}"
                                                 Style="{StaticResource DefaultEntry}"
@@ -1123,7 +1123,7 @@
                                             <Grid.Resources>
                                                 <ResourceDictionary>
                                                     <Style TargetType="custom:GAZTBorderlessEntry">
-                                                        <Setter Property="Keyboard" Value="Numeric" />
+                                                        <Setter Property="Keyboard" Value="{OnPlatform Android=Numeric, iOS=Default}" />
                                                         <Setter Property="FontAttributes" Value="Bold" />
                                                         <Setter Property="FontSize" Value="Small" />
                                                         <Setter Property="WidthRequest" Value="8" />
@@ -1156,7 +1156,7 @@
 
                                                <custom:GAZTBorderlessEntry x:Name="OTPFirstEntry"
                                                                             MaxLength="1"
-                                                                            Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                                             WidthRequest="100"
                                                                             Text="{Binding OTPFirstDigit}">
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -1186,7 +1186,7 @@
                                                         x:Name="OTPSecondEntry"
                                                         ClassId="2"
                                                         WidthRequest="100"
-                                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         MaxLength="1"
                                                         Text="{Binding OTPSecondDigit}">
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -1215,7 +1215,7 @@
                                                         x:Name="OTPThirdEntry"
                                                         ClassId="3"
                                                         WidthRequest="100"
-                                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         MaxLength="1"
                                                         Text="{Binding OTPThirdDigit}">
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -1243,7 +1243,7 @@
                                                         x:Name="OTPFourthEntry"
                                                         MaxLength="1"
                                                         WidthRequest="100"
-                                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         ClassId="4"
                                                         Text="{Binding OTPFourthDigit}">
                                                         <custom:GAZTBorderlessEntry.Behaviors>

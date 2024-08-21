@@ -41,16 +41,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     {
                         if (App.ICRStatus == "E0001")
                         {
-                            if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
+                            if (viewModel.VATDeclarationData.data.NOTESSet.Count != 0)
                             {
-                                viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
+                                viewModel.NoteText = viewModel.VATDeclarationData.data.NOTESSet.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
                                 viewModel.PreviousNoteText = viewModel.NoteText;
                             }
                         }
                     }
                     if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057" || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
                     {
-                        if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
+                        if (viewModel.VATDeclarationData.data.NOTESSet.Count != 0)
                         {
                             if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
                             {
@@ -62,14 +62,14 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 }
                                 else
                                 {
-                                    viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
+                                    viewModel.NoteText = viewModel.VATDeclarationData.data.NOTESSet.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
                                     viewModel.PreviousNoteText = viewModel.NoteText;
                                 }
 
                             }
                             else
                             {
-                                viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
+                                viewModel.NoteText = viewModel.VATDeclarationData.data.NOTESSet.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
                                 viewModel.PreviousNoteText = viewModel.NoteText;
                             }
                         }

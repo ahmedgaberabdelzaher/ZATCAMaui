@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using Syncfusion.Maui.ListView;
 using ZATCAMAUI.Core.Enums;
@@ -9,7 +8,6 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.VATDeRegistration;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 {
@@ -23,55 +21,13 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             try
             {
                 InitializeComponent();
-                ChangeAeroIcon();
-                NavigationPage.SetBackButtonTitle(this, "");
                 viewModel = App.Locator.ZakatRegistrationDetailsListPageView;
-                On<iOS>().SetUseSafeArea(true);
                 BindingContext = viewModel;
                 viewModel.PopulateZakatRegListData();
             }
             catch (Exception)
             {
                 viewModel.HandleExceptipon();
-            }
-
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            try
-            {
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-            }
-            catch (Exception)
-            {
-
-            }
-
-
-        }
-
-        public void ChangeAeroIcon()
-        {
-            try
-            {
-                if (App.IsArabic)
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                }
-                else
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                }
-
-            }
-            catch (Exception)
-            {
-
-
             }
 
         }
@@ -125,11 +81,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     App.VATType = PageExecutionType.Amend;
                     viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-                    /*
-                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Financial Details eService");
-                    //viewModel._navigationService.NavigateTo(App.ZakatRegistrationFinancialDetails);
-                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-                    */
+                   
 
                 }
                 else if (selectedItem.ZDTitle == AppResources.VatReactivationDashboardTitle)
@@ -145,19 +97,14 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 else if (selectedItem.ZDTitle == AppResources.DBSMVATDeregistration)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration eService");
-                    //viewModel._navigationService.NavigateTo(App.VATDeregistrationInstructionsPage);
                     bool IsInstructionChecked = false;
                     try
                     {
                         VATDeRegistrationDetails vATDeRegistrationDetails = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
-                        IsInstructionChecked = vATDeRegistrationDetails?.d?.Agreeflg == true;
+                        IsInstructionChecked = vATDeRegistrationDetails?.data?.Agreeflg == true;
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        //await Task.Run(() =>
-                        //{
-
-                        //});
                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
@@ -192,7 +139,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             catch (Exception)
             {
 
-
+                selectedLv.SelectedItem = null;
             }
             finally
             {

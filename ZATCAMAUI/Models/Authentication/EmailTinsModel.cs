@@ -1,8 +1,8 @@
-﻿using Foundation;
+﻿
 using Newtonsoft.Json;
 namespace ZATCAMAUI.Models.Authentication
 {
-    [Preserve(AllMembers = true)]
+    
     public class EmailTinsModel
     {
         [JsonProperty("header")]
@@ -11,7 +11,7 @@ namespace ZATCAMAUI.Models.Authentication
         [JsonProperty("data")]
         public List<Datum> Data;
     }
-    [Preserve(AllMembers = true)]
+    
     public class Datum
     {
         [JsonProperty("TINNumber")]
@@ -23,7 +23,7 @@ namespace ZATCAMAUI.Models.Authentication
         [JsonProperty("taxpayerType")]
         public string TaxpayerType;
     }
-    [Preserve(AllMembers = true)]
+    
     public class Header
     {
         [JsonProperty("requestID")]
@@ -32,7 +32,7 @@ namespace ZATCAMAUI.Models.Authentication
         [JsonProperty("status")]
         public Status Status;
     }
-    [Preserve(AllMembers = true)]
+    
     public class Status
     {
         [JsonProperty("code")]

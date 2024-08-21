@@ -1198,11 +1198,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 var platform = "";
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     platform = "C4";
                 }
-                else if (Device.RuntimePlatform == Device.Android)
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     platform = "C3";
                 }
@@ -1271,12 +1271,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         //if (ZakatReturnDetails.d.MadabutFg == "X")
                         //{
 
-                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
                         //}
                         //else
                         //{
 
-                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
 
                         //}
 
@@ -1284,17 +1284,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         //var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
                         //if (String.IsNullOrEmpty(ZakatAmount) || Double.Parse(ZakatAmount) == 0)
                         //{
-                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, ZakatReturnDetails.d.OpenliMsg));
+                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, ZakatReturnDetails.d.OpenliMsg));
 
                         //}
                         //else if (!String.IsNullOrEmpty(ZakatAmount) && Double.Parse(ZakatAmount) > 20000)
                         //{
-                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
 
                         //}
                         //else
                         //{
-                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ZakatReturnDetails.d.OpenliMsg));
+                        //    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ZakatReturnDetails.d.OpenliMsg));
 
                         //}
 
@@ -1406,11 +1406,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 string platform = string.Empty;
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     platform = "C4";
                 }
-                else if (Device.RuntimePlatform == Device.Android)
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     platform = "C3";
                 }
@@ -1592,7 +1592,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 Console.WriteLine(ex.Message);
                                 Console.Write(ex.StackTrace.ToString());
                             }
-                            //Device.BeginInvokeOnMainThread(async () => {
+                            //MainThread.BeginInvokeOnMainThread(async () => {
                             //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
                             //    _navigationService.GoBack();
                             //});

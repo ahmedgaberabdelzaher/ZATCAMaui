@@ -107,7 +107,7 @@
                                     <custom:CustomSfTextInputView.TextInputView>
                                          <custom:GAZTBorderlessEntry
                                                 x:Name="entry"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.NationalIqamaID}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding NationalIqamaId}"

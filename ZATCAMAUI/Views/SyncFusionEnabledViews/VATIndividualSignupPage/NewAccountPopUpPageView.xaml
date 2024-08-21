@@ -11,6 +11,10 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
 
@@ -76,12 +80,18 @@
                                 Completed="IbanOne_Completed"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="Numeric"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="2"
                                 Placeholder="03"
                                 ReturnType="Next"
                                 Text="{Binding IbanPartOne}"
-                                TextChanged="IbanOne_TextChanged" />
+                                TextChanged="IbanOne_TextChanged" >
+
+                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behavior:OnlyNumericValuesBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
                             <BoxView
                                 BackgroundColor="LightGray"
                                 HeightRequest="30"
@@ -90,12 +100,18 @@
                                 x:Name="IbanTwo"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="Numeric"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="8"
                                 Placeholder="80000000"
                                 ReturnType="Next"
                                 Text="{Binding IbanPartTwo}"
-                                TextChanged="IbanTwo_TextChanged" />
+                                TextChanged="IbanTwo_TextChanged" >
+
+                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behavior:OnlyNumericValuesBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
                             <BoxView
                                 BackgroundColor="LightGray"
                                 HeightRequest="30"
@@ -104,12 +120,18 @@
                                 x:Name="IbanThree"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="Numeric"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="4"
                                 Placeholder="0000"
                                 ReturnType="Next"
                                 Text="{Binding IbanPartThree}"
-                                TextChanged="IbanThree_TextChanged" />
+                                TextChanged="IbanThree_TextChanged" >
+
+                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behavior:OnlyNumericValuesBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
                             <BoxView
                                 BackgroundColor="LightGray"
                                 HeightRequest="30"
@@ -118,12 +140,18 @@
                                 x:Name="IbanFour"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="Numeric"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="4"
                                 Placeholder="0000"
                                 ReturnType="Next"
                                 Text="{Binding IbanPartFour}"
-                                TextChanged="IbanFour_TextChanged" />
+                                TextChanged="IbanFour_TextChanged" >
+
+                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behavior:OnlyNumericValuesBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
                             <BoxView
                                 BackgroundColor="LightGray"
                                 HeightRequest="30"
@@ -132,11 +160,17 @@
                                 x:Name="IbanFive"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="Numeric"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="4"
                                 Placeholder="0000"
                                 Text="{Binding IbanPartFive}"
-                                TextChanged="IbanFive_TextChanged" />
+                                TextChanged="IbanFive_TextChanged" >
+
+                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behavior:OnlyNumericValuesBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
 
                         </StackLayout>
                     </StackLayout>

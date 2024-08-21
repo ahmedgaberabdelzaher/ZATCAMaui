@@ -1,14 +1,14 @@
 ﻿
-using Foundation;
+
 
 namespace ZATCAMAUI.Models
 {
-    [Preserve(AllMembers = true)]
+    
     class OtpPageModel
 	{
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class OtpMetadata
     {
         public string id { get; set; }
@@ -16,7 +16,7 @@ namespace ZATCAMAUI.Models
         public string type { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class OtpPageResult
     {
         public OtpMetadata __metadata { get; set; }
@@ -47,19 +47,19 @@ namespace ZATCAMAUI.Models
         public string OtpCode { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class OTPModelD
     {
         public OtpPageResult d { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class OTPModelvalidateD
     {
         public otpVlidate d { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class OTPModelvalidatedD
     {
         public otpVlidateCheck d { get; set; }

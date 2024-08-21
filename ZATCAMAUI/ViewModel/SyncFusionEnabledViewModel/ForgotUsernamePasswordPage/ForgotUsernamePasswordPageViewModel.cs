@@ -22,7 +22,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
         public Command OnValidateOTPClicked { get; set; }
         public Command OnLogInClick { get; set; }
         public ICommand OnLoginPageLinkClicked { get; set; }
-        public ICommand BackButtonClicked { get; set; }
         public int currentAttempts = 0;
         int TotalSec;
         public int numberOfSeconds = 120;
@@ -30,7 +29,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
         public bool StopTimer = true;
         #endregion
         #region Property
-       
+
         private bool _isOTPEntryEnable = true;
         public bool IsOTPEntryEnable
         {
@@ -41,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isOTPEntryEnable = value;
-                OnPropertyChanged(nameof( IsOTPEntryEnable));
+                OnPropertyChanged(nameof(IsOTPEntryEnable));
             }
         }
         private ForgotUserNamePassword _selectedTaxPayerType;
@@ -91,8 +90,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 OnPropertyChanged("ForgotTypeList");
             }
         }
-        private List<TIN> _tINs;
-        public List<TIN> TINs
+        private List<TINModel> _tINs;
+        public List<TINModel> TINs
         {
             get
             {
@@ -143,8 +142,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 OnPropertyChanged("TxtTIN");
             }
         }
-        private TIN _selectedTinId;
-        public TIN SelectedTinId
+        private TINModel _selectedTinId;
+        public TINModel SelectedTinId
         {
             get
             {
@@ -155,15 +154,15 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 _selectedTinId = value;
                 if (_selectedTinId != null)
                 {
-                    TxtTIN = _selectedTinId.Tin;
+                    TxtTIN = _selectedTinId.TIN;
                     App.CurrentDropdownTIN = SelectedTinId;
                     // Password = string.Empty;
                 }
                 OnPropertyChanged("SelectedTinId");
             }
         }
-        private TIN _selectedTinIdPrev;
-        public TIN SelectedTinIdPrev
+        private TINModel _selectedTinIdPrev;
+        public TINModel SelectedTinIdPrev
         {
             get
             {
@@ -441,7 +440,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 OnPropertyChanged("NavigateToLoginLinkVisibility");
             }
         }
-        private string _newPassword = "";
+        private string _newPassword;
         public string NewPassword
         {
             get
@@ -454,7 +453,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 OnPropertyChanged("NewPassword");
             }
         }
-        private string _confirmPassword = "";
+        private string _confirmPassword;
         public string ConfirmPassword
         {
             get
@@ -692,10 +691,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
         #region Constructor
         public ForgotUsernamePasswordPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            BackButtonClicked = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
             OnSubmitClicked = new Command(async () =>
             {
                 try
@@ -718,7 +713,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                                 }
                                 else
                                 {
-                                   await _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                                    await _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
                                 }
                             }
                         }
@@ -872,7 +867,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                     else
                     {
                         IsAllDataAvailable = true;
-                       
+
                     }
                 }
                 else
@@ -911,7 +906,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 StringBuilder captcha = new StringBuilder();
                 for (int i = 0; i < 6; i++)
                     captcha.Append(combination[random.Next(combination.Length)]);
-                
+
                 Captcha = captcha;
             }
             catch
@@ -931,7 +926,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             }
             else
             {
-               
+
                 isValidCaptcha = false;
             }
             return isValidCaptcha;
@@ -1204,10 +1199,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                     d.CnfPwd = ConfirmPassword;
                     d.RdBt = "U";
                     d.Hyperlink = "";
-                    forgotPassword.d = d;
                     forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
                     await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    if (forgotPassword.d != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
+                    if (forgotPassword != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
@@ -1373,8 +1367,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             {
                 if (IsEmailUserName)
                 {
-                    TINs = new List<TIN>();
-                    List<TIN> Tins = new List<TIN>();
+                    TINs = new List<TINModel>();
+                    List<TINModel> Tins = new List<TINModel>();
                     try
                     {
                         try
@@ -1440,7 +1434,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             bool isEmailUser = UtilityManager.IsValidEmailAddress(IDNumber);
             if (isEmailUser)
             {
-                tinId = SelectedTinId.Tin;
+                tinId = SelectedTinId.TIN;
             }
             else
             {
@@ -1459,7 +1453,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             {
                 if (App.IsComingFromSleepMode)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
@@ -1513,7 +1507,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 }
             });
         }
-      
+
         private bool IsMandatoryFieldEntered()
         {
             bool IsMandatoryFieldEntered = false;
@@ -1542,7 +1536,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 });
             }
         }
-       
+
         public void ClearData()
         {
             SelectedTaxPayerType = null;

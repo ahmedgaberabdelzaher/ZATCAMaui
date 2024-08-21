@@ -510,11 +510,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
                     var platform = "";
 
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         platform = "C4";
                     }
-                    else if (Device.RuntimePlatform == Device.Android)
+                    else if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         platform = "C3";
                     }
@@ -653,11 +653,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             catch (GAZTValidateMadaPaymentException ex)
             {
                 IsLoading = false;
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
 
                     var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     //_navigationService.GoBack();
                 });
@@ -680,11 +680,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
                     string platform = string.Empty;
 
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
                         platform = "C4";
                     }
-                    else if (Device.RuntimePlatform == Device.Android)
+                    else if (DeviceInfo.Platform == DevicePlatform.Android)
                     {
                         platform = "C3";
                     }

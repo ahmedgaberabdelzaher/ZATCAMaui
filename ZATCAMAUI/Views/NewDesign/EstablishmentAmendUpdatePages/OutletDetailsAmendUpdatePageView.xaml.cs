@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Models;
@@ -10,7 +9,7 @@ using ZATCAMAUI.Views.NewDesign.GenericPickers;
 
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 {
- 
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OutletDetailsAmendUpdatePageView : ContentPage
     {
@@ -27,7 +26,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.currentTab = outletNavigation.openedTab;
 
             BindingContext = viewModel;
-            ChangeAeroIcon();
             viewModel.SetUIAvailability();
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
@@ -35,24 +33,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.PickerModel = arg;
             });
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
             viewModel?.OnAppearing();
             MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
             {

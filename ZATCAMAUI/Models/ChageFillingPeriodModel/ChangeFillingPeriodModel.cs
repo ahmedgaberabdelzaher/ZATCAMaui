@@ -1,4 +1,4 @@
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.ChageFillingPeriodModel
@@ -59,7 +59,7 @@ After:
 
     public class VATchangeFillingPeriodPostModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public RequestVATFillingPeriod d { get; set; }
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
@@ -262,7 +262,7 @@ After:
         public D d { get; set; }
         [JsonProperty("result")]
         public D d1 { get; set; }
-        [Preserve(AllMembers = true)]
+        
         public class Metadata
         {
             public string id { get; set; }
@@ -528,7 +528,7 @@ After:
             public string uri { get; set; }
             public string type { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class AttypResult
         {
             public Metadata4 __metadata { get; set; }
@@ -851,11 +851,11 @@ After:
         [JsonProperty("taxpayerFullName")]
         public string TpFullNm { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class ValidateIDResponse
     {
 
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
         [JsonProperty("result")]
@@ -866,7 +866,7 @@ After:
                 d = value;
             }
         }
-        [Preserve(AllMembers = true)]
+        
         public string errorMessage { get; set; }
     }
     #endregion

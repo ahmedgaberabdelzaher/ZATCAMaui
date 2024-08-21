@@ -1,10 +1,10 @@
 ﻿
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
 {
- [Preserve(AllMembers = true)]
+ 
     public class ZakatReturnDetails
     {
         [JsonProperty("data")]

@@ -20,7 +20,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
                 viewModel = App.Locator.pdfView;
                 InitializeComponent();
 
-                if (Device.RuntimePlatform == Device.Android)
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     //TODO Not supported yet 
                     //PdfViewForCertificate.CustomPdfRenderer = DependencyService.Get<ICustomPdfRendererService>().AlternatePdfRenderer;
@@ -98,51 +98,31 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
         {
             try
             {
-                await Task.Run(() =>
+                viewModel.IsLoading = true;
+                var message = new EmailMessage
                 {
-                    viewModel.Loading = true;
-                });
-                await Task.Run(async () =>
+                    Subject = "Attached Form :",
+                };
+                if (viewModel.PdfBytes != null)
                 {
-                    try
+                    var fn = "GAZT" + viewModel.TaxPayerProfile + ".pdf";
+                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                    File.WriteAllBytes(file, viewModel.PdfBytes);
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        var message = new EmailMessage
+                        await Share.RequestAsync(new ShareFileRequest
                         {
-                            Subject = "Attached Form :",
-                        };
-                        if (viewModel.PdfBytes != null)
-                        {
-                            var fn = "GAZT" + viewModel.TaxPayerProfile + ".pdf";
-                            var file = Path.Combine(FileSystem.CacheDirectory, fn);
-                            File.WriteAllBytes(file, viewModel.PdfBytes);
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                             {
-                                 await Share.RequestAsync(new ShareFileRequest
-                                 {
-                                     Title = Title,
-                                     File = new ShareFile(file)
-                                 });
-                             });
+                            Title = Title,
+                            File = new ShareFile(file)
+                        });
+                    });
 
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                             {
-                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThefileisstillloading));
-                             });
-                        }
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
-                });
-                await Task.Run(() =>
+                }
+                else
                 {
-                    viewModel.Loading = false;
-                });
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThefileisstillloading));
+                }
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {

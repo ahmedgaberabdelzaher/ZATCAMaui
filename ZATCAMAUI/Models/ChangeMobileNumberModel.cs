@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -147,14 +147,14 @@ namespace ZATCAMAUI.Models
     }
     
     
-    [Preserve(AllMembers = true)]
+    
     public class IDTYPSet
     {
         [JsonProperty("results")]
         public List<IDTypes> Results;
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class MCERRORSet
     {
         [JsonProperty("results")]
@@ -166,7 +166,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("results")]
         public List<object> Results;
     }
-    [Preserve(AllMembers = true)]
+    
     public class IDTypes
     {
         [JsonProperty("idType")]
@@ -177,7 +177,7 @@ namespace ZATCAMAUI.Models
     }
     
     
-    [Preserve(AllMembers = true)]
+    
     public class ErrorTypes {
         [JsonProperty("messageId")]
         public string Id;

@@ -23,20 +23,11 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             {
                 InitializeComponent();
 
-
                 viewModel = App.Locator.ChangeFillingPeriodPageView;
-                BindingContext = viewModel;
-                viewModel.cFInterface = (Core.Interfaces.IChangeFillingInterface)this;
+                this.BindingContext = viewModel;
+                viewModel.cFInterface = this;
                 viewModel.ResetData();
                 _ = viewModel.GetVATChangeFillingData();
-                if (App.IsArabic && Device.RuntimePlatform == Device.iOS)
-                {
-                    viewModel.TermsAlignment = TextAlignment.End;
-                }
-                else
-                {
-                    viewModel.TermsAlignment = TextAlignment.Start;
-                }
 
             }
             catch (Exception)
@@ -44,22 +35,11 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             }
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
+
 
             getYesCommand();
             getNoCommand();

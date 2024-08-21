@@ -1,8 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Net;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
 using Mopups.Pages;
 using Mopups.Services;
@@ -43,16 +41,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                 viewModel.VatAttachmentsList = null;
                 viewModel.ClearData();
-                if (vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
+                if (vATDeclaration.data.ATTACHSet != null && vATDeclaration.data.ATTACHSet != null && vATDeclaration.data.ATTACHSet.Count > 0)
                     viewModel.NumberOfAttachmentComingFromServer = GAZTNewDesignMyReturnsNewPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.d.ATTACHSet.results.Count;
                 viewModel.TotalAttachmentSize = AttachmentPageViewModel.AttachmentUploadedSize;
                 viewModel.IsAmendClickedOnVAT = GAZTNewDesignVATReturnUpdatedUIPageViewModel.IsAmend;
-                if (vATDeclaration != null && vATDeclaration.d != null)
+                if (vATDeclaration != null && vATDeclaration.data != null)
                 {
                     viewModel.VATDeclarationDataForAttch = vATDeclaration;
-                    if (viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Count != 0)
+                    if (viewModel.VATDeclarationDataForAttch.data.ATTACHSet.Count != 0)
                     {
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.data.ATTACHSet as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
                         int AttachmentCount = 0;
                         foreach (var item in viewModel.VatAttachmentsList)
@@ -94,9 +92,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
 
             getYesCommandToDeleteTheAttachment();
 
@@ -135,19 +130,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                if (App.ICRStatus.Equals("E0045") && viewModel.IsAmendClickedOnVAT == false)
-                {
-                    //Show some message
-
-                    //Image arrowImage = sender as Image;
-                    //Attachment attachment = (Attachment)arrowImage.BindingContext;
-                    //if (attachment != null)
-                    //{
-                    //    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
-                    //    DeleteAttachment(result, attachment);
-                    //}
-                }
-                else if (App.ICRStatus.Equals("E0045") && viewModel.IsAmendClickedOnVAT == true)
+                if (App.ICRStatus.Equals("E0045") && viewModel.IsAmendClickedOnVAT == true)
                 {
                     try
                     {
@@ -236,7 +219,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                         viewModel.VatAttachmentsList.Remove(listitem);
                         viewModel.AttachmentList.Remove(listitemTwo);
-                        viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
+                        viewModel.VATDeclarationDataForAttch.data.ATTACHSet.Remove(listitem);
                         if (indexToReduceTheSize != -1)
                             viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                     }
@@ -272,23 +255,23 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel.VATDeclarationDataForAttch = vatDec;
 
                 string retGuid = attachment.RetGuid;
-                string fbNum = viewModel.VATDeclarationDataForAttch.d.Fbnum;
+                string fbNum = viewModel.VATDeclarationDataForAttch.data.Fbnum;
 
                 viewModel.IsLoading = true;
                 Models.AttachmentDocumentModel attachmentDocumentModel = await WebServiceManager.GAZTGetAllAttachments(retGuid, fbNum);
 
-                foreach (Models.AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D.Results)
+                foreach (Models.AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D)
                 {
 
                     if (attachment.Filename == tempAttachmentDocumentModel.Filename)
                     {
                         var platform = DeviceInfo.Platform;
-                        if (Device.RuntimePlatform == Device.iOS)
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
                             downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
                             viewModel.IsLoading = false;
-                            var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
+                            var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
 
 
                         }
@@ -301,7 +284,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 try
                                 {
 
-                                    var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
+                                    var downloadDirectoryFilePath = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
                                 }
                                 catch (Exception)
@@ -445,17 +428,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel.IsLoading = false;
             });
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
 
     }
 }

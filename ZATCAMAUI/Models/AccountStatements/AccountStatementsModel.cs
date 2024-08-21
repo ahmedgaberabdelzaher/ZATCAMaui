@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Runtime.Serialization;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Foundation;
+
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Mangers;
 using static ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements.AccountStatementsPageViewModel;
@@ -379,7 +379,7 @@ namespace ZATCAMAUI.Models.AccountStatements
         [JsonProperty("results")]
         public ASResult[] Results { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public partial class ASResult : ObservableRecipient
     {
         [JsonProperty("__metadata")]

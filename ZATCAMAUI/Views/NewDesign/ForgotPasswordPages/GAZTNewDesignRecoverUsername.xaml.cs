@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
+﻿
 
 namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
 {
@@ -12,8 +10,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
         {
             InitializeComponent();
             BindingContext = App.Locator.GAZTNewDesignRecoverUsernameViewModel;
-            NavigationPage.SetHasBackButton(this, false);
-            On<iOS>().SetUseSafeArea(true);
 
         }
 

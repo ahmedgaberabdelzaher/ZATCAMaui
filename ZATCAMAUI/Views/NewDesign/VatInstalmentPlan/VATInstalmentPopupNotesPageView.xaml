@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.NewDesign.VatInstalmentPlan.VATInstalmentPopupNotesPageView"
+             Title="VATInstalmentPopupNotesPageView"
+            xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
+            xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+            xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+            xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+            xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+            FlowDirection="{Binding AppDirection}">
+
+     <Mopups:PopupPage.Animation>
+        <Animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </Mopups:PopupPage.Animation>
+
+
+        <Border StrokeShape="RoundRectangle 15,15,0,0"  VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15,0,15,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!--Confirmation-->
+                <StackLayout x:Name="Confirmation" Orientation="Vertical" Grid.Row="0" IsVisible="{Binding IsConfirmationPageVisible}">
+                 <StackLayout Margin="0,16,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                   <Image VerticalOptions="Center" Margin="0,0,5,0"  HorizontalOptions="StartAndExpand">
+                        <Image.Source>
+                            <FontImageSource FontFamily="UserIconFont"
+                                             Color="{StaticResource SecondaryNew}" Size="24"
+                                                 Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                        </Image.Source>
+                    </Image>
+                    <Label VerticalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.ZZZConfirmationMsg}" HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlackBold}" FontSize="15"/>
+              
+                </StackLayout>
+
+                <ScrollView Grid.Row="1" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" >
+                    <StackLayout Orientation="Vertical" Margin="0,16,0,0" Padding="5,0,5,0">
+                        <Border Grid.Row="0" Stroke="#B1B1B1" StrokeThickness="1"
+                             Style="{StaticResource GreyBorderFrame}">
+
+                            <Grid Margin="8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Row="0" Grid.Column="0" IsVisible="false">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont"
+                                                         Color="{StaticResource SecondaryNew}" Size="24"
+                                                 Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                    </Image.Source>
+                                </Image>
+                                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding VATRevokeMessage}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource TCBodyLabelGrey}" LineHeight="1" />
+                            </Grid>
+                        </Border>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                        </Grid>
+                        
+                    </StackLayout>
+                </ScrollView>
+
+    
+                </StackLayout>
+                <!--Notes-->
+                <StackLayout x:Name="Notes" Orientation="Vertical" Grid.Row="1" IsVisible="{Binding NotesPageVisible}">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0"
+                                            Text="{x:Static ResourceManager:AppResources.RevokeNotes}"
+                                            Style="{StaticResource ValueLabelBlackBold}" FontSize="15" />
+                       
+                        <cards:SfCardView Grid.Row="2"
+                                            Padding="10,0,10,0"
+                                            Margin="10"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand"
+                                            HeightRequest="150"
+                                            BorderColor="Gray"
+                                            BorderWidth="0.2"
+                                            CornerRadius="15">
+                                            <Editor Text="{Binding NoteEditor}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="FillAndExpand"
+                                                    Style="{StaticResource SectionTitleBlackBold}" />
+                        </cards:SfCardView>
+                        
+                    </Grid>
+
+                </StackLayout>
+                <!--OTP-->
+                <StackLayout x:Name="OTP" Orientation="Vertical" Grid.Row="2" IsVisible="{Binding IsOtpPageVisible}">
+                    <StackLayout Margin="0,16,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                        <Image VerticalOptions="Center" Margin="0,0,5,0"  HorizontalOptions="StartAndExpand">
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont"
+                                                 Color="{StaticResource SecondaryNew}" Size="24"
+                                                     Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                            </Image.Source>
+                        </Image>
+                        <Label VerticalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.VerificationCode}" HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlackBold}" FontSize="15"/>
+                       
+                    </StackLayout>
+                     <Label Text="{x:Static ResourceManager:AppResources.OTPSentToMobile}"
+                                                Style="{StaticResource BodyLabelGrey}" />
+
+                    <Label Text="{Binding MobileNumber}" Style="{StaticResource BodyLabelGrey}"/>
+
+                    
+                    <StackLayout Padding="0,15,0,0">
+
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label Text="{x:Static ResourceManager:AppResources.VRApplicationNumber}"
+                                                Style="{StaticResource BodyLabelGrey}" />
+                            <Label Text="{Binding ApplicationNumber}"
+                                                Style="{StaticResource BodyLabelGrey}" />
+                        </StackLayout>
+
+
+                        <StackLayout Padding="0,0,0,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Row="0"
+                                        ColumnSpacing="20"
+                                        Padding="30,20,30,20"
+                                        FlowDirection="LeftToRight">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    
+
+                                    <!--First OTP Digit Start-->
+                                    <Border StrokeShape="RoundRectangle 10"
+                                            Stroke="Gray"
+                                            HeightRequest="50"
+                                            WidthRequest="50"
+                                            Grid.Column="0"
+                                            VerticalOptions="Start">
+
+                                            <custom:GAZTBorderlessEntry
+                                                        x:Name="OTPFirstEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="100"
+                                                        HorizontalTextAlignment="Center"
+                                                        Text="{Binding OTPFirstDigit}"
+                                                        TextChanged="OtpFirstEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behavior:OnlyNumericValuesBehaviour />
+                                                        <behavior:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                </custom:GAZTBorderlessEntry>
+                                    </Border>
+                                    <!--First OTP Digit End-->
+
+                                    <!--Second OTP Digit Start-->
+                                    <Border StrokeShape="RoundRectangle 10"
+                                            Stroke="Gray"
+                                            HeightRequest="50"
+                                            WidthRequest="50"
+                                            Grid.Column="1"
+                                            VerticalOptions="Start">
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="OTPSecondEntry"
+                                                FontAttributes="Bold"
+                                                FontSize="Small"
+                                                WidthRequest="100"
+                                                HorizontalTextAlignment="Center"
+                                                IsEnabled="{Binding IsOTPEntryEnable}"
+                                                Text="{Binding OTPSecondDigit}"
+                                                TextChanged="OtpSecondEntry_TextChanged"
+                                                ReturnType="Next"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                MaxLength="1"
+                                                TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behavior:OnlyNumericValuesBehaviour />
+                                                <behavior:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+                                    </Border>
+                                    <!--Second OTP Digit End-->
+
+                                    <!--Third OTP Digit Start-->
+                                    <Border StrokeShape="RoundRectangle 10"
+                                            Stroke="Gray"
+                                            HeightRequest="50"
+                                            WidthRequest="50"
+                                            Grid.Column="2"
+                                            VerticalOptions="Start">
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="OTPThirdEntry"
+                                                FontAttributes="Bold"
+                                                FontSize="Small"
+                                                WidthRequest="100"
+                                                HorizontalTextAlignment="Center"
+                                                IsEnabled="{Binding IsOTPEntryEnable}"
+                                                Text="{Binding OTPThirdDigit}"
+                                                TextChanged="OtpThirdEntry_TextChanged"
+                                                ReturnType="Next"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                MaxLength="1"
+                                                TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                 <behavior:OnlyNumericValuesBehaviour />
+                                                <behavior:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+                                    </Border>
+                                    <!--Third OTP Digit End-->
+
+                                    <!--Fourth OTP Digit Start-->
+                                    <Border StrokeShape="RoundRectangle 10"
+                                            Stroke="Gray"
+                                            HeightRequest="50"
+                                            WidthRequest="50"
+                                            Grid.Column="3"
+                                            VerticalOptions="Start">
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="OTPFourthEntry"
+                                                FontAttributes="Bold"
+                                                FontSize="Small"
+                                                WidthRequest="100"
+                                                HorizontalTextAlignment="Center"
+                                                IsEnabled="{Binding IsOTPEntryEnable}"
+                                                Text="{Binding OTPFourthDigit}"
+                                                ReturnType="Next"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                MaxLength="1"
+                                                TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand"
+                                                >
+                                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                                 <behavior:OnlyNumericValuesBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
+                                    </Border>
+                                    <!--Fourth OTP Digit End-->
+
+                                  
+
+                                </Grid>
+
+                                <Label Grid.Row="1" Text="{x:Static ResourceManager:AppResources.AccountLocked}" Style="{StaticResource BodyLabelGrey}"/>
+
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal"
+                                        HorizontalOptions="Center">
+                            <Image Source="clock">
+                            </Image>
+                            <Label  Text="{Binding LblCountDownTimer}"
+                                                    Style="{StaticResource CaptionLabelGrey}"
+                                                    VerticalOptions="Center" />
+                        </StackLayout>
+                        <buttons:SfButton  Command="{Binding OnResendOTPClicked}"
+                                            IsEnabled="{Binding IsResendOTPEnabled}"
+                                            Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
+                                            VerticalOptions="EndAndExpand"
+                                            Margin="0,50,0,0"
+                                            Background="Transparent"
+                                            TextColor="{Binding ResendOTPTextColor}"/>
+                            </StackLayout>
+                </StackLayout>
+               
+                <buttons:SfButton Grid.Row="4" Grid.Column="0"  Text="{x:Static ResourceManager:AppResources.ZZCancel}" Margin="0,5,0,5" 
+                                           Command="{Binding CancelButton}"
+                              Style="{StaticResource PrimaryButtonStyle}" VerticalOptions="End"/>
+                <buttons:SfButton Grid.Row="5" Grid.Column="0" Text="{Binding NextSubmitText}" Margin="0,5,0,5" 
+                                           Command="{Binding ContinueClick}"
+                              Style="{StaticResource PrimaryButtonStyle}" VerticalOptions="End"/>
+            </Grid>
+
+        </Border>
+        
+        
+
+
+</Mopups:PopupPage>

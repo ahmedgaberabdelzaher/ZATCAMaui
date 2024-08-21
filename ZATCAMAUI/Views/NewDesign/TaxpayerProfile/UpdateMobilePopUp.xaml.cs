@@ -1,10 +1,7 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Pages;
+﻿using Mopups.Pages;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
-using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
@@ -35,12 +32,12 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                 Label_InternationalnoCode.StyleId = "RTLLabelText";
             }
 
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
                 Label_InternationalnoCode.Margin = new Thickness(0);
             else
                 Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
 
-            
+
 
             // Setup International Mobile Data
             currentMobileData = mobileData;
@@ -85,15 +82,11 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             else if (viewModel.OTPThirdDigit.Length == 0) { OTPSecondEntry.Focus(); }
         }
 
-        void OtpFourthEntry_TextChanged(object sender,  TextChangedEventArgs e)
+        void OtpFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (viewModel.OTPFourthDigit.Length == 0) { OTPThirdEntry.Focus(); }
         }
 
-        void OtpFourthEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-            
-        }
 
         private void UpdatedClicked(object sender, EventArgs e)
         {
@@ -146,11 +139,11 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             {
                 // * Update TP Profile Object
                 App.TP = TPAPIResponse;
-                App.TP.Userid = TPAPIResponse.Tin;
+                App.TP.userId = TPAPIResponse.TIN;
 
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    CloseAllPopup();
+                    this.CloseAllPopup();
                     viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 2);
                 });
             }
@@ -216,25 +209,21 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
-
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
                 Label_InternationalnoCode.Margin = new Thickness(0);
             else
                 Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
 
             try
             {
-                if (App.TP.Mobile.Length < 12)
-                    viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
+                if (App.TP.mobile.Length < 12)
+                    viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.mobile.Remove(0, 2);
                 else
-                    viewModel.CurrentMobileNumberEntryText = "+" + App.TP.Mobile.Remove(0, 2);
+                    viewModel.CurrentMobileNumberEntryText = "+" + App.TP.mobile.Remove(0, 2);
             }
-            catch (Exception)
+            catch (Exception )
             {
-
+                
             }
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
@@ -248,6 +237,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
             RefreshControlsData();
         }
+
 
         protected override void OnDisappearing()
         {
@@ -278,7 +268,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             viewModel.EnteredOTP = string.Empty;
         }
 
-        private void Mobile_entry_Unfocused(object sender, FocusEventArgs e) { }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {

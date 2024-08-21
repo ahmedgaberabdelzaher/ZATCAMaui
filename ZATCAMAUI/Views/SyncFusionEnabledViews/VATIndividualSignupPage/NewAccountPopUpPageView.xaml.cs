@@ -1,15 +1,9 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Pages;
+﻿using Mopups.Pages;
 using Mopups.Services;
-using Syncfusion.Maui.Picker;
-using System.Globalization;
-using System.Resources;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
-using Application = Microsoft.Maui.Controls.Application;
 
 public enum IsComingFromScreen
 {
@@ -51,20 +45,18 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception)
                 {
-                    
-                    
+
+
                 }
 
                 //Bind Iban and remove name
             }
-            SetLTR();
         }
 
         public NewAccountPopUpPageView(String Iban, IsComingFromScreen isComingFromScreen)
         {
             InitializeComponent();
             viewModel = App.Locator.NewAccountPopUpPageView;
-            On<iOS>().SetUseSafeArea(true);
             NewAccountPopUpPageViewModel.ValidTypeIban = string.Empty;
             this.BindingContext = viewModel;
             viewModel.IbanNumberText = Iban;
@@ -92,8 +84,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception)
                 {
-                    
-                    
+
+
                 }
 
                 //Bind Iban and remove name
@@ -111,7 +103,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 btnDone.IsVisible = true;
 
             }
-            SetLTR();
         }
 
         private async void Checked_IBAN()
@@ -158,8 +149,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception)
             {
-                
-                
+
+
                 viewModel.IsIBANValid = false;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -168,29 +159,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void SetLTR()
-        {
-            try
-            {
-                if (App.IsArabic)
-                {
-                    //this.FlowDirection = FlowDirection.RightToLeft;
-                    CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                    SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-                }
-                else
-                {
-                    //this.FlowDirection = FlowDirection.LeftToRight;
-                    CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                    SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-                }
-            }
-            catch (Exception gec)
-            {
-            }
-        }
+
 
         private void IbanAddButtonClicked(object sender, EventArgs e)
         {

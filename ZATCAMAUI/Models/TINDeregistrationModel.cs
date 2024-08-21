@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Foundation;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ZATCAMAUI.Core.Mangers;
@@ -475,7 +475,7 @@ namespace ZATCAMAUI.Models
 
     }
 
-    [Preserve(AllMembers = true)]
+    
     public partial class TinDeregistrationSendResponseModel
     {
         public Metadata Metadata { get; set; }

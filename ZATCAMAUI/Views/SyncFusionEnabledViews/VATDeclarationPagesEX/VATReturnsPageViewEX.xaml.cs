@@ -1,10 +1,6 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
-using Syncfusion.Maui.Picker;
 using Syncfusion.Maui.TabView;
-using System.Globalization;
-using System.Resources;
 using System.Text;
 using ZATCAMAUI.Core.Behaviors;
 using ZATCAMAUI.Core.Exceptions;
@@ -19,7 +15,6 @@ using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.ICRListPages;
 using Application = Microsoft.Maui.Controls.Application;
 using Entry = Microsoft.Maui.Controls.Entry;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 {
@@ -37,13 +32,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 viewModel = App.Locator.VATReturnsPageViewEX;
                 InitializeComponent();
-                On<iOS>().SetUseSafeArea(true);
-                ChangeAeroIcon();
                 viewModel = App.Locator.VATReturnsPageViewEX;
                 viewModel.SelectedIndex = 0;
-                BindingContext = viewModel;
-                SetLTR();
-                if (_vATDeclarationInfo.d != null)
+                this.BindingContext = viewModel;
+                if (_vATDeclarationInfo.data != null)
                 {
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
 
@@ -57,11 +49,15 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsChangeRegistrationlinkVisible = false;
                 }
                 //New logic
+                if (_vATDeclarationInfo.data.PendingIbanMsg != "")
+                {
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(_vATDeclarationInfo.data.PendingIbanMsg));
+                    // 3102126661
+                }
 
                 checkNewFormorOld();
 
                 //New logic
-
 
                 viewModel.IsFirstTimeGet = true;
                 viewModel.IsSwitchToggled = false;
@@ -87,12 +83,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 VATReturnsPageViewModelEX.IsFirstTimeForNote = true;
                 setAllCheckbox(false);
                 IntilizeAsync();
-                NavigationPage.SetBackButtonTitle(this, "");
                 viewModel.IsMainButtonEnabled = false;
 
-
+                // Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
             }
-            catch (Exception)
+            catch (Exception )
             {
             }
         }
@@ -108,7 +103,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             }
             else
             {
-                if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0056" || App.ICRStatus == "E0006") && viewModel.VATDeclarationData.d.Yesno == "X")
+                if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0056" || App.ICRStatus == "E0006") && viewModel.VATDeclarationData.data.Yesno == "X")
                 {
                     viewModel.IsEnableSwitchToggledFor15PercentChange = false;
                 }
@@ -130,7 +125,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             }
 
 
-            if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.GoliveFg == "X")
+            if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.data != null && viewModel.VATDeclarationData.data.GoliveFg == "X")
             {
                 viewModel.IsFifteenPercentChange = true;
                 viewModel.IsNewReturn = true;
@@ -149,12 +144,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         public void SetNewVATRate()
         {
 
-            if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null)
+            if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.data != null)
             {
-                if (viewModel.VATDeclarationData.d.VATPERITEMSet != null && viewModel.VATDeclarationData.d.VATPERITEMSet.results != null)
+                if (viewModel.VATDeclarationData.data.VATPERITEMSet != null && viewModel.VATDeclarationData.data.VATPERITEMSet != null)
                 {
-                    Result6 Rate002For15Percent = viewModel.VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
-                    Result6 Rate003For5Percent = viewModel.VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "003").FirstOrDefault();
+                    Result6 Rate002For15Percent = viewModel.VATDeclarationData.data.VATPERITEMSet.Where(x => x.Type == "002").FirstOrDefault();
+                    Result6 Rate003For5Percent = viewModel.VATDeclarationData.data.VATPERITEMSet.Where(x => x.Type == "003").FirstOrDefault();
 
                     if (Rate002For15Percent != null)
                     {
@@ -179,7 +174,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 viewModel.IsPrevReturn = false;
                 viewModel.IsNewReturn = true;
-                if (viewModel.VATDeclarationData.d.Yesno == "X")
+                if (viewModel.VATDeclarationData.data.Yesno == "X")
                 {
                     viewModel.IsFifteenPersenctVisible = true;
                     viewModel.IsFivePersenctVisible = true;
@@ -239,42 +234,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
             }
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
         public void setAllCheckbox(bool bValue)
         {
             viewModel.IsDeclarationCheckedForInstruction = bValue;
             viewModel.IsDeclarationCheckedForSummary = bValue;
             viewModel.IsCheckedTaxPayerDetailsInfo = bValue;
             viewModel.IschkRefundDeclaration = bValue;
-        }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                //FlowDirection = FlowDirection.RightToLeft;
-                //viewModel.FDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-            }
-            else
-            {
-                //FlowDirection = FlowDirection.LeftToRight;
-                //viewModel.FDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-            }
         }
         public async Task IntilizeAsync()
         {
@@ -364,12 +329,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             ICRListPageView.AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = true;
-            if (Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 viewModel.IsSwitchVisible = true;
             }
@@ -386,10 +348,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
                 if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057" || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
                 {
-                    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                    Note note = viewModel.VATDeclarationData.data.NOTESSet.Where(w => w.DataVersionz == "00000").FirstOrDefault();
                     if (note != null)
                     {
-                        foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                        foreach (var item in viewModel.VATDeclarationData.data.NOTESSet.Where(w => w.DataVersionz == "00000"))
                         {
                             item.Strline = AddNotePageViewModel.NoteString;
                             item.Tdline = AddNotePageViewModel.NoteString;
@@ -404,10 +366,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
              
                 if (AddNotePageViewModel.ClearNoteClicked == true)
                 {
-                    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                    Note note = viewModel.VATDeclarationData.data.NOTESSet.Where(w => w.DataVersionz == "00000").FirstOrDefault();
                     if (note != null)
                     {
-                        foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                        foreach (var item in viewModel.VATDeclarationData.data.NOTESSet.Where(w => w.DataVersionz == "00000"))
                         {
                             item.Strline = AddNotePageViewModel.NoteString;
                             item.Tdline = AddNotePageViewModel.NoteString;
@@ -422,26 +384,23 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         }
         public void SetNote()
         {
-            viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+            viewModel.VATDeclarationData.data.NOTESSet = new List<Note>();
             Note objNote = new Note();
-            int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-            string Url = ZATCAConstants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
-            objNote.__metadata = new Metadata2();
-            objNote.__metadata.id = Url;
-            objNote.__metadata.uri = Url;
-            objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
+            int count = viewModel.VATDeclarationData.data.NOTESSet.Count;
+            string Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+           
             objNote.Notenoz = (count + 1).ToString();
             objNote.DataVersionz = "00000";
-            objNote.Refnamez = string.Empty;
-            objNote.XInvoicez = string.Empty;
+            objNote.Refnamez = String.Empty;
+            objNote.XInvoicez = String.Empty;
             objNote.XObsoletez = string.Empty;
             objNote.Rcodez = "VATR";
             objNote.ByPusrz = string.Empty;
             objNote.Tdformat = string.Empty;
             objNote.Tdline = string.Empty;
-            objNote.Erfusrz = viewModel.VATDeclarationData.d.Gpartz;
-            objNote.ByGpartz = viewModel.VATDeclarationData.d.Gpartz;
-            objNote.Namez = viewModel.VATDeclarationData.d.Tpnm;
+            objNote.Erfusrz = viewModel.VATDeclarationData.data.Gpart;
+            objNote.ByGpartz = viewModel.VATDeclarationData.data.Gpart;
+            objNote.Namez = viewModel.VATDeclarationData.data.Tpnm;
             objNote.AttByz = "TP";
             objNote.Noteno = (count + 1).ToString();
             objNote.Lineno = 1;
@@ -451,41 +410,37 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             objNote.Sect = "VAT Return General Note";
             objNote.Strline = AddNotePageViewModel.NoteString;
             objNote.Tdline = AddNotePageViewModel.NoteString;
-            viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
+            viewModel.VATDeclarationData.data.NOTESSet.Add(objNote);
             AddNotePageViewModel.IsComingFromNotePage = false;
-            //AddNotePageViewModel.NoteString = string.Empty;
         }
         public void SetNoteForBilledAndAmend()
         {
             try
             {
-                Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
+                Note note = viewModel.VATDeclarationData.data.NOTESSet.Where(w => w.DataVersionz == "00001").FirstOrDefault();
                 if (note != null)
                 {
                 }
                 else
                 {
-                    viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+                    viewModel.VATDeclarationData.data.NOTESSet = new List<Note>();
                 }
                 Note objNote = new Note();
-                int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-                string Url = ZATCAConstants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
-                objNote.__metadata = new Metadata2();
-                objNote.__metadata.id = Url;
-                objNote.__metadata.uri = Url;
-                objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
+                int count = viewModel.VATDeclarationData.data.NOTESSet.Count;
+                string Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+               
                 objNote.Notenoz = (count + 1).ToString();
                 objNote.DataVersionz = "00000";
-                objNote.Refnamez = string.Empty;
-                objNote.XInvoicez = string.Empty;
+                objNote.Refnamez = String.Empty;
+                objNote.XInvoicez = String.Empty;
                 objNote.XObsoletez = string.Empty;
                 objNote.Rcodez = "VATR";
                 objNote.ByPusrz = string.Empty;
                 objNote.Tdformat = string.Empty;
                 objNote.Tdline = string.Empty;
-                objNote.Erfusrz = viewModel.VATDeclarationData.d.Gpartz;
-                objNote.ByGpartz = viewModel.VATDeclarationData.d.Gpartz;
-                objNote.Namez = viewModel.VATDeclarationData.d.Tpnm;
+                objNote.Erfusrz = viewModel.VATDeclarationData.data.Gpart;
+                objNote.ByGpartz = viewModel.VATDeclarationData.data.Gpart;
+                objNote.Namez = viewModel.VATDeclarationData.data.Tpnm;
                 objNote.AttByz = "TP";
                 objNote.Noteno = (count + 1).ToString();
                 objNote.Lineno = 1;
@@ -495,7 +450,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 objNote.Sect = "VAT Return General Note";
                 objNote.Strline = AddNotePageViewModel.NoteString;
                 objNote.Tdline = AddNotePageViewModel.NoteString;
-                viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
+                viewModel.VATDeclarationData.data.NOTESSet.Add(objNote);
                 AddNotePageViewModel.IsComingFromNotePage = false;
                 //AddNotePageViewModel.NoteString = string.Empty;
             }
@@ -1706,7 +1661,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             bool IsAllEntered = true;
             try
             {
-                if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.GoliveFg != "X")
+                if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.data != null && viewModel.VATDeclarationData.data.GoliveFg != "X")
                 {
                     if (TabVatReturn.IsVisible == true && viewModel.IsGetAcknowledgementClicked != true || viewModel.IsVATReturnFieldCheckForSaveAsDraft)
                     {

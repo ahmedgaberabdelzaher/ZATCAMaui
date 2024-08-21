@@ -1,4 +1,4 @@
-﻿using Foundation;
+﻿
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.ZakatInstalationModels
@@ -950,7 +950,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
     public class ZakatRevokeValidateModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")] public D d { get; set; }
         public class __metadata
         {
@@ -978,10 +978,10 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
     public class ZakatRevokeSendSMSModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public IList<Results> results { get; set; }
-        [Preserve(AllMembers = true)]
+        
         public class __metadata
         {
             public string id { get; set; }
@@ -1021,7 +1021,7 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
 
     public class ZakatInstalmentValidateNewRequestModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
        

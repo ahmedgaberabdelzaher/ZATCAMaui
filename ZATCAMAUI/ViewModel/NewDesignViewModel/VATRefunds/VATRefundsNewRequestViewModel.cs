@@ -21,8 +21,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
     {
         #region Commands
 
-        public ICommand GoBackBtnTapped { get; set; }
-        public ICommand CloseBtnTapped { get; set; }
         public ICommand IbanIdTypeTapped { get; set; }
         public ICommand IbanIdNumberTapped { get; set; }
         public ICommand OnMoreClicked { get; set; }
@@ -495,12 +493,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
         public VATRefundsNewRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-
-            GoBackBtnTapped = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
-
             IbanIdTypeTapped = new Command(OnIbanIdTypeClicked);
             IbanIdNumberTapped = new Command(OnIbanNumberClicked);
 
@@ -965,7 +957,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 }
                 catch (InternetException ex)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         _ = _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
@@ -1366,14 +1358,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             //if (SelectedIdtype == string.Empty || SelectedIdtype == AppResources.ZZIDType)
             //{
             //    popUp.Message = AppResources.ZPleaseselectparametertype;
-            //    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            //    await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
             //    return;
             //}
 
             //if (SelectedIdNumber == string.Empty || SelectedIdNumber == AppResources.IDNumber)
             //{
             //    popUp.Message = AppResources.ZVatRefundInformationSelectIBANIDNumber;
-            //    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            //    await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
             //    return;
             //}
 

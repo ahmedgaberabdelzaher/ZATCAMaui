@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
-using Foundation;
+
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -11,7 +11,7 @@ using static ZATCAMAUI.Models.ErrorMessage;
 
 namespace ZATCAMAUI.Core.Manager
 {
-    [Preserve(AllMembers = true)]
+    
     public class ZakatExemptionWebServiceManager
     {
         private static double _timeoutMinutes = 3;

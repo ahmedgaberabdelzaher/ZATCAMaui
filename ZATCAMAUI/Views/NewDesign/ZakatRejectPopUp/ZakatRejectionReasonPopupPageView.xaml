@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.NewDesign.ZakatRejectPopUp.ZakatRejectionReasonPopupPageView"
+             Title="ZakatRejectionReasonPopupPageView"
+             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+             xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+            xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+            FlowDirection="{Binding AppDirection}">
+
+     <Mopups:PopupPage.Animation>
+        <Animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </Mopups:PopupPage.Animation>
+
+     <Border x:Name="MainPanCakeView1"
+                       StrokeShape="RoundRectangle 15,15,0,0"
+                       VerticalOptions="EndAndExpand"
+                       BackgroundColor="White"
+                       Padding="15">
+        <Grid HeightRequest="171">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0"
+                                    Grid.ColumnSpan="3"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    HorizontalOptions="StartAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                        <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmetReject}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Border Grid.Row="1"
+                                 Grid.ColumnSpan="3"
+                                 Padding="10"
+                                 Style="{StaticResource GreyBorderFrame}">
+                    <custom:GAZTBorderlessEntry x:Name="Reason"
+                                            HorizontalOptions="FillAndExpand"
+                                        Text="{Binding RejectReasonText}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            FontFamily="{StaticResource SSTArRoman}"
+                                            FontSize="15" />
+                </Border>
+
+            <buttons:SfButton x:Name="btnprimary"
+                              Grid.Row="2"
+                              Grid.Column="0"
+                              Clicked="RejectButtonClicked"
+                              Margin="10,0,10,0"
+                              Text="{x:Static ResourceManager:AppResources.ZakatInstalmetReject}"
+                              Style="{StaticResource PrimaryButtonStyle}" />
+            <buttons:SfButton x:Name="btnprimary1"
+                              Clicked="CancelButtonClicked"
+                              Grid.Row="2"
+                              Grid.Column="1"
+                              Margin="10,0,10,0"
+                              Text="{x:Static ResourceManager:AppResources.ZakatInstalmetClose}"
+                              Style="{StaticResource PrimaryButtonStyle}" />
+        </Grid>
+    </Border>
+
+</Mopups:PopupPage>

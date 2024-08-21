@@ -1,8 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
-using EGAZT.Models.VATInstalmentModels;
-using EGAZT.Views.NewDesign.VatInstalmentPlan;
 using Mopups.Services;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Exceptions;
@@ -13,6 +11,7 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.InstalmentPlanModel;
 using ZATCAMAUI.Models.VATInstalmentModels;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Views.NewDesign.VatInstalmentPlan;
 using static ZATCAMAUI.Models.ErrorMessage;
 using static ZATCAMAUI.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using static ZATCAMAUI.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.DisplayInstallmentAgreementSchedulePlan;
@@ -673,7 +672,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         //    {
         //        if (_isRevokeInstallmentPlanVisible == value) return;
         //        _isRevokeInstallmentPlanVisible = value;
-        //        RaisePropertyChanged("IsRevokeInstallmentPlanVisible");
+        //        OnPropertyChanged("IsRevokeInstallmentPlanVisible");
         //    }
         //}
 
@@ -1491,10 +1490,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             await MopupService.Instance.PushAsync(new VATInstalmentPopupNotesPageView());
         }
 
-        public async Task ShowCreateNewRequestDialog()
-        {
-            // await PopupNavigation.Instance.PushAsync(new VATInstalmentPopupRevokePageView());
-        }
+      
         #region API Methods
 
         #region GETVatInstalmentPlan
@@ -1608,21 +1604,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public async Task GetDetailsClicked(int index)
         {
-            //For first item list
-
-            //Console.WriteLine("Index: " + index);
-
             await GetVATInstalmentPlanDetails(index);
-
-            //  PopulateSummaryReasonData();
 
         }
 
         public async Task GetDisplayDetailsClicked(int index)
         {
-            //
-            Console.WriteLine("Index: " + index);
-            //GetVATDisplaySchedule();
 
             await GetVATDisplayScheduleDetails(index);
 
@@ -2222,7 +2209,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                     {
                         WebServiceManager.ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        //  await PopupNavigation.Instance.PopAsync();
+                        //  await MopupService.Instance.PopAsync();
                         await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                         //  throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessage);
                     }
@@ -2255,7 +2242,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 VATEnableRevokeInstalment();
                 await GetVATRevokeList();
-                //  ShowCreateNewRequestDialog();
 
             }
 

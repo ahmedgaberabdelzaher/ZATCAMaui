@@ -65,7 +65,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_correspondenceobj == value) return;
                 _correspondenceobj = value;
-               // RaisePropertyChanged("Correspondenceobj");
+               // OnPropertyChanged("Correspondenceobj");
             }
         }
 
@@ -907,8 +907,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         catch (Exception ex)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemColl.Cdate != null)
@@ -1151,14 +1151,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             ObservableCollection<CorrDetails> attchModel = null;
             Correspondenceobj = new List<object>();
 
-            // Device.BeginInvokeOnMainThread(() =>
+            // MainThread.BeginInvokeOnMainThread(() =>
             // {
             //attchModel = WebServiceManager.ZATCACorrespondenceDetails(CorresModel.FBnum);
            // });
 
            //var t = Task.Run( () =>
            // { 
-           //     Device.BeginInvokeOnMainThread(() =>
+           //     MainThread.BeginInvokeOnMainThread(() =>
            //     {
 
                     if (attchModel != null)

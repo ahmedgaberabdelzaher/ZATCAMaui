@@ -57,7 +57,7 @@ namespace ZATCAMAUI.Models
             public ProfitGoods d { get; set; }
         }
 
-       // [Preserve(AllMembers = true)]
+       // 
         public class VATFoodResults
         {
             [JsonProperty("TIN")]

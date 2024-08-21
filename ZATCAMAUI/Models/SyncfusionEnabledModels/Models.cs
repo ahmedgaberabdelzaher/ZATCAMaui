@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using Foundation;
+
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Mangers;
 
@@ -286,7 +286,7 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
             }
         }
     }
-    [Preserve(AllMembers = true)]
+    
     public enum ReturnType
     {
         RtnTot = 0,

@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
 using Mopups.Pages;
 using Mopups.Services;
@@ -20,6 +18,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
     {
         private FilesUploadPopUpViewModel viewModel;
         private string dmsTypeString = string.Empty;
+        private string _outletRef = string.Empty;
 
         public FilesUploadPopUpPageView(List<Attachment> attachments, WhichAttachment whichAttachment, string returnIdz)
         {
@@ -39,9 +38,21 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             viewModel = App.Locator.FilesUploadPopUpView;
             this.BindingContext = viewModel;
             dmsTypeString = dmsType;
-            On<iOS>().SetUseSafeArea(true);
             var attachement = new Attachments();
             attachement.results = attachments;
+            onPageLoadAsync(attachement, whichAttachment, returnIdz);
+
+        }
+
+        public FilesUploadPopUpPageView(List<Attachment> attachments, WhichAttachment whichAttachment, string returnIdz, string dmsType, string outletRef)
+        {
+            InitializeComponent();
+            viewModel = App.Locator.FilesUploadPopUpView;
+            this.BindingContext = viewModel;
+
+            var attachement = new Attachments();
+            attachement.results = attachments;
+            _outletRef = outletRef;
             onPageLoadAsync(attachement, whichAttachment, returnIdz);
 
         }
@@ -96,6 +107,11 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                 viewModel.TitleOne = "";
                 viewModel.TitleTwo = AppResources.TINDeregAttachmentsTitleTwo;
             }
+            else if (whichAttachment == WhichAttachment.TINOutletDeregisterAttachment)
+            {
+                viewModel.TitleOne = AppResources.ZVatAttachmentSizeNotfication;
+                viewModel.TitleTwo = AppResources.ZChooseonlyfilewithextension; ;
+            }
             else if (whichAttachment == WhichAttachment.IBANBankAccountOne || whichAttachment == WhichAttachment.IBANBankAccountTwo)
             {
                 viewModel.TitleOne = "";
@@ -148,11 +164,28 @@ namespace ZATCAMAUI.Views.NewDesign.Common
 
         protected override void OnDisappearing()
         {
-            base.OnDisappearing();
-            MessagingCenter.Send<object, Attachments>(this, "AttachmentReceived", viewModel.AttachmentsList);
+            if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements)
+            {
+                MessagingCenter.Send<Object, Attachments>(this, "AttachmentRecvdinst", viewModel.AttachmentsList);
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
+            {
+                MessagingCenter.Send<Object, Attachments>(this, "AttachmentRecvdinst", viewModel.AttachmentsList);
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionDynamicAttachment)
+            {
+                MessagingCenter.Send<Object, FilesUploadPopUpViewModel>(this, "ZakatAttachmentReceived", viewModel);
+            }
+            else
+            {
+                MessagingCenter.Send<Object, Attachments>(this, "AttachmentReceived", viewModel.AttachmentsList);
+            }
+
             viewModel.AttachmentList = new ObservableCollection<VATAttachment>();
             viewModel.IsLoading = false;
             viewModel.AttachmentsList = null;
+
+            base.OnDisappearing();
         }
         public void SetDocType()
         {
@@ -223,6 +256,43 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
             {
                 viewModel.DocTypeString = "N03B";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionAttachmentOne)
+            {
+                viewModel.DocTypeString = "ZEX6";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionAttachmentTwo)
+            {
+                viewModel.DocTypeString = "ZEX7";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionAttachmentThree)
+            {
+                viewModel.DocTypeString = "ZEX8";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionAttachmentFour)
+            {
+                viewModel.DocTypeString = "ZEX9";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionAttachmentFive)
+            {
+                viewModel.DocTypeString = "ZEX0";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionAttachmentSix)
+            {
+                viewModel.DocTypeString = "ZEXA";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionAttachmentSeven)
+            {
+                viewModel.DocTypeString = "ZEXD";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.TINOutletDeregisterAttachment)
+            {
+                viewModel.DocTypeString = "DR01";
+                viewModel.OutletRef = _outletRef;
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionDynamicAttachment)
+            {
+                viewModel.DocTypeString = viewModel.returnIdz;
             }
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.IBANBankAccountOne)
             {
@@ -297,12 +367,11 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         {
             try
             {
-               ListView Document = sender as ListView;
+                ListView Document = sender as ListView;
                 VATAttachment attachment = (VATAttachment)Document.SelectedItem;
                 //attachment.DocUrl;
                 if (attachment.Filename.Contains("."))
                 {
-
                     string Extention = attachment.Filename.Split('.')[1];
                     if (Extention.Equals("PDF") || Extention.Equals("pdf"))
                     {
@@ -395,10 +464,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                     await _navigation.PopToRootAsync();
                 });
             }
-        }
-        private void OnDownloadAttachmentClicked(object sender, EventArgs e)
-        {
-
         }
     }
 }

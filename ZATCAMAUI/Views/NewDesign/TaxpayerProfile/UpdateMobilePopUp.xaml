@@ -3,10 +3,8 @@
     x:Class="ZATCAMAUI.Views.NewDesign.TaxpayerProfile.UpdateMobilePopUp"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -14,6 +12,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}"
+     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     mc:Ignorable="d">
     <Border
         Padding="0"
@@ -130,8 +130,7 @@
                                         MaxLength="{Binding MaxDigids}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding NewMobileNumberEntryText}"
-                                        TextColor="{StaticResource PrimaryColor}"
-                                        Unfocused="Mobile_entry_Unfocused">
+                                        TextColor="{StaticResource PrimaryColor}">
                                         <custom:GAZTBorderlessEntry.Behaviors>
                                             <behaviors:OnlyNumericValuesBehaviour />
                                         </custom:GAZTBorderlessEntry.Behaviors>
@@ -228,7 +227,7 @@
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
-                                            Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                             MaxLength="1"
                                             ReturnType="Next"
                                             Text="{Binding OTPFirstDigit}"
@@ -259,7 +258,7 @@
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
-                                            Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                             MaxLength="1"
                                             ReturnType="Next"
                                             Text="{Binding OTPSecondDigit}"
@@ -290,7 +289,7 @@
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
-                                            Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                             MaxLength="1"
                                             ReturnType="Next"
                                             Text="{Binding OTPThirdDigit}"
@@ -321,13 +320,13 @@
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
-                                            Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                             MaxLength="1"
                                             ReturnType="Next"
                                             Text="{Binding OTPFourthDigit}"
                                             TextChanged="OtpFourthEntry_TextChanged"
                                             TextColor="#bbbbbb"
-                                            Unfocused="OtpFourthEntry_Unfocused"
+                                            
                                             WidthRequest="100" >
                                              <custom:GAZTBorderlessEntry.Behaviors>
                                                 <behaviors:OnlyNumericValuesBehaviour/>

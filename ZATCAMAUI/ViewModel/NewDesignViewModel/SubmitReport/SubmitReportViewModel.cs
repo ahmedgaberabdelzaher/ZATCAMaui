@@ -795,7 +795,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             {
                 FileResult result;
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     if (selectedLabel.Equals("image"))
                         result = await MediaPicker.PickPhotoAsync();

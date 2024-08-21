@@ -1,4 +1,4 @@
-﻿using Foundation;
+﻿
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.ContractRelease
@@ -13,27 +13,27 @@ namespace ZATCAMAUI.Models.ContractRelease
 
     public class ContractReleaseFormResponse
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public CotractResponse d { get; set; }
 
     }
     public class ContractReleaseFormResponse1
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("result")]
         public CotractResponse d { get; set; }
 
     }
     public class ContractReleaseFormRequest
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public CotractRequest d { get; set; }
 
     }
-    [Preserve(AllMembers = true)]
+    
     public class Metadata
     {
         public string id { get; set; }
@@ -41,19 +41,19 @@ namespace ZATCAMAUI.Models.ContractRelease
         public string type { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class AttDetSetResult
     {
         [JsonProperty("attachments")]
         public AttDetSet[] results { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class ZnotesSetResult
     {
         [JsonProperty("notes")]
         public ZnotesSet[] results { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public partial class AttDetSet
     {
 
@@ -61,7 +61,7 @@ namespace ZATCAMAUI.Models.ContractRelease
     }
 
 
-    [Preserve(AllMembers = true)]
+    
     public partial class ZnotesSet
     {
         public Metadata __metadata { get; set; }
@@ -94,7 +94,7 @@ namespace ZATCAMAUI.Models.ContractRelease
         [JsonProperty("textLine")]
         public string Tdline { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class CotractResponse
     {
         public Metadata __metadata { get; set; }
@@ -233,7 +233,7 @@ namespace ZATCAMAUI.Models.ContractRelease
         [JsonProperty("notes")]
         public ZnotesSet[] znotesSet { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class CotractRequest
     {
         public Metadata __metadata { get; set; }
@@ -378,25 +378,25 @@ namespace ZATCAMAUI.Models.ContractRelease
 
     public class ContractReLeaseApplicationFormModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-        [Preserve(AllMembers = true)]
+        
         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class Metadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class ContractResult
         {
             public Metadata2 __metadata { get; set; }
@@ -447,19 +447,19 @@ namespace ZATCAMAUI.Models.ContractRelease
             [JsonProperty("formBundleGUID")]
             public string Fbguid { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class ListSet
         {
             [JsonProperty("lists")]
             public List<ContractResult> results { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class AuthServSet
         {
             [JsonProperty("penalties")]
             public List<object> results { get; set; }
         }
-        [Preserve(AllMembers = true)]
+        
         public class D
         {
             //public Metadata __metadata { get; set; }

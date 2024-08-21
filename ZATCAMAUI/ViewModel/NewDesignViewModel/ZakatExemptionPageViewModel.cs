@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
-using Foundation;
 using Mopups.Services;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Enums;
@@ -11,11 +10,12 @@ using ZATCAMAUI.Core.Manager;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
+using ZATCAMAUI.Views.NewDesign.ZakatExemptionRequest;
 using static ZATCAMAUI.Models.ZakatExemptionModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
 {
-    [Preserve(AllMembers = true)]
+   
     public class ZakatExemptionPageViewModel : BaseViewModel
     {
         public ZakatExemptionModel zakatExemptionModel;
@@ -1168,8 +1168,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
                 }
                 catch (InternetException ex)
                 {
@@ -2041,7 +2039,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
 
         public async void NewCompanyArticalsAttachmentsPopup()
         {
-            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             if (CompanyArticalsAttachmentsListViewData == null)
             {
                 CompanyArticalsAttachmentsListViewData = new ObservableCollection<Attachment>();

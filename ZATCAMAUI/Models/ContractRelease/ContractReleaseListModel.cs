@@ -1,4 +1,4 @@
-﻿using Foundation;
+﻿
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.ContractReleas
@@ -14,7 +14,7 @@ namespace ZATCAMAUI.Models.ContractReleas
 
     public class ContractReleaseSummaryModel
     {
-        [Preserve(AllMembers = true)]
+        
         [JsonProperty("data")]
         public D d { get; set; }
         

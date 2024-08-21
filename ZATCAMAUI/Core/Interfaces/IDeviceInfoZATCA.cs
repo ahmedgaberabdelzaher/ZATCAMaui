@@ -1,7 +1,7 @@
 ﻿namespace ZATCAMAUI.Core.Interfaces
 {
 
-    public interface IDeviceInfo
+    public interface IDeviceInfoZATCA
     {
         double GetDeviceHeight();
         double GetDeviceWidth();

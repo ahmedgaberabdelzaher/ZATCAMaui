@@ -27,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
         public int NumberOfAttachmentComingFromServer = 0;
         #endregion
         #region Property
-       
+
         private bool _attachmentSizeVisibility = attachmentSizeVisibility;
         public bool AttachmentSizeVisibility
         {
@@ -181,7 +181,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
         #region Constructor
         public AttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackClick = new Command( () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -202,7 +202,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
                     {
                         string[] filetypes;
 
-                        filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetAttachmentTypeStringForAll();
+                        filetypes = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetAttachmentTypeStringForAll();
                         PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
 
                         var fileData = await FilePicker.PickAsync(options);
@@ -229,7 +229,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
                                             if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                             {
                                                 bool IsAttachmentPresent = false;
-                                                foreach (Attachment ItemA in VATDeclarationDataForAttch.d.ATTACHSet.results)
+                                                foreach (Attachment ItemA in VATDeclarationDataForAttch.data.ATTACHSet)
                                                 {
                                                     if (AttachmentName == ItemA.Filename)
                                                     {
@@ -239,7 +239,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
                                                 if (IsAttachmentPresent == false)
                                                 {
                                                     string attachmentType = UtilityManager.GetContentType(Extention);
-                                                    AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
+                                                    AttachmentRootOject _attachment = await SaveAttachment(stream, attachmentType);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
                                                     PopToRootPage();
                                                     if (_attachment != null && _attachment.d != null)
                                                     {
@@ -252,8 +252,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
                                                         uploadedDate = uploadedDate.Replace("‘", "");
                                                         uploadedDate = uploadedDate.Replace("UTC", "GMT");
                                                         _attachment.d.Erfdt = uploadedDate;
-                                                        VATDeclarationDataForAttch.d.ATTACHSet.results.Add(_attachment.d);
-                                                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
+                                                        VATDeclarationDataForAttch.data.ATTACHSet.Add(_attachment.d);
+                                                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.data.ATTACHSet as List<Attachment>);
                                                         MainThread.BeginInvokeOnMainThread(() =>
                                                         {
                                                             VatAttachmentsList = myCollection;
@@ -362,7 +362,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
                         AttachmentName = string.Empty;
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                           await _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+                            await _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
                         });
                     }
                 }
@@ -379,18 +379,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
 
             }
         }
-        private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType)
+
+        private async Task<AttachmentRootOject> SaveAttachment(Stream attachmentByteData, string contentType)
         {
             AttachmentRootOject _attachment = null;
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             await Task.Run(async () =>
             {
                 try
                 {
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0", contentType);
+                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.data.ReturnIdz, "VTA0", contentType);
                     if (attachment != null && attachment.d != null)
                     {
                         attachmentSizeVisibility = true;
@@ -412,10 +410,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
 
                 }
             });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+            IsLoading = false;
             return _attachment;
         }
 

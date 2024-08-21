@@ -8,7 +8,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
-    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -26,7 +26,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
-
+             
             <Grid Padding="0,0,0,0"
                       Grid.Row="1"
                       IsVisible="{Binding IsShowScanView}"
@@ -35,6 +35,7 @@
                         x:Name="MainGrid"
                         Grid.RowSpan="5"
                         Margin="0,0,0,0" />
+
                     <zxing:CameraBarcodeReaderView
                         x:Name="zxing"
                         Grid.RowSpan="5"

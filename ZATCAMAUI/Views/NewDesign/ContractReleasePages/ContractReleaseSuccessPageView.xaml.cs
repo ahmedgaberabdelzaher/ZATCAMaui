@@ -1,14 +1,11 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
 using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 {
-   
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContractReleaseSuccessPageView : ContentPage
     {
@@ -17,29 +14,13 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         {
             InitializeComponent();
             this.viewModel = viewModel;
-            On<iOS>().SetUseSafeArea(true);
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
             BindingContext = viewModel;
 
-            ReferenceNumberTxt.Text = viewModel.ContractReleaseData.d.Fbnumz;
-            ContractNumberTxt.Text = viewModel.ContractReleaseData.d.AContNo;
+            viewModel.ReferenceNumberTxt = viewModel.ContractReleaseData1.d.Fbnumz;
+            viewModel.ContractNumberTxt = viewModel.ContractReleaseData1.d.AContNo;
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
 
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
 
         private void Dashboard_Tapped(object sender, EventArgs e)
         {
@@ -96,13 +77,6 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             }
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-        }
 
         private void Download_Acknowledgement(object sender, EventArgs e)
         {
@@ -110,33 +84,33 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    viewModel.IsLoading1 = true;
+                    viewModel.IsLoading = true;
                 });
 
-                string downloadurl = ZATCAConstants.CRDownloadAcknowledementFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
+                string downloadurl = ZATCAConstants.CRDownloadAcknowledementFile + viewModel.ContractReleaseData.d.Fbnumz;
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    viewModel.IsLoading1 = false;
+                    viewModel.IsLoading = false;
                 });
             }
         }
 
         private void Download_AcknowledgementForm(object sender, EventArgs e)
         {
-            if (viewModel.ContractReleaseData.d.Fbnumz != null)
+            if (viewModel.ContractReleaseData1.d.Fbnumz != null)
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    viewModel.IsLoading1 = true;
+                    viewModel.IsLoading = true;
                 });
-                string downloadurl = ZATCAConstants.CRDownloadCoverFormFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
+                string downloadurl = ZATCAConstants.CRDownloadCoverFormFile + viewModel.ContractReleaseData1.d.Fbnumz;
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    viewModel.IsLoading1 = false;
+                    viewModel.IsLoading = false;
                 });
             }
         }

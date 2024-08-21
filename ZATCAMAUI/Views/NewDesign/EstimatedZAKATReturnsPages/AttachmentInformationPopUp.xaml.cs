@@ -30,6 +30,12 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             OnDone?.Invoke();
             MopupService.Instance.PopAsync();
+            if (InfromatationText.Text.Equals(AppResources.ZZZZReturnUnderReviewAddAttachments))
+            {
+                MessagingCenter.Send<App, string>
+                    ((App)Application.Current, "OnlyAddAttachments", "add vat attachments");
+
+            }
         }
     }
 }

@@ -29,7 +29,7 @@ namespace ZATCAMAUI.Core.Mangers
                     string euser5 = "null";
 
                     string deviceOs = DeviceInfo.Platform.ToString();
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                     string deviceModel = DeviceInfo.Model;
                     //Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -99,8 +99,8 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (Exception ex)
                 {
 
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     return null;
                 }
             }
@@ -122,7 +122,7 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     string deviceOs = DeviceInfo.Platform.ToString();
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                     string deviceModel = DeviceInfo.Model;
                     //Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -194,8 +194,8 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (Exception ex)
                 {
 
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     return null;
                 }
             }
@@ -216,7 +216,7 @@ namespace ZATCAMAUI.Core.Mangers
                 //HttpClient client = new HttpClient(App.httpClientHandler);
 
                 string deviceOs = DeviceInfo.Platform.ToString();
-                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                 string deviceModel = DeviceInfo.Model;
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -252,8 +252,8 @@ namespace ZATCAMAUI.Core.Mangers
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return null;
             }
             return _contractReleasesubmitResponse;
@@ -268,7 +268,7 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     string deviceOs = DeviceInfo.Platform.ToString();
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                     string deviceModel = DeviceInfo.Model;
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
@@ -336,8 +336,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     return null;
                 }
             }

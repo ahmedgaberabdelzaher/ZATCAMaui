@@ -1,6 +1,4 @@
 ﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage;
@@ -27,11 +25,8 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
             {
                 BundleType.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
                 BundleNumber.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
@@ -47,10 +42,10 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
                             BundleType.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
                             BundleType.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
@@ -58,7 +53,7 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
                             BundleType.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
-                    case Device.Android:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
                         BundleType.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         BundleType.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";

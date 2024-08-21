@@ -2,7 +2,7 @@
 using Mopups.Services;
 using System.Globalization;
 using ZATCAMAUI.Core.Mangers;
-using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 {
@@ -21,16 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-        }
-
-        private void OnVATNowTapped(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDashboard_Clicked(object sender, EventArgs e)
-        {
-
         }
 
         private async void btnLogout_Clicked(object sender, EventArgs e)
@@ -65,10 +55,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
         public async Task LogOutFromPopup()
         {
-            await Task.Run(() =>
-            {
-                App.DisplayProgressView();
-            });
+            App.DisplayProgressView();
             if (App.TP != null)
                 App.TP = null;
             if (App.PreviousIsArabic)
@@ -91,10 +78,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
             }
 
-            await Task.Run(() =>
-            {
-                App.HideProgressView();
-            });
+            App.HideProgressView();
 
             App.IsLogOut = true;
             App.IsLoginCalled = false;
@@ -115,9 +99,5 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
         }
 
-        private void OnZakatNowTapped(object sender, EventArgs e)
-        {
-
-        }
     }
 }

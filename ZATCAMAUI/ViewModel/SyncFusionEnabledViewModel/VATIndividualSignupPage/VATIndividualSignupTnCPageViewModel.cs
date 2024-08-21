@@ -14,8 +14,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     {
         #region Variable
         public ICommand OnSubmitClicked { get; set; }
-        public ICommand GoBackClick { get; set; }
-        public ICommand BackButtonClicked { get; set; }
 
         #endregion
         #region Property
@@ -94,14 +92,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #region Constructor
         public VATIndividualSignupTnCPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackClick = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
-            BackButtonClicked = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
             OnSubmitClicked = new Command(async () =>
             {
                 await Task.Run(() =>

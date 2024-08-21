@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -78,7 +78,7 @@ namespace ZATCAMAUI.Models
         public List<ResultsItemForElgblDocSet> results { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class ELGBL_DOCSetforsubmit
     {
        // [DataMember]
@@ -148,7 +148,7 @@ namespace ZATCAMAUI.Models
     }
 
     [Serializable]
-    [Preserve(AllMembers = true)]
+    
     [DataContract]
     public class BankItem
     {
@@ -179,7 +179,7 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public VATRegistrationDetails VATRegistrationDetailsDatatoPopup { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class VatCommencementDateFormatModel
     {
         [DataMember]
@@ -189,7 +189,7 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public string type { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class CommencementModel
     {
         [DataMember]
@@ -207,7 +207,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("transactionType")]
         public string TxnTpz { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class VatCommencementDateFormat
     {
         [DataMember]

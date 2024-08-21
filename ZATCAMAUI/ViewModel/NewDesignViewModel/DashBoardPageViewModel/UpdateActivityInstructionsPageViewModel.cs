@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using Foundation;
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
@@ -8,7 +8,7 @@ using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 {
-    [Preserve(AllMembers = true)]
+    
     public class UpdateActivityInstructionsPageViewModel : BaseViewModel
     {
         #region Variable
@@ -135,12 +135,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 catch (InternetException ex)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         _navigationService.GoBack();
@@ -148,7 +148,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    
                 }
             }
         }

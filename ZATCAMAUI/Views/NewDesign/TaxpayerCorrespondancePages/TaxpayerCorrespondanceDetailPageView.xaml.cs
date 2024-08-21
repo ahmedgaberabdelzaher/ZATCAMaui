@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
@@ -7,7 +6,6 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
 {
@@ -23,9 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             InitializeComponent();
             viewModel = App.Locator.TaxpayerCorrespondanceDetailPageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
-            NavigationPage.SetBackButtonTitle(this, "");
             viewModel.IsFavoriteVisible = false;
             CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
             if (CorrModel != null)
@@ -82,7 +77,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
                 newHTMLContent = newHTMLContent.Replace("</html>", "<head><style type='text/css'>@font-face {font-family: MyFont;src:url('Somar-Regular.otf') format('opentype');}body { font-family: MyFont }</style></head></html>");
 
 
-                if (Device.RuntimePlatform == Device.iOS)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:40px;margin:15;color:#042e66'>");
                     var htmlSource = new HtmlWebViewSource();
@@ -113,25 +108,8 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
                 }
             }
         }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)

@@ -1,4 +1,4 @@
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -47,7 +47,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("correspondences")]
         public List<CorrespondenceDetailsResult> results { get; set; }
     }
-    [Preserve(AllMembers = true)]
+    
     public class CorrespondenceDetailsRootObject
     {
         [JsonProperty("data")]

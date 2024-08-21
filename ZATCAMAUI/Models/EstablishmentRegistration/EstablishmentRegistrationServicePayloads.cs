@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Foundation;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ZATCAMAUI.Core.Exceptions;
@@ -1199,7 +1199,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string CityName { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class DeleteOutletRequest
     {
         public string formBundleNumber { get; set; }
@@ -1208,7 +1208,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string TIN { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class FinancialDetail
     {
         [JsonIgnore]

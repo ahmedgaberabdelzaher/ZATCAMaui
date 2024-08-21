@@ -2,9 +2,7 @@
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
-using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
 {
@@ -15,31 +13,36 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
         GAZTNewDesignMyReturnsNewPageViewModel viewModel;
         public GAZTNewDesignMyReturnsNewPageView(int Index)
         {
+      
+
             InitializeComponent();
 
             viewModel = App.Locator.GAZTNewDesignMyReturnsNewPageView;
-            BindingContext = viewModel;
-            NavigationPage.SetBackButtonTitle(this, "");
+            this.BindingContext = viewModel;
             viewModel.Index = Index;
             viewModel.PopulateReturnTypeList();
-            viewModel.PopulateDataInChips();
             viewModel.SelectedChipFilterItem = null;
             ListView_Returns.ItemTapped += (sender, e) =>
             {
-                MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
-                viewModel.SelectedListItem = SelectedItem;
-                viewModel.PopulateData();
-                if (e.Item == null)
+                try
                 {
-                    return;
-                } ((ListView)sender).SelectedItem = null;
+                    MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
+                    viewModel.SelectedListItem = SelectedItem;
 
+                    if (e.Item == null)
+                    {
+                        return;
+                    } ((ListView)sender).SelectedItem = null;
+                }
+                catch (Exception)
+                {
+                }
             };
         }
 
         protected async override void OnAppearing()
         {
-           
+
             try
             {
                 MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
@@ -50,10 +53,10 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
 
                 viewModel.IsLoading = true;
                 VATDeclarationAttachmentPageViewModel.isToBeFilled = true;
-                
+
                 await viewModel.OnPageLoad();
                 viewModel.PopulateDataInChips();
-              
+
                 viewModel.SelectedChipFilterItem = null;
                 // viewModel.FilterAllData();
                 if (viewModel.Index == 0)
@@ -75,14 +78,14 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
                 }
                 if (viewModel.Index == 5)
                 {
-                    viewModel.SelectedTaxTypeForFilter = viewModel.TaxTypeForFilter.Where(x => x.StatementFilter == "02").FirstOrDefault();
+                    viewModel.SelectedTaxTypeForFilter = viewModel.TaxTypeForFilter.Where(x => x.statementFilter == "02").FirstOrDefault();
                     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
                     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
                 }
                 if (viewModel.Index == 6)
                 {
-                    
-                    viewModel.SelectedTaxTypeForFilter = viewModel.TaxTypeForFilter.Where(x => x.StatementFilter == "06").FirstOrDefault();
+
+                    viewModel.SelectedTaxTypeForFilter = viewModel.TaxTypeForFilter.Where(x => x.statementFilter == "06").FirstOrDefault();
 
                     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
                     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
@@ -115,23 +118,23 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
                 ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
                 viewModel.SelectedChipFilterItem = selectedReturntype;
 
-                if (selectedReturntype.TemplateType.ToLower() == AppResources.UnSubmitted.ToLower())
+                if (selectedReturntype.Text == AppResources.UnSubmitted)
                 {
-                    ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Error"];
-                    ChipGroup_statusFilter.SelectedChipBackground = (Color)Application.Current.Resources["ErrorBg"];
+                    ChipGroup_statusFilter.SelectedChipTextColor = (Color)App.Current.Resources["Error"];
+                    ChipGroup_statusFilter.SelectedChipBackground = (Color)App.Current.Resources["ErrorBg"];
 
 
                 }
-                else if (selectedReturntype.TemplateType.ToLower() == AppResources.OverDue.ToLower())
+                else if (selectedReturntype.Text == AppResources.OverDue)
                 {
-                    ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Error"];
-                    ChipGroup_statusFilter.SelectedChipBackground = (Color)Application.Current.Resources["ErrorBg"];
+                    ChipGroup_statusFilter.SelectedChipTextColor = (Color)App.Current.Resources["Error"];
+                    ChipGroup_statusFilter.SelectedChipBackground = (Color)App.Current.Resources["ErrorBg"];
 
                 }
-                else if (selectedReturntype.TemplateType.ToLower() == AppResources.Submitted.ToLower())
+                else if (selectedReturntype.Text == AppResources.Submitted)
                 {
-                    ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Success"];
-                    ChipGroup_statusFilter.SelectedChipBackground = (Color)Application.Current.Resources["SuccessBg"];
+                    ChipGroup_statusFilter.SelectedChipTextColor = (Color)App.Current.Resources["Success"];
+                    ChipGroup_statusFilter.SelectedChipBackground = (Color)App.Current.Resources["SuccessBg"];
 
                 }
             }

@@ -18,11 +18,8 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
             zxing.Options = new BarcodeReaderOptions()
             {
                 Formats = BarcodeFormats.All,
-              
                 TryHarder = true,
                 AutoRotate = false,
-                TryInverted = true,
-             
             };
 
         }

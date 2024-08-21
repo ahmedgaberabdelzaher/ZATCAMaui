@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using Syncfusion.Maui.ListView;
 using ZATCAMAUI.Models.VATRefunds;
@@ -19,8 +18,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             InitializeComponent();
 
             viewModel = App.Locator.VATRefundsListPageView;
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
         }
 
@@ -30,12 +27,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
 
             try
             {
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
 
                 viewModel.PopulateVATRefundsList();
-                ChangeArrowDirection();
                MessagingCenter.Subscribe<object, string>(this, "InstructionsConfirmed", (message, arg) =>
                 {
                     if (arg == "NavigateToNewRequestPageView")
@@ -57,30 +50,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             MessagingCenter.Unsubscribe<object, string>(this, "InstructionsConfirmed");
 
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-
-        public void ChangeArrowDirection()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+       
 
         void vatRefundDetailsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
         {

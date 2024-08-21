@@ -5,7 +5,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
 using static ZATCAMAUI.Models.IBanManagementListModel;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -30,21 +29,21 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                 Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
 
                 InitializeComponent();
-                ChangeAeroIcon();
                 _viewModel = App.Locator.BankAccountAddOrUpdatePageView;
-                On<iOS>().SetUseSafeArea(true);
                 this.BindingContext = _viewModel;
                 EntryIDNumber.IsEnabled = false;
 
                 _viewModel.OtherBanksVisible = false;
-                _viewModel.IsIdInfoVisibility = false;
-                _viewModel.AttachmentVisible = false;
+
                 _viewModel.IsInstrunctionChecked = false;
                 _viewModel.SummaryVisible = false;
                 _viewModel.NewFormVisible = true;
                 _viewModel.IsContinueButtonEnable = false;
                 _viewModel.IsIBanDropDownEnabled = true;
                 _viewModel.IsIBanUpdatePage = false;
+
+                _viewModel.IsIdInfoVisibility = false;
+                _viewModel.AttachmentVisible = false;
                 _viewModel.IsDropdownVisibile = false;
                 _viewModel.IsBorderColorRed = Colors.LightGray;
                 // _viewModel.ContinueButtonnBackroundColor = Color.FromHex("#d49504");
@@ -77,19 +76,18 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                 }
                 AckText.Text = string.Format(AppResources.NDIBANCertifyAck, TpName);
                 BindInfoToViews();
-
                 _viewModel.FetchBankAccDetails();
                 Task.Run(() => _viewModel.IBANBankAccountFormGUID()).Wait();
                 InitializationPopups();
+
                 _viewModel.IBANBankListViewDataOne.Clear();
                 _viewModel.IBANBankListViewDataTwo.Clear();
                 _viewModel.IdNumberTitle = String.Format(AppResources.IBANIdNumber, "");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
-
         }
 
         private void InitializationPopups()
@@ -103,15 +101,6 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
             });
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
-
-        }
 
         private void BindInfoToViews()
         {
@@ -129,9 +118,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                 }
                 else
                 {
-
-
-                    var selectedIBAN = _viewModel.IBANAccountData.d.IbanListSet.results.Find(selectedValue => (selectedValue.Fbnum == App.SelectedIBAN));
+                    var selectedIBAN = _viewModel.IBANAccountData.d.IbanListSet.Find(selectedValue => (selectedValue.Fbnum == App.SelectedIBAN));
 
                     if (selectedIBAN != null)
                     {
@@ -142,7 +129,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                         _viewModel.AccountOwnerName = selectedIBAN.Koinh;
                         _viewModel.IBANValue = selectedIBAN.Iban;
                         _viewModel.IsIBanDropDownEnabled = false;
-                        var MissingIfoMatch = _viewModel.IBANAccountData.d.IbanListSet.results.Find(selectedValue => (selectedValue.Status == "E0018") || (selectedValue.Status == "E0045"));
+                        var MissingIfoMatch = _viewModel.IBANAccountData.d.IbanListSet.Find(selectedValue => (selectedValue.StatusDesc == "Missing Informaiton") || (selectedValue.StatusDesc == "معلومات الحساب غير مكتملة"));
                         if (MissingIfoMatch != null)
                         {
                             BankAccountIBAN.IsEnabled = false;
@@ -180,9 +167,9 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                         {
                             _viewModel.IdNumberTitle = AppResources.IBANIdNumber;
                         }
-                        filteredList = _viewModel.IBANAccountData.d.IdTypeListSet.results.Where(x => x.IdDesc.Equals(_viewModel.SelectedIDType)).ToList();
+                        filteredList = _viewModel.IBANAccountData.d.IdTypeListSet.Where(x => x.IdDesc.Equals(_viewModel.SelectedIDType)).ToList();
                         _viewModel.FetchBankAccDetails();
-                       
+
                         if (filteredList != null && filteredList.Count > 0)
                         {
                             //gcc id
@@ -204,7 +191,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                         EntryIDNumber.IsEnabled = false;
                         if (!string.IsNullOrEmpty(_viewModel.SelectedIDNumber))
                         {
-                            _viewModel.AccountOwnerName = _viewModel.IBANAccountData.d.IdNumberListSet.results.Where(x => x.IdNumber == _viewModel.SelectedIDNumber).FirstOrDefault().Actnm;
+                            _viewModel.AccountOwnerName = _viewModel.IBANAccountData.d.IdNumberListSet.Where(x => x.IdNumber == _viewModel.SelectedIDNumber).FirstOrDefault().Actnm;
                         }
                         if (string.IsNullOrEmpty(_viewModel.AccountOwnerName))
                         {
@@ -238,26 +225,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            try
-            {
-                if (App.IsArabic)
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                }
-                else
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                }
 
-            }
-            catch (Exception)
-            {
-
-            }
-
-        }
 
         private void AccountOwnerNameTextChanged(object sender, TextChangedEventArgs e)
         {
@@ -315,7 +283,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                         if (!_viewModel.IBANValue.Substring(2).All(allowedchar.Contains))
                         {
                             _viewModel.IBANValue = _viewModel.IBANValue.Remove(_viewModel.IBANValue.Length - 1);
-                           
+
 
                         }
                     }
@@ -325,7 +293,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
 
         }
 
-        private void checkIBanIsValidOrNot()
+        private async void checkIBanIsValidOrNot()
         {
             App.IBanValidatedResponse = string.Empty;
             _viewModel.IsLoading = true;
@@ -334,15 +302,15 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                 try
                 {
                     App.IBanValidatedResponse = string.Empty;
-                    var response = WebServiceManager.GAZTCheckIBAN(_viewModel.IBANValue);
+                    var response = await WebServiceManager.GAZTCheckIBAN(_viewModel.IBANValue);
                     if (response != null)
                     {
                         //IBan is Valid
                         _viewModel.isIBanValid = true;
                         _viewModel.IsLoading = false;
                         string bankName = string.Empty;
-                        bankName = JObject.Parse(App.IBanValidatedResponse)["d"].ToString();
-                        string IBanSelectedBankName = JObject.Parse(bankName)["Bkext"].ToString();
+                        bankName = JObject.Parse(App.IBanValidatedResponse)["result"].ToString();
+                        string IBanSelectedBankName = JObject.Parse(bankName)["bankDetails"].ToString();
 
                         _viewModel.IsIBanDropDownEnabled = false;
 
@@ -354,10 +322,11 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                         }
                         else
                         {
-                            _viewModel.SelectedBankName = JObject.Parse(bankName)["Bkext"].ToString();
-                            _viewModel.SelectedBankNameField = JObject.Parse(bankName)["Bkext"].ToString();
+                            _viewModel.SelectedBankName = JObject.Parse(bankName)["bankDetails"].ToString();
+                            _viewModel.SelectedBankNameField = JObject.Parse(bankName)["bankDetails"].ToString();
                             _viewModel.OtherBanksVisible = false;
                         }
+
 
                     }
                     else
@@ -476,7 +445,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
             {
 
-                List<IdTypeListSetResult> filteredList = _viewModel.IBANAccountData.d.IdTypeListSet.results.Where(x => x.IdDesc.Equals(_viewModel.SelectedIDType)).ToList();
+                List<IdTypeListSetResult> filteredList = _viewModel.IBANAccountData.d.IdTypeListSet.Where(x => x.IdDesc.Equals(_viewModel.SelectedIDType)).ToList();
 
                 if (filteredList != null && filteredList.Count > 0)
                 {

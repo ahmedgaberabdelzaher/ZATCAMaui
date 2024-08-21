@@ -1,11 +1,21 @@
 ﻿using AppDynamics.Agent;
-
+using Mopups.Services;
+using Newtonsoft.Json.Linq;
+using System.Text;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using Org.BouncyCastle.Asn1;
+using Org.BouncyCastle.Crypto.Parameters;
+using System.Security.Cryptography;
+using Org.BouncyCastle.Math;
+using ZATCAMAUI.Views.NewDesign.GenericPickers;
+using ZATCAMAUI.Models.Authentication;
+using Newtonsoft.Json;
+using ZATCAMAUI.Views.NewDesign.ChangeMobile;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 {
@@ -27,9 +37,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         public string password;
         public string email;
         public int CurrentAttempt = 0;
-        public ICommand BackButtonClicked { get; set; }
-        public ICommand GoBackClick { get; set; }
-
+        private bool loginError = false;
+        private string tin;
 
         #endregion
         #region Constructor
@@ -50,9 +59,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                             await DependencyService.Get<IForceUpdate>().FetchAndActivateAsync();
                             var hasForceUpdateResult = bool.Parse(DependencyService.Get<IForceUpdate>().GetValue("IsForceUpdate"));
 
-                            switch (Device.RuntimePlatform)
+                            switch (DeviceInfo.Platform)
                             {
-                                case Device.Android:
+                                case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
 
                                     var currentAndroidBuild = int.Parse(VersionTracking.CurrentBuild);
                                     var firebaseAndroidBuild = int.Parse(DependencyService.Get<IForceUpdate>().GetValue("BuildNumber_Android"));
@@ -66,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                                     break;
 
 
-                                case Device.iOS:
+                                case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                                     var currentiOSBuild = VersionTracking.CurrentBuild;
                                     var currentiOSBuildInt = Array.ConvertAll(currentiOSBuild.Split('.'), int.Parse);
 
@@ -120,18 +129,35 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 IsOldLoginHidden = true;
             }
 
-            BackButtonClicked = new Command(BackButtonClick);
             SignUpCommand = new Command(SignUpClicked);
             ForgotPasswordCommand = new Command(ForgotPasswordClicked);
-            SocialMediaLoginCommand = new Command(SocialLoggedIn);
             HamburgerMenuClickedCommand = new Command(HamburgerMenuClicked);
+            this.LoginClickedCommand = new Command(async () => await LoginButtonClicked());
+            this.ChangeMCommand = new Command(this.ChangeMobileClicked);
 
-            GoBackClick = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
+            this.WebLoginCommand = new Command(this.WebLoginClicked);
+            this.ShowTinsPickerCommand = new Command(async () => await OpenTinsDropdown());
 
 
+        }
+        private void WebLoginClicked(object obj)
+        {
+            //_navigationService.NavigateTo(App.NFLoginView);
+
+            _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_LOGIN);
+        }
+
+        private async void ChangeMobileClicked(object obj)
+        {
+            //  _navigationService.NavigateTo(App.N);
+            //_navigationService.NavigateTo(App.NewChaneMobileView);
+            //await MopupService.Instance.PushAsync(new NafathPopup());
+            await MopupService.Instance.PushAsync(new NafathChangeMobleNumberOptionsView());
+        }
+        private void ChangeIAMClicked(object obj)
+        {
+            _navigationService.NavigateTo(App.NafathLoginPageView);
+            // _navigationService.NavigateTo(App.NafathPopUpPage);
         }
         #endregion
         #region property
@@ -200,6 +226,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                     IsLoginEnabled = true;
                 }
                 OnPropertyChanged("Email");
+            }
+        }
+        private bool _ISloadedURL;
+        public bool ISloadedURL
+        {
+            get
+            {
+                return _ISloadedURL;
+            }
+            set
+            {
+                if (_ISloadedURL == value) return;
+
+                //_ISloadedURL = value;
+                OnPropertyChanged("ISloadedURL");
             }
         }
         private bool _IsSAMLLoginEnabled;
@@ -307,6 +348,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 OnPropertyChanged("IsLoginEnabled");
             }
         }
+        private bool _isTinDropdownVisible = false;
+        public bool IsTinDropdownVisible
+        {
+            get
+            {
+                return _isTinDropdownVisible;
+            }
+            set
+            {
+                if (_isTinDropdownVisible == value) return;
+
+                _isTinDropdownVisible = value;
+                OnPropertyChanged("IsTinDropdownVisible");
+            }
+        }
         private int _tINIndex = 0;
         public int TINIndex
         {
@@ -322,8 +378,33 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 OnPropertyChanged("TINIndex");
             }
         }
-        private List<TIN> _tINs;
-        public List<TIN> TINs
+        private GenericPickerModel _pickerModelTins { get; set; }
+        public GenericPickerModel PickerModelTins
+        {
+            get { return _pickerModelTins; }
+            set
+            {
+                if (_pickerModelTins == value) return;
+
+                _pickerModelTins = value;
+                OnPropertyChanged("PickerModelTins");
+            }
+        }
+
+        private string _selectedTin { get; set; }
+        public string SelectedTin
+        {
+            get { return _selectedTin; }
+            set
+            {
+                if (_selectedTin == value) return;
+                _selectedTin = value;
+                OnPropertyChanged("SelectedTin");
+            }
+        }
+
+        private List<TINModel> _tINs;
+        public List<TINModel> TINs
         {
             get
             {
@@ -337,8 +418,42 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 OnPropertyChanged("TINs");
             }
         }
-        private TIN _selectedTinId;
-        public TIN SelectedTinId
+        public string TIN
+        {
+            get
+            {
+                return this.tin;
+            }
+            set
+            {
+                if (this.tin == value)
+                {
+                    return;
+                }
+                this.tin = value;
+                this.OnPropertyChanged("TIN");
+            }
+        }
+
+        public bool LoginError
+        {
+            get
+            {
+                return this.loginError;
+            }
+            set
+            {
+                if (this.loginError == value)
+                {
+                    return;
+                }
+                this.loginError = value;
+                this.OnPropertyChanged("LoginError");
+            }
+        }
+
+        private TINModel _selectedTinId;
+        public TINModel SelectedTinId
         {
             get
             {
@@ -352,14 +467,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 if (_selectedTinId != null)
                 {
                     App.CurrentDropdownTIN = SelectedTinId;
-                    TINID = _selectedTinId.Tin;
+                    TINID = _selectedTinId.TIN;
                     Password = string.Empty;
                 }
                 OnPropertyChanged("SelectedTinId");
             }
         }
-        private TIN _selectedTinIdPrev;
-        public TIN SelectedTinIdPrev
+        private TINModel _selectedTinIdPrev;
+        public TINModel SelectedTinIdPrev
         {
             get
             {
@@ -371,6 +486,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 
                 _selectedTinIdPrev = value;
                 OnPropertyChanged("SelectedTinIdPrev");
+            }
+        }
+        private EmailTinsModel _tinsList;
+        public EmailTinsModel TinsList
+        {
+            get
+            {
+                return _tinsList;
+            }
+            set
+            {
+                if (_tinsList == value) return;
+
+                _tinsList = value;
+                OnPropertyChanged("TinsList");
             }
         }
         private bool _passwordVisibility = true;
@@ -402,7 +532,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 _isVisibleTinIds = value;
                 if (_isVisibleTinIds == true)
                 {
-                    TINs = new List<TIN>();
+                    TINs = new List<TINModel>();
                     Task.Run(async () =>
                     {
                         try
@@ -500,14 +630,30 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         /// Gets or sets the command that is executed when the Forgot Password button is clicked.
         /// </summary>
         public Command ForgotPasswordCommand { get; set; }
+        public Command ChangeMCommand { get; set; }
+
+        public Command ChangeCitizensCommand { get; set; }
         /// <summary>
         /// Gets or sets the command that is executed when the social media login button is clicked.
         /// </summary>
+        public Command WebLoginCommand { get; set; }
         public Command SocialMediaLoginCommand { get; set; }
         /// <summary>
         /// Gets or sets the command that is executed when the Hamburger menu button is clicked.
         /// </summary>
         public ICommand HamburgerMenuClickedCommand { get; set; }
+        /// <summary>
+        /// Gets or sets the command that is executed when the Login button is clicked.
+        /// </summary>
+        public ICommand LoginClickedCommand { get; set; }
+
+        /// <summary>
+        /// Gets or sets the command that is executed when the Tin dropdown clicked.
+        /// </summary>
+        public ICommand ShowTinsPickerCommand { get; set; }
+
+
+        public static int LoginAttempt = 0;
 
         #endregion
         #region methods
@@ -517,7 +663,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         /// <param name="obj">The Object</param>
         private void SignUpClicked(object obj)
         {
-            _navigationService.NavigateTo(App.SignUpTAndCViewPage);
+            _navigationService.NavigateTo(App.EstablishmentSignUPPageView);
             // Do something
         }
         /// <summary>
@@ -526,25 +672,196 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         /// <param name="obj">The Object</param>
         private async void ForgotPasswordClicked(object obj)
         {
-            var label = obj as Label;
-            label.BackgroundColor = (Color)Application.Current.Resources["FPButtonTextColor"];
-            await Task.Delay(100);
-            label.BackgroundColor = Colors.Transparent;
             _navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
         }
-        /// <summary>
-        /// Invoked when social media login button is clicked.
-        /// </summary>
-        /// <param name="obj">The Object</param>
-        private void SocialLoggedIn(object obj)
+        private static byte[] ConvertRSAParametersField(BigInteger n, int size)
         {
-            // Do something
-        }
-        public void BackButtonClick()
-        {
-            _navigationService.GoBack();
+            byte[] bs = n.ToByteArrayUnsigned();
+
+            if (bs.Length == size)
+                return bs;
+
+            if (bs.Length > size)
+                throw new ArgumentException("Specified size too small", "size");
+
+            byte[] padded = new byte[size];
+            Array.Copy(bs, 0, padded, size - bs.Length, bs.Length);
+            return padded;
         }
 
+        public static RSAParameters ToRSAParameters(RsaKeyParameters rsaKey)
+        {
+            RSAParameters rp = new RSAParameters();
+            rp.Modulus = rsaKey.Modulus.ToByteArrayUnsigned();
+            if (rsaKey.IsPrivate)
+                rp.D = ConvertRSAParametersField(rsaKey.Exponent, rp.Modulus.Length);
+            else
+                rp.Exponent = rsaKey.Exponent.ToByteArrayUnsigned();
+            return rp;
+        }
+
+        private async Task LoginButtonClicked()
+        {
+            IsLoading = true;
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFLoginPageView", "LoginButtonClicked", "Anonymous Menu Opened");
+            try
+            {
+                Asn1Object obj = Asn1Object.FromByteArray(Convert.FromBase64String(ZATCAConstants.publicKeyStr));
+                RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+                DerSequence publicKeySequence = (DerSequence)obj;
+
+                DerBitString encodedPublicKey = (DerBitString)publicKeySequence[1];
+                DerSequence publicKey = (DerSequence)Asn1Object.FromByteArray(encodedPublicKey.GetBytes());
+
+                DerInteger modulus = (DerInteger)publicKey[0];
+                DerInteger exponent = (DerInteger)publicKey[1];
+                RsaKeyParameters keyParameters = new RsaKeyParameters(false, modulus.PositiveValue, exponent.PositiveValue);
+                var plainTextData = this.Password;
+
+                RSAParameters parameters = ToRSAParameters(keyParameters);
+                //for encryption, always handle bytes...
+                var bytesPlainTextData = Encoding.UTF8.GetBytes(plainTextData);
+                rsa.ImportParameters(parameters);
+
+                //apply pkcs#1.5 padding and encrypt our data 
+                var bytesCypherText = rsa.Encrypt(bytesPlainTextData, RSAEncryptionPadding.Pkcs1);
+
+                //we might want a string representation of our cypher text... base64 will do
+                var cypherText = Convert.ToBase64String(bytesCypherText);
+                var lang = UtilityManager.GetLanguageParameter();
+                var model = new LoginRequestModel()
+                {
+                    userId = IsTinDropdownVisible ? this.SelectedTin : this.TIN,
+                    password = cypherText,
+                    language = lang
+                };
+                var loginResponse = await WebServiceManager.LoginRequest(model);
+                //App.Token = "";
+                //App.MobileNumber = "9999971487";
+                //App.LoginDataRetrieved = new LoginModel() { TIN = this.TIN };
+                //_navigationService.NavigateTo(App.OtpLoginPageView);
+                String response = loginResponse.Content.ReadAsStringAsync().Result;
+                if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+
+                    var result = JsonConvert.DeserializeObject<LoginResponseModel>(response);
+                    App.Token = result.Result.Token;
+                    App.MobileNumber = result.Result.MobileNumber;
+                    App.LoginDataRetrieved = new LoginModel() { TIN = IsTinDropdownVisible ? this.SelectedTin : this.TIN };
+                    LoginError = false;
+                    _navigationService.NavigateTo(App.OtpLoginPageView);
+                }
+                else if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    LoginAttempt++;
+                    LoginError = true;
+                    if (LoginAttempt >= 3)
+                    {
+                        //_navigationService.GoBack();
+                        _navigationService.NavigateTo(App.UnlockAccountTINPageView);
+                        LoginAttempt = 0;
+                    }
+                }
+                else if (loginResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                {
+                    // { "httpCode":"500","httpMessage":"Internal Server Error","moreInformation":"Internal Error"}
+                    JObject json = JObject.Parse(response);
+                    await _dialogService.ShowMessage(json.GetValue("httpMessage").ToString(), AppResources.ZError);
+                }
+            }
+            catch (Exception ex)
+            {
+                //return String.Empty;
+                System.Diagnostics.Debug.WriteLine("err : " + ex.StackTrace);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
+        internal async Task TinEntryUnfocusedAsync(string text)
+        {
+            IsLoading = true;
+            int return_code = UtilityManager.CheckEmailOrTin(text.Trim());
+            switch (return_code)
+            {
+                case 0:
+                    IsTinDropdownVisible = false;
+                    SelectedTin = string.Empty;
+                    break;
+                case 1:
+                    IsTinDropdownVisible = false;
+                    SelectedTin = string.Empty;
+                    break;
+                case 2:
+                    TinsList = await WebServiceManager.GetTinsBasedOnEmail(text.Trim());
+
+                    if (TinsList.Data != null && TinsList.Data.Count > 0)
+                    {
+                        SelectedTin = AppResources.PleaseSelectTIN;
+                        IsTinDropdownVisible = true;
+                    }
+                    break;
+            }
+            IsLoading = false;
+        }
+        private async Task OpenTinsDropdown()
+        {
+            if (TinsList.Data != null && TinsList.Data.Count > 0)
+            {
+                await PrepareTinsDropDown(TinsList.Data);
+            }
+        }
+        private async Task PrepareTinsDropDown(List<Models.Authentication.Datum> data)
+        {
+            try
+            {
+                setTinsPickerModel(data);
+                await MopupService.Instance.PushAsync(new PickerPageView(PickerModelTins));
+            }
+            catch (GAZTUnlockAccountException)
+            {
+            }
+            catch (InternetException ex)
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+
+        }
+
+        private void setTinsPickerModel(List<Models.Authentication.Datum> data)
+        {
+            if (PickerModelTins != null)
+            {
+                PickerModelTins = null;
+            }
+            var list = new List<string>();
+            list.Add(AppResources.PleaseSelectTIN);
+            foreach (Models.Authentication.Datum dropdown in data)
+            {
+                try
+                {
+                    list.Add(dropdown.TINNumber);
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = list;
+            genericPickerModel.PickerTitle = "";
+            genericPickerModel.PickerId = "EntityTinPicker";
+            genericPickerModel.PageCode = 1;
+            PickerModelTins = genericPickerModel;
+            SelectedTin = SelectedTin;
+        }
         private void HamburgerMenuClicked()
         {
 
@@ -560,7 +877,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             try
             {
                 string deviceOs = DeviceInfo.Platform.ToString();
-                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                 return WebServiceManager.CreateSAMLLoginURL("", deviceUdid, "", deviceOs, lang);
 
             }
@@ -588,7 +905,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             //TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
 
             // * NEW TP PROFILE API
-            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(UserId);
+            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileAndUpdatePasswordAPICall(UserId);
 
             if (TPProfile != null)
             {
@@ -596,17 +913,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 
                 App.TP = new TaxPayerProfile();
                 App.TP = TPProfile;
-                App.TP.Userid = TPProfile.Tin;
+                App.TP.userId = TPProfile.TIN;
                 try
                 {
                     if (App.LoginDataRetrieved != null)
                     {
                         if (App.TP != null)
                         {
-                            App.TP.NameFirst = App.LoginDataRetrieved.NameFirst;
-                            App.TP.NameLast = App.LoginDataRetrieved.NameLast;
-                            App.TP.NameOrg1 = App.LoginDataRetrieved.NameOrg1;
-                            App.TP.TypeChk = App.LoginDataRetrieved.TypeChk;
+                            App.TP.firstName = App.LoginDataRetrieved.NameFirst;
+                            App.TP.lastName = App.LoginDataRetrieved.NameLast;
+                            App.TP.organizationName = App.LoginDataRetrieved.NameOrg1;
+                            App.TP.typeCheck = App.LoginDataRetrieved.TypeChk;
                         }
 
                     }
@@ -633,7 +950,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView, false);
+                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                         App.HasToRefreshLoaderOnDashboard = true;
                     });
 
@@ -677,23 +994,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             string _currentAttempts = CurrentAttempt.ToString();
             string languag = UtilityManager.GetLanguageParameter();
 
-            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(UserId);
+            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileAndUpdatePasswordAPICall(UserId);
             if (TPProfile != null)
             {
 
                 App.TP = new TaxPayerProfile();
                 App.TP = TPProfile;
-                App.TP.Userid = App.LoginDataRetrieved.TIN;
+                App.TP.userId = App.LoginDataRetrieved.TIN;
                 try
                 {
                     if (App.LoginDataRetrieved != null)
                     {
                         if (App.TP != null)
                         {
-                            App.TP.NameFirst = App.LoginDataRetrieved.NameFirst;
-                            App.TP.NameLast = App.LoginDataRetrieved.NameLast;
-                            App.TP.NameOrg1 = App.LoginDataRetrieved.NameOrg1;
-                            App.TP.TypeChk = App.LoginDataRetrieved.TypeChk;
+                            App.TP.firstName = App.LoginDataRetrieved.NameFirst;
+                            App.TP.lastName = App.LoginDataRetrieved.NameLast;
+                            App.TP.organizationName = App.LoginDataRetrieved.NameOrg1;
+                            App.TP.typeCheck = App.LoginDataRetrieved.TypeChk;
                         }
 
                     }

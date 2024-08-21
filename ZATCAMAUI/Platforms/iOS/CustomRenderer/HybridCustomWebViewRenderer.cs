@@ -4,11 +4,12 @@ using WebKit;
 using ZATCAMAUI.Core.CustomControls;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using Microsoft.Maui.Controls.Platform;
-using Foundation;
+
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Exceptions;
+using Foundation;
 
 namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 {
@@ -182,7 +183,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                 App.GUIDFrChangeMob = guid;
                 element.InvokeAction(ZATCAConstants.AppChangeMobCompanayNafath);
             }
-            if (apiUrl.ToString().Contains(ZATCAConstants.DomainUrlForCookies))
+            if (apiUrl.ToString().Contains(ZATCAConstants.DevDomainForCookies))
             {
                 App.IsLoginCalled = true;
             }
@@ -221,7 +222,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
             Uri tempUrl = webView.Url;
 
 
-            if (tempUrl.ToString().Contains(ZATCAConstants.DomainUrlForCookies) && App.IsLoginCalled == false)
+            if (tempUrl.ToString().Contains(ZATCAConstants.DevDomainForCookies) && App.IsLoginCalled == false)
             {
                 element.InvokeAction("hideLoadingIndicator");
             }

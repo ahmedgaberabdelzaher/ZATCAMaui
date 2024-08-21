@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Models.ZakatObjectionsModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 
@@ -13,11 +12,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
         public ZakatObjectionsListPageView()
         {
             InitializeComponent();
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
             viewModel = App.Locator.ZakatObjectionListView;
             BindingContext = viewModel;
             viewModel.ResetData();
@@ -25,40 +19,11 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
 
 
         }
-
-        protected override void OnAppearing()
-        {
-            try
-            {
-                base.OnAppearing();
-
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+       
 
         public async void Objection_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
         {
-            //string formguid = "005056B1F8FB1EDABC99B9AFD7873DBB"; //string.Empty;
-            //string euser = "00000010000008327086"; //string.Empty;
+           
 
             try
             {

@@ -35,10 +35,10 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayersCertificatesPages
         {
             try
             {
-                switch (Device.RuntimePlatform)
+                switch (DeviceInfo.Platform)
                 {
 
-                    case Device.iOS:
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
                         {
 
 
@@ -48,7 +48,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayersCertificatesPages
                             TaxTypePicker.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
-                    case Device.Android:                                        // 
+                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:                                        // 
                         TaxTypePicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         TaxTypePicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         TaxTypePicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
@@ -93,7 +93,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayersCertificatesPages
             base.OnAppearing();
 
 
-            if (Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.Android)
             {
                 TaxTypePicker.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
             }

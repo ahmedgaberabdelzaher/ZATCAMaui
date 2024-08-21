@@ -17,8 +17,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
     public class ZakatReturnDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        public ICommand OnBillsButtonClicked { get; set; }
-        public ICommand GoBackClick { get; set; }
         public ICommand OnSalesDetailsClicked { get; set; }
         public ICommand OnAmendReturnButtonClicked { get; set; }
         public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
@@ -141,9 +139,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
         #region Constructor
         public ZakatReturnDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnBillsButtonClicked = new Command(() =>
-            {
-            });
             OnAmendReturnButtonClicked = new Command(() =>
             {
                 try
@@ -155,13 +150,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
                 {
 
 
-                }
-            });
-            GoBackClick = new Command( () =>
-            {
-                if (!IsLoading)
-                {
-                    _navigationService.GoBack();
                 }
             });
             OnSalesDetailsClicked = new Command(async () =>

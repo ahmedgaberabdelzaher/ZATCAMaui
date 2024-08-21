@@ -146,28 +146,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #region Method
         public async Task OnPageLoad(ZakatReturnDetailsD zakatReturnDetailsD)
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             await Task.Run(async () =>
             {
                 try
                 {
                     SetSuccussMessageVisibility();
                     EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.Fbnum, ZAKATReturnDetailsViewModel.Fbguid); // Method to get the invoice
-                                                                                                                                                                                                                       //  PopToRootPage();
+
                     if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                     {
                         // IsMainGridVisble = true;
-                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Undisamt) > 0 || Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Disamt) > 0)
+                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.results[0].Undisamt) > 0 || Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.results[0].Disamt) > 0)
                         {
                             Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
                             Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
-                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
-                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
-                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
-                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
+                            estimatedZAKATReturnsSADADNumber.d.results[0].ObjectionInvoiceVisibility = true;
+                            estimatedZAKATReturnsSADADNumber.d.results[0].InvoiceVisibility = false;
+                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.results[0];
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.results[0].Sopbel))
                             {
                                 IsrefreshEnabled = true;
                                 RefreshIconImageSource = "ic_refresh.png";
@@ -181,19 +178,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                                 RefreshIconImageSource = "";
 
                             }
-                            //  RefreshIconImageSource = "ic_refresh.png";
-                            //else
-                            //    IsrefreshEnabled = false;
                         }
                         else
                         {
                             Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
                             Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
-                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = false;
-                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = true;
+                            estimatedZAKATReturnsSADADNumber.d.results[0].ObjectionInvoiceVisibility = false;
+                            estimatedZAKATReturnsSADADNumber.d.results[0].InvoiceVisibility = true;
 
 
-                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.results[0].Sopbel))
                             {
                                 IsrefreshEnabled = true;
                                 RefreshIconImageSource = "ic_refresh.png";
@@ -203,7 +197,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             }
                             else
                             {
-                                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.results[0];
 
                                 ReferenceNumber = EstimatedZAKATSADADNumber.Sopbel;
                                 SADADNumber = EstimatedZAKATSADADNumber.Sadadid;
@@ -217,32 +211,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     }
                     else
                     {
-                       MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        MainThread.BeginInvokeOnMainThread(async () => {
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
                             _navigationService.GoBack();
                         });
                         IsLoading = false;
-                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
-                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
+                        estimatedZAKATReturnsSADADNumber.d.results[0].ObjectionInvoiceVisibility = true;
+                        estimatedZAKATReturnsSADADNumber.d.results[0].InvoiceVisibility = false;
                     }
                 }
                 catch (InternetException ex)
                 {
-                   MainThread.BeginInvokeOnMainThread(async () =>
+                    IsLoading = false;
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                        // _dialogService.ShowMessage(, AppResources.Information);
                     });
                 }
             });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+            IsLoading = false;
         }
 
         protected void OnDownLoadInvoiceClicked()

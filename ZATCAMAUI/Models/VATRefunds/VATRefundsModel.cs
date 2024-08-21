@@ -3,11 +3,11 @@ using System.Globalization;
 using Newtonsoft.Json;
 using System.ComponentModel;
 using ZATCAMAUI.Core.Mangers;
-using Foundation;
+
 
 namespace ZATCAMAUI.Models.VATRefunds
 {
-    [Preserve(AllMembers = true)]
+    
     public class VATRefundsModel
     {
         public VATRefundsModel()
@@ -50,7 +50,7 @@ namespace ZATCAMAUI.Models.VATRefunds
         public string LastStatusChange { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public partial class VatRefundsListResultModel
     {
         //[JsonProperty("__metadata")]
@@ -723,14 +723,14 @@ namespace ZATCAMAUI.Models.VATRefunds
         public VatReffundAmtDetails[] VAtRefundSET { get; set; }
     }
     
-    [Preserve(AllMembers = true)]
+    
     public partial class Set
     {
         [JsonProperty("banks")]
         public Result[] Results { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public partial class Result
     {
         //[JsonProperty("__metadata")]
@@ -805,7 +805,7 @@ namespace ZATCAMAUI.Models.VATRefunds
         public VatReffundAmtDetails[] results { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public class VatReffundAmtDetails
     {
         /*ZDP_VAT_NW_RF_SRV*/
@@ -854,7 +854,7 @@ namespace ZATCAMAUI.Models.VATRefunds
 
     }
 
-    [Preserve(AllMembers = true)]
+    
     public partial class VarRefundIbanDataModel
     {
         [JsonProperty("__metadata")]
@@ -964,7 +964,7 @@ namespace ZATCAMAUI.Models.VATRefunds
     }
 
 
-    [Preserve(AllMembers = true)]
+    
     public partial class VatRefundSaveDataModel
     {
         [JsonProperty("__metadata")]
@@ -1142,7 +1142,7 @@ namespace ZATCAMAUI.Models.VATRefunds
         public VtfrAmtSet VAtRefundSET { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     public partial class MetadataVatRefundSaveDataModel
     {
         [JsonProperty("id")]

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Foundation;
+
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -461,7 +461,7 @@ namespace ZATCAMAUI.Models
         public string questionDescription { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
     [DataContract]
     public class vATRegistration
     {
@@ -744,7 +744,7 @@ namespace ZATCAMAUI.Models
 
 
     [Serializable]
-    [Preserve(AllMembers = true)]
+    
     public class VATRegistrationDetails
     {
         [DataMember]
@@ -753,7 +753,7 @@ namespace ZATCAMAUI.Models
     }
 
     [Serializable]
-    [Preserve(AllMembers = true)]
+    
     public class VATRegistrationDetailsResponse
     {
         [DataMember]
