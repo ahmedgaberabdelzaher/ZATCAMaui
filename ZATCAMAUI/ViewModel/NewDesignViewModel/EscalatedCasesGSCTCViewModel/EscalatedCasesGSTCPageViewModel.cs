@@ -1,7 +1,6 @@
 ﻿
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Foundation;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
@@ -9,7 +8,6 @@ using static ZATCAMAUI.Models.EscalatedGstcModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EscalatedCasesGSCTCViewModel
 {
-    [Preserve(AllMembers = true)]
     public class EscalatedCasesGSTCPageViewModel : BaseViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }

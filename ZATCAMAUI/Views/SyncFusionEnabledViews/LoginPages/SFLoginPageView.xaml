@@ -17,21 +17,10 @@
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
 
-            <!--#region Header-->
-            <!--  Back Button  -->
-            <Image
-                HorizontalOptions="Center"
-                Source="zatcaLogo.png"
-                Margin="40,10"
-                WidthRequest="75"
-                HeightRequest="75"
-                VerticalOptions="Start"/>
-            <!--#endregion Header-->
+            <StackLayout Grid.Row="1" Padding="10,0" Spacing="10">
+                    <Image HorizontalOptions="Center" Source="zatcaLogo.png" Margin="40,10" WidthRequest="75" HeightRequest="75" VerticalOptions="Start"/>
 
-            <StackLayout Grid.Row="1"
-                         Padding="10,0" Spacing="20">
-
-                     <Label x:Name="loginLabel"  FontSize="Large" TextColor="LightSeaGreen" Opacity="1.3" HorizontalOptions="Start" />
+                    <Label x:Name="loginLabel"  FontSize="Large" TextColor="LightSeaGreen" Opacity="1.3" HorizontalOptions="Start" />
 
                     <Label x:Name="WelcomeLabel" FontSize="Small" TextColor="white"
                             Opacity="0.8"/>
@@ -50,6 +39,7 @@
                                     x:Name="LoginTin"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding TIN}"
+                                    Placeholder="{x:Static ResourceManager:AppResources.TINPlaceholder}"
                                     Unfocused="LoginTin_Unfocused"
                                     Focused="LoginTin_Focused"
                                     TextColor="#58595B"/>
@@ -106,6 +96,7 @@
                                 <custom:GAZTBorderlessEntry
                                 x:Name="LoginPassword"
                                 IsPassword="true"
+                                Placeholder="{x:Static ResourceManager:AppResources.PasswordPlaceholder}"
                                 Style="{StaticResource DefaultEntry}"
                                 Text="{Binding Password}"
                                 TextColor="#58595B"/>
@@ -143,7 +134,7 @@
                                               TextColor="White"
                                               StrokeThickness="1.5"
                                               CornerRadius="15"
-                                              Margin="35,5,0,5"
+                                              Margin="20"
                                               Style="{StaticResource PrimaryButtonStyle}"
                                               FontSize="Medium"
                                               Command="{Binding LoginClickedCommand}"/>

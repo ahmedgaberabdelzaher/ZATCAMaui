@@ -27,13 +27,13 @@
         public string Visdel { get; set; }
 
     }
-    
 
-    public class Attachments
+
+    public partial class AttachmentsList
     {
         public List<Attachment> results { get; set; }
     }
-    
 
-  
+
+
 }
