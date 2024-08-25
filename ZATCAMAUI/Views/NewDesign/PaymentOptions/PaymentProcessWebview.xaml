@@ -43,9 +43,8 @@
                             Grid.Column="0"
                             HeightRequest="24"
                             HorizontalOptions="StartAndExpand"
-                            
                             Source="arrowLeftwhite"
-                            Style="{DynamicResource BackButtonArrow}"
+                            
                             VerticalOptions="StartAndExpand"
                             WidthRequest="24">
                             <Image.GestureRecognizers>
@@ -62,7 +61,7 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-         <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="*">
@@ -72,8 +71,8 @@
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        Rotation="0"
                         IsVisible="{Binding IsBackStepButtonVisible}"
+                        Rotation="0"
                         Source="whiteRightBack.png"
                         VerticalOptions="CenterAndExpand">
 
@@ -97,17 +96,17 @@
             </Grid>
             <!--#endregion Header-->
 
-             <Grid HeightRequest="850">
+            <Grid HeightRequest="850">
 
                 <Grid
                     x:Name="WebviewGrid"
                     ColumnDefinitions="100*"
-                    RowDefinitions="100*"/>
+                    RowDefinitions="100*" />
 
             </Grid>
 
-             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
         </Grid>
-       
+
     </ContentPage.Content>
 </ContentPage>

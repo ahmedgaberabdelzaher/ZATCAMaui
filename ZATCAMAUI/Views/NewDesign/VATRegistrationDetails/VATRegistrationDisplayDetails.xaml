@@ -5,26 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid>
@@ -53,7 +41,7 @@
                             HorizontalOptions="StartAndExpand"
                             IsVisible="{Binding IsBackStepButtonVisible}"
                             Source="arrowLeftwhite"
-                            Style="{DynamicResource BackButtonArrow}"
+                            
                             VerticalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />
@@ -147,10 +135,10 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         BackgroundColor="Transparent"
-                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         HeightRequest="24"
                                         HorizontalOptions="Start"
                                         Opacity=".2"
+                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         VerticalOptions="Center"
                                         WidthRequest="24" />
                                     <Image
@@ -223,9 +211,9 @@
                         <Border
                             Margin="0,10,0,0"
                             Padding="0"
+                            IsVisible="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IbanVisibility}"
                             Stroke="LightGray"
-                            StrokeShape="RoundRectangle 8,8,8,8"
-                            IsVisible="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IbanVisibility}">
+                            StrokeShape="RoundRectangle 8,8,8,8">
                             <StackLayout>
 
                                 <Grid Padding="5" RowSpacing="0">
@@ -242,10 +230,10 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         BackgroundColor="Transparent"
-                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         HeightRequest="24"
                                         HorizontalOptions="Start"
                                         Opacity=".2"
+                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         VerticalOptions="Center"
                                         WidthRequest="24" />
                                     <Image
@@ -343,10 +331,10 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         BackgroundColor="Transparent"
-                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         HeightRequest="24"
                                         HorizontalOptions="Start"
                                         Opacity=".2"
+                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         VerticalOptions="Center"
                                         WidthRequest="24" />
                                     <Image
@@ -451,10 +439,10 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         BackgroundColor="Transparent"
-                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         HeightRequest="24"
                                         HorizontalOptions="Start"
                                         Opacity=".2"
+                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         VerticalOptions="Center"
                                         WidthRequest="24" />
                                     <Image
@@ -593,10 +581,10 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         BackgroundColor="Transparent"
-                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         HeightRequest="24"
                                         HorizontalOptions="Start"
                                         Opacity=".2"
+                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         VerticalOptions="Center"
                                         WidthRequest="24" />
                                     <Image

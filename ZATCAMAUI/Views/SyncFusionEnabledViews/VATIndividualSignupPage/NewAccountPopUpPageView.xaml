@@ -4,14 +4,15 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
-     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -80,14 +81,15 @@
                                 Completed="IbanOne_Completed"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric,
+                                                      iOS=Default}"
                                 MaxLength="2"
                                 Placeholder="03"
                                 ReturnType="Next"
                                 Text="{Binding IbanPartOne}"
-                                TextChanged="IbanOne_TextChanged" >
+                                TextChanged="IbanOne_TextChanged">
 
-                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom:GAZTBorderlessEntry.Behaviors>
                                     <behavior:OnlyNumericValuesBehaviour />
                                 </custom:GAZTBorderlessEntry.Behaviors>
 
@@ -100,14 +102,15 @@
                                 x:Name="IbanTwo"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric,
+                                                      iOS=Default}"
                                 MaxLength="8"
                                 Placeholder="80000000"
                                 ReturnType="Next"
                                 Text="{Binding IbanPartTwo}"
-                                TextChanged="IbanTwo_TextChanged" >
+                                TextChanged="IbanTwo_TextChanged">
 
-                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom:GAZTBorderlessEntry.Behaviors>
                                     <behavior:OnlyNumericValuesBehaviour />
                                 </custom:GAZTBorderlessEntry.Behaviors>
 
@@ -120,14 +123,15 @@
                                 x:Name="IbanThree"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric,
+                                                      iOS=Default}"
                                 MaxLength="4"
                                 Placeholder="0000"
                                 ReturnType="Next"
                                 Text="{Binding IbanPartThree}"
-                                TextChanged="IbanThree_TextChanged" >
+                                TextChanged="IbanThree_TextChanged">
 
-                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom:GAZTBorderlessEntry.Behaviors>
                                     <behavior:OnlyNumericValuesBehaviour />
                                 </custom:GAZTBorderlessEntry.Behaviors>
 
@@ -140,14 +144,15 @@
                                 x:Name="IbanFour"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric,
+                                                      iOS=Default}"
                                 MaxLength="4"
                                 Placeholder="0000"
                                 ReturnType="Next"
                                 Text="{Binding IbanPartFour}"
-                                TextChanged="IbanFour_TextChanged" >
+                                TextChanged="IbanFour_TextChanged">
 
-                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom:GAZTBorderlessEntry.Behaviors>
                                     <behavior:OnlyNumericValuesBehaviour />
                                 </custom:GAZTBorderlessEntry.Behaviors>
 
@@ -160,13 +165,14 @@
                                 x:Name="IbanFive"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric,
+                                                      iOS=Default}"
                                 MaxLength="4"
                                 Placeholder="0000"
                                 Text="{Binding IbanPartFive}"
-                                TextChanged="IbanFive_TextChanged" >
+                                TextChanged="IbanFive_TextChanged">
 
-                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom:GAZTBorderlessEntry.Behaviors>
                                     <behavior:OnlyNumericValuesBehaviour />
                                 </custom:GAZTBorderlessEntry.Behaviors>
 

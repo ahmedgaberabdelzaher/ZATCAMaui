@@ -18,12 +18,6 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
             <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector" />
             <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector" />
 
@@ -82,7 +76,7 @@
                             HeightRequest="24"
                             HorizontalOptions="StartAndExpand"
                             Source="arrowLeftwhite"
-                            Style="{DynamicResource BackButtonArrow}"
+                            
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="24">
                             <Image.GestureRecognizers>

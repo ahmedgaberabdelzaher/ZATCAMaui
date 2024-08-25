@@ -75,8 +75,8 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         HorizontalOptions="End"
-                                        Text="{Binding ReferenceNumberTxt}"
                                         Style="{StaticResource ValueLabelBlack}"
+                                        Text="{Binding ReferenceNumberTxt}"
                                         VerticalOptions="Center" />
 
                                     <Image Grid.Row="0" Grid.Column="2">
@@ -117,12 +117,12 @@
 
                                     <Label
                                         x:Name="ContractNumberTxt"
-                                        Text="{Binding ContractNumberTxt}"
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         FontSize="15"
                                         HorizontalOptions="End"
                                         Style="{StaticResource ValueLabelBlack}"
+                                        Text="{Binding ContractNumberTxt}"
                                         VerticalOptions="Center" />
 
                                     <Image Grid.Row="0" Grid.Column="2">
@@ -167,7 +167,7 @@
                             </Label>
                         </StackLayout>
                     </Border>
-                    <custom:Loader IsVisible="{Binding IsLoading1}"/>
+                    <custom:Loader IsVisible="{Binding IsLoading1}" />
                 </Grid>
             </ScrollView>
         </StackLayout>

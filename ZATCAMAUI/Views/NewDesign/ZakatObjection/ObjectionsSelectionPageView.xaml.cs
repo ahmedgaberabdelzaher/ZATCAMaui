@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
@@ -14,11 +13,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
         public ObjectionsSelectionPageView()
         {
             InitializeComponent();
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             _viewModel = App.Locator.ObjectionsSelectionPageView;
 
@@ -27,17 +21,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
             _viewModel.AddSelectionOptions();
 
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
 
         async void outletDecisionOptionsListView_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
         {
@@ -70,10 +54,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
             try
             {
                 base.OnAppearing();
-
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
 
                 _viewModel.AddSelectionOptions();
 

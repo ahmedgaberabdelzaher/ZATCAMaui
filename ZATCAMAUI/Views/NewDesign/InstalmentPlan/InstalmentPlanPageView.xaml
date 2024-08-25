@@ -40,7 +40,7 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -81,12 +81,12 @@
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
-                    
+
 
                     <ScrollView
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            VerticalScrollBarVisibility="Never">
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never">
 
                         <!--  Code for Zakat & VAT options  -->
                         <Grid

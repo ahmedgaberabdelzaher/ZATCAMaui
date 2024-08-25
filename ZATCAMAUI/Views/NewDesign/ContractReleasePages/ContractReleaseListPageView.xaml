@@ -6,17 +6,17 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False">
 
 
     <ContentPage.Content>
 
-         <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
@@ -55,7 +55,7 @@
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}" 
+                    Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}"
                     VerticalOptions="Center" />
 
                 <Image
@@ -75,13 +75,14 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
 
-                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                         <StackLayout>
                             <Grid
@@ -99,8 +100,8 @@
                                 <StackLayout Orientation="Horizontal">
 
                                     <Label
-                                        Style="{StaticResource PageTitleBlack}"
                                         HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource PageTitleBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ContractRelease}"
                                         VerticalOptions="CenterAndExpand" />
                                     <Image
@@ -205,10 +206,7 @@
                                                                 <ColumnDefinition Width="50*" />
                                                             </Grid.ColumnDefinitions>
 
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.ColumnSpan="2"
-                                                                Orientation="Vertical">
+                                                            <StackLayout Grid.Row="0" Grid.ColumnSpan="2">
                                                                 <Label
                                                                     Margin="0,0,0,10"
                                                                     HorizontalOptions="StartAndExpand"
@@ -218,10 +216,7 @@
 
                                                             </StackLayout>
 
-                                                            <StackLayout
-                                                                Grid.Row="1"
-                                                                Grid.ColumnSpan="2"
-                                                                Orientation="Vertical">
+                                                            <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
 
                                                                 <Label
                                                                     HorizontalOptions="StartAndExpand"
@@ -287,7 +282,7 @@
                                 IsVisible="{Binding SummaryVisible}"
                                 VerticalOptions="FillAndExpand">
 
-                                <StackLayout Orientation="Vertical">
+                                <StackLayout>
 
                                     <Grid Margin="0,5,0,10">
                                         <Grid.RowDefinitions>
@@ -317,7 +312,7 @@
 
                                     <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout>
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -428,9 +423,9 @@
                                                         <Label.FormattedText>
                                                             <FormattedString>
                                                                 <FormattedString.Spans>
-                                                                    <Span Text="{Binding FromDate, StringFormat='{0:MMM yyyy}'}" />
+                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding FromDate, StringFormat='{0:MMM yyyy}'}" />
                                                                     <Span Text=" - " />
-                                                                    <Span Text="{Binding ToDate, StringFormat='{0:MMM yyyy}'}" />
+                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding ToDate, StringFormat='{0:MMM yyyy}'}" />
                                                                 </FormattedString.Spans>
                                                             </FormattedString>
                                                         </Label.FormattedText>
@@ -483,8 +478,8 @@
                                     <Border
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}"
                                         VerticalOptions="FillAndExpand">
                                         <Grid
@@ -523,8 +518,8 @@
                                     <Border
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}"
                                         VerticalOptions="FillAndExpand">
                                         <Grid
@@ -563,8 +558,8 @@
                                     <Border
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}"
                                         VerticalOptions="FillAndExpand">
                                         <Grid
@@ -605,7 +600,7 @@
                                         Padding="0,0,0,16"
                                         Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout>
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -786,7 +781,7 @@
                                         VerticalOptions="End" />
                                 </StackLayout>
                             </Grid>
-                            
+
                         </StackLayout>
 
                     </ScrollView>
@@ -801,6 +796,6 @@
 
         </Grid>
 
-     
+
     </ContentPage.Content>
 </ContentPage>

@@ -1,55 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Mopups:PopupPage  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.NewDesign.DashBoardPages.UpdateActivityInstructionsPageView"
-             Title="UpdateActivityInstructionsPageView"
-             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-            xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-             xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
-            FlowDirection="{Binding AppDirection}">
+<Mopups:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.DashBoardPages.UpdateActivityInstructionsPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    Title="UpdateActivityInstructionsPageView"
+    FlowDirection="{Binding AppDirection}">
 
-            <Mopups:PopupPage.Animation>
-                    <Animations:ScaleAnimation
-                        DurationIn="400"
-                        DurationOut="300"
-                        HasBackgroundAnimation="True"
-                        PositionIn="Bottom"
-                        PositionOut="Bottom" />
-            </Mopups:PopupPage.Animation>
+    <Mopups:PopupPage.Animation>
+        <Animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </Mopups:PopupPage.Animation>
 
-    <Border BackgroundColor="White" StrokeShape="RoundRectangle 15,15,0,0"  HorizontalOptions="End" VerticalOptions="End" >
-        <StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
-            <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
-            
-                <StackLayout Margin="8">
-                    
-                    <StackLayout Orientation="Vertical" Spacing="0">
+    <Border
+        BackgroundColor="White"
+        HorizontalOptions="End"
+        StrokeShape="RoundRectangle 15,15,0,0"
+        VerticalOptions="End">
+        <StackLayout
+            Margin="24,8,24,0"
+            BackgroundColor="Transparent"
+            HorizontalOptions="End"
+            VerticalOptions="End">
+            <BoxView
+                HorizontalOptions="Center"
+                Style="{StaticResource NeutralGrayBoxViewDrag}"
+                VerticalOptions="Start" />
 
-                    <Label Text="{Binding responseMessage}" HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource CaptionLabelGrey}" />
-                        </StackLayout>
+            <StackLayout Margin="8">
+
+                <StackLayout  Spacing="0">
+
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource CaptionLabelGrey}"
+                        Text="{Binding responseMessage}" />
                 </StackLayout>
-            
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End">
-                <custom:CheckboxCustom  Grid.Row="0" Grid.Column="0" IsChecked="{Binding IsInstructionChecked}" IsEnabled="{Binding isInstructionCheckedEnable}"
-                                                                             Style="{StaticResource CheckboxHeightWidth32}"/>
-                <Label Margin="5,10,0,15"  Style="{DynamicResource IsInstructionCheckedStyle}" Text="{x:Static ResourceManager:AppResources.VFCCheckBoxDesc}" >
-                    
+            </StackLayout>
+
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="End">
+                <custom:CheckboxCustom
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    IsChecked="{Binding IsInstructionChecked}"
+                    IsEnabled="{Binding isInstructionCheckedEnable}"
+                    Style="{StaticResource CheckboxHeightWidth32}" />
+                <Label
+                    Margin="5,10,0,15"
+                    Style="{DynamicResource IsInstructionCheckedStyle}"
+                    Text="{x:Static ResourceManager:AppResources.VFCCheckBoxDesc}">
+
                     <Label.Triggers>
-                        <DataTrigger TargetType="Label" Binding="{Binding IsInstructionChecked}" Value="True">
+                        <DataTrigger
+                            Binding="{Binding IsInstructionChecked}"
+                            TargetType="Label"
+                            Value="True">
                             <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                         </DataTrigger>
-                        <DataTrigger TargetType="Label" Binding="{Binding IsInstructionChecked}" Value="False">
+                        <DataTrigger
+                            Binding="{Binding IsInstructionChecked}"
+                            TargetType="Label"
+                            Value="False">
                             <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
             </StackLayout>
-            <buttons:SfButton Grid.ColumnSpan="2" Margin="0,24,0,24" IsEnabled="{Binding IsContinueButtonEnable}" Background="{Binding ContinueButtonnBackroundColor}" 
-            x:Name="btnVATDeregistration" Command="{Binding UpdateActivityClicked}" Text="{x:Static ResourceManager:AppResources.ZDone}"
-                                   Style="{StaticResource PrimaryButtonStyle}"/>
+            <buttons:SfButton
+                x:Name="btnVATDeregistration"
+                Grid.ColumnSpan="2"
+                Margin="0,24,0,24"
+                Background="{Binding ContinueButtonnBackroundColor}"
+                Command="{Binding UpdateActivityClicked}"
+                IsEnabled="{Binding IsContinueButtonEnable}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZDone}" />
         </StackLayout>
     </Border>
 </Mopups:PopupPage>

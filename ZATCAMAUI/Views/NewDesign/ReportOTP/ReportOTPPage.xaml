@@ -4,36 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
-            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImage" TargetType="Image">
-                        <Setter Property="HeightRequest" Value="30" />
-                        <Setter Property="WidthRequest" Value="30" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding StartTimerCommand}" EventName="Appearing" />
@@ -65,7 +45,7 @@
                                 HeightRequest="45"
                                 HorizontalOptions="CenterAndExpand"
                                 Source="ic_logo_gazt.png"
-                                Style="{DynamicResource BackButtonArrow}"
+                                
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="40" />
 
@@ -77,7 +57,7 @@
                                     HorizontalOptions="EndAndExpand"
                                     Rotation="0"
                                     Source="darkClose.png"
-                                    Style="{DynamicResource BackButtonArrow}"
+                                    
                                     VerticalOptions="CenterAndExpand" />
 
                                 <StackLayout.GestureRecognizers>
@@ -139,155 +119,163 @@
                             VerticalOptions="Start">
 
                             <!--  First OTP  -->
-                            <Border StrokeShape="RoundRectangle 10"
-                                    Stroke="Gray"
-                                    HeightRequest="50"
-                                    WidthRequest="50"
-                                    VerticalOptions="Start">
+                            <Border
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
 
                                 <custom:GAZTBorderlessEntry
-                                        x:Name="firstEntry"
-                                        ClassId="1"
-                                        FontFamily="{StaticResource SomarSemiBold}"
-                                        FontSize="16"
-                                        HorizontalTextAlignment="Center"
-                                        IsPassword="True"
-                                        MaxLength="1"
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
-                                        WidthRequest="100"
-                                        ReturnType="Next"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding OTPFirstDigit}"
-                                        TextColor="#0996D4">
+                                    x:Name="firstEntry"
+                                    ClassId="1"
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="True"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    ReturnType="Next"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding OTPFirstDigit}"
+                                    TextColor="#0996D4"
+                                    WidthRequest="100">
 
-                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:GAZTBorderlessEntry.Behaviors>
                                         <behavior:OnlyNumericValuesBehaviour />
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding GoToNextEntryCommand}"
-                                                CommandParameter="{Binding Source={x:Reference secondEntry}}"
-                                                EventName="TextChanged" />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding GoToNextEntryCommand}"
+                                            CommandParameter="{Binding Source={x:Reference secondEntry}}"
+                                            EventName="TextChanged" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
 
                                 </custom:GAZTBorderlessEntry>
 
-                                 <Border.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference firstEntry}}" />
                                 </Border.GestureRecognizers>
-    
+
                             </Border>
 
                             <!--  Second OTP  -->
-                            <Border StrokeShape="RoundRectangle 10"
-                                    Stroke="Gray"
-                                    HeightRequest="50"
-                                    WidthRequest="50"
-                                    Grid.Column="1"
-                                    VerticalOptions="Start">
+                            <Border
+                                Grid.Column="1"
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
 
-                               <custom:GAZTBorderlessEntry
-                                        x:Name="secondEntry"
-                                        ClassId="2"
-                                        FontFamily="{StaticResource SomarSemiBold}"
-                                        FontSize="16"
-                                        HorizontalTextAlignment="Center"
-                                        IsPassword="True"
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
-                                        WidthRequest="100"
-                                        MaxLength="1"
-                                        ReturnType="Next"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding OTPSecondDigit}"
-                                        TextColor="#0996D4">
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="secondEntry"
+                                    ClassId="2"
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="True"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    ReturnType="Next"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding OTPSecondDigit}"
+                                    TextColor="#0996D4"
+                                    WidthRequest="100">
 
-                                      <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:GAZTBorderlessEntry.Behaviors>
                                         <behavior:OnlyNumericValuesBehaviour />
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding GoToNextEntryCommand}"
-                                                CommandParameter="{Binding Source={x:Reference thirdEntry}}"
-                                                EventName="TextChanged" />
-                                      </custom:GAZTBorderlessEntry.Behaviors>
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding GoToNextEntryCommand}"
+                                            CommandParameter="{Binding Source={x:Reference thirdEntry}}"
+                                            EventName="TextChanged" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
 
-                                    </custom:GAZTBorderlessEntry>
+                                </custom:GAZTBorderlessEntry>
 
-                                 <Border.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference secondEntry}}" />
                                 </Border.GestureRecognizers>
-    
+
                             </Border>
 
                             <!--  Third OTP  -->
-                            <Border StrokeShape="RoundRectangle 10"
-                                    Stroke="Gray"
-                                    HeightRequest="50"
-                                    WidthRequest="50"
-                                    Grid.Column="2"
-                                    VerticalOptions="Start">
+                            <Border
+                                Grid.Column="2"
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
 
-                               <custom:GAZTBorderlessEntry
-                                        x:Name="thirdEntry"
-                                        ClassId="3"
-                                        FontFamily="{StaticResource SomarSemiBold}"
-                                        FontSize="16"
-                                        HorizontalTextAlignment="Center"
-                                        IsPassword="True"
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
-                                        WidthRequest="100"
-                                        MaxLength="1"
-                                        ReturnType="Next"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding OTPThirdDigit}"
-                                        TextColor="#0996D4">
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="thirdEntry"
+                                    ClassId="3"
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="True"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    ReturnType="Next"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding OTPThirdDigit}"
+                                    TextColor="#0996D4"
+                                    WidthRequest="100">
 
-                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:GAZTBorderlessEntry.Behaviors>
                                         <behavior:OnlyNumericValuesBehaviour />
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding GoToNextEntryCommand}"
-                                                CommandParameter="{Binding Source={x:Reference fourthEntry}}"
-                                                EventName="TextChanged" />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding GoToNextEntryCommand}"
+                                            CommandParameter="{Binding Source={x:Reference fourthEntry}}"
+                                            EventName="TextChanged" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
 
                                 </custom:GAZTBorderlessEntry>
 
-                                 <Border.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference thirdEntry}}" />
                                 </Border.GestureRecognizers>
-    
+
                             </Border>
 
                             <!--  Fourth OTP  -->
-                            <Border StrokeShape="RoundRectangle 10"
-                                    Stroke="Gray"
-                                    HeightRequest="50"
-                                    WidthRequest="50"
-                                    Grid.Column="3"
-                                    VerticalOptions="Start">
+                            <Border
+                                Grid.Column="3"
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
 
                                 <custom:GAZTBorderlessEntry
-                                        x:Name="fourthEntry"
-                                        ClassId="4"
-                                        FontFamily="{StaticResource SomarSemiBold}"
-                                        FontSize="16"
-                                        HorizontalTextAlignment="Center"
-                                        IsPassword="True"
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
-                                        WidthRequest="100"
-                                        MaxLength="1"
-                                        ReturnType="Go"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding OTPFourthDigit}"
-                                        TextColor="#0996D4">
+                                    x:Name="fourthEntry"
+                                    ClassId="4"
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="True"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    ReturnType="Go"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding OTPFourthDigit}"
+                                    TextColor="#0996D4"
+                                    WidthRequest="100">
 
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                         <behavior:OnlyNumericValuesBehaviour />
-                                            <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behavior:OnlyNumericValuesBehaviour />
+                                        <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
 
                                 </custom:GAZTBorderlessEntry>
 
-                                 <Border.GestureRecognizers>
-                                   <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference fourthEntry}}" />
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference fourthEntry}}" />
                                 </Border.GestureRecognizers>
-    
+
                             </Border>
 
                         </Grid>

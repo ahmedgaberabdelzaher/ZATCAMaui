@@ -1,8 +1,5 @@
 ﻿
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Application = Microsoft.Maui.Controls.Application;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.CreditCarriedPages

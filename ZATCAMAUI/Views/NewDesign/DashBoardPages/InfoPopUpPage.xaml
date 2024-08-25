@@ -3,17 +3,17 @@
     x:Class="ZATCAMAUI.Views.NewDesign.DashBoardPages.InfoPopUpPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Border
         BackgroundColor="{StaticResource NewDullOrangeColor}"
-        Style="{StaticResource CommonTopCurves}"
         Stroke="{StaticResource NeutralLightGrey}"
+        Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
         <StackLayout>
             <Grid
@@ -28,7 +28,7 @@
                     Grid.Column="0"
                     HorizontalOptions="StartAndExpand"
                     Source="ic_White_info.png"
-                    Style="{DynamicResource BackButtonArrow}" />
+                     />
 
                 <Label
                     x:Name="VATTitle"
@@ -69,7 +69,7 @@
                     Grid.Column="0"
                     HorizontalOptions="StartAndExpand"
                     Source="ic_White_info.png"
-                    Style="{DynamicResource BackButtonArrow}" />
+                     />
 
                 <Label
                     Grid.Row="0"

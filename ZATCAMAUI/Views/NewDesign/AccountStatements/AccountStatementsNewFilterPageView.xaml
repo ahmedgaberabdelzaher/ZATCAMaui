@@ -82,16 +82,18 @@
 
                                         <Grid ColumnDefinitions="*,auto,*" HorizontalOptions="FillAndExpand">
 
-                                           <Border Stroke="#B1B1B1"
-                                                   StrokeThickness="1" 
-                                                   Padding="5,8,5,8"
-                                                   Style="{StaticResource GreyBorderFrame}">
+                                            <Border
+                                                Padding="5,8,5,8"
+                                                Stroke="#B1B1B1"
+                                                StrokeThickness="1"
+                                                Style="{StaticResource GreyBorderFrame}">
 
                                                 <StackLayout Orientation="Horizontal">
 
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="TxFromAmountEntry"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"
                                                         Text="{Binding FromAmount}"
                                                         TextChanged="From_Amount_Changed"
@@ -103,18 +105,19 @@
 
                                                     </custom:GAZTBorderlessEntry>
 
-                                                        <Image  Margin="5,0"
-                                                            Source="close"
-                                                            HeightRequest="14"
-                                                            WidthRequest="14">
-                                                            <Image.GestureRecognizers>
-                                                                <TapGestureRecognizer Tapped="FromAmount_Tapped" />
-                                                            </Image.GestureRecognizers>
-                                                        </Image>
+                                                    <Image
+                                                        Margin="5,0"
+                                                        HeightRequest="14"
+                                                        Source="close"
+                                                        WidthRequest="14">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="FromAmount_Tapped" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
                                                 </StackLayout>
 
-                                           </Border>
-                                            
+                                            </Border>
+
                                             <StackLayout
                                                 Grid.Column="1"
                                                 HorizontalOptions="EndAndExpand"
@@ -131,40 +134,43 @@
 
                                             </StackLayout>
 
-                                            <Border Stroke="#B1B1B1"
-                                                   StrokeThickness="1" 
-                                                   Padding="5,8,5,8"
-                                                   Grid.Column="2"
-                                                   Style="{StaticResource GreyBorderFrame}">
+                                            <Border
+                                                Grid.Column="2"
+                                                Padding="5,8,5,8"
+                                                Stroke="#B1B1B1"
+                                                StrokeThickness="1"
+                                                Style="{StaticResource GreyBorderFrame}">
 
                                                 <StackLayout Orientation="Horizontal">
 
                                                     <custom:GAZTBorderlessEntry
-                                                            x:Name="TxToAmountEntry"
-                                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
-                                                            Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}"
-                                                            Text="{Binding ToAmount}"
-                                                            TextChanged="To_Amount_Changed"
-                                                            Unfocused="To_Amount_Unfocused">
+                                                        x:Name="TxToAmountEntry"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
+                                                        Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}"
+                                                        Text="{Binding ToAmount}"
+                                                        TextChanged="To_Amount_Changed"
+                                                        Unfocused="To_Amount_Unfocused">
 
-                                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                                <behaviour:OnlyNumericValuesBehaviour />
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <behaviour:OnlyNumericValuesBehaviour />
 
-                                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
 
-                                                        </custom:GAZTBorderlessEntry>
+                                                    </custom:GAZTBorderlessEntry>
 
-                                                        <Image  Margin="5,0"
-                                                            Source="close"
-                                                            HeightRequest="14"
-                                                            WidthRequest="14">
-                                                            <Image.GestureRecognizers>
-                                                                <TapGestureRecognizer Tapped="ToAmount_Tapped" />
-                                                            </Image.GestureRecognizers>
-                                                        </Image>
+                                                    <Image
+                                                        Margin="5,0"
+                                                        HeightRequest="14"
+                                                        Source="close"
+                                                        WidthRequest="14">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="ToAmount_Tapped" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
                                                 </StackLayout>
 
-                                           </Border>
+                                            </Border>
                                         </Grid>
                                     </StackLayout>
 
@@ -478,11 +484,9 @@
                                 x:Name="TaxPeriodDateNormalCalendar"
                                 Margin="2"
                                 Background="White"
-                                
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="36"
                                 Mode="Dialog"
-                                
                                 SelectedItem="{Binding TodayDateNormal}"
                                 Style="{StaticResource PickerStyle}">
 
@@ -536,11 +540,9 @@
                                 x:Name="TaxPeriodDateHijriCalendar"
                                 Margin="2"
                                 Background="White"
-                                
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="36"
                                 Mode="Dialog"
-                                
                                 SelectedItem="{Binding TodayDateinHijri}">
 
                                 <custom:CustomHijriDatePicker.SelectionView>
@@ -587,10 +589,10 @@
                                 </custom:CustomHijriDatePicker.FooterView>
                             </custom:CustomHijriDatePicker>
 
-                             <buttons:SfButton
+                            <buttons:SfButton
                                 x:Name="btnReasonClear"
                                 Margin="0,60"
-                                Clicked="Clearfields" 
+                                Clicked="Clearfields"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ACFilterClear}"
                                 VerticalOptions="End" />

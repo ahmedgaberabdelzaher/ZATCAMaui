@@ -10170,13 +10170,13 @@ info@zatca.gov.sa</value>
     <value>رقم البيان/رقم الفاتورة</value>
 </data>
 <data name="TotalFees" xml:space="preserve">
-    <value>الرسوم الإجمالية</value>
+    <value>إجمالي الرسوم والضرائب</value>
 </data>
 <data name="CustomsFees" xml:space="preserve">
     <value>الرسوم الجمركية</value>
 </data>
 <data name="OtherFees" xml:space="preserve">
-    <value>الرسوم الأخرى</value>
+    <value>رسوم أخرى</value>
 </data>
 <data name="CIFValue" xml:space="preserve">
     <value>قيمة الشحنة</value>
@@ -10185,10 +10185,10 @@ info@zatca.gov.sa</value>
     <value>للحصول على نتائج أكثر دقة ، يرجى إدخال تفاصيل البيان.</value>
 </data>
 <data name="DeclarationDisclaimer" xml:space="preserve">
-    <value>لم يتم إنشاء البيان المخصص حتى الآن.</value>
+    <value>من فضلك تأكد من المعلومات المدخلة</value>
 </data>
 <data name="VATDisclaimer" xml:space="preserve">
-    <value>تبلغ ضريبة القيمة المضافة 15٪ من إجمالي قيمة الشحنة.</value>
+    <value>قيمة ضريبة القيمة المضافة 15٪ من إجمالي قيمة الشحنة.</value>
 </data>
 <data name="BillNumber" xml:space="preserve">
     <value>رقم البوليصة</value>
@@ -10893,13 +10893,13 @@ info@zatca.gov.sa</value>
     <value>الشركة الناقلة</value>
 </data>
 <data name="CustomFeesDisclaimer" xml:space="preserve">
-    <value>قيمة الشحنة * 15%.</value>
+    <value>قيمة الشحنة * رسم البند</value>
 </data>
 <data name="TrackVATDisclaimer" xml:space="preserve">
     <value>(قيمة الشحنة + الرسوم الجمركية + الرسوم الأخري) * 15%.</value>
 </data>
 <data name="TrackTotalDisclaimer" xml:space="preserve">
-    <value>الرسوم الجمركية + ضريبة القيمة المضافة + الرسوم الأخرى + الضريبة الانتقائية إن وجدت في البيان</value>
+     <value>(الرسوم الجمركية + ضريبة القيمة المضافة + الرسوم الأخرى + الضريبة الانتقائية إن وجدت في البيان)</value>
 </data>
 <!-- start of VAT Refund Prod -->
 <data name="VATRefundReqMessageInfo" xml:space="preserve">
@@ -11438,5 +11438,8 @@ info@zatca.gov.sa</value>
 </data>
 <data name="SupportingDocuments" xml:space="preserve">
     <value>الوثائق الداعمة</value>
+</data>
+<data name="SAR" xml:space="preserve">
+    <value>ريال</value>
 </data>
 </root>

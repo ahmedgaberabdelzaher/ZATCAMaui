@@ -1,14 +1,11 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Syncfusion.Maui.Picker;
 using System.Globalization;
 using System.Resources;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage;
-using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ICRListPages
 {
@@ -28,11 +25,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ICRListPages
         public ICRListPageView()
         {
             InitializeComponent();
-            On<iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.ICRListPageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
-            SetLTR();
             SetPickerFont();
             Count = 1;
             FrmLicenseIssuedBy.Margin = new Thickness(5, 0, 5, 5);
@@ -47,49 +41,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ICRListPages
                 if (e.Item == null) return;
                 if (sender is ListView lv) lv.SelectedItem = null;
             };
-            NavigationPage.SetBackButtonTitle(this, "");
             //BPicker
         }
         #endregion
         #region Method
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height); //must be called
-            if (this.width != width || this.height != height)
-            {
-                this.width = width;
-                this.height = height;
-                if (App.IsArabic)
-                {
-                    if (width > height)
-                    {
-                        On<iOS>().SetUseSafeArea(false);
-                        BPicker.Margin = new Thickness(8, 0, 8, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(8, 0, 8, 5);
-                        ListLayout.Padding = new Thickness(40, 0, 40, 5);
-                    }
-                    else
-                    {
-                        On<iOS>().SetUseSafeArea(true);
-                        BPicker.Margin = new Thickness(8, 0, 8, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(8, 0, 8, 5);
-                        ListLayout.Padding = new Thickness(0, 0, 0, 5);
-                    }
-                }
-                //reconfigure layout
-            }
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+      
+      
         public async Task IntialiseAsync()
         {
             try
@@ -151,23 +108,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ICRListPages
             {
             }
         }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                //FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-            }
-            else
-            {
-                //FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-            }
-        }
+       
         #endregion
         public void SetPickerFont()
         {

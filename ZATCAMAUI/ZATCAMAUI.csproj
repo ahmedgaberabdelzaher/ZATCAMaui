@@ -130,8 +130,6 @@
         <Compile Remove="Platforms\iOS\CustomRenderer\GAZTBorderlessEditorRenderer.cs" />
         <Compile Remove="Platforms\Android\CustomRenderer\GAZTBorderlessEditorRenderer.cs" />
         <Compile Remove="Platforms\Android\CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
-        <Compile Remove="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml.cs" />
-        <MauiXaml Remove="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml" />
         <None Remove="ViewModel\NewDesignViewModel\EscalatedCasesGSTCPageViewModel\" />
         <None Remove="Views\NewDesign\EscalatedCasesGSTC\" />
         <Compile Remove="ViewModel\SyncFusionEnabledViewModel\MyCommitmentsPage\MyCommitmentsPageViewModel.cs" />

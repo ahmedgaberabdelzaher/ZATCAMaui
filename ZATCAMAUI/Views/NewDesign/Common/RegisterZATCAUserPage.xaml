@@ -18,8 +18,7 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10"
-                  ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
 
                 <StackLayout>
 
@@ -28,7 +27,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -104,7 +102,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -112,7 +110,7 @@
                             </Label>
 
                             <!--  MobileNumber Entry  -->
-                            <custom:CustomSfTextInputView >
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         Keyboard="Telephone"
@@ -124,9 +122,10 @@
                                 </custom:CustomSfTextInputView.TextInputView>
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Grid>
-                                        <Label Text="+966"
-                                           HorizontalOptions="Start"
-                                           LineBreakMode="NoWrap"/>
+                                        <Label
+                                            HorizontalOptions="Start"
+                                            LineBreakMode="NoWrap"
+                                            Text="+966" />
 
                                     </Grid>
 
@@ -134,9 +133,10 @@
 
                             </custom:CustomSfTextInputView>
 
-                            <Label Text="{x:Static ResourceManager:AppResources.NumberHint}"
-                                    Margin="0,-15,0,10"
-                                    Style="{StaticResource CaptionLabelGrey}"/>
+                            <Label
+                                Margin="0,-15,0,10"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.NumberHint}" />
 
                         </StackLayout>
 
@@ -147,7 +147,7 @@
 
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -155,9 +155,9 @@
                             </Label>
 
                             <!--  Email Entry  -->
-                            <custom:CustomSfTextInputView >
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
-                                   <custom:GAZTBorderlessEntry
+                                    <custom:GAZTBorderlessEntry
                                         Keyboard="Email"
                                         Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                         Style="{StaticResource DefaultEntry}"
@@ -176,7 +176,7 @@
 
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.AddressKSA}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.AddressKSA}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -184,9 +184,9 @@
                             </Label>
 
                             <!--  Address Entry  -->
-                            <custom:CustomSfTextInputView >
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
-                                   <custom:GAZTBorderlessEntry
+                                    <custom:GAZTBorderlessEntry
                                         Keyboard="Text"
                                         Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
                                         Style="{StaticResource DefaultEntry}"

@@ -3,10 +3,10 @@
     x:Class="ZATCAMAUI.Views.NewDesign.VATRefunds.VATRefundsInstructionsPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
@@ -96,12 +96,10 @@
                     Style="{StaticResource CheckboxHeightWidth32}" />
 
 
-                <Label Margin="5,10,0,15" Style="{StaticResource GAZTMicroMediumGrayLabel}">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}" />
-                        </FormattedString>
-                    </Label.FormattedText>
+                <Label
+                    Margin="5,10,0,15"
+                    Style="{StaticResource GAZTMicroMediumGrayLabel}"
+                    Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}">
                     <Label.Triggers>
                         <DataTrigger
                             Binding="{Binding IsInstructionsChecked}"

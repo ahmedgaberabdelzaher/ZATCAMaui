@@ -16,14 +16,6 @@
     ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
     TitleText="{Binding TitleText}">
-    <newdesign:BaseContentPage.Resources>
-        <ResourceDictionary>
-            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
-
-            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
-
-        </ResourceDictionary>
-    </newdesign:BaseContentPage.Resources>
 
     <newdesign:BaseContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding LoadPortsCommand}" EventName="Appearing" />
@@ -78,8 +70,8 @@
                                     <Border
                                         Padding="5"
                                         BackgroundColor="#0996D4"
-                                        Stroke="#0996D4"
-                                        Opacity=".5">
+                                        Opacity=".5"
+                                        Stroke="#0996D4">
                                         <Label
                                             FontSize="14"
                                             Text="{x:Static ResourceManager:AppResources.RequestInformation}"
@@ -91,25 +83,24 @@
                                         <Label Style="{StaticResource CaptionLabelGrey}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.Port}" />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Port}" />
                                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView HorizontalOptions="FillAndExpand"
-                                                                      VerticalOptions="FillAndExpand">
+                                        <custom:CustomSfTextInputView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                            IsReadOnly="True"
-                                                            InputTransparent="True"
-                                                            Placeholder="{x:Static ResourceManager:AppResources.Port}"
-                                                            Style="{StaticResource DefaultEntryWithoutHeigh}"
-                                                            Text="{Binding SelectedPort.Name}"
-                                                            TextColor="{StaticResource NeutralBlack}"
-                                                            VerticalTextAlignment="Center" >
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.Port}"
+                                                    Style="{StaticResource DefaultEntryWithoutHeigh}"
+                                                    Text="{Binding SelectedPort.Name}"
+                                                    TextColor="{StaticResource NeutralBlack}"
+                                                    VerticalTextAlignment="Center">
 
-                                                     <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding OpenPortsCommand}" />
                                                     </custom:GAZTBorderlessEntry.GestureRecognizers>
 
@@ -138,17 +129,18 @@
                                         <Label Style="{StaticResource CaptionLabelGrey}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.RequestNumber}" />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.RequestNumber}" />
                                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
 
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView >
+                                        <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     MaxLength="10"
                                                     Placeholder="{x:Static ResourceManager:AppResources.RequestNumber}"
                                                     Style="{StaticResource DefaultEntry}"
@@ -169,7 +161,7 @@
                                     <Label Style="{StaticResource CaptionLabelGrey}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.RequestDate}" />
+                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.RequestDate}" />
                                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -177,29 +169,29 @@
 
                                     <StackLayout>
 
-                                        <custom:CustomSfTextInputView >
+                                        <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                IsReadOnly="True"
-                                                InputTransparent="True"
-                                                Placeholder="dd/MM/yyyy"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding HijriDateToBeDisplayed}"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                VerticalTextAlignment="Center" />
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Placeholder="dd/MM/yyyy"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding HijriDateToBeDisplayed}"
+                                                    TextColor="{StaticResource NeutralBlack}"
+                                                    VerticalTextAlignment="Center" />
 
                                             </custom:CustomSfTextInputView.TextInputView>
 
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image HorizontalOptions="EndAndExpand"
-                                                       WidthRequest="20"
-                                                       HeightRequest="20"
-                                                       Source="calendar.png" />
+                                                <Image
+                                                    HeightRequest="20"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="calendar.png"
+                                                    WidthRequest="20" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
 
                                             <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OpenHijriPickerCommand}"
-                                                                      CommandParameter="{x:Reference dateHijri}" />
+                                                <TapGestureRecognizer Command="{Binding OpenHijriPickerCommand}" CommandParameter="{x:Reference dateHijri}" />
                                             </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                                         </custom:CustomSfTextInputView>
@@ -267,8 +259,8 @@
                                         Margin="0,20,0,10"
                                         Padding="12"
                                         BackgroundColor="#0996D4"
-                                        StrokeShape="RoundRectangle 14,14,14,14"
-                                        HorizontalOptions="FillAndExpand">
+                                        HorizontalOptions="FillAndExpand"
+                                        StrokeShape="RoundRectangle 14,14,14,14">
 
                                         <Border.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding InquireCommand}" />

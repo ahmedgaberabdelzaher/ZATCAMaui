@@ -1,11 +1,8 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Syncfusion.Maui.ListView;
+﻿
 using ZATCAMAUI.Models.InstalmentPlanModel;
 using ZATCAMAUI.Models.ZakatInstalationModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using ItemTappedEventArgs = Syncfusion.Maui.ListView.ItemTappedEventArgs;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 {
@@ -31,8 +28,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                 viewModel = App.Locator.OldZakatInstalmentPlanListPageView;
                 BindingContext = viewModel;
 
-
-                // viewModel.onPageLoad();
 
             }
             catch (Exception)
@@ -125,18 +120,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
-        private void RevokListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-         
-        }
-
-
-        private void DisplayListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
-        }
-
-
         void OtpFirstEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (viewModel.OTPFirstDigit.Length > 0)
@@ -160,14 +143,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                 OTPFourthEntry.Focus();
             }
         }
-        void OtpFourthEntry_TextChanged(object sender,TextChangedEventArgs e)
-        {
 
-        }
-        void OtpFourthEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
 
     }
 }

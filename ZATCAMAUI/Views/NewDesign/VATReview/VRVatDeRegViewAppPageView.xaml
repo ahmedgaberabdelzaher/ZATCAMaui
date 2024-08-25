@@ -6,11 +6,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-     BackgroundImageSource="partials_background.png"
-    FlowDirection="{Binding AppDirection}"
+    xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
@@ -25,9 +25,9 @@
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
+                        IsVisible="{Binding IsBackVisible}"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        IsVisible="{Binding IsBackVisible}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -57,31 +57,31 @@
                     Text="{x:Static ResourceManager:AppResources.VatReview}"
                     VerticalOptions="Center" />
 
-                 <Image
-                        Grid.Row="0"
-                        Grid.Column="2"
-                        HeightRequest="24"
-                        HorizontalOptions="EndAndExpand"
-                        Source="close"
-                        VerticalOptions="CenterAndExpand"
-                        WidthRequest="24">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BackCommand}" />
-                        </Image.GestureRecognizers>
-                    </Image>
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HeightRequest="24"
+                    HorizontalOptions="EndAndExpand"
+                    Source="close"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="24">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
 
             </Grid>
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
 
-                    <ScrollView HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand">
+                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                         <Grid
                             Margin="20,10,20,0"
@@ -384,7 +384,7 @@
 
                     </ScrollView>
 
-       
+
                 </Grid>
 
             </Border>
@@ -395,7 +395,7 @@
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>
-       
+
 
     </ContentPage.Content>
 </ContentPage>

@@ -30,7 +30,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -157,9 +156,15 @@
                                         VerticalOptions="Start">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding TravelerDeclarationResponse.totalFees}" />
+                                                <Span
+                                                    FontSize="14"
+                                                    Text="{Binding TravelerDeclarationResponse.totalFees}"
+                                                    TextColor="#002447" />
                                                 <Span Text="  " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                <Span
+                                                    FontSize="14"
+                                                    Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                                                    TextColor="#002447" />
                                             </FormattedString>
                                         </Label.FormattedText>
 

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages.NafathLoginView"
-             Title="NafathLoginView"
-             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-            x:Name="page"
-            ios:Page.UseSafeArea="true"
-            BackgroundImageSource="partials_background.png"
-            FlowDirection="{Binding AppDirection}"
-            NavigationPage.HasNavigationBar="False">
- <ContentPage.Content>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages.NafathLoginView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    x:Name="page"
+    Title="NafathLoginView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
 
         <Grid RowDefinitions="Auto,*">
 
@@ -52,29 +53,51 @@
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                     Text="{x:Static ResourceManager:AppResources.NafathAuthentication}"
+                    Text="{x:Static ResourceManager:AppResources.NafathAuthentication}"
                     VerticalOptions="Center" />
 
             </Grid>
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
-              <Grid>
-                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="32" Spacing="16">
-                        <Label Text="{x:Static ResourceManager:AppResources.ZIBANNationalID}"
-                        HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
-                        
-                        <Border Style="{StaticResource GreyBorderFrame}" Stroke="#B1B1B1" Padding="5" StrokeThickness="1">
-                            <custom:GAZTBorderlessEntry HorizontalOptions="FillAndExpand" Text="{Binding NafathId}" Placeholder="{x:Static ResourceManager:AppResources.EnterYourNationalIdHere}" Margin="8,0" HeightRequest="40"/>
+                <Grid>
+                    <StackLayout
+                        Padding="32"
+                        HorizontalOptions="FillAndExpand"
+                        Spacing="16"
+                        VerticalOptions="FillAndExpand">
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource SectionTitleBlack}"
+                            Text="{x:Static ResourceManager:AppResources.ZIBANNationalID}" />
+
+                        <Border
+                            Padding="5"
+                            Stroke="#B1B1B1"
+                            StrokeThickness="1"
+                            Style="{StaticResource GreyBorderFrame}">
+                            <custom:GAZTBorderlessEntry
+                                Margin="8,0"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="{x:Static ResourceManager:AppResources.EnterYourNationalIdHere}"
+                                Text="{Binding NafathId}" />
                         </Border>
-                        <Label Text="{Binding Error}" TextColor="Red" Padding="8,0,0,8"/>
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.LogIn}" Command="{Binding LoginCommand}" Style="{StaticResource PrimaryButtonStyle}"/>
+                        <Label
+                            Padding="8,0,0,8"
+                            Text="{Binding Error}"
+                            TextColor="Red" />
+                        <buttons:SfButton
+                            Command="{Binding LoginCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.LogIn}" />
                     </StackLayout>
-                    
+
                 </Grid>
 
             </Border>

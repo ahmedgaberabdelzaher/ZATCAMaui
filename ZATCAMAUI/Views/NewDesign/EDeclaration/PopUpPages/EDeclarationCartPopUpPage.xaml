@@ -3,9 +3,9 @@
     x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages.EDeclarationCartPopUpPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
     FlowDirection="{Binding AppDirection}">
@@ -77,9 +77,9 @@
                         <Border
                             Margin="0,0,0,20"
                             Padding="15"
+                            HorizontalOptions="FillAndExpand"
                             Stroke="#EBEBEB"
                             StrokeShape="RoundRectangle 14,14,14,14"
-                            HorizontalOptions="FillAndExpand"
                             Style="{StaticResource CommonTopCurves}"
                             VerticalOptions="FillAndExpand">
 
@@ -199,9 +199,18 @@
 
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{x:Static ResourceManager:AppResources.QTY}" />
-                                                                <Span Text=": " />
-                                                                <Span Text="{Binding QTY}" />
+                                                                <Span
+                                                                    FontSize="14"
+                                                                    Text="{x:Static ResourceManager:AppResources.QTY}"
+                                                                    TextColor="#232323" />
+                                                                <Span
+                                                                    FontSize="14"
+                                                                    Text=": "
+                                                                    TextColor="#232323" />
+                                                                <Span
+                                                                    FontSize="14"
+                                                                    Text="{Binding QTY}"
+                                                                    TextColor="#232323" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
 
@@ -224,9 +233,18 @@
 
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
-                                                                <Span Text=": " />
-                                                                <Span Text="{Binding Price}" />
+                                                                <Span
+                                                                    FontSize="14"
+                                                                    Text="{x:Static ResourceManager:AppResources.TotalPriceValue}"
+                                                                    TextColor="#232323" />
+                                                                <Span
+                                                                    FontSize="14"
+                                                                    Text=": "
+                                                                    TextColor="#232323" />
+                                                                <Span
+                                                                    FontSize="14"
+                                                                    Text="{Binding Price}"
+                                                                    TextColor="#232323" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
 
@@ -277,9 +295,9 @@
 
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding FeesCalculatorResponse.extraFees}" />
+                                                <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding FeesCalculatorResponse.extraFees}" />
                                                 <Span Text=" " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                             </FormattedString>
                                         </Label.FormattedText>
 
@@ -295,9 +313,9 @@
                                     <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding FeesCalculatorResponse.excise}" />
+                                                <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding FeesCalculatorResponse.excise}" />
                                                 <Span Text=" " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -311,9 +329,9 @@
 
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
+                                                <Span Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
                                                 <Span Text=" " />
-                                                <Span Text="5%" />
+                                                <Span Style="{StaticResource BodyLabelGrey}" Text="5%" />
                                             </FormattedString>
                                         </Label.FormattedText>
 
@@ -328,9 +346,9 @@
                                     <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding FeesCalculatorResponse.totalDuty}" />
+                                                <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding FeesCalculatorResponse.totalDuty}" />
                                                 <Span Text=" " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -344,9 +362,9 @@
 
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
+                                                <Span Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
                                                 <Span Text=" " />
-                                                <Span Text="15%" />
+                                                <Span Style="{StaticResource BodyLabelGrey}" Text="15%" />
                                             </FormattedString>
                                         </Label.FormattedText>
 
@@ -361,9 +379,9 @@
                                     <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding FeesCalculatorResponse.vat, StringFormat='{0:n}'}" />
+                                                <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding FeesCalculatorResponse.vat, StringFormat='{0:n}'}" />
                                                 <Span Text=" " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -419,9 +437,9 @@
                                         VerticalOptions="Start">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding FeesCalculatorResponse.totalPayment, StringFormat='{0:n}'}" />
+                                                <Span Text="{Binding FeesCalculatorResponse.totalPayment, StringFormat='{0:n}'}" TextColor="Black" />
                                                 <Span Text="  " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" TextColor="Black" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>

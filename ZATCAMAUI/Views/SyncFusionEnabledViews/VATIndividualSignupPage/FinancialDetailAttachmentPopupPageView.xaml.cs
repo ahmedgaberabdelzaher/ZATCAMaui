@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Newtonsoft.Json;
 using Mopups.Pages;
 using Mopups.Services;
@@ -313,7 +312,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             base.OnAppearing();
             getYesForDeleteAttachment();
-            getNoForDeleteAttachment();
 
             if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
             {
@@ -376,21 +374,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        public async void getNoForDeleteAttachment()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "NoPressedToDeleteFinancialAttachment", async (sender, arg) =>
-                {
-
-
-                });
-            }
-            catch (Exception)
-            {
-
-            }
-        }
+      
 
         private void btn1_Clicked(object sender, EventArgs e)
         {

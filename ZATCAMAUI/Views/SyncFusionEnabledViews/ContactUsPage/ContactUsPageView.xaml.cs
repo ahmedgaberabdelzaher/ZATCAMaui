@@ -1,7 +1,5 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ContactUsPage;
-using Application = Microsoft.Maui.Controls.Application;
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ContactUsPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -12,8 +10,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ContactUsPage
         {
             InitializeComponent();
             viewModel = App.Locator.ContactUsPageView;
-            On<iOS>().SetUseSafeArea(true);
-            ChangeAeroIcon();
             SetUrl();
             BindingContext = viewModel;
         }
@@ -30,17 +26,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ContactUsPage
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+      
         private void BackButtonClicked(object sender, EventArgs e)
         {
             if (ContactWebView.CanGoBack)

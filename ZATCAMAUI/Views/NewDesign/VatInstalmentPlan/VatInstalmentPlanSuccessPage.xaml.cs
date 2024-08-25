@@ -1,7 +1,4 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 using Application = Microsoft.Maui.Controls.Application;
@@ -131,15 +128,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
 
 
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-        }
-
+     
     }
 
 }

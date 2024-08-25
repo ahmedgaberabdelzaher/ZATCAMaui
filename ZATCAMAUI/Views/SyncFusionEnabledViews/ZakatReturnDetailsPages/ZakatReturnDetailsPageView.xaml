@@ -8,11 +8,11 @@
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{x:Static ResourceManager:AppResources.ZZakatReturnDetails}"
-    BackgroundColor="White"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="true"
+    BackgroundColor="White"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -188,9 +188,9 @@
                                 VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding Estsl}" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForSmallFont}" Text="{Binding Estsl}" />
                                         <Span Text=" " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForSmallFont}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -226,9 +226,9 @@
                                 VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding Cpamt}" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForSmallFont}" Text="{Binding Cpamt}" />
                                         <Span Text=" " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForSmallFont}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -263,9 +263,9 @@
                                 VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding Zbamt}" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForSmallFont}" Text="{Binding Zbamt}" />
                                         <Span Text=" " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForSmallFont}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -300,9 +300,9 @@
                                 VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding Zkamt}" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForSmallFont}" Text="{Binding Zkamt}" />
                                         <Span Text=" " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForSmallFont}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -322,7 +322,6 @@
                     <StackLayout
                         Grid.Row="1"
                         Grid.Column="0"
-                        Orientation="Vertical"
                         Spacing="1"
                         VerticalOptions="EndAndExpand">
                         <buttons:SfButton
@@ -385,8 +384,8 @@
                     </StackLayout>
                 </Grid>
                 <!--  Acticity indicator layout start  -->
-                <custom:Loader IsVisible="{Binding IsLoading}"/>
-         
+                <custom:Loader IsVisible="{Binding IsLoading}" />
+
                 <!--  Acticity indicator layout End  -->
             </Grid>
         </ScrollView>

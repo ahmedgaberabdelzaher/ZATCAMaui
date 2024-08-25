@@ -152,8 +152,8 @@
                     </Border>
 
 
-                    <custom:Loader IsVisible="{Binding IsLoading}"/>
-                 
+                    <custom:Loader IsVisible="{Binding IsLoading}" />
+
                 </Grid>
             </ScrollView>
 

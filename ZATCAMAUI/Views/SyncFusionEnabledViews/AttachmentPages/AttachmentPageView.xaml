@@ -8,10 +8,10 @@
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -117,11 +117,11 @@
                                 VerticalOptions="CenterAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding TotalAttachmentSize}" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="{Binding TotalAttachmentSize}" />
                                         <Span Text="     " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.OfText}" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="{x:Static ResourceManager:AppResources.OfText}" />
                                         <Span Text="     " />
-                                        <Span Text="300 MB" />
+                                        <Span Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="300 MB" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -132,15 +132,16 @@
                                 Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZVatAttachments}" />
 
-                            <custom:CustomSfTextInputView Grid.Row="6"
+                            <custom:CustomSfTextInputView
+                                Grid.Row="6"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 HasError="False">
                                 <custom:CustomSfTextInputView.TextInputView>
-                                   <custom:GAZTBorderlessEntry
+                                    <custom:GAZTBorderlessEntry
                                         Margin="20,0,20,0"
-                                        IsReadOnly="True"
                                         InputTransparent="True"
+                                        IsReadOnly="True"
                                         Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                         Text="{Binding AttachmentName}" />
                                 </custom:CustomSfTextInputView.TextInputView>
@@ -271,8 +272,8 @@
                 </ScrollView>
             </StackLayout>
             <!--  Acticity indicator layout start  -->
-            <custom:Loader IsVisible="{Binding IsLoading}"/>
-        
+            <custom:Loader IsVisible="{Binding IsLoading}" />
+
             <!--  Acticity indicator layout end  -->
         </Grid>
     </ContentPage.Content>

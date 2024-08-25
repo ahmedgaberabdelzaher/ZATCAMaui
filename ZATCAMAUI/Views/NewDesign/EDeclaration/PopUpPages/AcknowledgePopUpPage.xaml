@@ -3,13 +3,13 @@
     x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages.AcknowledgePopUpPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     FlowDirection="{Binding AppDirection}">
 
-     <Mopups:PopupPage.Animation>
+    <Mopups:PopupPage.Animation>
         <Animations:ScaleAnimation
             DurationIn="400"
             DurationOut="300"
@@ -17,7 +17,7 @@
             PositionIn="Bottom"
             PositionOut="Bottom" />
     </Mopups:PopupPage.Animation>
-    
+
 
     <Grid VerticalOptions="EndAndExpand">
 
@@ -56,7 +56,6 @@
                                 HeightRequest="20"
                                 HorizontalOptions="EndAndExpand"
                                 Source="darkClose.png"
-                                Style="{DynamicResource BackButtonArrow}"
                                 VerticalOptions="Center"
                                 WidthRequest="20" />
 
@@ -110,8 +109,16 @@
                                         TextColor="#002447">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="• " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.AcknowledgeNote1}" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="14"
+                                                    Text="• "
+                                                    TextColor="#002447" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="14"
+                                                    Text="{x:Static ResourceManager:AppResources.AcknowledgeNote1}"
+                                                    TextColor="#002447" />
                                                 <Span Text="&#10;" />
                                             </FormattedString>
 
@@ -126,8 +133,16 @@
                                         TextColor="#002447">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="• " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.AcknowledgeNote2}" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="14"
+                                                    Text="• "
+                                                    TextColor="#002447" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="14"
+                                                    Text="{x:Static ResourceManager:AppResources.AcknowledgeNote2}"
+                                                    TextColor="#002447" />
                                                 <Span Text="&#10;" />
                                             </FormattedString>
 
@@ -142,8 +157,16 @@
                                         TextColor="#002447">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="• " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.AcknowledgeNote3}" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="14"
+                                                    Text="• "
+                                                    TextColor="#002447" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="14"
+                                                    Text="{x:Static ResourceManager:AppResources.AcknowledgeNote3}"
+                                                    TextColor="#002447" />
                                                 <Span Text="&#10;" />
                                             </FormattedString>
 
@@ -158,8 +181,16 @@
                                         TextColor="#002447">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="• " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.AcknowledgeNote4}" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="14"
+                                                    Text="• "
+                                                    TextColor="#002447" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="14"
+                                                    Text="{x:Static ResourceManager:AppResources.AcknowledgeNote4}"
+                                                    TextColor="#002447" />
                                                 <Span Text="&#10;" />
                                             </FormattedString>
 
@@ -174,8 +205,16 @@
                                         TextColor="#002447">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="• " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.AcknowledgeNote5}" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="14"
+                                                    Text="• "
+                                                    TextColor="#002447" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="14"
+                                                    Text="{x:Static ResourceManager:AppResources.AcknowledgeNote5}"
+                                                    TextColor="#002447" />
                                             </FormattedString>
 
                                         </Label.FormattedText>
@@ -201,7 +240,6 @@
                                 HeightRequest="20"
                                 HorizontalOptions="Start"
                                 Source="CheckMark.png"
-                                Style="{DynamicResource BackButtonArrow}"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="20">
 

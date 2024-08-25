@@ -7,17 +7,17 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
     <ContentPage.Content>
 
-         <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
@@ -27,8 +27,8 @@
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        Rotation="0"
                         IsVisible="{Binding IsBackStepButtonVisible}"
+                        Rotation="0"
                         Source="whiteRightBack.png"
                         VerticalOptions="CenterAndExpand">
 
@@ -63,11 +63,12 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
-              
+
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid
                         x:Name="pageBinder"
@@ -391,7 +392,7 @@
 
 
                     </Grid>
-                    
+
                 </Grid>
 
             </Border>

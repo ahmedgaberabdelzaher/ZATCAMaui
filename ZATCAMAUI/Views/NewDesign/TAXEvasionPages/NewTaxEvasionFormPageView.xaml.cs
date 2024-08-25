@@ -1,8 +1,4 @@
 ﻿
-
-using Maui.GoogleMaps;
-using Mopups.Services;
-using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;

@@ -21,7 +21,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
-          
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -74,7 +74,6 @@
                                     Margin="0,35,0,0"
                                     HorizontalOptions="Start"
                                     Source="arrowLeft.png"
-                                    Style="{DynamicResource BackButtonArrow}"
                                     VerticalOptions="CenterAndExpand">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{TemplateBinding BindingContext.BackButtonTapped}" />
@@ -121,7 +120,6 @@
                             Grid.Column="0"
                             HorizontalOptions="StartAndExpand"
                             Source="arrowLeftwhite"
-                            Style="{DynamicResource BackButtonArrow}"
                             VerticalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" />
@@ -288,7 +286,7 @@
                                     </Border>
                                     <StackLayout Spacing="2">
 
-                                        <custom:CustomSfTextInputView  IsVisible="{Binding IsOthersEditorVisible}">
+                                        <custom:CustomSfTextInputView IsVisible="{Binding IsOthersEditorVisible}">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                     HeightRequest="100"
@@ -301,9 +299,10 @@
 
                                         </custom:CustomSfTextInputView>
 
-                                        <Label Text="{Binding TextCount}"
-                                                Margin="0,-15,0,10"
-                                                Style="{StaticResource CaptionLabelGrey}"/>
+                                        <Label
+                                            Margin="0,-15,0,10"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{Binding TextCount}" />
 
                                     </StackLayout>
                                 </StackLayout>
@@ -317,8 +316,7 @@
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="FillAndExpand"
                                 IsEnabled="{Binding IsRequestTypeEnabled}"
-                                IsVisible="{Binding IsSuspReasonVisible}"
-                                Orientation="Vertical">
+                                IsVisible="{Binding IsSuspReasonVisible}">
                                 <StackLayout>
                                     <StackLayout>
                                         <StackLayout>
@@ -357,22 +355,22 @@
                                                 </StackLayout>
                                             </Border>
                                             <StackLayout Spacing="2">
-                                                <custom:CustomSfTextInputView IsVisible="{Binding IsOthersEditorVisible}"
-                                                                              x:Name="OthersTxt">
-                                                   <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:CustomSfTextInputView x:Name="OthersTxt" IsVisible="{Binding IsOthersEditorVisible}">
+                                                    <custom:CustomSfTextInputView.TextInputView>
                                                         <custom:GAZTBorderlessEntry
                                                             HeightRequest="100"
                                                             MaxLength="1000"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding OtherField}"
                                                             TextChanged="Others_Entry_TextChanged" />
-                                                   </custom:CustomSfTextInputView.TextInputView>
+                                                    </custom:CustomSfTextInputView.TextInputView>
 
                                                 </custom:CustomSfTextInputView>
 
-                                                <Label Text="{Binding TextCount}"
-                                                        Margin="0,-15,0,10"
-                                                        Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label
+                                                    Margin="0,-15,0,10"
+                                                    Style="{StaticResource CaptionLabelGrey}"
+                                                    Text="{Binding TextCount}" />
 
                                             </StackLayout>
                                         </StackLayout>
@@ -448,7 +446,7 @@
                                             </StackLayout>
                                         </Border>
                                     </StackLayout>
-                                    <StackLayout Orientation="Vertical">
+                                    <StackLayout>
                                         <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
@@ -490,7 +488,7 @@
                                             </StackLayout>
                                         </Border>
                                     </StackLayout>
-                                    <StackLayout Orientation="Vertical">
+                                    <StackLayout>
                                         <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
@@ -531,7 +529,7 @@
                                             </StackLayout>
                                         </Border>
                                     </StackLayout>
-                                    <StackLayout Orientation="Vertical">
+                                    <StackLayout>
                                         <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
@@ -860,8 +858,7 @@
                                         x:Name="IDNumberField"
                                         Grid.Row="1"
                                         Grid.ColumnSpan="2"
-                                        HorizontalOptions="StartAndExpand"
-                                        Orientation="Vertical">
+                                        HorizontalOptions="StartAndExpand">
                                         <StackLayout>
                                             <Label
                                                 HorizontalOptions="StartAndExpand"
@@ -981,13 +978,10 @@
                                                 </DataTrigger>
                                             </CheckBox.Triggers>
                                         </CheckBox>
-                                        <Label Margin="5,10,0,15" Style="{StaticResource GAZTMicroMediumGrayLabel}">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationCheckBoxText}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                                        <Label
+                                            Margin="5,10,0,15"
+                                            Style="{StaticResource GAZTMicroMediumGrayLabel}"
+                                            Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationCheckBoxText}" />
                                     </StackLayout>
                                     <Border
                                         Margin="0,20,0,10"
@@ -1449,8 +1443,8 @@
 
             </Grid>
 
-            <custom:Loader  IsVisible="{Binding IsLoading}"/>
-          
+            <custom:Loader IsVisible="{Binding IsLoading}" />
+
         </Grid>
 
     </ContentPage.Content>

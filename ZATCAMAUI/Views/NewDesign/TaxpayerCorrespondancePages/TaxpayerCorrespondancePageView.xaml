@@ -16,7 +16,7 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-   
+
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
 
@@ -31,7 +31,7 @@
                         IsVisible="{Binding IsBackStepButtonVisible}"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -313,7 +313,7 @@
                                                     x:Name="ImageBackArrow"
                                                     HeightRequest="30"
                                                     Source="{Binding FavImg}"
-                                                    Style="{DynamicResource BackButtonArrow}"
+                                                    
                                                     WidthRequest="30" />
 
                                             </StackLayout>

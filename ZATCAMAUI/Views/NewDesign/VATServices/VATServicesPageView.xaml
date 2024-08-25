@@ -14,20 +14,7 @@
     NavigationPage.BackButtonTitle=""
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid x:Name="VATServices" RowSpacing="0">
             <Grid.RowDefinitions>
@@ -168,7 +155,7 @@
                     Grid.Column="0"
                     HorizontalOptions="Start"
                     Source="arrowLeftwhite.png"
-                    Style="{DynamicResource BackButtonArrow}"
+                    
                     VerticalOptions="CenterAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnBackTapped" />

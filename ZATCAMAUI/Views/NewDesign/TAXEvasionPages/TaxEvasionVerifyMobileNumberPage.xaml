@@ -9,12 +9,12 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    BackgroundImageSource="partials_background.png"
-    FlowDirection="{Binding AppDirection}"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-   
+
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <ScrollView>
@@ -43,7 +43,7 @@
                                 HorizontalOptions="StartAndExpand"
                                 IsVisible="{Binding IsBackStepButtonVisible}"
                                 Source="arrowLeftwhite"
-                                Style="{DynamicResource BackButtonArrow}"
+                                
                                 VerticalOptions="CenterAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />
@@ -138,7 +138,7 @@
 
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}"  Style="{StaticResource CaptionLabelGrey}"/>
                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                             </FormattedString>
                         </Label.FormattedText>
@@ -222,12 +222,13 @@
 
 
                         <!--  First OTP Digit Start  -->
-                        <Border StrokeShape="RoundRectangle 10"
-                                Stroke="Gray"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                Grid.Column="0"
-                                VerticalOptions="Start">
+                        <Border
+                            Grid.Column="0"
+                            HeightRequest="50"
+                            Stroke="Gray"
+                            StrokeShape="RoundRectangle 10"
+                            VerticalOptions="Start"
+                            WidthRequest="50">
 
                             <custom:GAZTBorderlessEntry
                                 x:Name="OTPFirstEntry"
@@ -236,29 +237,31 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
+                                Keyboard="{OnPlatform Android=Numeric,
+                                                      iOS=Default}"
                                 MaxLength="1"
-                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
-                                WidthRequest="100"
                                 ReturnType="Next"
                                 Text="{Binding OTPFirstDigit}"
                                 TextChanged="OtpFirstEntry_TextChanged"
-                                TextColor="#bbbbbb">
+                                TextColor="#bbbbbb"
+                                WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                    <behaviors:OnlyNumericValuesBehaviour/>
+                                    <behaviors:OnlyNumericValuesBehaviour />
                                     <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
-    
+
                         </Border>
                         <!--  First OTP Digit End  -->
 
                         <!--  Second OTP Digit Start  -->
-                        <Border StrokeShape="RoundRectangle 10"
-                                Stroke="Gray"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                Grid.Column="1"
-                                VerticalOptions="Start">
+                        <Border
+                            Grid.Column="1"
+                            HeightRequest="50"
+                            Stroke="Gray"
+                            StrokeShape="RoundRectangle 10"
+                            VerticalOptions="Start"
+                            WidthRequest="50">
 
                             <custom:GAZTBorderlessEntry
                                 x:Name="OTPSecondEntry"
@@ -267,7 +270,8 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
-                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric,
+                                                      iOS=Default}"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding OTPSecondDigit}"
@@ -275,21 +279,22 @@
                                 TextColor="#bbbbbb"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                     <behaviors:OnlyNumericValuesBehaviour/>
+                                    <behaviors:OnlyNumericValuesBehaviour />
                                     <behaviors:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
-    
+
                         </Border>
                         <!--  Second OTP Digit End  -->
 
                         <!--  Third OTP Digit Start  -->
-                        <Border StrokeShape="RoundRectangle 10"
-                                Stroke="Gray"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                Grid.Column="2"
-                                VerticalOptions="Start">
+                        <Border
+                            Grid.Column="2"
+                            HeightRequest="50"
+                            Stroke="Gray"
+                            StrokeShape="RoundRectangle 10"
+                            VerticalOptions="Start"
+                            WidthRequest="50">
 
                             <custom:GAZTBorderlessEntry
                                 x:Name="OTPThirdEntry"
@@ -298,7 +303,8 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
-                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric,
+                                                      iOS=Default}"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding OTPThirdDigit}"
@@ -306,43 +312,45 @@
                                 TextColor="#bbbbbb"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                    <behaviors:OnlyNumericValuesBehaviour/>
+                                    <behaviors:OnlyNumericValuesBehaviour />
                                     <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
-    
+
                         </Border>
                         <!--  Third OTP Digit End  -->
 
                         <!--  Fourth OTP Digit Start  -->
-                        <Border StrokeShape="RoundRectangle 10"
-                                Stroke="Gray"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                Grid.Column="3"
-                                VerticalOptions="Start">
+                        <Border
+                            Grid.Column="3"
+                            HeightRequest="50"
+                            Stroke="Gray"
+                            StrokeShape="RoundRectangle 10"
+                            VerticalOptions="Start"
+                            WidthRequest="50">
 
-                             <custom:GAZTBorderlessEntry
+                            <custom:GAZTBorderlessEntry
                                 x:Name="OTPFourthEntry"
                                 FontAttributes="Bold"
                                 FontSize="Small"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
-                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric,
+                                                      iOS=Default}"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding OTPFourthDigit}"
                                 TextChanged="OtpFourthEntry_TextChanged"
                                 TextColor="#bbbbbb"
                                 Unfocused="OtpFourthEntry_Unfocused"
-                                WidthRequest="100" >
-                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                    <behaviors:OnlyNumericValuesBehaviour/>
+                                WidthRequest="100">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behaviors:OnlyNumericValuesBehaviour />
                                 </custom:GAZTBorderlessEntry.Behaviors>
 
                             </custom:GAZTBorderlessEntry>
-    
+
                         </Border>
                         <!--  Fourth OTP Digit End  -->
 
@@ -377,8 +385,8 @@
                     Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" />
 
             </Grid>
-            <custom:Loader IsVisible="{Binding IsLoading}"/>
-      
+            <custom:Loader IsVisible="{Binding IsLoading}" />
+
         </Grid>
 
     </ContentPage.Content>

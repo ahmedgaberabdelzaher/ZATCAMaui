@@ -11,7 +11,7 @@
             <!--  Act as dimmed background style  -->
             <StackLayout
                 Opacity="0.4"
-                Orientation="Vertical"
+                
                 VerticalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ClosBottomSheetCommand}" />

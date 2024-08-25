@@ -4,8 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:SfEffectsView="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
@@ -19,7 +19,7 @@
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-           
+
             <converters:EstablishmentRegistrationOutletTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
         </ResourceDictionary>
@@ -67,13 +67,11 @@
                 <ScrollView
                     HorizontalOptions="FillAndExpand"
                     IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.OutletDetail}}"
-                    Orientation="Vertical"
                     VerticalOptions="FillAndExpand"
                     VerticalScrollBarVisibility="Never">
                     <StackLayout
                         HorizontalOptions="FillAndExpand"
                         IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.OutletDetail}}"
-                        Orientation="Vertical"
                         Spacing="0"
                         VerticalOptions="FillAndExpand">
                         <Label
@@ -99,8 +97,8 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -128,8 +126,8 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ESTOutletCommercialName}" />
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTOutletCommercialName}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -167,12 +165,10 @@
                 </ScrollView>
                 <ScrollView
                     IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.ActivityDetails}}"
-                    Orientation="Vertical"
                     VerticalOptions="Fill"
                     VerticalScrollBarVisibility="Never">
                     <StackLayout
                         HorizontalOptions="FillAndExpand"
-                        Orientation="Vertical"
                         Spacing="0"
                         VerticalOptions="FillAndExpand">
                         <SfEffectsView:SfEffectsView TouchDownCommand="{Binding OnActivityItemButtonClick}" TouchDownCommandParameter="{x:Static models:EstablishmentOutletActivitiesTabsEnum.CRDetails}">
@@ -208,7 +204,6 @@
                                         Grid.Column="2"
                                         HorizontalOptions="Center"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
                                         VerticalOptions="Center" />
                                 </Grid>
                             </Border>
@@ -249,7 +244,6 @@
                                         Grid.Column="2"
                                         HorizontalOptions="Center"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
                                         VerticalOptions="Center" />
                                 </Grid>
                             </Border>
@@ -347,12 +341,10 @@
                 </ScrollView>
                 <ScrollView
                     IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.AddressDetails}}"
-                    Orientation="Vertical"
                     VerticalOptions="Fill"
                     VerticalScrollBarVisibility="Never">
                     <StackLayout
                         HorizontalOptions="FillAndExpand"
-                        Orientation="Vertical"
                         Spacing="0"
                         VerticalOptions="StartAndExpand">
                         <Label
@@ -392,8 +384,8 @@
                                 VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}" />
-                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -451,8 +443,8 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ESTFloorNumber}" />
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTFloorNumber}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -484,8 +476,8 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" />
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -517,8 +509,8 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ESTQuarter}" />
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTQuarter}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -550,8 +542,8 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" />
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -569,7 +561,8 @@
                                 HorizontalOptions="FillAndExpand"
                                 HorizontalTextAlignment="Start"
                                 IsSpellCheckEnabled="false"
-                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric,
+                                                      iOS=Default}"
                                 MaxLength="6"
                                 PlaceholderColor="{StaticResource NeutralGreay}"
                                 Text="{Binding PostalCode}"
@@ -615,8 +608,8 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.CountryText}" />
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CountryText}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -642,8 +635,8 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ESTProvinance}" />
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTProvinance}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -669,8 +662,8 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -718,7 +711,6 @@
                             x:Name="PostalAddressFields"
                             HorizontalOptions="FillAndExpand"
                             IsEnabled="{Binding PostalAsPhysical, Converter={StaticResource boolToVisibilityConverter}, ConverterParameter='invert'}"
-                            Orientation="Vertical"
                             VerticalOptions="StartAndExpand">
                             <Grid
                                 ColumnSpacing="20"
@@ -750,8 +742,8 @@
                                     VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}" />
-                                            <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}" />
+                                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -807,8 +799,8 @@
                                 VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTFloorNumber}" />
-                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTFloorNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -839,8 +831,8 @@
                                 VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" />
-                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -870,8 +862,8 @@
                                 VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTQuarter}" />
-                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTQuarter}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -901,8 +893,8 @@
                                 VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" />
-                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -919,7 +911,8 @@
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     IsSpellCheckEnabled="false"
-                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
                                     MaxLength="6"
                                     PlaceholderColor="{StaticResource NeutralGreay}"
                                     Text="{Binding PostalCodeSame}"
@@ -964,8 +957,8 @@
                                 VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.CountryText}" />
-                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CountryText}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -991,8 +984,8 @@
                                 VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTProvinance}" />
-                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTProvinance}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -1018,8 +1011,8 @@
                                 VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTOutletCity}" />
-                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTOutletCity}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -1047,7 +1040,6 @@
                 Padding="20,15"
                 BackgroundColor="White"
                 HorizontalOptions="FillAndExpand"
-                Orientation="Vertical"
                 Spacing="0"
                 VerticalOptions="StartAndExpand">
                 <Grid
@@ -1065,7 +1057,6 @@
                         Grid.Column="0"
                         HorizontalOptions="Start"
                         Source="arrowLeft.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="Center">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
@@ -1149,9 +1140,8 @@
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{Binding NxtButtonLabel}" />
             </Grid>
-            <custom:Loader  Grid.RowSpan="3"
-             IsVisible="{Binding IsLoading}"/>
-           
+            <custom:Loader Grid.RowSpan="3" IsVisible="{Binding IsLoading}" />
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

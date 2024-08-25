@@ -3,8 +3,8 @@
     x:Class="ZATCAMAUI.Views.NewDesign.DashBoardPages.QuickActionPopUpPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     BackgroundColor="Transparent"
     FlowDirection="{Binding AppDirection}">
     <Border StrokeShape="RoundRectangle 20,20,20,20" VerticalOptions="FillAndExpand">
@@ -40,7 +40,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Padding="20"
-                Orientation="Vertical"
+                
                 Spacing="24"
                 VerticalOptions="End">
 
@@ -127,9 +127,9 @@
             <Border
                 Grid.Row="2"
                 Grid.ColumnSpan="3"
-                StrokeShape="RoundRectangle 10,10,10,10"
                 HeightRequest="24"
                 Opacity="0.5"
+                StrokeShape="RoundRectangle 10,10,10,10"
                 WidthRequest="24">
                 <Border.Margin>
                     <OnPlatform x:TypeArguments="Thickness">

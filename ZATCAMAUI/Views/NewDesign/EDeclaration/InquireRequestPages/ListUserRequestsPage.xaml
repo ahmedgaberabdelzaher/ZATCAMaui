@@ -32,7 +32,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -100,7 +99,7 @@
 
 
                         <!--  Search Entry  -->
-                        <custom:CustomSfTextInputView >
+                        <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="Text"
@@ -159,9 +158,15 @@
                                                 TextColor="#575756">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.ZZTotalAmount}" />
+                                                        <Span
+                                                            FontSize="12"
+                                                            Text="{x:Static ResourceManager:AppResources.ZZTotalAmount}"
+                                                            TextColor="#575756" />
                                                         <Span Text="  " />
-                                                        <Span Text="3" />
+                                                        <Span
+                                                            FontSize="12"
+                                                            Text="3"
+                                                            TextColor="#575756" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -181,8 +186,8 @@
                                                 <Border
                                                     Padding="15"
                                                     BackgroundColor="#0996D4"
-                                                    StrokeShape="RoundRectangle 14,14,14,14"
                                                     Opacity="0.15"
+                                                    StrokeShape="RoundRectangle 14,14,14,14"
                                                     VerticalOptions="Start" />
 
                                                 <!--  Price Label  -->
@@ -194,9 +199,17 @@
                                                     VerticalOptions="CenterAndExpand">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding totalFees}" />
+                                                            <Span
+                                                                FontFamily="{StaticResource SomarBold}"
+                                                                FontSize="12"
+                                                                Text="{Binding totalFees}"
+                                                                TextColor="#0996D4" />
                                                             <Span Text="  " />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                            <Span
+                                                                FontFamily="{StaticResource SomarBold}"
+                                                                FontSize="12"
+                                                                Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                                                                TextColor="#0996D4" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>

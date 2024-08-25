@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Services;
+﻿
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATServicesPageViewModel;
 using ZATCAMAUI.Views.NewDesign.VATDeRegistration;
@@ -20,28 +18,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATServices
             viewModel = App.Locator.VATServicesPageView;
             BindingContext = viewModel;
         }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
-        }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                //FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                //FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
+      
         private void OnBackTapped(object sender, EventArgs e)
         {
             viewModel._navigationService.GoBack();

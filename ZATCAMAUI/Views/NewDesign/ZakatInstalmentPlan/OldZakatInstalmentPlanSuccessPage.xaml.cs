@@ -1,8 +1,4 @@
-﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using ZATCAMAUI.Core.Helper;
+﻿using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using Application = Microsoft.Maui.Controls.Application;
 
@@ -91,11 +87,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                 viewModel._navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
 
                 MessagingCenter.Send<object, bool>(this, "ISCallBackFromSuccess", true);
-
-                //Application.Current.MainPage.Navigation.PopAsync();
-
-
-
             });
 
         }
@@ -105,15 +96,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
         private async void Download_Acknowledgement(object sender, EventArgs e)
         {
-
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-
-
-
-            });
-
+            viewModel.IsLoading = true;
             if (viewModel.ZakatReferanceNumber != null)
             {
 
@@ -122,24 +105,16 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
 
-            }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-
-
-
-            });
+            } 
+            viewModel.IsLoading = false;
+           
         }
 
         private async void Download_Form(object sender, EventArgs e)
         {
 
-
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-            });
+            viewModel.IsLoading = true;
+          
 
             if (viewModel.ZakatReferanceNumber != null)
             {
@@ -149,21 +124,11 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
 
 
-            }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
+            } 
+            viewModel.IsLoading = false;
+          
 
 
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
         }
 
     }

@@ -28,17 +28,17 @@
         <Label Style="{StaticResource CaptionLabelGrey}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="{x:Static ResourceManager:AppResources.MaterialType}" />
+                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.MaterialType}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
 
         <!--  MaterialType Entry  -->
-        <custom:CustomSfTextInputView >
+        <custom:CustomSfTextInputView>
             <custom:CustomSfTextInputView.TextInputView>
 
-                 <custom:GAZTBorderlessEntry
+                <custom:GAZTBorderlessEntry
                     InputTransparent="True"
                     IsReadOnly="True"
                     Keyboard="Text"
@@ -77,13 +77,13 @@
         <Label Style="{StaticResource CaptionLabelGrey}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="{x:Static ResourceManager:AppResources.Purpose}" />
+                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Purpose}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
 
-        <custom:CustomSfTextInputView >
+        <custom:CustomSfTextInputView>
             <custom:CustomSfTextInputView.TextInputView>
 
                 <custom:GAZTBorderlessEntry
@@ -136,17 +136,17 @@
         <Label Style="{StaticResource CaptionLabelGrey}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="{x:Static ResourceManager:AppResources.OtherPurpose}" />
+                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OtherPurpose}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
 
         <!--  Other Purpose Entry  -->
-        <custom:CustomSfTextInputView >
+        <custom:CustomSfTextInputView>
             <custom:CustomSfTextInputView.TextInputView>
 
-               <custom:GAZTBorderlessEntry
+                <custom:GAZTBorderlessEntry
                     Keyboard="Text"
                     Placeholder="{x:Static ResourceManager:AppResources.OtherPurpose}"
                     Style="{StaticResource DefaultEntry}"
@@ -167,7 +167,7 @@
         <Label Style="{StaticResource CaptionLabelGrey}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
+                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
             </Label.FormattedText>
@@ -177,19 +177,19 @@
         <custom:CustomSfTextInputView>
             <custom:CustomSfTextInputView.TextInputView>
 
-                 <numericinput:SfNumericEntry
+                <numericinput:SfNumericEntry
+                    BackgroundColor="Transparent"
                     CustomFormat="N2"
                     FontFamily="{StaticResource SomarRegular}"
                     FontSize="15"
                     HeightRequest="48"
-                    VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
                     PlaceholderColor="{StaticResource NeutralGreay}"
+                    ShowBorder="False"
                     TextColor="#58595B"
                     ValueChangeMode="OnKeyFocus"
-                    ShowBorder="False"
-                    BackgroundColor="Transparent"
+                    VerticalOptions="FillAndExpand"
                     Value="{Binding TotalValue}" />
 
             </custom:CustomSfTextInputView.TextInputView>
@@ -204,9 +204,10 @@
 
         </custom:CustomSfTextInputView>
 
-        <Label Text="{x:Static ResourceManager:AppResources.NumberHint}"
-               Margin="0,-15,0,10"
-               Style="{StaticResource CaptionLabelGrey}"/>
+        <Label
+            Margin="0,-15,0,10"
+            Style="{StaticResource CaptionLabelGrey}"
+            Text="{x:Static ResourceManager:AppResources.NumberHint}" />
 
     </StackLayout>
     <!--#endregion TotalValue Field-->
@@ -216,13 +217,13 @@
         <Label Style="{StaticResource CaptionLabelGrey}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="{x:Static ResourceManager:AppResources.Currency}" />
+                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Currency}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
 
-        <custom:CustomSfTextInputView >
+        <custom:CustomSfTextInputView>
             <custom:CustomSfTextInputView.TextInputView>
 
                 <custom:GAZTBorderlessEntry
@@ -260,7 +261,7 @@
     <Label Style="{StaticResource CaptionLabelGrey}">
         <Label.FormattedText>
             <FormattedString>
-                <Span Text="{x:Static ResourceManager:AppResources.CurrencyPermitLabel}" />
+                <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CurrencyPermitLabel}" />
                 <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
             </FormattedString>
         </Label.FormattedText>
@@ -365,14 +366,14 @@
             <Label Style="{StaticResource CaptionLabelGrey}">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="{x:Static ResourceManager:AppResources.Attachments}" />
+                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Attachments}" />
                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
 
             <!--  Uploaded files Entry  -->
-            <custom:CustomSfTextInputView >
+            <custom:CustomSfTextInputView>
                 <custom:CustomSfTextInputView.TextInputView>
 
                     <custom:GAZTBorderlessEntry
@@ -395,9 +396,10 @@
 
             </custom:CustomSfTextInputView>
 
-             <Label Text="{x:Static ResourceManager:AppResources.PDFFileHintMB}"
-               Margin="0,-15,0,10"
-               Style="{StaticResource CaptionLabelGrey}"/>
+            <Label
+                Margin="0,-15,0,10"
+                Style="{StaticResource CaptionLabelGrey}"
+                Text="{x:Static ResourceManager:AppResources.PDFFileHintMB}" />
 
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding CurrencyUploadFileCommand}" />
@@ -418,7 +420,7 @@
                         <StackLayout x:Name="Item">
 
                             <!--  PDfUploaded Entry  -->
-                            <custom:CustomSfTextInputView >
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
 
                                     <custom:GAZTBorderlessEntry
@@ -431,7 +433,7 @@
 
                                 </custom:CustomSfTextInputView.TextInputView>
 
-                                 <inputLayout:SfTextInputLayout.LeadingView>
+                                <inputLayout:SfTextInputLayout.LeadingView>
                                     <Image Aspect="AspectFit" Source="Generic_attachment_icon" />
                                 </inputLayout:SfTextInputLayout.LeadingView>
 
@@ -458,8 +460,8 @@
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                
-                               
+
+
 
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>

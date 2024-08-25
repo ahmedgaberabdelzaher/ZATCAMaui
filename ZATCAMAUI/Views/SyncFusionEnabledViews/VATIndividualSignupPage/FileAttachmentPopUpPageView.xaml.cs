@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Newtonsoft.Json;
 using Mopups.Pages;
 using Mopups.Services;
@@ -37,7 +36,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.FileAttachmentPopUpPageView;
             this.BindingContext = viewModel;
-            On<iOS>().SetUseSafeArea(true);
             viewModel.AttachmentList = new ObservableCollection<VATAttachment>();
             viewModel.VatAttachmentsList = new ObservableCollection<Attachment>();
             viewModel.IsComeForWhichAttachment = attachment;
@@ -72,10 +70,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
                         }
 
                         viewModel.filterList();
@@ -147,53 +143,32 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
             //Test check in
+
             try
             {
-                try
+                if (sender != null)
                 {
-                    if (sender != null)
+                    viewModel.VATAttachmentObj = new VATAttachment();
+                    Image arrowImage = sender as Image;
+                    viewModel.VATAttachmentObj = (VATAttachment)arrowImage.BindingContext;
+                    string var = string.Empty;
+                    if (App.IsArabic)
                     {
-                        viewModel.VATAttachmentObj = new VATAttachment();
-                        Image arrowImage = sender as Image;
-                        viewModel.VATAttachmentObj = (VATAttachment)arrowImage.BindingContext;
-                        string var = string.Empty;
-                        if (App.IsArabic)
-                        {
-                            var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ؟ ";
-                        }
-                        else
-                        {
-                            var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ? ";
-                        }
-                        await MopupService.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FileAttachmentPopUpPageView"));
+                        var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ؟ ";
                     }
-
-                }
-                catch (Exception)
-
-                {
-
-
-                    await Task.Run(() =>
+                    else
                     {
-                        viewModel.IsLoading = false;
-                    });
-
+                        var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ? ";
+                    }
+                    await MopupService.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FileAttachmentPopUpPageView"));
                 }
+
             }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    viewModel.IsLoading = false;
-                    //await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                });
-            }
-            await Task.Run(() =>
+            catch (Exception)
             {
                 viewModel.IsLoading = false;
-            });
+
+            }
         }
 
         public async void DeleteAttachmentForMessagingCenterCall()
@@ -235,7 +210,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             base.OnAppearing();
             getYesForDeleteAttachment();
-            getNoForDeleteAttachment();
         }
 
 
@@ -256,22 +230,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        public void getNoForDeleteAttachment()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "NoPressedToDeleteAttachment", (sender, arg) =>
-                {
-
-
-                });
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
+    
 
         public async Task DeleteAttachment(bool result, VATAttachment attachment)
         {
@@ -282,7 +241,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     if (result)
                     {
-                        // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
                         string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
                         PopToRootPage();
                         if (results == "X")
@@ -309,8 +267,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.Remove(listitem);
 
 
-                            //if (indexToReduceTheSize != -1)
-                            // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                             viewModel.AttachmentCount--;
                             viewModel.filterList();
                             viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
@@ -343,11 +299,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 });
             }
         }
-        private void OnDownloadAttachmentClicked(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void btnSwitch_ClickedForNewVATChange(object sender, EventArgs e)
         {
             if (!viewModel.IsSwitchToggled)

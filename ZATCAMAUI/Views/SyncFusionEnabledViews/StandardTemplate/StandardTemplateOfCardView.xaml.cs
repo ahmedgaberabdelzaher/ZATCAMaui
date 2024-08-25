@@ -7,18 +7,7 @@
         {
             InitializeComponent();
             App.IsArabic = false;
-            ChangeAeroIcon();
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+       
     }
 }

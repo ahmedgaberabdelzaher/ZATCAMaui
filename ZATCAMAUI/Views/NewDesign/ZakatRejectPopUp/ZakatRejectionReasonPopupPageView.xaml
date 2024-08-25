@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.NewDesign.ZakatRejectPopUp.ZakatRejectionReasonPopupPageView"
-             Title="ZakatRejectionReasonPopupPageView"
-             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-             xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-            xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-            xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
-            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-            FlowDirection="{Binding AppDirection}">
+<Mopups:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.ZakatRejectPopUp.ZakatRejectionReasonPopupPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    Title="ZakatRejectionReasonPopupPageView"
+    FlowDirection="{Binding AppDirection}">
 
-     <Mopups:PopupPage.Animation>
+    <Mopups:PopupPage.Animation>
         <Animations:ScaleAnimation
             DurationIn="400"
             DurationOut="300"
@@ -19,11 +20,12 @@
             PositionOut="Bottom" />
     </Mopups:PopupPage.Animation>
 
-     <Border x:Name="MainPanCakeView1"
-                       StrokeShape="RoundRectangle 15,15,0,0"
-                       VerticalOptions="EndAndExpand"
-                       BackgroundColor="White"
-                       Padding="15">
+    <Border
+        x:Name="MainPanCakeView1"
+        Padding="15"
+        BackgroundColor="White"
+        StrokeShape="RoundRectangle 15,15,0,0"
+        VerticalOptions="EndAndExpand">
         <Grid HeightRequest="171">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -36,43 +38,43 @@
                 <ColumnDefinition Width="auto" />
 
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0"
-                                    Grid.ColumnSpan="3"
-                                    Style="{StaticResource ValueLabelBlack}"
-                                    HorizontalOptions="StartAndExpand">
-                    <Label.FormattedText>
-                        <FormattedString>
-                        <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmetReject}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+            <Label
+                Grid.Row="0"
+                Grid.ColumnSpan="3"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource ValueLabelBlack}"
+                Text="{x:Static ResourceManager:AppResources.ZakatInstalmetReject}" />
 
-                <Border Grid.Row="1"
-                                 Grid.ColumnSpan="3"
-                                 Padding="10"
-                                 Style="{StaticResource GreyBorderFrame}">
-                    <custom:GAZTBorderlessEntry x:Name="Reason"
-                                            HorizontalOptions="FillAndExpand"
-                                        Text="{Binding RejectReasonText}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            FontFamily="{StaticResource SSTArRoman}"
-                                            FontSize="15" />
-                </Border>
+            <Border
+                Grid.Row="1"
+                Grid.ColumnSpan="3"
+                Padding="10"
+                Style="{StaticResource GreyBorderFrame}">
+                <custom:GAZTBorderlessEntry
+                    x:Name="Reason"
+                    FontFamily="{StaticResource SSTArRoman}"
+                    FontSize="15"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding RejectReasonText}"
+                    TextColor="{StaticResource NeutralBlack}" />
+            </Border>
 
-            <buttons:SfButton x:Name="btnprimary"
-                              Grid.Row="2"
-                              Grid.Column="0"
-                              Clicked="RejectButtonClicked"
-                              Margin="10,0,10,0"
-                              Text="{x:Static ResourceManager:AppResources.ZakatInstalmetReject}"
-                              Style="{StaticResource PrimaryButtonStyle}" />
-            <buttons:SfButton x:Name="btnprimary1"
-                              Clicked="CancelButtonClicked"
-                              Grid.Row="2"
-                              Grid.Column="1"
-                              Margin="10,0,10,0"
-                              Text="{x:Static ResourceManager:AppResources.ZakatInstalmetClose}"
-                              Style="{StaticResource PrimaryButtonStyle}" />
+            <buttons:SfButton
+                x:Name="btnprimary"
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="10,0,10,0"
+                Clicked="RejectButtonClicked"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZakatInstalmetReject}" />
+            <buttons:SfButton
+                x:Name="btnprimary1"
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="10,0,10,0"
+                Clicked="CancelButtonClicked"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZakatInstalmetClose}" />
         </Grid>
     </Border>
 

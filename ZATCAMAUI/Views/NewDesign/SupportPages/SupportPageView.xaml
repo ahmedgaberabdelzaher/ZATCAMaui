@@ -38,7 +38,7 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -104,7 +104,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         Rotation="180"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
+                                        
                                         VerticalOptions="CenterAndExpand">
                                         <Image.Triggers>
                                             <DataTrigger
@@ -137,7 +137,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         Rotation="180"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
+                                        
                                         VerticalOptions="CenterAndExpand">
 
                                         <Image.Triggers>
@@ -171,7 +171,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         Rotation="180"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
+                                        
                                         VerticalOptions="CenterAndExpand">
 
                                         <Image.Triggers>
@@ -204,7 +204,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         Rotation="180"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
+                                        
                                         VerticalOptions="CenterAndExpand">
                                         <Image.Triggers>
                                             <DataTrigger
@@ -236,7 +236,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         Rotation="180"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
+                                        
                                         VerticalOptions="CenterAndExpand">
 
                                         <Image.Triggers>
@@ -437,7 +437,7 @@
                                                 Margin="6,0,16,0"
                                                 HorizontalOptions="EndAndExpand"
                                                 Source="arrowRight.png"
-                                                Style="{DynamicResource BackButtonArrow}" />
+                                                 />
                                         </StackLayout>
                                     </Border>
                                 </StackLayout>

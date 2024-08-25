@@ -33,7 +33,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -193,7 +192,7 @@
 
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -201,7 +200,7 @@
                                 </Label>
 
                                 <!--  Phone Entry  -->
-                                <controls:CustomSfTextInputView >
+                                <controls:CustomSfTextInputView>
                                     <controls:CustomSfTextInputView.TextInputView>
                                         <controls:GAZTBorderlessEntry
                                             Keyboard="Telephone"
@@ -253,7 +252,7 @@
 
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -261,14 +260,14 @@
                                 </Label>
 
                                 <!--  Email Entry  -->
-                                <controls:CustomSfTextInputView >
+                                <controls:CustomSfTextInputView>
                                     <controls:CustomSfTextInputView.TextInputView>
                                         <controls:GAZTBorderlessEntry
-                                        Keyboard="Email"
-                                        Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding SubmitModel.travelerDeclaration.email}"
-                                        TextColor="#58595B" />
+                                            Keyboard="Email"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding SubmitModel.travelerDeclaration.email}"
+                                            TextColor="#58595B" />
                                     </controls:CustomSfTextInputView.TextInputView>
 
                                 </controls:CustomSfTextInputView>
@@ -282,7 +281,7 @@
 
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.AddressKSA}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.AddressKSA}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -290,7 +289,7 @@
                                 </Label>
 
                                 <!--  Address Entry  -->
-                                <controls:CustomSfTextInputView >
+                                <controls:CustomSfTextInputView>
                                     <controls:CustomSfTextInputView.TextInputView>
                                         <controls:GAZTBorderlessEntry
                                             Keyboard="Text"

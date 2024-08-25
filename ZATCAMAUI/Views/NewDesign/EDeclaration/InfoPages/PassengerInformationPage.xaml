@@ -4,11 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -76,12 +77,12 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView VerticalScrollBarVisibility="Never"
-                            Padding="0">
+                <ScrollView Padding="0" VerticalScrollBarVisibility="Never">
 
                     <StackLayout VerticalOptions="FillAndExpand">
 
@@ -218,9 +219,7 @@
                             VerticalOptions="FillAndExpand">
 
                             <!--  Passport Card  -->
-                            <Grid
-                                HeightRequest="110"
-                                WidthRequest="160">
+                            <Grid HeightRequest="110" WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="QSelected.png">
@@ -240,7 +239,7 @@
                                             TargetType="Image"
                                             Value="False">
                                             <Setter Property="Source" Value="QUnselected.png" />
-                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="HeightRequest" Value="110" />
                                             <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
@@ -296,7 +295,7 @@
                                             TargetType="Image"
                                             Value="False">
                                             <Setter Property="Source" Value="QSelected.png" />
-                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="HeightRequest" Value="110" />
                                             <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
@@ -305,7 +304,7 @@
                                             TargetType="Image"
                                             Value="True">
                                             <Setter Property="Source" Value="QUnselected.png" />
-                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="HeightRequest" Value="110" />
                                             <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
@@ -357,14 +356,14 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
                             <!--  First Name Entry  -->
-                             <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
+                            <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         Keyboard="Text"
@@ -385,7 +384,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.MiddleName}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.MiddleName}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -393,7 +392,7 @@
                             <!--  IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"  -->
 
                             <!--  Middle Entry  -->
-                            <custom:CustomSfTextInputView >
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         Keyboard="Text"
@@ -414,7 +413,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTLastNameLabel}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTLastNameLabel}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -422,9 +421,9 @@
                             <!--  IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"  -->
 
                             <!--  Last Entry  -->
-                            <custom:CustomSfTextInputView >
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
-                                     <custom:GAZTBorderlessEntry
+                                    <custom:GAZTBorderlessEntry
                                         Keyboard="Text"
                                         Placeholder="{x:Static ResourceManager:AppResources.ESTLastNameLabel}"
                                         Style="{StaticResource DefaultEntry}"
@@ -433,7 +432,7 @@
 
                                 </custom:CustomSfTextInputView.TextInputView>
                             </custom:CustomSfTextInputView>
-                           
+
                         </StackLayout>
 
                         <!--  Nationality Field  -->
@@ -443,7 +442,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.PassengerNationality}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.PassengerNationality}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -452,7 +451,7 @@
                             <!--  Nationality Entry  -->
                             <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
                                 <custom:CustomSfTextInputView.TextInputView>
-                                     <custom:GAZTBorderlessEntry
+                                    <custom:GAZTBorderlessEntry
                                         InputTransparent="True"
                                         IsReadOnly="True"
                                         Keyboard="Text"
@@ -466,9 +465,9 @@
                                     </custom:GAZTBorderlessEntry>
 
                                 </custom:CustomSfTextInputView.TextInputView>
-                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
-                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                                 <inputLayout:SfTextInputLayout.TrailingView>
 
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
@@ -488,7 +487,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding IDName}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{Binding IDName}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -498,12 +497,12 @@
                             <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
                                 <custom:CustomSfTextInputView.TextInputView>
 
-                                     <custom:GAZTBorderlessEntry
+                                    <custom:GAZTBorderlessEntry
                                         Keyboard="{Binding IDNumberKeyboard}"
                                         Placeholder="{Binding IDNumberPlaceHolder}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitModel.travelerDeclaration.travelID}"
-                                        TextColor="#58595B" >
+                                        TextColor="#58595B">
 
                                         <custom:GAZTBorderlessEntry.Behaviors>
                                             <behavior:OnlyNumericValuesBehaviour />
@@ -576,7 +575,7 @@
                         <Label Style="{StaticResource CaptionLabelGrey}">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ESTGenderLabel}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTGenderLabel}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -593,9 +592,7 @@
                             VerticalOptions="FillAndExpand">
 
                             <!--  Male card  -->
-                            <Grid
-                                HeightRequest="110"
-                                WidthRequest="160">
+                            <Grid HeightRequest="110" WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="QSelected.png">
@@ -606,7 +603,7 @@
                                             TargetType="Image"
                                             Value="True">
                                             <Setter Property="Source" Value="QSelected.png" />
-                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="HeightRequest" Value="110" />
                                             <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
@@ -615,7 +612,7 @@
                                             TargetType="Image"
                                             Value="False">
                                             <Setter Property="Source" Value="QUnselected.png" />
-                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="HeightRequest" Value="110" />
                                             <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
@@ -660,9 +657,7 @@
                             </Grid>
 
                             <!--  Female Card  -->
-                            <Grid
-                                HeightRequest="110"
-                                WidthRequest="160">
+                            <Grid HeightRequest="110" WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="QUnselected.png">
@@ -673,7 +668,7 @@
                                             TargetType="Image"
                                             Value="False">
                                             <Setter Property="Source" Value="QSelected.png" />
-                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="HeightRequest" Value="110" />
                                             <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
@@ -682,7 +677,7 @@
                                             TargetType="Image"
                                             Value="True">
                                             <Setter Property="Source" Value="QUnselected.png" />
-                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="HeightRequest" Value="110" />
                                             <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
@@ -773,7 +768,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ItsSource}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ItsSource}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -784,21 +779,21 @@
                                 <custom:CustomSfTextInputView.TextInputView>
 
                                     <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ItsSource}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.travelIssuerName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ItsSource}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.travelIssuerName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
 
                                 </custom:CustomSfTextInputView.TextInputView>
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -820,7 +815,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ReleaseDate}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ReleaseDate}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -831,26 +826,26 @@
                             <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
                                 <custom:CustomSfTextInputView.TextInputView>
 
-                                     <custom:GAZTBorderlessEntry
-                                    x:Name="releaseDateEntry"
-                                    ClassId="releasedateentry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="dd/MM/yyyy"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding ReleaseDateString}"
-                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="releaseDateEntry"
+                                        ClassId="releasedateentry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd/MM/yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding ReleaseDateString}"
+                                        TextColor="#58595B">
 
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference ReleaseDate}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference ReleaseDate}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
 
-                                </custom:GAZTBorderlessEntry>
+                                    </custom:GAZTBorderlessEntry>
 
                                 </custom:CustomSfTextInputView.TextInputView>
 
-                              <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference ReleaseDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
@@ -893,7 +888,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -904,26 +899,26 @@
                             <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
                                 <custom:CustomSfTextInputView.TextInputView>
 
-                                      <custom:GAZTBorderlessEntry
-                                    x:Name="endDateEntry"
-                                    ClassId="enddateentry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="dd/MM/yyyy"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding EndDateString}"
-                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="endDateEntry"
+                                        ClassId="enddateentry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd/MM/yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding EndDateString}"
+                                        TextColor="#58595B">
 
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference EndDate}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference EndDate}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
 
-                                </custom:GAZTBorderlessEntry>
+                                    </custom:GAZTBorderlessEntry>
 
                                 </custom:CustomSfTextInputView.TextInputView>
 
-                               <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference EndDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
@@ -961,7 +956,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>

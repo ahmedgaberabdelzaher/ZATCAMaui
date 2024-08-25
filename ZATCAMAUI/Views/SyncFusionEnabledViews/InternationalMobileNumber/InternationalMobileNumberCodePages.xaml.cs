@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using System.Collections.ObjectModel;
 using System.Globalization;
 using ZATCAMAUI.Models;
@@ -18,24 +17,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.InternationalMobileNumber
             InitializeComponent();
             viewModel = App.Locator.InternationalMobileNumberCodePages;
             BindingContext = viewModel;
-            On<iOS>().SetUseSafeArea(true);
-
-            ChangeAeroIcon();
 
             viewModel.onPageLoad();
 
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+      
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
             try

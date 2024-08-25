@@ -44,7 +44,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -948,9 +947,9 @@
 
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.VATInstalmentAgreementNumber}" />
-                                            <Span Text=": " />
-                                            <Span Text="{Binding AgreementNumber}" />
+                                            <Span Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATInstalmentAgreementNumber}" />
+                                            <Span Style="{StaticResource BodyLabelGrey}" Text=": " />
+                                            <Span Style="{StaticResource BodyLabelGrey}" Text="{Binding AgreementNumber}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

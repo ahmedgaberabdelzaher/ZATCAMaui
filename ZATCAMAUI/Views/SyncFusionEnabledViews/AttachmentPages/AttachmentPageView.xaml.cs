@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -12,7 +11,6 @@ using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
 {

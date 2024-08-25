@@ -18,7 +18,7 @@
         <ResourceDictionary>
             <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
-            
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -34,8 +34,8 @@
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
+                        IsVisible="{Binding IsBackButtonVisible}"
                         Rotation="0"
-                         IsVisible="{Binding IsBackButtonVisible}"
                         Source="whiteRightBack.png"
                         VerticalOptions="CenterAndExpand">
 
@@ -95,9 +95,10 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
                 <Grid>
 
@@ -175,8 +176,7 @@
                                         <StackLayout
                                             Grid.Row="0"
                                             Grid.Column="0"
-                                            BackgroundColor="Transparent"
-                                            Orientation="Vertical">
+                                            BackgroundColor="Transparent">
                                             <Label
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource PageTitleBlack}"
@@ -350,9 +350,9 @@
                                                         Style="{StaticResource ValueLabelBlack}">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding VATRefundsHeaderSet.ReassessAmt, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding VATRefundsHeaderSet.ReassessAmt, Converter={StaticResource commaSeparatorConverter}}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -371,9 +371,9 @@
                                                         Style="{StaticResource ValueLabelBlack}">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding VATRefundsHeaderSet.OffsetTot, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding VATRefundsHeaderSet.OffsetTot, Converter={StaticResource commaSeparatorConverter}}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -392,9 +392,9 @@
                                                         Style="{StaticResource ValueLabelBlack}">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding VATRefundsHeaderSet.NetCreditBal, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding VATRefundsHeaderSet.NetCreditBal, Converter={StaticResource commaSeparatorConverter}}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -406,10 +406,10 @@
                                                     Margin="-8,10,-8,-8"
                                                     Padding="20"
                                                     BackgroundColor="{StaticResource Primary}"
-                                                    StrokeShape="RoundRectangle 0,0,0,0"
                                                     HeightRequest="24"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Opacity="0.1" />
+                                                    Opacity="0.1"
+                                                    StrokeShape="RoundRectangle 0,0,0,0" />
                                                 <StackLayout
                                                     Grid.Row="3"
                                                     Grid.Column="0"
@@ -433,9 +433,9 @@
                                                     <Label HorizontalOptions="End" Style="{StaticResource SectionTitleBlackBold}">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding VATRefundsHeaderSet.RequestedAmt, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding VATRefundsHeaderSet.RequestedAmt, Converter={StaticResource commaSeparatorConverter}}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -769,8 +769,7 @@
                                     <StackLayout
                                         Grid.Row="0"
                                         Grid.Column="0"
-                                        BackgroundColor="Transparent"
-                                        Orientation="Vertical">
+                                        BackgroundColor="Transparent">
                                         <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource PageTitleBlack}"
@@ -1073,9 +1072,18 @@
                                             Style="{DynamicResource IsInstructionCheckedStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions1}" TextColor="{StaticResource PrimaryColor}" />
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions2}" TextColor="Blue" />
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions3}" TextColor="{StaticResource PrimaryColor}" />
+                                                    <Span
+                                                        Style="{DynamicResource IsInstructionCheckedStyle}"
+                                                        Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions1}"
+                                                        TextColor="{StaticResource PrimaryColor}" />
+                                                    <Span
+                                                        Style="{DynamicResource IsInstructionCheckedStyle}"
+                                                        Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions2}"
+                                                        TextColor="Blue" />
+                                                    <Span
+                                                        Style="{DynamicResource IsInstructionCheckedStyle}"
+                                                        Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions3}"
+                                                        TextColor="{StaticResource PrimaryColor}" />
 
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -1108,7 +1116,10 @@
                                             Style="{DynamicResource IsInstructionCheckedStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VATRefundAcknowledgment}" TextColor="{StaticResource PrimaryColor}" />
+                                                    <Span
+                                                        Style="{DynamicResource IsInstructionCheckedStyle}"
+                                                        Text="{x:Static ResourceManager:AppResources.VATRefundAcknowledgment}"
+                                                        TextColor="{StaticResource PrimaryColor}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -1142,11 +1153,11 @@
                                                     Margin="-8,10,-8,-8"
                                                     Padding="20"
                                                     BackgroundColor="{StaticResource Primary}"
-                                                    Stroke="{StaticResource NewWarmGreyColor}"
-                                                    StrokeShape="RoundRectangle 12,12,12,12"
                                                     HeightRequest="24"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Opacity="0.1" />
+                                                    Opacity="0.1"
+                                                    Stroke="{StaticResource NewWarmGreyColor}"
+                                                    StrokeShape="RoundRectangle 12,12,12,12" />
                                                 <StackLayout
                                                     Grid.Row="0"
                                                     Grid.Column="0"
@@ -1171,9 +1182,9 @@
                                                     <Label HorizontalOptions="End" Style="{StaticResource SectionTitleBlackBold}">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding VatNewReqSummaryData.Rfamt, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding VatNewReqSummaryData.Rfamt, Converter={StaticResource commaSeparatorConverter}}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -1213,6 +1224,6 @@
 
         </Grid>
 
-        
+
     </ContentPage.Content>
 </ContentPage>

@@ -27,9 +27,5 @@ namespace ZATCAMAUI.Views.NewDesign.CustomServicesPages.eDeclarations
             }
         }
 
-        void wbview_Navigating(System.Object sender, WebNavigatingEventArgs e)
-        {
-            
-        }
     }
 }

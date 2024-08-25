@@ -12,26 +12,20 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:gmaps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    BackgroundImageSource="partials_background.png"
-        xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="true"
-    NavigationPage.HasNavigationBar="False"
+    BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="Android, UWP">0</On>
-            <On Platform="iOS">0,20,0,0</On>
-        </OnPlatform>
-    </ContentPage.Padding>
     <ContentPage.Resources>
         <ResourceDictionary>
 
-           
+
 
             <Style x:Key="EntryHeight48" TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
@@ -80,7 +74,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" Style="{StaticResource CaptionLabelGrey}"/>
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -101,7 +95,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" Style="{StaticResource CaptionLabelGrey}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -138,8 +132,8 @@
                                         FlowDirection="LeftToRight"
                                         FontSize="Medium"
                                         HorizontalOptions="FillAndExpand"
-                                        IsReadOnly="True"
                                         InputTransparent="True"
+                                        IsReadOnly="True"
                                         Keyboard="Telephone"
                                         PlaceholderColor="Gray"
                                         Text="{Binding TMobNumber}"
@@ -149,7 +143,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource CaptionLabelGrey}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -161,8 +155,8 @@
                                     IsHintAlwaysFloated="True">
                                     <Editor
                                         AutoSize="TextChanges"
-                                        IsReadOnly="True"
                                         InputTransparent="True"
+                                        IsReadOnly="True"
                                         Text="{Binding RLocation}" />
 
                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -206,7 +200,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"  Style="{StaticResource CaptionLabelGrey}"/>
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -240,7 +234,8 @@
                                     <custom:GAZTBorderlessEntry
                                         x:Name="TxtTIN"
                                         IsSpellCheckEnabled="False"
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                        Keyboard="{OnPlatform Android=Numeric,
+                                                              iOS=Default}"
                                         MaxLength="10"
                                         Style="{StaticResource EntryHeight48}"
                                         Text="{Binding TxtTIN}"
@@ -259,7 +254,8 @@
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
                                         x:Name="TVatNumber"
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                        Keyboard="{OnPlatform Android=Numeric,
+                                                              iOS=Default}"
                                         MaxLength="15"
                                         Style="{StaticResource EntryHeight48}"
                                         Text="{Binding TVatNumber}"
@@ -272,7 +268,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}"  Style="{StaticResource CaptionLabelGrey}"/>
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -354,7 +350,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}"  Style="{StaticResource CaptionLabelGrey}"/>
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -437,7 +433,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}"  Style="{StaticResource CaptionLabelGrey}"/>
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -460,7 +456,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}"  Style="{StaticResource CaptionLabelGrey}"/>
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -494,7 +490,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource CaptionLabelGrey}"/>
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -576,7 +572,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource CaptionLabelGrey}"/>
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -592,7 +588,7 @@
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                         <inputLayout:LabelStyle TextColor="#B00020" />
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <StackLayout Margin="0,16,0,0" Orientation="Vertical">
+                                    <StackLayout Margin="0,16,0,0">
                                         <Editor
                                             x:Name="TReportDetail"
                                             AutoSize="TextChanges"
@@ -631,8 +627,8 @@
                                         </inputLayout:SfTextInputLayout.LeadingView>
                                         <custom:GAZTBorderlessEntry
                                             x:Name="Attachment_Frm"
-                                            IsReadOnly="True"
                                             InputTransparent="True"
+                                            IsReadOnly="True"
                                             Style="{StaticResource EntryHeight48}"
                                             Text="" />
                                     </inputLayout:SfTextInputLayout>
@@ -661,8 +657,8 @@
                                                     </inputLayout:SfTextInputLayout.LeadingView>
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="Attachment_Frm"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
+                                                        IsReadOnly="True"
                                                         Style="{StaticResource EntryHeight48}"
                                                         Text="{Binding FileNameWithExtension}" />
 
@@ -1029,8 +1025,8 @@
                                                                 </inputLayout:SfTextInputLayout.LeadingView>
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="Attachment_Frm"
-                                                                    IsReadOnly="True"
                                                                     InputTransparent="True"
+                                                                    IsReadOnly="True"
                                                                     Style="{StaticResource EntryHeight48}"
                                                                     Text="{Binding FileNameWithExtension}" />
                                                             </inputLayout:SfTextInputLayout>
@@ -1091,7 +1087,7 @@
                         <Image
                             HorizontalOptions="Start"
                             Source="arrowLeftwhite.png"
-                            Style="{DynamicResource BackButtonArrow}"
+                            
                             VerticalOptions="CenterAndExpand" />
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnBackStepClicked}" />
@@ -1111,8 +1107,8 @@
                 </Grid>
             </Grid>
 
-              <custom:Loader  IsVisible="{Binding IsLoading}"/>
-      
+            <custom:Loader IsVisible="{Binding IsLoading}" />
+
         </Grid>
 
     </ContentPage.Content>

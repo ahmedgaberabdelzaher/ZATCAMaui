@@ -24,7 +24,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
                 viewModel = App.Locator.UnlockAccountTINPageViewModel;
                 this.BindingContext = viewModel;
 
-                ChangeAeroIcon();
                 OtpGAZTDarkGrayLabelStyleFourthEntry.Text = string.Empty;
                 viewModel.EnableTINView();
                 Task.Run(async () => { await viewModel.GetCaptchAndGUID(); });
@@ -34,18 +33,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
 
             }
             
-        }
-
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
         }
 
 
@@ -75,28 +62,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
             //ValidateTinEntryAndVerify();
         }
 
-        void Otp_Unfocused(object sender,FocusEventArgs e)
-        {
-        }
-
         void btnVerify_Clicked(object sender, EventArgs e)
         {
             ValidateTinEntryAndVerify(true);
         }
 
-        void FrmTIN_Focused(object sender, FocusEventArgs e)
-        {
-        }
 
-        void OtpFourthEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        void btnConfirmOtp_Clicked(object sender, EventArgs e)
-        {
-
-        }
 
         private void EntryTINNumber_TextChanged(object sender, TextChangedEventArgs e)
         {

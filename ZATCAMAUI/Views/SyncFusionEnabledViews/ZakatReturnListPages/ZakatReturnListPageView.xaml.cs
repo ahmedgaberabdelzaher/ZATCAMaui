@@ -1,13 +1,10 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Syncfusion.Maui.Picker;
 using System.Globalization;
 using System.Resources;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage;
-using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnListPages
 {
@@ -25,13 +22,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnListPages
         public ZakatReturnListPageView()
         {
             InitializeComponent();
-            On<iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.ZakatReturnListPageView;
             ZakatICRListLayout.Padding = new Thickness(10, 0, 10, 0);
             BPicker.Margin = new Thickness(10, 0, 10, 0);
             FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
-            ChangeAeroIcon();
-            SetLTR();
             SetPickerFont();
             BindingContext = viewModel;
             viewModel.ClearData();
@@ -45,65 +39,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnListPages
                 if (e.Item == null) return;
                 if (sender is ListView lv) lv.SelectedItem = null;
             };
-            NavigationPage.SetBackButtonTitle(this, "");
 
         }
         #endregion
         #region Method
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height); //must be called
-            if (this.width != width || this.height != height)
-            {
-                this.width = width;
-                this.height = height;
-                if (App.IsArabic)
-                {
-                    if (width > height)
-                    {
-                        On<iOS>().SetUseSafeArea(false);
-                        ZakatICRListLayout.Padding = new Thickness(40, 0, 40, 0);
-                        BPicker.Margin = new Thickness(40, 0, 40, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(40, 0, 40, 5);
-                    }
-                    else
-                    {
-                        On<iOS>().SetUseSafeArea(true);
-                        ZakatICRListLayout.Padding = new Thickness(10, 0, 10, 0);
-                        BPicker.Margin = new Thickness(10, 0, 10, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
-                    }
-                }
-            }
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                //FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-            }
-            else
-            {
-                //FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-            }
-        }
+      
         private void onDropdownButtonClicked(object sender, EventArgs e)
         {
             BPicker.Focus();

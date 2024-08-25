@@ -9,11 +9,11 @@
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    FlowDirection="{Binding AppDirection}"
-    BackgroundColor="White"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     ios:Page.UseSafeArea="true"
+    BackgroundColor="White"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -22,19 +22,19 @@
 
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
-          
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
 
     <ContentPage.Content>
 
-         <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="0*,100*,0*">
 
-                 <Image
+                <Image
                     Grid.Row="0"
                     Grid.Column="1"
                     HeightRequest="50"
@@ -47,12 +47,13 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
-                    
+
                     <ScrollView VerticalOptions="FillAndExpand">
                         <StackLayout Padding="10" VerticalOptions="FillAndExpand">
                             <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.SADADDetailss}" />
@@ -108,8 +109,8 @@
                                     <Border
                                         Margin="0,10,0,0"
                                         Padding="10"
-                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}"
                                         VerticalOptions="FillAndExpand">
                                         <Grid
@@ -153,7 +154,7 @@
                                     Padding="0,2,0,0"
                                     BackgroundColor="White"
                                     HorizontalOptions="FillAndExpand"
-                                    Orientation="Vertical"
+                                    
                                     Spacing="4"
                                     VerticalOptions="End">
                                     <buttons:SfButton

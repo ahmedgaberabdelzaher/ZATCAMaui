@@ -6,14 +6,14 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    
+
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid>
@@ -38,7 +38,7 @@
                             HorizontalOptions="StartAndExpand"
                             IsVisible="{Binding IsBackStepButtonVisible}"
                             Source="arrowLeftwhite"
-                            Style="{DynamicResource BackButtonArrow}"
+                            
                             VerticalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />

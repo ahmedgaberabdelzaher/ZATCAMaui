@@ -9,9 +9,11 @@
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sfcustom="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     Title="{x:Static ResourceManager:AppResources.ZAmendSalesDetails}"
+    ios:Page.UseSafeArea="true"
     BackgroundColor="White"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -57,7 +59,6 @@
                     Grid.Column="0"
                     BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
-                    Orientation="Vertical"
                     VerticalOptions="FillAndExpand">
                     <Grid BackgroundColor="White">
                         <Grid.RowDefinitions>
@@ -99,58 +100,62 @@
                                 VerticalTextAlignment="Center" />
                         </StackLayout>
 
-                        <custom:CustomSfTextInputView Grid.Row="1"
+                        <custom:CustomSfTextInputView
+                            Grid.Row="1"
                             Grid.Column="0"
-                            HasError="False"
-                            Grid.ColumnSpan="2">
+                            Grid.ColumnSpan="2"
+                            HasError="False">
 
                             <custom:CustomSfTextInputView.TextInputView>
-                               <custom:GAZTBorderlessEntry
+                                <custom:GAZTBorderlessEntry
                                     FontFamily="{StaticResource SomarSemiBold}"
-                                    IsReadOnly="True"
                                     InputTransparent="True"
+                                    IsReadOnly="True"
                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                     Text="{Binding OldValue}"
                                     TextColor="{StaticResource ForgotPasswordGrayTextColor}">
                                     <custom:GAZTBorderlessEntry.Behaviors>
                                         <behaviors:AlphaNumericValidatorBehaviour />
                                     </custom:GAZTBorderlessEntry.Behaviors>
-                               </custom:GAZTBorderlessEntry>
+                                </custom:GAZTBorderlessEntry>
                             </custom:CustomSfTextInputView.TextInputView>
 
                         </custom:CustomSfTextInputView>
 
-                        <custom:CustomSfTextInputView Grid.Row="2"
+                        <custom:CustomSfTextInputView
+                            Grid.Row="2"
                             Grid.Column="0"
-                            HasError="False"
-                            Grid.ColumnSpan="2">
+                            Grid.ColumnSpan="2"
+                            HasError="False">
 
                             <custom:CustomSfTextInputView.TextInputView>
-                               <custom:GAZTBorderlessEntry
+                                <custom:GAZTBorderlessEntry
                                     x:Name="NewValue"
                                     Focused="OnEntryFocussed"
                                     FontFamily="{StaticResource SomarSemiBold}"
-                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                     Text="{Binding NewValue}"
                                     TextChanged="OnNewValueTextChanged"
-                                    Unfocused="OnEntryUnFocussed" >
-                                      <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviors:OnlyNumericValuesBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                    Unfocused="OnEntryUnFocussed">
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behaviors:OnlyNumericValuesBehaviour />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
 
                                 </custom:GAZTBorderlessEntry>
                             </custom:CustomSfTextInputView.TextInputView>
 
                         </custom:CustomSfTextInputView>
 
-                        <custom:CustomSfTextInputView Grid.Row="3"
+                        <custom:CustomSfTextInputView
+                            Grid.Row="3"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             HasError="False">
 
                             <custom:CustomSfTextInputView.TextInputView>
-                               <custom:GAZTBorderlessEntry
+                                <custom:GAZTBorderlessEntry
                                     FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                     Text="{Binding ChangeReason}">
@@ -170,16 +175,17 @@
                             Style="{StaticResource GAZTSmallGreenLabelStyle}"
                             Text="{x:Static ResourceManager:AppResources.Attachments}" />
 
-                         <custom:CustomSfTextInputView Grid.Row="12"
+                        <custom:CustomSfTextInputView
+                            Grid.Row="12"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             HasError="False">
 
                             <custom:CustomSfTextInputView.TextInputView>
-                               <custom:GAZTBorderlessEntry
+                                <custom:GAZTBorderlessEntry
                                     FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                    IsReadOnly="True"
                                     InputTransparent="True"
+                                    IsReadOnly="True"
                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                     Text="{Binding AttachmentName}"
                                     TextColor="{StaticResource PrimaryColor}" />
@@ -381,8 +387,8 @@
             </Grid>
             <!--  Acticity indicator layout start  -->
 
-            <custom:Loader IsVisible="{Binding IsLoading}"/>
-          
+            <custom:Loader IsVisible="{Binding IsLoading}" />
+
             <!--  Acticity indicator layout end  -->
         </Grid>
     </ContentPage.Content>

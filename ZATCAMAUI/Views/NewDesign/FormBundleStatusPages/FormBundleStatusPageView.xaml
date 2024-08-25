@@ -65,7 +65,7 @@
                 Padding="0"
                 Style="{StaticResource CommonTopCurves}">
                 <Grid RowDefinitions="*">
-                    
+
                     <ScrollView Padding="20" VerticalScrollBarVisibility="Never">
 
                         <StackLayout>
@@ -74,7 +74,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -96,8 +96,8 @@
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
                                     <custom:GAZTBorderlessEntry
-                                        IsReadOnly="True"
                                         InputTransparent="True"
+                                        IsReadOnly="True"
                                         Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding TxtFBtype}"
@@ -178,7 +178,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -200,8 +200,8 @@
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
                                     <custom:GAZTBorderlessEntry
-                                        IsReadOnly="True"
                                         InputTransparent="True"
+                                        IsReadOnly="True"
                                         Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding TxtFBnum}"

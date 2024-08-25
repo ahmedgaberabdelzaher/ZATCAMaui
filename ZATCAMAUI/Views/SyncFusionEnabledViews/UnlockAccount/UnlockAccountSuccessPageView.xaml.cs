@@ -14,7 +14,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
             viewModel = App.Locator.UnlockAccountSuccessPageViewModel;
             BindingContext = viewModel;
             viewModel.PasswordChangedSuccessfully = PasswordChangedSuccessfully;
-            ChangeAeroIcon();
         }
 
         void btnLogin_Clicked(object sender, EventArgs e)
@@ -22,17 +21,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
             viewModel.PopToRootPage();
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+      
 
     }
 }

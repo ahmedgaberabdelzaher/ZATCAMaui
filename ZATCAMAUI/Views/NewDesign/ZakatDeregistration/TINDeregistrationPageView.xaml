@@ -11,11 +11,11 @@
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
     x:Name="TinDeReg"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="false">
@@ -27,89 +27,90 @@
                 <Setter Property="FontSize" Value="12" />
             </Style>
             <converters:ValueTypeToVisibilityConverter x:Key="valueTypeToVisibilityConverter" />
-           
+
         </ResourceDictionary>
 
     </ContentPage.Resources>
 
 
-     <Grid RowDefinitions="Auto,*">
+    <Grid RowDefinitions="Auto,*">
 
-            <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+        <!--#region Header-->
+        <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
 
-                <StackLayout>
+            <StackLayout>
 
-                    <!--  Back Button  -->
-                    <Image
-                        HorizontalOptions="Start"
-                        Rotation="0"
-                        IsVisible="{Binding IsBackButtonVisible}"
-                        Source="whiteRightBack.png"
-                        VerticalOptions="CenterAndExpand">
+                <!--  Back Button  -->
+                <Image
+                    HorizontalOptions="Start"
+                    IsVisible="{Binding IsBackButtonVisible}"
+                    Rotation="0"
+                    Source="whiteRightBack.png"
+                    VerticalOptions="CenterAndExpand">
 
-                        <Image.Triggers>
-                            <DataTrigger
-                                Binding="{Binding AppDirection}"
-                                TargetType="Image"
-                                Value="LeftToRight">
-                                <Setter Property="Rotation" Value="180" />
-                            </DataTrigger>
-                        </Image.Triggers>
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding AppDirection}"
+                            TargetType="Image"
+                            Value="LeftToRight">
+                            <Setter Property="Rotation" Value="180" />
+                        </DataTrigger>
+                    </Image.Triggers>
 
-                    </Image>
+                </Image>
 
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoBackBtnTapped}" />
-                    </StackLayout.GestureRecognizers>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBackBtnTapped}" />
+                </StackLayout.GestureRecognizers>
 
+            </StackLayout>
+
+            <!--  Header Label  -->
+            <Label
+                Grid.Column="1"
+                FontSize="15"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource SectionTitleWhiteBold}"
+                Text="{x:Static ResourceManager:AppResources.TinDeregistration}"
+                VerticalOptions="Center" />
+
+            <StackLayout Grid.Row="0" Grid.Column="2">
+                <StackLayout
+                    HorizontalOptions="EndAndExpand"
+                    Orientation="Horizontal"
+                    Rotation="90"
+                    Spacing="3"
+                    VerticalOptions="CenterAndExpand">
+                    <BoxView
+                        BackgroundColor="{StaticResource SecondaryNew}"
+                        CornerRadius="3"
+                        HeightRequest="5"
+                        WidthRequest="5" />
+                    <BoxView
+                        BackgroundColor="{StaticResource SecondaryNew}"
+                        CornerRadius="3"
+                        HeightRequest="5"
+                        WidthRequest="5" />
+                    <BoxView
+                        BackgroundColor="{StaticResource SecondaryNew}"
+                        CornerRadius="3"
+                        HeightRequest="5"
+                        WidthRequest="5" />
                 </StackLayout>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OnMoreClicked}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
 
-                <!--  Header Label  -->
-                <Label
-                    Grid.Column="1"
-                    FontSize="15"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{x:Static ResourceManager:AppResources.TinDeregistration}"
-                    VerticalOptions="Center" />
+        </Grid>
+        <!--#endregion Header-->
 
-                 <StackLayout Grid.Row="0" Grid.Column="2">
-                    <StackLayout
-                        HorizontalOptions="EndAndExpand"
-                        Orientation="Horizontal"
-                        Rotation="90"
-                        Spacing="3"
-                        VerticalOptions="CenterAndExpand">
-                        <BoxView
-                            BackgroundColor="{StaticResource SecondaryNew}"
-                            CornerRadius="3"
-                            HeightRequest="5"
-                            WidthRequest="5" />
-                        <BoxView
-                            BackgroundColor="{StaticResource SecondaryNew}"
-                            CornerRadius="3"
-                            HeightRequest="5"
-                            WidthRequest="5" />
-                        <BoxView
-                            BackgroundColor="{StaticResource SecondaryNew}"
-                            CornerRadius="3"
-                            HeightRequest="5"
-                            WidthRequest="5" />
-                    </StackLayout>
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnMoreClicked}" />
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-
-            </Grid>
-            <!--#endregion Header-->
-
-            <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+        <!--#region Body-->
+        <Border
+            Grid.Row="1"
+            Padding="10,0"
+            Style="{StaticResource CommonTopCurves}">
 
             <Grid
                 Grid.Row="0"
@@ -120,16 +121,16 @@
                     <Grid
                         Margin="20,10,20,0"
                         BackgroundColor="Transparent"
+                        ColumnDefinitions="50*,50*"
                         HorizontalOptions="FillAndExpand"
                         IsVisible="{Binding IsReasonViewEnabled}"
-                        VerticalOptions="FillAndExpand"
                         RowDefinitions="auto,auto,auto,auto,auto"
-                        ColumnDefinitions="50*,50*">
+                        VerticalOptions="FillAndExpand">
                         <Grid
                             Grid.Row="0"
                             Grid.Column="0"
-                            RowDefinitions="auto,auto,1"
-                            Grid.ColumnSpan="2">
+                            Grid.ColumnSpan="2"
+                            RowDefinitions="auto,auto,1">
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
@@ -150,8 +151,8 @@
                         <Grid
                             Grid.Row="1"
                             Grid.Column="0"
-                            RowDefinitions="auto,auto,1"
-                            Grid.ColumnSpan="2">
+                            Grid.ColumnSpan="2"
+                            RowDefinitions="auto,auto,1">
 
                             <StackLayout Grid.Row="0" Grid.Column="0">
 
@@ -277,42 +278,43 @@
                             <Label x:Name="DateLabel" Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" />
                                         <Span Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
-                            <Border Padding="0,16,0,16"
-                                    Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Padding="0,16,0,16" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                <StackLayout x:Name="DateLbl"
-                                             IsVisible="{Binding isEditingAllowed}"
-                                             Orientation="Horizontal"
-                                             Grid.Row="5"
-                                             Grid.Column="0"
-                                             Grid.ColumnSpan="2" >
+                                <StackLayout
+                                    x:Name="DateLbl"
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    IsVisible="{Binding isEditingAllowed}"
+                                    Orientation="Horizontal">
 
-                                   <Label x:Name="DateLbl2"
-                                          Style="{StaticResource CaptionLabelGrey}"
-                                          Text="{Binding PickerDobToDisplay}"
-                                          HorizontalOptions="StartAndExpand"/>
+                                    <Label
+                                        x:Name="DateLbl2"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        Text="{Binding PickerDobToDisplay}" />
 
-                                    <StackLayout HorizontalOptions="EndAndExpand"
-                                                 Orientation="Horizontal" >
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
 
-                                            <Image Margin="5,0">
-                                                <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont"
-                                                                        Color="{StaticResource Gray}"
-                                                                        Size="20"
-                                                                    Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                                </Image.Source>
-                                            </Image>
+                                        <Image Margin="5,0">
+                                            <Image.Source>
+                                                <FontImageSource
+                                                    FontFamily="UserIconFont"
+                                                    Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
+                                                    Size="20"
+                                                    Color="{StaticResource Gray}" />
+                                            </Image.Source>
+                                        </Image>
 
-                                     </StackLayout>
+                                    </StackLayout>
 
-                                  </StackLayout>
+                                </StackLayout>
                             </Border>
 
                             <StackLayout
@@ -350,8 +352,8 @@
                                         BackgroundColor="Gray"
                                         Focused="OnDateEntryFocussed"
                                         FontFamily="{StaticResource SomarLight}"
-                                        IsReadOnly="True"
                                         InputTransparent="True"
+                                        IsReadOnly="True"
                                         Placeholder="yyyy/MM/dd"
                                         Style="{StaticResource InputTableEntryLayoutStyle}"
                                         Text="{Binding PickerDobToDisplay}"
@@ -500,7 +502,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" />
                                             <Span Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -533,8 +535,8 @@
                                             FontAttributes="None"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="Small"
-                                            IsReadOnly="True"
                                             InputTransparent="True"
+                                            IsReadOnly="True"
                                             Placeholder="yyyy/MM/dd"
                                             Style="{StaticResource InputTableEntryLayoutStyle}"
                                             Text="{Binding PickerDobToDisplay}"
@@ -705,7 +707,7 @@
                                     <Label Style="{StaticResource CaptionLabelGrey}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
+                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
                                                 <Span Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -755,7 +757,7 @@
                                     <Label FontFamily="{StaticResource SomarLight}" Style="{StaticResource CaptionLabelGrey}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.IDNumber}" />
+                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IDNumber}" />
                                                 <Span Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -795,7 +797,7 @@
                             <Label IsVisible="{Binding IsDobVisible}" Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
                                         <Span Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -828,8 +830,8 @@
                                         FontAttributes="None"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="Small"
-                                        IsReadOnly="True"
                                         InputTransparent="True"
+                                        IsReadOnly="True"
                                         Placeholder="yyyy/MM/dd"
                                         Style="{StaticResource InputTableEntryLayoutStyle}"
                                         Text="{Binding PickerDOBDateDisplay}"
@@ -966,7 +968,7 @@
                                     <Label Style="{StaticResource CaptionLabelGrey}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
+                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
                                                 <Span Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -1003,7 +1005,7 @@
                                     <Label Style="{StaticResource CaptionLabelGrey}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" />
+                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" />
                                                 <Span Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -1592,9 +1594,9 @@
                                             <Border
                                                 Margin="0,10,0,0"
                                                 Padding="12"
+                                                HeightRequest="30"
                                                 Stroke="#B1B1B1"
-                                                StrokeShape="RoundRectangle 14,14,14,14"
-                                                HeightRequest="30">
+                                                StrokeShape="RoundRectangle 14,14,14,14">
                                                 <StackLayout Orientation="Horizontal">
                                                     <custom:GAZTBorderlessEntry
                                                         HorizontalOptions="StartAndExpand"
@@ -1742,16 +1744,16 @@
                     <Grid
                         Margin="20,10,20,0"
                         BackgroundColor="Transparent"
-                        HorizontalOptions="FillAndExpand"
-                        RowDefinitions="auto,auto,auto,auto,auto,*"
                         ColumnDefinitions="50*,50*"
+                        HorizontalOptions="FillAndExpand"
                         IsVisible="{Binding IsDeclarationViewEnabled}"
+                        RowDefinitions="auto,auto,auto,auto,auto,*"
                         VerticalOptions="FillAndExpand">
                         <Grid
                             Grid.Row="0"
                             Grid.Column="0"
-                            RowDefinitions="auto,auto,1"
-                            Grid.ColumnSpan="2">
+                            Grid.ColumnSpan="2"
+                            RowDefinitions="auto,auto,1">
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
@@ -1772,8 +1774,8 @@
                         <Grid
                             Grid.Row="1"
                             Grid.Column="0"
-                            RowDefinitions="auto,auto,1"
-                            Grid.ColumnSpan="2">
+                            Grid.ColumnSpan="2"
+                            RowDefinitions="auto,auto,1">
                             <StackLayout>
                                 <StackLayout>
                                     <Label
@@ -1866,7 +1868,8 @@
                                             FontSize="Small"
                                             HorizontalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Start"
-                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric,
+                                                                  iOS=Default}"
                                             MaxLength="10"
                                             Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
                                             Text="{Binding TinDeregistrationData.ADecTelNo}"
@@ -1928,7 +1931,7 @@
                                     <Label Margin="5,10,0,15" Style="{DynamicResource IsDeclarationCheckedStyle}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDeclarationCheck}" />
+                                                <Span Style="{DynamicResource IsDeclarationCheckedStyle}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationDeclarationCheck}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -2328,12 +2331,12 @@
                 </ScrollView>
             </Grid>
 
-            </Border>
-            <!--#endregion Body-->
+        </Border>
+        <!--#endregion Body-->
 
 
-            <!--  Loader  -->
-            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+        <!--  Loader  -->
+        <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
-        </Grid>
+    </Grid>
 </ContentPage>

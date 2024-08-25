@@ -6,12 +6,12 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    BackgroundImageSource="partials_background.png"
-    FlowDirection="{Binding AppDirection}"
-     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     x:Name="page"
     ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
@@ -20,7 +20,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-   
+
 
     <ContentPage.Content>
 
@@ -69,13 +69,14 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
-               <Grid RowDefinitions="*">
+                <Grid RowDefinitions="*">
 
-                     <ScrollView
+                    <ScrollView
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand"
                         VerticalScrollBarVisibility="Never">
@@ -203,7 +204,7 @@
                                                             <StackLayout
                                                                 Grid.Row="0"
                                                                 Grid.ColumnSpan="2"
-                                                                Orientation="Vertical">
+                                                                >
                                                                 <Label
                                                                     Margin="0,0,0,10"
                                                                     HorizontalOptions="StartAndExpand"
@@ -216,7 +217,7 @@
                                                             <StackLayout
                                                                 Grid.Row="1"
                                                                 Grid.Column="0"
-                                                                Orientation="Vertical">
+                                                                >
 
                                                                 <Label
                                                                     HorizontalOptions="StartAndExpand"
@@ -277,7 +278,7 @@
                                 IsVisible="{Binding SummaryVisible}"
                                 VerticalOptions="FillAndExpand">
 
-                                <StackLayout Orientation="Vertical">
+                                <StackLayout >
 
                                     <Grid Margin="0,5,0,10">
                                         <Grid.RowDefinitions>
@@ -307,7 +308,7 @@
 
                                     <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout >
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -427,7 +428,7 @@
 
                                     <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout >
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -543,7 +544,7 @@
                                         IsVisible="{Binding IsSecurityPaymentsTabVisible}"
                                         Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout >
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -710,7 +711,7 @@
                                         IsVisible="{Binding IsSecurityPaymentsTabVisible}"
                                         Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout >
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -866,7 +867,7 @@
                                         Padding="0,0,0,16"
                                         Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout >
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -992,7 +993,7 @@
 
                                 </StackLayout>
                             </Grid>
-              
+
                         </Grid>
 
                     </ScrollView>
@@ -1008,7 +1009,7 @@
 
         </Grid>
 
-       
+
 
     </ContentPage.Content>
 </ContentPage>

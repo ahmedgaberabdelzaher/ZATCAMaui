@@ -10965,7 +10965,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
         <value>CarrierCompany</value>
     </data>
     <data name="CustomFeesDisclaimer" xml:space="preserve">
-        <value>Shipment value * 15%.</value>
+         <value>Shipment Value * Tariff  Fees.</value>
     </data>
     <data name="TrackVATDisclaimer" xml:space="preserve">
         <value>(Shipment value + Customs duties + Other fees) * 15%.</value>
@@ -11727,4 +11727,7 @@ the credit balance of the current period will be carried forward, you can reques
     <data name="AccountLoeckedMessgae" xml:space="preserve">
         <value>Your account has been locked due to several incorrect login attempts. Therefore, You can unlock the account by resetting the password now.</value>
     </data>
+	<data name="SAR" xml:space="preserve">
+    <value>SAR</value>
+  </data>
 </root>

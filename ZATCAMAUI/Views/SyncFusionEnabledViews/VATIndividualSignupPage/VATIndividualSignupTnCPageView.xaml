@@ -8,10 +8,10 @@
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{x:Static ResourceManager:AppResources.ZVatTermsAndConditions}"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -176,8 +176,8 @@
                 </Grid>
             </Border>
 
-            <custom:Loader  IsVisible="{Binding IsLoading}"/>
-           
+            <custom:Loader IsVisible="{Binding IsLoading}" />
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

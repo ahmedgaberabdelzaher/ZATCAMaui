@@ -43,7 +43,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -223,7 +222,7 @@
                         <Label Style="{StaticResource CaptionLabelGrey}">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.TypeOfTrip}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TypeOfTrip}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -327,7 +326,7 @@
 
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ComingFrom}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ComingFrom}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -338,7 +337,7 @@
 
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.GoingTo}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.GoingTo}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -346,8 +345,8 @@
                             </Label>
 
                             <!--  Coming From/Going To Entry  -->
-                            <custom:CustomSfTextInputView >
-                               <custom:CustomSfTextInputView.TextInputView>
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         InputTransparent="True"
                                         IsReadOnly="True"
@@ -360,9 +359,9 @@
                                             <TapGestureRecognizer Command="{Binding OpenComingGoingCommand}" />
                                         </custom:GAZTBorderlessEntry.GestureRecognizers>
                                     </custom:GAZTBorderlessEntry>
-                               </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView.TextInputView>
 
-                                 <inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
@@ -386,7 +385,7 @@
                             <Label IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.EntrancePort}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.EntrancePort}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -395,15 +394,15 @@
                             <Label IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ExitPort}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ExitPort}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
                             <!--  Entrance/Exit Port Entry  -->
-                            <custom:CustomSfTextInputView >
-                               <custom:CustomSfTextInputView.TextInputView>
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         InputTransparent="True"
                                         IsReadOnly="True"
@@ -416,9 +415,9 @@
                                             <TapGestureRecognizer Command="{Binding OpenEntranceExitPortCommand}" />
                                         </custom:GAZTBorderlessEntry.GestureRecognizers>
                                     </custom:GAZTBorderlessEntry>
-                               </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView.TextInputView>
 
-                                 <inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
@@ -442,7 +441,7 @@
                             <Label IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ArrivalDate}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ArrivalDate}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -451,7 +450,7 @@
                             <Label IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.DepartureDate}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.DepartureDate}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -459,8 +458,8 @@
 
 
                             <!--  Arrival/Departure Date Entry  -->
-                            <custom:CustomSfTextInputView >
-                               <custom:CustomSfTextInputView.TextInputView>
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         x:Name="ArivalDateEntry"
                                         InputTransparent="True"
@@ -470,9 +469,9 @@
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding ArrivalDepartureDateString}"
                                         TextColor="#58595B" />
-                               </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView.TextInputView>
 
-                                 <inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
@@ -507,22 +506,22 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.TripNumber}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TripNumber}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
                             <!--  Trip Number Entry  -->
-                            <custom:CustomSfTextInputView >
-                               <custom:CustomSfTextInputView.TextInputView>
-                                     <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
                                         Keyboard="Text"
                                         Placeholder="SV0000"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitModel.travelerDeclaration.flightNumber}"
                                         TextColor="#58595B" />
-                               </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView.TextInputView>
 
                             </custom:CustomSfTextInputView>
 
@@ -535,29 +534,29 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.TravelPurpose}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TravelPurpose}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
                             <!--  Travel Purpose Entry  -->
-                            <custom:CustomSfTextInputView >
-                               <custom:CustomSfTextInputView.TextInputView>
-                                      <custom:GAZTBorderlessEntry
-                                            InputTransparent="True"
-                                            IsReadOnly="True"
-                                            Keyboard="Text"
-                                            Placeholder="{x:Static ResourceManager:AppResources.TravelPurpose}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding SubmitModel.travelerDeclaration.travelPurposeName}"
-                                            TextColor="#58595B">
-                                            <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OpenTravelPurposeCommand}" />
-                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        </custom:GAZTBorderlessEntry>
-                               </custom:CustomSfTextInputView.TextInputView>
-                                 <inputLayout:SfTextInputLayout.TrailingView>
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.TravelPurpose}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.travelPurposeName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenTravelPurposeCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
@@ -580,17 +579,18 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.TravelerCount}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TravelerCount}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
                             <!--  Traveler Count Entry  -->
-                            <custom:CustomSfTextInputView >
-                               <custom:CustomSfTextInputView.TextInputView>
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                        Keyboard="{OnPlatform Android=Numeric,
+                                                              iOS=Default}"
                                         Placeholder="{x:Static ResourceManager:AppResources.TravelerCount}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitModel.travelerDeclaration.travelersCount}"
@@ -600,13 +600,14 @@
                                         </custom:GAZTBorderlessEntry.Behaviors>
 
                                     </custom:GAZTBorderlessEntry>
-                               </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView.TextInputView>
 
                             </custom:CustomSfTextInputView>
 
-                            <Label Text="{x:Static ResourceManager:AppResources.NumberHint}"
+                            <Label
                                 Margin="0,-15,0,10"
-                                Style="{StaticResource CaptionLabelGrey}"/>
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.NumberHint}" />
 
                         </StackLayout>
 
@@ -616,18 +617,12 @@
                         <StackLayout IsVisible="{Binding TripCard.IsLandTripSelected}" Spacing="0">
 
                             <!--  Plates Country Label  -->
-                            <Label Style="{StaticResource CaptionLabelGrey}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.CountryText}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CountryText}" />
 
                             <!--  Plates Country Entry  -->
-                            <custom:CustomSfTextInputView >
-                               <custom:CustomSfTextInputView.TextInputView>
-                                   <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
                                         InputTransparent="True"
                                         IsReadOnly="True"
                                         Keyboard="Text"
@@ -638,8 +633,8 @@
                                         <custom:GAZTBorderlessEntry.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
                                         </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                   </custom:GAZTBorderlessEntry>
-                               </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:GAZTBorderlessEntry>
+                                </custom:CustomSfTextInputView.TextInputView>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
@@ -649,7 +644,7 @@
                                     <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                             </custom:CustomSfTextInputView>
+                            </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
@@ -664,16 +659,16 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
                             <!--  Plates City Entry  -->
-                            <custom:CustomSfTextInputView >
-                               <custom:CustomSfTextInputView.TextInputView>
-                                   <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
                                         InputTransparent="True"
                                         IsReadOnly="True"
                                         Keyboard="Text"
@@ -685,8 +680,8 @@
                                             <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
 
                                         </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                   </custom:GAZTBorderlessEntry>
-                               </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:GAZTBorderlessEntry>
+                                </custom:CustomSfTextInputView.TextInputView>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
@@ -696,7 +691,7 @@
                                     <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                             </custom:CustomSfTextInputView>
+                            </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
@@ -708,18 +703,12 @@
                         <StackLayout IsVisible="{Binding TripCard.IsLandTripSelected}" Spacing="0">
 
                             <!--  Plates Number Label  -->
-                            <Label Style="{StaticResource CaptionLabelGrey}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.PlatesNumber}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.PlatesNumber}" />
 
                             <!--  Plates Number Entry  -->
-                            <custom:CustomSfTextInputView >
-                               <custom:CustomSfTextInputView.TextInputView>
-                                   <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
                                         Keyboard="Text"
                                         MaxLength="30"
                                         Placeholder="{x:Static ResourceManager:AppResources.PlatesNumber}"
@@ -732,9 +721,9 @@
                                         </custom:GAZTBorderlessEntry.Behaviors>
 
                                     </custom:GAZTBorderlessEntry>
-                               </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView.TextInputView>
 
-                             </custom:CustomSfTextInputView>
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -742,18 +731,12 @@
                         <StackLayout IsVisible="{Binding TripCard.IsLandTripSelected}" Spacing="0">
 
                             <!--  Plates Letter Label  -->
-                            <Label Style="{StaticResource CaptionLabelGrey}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.PlatesLetter}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.PlatesLetter}" />
 
                             <!--  Plates Letter Entry  -->
-                            <custom:CustomSfTextInputView >
-                               <custom:CustomSfTextInputView.TextInputView>
-                                   <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
                                         Keyboard="Text"
                                         MaxLength="4"
                                         Placeholder="{x:Static ResourceManager:AppResources.PlatesLetter}"
@@ -765,10 +748,10 @@
                                             <xct:EventToCommandBehavior Command="{Binding PlateLLetterTextChangedCommand}" EventName="TextChanged" />
                                         </custom:GAZTBorderlessEntry.Behaviors>
 
-                                   </custom:GAZTBorderlessEntry>
-                               </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:GAZTBorderlessEntry>
+                                </custom:CustomSfTextInputView.TextInputView>
 
-                             </custom:CustomSfTextInputView>
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -785,8 +768,16 @@
                             TextColor="#0996D4">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="+ " />
-                                    <Span Text="{x:Static ResourceManager:AppResources.PassengerInformation}" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Text="+ "
+                                        TextColor="#0996D4" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Text="{x:Static ResourceManager:AppResources.PassengerInformation}"
+                                        TextColor="#0996D4" />
 
                                 </FormattedString>
                             </Label.FormattedText>

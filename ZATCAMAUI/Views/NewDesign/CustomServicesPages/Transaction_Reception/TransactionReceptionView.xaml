@@ -32,7 +32,7 @@
                     <Label Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{x:Static ResourceManager:AppResources.UserType}" />
+                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.UserType}" />
                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                             </FormattedString>
                         </Label.FormattedText>
@@ -182,7 +182,7 @@
                         <Label Style="{StaticResource CaptionLabelGrey}">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -218,7 +218,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.UnifiedNumber}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.UnifiedNumber}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -238,8 +238,8 @@
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     x:Name="reportRegionEntry"
-                                    IsReadOnly="True"
                                     InputTransparent="True"
+                                    IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.UnifiedNumber}"
                                     Style="{StaticResource DefaultEntry}"
@@ -252,9 +252,9 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
-                                  <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding GetCurrentUserCRCommand}" />
-                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GetCurrentUserCRCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -293,7 +293,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.TIN}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TIN}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -311,8 +311,8 @@
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     x:Name="TinEntry"
-                                    IsReadOnly="True"
                                     InputTransparent="True"
+                                    IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.TIN}"
                                     Style="{StaticResource DefaultEntry}"
@@ -347,7 +347,7 @@
                                 <Label>
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.Buildingnumber}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Buildingnumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -365,7 +365,8 @@
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
                                     <custom:GAZTBorderlessEntry
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                        Keyboard="{OnPlatform Android=Numeric,
+                                                              iOS=Default}"
                                         Placeholder="{x:Static ResourceManager:AppResources.Buildingnumber}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding BuildingNo}"
@@ -380,7 +381,7 @@
                                 <Label Grid.Row="0" Grid.Column="1">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.Streetname}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Streetname}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -409,7 +410,7 @@
                                 <Label Grid.Row="2" Grid.Column="0">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.Districtname}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Districtname}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -438,7 +439,7 @@
                                 <Label Grid.Row="2" Grid.Column="1">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.Cityname}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Cityname}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -472,7 +473,7 @@
                                     Text="{x:Static ResourceManager:AppResources.PostalCode}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.PostalCode}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.PostalCode}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -500,7 +501,7 @@
                                 <Label Grid.Row="4" Grid.Column="1">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.SecondaryNumber}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.SecondaryNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -539,7 +540,7 @@
                         <Label Style="{StaticResource CaptionLabelGrey}">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.Subject}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Subject}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -571,7 +572,7 @@
                         <Label Style="{StaticResource CaptionLabelGrey}">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.Transactiondescription}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Transactiondescription}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -613,7 +614,7 @@
                         <Label Style="{StaticResource CaptionLabelGrey}">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.Attachments}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Attachments}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -621,12 +622,12 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
-                                    IsReadOnly="True"
                                     InputTransparent="True"
+                                    IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Addattachments}"
                                     Style="{StaticResource DefaultEntry}"
-                                    TextColor="#58595B" >
+                                    TextColor="#58595B">
 
                                     <custom:GAZTBorderlessEntry.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
@@ -643,9 +644,10 @@
                         </custom:CustomSfTextInputView>
                         <!--  Uploaded files Entry  -->
 
-                        <Label Text="{x:Static ResourceManager:AppResources.PDFFileHint}"
-                                Margin="0,-15,0,10"
-                                Style="{StaticResource CaptionLabelGrey}"/>
+                        <Label
+                            Margin="0,-15,0,10"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="{x:Static ResourceManager:AppResources.PDFFileHint}" />
 
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
@@ -677,8 +679,8 @@
                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <custom:GAZTBorderlessEntry
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Keyboard="Text"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding fileFullName}"

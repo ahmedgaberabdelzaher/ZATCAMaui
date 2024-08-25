@@ -24,13 +24,13 @@
         <ResourceDictionary>
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
-          
+
         </ResourceDictionary>
 
 
     </ContentPage.Resources>
 
-  
+
 
     <ContentPage.Content>
 
@@ -44,8 +44,8 @@
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        Rotation="0"
                         IsVisible="{Binding IsBackVisible}"
+                        Rotation="0"
                         Source="whiteRightBack.png"
                         VerticalOptions="CenterAndExpand">
 
@@ -80,9 +80,10 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
 
@@ -312,8 +313,7 @@
                                     Margin="20,10,20,0"
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
-                                    IsVisible="{Binding IsObjectionDetailsEnabled}"
-                                    Orientation="Vertical">
+                                    IsVisible="{Binding IsObjectionDetailsEnabled}">
 
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -342,7 +342,7 @@
 
                                     <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout>
 
                                             <Grid Padding="5" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -858,8 +858,8 @@
                                         <Border
                                             Margin="0,20,0,0"
                                             Padding="10,3,10,3"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
                                             HorizontalOptions="FillAndExpand"
+                                            StrokeShape="RoundRectangle 12,12,12,12"
                                             Style="{StaticResource SfStyleForZakatPlanGreen}">
                                             <Label
                                                 HorizontalOptions="StartAndExpand"
@@ -874,8 +874,8 @@
                                         <Border
                                             Margin="0,20,0,0"
                                             Padding="10,3,10,3"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
                                             HorizontalOptions="FillAndExpand"
+                                            StrokeShape="RoundRectangle 12,12,12,12"
                                             Style="{StaticResource SfStyleForZakatPlanGreen}">
                                             <Label
                                                 HorizontalOptions="StartAndExpand"
@@ -884,7 +884,7 @@
                                         </Border>
                                     </Grid>
 
-                                    <StackLayout IsVisible="{Binding IsBankGurantSecuritySelected}" Orientation="Vertical">
+                                    <StackLayout IsVisible="{Binding IsBankGurantSecuritySelected}">
 
                                         <listView:SfListView
                                             AutoFitMode="Height"
@@ -1131,8 +1131,8 @@
                                     <Border
                                         Margin="0,20,0,0"
                                         Padding="0"
-                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
                                         <StackLayout
                                             Padding="15"
@@ -1235,9 +1235,9 @@
                                         <Border
                                             Grid.Row="1"
                                             Padding="8"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            HorizontalOptions="FillAndExpand">
+                                            StrokeShape="RoundRectangle 12,12,12,12">
                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
                                                     FontAttributes="Bold"
@@ -1272,9 +1272,9 @@
                                         <Border
                                             Grid.Row="1"
                                             Padding="8"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            HorizontalOptions="FillAndExpand">
+                                            StrokeShape="RoundRectangle 12,12,12,12">
                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
                                                     FontAttributes="Bold"
@@ -1309,9 +1309,9 @@
                                         <Border
                                             Grid.Row="1"
                                             Padding="8"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            HorizontalOptions="FillAndExpand">
+                                            StrokeShape="RoundRectangle 12,12,12,12">
                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
                                                     FontAttributes="Bold"
@@ -1346,9 +1346,9 @@
                                         <Border
                                             Grid.Row="1"
                                             Padding="8"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            HorizontalOptions="FillAndExpand">
+                                            StrokeShape="RoundRectangle 12,12,12,12">
                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
                                                     FontAttributes="Bold"
@@ -1383,9 +1383,9 @@
                                         <Border
                                             Grid.Row="1"
                                             Padding="8"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            HorizontalOptions="FillAndExpand">
+                                            StrokeShape="RoundRectangle 12,12,12,12">
                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
                                                     FontAttributes="Bold"
@@ -1420,9 +1420,9 @@
                                         <Border
                                             Grid.Row="1"
                                             Padding="8"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            HorizontalOptions="FillAndExpand">
+                                            StrokeShape="RoundRectangle 12,12,12,12">
                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
                                                     FontAttributes="Bold"
@@ -1457,9 +1457,9 @@
                                         <Border
                                             Grid.Row="1"
                                             Padding="8"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            HorizontalOptions="FillAndExpand">
+                                            StrokeShape="RoundRectangle 12,12,12,12">
                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
                                                     FontAttributes="Bold"
@@ -1494,9 +1494,9 @@
                                         <Border
                                             Grid.Row="1"
                                             Padding="8"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            HorizontalOptions="FillAndExpand">
+                                            StrokeShape="RoundRectangle 12,12,12,12">
                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
                                                     FontAttributes="Bold"
@@ -1526,13 +1526,10 @@
                                                 </DataTrigger>
                                             </CheckBox.Triggers>
                                         </CheckBox>
-                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" VerticalOptions="Fill">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZODeclarationCheckboxText}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                                        <Label
+                                            Style="{StaticResource GAZTSmallGrayLabelStyle}"
+                                            Text="{x:Static ResourceManager:AppResources.ZODeclarationCheckboxText}"
+                                            VerticalOptions="Fill" />
 
                                     </StackLayout>
 
@@ -1558,9 +1555,9 @@
                                         <Border
                                             Grid.Row="1"
                                             Padding="8"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            HorizontalOptions="FillAndExpand">
+                                            StrokeShape="RoundRectangle 12,12,12,12">
                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
                                                     FontAttributes="Bold"
@@ -1595,9 +1592,9 @@
                                         <Border
                                             Grid.Row="1"
                                             Padding="8"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            HorizontalOptions="FillAndExpand">
+                                            StrokeShape="RoundRectangle 12,12,12,12">
                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
                                                     FontAttributes="Bold"
@@ -1633,7 +1630,7 @@
                                     IsVisible="{Binding SummaryVisible}"
                                     VerticalOptions="FillAndExpand">
 
-                                    <StackLayout Orientation="Vertical">
+                                    <StackLayout>
 
                                         <Grid Margin="0,5,0,10">
                                             <Grid.RowDefinitions>
@@ -1663,7 +1660,7 @@
 
                                         <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout Orientation="Vertical">
+                                            <StackLayout>
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -1809,8 +1806,8 @@
                                         <Border
                                             Margin="0,10,0,0"
                                             Padding="0"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
                                             HorizontalOptions="FillAndExpand"
+                                            StrokeShape="RoundRectangle 12,12,12,12"
                                             Style="{StaticResource SfStyleForZakatPlanGreen}"
                                             VerticalOptions="FillAndExpand">
                                             <Grid
@@ -1844,8 +1841,8 @@
                                         <Border
                                             Margin="0,10,0,0"
                                             Padding="0"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
                                             HorizontalOptions="FillAndExpand"
+                                            StrokeShape="RoundRectangle 12,12,12,12"
                                             Style="{StaticResource SfStyleForZakatPlanGreen}"
                                             VerticalOptions="FillAndExpand">
                                             <Grid
@@ -1883,7 +1880,7 @@
                                             Padding="0,0,0,16"
                                             Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout Orientation="Vertical">
+                                            <StackLayout>
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -1953,7 +1950,7 @@
                                             Padding="0,0,0,16"
                                             Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout Orientation="Vertical">
+                                            <StackLayout>
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -2053,7 +2050,7 @@
                                             Padding="0,0,0,16"
                                             Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout Orientation="Vertical">
+                                            <StackLayout>
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -2198,8 +2195,8 @@
                                         <Border
                                             Margin="0,10,0,0"
                                             Padding="0"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
                                             HorizontalOptions="FillAndExpand"
+                                            StrokeShape="RoundRectangle 12,12,12,12"
                                             Style="{StaticResource SfStyleForZakatPlanGreen}"
                                             VerticalOptions="FillAndExpand">
                                             <Grid
@@ -2270,7 +2267,6 @@
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding IsWithdrawDetailsEnabled}"
-                                    Orientation="Vertical"
                                     VerticalOptions="FillAndExpand">
 
                                     <Grid>
@@ -2312,7 +2308,7 @@
 
                                     <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout>
 
                                             <Grid Padding="5" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -2542,7 +2538,7 @@
 
                                     </Grid>
 
-                                    <StackLayout Orientation="Vertical">
+                                    <StackLayout>
 
 
                                         <listView:SfListView
@@ -2858,7 +2854,7 @@
                                         VerticalOptions="End" />
                                 </StackLayout>
 
-                               
+
                             </Grid>
 
                         </Grid>
@@ -2875,7 +2871,7 @@
 
         </Grid>
 
-        
+
 
     </ContentPage.Content>
 </ContentPage>

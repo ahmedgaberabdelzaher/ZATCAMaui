@@ -1,7 +1,4 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 using Application = Microsoft.Maui.Controls.Application;
@@ -16,47 +13,13 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
         public ZakatObjectionSuccessPageView()
         {
             InitializeComponent();
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             _viewModel = App.Locator.ZakatObjectionSuccessView;
 
             BindingContext = _viewModel;
         }
 
-        protected override void OnAppearing()
-        {
-            try
-            {
-                base.OnAppearing();
-
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
+       
 
         private async void Instalment_copy_Tapped(object sender, EventArgs e)
         {

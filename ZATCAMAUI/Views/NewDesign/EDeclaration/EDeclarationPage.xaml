@@ -26,16 +26,22 @@
                 <!--  Declaration Note Label  -->
                 <Label
                     Margin="0,0,0,10"
-                    FontSize="16"
                     FontFamily="{StaticResource SomarRegular}"
+                    FontSize="16"
                     LineBreakMode="WordWrap"
                     LineHeight="1"
                     Style="{StaticResource CaptionLabelGrey}">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}" TextColor="{StaticResource NeutralGreay}" />
+                            <Span
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                                TextColor="{StaticResource NeutralGreay}" />
                             <Span Text=" " />
-                            <Span Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" TextColor="{StaticResource Primary}" />
+                            <Span
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}"
+                                TextColor="{StaticResource Primary}" />
                         </FormattedString>
                     </Label.FormattedText>
 
@@ -58,7 +64,7 @@
                 <Label Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static ResourceManager:AppResources.Identitytype}" />
+                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Identitytype}" />
                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                         </FormattedString>
                     </Label.FormattedText>
@@ -71,16 +77,13 @@
                     <HorizontalStackLayout Spacing="10">
 
                         <!--#region Visitor Option-->
-                        <Grid HeightRequest="110"
-                              WidthRequest="160">
+                        <Grid HeightRequest="110" WidthRequest="160">
 
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SelcectIdentityTypeCommand}" CommandParameter="1" />
                             </Grid.GestureRecognizers>
 
-                            <Image
-                                Aspect="Fill"
-                                Source="UnselectedCard">
+                            <Image Aspect="Fill" Source="UnselectedCard">
                                 <Image.Triggers>
                                     <DataTrigger
                                         Binding="{Binding IdentityType}"
@@ -129,16 +132,14 @@
                         <!--#endregion Visitor-->
 
                         <!--#region Citizen Option-->
-                        <Grid HeightRequest="110"
-                                WidthRequest="160">
+                        <Grid HeightRequest="110" WidthRequest="160">
 
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SelcectIdentityTypeCommand}" CommandParameter="2" />
 
                             </Grid.GestureRecognizers>
 
-                            <Image Aspect="Fill"
-                                   Source="UnselectedCard.png">
+                            <Image Aspect="Fill" Source="UnselectedCard.png">
                                 <Image.Triggers>
                                     <DataTrigger
                                         Binding="{Binding IdentityType}"
@@ -268,7 +269,7 @@
 
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReferenceNumber}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReferenceNumber}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -276,7 +277,7 @@
                         </Label>
 
                         <!--  Reference Number Entry  -->
-                        <custom:CustomSfTextInputView >
+                        <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="Text"
@@ -297,7 +298,7 @@
 
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.IDResidencePassportNumber}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IDResidencePassportNumber}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -305,7 +306,7 @@
                         </Label>
 
                         <!--  ID/Passport Entry  -->
-                        <custom:CustomSfTextInputView >
+                        <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="Text"

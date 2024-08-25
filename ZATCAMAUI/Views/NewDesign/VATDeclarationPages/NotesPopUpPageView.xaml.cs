@@ -23,10 +23,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 InitializeComponent();
                 viewModel = App.Locator.NotesPopUpPageView;
                 BindingContext = viewModel;
-                NavigationPage.SetBackButtonTitle(this, "");
-                NavigationPage.SetHasBackButton(this, false);
-                ChangeAeroIcon();
-                //  viewModel.NoteText = string.Empty;
                 NotesPopUpPageViewModel.IsComingFromNotePage = true;
                 viewModel.NoteText = string.Empty;
                 if (vATDeclaration != null && vATDeclaration != null)
@@ -89,18 +85,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
         #region Methods
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-
+      
         protected override bool OnBackButtonPressed()
         {
             return true;
@@ -123,10 +108,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        private void NoteDetail_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
         #endregion
     }
 }

@@ -71,8 +71,7 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             HorizontalOptions="Center"
-                            Style="{StaticResource SectionTitleWhiteBold}"
-                            />
+                            Style="{StaticResource SectionTitleWhiteBold}" />
 
 
                         <Image
@@ -82,7 +81,6 @@
                             HorizontalOptions="StartAndExpand"
                             IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}"
                             Source="arrowLeftwhite"
-                            Style="{DynamicResource BackButtonArrow}"
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="24">
                             <Image.GestureRecognizers>
@@ -90,7 +88,7 @@
                             </Image.GestureRecognizers>
                         </Image>
 
-                        
+
                     </Grid>
                 </Grid>
             </Grid>
@@ -100,7 +98,7 @@
 
     <ContentPage.Content>
 
-         <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
@@ -110,8 +108,8 @@
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        Rotation="0"
                         IsVisible="{Binding IsBackButtonVisible}"
+                        Rotation="0"
                         Source="whiteRightBack.png"
                         VerticalOptions="CenterAndExpand">
 
@@ -139,7 +137,7 @@
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                     Text="{x:Static ResourceManager:AppResources.VatReview}"
+                    Text="{x:Static ResourceManager:AppResources.VatReview}"
                     VerticalOptions="Center" />
 
                 <StackLayout Grid.Row="0" Grid.Column="2">
@@ -174,11 +172,12 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
-               <Grid RowDefinitions="*" >
+                <Grid RowDefinitions="*">
 
                     <ScrollView
                         HorizontalOptions="FillAndExpand"
@@ -256,7 +255,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VRReviewReason}" />
+                                                    <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VRReviewReason}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -309,7 +308,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VRReviewSubReason}" />
+                                                    <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VRReviewSubReason}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -360,7 +359,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VRApplicationReferenceNumber}" />
+                                                    <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VRApplicationReferenceNumber}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -505,7 +504,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VATReviewRequestString}" />
+                                                    <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VATReviewRequestString}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -519,7 +518,7 @@
                                             Style="{StaticResource GreyBorderFrame}"
                                             VerticalOptions="FillAndExpand">
 
-                                            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                                            <StackLayout VerticalOptions="FillAndExpand">
 
                                                 <custom:GAZTBorderlessEditor
                                                     x:Name="Report_Details_Tx"
@@ -764,8 +763,8 @@
                                             Style="{StaticResource GreyBorderFrame}">
                                             <custom:GAZTBorderlessEntry
                                                 HorizontalOptions="FillAndExpand"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="{Binding TaxPeriodOfCase}"
                                                 TextColor="{StaticResource Primary}" />
@@ -795,8 +794,8 @@
                                             Style="{StaticResource GreyBorderFrame}">
                                             <custom:GAZTBorderlessEntry
                                                 HorizontalOptions="FillAndExpand"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="{Binding FormattedTaxperdioFromDate}"
                                                 TextColor="{StaticResource Primary}" />
@@ -828,8 +827,8 @@
                                             Style="{StaticResource GreyBorderFrame}">
                                             <custom:GAZTBorderlessEntry
                                                 HorizontalOptions="FillAndExpand"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="{Binding FormattedTaxperdioToDate}"
                                                 TextColor="{StaticResource Primary}" />
@@ -858,8 +857,8 @@
                                             Style="{StaticResource GreyBorderFrame}">
                                             <custom:GAZTBorderlessEntry
                                                 HorizontalOptions="FillAndExpand"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="{Binding PenalityAmountInQuestion, Converter={StaticResource commaSeparatorConverter}}"
                                                 TextColor="{StaticResource Primary}" />
@@ -888,8 +887,8 @@
                                             Style="{StaticResource GreyBorderFrame}">
                                             <custom:GAZTBorderlessEntry
                                                 HorizontalOptions="FillAndExpand"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="{Binding TotalTaxLiability}"
                                                 TextColor="{StaticResource Primary}" />
@@ -918,8 +917,8 @@
                                             Style="{StaticResource GreyBorderFrame}">
                                             <custom:GAZTBorderlessEntry
                                                 HorizontalOptions="FillAndExpand"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="{Binding TotalPenalities}"
                                                 TextColor="{StaticResource Primary}" />
@@ -948,8 +947,8 @@
                                             Style="{StaticResource GreyBorderFrame}">
                                             <custom:GAZTBorderlessEntry
                                                 HorizontalOptions="FillAndExpand"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="{Binding TaxPaid}"
                                                 TextColor="{StaticResource Primary}" />
@@ -1077,7 +1076,8 @@
                                                 x:Name="rrAmountTxt"
                                                 HorizontalOptions="FillAndExpand"
                                                 IsEnabled="{Binding IsRRAmountEdit}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="{Binding RequestedReviewAmount}"
                                                 TextColor="{StaticResource Primary}"
@@ -1101,7 +1101,7 @@
 
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VRDisputeDetails}" />
+                                                    <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VRDisputeDetails}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -1116,7 +1116,7 @@
                                             Style="{StaticResource GreyBorderFrame}"
                                             VerticalOptions="FillAndExpand">
 
-                                            <StackLayout Orientation="Vertical">
+                                            <StackLayout>
 
                                                 <custom:GAZTBorderlessEditor
                                                     x:Name="Dispute_Details_Tx"
@@ -1140,13 +1140,8 @@
                                             Grid.Row="2"
                                             FontFamily="{StaticResource SomarRegular}"
                                             HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{Binding charCountDisputeDetails}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                                            Style="{StaticResource MicroGrayLabelStyle}"
+                                            Text="{Binding charCountDisputeDetails}" />
 
                                     </Grid>
 
@@ -1202,7 +1197,7 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.VatLateFilingObjection}" />
+                                                        <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VatLateFilingObjection}" />
                                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -1226,7 +1221,7 @@
                                             Style="{StaticResource GreyBorderFrame}"
                                             VerticalOptions="FillAndExpand">
 
-                                            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                                            <StackLayout VerticalOptions="FillAndExpand">
 
                                                 <custom:GAZTBorderlessEditor
                                                     x:Name="LateFiling_Details_Txx"
@@ -1249,13 +1244,8 @@
                                         <Label
                                             Grid.Row="1"
                                             HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{Binding charCountLateFilingDetails}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                                            Style="{StaticResource MicroGrayLabelStyle}"
+                                            Text="{Binding charCountLateFilingDetails}" />
 
 
                                     </StackLayout>
@@ -1348,7 +1338,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VRNewAttachment}" />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.VRNewAttachment}"  Style="{StaticResource MicroGrayLabelStyle}"/>
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -1432,7 +1422,7 @@
                                             Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                                     </Grid>
-                                    <StackLayout IsVisible="{Binding IsSecurityAmountMorethanZero}" Orientation="Vertical">
+                                    <StackLayout IsVisible="{Binding IsSecurityAmountMorethanZero}">
 
                                         <Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand">
 
@@ -1570,7 +1560,7 @@
                                             </Border>
                                         </Grid>
 
-                                        <StackLayout IsVisible="{Binding IsBankGurantSecuritySelected}" Orientation="Vertical">
+                                        <StackLayout IsVisible="{Binding IsBankGurantSecuritySelected}">
 
                                             <listView:SfListView
                                                 AutoFitMode="Height"
@@ -2019,7 +2009,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VRIDType}" />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.VRIDType}"  Style="{StaticResource MicroGrayLabelStyle}"/>
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -2083,7 +2073,7 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.VRIDNumber}" />
+                                                        <Span Text="{x:Static ResourceManager:AppResources.VRIDNumber}"  Style="{StaticResource MicroGrayLabelStyle}"/>
                                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -2098,7 +2088,8 @@
                                                     <custom:GAZTBorderlessEntry
                                                         HeightRequest="48"
                                                         HorizontalOptions="FillAndExpand"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource BodyLabelBlack}"
                                                         Text="{Binding IDNumber}"
                                                         TextChanged="IdNumberTextChanged"
@@ -2125,7 +2116,7 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.VRDateOfBirth}" />
+                                                        <Span Text="{x:Static ResourceManager:AppResources.VRDateOfBirth}"  Style="{StaticResource MicroGrayLabelStyle}"/>
                                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -2182,7 +2173,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VRContactPersonName}" />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.VRContactPersonName}"  Style="{StaticResource MicroGrayLabelStyle}"/>
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -2227,7 +2218,7 @@
                                     IsVisible="{Binding SummaryVisible}"
                                     VerticalOptions="FillAndExpand">
 
-                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                                    <StackLayout VerticalOptions="FillAndExpand">
 
                                         <Grid Margin="0,5,0,10">
                                             <Grid.RowDefinitions>
@@ -2261,10 +2252,7 @@
                                             Style="{StaticResource GreyBorderFrameWithShadow}"
                                             VerticalOptions="FillAndExpand">
 
-                                            <StackLayout
-                                                HorizontalOptions="FillAndExpand"
-                                                Orientation="Vertical"
-                                                VerticalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -2425,10 +2413,7 @@
 
                                         <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout
-                                                HorizontalOptions="FillAndExpand"
-                                                Orientation="Vertical"
-                                                VerticalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -2566,10 +2551,7 @@
                                             IsVisible="{Binding LateFilingObjectionsSummaryVisible}"
                                             Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout
-                                                HorizontalOptions="FillAndExpand"
-                                                Orientation="Vertical"
-                                                VerticalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -2717,10 +2699,7 @@
                                             IsVisible="{Binding IsSecurityPaymentsTabVisible}"
                                             Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout
-                                                HorizontalOptions="FillAndExpand"
-                                                Orientation="Vertical"
-                                                VerticalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -2951,7 +2930,7 @@
                                             IsVisible="{Binding IsSecurityPaymentsTabVisible}"
                                             Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout Orientation="Vertical">
+                                            <StackLayout>
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -3129,7 +3108,7 @@
                                             Style="{StaticResource GreyBorderFrameWithShadow}"
                                             VerticalOptions="FillAndExpand">
 
-                                            <StackLayout Orientation="Vertical">
+                                            <StackLayout>
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -3279,13 +3258,13 @@
                                     </StackLayout>
                                 </StackLayout>
 
-                  
+
                             </Grid>
                         </Grid>
 
                     </ScrollView>
 
-               </Grid>
+                </Grid>
 
             </Border>
             <!--#endregion Body-->
@@ -3296,7 +3275,7 @@
 
         </Grid>
 
-      
+
     </ContentPage.Content>
 
 

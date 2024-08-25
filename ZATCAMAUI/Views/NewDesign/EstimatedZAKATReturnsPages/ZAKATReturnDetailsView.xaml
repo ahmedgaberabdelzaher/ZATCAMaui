@@ -47,7 +47,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -141,10 +140,7 @@
                                         Spacing="10">
                                         <StackLayout Orientation="Horizontal">
                                             <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FiscalYear}" />
-                                            <Label
-                                                Style="{StaticResource HorizontalEnd}"
-                                                StyleId="ValueLabel"
-                                                Text="{Binding Persl}" />
+                                            <Label StyleId="ValueLabel" Text="{Binding Persl}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <Label
@@ -154,14 +150,12 @@
                                                 Text="{x:Static ResourceManager:AppResources.FinancialPeriodFrom}" />
                                             <StackLayout
                                                 HorizontalOptions="FillAndExpand"
-                                                Orientation="Vertical"
                                                 Spacing="0"
                                                 StyleId="ValueLabel"
                                                 WidthRequest="160">
-                                                <Label Style="{StaticResource HorizontalEnd}" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FromDate}" />
+                                                <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FromDate}" />
                                                 <Label
                                                     Margin="5"
-                                                    Style="{StaticResource HorizontalEnd}"
                                                     StyleId="ValueLabel"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ToDate}" />
 
@@ -175,7 +169,6 @@
                                             <Label
                                                 HorizontalOptions="EndAndExpand"
                                                 HorizontalTextAlignment="End"
-                                                Style="{StaticResource HorizontalEnd}"
                                                 StyleId="ValueLabel"
                                                 Text="{Binding Fbnum}"
                                                 WidthRequest="120" />
@@ -215,7 +208,7 @@
                                                 Grid.Column="0"
                                                 Style="{StaticResource ValueLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.ZZEstimatedSalesForFiscalYear}" />
-                                            <Label Grid.Column="1" Style="{StaticResource HorizontalEnd}">
+                                            <Label Grid.Column="1">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding Estsl, StringFormat='{}{0:0.#}'}" />
@@ -244,7 +237,7 @@
                                                 Grid.Column="0"
                                                 Style="{StaticResource ValueLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.Capital}" />
-                                            <Label Grid.Column="1" Style="{StaticResource HorizontalEnd}">
+                                            <Label Grid.Column="1">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding Cpamt, StringFormat='{}{0:0.#}'}" />
@@ -271,7 +264,7 @@
                                                 Grid.Column="0"
                                                 Style="{StaticResource ValueLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.ZakatBase}" />
-                                            <Label Grid.Column="1" Style="{StaticResource HorizontalEnd}">
+                                            <Label Grid.Column="1">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding Zbamt, StringFormat='{}{0:0.#}'}" />
@@ -422,9 +415,10 @@
 
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="TotalVATSalesNew"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TvtslI}">
 
@@ -467,9 +461,10 @@
                                                     Unfocused="TotalVATSalesInputUnFocused">
 
                                                     <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TvtslI}" />
 
@@ -509,8 +504,8 @@
                                                     OutlineCornerRadius="8"
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
+                                                        IsReadOnly="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TvtslE}" />
 
@@ -556,7 +551,8 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="TotalVATSales"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToTotalVATSales}"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TvtslI}">
 
@@ -596,7 +592,8 @@
 
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToTotalVATSales}"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00">
 
@@ -683,9 +680,10 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="AverageNumberOfLabourNew"
                                                         Focused="AverageNumberOfLabourInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding LabnoI}"
                                                         Unfocused="AverageNumberOfLabourInputUnFocused">
@@ -727,9 +725,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="AverageNumberOfLabourInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="AverageNumberOfLabourInputUnFocused">
@@ -776,8 +775,8 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         HeightRequest="48"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
+                                                        IsReadOnly="True"
                                                         Style="{StaticResource InputTableEntryLayoutStyle}"
                                                         Text="{Binding LabnoE}" />
 
@@ -821,7 +820,8 @@
                                                         x:Name="AverageNumberOfLabour"
                                                         Focused="AverageNumberOfLabourInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding LabnoI}"
                                                         Unfocused="AverageNumberOfLabourInputUnFocused">
@@ -862,9 +862,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="AverageNumberOfLabourInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="AverageNumberOfLabourInputUnFocused">
@@ -952,9 +953,10 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="ImportValueNew"
                                                         Focused="ImportValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ImpvalI}"
                                                         Unfocused="ImportValueInputUnFocused">
@@ -997,9 +999,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ImportValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="ImportValueInputUnFocused">
@@ -1049,8 +1052,8 @@
                                                     OutlineCornerRadius="8"
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
+                                                        IsReadOnly="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ImpvalE}" />
 
@@ -1094,7 +1097,8 @@
                                                         x:Name="ImportValue"
                                                         Focused="ImportValueInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ImpvalI}"
                                                         Unfocused="ImportValueInputUnFocused">
@@ -1134,9 +1138,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ImportValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="ImportValueInputUnFocused">
@@ -1215,9 +1220,10 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="SalesFromPointOfSalesNew"
                                                         Focused="SalesFromPointOfSalesInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PtoslI}"
                                                         Unfocused="SalesFromPointOfSalesUnFocused">
@@ -1258,9 +1264,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="SalesFromPointOfSalesInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="SalesFromPointOfSalesUnFocused">
@@ -1311,9 +1318,10 @@
                                                     OutlineCornerRadius="8"
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PtoslI}" />
 
@@ -1353,7 +1361,8 @@
                                                         x:Name="SalesFromPointOfSales"
                                                         Focused="SalesFromPointOfSalesInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PtoslI}"
                                                         Unfocused="SalesFromPointOfSalesUnFocused">
@@ -1392,9 +1401,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="SalesFromPointOfSalesInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="SalesFromPointOfSalesUnFocused">
@@ -1473,9 +1483,10 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="ContractFromETIMADSystemNew"
                                                         Focused="ContractFromETIMADSystemInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding EtimadI}"
                                                         Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
@@ -1516,9 +1527,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ContractFromETIMADSystemInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
@@ -1568,8 +1580,8 @@
                                                     OutlineCornerRadius="8"
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
+                                                        IsReadOnly="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding EtimadI}" />
 
@@ -1614,7 +1626,8 @@
                                                         x:Name="ContractFromETIMADSystem"
                                                         Focused="ContractFromETIMADSystemInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding EtimadI}"
                                                         Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
@@ -1652,9 +1665,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ContractFromETIMADSystemInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
@@ -1723,9 +1737,10 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="ExportValueNew"
                                                         Focused="ExportValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ExamtI}"
                                                         Unfocused="ExportValueUnFocused">
@@ -1767,9 +1782,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ExportValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="ExportValueUnFocused">
@@ -1819,9 +1835,10 @@
                                                     OutlineCornerRadius="8"
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ExamtI}">
 
@@ -1869,7 +1886,8 @@
                                                         x:Name="ExportValue"
                                                         Focused="ExportValueInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ExamtI}"
                                                         Unfocused="ExportValueUnFocused">
@@ -1904,9 +1922,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ExportValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="ExportValueUnFocused">
@@ -1989,9 +2008,10 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="PurchaseValueNew"
                                                         Focused="PurchaseValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PramtI}"
                                                         Unfocused="PurchaseValueUnFocused">
@@ -2036,9 +2056,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="PurchaseValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="PurchaseValueUnFocused">
@@ -2090,8 +2111,8 @@
                                                     OutlineCornerRadius="8"
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
+                                                        IsReadOnly="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PramtE}" />
 
@@ -2133,7 +2154,8 @@
                                                         x:Name="PurchaseValue"
                                                         Focused="PurchaseValueInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PramtI}"
                                                         Unfocused="PurchaseValueUnFocused">
@@ -2167,9 +2189,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="PurchaseValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="PurchaseValueUnFocused">
@@ -2255,9 +2278,10 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="RealEstateValueNew"
                                                         Focused="RealEstateValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding RestI}"
                                                         Unfocused="RealEstateValueUnFocused">
@@ -2302,9 +2326,10 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="RealEstateValueInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="RealEstateValueUnFocused">
@@ -2356,8 +2381,8 @@
                                                     OutlineCornerRadius="8"
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
+                                                        IsReadOnly="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding RestE}" />
 
@@ -2397,7 +2422,8 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="RealEstateValue"
                                                         Focused="PurchaseValueInputFocused"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding RestI}"
                                                         Unfocused="PurchaseValueUnFocused">
@@ -2479,9 +2505,10 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="CapitalAmounNew"
                                                         Focused="CapitalAmountInputFocused"
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        IsReadOnly="True"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding Cpamt}"
                                                         Unfocused="CapitalAmountUnFocused">
@@ -2529,8 +2556,8 @@
                                                     OutlineCornerRadius="8"
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
                                                         InputTransparent="True"
+                                                        IsReadOnly="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding Cpamt}" />
 
@@ -2568,7 +2595,8 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="CapitalAmount"
                                                         Focused="CapitalAmountInputFocused"
-                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding Cpamt}"
                                                         Unfocused="CapitalAmountUnFocused">
@@ -2662,12 +2690,8 @@
                                             Grid.Column="1"
                                             Margin="5"
                                             HorizontalTextAlignment="Center"
-                                            IsVisible="{Binding DesClaimerVisibility}">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZZDeclarationText}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
+                                            IsVisible="{Binding DesClaimerVisibility}"
+                                            Text="{x:Static ResourceManager:AppResources.ZZDeclarationText}">
                                             <Label.Triggers>
                                                 <DataTrigger
                                                     Binding="{Binding CheckBoxStatus}"

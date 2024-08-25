@@ -1,72 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages.AccountLockedPageView"
-             Title="AccountLockedPageView"
-             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-            x:Name="page"
-            ios:Page.UseSafeArea="true"
-            BackgroundImageSource="partials_background.png"
-            FlowDirection="{Binding AppDirection}"
-            NavigationPage.HasNavigationBar="False">
+<ContentPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages.AccountLockedPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    x:Name="page"
+    Title="AccountLockedPageView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid>
-            <Grid x:Name="otpGrid" Margin="{OnPlatform  Android='0,-40,0,0', iOS='0,-50,0,-35'}">
-                <!--/* please dont remove UWP it gives error on run time */-->
+            <Grid x:Name="otpGrid" Margin="{OnPlatform Android='0,-40,0,0', iOS='0,-50,0,-35'}">
+                <!--  /* please dont remove UWP it gives error on run time */  -->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100*"></RowDefinition>
+                    <RowDefinition Height="100*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"></ColumnDefinition>
+                    <ColumnDefinition Width="100*" />
                 </Grid.ColumnDefinitions>
-                <StackLayout Orientation="Vertical">
-                    <Image Source="Burger" x:Name="HamburgerMenu" Style="{StaticResource SmallIcon}" 
-                       VerticalOptions="Start"
-                HorizontalOptions="EndAndExpand"
-                        Margin="10,55,10,0">
+                <StackLayout>
+                    <Image
+                        x:Name="HamburgerMenu"
+                        Margin="10,55,10,0"
+                        HorizontalOptions="EndAndExpand"
+                        Source="Burger"
+                        Style="{StaticResource SmallIcon}"
+                        VerticalOptions="Start">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1"/>
+                            <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1" />
                         </Image.GestureRecognizers>
                     </Image>
                     <Grid VerticalOptions="Start">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
 
-                        <Image Grid.Row="0" Margin="25,5,0,0" BackgroundColor="Transparent" Source="userlock.png" HorizontalOptions="Start" HeightRequest="100" WidthRequest="100" />
-                        <Label Grid.Row="1" Margin="25,5,0,0" FontSize="Medium" FontAttributes="Bold" TextColor="White" Text="{x:Static ResourceManager:AppResources.RetriveLoginData}"  />
-                        <Label Grid.Row="2" Margin="25,0,0,0" FontSize="Subtitle" TextColor="White" Text="{x:Static ResourceManager:AppResources.DearTaxpayer}" />
-                        <Label Grid.Row="3" Margin="25,0,15,0" FontSize="Small" TextColor="White" Text="{x:Static ResourceManager:AppResources.AccountLoeckedMessgae}" />
+                        <Image
+                            Grid.Row="0"
+                            Margin="25,5,0,0"
+                            BackgroundColor="Transparent"
+                            HeightRequest="100"
+                            HorizontalOptions="Start"
+                            Source="userlock.png"
+                            WidthRequest="100" />
+                        <Label
+                            Grid.Row="1"
+                            Margin="25,5,0,0"
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="{x:Static ResourceManager:AppResources.RetriveLoginData}"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="2"
+                            Margin="25,0,0,0"
+                            FontSize="Subtitle"
+                            Text="{x:Static ResourceManager:AppResources.DearTaxpayer}"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="3"
+                            Margin="25,0,15,0"
+                            FontSize="Small"
+                            Text="{x:Static ResourceManager:AppResources.AccountLoeckedMessgae}"
+                            TextColor="White" />
 
-                        <Button Grid.Row="4" 
-                    VerticalOptions="Center"
-                    TextColor="White"
-                    BackgroundColor="#0996d4"
-                    BorderWidth="1.5"
-                    CornerRadius="15"
-                    Text="{x:Static ResourceManager:AppResources.UnlockAccountResetPassword}"
-                    Margin="25,25,25,0"
-                    TextTransform="None"
-                    FontSize="Small"
-                    Command="{Binding ResetPasswordCommand}"
-                    />
-                           <Button Grid.Row="5" 
-                    VerticalOptions="Center"
-                    TextColor="White"
-                    BackgroundColor="#0996d4"
-                    BorderWidth="1.5"
-                    CornerRadius="15"
-                    Margin="25"
-                    Text="{x:Static ResourceManager:AppResources.LoginTitle}"
-                    TextTransform="None"
-                    FontSize="Small"
-                    Command="{Binding LoginCommand}"
-                    />
+                        <Button
+                            Grid.Row="4"
+                            Margin="25,25,25,0"
+                            BackgroundColor="#0996d4"
+                            BorderWidth="1.5"
+                            Command="{Binding ResetPasswordCommand}"
+                            CornerRadius="15"
+                            FontSize="Small"
+                            Text="{x:Static ResourceManager:AppResources.UnlockAccountResetPassword}"
+                            TextColor="White"
+                            TextTransform="None"
+                            VerticalOptions="Center" />
+                        <Button
+                            Grid.Row="5"
+                            Margin="25"
+                            BackgroundColor="#0996d4"
+                            BorderWidth="1.5"
+                            Command="{Binding LoginCommand}"
+                            CornerRadius="15"
+                            FontSize="Small"
+                            Text="{x:Static ResourceManager:AppResources.LoginTitle}"
+                            TextColor="White"
+                            TextTransform="None"
+                            VerticalOptions="Center" />
                     </Grid>
                 </StackLayout>
             </Grid>

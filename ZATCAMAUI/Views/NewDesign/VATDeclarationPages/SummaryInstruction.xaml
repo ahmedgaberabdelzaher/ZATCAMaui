@@ -3,12 +3,12 @@
     x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.SummaryInstruction"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -33,8 +33,8 @@
                     VerticalOptions="EndAndExpand">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="1." />
-                            <Span Text="{x:Static ResourceManager:AppResources.ZVatTandCone}" />
+                            <Span Style="{StaticResource CaptionLabelGrey}" Text="1." />
+                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatTandCone}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -46,8 +46,8 @@
                     VerticalOptions="EndAndExpand">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="2." />
-                            <Span Text="{x:Static ResourceManager:AppResources.ZVatTandCtwo}" />
+                            <Span Style="{StaticResource CaptionLabelGrey}" Text="2." />
+                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatTandCtwo}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -59,8 +59,8 @@
                     VerticalOptions="EndAndExpand">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="3." />
-                            <Span Text="{x:Static ResourceManager:AppResources.ZVatTandCthree}" />
+                            <Span Style="{StaticResource CaptionLabelGrey}" Text="3." />
+                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatTandCthree}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -72,19 +72,13 @@
                     VerticalOptions="EndAndExpand">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="4." />
-                            <Span Text="{x:Static ResourceManager:AppResources.ZVatTandCfour}" />
+                            <Span Style="{StaticResource CaptionLabelGrey}" Text="4." />
+                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatTandCfour}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
 
-                <Label Style="{StaticResource CaptionLabelBlack}">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="{x:Static ResourceManager:AppResources.ZVatCertifyInformation}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+                <Label Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZVatCertifyInformation}" />
 
             </StackLayout>
         </ScrollView>
