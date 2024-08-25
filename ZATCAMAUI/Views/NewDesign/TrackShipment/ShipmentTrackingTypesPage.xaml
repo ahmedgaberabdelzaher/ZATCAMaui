@@ -25,7 +25,7 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -61,7 +61,8 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="{x:OnPlatform Android= '5,5,5,0',iOS= '20,5,20,0'}"
+                Padding="{x:OnPlatform Android='5,5,5,0',
+                                       iOS='20,5,20,0'}"
                 Style="{StaticResource CommonTopCurves}">
 
                 <ScrollView VerticalScrollBarVisibility="Never">

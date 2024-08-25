@@ -1,8 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Syncfusion.Maui.Picker;
-using System.Globalization;
-using System.Resources;
+﻿
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using Application = Microsoft.Maui.Controls.Application;
 
@@ -19,8 +15,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
             InitializeComponent();
             viewModel = App.Locator.ZakatForm5PageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
-            SetLTR();
             viewModel.Fbguid = Fbguid;
             _ = viewModel.LoadZakatForm5Data();
 
@@ -46,35 +40,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
             });
         }
 
-
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                //FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-            }
-            else
-            {
-                //FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-            }
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
 
         public void SetButtonBackGroundColor(int BTNno)

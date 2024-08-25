@@ -2,7 +2,6 @@
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models.ChageFillingPeriodModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
 {

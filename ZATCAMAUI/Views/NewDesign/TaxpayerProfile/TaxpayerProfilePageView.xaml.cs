@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 {

@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Pages;
 using Mopups.Services;
 using System.Collections.ObjectModel;
@@ -11,7 +10,6 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
-using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 {
@@ -25,7 +23,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             InitializeComponent();
             try
             {
-                ChangeAeroIcon();
                 tINDeregistrationPageViewModel.IsMultiplePermitsVisible = false;
                 viewModel = tINDeregistrationPageViewModel;
                 this.BindingContext = viewModel;
@@ -739,9 +736,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
             SetDate();
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
@@ -760,17 +754,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             viewModel.SetDefaultDate();
 
         }
-        public void ChangeAeroIcon()
-        {
-            if (!App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+       
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -1219,24 +1203,10 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
                 genericDatePickerModel.DatePickerTitle = AppResources.TinDeregistrationDate;
                 genericDatePickerModel.PickerId = "DeregOutletSingleDatePicker";
-
-                try
-                {
-                    datepickermessagecenter();
-                    await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
-                }
-                catch (GAZTUnlockAccountException)
-                {
-
-                }
-                catch (InternetException)
-                {
-
-                }
-            }
-            catch (GAZTUnlockAccountException)
-            {
-
+                datepickermessagecenter();
+                await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+             
+              
             }
             catch (InternetException)
             {
@@ -1295,24 +1265,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     var parameterVal = (e as TappedEventArgs).Parameter.ToString();
                     viewModel.OnOutletPermitTypeDeRegisrtationReasonDateTapped.Execute(parameterVal);
                 }
-
-                try
-                {
                     datepickermessagecenter();
                     await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
-                }
-                catch (GAZTUnlockAccountException)
-                {
-
-                }
-                catch (InternetException)
-                {
-
-                }
-            }
-            catch (GAZTUnlockAccountException)
-            {
-
+               
             }
             catch (InternetException)
             {
@@ -1339,17 +1294,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 genericPickerModel.PickerId = "permitTypeReasonPicker";
 
                 await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-
-
-            }
-            catch (InternetException ex)
-            {
-
-
             }
             catch (Exception)
             {
@@ -1630,10 +1574,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        private void OnClosePermitDeregDateClicked(object sender, EventArgs e)
-        {
-
-        }
 
         void Button_Clicked(object sender, EventArgs e)
         {
@@ -1746,9 +1686,5 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
         }
 
-        private void OnDateEntryFocussed(object sender, FocusEventArgs e)
-        {
-
-        }
     }
 }

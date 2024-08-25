@@ -42,9 +42,9 @@
                     <!--#region Hint view-->
                     <Border
                         Padding="10"
+                        HorizontalOptions="FillAndExpand"
                         Stroke="#E6E6E6"
-                        StrokeShape="RoundRectangle 10,10,10,10"
-                        HorizontalOptions="FillAndExpand">
+                        StrokeShape="RoundRectangle 10,10,10,10">
 
                         <Grid
                             ColumnDefinitions="auto,*"
@@ -94,7 +94,7 @@
                         <Label Style="{StaticResource CaptionLabelGrey}">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.Thetypeofmerchandise}" />
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Thetypeofmerchandise}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -122,8 +122,8 @@
                                 <Image Aspect="AspectFit" Source="greyDropDown" />
                             </inputLayout:SfTextInputLayout.TrailingView>
 
-                             <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenPoductTypesCommand}" />
+                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenPoductTypesCommand}" />
                             </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                         </custom:CustomSfTextInputView>
@@ -155,7 +155,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.Selecttheitem}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Selecttheitem}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -183,8 +183,8 @@
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
-                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenProductSubTypesCommand}" />
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenProductSubTypesCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                             </custom:CustomSfTextInputView>
@@ -202,27 +202,27 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.Quantity}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Quantity}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
                             <!--  Quantity Entry  -->
-                            <custom:CustomSfTextInputView >
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <numericinput:SfNumericEntry
+                                        BackgroundColor="Transparent"
                                         CustomFormat="n"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
                                         HeightRequest="48"
                                         HorizontalOptions="FillAndExpand"
-                                        BackgroundColor="Transparent"
-                                        ShowBorder="False"
-                                        VerticalOptions="FillAndExpand"
                                         Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
                                         PlaceholderColor="{StaticResource NeutralGreay}"
+                                        ShowBorder="False"
                                         TextColor="#58595B"
+                                        VerticalOptions="FillAndExpand"
                                         WidthRequest="150"
                                         Value="{Binding Quantity}" />
 
@@ -230,9 +230,10 @@
 
                             </custom:CustomSfTextInputView>
 
-                            <Label Text="{x:Static ResourceManager:AppResources.NumberHint}"
-                                   Margin="0,-15,0,10"
-                                   Style="{StaticResource CaptionLabelGrey}"/>
+                            <Label
+                                Margin="0,-15,0,10"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.NumberHint}" />
 
                         </StackLayout>
                         <!--#region units View-->
@@ -242,13 +243,13 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.units}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.units}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
-                            <custom:CustomSfTextInputView >
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         InputTransparent="True"
@@ -269,13 +270,13 @@
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
-                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenUnitsCommand}" />
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenUnitsCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                             </custom:CustomSfTextInputView>
 
-                            
+
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenUnitsCommand}" />
                             </StackLayout.GestureRecognizers>
@@ -289,7 +290,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.Productvalue}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Productvalue}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -299,22 +300,22 @@
                             <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <numericinput:SfNumericEntry
+                                        BackgroundColor="Transparent"
                                         CustomFormat="n"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
                                         HeightRequest="48"
-                                        VerticalOptions="FillAndExpand"
                                         HorizontalOptions="FillAndExpand"
                                         Placeholder="{x:Static ResourceManager:AppResources.Productvalue}"
                                         PlaceholderColor="{StaticResource NeutralGreay}"
-                                        TextColor="#58595B"
                                         ShowBorder="False"
-                                        BackgroundColor="Transparent"
+                                        TextColor="#58595B"
+                                        VerticalOptions="FillAndExpand"
                                         Value="{Binding TotalValue}" />
 
                                 </custom:CustomSfTextInputView.TextInputView>
 
-                               <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                                <inputLayout:SfTextInputLayout.HelperLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#58595B" />
                                 </inputLayout:SfTextInputLayout.HelperLabelStyle>
 
@@ -329,9 +330,10 @@
 
                             </custom:CustomSfTextInputView>
 
-                            <Label Text="{x:Static ResourceManager:AppResources.ProductValueHint}"
-                                   Margin="0,-15,0,10"
-                                   Style="{StaticResource CaptionLabelGrey}"/>
+                            <Label
+                                Margin="0,-15,0,10"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.ProductValueHint}" />
 
                         </StackLayout>
 
@@ -371,15 +373,14 @@
                             </Label.GestureRecognizers>
 
                         </Label>
-                     </Border>
+                    </Border>
 
                 </StackLayout>
             </ScrollView>
 
             <Grid Grid.Row="0" IsVisible="{Binding IsshowFeesView}">
 
-                <Grid RowDefinitions="auto,*"
-                      RowSpacing="10">
+                <Grid RowDefinitions="auto,*" RowSpacing="10">
 
                     <Label
                         FontFamily="{StaticResource SomarBold}"
@@ -391,16 +392,16 @@
 
                     <!--  Fees Details frame  -->
                     <ScrollView
+                        Grid.Row="1"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand"
-                        Grid.Row="1"
                         VerticalScrollBarVisibility="Never">
 
                         <Border
                             Padding="15,10"
+                            HorizontalOptions="FillAndExpand"
                             Stroke="#E6E6E6"
                             StrokeShape="RoundRectangle 10,10,10,10"
-                            HorizontalOptions="FillAndExpand"
                             VerticalOptions="StartAndExpand">
 
                             <StackLayout Spacing="10">
@@ -426,9 +427,9 @@
                                     Style="{StaticResource BodyLabelBlack}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding ProductValue, StringFormat='{0:n}'}" />
+                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding ProductValue, StringFormat='{0:n}'}" />
                                             <Span Text=" " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
+                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                         </FormattedString>
                                     </Label.FormattedText>
 
@@ -443,9 +444,9 @@
 
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
+                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
                                             <Span Text=" " />
-                                            <Span Text="{Binding CustomFeesPercentage}" />
+                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding CustomFeesPercentage}" />
                                         </FormattedString>
                                     </Label.FormattedText>
 
@@ -465,9 +466,9 @@
                                     Style="{StaticResource BodyLabelBlack}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding FeesCalculatorResponse.totalDuty, StringFormat='{0:n}'}" />
+                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding FeesCalculatorResponse.totalDuty, StringFormat='{0:n}'}" />
                                             <Span Text=" " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
+                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                         </FormattedString>
                                     </Label.FormattedText>
 
@@ -494,9 +495,9 @@
                                     Style="{StaticResource BodyLabelBlack}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding FeesCalculatorResponse.extraFees, StringFormat='{0:n}'}" />
+                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding FeesCalculatorResponse.extraFees, StringFormat='{0:n}'}" />
                                             <Span Text=" " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
+                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -527,9 +528,9 @@
                                         Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding FeesCalculatorResponse.excise, StringFormat='{0:n}'}" />
+                                                <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding FeesCalculatorResponse.excise, StringFormat='{0:n}'}" />
                                                 <Span Text=" " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
+                                                <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -553,9 +554,9 @@
 
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
+                                            <Span Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
                                             <Span Text=" " />
-                                            <Span Text="{Binding VatPercenntage}" />
+                                            <Span Style="{StaticResource BodyLabelGrey}" Text="{Binding VatPercenntage}" />
                                         </FormattedString>
                                     </Label.FormattedText>
 
@@ -575,9 +576,9 @@
                                     Style="{StaticResource BodyLabelBlack}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding FeesCalculatorResponse.vat, StringFormat='{0:n}'}" />
+                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding FeesCalculatorResponse.vat, StringFormat='{0:n}'}" />
                                             <Span Text=" " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
+                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -596,9 +597,9 @@
                                     <Border
                                         Margin="-16"
                                         BackgroundColor="#0996D4"
-                                        StrokeShape="RoundRectangle 8,8,8,8"
                                         HorizontalOptions="FillAndExpand"
-                                        Opacity=".1" />
+                                        Opacity=".1"
+                                        StrokeShape="RoundRectangle 8,8,8,8" />
 
                                     <StackLayout VerticalOptions="CenterAndExpand">
 
@@ -611,9 +612,9 @@
                                             <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding FeesCalculatorResponse.totalPayment, StringFormat='{0:n}'}" />
+                                                        <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding FeesCalculatorResponse.totalPayment, StringFormat='{0:n}'}" />
                                                         <Span Text=" " />
-                                                        <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
+                                                        <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -631,7 +632,7 @@
 
                             </StackLayout>
 
-                         </Border>
+                        </Border>
 
                     </ScrollView>
 

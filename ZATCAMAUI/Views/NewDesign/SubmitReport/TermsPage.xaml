@@ -28,7 +28,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -172,17 +171,49 @@
                             TextColor="#002447">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="• " />
-                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote2}" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        Text="• "
+                                        TextColor="#002447" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        Text="{x:Static ResourceManager:AppResources.ReportSecondNote2}"
+                                        TextColor="#002447" />
                                     <Span Text="&#10;" />
-                                    <Span Text="• " />
-                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote3}" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        Text="• "
+                                        TextColor="#002447" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        Text="{x:Static ResourceManager:AppResources.ReportSecondNote3}"
+                                        TextColor="#002447" />
                                     <Span Text="&#10;" />
-                                    <Span Text="• " />
-                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote4}" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        Text="• "
+                                        TextColor="#002447" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        Text="{x:Static ResourceManager:AppResources.ReportSecondNote4}"
+                                        TextColor="#002447" />
                                     <Span Text="&#10;" />
-                                    <Span Text="• " />
-                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote5}" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        Text="• "
+                                        TextColor="#002447" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        Text="{x:Static ResourceManager:AppResources.ReportSecondNote5}"
+                                        TextColor="#002447" />
                                 </FormattedString>
                             </Label.FormattedText>
 
@@ -220,7 +251,6 @@
                                 HeightRequest="20"
                                 HorizontalOptions="Start"
                                 Source="emptyCheck.png"
-                                Style="{DynamicResource BackButtonArrow}"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="20">
 
@@ -262,10 +292,10 @@
                         <Border
                             Padding="10"
                             BackgroundColor="White"
-                            Stroke="#E6E6E6"
-                            StrokeShape="RoundRectangle 10,10,10,10"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="false"
+                            Stroke="#E6E6E6"
+                            StrokeShape="RoundRectangle 10,10,10,10"
                             VerticalOptions="StartAndExpand">
                             <Border.Triggers>
                                 <DataTrigger
@@ -341,7 +371,7 @@
 
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ReportFullName}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ReportFullName}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -393,13 +423,13 @@
                             <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
 
-                                     <custom:GAZTBorderlessEntry
-                                    x:Name="nameEntry"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ReportFullName}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.ReporterNameAr}"
-                                    TextColor="#58595B" />
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="nameEntry"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ReportFullName}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.ReporterNameAr}"
+                                        TextColor="#58595B" />
 
                                 </custom:CustomSfTextInputView.TextInputView>
 
@@ -414,7 +444,7 @@
 
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -467,12 +497,12 @@
                             <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
 
-                                      <custom:GAZTBorderlessEntry
-                                    Keyboard="Email"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.ReporterEmail}"
-                                    TextColor="#58595B" />
+                                    <custom:GAZTBorderlessEntry
+                                        Keyboard="Email"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.ReporterEmail}"
+                                        TextColor="#58595B" />
 
                                 </custom:CustomSfTextInputView.TextInputView>
 
@@ -487,7 +517,7 @@
 
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -539,17 +569,17 @@
                             <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
 
-                                     <custom:GAZTBorderlessEntry
-                                    x:Name="phoneEntry"
-                                    Keyboard="Telephone"
-                                    Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.ReporterMobileNumber}"
-                                    TextColor="#58595B" />
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="phoneEntry"
+                                        Keyboard="Telephone"
+                                        Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.ReporterMobileNumber}"
+                                        TextColor="#58595B" />
 
                                 </custom:CustomSfTextInputView.TextInputView>
 
-                                  <inputLayout:SfTextInputLayout.LeadingView>
+                                <inputLayout:SfTextInputLayout.LeadingView>
                                     <Image Aspect="AspectFit" Source="ic_Version" />
                                 </inputLayout:SfTextInputLayout.LeadingView>
 

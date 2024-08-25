@@ -14,26 +14,7 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
-            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImage" TargetType="Image">
-                        <Setter Property="HeightRequest" Value="30" />
-                        <Setter Property="WidthRequest" Value="30" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+
 
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
@@ -79,9 +60,9 @@
                     <!--  Video URL  -->
                     <Border
                         Padding="0"
+                        HeightRequest="250"
                         Stroke="#EBEBEB"
                         StrokeShape="RoundRectangle 20,20,20,20"
-                        HeightRequest="250"
                         WidthRequest="470">
                         <WebView Source="{Binding VideoUrl}" />
                     </Border>
@@ -97,7 +78,8 @@
 
                     <CollectionView
                         x:Name="videosList"
-                        Margin="{x:OnPlatform Android= '0,0,0,75',iOS= '0'}"
+                        Margin="{x:OnPlatform Android='0,0,0,75',
+                                              iOS='0'}"
                         CollectionView.ItemsSource="{Binding LiveVideosList}"
                         HorizontalOptions="FillAndExpand"
                         ItemSizingStrategy="MeasureAllItems"
@@ -106,8 +88,8 @@
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout
                                 HorizontalItemSpacing="15"
-                                Orientation="Vertical"
                                 Span="2"
+                                Orientation="Vertical"
                                 VerticalItemSpacing="15" />
                         </CollectionView.ItemsLayout>
 
@@ -119,9 +101,9 @@
                                 <Border
                                     x:Name="Item"
                                     Padding="0"
+                                    HeightRequest="150"
                                     Stroke="#EBEBEB"
                                     StrokeShape="RoundRectangle 20,20,20,20"
-                                    HeightRequest="150"
                                     WidthRequest="140">
 
                                     <StackLayout Padding="0">

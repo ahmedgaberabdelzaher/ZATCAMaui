@@ -1,5 +1,4 @@
 ﻿
-
 using Maui.GoogleMaps;
 using Mopups.Services;
 using Syncfusion.Maui.Picker;

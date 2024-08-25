@@ -37,7 +37,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -86,7 +85,6 @@
                     <Image
                         HorizontalOptions="End"
                         Source="eCart.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand" />
 
                     <StackLayout.GestureRecognizers>
@@ -279,7 +277,7 @@
                                 Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding Question}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{Binding Question}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -300,9 +298,9 @@
                                 <Border
                                     Padding="10"
                                     BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
                                     Stroke="#E6E6E6"
                                     StrokeShape="RoundRectangle 10,10,10,10"
-                                    HorizontalOptions="FillAndExpand"
                                     VerticalOptions="StartAndExpand">
 
                                     <Border.Triggers>
@@ -431,21 +429,19 @@
                             <!--#endregion Questions View-->
 
                             <!--#region Submit and Card-->
-                            <StackLayout
-                                Margin="0,10"
-                                Spacing="10">
+                            <StackLayout Margin="0,10" Spacing="10">
                                 <!--  Add Item Button  -->
                                 <buttons:SfButton
                                     Command="{Binding AddCommand}"
                                     Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.AddItem}"/>
+                                    Text="{x:Static ResourceManager:AppResources.AddItem}" />
 
                                 <!--  Card Border  -->
                                 <Border
                                     Padding="10"
                                     BackgroundColor="{StaticResource Primary}"
-                                    StrokeShape="RoundRectangle 10,10,10,10"
                                     HorizontalOptions="FillAndExpand"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
                                     VerticalOptions="StartAndExpand">
 
                                     <StackLayout Orientation="Horizontal" Spacing="10">
@@ -453,8 +449,8 @@
                                         <Border
                                             Padding="10"
                                             BackgroundColor="White"
-                                            StrokeShape="RoundRectangle 10,10,10,10"
                                             HorizontalOptions="Start"
+                                            StrokeShape="RoundRectangle 10,10,10,10"
                                             VerticalOptions="Center">
 
                                             <!--  Total Number Label  -->
@@ -464,9 +460,17 @@
                                                 Style="{StaticResource CaptionLabelGrey}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding FeesCalculatorResponse.totalPayment, StringFormat='{0:n}'}" />
+                                                        <Span
+                                                            FontFamily="{StaticResource SomarRegular}"
+                                                            FontSize="14"
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{Binding FeesCalculatorResponse.totalPayment, StringFormat='{0:n}'}" />
                                                         <Span Text="  " />
-                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                        <Span
+                                                            FontFamily="{StaticResource SomarRegular}"
+                                                            FontSize="14"
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>

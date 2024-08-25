@@ -43,7 +43,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -188,7 +187,7 @@
                                     StrokeThickness="1"
                                     Style="{StaticResource GreyBorderFrame}">
                                     <Grid Margin="8">
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout>
 
                                             <Grid>
                                                 <Grid.RowDefinitions>
@@ -247,12 +246,10 @@
                                         IsChecked="{Binding IsFirstCheckboxChecked}"
                                         Style="{StaticResource CheckboxHeightWidth32}"
                                         VerticalOptions="CenterAndExpand" />
-                                    <Label Grid.Row="0" Grid.Column="1">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.VatInstalmentContinueCheckboxText}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Text="{x:Static ResourceManager:AppResources.VatInstalmentContinueCheckboxText}">
                                         <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding IsFirstCheckboxChecked}"
@@ -410,9 +407,9 @@
                                     Grid.Row="0"
                                     Margin="0,20,0,0"
                                     Padding="0"
-                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="False"
+                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     Style="{StaticResource SfStyleForZakatPlanGreen}">
                                     <StackLayout
                                         Padding="10,3,10,2"
@@ -500,7 +497,6 @@
                                     ItemsSource="{Binding AttachmentsListViewData}"
                                     ScrollBarVisibility="Never"
                                     SelectionBackground="Transparent"
-                                    SelectionChanged="attachmentsListView_SelectionChanged"
                                     SelectionMode="SingleDeselect"
                                     TapCommand="{Binding NewAttachmentTapped}"
                                     VerticalOptions="Center">
@@ -1010,8 +1006,8 @@
                                                             Grid.Row="0"
                                                             Margin="0,0,0,0"
                                                             Padding="0"
-                                                            StrokeShape="RoundRectangle 12,12,12,12"
                                                             HorizontalOptions="FillAndExpand"
+                                                            StrokeShape="RoundRectangle 12,12,12,12"
                                                             Style="{StaticResource SfStyleForZakatPlanGreen}">
                                                             <StackLayout
                                                                 Padding="10,3,10,2"
@@ -1040,8 +1036,8 @@
                                                             Grid.Row="0"
                                                             Margin="0,20,0,0"
                                                             Padding="0"
-                                                            StrokeShape="RoundRectangle 12,12,12,12"
                                                             HorizontalOptions="FillAndExpand"
+                                                            StrokeShape="RoundRectangle 12,12,12,12"
                                                             Style="{StaticResource SfStyleForZakatPlanGreen}">
                                                             <StackLayout
                                                                 Padding="10,3,10,2"
@@ -1595,8 +1591,8 @@
                                         Grid.Row="0"
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
                                         <Grid Padding="10,3,10,2" HorizontalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
@@ -1634,8 +1630,8 @@
                                         Grid.Row="0"
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
                                         <StackLayout
                                             Padding="10,3,10,2"
@@ -1665,8 +1661,8 @@
                                         Grid.Row="0"
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
                                         <StackLayout
                                             Padding="10,3,10,2"

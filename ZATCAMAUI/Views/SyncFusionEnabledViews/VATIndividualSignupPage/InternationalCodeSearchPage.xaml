@@ -3,15 +3,14 @@
     x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage.InternationalCodeSearchPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-    <Border Padding="20"
-            Style="{StaticResource CommonTopCurves}">
+    <Border Padding="20" Style="{StaticResource CommonTopCurves}">
 
         <Grid Padding="10" RowDefinitions="auto,*">
 
@@ -101,7 +100,7 @@
                     VerticalScrollBarVisibility="Never">
 
                     <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" />
+                        <GridItemsLayout VerticalItemSpacing="10" Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>

@@ -4,12 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Grid RowDefinitions="100*">
@@ -17,8 +17,8 @@
         <Border
             Grid.Row="0"
             Padding="0"
-            Stroke="{StaticResource NeutralLightGrey}"
             HeightRequest="400"
+            Stroke="{StaticResource NeutralLightGrey}"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
             <StackLayout>
@@ -32,12 +32,12 @@
 
                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDWriteYourObjectionReason}" />
 
-                             <custom:CustomSfTextInputView Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:CustomSfTextInputView Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         x:Name="ObjectionReason"
                                         Style="{StaticResource InputTableEntryLayoutStyle}"
-                                        Text="{Binding ObjectionReason}"/>
+                                        Text="{Binding ObjectionReason}" />
                                 </custom:CustomSfTextInputView.TextInputView>
                             </custom:CustomSfTextInputView>
 
@@ -170,9 +170,8 @@
 
         </Border>
 
-        <custom:Loader Grid.RowSpan="2"
-                       IsVisible="{Binding IsLoading}"/>
-        
+        <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
 
     </Grid>
 </Mopups:PopupPage>

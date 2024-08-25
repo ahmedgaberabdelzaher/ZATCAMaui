@@ -3,12 +3,12 @@
     x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.NotesDescriptionPopUpPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Border
@@ -30,35 +30,13 @@
                         <ViewCell>
                             <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Padding="20" Spacing="-5">
-                                    <Label Style="{StaticResource ValueLabelBlack}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Sect}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                    <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Sect}" />
 
-                                    <Label Style="{StaticResource ValueLabelBlack}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Strline}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                    <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Strline}" />
 
-                                    <Label Style="{StaticResource ValueLabelBlack}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Namez}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                    <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Namez}" />
+
+
 
                                     <Label Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>

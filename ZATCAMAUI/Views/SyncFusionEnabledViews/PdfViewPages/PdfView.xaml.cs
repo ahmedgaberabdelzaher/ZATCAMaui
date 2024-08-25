@@ -1,11 +1,6 @@
-﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Services;
+﻿using Mopups.Services;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
-using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
 {
@@ -25,10 +20,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
                     //TODO Not supported yet 
                     //PdfViewForCertificate.CustomPdfRenderer = DependencyService.Get<ICustomPdfRendererService>().AlternatePdfRenderer;
                 }
-                NavigationPage.SetBackButtonTitle(this, "");
-                On<iOS>().SetUseSafeArea(true);
                 viewModel.pdfUrl = Pdfurl;
-                ChangeAeroIcon();
 
                 //TODO Not supported yet
 
@@ -71,17 +63,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
             viewModel.PdfUrl = string.Empty;
             viewModel.StreamForDownloadURL = null;
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+       
         private async void Share_Clicked(object sender, EventArgs e)
         {
             try

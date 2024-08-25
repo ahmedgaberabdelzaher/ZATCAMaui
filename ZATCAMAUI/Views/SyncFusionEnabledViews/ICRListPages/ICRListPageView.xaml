@@ -429,8 +429,8 @@
                     VerticalOptions="Center" />
             </Grid>
             <!--  Acticity indicator layout start  -->
-            <custom:Loader   IsVisible="{Binding IsLoading}"/>
-            
+            <custom:Loader IsVisible="{Binding IsLoading}" />
+
             <!--  Acticity indicator layout end  -->
         </Grid>
     </ContentPage.Content>

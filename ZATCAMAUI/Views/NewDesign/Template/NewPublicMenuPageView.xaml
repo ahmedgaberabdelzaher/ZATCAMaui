@@ -13,17 +13,6 @@
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-            <Color x:Key="ShadowLvl0">#EFEFEF</Color>
             <Style x:Key="GreyBorderFrameWithShadow" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
@@ -145,9 +134,9 @@
                                         VerticalTextAlignment="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.AppVersion}" />
+                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.AppVersion}" />
                                                 <Span Text="&#160;&#160;" />
-                                                <Span Text="{Binding AppVersion}" />
+                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding AppVersion}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -194,7 +183,6 @@
                     Grid.Column="0"
                     HorizontalOptions="Start"
                     Source="arrowLeftwhite.png"
-                    Style="{DynamicResource BackButtonArrow}"
                     VerticalOptions="CenterAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoBackTapped" />
@@ -202,8 +190,8 @@
                 </Image>
             </Grid>
 
-            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
-         
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

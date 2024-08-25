@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages.NafathAuthenticationView"
-             Title="NafathAuthenticationView"
-             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-            xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-            x:Name="page"
-            ios:Page.UseSafeArea="true"
-            BackgroundImageSource="partials_background.png"
-            FlowDirection="{Binding AppDirection}"
-            NavigationPage.HasNavigationBar="False">
+<ContentPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages.NafathAuthenticationView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="page"
+    Title="NafathAuthenticationView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -63,31 +64,48 @@
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                     Text="{x:Static ResourceManager:AppResources.NafathAuthentication}" 
+                    Text="{x:Static ResourceManager:AppResources.NafathAuthentication}"
                     VerticalOptions="Center" />
 
             </Grid>
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
-                <StackLayout Padding="24" VerticalOptions="CenterAndExpand" Spacing="32">
-                    <Border Stroke="{StaticResource Primary}" StrokeShape="RoundRectangle 30" HorizontalOptions="Center" BackgroundColor="{StaticResource TiffanyBG}">
-                        <Label Text="{Binding AuthenticationNumber}" TextColor="{StaticResource Primary}" FontSize="Large"/>
+                <StackLayout
+                    Padding="24"
+                    Spacing="32"
+                    VerticalOptions="CenterAndExpand">
+                    <Border
+                        BackgroundColor="{StaticResource TiffanyBG}"
+                        HorizontalOptions="Center"
+                        Stroke="{StaticResource Primary}"
+                        StrokeShape="RoundRectangle 30">
+                        <Label
+                            FontSize="Large"
+                            Text="{Binding AuthenticationNumber}"
+                            TextColor="{StaticResource Primary}" />
                     </Border>
-                    <Label Text="{x:Static ResourceManager:AppResources.ApproveInNafathApp}"
-                        VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="CenterAndExpand" 
-                        />
-                    <Label Text="{Binding TempMessage}"
-                        VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="CenterAndExpand" 
-                        />
-                    <Button Text="{x:Static ResourceManager:AppResources.CancelText}"
-                     Command="{Binding CancelCommand}" BackgroundColor="#0996d4" BorderWidth="1.5" CornerRadius="15" Margin="24,24" TextColor="White"/>
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{x:Static ResourceManager:AppResources.ApproveInNafathApp}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{Binding TempMessage}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Button
+                        Margin="24,24"
+                        BackgroundColor="#0996d4"
+                        BorderWidth="1.5"
+                        Command="{Binding CancelCommand}"
+                        CornerRadius="15"
+                        Text="{x:Static ResourceManager:AppResources.CancelText}"
+                        TextColor="White" />
                 </StackLayout>
 
             </Border>

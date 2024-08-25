@@ -92,46 +92,51 @@
                             </Grid.Resources>
 
                             <!--  First OTP Digit Start  -->
-                            <Border StrokeShape="RoundRectangle 10"
-                                    Stroke="Gray"
-                                    HeightRequest="50"
-                                    WidthRequest="50"
-                                    VerticalOptions="Start">
+                            <Border
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
 
-                                <custom:GAZTBorderlessEntry x:Name="OTPFirstEntry"
-                                                            MaxLength="1"
-                                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
-                                                            WidthRequest="100"
-                                                            Text="{Binding OTPFirstDigit}">
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviour:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
-                                            <behaviour:OnlyNumericValuesBehaviour />
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding GoToNextEntryCommand}"
-                                                CommandParameter="{Binding Source={x:Reference OTPSecondEntry}}"
-                                                EventName="TextChanged" />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="OTPFirstEntry"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    Text="{Binding OTPFirstDigit}"
+                                    WidthRequest="100">
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behaviour:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                        <behaviour:OnlyNumericValuesBehaviour />
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding GoToNextEntryCommand}"
+                                            CommandParameter="{Binding Source={x:Reference OTPSecondEntry}}"
+                                            EventName="TextChanged" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
 
-                                    </custom:GAZTBorderlessEntry>
-    
+                                </custom:GAZTBorderlessEntry>
+
                             </Border>
                             <!--  First OTP Digit End  -->
 
                             <!--  Second OTP Digit Start  -->
-                            <Border StrokeShape="RoundRectangle 10"
-                                    Stroke="Gray"
-                                    HeightRequest="50"
-                                    WidthRequest="50"
-                                    Grid.Column="1"
-                                    VerticalOptions="Start">
+                            <Border
+                                Grid.Column="1"
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
 
-                               <custom:GAZTBorderlessEntry
-                                        x:Name="OTPSecondEntry"
-                                        ClassId="2"
-                                        MaxLength="1"
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
-                                        WidthRequest="100"
-                                        Text="{Binding OTPSecondDigit}">
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="OTPSecondEntry"
+                                    ClassId="2"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    Text="{Binding OTPSecondDigit}"
+                                    WidthRequest="100">
                                     <custom:GAZTBorderlessEntry.Behaviors>
                                         <behaviour:OnlyNumericValuesBehaviour />
                                         <behaviour:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
@@ -141,60 +146,64 @@
                                             EventName="TextChanged" />
 
                                     </custom:GAZTBorderlessEntry.Behaviors>
-                               </custom:GAZTBorderlessEntry>
-    
+                                </custom:GAZTBorderlessEntry>
+
                             </Border>
                             <!--  Second OTP Digit End  -->
 
                             <!--  Third OTP Digit Start  -->
-                            <Border StrokeShape="RoundRectangle 10"
-                                    Stroke="Gray"
-                                    HeightRequest="50"
-                                    WidthRequest="50"
-                                    Grid.Column="2"
-                                    VerticalOptions="Start">
+                            <Border
+                                Grid.Column="2"
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
 
-                               <custom:GAZTBorderlessEntry
-                                        x:Name="OTPThirdEntry"
-                                        ClassId="3"
-                                        MaxLength="1"
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
-                                        WidthRequest="100"
-                                        Text="{Binding OTPThirdDigit}">
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviour:OnlyNumericValuesBehaviour />
-                                            <behaviour:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding GoToNextEntryCommand}"
-                                                CommandParameter="{Binding Source={x:Reference OTPFourthEntry}}"
-                                                EventName="TextChanged" />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
-                               </custom:GAZTBorderlessEntry>
-    
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="OTPThirdEntry"
+                                    ClassId="3"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    Text="{Binding OTPThirdDigit}"
+                                    WidthRequest="100">
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour />
+                                        <behaviour:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding GoToNextEntryCommand}"
+                                            CommandParameter="{Binding Source={x:Reference OTPFourthEntry}}"
+                                            EventName="TextChanged" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
+
                             </Border>
                             <!--  Third OTP Digit End  -->
 
                             <!--  Fourth OTP Digit Start  -->
-                            <Border StrokeShape="RoundRectangle 10"
-                                    Stroke="Gray"
-                                    HeightRequest="50"
-                                    WidthRequest="50"
-                                    Grid.Column="3"
-                                    VerticalOptions="Start">
+                            <Border
+                                Grid.Column="3"
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
 
-                               <custom:GAZTBorderlessEntry
-                                        x:Name="OTPFourthEntry"
-                                        MaxLength="1"
-                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
-                                        WidthRequest="100"
-                                        ClassId="4"
-                                        Text="{Binding OTPFourthDigit}">
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviour:OnlyNumericValuesBehaviour />
-                                            <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
-                                    </custom:GAZTBorderlessEntry>
-    
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="OTPFourthEntry"
+                                    ClassId="4"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    Text="{Binding OTPFourthDigit}"
+                                    WidthRequest="100">
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour />
+                                        <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
+
                             </Border>
                             <!--  Fourth OTP Digit End  -->
 
@@ -244,9 +253,7 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 BackgroundColor="White">
-                <Image
-                    HorizontalOptions="Start"
-                    Source="arrowLeft.png">
+                <Image HorizontalOptions="Start" Source="arrowLeft.png">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding BackFromOtpCommand}" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>

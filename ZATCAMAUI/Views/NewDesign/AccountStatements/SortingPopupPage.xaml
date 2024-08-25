@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.NewDesign.AccountStatements.SortingPopupPage"
-             xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-             xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
-             FlowDirection="{Binding AppDirection}"
-             Title="SortingPopupPage">
+<Mopups:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.AccountStatements.SortingPopupPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    Title="SortingPopupPage"
+    FlowDirection="{Binding AppDirection}">
 
     <Mopups:PopupPage.Animation>
-            <Animations:ScaleAnimation
-                DurationIn="400"
-                DurationOut="300"
-                HasBackgroundAnimation="True"
-                PositionIn="Bottom"
-                PositionOut="Bottom" />
+        <Animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
     </Mopups:PopupPage.Animation>
 
-    <Border WidthRequest="150"
-            HeightRequest="150"
-            Padding="10" 
-            BackgroundColor="White">
+    <Border
+        Padding="10"
+        BackgroundColor="White"
+        HeightRequest="150"
+        WidthRequest="150">
 
-            <VerticalStackLayout x:Name="popupListView" >
-                <ListView x:Name="sampleList" ItemTapped="sampleList_ItemTapped"/>
-            </VerticalStackLayout>      
-    </Border> 
+        <VerticalStackLayout x:Name="popupListView">
+            <ListView x:Name="sampleList" ItemTapped="sampleList_ItemTapped" />
+        </VerticalStackLayout>
+    </Border>
 </Mopups:PopupPage>

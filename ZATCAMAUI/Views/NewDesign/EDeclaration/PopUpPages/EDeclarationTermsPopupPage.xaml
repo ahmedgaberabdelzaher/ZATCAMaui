@@ -3,13 +3,13 @@
     x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages.EDeclarationTermsPopupPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     FlowDirection="{Binding AppDirection}">
 
-   
+
     <Mopups:PopupPage.Animation>
         <Animations:ScaleAnimation
             DurationIn="400"
@@ -62,17 +62,49 @@
                                     TextColor="#002447">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="•  " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsOne}" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="•  "
+                                                TextColor="#002447" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="{x:Static ResourceManager:AppResources.EDeclarationTermsOne}"
+                                                TextColor="#002447" />
                                             <Span Text="&#10;" />
-                                            <Span Text="•  " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsTwo}" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="•  "
+                                                TextColor="#002447" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="{x:Static ResourceManager:AppResources.EDeclarationTermsTwo}"
+                                                TextColor="#002447" />
                                             <Span Text="&#10;" />
-                                            <Span Text="•  " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsThree}" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="•  "
+                                                TextColor="#002447" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="{x:Static ResourceManager:AppResources.EDeclarationTermsThree}"
+                                                TextColor="#002447" />
                                             <Span Text="&#10;" />
-                                            <Span Text="•  " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsFour}" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="•  "
+                                                TextColor="#002447" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="{x:Static ResourceManager:AppResources.EDeclarationTermsFour}"
+                                                TextColor="#002447" />
                                         </FormattedString>
                                     </Label.FormattedText>
 
@@ -97,11 +129,27 @@
                                     TextColor="#002447">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="•  " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsOne}" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="•  "
+                                                TextColor="#002447" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="{x:Static ResourceManager:AppResources.EDeclarationTermsOne}"
+                                                TextColor="#002447" />
                                             <Span Text="&#10;" />
-                                            <Span Text="•  " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsFive}" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="•  "
+                                                TextColor="#002447" />
+                                            <Span
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Text="{x:Static ResourceManager:AppResources.EDeclarationTermsFive}"
+                                                TextColor="#002447" />
                                         </FormattedString>
                                     </Label.FormattedText>
 

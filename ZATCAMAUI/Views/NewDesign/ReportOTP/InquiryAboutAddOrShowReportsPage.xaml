@@ -10,25 +10,6 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                    <Style x:Key="ArrowImage" TargetType="Image">
-                        <Setter Property="HeightRequest" Value="30" />
-                        <Setter Property="WidthRequest" Value="30" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
@@ -42,7 +23,7 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -96,10 +77,10 @@
                             <Border
                                 Padding="0"
                                 BackgroundColor="White"
-                                Stroke="#E6E6E6"
-                                StrokeShape="RoundRectangle 10,10,10,10"
                                 HeightRequest="110"
                                 HorizontalOptions="StartAndExpand"
+                                Stroke="#E6E6E6"
+                                StrokeShape="RoundRectangle 10,10,10,10"
                                 VerticalOptions="StartAndExpand"
                                 WidthRequest="160">
 
@@ -136,10 +117,10 @@
                             <Border
                                 Padding="0"
                                 BackgroundColor="White"
-                                Stroke="#E6E6E6"
-                                StrokeShape="RoundRectangle 10,10,10,10"
                                 HeightRequest="110"
                                 HorizontalOptions="CenterAndExpand"
+                                Stroke="#E6E6E6"
+                                StrokeShape="RoundRectangle 10,10,10,10"
                                 VerticalOptions="StartAndExpand"
                                 WidthRequest="160">
 
@@ -179,9 +160,9 @@
                         <Border
                             Padding="10"
                             BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
                             Stroke="#E6E6E6"
                             StrokeShape="RoundRectangle 10,10,10,10"
-                            HorizontalOptions="FillAndExpand"
                             VerticalOptions="StartAndExpand">
 
                             <StackLayout

@@ -15,7 +15,6 @@ using ZATCAMAUI.Platforms.Android.CustomRenderer;
 #endif
 
 using ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages;
-using ZXing.Net.Maui.Controls;
 using IDeviceInfoZATCA = ZATCAMAUI.Core.Interfaces.IDeviceInfoZATCA;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Maui.GoogleMaps.Hosting;

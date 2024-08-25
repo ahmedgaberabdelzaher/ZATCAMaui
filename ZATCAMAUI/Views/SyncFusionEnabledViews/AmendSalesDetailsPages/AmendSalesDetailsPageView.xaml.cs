@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using System.Net;
 using ZATCAMAUI.Core.Behaviors;
 using ZATCAMAUI.Core.Exceptions;
@@ -8,7 +7,6 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage;
 using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
 {
@@ -25,7 +23,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
         public AmendSalesDetailsPageView(SalesDetails SelectedSalesDetails)
         {
             InitializeComponent();
-            On<iOS>().SetUseSafeArea(true);
             double ht = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceHeight();
             ht = ht * 35 / 100;
             Attachmentlist.HeightRequest = ht;
@@ -40,7 +37,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
                 viewModel.OnLoad();
                 NavigationPage.SetBackButtonTitle(this, "");
                 SetDynamicBehaviour();
-                ChangeAeroIcon();
             }
             catch (Exception)
             {
@@ -285,16 +281,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
         }
 
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+       
     }
 }

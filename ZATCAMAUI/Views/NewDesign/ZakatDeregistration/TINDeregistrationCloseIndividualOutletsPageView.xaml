@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
@@ -13,7 +14,6 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:local1="clr-namespace:ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     x:Name="TinDeregIndOutlets"
     FlowDirection="{Binding AppDirection}">
@@ -200,9 +200,8 @@
                                 <custom:GAZTBorderlessEntry
                                     x:Name="DateEntry"
                                     BackgroundColor="Gray"
-                                    Focused="OnDateEntryFocussed"
-                                    IsReadOnly="True"
                                     InputTransparent="True"
+                                    IsReadOnly="True"
                                     Placeholder="yyyy/MM/dd"
                                     Style="{StaticResource InputTableEntryLayoutStyle}"
                                     Text="{Binding PickerCloseAllDeregDateDisplay}"
@@ -362,9 +361,8 @@
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <custom:GAZTBorderlessEntry
                                             x:Name="DateEntry21"
-                                            Focused="OnDateEntryFocussed"
-                                            IsReadOnly="True"
                                             InputTransparent="True"
+                                            IsReadOnly="True"
                                             Placeholder="yyyy/MM/dd"
                                             Style="{StaticResource InputTableEntryLayoutStyle}"
                                             Text="{Binding PickerCloseAllDeregDateDisplay}"
@@ -632,8 +630,8 @@
                                     <custom:GAZTBorderlessEntry
                                         x:Name="DateEntry23"
                                         Focused="OnTransferDOBDateEntryFocussed"
-                                        IsReadOnly="True"
                                         InputTransparent="True"
+                                        IsReadOnly="True"
                                         Placeholder="yyyy/MM/dd"
                                         Style="{StaticResource InputTableEntryLayoutStyle}"
                                         Text="{Binding TransferPickerDOBDateDisplay, StringFormat='{0:yyyy/MM/dd}'}"
@@ -1204,8 +1202,8 @@
                                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                                         <custom:GAZTBorderlessEntry
                                                             x:Name="DateEntry23"
-                                                            IsReadOnly="True"
                                                             InputTransparent="True"
+                                                            IsReadOnly="True"
                                                             Placeholder="yyyy/MM/dd"
                                                             Style="{StaticResource InputTableEntryLayoutStyle}"
                                                             Text="{Binding APermitDeregDisplayDate}"
@@ -1470,8 +1468,8 @@
                                                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="DateEntry35"
-                                                                    IsReadOnly="True"
                                                                     InputTransparent="True"
+                                                                    IsReadOnly="True"
                                                                     Placeholder="yyyy/MM/dd"
                                                                     Style="{StaticResource InputTableEntryLayoutStyle}"
                                                                     Text="{Binding APermitDeregDisplayDobDate}"

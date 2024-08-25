@@ -1,32 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.NewDesign.ChangeMobile.NafathChangeMobileNumberSuccessView"
-             Title="NafathChangeMobileNumberSuccessView"
-             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-            
-            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-            x:Name="page"
-            ios:Page.UseSafeArea="true"
-            BackgroundImageSource="partials_background.png"
-            FlowDirection="{Binding AppDirection}"
-            NavigationPage.HasNavigationBar="False">
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.ChangeMobile.NafathChangeMobileNumberSuccessView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    x:Name="page"
+    Title="NafathChangeMobileNumberSuccessView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout VerticalOptions="CenterAndExpand" Spacing="32">
+            <StackLayout Spacing="32" VerticalOptions="CenterAndExpand">
 
-            <Image Source="Forget_ic_success" Aspect="AspectFit"/>
+                <Image Aspect="AspectFit" Source="Forget_ic_success" />
 
-                <Label Text="{x:Static ResourceManager:AppResources.ChangeMobileNumber}" 
-                Style="{StaticResource SectionTitleWhiteBold}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" LineBreakMode="WordWrap"/>
+                <Label
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.ChangeMobileNumber}"
+                    TextColor="White" />
 
-            <Label Text="{x:Static ResourceManager:AppResources.TPSuccessMobileUpdated}" 
-            Style="{StaticResource BodyLabelBlack}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" LineBreakMode="WordWrap"/>
-            
+                <Label
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
+                    Style="{StaticResource BodyLabelBlack}"
+                    Text="{x:Static ResourceManager:AppResources.TPSuccessMobileUpdated}"
+                    TextColor="White" />
+
             </StackLayout>
-            <Border VerticalOptions="End" HorizontalOptions="FillAndExpand" Style="{StaticResource CommonTopCurves}">
-                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.VATRgotologinpage}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding GotoLoginCommand}"/>
+            <Border
+                HorizontalOptions="FillAndExpand"
+                Style="{StaticResource CommonTopCurves}"
+                VerticalOptions="End">
+                <buttons:SfButton
+                    Command="{Binding GotoLoginCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static ResourceManager:AppResources.VATRgotologinpage}" />
             </Border>
         </StackLayout>
     </ContentPage.Content>

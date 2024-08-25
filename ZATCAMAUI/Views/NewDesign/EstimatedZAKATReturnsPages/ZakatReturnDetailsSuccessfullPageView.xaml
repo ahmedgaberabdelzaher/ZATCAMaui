@@ -7,13 +7,13 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -82,11 +82,17 @@
                         TextColor="White">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{x:Static ResourceManager:AppResources.ZZZZZakatReturnSubmittedNew}" />
+                                <Span Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZZZZakatReturnSubmittedNew}" />
                                 <Span Text="&#160;&#160;" />
-                                <Span Text="{Binding ZAKATAmount}" TextColor="White" />
+                                <Span
+                                    Style="{StaticResource CaptionLabelBlack}"
+                                    Text="{Binding ZAKATAmount}"
+                                    TextColor="White" />
                                 <Span Text="&#160;" />
-                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" TextColor="White" />
+                                <Span
+                                    Style="{StaticResource CaptionLabelBlack}"
+                                    Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                                    TextColor="White" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -164,13 +170,13 @@
 
                                 <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZBillDetailsDisclaimer}" />
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
-                                    <StackLayout Padding="10,5,5,5" Orientation="Vertical">
+                                    <StackLayout Padding="10,5,5,5">
                                         <Label Style="{StaticResource ValueLabelGrey}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZBillDeatilsInfo1}" />
+                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZBillDeatilsInfo1}" />
                                                     <Span Text="&#10;" />
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZBillDeatilsInfo2}" />
+                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZBillDeatilsInfo2}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
 
@@ -186,7 +192,6 @@
                             Padding="0,8,0,0"
                             BackgroundColor="White"
                             HorizontalOptions="FillAndExpand"
-                            Orientation="Vertical"
                             Spacing="8"
                             VerticalOptions="FillAndExpand">
                             <buttons:SfButton
@@ -234,7 +239,6 @@
                         HorizontalOptions="End"
                         IsVisible="{Binding IsBackBtnVisible}"
                         Source="close"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnBackButtonClicked}" />

@@ -734,7 +734,7 @@
                 <Setter Property="Margin" Value="10,2,10,1" />
             </Style>
             <Style x:Key="GAZTFrameStyleForVATReturnEditor" TargetType="Border">
-               <Setter Property="StrokeShape" Value="RoundRectangle 2,2,2,2" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 2,2,2,2" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
                 <Setter Property="Stroke" Value="#B1B1B1" />
                 <Setter Property="Margin" Value="10,2,10,1" />

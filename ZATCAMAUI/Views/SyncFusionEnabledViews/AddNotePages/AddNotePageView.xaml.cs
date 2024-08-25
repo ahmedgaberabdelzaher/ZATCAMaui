@@ -1,11 +1,8 @@
 ﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddNotePage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AddNotePages
 {
@@ -21,10 +18,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AddNotePages
             try
             {
                 InitializeComponent();
-                NavigationPage.SetBackButtonTitle(this, "");
-                NavigationPage.SetHasBackButton(this, false);
-                On<iOS>().SetUseSafeArea(true);
-                ChangeAeroIcon();
 
                 viewModel = App.Locator.AddNotePageView;
                 BindingContext = viewModel;
@@ -80,19 +73,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AddNotePages
             }
             catch (Exception)
             {
-            }
-        }
-        #endregion
-        #region Method
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
             }
         }
         #endregion

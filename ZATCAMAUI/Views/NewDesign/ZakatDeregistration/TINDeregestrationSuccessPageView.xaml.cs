@@ -1,8 +1,6 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
-using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 {
@@ -15,8 +13,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             InitializeComponent();
 
             viewModel = App.Locator.TINDeregestrationSuccessPageView;
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             if (response != null)
             {
@@ -33,24 +29,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 }
             }
         }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-        }
-        public void ChangeAeroIcon()
-        {
-            if (!App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+     
         private async void Image_Copy_Tapped(object sender, EventArgs e)
         {
             if (Label_ApplicationNumber != null)

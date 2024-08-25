@@ -11,13 +11,14 @@
 
     <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
         <Label x:Name="Title" Style="{StaticResource CaptionLabelGrey}" />
-        <custom:CustomSfTextInputView >
+        <custom:CustomSfTextInputView>
             <custom:CustomSfTextInputView.TextInputView>
                 <custom:GAZTBorderlessEntry
                     x:Name="TextValue"
                     BackgroundColor="Red"
                     HorizontalOptions="Fill"
-                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                    Keyboard="{OnPlatform Android=Numeric,
+                                          iOS=Default}"
                     MaxLength="21"
                     Placeholder="{Binding Source={x:Reference CustomEntryWithSAR}, Path=Placeholder}"
                     Style="{StaticResource DefaultEntry}"

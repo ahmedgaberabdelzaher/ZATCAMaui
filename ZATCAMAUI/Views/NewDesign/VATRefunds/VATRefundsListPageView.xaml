@@ -23,15 +23,17 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,2*,*"
-                  RowDefinitions="auto,*">
+            <Grid
+                Padding="20,10"
+                ColumnDefinitions="*,2*,*"
+                RowDefinitions="auto,*">
 
                 <StackLayout>
 
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                         IsVisible="{Binding IsBackStepButtonVisible}"
+                        IsVisible="{Binding IsBackStepButtonVisible}"
                         Rotation="0"
                         Source="whiteRightBack.png"
                         VerticalOptions="CenterAndExpand">
@@ -104,9 +106,10 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
                 <Grid>
 
@@ -286,7 +289,7 @@
                                                             <FormattedString>
                                                                 <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding RequestedAmt, Converter={StaticResource commaSeparatorConverter}}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -303,9 +306,9 @@
                                                     <Label HorizontalOptions="StartAndExpand" Style="{StaticResource BodyLabelBlackMedium}">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding ReassessAmt, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding ReassessAmt, Converter={StaticResource commaSeparatorConverter}}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -318,9 +321,9 @@
                                                     <Label HorizontalOptions="StartAndExpand" Style="{StaticResource BodyLabelBlackMedium}">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding OffsetTot, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding OffsetTot, Converter={StaticResource commaSeparatorConverter}}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -333,9 +336,9 @@
                                                     <Label HorizontalOptions="StartAndExpand" Style="{StaticResource BodyLabelBlackMedium}">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding NetCreditBal, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding NetCreditBal, Converter={StaticResource commaSeparatorConverter}}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -362,7 +365,7 @@
                         </listView:SfListView>
 
                     </Grid>
-       
+
                 </Grid>
 
             </Border>
@@ -374,7 +377,7 @@
 
         </Grid>
 
-       
+
 
     </ContentPage.Content>
 </ContentPage>

@@ -28,7 +28,6 @@
             Grid.Column="0"
             BackgroundColor="Black"
             Opacity="0.4"
-            Orientation="Vertical"
             VerticalOptions="FillAndExpand" />
         <Border
             Padding="20,20,20,10"

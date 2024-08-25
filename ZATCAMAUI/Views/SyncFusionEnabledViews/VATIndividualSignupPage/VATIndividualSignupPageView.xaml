@@ -4,8 +4,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -67,8 +70,8 @@
                         <Border
                             Margin="5"
                             BackgroundColor="Transparent"
-                            StrokeShape="RoundRectangle 5,5,5,5"
-                            HeightRequest="100">
+                            HeightRequest="100"
+                            StrokeShape="RoundRectangle 5,5,5,5">
                             <!--  Text="Individual Registration"  -->
 
                             <Grid>
@@ -118,8 +121,8 @@
                         <Border
                             Margin="5"
                             BackgroundColor="Transparent"
-                            StrokeShape="RoundRectangle 5,5,5,5"
-                            HeightRequest="100">
+                            HeightRequest="100"
+                            StrokeShape="RoundRectangle 5,5,5,5">
 
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -158,8 +161,8 @@
                 </StackLayout>
             </Border>
 
-            <custom:Loader  IsVisible="{Binding IsLoading}"/>
-     
+            <custom:Loader IsVisible="{Binding IsLoading}" />
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

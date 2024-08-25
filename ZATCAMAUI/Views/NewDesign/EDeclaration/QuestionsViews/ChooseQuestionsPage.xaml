@@ -36,7 +36,7 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -124,9 +124,9 @@
                                         x:Name="selectedItem"
                                         Padding="10"
                                         BackgroundColor="{Binding QuestionBackgroundColor}"
+                                        HorizontalOptions="FillAndExpand"
                                         Stroke="#E6E6E6"
                                         StrokeShape="RoundRectangle 10,10,10,10"
-                                        HorizontalOptions="FillAndExpand"
                                         VerticalOptions="StartAndExpand">
 
                                         <StackLayout
@@ -140,7 +140,7 @@
                                                 HeightRequest="20"
                                                 HorizontalOptions="Start"
                                                 Source="emptyCheck.png"
-                                                Style="{DynamicResource BackButtonArrow}"
+                                                
                                                 VerticalOptions="CenterAndExpand"
                                                 WidthRequest="20">
 

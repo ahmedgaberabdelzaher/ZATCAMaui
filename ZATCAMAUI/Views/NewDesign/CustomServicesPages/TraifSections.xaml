@@ -37,7 +37,6 @@
                     IsVisible="{Binding IsBackStepButtonVisible}"
                     Rotation="0"
                     Source="whiteRightBack.png"
-                    Style="{DynamicResource BackButtonArrow}"
                     VerticalOptions="CenterAndExpand">
 
                     <Image.Triggers>
@@ -184,7 +183,7 @@
                             <Image Aspect="AspectFit" Source="reportSearchBar.png" />
                         </inputLayout:SfTextInputLayout.LeadingView>
 
-                     </custom:CustomSfTextInputView>
+                    </custom:CustomSfTextInputView>
 
                     <CollectionView
                         Grid.Row="1"
@@ -197,7 +196,7 @@
                         VerticalScrollBarVisibility="Never">
 
                         <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" />
+                            <GridItemsLayout VerticalItemSpacing="10" Orientation="Vertical"/>
                         </CollectionView.ItemsLayout>
 
                         <CollectionView.ItemTemplate>
@@ -243,8 +242,7 @@
                     </CollectionView>
                 </Grid>
 
-                <Grid IsVisible="{Binding IsChapterSection}"
-                      RowDefinitions="*">
+                <Grid IsVisible="{Binding IsChapterSection}" RowDefinitions="*">
 
                     <CollectionView
                         ItemsSource="{Binding TraiffChapters}"
@@ -261,8 +259,7 @@
 
                 </Grid>
 
-                <Grid IsVisible="{Binding IsMainHarmonizedTariffs}"
-                      RowDefinitions="*">
+                <Grid IsVisible="{Binding IsMainHarmonizedTariffs}" RowDefinitions="*">
 
                     <CollectionView
                         ItemsSource="{Binding MainHarmonizedTariffs}"
@@ -277,8 +274,7 @@
                     </CollectionView>
                 </Grid>
 
-                <Grid IsVisible="{Binding IsSubHarmonizedTariffs}"
-                      RowDefinitions="*">
+                <Grid IsVisible="{Binding IsSubHarmonizedTariffs}" RowDefinitions="*">
 
                     <CollectionView
                         x:Name="SubHarmonizedTariffsLst"
@@ -309,9 +305,9 @@
                                                 TextColor="{StaticResource Primary}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding Code}" />
-                                                        <Span Text=" - " />
-                                                        <Span Text="{Binding Name}" />
+                                                        <Span Text="{Binding Code}" TextColor="{StaticResource Primary}" />
+                                                        <Span Text=" - " TextColor="{StaticResource Primary}" />
+                                                        <Span Text="{Binding Name}" TextColor="{StaticResource Primary}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -336,10 +332,10 @@
                 </Grid>
 
                 <Grid
-                    RowDefinitions="auto,auto,auto,auto,*"
                     Margin="20"
                     BackgroundColor="White"
-                    IsVisible="{Binding IsSearchVIewVisible}">
+                    IsVisible="{Binding IsSearchVIewVisible}"
+                    RowDefinitions="auto,auto,auto,auto,*">
 
                     <Grid
                         Margin="0,0,0,0"
@@ -400,16 +396,16 @@
                     </Grid>
 
                     <Label
-                        FontSize="16"
                         Grid.Row="1"
+                        FontSize="16"
                         HorizontalOptions="Start"
                         Text="{x:Static ResourceManager:AppResources.SearchFor}"
                         TextColor="#002447" />
 
                     <Grid
+                        Grid.Row="2"
                         ColumnDefinitions="*,*,*"
                         ColumnSpacing="10"
-                        Grid.Row="2"
                         IsVisible="{Binding IsSearchFilterVisbible}">
                         <Grid.Resources>
                             <ResourceDictionary>
@@ -504,21 +500,20 @@
                     </Grid>
 
                     <Label
-                        Margin="0,0,0,10"
                         Grid.Row="3"
+                        Margin="0,0,0,10"
                         IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
                         TextColor="{StaticResource Primary}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding SearchRsltCount}" />
+                                <Span Text="{Binding SearchRsltCount}" TextColor="{StaticResource Primary}" />
                                 <Span Text=" " />
-                                <Span Text="{x:Static ResourceManager:AppResources.SearchRsltCountText}" />
+                                <Span Text="{x:Static ResourceManager:AppResources.SearchRsltCountText}" TextColor="{StaticResource Primary}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
 
-                    <Grid Grid.Row="4"
-                          RowDefinitions="*">
+                    <Grid Grid.Row="4" RowDefinitions="*">
                         <CollectionView
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
@@ -530,7 +525,7 @@
                             VerticalScrollBarVisibility="Never">
 
                             <CollectionView.ItemsLayout>
-                                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical"/>
                             </CollectionView.ItemsLayout>
 
                             <CollectionView.ItemTemplate>
@@ -541,9 +536,9 @@
                                         VerticalOptions="FillAndExpand">
                                         <Border
                                             Padding="10"
+                                            HorizontalOptions="FillAndExpand"
                                             Stroke="#D8D8D8"
                                             StrokeShape="RoundRectangle 14,14,14,14"
-                                            HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand">
                                             <StackLayout>
 
@@ -589,9 +584,18 @@
                                                     TextColor="#002447">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{x:Static ResourceManager:AppResources.Duty}" />
-                                                            <Span Text=": " />
-                                                            <Span Text="{Binding tariffdetails[0].dutyName}" />
+                                                            <Span
+                                                                FontSize="12"
+                                                                Text="{x:Static ResourceManager:AppResources.Duty}"
+                                                                TextColor="#002447" />
+                                                            <Span
+                                                                FontSize="12"
+                                                                Text=": "
+                                                                TextColor="#002447" />
+                                                            <Span
+                                                                FontSize="12"
+                                                                Text="{Binding tariffdetails[0].dutyName}"
+                                                                TextColor="#002447" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -604,12 +608,11 @@
                         </CollectionView>
 
                     </Grid>
-                  
+
 
                 </Grid>
 
-                <Grid IsVisible="{Binding IsTarrifSearch}"
-                      RowDefinitions="*">
+                <Grid IsVisible="{Binding IsTarrifSearch}" RowDefinitions="*">
                     <CollectionView
                         x:Name="HarmonizedTariffsInSearchLst"
                         ItemsSource="{Binding HarmonizedTariffslvl3}"
@@ -634,9 +637,18 @@
                                                 TextColor="{StaticResource Primary}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding Code}" />
-                                                        <Span Text=" - " />
-                                                        <Span Text="{Binding Name}" />
+                                                        <Span
+                                                            FontSize="16"
+                                                            Text="{Binding Code}"
+                                                            TextColor="{StaticResource Primary}" />
+                                                        <Span
+                                                            FontSize="16"
+                                                            Text=" - "
+                                                            TextColor="{StaticResource Primary}" />
+                                                        <Span
+                                                            FontSize="16"
+                                                            Text="{Binding Name}"
+                                                            TextColor="{StaticResource Primary}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -736,9 +748,18 @@
                                                 TextColor="{StaticResource Primary}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding Code}" />
-                                                        <Span Text=" - " />
-                                                        <Span Text="{Binding Name}" />
+                                                        <Span
+                                                            FontSize="16"
+                                                            Text="{Binding Code}"
+                                                            TextColor="{StaticResource Primary}" />
+                                                        <Span
+                                                            FontSize="16"
+                                                            Text=" - "
+                                                            TextColor="{StaticResource Primary}" />
+                                                        <Span
+                                                            FontSize="16"
+                                                            Text="{Binding Name}"
+                                                            TextColor="{StaticResource Primary}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -838,9 +859,18 @@
                                             TextColor="{StaticResource Primary}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding Code}" />
-                                                    <Span Text=" - " />
-                                                    <Span Text="{Binding Name}" />
+                                                    <Span
+                                                        FontSize="16"
+                                                        Text="{Binding Code}"
+                                                        TextColor="{StaticResource Primary}" />
+                                                    <Span
+                                                        FontSize="16"
+                                                        Text=" - "
+                                                        TextColor="{StaticResource Primary}" />
+                                                    <Span
+                                                        FontSize="16"
+                                                        Text="{Binding Name}"
+                                                        TextColor="{StaticResource Primary}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -934,9 +964,18 @@
                                             TextColor="{StaticResource Primary}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding Code}" />
-                                                    <Span Text=" - " />
-                                                    <Span Text="{Binding Name}" />
+                                                    <Span
+                                                        FontSize="16"
+                                                        Text="{Binding Code}"
+                                                        TextColor="{StaticResource Primary}" />
+                                                    <Span
+                                                        FontSize="16"
+                                                        Text=" - "
+                                                        TextColor="{StaticResource Primary}" />
+                                                    <Span
+                                                        FontSize="16"
+                                                        Text="{Binding Name}"
+                                                        TextColor="{StaticResource Primary}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -1030,9 +1069,18 @@
                                             TextColor="{StaticResource Primary}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding Code}" />
-                                                    <Span Text=" - " />
-                                                    <Span Text="{Binding Name}" />
+                                                    <Span
+                                                        FontSize="16"
+                                                        Text="{Binding Code}"
+                                                        TextColor="{StaticResource Primary}" />
+                                                    <Span
+                                                        FontSize="16"
+                                                        Text=" - "
+                                                        TextColor="{StaticResource Primary}" />
+                                                    <Span
+                                                        FontSize="16"
+                                                        Text="{Binding Name}"
+                                                        TextColor="{StaticResource Primary}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -1108,8 +1156,7 @@
 
         </Border>
 
-        <Grid Grid.RowSpan="2"
-              IsVisible="{Binding IsSectNote}">
+        <Grid Grid.RowSpan="2" IsVisible="{Binding IsSectNote}">
 
             <Grid
                 BackgroundColor="Black"
@@ -1121,9 +1168,9 @@
                 Margin="10"
                 Padding="5"
                 BackgroundColor="White"
+                HorizontalOptions="Center"
                 Stroke="#CECECE"
                 StrokeShape="RoundRectangle 14,14,14,14"
-                HorizontalOptions="Center"
                 VerticalOptions="Center">
                 <StackLayout>
                     <StackLayout
@@ -1173,9 +1220,9 @@
                 Margin="10"
                 Padding="5"
                 BackgroundColor="White"
+                HorizontalOptions="Center"
                 Stroke="#CECECE"
                 StrokeShape="RoundRectangle 14,14,14,14"
-                HorizontalOptions="Center"
                 VerticalOptions="Center">
                 <StackLayout>
                     <StackLayout
@@ -1198,7 +1245,7 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
-                    <ScrollView  VerticalScrollBarVisibility="Never">
+                    <ScrollView VerticalScrollBarVisibility="Never">
                         <StackLayout BindableLayout.ItemsSource="{Binding ChapterNotesLst}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
@@ -1214,8 +1261,7 @@
             </Border>
         </Grid>
 
-        <Grid Grid.RowSpan="2"
-              IsVisible="{Binding IsitemDetilsVisible}">
+        <Grid Grid.RowSpan="2" IsVisible="{Binding IsitemDetilsVisible}">
             <Grid
                 BackgroundColor="Black"
                 HorizontalOptions="Fill"
@@ -1238,7 +1284,7 @@
 
                 <Grid RowDefinitions="*">
 
-                    <ScrollView VerticalScrollBarVisibility="Never" >
+                    <ScrollView VerticalScrollBarVisibility="Never">
 
                         <StackLayout Spacing="10">
 
@@ -1259,9 +1305,10 @@
                                 </Image>
                             </StackLayout>
 
-                            <Border Stroke="#CECECE"
-                                    Padding="10"
-                                    StrokeShape="RoundRectangle 14,14,14,14">
+                            <Border
+                                Padding="10"
+                                Stroke="#CECECE"
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <StackLayout>
                                     <Label
                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -1275,7 +1322,7 @@
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding prcdr_code}" />
-                                                            <Span Text=": " />
+                                                            <Span Text=" - " />
                                                             <Span Text="{Binding rlse_prcdr_note}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
@@ -1286,9 +1333,10 @@
                                 </StackLayout>
                             </Border>
 
-                            <Border Stroke="#CECECE"
-                                    Padding="10"
-                                    StrokeShape="RoundRectangle 14,14,14,14">
+                            <Border
+                                Padding="10"
+                                Stroke="#CECECE"
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <StackLayout>
                                     <Label
                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -1312,9 +1360,10 @@
                                 </StackLayout>
                             </Border>
 
-                            <Border Stroke="#CECECE"
-                                    Padding="10"
-                                    StrokeShape="RoundRectangle 14,14,14,14">
+                            <Border
+                                Padding="10"
+                                Stroke="#CECECE"
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <StackLayout>
                                     <Label
                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -1325,9 +1374,10 @@
                                 </StackLayout>
                             </Border>
 
-                            <Border Stroke="#CECECE"
-                                    Padding="10"
-                                    StrokeShape="RoundRectangle 14,14,14,14">
+                            <Border
+                                Padding="10"
+                                Stroke="#CECECE"
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout>
                                         <Label

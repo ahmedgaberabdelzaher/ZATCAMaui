@@ -56,7 +56,7 @@
                     <ScrollView
                         Grid.Row="0"
                         HorizontalOptions="FillAndExpand"
-                        Orientation="Vertical"
+                        
                         VerticalOptions="Start"
                         VerticalScrollBarVisibility="Never">
                         <StackLayout Spacing="15" VerticalOptions="StartAndExpand">

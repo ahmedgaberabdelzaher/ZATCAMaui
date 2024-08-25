@@ -31,7 +31,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -67,7 +66,8 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="{x:OnPlatform Android= '5,5,5,0',iOS= '10,0'}"
+                Padding="{x:OnPlatform Android='5,5,5,0',
+                                       iOS='10,0'}"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
@@ -112,7 +112,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.PortName}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.PortName}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -122,7 +122,7 @@
                                 <custom:CustomSfTextInputView>
 
                                     <custom:CustomSfTextInputView.TextInputView>
-                                         <custom:GAZTBorderlessEntry
+                                        <custom:GAZTBorderlessEntry
                                             InputTransparent="True"
                                             IsReadOnly="True"
                                             Keyboard="Text"
@@ -156,7 +156,7 @@
                             <Label IsVisible="{Binding DrawShipmentTrack.HasSearchBy}" Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.SearchBy}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.SearchBy}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -184,7 +184,7 @@
                                                 TargetType="Image"
                                                 Value="True">
                                                 <Setter Property="Source" Value="Unselected.png" />
-                                                 <Setter Property="WidthRequest" Value="160" />
+                                                <Setter Property="WidthRequest" Value="160" />
                                                 <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
@@ -193,8 +193,8 @@
                                                 TargetType="Image"
                                                 Value="False">
                                                 <Setter Property="Source" Value="UnselectedCard.png" />
-                                                 <Setter Property="WidthRequest" Value="160" />
-                                                 <Setter Property="HeightRequest" Value="110" />
+                                                <Setter Property="WidthRequest" Value="160" />
+                                                <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                         </Image.Triggers>
@@ -285,8 +285,8 @@
                                                 TargetType="Image"
                                                 Value="False">
                                                 <Setter Property="Source" Value="Unselected.png" />
-                                                 <Setter Property="WidthRequest" Value="160" />
-                                                    <Setter Property="HeightRequest" Value="110" />
+                                                <Setter Property="WidthRequest" Value="160" />
+                                                <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                             <DataTrigger
@@ -294,8 +294,8 @@
                                                 TargetType="Image"
                                                 Value="True">
                                                 <Setter Property="Source" Value="UnselectedCard.png" />
-                                                 <Setter Property="WidthRequest" Value="160" />
-                                                    <Setter Property="HeightRequest" Value="110" />
+                                                <Setter Property="WidthRequest" Value="160" />
+                                                <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                         </Image.Triggers>
@@ -386,7 +386,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ShipmentDeclarationNumber}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ShipmentDeclarationNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -396,7 +396,8 @@
                                 <custom:CustomSfTextInputView>
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric,
+                                                                  iOS=Default}"
                                             Placeholder="{x:Static ResourceManager:AppResources.ShipmentDeclarationNumber}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding ShipmentDeclarationNumber}"
@@ -418,7 +419,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.DeclarationDate}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.DeclarationDate}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -426,24 +427,24 @@
 
 
                                 <!--  Declaration Date Entry  -->
-                               <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView>
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                                InputTransparent="True"
-                                                IsReadOnly="True"
-                                                Keyboard="Text"
-                                                Placeholder="dd-MM-yyyy"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding DeclarationDateString}"
-                                                TextColor="#58595B" />
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Placeholder="dd-MM-yyyy"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding DeclarationDateString}"
+                                            TextColor="#58595B" />
 
                                     </custom:CustomSfTextInputView.TextInputView>
 
-                                   <inputLayout:SfTextInputLayout.TrailingView>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image Aspect="AspectFit" Source="greyCalender" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
 
-                                    
+
                                     <inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference declarationDate}" />
                                     </inputLayout:SfTextInputLayout.GestureRecognizers>
@@ -514,15 +515,14 @@
                             </StackLayout>
 
                             <!--  Importer Year for Express E-Declaration Field  -->
-                            <StackLayout Spacing="0"
-                                         IsVisible="{Binding DrawShipmentTrack.HasImportYear}">
+                            <StackLayout IsVisible="{Binding DrawShipmentTrack.HasImportYear}" Spacing="0">
 
                                 <!--  Importer Year for Express E-Declaration Label  -->
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ImporterYear}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ImporterYear}" />
+                                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -548,11 +548,11 @@
 
                                     </custom:CustomSfTextInputView.TextInputView>
 
-                                   <inputLayout:SfTextInputLayout.TrailingView>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image Aspect="AspectFit" Source="greyCalender" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
 
-                                    
+
                                     <inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
                                     </inputLayout:SfTextInputLayout.GestureRecognizers>
@@ -571,7 +571,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.BillNumber}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.BillNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -582,7 +582,7 @@
                                             Value="true">
                                             <Setter Property="FormattedText">
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ExpressBillNumber}" />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ExpressBillNumber}" />
                                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                                 </FormattedString>
 
@@ -628,7 +628,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ContainerNumber}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ContainerNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -638,7 +638,7 @@
                                 <custom:CustomSfTextInputView>
 
                                     <custom:CustomSfTextInputView.TextInputView>
-                                         <custom:GAZTBorderlessEntry
+                                        <custom:GAZTBorderlessEntry
                                             Keyboard="Text"
                                             Placeholder="{x:Static ResourceManager:AppResources.ContainerNumber}"
                                             Style="{StaticResource DefaultEntry}"

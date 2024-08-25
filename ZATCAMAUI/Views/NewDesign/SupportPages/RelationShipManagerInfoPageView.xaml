@@ -1,20 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.NewDesign.SupportPages.RelationShipManagerInfoPageView"
-             Title="RelationShipManagerInfoPageView"
-             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-            x:Name="page"
-            ios:Page.UseSafeArea="true"
-            BackgroundImageSource="partials_background.png"
-            FlowDirection="{Binding AppDirection}"
-            NavigationPage.HasNavigationBar="False">
-   
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.SupportPages.RelationShipManagerInfoPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    x:Name="page"
+    Title="RelationShipManagerInfoPageView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
     <ContentPage.Content>
-               <Grid RowDefinitions="auto,*">
+        <Grid RowDefinitions="auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
@@ -26,7 +27,7 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -53,91 +54,160 @@
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                     Text="{x:Static ResourceManager:AppResources.RMTitle}"
+                    Text="{x:Static ResourceManager:AppResources.RMTitle}"
                     VerticalOptions="Center" />
 
             </Grid>
             <!--#endregion Header-->
-            
-            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,30" >
+
+            <Border
+                Grid.Row="1"
+                Padding="20,20,20,30"
+                Style="{StaticResource CommonTopCurves}">
                 <ScrollView>
-                    <StackLayout >
+                    <StackLayout>
 
-                        <Label  Text="{x:Static ResourceManager:AppResources.RMNameInfo}" FontSize="18"  TextColor="{StaticResource Secondary}"  Grid.ColumnSpan="2"
-                                    Margin="0,0,0,20"/>
+                        <Label
+                            Grid.ColumnSpan="2"
+                            Margin="0,0,0,20"
+                            FontSize="18"
+                            Text="{x:Static ResourceManager:AppResources.RMNameInfo}"
+                            TextColor="{StaticResource Secondary}" />
 
-                        <!--Rm Details-->
-                <Grid RowSpacing="16"
-                RowDefinitions="auto,auto,auto,auto">
+                        <!--  Rm Details  -->
+                        <Grid RowDefinitions="auto,auto,auto,auto" RowSpacing="16">
 
-                    <!-- View Starts-->
-                            <Label  Text="{x:Static ResourceManager:AppResources.RMName}" FontSize="16" TextColor="{StaticResource Primary}"  Grid.ColumnSpan="2"
-                                    Margin="0,0,0,20"/>
+                            <!--  View Starts  -->
+                            <Label
+                                Grid.ColumnSpan="2"
+                                Margin="0,0,0,20"
+                                FontSize="16"
+                                Text="{x:Static ResourceManager:AppResources.RMName}"
+                                TextColor="{StaticResource Primary}" />
 
-                            <Label Text="{x:Static ResourceManager:AppResources.RM_Name}" TextColor="{StaticResource Primary}" Grid.Row="1" Grid.Column="0"/>
-                            <Label Text="{Binding getRMName}" TextColor="{StaticResource Primary}" Grid.Row="1" Grid.Column="1"/>
-                            <Label Text="{x:Static ResourceManager:AppResources.RM_phone}" TextColor="{StaticResource Primary}" Grid.Row="2" Grid.Column="0"/>
-                            <Label Text="{Binding getRMMobile}" TextColor="{StaticResource Primary}" Grid.Row="2" Grid.Column="1"/>
-                            <Label Text="{x:Static ResourceManager:AppResources.RM_Email}" TextColor="{StaticResource Primary}" Grid.Row="3" Grid.Column="0"/>
-                            <Label Text="{Binding getRMEmail}" TextColor="{StaticResource Primary}" Grid.Row="3" Grid.Column="1"/>
-                    
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="{x:Static ResourceManager:AppResources.RM_Name}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding getRMName}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Text="{x:Static ResourceManager:AppResources.RM_phone}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding getRMMobile}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Text="{x:Static ResourceManager:AppResources.RM_Email}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Text="{Binding getRMEmail}"
+                                TextColor="{StaticResource Primary}" />
 
-                </Grid>
 
-                        <buttons:SfButton x:Name="MainButtonName"  Text="{x:Static ResourceManager:AppResources.RM_SubmitComplaint}" 
-                         Clicked="submitComplaintToRelationShipManager" IsEnabled="{Binding IsContinueButtonEnable}"
-                                          CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}"
-                                          Background="{StaticResource Secondary}" >
+                        </Grid>
+
+                        <buttons:SfButton
+                            x:Name="MainButtonName"
+                            Grid.ColumnSpan="2"
+                            Background="{StaticResource Secondary}"
+                            Clicked="submitComplaintToRelationShipManager"
+                            CornerRadius="14"
+                            IsEnabled="{Binding IsContinueButtonEnable}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.RM_SubmitComplaint}">
                             <buttons:SfButton.Margin>
-                                <OnPlatform x:TypeArguments="Thickness" >
-                                    <On Platform="iOS" Value="0,12,0,0"/>
-                                    <On Platform="Android" Value="0,12,0,0"/>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="0,12,0,0" />
+                                    <On Platform="Android" Value="0,12,0,0" />
                                 </OnPlatform>
                             </buttons:SfButton.Margin>
                         </buttons:SfButton>
 
-                        <!--supervisor Details-->
-                        <Grid RowSpacing="16" Margin="0,30,0,0"
-                        RowDefinitions="auto,auto,auto,auto">
+                        <!--  supervisor Details  -->
+                        <Grid
+                            Margin="0,30,0,0"
+                            RowDefinitions="auto,auto,auto,auto"
+                            RowSpacing="16">
 
-                        <!-- View Starts-->
-                            <Label Text="{x:Static ResourceManager:AppResources.RMSupName}"
-                                   Margin="0,0,0,20"
-                                   FontSize="16" 
-                                   TextColor="{StaticResource Primary}" 
-                                   Grid.ColumnSpan="2"/>
-                            <Label Text="{x:Static ResourceManager:AppResources.RM_Name}" TextColor="{StaticResource Primary}" Grid.Row="1" Grid.Column="0"/>
-                            <Label Text="{Binding getSupName}" TextColor="{StaticResource Primary}" Grid.Row="1" Grid.Column="1"/>
-                            <Label Text="{x:Static ResourceManager:AppResources.RM_phone}" TextColor="{StaticResource Primary}" Grid.Row="2" Grid.Column="0"/>
-                            <Label Text="{Binding getSupMobile}" TextColor="{StaticResource Primary}" Grid.Row="2" Grid.Column="1"/>
-                            <Label Text="{x:Static ResourceManager:AppResources.RM_Email}" TextColor="{StaticResource Primary}" Grid.Row="3" Grid.Column="0"/>
-                            <Label Text="{Binding getSupEmail}" TextColor="{StaticResource Primary}" Grid.Row="3" Grid.Column="1"/>
+                            <!--  View Starts  -->
+                            <Label
+                                Grid.ColumnSpan="2"
+                                Margin="0,0,0,20"
+                                FontSize="16"
+                                Text="{x:Static ResourceManager:AppResources.RMSupName}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="{x:Static ResourceManager:AppResources.RM_Name}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding getSupName}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Text="{x:Static ResourceManager:AppResources.RM_phone}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding getSupMobile}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Text="{x:Static ResourceManager:AppResources.RM_Email}"
+                                TextColor="{StaticResource Primary}" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Text="{Binding getSupEmail}"
+                                TextColor="{StaticResource Primary}" />
 
 
-                    </Grid>
+                        </Grid>
 
 
-                        <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.RM_ShareOpenion}"  IsEnabled="{Binding IsContinueButtonEnable}"
-                                          CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource RMDetailsPrimaryButtonStyle}"
-                                          Command="{Binding ShareOpenionClicked}" 
-                                          Background="{StaticResource Secondary}" >
+                        <buttons:SfButton
+                            Grid.ColumnSpan="2"
+                            Background="{StaticResource Secondary}"
+                            Command="{Binding ShareOpenionClicked}"
+                            CornerRadius="14"
+                            IsEnabled="{Binding IsContinueButtonEnable}"
+                            Style="{StaticResource RMDetailsPrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.RM_ShareOpenion}">
                             <buttons:SfButton.Margin>
-                                <OnPlatform x:TypeArguments="Thickness" >
-                                    <On Platform="iOS" Value="0,12,0,0"/>
-                                    <On Platform="Android" Value="0,12,0,0"/>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="0,12,0,0" />
+                                    <On Platform="Android" Value="0,12,0,0" />
                                 </OnPlatform>
                             </buttons:SfButton.Margin>
                         </buttons:SfButton>
                     </StackLayout>
                 </ScrollView>
-                
+
 
             </Border>
-            <custom:Loader Grid.RowSpan="2"
-                            IsVisible="{Binding IsLoading}"/>
-            
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
-            
+
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

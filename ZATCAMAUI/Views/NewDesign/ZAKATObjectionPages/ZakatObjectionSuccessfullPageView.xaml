@@ -7,20 +7,16 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
 
             <Style x:Key="MainPage" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="White" />
@@ -92,10 +88,7 @@
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
-                            <StackLayout
-                                BindingContext="{Binding EstimatedZAKATSADADNumber}"
-                                Orientation="Vertical"
-                                Spacing="0">
+                            <StackLayout BindingContext="{Binding EstimatedZAKATSADADNumber}" Spacing="0">
 
                                 <Label
                                     Style="{StaticResource ValueLabelGrey}"
@@ -279,7 +272,6 @@
                             Padding="0,8,0,0"
                             BackgroundColor="White"
                             HorizontalOptions="FillAndExpand"
-                            Orientation="Vertical"
                             Spacing="8"
                             VerticalOptions="EndAndExpand">
                             <buttons:SfButton
@@ -326,7 +318,7 @@
                         HorizontalOptions="StartAndExpand"
                         IsVisible="{Binding IsBackBtnVisible}"
                         Source="arrowLeftwhite"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="CenterAndExpand" />
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnBackButtonClicked}" />

@@ -1,7 +1,4 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
 using ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages;
 using Application = Microsoft.Maui.Controls.Application;
@@ -22,11 +19,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AboutUsPages
             {
                 InitializeComponent();
                 viewModel = App.Locator.AboutUsPageView;
-                On<iOS>().SetUseSafeArea(true);
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-                ChangeAeroIcon();
                 BindingContext = viewModel;
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
@@ -62,29 +54,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AboutUsPages
         #endregion
 
         #region Method
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-       
+      
         private void BackButtonClicked(object sender, EventArgs e)
         {
             if (AboutUsWebView.CanGoBack)

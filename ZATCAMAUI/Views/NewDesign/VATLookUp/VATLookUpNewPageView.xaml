@@ -45,14 +45,14 @@
                                 <custom:CustomSfTextInputView>
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            IsReadOnly="True"
                                             InputTransparent="True"
+                                            IsReadOnly="True"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding TxtSearchParameter}"
                                             TextColor="{StaticResource Primary}" />
 
                                     </custom:CustomSfTextInputView.TextInputView>
-                                     <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PPicker_btn_Clicked" />
                                     </inputLayout:SfTextInputLayout.GestureRecognizers>
                                 </custom:CustomSfTextInputView>
@@ -129,7 +129,8 @@
                                 <custom:CustomSfTextInputView>
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric,
+                                                                  iOS=Default}"
                                             MaxLength="{Binding MaxDigids}"
                                             Placeholder="{Binding SelectedParameterType.ParameterType}"
                                             Style="{StaticResource DefaultEntry}"
@@ -144,7 +145,7 @@
 
                                     </custom:CustomSfTextInputView.TextInputView>
 
-                                     <inputLayout:SfTextInputLayout.TrailingView>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
                                         <Label
                                             Margin="0,0,0,4"
                                             FontSize="Title"
@@ -213,138 +214,134 @@
             </Border>
 
             <!--#region Scan View-->
-            <Grid Padding="0,0,0,0"
-                  Grid.Row="1"
-                  IsVisible="{Binding IsShowScanView}"
-                  RowDefinitions="1.2*,*,*,*,*">
-                    <Grid
-                        x:Name="MainGrid"
-                        Grid.RowSpan="5"
-                        Margin="0,0,0,0" />
+            <Grid
+                Grid.Row="1"
+                Padding="0,0,0,0"
+                IsVisible="{Binding IsShowScanView}"
+                RowDefinitions="1.2*,*,*,*,*">
+                <Grid
+                    x:Name="MainGrid"
+                    Grid.RowSpan="5"
+                    Margin="0,0,0,0" />
 
-                    <zxing:CameraBarcodeReaderView
-                        x:Name="zxing"
-                        Grid.RowSpan="5"
-                        Margin="0,0,0,0"
-                        BackgroundColor="White"
-                        BarcodesDetected="zxing_BarcodesDetected" />
+                <zxing:CameraBarcodeReaderView
+                    x:Name="zxing"
+                    Grid.RowSpan="5"
+                    Margin="0,0,0,0"
+                    BackgroundColor="White"
+                    BarcodesDetected="zxing_BarcodesDetected" />
 
-                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
-                        <Border BackgroundColor="Black" Opacity=".44" />
+                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
+                    <Border BackgroundColor="Black" Opacity=".44" />
 
-                        <StackLayout Margin="0,30,0,30">
+                    <StackLayout Margin="0,30,0,30">
+
+                        <Label
+                            FontFamily="{StaticResource FontSomarBold}"
+                            FontSize="22"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.ScantheQRcode}"
+                            TextColor="White" />
+
+                        <BoxView HeightRequest="30" />
+                    </StackLayout>
+                </Grid>
+
+                <Grid
+                    Grid.Row="1"
+                    Grid.RowSpan="3"
+                    Margin="2,0,2,-7"
+                    FlowDirection="RightToLeft">
+                    <Path
+                        Margin="-3,-7,-3,0"
+                        Data="M 0,0 L 36,0 36,36Z"
+                        Fill="Black"
+                        HorizontalOptions="End"
+                        Opacity=".45"
+                        Rotation="-90"
+                        Stroke="transparent"
+                        VerticalOptions="Start" />
+                    <Image
+                        Margin="-5,-15,-5,0"
+                        HeightRequest="90"
+                        HorizontalOptions="StartAndExpand"
+                        Rotation="-90"
+                        Source="Path"
+                        VerticalOptions="Start" />
+                    <Path
+                        Margin="-7,-6,-15,0"
+                        Data="M 0,0 L 30,0 30,30Z"
+                        Fill="Black"
+                        HorizontalOptions="Start"
+                        Opacity=".45"
+                        VerticalOptions="Start" />
+                    <Image
+                        Margin="-3,-15,-5,0"
+                        HeightRequest="90"
+                        HorizontalOptions="End"
+                        Rotation="-180"
+                        Source="Path"
+                        VerticalOptions="Start" />
+
+                    <Path
+                        Margin="-3,0,-3,-.2"
+                        Data="M 0,0 L 45,0 45,45"
+                        Fill="Black"
+                        HorizontalOptions="Start"
+                        Opacity=".45"
+                        Rotation="90"
+                        Stroke="transparent"
+                        VerticalOptions="End" />
+                    <Image
+                        Margin="-3,0,-3,0"
+                        HeightRequest="90"
+                        HorizontalOptions="StartAndExpand"
+                        Source="Path"
+                        VerticalOptions="End" />
+                    <Path
+                        Margin="-3,0,-3,0"
+                        Data="M 0,0 L 45,0 45,45"
+                        Fill="Black"
+                        HorizontalOptions="End"
+                        Opacity=".45"
+                        Rotation="180"
+                        Stroke="transparent"
+                        VerticalOptions="End" />
+                    <Image
+                        Margin="-3,0,-3,0"
+                        HeightRequest="90"
+                        HorizontalOptions="End"
+                        Rotation="90"
+                        Source="Path"
+                        VerticalOptions="End" />
+
+                </Grid>
+
+
+                <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
+                    <Border BackgroundColor="Black" Opacity=".44" />
+                    <StackLayout>
+                        <Label
+                            Grid.Row="3"
+                            Margin="0,40,27,0"
+                            FontFamily="{StaticResource FontSomarBold}"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            TextColor="White" />
+                        <Border
+                            Grid.Row="4"
+                            Margin="21,27,27,40"
+                            Padding="12"
+                            BackgroundColor="Transparent"
+                            StrokeShape="RoundRectangle 14,14,14,14">
 
                             <Label
-                                FontFamily="{StaticResource FontSomarBold}"
-                                FontSize="22"
+                                FontSize="16"
                                 HorizontalOptions="CenterAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.ScantheQRcode}"
                                 TextColor="White" />
-
-                            <BoxView HeightRequest="30" />
-                        </StackLayout>
-                    </Grid>
-
-                    <Grid
-                        Grid.Row="1"
-                        Grid.RowSpan="3"
-                        Margin="2,0,2,-7"
-                        FlowDirection="RightToLeft">
-                        <Path
-                            Margin="-3,-7,-3,0"
-                            Data="M 0,0 L 36,0 36,36Z"
-                            Fill="Black"
-                            HorizontalOptions="End"
-                            Opacity=".45"
-                            Rotation="-90"
-                            Stroke="transparent"
-                            VerticalOptions="Start" />
-                        <Image
-                            Margin="-5,-15,-5,0"
-                            HeightRequest="90"
-                            HorizontalOptions="StartAndExpand"
-                            Rotation="-90"
-                            Source="Path"
-                            VerticalOptions="Start" />
-                        <Path
-                            Margin="-7,-6,-15,0"
-                            Data="M 0,0 L 30,0 30,30Z"
-                            Fill="Black"
-                            HorizontalOptions="Start"
-                            Opacity=".45"
-                            VerticalOptions="Start" />
-                        <Image
-                            Margin="-3,-15,-5,0"
-                            HeightRequest="90"
-                            HorizontalOptions="End"
-                            Rotation="-180"
-                            Source="Path"
-                            VerticalOptions="Start" />
-
-                        <Path
-                            Margin="-3,0,-3,-.2"
-                            Data="M 0,0 L 45,0 45,45"
-                            Fill="Black"
-                            HorizontalOptions="Start"
-                            Opacity=".45"
-                            Rotation="90"
-                            Stroke="transparent"
-                            VerticalOptions="End" />
-                        <Image
-                            Margin="-3,0,-3,0"
-                            HeightRequest="90"
-                            HorizontalOptions="StartAndExpand"
-                            Source="Path"
-                            VerticalOptions="End" />
-                        <Path
-                            Margin="-3,0,-3,0"
-                            Data="M 0,0 L 45,0 45,45"
-                            Fill="Black"
-                            HorizontalOptions="End"
-                            Opacity=".45"
-                            Rotation="180"
-                            Stroke="transparent"
-                            VerticalOptions="End" />
-                        <Image
-                            Margin="-3,0,-3,0"
-                            HeightRequest="90"
-                            HorizontalOptions="End"
-                            Rotation="90"
-                            Source="Path"
-                            VerticalOptions="End" />
-
-                    </Grid>
-
-
-                    <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
-                        <Border BackgroundColor="Black" Opacity=".44" />
-                        <StackLayout>
-                            <Label
-                                Grid.Row="3"
-                                Margin="0,40,27,0"
-                                HorizontalOptions="CenterAndExpand"
-                                TextColor="White">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span FontFamily="{StaticResource FontSomarBold}" FontSize="24" />
-                                        <Span FontSize="16" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Border
-                                Grid.Row="4"
-                                Margin="21,27,27,40"
-                                Padding="12"
-                                BackgroundColor="Transparent"
-                                StrokeShape="RoundRectangle 14,14,14,14">
-
-                                <Label
-                                    FontSize="16"
-                                    HorizontalOptions="CenterAndExpand"
-                                    TextColor="White" />
-                            </Border>
-                        </StackLayout>
-                    </Grid>
+                        </Border>
+                    </StackLayout>
+                </Grid>
             </Grid>
 
             <!--#endregion-->
@@ -428,8 +425,8 @@
                                             <Border
                                                 Padding="0"
                                                 BackgroundColor="#62B34F"
-                                                StrokeShape="RoundRectangle 14,14,14,14"
                                                 Opacity=".1"
+                                                StrokeShape="RoundRectangle 14,14,14,14"
                                                 VerticalOptions="FillAndExpand">
                                                 <Border.Triggers>
                                                     <DataTrigger

@@ -34,7 +34,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -97,9 +96,17 @@
                                 Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}" TextColor="{StaticResource NeutralGreay}" />
+                                        <Span
+                                            FontSize="16"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                                            TextColor="{StaticResource NeutralGreay}" />
                                         <Span Text=" " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" TextColor="{StaticResource Primary}" />
+                                        <Span
+                                            FontSize="16"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}"
+                                            TextColor="{StaticResource Primary}" />
                                     </FormattedString>
                                 </Label.FormattedText>
 
@@ -113,28 +120,29 @@
                             <BoxView
                                 Margin="0,0,0,25"
                                 BackgroundColor="{StaticResource NeutralLightGrey}"
-                                HeightRequest="1"/>
+                                HeightRequest="1" />
 
                             <!--  Question Field Label  -->
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationQuestion}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NewDeclarationQuestion}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
                             <!--#region Cards-->
-                            <HorizontalStackLayout Spacing="10"
-                                                   HorizontalOptions="FillAndExpand"
-                                                   VerticalOptions="FillAndExpand">
+                            <HorizontalStackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Spacing="10"
+                                VerticalOptions="FillAndExpand">
 
                                 <!--  Arriving Card  -->
                                 <Grid
+                                    HeightRequest="110"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="StartAndExpand"
-                                    HeightRequest="110"
                                     WidthRequest="160">
 
                                     <!--  Background image selected  -->
@@ -235,9 +243,10 @@
 
 
                                 <!--  Departing card  -->
-                                <Grid  HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="StartAndExpand"
+                                <Grid
                                     HeightRequest="110"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="StartAndExpand"
                                     WidthRequest="160">
 
                                     <!--  Background image selected  -->

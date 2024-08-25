@@ -14,7 +14,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:SupportTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
-           
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -58,7 +58,7 @@
                                     <Image
                                         HorizontalOptions="EndAndExpand"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
+                                        
                                         VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
                                 <Border.GestureRecognizers>
@@ -76,7 +76,7 @@
 
                 </Grid>
             </Border>
-            
+
 
             <Grid Grid.Row="0" Padding="20,5,20,5">
                 <Grid.ColumnDefinitions>

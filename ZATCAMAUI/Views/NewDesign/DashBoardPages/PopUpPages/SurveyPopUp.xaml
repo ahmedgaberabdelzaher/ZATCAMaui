@@ -3,10 +3,10 @@
     x:Class="ZATCAMAUI.Views.NewDesign.DashBoardPages.PopUpPages.SurveyPopUp"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}">
     <Mopups:PopupPage.Animation>
         <animations:ScaleAnimation
@@ -165,9 +165,9 @@
                     <Border
                         Padding="9"
                         BackgroundColor="White"
+                        HeightRequest="100"
                         Stroke="#4FBBBD"
-                        StrokeShape="RoundRectangle 14,14,14,14"
-                        HeightRequest="100">
+                        StrokeShape="RoundRectangle 14,14,14,14">
                         <custom:GAZTBorderlessEditor Placeholder="اكتب النص هنا " Text="{Binding SQAnswer}" />
                     </Border>
                     <Border

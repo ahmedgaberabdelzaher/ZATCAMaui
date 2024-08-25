@@ -3,11 +3,11 @@
     x:Class="ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages.AddressPickerPopPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     ios:Page.UseSafeArea="true"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -40,7 +40,7 @@
                     SelectionMode="Single"
                     VerticalScrollBarVisibility="Never">
                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                        <LinearItemsLayout ItemSpacing="10"  Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>

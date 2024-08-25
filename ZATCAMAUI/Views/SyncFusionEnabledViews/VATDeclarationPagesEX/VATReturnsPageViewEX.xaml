@@ -9,12 +9,12 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sfcustom="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
     Title="{x:Static ResourceManager:AppResources.VATDeclaration}"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="true"
     BackgroundColor="White"
     FlowDirection="{Binding AppDirection}"
@@ -128,10 +128,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarLight}"
                                                         FontSize="11"
+                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                         Text="1." />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                         FontSize="11"
+                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZPleasefilltherequestedinformationforeachstep}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -149,10 +151,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarLight}"
                                                         FontSize="11"
+                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                         Text="2." />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                         FontSize="11"
+                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatSubmittedInstructions}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -170,10 +174,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarLight}"
                                                         FontSize="11"
+                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                         Text="3." />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                         FontSize="11"
+                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatDateInstructions}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -191,10 +197,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarLight}"
                                                         FontSize="11"
+                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                         Text="4." />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                         FontSize="11"
+                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatFaqSectionInstructions}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -242,6 +250,7 @@
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -260,7 +269,6 @@
                                     x:Name="TabTaxPayerDetails"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding IsVisibleTaxPayerDetails}"
-                                    Orientation="Vertical"
                                     VerticalOptions="FillAndExpand">
                                     <Grid BindingContext="{Binding ResponseVATDeclarationD}">
                                         <Grid.RowDefinitions>
@@ -329,8 +337,8 @@
                                                 Grid.Row="2"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 IsSpellCheckEnabled="False"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Incotext}"
@@ -355,8 +363,8 @@
                                                 Grid.Row="3"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 IsSpellCheckEnabled="False"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Vrtaxret}"
@@ -381,8 +389,8 @@
                                                 Grid.Row="4"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Fbnum}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -406,8 +414,8 @@
                                                 Grid.Row="5"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Perslt}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -434,8 +442,8 @@
                                                 FlowDirection="LeftToRight"
                                                 HorizontalOptions="StartAndExpand"
                                                 HorizontalTextAlignment="Start"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodFromDate}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -462,8 +470,8 @@
                                                 FlowDirection="LeftToRight"
                                                 HorizontalOptions="StartAndExpand"
                                                 HorizontalTextAlignment="Start"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -501,8 +509,8 @@
                                                 Grid.Row="9"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Gpart}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -526,8 +534,8 @@
                                                 Grid.Row="10"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Fin}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -552,8 +560,8 @@
                                                 Grid.Row="11"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Idnumber}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -577,8 +585,8 @@
                                                 Grid.Row="12"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Tpnm}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -604,9 +612,9 @@
                                             BackgroundColor="White"
                                             FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                             HeightRequest="100"
+                                            InputTransparent="True"
                                             IsEnabled="False"
                                             IsReadOnly="True"
-                                            InputTransparent="True"
                                             Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                             Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}"
                                             TextColor="{StaticResource ForgotPasswordGrayTextColor}"
@@ -656,19 +664,23 @@
                                                     <Span
                                                         FontAttributes="Bold"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatNote}" />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text=":" />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatNoteDetail}" />
                                                     <Span Text="&#160;" />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZChageOfRegistration}"
                                                         TextColor="#c49b2d">
                                                         <Span.GestureRecognizers>
@@ -699,7 +711,6 @@
                                     x:Name="TabVatReturn"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding IsVisibleVatReturnForm}"
-                                    Orientation="Vertical"
                                     VerticalOptions="FillAndExpand">
                                     <Grid BindingContext="{Binding ResponseVATDeclarationD}">
                                         <Grid.RowDefinitions>
@@ -776,7 +787,7 @@
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZDoyouhavesalesorpurchasessubjectto5VAT}" />
+                                                    <Span Style="{StaticResource GAZTSmallGreenLabelStyle}" Text="{x:Static ResourceManager:AppResources.ZZZDoyouhavesalesorpurchasessubjectto5VAT}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -862,10 +873,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="1. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatStandardRatedSales}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -890,7 +903,8 @@
                                                 x:Name="EntryVatAmount"
                                                 Focused="EntryVatAmountFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
                                                 PropertyChanged="EntryVatAmount_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
@@ -956,7 +970,8 @@
                                                 x:Name="EntryVatAdjustmentWithSAR"
                                                 Focused="EntryVatAdjustmentFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryVatAdjustmentWithSAR_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding StdsalesAdj}"
@@ -1018,9 +1033,10 @@
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryStdsalesVat"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                IsReadOnly="True"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat, StringFormat='{0:D2}'}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -1058,10 +1074,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="1. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZVatStandardRatedSales15}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -1086,7 +1104,8 @@
                                                 x:Name="EntryVatAmount15"
                                                 Focused="EntryVatAmount15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
                                                 PropertyChanged="EntryVatAmount15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
@@ -1152,7 +1171,8 @@
                                                 x:Name="EntryVatAdjustmentWithSAR15"
                                                 Focused="EntryVatAdjustment15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryVatAdjustmentWithSAR15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdsalesAdj}"
@@ -1214,9 +1234,10 @@
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryStdsalesVat15"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                IsReadOnly="True"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat15, StringFormat='{0:D2}'}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -1254,10 +1275,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="1.1 " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZSalessubjecttoVATat5}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -1282,7 +1305,8 @@
                                                 x:Name="EntryVatAmount5"
                                                 Focused="EntryVatAmount5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
                                                 PropertyChanged="EntryVatAmount5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
@@ -1348,7 +1372,8 @@
                                                 x:Name="EntryVatAdjustmentWithSAR5"
                                                 Focused="EntryVatAdjustment5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryVatAdjustmentWithSAR5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdsalesAdj}"
@@ -1410,9 +1435,10 @@
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryStdsalesVat5"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                IsReadOnly="True"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat5, StringFormat='{0:D2}'}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -1447,10 +1473,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="2. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatPrivateHealthcare}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -1474,7 +1502,8 @@
                                                 x:Name="EntrySalesGccAmt"
                                                 Focused="EntrySalesGccAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntrySalesGccAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding SalesGccAmt}"
@@ -1538,7 +1567,8 @@
                                                 x:Name="EntrySalesGccAdj"
                                                 Focused="EntrySalesGccAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntrySalesGccAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding SalesGccAdj}"
@@ -1593,10 +1623,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="3. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatZerorateddomesticsales}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -1620,7 +1652,8 @@
                                                 x:Name="EntryZerosalesAmt"
                                                 Focused="EntryZerosalesAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryZerosalesAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ZerosalesAmt}"
@@ -1684,7 +1717,8 @@
                                                 x:Name="EntryZerosalesAdj"
                                                 Focused="EntryZerosalesAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryZerosalesAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ZerosalesAdj}"
@@ -1739,10 +1773,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="4. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatExports}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -1769,7 +1805,8 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryExportsAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
                                                 PropertyChanged="EntryExportsAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
@@ -1834,7 +1871,8 @@
                                                 x:Name="EntryExportsAdj"
                                                 Focused="EntryExportsAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryExportsAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ExportsAdj}"
@@ -1889,10 +1927,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="5. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatExemptsales}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -1917,7 +1957,8 @@
                                                 x:Name="EntryExemptsalesAmt"
                                                 Focused="EntryExemptsalesAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryExemptsalesAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ExemptsalesAmt}"
@@ -1984,7 +2025,8 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryExemptsalesAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
                                                 PropertyChanged="EntryExemptsalesAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
@@ -2061,10 +2103,12 @@
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                             Text="6. " />
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                             Text="{x:Static ResourceManager:AppResources.ZVatTotalSales}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -2091,6 +2135,7 @@
                                                         <Span
                                                             FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                             FontSize="11"
+                                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                             Text="{x:Static ResourceManager:AppResources.ZZZTotalSalesAdjustment}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -2117,6 +2162,7 @@
                                                         <Span
                                                             FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                             FontSize="11"
+                                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                             Text="{x:Static ResourceManager:AppResources.ZZZTotalVATTaxableAmountonSales}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -2156,10 +2202,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="7. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatStandardrateddomesticpurchases}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -2184,7 +2232,8 @@
                                                 x:Name="EntryStdpurchaseAmt"
                                                 Focused="EntryStdpurchaseAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryStdpurchaseAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding StdpurchaseAmt}"
@@ -2249,7 +2298,8 @@
                                                 x:Name="EntryStdpurchaseAdj"
                                                 Focused="EntryStdpurchaseAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryStdpurchaseAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding StdpurchaseAdj}"
@@ -2312,8 +2362,8 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryStdpurchasesVat"
                                                 Grid.Column="0"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2343,10 +2393,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="7. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZVatStandardrateddomesticpurchases15}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -2371,7 +2423,8 @@
                                                 x:Name="EntryStdpurchaseAmt15"
                                                 Focused="EntryStdpurchaseAmt15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryStdpurchaseAmt15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdpurchaseAmt}"
@@ -2436,7 +2489,8 @@
                                                 x:Name="EntryStdpurchaseAdj15"
                                                 Focused="EntryStdpurchaseAdj15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryStdpurchaseAdj15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdpurchaseAdj}"
@@ -2499,8 +2553,8 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryStdpurchasesVat15"
                                                 Grid.Column="0"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat15, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2529,10 +2583,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="7.1 " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZPurchasessubjecttoVATat5}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -2557,7 +2613,8 @@
                                                 x:Name="EntryStdpurchaseAmt5"
                                                 Focused="EntryStdpurchaseAmt5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryStdpurchaseAmt5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdpurchaseAmt}"
@@ -2622,7 +2679,8 @@
                                                 x:Name="EntryStdpurchaseAdj5"
                                                 Focused="EntryStdpurchaseAdj5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryStdpurchaseAdj5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdpurchaseAdj}"
@@ -2685,8 +2743,8 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryStdpurchasesVat5"
                                                 Grid.Column="0"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat5, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2718,10 +2776,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="8. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatImportsVatPaidatcustoms}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -2746,7 +2806,8 @@
                                                 x:Name="EntryZVatAmountWithSAR"
                                                 Focused="EntryZVatAmountWithSARFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryZVatAmountWithSAR_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ImportspaidAmt}"
@@ -2811,7 +2872,8 @@
                                                 x:Name="EntryImportspaidAdj"
                                                 Focused="EntryImportspaidAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryImportspaidAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ImportspaidAdj}"
@@ -2874,8 +2936,8 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryImportspaidVat"
                                                 Grid.Column="0"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2906,10 +2968,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="8. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZImportssubjecttoVATpaidatcustoms15}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -2934,7 +2998,8 @@
                                                 x:Name="EntryZVatAmountWithSAR15"
                                                 Focused="EntryZVatAmountWithSAR15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryZVatAmountWithSAR15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportspaidAmt}"
@@ -2999,7 +3064,8 @@
                                                 x:Name="EntryImportspaidAdj15"
                                                 Focused="EntryImportspaidAdj15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryImportspaidAdj15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportspaidAdj}"
@@ -3062,8 +3128,8 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryImportspaidVat15"
                                                 Grid.Column="0"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat15, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -3094,10 +3160,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="8.1 " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZImportssubjecttoVATpaidatcustoms5}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -3122,7 +3190,8 @@
                                                 x:Name="EntryZVatAmountWithSAR5"
                                                 Focused="EntryZVatAmountWithSAR5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryZVatAmountWithSAR5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportspaidAmt}"
@@ -3188,7 +3257,8 @@
                                                 x:Name="EntryImportspaidAdj5"
                                                 Focused="EntryImportspaidAdj5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryImportspaidAdj5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportspaidAdj}"
@@ -3252,8 +3322,8 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryImportspaidVat5"
                                                 Grid.Column="0"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat5, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -3284,6 +3354,7 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="9. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -3313,7 +3384,8 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryImportsaccAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ImportsaccAmt}"
@@ -3380,7 +3452,8 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryImportsaccAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ImportsaccAdj}"
@@ -3443,8 +3516,8 @@
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryImportsaccVat"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -3485,10 +3558,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="9. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -3514,7 +3589,8 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAmt15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryImportsaccAmt15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportsaccAmt}"
@@ -3581,7 +3657,8 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAdj15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryImportsaccAdj15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportsaccAdj}"
@@ -3643,8 +3720,8 @@
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryImportsaccVat15"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat15, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -3685,10 +3762,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="9.1 " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -3714,7 +3793,8 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAmt5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryImportsaccAmt5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportsaccAmt}"
@@ -3781,7 +3861,8 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAdj5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryImportsaccAdj5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportsaccAdj}"
@@ -3844,8 +3925,8 @@
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryImportsaccVat5"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat5, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -3887,10 +3968,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="10. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatZeroRatedPurchases}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -3914,7 +3997,8 @@
                                                 x:Name="EntryZeropurchaseAmt"
                                                 Focused="EntryZeropurchaseAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryZeropurchaseAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ZeropurchaseAmt}"
@@ -3979,7 +4063,8 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryZeropurchaseAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryZeropurchaseAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ZeropurchaseAdj}"
@@ -4035,10 +4120,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="11. " />
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="13"
+                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatExemptPurchases}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -4062,7 +4149,8 @@
                                                 x:Name="EntryExemptpurchaseAmt"
                                                 Focused="EntryExemptpurchaseAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryExemptpurchaseAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ExemptpurchaseAmt}"
@@ -4127,7 +4215,8 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryExemptpurchaseAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryExemptpurchaseAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ExemptpurchaseAdj}"
@@ -4210,10 +4299,12 @@
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                             Text="12. " />
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                             Text="{x:Static ResourceManager:AppResources.ZVatTotalPurchases}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -4273,10 +4364,12 @@
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                             Text="13. " />
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                             Text="{x:Static ResourceManager:AppResources.ZVatTotalVATdueforcurrentperiod}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -4302,10 +4395,12 @@
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                             Text="14. " />
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                             Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -4343,7 +4438,8 @@
                                                     Grid.Row="6"
                                                     Focused="EntryPreperiodcorrFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryPreperiodcorr_PropertyChanged"
                                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"
@@ -4404,10 +4500,12 @@
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                             Text="15. " />
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                             Text="{x:Static ResourceManager:AppResources.ZVatcreditcarriedforward}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -4438,9 +4536,10 @@
                                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryCreditVat"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    IsReadOnly="True"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CreditVat}"
                                                     TextChanged="EntryCreditVat_TextChanged"
@@ -4486,10 +4585,12 @@
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                             Text="16. " />
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                             FontSize="13"
+                                                            Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                             Text="{x:Static ResourceManager:AppResources.ZVatNetdue}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -4510,9 +4611,10 @@
                                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryNetdueVat"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    IsReadOnly="True"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}"
                                                     TextChanged="EntryNetdueVat_TextChanged"
@@ -5053,10 +5155,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="1." />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatTandCone}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -5074,10 +5178,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="2." />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatTandCtwo}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -5095,10 +5201,12 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="3." />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatTandCthree}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -5116,12 +5224,13 @@
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="4." />
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatTandCfour}" />
-                                                    <!--<Span Text="{x:Static ResourceManager:AppResources.ZVatClickFaqInstructions}"  />-->
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -5156,6 +5265,7 @@
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatCertifyInformation}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -5192,6 +5302,7 @@
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
+                                                        Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZIacknowledgethattheabovebankaccount}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -5285,8 +5396,8 @@
                 <!--  Acticity indicator layout start  -->
                 <!--  Acticity indicator layout End  -->
             </StackLayout>
-             <custom:Loader IsVisible="{Binding IsLoading}"/>
-           
+            <custom:Loader IsVisible="{Binding IsLoading}" />
+
         </Grid>
     </ContentPage.Content>
     <ContentPage.ControlTemplate>

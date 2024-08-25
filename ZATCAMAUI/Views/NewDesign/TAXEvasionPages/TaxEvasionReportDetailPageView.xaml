@@ -7,10 +7,10 @@
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:gmaps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps"
-    BackgroundImageSource="partials_background.png"
-    FlowDirection="{Binding AppDirection}"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -60,7 +60,7 @@
                             HorizontalOptions="StartAndExpand"
                             IsVisible="{Binding IsBackStepButtonVisible}"
                             Source="arrowLeftwhite"
-                            Style="{DynamicResource BackButtonArrow}"
+                            
                             VerticalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />

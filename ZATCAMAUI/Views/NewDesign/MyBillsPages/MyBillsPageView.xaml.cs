@@ -7,7 +7,6 @@ using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 {
@@ -74,17 +73,12 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
 
             }
-
-
-            NavigationPage.SetBackButtonTitle(this, "");
             Bills.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
                 if (sender is ListView lv) lv.SelectedItem = null;
             };
-
-            //  App.HideProgressView();
 
         }
 

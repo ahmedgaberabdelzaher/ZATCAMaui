@@ -1,6 +1,4 @@
 ﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage;
@@ -8,7 +6,6 @@ using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
 {
@@ -26,7 +23,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
         public SalesDetailsPageView(ZakatReturnDetails ZakatReturnDetail)
         {
             InitializeComponent();
-            On<iOS>().SetUseSafeArea(true);
             try
             {
                 viewModel = App.Locator.SalesDetailsPageView;
@@ -37,8 +33,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
                 viewModel.ClearData();
                 viewModel.onPageLoad();
                 viewModel.ZakatReturnDetail = ZakatReturnDetail;
-                NavigationPage.SetBackButtonTitle(this, "");
-                ChangeAeroIcon();
             }
             catch (Exception)
             {
@@ -54,17 +48,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
         }
         #endregion
         #region Method
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+      
         protected override void OnAppearing()
         {
             base.OnAppearing();

@@ -1,79 +1,241 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages.OTPPageView"
-             Title="OTPPageView"
-            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-            x:Name="page"
-            ios:Page.UseSafeArea="true"
-            BackgroundImageSource="partials_background.png"
-            FlowDirection="{Binding AppDirection}"
-            NavigationPage.HasNavigationBar="False">
-     <ContentPage.Content>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages.OTPPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    x:Name="page"
+    Title="OTPPageView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
         <Grid>
-            <Grid x:Name="otpGrid" Margin="{OnPlatform  Android='0,-40,0,0', iOS='0,-50,0,-35'}">
-                <!--/* please dont remove UWP it gives error on run time */-->
+            <Grid x:Name="otpGrid" Margin="{OnPlatform Android='0,-40,0,0', iOS='0,-50,0,-35'}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100*"></RowDefinition>
+                    <RowDefinition Height="100*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"></ColumnDefinition>
+                    <ColumnDefinition Width="100*" />
                 </Grid.ColumnDefinitions>
-                <StackLayout Orientation="Vertical">
-                    <Image Source="Burger" x:Name="HamburgerMenu" Style="{StaticResource SmallIcon}" 
-                       VerticalOptions="Start"
-                HorizontalOptions="EndAndExpand"
-                        Margin="10,55,10,0">
+                <StackLayout>
+                    <Image
+                        x:Name="HamburgerMenu"
+                        Margin="10,55,10,0"
+                        HorizontalOptions="EndAndExpand"
+                        Source="Burger"
+                        Style="{StaticResource SmallIcon}"
+                        VerticalOptions="Start">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1"/>
+                            <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1" />
                         </Image.GestureRecognizers>
                     </Image>
                     <Grid VerticalOptions="Start">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
 
-                        <Image Grid.Row="0" BackgroundColor="Transparent" Source="zatcaLogo.png" HorizontalOptions="Center" HeightRequest="100" WidthRequest="100" />
-                        <StackLayout Grid.Row="1" BackgroundColor="Transparent" Margin="25,0,0,0" Orientation="Vertical">
-                            <Label x:Name="VerificationCodeTitle" Margin="0,0,25,0" FontSize="Large" TextColor="LightSeaGreen" Opacity="1.3" Grid.Row="0" />
-                            <Label x:Name="OTPPageDescription" Margin="0,3,25,0"  FontSize="12" TextColor="white"  Opacity="0.8"/>
-                            <BoxView  HeightRequest="1" Margin="0,3,35,0" BackgroundColor="Gray" Opacity="0.3"  VerticalOptions="Center" HorizontalOptions="StartAndExpand" WidthRequest="500" Grid.RowSpan="3"/>
-                            <Label x:Name="OTPErrorMsg"  Margin="0,10,35,0" HeightRequest="20"  FontSize="12" BackgroundColor="LightPink" TextColor="Red" Opacity="1.3" VerticalOptions="Center" IsVisible="{Binding LoginError}"/>
-                            <Label Margin="0,3,25,0" FontSize="12" Style="{StaticResource CaptionLabelWhite}">
+                        <Image
+                            Grid.Row="0"
+                            BackgroundColor="Transparent"
+                            HeightRequest="100"
+                            HorizontalOptions="Center"
+                            Source="zatcaLogo.png"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Grid.Row="1"
+                            Margin="25,0,0,0"
+                            BackgroundColor="Transparent">
+                            <Label
+                                x:Name="VerificationCodeTitle"
+                                Grid.Row="0"
+                                Margin="0,0,25,0"
+                                FontSize="Large"
+                                Opacity="1.3"
+                                TextColor="LightSeaGreen" />
+                            <Label
+                                x:Name="OTPPageDescription"
+                                Margin="0,3,25,0"
+                                FontSize="12"
+                                Opacity="0.8"
+                                TextColor="white" />
+                            <BoxView
+                                Grid.RowSpan="3"
+                                Margin="0,3,35,0"
+                                BackgroundColor="Gray"
+                                HeightRequest="1"
+                                HorizontalOptions="StartAndExpand"
+                                Opacity="0.3"
+                                VerticalOptions="Center"
+                                WidthRequest="500" />
+                            <Label
+                                x:Name="OTPErrorMsg"
+                                Margin="0,10,35,0"
+                                BackgroundColor="LightPink"
+                                FontSize="12"
+                                HeightRequest="20"
+                                IsVisible="{Binding LoginError}"
+                                Opacity="1.3"
+                                TextColor="Red"
+                                VerticalOptions="Center" />
+                            <Label
+                                Margin="0,3,25,0"
+                                FontSize="12"
+                                Style="{StaticResource CaptionLabelWhite}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span x:Name="MobileNumber"  TextColor="{StaticResource SuccessColor}"/>
-                                        <Span Text=" "/>
-                                        <Span x:Name="MobileNumberTxt" Text="xxxxxx2226"></Span>
+                                        <Span
+                                            x:Name="MobileNumber"
+                                            Style="{StaticResource CaptionLabelWhite}"
+                                            TextColor="{StaticResource SuccessColor}" />
+                                        <Span Text=" " />
+                                        <Span
+                                            x:Name="MobileNumberTxt"
+                                            Style="{StaticResource CaptionLabelWhite}"
+                                            Text="xxxxxx2226" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                         </StackLayout>
-                        <StackLayout Orientation="Horizontal" Grid.Row="2" Margin="0,10,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
-                            <Border HorizontalOptions="FillAndExpand" HeightRequest="40" WidthRequest="40"  Padding="0" StrokeShape="RoundRectangle 5" Margin="5"  >
-                                <custom:GAZTBorderlessEntry BackgroundColor="White" HeightRequest="35" WidthRequest="35"  x:Name="Step1" HorizontalTextAlignment="Center" IsPassword="true" TextChanged="Step1_TextChanged" MaxLength="1" TextColor="black" HorizontalOptions="CenterAndExpand" PlaceholderColor="Black" Margin="1,1,1,1"  Opacity="1"/>
+                        <StackLayout
+                            Grid.Row="2"
+                            Margin="0,10,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="Start">
+                            <Border
+                                Margin="5"
+                                Padding="0"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                StrokeShape="RoundRectangle 5"
+                                WidthRequest="40">
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="Step1"
+                                    Margin="1,1,1,1"
+                                    BackgroundColor="White"
+                                    HeightRequest="35"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="true"
+                                    MaxLength="1"
+                                    Opacity="1"
+                                    PlaceholderColor="Black"
+                                    TextChanged="Step1_TextChanged"
+                                    TextColor="black"
+                                    WidthRequest="35" />
                             </Border>
-                            <Border HorizontalOptions="FillAndExpand" HeightRequest="40" WidthRequest="40"  Padding="0" StrokeShape="RoundRectangle 5" Margin="5" >
-                                <custom:GAZTBorderlessEntry BackgroundColor="White"  HeightRequest="35" WidthRequest="35"  x:Name="Step2" HorizontalTextAlignment="Center" IsPassword="true" TextChanged="Step2_TextChanged" MaxLength="1" TextColor="black" HorizontalOptions="CenterAndExpand" PlaceholderColor="Black" Margin="1,1,1,1"  Opacity="1"/>
+                            <Border
+                                Margin="5"
+                                Padding="0"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                StrokeShape="RoundRectangle 5"
+                                WidthRequest="40">
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="Step2"
+                                    Margin="1,1,1,1"
+                                    BackgroundColor="White"
+                                    HeightRequest="35"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="true"
+                                    MaxLength="1"
+                                    Opacity="1"
+                                    PlaceholderColor="Black"
+                                    TextChanged="Step2_TextChanged"
+                                    TextColor="black"
+                                    WidthRequest="35" />
                             </Border>
-                            <Border HorizontalOptions="FillAndExpand" HeightRequest="40" WidthRequest="40"  Padding="0" StrokeShape="RoundRectangle 5" Margin="5" >
-                                <custom:GAZTBorderlessEntry BackgroundColor="White" HeightRequest="35" WidthRequest="35"  x:Name="Step3" HorizontalTextAlignment="Center" IsPassword="true" TextChanged="Step3_TextChanged"  MaxLength="1" TextColor="black" HorizontalOptions="Center" PlaceholderColor="Black" Margin="1,1,1,1"  Opacity="1"/>
+                            <Border
+                                Margin="5"
+                                Padding="0"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                StrokeShape="RoundRectangle 5"
+                                WidthRequest="40">
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="Step3"
+                                    Margin="1,1,1,1"
+                                    BackgroundColor="White"
+                                    HeightRequest="35"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="true"
+                                    MaxLength="1"
+                                    Opacity="1"
+                                    PlaceholderColor="Black"
+                                    TextChanged="Step3_TextChanged"
+                                    TextColor="black"
+                                    WidthRequest="35" />
                             </Border>
-                            <Border HorizontalOptions="FillAndExpand" HeightRequest="40" WidthRequest="40"  Padding="0" StrokeShape="RoundRectangle 5" Margin="5" >
-                                <custom:GAZTBorderlessEntry BackgroundColor="White" HeightRequest="35" WidthRequest="35"  x:Name="Step4" HorizontalTextAlignment="Center" IsPassword="true" TextChanged="Step4_TextChanged" MaxLength="1" TextColor="black" HorizontalOptions="Center" PlaceholderColor="Black" Margin="1,1,1,1"  Opacity="1"/>
+                            <Border
+                                Margin="5"
+                                Padding="0"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                StrokeShape="RoundRectangle 5"
+                                WidthRequest="40">
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="Step4"
+                                    Margin="1,1,1,1"
+                                    BackgroundColor="White"
+                                    HeightRequest="35"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="true"
+                                    MaxLength="1"
+                                    Opacity="1"
+                                    PlaceholderColor="Black"
+                                    TextChanged="Step4_TextChanged"
+                                    TextColor="black"
+                                    WidthRequest="35" />
                             </Border>
                         </StackLayout>
-                        <StackLayout Orientation="Horizontal" Grid.Row="3" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" VerticalOptions="Start">
-                            <Image Source="partially_clock" Style="{StaticResource SmallIcon}" Margin="5" HeightRequest="20" WidthRequest="20"/>
-                            <Label x:Name="ResendTimer" TextColor="White" Opacity="1.3" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="12" />
+                        <StackLayout
+                            Grid.Row="3"
+                            Margin="0,20,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="Start">
+                            <Image
+                                Margin="5"
+                                HeightRequest="20"
+                                Source="partially_clock"
+                                Style="{StaticResource SmallIcon}"
+                                WidthRequest="20" />
+                            <Label
+                                x:Name="ResendTimer"
+                                FontSize="12"
+                                HorizontalOptions="CenterAndExpand"
+                                Opacity="1.3"
+                                TextColor="White"
+                                VerticalOptions="Center" />
                         </StackLayout>
-                        <Label x:Name="AccountLockedText"  Margin="25,20,25,0" Grid.Row="4" TextColor="LightSeaGreen" Opacity="1.3" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="14" />
-                        <Label x:Name="ResendCodeText"   Margin="25,40,25,0" Grid.Row="5" Opacity="1.0" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Gray" FontSize="14">
+                        <Label
+                            x:Name="AccountLockedText"
+                            Grid.Row="4"
+                            Margin="25,20,25,0"
+                            FontSize="14"
+                            HorizontalOptions="CenterAndExpand"
+                            Opacity="1.3"
+                            TextColor="LightSeaGreen"
+                            VerticalOptions="Center" />
+                        <Label
+                            x:Name="ResendCodeText"
+                            Grid.Row="5"
+                            Margin="25,40,25,0"
+                            FontSize="14"
+                            HorizontalOptions="CenterAndExpand"
+                            Opacity="1.0"
+                            TextColor="Gray"
+                            VerticalOptions="Center">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Resent_Tapped" />
                             </Label.GestureRecognizers>

@@ -15,7 +15,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             
         }
 
-        public bool IsLoading { get; internal set; }
 
         public async Task LoginCompletedInWebView()
         {

@@ -6,7 +6,9 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    ios:Page.UseSafeArea="true"
     BackgroundColor="{StaticResource Primary}"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -96,8 +98,8 @@
                 VerticalOptions="FillAndExpand"
                 WidthRequest="1000" />
 
-            <custom:Loader Grid.ColumnSpan="2" IsVisible="{Binding IsLoading}"/>
-         
+            <custom:Loader Grid.ColumnSpan="2" IsVisible="{Binding IsLoading}" />
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

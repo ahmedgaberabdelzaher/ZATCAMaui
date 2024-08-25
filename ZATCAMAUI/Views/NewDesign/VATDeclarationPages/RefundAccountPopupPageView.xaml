@@ -3,6 +3,7 @@
     x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.RefundAccountPopupPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
@@ -10,7 +11,6 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
@@ -56,7 +56,8 @@
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     Margin="10,0,10,0"
-                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
                                     Placeholder="Text"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding TxtSelectedIBANType}"
@@ -372,9 +373,12 @@
                             VerticalTextAlignment="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}" />
+                                    <Span Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}" />
                                     <Span Text="&#160;" />
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
+                                    <Span
+                                        Style="{StaticResource CaptionLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}"
+                                        TextColor="{StaticResource Primary}" />
                                 </FormattedString>
                             </Label.FormattedText>
                             <Label.GestureRecognizers>
@@ -396,8 +400,8 @@
                     </StackLayout>
                 </Grid>
 
-                <custom:Loader IsVisible="{Binding IsLoading}"/>
-           
+                <custom:Loader IsVisible="{Binding IsLoading}" />
+
             </Grid>
         </StackLayout>
     </Border>

@@ -2,7 +2,6 @@
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models.VATReviewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
-using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.VATReview
 {
@@ -16,7 +15,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         {
             InitializeComponent();
 
-            ChangeAeroIcon();
 
             viewModel = App.Locator.VatReviewSuccessView;
 
@@ -27,17 +25,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources[""];
-            }
-        }
 
         private async void Instalment_copy_Tapped(object sender, EventArgs e)
         {

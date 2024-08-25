@@ -25,7 +25,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -78,7 +77,11 @@
                             TextColor="#002447">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.OpenNafath}" />
+                                    <Span
+                                        FontFamily="{StaticResource SomarBold}"
+                                        FontSize="18"
+                                        Text="{x:Static ResourceManager:AppResources.OpenNafath}"
+                                        TextColor="#002447" />
                                     <Span Text="&#10;" />
                                     <Span FontFamily="{StaticResource SomarRegular}" Text="{x:Static ResourceManager:AppResources.ConfirmOpenningNafath}" />
                                 </FormattedString>
@@ -93,10 +96,10 @@
                         <Border
                             Margin="0,30,0,0"
                             Padding="10"
-                            Stroke="Black"
-                            StrokeShape="RoundRectangle 20,20,20,20"
                             HeightRequest="50"
                             HorizontalOptions="CenterAndExpand"
+                            Stroke="Black"
+                            StrokeShape="RoundRectangle 20,20,20,20"
                             VerticalOptions="Start"
                             WidthRequest="50">
 

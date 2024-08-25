@@ -12,29 +12,7 @@
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
 
-            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
-
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                    <Style x:Key="ArrowImage" TargetType="Image">
-                        <Setter Property="HeightRequest" Value="30" />
-                        <Setter Property="WidthRequest" Value="30" />
-                    </Style>
-
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
 
@@ -223,7 +201,6 @@
                         HorizontalOptions="Start"
                         Rotation="180"
                         Source="arrowLeftwhite.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -265,7 +242,6 @@
                     Grid.Column="0"
                     BackgroundColor="Black"
                     Opacity="0.4"
-                    Orientation="Vertical"
                     VerticalOptions="FillAndExpand" />
 
                 <Border
@@ -306,9 +282,17 @@
                             </Label.Triggers>
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span FontSize="31" Text="{Binding TaxValue}" />
+                                    <Span
+                                        FontSize="31"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding TaxValue}"
+                                        TextColor="#58595B" />
                                     <Span Text=" " />
-                                    <Span FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
+                                    <Span
+                                        FontSize="12"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.FORM5SAR}"
+                                        TextColor="#58595B" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>

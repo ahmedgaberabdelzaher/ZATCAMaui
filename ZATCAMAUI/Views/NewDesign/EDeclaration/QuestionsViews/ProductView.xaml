@@ -24,14 +24,14 @@
         <Label Style="{StaticResource CaptionLabelGrey}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="{x:Static ResourceManager:AppResources.TypeItem}" />
+                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TypeItem}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
 
         <!--  TypeItem Entry  -->
-        <custom:CustomSfTextInputView >
+        <custom:CustomSfTextInputView>
             <custom:CustomSfTextInputView.TextInputView>
 
                 <custom:GAZTBorderlessEntry
@@ -74,14 +74,14 @@
         <Label Style="{StaticResource CaptionLabelGrey}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="{x:Static ResourceManager:AppResources.ProductName}" />
+                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ProductName}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
 
         <!--  ProductName Entry  -->
-        <custom:CustomSfTextInputView >
+        <custom:CustomSfTextInputView>
             <custom:CustomSfTextInputView.TextInputView>
 
                 <custom:GAZTBorderlessEntry
@@ -124,7 +124,7 @@
         <Label Style="{StaticResource CaptionLabelGrey}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="{x:Static ResourceManager:AppResources.Quantity}" />
+                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Quantity}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
             </Label.FormattedText>
@@ -134,19 +134,19 @@
         <custom:CustomSfTextInputView>
             <custom:CustomSfTextInputView.TextInputView>
 
-                 <numericinput:SfNumericEntry
+                <numericinput:SfNumericEntry
+                    BackgroundColor="Transparent"
                     CustomFormat="N2"
                     FontFamily="{StaticResource SomarRegular}"
                     FontSize="15"
                     HeightRequest="48"
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
                     Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
                     PlaceholderColor="{StaticResource NeutralGreay}"
+                    ShowBorder="False"
                     TextColor="#58595B"
                     ValueChangeMode="OnKeyFocus"
-                    BackgroundColor="Transparent"
-                    ShowBorder="False"
+                    VerticalOptions="FillAndExpand"
                     Value="{Binding Quantity}" />
 
             </custom:CustomSfTextInputView.TextInputView>
@@ -161,9 +161,10 @@
 
         </custom:CustomSfTextInputView>
 
-        <Label Text="{x:Static ResourceManager:AppResources.NumberHint}"
-                Margin="0,-15,0,10"
-                Style="{StaticResource CaptionLabelGrey}"/>
+        <Label
+            Margin="0,-15,0,10"
+            Style="{StaticResource CaptionLabelGrey}"
+            Text="{x:Static ResourceManager:AppResources.NumberHint}" />
 
     </StackLayout>
 
@@ -174,29 +175,29 @@
         <Label Style="{StaticResource CaptionLabelGrey}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
+                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
 
         <!--  Total Value Entry  -->
-         <custom:CustomSfTextInputView >
+        <custom:CustomSfTextInputView>
             <custom:CustomSfTextInputView.TextInputView>
 
-                 <numericinput:SfNumericEntry
+                <numericinput:SfNumericEntry
+                    BackgroundColor="Transparent"
                     CustomFormat="N2"
                     FontFamily="{StaticResource SomarRegular}"
                     FontSize="15"
                     HeightRequest="48"
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    BackgroundColor="Transparent"
-                    ShowBorder="False"
                     Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
                     PlaceholderColor="{StaticResource NeutralGreay}"
+                    ShowBorder="False"
                     TextColor="#58595B"
                     ValueChangeMode="OnKeyFocus"
+                    VerticalOptions="FillAndExpand"
                     Value="{Binding TotalValue}" />
 
             </custom:CustomSfTextInputView.TextInputView>
@@ -211,9 +212,10 @@
 
         </custom:CustomSfTextInputView>
 
-        <Label Text="{x:Static ResourceManager:AppResources.NumberHint}"
-                Margin="0,-15,0,10"
-                Style="{StaticResource CaptionLabelGrey}"/>
+        <Label
+            Margin="0,-15,0,10"
+            Style="{StaticResource CaptionLabelGrey}"
+            Text="{x:Static ResourceManager:AppResources.NumberHint}" />
 
 
     </StackLayout>

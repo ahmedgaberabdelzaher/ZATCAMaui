@@ -3,10 +3,10 @@
     x:Class="ZATCAMAUI.Views.NewDesign.VATDeRegistration.VATDeregistrationInstructionsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
@@ -50,7 +50,7 @@
                             Style="{StaticResource ValueLabelBlack}"
                             Text="{x:Static ResourceManager:AppResources.Information}" />
                     </StackLayout>
-                    <StackLayout Orientation="Vertical" Spacing="0">
+                    <StackLayout Spacing="0">
 
                         <Label
                             HorizontalOptions="StartAndExpand"
@@ -78,12 +78,10 @@
                     IsEnabled="{Binding isInstructionCheckedEnable}"
                     Style="{StaticResource CheckboxHeightWidth32}" />
 
-                <Label Margin="5,10,0,15" Style="{DynamicResource IsInstructionCheckedStyle}">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}" />
-                        </FormattedString>
-                    </Label.FormattedText>
+                <Label
+                    Margin="5,10,0,15"
+                    Style="{DynamicResource IsInstructionCheckedStyle}"
+                    Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}">
                     <Label.Triggers>
                         <DataTrigger
                             Binding="{Binding IsInstructionChecked}"

@@ -1,7 +1,4 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using Application = Microsoft.Maui.Controls.Application;
 
@@ -15,7 +12,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             InitializeComponent();
             viewModel = App.Locator.VATIndividualSignupPageView;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             // image_individual_tile.Source = "vat_tile_listofsignup.png";
             viewModel.ImageIndividualTile = "vat_tile_listofsignup_W.png";
@@ -27,20 +23,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.ImageEstimatedIcon = "vat_new_Establishment_G.png";
             viewModel.EstimatedTileColor = (Color)Application.Current.Resources["Primary"];
             viewModel.IndividualTileColor = (Color)Application.Current.Resources["Primary"];
-            SetLTR();
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                Image_backArrow.Rotation = 0;
-            }
-            else
-            {
-                Image_backArrow.Rotation = 180;
-            }
-        }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();

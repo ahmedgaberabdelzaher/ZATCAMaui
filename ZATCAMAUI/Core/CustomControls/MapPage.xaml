@@ -3,9 +3,9 @@
     x:Class="ZATCAMAUI.Controls.MapPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-    xmlns:gmaps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups">
+    xmlns:gmaps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps">
 
     <Mopups:PopupPage.Animation>
         <animations:ScaleAnimation
@@ -21,8 +21,8 @@
         <Border
             Padding="0"
             BackgroundColor="White"
-            Stroke="{StaticResource NeutralLightGrey}"
             HeightRequest="400"
+            Stroke="{StaticResource NeutralLightGrey}"
             StrokeShape="RoundRectangle 15,15,0,0"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">

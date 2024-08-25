@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
@@ -15,7 +14,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             InitializeComponent();
             viewModel = App.Locator.VATRegistrationSuccessfulPageView;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             viewModel.TINnumber = TIN;
             //App.IsArabic = false;

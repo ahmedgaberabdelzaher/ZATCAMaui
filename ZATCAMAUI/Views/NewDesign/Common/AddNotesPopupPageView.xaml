@@ -3,17 +3,18 @@
     x:Class="ZATCAMAUI.Views.NewDesign.Common.AddNotesPopupPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <Border Style="{StaticResource CommonTopCurves}"
-            Stroke="{StaticResource NeutralLightGrey}"
-            VerticalOptions="End">
+    <Border
+        Stroke="{StaticResource NeutralLightGrey}"
+        Style="{StaticResource CommonTopCurves}"
+        VerticalOptions="End">
         <StackLayout>
             <Image HorizontalOptions="EndAndExpand" Source="close.png">
                 <Image.GestureRecognizers>
@@ -23,10 +24,10 @@
 
             <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZVatNotes}" />
 
-             <custom:CustomSfTextInputView HasError="{Binding IsReportDetailHasError}">
+            <custom:CustomSfTextInputView HasError="{Binding IsReportDetailHasError}">
 
                 <custom:CustomSfTextInputView.TextInputView>
-                    <StackLayout Margin="0,16,0,0" Orientation="Vertical">
+                    <StackLayout Margin="0,16,0,0" >
                         <Editor
                             x:Name="NoteDetail"
                             AutoSize="TextChanges"

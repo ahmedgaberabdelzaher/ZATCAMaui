@@ -1,16 +1,16 @@
-﻿using System.Collections.ObjectModel;
-using System.Text;
-using Newtonsoft.Json;
-using ZATCAMAUI.Models;
+﻿using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
-using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 using Application = Microsoft.Maui.Controls.Application;
-using Syncfusion.Maui.ListView;
 using Entry = Microsoft.Maui.Controls.Entry;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using Syncfusion.Maui.ListView;
+using System.Text;
+using Mopups.Services;
+using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 {

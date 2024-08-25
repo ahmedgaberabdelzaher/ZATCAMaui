@@ -19,7 +19,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:SupportTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
-           
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -61,7 +61,7 @@
                                     <Image
                                         HorizontalOptions="EndAndExpand"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
+                                        
                                         VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
                                 <Border.GestureRecognizers>
@@ -82,7 +82,7 @@
                                     <Image
                                         HorizontalOptions="EndAndExpand"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
+                                        
                                         VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
                                 <Border.GestureRecognizers>
@@ -92,9 +92,9 @@
 
                             <Border
                                 Padding="5"
+                                IsVisible="{x:Static settings:PageSettings.IsIncludeLapFees}"
                                 Stroke="{StaticResource NeutralLightGrey}"
-                                StrokeShape="RoundRectangle 14,14,14,14"
-                                IsVisible="{x:Static settings:PageSettings.IsIncludeLapFees}">
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -108,7 +108,7 @@
                                     <Image
                                         HorizontalOptions="EndAndExpand"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
+                                        
                                         VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
                                 <Border.GestureRecognizers>
@@ -135,7 +135,7 @@
                                     <Image
                                         HorizontalOptions="EndAndExpand"
                                         Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
+                                        
                                         VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
                                 <Border.GestureRecognizers>
@@ -181,16 +181,18 @@
                     <!--  Customs View Ends  -->
                 </Grid>
             </Border>
-            <custom:Loader Grid.Row="1" IsVisible="{Binding IsLoading}"/>
+            <custom:Loader Grid.Row="1" IsVisible="{Binding IsLoading}" />
 
-            <Grid Grid.Row="0" Padding="20,5,20,5"
-                  ColumnDefinitions="10*,80*,10*">
+            <Grid
+                Grid.Row="0"
+                Padding="20,5,20,5"
+                ColumnDefinitions="10*,80*,10*">
 
                 <StackLayout Grid.Column="0">
                     <Image
                         HorizontalOptions="Start"
                         Source="arrowLeftwhite.png"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="CenterAndExpand" />
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnBackArrowTapped" />

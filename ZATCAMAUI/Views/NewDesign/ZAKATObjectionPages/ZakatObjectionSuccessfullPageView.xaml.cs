@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 using Page = Microsoft.Maui.Controls.Page;
@@ -16,9 +15,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZAKATObjectionPages
         {
             InitializeComponent();
             viewModel = App.Locator.ZakatObjectionSuccessfullPageView;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
-            ChangeAeroIcon();
 
             viewModel.ClearData();
             _ = viewModel.OnPageLoad(ZakatReturnDetail);
@@ -38,17 +35,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZAKATObjectionPages
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
         protected async Task OnRefreshButtonClicked()
         {
@@ -58,10 +44,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZAKATObjectionPages
                 {
                     await viewModel.OnPageLoad(_zakatReturnDetail);
                 }
-                else
-                {
-                    // put Mesage already latest SADADID available
-                }
+               
             }
             catch (Exception)
             {
@@ -84,20 +67,13 @@ namespace ZATCAMAUI.Views.NewDesign.ZAKATObjectionPages
                 {
                     await viewModel.OnPageLoad(_zakatReturnDetail);
                 }
-                else
-                {
-                    // put Mesage already latest SADADID available
-                }
+                
             }
             catch (Exception)
             {
 
             }
 
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
         }
     }
 }

@@ -2892,7 +2892,6 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure("LiveVideoPage", typeof(LiveVideoPage));
             navigationService.Configure("MyReportDetailsPage", typeof(MyReportDetailsPage));
             navigationService.Configure("ReportSuccessPage", typeof(ReportSuccessPage));
-            navigationService.Configure("EDeclerationView", typeof(EDeclerationView));
             navigationService.Configure("CreateE_Declaration", typeof(CreateE_Declaration));
             navigationService.Configure("ReiewPreviousDeclerations", typeof(ReiewPreviousDeclerations));
             navigationService.Configure("Home", typeof(Home));

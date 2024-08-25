@@ -3,11 +3,11 @@
     x:Class="ZATCAMAUI.Views.NewDesign.GenericPickers.NewPopupPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:customcontrol="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     FlowDirection="{Binding AppDirection}">
     <ContentPage.Content>
@@ -15,7 +15,7 @@
             <BoxView
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                 AbsoluteLayout.LayoutFlags="All"
-                BackgroundColor="Transparent"/>
+                BackgroundColor="Transparent" />
             <Border
                 x:Name="picker"
                 Padding="0"
@@ -24,13 +24,13 @@
                 BackgroundColor="White"
                 StrokeShape="RoundRectangle 15,15,0,0"
                 VerticalOptions="FillAndExpand">
-                <StackLayout Orientation="Vertical">
+                <StackLayout >
 
                     <Border
                         Margin="0,0,0,5"
                         Padding="0"
                         Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Orientation="Vertical">
+                        <StackLayout >
                             <BoxView
                                 HorizontalOptions="Center"
                                 Style="{StaticResource NeutralGrayBoxViewDrag}"
@@ -52,7 +52,7 @@
                     <StackLayout
                         Margin="0,8,0,0"
                         Padding="24,0"
-                        Orientation="Vertical">
+                        >
                         <customcontrol:CustomSfPicker
                             x:Name="TaxTypePicker"
                             Background="White"

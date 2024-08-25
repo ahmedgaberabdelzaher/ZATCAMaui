@@ -1,330 +1,479 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.NewDesign.AccountStatements.AccountsStatementObjectionDetailsPage"
-             Title="AccountsStatementObjectionDetailsPage"
-             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-            ios:Page.UseSafeArea="true"
-            BackgroundImageSource="partials_background.png"
-            FlowDirection="{Binding AppDirection}"
-            NavigationPage.HasNavigationBar="False">
-   
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.AccountStatements.AccountsStatementObjectionDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    Title="AccountsStatementObjectionDetailsPage"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
     <ContentPage.Content>
 
-    <Grid RowDefinitions="auto,*">
+        <Grid RowDefinitions="auto,*">
 
-        <!--#region Header-->
-        <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
 
-            <StackLayout>
+                <StackLayout>
 
-                <!--  Back Button  -->
-                <Image
-                    HorizontalOptions="Start"
-                    Rotation="0"
-                    Source="whiteRightBack.png"
-                    VerticalOptions="CenterAndExpand">
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
 
-                    <Image.Triggers>
-                        <DataTrigger
-                            Binding="{Binding AppDirection}"
-                            TargetType="Image"
-                            Value="LeftToRight">
-                            <Setter Property="Rotation" Value="180" />
-                        </DataTrigger>
-                    </Image.Triggers>
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
 
-                </Image>
+                    </Image>
 
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding BackCommand}" />
-                </StackLayout.GestureRecognizers>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
 
-            </StackLayout>
+                </StackLayout>
 
-            <!--  Header Label  -->
-            <Label
-                Grid.Column="1"
-                FontSize="15"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Style="{StaticResource SectionTitleWhiteBold}"
-                Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}"
-                VerticalOptions="Center" />
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}"
+                    VerticalOptions="Center" />
 
-        </Grid>
-        <!--#endregion Header-->
-        
-        <!--#region Body--> 
-        <Border Grid.Row="1"
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <Border
+                Grid.Row="1"
                 Padding="10,0"
                 Style="{StaticResource CommonTopCurves}">
-            <Grid>
+                <Grid>
 
-                <!--#region return Details -->
-                <Grid RowDefinitions="*"
-                        IsVisible="{Binding isReturnsVisible}">
-                    <ListView x:Name="ReturnBills" 
-                            SeparatorVisibility="None" 
-                            ItemsSource="{Binding RETDTLSets}"
-                                VerticalScrollBarVisibility="Never" 
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" 
-                                HasUnevenRows="True" 
-                                BackgroundColor="White"
-                                SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                    <Border  Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                            <StackLayout Spacing="0">
-                                                <Grid RowSpacing="3"  Padding="16">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <StackLayout Grid.Row="0" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailsObjRFBN1}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding RetFbnum}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-
-                                            <StackLayout Grid.Row="1" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailsReturnforum}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding RetFbtypTxt}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-
-                                            <StackLayout Grid.Row="2" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailsObjRTYPE1}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding RetRevType}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-
-                                                <StackLayout Grid.Row="2" Grid.Column="1">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailsReturnDate}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-            
-                                                <Label  Text="{Binding FormattedBldat}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-                                                </Grid>
-                                            </StackLayout>
-                                        </Border>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-
-                </Grid>
-                <!--#endregion return Details-->
-                
-                <!--#region Instalment plan Details -->
-                <Grid RowDefinitions="*"
-                        IsVisible="{Binding isInstalmentDetailsVisible}">
-                        <ListView x:Name="InstalBills" 
-                                SeparatorVisibility="None"
-                                ItemsSource="{Binding instDTLSET}" 
-                                VerticalScrollBarVisibility="Never"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand"
-                                HasUnevenRows="True" 
-                                BackgroundColor="White"
-                                SelectionMode="None">
-
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                    <Border  Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                            <StackLayout Spacing="0">
-                                                <Grid RowSpacing="3"  Padding="16">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>                                                                                                                     
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <StackLayout Grid.Row="0" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStT1}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding Status}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-
-                                            <StackLayout Grid.Row="0" Grid.Column="1">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTDAT2}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding DueAmt}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-
-                                            <StackLayout Grid.Row="1" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTAMt}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding InstAmt}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-
-                                                <StackLayout Grid.Row="1" Grid.Column="1">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTNOI}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding NoOfInst}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-                                                <StackLayout Grid.Row="2" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailsDPAMT}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding DpAmt}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-                                                <StackLayout Grid.Row="2" Grid.Column="1">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetaiDOS}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding SubmissionDate}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-
-                                                <StackLayout Grid.Row="3" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTPRN}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-
-                                                        <Label  Text="{Binding ReqNum}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-                                                </Grid>
-                                            </StackLayout>
-                                        </Border>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-
-                </Grid>
-                <!--#endregion Instalment plan Details-->
-
-                <!--#region Objection Details-->
-                <Grid IsVisible="{Binding isObjectionDetailsVisible}"
-                        RowDefinitions="*">
-                    <ListView  x:Name="objectionBills" 
-                            SeparatorVisibility="None"
-                                ItemsSource="{Binding oBJDTLSets}" 
-                                VerticalScrollBarVisibility="Never" 
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" 
-                                HasUnevenRows="True"
-                                BackgroundColor="White" 
-                                SelectionMode="None">
-
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                    <Border  Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                            <StackLayout Spacing="0">
-                                                <Grid RowSpacing="3"  Padding="16">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                                                                                                                                
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <StackLayout Grid.Row="0" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailsObjectionRN1}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding ObjFbnum}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-
-                                            <StackLayout Grid.Row="0" Grid.Column="1">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailsObjTDAMT1}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding ObjDispAmt}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-
-                                            <StackLayout Grid.Row="1" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailsObjRFBN1}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding RetFbnum}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-
-                                                <StackLayout Grid.Row="1" Grid.Column="1">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailsReturnforum}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding RetFbtypTxt}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-                                                </Grid>
-                                            </StackLayout>
-                                        </Border>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                </Grid>
-                <!--#endregion Objection Details-->
-
-                <!--#region Instalment Plan Orginal Details List-->
-                <Grid  Padding="0" 
-                        RowDefinitions="*"
-                        IsVisible="{Binding isBIllDetialsVisble}">
-                        <ListView  x:Name="orginalBills" 
-                            SeparatorVisibility="None" 
-                            ItemsSource="{Binding billDetails}" 
-                            VerticalScrollBarVisibility="Never" 
+                    <!--#region return Details-->
+                    <Grid IsVisible="{Binding isReturnsVisible}" RowDefinitions="*">
+                        <ListView
+                            x:Name="ReturnBills"
+                            BackgroundColor="White"
+                            HasUnevenRows="True"
                             HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" 
-                                HasUnevenRows="True" 
-                                BackgroundColor="White"
-                                SelectionMode="None">
+                            ItemsSource="{Binding RETDTLSets}"
+                            SelectionMode="None"
+                            SeparatorVisibility="None"
+                            VerticalOptions="FillAndExpand"
+                            VerticalScrollBarVisibility="Never">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Border  Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <Border Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                             <StackLayout Spacing="0">
-                                                <Grid RowSpacing="3"  Padding="16">
+                                                <Grid Padding="16" RowSpacing="3">
                                                     <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>                                                                                                                     
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="auto"/>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
-
                                                     <StackLayout Grid.Row="0" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTODSno}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding SrNo}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Row="0" Grid.Column="1">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTBN}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding BillNo}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailsObjRFBN1}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding RetFbnum}"
+                                                            VerticalOptions="CenterAndExpand" />
                                                     </StackLayout>
 
-                                        
-                                            <StackLayout Grid.Row="1" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINstFbN}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding Fbnum}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <StackLayout Grid.Row="1" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailsReturnforum}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding RetFbtypTxt}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="2" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailsObjRTYPE1}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding RetRevType}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="2" Grid.Column="1">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailsReturnDate}"
+                                                            VerticalOptions="CenterAndExpand" />
+
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding FormattedBldat}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Border>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </Grid>
+                    <!--#endregion return Details-->
+
+                    <!--#region Instalment plan Details-->
+                    <Grid IsVisible="{Binding isInstalmentDetailsVisible}" RowDefinitions="*">
+                        <ListView
+                            x:Name="InstalBills"
+                            BackgroundColor="White"
+                            HasUnevenRows="True"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding instDTLSET}"
+                            SelectionMode="None"
+                            SeparatorVisibility="None"
+                            VerticalOptions="FillAndExpand"
+                            VerticalScrollBarVisibility="Never">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Border Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <StackLayout Spacing="0">
+                                                <Grid Padding="16" RowSpacing="3">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStT1}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding Status}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTDAT2}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding DueAmt}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="1" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTAMt}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding InstAmt}"
+                                                            VerticalOptions="CenterAndExpand" />
                                                     </StackLayout>
 
                                                     <StackLayout Grid.Row="1" Grid.Column="1">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTBD}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding BillDesc}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTNOI}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding NoOfInst}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="2" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailsDPAMT}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding DpAmt}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="2" Grid.Column="1">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetaiDOS}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding SubmissionDate}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="3" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTPRN}"
+                                                            VerticalOptions="CenterAndExpand" />
+
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding ReqNum}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Border>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </Grid>
+                    <!--#endregion Instalment plan Details-->
+
+                    <!--#region Objection Details-->
+                    <Grid IsVisible="{Binding isObjectionDetailsVisible}" RowDefinitions="*">
+                        <ListView
+                            x:Name="objectionBills"
+                            BackgroundColor="White"
+                            HasUnevenRows="True"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding oBJDTLSets}"
+                            SelectionMode="None"
+                            SeparatorVisibility="None"
+                            VerticalOptions="FillAndExpand"
+                            VerticalScrollBarVisibility="Never">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Border Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <StackLayout Spacing="0">
+                                                <Grid Padding="16" RowSpacing="3">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailsObjectionRN1}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding ObjFbnum}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailsObjTDAMT1}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding ObjDispAmt}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="1" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailsObjRFBN1}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding RetFbnum}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="1" Grid.Column="1">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailsReturnforum}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding RetFbtypTxt}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Border>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                    <!--#endregion Objection Details-->
+
+                    <!--#region Instalment Plan Orginal Details List-->
+                    <Grid
+                        Padding="0"
+                        IsVisible="{Binding isBIllDetialsVisble}"
+                        RowDefinitions="*">
+                        <ListView
+                            x:Name="orginalBills"
+                            BackgroundColor="White"
+                            HasUnevenRows="True"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding billDetails}"
+                            SelectionMode="None"
+                            SeparatorVisibility="None"
+                            VerticalOptions="FillAndExpand"
+                            VerticalScrollBarVisibility="Never">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Border Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <StackLayout Spacing="0">
+                                                <Grid Padding="16" RowSpacing="3">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="auto" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTODSno}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding SrNo}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTBN}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding BillNo}"
+                                                            VerticalOptions="CenterAndExpand" />
                                                     </StackLayout>
 
 
-                                                <StackLayout Grid.Row="2" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTP}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding Intime}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-                                                <StackLayout Grid.Row="2" Grid.Column="1">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTPK}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  x:Name="periodKey" Text="{Binding Period}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
-                                                    </StackLayout>
-                                                <StackLayout Grid.Row="3" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTTT}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding TaxType}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <StackLayout Grid.Row="1" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINstFbN}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding Fbnum}"
+                                                            VerticalOptions="CenterAndExpand" />
                                                     </StackLayout>
 
-                                                <StackLayout Grid.Row="3" Grid.Column="1">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStTAmt1}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding Betrw}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <StackLayout Grid.Row="1" Grid.Column="1">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTBD}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding BillDesc}"
+                                                            VerticalOptions="CenterAndExpand" />
                                                     </StackLayout>
-                                                <StackLayout Grid.Row="4" Grid.Column="0">
-                                                        <Label  Text="{x:Static ResourceManager:AppResources.AccDetailINStPtySS}" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                                                        <Label  Text="{Binding PymtStatus}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}"/>
+
+
+                                                    <StackLayout Grid.Row="2" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTP}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding Intime}"
+                                                            VerticalOptions="CenterAndExpand" />
                                                     </StackLayout>
-                                                
+                                                    <StackLayout Grid.Row="2" Grid.Column="1">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTPK}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            x:Name="periodKey"
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding Period}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="3" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTTT}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding TaxType}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="3" Grid.Column="1">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStTAmt1}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding Betrw}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="4" Grid.Column="0">
+                                                        <Label
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccDetailINStPtySS}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding PymtStatus}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+
 
                                                 </Grid>
                                             </StackLayout>
@@ -333,18 +482,18 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                    </Grid>
+                    <!--#endregion Instalment Plan Orginal Details List-->
+
                 </Grid>
-                <!--#endregion Instalment Plan Orginal Details List-->
+            </Border>
 
-            </Grid>
-        </Border>
-       
-        <!--#endregion Body-->
-        <!--  Loader  -->
-        <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+            <!--#endregion Body-->
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
-    </Grid>
-       
+        </Grid>
+
     </ContentPage.Content>
 
 </ContentPage>

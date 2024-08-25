@@ -11,12 +11,12 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
@@ -177,8 +177,8 @@
                                             VerticalOptions="EndAndExpand">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="1." />
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZZPleasefilltherequestedinformationforeachstep}" />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="1." />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZPleasefilltherequestedinformationforeachstep}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -193,9 +193,9 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
 
-                                                    <Span Text="2." />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="2." />
 
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatSubmittedInstructions}" />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatSubmittedInstructions}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -206,8 +206,8 @@
                                             VerticalOptions="EndAndExpand">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="3." />
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatDateInstructions}" />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="3." />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatDateInstructions}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -215,8 +215,8 @@
                                         <Label LineHeight="0.8" Style="{StaticResource CaptionLabelGrey}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="4." />
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatFaqSectionInstructions}" />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="4." />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatFaqSectionInstructions}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -245,14 +245,9 @@
                                             <Label
                                                 LineHeight="0.8"
                                                 Style="{StaticResource CaptionLabelBlack}"
+                                                Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}"
                                                 VerticalOptions="CenterAndExpand"
-                                                VerticalTextAlignment="Center">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
+                                                VerticalTextAlignment="Center" />
                                         </StackLayout>
 
                                         <buttons:SfButton
@@ -560,7 +555,8 @@
                                                     x:Name="EntryVatAmount"
                                                     Focused="EntryVatAmountFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryVatAmount_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding StdsalesAmt}"
@@ -597,7 +593,8 @@
                                                     x:Name="EntryVatAdjustmentWithSAR"
                                                     Focused="EntryVatAdjustmentFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryVatAdjustmentWithSAR_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding StdsalesAdj}"
@@ -631,9 +628,10 @@
                                                 OutlineCornerRadius="8">
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryStdsalesVat"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    IsReadOnly="True"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     Style="{StaticResource InputTableEntryLayoutStyle}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat, StringFormat='{0:D2}'}"
                                                     TextColor="#7D858D" />
@@ -700,7 +698,8 @@
                                                     x:Name="EntryVatAmount15"
                                                     Focused="EntryVatAmount15Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryVatAmount15_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdsalesAmt}"
@@ -738,7 +737,8 @@
                                                     x:Name="EntryVatAdjustmentWithSAR15"
                                                     Focused="EntryVatAdjustment15Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryVatAdjustmentWithSAR15_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdsalesAdj}"
@@ -773,9 +773,10 @@
                                                 OutlineCornerRadius="8">
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryStdsalesVat15"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    IsReadOnly="True"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat15, StringFormat='{0:D2}'}"
                                                     TextColor="#7D858D" />
@@ -843,7 +844,8 @@
                                                     x:Name="EntryVatAmount5"
                                                     Focused="EntryVatAmount5Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryVatAmount5_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdsalesAmt}"
@@ -881,7 +883,8 @@
                                                     x:Name="EntryVatAdjustmentWithSAR5"
                                                     Focused="EntryVatAdjustment5Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryVatAdjustmentWithSAR5_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdsalesAdj}"
@@ -915,9 +918,10 @@
                                                 OutlineCornerRadius="8">
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryStdsalesVat5"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    IsReadOnly="True"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat5, StringFormat='{0:D2}'}"
                                                     TextColor="#7D858D" />
@@ -988,7 +992,8 @@
                                                     x:Name="EntryVatSalesTaxAmount"
                                                     Focused="EntryVatSalesSubjecttoTaxAmountFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryVatSalesSubjecttoTaxAmount_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.GovsupsalesAmt}"
@@ -1027,7 +1032,8 @@
                                                     x:Name="EntryVatSalesTaxAdjustmentWithSAR"
                                                     Focused="EntryVatSalesSubjectToTaxAdjustmentFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryVatSalesSubjectToTaxAdjustmentWithSAR_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.GovsupsalesAdj}"
@@ -1061,9 +1067,10 @@
                                                 OutlineCornerRadius="8">
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntrySalesTaxStdsalesVat"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    IsReadOnly="True"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat5, StringFormat='{0:D2}'}"
                                                     TextColor="#7D858D" />
@@ -1129,7 +1136,8 @@
                                                     x:Name="EntrySalesGccAmt"
                                                     Focused="EntrySalesGccAmtFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntrySalesGccAmt_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding SalesGccAmt}"
@@ -1165,7 +1173,8 @@
                                                     x:Name="EntrySalesGccAdj"
                                                     Focused="EntrySalesGccAdjFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntrySalesGccAdj_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding SalesGccAdj}"
@@ -1236,7 +1245,8 @@
                                                     x:Name="EntryZerosalesAmt"
                                                     Focused="EntryZerosalesAmtFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryZerosalesAmt_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ZerosalesAmt}"
@@ -1272,7 +1282,8 @@
                                                     x:Name="EntryZerosalesAdj"
                                                     Focused="EntryZerosalesAdjFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryZerosalesAdj_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ZerosalesAdj}"
@@ -1342,7 +1353,8 @@
                                                     x:Name="EntryExportsAmt"
                                                     Focused="EntryExportsAmtFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryExportsAmt_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ExportsAmt}"
@@ -1378,7 +1390,8 @@
                                                     x:Name="EntryExportsAdj"
                                                     Focused="EntryExportsAdjFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryExportsAdj_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ExportsAdj}"
@@ -1448,7 +1461,8 @@
                                                     x:Name="EntryExemptsalesAmt"
                                                     Focused="EntryExemptsalesAmtFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryExemptsalesAmt_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ExemptsalesAmt}"
@@ -1484,7 +1498,8 @@
                                                     x:Name="EntryExemptsalesAdj"
                                                     Focused="EntryExemptsalesAdjFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryExemptsalesAdj_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ExemptsalesAdj}"
@@ -1688,7 +1703,8 @@
                                                     x:Name="EntryStdpurchaseAmt"
                                                     Focused="EntryStdpurchaseAmtFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryStdpurchaseAmt_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding StdpurchaseAmt}"
@@ -1727,7 +1743,8 @@
                                                     x:Name="EntryStdpurchaseAdj"
                                                     Focused="EntryStdpurchaseAdjFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryStdpurchaseAdj_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding StdpurchaseAdj}"
@@ -1761,8 +1778,8 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryStdpurchasesVat"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat, StringFormat='{0:D2}'}"
                                                     TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
                                                     TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -1822,7 +1839,8 @@
                                                     x:Name="EntryStdpurchaseAmt15"
                                                     Focused="EntryStdpurchaseAmt15Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryStdpurchaseAmt15_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdpurchaseAmt}"
@@ -1862,7 +1880,8 @@
                                                     x:Name="EntryStdpurchaseAdj15"
                                                     Focused="EntryStdpurchaseAdj15Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryStdpurchaseAdj15_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdpurchaseAdj}"
@@ -1896,8 +1915,8 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryStdpurchasesVat15"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat15, StringFormat='{0:D2}'}"
                                                     TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
                                                     TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -1958,7 +1977,8 @@
                                                     x:Name="EntryStdpurchaseAmt5"
                                                     Focused="EntryStdpurchaseAmt5Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryStdpurchaseAmt5_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdpurchaseAmt}"
@@ -1998,7 +2018,8 @@
                                                     x:Name="EntryStdpurchaseAdj5"
                                                     Focused="EntryStdpurchaseAdj5Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryStdpurchaseAdj5_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdpurchaseAdj}"
@@ -2032,8 +2053,8 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryStdpurchasesVat5"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat5, StringFormat='{0:D2}'}"
                                                     TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
                                                     TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -2093,7 +2114,8 @@
                                                     x:Name="EntryZVatAmountWithSAR"
                                                     Focused="EntryZVatAmountWithSARFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryZVatAmountWithSAR_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ImportspaidAmt}"
@@ -2131,7 +2153,8 @@
                                                     x:Name="EntryImportspaidAdj"
                                                     Focused="EntryImportspaidAdjFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryImportspaidAdj_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ImportspaidAdj}"
@@ -2165,8 +2188,8 @@
                                                 OutlineCornerRadius="8">
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryImportspaidVat"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat, StringFormat='{0:D2}'}"
                                                     TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
                                                     TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -2224,7 +2247,8 @@
                                                     x:Name="EntryZVatAmountWithSAR15"
                                                     Focused="EntryZVatAmountWithSAR15Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryZVatAmountWithSAR15_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportspaidAmt}"
@@ -2261,7 +2285,8 @@
                                                     x:Name="EntryImportspaidAdj15"
                                                     Focused="EntryImportspaidAdj15Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryImportspaidAdj15_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportspaidAdj}"
@@ -2295,8 +2320,8 @@
                                                 OutlineCornerRadius="8">
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryImportspaidVat15"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat15, StringFormat='{0:D2}'}"
                                                     TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2356,7 +2381,8 @@
                                                     x:Name="EntryZVatAmountWithSAR5"
                                                     Focused="EntryZVatAmountWithSAR5Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryZVatAmountWithSAR5_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportspaidAmt}"
@@ -2394,7 +2420,8 @@
                                                     x:Name="EntryImportspaidAdj5"
                                                     Focused="EntryImportspaidAdj5Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryImportspaidAdj5_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportspaidAdj}"
@@ -2433,8 +2460,8 @@
                                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryImportspaidVat5"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat5, StringFormat='{0:D2}'}"
                                                     TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2494,7 +2521,8 @@
                                                     Grid.ColumnSpan="2"
                                                     Focused="EntryImportsaccAmtFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryImportsaccAmt_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ImportsaccAmt}"
@@ -2532,7 +2560,8 @@
                                                     Grid.ColumnSpan="2"
                                                     Focused="EntryImportsaccAdjFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryImportsaccAdj_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ImportsaccAdj}"
@@ -2566,8 +2595,8 @@
                                                 OutlineCornerRadius="8">
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryImportsaccVat"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat, StringFormat='{0:D2}'}"
                                                     TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2627,7 +2656,8 @@
                                                     Grid.ColumnSpan="2"
                                                     Focused="EntryImportsaccAmt15Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryImportsaccAmt15_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportsaccAmt}"
@@ -2668,7 +2698,8 @@
                                                     Grid.ColumnSpan="2"
                                                     Focused="EntryImportsaccAdj15Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryImportsaccAdj15_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportsaccAdj}"
@@ -2702,8 +2733,8 @@
                                                 OutlineCornerRadius="8">
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryImportsaccVat15"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat15, StringFormat='{0:D2}'}"
                                                     TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2763,7 +2794,8 @@
                                                     Grid.ColumnSpan="2"
                                                     Focused="EntryImportsaccAmt5Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryImportsaccAmt5_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportsaccAmt}"
@@ -2803,7 +2835,8 @@
                                                     Margin="10,0,10,0"
                                                     Focused="EntryImportsaccAdj5Focused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryImportsaccAdj5_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportsaccAdj}"
@@ -2837,8 +2870,8 @@
                                                 OutlineCornerRadius="8">
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryImportsaccVat5"
-                                                    IsReadOnly="True"
                                                     InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat5, StringFormat='{0:D2}'}"
                                                     TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2890,7 +2923,8 @@
                                                     x:Name="EntryZeropurchaseAmt"
                                                     Focused="EntryZeropurchaseAmtFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryZeropurchaseAmt_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ZeropurchaseAmt}"
@@ -2927,7 +2961,8 @@
                                                     Grid.ColumnSpan="2"
                                                     Focused="EntryZeropurchaseAdjFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryZeropurchaseAdj_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ZeropurchaseAdj}"
@@ -2990,7 +3025,8 @@
                                                     x:Name="EntryExemptpurchaseAmt"
                                                     Focused="EntryExemptpurchaseAmtFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryExemptpurchaseAmt_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ExemptpurchaseAmt}"
@@ -3027,7 +3063,8 @@
                                                     Grid.ColumnSpan="2"
                                                     Focused="EntryExemptpurchaseAdjFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
                                                     PropertyChanged="EntryExemptpurchaseAdj_PropertyChanged"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ExemptpurchaseAdj}"
@@ -3237,7 +3274,8 @@
                                                 x:Name="EntryPreperiodcorr"
                                                 Focused="EntryPreperiodcorrFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
                                                 PropertyChanged="EntryPreperiodcorr_PropertyChanged"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"
@@ -3948,10 +3986,7 @@
                                                             Text="{Binding Preperiodcorr}" />
                                                     </Grid>
                                                 </StackLayout>
-                                                <StackLayout
-                                                    Padding="10"
-                                                    BackgroundColor="{StaticResource TiffanyBG}"
-                                                    Orientation="Vertical">
+                                                <StackLayout Padding="10" BackgroundColor="{StaticResource TiffanyBG}">
                                                     <Label
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         LineHeight="0.8"

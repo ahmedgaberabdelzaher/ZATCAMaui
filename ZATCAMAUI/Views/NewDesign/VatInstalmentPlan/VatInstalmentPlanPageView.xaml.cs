@@ -1,11 +1,9 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.VATInstalmentModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
 {
@@ -244,11 +242,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
 
             }
         }
-        void attachmentsListView_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
-        {
-            // MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(viewModel.VatInstalments.d.AttachmentSet.results,WhichAttachment.VATInstalment,viewModel.VatInstalments.d.ReturnIdz));
-        }
-
+     
         private void listView_SelectionChanging(object sender, Syncfusion.Maui.ListView.ItemSelectionChangingEventArgs e)
         {
             if (!viewModel.IsViewEnable)
@@ -320,14 +314,6 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
                     {
                         viewModel.FirstTerms = true;
                     }
-                });
-
-                MessagingCenter.Subscribe<object, bool>(this, "TermsContinue", (sender, arg) =>
-                {
-                    //if (arg != null)
-                    //{
-                    //viewModel.EnableSucessScreenAsync();
-                    //}
                 });
 
                 MessagingCenter.Subscribe<object, string>(this, "Notes", (sender, arg) =>

@@ -40,12 +40,7 @@
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                 <Setter Property="Stroke" Value="AliceBlue" />
             </Style>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -75,7 +70,6 @@
                     HorizontalOptions="Start"
                     IsVisible="{Binding IsBackStepButtonVisible}"
                     Source="arrowLeft"
-                    Style="{DynamicResource BackButtonArrow}"
                     VerticalOptions="CenterAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnBackButtonClick}" />
@@ -162,29 +156,9 @@
                                                     x:Name="PeriodLbl"
                                                     Style="{StaticResource ValueLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.FORM5Period}" />
-                                                <!--<Label Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding ZakatFromDate}" />
-                                                            <Span Text=" - "/>
-                                                            <Span Text="{Binding ZakatToDate}"/>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                    <Label.Triggers>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference PeriodLbl}, Path=Text}" Value="Period">
-                                                            <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
-                                                            <Setter Property="HorizontalTextAlignment" Value="End"/>
-                                                        </DataTrigger>
-                                                    </Label.Triggers>
-                                                </Label>-->
-
-                                                <!--<Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Period}" FlowDirection="LeftToRight" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"></Label>-->
-
 
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5From}" />
-                                                    <!--<Label Text=" " Style="{StaticResource ValueLabelBlack}"/>-->
-                                                    <!--<Label Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
                                                     <Label
                                                         HorizontalOptions="EndAndExpand"
                                                         HorizontalTextAlignment="End"
@@ -497,9 +471,9 @@
                                                                         WidthRequest="180">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding AgvDlyIncome}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding AgvDlyIncome}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -528,9 +502,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Revenue}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Revenue}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -568,9 +542,9 @@
                                                                         StyleId="ValueLabel">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Expenses}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Expenses}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -584,9 +558,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding NetPft}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding NetPft}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -654,9 +628,9 @@
                                                                     <Label HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Revenue}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Revenue}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -694,9 +668,9 @@
                                                                         StyleId="ValueLabel">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Expenses}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Expenses}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -708,9 +682,9 @@
                                                                     <Label HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding NetPft}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding NetPft}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -785,9 +759,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Capital}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Capital}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -835,9 +809,9 @@
                                                                         StyleId="ValueLabel">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding SuppCon}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding SuppCon}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -861,9 +835,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Sales}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Sales}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -935,9 +909,9 @@
                                                                             Style="{StaticResource ValueLabelBlack}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding GenTrade}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding GenTrade}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -980,9 +954,9 @@
                                                                             Style="{StaticResource ValueLabelBlack}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding Livelihoods}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Livelihoods}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -1025,9 +999,9 @@
                                                                             Style="{StaticResource ValueLabelBlack}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding LiveStkAnimals}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding LiveStkAnimals}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -1049,9 +1023,9 @@
                                                                             Style="{StaticResource ValueLabelBlack}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding ExtnProc}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding ExtnProc}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -1121,9 +1095,9 @@
                                                                             Style="{StaticResource ValueLabelBlack}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding GenTradeI}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding GenTradeI}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -1165,9 +1139,9 @@
                                                                             Style="{StaticResource ValueLabelBlack}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding LivelihoodsI}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding LivelihoodsI}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -1210,9 +1184,9 @@
                                                                             Style="{StaticResource ValueLabelBlack}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding LiveStkAnimalsI}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding LiveStkAnimalsI}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -1235,9 +1209,9 @@
                                                                             Style="{StaticResource ValueLabelBlack}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding IntnProc}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding IntnProc}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -1322,9 +1296,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Revenue}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Revenue}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1362,9 +1336,9 @@
                                                                         StyleId="ValueLabel">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Expenses}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Expenses}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1379,9 +1353,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding NetProfit}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding NetProfit}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1473,9 +1447,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding FundingTot}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding FundingTot}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1489,9 +1463,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding CapitalStr}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding CapitalStr}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1522,9 +1496,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Profit}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Profit}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1540,9 +1514,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Sales}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Sales}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1634,9 +1608,9 @@
                                                                             WidthRequest="200">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding GovtContractProf}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding GovtContractProf}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -1665,9 +1639,9 @@
                                                                             WidthRequest="200">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding CivilContrRev}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding CivilContrRev}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -1712,9 +1686,9 @@
                                                                             Style="{StaticResource ValueLabelBlack}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding OtherIncome}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding OtherIncome}" />
                                                                                     <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -1729,9 +1703,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding TotalProfit}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding TotalProfit}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1755,9 +1729,9 @@
                                                                         StyleId="ValueLabel">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Capital}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Capital}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1840,9 +1814,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Revenue}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Revenue}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1880,9 +1854,9 @@
                                                                         StyleId="ValueLabel">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Expenses}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Expenses}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1897,9 +1871,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding NetPft}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding NetPft}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -1981,9 +1955,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding RoomRate}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding RoomRate}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2008,9 +1982,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding AddRoomRate}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding AddRoomRate}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2061,9 +2035,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Revenue}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Revenue}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2101,9 +2075,9 @@
                                                                         StyleId="ValueLabel">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Expenses}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Expenses}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2117,9 +2091,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding NetProfit}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding NetProfit}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2201,9 +2175,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding SubsidyVal}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding SubsidyVal}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2217,9 +2191,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Revenue}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Revenue}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2268,9 +2242,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding NetPft}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding NetPft}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2342,9 +2316,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Capital}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Capital}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2412,9 +2386,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding CapitalRate}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding CapitalRate}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2428,9 +2402,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Profits}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Profits}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2502,9 +2476,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding ShareCap}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding ShareCap}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2520,9 +2494,9 @@
                                                                         WidthRequest="180">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding IntrPurchase}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding IntrPurchase}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2536,9 +2510,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding ForgPurchase}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding ForgPurchase}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2552,9 +2526,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Sales}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Sales}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2636,9 +2610,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding ShareCap}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding ShareCap}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2654,9 +2628,9 @@
                                                                         WidthRequest="180">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding IntrPurchase}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding IntrPurchase}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2670,9 +2644,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding ForgPurchase}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding ForgPurchase}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2686,9 +2660,9 @@
                                                                         Style="{StaticResource ValueLabelBlack}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Sales}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Sales}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -2773,9 +2747,9 @@
                                                         StyleId="ValueLabel">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding OtherCompanyShare}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding OtherCompanyShare}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -2790,9 +2764,9 @@
                                                         StyleId="ValueLabel">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding ZakatBase}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding ZakatBase}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -2864,9 +2838,9 @@
                                                         Style="{StaticResource ValueLabelBlack}">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding YearRent}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding YearRent}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
 
@@ -2893,9 +2867,9 @@
                                                         StyleId="ValueLabel">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding TotalAnnualSalary}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding TotalAnnualSalary}" />
                                                                 <Span Text=" " />
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>

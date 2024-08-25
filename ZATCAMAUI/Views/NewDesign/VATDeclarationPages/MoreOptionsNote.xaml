@@ -1,175 +1,261 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.MoreOptionsNote"
-             Title="MoreOptionsNote"
-             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-             xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-             xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
-             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-            xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-            xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
-            FlowDirection="{Binding AppDirection}">
+<Mopups:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.MoreOptionsNote"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    Title="MoreOptionsNote"
+    FlowDirection="{Binding AppDirection}">
 
-        <Mopups:PopupPage.Animation>
-            <Animations:ScaleAnimation
-                DurationIn="400"
-                DurationOut="300"
-                HasBackgroundAnimation="True"
-                PositionIn="Bottom"
-                PositionOut="Bottom" />
-        </Mopups:PopupPage.Animation>
+    <Mopups:PopupPage.Animation>
+        <Animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </Mopups:PopupPage.Animation>
 
-        <Border StrokeShape="RoundRectangle 22,22,0,0"  VerticalOptions="End" BackgroundColor="White">
-          
+    <Border
+        BackgroundColor="White"
+        StrokeShape="RoundRectangle 22,22,0,0"
+        VerticalOptions="End">
+
+        <Grid>
+            <StackLayout Margin="10,0,10,0" Padding="0,0,0,0">
+                <Image Margin="15,15,15,1" HorizontalOptions="EndAndExpand">
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily="UserIconFont"
+                            Glyph="{x:Static FontImage:IconFonts.Close}"
+                            Size="25"
+                            Color="{StaticResource SecondaryNew}" />
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClosedTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZZATTNotes}" />
+
                 <Grid>
-                <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
-                    <Image HorizontalOptions="EndAndExpand" Margin="15,15,15,1" >
-                        <Image.Source>
-                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                        </Image.Source>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnClosedTapped"/>
-                        </Image.GestureRecognizers>
-                    </Image>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0">
+                        <inputLayout:SfTextInputLayout
+                            ContainerType="Outlined"
+                            HasError="{Binding IsReportDetailHasError}"
+                            OutlineCornerRadius="8"
+                            Stroke="{StaticResource Primary}">
 
-                    <Label Text="{x:Static ResourceManager:AppResources.ZZATTNotes}" Style="{StaticResource SectionTitleBlack}"/>
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0">
-                    <inputLayout:SfTextInputLayout HasError="{Binding IsReportDetailHasError}"
-                                                   ContainerType="Outlined"
-                                                   OutlineCornerRadius="8"
-                                                   Stroke="{StaticResource Primary}"
-                                                   >
-
-                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <inputLayout:LabelStyle TextColor="#B00020" />
                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                    <StackLayout Orientation="Vertical" Margin="0,16,0,0">
-                        <Editor  MaxLength="999" HeightRequest="200"
-                                                    IsSpellCheckEnabled="False"
-                                                    FontSize= "Small"
-                                                    x:Name="NoteDetail"
-                                                    Text="{Binding NoteText}"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    AutoSize="TextChanges"/>
+                            <StackLayout Margin="0,16,0,0" >
+                                <Editor
+                                    x:Name="NoteDetail"
+                                    AutoSize="TextChanges"
+                                    FontSize="Small"
+                                    HeightRequest="200"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsSpellCheckEnabled="False"
+                                    MaxLength="999"
+                                    Text="{Binding NoteText}" />
 
-                                <Label  Text="{Binding
-                                                        Source={x:Reference NoteDetail},
-                                                        Path=Text.Length, StringFormat='{0}/999'}"
-                                                        Style="{StaticResource CaptionLabelGrey}"
-                                                        HorizontalOptions="EndAndExpand" VerticalOptions="Start" VerticalTextAlignment="Start" FontSize="Micro"/>
-                    </StackLayout>
-
-
-                </inputLayout:SfTextInputLayout>
-
-                </StackLayout>
-                <StackLayout Grid.Row="1">
-                    <Grid>
-                 <StackLayout Grid.Row="0">
-                <ScrollView >
-            <Grid Padding="15">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100*"/>
-                </Grid.RowDefinitions>
-
-                <StackLayout Spacing="0" Grid.Row="0">
-                    <StackLayout Spacing="0">
-                         <Label Text="{x:Static ResourceManager:AppResources.ZVatAttachments}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                            </Label>
-                            <Label Text="{x:Static ResourceManager:AppResources.ZVatAttachmentSizeNotfication}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SomarBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                            <Label Text="{x:Static ResourceManager:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" FontFamily="{StaticResource SomarBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                            <Label  Text="{x:Static ResourceManager:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SomarBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                 
-                            <Label Text="{x:Static ResourceManager:AppResources.ZVatAttachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
-                            </Label>
-                        <Border  Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" StrokeThickness="1" Stroke="{StaticResource DarkGrayTextColor}">
-                     <StackLayout Orientation="Horizontal" Padding="15,10,15,10" IsEnabled="{Binding IsAttachEnabled}">
-                                <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
-
-                                <Image HorizontalOptions="EndAndExpand" Rotation="90" IsEnabled="{Binding IsAttachEnabled}">
-                                    <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont"
-                                                                     Color="{StaticResource SecondaryNew}" Size="25"
-                                                 Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                    </Image.Source>
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnAttachmentClick}"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnAttachmentClick}"/>
-                                </StackLayout.GestureRecognizers>
+                                <Label
+                                    FontSize="Micro"
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{Binding Source={x:Reference NoteDetail}, Path=Text.Length, StringFormat='{0}/999'}"
+                                    VerticalOptions="Start"
+                                    VerticalTextAlignment="Start" />
                             </StackLayout>
-                        </Border>
 
-                        <StackLayout Orientation="Horizontal" Padding="0,10,0,10" HeightRequest="300">
-                 <ListView x:Name="List2"
-                   ItemsSource="{Binding AttachmentList}"
-                  HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    HasUnevenRows="True"
-                    VerticalScrollBarVisibility="Never"
-                              ItemTapped="Attachmentlist_ItemTapped"
-                        BackgroundColor="White"
-                    SeparatorVisibility="None">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                         <StackLayout  Padding="0,5,0,5" HorizontalOptions="FillAndExpand">
 
-                                            <Border Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" StrokeThickness="1" Stroke="{StaticResource DarkGrayTextColor}" >
+                        </inputLayout:SfTextInputLayout>
 
-                                                <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
-                                                    <Image Source="Generic_attachment_icon.png"  HeightRequest="25" WidthRequest="25" Margin="5">
-                                                  
-                                                    </Image>
-
-                                                    <Label Text="{Binding Filename}" LineBreakMode="TailTruncation"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
-
-                                                    <Image HorizontalOptions="EndAndExpand" Margin="5">
-                                                        <Image.Source>
-                                                            <FontImageSource FontFamily="UserIconFont" Color="{Binding ColorOf}" Size="25"
-                                                 Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                                                        </Image.Source>
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked"/>
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
-                                                </StackLayout>
-                                            </Border>
-                                           </StackLayout>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackLayout>                   
                     </StackLayout>
-                </StackLayout>
-            </Grid>
-                    </ScrollView>
-                     </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Grid>
+                            <StackLayout Grid.Row="0">
+                                <ScrollView>
+                                    <Grid Padding="15">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100*" />
+                                        </Grid.RowDefinitions>
 
-                     <custom:Loader IsVisible="{Binding IsLoading}"/>
-                   
- </Grid>
-</StackLayout>
-                <StackLayout Grid.Row="2">
-                    <buttons:SfButton VerticalOptions="CenterAndExpand" Margin="0,8,0,0" Text="{x:Static ResourceManager:AppResources.ZZATTSUBMIT}" Command="{Binding OnAddButtonClicked}" Style="{StaticResource PrimaryButtonStyle}"/>
-                </StackLayout>
- </Grid>
- </StackLayout>
- </Grid>
+                                        <StackLayout Grid.Row="0" Spacing="0">
+                                            <StackLayout Spacing="0">
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Style="{StaticResource GAZTSmallGreenLabelStyle}"
+                                                    Text="{x:Static ResourceManager:AppResources.ZVatAttachments}"
+                                                    VerticalOptions="Center" />
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    Padding="0"
+                                                    FontFamily="{StaticResource SomarBold}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
+                                                    Text="{x:Static ResourceManager:AppResources.ZVatAttachmentSizeNotfication}"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    Padding="0"
+                                                    FontFamily="{StaticResource SomarBold}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
+                                                    Text="{x:Static ResourceManager:AppResources.ZVatAttachmentTypeNotfication}"
+                                                    VerticalOptions="EndAndExpand" />
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    Padding="0"
+                                                    FontFamily="{StaticResource SomarBold}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
+                                                    Text="{x:Static ResourceManager:AppResources.ZVatAttachmentMaxSizeNotfication}"
+                                                    VerticalOptions="CenterAndExpand" />
+
+                                                <Label
+                                                    Grid.Row="5"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    Style="{StaticResource GAZTSmallGreenLabelStyle}"
+                                                    Text="{x:Static ResourceManager:AppResources.ZVatAttachments}" />
+                                                <Border
+                                                    Margin="0"
+                                                    Stroke="{StaticResource DarkGrayTextColor}"
+                                                    StrokeThickness="1"
+                                                    Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <StackLayout
+                                                        Padding="15,10,15,10"
+                                                        IsEnabled="{Binding IsAttachEnabled}"
+                                                        Orientation="Horizontal">
+                                                        <Label
+                                                            HorizontalOptions="Start"
+                                                            Style="{StaticResource ValueLabelGrey}"
+                                                            Text="{Binding AttachmentName}" />
+
+                                                        <Image
+                                                            HorizontalOptions="EndAndExpand"
+                                                            IsEnabled="{Binding IsAttachEnabled}"
+                                                            Rotation="90">
+                                                            <Image.Source>
+                                                                <FontImageSource
+                                                                    FontFamily="UserIconFont"
+                                                                    Glyph="{x:Static FontImage:IconFonts.Attachment}"
+                                                                    Size="25"
+                                                                    Color="{StaticResource SecondaryNew}" />
+                                                            </Image.Source>
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                                                        </StackLayout.GestureRecognizers>
+                                                    </StackLayout>
+                                                </Border>
+
+                                                <StackLayout
+                                                    Padding="0,10,0,10"
+                                                    HeightRequest="300"
+                                                    Orientation="Horizontal">
+                                                    <ListView
+                                                        x:Name="List2"
+                                                        BackgroundColor="White"
+                                                        HasUnevenRows="True"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        ItemTapped="Attachmentlist_ItemTapped"
+                                                        ItemsSource="{Binding AttachmentList}"
+                                                        SeparatorVisibility="None"
+                                                        VerticalOptions="FillAndExpand"
+                                                        VerticalScrollBarVisibility="Never">
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <ViewCell>
+                                                                    <StackLayout Padding="0,5,0,5" HorizontalOptions="FillAndExpand">
+
+                                                                        <Border
+                                                                            Margin="0"
+                                                                            Stroke="{StaticResource DarkGrayTextColor}"
+                                                                            StrokeThickness="1"
+                                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                                                            <StackLayout Padding="0,10,0,10" Orientation="Horizontal">
+                                                                                <Image
+                                                                                    Margin="5"
+                                                                                    HeightRequest="25"
+                                                                                    Source="Generic_attachment_icon.png"
+                                                                                    WidthRequest="25" />
+
+                                                                                <Label
+                                                                                    HorizontalOptions="Start"
+                                                                                    LineBreakMode="TailTruncation"
+                                                                                    Style="{StaticResource ValueLabelBlack}"
+                                                                                    Text="{Binding Filename}" />
+
+                                                                                <Image Margin="5" HorizontalOptions="EndAndExpand">
+                                                                                    <Image.Source>
+                                                                                        <FontImageSource
+                                                                                            FontFamily="UserIconFont"
+                                                                                            Glyph="{x:Static FontImage:IconFonts.Close}"
+                                                                                            Size="25"
+                                                                                            Color="{Binding ColorOf}" />
+                                                                                    </Image.Source>
+                                                                                    <Image.GestureRecognizers>
+                                                                                        <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
+                                                                                    </Image.GestureRecognizers>
+                                                                                </Image>
+                                                                            </StackLayout>
+                                                                        </Border>
+                                                                    </StackLayout>
+                                                                </ViewCell>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Grid>
+                                </ScrollView>
+                            </StackLayout>
+
+                            <custom:Loader IsVisible="{Binding IsLoading}" />
+
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <buttons:SfButton
+                            Margin="0,8,0,0"
+                            Command="{Binding OnAddButtonClicked}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZATTSUBMIT}"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </Grid>
 
 
-        </Border>
+    </Border>
 </Mopups:PopupPage>

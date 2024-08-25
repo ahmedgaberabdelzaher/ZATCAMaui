@@ -13,10 +13,9 @@
             Grid.Column="0"
             BackgroundColor="Black"
             Opacity="0.2"
-            Orientation="Vertical"
             VerticalOptions="FillAndExpand" />
 
-        <custom:Loader Grid.RowSpan="2"/>
+        <custom:Loader Grid.RowSpan="2" />
 
     </Grid>
 </Mopups:PopupPage>

@@ -9,12 +9,12 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     Title="BankAccountAddorUpdateIBANPageView"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="true"
-    NavigationPage.HasNavigationBar="False"
-    FlowDirection="{Binding AppDirection}">
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
 
@@ -28,8 +28,8 @@
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        Rotation="0"
                         IsVisible="{Binding IsBackStepButtonVisible}"
+                        Rotation="0"
                         Source="whiteRightBack.png"
                         VerticalOptions="CenterAndExpand">
 
@@ -64,9 +64,10 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -144,7 +145,7 @@
                                             Style="{StaticResource ValueLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.IBANAccName}" />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.IBANAccName}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -183,7 +184,7 @@
                                             Style="{StaticResource ValueLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.IBANIdType}" />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.IBANIdType}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -244,7 +245,7 @@
                                             Style="{StaticResource ValueLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding IdNumberTitle}" />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding IdNumberTitle}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -393,7 +394,7 @@
                                             Style="{StaticResource ValueLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.IBAN}" />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.IBAN}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -433,7 +434,7 @@
                                             Style="{StaticResource ValueLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.IBANBankName}" />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.IBANBankName}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -577,7 +578,12 @@
                                                 TextColor="{StaticResource PrimaryColor}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.IBANAttachment1}" />
+                                                        <Span
+                                                            FontFamily="{StaticResource SomarBold}"
+                                                            FontSize="15"
+                                                            Style="{StaticResource MicroGrayLabelStyle}"
+                                                            Text="{x:Static ResourceManager:AppResources.IBANAttachment1}"
+                                                            TextColor="{StaticResource PrimaryColor}" />
                                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text=" *" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -712,7 +718,11 @@
                                                 TextColor="{StaticResource PrimaryColor}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.IBANAttachment2}" />
+                                                        <Span
+                                                            FontFamily="{StaticResource SomarBold}"
+                                                            FontSize="15"
+                                                            Text="{x:Static ResourceManager:AppResources.IBANAttachment2}"
+                                                            TextColor="{StaticResource PrimaryColor}" />
                                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text=" *" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -791,10 +801,7 @@
 
                                 </Grid.RowDefinitions>
 
-                                <StackLayout
-                                    HorizontalOptions="FillAndExpand"
-                                    Orientation="Vertical"
-                                    VerticalOptions="FillAndExpand">
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                     <Grid Margin="0,5,0,10">
                                         <Grid.RowDefinitions>
@@ -824,7 +831,7 @@
 
                                     <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout>
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -840,10 +847,10 @@
                                                     Grid.Row="0"
                                                     Grid.Column="0"
                                                     BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                    StrokeShape="RoundRectangle 32,32,32,32"
                                                     HeightRequest="24"
                                                     HorizontalOptions="Start"
                                                     Opacity=".2"
+                                                    StrokeShape="RoundRectangle 32,32,32,32"
                                                     VerticalOptions="Center"
                                                     WidthRequest="24" />
                                                 <Image
@@ -1061,6 +1068,6 @@
 
         </Grid>
 
-       
+
     </ContentPage.Content>
 </ContentPage>

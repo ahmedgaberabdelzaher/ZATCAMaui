@@ -1,6 +1,5 @@
 ﻿
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.VATReview
 {
@@ -14,23 +13,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         public VatReviewViewApplicationPageView(VatReviewViewModel VatReviewviewModel)
         {
             InitializeComponent();
-
-            
-            ChangeAeroIcon();
             viewModel = VatReviewviewModel;
             this.BindingContext = viewModel;
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
     }
 }

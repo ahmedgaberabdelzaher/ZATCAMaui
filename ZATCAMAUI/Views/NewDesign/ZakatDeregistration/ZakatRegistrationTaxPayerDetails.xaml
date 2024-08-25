@@ -4,14 +4,14 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    
-  
+
+
     <ContentPage.Content>
 
         <Grid RowDefinitions="Auto,*">
@@ -59,9 +59,10 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                    Padding="10,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
 
                 <Grid>
 
@@ -110,10 +111,10 @@
                                             Grid.Column="0"
                                             Margin="10,10,10,0"
                                             BackgroundColor="Transparent"
-                                            StrokeShape="RoundRectangle 32,32,32,32"
                                             HeightRequest="24"
                                             HorizontalOptions="Start"
                                             Opacity=".2"
+                                            StrokeShape="RoundRectangle 32,32,32,32"
                                             VerticalOptions="Center"
                                             WidthRequest="24" />
                                         <Image
@@ -222,7 +223,7 @@
 
                         </Grid>
                     </Grid>
-     
+
                 </Grid>
 
             </Border>
@@ -234,7 +235,7 @@
 
 
         </Grid>
-       
+
 
 
     </ContentPage.Content>

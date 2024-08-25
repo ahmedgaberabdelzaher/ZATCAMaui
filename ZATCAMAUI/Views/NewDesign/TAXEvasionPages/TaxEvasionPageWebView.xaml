@@ -5,12 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    BackgroundImageSource="partials_background.png"
-    FlowDirection="{Binding AppDirection}"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-   
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -29,7 +29,7 @@
 
                     <!--  FAQ View Starts  -->
                     <StackLayout>
-                       
+
                         <WebView
                             x:Name="taxEvasionWebView"
                             Margin="-20,-40,-20,0"
@@ -37,15 +37,15 @@
                             Navigated="taxEvasionWebView_Navigated"
                             Navigating="taxEvasionWebView_Navigating"
                             VerticalOptions="FillAndExpand" />
-                    
+
 
                     </StackLayout>
 
                 </Grid>
             </Border>
 
-             <custom:Loader IsVisible="{Binding IsLoading}"/>
-         
+            <custom:Loader IsVisible="{Binding IsLoading}" />
+
 
             <Grid Grid.Row="0" Padding="20,5,20,5">
                 <Grid.ColumnDefinitions>
@@ -57,7 +57,7 @@
                     <Image
                         HorizontalOptions="Start"
                         Source="arrowLeftwhite.png"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="CenterAndExpand" />
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TOnBackButtonClicked" />

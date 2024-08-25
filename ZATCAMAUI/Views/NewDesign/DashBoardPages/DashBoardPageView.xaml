@@ -106,13 +106,10 @@
                                     <Grid HorizontalOptions="StartAndExpand">
                                         <Border
                                             BackgroundColor="White"
-                                            StrokeShape="RoundRectangle 14,14,14,14"
-                                            Opacity="0.1" />
+                                            Opacity="0.1"
+                                            StrokeShape="RoundRectangle 14,14,14,14" />
 
-                                        <StackLayout
-                                            Padding="10,3"
-                                            Orientation="Vertical"
-                                            Spacing="0">
+                                        <StackLayout Padding="10,3" Spacing="0">
                                             <Label
                                                 Margin="0"
                                                 Padding="0"
@@ -201,9 +198,16 @@
                                             <Label FontSize="15" Style="{StaticResource CaptionLabelWhite}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.DashBoardWellDone}" TextColor="{StaticResource SuccessColor}" />
+                                                        <Span
+                                                            FontSize="15"
+                                                            Style="{StaticResource CaptionLabelWhite}"
+                                                            Text="{x:Static ResourceManager:AppResources.DashBoardWellDone}"
+                                                            TextColor="{StaticResource SuccessColor}" />
                                                         <Span Text=" " />
-                                                        <Span Text="{x:Static ResourceManager:AppResources.DashBoardNoTaxObligationsPending}" />
+                                                        <Span
+                                                            FontSize="15"
+                                                            Style="{StaticResource CaptionLabelWhite}"
+                                                            Text="{x:Static ResourceManager:AppResources.DashBoardNoTaxObligationsPending}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -245,12 +249,9 @@
 
                                             <Border
                                                 BackgroundColor="White"
-                                                StrokeShape="RoundRectangle 14,14,14,14"
-                                                Opacity="0.1" />
-                                            <StackLayout
-                                                Padding="12,5,12,5"
-                                                Orientation="Vertical"
-                                                Spacing="0">
+                                                Opacity="0.1"
+                                                StrokeShape="RoundRectangle 14,14,14,14" />
+                                            <StackLayout Padding="12,5,12,5" Spacing="0">
 
                                                 <Label
                                                     Margin="0"
@@ -316,8 +317,7 @@
                                         Grid.Row="0"
                                         Grid.Column="2"
                                         HorizontalOptions="EndAndExpand"
-                                        Source="WhiteCircle_arrow_right.png"
-                                        Style="{DynamicResource BackButtonArrow}">
+                                        Source="WhiteCircle_arrow_right.png">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnZakatNowTapped" />
                                         </Image.GestureRecognizers>
@@ -375,10 +375,7 @@
                                                     </Label.FormattedText>
                                                 </Label>
 
-                                                <Image
-                                                    Source="circle_arrow_right.png"
-                                                    Style="{DynamicResource BackButtonArrow}"
-                                                    VerticalOptions="Center">
+                                                <Image Source="circle_arrow_right.png" VerticalOptions="Center">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="TappedOnMyBills" />
                                                     </Image.GestureRecognizers>
@@ -406,10 +403,7 @@
                                                     </Label.FormattedText>
                                                 </Label>
 
-                                                <Image
-                                                    Source="circle_arrow_right.png"
-                                                    Style="{DynamicResource BackButtonArrow}"
-                                                    VerticalOptions="Center">
+                                                <Image Source="circle_arrow_right.png" VerticalOptions="Center">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="TappedOnMyBills" />
                                                     </Image.GestureRecognizers>
@@ -428,7 +422,7 @@
                                             VerticalScrollBarVisibility="Never">
 
                                             <CollectionView.ItemsLayout>
-                                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5" />
+                                                <GridItemsLayout VerticalItemSpacing="5" Orientation="Vertical"/>
                                             </CollectionView.ItemsLayout>
 
                                             <CollectionView.ItemTemplate>
@@ -458,9 +452,9 @@
                                                                         <Label.FormattedText>
 
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                                <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}" />
                                                                                 <Span Text=" " />
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
 
@@ -519,9 +513,9 @@
                                                                         <Label.FormattedText>
 
                                                                             <FormattedString>
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
+                                                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
                                                                                 <Span Text=": " />
-                                                                                <Span Text="{Binding FormatedDuedate}" />
+                                                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{Binding FormatedDuedate}" />
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -712,7 +706,6 @@
                                                                         WidthRequest="80">
                                                                         <StackLayout
                                                                             HorizontalOptions="Center"
-                                                                            Orientation="Vertical"
                                                                             Spacing="0"
                                                                             VerticalOptions="Center">
                                                                             <Label
@@ -769,9 +762,9 @@
                                                                             Style="{StaticResource ValueLabelGrey}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" />
+                                                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" />
                                                                                     <Span Text=" : " />
-                                                                                    <Span Text="{Binding TaxPeriod}" />
+                                                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding TaxPeriod}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
 
@@ -784,13 +777,13 @@
                                                                             Style="{StaticResource ValueLabelGrey}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZAmount}" />
-                                                                                    <Span Text=" : " />
-                                                                                    <Span Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZAmount}" />
+                                                                                    <Span Style="{StaticResource ValueLabelGrey}" Text=" : " />
+                                                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}" />
                                                                                     <Span Text=" " />
                                                                                     <!--<Span Text="{Binding Amount}"></Span>-->
                                                                                     <Span Text="&#160;&#160;" />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -835,10 +828,7 @@
                                                         Style="{StaticResource SectionTitleBlack}"
                                                         Text="{x:Static ResourceManager:AppResources.NDReturns}"
                                                         VerticalOptions="Center" />
-                                                    <Image
-                                                        HorizontalOptions="EndAndExpand"
-                                                        Source="circle_arrow_right.png"
-                                                        Style="{DynamicResource BackButtonArrow}">
+                                                    <Image HorizontalOptions="EndAndExpand" Source="circle_arrow_right.png">
                                                         <Image.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="TappedOnMyReturns" />
                                                         </Image.GestureRecognizers>
@@ -978,10 +968,7 @@
                                                 Style="{StaticResource SectionTitleBlack}"
                                                 Text="{x:Static ResourceManager:AppResources.DashboardLastTransaction}"
                                                 VerticalOptions="Center" />
-                                            <Image
-                                                HorizontalOptions="EndAndExpand"
-                                                Source="circle_arrow_right.png"
-                                                Style="{DynamicResource BackButtonArrow}">
+                                            <Image HorizontalOptions="EndAndExpand" Source="circle_arrow_right.png">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
                                                 </Image.GestureRecognizers>
@@ -998,7 +985,7 @@
                                                 VerticalScrollBarVisibility="Never">
 
                                                 <CollectionView.ItemsLayout>
-                                                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="8" />
+                                                    <GridItemsLayout VerticalItemSpacing="8" Orientation="Vertical"/>
                                                 </CollectionView.ItemsLayout>
 
                                                 <CollectionView.ItemTemplate>
@@ -1028,9 +1015,9 @@
                                                                         Grid.Column="1"
                                                                         Padding="15"
                                                                         BackgroundColor="{StaticResource Primary}"
-                                                                        StrokeShape="RoundRectangle 14,14,14,14"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         Opacity=".2"
+                                                                        StrokeShape="RoundRectangle 14,14,14,14"
                                                                         VerticalOptions="CenterAndExpand">
 
                                                                         <Border.Triggers>
@@ -1073,7 +1060,10 @@
                                                                             VerticalOptions="CenterAndExpand">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding TestDueAmount}" />
+                                                                                    <Span
+                                                                                        Style="{StaticResource CaptionLabelBlack}"
+                                                                                        Text="{Binding TestDueAmount}"
+                                                                                        TextColor="{StaticResource NewDarkGreenColor}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                             <Label.Triggers>
@@ -1106,7 +1096,10 @@
                                                                             VerticalOptions="CenterAndExpand">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                    <Span
+                                                                                        Style="{StaticResource CaptionLabelBlack}"
+                                                                                        Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                                                                                        TextColor="{StaticResource NewDarkGreenColor}" />
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                             <Label.Triggers>
@@ -1143,7 +1136,7 @@
 
                                             </CollectionView>
 
-                                            <custom:Loader  IsVisible="{Binding IsAccountsStatementLoading}"/>
+                                            <custom:Loader IsVisible="{Binding IsAccountsStatementLoading}" />
                                         </Grid>
 
                                     </StackLayout>
@@ -1161,10 +1154,7 @@
                                                 Style="{StaticResource SectionTitleBlack}"
                                                 Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}"
                                                 VerticalOptions="Center" />
-                                            <Image
-                                                HorizontalOptions="EndAndExpand"
-                                                Source="circle_arrow_right.png"
-                                                Style="{DynamicResource BackButtonArrow}">
+                                            <Image HorizontalOptions="EndAndExpand" Source="circle_arrow_right.png">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="InstalmentPlan_Tapped" />
                                                 </Image.GestureRecognizers>
@@ -1460,7 +1450,7 @@
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView x:Name="fillingMenuBox" Style="{StaticResource WhiteLineSeperator}" />
-                                                <StackLayout IsVisible="{Binding IfRegInZakat}" Orientation="Vertical">
+                                                <StackLayout IsVisible="{Binding IfRegInZakat}">
                                                     <StackLayout
                                                         Margin="0,0,0,15"
                                                         Orientation="Horizontal"
@@ -1498,7 +1488,7 @@
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             </StackLayout>
-                                            <StackLayout IsVisible="{Binding IsVatRegistrationTileVisible}" Orientation="Vertical">
+                                            <StackLayout IsVisible="{Binding IsVatRegistrationTileVisible}">
                                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                                     <Image Source="documents_White.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.VatRegistration}" />
@@ -1525,10 +1515,7 @@
                                             </StackLayout>
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             <!--  Subsidy Request Starts  -->
-                                            <StackLayout
-                                                IsVisible="{Binding IsSubsidyTileVisible}"
-                                                Orientation="Vertical"
-                                                Spacing="20">
+                                            <StackLayout IsVisible="{Binding IsSubsidyTileVisible}" Spacing="20">
                                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                                     <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.TaxPayerSubsidyRequest}" />
@@ -1540,10 +1527,7 @@
                                             </StackLayout>
                                             <!--  Subsidy Request Ends  -->
                                             <!--  Contact Zatca For Audit Case starts  -->
-                                            <StackLayout
-                                                IsVisible="{Binding IsContactZatcaEmpTileVisible}"
-                                                Orientation="Vertical"
-                                                Spacing="20">
+                                            <StackLayout IsVisible="{Binding IsContactZatcaEmpTileVisible}" Spacing="20">
                                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                                     <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ContactZatcaEmp}" />
@@ -1577,7 +1561,7 @@
 
                                             <!--  CR6264 ends  -->
                                             <!--  RateUS  Starts  -->
-                                            <StackLayout Orientation="Vertical" Spacing="20">
+                                            <StackLayout Spacing="20">
                                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                                     <Image Source="RateUS.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.RateUs}" />
@@ -1649,9 +1633,9 @@
                                         <Label Style="{StaticResource CaptionLabelWhite}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.NDV}" />
+                                                    <Span Style="{StaticResource PageTitleWhite}" Text="{x:Static ResourceManager:AppResources.NDV}" />
                                                     <Span Text="&#160;&#160;" />
-                                                    <Span Text="{Binding AppVersion}" />
+                                                    <Span Style="{StaticResource PageTitleWhite}" Text="{Binding AppVersion}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -1830,9 +1814,9 @@
                             <Border
                                 Padding="9"
                                 BackgroundColor="White"
+                                HeightRequest="100"
                                 Stroke="#4FBBBD"
-                                StrokeShape="RoundRectangle 14,14,14,14"
-                                HeightRequest="100">
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <custom:GAZTBorderlessEditor Placeholder="اكتب النص هنا " Text="{Binding SQAnswer}" />
                             </Border>
                             <Frame

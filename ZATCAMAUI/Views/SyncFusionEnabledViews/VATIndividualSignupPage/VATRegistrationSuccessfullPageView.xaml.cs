@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System.Globalization;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Page = Microsoft.Maui.Controls.Page;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
@@ -19,7 +17,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.VATRegistrationSuccessfullPageView;
             BindingContext = viewModel;
-            On<iOS>().SetUseSafeArea(true);
             if (response != null)
             {
                 if (response.d != null)
@@ -53,14 +50,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                 headerAmountInfo.IsLinkAvailable = false;
                 headerAmountInfo.Message = displayText;
-                if (App.IsArabic)
-                {
-                    headerAmountInfo.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    headerAmountInfo.FlowDirections = "LeftToRight";
-                }
+              
                 headerWithInfos.Add(headerAmountInfo);
                 newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                 newDesignPopUp.HeaderWithInfos = headerWithInfos;

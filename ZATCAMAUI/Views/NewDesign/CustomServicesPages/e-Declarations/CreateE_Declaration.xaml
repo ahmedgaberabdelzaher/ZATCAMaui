@@ -10,24 +10,7 @@
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
 
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                </ResourceDictionary>
-
-            </ResourceDictionary.MergedDictionaries>
-
-        </ResourceDictionary>
-
-    </ContentPage.Resources>
 
     <Grid RowDefinitions="auto,*">
 
@@ -39,7 +22,6 @@
                 x:Name="wbview"
                 Margin="-20,-40,-20,0"
                 HorizontalOptions="FillAndExpand"
-                Navigating="wbview_Navigating"
                 VerticalOptions="FillAndExpand" />
         </Border>
 

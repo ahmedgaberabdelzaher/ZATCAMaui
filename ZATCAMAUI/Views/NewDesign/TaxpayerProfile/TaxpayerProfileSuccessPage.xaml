@@ -7,7 +7,7 @@
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}">
     <ContentPage.Content>
-        <StackLayout Padding="24" Orientation="Vertical">
+        <StackLayout Padding="24" >
             <Image Margin="0,90,0,0" Source="Forget_ic_success.png" />
             <Label
                 HorizontalOptions="Center"

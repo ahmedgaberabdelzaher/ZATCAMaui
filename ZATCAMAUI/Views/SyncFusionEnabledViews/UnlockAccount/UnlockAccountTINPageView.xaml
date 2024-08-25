@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
@@ -11,7 +12,6 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     CloseWhenBackgroundIsClicked="False"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
@@ -101,24 +101,18 @@
                                     BackgroundColor="Transparent"
                                     Style="{StaticResource SectionTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.UnlockAccountResetPassword}" />
-                                <!--<Label Text="{x:Static ResourceManager:AppResources.NDSelectTheOptionAndCompleteDetails}" Style="{StaticResource BodyLabelGrey}"/>-->
 
                                 <StackLayout
                                     Grid.Row="2"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="3"
                                     Margin="0,0,0,0">
-                                    <!--<Label Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>-->
                                     <Label
                                         Grid.Row="0"
                                         Margin="0,20,0,0"
-                                        Style="{StaticResource CaptionLabelGrey}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.TIN}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.TIN}" />
+
                                     <inputLayout:SfTextInputLayout
                                         x:Name="FrmTIN"
                                         Margin="0,-6,0,-6"
@@ -135,10 +129,10 @@
                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                         <custom:GAZTBorderlessEntry
                                             x:Name="EntryTIN"
-                                            Focused="FrmTIN_Focused"
                                             FontSize="Small"
                                             IsSpellCheckEnabled="False"
-                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric,
+                                                                  iOS=Default}"
                                             MaxLength="10"
                                             Placeholder="{x:Static ResourceManager:AppResources.TIN}"
                                             PlaceholderColor="Gray"
@@ -316,7 +310,8 @@
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
                                             IsPassword="True"
-                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric,
+                                                                  iOS=Default}"
                                             MaxLength="1"
                                             ReturnType="Next"
                                             Style="{StaticResource GAZTOTPEntry}"
@@ -350,7 +345,8 @@
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
                                             IsPassword="True"
-                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric,
+                                                                  iOS=Default}"
                                             MaxLength="1"
                                             ReturnType="Next"
                                             Style="{StaticResource GAZTOTPEntry}"
@@ -384,7 +380,8 @@
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
                                             IsPassword="True"
-                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric,
+                                                                  iOS=Default}"
                                             MaxLength="1"
                                             ReturnType="Next"
                                             Style="{StaticResource GAZTOTPEntry}"
@@ -419,7 +416,8 @@
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
                                             IsPassword="True"
-                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                            Keyboard="{OnPlatform Android=Numeric,
+                                                                  iOS=Default}"
                                             MaxLength="1"
                                             Style="{StaticResource GAZTOTPEntry}"
                                             Text="{Binding OtpFourthDigit}"

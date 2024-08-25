@@ -14,17 +14,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
-
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -237,15 +226,15 @@
                             VerticalTextAlignment="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatNote}" />
+                                    <Span Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZVatNote}" />
                                     <Span Text="&#160;" />
-                                    <Span Text=":" />
+                                    <Span Style="{StaticResource CaptionLabelBlack}" Text=":" />
                                     <Span Text="&#160;" />
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZChageOfRegistration}" TextColor="{StaticResource Primary}">
-                                        <Span.GestureRecognizers>
-                                            <TapGestureRecognizer />
-                                        </Span.GestureRecognizers>
-                                    </Span>
+                                    <Span
+                                        Style="{StaticResource CaptionLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZZChageOfRegistration}"
+                                        TextColor="{StaticResource Primary}" />
+
                                 </FormattedString>
                             </Label.FormattedText>
 

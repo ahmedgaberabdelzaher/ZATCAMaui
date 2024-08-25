@@ -7,15 +7,14 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    BackgroundImageSource="partials_background.png"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     ios:Page.UseSafeArea="true"
-    NavigationPage.HasNavigationBar="False"
+    BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    
+    NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    
+
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*" RowSpacing="0">
 
@@ -28,7 +27,7 @@
                     <Image
                         HorizontalOptions="Start"
                         Source="arrowLeftwhite.png"
-                        Style="{DynamicResource BackButtonArrow}"
+                        
                         VerticalOptions="Center">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding BackCommand}" />
@@ -163,8 +162,8 @@
                                         x:Name="MobileNumberCodeEntry"
                                         FlowDirection="LeftToRight"
                                         HorizontalOptions="FillAndExpand"
-                                        IsReadOnly="True"
                                         InputTransparent="True"
+                                        IsReadOnly="True"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding MobileNumber}"
                                         TextColor="{StaticResource PrimaryColor}"
@@ -200,8 +199,8 @@
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
                                     <custom:GAZTBorderlessEntry
-                                        IsReadOnly="True"
                                         InputTransparent="True"
+                                        IsReadOnly="True"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding EmailEntry}" />
 
@@ -239,8 +238,8 @@
 
                                     <custom:GAZTBorderlessEntry
                                         x:Name="Password"
-                                        IsPassword="True"
                                         InputTransparent="True"
+                                        IsPassword="True"
                                         IsReadOnly="True"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding PasswordEntry}" />

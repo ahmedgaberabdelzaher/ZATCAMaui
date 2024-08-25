@@ -3,12 +3,12 @@
     x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.VATCreditCarriedForwardPopUpPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Border
@@ -36,8 +36,8 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatSerialNumber}" />
-                                                    <Span Text=" : " />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZVatSerialNumber}" />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text=" : " />
                                                     <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding LineNo}" />
                                                 </FormattedString.Spans>
                                             </FormattedString>
@@ -48,8 +48,8 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZReturnReferenceNumber}" />
-                                                    <Span Text=" : " />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZReturnReferenceNumber}" />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text=" : " />
                                                     <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Fbnum}" />
                                                 </FormattedString.Spans>
                                             </FormattedString>
@@ -60,8 +60,8 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatDocumentNumber}" />
-                                                    <Span Text=" : " />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZVatDocumentNumber}" />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text=" : " />
                                                     <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding DocNo}" />
                                                 </FormattedString.Spans>
                                             </FormattedString>
@@ -72,8 +72,8 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZAmount}" />
-                                                    <Span Text=" : " />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZAmount}" />
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text=" : " />
                                                     <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding CreditAmt}" />
                                                 </FormattedString.Spans>
                                             </FormattedString>

@@ -13,7 +13,6 @@ using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 {
@@ -80,7 +79,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     }
                 }
                 viewModel.OnPageLoad();
-                NavigationPage.SetBackButtonTitle(this, "");
             }
             catch (Exception)
             {

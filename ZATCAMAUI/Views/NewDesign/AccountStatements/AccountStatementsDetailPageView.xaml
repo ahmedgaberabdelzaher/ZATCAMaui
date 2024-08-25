@@ -5,23 +5,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:sfconverters="clr-namespace:ZATCAMAUI.Core.Converters.SyncFusionEnabledConverters"
     ios:Page.UseSafeArea="true"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <sfconverters:StringToColorConvertor x:Key="StringToColorConvertor" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
@@ -70,8 +63,7 @@
 
             <StackLayout Grid.Row="1">
 
-                <Border Margin="10"
-                        Style="{StaticResource GreyBorderFrameWithShadow}">
+                <Border Margin="10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
                     <Grid Padding="15" RowSpacing="0">
                         <Grid.RowDefinitions>
@@ -105,10 +97,10 @@
                             Grid.Column="1"
                             Padding="10,10,10,10"
                             BackgroundColor="{Binding StatusBackGcolor}"
-                            StrokeShape="RoundRectangle 14,14,14,14"
                             HeightRequest="20"
                             HorizontalOptions="FillAndExpand"
                             Opacity=".2"
+                            StrokeShape="RoundRectangle 14,14,14,14"
                             VerticalOptions="CenterAndExpand" />
                         <StackLayout
                             Grid.Row="0"
@@ -187,56 +179,56 @@
                 </Border>
 
                 <Border
-                        Margin="1"
-                        Padding="10"
-                        x:Name="TaxTypeGrid"
+                    x:Name="TaxTypeGrid"
+                    Margin="1"
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource GreyBorderFrameWithShadow}"
+                    VerticalOptions="FillAndExpand">
+
+                    <Grid
+                        Margin="0"
+                        Padding="0"
                         HorizontalOptions="FillAndExpand"
-                        Style="{StaticResource GreyBorderFrameWithShadow}"
-                        VerticalOptions="FillAndExpand">
-
-                        <Grid
-                            Margin="0"
-                            Padding="0"
+                        VerticalOptions="StartAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Border
+                            x:Name="TaxTypeDesc"
+                            Grid.Row="0"
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="StartAndExpand">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <Border
-                                x:Name="TaxTypeDesc"
-                                Grid.Row="0"
-                                StrokeShape="RoundRectangle 8,8,8,8"
-                                HorizontalOptions="FillAndExpand"
-                                Opacity=".2"
-                                VerticalOptions="FillAndExpand" />
-                            <StackLayout
-                                Grid.Row="0"
-                                Padding="10"
-                                VerticalOptions="FillAndExpand">
-                                <Label
-                                    x:Name="LableTaxType"
-                                    HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource BodyLabelBlack}"
-                                    Text=""
-                                    VerticalOptions="CenterAndExpand" />
+                            Opacity=".2"
+                            StrokeShape="RoundRectangle 8,8,8,8"
+                            VerticalOptions="FillAndExpand" />
+                        <StackLayout
+                            Grid.Row="0"
+                            Padding="10"
+                            VerticalOptions="FillAndExpand">
+                            <Label
+                                x:Name="LableTaxType"
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource BodyLabelBlack}"
+                                Text=""
+                                VerticalOptions="CenterAndExpand" />
 
-                            </StackLayout>
-                        </Grid>
+                        </StackLayout>
+                    </Grid>
                 </Border>
 
                 <Grid
                     Margin="0"
                     Padding="10"
-                    RowDefinitions="auto"
                     HorizontalOptions="FillAndExpand"
+                    RowDefinitions="auto"
                     VerticalOptions="StartAndExpand">
 
                     <Border
                         x:Name="CardAmount"
                         Grid.Row="0"
-                        StrokeShape="RoundRectangle 20,20,20,20"
                         HorizontalOptions="FillAndExpand"
-                        Opacity=".2" />
+                        Opacity=".2"
+                        StrokeShape="RoundRectangle 20,20,20,20" />
 
                     <StackLayout
                         Grid.Row="0"
@@ -263,18 +255,18 @@
                 <Grid
                     x:Name="GridAmountRemaining"
                     Margin="0"
-                    RowDefinitions="auto"
                     Padding="10"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="False"
+                    RowDefinitions="auto"
                     VerticalOptions="StartAndExpand">
 
                     <Border
                         x:Name="CardAmountRemaining"
                         Grid.Row="0"
-                        StrokeShape="RoundRectangle 20,20,20,20"
                         HorizontalOptions="FillAndExpand"
-                        Opacity=".2" />
+                        Opacity=".2"
+                        StrokeShape="RoundRectangle 20,20,20,20" />
 
                     <StackLayout
                         Grid.Row="0"
@@ -297,106 +289,116 @@
                     </StackLayout>
 
                 </Grid>
-                
-                <Border Margin="0,10,0,10"
-                        x:Name="ReturnDetails" 
-                        IsVisible="{Binding isReturnsVisible}"
-                        Stroke="{StaticResource Secondary}" 
-                        Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                <Border
+                    x:Name="ReturnDetails"
+                    Margin="0,10,0,10"
+                    IsVisible="{Binding isReturnsVisible}"
+                    Stroke="{StaticResource Secondary}"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
 
                     <Grid ColumnDefinitions="80*,20*">
 
-                        <Label Grid.Column="0" 
-                            Text ="{x:Static ResourceManager:AppResources.retDetails}" 
+                        <Label
+                            Grid.Column="0"
+                            FontSize="15"
+                            HorizontalOptions="FillAndExpand"
                             Style="{StaticResource GAZTSmallBlackLabel}"
-                             FontSize="15" HorizontalOptions="FillAndExpand" 
-                             VerticalOptions="CenterAndExpand"/>
+                            Text="{x:Static ResourceManager:AppResources.retDetails}"
+                            VerticalOptions="CenterAndExpand" />
 
-                        <Image Grid.Column="1" 
-                                Source="arrowRight">
+                        <Image Grid.Column="1" Source="arrowRight">
 
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="ReturnDetails">
-                                </TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="ReturnDetails" />
                             </Image.GestureRecognizers>
                         </Image>
 
                     </Grid>
-                                 
+
                 </Border>
 
-                <Border Margin="0,10,0,10"
-                        x:Name="ObjectionDetails" 
-                        IsVisible="{Binding isObjectionDetailsVisible}"
-                        Stroke="{StaticResource Secondary}" 
-                        Style="{StaticResource GreyBorderFrameWithShadow}">
+                <Border
+                    x:Name="ObjectionDetails"
+                    Margin="0,10,0,10"
+                    IsVisible="{Binding isObjectionDetailsVisible}"
+                    Stroke="{StaticResource Secondary}"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                        <Grid ColumnDefinitions="80*,20*">
+                    <Grid ColumnDefinitions="80*,20*">
 
-                             <Label Grid.Column="0"
-                                    Text ="{x:Static ResourceManager:AppResources.ObjDetails}" 
-                                    Style="{StaticResource GAZTSmallBlackLabel}" 
-                                    FontSize="15" HorizontalOptions="FillAndExpand" 
-                                    VerticalOptions="CenterAndExpand"/>
+                        <Label
+                            Grid.Column="0"
+                            FontSize="15"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource GAZTSmallBlackLabel}"
+                            Text="{x:Static ResourceManager:AppResources.ObjDetails}"
+                            VerticalOptions="CenterAndExpand" />
 
-                            <Image Grid.Column="1" Source="arrowRight">
+                        <Image Grid.Column="1" Source="arrowRight">
 
-                                <Image.GestureRecognizers>
-                                        <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="ObjDetails"/>
-                                    </Image.GestureRecognizers>
-                            </Image>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="ObjDetails" />
+                            </Image.GestureRecognizers>
+                        </Image>
 
-                        </Grid>
+                    </Grid>
                 </Border>
 
-                <Border Margin="0,10,0,10"
-                        x:Name="ISTPlanDetails" 
-                        IsVisible="{Binding isBIllDetialsVisble}"
-                        Stroke="{StaticResource Secondary}" 
-                        Style="{StaticResource GreyBorderFrameWithShadow}">
+                <Border
+                    x:Name="ISTPlanDetails"
+                    Margin="0,10,0,10"
+                    IsVisible="{Binding isBIllDetialsVisble}"
+                    Stroke="{StaticResource Secondary}"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                        <Grid ColumnDefinitions="80*,20*">
+                    <Grid ColumnDefinitions="80*,20*">
 
-                             <Label Grid.Column="0"
-                                    Text ="{x:Static ResourceManager:AppResources.InstalmentDetails}" 
-                                    Style="{StaticResource GAZTSmallBlackLabel}" 
-                                    FontSize="15" HorizontalOptions="FillAndExpand" 
-                                    VerticalOptions="CenterAndExpand"/>
+                        <Label
+                            Grid.Column="0"
+                            FontSize="15"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource GAZTSmallBlackLabel}"
+                            Text="{x:Static ResourceManager:AppResources.InstalmentDetails}"
+                            VerticalOptions="CenterAndExpand" />
 
-                            <Image Grid.Column="1" Source="arrowRight">
+                        <Image Grid.Column="1" Source="arrowRight">
 
-                                <Image.GestureRecognizers>
-                                        <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="InstDetails"/>
-                                </Image.GestureRecognizers>
-                            </Image>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="InstDetails" />
+                            </Image.GestureRecognizers>
+                        </Image>
 
-                        </Grid>
+                    </Grid>
                 </Border>
 
-                <Border Margin="0,10,0,10"
-                        x:Name="InstPlanOBDetials" 
-                        IsVisible="{Binding isInstalmentDetailsVisible}"
-                        Stroke="{StaticResource Secondary}" 
-                        Style="{StaticResource GreyBorderFrameWithShadow}">
+                <Border
+                    x:Name="InstPlanOBDetials"
+                    Margin="0,10,0,10"
+                    IsVisible="{Binding isInstalmentDetailsVisible}"
+                    Stroke="{StaticResource Secondary}"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                        <Grid ColumnDefinitions="80*,20*">
+                    <Grid ColumnDefinitions="80*,20*">
 
-                             <Label Grid.Column="0"
-                                    Text ="{x:Static ResourceManager:AppResources.InstalmentObjDetails}" 
-                                    Style="{StaticResource GAZTSmallBlackLabel}" 
-                                    FontSize="15" HorizontalOptions="FillAndExpand" 
-                                    VerticalOptions="CenterAndExpand"/>
+                        <Label
+                            Grid.Column="0"
+                            FontSize="15"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource GAZTSmallBlackLabel}"
+                            Text="{x:Static ResourceManager:AppResources.InstalmentObjDetails}"
+                            VerticalOptions="CenterAndExpand" />
 
-                            <Image Grid.Column="1" Source="arrowRight">
+                        <Image Grid.Column="1" Source="arrowRight">
 
-                                <Image.GestureRecognizers>
-                                        <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="InstObjeORdetails"/>
-                                </Image.GestureRecognizers>
-                            </Image>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="InstObjeORdetails" />
+                            </Image.GestureRecognizers>
+                        </Image>
 
-                        </Grid>
+                    </Grid>
                 </Border>
-                
+
             </StackLayout>
 
             <!--  Loader  -->

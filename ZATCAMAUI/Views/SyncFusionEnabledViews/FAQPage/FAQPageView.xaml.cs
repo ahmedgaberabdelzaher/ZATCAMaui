@@ -1,8 +1,5 @@
 ﻿
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Application = Microsoft.Maui.Controls.Application;
 using ZATCAMAUI.Core.Helper;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.FAQPage
@@ -16,8 +13,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.FAQPage
             InitializeComponent();
             viewModel = App.Locator.FAQPageView;
             BindingContext = viewModel;
-            On<iOS>().SetUseSafeArea(true);
-            ChangeAeroIcon();
             SetUrl();
         }
 
@@ -35,17 +30,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.FAQPage
 
         }
      
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+     
         private void ContactWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
             viewModel.IsLoading = true;

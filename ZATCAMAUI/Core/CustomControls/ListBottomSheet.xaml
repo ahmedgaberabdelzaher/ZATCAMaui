@@ -21,7 +21,7 @@
             <Grid Padding="10" RowDefinitions="auto,*">
 
                 <!--  Search Entry  -->
-                 <custom:CustomSfTextInputView>
+                <custom:CustomSfTextInputView>
                     <custom:CustomSfTextInputView.TextInputView>
                         <custom:GAZTBorderlessEntry
                             x:Name="searchEntry"
@@ -46,7 +46,7 @@
                         <Image Aspect="AspectFit" Source="reportSearchBar.png" />
                     </inputLayout:SfTextInputLayout.LeadingView>
 
-                 </custom:CustomSfTextInputView>
+                </custom:CustomSfTextInputView>
 
                 <Grid
                     x:Name="itemList"
@@ -57,7 +57,7 @@
                     <CollectionView CollectionView.ItemsSource="{Binding BottomSheetList}" VerticalScrollBarVisibility="Never">
 
                         <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" />
+                            <GridItemsLayout VerticalItemSpacing="10" Orientation="Vertical"/>
                         </CollectionView.ItemsLayout>
 
                         <CollectionView.ItemTemplate>

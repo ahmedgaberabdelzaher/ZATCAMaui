@@ -495,9 +495,17 @@
                                         VerticalOptions="Start">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding TravelerDeclarationResponse.totalFees}" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="14"
+                                                    Text="{Binding TravelerDeclarationResponse.totalFees}"
+                                                    TextColor="#002447" />
                                                 <Span Text="  " />
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="14"
+                                                    Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                                                    TextColor="#002447" />
                                             </FormattedString>
                                         </Label.FormattedText>
 
@@ -583,9 +591,17 @@
                                                     VerticalOptions="Start">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding Id}" />
+                                                            <Span
+                                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                                FontSize="14"
+                                                                Text="{Binding Id}"
+                                                                TextColor="#002447" />
                                                             <Span Text="  " />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                            <Span
+                                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                                FontSize="14"
+                                                                Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                                                                TextColor="#002447" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
 

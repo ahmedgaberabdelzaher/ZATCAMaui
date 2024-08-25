@@ -29,7 +29,7 @@
 
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
-            
+
             <Style TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="10" />
                 <Setter Property="WidthRequest" Value="10" />
@@ -139,15 +139,24 @@
                                                     Style="{StaticResource GAZTTermsConditions}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATRFAQ1}" TextColor="{StaticResource Secondary}" />
+                                                            <Span
+                                                                Style="{StaticResource GAZTTermsConditions}"
+                                                                Text="{x:Static ResourceManager:AppResources.ZZZZVATRFAQ1}"
+                                                                TextColor="{StaticResource Secondary}" />
                                                             <Span Text="&#160;" />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATRFAQ2}" TextColor="#003672">
+                                                            <Span
+                                                                Style="{StaticResource GAZTTermsConditions}"
+                                                                Text="{x:Static ResourceManager:AppResources.ZZZZVATRFAQ2}"
+                                                                TextColor="#003672">
                                                                 <Span.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="VATFaqTapped" />
                                                                 </Span.GestureRecognizers>
                                                             </Span>
                                                             <Span Text="&#160;" />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATRFAQ3}" TextColor="{StaticResource NeutralGreay}" />
+                                                            <Span
+                                                                Style="{StaticResource GAZTTermsConditions}"
+                                                                Text="{x:Static ResourceManager:AppResources.ZZZZVATRFAQ3}"
+                                                                TextColor="{StaticResource NeutralGreay}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -159,8 +168,8 @@
                                                     VerticalOptions="EndAndExpand">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="1." />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions1}" />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="1." />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions1}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -173,8 +182,11 @@
                                                     VerticalOptions="EndAndExpand">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span FontSize="11" Text="2." />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions2}" />
+                                                            <Span
+                                                                FontSize="11"
+                                                                Style="{StaticResource GAZTTermsConditions}"
+                                                                Text="2." />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions2}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -185,8 +197,8 @@
                                                     VerticalOptions="EndAndExpand">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="3." />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions3}" />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="3." />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions3}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -194,8 +206,8 @@
                                                 <Label LineHeight="1" Style="{StaticResource GAZTTermsConditions}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="4." />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions4}" />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="4." />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions4}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -206,8 +218,8 @@
                                                     VerticalOptions="EndAndExpand">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="5." />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions5}" />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="5." />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions5}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -215,8 +227,8 @@
                                                 <Label LineHeight="1" Style="{StaticResource GAZTTermsConditions}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="6." />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions6}" />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="6." />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions6}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -224,8 +236,8 @@
                                                 <Label LineHeight="1" Style="{StaticResource GAZTTermsConditions}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="7." />
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions7}" />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="7." />
+                                                            <Span Style="{StaticResource GAZTTermsConditions}" Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions7}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -236,13 +248,7 @@
                                                         IsChecked="{Binding IsInstrunctionChecked}"
                                                         Style="{StaticResource CheckboxHeightWidth32}"
                                                         VerticalOptions="CenterAndExpand" />
-                                                    <Label Style="{StaticResource CheckboxSelectedFontStyle}">
-                                                        <Label.FormattedText>
-                                                            <FormattedString>
-                                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}" />
-                                                            </FormattedString>
-                                                        </Label.FormattedText>
-                                                    </Label>
+                                                    <Label Style="{StaticResource CheckboxSelectedFontStyle}" Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}" />
                                                 </StackLayout>
 
                                             </StackLayout>
@@ -318,8 +324,8 @@
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
-                                                            IsReadOnly="True"
                                                             InputTransparent="True"
+                                                            IsReadOnly="True"
                                                             Placeholder="{x:Static ResourceManager:AppResources.TINS}"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding Gpartz}"
@@ -350,8 +356,8 @@
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
-                                                            IsReadOnly="True"
                                                             InputTransparent="True"
+                                                            IsReadOnly="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding TinNm}" />
                                                     </inputLayout:SfTextInputLayout>
@@ -376,8 +382,8 @@
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
-                                                            IsReadOnly="True"
                                                             InputTransparent="True"
+                                                            IsReadOnly="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding CrNo}">
                                                             <custom:GAZTBorderlessEntry.Behaviors>
@@ -401,8 +407,8 @@
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
                                                             FontSize="Small"
-                                                            IsReadOnly="True"
                                                             InputTransparent="True"
+                                                            IsReadOnly="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding CrNm}"
                                                             TextColor="#bbbbbb" />
@@ -431,8 +437,8 @@
                                                             <custom:GAZTBorderlessEntry
                                                                 x:Name="Entry_CrStdt"
                                                                 Margin="0"
-                                                                IsReadOnly="True"
                                                                 InputTransparent="True"
+                                                                IsReadOnly="True"
                                                                 Style="{StaticResource DefaultEntry}"
                                                                 Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.StartdateToshow}" />
                                                         </StackLayout>
@@ -458,8 +464,8 @@
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
-                                                            IsReadOnly="True"
                                                             InputTransparent="True"
+                                                            IsReadOnly="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineOne}" />
                                                     </inputLayout:SfTextInputLayout>
@@ -477,8 +483,8 @@
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
-                                                            IsReadOnly="True"
                                                             InputTransparent="True"
+                                                            IsReadOnly="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineTwo}" />
                                                     </inputLayout:SfTextInputLayout>
@@ -503,8 +509,8 @@
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
-                                                            IsReadOnly="True"
                                                             InputTransparent="True"
+                                                            IsReadOnly="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding Source}" />
 
@@ -615,7 +621,7 @@
 
                                                             <Label.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{x:Static ResourceManager:AppResources.VATREligibleStartDate}" />
+                                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATREligibleStartDate}" />
                                                                     <Span Text="*" TextColor="#e84941" />
                                                                 </FormattedString>
                                                             </Label.FormattedText>
@@ -670,8 +676,7 @@
                                                             ItemHeight="45"
                                                             Mode="Dialog"
                                                             OkButtonClicked="DpEStartDate_OkButtonClicked"
-                                                            SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
-                                                            >
+                                                            SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}">
 
                                                             <custom:CustomDatePicker.ColumnHeaderView>
                                                                 <syncfusion:PickerColumnHeaderView Height="46" />
@@ -1757,7 +1762,7 @@
                                                         <Label IsVisible="{Binding IDNumberMandatoryVisibility}" Style="{StaticResource CaptionLabelGrey}">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{x:Static ResourceManager:AppResources.IDNumber}" />
+                                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IDNumber}" />
                                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                                 </FormattedString>
                                                             </Label.FormattedText>
@@ -1781,7 +1786,8 @@
                                                             <custom:GAZTBorderlessEntry
                                                                 x:Name="EntryIDNo"
                                                                 IsSpellCheckEnabled="False"
-                                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                                      iOS=Default}"
                                                                 MaxLength="{Binding MaxLengthID}"
                                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                 Style="{StaticResource DefaultEntry}"
@@ -1821,7 +1827,7 @@
 
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
                                                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
@@ -2381,7 +2387,7 @@
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATRIDType}" />
-                                                                        <Span Text="*" TextColor="#e84941" />
+                                                                        <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
@@ -2481,7 +2487,7 @@
                                                             <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IDNumber}" />
-                                                                    <Span Text="*" TextColor="#e84941" />
+                                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
@@ -2504,7 +2510,8 @@
                                                             <custom:GAZTBorderlessEntry
                                                                 x:Name="EntryContactIDNumber"
                                                                 IsSpellCheckEnabled="False"
-                                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                                      iOS=Default}"
                                                                 MaxLength="{Binding MaxLengthIDSR}"
                                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                 Style="{StaticResource DefaultEntry}"
@@ -2535,7 +2542,7 @@
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
-                                                                        <Span Text="*" TextColor="#e84941" />
+                                                                        <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
@@ -2784,7 +2791,6 @@
                                 HorizontalOptions="StartAndExpand"
                                 IsVisible="{Binding IsBackStepButtonVisible}"
                                 Source="arrowLeft.png"
-                                Style="{DynamicResource BackButtonArrow}"
                                 VerticalOptions="CenterAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TappedOnBackButton" />
@@ -2865,7 +2871,6 @@
                     Grid.Column="0"
                     HorizontalOptions="Start"
                     Source="arrowLeftwhite.png"
-                    Style="{DynamicResource BackButtonArrow}"
                     VerticalOptions="CenterAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnBackTapped" />
@@ -2873,8 +2878,8 @@
                 </Image>
             </Grid>
 
-            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
-     
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
         </Grid>
 
 

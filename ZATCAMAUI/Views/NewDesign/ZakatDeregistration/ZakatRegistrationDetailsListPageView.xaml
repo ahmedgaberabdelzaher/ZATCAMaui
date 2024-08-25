@@ -4,10 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     x:Name="ZakatReg"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -15,7 +15,7 @@
 
 
 
-     <Grid RowDefinitions="Auto,*">
+    <Grid RowDefinitions="Auto,*">
 
         <!--#region Header-->
         <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
@@ -25,9 +25,9 @@
                 <!--  Back Button  -->
                 <Image
                     HorizontalOptions="Start"
+                    IsVisible="{Binding IsBackStepButtonVisible}"
                     Rotation="0"
                     Source="whiteRightBack.png"
-                    IsVisible="{Binding IsBackStepButtonVisible}"
                     VerticalOptions="CenterAndExpand">
 
                     <Image.Triggers>
@@ -61,13 +61,14 @@
         <!--#endregion Header-->
 
         <!--#region Body-->
-        <Border Grid.Row="1"
-                Padding="10,0"
-                Style="{StaticResource CommonTopCurves}">
+        <Border
+            Grid.Row="1"
+            Padding="10,0"
+            Style="{StaticResource CommonTopCurves}">
 
             <Grid RowDefinitions="*">
 
-                 <listView:SfListView
+                <listView:SfListView
                     x:Name="outletDecisionOptionsListView"
                     Grid.Row="2"
                     Grid.Column="0"
@@ -139,5 +140,5 @@
         <!--  Loader  -->
         <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
-     </Grid>
+    </Grid>
 </ContentPage>
