@@ -303,8 +303,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        private Attachments _attachments;
-        public Attachments AttachmentsList
+        private AttachmentsList _attachments;
+        public AttachmentsList AttachmentsList
         {
             get
             {

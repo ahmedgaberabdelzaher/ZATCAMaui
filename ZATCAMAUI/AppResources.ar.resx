@@ -11065,7 +11065,7 @@ info@zatca.gov.sa</value>
     <value>الرجاء إعادة إدخال رمز الدخول </value>
 </data>
 <data name="TINPlaceholder" xml:space="preserve">
-    <value>الرقم المميز أو البريد الإلكتروني</value>
+    <value>الرقم المميز او البريد الالكتروني</value>
 </data>
 <data name="PasswordPlaceholder" xml:space="preserve">
     <value>كلمة المرور</value>

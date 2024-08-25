@@ -26,7 +26,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             //App.IsArabic = false;
             viewModel = App.Locator.FilesUploadPopUpView;
             this.BindingContext = viewModel;
-            var attachement = new Attachments();
+            var attachement = new AttachmentsList();
             attachement.results = attachments;
             onPageLoadAsync(attachement, whichAttachment, returnIdz);
         }
@@ -38,7 +38,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             viewModel = App.Locator.FilesUploadPopUpView;
             this.BindingContext = viewModel;
             dmsTypeString = dmsType;
-            var attachement = new Attachments();
+            var attachement = new AttachmentsList();
             attachement.results = attachments;
             onPageLoadAsync(attachement, whichAttachment, returnIdz);
 
@@ -50,14 +50,14 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             viewModel = App.Locator.FilesUploadPopUpView;
             this.BindingContext = viewModel;
 
-            var attachement = new Attachments();
+            var attachement = new AttachmentsList();
             attachement.results = attachments;
             _outletRef = outletRef;
             onPageLoadAsync(attachement, whichAttachment, returnIdz);
 
         }
 
-        public void onPageLoadAsync(Attachments attachments, WhichAttachment whichAttachment, string returnIdz)
+        public void onPageLoadAsync(AttachmentsList attachments, WhichAttachment whichAttachment, string returnIdz)
         {
 
             if (whichAttachment == WhichAttachment.VATInstalment)
@@ -166,11 +166,11 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         {
             if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements)
             {
-                MessagingCenter.Send<Object, Attachments>(this, "AttachmentRecvdinst", viewModel.AttachmentsList);
+                MessagingCenter.Send<Object, AttachmentsList>(this, "AttachmentRecvdinst", viewModel.AttachmentsList);
             }
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
             {
-                MessagingCenter.Send<Object, Attachments>(this, "AttachmentRecvdinst", viewModel.AttachmentsList);
+                MessagingCenter.Send<Object, AttachmentsList>(this, "AttachmentRecvdinst", viewModel.AttachmentsList);
             }
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionDynamicAttachment)
             {
@@ -178,7 +178,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             }
             else
             {
-                MessagingCenter.Send<Object, Attachments>(this, "AttachmentReceived", viewModel.AttachmentsList);
+                MessagingCenter.Send<Object, AttachmentsList>(this, "AttachmentReceived", viewModel.AttachmentsList);
             }
 
             viewModel.AttachmentList = new ObservableCollection<VATAttachment>();

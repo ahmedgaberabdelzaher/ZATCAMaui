@@ -110,7 +110,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
         {
             base.OnDisappearing();
 
-            MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
+            MessagingCenter.Unsubscribe<object, AttachmentsList>(this, "AttachmentReceived");
 
 
         }
@@ -121,7 +121,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
                 base.OnAppearing();
 
 
-                MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+                MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {

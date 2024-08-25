@@ -255,7 +255,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<object, bool>(this, "TermsContinue");
-            MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
+            MessagingCenter.Unsubscribe<object, AttachmentsList>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<object, bool>(this, "TermsContinueSecond");
             MessagingCenter.Unsubscribe<object, bool>(this, "InstructionsContinue");
             MessagingCenter.Unsubscribe<object, string>(this, "RejectScenario");
@@ -285,7 +285,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
                         SetItemsSelected();
                     }
                 });
-               MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+               MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {

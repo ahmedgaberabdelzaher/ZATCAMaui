@@ -157,7 +157,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
                 OnAppearing();
             });
 
-            MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+            MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
             {
                 if (arg != null)
                 {
@@ -172,7 +172,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
-            MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
+            MessagingCenter.Unsubscribe<object, AttachmentsList>(this, "AttachmentReceived");
 
         }
 

@@ -131,7 +131,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
             });
 
-            MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+            MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
             {
                 if (arg != null && arg.results != null && arg.results.Count > 0)
                 {
@@ -251,7 +251,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
+            MessagingCenter.Unsubscribe<object, AttachmentsList>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton");
             MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");

@@ -92,7 +92,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
 
         private void InitializationPopups()
         {
-            MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+            MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
             {
                 if (arg != null)
                 {

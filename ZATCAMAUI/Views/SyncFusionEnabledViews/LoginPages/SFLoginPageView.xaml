@@ -16,10 +16,9 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid RowDefinitions="auto,*">
+        <Grid RowDefinitions="*">
 
             <StackLayout
-                Grid.Row="1"
                 Padding="10,0"
                 Spacing="20">
 
@@ -171,7 +170,6 @@
 
                 <buttons:SfButton
                     x:Name="loginBtn"
-                    Margin="20"
                     Command="{Binding LoginClickedCommand}"
                     CornerRadius="15"
                     FontSize="Medium"
@@ -185,6 +183,7 @@
                     FontSize="Small"
                     HorizontalOptions="CenterAndExpand"
                     Opacity="0.8"
+                    Margin="0"
                     TextColor="LightGreen">
 
                     <Label.GestureRecognizers>

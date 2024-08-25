@@ -281,14 +281,14 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
         {
             base.OnDisappearing();
 
-            MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
+            MessagingCenter.Unsubscribe<object, AttachmentsList>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<object, bool>(this, "InvoiceBillsLoaded");
             MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "SelectedFrequencyType");
             MessagingCenter.Unsubscribe<object, string>(this, "SelectedReason");
-            MessagingCenter.Unsubscribe<object, Attachments>(this, "PickerSelectedItem");
+            MessagingCenter.Unsubscribe<object, AttachmentsList>(this, "PickerSelectedItem");
 
 
 
@@ -308,7 +308,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
 
 
-                MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+                MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {
