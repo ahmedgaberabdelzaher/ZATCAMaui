@@ -1,4 +1,5 @@
 ﻿
+using Syncfusion.Maui.ListView;
 using ZATCAMAUI.Models.InstalmentPlanModel;
 using ZATCAMAUI.Models.ZakatInstalationModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;

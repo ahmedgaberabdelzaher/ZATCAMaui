@@ -40,7 +40,7 @@
                     SelectionMode="Single"
                     VerticalScrollBarVisibility="Never">
                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="10"  />
+                        <LinearItemsLayout ItemSpacing="10"  Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>

@@ -30,7 +30,7 @@
                 VerticalOptions="Start"
                 VerticalScrollBarVisibility="Always">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout  />
+                    <LinearItemsLayout  Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
 

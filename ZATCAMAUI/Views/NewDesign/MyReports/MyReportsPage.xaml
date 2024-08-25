@@ -227,7 +227,7 @@
                         VerticalScrollBarVisibility="Never">
 
                         <CollectionView.ItemsLayout>
-                            <GridItemsLayout VerticalItemSpacing="20" />
+                            <GridItemsLayout VerticalItemSpacing="20" Orientation="Vertical"/>
                         </CollectionView.ItemsLayout>
 
                         <CollectionView.EmptyView>

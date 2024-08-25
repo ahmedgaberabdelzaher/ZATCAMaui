@@ -422,7 +422,7 @@
                                             VerticalScrollBarVisibility="Never">
 
                                             <CollectionView.ItemsLayout>
-                                                <GridItemsLayout VerticalItemSpacing="5" />
+                                                <GridItemsLayout VerticalItemSpacing="5" Orientation="Vertical"/>
                                             </CollectionView.ItemsLayout>
 
                                             <CollectionView.ItemTemplate>
@@ -985,7 +985,7 @@
                                                 VerticalScrollBarVisibility="Never">
 
                                                 <CollectionView.ItemsLayout>
-                                                    <GridItemsLayout VerticalItemSpacing="8" />
+                                                    <GridItemsLayout VerticalItemSpacing="8" Orientation="Vertical"/>
                                                 </CollectionView.ItemsLayout>
 
                                                 <CollectionView.ItemTemplate>

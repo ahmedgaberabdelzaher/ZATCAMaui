@@ -1,5 +1,4 @@
 ﻿using AppDynamics.Agent;
-using Foundation;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
@@ -7,7 +6,6 @@ using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
-    [Preserve(AllMembers = true)]
     public class NafathLoginPageViewModel : BaseViewModel
     {
     
@@ -17,7 +15,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             
         }
 
-        public bool IsLoading { get; internal set; }
 
         public async Task LoginCompletedInWebView()
         {

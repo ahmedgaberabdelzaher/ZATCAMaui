@@ -6,6 +6,11 @@ using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 using Application = Microsoft.Maui.Controls.Application;
 using Entry = Microsoft.Maui.Controls.Entry;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using Syncfusion.Maui.ListView;
+using System.Text;
+using Mopups.Services;
+using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 {

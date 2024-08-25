@@ -995,7 +995,7 @@
                                 VerticalOptions="Fill"
                                 VerticalScrollBarVisibility="Never">
                                 <CollectionView.ItemsLayout>
-                                    <LinearItemsLayout />
+                                    <LinearItemsLayout Orientation="Vertical"/>
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>

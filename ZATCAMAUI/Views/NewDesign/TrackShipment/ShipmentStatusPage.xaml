@@ -306,12 +306,16 @@
                                         LineBreakMode="WordWrap"
                                         TextColor="#002447"
                                         VerticalOptions="Start">
+                                        <Label.FormattedText>
 
-                                        <FormattedString>
-                                            <Span Text="{Binding TrackShipmentResponse.CIF, StringFormat='{0:n}'}" />
-                                            <Span Text="." />
-                                            <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
-                                        </FormattedString>
+                                            <FormattedString>
+                                                <Span Text="{Binding TrackShipmentResponse.CIF, StringFormat='{0:n}'}" />
+                                                <Span Text="." />
+                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
+                                            </FormattedString>
+
+                                        </Label.FormattedText>
+                                        
 
                                         <Label.Triggers>
                                             <DataTrigger
@@ -371,12 +375,16 @@
                                         LineBreakMode="WordWrap"
                                         TextColor="#002447"
                                         VerticalOptions="Start">
+                                        <Label.FormattedText>
 
-                                        <FormattedString>
-                                            <Span Text="{Binding TrackShipmentResponse.customs, StringFormat='{0:n}'}" />
-                                            <Span Text="." />
-                                            <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
-                                        </FormattedString>
+                                            <FormattedString>
+                                                <Span Text="{Binding TrackShipmentResponse.customs, StringFormat='{0:n}'}" />
+                                                <Span Text="." />
+                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
+                                            </FormattedString>
+
+                                        </Label.FormattedText>
+                                       
 
                                         <Label.Triggers>
                                             <DataTrigger
@@ -435,12 +443,15 @@
                                         LineBreakMode="WordWrap"
                                         TextColor="#002447"
                                         VerticalOptions="Start">
+                                        <Label.FormattedText>
 
-                                        <FormattedString>
-                                            <Span Text="{Binding TrackShipmentResponse.VAT, StringFormat='{0:n}'}" />
-                                            <Span Text="." />
-                                            <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
-                                        </FormattedString>
+                                            <FormattedString>
+                                                <Span Text="{Binding TrackShipmentResponse.VAT, StringFormat='{0:n}'}" />
+                                                <Span Text="." />
+                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
+                                            </FormattedString>
+
+                                        </Label.FormattedText>
 
                                         <Label.Triggers>
                                             <DataTrigger
@@ -514,12 +525,17 @@
                                         LineBreakMode="WordWrap"
                                         TextColor="#002447"
                                         VerticalOptions="Start">
+                                        <Label.FormattedText>
 
-                                        <FormattedString>
-                                            <Span Text="{Binding TrackShipmentResponse.others, StringFormat='{0:n}'}" />
-                                            <Span Text="." />
-                                            <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
-                                        </FormattedString>
+                                           <FormattedString>
+                                                <Span Text="{Binding TrackShipmentResponse.others, StringFormat='{0:n}'}" />
+                                                <Span Text="." />
+                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
+                                           </FormattedString>
+
+                                        </Label.FormattedText>
+
+                                        
 
                                         <Label.Triggers>
                                             <DataTrigger
