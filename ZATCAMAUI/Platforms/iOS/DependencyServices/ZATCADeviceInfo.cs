@@ -9,9 +9,9 @@ namespace ZATCAMAUI.Platforms.iOS.DependencyServices
 {
     public class ZATCADeviceInfo : Core.Interfaces.IDeviceInfoZATCA
     {
-        public string Model => throw new NotImplementedException();
+        public string Model => UIDevice.CurrentDevice.Model;
 
-        public string OperatingSystem => throw new NotImplementedException();
+        public string OperatingSystem => "iOS";
 
         public string OperatingSystemVersion => throw new NotImplementedException();
 
@@ -19,6 +19,8 @@ namespace ZATCAMAUI.Platforms.iOS.DependencyServices
 
         public bool IsTablet => throw new NotImplementedException();
 
+  
+        
         public double GetDeviceHeight()
         {
             double height = 0;

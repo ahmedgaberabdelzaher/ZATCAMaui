@@ -49,6 +49,9 @@ namespace ZATCAMAUI.Platforms.Android.DependencyServices
             return filetypesforZakat;
         }
 
+        
+        
+
         public string GetDeviceUdid()
         {
             string id = string.Empty;
@@ -95,9 +98,9 @@ namespace ZATCAMAUI.Platforms.Android.DependencyServices
             return filePath;
         }
 
-        public string Model => throw new NotImplementedException();
+        public string Model => Build.Model;
 
-        public string OperatingSystem => throw new NotImplementedException();
+        public string OperatingSystem => "Android";
 
         public string OperatingSystemVersion => throw new NotImplementedException();
 

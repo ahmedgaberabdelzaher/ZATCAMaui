@@ -2945,6 +2945,7 @@ namespace ZATCAMAUI.Core.Helper
 
             navigationService.Configure(App.ZakatExemptionRequestListPageView, typeof(ZakatExemptionRequestListPageView));
             navigationService.Configure(App.NafathPopUpPage,typeof(NafathPopUpPage));
+            navigationService.Configure(App.OtpLoginPageView, typeof(OTPPageView));
 
             #endregion
 
