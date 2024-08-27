@@ -26,32 +26,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <chart:ColumnSeries x:Key="Colors">
-                        <chart:ColumnSeries.PaletteBrushes>
-                            <Color>YellowGreen</Color>
-                            <Color>Blue</Color>
-                            <Color>Aqua</Color>
-                        </chart:ColumnSeries.PaletteBrushes>
-                    </chart:ColumnSeries>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                    <Color x:Key="ShadowLvl0">#EFEFEF</Color>
-                    <Style x:Key="GreyBorderFrameWithShadow" TargetType="Border">
-                        <Setter Property="BackgroundColor" Value="White" />
-                        <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
-                        <!--<Setter Property="HasShadow" Value="False" />-->
-                        <Setter Property="StrokeThickness" Value="1" />
-                        <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
-                        <!--<Setter Property="ShadowColor" Value="{StaticResource ShadowLvl0}" />-->
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
+            
         </ResourceDictionary>
     </ContentPage.Resources>
 

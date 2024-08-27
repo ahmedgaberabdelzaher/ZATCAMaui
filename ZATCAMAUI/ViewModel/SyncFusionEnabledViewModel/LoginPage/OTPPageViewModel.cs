@@ -1,7 +1,9 @@
-﻿using System.Windows.Input;
+﻿using System.Runtime.Intrinsics.X86;
+using System.Windows.Input;
 using AppDynamics.Agent;
 using Mopups.Services;
 using Newtonsoft.Json;
+using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -13,49 +15,162 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
 public class OTPPageViewModel : BaseViewModel
 {
 
-    private bool loginError = false;
     public static int LoginAttempt = 0;
-    /// <summary>
-    /// Gets or sets the command that is executed when the Hamburger menu button is clicked.
-    /// </summary>
-    public ICommand HamburgerMenuClickedCommand { get; set; }
+    private TimeSpan remainingTime = TimeSpan.FromMinutes(2);
+    private bool isTimeRemaining = false;
 
-    public bool LoginError
+    string oTPSentOnThisMobileNumber;
+    public string OTPSentOnThisMobileNumber { get { return oTPSentOnThisMobileNumber; } set { oTPSentOnThisMobileNumber = value; OnPropertyChanged(); } }
+
+    Color resendCodeTextColor;
+    public Color ResendCodeTextColor { get { return resendCodeTextColor; } set { resendCodeTextColor = value; OnPropertyChanged(); } }
+
+    bool isResendCodeEnabled;
+    public bool IsResendCodeEnabled { get { return isResendCodeEnabled; } set { isResendCodeEnabled = value; OnPropertyChanged(); } }
+
+    string lblCountDownTimer;
+    public string LblCountDownTimer { get { return lblCountDownTimer; } set { lblCountDownTimer = value; OnPropertyChanged(); } }
+
+    string oTPFirstDigit;
+    public string OTPFirstDigit { get { return oTPFirstDigit; } set { oTPFirstDigit = value; OnPropertyChanged(); } }
+
+    string oTPSecondDigit;
+    public string OTPSecondDigit { get { return oTPSecondDigit; } set { oTPSecondDigit = value; OnPropertyChanged(); } }
+
+    string oTPThirdDigit;
+    public string OTPThirdDigit { get { return oTPThirdDigit; } set { oTPThirdDigit = value; OnPropertyChanged(); } }
+
+    string oTPFourthDigit;
+    public string OTPFourthDigit { get { return oTPFourthDigit; } set { oTPFourthDigit = value; OnPropertyChanged(); } }
+
+
+    
+    public OTPPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
+    {
+        OTPSentOnThisMobileNumber = AppResources.ZZMobileNumber + " xxxxxxx" + App.MobileNumber?.Substring(7, 3);
+    }
+
+    public ICommand GoToNextEntryCommand
+    {
+
+        get
+        {
+            return new Command<object>((e) =>
+            {
+                if (e != null)
+                {
+
+                    var entry = e as GAZTBorderlessEntry;
+
+                    switch (entry.ClassId)
+                    {
+                        case "2":
+                            if (!string.IsNullOrEmpty(OTPFirstDigit))
+                            {
+                                entry.Focus();
+                            }
+                            break;
+                        case "3":
+                            if (!string.IsNullOrEmpty(OTPSecondDigit))
+                            {
+                                entry.Focus();
+                            }
+                            break;
+                        case "4":
+                            if (!string.IsNullOrEmpty(OTPThirdDigit))
+                            {
+                                entry.Focus();
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                }
+            });
+        }
+    }
+
+    public ICommand FocusEntryCommand
+    {
+
+        get
+        {
+            return new Command<object>((e) =>
+            {
+                if (e != null)
+                {
+
+                    var entry = e as GAZTBorderlessEntry;
+
+                    entry.Focus();
+                }
+            });
+        }
+    }
+
+    public ICommand VerifyOTPCommand
     {
         get
         {
-            return this.loginError;
-        }
-        set
-        {
-            if (this.loginError == value)
+            return new Command(async () =>
             {
-                return;
-            }
-            this.loginError = value;
-            this.OnPropertyChanged("LoginError");
+                try
+                {
+                    StopTimer();
+                    var tokenRequestModel = new TokenRequestModel() { Token = App.Token, Lang =App.IsArabic ? "ar":"en", OTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit, SourceType = "M", OsName = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem, BrowserName = "chrome" };
+                    await TokenPostRequest(tokenRequestModel);
+                }
+                catch (Exception)
+                {
+                   
+                   
+                }
+
+
+            });
         }
     }
 
-    public OTPPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
+    public ICommand StartTimerCommand
     {
-        this.HamburgerMenuClickedCommand = new Command(this.HamburgerMenuClicked);
+        get
+        {
+            return new Command(() =>
+            {
+                StartTimer();
+            });
+        }
     }
 
-    private void HamburgerMenuClicked()
+    public ICommand ResendOtpCommand
     {
-        var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("OTPPageView", "HamburgerMenuClicked", "Anonymous Menu Opened");
-        _navigationService.NavigateTo(App.DashboardAnonymousMenuPageView);
-        AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        get
+        {
+            return new Command(() =>
+            {
+                if (!isTimeRemaining)
+                {
+                    ResendToken().ConfigureAwait(false);
+                    ResendCodeTextColor = Colors.Gray;
+                    IsResendCodeEnabled = false;
+                    OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = string.Empty;
+                    remainingTime = TimeSpan.FromMinutes(2);
+                    StartTimer();
+                }
+            });
+        }
     }
 
     public async Task TokenPostRequest(TokenRequestModel model)
     {
         try
         {
-            LoginError = false;
+
+            IsLoading = true;
             var tokenResponse = await WebServiceManager.ValidateOTP(model);
-            String response = tokenResponse.Content.ReadAsStringAsync().Result;
+            string response = tokenResponse.Content.ReadAsStringAsync().Result;
             if (tokenResponse != null && tokenResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
 
@@ -64,15 +179,14 @@ public class OTPPageViewModel : BaseViewModel
                 {
                     App.Token = result?.Result?.AccessToken;
                     await LoginCompleted();
-
-                    //TODO Pop OTP Page
-                    // _navigationService.GoBack();
-                    _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                    _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView,false);
                 }
             }
             else if (tokenResponse != null && tokenResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
             {
-                LoginError = true;
+                IsShowMsgView = true;
+                MessageTxt = AppResources.OTPScreenErrMsg;
+
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                 _navigationService.GoBack();
 
@@ -81,21 +195,61 @@ public class OTPPageViewModel : BaseViewModel
             {
                 var result = JsonConvert.DeserializeObject<TokenErrorModel>(response);
                 App.Token = result.Result.ErrorToken; //to Resend the request
-                LoginError = true;
+                IsShowMsgView = true;
+                MessageTxt = AppResources.OTPScreenErrMsg;
                 if (result.Result.ErrorCode.Equals("M012"))
                 {
                     _navigationService.GoBack();
                     _navigationService.NavigateTo(App.AccountLockedPageView);
-                    LoginError = false;
+                    
                 }
 
             }
+            IsLoading = false;
         }
-        catch (Exception) { }
+        catch (Exception)
+        {
+            IsLoading = false;
+            IsShowMsgView = true;
+            MessageTxt = AppResources.RequestTimeoutDescription;
+        }
+    }
+
+
+    private void StartTimer()
+    {
+        isTimeRemaining = true;
+        Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+        {
+            remainingTime = remainingTime.Subtract(TimeSpan.FromSeconds(1));
+            if (remainingTime.TotalSeconds <= -1)
+            {
+                StopTimer();
+                return false;
+            }
+            UpdateTimerLabel();
+            return true;
+        });
+    }
+
+    private void StopTimer()
+    {
+        IsResendCodeEnabled = true;
+        ResendCodeTextColor = Color.FromArgb("#0996D4"); 
+        isTimeRemaining = false;
+    }
+
+    private void UpdateTimerLabel()
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            LblCountDownTimer = remainingTime.ToString(@"mm\:ss");
+        });
     }
 
     public async Task ResendToken()
     {
+        IsLoading = true;
         string UserId = App.LoginDataRetrieved.TIN;
         string language = UtilityManager.GetLanguageParameter();
         var model = new ResentTokenRequestModel()
@@ -114,16 +268,19 @@ public class OTPPageViewModel : BaseViewModel
         else
         {
             LoginAttempt++;
-            LoginError = true;
+            IsShowMsgView = true;
+            MessageTxt = AppResources.OTPScreenErrMsg;
             if (LoginAttempt == 3)
             {
                 _navigationService.NavigateTo(App.UnlockAccountTINPageView);
             }
         }
+        IsLoading = false;
     }
 
     public async Task LoginCompleted()
     {
+        IsLoading = true;
         string response = string.Empty;
         string UserId = App.LoginDataRetrieved.TIN;
 
@@ -163,6 +320,7 @@ public class OTPPageViewModel : BaseViewModel
             }
             catch (Exception)
             {
+                IsLoading = false;
             }
 
         }
@@ -202,7 +360,7 @@ public class OTPPageViewModel : BaseViewModel
         }
 
 
-
+        IsLoading = false;
     }
 }
 

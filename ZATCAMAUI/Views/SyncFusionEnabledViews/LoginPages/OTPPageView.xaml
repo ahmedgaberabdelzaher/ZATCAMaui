@@ -3,246 +3,335 @@
     x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages.OTPPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     x:Name="page"
     Title="OTPPageView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    <ContentPage.Content>
-        <Grid>
-            <Grid x:Name="otpGrid" Margin="{OnPlatform Android='0,-40,0,0', iOS='0,-50,0,-35'}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*" />
-                </Grid.ColumnDefinitions>
-                <StackLayout>
-                    <Image
-                        x:Name="HamburgerMenu"
-                        Margin="10,55,10,0"
-                        HorizontalOptions="EndAndExpand"
-                        Source="Burger"
-                        Style="{StaticResource SmallIcon}"
-                        VerticalOptions="Start">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <Grid VerticalOptions="Start">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
 
-                        <Image
-                            Grid.Row="0"
-                            BackgroundColor="Transparent"
-                            HeightRequest="100"
-                            HorizontalOptions="Center"
-                            Source="zatcaLogo.png"
-                            WidthRequest="100" />
-                        <StackLayout
-                            Grid.Row="1"
-                            Margin="25,0,0,0"
-                            BackgroundColor="Transparent">
-                            <Label
-                                x:Name="VerificationCodeTitle"
-                                Grid.Row="0"
-                                Margin="0,0,25,0"
-                                FontSize="Large"
-                                Opacity="1.3"
-                                TextColor="LightSeaGreen" />
-                            <Label
-                                x:Name="OTPPageDescription"
-                                Margin="0,3,25,0"
-                                FontSize="12"
-                                Opacity="0.8"
-                                TextColor="white" />
-                            <BoxView
-                                Grid.RowSpan="3"
-                                Margin="0,3,35,0"
-                                BackgroundColor="Gray"
-                                HeightRequest="1"
-                                HorizontalOptions="StartAndExpand"
-                                Opacity="0.3"
-                                VerticalOptions="Center"
-                                WidthRequest="500" />
-                            <Label
-                                x:Name="OTPErrorMsg"
-                                Margin="0,10,35,0"
-                                BackgroundColor="LightPink"
-                                FontSize="12"
-                                HeightRequest="20"
-                                IsVisible="{Binding LoginError}"
-                                Opacity="1.3"
-                                TextColor="Red"
-                                VerticalOptions="Center" />
-                            <Label
-                                Margin="0,3,25,0"
-                                FontSize="12"
-                                Style="{StaticResource CaptionLabelWhite}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span
-                                            x:Name="MobileNumber"
-                                            Style="{StaticResource CaptionLabelWhite}"
-                                            TextColor="{StaticResource SuccessColor}" />
-                                        <Span Text=" " />
-                                        <Span
-                                            x:Name="MobileNumberTxt"
-                                            Style="{StaticResource CaptionLabelWhite}"
-                                            Text="xxxxxx2226" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </StackLayout>
-                        <StackLayout
-                            Grid.Row="2"
-                            Margin="0,10,0,0"
-                            HorizontalOptions="CenterAndExpand"
-                            Orientation="Horizontal"
-                            VerticalOptions="Start">
-                            <Border
-                                Margin="5"
-                                Padding="0"
-                                HeightRequest="40"
-                                HorizontalOptions="FillAndExpand"
-                                StrokeShape="RoundRectangle 5"
-                                WidthRequest="40">
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="Step1"
-                                    Margin="1,1,1,1"
-                                    BackgroundColor="White"
-                                    HeightRequest="35"
-                                    HorizontalOptions="CenterAndExpand"
-                                    HorizontalTextAlignment="Center"
-                                    IsPassword="true"
-                                    MaxLength="1"
-                                    Opacity="1"
-                                    PlaceholderColor="Black"
-                                    TextChanged="Step1_TextChanged"
-                                    TextColor="black"
-                                    WidthRequest="35" />
-                            </Border>
-                            <Border
-                                Margin="5"
-                                Padding="0"
-                                HeightRequest="40"
-                                HorizontalOptions="FillAndExpand"
-                                StrokeShape="RoundRectangle 5"
-                                WidthRequest="40">
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="Step2"
-                                    Margin="1,1,1,1"
-                                    BackgroundColor="White"
-                                    HeightRequest="35"
-                                    HorizontalOptions="CenterAndExpand"
-                                    HorizontalTextAlignment="Center"
-                                    IsPassword="true"
-                                    MaxLength="1"
-                                    Opacity="1"
-                                    PlaceholderColor="Black"
-                                    TextChanged="Step2_TextChanged"
-                                    TextColor="black"
-                                    WidthRequest="35" />
-                            </Border>
-                            <Border
-                                Margin="5"
-                                Padding="0"
-                                HeightRequest="40"
-                                HorizontalOptions="FillAndExpand"
-                                StrokeShape="RoundRectangle 5"
-                                WidthRequest="40">
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="Step3"
-                                    Margin="1,1,1,1"
-                                    BackgroundColor="White"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center"
-                                    IsPassword="true"
-                                    MaxLength="1"
-                                    Opacity="1"
-                                    PlaceholderColor="Black"
-                                    TextChanged="Step3_TextChanged"
-                                    TextColor="black"
-                                    WidthRequest="35" />
-                            </Border>
-                            <Border
-                                Margin="5"
-                                Padding="0"
-                                HeightRequest="40"
-                                HorizontalOptions="FillAndExpand"
-                                StrokeShape="RoundRectangle 5"
-                                WidthRequest="40">
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="Step4"
-                                    Margin="1,1,1,1"
-                                    BackgroundColor="White"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center"
-                                    IsPassword="true"
-                                    MaxLength="1"
-                                    Opacity="1"
-                                    PlaceholderColor="Black"
-                                    TextChanged="Step4_TextChanged"
-                                    TextColor="black"
-                                    WidthRequest="35" />
-                            </Border>
-                        </StackLayout>
-                        <StackLayout
-                            Grid.Row="3"
-                            Margin="0,20,0,0"
-                            HorizontalOptions="CenterAndExpand"
-                            Orientation="Horizontal"
-                            VerticalOptions="Start">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding StartTimerCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <Grid
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="Auto,*"
+            VerticalOptions="FillAndExpand">
+
+            <!--#region Body-->
+            <Border
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                HorizontalOptions="FillAndExpand"
+                Style="{StaticResource CommonTopCurves}"
+                VerticalOptions="FillAndExpand">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout Spacing="30">
+
+                        <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                            <!--  Logo Image  -->
                             <Image
-                                Margin="5"
-                                HeightRequest="20"
-                                Source="partially_clock"
-                                Style="{StaticResource SmallIcon}"
-                                WidthRequest="20" />
-                            <Label
-                                x:Name="ResendTimer"
-                                FontSize="12"
+                                Grid.Column="1"
+                                HeightRequest="45"
                                 HorizontalOptions="CenterAndExpand"
-                                Opacity="1.3"
-                                TextColor="White"
-                                VerticalOptions="Center" />
+                                Source="ic_logo_gazt.png"
+                                
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="40" />
+
+
+                            <StackLayout Grid.Column="2">
+
+                                <!--  Close Image  -->
+                                <Image
+                                    HorizontalOptions="EndAndExpand"
+                                    Rotation="0"
+                                    Source="darkClose.png"
+                                    
+                                    VerticalOptions="CenterAndExpand" />
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BackCommand}" />
+                                </StackLayout.GestureRecognizers>
+
+                            </StackLayout>
+
+                        </Grid>
+
+                        <!--  Header Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="28"
+                            Text="{x:Static ResourceManager:AppResources.VerificationCodeTitle}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            TextColor="#002447"
+                            VerticalOptions="Start" />
+
+                        <!--  OTP msg Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="WordWrap"
+                            Text="{x:Static ResourceManager:AppResources.OTPPageDescription}"
+                            TextColor="#999999"
+                            VerticalOptions="Start" />
+
+
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            BackgroundColor="#EBEBEB"
+                            HeightRequest="1"
+                            VerticalOptions="Start" />
+
+
+                        <!--  OTP msg Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="WordWrap"
+                            Text="{Binding OTPSentOnThisMobileNumber}"
+                            TextColor="#999999"
+                            VerticalOptions="Start" />
+
+
+                        <Grid
+                            Padding="0"
+                            ColumnDefinitions="55,55,55,55"
+                            ColumnSpacing="20"
+                            FlowDirection="LeftToRight"
+                            HorizontalOptions="CenterAndExpand"
+                            RowDefinitions="65"
+                            VerticalOptions="Start">
+
+                            <!--  First OTP  -->
+                            <Border
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
+
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="firstEntry"
+                                    ClassId="1"
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="True"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    ReturnType="Next"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding OTPFirstDigit}"
+                                    TextColor="#0996D4"
+                                    WidthRequest="100">
+
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behavior:OnlyNumericValuesBehaviour />
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding GoToNextEntryCommand}"
+                                            CommandParameter="{Binding Source={x:Reference secondEntry}}"
+                                            EventName="TextChanged" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                </custom:GAZTBorderlessEntry>
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference firstEntry}}" />
+                                </Border.GestureRecognizers>
+
+                            </Border>
+
+                            <!--  Second OTP  -->
+                            <Border
+                                Grid.Column="1"
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
+
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="secondEntry"
+                                    ClassId="2"
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="True"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    ReturnType="Next"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding OTPSecondDigit}"
+                                    TextColor="#0996D4"
+                                    WidthRequest="100">
+
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behavior:OnlyNumericValuesBehaviour />
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding GoToNextEntryCommand}"
+                                            CommandParameter="{Binding Source={x:Reference thirdEntry}}"
+                                            EventName="TextChanged" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                </custom:GAZTBorderlessEntry>
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference secondEntry}}" />
+                                </Border.GestureRecognizers>
+
+                            </Border>
+
+                            <!--  Third OTP  -->
+                            <Border
+                                Grid.Column="2"
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
+
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="thirdEntry"
+                                    ClassId="3"
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="True"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    ReturnType="Next"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding OTPThirdDigit}"
+                                    TextColor="#0996D4"
+                                    WidthRequest="100">
+
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behavior:OnlyNumericValuesBehaviour />
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding GoToNextEntryCommand}"
+                                            CommandParameter="{Binding Source={x:Reference fourthEntry}}"
+                                            EventName="TextChanged" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                </custom:GAZTBorderlessEntry>
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference thirdEntry}}" />
+                                </Border.GestureRecognizers>
+
+                            </Border>
+
+                            <!--  Fourth OTP  -->
+                            <Border
+                                Grid.Column="3"
+                                HeightRequest="50"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10"
+                                VerticalOptions="Start"
+                                WidthRequest="50">
+
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="fourthEntry"
+                                    ClassId="4"
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    IsPassword="True"
+                                    Keyboard="{OnPlatform Android=Numeric,
+                                                          iOS=Default}"
+                                    MaxLength="1"
+                                    ReturnType="Go"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding OTPFourthDigit}"
+                                    TextColor="#0996D4"
+                                    WidthRequest="100">
+
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behavior:OnlyNumericValuesBehaviour />
+                                        <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                </custom:GAZTBorderlessEntry>
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference fourthEntry}}" />
+                                </Border.GestureRecognizers>
+
+                            </Border>
+
+                        </Grid>
+
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal"
+                            Spacing="20">
+
+                            <Label
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="16"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding LblCountDownTimer}"
+                                TextColor="#999999" />
+
+                            <Image
+                                HeightRequest="25"
+                                Source="clock"
+                                WidthRequest="25" />
+
                         </StackLayout>
+
+                        <!--  Resend msg Label  -->
                         <Label
-                            x:Name="AccountLockedText"
-                            Grid.Row="4"
-                            Margin="25,20,25,0"
-                            FontSize="14"
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
                             HorizontalOptions="CenterAndExpand"
-                            Opacity="1.3"
-                            TextColor="LightSeaGreen"
-                            VerticalOptions="Center" />
-                        <Label
-                            x:Name="ResendCodeText"
-                            Grid.Row="5"
-                            Margin="25,40,25,0"
-                            FontSize="14"
-                            HorizontalOptions="CenterAndExpand"
-                            Opacity="1.0"
-                            TextColor="Gray"
-                            VerticalOptions="Center">
+                            HorizontalTextAlignment="Center"
+                            IsEnabled="{Binding IsResendCodeEnabled}"
+                            TextColor="{Binding ResendCodeTextColor}"
+                            Opacity="{Binding Opacity}"
+                            Text="{x:Static ResourceManager:AppResources.ResendVerificationCodeMsg}"
+                            TextDecorations="Underline"
+                            VerticalOptions="Start">
+
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Resent_Tapped" />
+                                <TapGestureRecognizer Command="{Binding ResendOtpCommand}" />
                             </Label.GestureRecognizers>
                         </Label>
-                    </Grid>
-                </StackLayout>
-            </Grid>
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </Border>
+            <!--#endregion Body-->
+
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

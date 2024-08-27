@@ -37,7 +37,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         public string password;
         public string email;
         public int CurrentAttempt = 0;
-        private bool loginError = false;
         private string tin;
 
         #endregion
@@ -435,23 +434,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             }
         }
 
-        public bool LoginError
-        {
-            get
-            {
-                return this.loginError;
-            }
-            set
-            {
-                if (this.loginError == value)
-                {
-                    return;
-                }
-                this.loginError = value;
-                this.OnPropertyChanged("LoginError");
-            }
-        }
-
+       
         private TINModel _selectedTinId;
         public TINModel SelectedTinId
         {
@@ -605,6 +588,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 OnPropertyChanged("IsVisibleTinIds");
             }
         }
+
         private string _NavigaateToThisService = string.Empty;
         public string NavigateToThisService
         {
@@ -736,11 +720,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                     language = lang
                 };
                 var loginResponse = await WebServiceManager.LoginRequest(model);
-                //App.Token = "";
-                //App.MobileNumber = "9999971487";
-                //App.LoginDataRetrieved = new LoginModel() { TIN = this.TIN };
-                //_navigationService.NavigateTo(App.OtpLoginPageView);
-                String response = loginResponse.Content.ReadAsStringAsync().Result;
+
+                string response = loginResponse.Content.ReadAsStringAsync().Result;
                 if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.OK)
                 {
 
@@ -748,31 +729,35 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                     App.Token = result.Result.Token;
                     App.MobileNumber = result.Result.MobileNumber;
                     App.LoginDataRetrieved = new LoginModel() { TIN = IsTinDropdownVisible ? this.SelectedTin : this.TIN };
-                    LoginError = false;
+                    
                     _navigationService.NavigateTo(App.OtpLoginPageView);
                 }
                 else if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
                     LoginAttempt++;
-                    LoginError = true;
+                    JObject json = JObject.Parse(response);
+                    IsShowMsgView = true;
+                    MessageTxt = json.GetValue("httpMessage").ToString();
                     if (LoginAttempt >= 3)
                     {
-                        //_navigationService.GoBack();
                         _navigationService.NavigateTo(App.UnlockAccountTINPageView);
                         LoginAttempt = 0;
                     }
                 }
                 else if (loginResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
                 {
-                    // { "httpCode":"500","httpMessage":"Internal Server Error","moreInformation":"Internal Error"}
                     JObject json = JObject.Parse(response);
-                    await _dialogService.ShowMessage(json.GetValue("httpMessage").ToString(), AppResources.ZError);
+                    IsShowMsgView = true;
+                    MessageTxt = json.GetValue("httpMessage").ToString();
                 }
+                IsLoading = false;
+
             }
+
+
             catch (Exception ex)
             {
-                //return String.Empty;
-                System.Diagnostics.Debug.WriteLine("err : " + ex.StackTrace);
+                IsLoading = false;
             }
             finally
             {
@@ -888,184 +873,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 
         }
 
-        public async Task LoginCompletedInWebView()
-        {
-            string response = string.Empty;
-            string UserId = App.LoginDataRetrieved.TIN;
-
-            Instrumentation.SetUserData("user_id", UserId);
-
-            //string lang = "E";
-            string language = UtilityManager.GetLanguageParameter();
-
-            string _currentAttempts = CurrentAttempt.ToString();
-            string languag = UtilityManager.GetLanguageParameter();
-
-            // * OLD TP PROFILE API
-            //TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
-
-            // * NEW TP PROFILE API
-            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileAndUpdatePasswordAPICall(UserId);
-
-            if (TPProfile != null)
-            {
-
-
-                App.TP = new TaxPayerProfile();
-                App.TP = TPProfile;
-                App.TP.userId = TPProfile.TIN;
-                try
-                {
-                    if (App.LoginDataRetrieved != null)
-                    {
-                        if (App.TP != null)
-                        {
-                            App.TP.firstName = App.LoginDataRetrieved.NameFirst;
-                            App.TP.lastName = App.LoginDataRetrieved.NameLast;
-                            App.TP.organizationName = App.LoginDataRetrieved.NameOrg1;
-                            App.TP.typeCheck = App.LoginDataRetrieved.TypeChk;
-                        }
-
-                    }
-
-                }
-                catch (Exception)
-                {
-
-
-                }
-
-            }
-
-            string OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
-            string OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
-
-            await Task.Run(() =>
-            {
-                try
-                {
-
-                    App.IsLoginCalled = false;
-                    App.ArePreLoginLangCookiesSet = false;
-
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
-                        App.HasToRefreshLoaderOnDashboard = true;
-                    });
-
-
-                }
-                catch (GAZTInternetException)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    });
-
-
-                }
-                catch (Exception)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong + " " + AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    });
-
-
-                }
-
-            });
-
-        }
-
-        public async Task LoginCompletedInWebViewForVATRegistrationTestPurpose()
-        {
-            string response = string.Empty;
-            string UserId = App.LoginDataRetrieved.TIN;
-
-            Instrumentation.SetUserData("user_id", UserId);
-
-
-            string language = UtilityManager.GetLanguageParameter();
-
-
-
-            string _currentAttempts = CurrentAttempt.ToString();
-            string languag = UtilityManager.GetLanguageParameter();
-
-            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileAndUpdatePasswordAPICall(UserId);
-            if (TPProfile != null)
-            {
-
-                App.TP = new TaxPayerProfile();
-                App.TP = TPProfile;
-                App.TP.userId = App.LoginDataRetrieved.TIN;
-                try
-                {
-                    if (App.LoginDataRetrieved != null)
-                    {
-                        if (App.TP != null)
-                        {
-                            App.TP.firstName = App.LoginDataRetrieved.NameFirst;
-                            App.TP.lastName = App.LoginDataRetrieved.NameLast;
-                            App.TP.organizationName = App.LoginDataRetrieved.NameOrg1;
-                            App.TP.typeCheck = App.LoginDataRetrieved.TypeChk;
-                        }
-
-                    }
-
-                }
-                catch (Exception)
-                {
-
-
-                }
-            }
-
-            string OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
-            string OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
-
-            await Task.Run(() =>
-            {
-                try
-                {
-
-                    App.IsLoginCalled = false;
-                    App.ArePreLoginLangCookiesSet = false;
-
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView, false);
-                        App.HasToRefreshLoaderOnDashboard = true;
-                        //TODO for continue work on EST added by ashwini
-                        //_navigationService.NavigateTo(App.EstablishmentRegistrationPage);
-                    });
-
-
-                }
-                catch (GAZTInternetException)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    });
-
-
-                }
-                catch (Exception)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong + " " + AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    });
-
-
-                }
-
-            });
-
-        }
 
         public async Task Logout()
         {

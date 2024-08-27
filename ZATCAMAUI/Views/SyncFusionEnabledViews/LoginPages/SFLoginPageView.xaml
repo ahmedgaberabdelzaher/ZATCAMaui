@@ -52,17 +52,6 @@
                     VerticalOptions="Center"
                     WidthRequest="500" />
 
-                <Label
-                    x:Name="LoginErrorLabel"
-                    BackgroundColor="LightPink"
-                    FontSize="12"
-                    HeightRequest="20"
-                    IsVisible="{Binding LoginError}"
-                    Opacity="1.3"
-                    Text="{Binding LoginErrorMsg}"
-                    TextColor="Red"
-                    VerticalOptions="Center" />
-
                 <!--  Tin/Email Entry  -->
                 <custom:CustomSfTextInputView>
                     <custom:CustomSfTextInputView.TextInputView>
@@ -195,9 +184,12 @@
             </StackLayout>
 
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
-
+             
             <custom:BottomMenu Grid.Row="2" VerticalOptions="EndAndExpand" />
 
+            <!--  Popup Msg  -->
+
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
