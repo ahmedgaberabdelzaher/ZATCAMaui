@@ -1856,7 +1856,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             });
             OnResendButtonClick = new Command(async () =>
             {
-
                 if (IsResendOTPEnabled)
                 {
                     await Task.Run(() =>
@@ -1869,17 +1868,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         IsLoading = false;
                     });
                 }
-
-
             });
 
             OnBackButtonClick = new Command(() =>
             {
                 SetBackFormVisibility();
-            });
-            GoButtonClick = new Command(() =>
-            {
-                _navigationService.GoBack();
             });
         }
         #endregion
@@ -2812,6 +2805,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (IsGulfER)
                 {
                     createVatSignUPRequest.birthDate = date1 + "T00:00:00";
+                    createVatSignUPRequest.birthDate = dt.ToString("yyyy-MM-dd") + "T00:00:00";
                 }
                 else
                 {

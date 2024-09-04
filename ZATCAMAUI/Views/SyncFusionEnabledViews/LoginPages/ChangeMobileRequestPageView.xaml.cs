@@ -34,40 +34,28 @@ public partial class ChangeMobileRequestPageView : ContentPage
 		viewModel.InitCountryCodesAPI();
 		viewModel.NafathGUID = guid;
 		var x = guid;
-		if (string.IsNullOrEmpty(guid))
+        viewModel.ShowTpDetailsPage();
+        if (!string.IsNullOrEmpty(guid))
 		{
-			viewModel.ShowMainForm = true;
-			viewModel.ShowOtpForm = false;
-			viewModel.ShowContinue2 = false;
-		}
-		else
-		{
-			viewModel.ShowOtpForm = true;
-			viewModel.IsTINManual = true;
-			viewModel.ShowContinue2 = true;
-			viewModel.ShowMainForm = false;
-			viewModel.OtpSection1 = false;
-			viewModel.InitCountryCodesAPI();
-			viewModel.GetCaptchAndGUID("CHMB");
-		}
+            viewModel.InitCountryCodesAPI();
+            viewModel.GetCaptchAndGUID("CHMB");
+        }
 
 	}
 
-
-
 	private void setDefaults()
 	{
-		viewModel.OtpSection1 = false;
+		//viewModel.OtpSection1 = false;
 		viewModel.ShowOTPSection = false;
 		viewModel.ShowAttachmentSection = false;
-		viewModel.ShowMainForm = true;
-		viewModel.ShowOtpForm = false;
+		//viewModel.ShowMainForm = true;
+		//viewModel.ShowOtpForm = false;
 		viewModel.TinNumber = string.Empty;
 		viewModel.ManagerName = string.Empty;
 		viewModel.SelectedIDType = string.Empty;
 		viewModel.ManagerId = string.Empty;
 		viewModel.AttachedForms.Clear();
-		viewModel.DissableSendOtp = true;
+		//viewModel.DissableSendOtp = true;
 		viewModel.TxtMobileNumber = string.Empty;
 		viewModel.OTPFirstDigit = string.Empty;
 		viewModel.OTPSecondDigit = string.Empty;
@@ -75,8 +63,10 @@ public partial class ChangeMobileRequestPageView : ContentPage
 		viewModel.OTPFourthDigit = string.Empty;
 		viewModel.ShowOTPSuccessMessage = false;
 		viewModel.ShowSubmitForAutomatic = false;
+		//viewModel.EnableContinue2 = true;
 
-		MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
+
+        MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
 		{
 			viewModel.TxtMobileNumber = string.Empty;
 			// IntnlCodes.Text = arg;

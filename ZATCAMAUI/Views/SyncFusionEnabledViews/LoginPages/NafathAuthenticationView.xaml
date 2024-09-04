@@ -78,7 +78,7 @@
 
                 <StackLayout
                     Padding="24"
-                    Spacing="32"
+                    Spacing="24"
                     VerticalOptions="CenterAndExpand">
                     <Border
                         BackgroundColor="{StaticResource TiffanyBG}"
@@ -87,6 +87,7 @@
                         StrokeShape="RoundRectangle 30">
                         <Label
                             FontSize="Large"
+                            Padding="20"
                             Text="{Binding AuthenticationNumber}"
                             TextColor="{StaticResource Primary}" />
                     </Border>
@@ -94,10 +95,7 @@
                         HorizontalOptions="CenterAndExpand"
                         Text="{x:Static ResourceManager:AppResources.ApproveInNafathApp}"
                         VerticalOptions="CenterAndExpand" />
-                    <Label
-                        HorizontalOptions="CenterAndExpand"
-                        Text="{Binding TempMessage}"
-                        VerticalOptions="CenterAndExpand" />
+                    
                     <Button
                         Margin="24,24"
                         BackgroundColor="#0996d4"

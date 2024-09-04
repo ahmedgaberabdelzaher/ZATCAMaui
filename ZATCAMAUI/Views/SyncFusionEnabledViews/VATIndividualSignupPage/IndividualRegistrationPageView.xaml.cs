@@ -368,13 +368,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         public async void ValidateIDNumber()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-            });
+            viewModel.IsLoading = true;
+
             string dob = viewModel.DOB.Replace("/", "");
             EntryName.IsEnabled = true;
             if (viewModel.SelectedIdType.ID == "ZS0015")

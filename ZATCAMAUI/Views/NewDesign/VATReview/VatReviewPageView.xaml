@@ -26,7 +26,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ControlTemplate>
+    <!--<ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid BackgroundColor="Transparent">
                 <Grid>
@@ -45,7 +45,7 @@
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
-                                <!--<RowDefinition Height="10*" />-->
+                                <RowDefinition Height="10*" />
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
                             <ContentPresenter
@@ -93,7 +93,7 @@
                 </Grid>
             </Grid>
         </ControlTemplate>
-    </ContentPage.ControlTemplate>
+    </ContentPage.ControlTemplate>-->
 
 
     <ContentPage.Content>
@@ -108,7 +108,6 @@
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        IsVisible="{Binding IsBackButtonVisible}"
                         Rotation="0"
                         Source="whiteRightBack.png"
                         VerticalOptions="CenterAndExpand">
@@ -125,7 +124,7 @@
                     </Image>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoBackClick}" />
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
 
                 </StackLayout>

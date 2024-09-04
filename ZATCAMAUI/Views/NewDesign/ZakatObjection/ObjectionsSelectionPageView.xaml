@@ -11,6 +11,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
     ios:Page.UseSafeArea="true"
+    BackgroundColor="White"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -23,150 +24,96 @@
 
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <Grid BackgroundColor="Transparent">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Border
-                        Grid.Row="1"
-                        Padding="0"
-                        BackgroundColor="Black"
-                        StrokeShape="RoundRectangle 15,15,0,0">
-                        <Grid
-                            x:Name="VATRMainGrid"
-                            Margin="0"
-                            Padding="0,0,0,0"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand">
-                            <Grid.RowDefinitions>
-                                <!--<RowDefinition Height="10*" />-->
-                                <RowDefinition Height="100*" />
-                            </Grid.RowDefinitions>
-                            <ContentPresenter
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" />
-                        </Grid>
-                    </Border>
-                    <Grid Grid.Row="0" Padding="24,10,24,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*" />
-                            <ColumnDefinition Width="60*" />
-                            <ColumnDefinition Width="20*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            HorizontalOptions="Center"
-                            Style="{StaticResource SectionTitleWhiteBold}"
-                            Text="{x:Static ResourceManager:AppResources.Objections}" />
-
-                        <Image
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            HeightRequest="24"
-                            HorizontalOptions="StartAndExpand"
-                            Source="arrowLeftwhite"
-                            
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="24">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" />
-                            </Image.GestureRecognizers>
-                        </Image>
-
-                    </Grid>
-                </Grid>
-            </Grid>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-
+    
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid>
 
-                <!--  Selection Page  -->
-                <Grid
-                    Margin="20,10,20,0"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
+        <Grid RowDefinitions="Auto,*">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
 
-                    <Grid Grid.Row="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="1" />
-                        </Grid.RowDefinitions>
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Padding="0,5,0,0"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource PageTitleBlack}"
-                            Text="{x:Static ResourceManager:AppResources.Objections}" />
-                        <Label
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Margin="0,10,0,15"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource BodyLabelGrey}"
-                            Text="{x:Static ResourceManager:AppResources.VRChooseaZakatObjectionorVATReview}" />
-                        <BoxView
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                <StackLayout>
 
-                    </Grid>
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
 
-                    <Grid
-                        Grid.Row="1"
-                        BackgroundColor="Transparent"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand">
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
 
-                        <listView:SfListView
-                            AutoFitMode="Height"
-                            HorizontalOptions="FillAndExpand"
-                            IsScrollingEnabled="False"
-                            ItemSpacing="5"
-                            ItemTemplate="{StaticResource UnselectedItemTemplateSelector}"
-                            ItemsSource="{Binding SelectionOptions}"
-                            ScrollBarVisibility="Never"
-                            SelectedItem="{Binding SelectedOption, Mode=TwoWay}"
-                            SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
-                            SelectionBackground="Transparent"
-                            SelectionChanged="outletDecisionOptionsListView_SelectionChanged"
-                            SelectionMode="Single"
-                            VerticalOptions="StartAndExpand">
+                    </Image>
 
-                            <listView:SfListView.ItemsLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
 
-                                <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+                </StackLayout>
 
-                            </listView:SfListView.ItemsLayout>
-
-                        </listView:SfListView>
-
-                    </Grid>
-                </Grid>
-
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.Objections}"
+                    VerticalOptions="Center" />
 
             </Grid>
-        </ScrollView>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
+                <StackLayout Grid.Row="1">
+                    <Label
+                        Margin="0,10,0,1-"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource BodyLabelGrey}"
+                        Text="{x:Static ResourceManager:AppResources.VRChooseaZakatObjectionorVATReview}" />
+
+                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                    <listView:SfListView
+                        AutoFitMode="Height"
+                        HorizontalOptions="FillAndExpand"
+                        IsScrollingEnabled="False"
+                        ItemSpacing="5"
+                        ItemTemplate="{StaticResource UnselectedItemTemplateSelector}"
+                        ItemsSource="{Binding SelectionOptions}"
+                        ScrollBarVisibility="Never"
+                        SelectedItem="{Binding SelectedOption, Mode=TwoWay}"
+                        SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
+                        SelectionBackground="Transparent"
+                        SelectionChanged="outletDecisionOptionsListView_SelectionChanged"
+                        SelectionMode="Single"
+                        VerticalOptions="StartAndExpand">
+
+                        <listView:SfListView.ItemsLayout>
+
+                            <listView:GridLayout x:Name="GridLayout" />
+
+                        </listView:SfListView.ItemsLayout>
+
+                    </listView:SfListView>
+
+                </StackLayout>
+            </Border>
+            
+            <!--endregion Body-->
+        </Grid>
+
+       
     </ContentPage.Content>
 </ContentPage>

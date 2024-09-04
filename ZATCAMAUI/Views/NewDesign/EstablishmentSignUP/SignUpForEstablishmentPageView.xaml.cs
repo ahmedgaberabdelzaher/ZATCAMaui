@@ -1919,6 +1919,12 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
         }
 
+        private void DDLicense_OkayButtonClicked(object sender, EventArgs e)
+        {
+            ddlLIssuedBy.IsOpen = false;
+            ddlLIssuedByCity.IsOpen = false;
+        }
+
         private void DDlIDType_OkayButtonClicked(object sender, EventArgs e)
         {
             viewModel.TxtIDNumber = string.Empty;
@@ -1952,8 +1958,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 viewModel.SelectedSignUpUsingSetForCancle = viewModel.SelectedSignUpUsing;
             }
             IDTypePicker.IsOpen = false;
-            ddlLIssuedBy.IsOpen = false;
-            ddlLIssuedByCity.IsOpen = false;
+            
         }
 
         private void EntryName_Unfocused(object sender, FocusEventArgs e)

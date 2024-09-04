@@ -71,7 +71,7 @@
                     Source="close.png"
                     WidthRequest="25">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoButtonClick}" />
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
 
@@ -147,7 +147,7 @@
                                 </StackLayout>
 
                                 <StackLayout x:Name="IDNumber" Grid.Row="1">
-                                    <Label
+                                    <!--<Label
                                         Grid.Row="0"
                                         Padding="0,0,0,0"
                                         HorizontalOptions="Start"
@@ -158,7 +158,7 @@
                                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </Label>
+                                    </Label>-->
                                     <Border
                                         Stroke="{StaticResource Gray}"
                                         StrokeShape="RoundRectangle 10,10,10,10"
@@ -383,7 +383,6 @@
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         HasError="{Binding FrameIDError}"
-                                        Hint="{x:Static ResourceManager:AppResources.IDNumber}"
                                         InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
@@ -613,7 +612,6 @@
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         HasError="{Binding FrameNameError}"
-                                        Hint="{x:Static ResourceManager:AppResources.ZZName}"
                                         InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
@@ -691,7 +689,6 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="False"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
                                             LeadingViewPosition="Inside"
@@ -1057,13 +1054,7 @@
 
                                     </StackLayout>
 
-                                    <StackLayout>
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource CaptionLabelBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}" />
-
-                                        <inputLayout:SfTextInputLayout
+                                    <inputLayout:SfTextInputLayout
                                             x:Name="Neighborhood"
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
@@ -1093,14 +1084,8 @@
                                             </custom:GAZTBorderlessEntry>
 
                                         </inputLayout:SfTextInputLayout>
-                                    </StackLayout>
 
-                                    <StackLayout>
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource CaptionLabelBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" />
-                                        <inputLayout:SfTextInputLayout
+                                    <inputLayout:SfTextInputLayout
                                             x:Name="PostalCode"
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
@@ -1129,14 +1114,8 @@
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
-                                    </StackLayout>
 
-                                    <StackLayout>
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource CaptionLabelBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}" />
-                                        <inputLayout:SfTextInputLayout
+                                    <inputLayout:SfTextInputLayout
                                             x:Name="BuildingNumber"
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
@@ -1165,15 +1144,8 @@
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
-                                    </StackLayout>
 
-                                    <StackLayout>
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource CaptionLabelBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.ZZZZUnitNumber}" />
-
-                                        <inputLayout:SfTextInputLayout
+                                    <inputLayout:SfTextInputLayout
                                             x:Name="UnitNumber"
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
@@ -1201,7 +1173,6 @@
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
-                                    </StackLayout>
 
                                 </StackLayout>
 
@@ -1235,9 +1206,7 @@
 
                                 <StackLayout>
 
-                                    <StackLayout>
-
-                                        <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -1247,12 +1216,11 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <inputLayout:SfTextInputLayout
+                                    <inputLayout:SfTextInputLayout
                                             x:Name="FrmEmailAddress"
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameEmailError}"
-                                            Hint="{x:Static ResourceManager:AppResources.Email}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
                                             LeadingViewPosition="Inside"
@@ -1275,11 +1243,7 @@
                                             </custom:GAZTBorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
 
-                                    </StackLayout>
-
-                                    <StackLayout>
-
-                                        <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -1289,12 +1253,11 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <inputLayout:SfTextInputLayout
+                                    <inputLayout:SfTextInputLayout
                                             x:Name="FrmConfirmEmail"
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameConfirmEmailError}"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZConfirmEmail}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
                                             LeadingViewPosition="Inside"
@@ -1318,11 +1281,8 @@
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
-                                    </StackLayout>
 
-                                    <StackLayout>
-
-                                        <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -1332,7 +1292,7 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <Border
+                                    <Border
                                             Padding="18,0,18,6"
                                             Stroke="LightGray"
                                             StrokeShape="RoundRectangle 8,8,8,8">
@@ -1386,11 +1346,7 @@
 
                                         </Border>
 
-                                    </StackLayout>
-
-                                    <StackLayout>
-
-                                        <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
+                                     <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -1401,10 +1357,12 @@
 
                                         </Label>
 
+                                    <StackLayout Orientation="Horizontal">
+
+                                       
                                         <inputLayout:SfTextInputLayout
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameCaptchaError}"
-                                            Hint="{x:Static ResourceManager:AppResources.CaptchaCode}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
                                             LeadingViewPosition="Inside"
@@ -1419,37 +1377,25 @@
                                                 FontFamily="{StaticResource SomarLight}"
                                                 FontSize="Small"
                                                 Keyboard="Plain"
-                                                Placeholder="{x:Static ResourceManager:AppResources.CaptchaCode}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding Captcha}" />
-
-                                            <inputLayout:SfTextInputLayout.TrailingView>
-                                                <StackLayout Orientation="Horizontal" Spacing="5">
-
-                                                    <Image
-                                                        HeightRequest="80"
-                                                        Source="{Binding Path=Image}"
-                                                        WidthRequest="150" />
-
-                                                    <Image>
-                                                        <Image.Source>
-                                                            <FontImageSource
-                                                                FontFamily="UserIconFont"
-                                                                Glyph="{x:Static FontImage:IconFonts.RefreshCircle}"
-                                                                Size="32"
-                                                                Color="{StaticResource SecondaryNew}" />
-                                                        </Image.Source>
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="RefreshCaptchaClicked" />
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
-
-                                                </StackLayout>
-
-                                            </inputLayout:SfTextInputLayout.TrailingView>
-
                                         </inputLayout:SfTextInputLayout>
-
+                                        <Image
+                                            HeightRequest="50"
+                                            Source="{Binding Path=Image}"
+                                            WidthRequest="150" />
+                                        <Image>
+                                            <Image.Source>
+                                                <FontImageSource
+                                                    FontFamily="UserIconFont"
+                                                    Glyph="{x:Static FontImage:IconFonts.RefreshCircle}"
+                                                    Size="32"
+                                                    Color="{StaticResource SecondaryNew}" />
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="RefreshCaptchaClicked" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
                                     </StackLayout>
 
                                 </StackLayout>

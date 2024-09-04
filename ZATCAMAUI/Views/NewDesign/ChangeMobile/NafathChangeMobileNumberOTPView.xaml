@@ -82,7 +82,7 @@
                     <Grid
                         Padding="10,0"
                         ColumnDefinitions="*,*,*,*,*,*"
-                        ColumnSpacing="8">
+                        ColumnSpacing="15">
 
                         <Border
                             Grid.Column="0"
@@ -240,7 +240,7 @@
                         </Border>
 
                         <Border
-                            Grid.Column="4"
+                            Grid.Column="5"
                             HeightRequest="50"
                             Stroke="Gray"
                             StrokeShape="RoundRectangle 10"
@@ -272,7 +272,7 @@
 
                     <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
 
-                        <Image Source="clock" />
+                        <Image Source="clock" HeightRequest="24"/>
 
                         <Label
                             Style="{StaticResource CaptionLabelGrey}"

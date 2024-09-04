@@ -16,23 +16,9 @@ public class NafathAuthenticationViewModel : BaseViewModel
     //public NafathLoginRequestModel RequestModel { get; set; }
     public NafathLoginResponse Response { get; set; }
 
-    public int _tempCounter = 0;
     public bool _isTimerRepeatRequired = true;
     public string navigation;
     public string guid_chm = string.Empty;
-
-
-    private string _tempMessage;
-
-    public string TempMessage
-    {
-        get { return _tempMessage; }
-        set
-        {
-            _tempMessage = value;
-            OnPropertyChanged(nameof(TempMessage));
-        }
-    }
 
     private string _authenticationNumber;
 
@@ -119,8 +105,6 @@ public class NafathAuthenticationViewModel : BaseViewModel
                 {
                     Task.Run(async () =>
                     {
-                        _tempCounter += 1;
-                        TempMessage = "API called " + _tempCounter;
                         response = await WebServiceManager.CheckNafathAuthentication(Response);
                     });
                 }
@@ -204,7 +188,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
             App.LoginDataRetrieved.TIN = TIN;
             App.Token = response.result.accessToken;
             await LoginCompleted();
-            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView, false);
         }
     }
 

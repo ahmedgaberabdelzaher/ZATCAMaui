@@ -3625,7 +3625,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     {
 
                  IsShowMsgView = await HaveSurveyForToday();
-                                     if (IsShowMsgView)
+                        if (IsShowMsgView)
                         {
                             SurveyPopUp poupWindow = new SurveyPopUp();
                             await MopupService.Instance.PushAsync(poupWindow);

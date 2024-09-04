@@ -11532,7 +11532,7 @@ Best regards,
         <value>Objection Number</value>
     </data>
     <data name="GSTCType" xml:space="preserve">
-        <value>Type</value>
+        <value>Type</value>  
     </data>
     <data name="GSTCNoteText" xml:space="preserve">
         <value>For More Information about the case , Please Visit GSTC website.</value>

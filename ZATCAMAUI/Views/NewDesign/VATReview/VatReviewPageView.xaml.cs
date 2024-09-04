@@ -21,6 +21,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
             viewModel = App.Locator.VatReviewView;
             this.BindingContext = viewModel;
+
             viewModel.vRInterface = (ViewModel.NewDesignViewModel.VATReviewViewModel.VatReviewInterface)this;
 
 

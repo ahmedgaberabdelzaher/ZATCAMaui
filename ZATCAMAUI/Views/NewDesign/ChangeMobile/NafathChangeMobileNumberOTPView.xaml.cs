@@ -15,8 +15,14 @@ public partial class NafathChangeMobileNumberOTPView : ContentPage
 			viewModel.Reset();
 		}
 
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			viewModel.OnAppearing();
+			FirstDigitEntry.Focus();
+		}
 
-		void OtpFirstEntry_TextChanged(System.Object sender, TextChangedEventArgs e)
+    void OtpFirstEntry_TextChanged(System.Object sender, TextChangedEventArgs e)
 		{
 			if (viewModel.FirstDigit.Length > 0)
 			{

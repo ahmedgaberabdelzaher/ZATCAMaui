@@ -5,6 +5,7 @@ using Mopups.Services;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 
@@ -31,6 +32,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             }
         }
 
+        public int _maxLength = 10;
+        public int MaxLength
+        {
+            get { return _maxLength; }
+            set
+            {
+                _maxLength = value;
+                OnPropertyChanged(nameof(MaxLength));
+            }
+        }
+        
         private GenericPickerModel _tinsPickerModel;
         public GenericPickerModel TinsPickerModel
         {
@@ -58,12 +70,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             }
         }
 
-        private string _countryCode;
+        private string _countryCode = "+966";
         public string CountryCode
         {
             get { return _countryCode; }
             set
             {
+                if (_countryCode == value) return;
                 _countryCode = value;
                 OnPropertyChanged(nameof(CountryCode));
             }
@@ -97,6 +110,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             get { return tinError; }
             set
             {
+               
                 tinError = value;
                 OnPropertyChanged(nameof(TinError));
             }
@@ -158,23 +172,41 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
 
         private async void Next()
         {
-            if (!Validate())
+            try
             {
-                NafathChangeMobileNumberSendOTPModel model = new NafathChangeMobileNumberSendOTPModel();
-                model.Partner = SelectedTIN;
-                model.Guid = GUID;
-                model.MobExten = CountryCode;
-                model.MobNum = MobileNumber;
-                model.ErrorMsg = string.Empty;
-                model.SendResendOtp = "1";
-                model.Lang = WebServiceManager.GetLangZParameterAREN();
-                model.Scrid = string.Empty;
-                var response = await WebServiceManager.NafathChangeMobileNumberSendOTP(model);
-                if (response != null && response.d != null)
+                IsLoading = true;
+                if (!Validate())
                 {
-                    _navigationService.NavigateTo(App.NafathChangeMobileNumberOTPView, response);
+                    NafathChangeMobileNumberSendOTPModel model = new NafathChangeMobileNumberSendOTPModel();
+                    model.Partner = SelectedTIN;
+                    model.Guid = GUID;
+                    model.MobExten = CountryCode.Replace("+", "00");
+                    model.MobNum = MobileNumber;
+                    model.ErrorMsg = string.Empty;
+                    model.SendResendOtp = "1";
+                    model.Lang = WebServiceManager.GetLangZParameterAREN();
+                    model.Scrid = string.Empty;
+                    var response = await WebServiceManager.NafathChangeMobileNumberSendOTP(model);
+                    IsLoading = false;
+                    if (response != null && response.d != null)
+                    {
+                        _navigationService.NavigateTo(App.NafathChangeMobileNumberOTPView, response);
+                    }
+                    else
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                    }
                 }
             }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+            
         }
 
         private void CountryCodesTapped()
@@ -188,6 +220,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
                 CountryCode = arg;
+                MaxLength = 15 - CountryCode.Length;
             });
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
@@ -212,7 +245,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             if (string.IsNullOrEmpty(SelectedTIN))
             {
                 IsError = true;
-                TinError = "Please select TIN";
+                TinError = AppResources.PleaseSelectTIN;
             }
 
             if (string.IsNullOrEmpty(CountryCode))
@@ -227,11 +260,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
                 MobileNumberError += "Please enter your mobile number.";
             }
 
-            else if (MobileNumber.Length != 10)
-            {
-                IsError = true;
-                MobileNumberError += "Mobile number should be 10 digit length.";
-            }
+            //else if (MobileNumber.Length < 10)
+            //{
+            //    IsError = true;
+            //    MobileNumberError += "Mobile number should be 10 digit length.";
+            //}
             return IsError;
         }
 
@@ -241,7 +274,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             TinError = string.Empty;
             MobileNumberError = string.Empty;
             SelectedTIN = string.Empty;
-            CountryCode = string.Empty;
+            CountryCode = "+966";
             MobileNumber = string.Empty;
             TinsPickerModel = null;
             CountryCodesList = null;

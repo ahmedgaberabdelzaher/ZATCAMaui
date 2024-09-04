@@ -696,7 +696,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             App.selectedVATItem = "";
             App.selectedVATItemFbust = "";
-            await Application.Current.MainPage.Navigation.PushAsync(new VatReviewPageView());
+            _navigationService.NavigateTo(App.VatReviewPageView);
         }
 
         public void ResetListData()

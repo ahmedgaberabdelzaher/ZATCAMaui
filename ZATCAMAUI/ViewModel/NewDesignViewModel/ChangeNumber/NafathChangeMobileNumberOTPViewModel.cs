@@ -177,16 +177,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
                 model.Lang = WebServiceManager.GetLangZParameterAREN();
                 model.Otp = FirstDigit + SecondDigit + ThirdDigit + FourthDigit + FifthDigit + SixthDigit;
                 var response = await WebServiceManager.NafathChangeMobileNumberCheckOTP(model);
-                if (response != null)
+                if (response != null && response.d != null)
                 {
-                    if (string.IsNullOrEmpty(response.d.ErrorMsg))
-                    {
-                        _navigationService.NavigateTo(App.NafathChangeMobileNumberSuccessView);
-                    }
-                    else
-                    {
-                       await _dialogService.ShowMessage(response.d.ErrorMsg, AppResources.Information);
-                    }
+                    _navigationService.NavigateTo(App.NafathChangeMobileNumberSuccessView);
+                }
+                else
+                {
+                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                 }
             }
         }

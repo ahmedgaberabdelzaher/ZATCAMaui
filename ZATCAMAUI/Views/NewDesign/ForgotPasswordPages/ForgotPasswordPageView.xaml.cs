@@ -22,10 +22,12 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
                 viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
                 BindingContext = viewModel;
                 viewModel.ClearData();
-                viewModel.OnPageLoad();
+               // viewModel.OnPageLoad();
                 viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
-                SetPickerFont();
+               // SetPickerFont();
                 viewModel.StartPage = 1;
+
+                Console.WriteLine("------ On Constructor End-------");
             }
             catch (Exception)
             {
@@ -316,6 +318,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
 
                 NewPasswordIcon.Source = "hidePassword";
                 ConfirmNewPasswordIcon.Source = "hidePassword";
+                Console.WriteLine("------ On Appeating End-------");
             }
             catch (Exception)
             {

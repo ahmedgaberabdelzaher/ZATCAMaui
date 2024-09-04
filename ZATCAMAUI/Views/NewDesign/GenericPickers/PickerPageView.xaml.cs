@@ -74,10 +74,15 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
                 viewModel.DataSource = _pickerSource;
                 viewModel.PickerItemSource = viewModel.DataSource.PickerData;
                 viewModel.PickerTitle = viewModel.DataSource.PickerTitle;
+                _pageCode = _pickerSource.PageCode;
                 if (viewModel.DataSource.SelectedValue != null)
                 {
                     viewModel.SelectedItem = viewModel.DataSource.SelectedValue;
                     //genericPicker.Columns[0].SelectedIndex = int.Parse(viewModel.SelectedItem);
+                }
+                else
+                {
+                    viewModel.DataSource.SelectedValue = _pickerSource.PickerData.FirstOrDefault();
                 }
                 this.BindingContext = viewModel;
                 // SetPickerFont();
@@ -139,7 +144,14 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         {
             try
             {
-                MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
+                if (_pageCode == 1)
+                {
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelected", viewModel.DataSource);
+                }
+                else
+                {
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
+                }
             }
             catch (Exception)
             {

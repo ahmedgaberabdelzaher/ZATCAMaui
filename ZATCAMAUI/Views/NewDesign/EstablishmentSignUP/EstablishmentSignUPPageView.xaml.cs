@@ -10,29 +10,14 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
         EstablishmentSignUPPageViewModel viewModel;
         public EstablishmentSignUPPageView()
         {
-
             InitializeComponent();
             viewModel = App.Locator.EstablishmentSignUPPageView;
             BindingContext = viewModel;
-
-
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
-            if (App.IsArabic)
-            {
-                backArrow.Rotation = 180;
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                backArrow.Rotation = 0;
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
@@ -43,7 +28,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
         private void OnEstablishmentTapped(object sender, TappedEventArgs e)
         {
-
             viewModel.IsLoading = true;
             viewModel.IndividualBackImg = "vat_tile_listofsignup_W.png";
             viewModel.EstablishmentBackImg = "vat_tile_listofsignup.png";
@@ -53,16 +37,10 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
         private async void OnIndividualTapped(object sender, TappedEventArgs e)
         {
-
             viewModel.IsLoading = true;
             viewModel.IndividualBackImg = "vat_tile_listofsignup.png";
             viewModel.EstablishmentBackImg = "vat_tile_listofsignup_W.png";
             await MopupService.Instance.PushAsync(new NafathPopUpPage());//CR6094
-        }
-
-        private void OnBackArrowTapped(object sender, TappedEventArgs e)
-        {
-            viewModel._navigationService.GoBack();
         }
     }
 }

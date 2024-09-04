@@ -74,77 +74,77 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
                     <Image Source="logo_gazt.png" />
-                    <StackLayout Spacing="16" VerticalOptions="Start">
-                        <Label Text="{x:Static ResourceManager:AppResources.PleaseChooseTinNumber}" />
-
-                        <Border Padding="4" Style="{StaticResource GreyBorderFrame}">
-                            <StackLayout
-                                Padding="8,0"
+                    <Label Text="{x:Static ResourceManager:AppResources.PleaseChooseTinNumber}" />
+                    <Border Padding="4" Style="{StaticResource GreyBorderFrame}">
+                        <StackLayout
+                            Padding="8,0"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal">
+                            <custom:GAZTBorderlessEntry
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
                                 HorizontalOptions="FillAndExpand"
-                                Orientation="Horizontal">
-                                <custom:GAZTBorderlessEntry
-                                    FontFamily="{StaticResource SomarBold}"
-                                    FontSize="Small"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsEnabled="False"
-                                    Text="{Binding SelectedTIN}"
-                                    TextColor="{StaticResource PrimaryColor}" />
-                                <Image
-                                    HorizontalOptions="EndAndExpand"
-                                    Source="arrowDropdown.png"
-                                    VerticalOptions="Center" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SnipperTappedCommand}" />
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                        </Border>
-                        <Label
-                            IsVisible="{Binding IsError}"
-                            Text="{Binding TinError}"
-                            TextColor="{StaticResource ErrorColor}" />
-                        <Label Margin="0,32,0,0" Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" />
-                        <Border Padding="4" Style="{StaticResource GreyBorderFrame}">
-                            <StackLayout
-                                Padding="0"
-                                Orientation="Horizontal"
-                                Spacing="0"
-                                VerticalOptions="CenterAndExpand">
-                                <Image Source="arrowDropdown.png">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding CountryCodesCommand}" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                                <buttons:SfButton
-                                    Background="Transparent"
-                                    Command="{Binding CountryCodesCommand}"
-                                    Text="{Binding CountryCode}"
-                                    TextColor="{StaticResource PrimaryColor}" />
-                                <custom:GAZTBorderlessEntry
-                                    Margin="5,0,0,0"
-                                    Keyboard="{OnPlatform Android=Telephone,
-                                                          iOS=Default}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding MobileNumber}"
-                                    TextColor="{StaticResource PrimaryColor}">
-                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                        <behaviors:OnlyNumericValuesBehaviour />
-                                    </custom:GAZTBorderlessEntry.Behaviors>
-                                </custom:GAZTBorderlessEntry>
-                            </StackLayout>
-                        </Border>
-                        <Label
-                            IsVisible="{Binding IsError}"
-                            Text="{Binding MobileNumberError}"
-                            TextColor="{StaticResource ErrorColor}" />
-                        <buttons:SfButton
-                            Margin="0,32,0,0"
-                            Command="{Binding NextCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
-                    </StackLayout>
+                                IsEnabled="False"
+                                Text="{Binding SelectedTIN}"
+                                TextColor="{StaticResource PrimaryColor}" />
+                            <Image
+                                HorizontalOptions="EndAndExpand"
+                                Source="arrowDropdown.png"
+                                VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SnipperTappedCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Border>
+                    <Label
+                        IsVisible="{Binding IsError}"
+                        Text="{Binding TinError}"
+                        TextColor="{StaticResource ErrorColor}" />
+                    <Label Margin="0,32,0,0" Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" />
+                    <Border Padding="4" Style="{StaticResource GreyBorderFrame}">
+                        <StackLayout
+                            Padding="0"
+                            Orientation="Horizontal"
+                            Spacing="0"
+                            VerticalOptions="CenterAndExpand">
+                            <Image Source="arrowDropdown.png">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CountryCodesCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <buttons:SfButton
+                                Background="Transparent"
+                                Command="{Binding CountryCodesCommand}"
+                                Text="{Binding CountryCode}"
+                                TextColor="{StaticResource PrimaryColor}" />
+                            <custom:GAZTBorderlessEntry
+                                Margin="5,0,0,0"
+                                MaxLength="{Binding MaxLength}"
+                                Keyboard="{OnPlatform Android=Telephone,
+                                                        iOS=Default}"
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding MobileNumber}"
+                                TextColor="{StaticResource PrimaryColor}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behaviors:OnlyNumericValuesBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+                        </StackLayout>
+                    </Border>
+                    <Label
+                        IsVisible="{Binding IsError}"
+                        Text="{Binding MobileNumberError}"
+                        TextColor="{StaticResource ErrorColor}" />
+                    <buttons:SfButton
+                        Margin="0,32,0,0"
+                        Command="{Binding NextCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.ZZNext}" />
                 </StackLayout>
-
             </Border>
+
+             <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
             <!--#endregion Body-->
         </Grid>
     </ContentPage.Content>
