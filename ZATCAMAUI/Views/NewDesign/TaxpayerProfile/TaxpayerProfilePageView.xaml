@@ -26,12 +26,19 @@
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        Source="arrowLeftwhite.png"
-                        
-                        VerticalOptions="Center">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BackCommand}" />
-                        </Image.GestureRecognizers>
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
                     </Image>
 
                     <StackLayout.GestureRecognizers>
@@ -110,7 +117,7 @@
                                         StrokeShape="RoundRectangle 14,14,14,14"
                                         StrokeThickness="1"
                                         VerticalOptions="CenterAndExpand"
-                                        WidthRequest="59">
+                                        WidthRequest="100">
 
                                         <Label
                                             HorizontalOptions="Center"
@@ -140,111 +147,85 @@
 
                                     <Image HorizontalOptions="EndAndExpand" Source="ic_Edit.png">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnMobileEditTapped" />
+                                            <TapGestureRecognizer Command="{Binding OnMobileEditCommand}" />
                                         </Image.GestureRecognizers>
                                     </Image>
                                 </StackLayout>
 
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="10"
-                                    Stroke="{StaticResource Primary}">
+                                <custom:CustomSfTextInputView OutlineCornerRadius="8">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="MobileNumberCodeEntry"
+                                            Placeholder="{x:Static ResourceManager:AppResources.NDConfirmNewEmail}"
+                                            HorizontalOptions="FillAndExpand"
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding MobileNumber}"
+                                            TextColor="{StaticResource PrimaryColor}"
+                                            VerticalTextAlignment="Center" />
 
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="MobileNumberCodeEntry"
-                                        FlowDirection="LeftToRight"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputTransparent="True"
-                                        IsReadOnly="True"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding MobileNumber}"
-                                        TextColor="{StaticResource PrimaryColor}"
-                                        VerticalTextAlignment="Center" />
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
 
                             </StackLayout>
 
                             <StackLayout Spacing="10">
 
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDEmail}" />
+                                    <Label Style="{StaticResource CaptionLabelGrey}"
+                                           Text="{x:Static ResourceManager:AppResources.NDEmail}" />
 
                                     <Image HorizontalOptions="EndAndExpand" Source="ic_Edit.png">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnEmailEditTapped" />
+                                            <TapGestureRecognizer Command="{Binding OnEmailEditCommand}" />
                                         </Image.GestureRecognizers>
                                     </Image>
                                 </StackLayout>
 
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="10"
-                                    Stroke="{StaticResource Primary}">
+                                <custom:CustomSfTextInputView OutlineCornerRadius="8">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                         <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding EmailEntry}" />
 
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
 
-                                    <custom:GAZTBorderlessEntry
-                                        InputTransparent="True"
-                                        IsReadOnly="True"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding EmailEntry}" />
-
-                                </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
                             <StackLayout Spacing="10">
 
                                 <StackLayout Orientation="Horizontal">
 
-                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Password}" />
+                                    <Label Style="{StaticResource CaptionLabelGrey}"
+                                           Text="{x:Static ResourceManager:AppResources.Password}" />
 
                                     <Image HorizontalOptions="EndAndExpand" Source="ic_Edit.png">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnPasswordEditTapped" />
+                                            <TapGestureRecognizer Command="{Binding OnPasswordEditCommand}" />
                                         </Image.GestureRecognizers>
 
                                     </Image>
 
                                 </StackLayout>
 
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="10"
-                                    Stroke="{StaticResource Primary}">
+                                <custom:CustomSfTextInputView OutlineCornerRadius="8">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                         <custom:GAZTBorderlessEntry
+                                            x:Name="Password"
+                                            Placeholder="{x:Static ResourceManager:AppResources.Password}"
+                                            InputTransparent="True"
+                                            IsPassword="True"
+                                            IsReadOnly="True"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding PasswordEntry}" />
 
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
 
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="Password"
-                                        InputTransparent="True"
-                                        IsPassword="True"
-                                        IsReadOnly="True"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding PasswordEntry}" />
-
-                                </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
                             <Border
@@ -262,7 +243,7 @@
 
                                     <Image HorizontalOptions="EndAndExpand" Source="ic_Edit.png">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnManagerDetailsTapped" />
+                                            <TapGestureRecognizer Command="{Binding OnManagerDetailsCommand}" />
                                         </Image.GestureRecognizers>
                                     </Image>
                                 </StackLayout>
@@ -273,9 +254,6 @@
                     </ScrollView>
 
                 </StackLayout>
-
-
-
 
             </Border>
 

@@ -30,7 +30,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                 {
 
                     BillInfo billInfo = new BillInfo();
-                    viewModel.onPageLoad(billInfo);
+                   await viewModel.onPageLoad(billInfo);
                     if (viewModel.MyBillsOriginal != null)
                     {
                         viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "P"));
@@ -50,26 +50,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
 
 
         }
-        private async void LoadAccountStatements()
-        {
-            try
-            {
-                BillInfo billInfo = new BillInfo();
-                await viewModel.onPageLoad(billInfo);
-                if (viewModel.MyBillsOriginal != null)
-                {
-                    viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "Paid"));
-                }
-
-                await viewModel.PopulateReturnTypeList();
-                await viewModel.PopulateASFilterData();
-                viewModel.populateStatusChips();
-
-            }
-            catch (Exception)
-            {
-            }
-        }
+      
         protected override void OnAppearing()
         {
             base.OnAppearing();

@@ -209,10 +209,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            if (DeviceInfo.Platform == DevicePlatform.Android)
-                Label_InternationalnoCode.Margin = new Thickness(0);
-            else
-                Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
 
             try
             {

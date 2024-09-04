@@ -29,7 +29,7 @@
         <Grid RowDefinitions="auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,15" ColumnDefinitions="*,auto,*">
 
                 <StackLayout>
 
@@ -287,16 +287,13 @@
                     <!--  Chat View Ends  -->
 
                     <!--  ContactUs View Starts  -->
-                    <Grid IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.ContactUs}}">
-                        <Grid x:Name="ContactUsMainPage">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
-                                <StackLayout>
+                    <Grid RowDefinitions="*" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.ContactUs}}">
+
+                        <ScrollView x:Name="ContactUsMainPage" VerticalScrollBarVisibility="Never">
+                                <StackLayout Margin="10"
+                                             Spacing="10">
                                     <Label
-                                        Grid.Column="1"
+                                        
                                         Style="{StaticResource SectionTitleBlackBold}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZLandingPageTitle}" />
 
@@ -311,8 +308,8 @@
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="CenterAndExpand" />
                                     </Border>
+
                                     <Label
-                                        Grid.Column="1"
                                         Margin="0,15,0,0"
                                         Style="{StaticResource SectionTitleBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" />
@@ -404,17 +401,19 @@
                                     </Border>
 
                                     <Label
-                                        Grid.Column="1"
                                         Style="{StaticResource SectionTitleBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDSocial}" />
-                                    <Border Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                    <Border Style="{StaticResource GreyBorderFrameWithShadow}"
+                                            Padding="10">
                                         <Border.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnTwitterGAZTTapped" />
                                         </Border.GestureRecognizers>
-                                        <StackLayout Orientation="Horizontal" Spacing="5">
+
+                                        <StackLayout Orientation="Horizontal" Spacing="15">
 
                                             <Border
-                                                Padding="12"
+                                                Padding="10"
                                                 BackgroundColor="{StaticResource Primary}"
                                                 StrokeThickness="0"
                                                 Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -423,7 +422,6 @@
                                                         <FontImageSource
                                                             FontFamily="UserIconFont"
                                                             Glyph="{x:Static FontImage:IconFonts.Twitter}"
-                                                            Size="30"
                                                             Color="{StaticResource SecondaryNew}" />
                                                     </Image.Source>
                                                 </Image>
@@ -435,32 +433,39 @@
                                             </StackLayout>
                                             <Image
                                                 Margin="6,0,16,0"
+                                                Rotation="180"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="arrowRight.png"
-                                                 />
+                                                Source="arrowRight.png" >
+
+                                                <Image.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding AppDirection}"
+                                                        TargetType="Image"
+                                                        Value="LeftToRight">
+                                                        <Setter Property="Rotation" Value="0" />
+                                                    </DataTrigger>
+                                                </Image.Triggers>
+
+                                            </Image>
                                         </StackLayout>
                                     </Border>
+
+                                    <buttons:SfButton
+                                        Margin="0,10,0,20"
+                                        Clicked="SuggestionsandComplaintsClicked"
+                                        Style="{StaticResource PrimaryButtonStyle}"
+                                        Text="{x:Static ResourceManager:AppResources.NDSuggestionsandComplaints}" />
+
                                 </StackLayout>
                             </ScrollView>
-                            <StackLayout
-                                Grid.Row="1"
-                                Padding="0,8,0,42"
-                                BackgroundColor="White">
-                                <buttons:SfButton
-                                    Clicked="SuggestionsandComplaintsClicked"
-                                    Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.NDSuggestionsandComplaints}" />
-                            </StackLayout>
-                        </Grid>
 
                         <WebView
                             x:Name="ContactUsWebView"
-                            Margin="-20,-60,-20,0"
                             IsVisible="False"
+                            HorizontalOptions="FillAndExpand"
                             Navigated="ContactWebView_Navigated"
                             Navigating="ContactWebView_Navigating"
-                            VerticalOptions="FillAndExpand"
-                            WidthRequest="1000" />
+                            VerticalOptions="FillAndExpand" />
                     </Grid>
                     <!--  ContactUs View End  -->
 

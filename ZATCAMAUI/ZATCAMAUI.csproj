@@ -165,7 +165,6 @@
         <PackageReference Include="Syncfusion.Maui.Scheduler" Version="26.2.10" />
         <PackageReference Include="Syncfusion.Maui.TabView" Version="26.2.10" />
         <PackageReference Include="Xam.Plugin.Media" Version="6.0.2" />
-        <PackageReference Include="ZXing.Net.Maui" Version="1.0.0" />
         <PackageReference Include="Onion.Maui.GoogleMaps" Version="5.0.3" />
         <PackageReference Include="AppDynamics.Agent" Version="2024.4.0" />
         <PackageReference Include="AppDynamics.Agent.Maui" Version="2024.4.0" />
@@ -177,6 +176,7 @@
         <PackageReference Include="Syncfusion.Maui.Rotator" Version="26.2.10" />
         <PackageReference Include="Mopups" Version="1.3.1" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+        <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="ViewModel\NewDesignViewModel\ChangeFillingPeriodViewModel\" />

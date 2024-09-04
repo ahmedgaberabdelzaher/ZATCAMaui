@@ -13,16 +13,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 {
     public class BankAccountManagementPageViewModel : BaseViewModel
     {
-        public ICommand GoBackBtnTapped { get; set; }
         public ICommand AddNewIBANTapped { get; set; }
 
         public BankAccountManagementPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackBtnTapped = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
-
             AddNewIBANTapped = new Command(this.AddNewIBANTappedClicked);
 
         }
@@ -81,13 +75,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 IBANAccountData.d.isUpdateFlag = false;
                 App.SelectedIBAN = "";
                 _navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, IBANAccountData);
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-                
-                
-
             }
             catch (InternetException ex)
             {

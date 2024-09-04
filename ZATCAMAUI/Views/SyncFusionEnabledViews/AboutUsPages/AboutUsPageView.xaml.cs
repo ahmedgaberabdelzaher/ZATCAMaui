@@ -1,7 +1,6 @@
 ﻿
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
 using ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages;
-using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AboutUsPages
 {
@@ -55,17 +54,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AboutUsPages
 
         #region Method
       
-        private void BackButtonClicked(object sender, EventArgs e)
-        {
-            if (AboutUsWebView.CanGoBack)
-            {
-                AboutUsWebView.GoBack();
-            }
-            else
-            {
-                viewModel._navigationService.GoBack();
-            }
-        }
+       
 
         void AboutUsWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {

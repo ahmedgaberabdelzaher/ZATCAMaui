@@ -25,6 +25,9 @@ public class OTPPageViewModel : BaseViewModel
     Color resendCodeTextColor;
     public Color ResendCodeTextColor { get { return resendCodeTextColor; } set { resendCodeTextColor = value; OnPropertyChanged(); } }
 
+    double resendCodeOpacity = 0.3;
+    public double ResendCodeOpacity { get { return resendCodeOpacity; } set { resendCodeOpacity = value; OnPropertyChanged(); } }
+
     bool isResendCodeEnabled;
     public bool IsResendCodeEnabled { get { return isResendCodeEnabled; } set { isResendCodeEnabled = value; OnPropertyChanged(); } }
 
@@ -154,6 +157,7 @@ public class OTPPageViewModel : BaseViewModel
                 {
                     ResendToken().ConfigureAwait(false);
                     ResendCodeTextColor = Colors.Gray;
+                    ResendCodeOpacity = 0.3;
                     IsResendCodeEnabled = false;
                     OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = string.Empty;
                     remainingTime = TimeSpan.FromMinutes(2);
@@ -235,7 +239,8 @@ public class OTPPageViewModel : BaseViewModel
     private void StopTimer()
     {
         IsResendCodeEnabled = true;
-        ResendCodeTextColor = Color.FromArgb("#0996D4"); 
+        ResendCodeTextColor = Color.FromArgb("#0996D4");
+        ResendCodeOpacity = 1;
         isTimeRemaining = false;
     }
 

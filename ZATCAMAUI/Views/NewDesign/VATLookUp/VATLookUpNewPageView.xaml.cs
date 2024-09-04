@@ -30,6 +30,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             btnScan.Clicked += (a, e) =>
             {
                 viewModel.IsShowScanView = true;
+                viewModel.IsMainView = false;
                 zxing.IsDetecting = true;
                 zxing.AutoFocus();
             };

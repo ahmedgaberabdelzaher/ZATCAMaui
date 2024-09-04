@@ -6,6 +6,7 @@
     xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     Title="TinOutletPopupPage"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
 
     <Mopups:PopupPage.Animation>

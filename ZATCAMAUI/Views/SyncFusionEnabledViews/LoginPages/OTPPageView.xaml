@@ -308,7 +308,7 @@
                             HorizontalTextAlignment="Center"
                             IsEnabled="{Binding IsResendCodeEnabled}"
                             TextColor="{Binding ResendCodeTextColor}"
-                            Opacity="{Binding Opacity}"
+                            Opacity="{Binding ResendCodeOpacity}"
                             Text="{x:Static ResourceManager:AppResources.ResendVerificationCodeMsg}"
                             TextDecorations="Underline"
                             VerticalOptions="Start">

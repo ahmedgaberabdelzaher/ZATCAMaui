@@ -735,9 +735,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 else if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
                     LoginAttempt++;
-                    JObject json = JObject.Parse(response);
+                    var result = JsonConvert.DeserializeObject<LoginResponseModel>(response);
                     IsShowMsgView = true;
-                    MessageTxt = json.GetValue("httpMessage").ToString();
+                    MessageTxt = result?.Header?.Status?.Description;
                     if (LoginAttempt >= 3)
                     {
                         _navigationService.NavigateTo(App.UnlockAccountTINPageView);
@@ -746,9 +746,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 }
                 else if (loginResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
                 {
-                    JObject json = JObject.Parse(response);
+                    var result = JsonConvert.DeserializeObject<LoginResponseModel>(response);
                     IsShowMsgView = true;
-                    MessageTxt = json.GetValue("httpMessage").ToString();
+                    MessageTxt = MessageTxt = result?.Header?.Status?.Description;
                 }
                 IsLoading = false;
 

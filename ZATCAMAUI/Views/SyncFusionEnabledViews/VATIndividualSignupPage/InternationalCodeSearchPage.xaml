@@ -6,6 +6,7 @@
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    BackgroundColor="#88000000"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -49,32 +50,23 @@
                     VerticalOptions="Center"
                     WidthRequest="350" />
 
-                <inputLayout:SfTextInputLayout
-                    ContainerBackground="White"
-                    ContainerType="Outlined"
-                    Hint="{x:Static ResourceManager:AppResources.SearchText}"
-                    InputViewPadding="0"
-                    LeadingViewPosition="Inside"
-                    OutlineCornerRadius="10"
-                    Stroke="{StaticResource NeutralGreay}"
-                    VerticalOptions="Start">
-                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <inputLayout:LabelStyle TextColor="#B00020" />
-                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    <custom:GAZTBorderlessEntry
-                        x:Name="searchEntry"
-                        Keyboard="Text"
-                        Placeholder="{x:Static ResourceManager:AppResources.ZSearch}"
-                        Style="{StaticResource DefaultEntry}"
-                        Text="{Binding SearchText}"
-                        TextChanged="searchEntry_TextChanged"
-                        TextColor="#002447" />
+                 <custom:CustomSfTextInputView OutlineCornerRadius="8">
+                    <custom:CustomSfTextInputView.TextInputView>
 
+                         <custom:GAZTBorderlessEntry
+                            x:Name="searchEntry"
+                            Keyboard="Text"
+                            Placeholder="{x:Static ResourceManager:AppResources.ZSearch}"
+                            Style="{StaticResource DefaultEntry}"
+                            Text="{Binding SearchText}"
+                            TextChanged="searchEntry_TextChanged"
+                            TextColor="#002447" />
+
+                    </custom:CustomSfTextInputView.TextInputView>
                     <inputLayout:SfTextInputLayout.LeadingView>
                         <Image Aspect="AspectFit" Source="reportSearchBar.png" />
                     </inputLayout:SfTextInputLayout.LeadingView>
-
-                </inputLayout:SfTextInputLayout>
+                </custom:CustomSfTextInputView>
 
                 <!--  Horizontal Line  -->
                 <BoxView

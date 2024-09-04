@@ -9,7 +9,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
     public partial class PickerPageView : PopupPage
     {
-        int _pageCode = 0;
         PickerPageViewModel viewModel;
         public PickerPageView(List<string> _pickerSource)
         {
@@ -23,45 +22,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         }
 
 
-        public void SetPickerFont()
-        {
-            try
-            {
-                switch (DeviceInfo.Platform)
-                {
-
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        PickerDoneButton.FontFamily = "Somar-SemiBold";
-                        PickerCancelButton.FontFamily = "Somar-SemiBold";
-
-                        PickerTitle.FontFamily = "Somar-SemiBold";
-
-                        genericPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                        genericPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                        genericPicker.TextStyle.FontFamily = "Somar-SemiBold";
-
-                        break;
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-
-                        PickerDoneButton.FontFamily = "Somar-SemiBold";
-                        PickerCancelButton.FontFamily = "Somar-SemiBold";
-
-                        PickerTitle.FontFamily = "Somar-SemiBold";
-
-                        genericPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                        genericPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                        genericPicker.TextStyle.FontFamily = "Somar-SemiBold";
-
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
+       
 
 
         public PickerPageView(GenericPickerModel _pickerSource)
@@ -77,10 +38,8 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
                 if (viewModel.DataSource.SelectedValue != null)
                 {
                     viewModel.SelectedItem = viewModel.DataSource.SelectedValue;
-                    //genericPicker.Columns[0].SelectedIndex = int.Parse(viewModel.SelectedItem);
                 }
                 this.BindingContext = viewModel;
-                // SetPickerFont();
             }
             catch (Exception)
             {
@@ -105,19 +64,16 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
         private void PopupClose_Clicked(object sender, EventArgs e)
         {
-
-            MopupService.Instance.PopAsync();
-
             try
             {
-                if (_pageCode == 1)
+                MopupService.Instance.PopAsync();
+                if(viewModel.PickerItemSource.Count == 1)
                 {
-                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelected", viewModel.DataSource);
-                }
-                else
-                {
+                    viewModel.DataSource.SelectedValue = viewModel.DataSource.PickerData[0];
                     MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
                 }
+                else if(viewModel.DataSource.SelectedValue != null)
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
 
             }
             catch (Exception)
@@ -139,7 +95,13 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         {
             try
             {
-                MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
+                if (viewModel.PickerItemSource.Count == 1)
+                {
+                    viewModel.DataSource.SelectedValue = viewModel.DataSource.PickerData[0];
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
+                }
+                else if (viewModel.DataSource.SelectedValue != null)
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
             }
             catch (Exception)
             {

@@ -12,17 +12,17 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FlowDirection="{Binding AppDirection}"
+    BackgroundColor="#88000000"
     mc:Ignorable="d">
 
     <Border
         Padding="0"
         Style="{StaticResource CommonTopCurves}"
+        Stroke="{StaticResource NeutralLightGrey}"
+        MinimumHeightRequest="200"
         VerticalOptions="EndAndExpand">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
+        <Grid RowDefinitions="*,auto">
+
             <StackLayout Grid.Row="0">
                 <Image Margin="24,16,24,8" HorizontalOptions="Start">
                     <Image.Source>

@@ -63,52 +63,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
 
 
 
-        private async void IBanAccountsListItemTapped(object sender, ItemSelectionChangedEventArgs e)
-        {
-            var textToDisplayInButton = string.Empty;
-            var selectedLv = sender as SfListView;
-            selectedItem = (IbanListSetResult)selectedLv.SelectedItem;
-            App.SelectedIBAN = selectedItem.Fbnum;
-            //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("" + selectedItem.Bkext));
-            if (selectedItem.VisibleUpdate != null)
-            {
-                if (selectedItem.VisibleUpdate == "")
-                {
-                    // Display ActionSheet Radio buttons 
-                    if (selectedItem.ActiveIban == "X")
-                    {
-                        textToDisplayInButton = "Deactivate";
-                    }
-                    else if (selectedItem.ActiveIban == "")
-                    {
-                        textToDisplayInButton = "Activate";
-                    }
-                }
-                else
-                {
-                    //IsEnabled Update or disble update button
-                    if (selectedItem.EnableUpdate == "X")
-                    {
-                        textToDisplayInButton = "Update";
-                    }
-                    else if (selectedItem.EnableUpdate == "")
-                    {
-                        textToDisplayInButton = "UpdateDisabled";
-                    }
-                }
-                if (textToDisplayInButton != "UpdateDisabled")
-                {
-                    var listOfActionButtonsApplicable = new List<string>();
-                    listOfActionButtonsApplicable.Add(textToDisplayInButton);
-                    await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(listOfActionButtonsApplicable));
-
-                }
-
-            }
-            var view = sender as SfListView;
-            view.SelectedItem = null;
-        }
-
+        
         private async void StatusViewButtons_Tapped(object sender, EventArgs e)
         {
             StackLayout chipView = sender as StackLayout;

@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -200,15 +200,15 @@
                                 </Label>
 
                                 <!--  Phone Entry  -->
-                                <controls:CustomSfTextInputView>
-                                    <controls:CustomSfTextInputView.TextInputView>
-                                        <controls:GAZTBorderlessEntry
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
                                             Keyboard="Telephone"
                                             Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding MobileNumber}"
                                             TextColor="#58595B" />
-                                    </controls:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView.TextInputView>
 
                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <StackLayout
@@ -235,7 +235,7 @@
 
                                         </StackLayout>
                                     </inputLayout:SfTextInputLayout.LeadingView>
-                                </controls:CustomSfTextInputView>
+                                </custom:CustomSfTextInputView>
 
                                 <Label
                                     Margin="3,-10,3,3"
@@ -260,17 +260,17 @@
                                 </Label>
 
                                 <!--  Email Entry  -->
-                                <controls:CustomSfTextInputView>
-                                    <controls:CustomSfTextInputView.TextInputView>
-                                        <controls:GAZTBorderlessEntry
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
                                             Keyboard="Email"
                                             Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding SubmitModel.travelerDeclaration.email}"
                                             TextColor="#58595B" />
-                                    </controls:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                </controls:CustomSfTextInputView>
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
 
                             <!--  Address Field  -->
@@ -289,17 +289,17 @@
                                 </Label>
 
                                 <!--  Address Entry  -->
-                                <controls:CustomSfTextInputView>
-                                    <controls:CustomSfTextInputView.TextInputView>
-                                        <controls:GAZTBorderlessEntry
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
                                             Keyboard="Text"
                                             Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding SubmitModel.travelerDeclaration.address}"
                                             TextColor="#58595B" />
-                                    </controls:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                </controls:CustomSfTextInputView>
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
 
                             <!--  GoTo Success Button  -->
@@ -329,13 +329,13 @@
             <!--#endregion Body-->
 
             <!--  Bottom Sheet List  -->
-            <controls:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
+            <custom:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
 
             <!--  Loader  -->
-            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
             <!--  Popup Msg  -->
-            <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
 
         </Grid>
     </ContentPage.Content>

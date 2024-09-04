@@ -18,7 +18,7 @@ using ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages;
 using IDeviceInfoZATCA = ZATCAMAUI.Core.Interfaces.IDeviceInfoZATCA;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Maui.GoogleMaps.Hosting;
-using ZXing.Net.Maui;
+using ZXing.Net.Maui.Controls;
 
 namespace ZATCAMAUI;
 

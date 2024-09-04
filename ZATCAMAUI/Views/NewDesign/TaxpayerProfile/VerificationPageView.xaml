@@ -230,31 +230,23 @@
                                 </StackLayout>
 
                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CurrentPassword}" />
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-10,0,0"
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,8,16,8"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="8"
-                                    Stroke="{StaticResource Primary}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="CurrentPassword"
-                                        IsPassword="True"
-                                        MaxLength="16"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding CurrentPasswordEntry}">
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviors:PasswordTextBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                 <custom:CustomSfTextInputView OutlineCornerRadius="8">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="CurrentPassword"
+                                            IsPassword="True"
+                                            MaxLength="16"
+                                            Placeholder="{x:Static ResourceManager:AppResources.CurrentPassword}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding CurrentPasswordEntry}">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:PasswordTextBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
 
-                                    </custom:GAZTBorderlessEntry>
+                                        </custom:GAZTBorderlessEntry>
 
+                                    </custom:CustomSfTextInputView.TextInputView>
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image x:Name="CurrentPasswordImg" Source="hidePassword.png">
                                             <Image.GestureRecognizers>
@@ -262,34 +254,29 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </inputLayout:SfTextInputLayout.TrailingView>
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
 
 
-                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NewPassword}" />
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-10,0,0"
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,8,16,8"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="8"
-                                    Stroke="{StaticResource Primary}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="NewPassword"
-                                        IsPassword="True"
-                                        MaxLength="16"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding NewPasswordEntry}">
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviors:PasswordTextBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                <Label Style="{StaticResource CaptionLabelGrey}"
+                                       Text="{x:Static ResourceManager:AppResources.NewPassword}" />
 
-                                    </custom:GAZTBorderlessEntry>
 
+                                 <custom:CustomSfTextInputView OutlineCornerRadius="8">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                         <custom:GAZTBorderlessEntry
+                                            x:Name="NewPassword"
+                                            IsPassword="True"
+                                            MaxLength="16"
+                                            Placeholder="{x:Static ResourceManager:AppResources.NewPassword}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding NewPasswordEntry}">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:PasswordTextBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                                        </custom:GAZTBorderlessEntry>
+
+                                    </custom:CustomSfTextInputView.TextInputView>
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image x:Name="NewPasswordImg" Source="hidePassword.png">
                                             <Image.GestureRecognizers>
@@ -297,33 +284,27 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </inputLayout:SfTextInputLayout.TrailingView>
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
+
 
                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZConfirmpassword}" />
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-10,0,0"
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,8,16,8"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="8"
-                                    Stroke="{StaticResource Primary}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="ConfirmPassword"
-                                        IsPassword="True"
-                                        MaxLength="16"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding ConfirmPasswordEntry}">
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviors:PasswordTextBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
 
-                                    </custom:GAZTBorderlessEntry>
+                                <custom:CustomSfTextInputView OutlineCornerRadius="8">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                         <custom:GAZTBorderlessEntry
+                                            x:Name="ConfirmPassword"
+                                            IsPassword="True"
+                                            MaxLength="16"
+                                            Placeholder="{x:Static ResourceManager:AppResources.CurrentPassword}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding ConfirmPasswordEntry}">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:PasswordTextBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
 
+                                        </custom:GAZTBorderlessEntry>
+
+                                    </custom:CustomSfTextInputView.TextInputView>
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image x:Name="ConfirmPasswordImg" Source="hidePassword.png">
                                             <Image.GestureRecognizers>
@@ -331,7 +312,8 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </inputLayout:SfTextInputLayout.TrailingView>
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
+
 
                             </StackLayout>
                         </ScrollView>

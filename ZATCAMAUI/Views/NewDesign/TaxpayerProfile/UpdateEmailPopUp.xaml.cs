@@ -294,10 +294,5 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             viewModel.IsLoading = false;
         }
 
-        private void BorderlessEntry_Unfocused(object sender, FocusEventArgs e) { }
-
-        private void NewEmail_Entry_Unfocused(object sender, FocusEventArgs e) { }
-
-        private void ConfirmEmail_Entry_Unfocused(object sender, FocusEventArgs e) { }
     }
 }

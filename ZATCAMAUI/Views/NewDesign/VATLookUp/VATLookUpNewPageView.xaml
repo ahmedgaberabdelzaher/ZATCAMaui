@@ -9,7 +9,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI"
+    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -17,201 +17,7 @@
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
 
-            <Border
-                Grid.Row="1"
-                Margin="0"
-                Padding="15"
-                IsVisible="{Binding IsMainView}"
-                Style="{StaticResource CommonTopCurves}"
-                VerticalOptions="FillAndExpand">
-                <ScrollView VerticalScrollBarVisibility="Never">
-                    <StackLayout>
-
-                        <StackLayout Spacing="10">
-
-                            <Label
-                                LineHeight=".8"
-                                Style="{StaticResource SectionTitleBlack}"
-                                Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" />
-
-                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVATLookUpTitleSub}" />
-
-                            <BoxView BackgroundColor="{StaticResource NeutralGreay}" HeightRequest="1" />
-
-                            <StackLayout>
-
-                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSearchParameter}" />
-
-                                <custom:CustomSfTextInputView>
-                                    <custom:CustomSfTextInputView.TextInputView>
-                                        <custom:GAZTBorderlessEntry
-                                            InputTransparent="True"
-                                            IsReadOnly="True"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding TxtSearchParameter}"
-                                            TextColor="{StaticResource Primary}" />
-
-                                    </custom:CustomSfTextInputView.TextInputView>
-                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="PPicker_btn_Clicked" />
-                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
-                                </custom:CustomSfTextInputView>
-
-                                <custom:CustomSfPicker
-                                    x:Name="PPicker"
-                                    Background="white"
-                                    IsOpen="False"
-                                    ItemHeight="40"
-                                    Mode="Dialog"
-                                    SelectionChanged="PPicker_SelectionChanged">
-
-                                    <syncfusion:SfPicker.TextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
-                                    </syncfusion:SfPicker.TextStyle>
-
-                                    <syncfusion:SfPicker.Columns>
-                                        <syncfusion:PickerColumn
-                                            Width="300"
-                                            DisplayMemberPath="ParameterType"
-                                            ItemsSource="{Binding ParameterTypeList}" />
-                                    </syncfusion:SfPicker.Columns>
-
-                                    <syncfusion:SfPicker.SelectedTextStyle>
-                                        <syncfusion:PickerTextStyle
-                                            FontAttributes="Bold"
-                                            FontSize="15"
-                                            TextColor="White" />
-                                    </syncfusion:SfPicker.SelectedTextStyle>
-
-
-
-                                    <syncfusion:SfPicker.SelectionView>
-                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                    </syncfusion:SfPicker.SelectionView>
-
-                                    <syncfusion:SfPicker.HeaderView>
-
-                                        <syncfusion:PickerHeaderView
-                                            Height="55"
-                                            Background="{StaticResource Primary}"
-                                            Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
-                                            <syncfusion:PickerHeaderView.TextStyle>
-                                                <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
-                                            </syncfusion:PickerHeaderView.TextStyle>
-                                        </syncfusion:PickerHeaderView>
-
-                                    </syncfusion:SfPicker.HeaderView>
-
-                                    <syncfusion:SfPicker.FooterView>
-
-                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
-
-                                            <syncfusion:PickerFooterView.TextStyle>
-                                                <syncfusion:PickerTextStyle TextColor="White" />
-                                            </syncfusion:PickerFooterView.TextStyle>
-
-                                        </syncfusion:PickerFooterView>
-
-                                    </syncfusion:SfPicker.FooterView>
-
-                                </custom:CustomSfPicker>
-
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PPicker_btn_Clicked" />
-                                </StackLayout.GestureRecognizers>
-
-                            </StackLayout>
-
-                            <StackLayout>
-
-                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding SelectedParameterType.ParameterType}" />
-
-                                <custom:CustomSfTextInputView>
-                                    <custom:CustomSfTextInputView.TextInputView>
-                                        <custom:GAZTBorderlessEntry
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
-                                            MaxLength="{Binding MaxDigids}"
-                                            Placeholder="{Binding SelectedParameterType.ParameterType}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding LookupNumber}"
-                                            TextColor="{StaticResource Primary}">
-
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviors:OnlyNumericValuesBehaviour />
-                                            </custom:GAZTBorderlessEntry.Behaviors>
-
-                                        </custom:GAZTBorderlessEntry>
-
-                                    </custom:CustomSfTextInputView.TextInputView>
-
-                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                        <Label
-                                            Margin="0,0,0,4"
-                                            FontSize="Title"
-                                            HorizontalOptions="End"
-                                            IsEnabled="{Binding IsTooltipEnableVisible}"
-                                            IsVisible="{Binding IsTooltipEnableVisible}"
-                                            Style="{StaticResource IconLabelStyle}"
-                                            Text="{StaticResource Help}"
-                                            TextColor="{StaticResource SecondaryNew}"
-                                            VerticalOptions="Center">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                    </inputLayout:SfTextInputLayout.TrailingView>
-
-                                </custom:CustomSfTextInputView>
-
-                            </StackLayout>
-
-
-                            <Border
-                                Margin="0,10,0,10"
-                                IsVisible="{Binding IsNameVisible}"
-                                Style="{StaticResource GreyBorderFrame}">
-
-                                <StackLayout
-                                    Padding="15,10,15,10"
-                                    IsVisible="{Binding IsNameVisible}"
-                                    Orientation="Horizontal"
-                                    Spacing="10">
-
-                                    <Label
-                                        HorizontalOptions="Start"
-                                        Style="{StaticResource ValueLabelGrey}"
-                                        Text="{x:Static ResourceManager:AppResources.ZZTaxPayerName}" />
-
-                                    <Label
-                                        HorizontalOptions="Start"
-                                        Style="{StaticResource ValueLabelBlack}"
-                                        Text="{Binding Name}" />
-
-                                </StackLayout>
-
-                            </Border>
-
-                        </StackLayout>
-
-                        <buttons:SfButton
-                            x:Name="btnScan"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZQRScanner}"
-                            VerticalOptions="EndAndExpand" />
-
-                        <buttons:SfButton
-                            x:Name="btnSearch"
-                            Margin="0,20"
-                            Command="{Binding OnSearchButtonClicked}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{Binding LookUpButtonText}"
-                            VerticalOptions="End" />
-
-                    </StackLayout>
-
-                </ScrollView>
-            </Border>
+            <custom:Header TitleText="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" />
 
             <!--#region Scan View-->
             <Grid
@@ -540,9 +346,203 @@
             </Border>
             <!--#endregion-->
 
-            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+            <Border
+                Grid.Row="1"
+                Margin="0"
+                Padding="15"
+                IsVisible="{Binding IsMainView}"
+                Style="{StaticResource CommonTopCurves}"
+                VerticalOptions="FillAndExpand">
+                <ScrollView VerticalScrollBarVisibility="Never">
+                    <StackLayout>
 
-            <custom:Header TitleText="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" />
+                        <StackLayout Spacing="10">
+
+                            <Label
+                                LineHeight=".8"
+                                Style="{StaticResource SectionTitleBlack}"
+                                Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" />
+
+                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVATLookUpTitleSub}" />
+
+                            <BoxView BackgroundColor="{StaticResource NeutralGreay}" HeightRequest="1" />
+
+                            <StackLayout>
+
+                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSearchParameter}" />
+
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding TxtSearchParameter}"
+                                            TextColor="{StaticResource Primary}" />
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PPicker_btn_Clicked" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                </custom:CustomSfTextInputView>
+
+                                <custom:CustomSfPicker
+                                    x:Name="PPicker"
+                                    Background="white"
+                                    IsOpen="False"
+                                    ItemHeight="40"
+                                    Mode="Dialog"
+                                    SelectionChanged="PPicker_SelectionChanged">
+
+                                    <syncfusion:SfPicker.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
+                                    </syncfusion:SfPicker.TextStyle>
+
+                                    <syncfusion:SfPicker.Columns>
+                                        <syncfusion:PickerColumn
+                                            Width="300"
+                                            DisplayMemberPath="ParameterType"
+                                            ItemsSource="{Binding ParameterTypeList}" />
+                                    </syncfusion:SfPicker.Columns>
+
+                                    <syncfusion:SfPicker.SelectedTextStyle>
+                                        <syncfusion:PickerTextStyle
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            TextColor="White" />
+                                    </syncfusion:SfPicker.SelectedTextStyle>
+
+
+
+                                    <syncfusion:SfPicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </syncfusion:SfPicker.SelectionView>
+
+                                    <syncfusion:SfPicker.HeaderView>
+
+                                        <syncfusion:PickerHeaderView
+                                            Height="55"
+                                            Background="{StaticResource Primary}"
+                                            Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
+                                            <syncfusion:PickerHeaderView.TextStyle>
+                                                <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
+                                            </syncfusion:PickerHeaderView.TextStyle>
+                                        </syncfusion:PickerHeaderView>
+
+                                    </syncfusion:SfPicker.HeaderView>
+
+                                    <syncfusion:SfPicker.FooterView>
+
+                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
+
+                                            <syncfusion:PickerFooterView.TextStyle>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
+                                            </syncfusion:PickerFooterView.TextStyle>
+
+                                        </syncfusion:PickerFooterView>
+
+                                    </syncfusion:SfPicker.FooterView>
+
+                                </custom:CustomSfPicker>
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PPicker_btn_Clicked" />
+                                </StackLayout.GestureRecognizers>
+
+                            </StackLayout>
+
+                            <StackLayout>
+
+                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding SelectedParameterType.ParameterType}" />
+
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            Keyboard="{OnPlatform Android=Numeric,
+                                                                  iOS=Default}"
+                                            MaxLength="{Binding MaxDigids}"
+                                            Placeholder="{Binding SelectedParameterType.ParameterType}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding LookupNumber}"
+                                            TextColor="{StaticResource Primary}">
+
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:OnlyNumericValuesBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                                        </custom:GAZTBorderlessEntry>
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Label
+                                            Margin="0,0,0,4"
+                                            FontSize="Title"
+                                            HorizontalOptions="End"
+                                            IsEnabled="{Binding IsTooltipEnableVisible}"
+                                            IsVisible="{Binding IsTooltipEnableVisible}"
+                                            Style="{StaticResource IconLabelStyle}"
+                                            Text="{StaticResource Help}"
+                                            TextColor="{StaticResource SecondaryNew}"
+                                            VerticalOptions="Center">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                </custom:CustomSfTextInputView>
+
+                            </StackLayout>
+
+
+                            <Border
+                                Margin="0,10,0,10"
+                                IsVisible="{Binding IsNameVisible}"
+                                Style="{StaticResource GreyBorderFrame}">
+
+                                <StackLayout
+                                    Padding="15,10,15,10"
+                                    IsVisible="{Binding IsNameVisible}"
+                                    Orientation="Horizontal"
+                                    Spacing="10">
+
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource ValueLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZTaxPayerName}" />
+
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{Binding Name}" />
+
+                                </StackLayout>
+
+                            </Border>
+
+                        </StackLayout>
+
+                        <buttons:SfButton
+                            x:Name="btnScan"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZQRScanner}"
+                            VerticalOptions="EndAndExpand" />
+
+                        <buttons:SfButton
+                            x:Name="btnSearch"
+                            Margin="0,20"
+                            Command="{Binding OnSearchButtonClicked}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{Binding LookUpButtonText}"
+                            VerticalOptions="End" />
+
+                    </StackLayout>
+
+                </ScrollView>
+            </Border>
+
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
 
         </Grid>

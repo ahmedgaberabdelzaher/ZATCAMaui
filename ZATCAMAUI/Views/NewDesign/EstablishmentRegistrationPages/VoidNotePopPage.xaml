@@ -9,9 +9,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    FlowDirection="{Binding AppDirection}"
-    NavigationPage.HasNavigationBar="False">
+    BackgroundColor="#88000000"
+    FlowDirection="{Binding AppDirection}">
     <Mopups:PopupPage.Animation>
         <animations:ScaleAnimation
             DurationIn="400"

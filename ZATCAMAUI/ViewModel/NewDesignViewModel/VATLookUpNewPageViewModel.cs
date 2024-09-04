@@ -42,7 +42,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         bool isMandatoryDataEntered = true;
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnSearchButtonClicked { get; set; }
-        public ICommand OnScanButtonClicked { get; set; }
 
         #region proprety
         private List<VATParameterType> _parameterTypeList;
@@ -213,54 +212,52 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #endregion
         public VATLookUpNewPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            IsMainView = true;
-            if (navigationService == null)
+            try
             {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            OnBackButtonClicked = new Command(() =>
-            {
-                if (IsShowScanView || IsShowRsltView)
-                {
-                    IsShowScanView = IsShowRsltView = false;
-                    return;
-                }
-                ResetFormData();
-                _navigationService.GoBack();
-            });
-            OnSearchButtonClicked = new Command(async () =>
-            {
-                isMandatoryDataEntered = true;
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsMainView = true;
 
-                await Task.Run(() =>
+                OnBackButtonClicked = new Command(() =>
                 {
-                    if (!string.IsNullOrEmpty(Name))
+                    if (IsShowScanView || IsShowRsltView)
                     {
-                        // ResetFormData();
-                        Name = string.Empty;
-                        IsNameVisible = false;
+                        IsShowScanView = IsShowRsltView = false;
+                        return;
                     }
-                    ValidateFormData();
-                    if (isMandatoryDataEntered)
+                    ResetFormData();
+                    _navigationService.GoBack();
+                });
+                OnSearchButtonClicked = new Command(async () =>
+                {
+                    isMandatoryDataEntered = true;
+                    await Task.Run(() =>
                     {
-                        getBarcodeData();
-                    }
+                        IsLoading = true;
+                    });
+
+                    await Task.Run(() =>
+                    {
+                        if (!string.IsNullOrEmpty(Name))
+                        {
+                            // ResetFormData();
+                            Name = string.Empty;
+                            IsNameVisible = false;
+                        }
+                        ValidateFormData();
+                        if (isMandatoryDataEntered)
+                        {
+                            getBarcodeData();
+                        }
+
+                    });
+
 
                 });
-
-
-            });
-            OnScanButtonClicked = new Command(() =>
+            }
+            catch (Exception ex)
             {
-            });
+
+            }
+            
 
         }
 
@@ -478,6 +475,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (GAZTException gex)
             {
+                IsMainView = true;
                 // Handle the GAZT custom exception.
                 string MessageForTheUser = gex.Message;
                 if (gex is GAZTInvalidDataException)
@@ -506,6 +504,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (HttpRequestException)
             {
+                IsMainView = true;
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -516,6 +515,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception)
             {
+                IsMainView = true;
 
 
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -528,6 +528,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             finally
             {
+                IsMainView = true;
                 IsShowScanView = false;
             }
 

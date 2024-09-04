@@ -1,6 +1,10 @@
 ﻿
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Mopups.Services;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Views.NewDesign.GenericPickers;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
 {
@@ -84,5 +88,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
                 OnPropertyChanged("SelectedItemIndex");
             }
         }
+
+        
     }
 }
