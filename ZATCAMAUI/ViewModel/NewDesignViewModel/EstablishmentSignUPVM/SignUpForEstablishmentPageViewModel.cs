@@ -15,6 +15,7 @@ using ZATCAMAUI.Models.NewModelAPI.AbsherOTP;
 using static ZATCAMAUI.Models.ErrorMessage;
 using System.Text;
 using Application = Microsoft.Maui.Controls.Application;
+using ZATCAMAUI.Core.CustomControls;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
@@ -132,6 +133,105 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public ICommand OnNextButtonClick { get; private set; }
         public ICommand OnBackButtonClick { get; private set; }
         public ICommand OnResendOTPClicked { get; set; }
+        public ICommand GoToNextEntryCommand
+        {
+
+            get
+            {
+                return new Command<object>((e) =>
+                {
+                    if (e != null)
+                    {
+
+                        var entry = e as GAZTBorderlessEntry;
+
+                        switch (entry.ClassId)
+                        {
+                            case "2":
+                                if (!string.IsNullOrEmpty(OTPFirstDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            case "3":
+                                if (!string.IsNullOrEmpty(OTPSecondDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            case "4":
+                                if (!string.IsNullOrEmpty(OTPThirdDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+
+
+                    }
+                });
+            }
+        }
+        public ICommand GoToNextEntryCommandMobile
+        {
+
+            get
+            {
+                return new Command<object>((e) =>
+                {
+                    if (e != null)
+                    {
+
+                        var entry = e as GAZTBorderlessEntry;
+
+                        switch (entry.ClassId)
+                        {
+                            case "2":
+                                if (!string.IsNullOrEmpty(MOTPFirstDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            case "3":
+                                if (!string.IsNullOrEmpty(MOTPSecondDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            case "4":
+                                if (!string.IsNullOrEmpty(MOTPThirdDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+
+
+                    }
+                });
+            }
+        }
+        public ICommand FocusEntryCommand
+        {
+
+            get
+            {
+                return new Command<object>((e) =>
+                {
+                    if (e != null)
+                    {
+
+                        var entry = e as GAZTBorderlessEntry;
+
+                        entry.Focus();
+                    }
+                });
+            }
+        }
         #endregion
 
         #region Propetry

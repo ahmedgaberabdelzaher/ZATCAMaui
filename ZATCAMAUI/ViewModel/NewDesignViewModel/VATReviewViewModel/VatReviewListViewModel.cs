@@ -781,7 +781,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        throw ex;
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     }
                     catch (InternetException ex)
                     {

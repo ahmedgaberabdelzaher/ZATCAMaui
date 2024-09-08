@@ -32,6 +32,7 @@ using ZATCAMAUI.Models.SignUP;
 using ZATCAMAUI.Models.Authentication;
 using ZATCAMAUI.Models.NewModelAPI.Logout;
 using ZATCAMAUI.Models.AttachmentRequest;
+using Microsoft.Maui;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -8851,5 +8852,16 @@ namespace ZATCAMAUI.Core.Mangers
             return null;
         }
 
+        public static string PrepareErrorMessageByJson(string ErrorResposnse)
+        {
+            SignupErrorModelRootObject errorMesg = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ErrorResposnse);
+            StringBuilder Message = new StringBuilder();
+            foreach (ErrorDetail itemerror in errorMesg.header.moreInformation.errorDetails)
+            {
+                Message.Append(itemerror.message);
+            }
+            return Message.ToString().Replace("An exception was raised", string.Empty);
+        }
+        
     }
 }

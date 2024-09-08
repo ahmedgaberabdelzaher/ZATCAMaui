@@ -76,33 +76,21 @@
                             Style="{StaticResource SectionTitleBlack}"
                             Text="{x:Static ResourceManager:AppResources.ZIBANNationalID}" />
 
-                        <!--<Border
-                            Padding="5"
-                            Stroke="#B1B1B1"
-                            StrokeThickness="1"
-                            Style="{StaticResource GreyBorderFrame}">
-                            <custom:GAZTBorderlessEntry
-                                Margin="8,0"
-                                HeightRequest="40"
-                                HorizontalOptions="FillAndExpand"
-                                Placeholder="{x:Static ResourceManager:AppResources.EnterYourNationalIdHere}"
-                                Text="{Binding NafathId}" />
-                        </Border>-->
-
-                        
-
-                        <inputLayout:SfTextInputLayout
-                                                ContainerBackground="White"
-                                                ContainerType="Outlined"
-                                                Hint="{x:Static ResourceManager:AppResources.EnterYourNationalIdHere}"
-                                                InputViewPadding="16,0,16,0"
-                                                OutlineCornerRadius="10"
-                                                Stroke="{StaticResource Primary}">
-                                                <custom:GAZTBorderlessEntry
-                                                    Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding NafathId}">
-                                                </custom:GAZTBorderlessEntry>
-                                            </inputLayout:SfTextInputLayout>
+                        <custom:CustomSfTextInputView
+                            ContainerBackground="White"
+                            ContainerType="Outlined"
+                            Hint="{x:Static ResourceManager:AppResources.EnterYourNationalIdHere}"
+                            InputViewPadding="16,0,16,0"
+                            OutlineCornerRadius="10"
+                            Stroke="{StaticResource Primary}">
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding NafathId}">
+                            </custom:GAZTBorderlessEntry>
+                            </custom:CustomSfTextInputView.TextInputView>
+                            
+                        </custom:CustomSfTextInputView>
 
                         <Label
                             Padding="8,0,0,8"

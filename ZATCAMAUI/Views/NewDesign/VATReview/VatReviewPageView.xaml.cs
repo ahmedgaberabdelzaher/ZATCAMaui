@@ -16,19 +16,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
         public VatReviewPageView()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+
+                viewModel = App.Locator.VatReviewView;
+                this.BindingContext = viewModel;
+
+                //viewModel.vRInterface = this;
 
 
-            viewModel = App.Locator.VatReviewView;
-            this.BindingContext = viewModel;
+                viewModel.ResetData();
+                SelectDefaultPaymentOption();
 
-            viewModel.vRInterface = (ViewModel.NewDesignViewModel.VATReviewViewModel.VatReviewInterface)this;
-
-
-            viewModel.ResetData();
-
-            _ = viewModel.VatReviewReasonDropDownData();
-            viewModel.setMoreOptioButtons();
+                _ = viewModel.VatReviewReasonDropDownData();
+                viewModel.setMoreOptioButtons();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            
 
         }
 

@@ -2351,7 +2351,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        public SelectionModel _disputeSelectedItem { get; set; }
+        public SelectionModel DisputeSelectedItem
+        {
+            get { return _disputeSelectedItem; }
+            set
+            {
+                if (_disputeSelectedItem == value)
+                {
+                    return;
+                }
+                _disputeSelectedItem = value;
+                OnPropertyChanged("DisputeSelectedItem");
+            }
+        }
 
+        public SelectionModel _selectedOption { get; set; }
+        public SelectionModel SelectedOption
+        {
+            get { return _selectedOption; }
+            set
+            {
+                if (_selectedOption == value)
+                {
+                    return;
+                }
+                _selectedOption = value;
+                OnPropertyChanged("SelectedOption");
+            }
+        }
+
+
+        
 
         public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
 
@@ -4819,7 +4850,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 IsSelected = false
             });
             DisputeAmountPaymentOptions = disputeAmountPaymentOptions;
-            vRInterface.SelectDefaultPaymentOption();
+            //vRInterface.SelectDefaultPaymentOption();
         }
 
         public void updateIdTypePicker()

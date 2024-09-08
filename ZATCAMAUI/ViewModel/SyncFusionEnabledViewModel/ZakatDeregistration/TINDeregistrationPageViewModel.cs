@@ -6089,6 +6089,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         //TODO
 
                         outletInfo.AOutletDobTb = ConvertDateFormat(DeregistrationDate);
+                        if (outletInfo.AOutletDobTb.Contains("/Date("))
+                        {
+                            outletInfo.AOutletDobTb = DeregistrationDate.ToString("yyyy-MM-ddTHH:mm:ss");
+                        }
                         outletInfo.AOutletToDeregTb = "1";
 
                         if (SelectedPermitOutletOptionIndex == 0)

@@ -62,9 +62,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                 else if (selectedItem.ZDTitle == AppResources.ZakatExemptionRequest)
                 {
 
-                    //TODO
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ZakatExemptionRequest", "ZakatExemptionRequest");
-                    //commnented as this is not a part of 6238.1 DP integration API migration
                     _viewModel._navigationService.NavigateTo(App.ZakatExemptionRequestListPageView);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 

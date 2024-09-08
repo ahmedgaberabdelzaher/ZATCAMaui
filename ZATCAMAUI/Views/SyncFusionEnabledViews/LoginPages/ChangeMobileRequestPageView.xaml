@@ -422,12 +422,11 @@
                                             Style="{StaticResource CardLabelBlack}"
                                             Text="{Binding TinNumber}" />
 
-                                        <Border
+                                        <custom:CustomSfTextInputView
                                             Grid.Row="2"
-                                            Grid.Column="1"
-                                            Padding="8,0"
-                                            Style="{StaticResource GreyBorderFrame}">
-                                            <custom:GAZTBorderlessEntry
+                                            Grid.Column="1">
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
                                                 FontFamily="{StaticResource SomarRegular}"
                                                 HorizontalOptions="StartAndExpand"
                                                 MaxLength="10"
@@ -435,8 +434,11 @@
                                                 Text="{Binding TinNumber}"
                                                 TextColor="{StaticResource NeutralBlack}"
                                                 WidthRequest="200" />
-                                        </Border>
+                                            </custom:CustomSfTextInputView.TextInputView>
 
+                                        </custom:CustomSfTextInputView>
+
+                                        
 
                                         <Label
                                             Grid.Row="4"

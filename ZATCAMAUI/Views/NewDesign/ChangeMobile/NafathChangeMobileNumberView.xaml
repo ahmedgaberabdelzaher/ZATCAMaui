@@ -7,7 +7,7 @@
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" xmlns:inputLayout="http://schemas.syncfusion.com/maui"
     x:Name="page"
     Title="NafathChangeMobileNumberView"
     ios:Page.UseSafeArea="true"
@@ -74,33 +74,41 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
                     <Image Source="logo_gazt.png" />
+
                     <Label Text="{x:Static ResourceManager:AppResources.PleaseChooseTinNumber}" />
-                    <Border Padding="4" Style="{StaticResource GreyBorderFrame}">
-                        <StackLayout
-                            Padding="8,0"
-                            HorizontalOptions="FillAndExpand"
-                            Orientation="Horizontal">
-                            <custom:GAZTBorderlessEntry
-                                FontFamily="{StaticResource SomarBold}"
-                                FontSize="Small"
-                                HorizontalOptions="FillAndExpand"
-                                IsEnabled="False"
-                                Text="{Binding SelectedTIN}"
-                                TextColor="{StaticResource PrimaryColor}" />
-                            <Image
-                                HorizontalOptions="EndAndExpand"
-                                Source="arrowDropdown.png"
-                                VerticalOptions="Center" />
-                            <StackLayout.GestureRecognizers>
+                    <StackLayout>
+                        <custom:CustomSfTextInputView>
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PleaseChooseTinNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SelectedTIN}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SnipperTappedCommand}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+
+                            </custom:CustomSfTextInputView.TextInputView>
+                            <inputLayout:SfTextInputLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SnipperTappedCommand}" />
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                    </Border>
+                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Image Aspect="AspectFit" Source="greyDropDown" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </custom:CustomSfTextInputView>
+                    </StackLayout>
+
                     <Label
                         IsVisible="{Binding IsError}"
                         Text="{Binding TinError}"
                         TextColor="{StaticResource ErrorColor}" />
                     <Label Margin="0,32,0,0" Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" />
+
                     <Border Padding="4" Style="{StaticResource GreyBorderFrame}">
                         <StackLayout
                             Padding="0"

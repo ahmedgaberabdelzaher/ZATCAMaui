@@ -11,22 +11,26 @@
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
+
         <ResourceDictionary>
 
             <converters:EstablishmentSignUPTabEnumToVisibilityConverters x:Key="enumToVisibilityConverter" />
 
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding StartTimerCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
@@ -214,7 +218,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         x:Name="FrmTIN"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
@@ -222,8 +226,8 @@
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
-
-                                        <custom:GAZTBorderlessEntry
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
                                             x:Name="EntryTIN"
                                             Focused="EntryTIN_focused"
                                             FontFamily="{StaticResource SomarLight}"
@@ -242,8 +246,10 @@
                                                 <behaviors:OnlyNumericValuesBehaviour />
                                             </custom:GAZTBorderlessEntry.Behaviors>
                                         </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        
 
-                                    </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView>
 
                                     <StackLayout.Triggers>
                                         <DataTrigger
@@ -268,15 +274,10 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <inputLayout:SfTextInputLayout
-                                        x:Name="txtEntryName"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10">
-
-                                        <custom:GAZTBorderlessEntry
+                                    <custom:CustomSfTextInputView
+                                        x:Name="txtEntryName">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
                                             BackgroundColor="Transparent"
                                             InputTransparent="True"
                                             IsReadOnly="True"
@@ -285,20 +286,22 @@
                                             Text="{Binding TxtIDType}"
                                             TextColor="{StaticResource NeutralBlack}"
                                             VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
 
-                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                        <custom:CustomSfTextInputView.TrailingView>
                                             <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
-                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                        </custom:CustomSfTextInputView.TrailingView>
 
-                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <custom:CustomSfTextInputView.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnIDTypeClicked" />
-                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        </custom:CustomSfTextInputView.GestureRecognizers>
 
-                                    </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView>
 
                                     <syncfusion:SfPicker
                                         x:Name="IDTypePicker"
                                         Margin="0"
+                                        IsOpen="False"
                                         Background="Transparent"
                                         ItemHeight="46"
                                         Mode="Dialog"
@@ -369,14 +372,15 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         x:Name="FrmIDNumber"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
-                                        <custom:GAZTBorderlessEntry
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
                                             x:Name="EntryIDNumber"
                                             IsSpellCheckEnabled="False"
                                             Keyboard="{OnPlatform Android=Numeric,
@@ -392,7 +396,8 @@
                                                 <behaviors:OnlyNumericValuesBehaviour />
                                             </custom:GAZTBorderlessEntry.Behaviors>
                                         </custom:GAZTBorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
 
                                 </StackLayout>
 
@@ -406,7 +411,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         InputTransparent="True"
@@ -414,15 +419,15 @@
                                         IsEnabled="False"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
-
-                                        <custom:GAZTBorderlessEntry
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
                                             InputTransparent="True"
                                             IsReadOnly="True"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding IqamaTypeDesc}"
                                             VerticalTextAlignment="Center" />
-
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
 
                                 </StackLayout>
 
@@ -463,7 +468,7 @@
                                         </SfChipGroup:SfChipGroup.ItemTemplate>
                                     </SfChipGroup:SfChipGroup>
 
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         x:Name="FrmDBO"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
@@ -472,8 +477,8 @@
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
-
-                                        <custom:GAZTBorderlessEntry
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
                                             x:Name="DateEntry"
                                             FontFamily="{StaticResource SomarLight}"
                                             FontSize="Small"
@@ -486,19 +491,21 @@
                                             TextChanged="DateEntry_TextChanged"
                                             TextColor="{StaticResource NeutralBlack}"
                                             VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        
 
-                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                        <custom:CustomSfTextInputView.TrailingView>
                                             <Image
                                                 HorizontalOptions="EndAndExpand"
                                                 Source="calendar.png"
                                                 Style="{StaticResource SmallIcon}" />
-                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                        </custom:CustomSfTextInputView.TrailingView>
 
-                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <custom:CustomSfTextInputView.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnDOBClicked" />
-                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        </custom:CustomSfTextInputView.GestureRecognizers>
 
-                                    </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView>
 
                                     <!--  DatePicker  -->
                                     <custom:CustomDatePicker
@@ -610,7 +617,7 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <inputLayout:SfTextInputLayout
+                                <custom:CustomSfTextInputView
                                     x:Name="FrmName"
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
@@ -619,20 +626,23 @@
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="10"
                                     Stroke="{StaticResource NeutralGreay}">
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="EntryName"
-                                        FontSize="Small"
-                                        IsSpellCheckEnabled="False"
-                                        Placeholder="{x:Static ResourceManager:AppResources.ZZName}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding TxtName}"
-                                        Unfocused="EntryName_Unfocused">
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviors:AlphabetandArabicCharacters />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:CustomSfTextInputView.TextInputView>
 
-                                    </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="EntryName"
+                                            FontSize="Small"
+                                            IsSpellCheckEnabled="False"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ZZName}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding TxtName}"
+                                            Unfocused="EntryName_Unfocused">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:AlphabetandArabicCharacters />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+                                </custom:CustomSfTextInputView>
 
                             </StackLayout>
 
@@ -722,7 +732,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         x:Name="FrmCR"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
@@ -730,7 +740,9 @@
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
-                                        <custom:GAZTBorderlessEntry
+                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                            <custom:GAZTBorderlessEntry
                                             x:Name="EntryCRNumber"
                                             Keyboard="{OnPlatform Android=Numeric,
                                                                   iOS=Default}"
@@ -747,23 +759,24 @@
                                             </custom:GAZTBorderlessEntry.Behaviors>
                                         </custom:GAZTBorderlessEntry>
 
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
 
                                 </StackLayout>
 
                                 <!--  License Number  -->
                                 <StackLayout IsVisible="{Binding LicenseOptionsVisible}">
+                                    <StackLayout>
+                                        <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" />
+                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
-                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" />
-                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         x:Name="FrmLicenseNumber"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
@@ -771,7 +784,8 @@
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
-                                        <custom:GAZTBorderlessEntry
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
                                             x:Name="EntryLicenceNumber"
                                             IsSpellCheckEnabled="False"
                                             Keyboard="{OnPlatform Android=Numeric,
@@ -787,305 +801,318 @@
                                             </custom:GAZTBorderlessEntry.Behaviors>
 
                                         </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        
 
-                                    </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView>
+
+                                    </StackLayout>
 
                                     <!--  Licence number issued by  -->
-                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}" />
-                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                    <StackLayout>
+                                        <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}" />
+                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <custom:CustomSfTextInputView
+                                            x:Name="FrmlicenceNumberIssuedbyframe"
+                                            ContainerBackground="White"
+                                            ContainerType="Outlined"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
+                                            InputViewPadding="16,0,16,0"
+                                            LeadingViewPosition="Inside"
+                                            OutlineCornerRadius="10">
 
-                                    <inputLayout:SfTextInputLayout
-                                        x:Name="FrmlicenceNumberIssuedbyframe"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10">
+                                            <custom:GAZTBorderlessEntry
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                IsSpellCheckEnabled="False"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding TxtLOrCIssuedBy}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalTextAlignment="Center" />
 
-                                        <custom:GAZTBorderlessEntry
-                                            InputTransparent="True"
-                                            IsReadOnly="True"
-                                            IsSpellCheckEnabled="False"
-                                            Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding TxtLOrCIssuedBy}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalTextAlignment="Center" />
+                                            <custom:CustomSfTextInputView.TrailingView>
+                                                <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
+                                            </custom:CustomSfTextInputView.TrailingView>
 
-                                        <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
-                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                            <custom:CustomSfTextInputView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="LIssuedBy_Clicked" />
 
-                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="LIssuedBy_Clicked" />
+                                            </custom:CustomSfTextInputView.GestureRecognizers>
 
-                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        </custom:CustomSfTextInputView>
+                                        <syncfusion:SfPicker
+                                            x:Name="ddlLIssuedBy"
+                                            Background="White"
+                                            ItemHeight="46"
+                                            Mode="Dialog"
+                                            OkButtonClicked="DDLicense_OkayButtonClicked"
+                                            SelectionChanged="ddlLIssuedBy_OkButtonClicked">
 
-                                    </inputLayout:SfTextInputLayout>
+                                            <syncfusion:SfPicker.SelectionView>
+                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                            </syncfusion:SfPicker.SelectionView>
 
-                                    <syncfusion:SfPicker
-                                        x:Name="ddlLIssuedBy"
-                                        Background="White"
-                                        ItemHeight="46"
-                                        Mode="Dialog"
-                                        OkButtonClicked="DDLicense_OkayButtonClicked"
-                                        SelectionChanged="ddlLIssuedBy_OkButtonClicked">
+                                            <syncfusion:SfPicker.TextStyle>
+                                                <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                            </syncfusion:SfPicker.TextStyle>
 
-                                        <syncfusion:SfPicker.SelectionView>
-                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                        </syncfusion:SfPicker.SelectionView>
+                                            <syncfusion:SfPicker.Columns>
+                                                <syncfusion:PickerColumn
+                                                    Width="300"
+                                                    DisplayMemberPath="txt50"
+                                                    ItemsSource="{Binding IssuedByList}" />
+                                            </syncfusion:SfPicker.Columns>
 
-                                        <syncfusion:SfPicker.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                        </syncfusion:SfPicker.TextStyle>
+                                            <syncfusion:SfPicker.SelectedTextStyle>
+                                                <syncfusion:PickerTextStyle
+                                                    FontAttributes="Bold"
+                                                    FontSize="15"
+                                                    TextColor="{StaticResource NeutralBlack}" />
+                                            </syncfusion:SfPicker.SelectedTextStyle>
 
-                                        <syncfusion:SfPicker.Columns>
-                                            <syncfusion:PickerColumn
-                                                Width="300"
-                                                DisplayMemberPath="txt50"
-                                                ItemsSource="{Binding IssuedByList}" />
-                                        </syncfusion:SfPicker.Columns>
+                                            <syncfusion:SfPicker.HeaderView>
 
-                                        <syncfusion:SfPicker.SelectedTextStyle>
-                                            <syncfusion:PickerTextStyle
-                                                FontAttributes="Bold"
-                                                FontSize="15"
-                                                TextColor="{StaticResource NeutralBlack}" />
-                                        </syncfusion:SfPicker.SelectedTextStyle>
+                                                <syncfusion:PickerHeaderView
+                                                    Height="46"
+                                                    Background="{StaticResource Primary}"
+                                                    Text="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}">
+                                                    <syncfusion:PickerHeaderView.TextStyle>
+                                                        <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
+                                                    </syncfusion:PickerHeaderView.TextStyle>
+                                                </syncfusion:PickerHeaderView>
 
-                                        <syncfusion:SfPicker.HeaderView>
+                                            </syncfusion:SfPicker.HeaderView>
 
-                                            <syncfusion:PickerHeaderView
-                                                Height="46"
-                                                Background="{StaticResource Primary}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}">
-                                                <syncfusion:PickerHeaderView.TextStyle>
-                                                    <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
-                                                </syncfusion:PickerHeaderView.TextStyle>
-                                            </syncfusion:PickerHeaderView>
+                                            <syncfusion:SfPicker.FooterView>
 
-                                        </syncfusion:SfPicker.HeaderView>
+                                                <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
-                                        <syncfusion:SfPicker.FooterView>
+                                                    <syncfusion:PickerFooterView.TextStyle>
+                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                    </syncfusion:PickerFooterView.TextStyle>
 
-                                            <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
+                                                </syncfusion:PickerFooterView>
 
-                                                <syncfusion:PickerFooterView.TextStyle>
-                                                    <syncfusion:PickerTextStyle TextColor="White" />
-                                                </syncfusion:PickerFooterView.TextStyle>
-
-                                            </syncfusion:PickerFooterView>
-
-                                        </syncfusion:SfPicker.FooterView>
-
-
-                                    </syncfusion:SfPicker>
-
+                                            </syncfusion:SfPicker.FooterView>
+                                        </syncfusion:SfPicker>
+                                    </StackLayout>
                                     <!--  issuein city  -->
-                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZIssuingCity}" />
-                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                    <StackLayout>
+                                        <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZIssuingCity}" />
+                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
-                                    <inputLayout:SfTextInputLayout
-                                        x:Name="FrmIssuedByCity"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10">
+                                        <custom:CustomSfTextInputView
+                                            x:Name="FrmIssuedByCity"
+                                            ContainerBackground="White"
+                                            ContainerType="Outlined"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
+                                            InputViewPadding="16,0,16,0"
+                                            LeadingViewPosition="Inside"
+                                            OutlineCornerRadius="10">
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                 <custom:GAZTBorderlessEntry
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding TxtLOrCIssuedByCity}"
+                                                TextChanged="IssuedByCity_TextChanged"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalTextAlignment="Center" />
+                                            </custom:CustomSfTextInputView.TextInputView>
 
-                                        <custom:GAZTBorderlessEntry
-                                            InputTransparent="True"
-                                            IsReadOnly="True"
-                                            Placeholder="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding TxtLOrCIssuedByCity}"
-                                            TextChanged="IssuedByCity_TextChanged"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalTextAlignment="Center" />
+                                            <custom:CustomSfTextInputView.TrailingView>
+                                                <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
+                                            </custom:CustomSfTextInputView.TrailingView>
 
-                                        <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
-                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                            <custom:CustomSfTextInputView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="LIssuedByCity_Clicked" />
 
-                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="LIssuedByCity_Clicked" />
+                                            </custom:CustomSfTextInputView.GestureRecognizers>
 
-                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        </custom:CustomSfTextInputView>
 
-                                    </inputLayout:SfTextInputLayout>
+                                        <syncfusion:SfPicker
+                                            x:Name="ddlLIssuedByCity"
+                                            Background="White"
+                                            ItemHeight="46"
+                                            Mode="Dialog"
+                                            OkButtonClicked="DDLicense_OkayButtonClicked"
+                                            SelectionChanged="ddlLIssuedByCity_OkButtonClicked">
 
-                                    <syncfusion:SfPicker
-                                        x:Name="ddlLIssuedByCity"
-                                        Background="White"
-                                        ItemHeight="46"
-                                        Mode="Dialog"
-                                        OkButtonClicked="DDLicense_OkayButtonClicked"
-                                        SelectionChanged="ddlLIssuedByCity_OkButtonClicked">
-
-                                        <syncfusion:SfPicker.SelectionView>
-                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                        </syncfusion:SfPicker.SelectionView>
-
-
-                                        <syncfusion:SfPicker.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                        </syncfusion:SfPicker.TextStyle>
-
-                                        <syncfusion:SfPicker.Columns>
-                                            <syncfusion:PickerColumn
-                                                Width="300"
-                                                DisplayMemberPath="CityName"
-                                                ItemsSource="{Binding CityList}" />
-                                        </syncfusion:SfPicker.Columns>
-
-                                        <syncfusion:SfPicker.SelectedTextStyle>
-                                            <syncfusion:PickerTextStyle
-                                                FontAttributes="Bold"
-                                                FontSize="15"
-                                                TextColor="{StaticResource NeutralBlack}" />
-                                        </syncfusion:SfPicker.SelectedTextStyle>
+                                            <syncfusion:SfPicker.SelectionView>
+                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                            </syncfusion:SfPicker.SelectionView>
 
 
-                                        <syncfusion:SfPicker.HeaderView>
+                                            <syncfusion:SfPicker.TextStyle>
+                                                <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                            </syncfusion:SfPicker.TextStyle>
 
-                                            <syncfusion:PickerHeaderView
-                                                Height="46"
-                                                Background="{StaticResource Primary}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZIssuingCity}">
-                                                <syncfusion:PickerHeaderView.TextStyle>
-                                                    <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
-                                                </syncfusion:PickerHeaderView.TextStyle>
-                                            </syncfusion:PickerHeaderView>
+                                            <syncfusion:SfPicker.Columns>
+                                                <syncfusion:PickerColumn
+                                                    Width="300"
+                                                    DisplayMemberPath="CityName"
+                                                    ItemsSource="{Binding CityList}" />
+                                            </syncfusion:SfPicker.Columns>
 
-                                        </syncfusion:SfPicker.HeaderView>
-
-                                        <syncfusion:SfPicker.FooterView>
-
-                                            <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
-
-                                                <syncfusion:PickerFooterView.TextStyle>
-                                                    <syncfusion:PickerTextStyle TextColor="White" />
-                                                </syncfusion:PickerFooterView.TextStyle>
-
-                                            </syncfusion:PickerFooterView>
-
-                                        </syncfusion:SfPicker.FooterView>
+                                            <syncfusion:SfPicker.SelectedTextStyle>
+                                                <syncfusion:PickerTextStyle
+                                                    FontAttributes="Bold"
+                                                    FontSize="15"
+                                                    TextColor="{StaticResource NeutralBlack}" />
+                                            </syncfusion:SfPicker.SelectedTextStyle>
 
 
-                                    </syncfusion:SfPicker>
+                                            <syncfusion:SfPicker.HeaderView>
+
+                                                <syncfusion:PickerHeaderView
+                                                    Height="46"
+                                                    Background="{StaticResource Primary}"
+                                                    Text="{x:Static ResourceManager:AppResources.ZZIssuingCity}">
+                                                    <syncfusion:PickerHeaderView.TextStyle>
+                                                        <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
+                                                    </syncfusion:PickerHeaderView.TextStyle>
+                                                </syncfusion:PickerHeaderView>
+
+                                            </syncfusion:SfPicker.HeaderView>
+
+                                            <syncfusion:SfPicker.FooterView>
+
+                                                <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
+
+                                                    <syncfusion:PickerFooterView.TextStyle>
+                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                    </syncfusion:PickerFooterView.TextStyle>
+
+                                                </syncfusion:PickerFooterView>
+
+                                            </syncfusion:SfPicker.FooterView>
+
+
+                                        </syncfusion:SfPicker>
+                                    </StackLayout>
+                                    
                                 </StackLayout>
                                 
                             </StackLayout>
 
                             <!--  Step 4  -->
                             <StackLayout IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}">
-
                                 <!--  Email  -->
-                                <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
-                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                </Label>
-                                <inputLayout:SfTextInputLayout
-                                        x:Name="FrmEmailAddress"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10">
+                                <StackLayout>
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                    </Label>
+                                    <custom:CustomSfTextInputView
+                                            x:Name="FrmEmailAddress"
+                                            ContainerBackground="White"
+                                            ContainerType="Outlined"
+                                            InputViewPadding="16,0,16,0"
+                                            LeadingViewPosition="Inside"
+                                            OutlineCornerRadius="10">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="EntryEmail"
+                                                Keyboard="Email"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding TxtEmailAddress}"
+                                                Unfocused="EntryEmail_TextChanged"
+                                                VerticalTextAlignment="Center">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviors:AlphaNumericValidatorBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        
 
-                                        <custom:GAZTBorderlessEntry
-                                            x:Name="EntryEmail"
-                                            Keyboard="Email"
-                                            Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding TxtEmailAddress}"
-                                            Unfocused="EntryEmail_TextChanged"
-                                            VerticalTextAlignment="Center">
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviors:AlphaNumericValidatorBehaviour />
-                                            </custom:GAZTBorderlessEntry.Behaviors>
-                                        </custom:GAZTBorderlessEntry>
+                                    </custom:CustomSfTextInputView>
 
-                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
 
                                 <!--  Mobile number  -->
-                                 <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
+                                 <StackLayout>
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" />
                                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
-                                 </Label>
+                                    </Label>
 
-                                 <inputLayout:SfTextInputLayout
+                                 <custom:CustomSfTextInputView
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <StackLayout
+                                                FlowDirection="LeftToRight"
+                                                Orientation="Horizontal"
+                                                Spacing="0"
+                                                VerticalOptions="CenterAndExpand">
 
-                                        <StackLayout
-                                            FlowDirection="LeftToRight"
-                                            Orientation="Horizontal"
-                                            Spacing="0"
-                                            VerticalOptions="CenterAndExpand">
+                                                <Image
+                                                    HorizontalOptions="Start"
+                                                    Source="arrowDropdown.png"
+                                                    Style="{StaticResource SmallIcon}">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="CountryCodeTapped" />
+                                                    </Image.GestureRecognizers>
 
-                                            <Image
-                                                HorizontalOptions="Start"
-                                                Source="arrowDropdown.png"
-                                                Style="{StaticResource SmallIcon}">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="CountryCodeTapped" />
-                                                </Image.GestureRecognizers>
+                                                </Image>
 
-                                            </Image>
+                                                <buttons:SfButton
+                                                    x:Name="IntnlCodes"
+                                                    Background="Transparent"
+                                                    Clicked="CountryCodeTapped"
+                                                    HorizontalOptions="Center"
+                                                    Text="{Binding TxtCountryCode}"
+                                                    TextColor="{StaticResource PrimaryColor}"
+                                                    VerticalOptions="Center" />
+                                        
 
-                                            <buttons:SfButton
-                                                x:Name="IntnlCodes"
-                                                Background="Transparent"
-                                                Clicked="CountryCodeTapped"
-                                                HorizontalOptions="Center"
-                                                Text="{Binding TxtCountryCode}"
-                                                TextColor="{StaticResource PrimaryColor}"
-                                                VerticalOptions="Center" />
+                                                <custom:GAZTBorderlessEntry
+                                                    x:Name="EntryMobileNumber"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    IsSpellCheckEnabled="False"
+                                                    Keyboard="Telephone"
+                                                    MaxLength="{Binding MaxDigids}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding TxtMobileNumber}"
+                                                    TextColor="{StaticResource PrimaryColor}"
+                                                    Unfocused="EntryMobileNumber_Unfocused" />
+                                            </StackLayout>
+                                         </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
 
-                                            <custom:GAZTBorderlessEntry
-                                                x:Name="EntryMobileNumber"
-                                                HorizontalOptions="FillAndExpand"
-                                                IsSpellCheckEnabled="False"
-                                                Keyboard="Telephone"
-                                                MaxLength="{Binding MaxDigids}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding TxtMobileNumber}"
-                                                TextColor="{StaticResource PrimaryColor}"
-                                                Unfocused="EntryMobileNumber_Unfocused" />
-
-
-                                        </StackLayout>
-
-                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+                                 
                                
                                 <!--  Phone Number  -->
-                                <inputLayout:SfTextInputLayout
+                                 <StackLayout>
+                                    <custom:CustomSfTextInputView
                                     x:Name="FrmPhoneNumber"
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
@@ -1111,7 +1138,10 @@
                                         </custom:GAZTBorderlessEntry.Behaviors>
 
                                     </custom:GAZTBorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView>
+
+                                </StackLayout>
+                               
                             </StackLayout>
 
                             <!--  Start step 5  -->
@@ -1146,9 +1176,10 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="OTPFirstEntry"
-                                                    BackgroundColor="Red"
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    FontSize="Small"
+                                                    ClassId="1"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="16"
+                                                    TextColor="#0996D4"
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
@@ -1157,18 +1188,22 @@
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding OTPFirstDigit}"
-                                                    TextChanged="OTPFirstEntry_TextChanged"
-                                                    TextColor="#bbbbbb"
                                                     WidthRequest="100">
+
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
-                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                                        <xct:EventToCommandBehavior
+                                                            Command="{Binding GoToNextEntryCommand}"
+                                                            CommandParameter="{Binding Source={x:Reference OTPSecondEntry}}"
+                                                            EventName="TextChanged" />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
+
                                                 </custom:GAZTBorderlessEntry>
 
                                                 <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer CommandParameter="1" Tapped="OTPTap" />
+                                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference OTPSecondEntry}}" />
                                                 </Border.GestureRecognizers>
+
 
                                             </Border>
                                             <!--  First OTP Digit End  -->
@@ -1184,8 +1219,10 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="OTPSecondEntry"
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    FontSize="Small"
+                                                    ClassId="2"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="16"
+                                                    TextColor="#0996D4"
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
@@ -1194,17 +1231,21 @@
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding OTPSecondDigit}"
-                                                    TextChanged="OTPSecondEntry_TextChanged"
-                                                    TextColor="#bbbbbb"
                                                     WidthRequest="100">
+
+                                                    
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
-                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
+                                                        <xct:EventToCommandBehavior
+                                                            Command="{Binding GoToNextEntryCommand}"
+                                                            CommandParameter="{Binding Source={x:Reference OTPThirdEntry}}"
+                                                            EventName="TextChanged" />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
+
                                                 </custom:GAZTBorderlessEntry>
 
                                                 <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer CommandParameter="2" Tapped="OTPTap" />
+                                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference OTPThirdEntry}}" />
                                                 </Border.GestureRecognizers>
 
                                             </Border>
@@ -1221,8 +1262,10 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="OTPThirdEntry"
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    FontSize="Small"
+                                                    ClassId="3"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="16"
+                                                    TextColor="#0996D4"
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
@@ -1231,18 +1274,20 @@
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding OTPThirdDigit}"
-                                                    TextChanged="OTPThirdEntry_TextChanged"
-                                                    TextColor="#bbbbbb"
                                                     WidthRequest="100">
-                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                   
+                                                <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
-                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                                        <xct:EventToCommandBehavior
+                                                            Command="{Binding GoToNextEntryCommand}"
+                                                            CommandParameter="{Binding Source={x:Reference OTPFourthEntry}}"
+                                                            EventName="TextChanged" />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
 
-                                                <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer CommandParameter="3" Tapped="OTPTap" />
-                                                </Border.GestureRecognizers>
+                                                 <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference OTPFourthEntry}}" />
+                                                 </Border.GestureRecognizers>
 
                                             </Border>
                                             <!--  Third OTP Digit End  -->
@@ -1258,8 +1303,10 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="OTPFourthEntry"
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    FontSize="Small"
+                                                    ClassId="4"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="16"
+                                                    TextColor="#0996D4"
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
@@ -1268,16 +1315,16 @@
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding OTPFourthDigit}"
-                                                    TextColor="#bbbbbb"
                                                     WidthRequest="100">
-                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                   <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
-                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                        <!--<xct:EventToCommandBehavior Command="{Binding OnNextButtonClick}" EventName="Completed" />-->
+                                                   </custom:GAZTBorderlessEntry.Behaviors>
 
                                                 </custom:GAZTBorderlessEntry>
 
                                                 <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer CommandParameter="4" Tapped="OTPTap" />
+                                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference OTPFourthEntry}}" />
                                                 </Border.GestureRecognizers>
 
                                             </Border>
@@ -1333,8 +1380,10 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="MobOTPFirstEntry"
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    FontSize="Small"
+                                                    ClassId="1"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="16"
+                                                    TextColor="#0996D4"
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
@@ -1343,17 +1392,25 @@
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding MOTPFirstDigit}"
-                                                    TextChanged="MobOTPFirstEntry_TextChanged"
-                                                    TextColor="#bbbbbb"
                                                     WidthRequest="100">
-                                                    <custom:GAZTBorderlessEntry.Behaviors>
+
+                                                    <!--<custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
                                                         <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>-->
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behaviors:OnlyNumericValuesBehaviour />
+                                                        <xct:EventToCommandBehavior
+                                                            Command="{Binding GoToNextEntryCommandMobile}"
+                                                            CommandParameter="{Binding Source={x:Reference MobOTPSecondEntry}}"
+                                                            EventName="TextChanged" />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
+
                                                 </custom:GAZTBorderlessEntry>
 
                                                 <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer CommandParameter="5" Tapped="OTPTap" />
+                                                     <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference MobOTPSecondEntry}}" />
+
                                                 </Border.GestureRecognizers>
 
                                             </Border>
@@ -1370,8 +1427,10 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="MobOTPSecondEntry"
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    FontSize="Small"
+                                                    ClassId="2"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="16"
+                                                    TextColor="#0996D4"
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
@@ -1380,17 +1439,19 @@
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding MOTPSecondDigit}"
-                                                    TextChanged="MobOTPSecondEntry_TextChanged"
-                                                    TextColor="#bbbbbb"
                                                     WidthRequest="100">
+
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
-                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
+                                                        <xct:EventToCommandBehavior
+                                                            Command="{Binding GoToNextEntryCommandMobile}"
+                                                            CommandParameter="{Binding Source={x:Reference MobOTPThirdEntry}}"
+                                                            EventName="TextChanged" />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
 
                                                 <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer CommandParameter="6" Tapped="OTPTap" />
+                                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference MobOTPThirdEntry}}" />
                                                 </Border.GestureRecognizers>
 
                                             </Border>
@@ -1407,8 +1468,10 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="MobOTPThirdEntry"
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    FontSize="Small"
+                                                    ClassId="3"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="16"
+                                                    TextColor="#0996D4"
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
@@ -1417,17 +1480,18 @@
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding MOTPThirdDigit}"
-                                                    TextChanged="MobOTPThirdEntry_TextChanged"
-                                                    TextColor="#bbbbbb"
                                                     WidthRequest="100">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
-                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                                        <xct:EventToCommandBehavior
+                                                            Command="{Binding GoToNextEntryCommandMobile}"
+                                                            CommandParameter="{Binding Source={x:Reference MobOTPFourthEntry}}"
+                                                            EventName="TextChanged" />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
 
                                                 <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer CommandParameter="7" Tapped="OTPTap" />
+                                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference MobOTPFourthEntry}}" />
                                                 </Border.GestureRecognizers>
 
                                             </Border>
@@ -1444,8 +1508,10 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="MobOTPFourthEntry"
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    FontSize="Small"
+                                                    ClassId="4"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="16"
+                                                    TextColor="#0996D4"
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding MIsOTPEntryEnable}"
@@ -1454,17 +1520,18 @@
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding MOTPFourthDigit}"
-                                                    TextColor="#bbbbbb"
                                                     WidthRequest="100">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
-                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                        <!--<xct:EventToCommandBehavior Command="{Binding OnNextButtonClick}" EventName="Completed" />-->
+                                                   </custom:GAZTBorderlessEntry.Behaviors>
 
                                                 </custom:GAZTBorderlessEntry>
 
                                                 <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer CommandParameter="8" Tapped="OTPTap" />
+                                                    <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference MobOTPFourthEntry}}" />
                                                 </Border.GestureRecognizers>
+
 
                                             </Border>
                                             <!--  Fourth OTP Digit End  -->
@@ -1512,24 +1579,26 @@
                                         </buttons:SfButton.Triggers>
                                     </buttons:SfButton>
 
-                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDNewPassword}" />
-                                            <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
 
-                                    <inputLayout:SfTextInputLayout
+                                     <StackLayout>
+                                         <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
+                                             <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDNewPassword}" />
+                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                </FormattedString>
+                                             </Label.FormattedText>
+                                         </Label>
+
+                                        <custom:CustomSfTextInputView
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         Hint="{x:Static ResourceManager:AppResources.NDNewPassword}"
                                         InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
-
-                                        <custom:GAZTBorderlessEntry
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
                                             x:Name="EntryPass"
                                             IsPassword="{Binding IsPasswordEncripted}"
                                             Style="{StaticResource DefaultEntry}"
@@ -1540,8 +1609,10 @@
                                                 <behaviors:PasswordTextBehaviour />
                                             </custom:GAZTBorderlessEntry.Behaviors>
                                         </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        
 
-                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                        <custom:CustomSfTextInputView.TrailingView>
                                             <Image
                                                 x:Name="imageNewPassword"
                                                 Source="showPassword.png"
@@ -1550,27 +1621,31 @@
                                                     <TapGestureRecognizer Tapped="ImageSeeNewPassword_Tapped" />
                                                 </Image.GestureRecognizers>
                                             </Image>
-                                        </inputLayout:SfTextInputLayout.TrailingView>
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TrailingView>
+                                    </custom:CustomSfTextInputView>
 
-                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}" />
-                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
 
-                                    <inputLayout:SfTextInputLayout
+                                    </StackLayout>
+
+                                     <StackLayout>
+                                         <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}" />
+                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <custom:CustomSfTextInputView
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         Hint="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
                                         InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
-
-                                        <custom:GAZTBorderlessEntry
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
                                             x:Name="EntryCfrmPass"
                                             IsPassword="{Binding IsConfirmPasswordEncripted}"
                                             Style="{StaticResource DefaultEntry}"
@@ -1581,8 +1656,10 @@
                                                 <behaviors:PasswordTextBehaviour />
                                             </custom:GAZTBorderlessEntry.Behaviors>
                                         </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        
 
-                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                        <custom:CustomSfTextInputView.TrailingView>
                                             <Image
                                                 x:Name="imageConfirmPassword"
                                                 Source="showPassword.png"
@@ -1592,8 +1669,10 @@
                                                 </Image.GestureRecognizers>
                                             </Image>
 
-                                        </inputLayout:SfTextInputLayout.TrailingView>
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TrailingView>
+                                    </custom:CustomSfTextInputView>
+
+                                    </StackLayout>
 
                                     <StackLayout Orientation="Horizontal" Spacing="16">
 

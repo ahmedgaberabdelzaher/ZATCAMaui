@@ -138,7 +138,7 @@
                                     </Border>
 
                                     <listView:SfListView
-                                        Grid.Row="0"
+                                        Grid.Row="1"
                                         Margin="0"
                                         Padding="0"
                                         AutoFitMode="Height"
@@ -160,36 +160,14 @@
                                                     Padding="10"
                                                     StrokeShape="RoundRectangle 15,15,15,15"
                                                     Style="{StaticResource GreyBorderFrameWithShadow}">
-                                                    <Grid
-                                                        Margin="0"
-                                                        Padding="0"
-                                                        RowSpacing="0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*" />
-                                                            <RowDefinition Height="*" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="50*" />
-                                                            <ColumnDefinition Width="50*" />
-                                                        </Grid.ColumnDefinitions>
+                                                    <StackLayout>
+                                                        <Label
+                                                            Margin="0,0,0,10"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource SectionTitleBlack}"
+                                                            Text="{x:Static ResourceManager:AppResources.VRVatReviewRequest}" />
 
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.ColumnSpan="2"
-                                                            >
-                                                            <Label
-                                                                Margin="0,0,0,10"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                Style="{StaticResource SectionTitleBlack}"
-                                                                Text="{x:Static ResourceManager:AppResources.VRVatReviewRequest}" />
-
-
-                                                        </StackLayout>
-
-                                                        <StackLayout
-                                                            Grid.Row="1"
-                                                            Grid.Column="0"
-                                                            >
+                                                        <StackLayout Orientation="Horizontal">
 
                                                             <Label
                                                                 HorizontalOptions="StartAndExpand"
@@ -198,11 +176,7 @@
                                                                 Text="{Binding Fbnum}"
                                                                 VerticalOptions="CenterAndExpand" />
 
-                                                        </StackLayout>
-
-
-
-                                                        <Border
+                                                            <Border
                                                             Grid.Row="1"
                                                             Grid.Column="1"
                                                             BackgroundColor="{StaticResource PartialBg}"
@@ -232,7 +206,9 @@
                                                                 </Label.Triggers>
                                                             </Label>
                                                         </Border>
-                                                    </Grid>
+
+                                                        </StackLayout>
+                                                    </StackLayout>
                                                 </Border>
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
@@ -242,7 +218,7 @@
                             </StackLayout>
 
                             <Grid
-                                Margin="20,10,20,0"
+                                
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand"
                                 IsVisible="{Binding SummaryVisible}"
@@ -250,31 +226,16 @@
 
                                 <StackLayout >
 
-                                    <Grid Margin="0,5,0,10">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                        </Grid.RowDefinitions>
-                                        <Label
-                                            Grid.Row="0"
-                                            Grid.Column="0"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource PageTitleBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.CRSummary}" />
-                                        <Label
-                                            Grid.Row="1"
-                                            Grid.Column="0"
-                                            Margin="0,-10,0,15"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.CRReviewthebelowinformation}" />
-                                        <BoxView
-                                            Grid.Row="2"
-                                            Grid.Column="0"
-                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                    <Label
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource PageTitleBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.CRSummary}" />
+                                    <Label
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.CRReviewthebelowinformation}" />
+                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    </Grid>
 
                                     <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 

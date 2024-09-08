@@ -321,7 +321,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     }
                     else if (viewModel.CurrentStep == AppResources.VATRStep4)
                     {
-                        if (viewModel.RegTypeCode == "N")
+                        if (viewModel.RegTypeCode == "Not Eligible")
                         {
                             if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.Count > 0)
                             {
@@ -741,24 +741,24 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     string eligibilityText = string.Empty;
                     viewModel.Attachments = AppResources.Attachments;
 
-                    if (code.Equals("L"))
+                    if (code.Equals("Mandatory Registration large taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     }
-                    else if (code.Equals("S"))
+                    else if (code.Equals("Mandatory Registration small taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     }
-                    else if (code.Equals("V"))
+                    else if (code.Equals("Voluntary Registration"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     }
-                    else if (code.Equals("N"))
+                    else if (code.Equals("Not Eligible"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                         viewModel.Attachments = AppResources.Attachments + "*";
                     }
-                    else if (code.Equals("M"))
+                    else if (code.Equals("Mandatory Registration medium taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     }
@@ -799,24 +799,24 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     string eligibilityText = string.Empty;
                     viewModel.Attachments = AppResources.Attachments;
 
-                    if (code.Equals("L"))
+                    if (code.Equals("Mandatory Registration large taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     }
-                    else if (code.Equals("S"))
+                    else if (code.Equals("Mandatory Registration small taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     }
-                    else if (code.Equals("V"))
+                    else if (code.Equals("Voluntary Registration"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     }
-                    else if (code.Equals("N"))
+                    else if (code.Equals("Not Eligible"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                         viewModel.Attachments = AppResources.Attachments + "*";
                     }
-                    else if (code.Equals("M"))
+                    else if (code.Equals("Mandatory Registration medium taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     }
@@ -863,24 +863,24 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         string eligibilityText = string.Empty;
                         viewModel.Attachments = AppResources.Attachments;
 
-                        if (code.Equals("L"))
+                        if (code.Equals("Mandatory Registration medium taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         }
-                        else if (code.Equals("S"))
+                        else if (code.Equals("Mandatory Registration small taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
-                        else if (code.Equals("V"))
+                        else if (code.Equals("Voluntary Registration"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         }
-                        else if (code.Equals("N"))
+                        else if (code.Equals("Not Eligible"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                             viewModel.Attachments = AppResources.Attachments + "*";
                         }
-                        else if (code.Equals("M"))
+                        else if (code.Equals("Mandatory Registration medium taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
@@ -932,24 +932,24 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         string eligibilityText = string.Empty;
                         viewModel.Attachments = AppResources.Attachments;
 
-                        if (code.Equals("L"))
+                        if (code.Equals("Mandatory Registration large taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         }
-                        else if (code.Equals("S"))
+                        else if (code.Equals("Mandatory Registration small taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
-                        else if (code.Equals("V"))
+                        else if (code.Equals("Voluntary Registration"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         }
-                        else if (code.Equals("N"))
+                        else if (code.Equals("Not Eligible"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                             viewModel.Attachments = AppResources.Attachments + "*";
                         }
-                        else if (code.Equals("M"))
+                        else if (code.Equals("Mandatory Registration medium taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
@@ -1007,24 +1007,24 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         string eligibilityText = string.Empty;
                         viewModel.Attachments = AppResources.Attachments;
 
-                        if (code.Equals("L"))
+                        if (code.Equals("Mandatory Registration large taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         }
-                        else if (code.Equals("S"))
+                        else if (code.Equals("Mandatory Registration small taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
-                        else if (code.Equals("V"))
+                        else if (code.Equals("Voluntary Registration"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         }
-                        else if (code.Equals("N"))
+                        else if (code.Equals("Not Eligible"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                             viewModel.Attachments = AppResources.Attachments + "*";
                         }
-                        else if (code.Equals("M"))
+                        else if (code.Equals("Mandatory Registration medium taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
@@ -1072,24 +1072,24 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         string eligibilityText = string.Empty;
                         viewModel.Attachments = AppResources.Attachments;
 
-                        if (code.Equals("L"))
+                        if (code.Equals("Mandatory Registration large taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         }
-                        else if (code.Equals("S"))
+                        else if (code.Equals("Mandatory Registration small taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
-                        else if (code.Equals("V"))
+                        else if (code.Equals("Voluntary Registration"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         }
-                        else if (code.Equals("N"))
+                        else if (code.Equals("Not Eligible"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                             viewModel.Attachments = AppResources.Attachments + "*";
                         }
-                        else if (code.Equals("M"))
+                        else if (code.Equals("Mandatory Registration medium taxpayer group"))
                         {
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
@@ -3642,27 +3642,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     string eligibilityText = string.Empty;
                     viewModel.Attachments = AppResources.Attachments;
 
-                    if (code.Equals("L"))
+                    if (code.Equals("Mandatory Registration large taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("S"))
+                    else if (code.Equals("Mandatory Registration small taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("V"))
+                    else if (code.Equals("Voluntary Registration"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("N"))
+                    else if (code.Equals("Not Eligible"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                         viewModel.Attachments = AppResources.Attachments + "*";
                     }
-                    else if (code.Equals("M"))
+                    else if (code.Equals("Mandatory Registration medium taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         FrmNewAttachment.HasError = false;
@@ -3719,27 +3719,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     string eligibilityText = string.Empty;
                     viewModel.Attachments = AppResources.Attachments;
 
-                    if (code.Equals("L"))
+                    if (code.Equals("Mandatory Registration large taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("S"))
+                    else if (code.Equals("Mandatory Registration small taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("V"))
+                    else if (code.Equals("Voluntary Registration"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                         FrmNewAttachment.HasError = false;
                     }
-                    else if (code.Equals("N"))
+                    else if (code.Equals("Not Eligible"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                         viewModel.Attachments = AppResources.Attachments + "*";
                     }
-                    else if (code.Equals("M"))
+                    else if (code.Equals("Mandatory Registration medium taxpayer group"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         FrmNewAttachment.HasError = false;
@@ -3778,27 +3778,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 string eligibilityText = string.Empty;
                 viewModel.Attachments = AppResources.Attachments;
 
-                if (code.Equals("L"))
+                if (code.Equals("Mandatory Registration large taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("S"))
+                else if (code.Equals("Mandatory Registration small taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("V"))
+                else if (code.Equals("Voluntary Registration"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("N"))
+                else if (code.Equals("Not Eligible"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                     viewModel.Attachments = AppResources.Attachments + "*";
                 }
-                else if (code.Equals("M"))
+                else if (code.Equals("Mandatory Registration medium taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
@@ -3835,27 +3835,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 string eligibilityText = string.Empty;
                 viewModel.Attachments = AppResources.Attachments;
 
-                if (code.Equals("L"))
+                if (code.Equals("Mandatory Registration large taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("S"))
+                else if (code.Equals("Mandatory Registration small taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("V"))
+                else if (code.Equals("Voluntary Registration"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("N"))
+                else if (code.Equals("Not Eligible"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                     viewModel.Attachments = AppResources.Attachments + "*";
                 }
-                else if (code.Equals("M"))
+                else if (code.Equals("Mandatory Registration medium taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
@@ -3893,27 +3893,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 string eligibilityText = string.Empty;
                 viewModel.Attachments = AppResources.Attachments;
 
-                if (code.Equals("L"))
+                if (code.Equals("Mandatory Registration large taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("S"))
+                else if (code.Equals("Mandatory Registration small taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("V"))
+                else if (code.Equals("Voluntary Registration"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("N"))
+                else if (code.Equals("Not Eligible"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                     viewModel.Attachments = AppResources.Attachments + "*";
                 }
-                else if (code.Equals("M"))
+                else if (code.Equals("Mandatory Registration medium taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
@@ -3951,27 +3951,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 string eligibilityText = string.Empty;
                 viewModel.Attachments = AppResources.Attachments;
 
-                if (code.Equals("L"))
+                if (code.Equals("Mandatory Registration large taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("S"))
+                else if (code.Equals("Mandatory Registration small taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("V"))
+                else if (code.Equals("Voluntary Registration"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
                     FrmNewAttachment.HasError = false;
                 }
-                else if (code.Equals("N"))
+                else if (code.Equals("Not Eligible"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                     viewModel.Attachments = AppResources.Attachments + "*";
                 }
-                else if (code.Equals("M"))
+                else if (code.Equals("Mandatory Registration medium taxpayer group"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     FrmNewAttachment.HasError = false;
@@ -4408,7 +4408,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         private void GoBackToFinacialRepresentativeDetails(object sender, EventArgs e)
         {
             viewModel.CurrentIndex = 4;
-            if (viewModel.RegTypeCode == "N")
+            if (viewModel.RegTypeCode == "Not Eligible")
             {
                 if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.Count > 0)
                 {
