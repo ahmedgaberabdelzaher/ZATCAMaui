@@ -9,6 +9,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
     public partial class PickerPageView : PopupPage
     {
+        int _pageCode = 0;
         PickerPageViewModel viewModel;
         public PickerPageView(List<string> _pickerSource)
         {
@@ -35,9 +36,14 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
                 viewModel.DataSource = _pickerSource;
                 viewModel.PickerItemSource = viewModel.DataSource.PickerData;
                 viewModel.PickerTitle = viewModel.DataSource.PickerTitle;
+                _pageCode = _pickerSource.PageCode;
                 if (viewModel.DataSource.SelectedValue != null)
                 {
                     viewModel.SelectedItem = viewModel.DataSource.SelectedValue;
+                }
+                else
+                {
+                    viewModel.DataSource.SelectedValue = _pickerSource.PickerData.FirstOrDefault();
                 }
                 this.BindingContext = viewModel;
             }
@@ -100,8 +106,14 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
                     viewModel.DataSource.SelectedValue = viewModel.DataSource.PickerData[0];
                     MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
                 }
+                else if (_pageCode == 1)
+                {
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelected", viewModel.DataSource);
+                }
                 else if (viewModel.DataSource.SelectedValue != null)
                     MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
+
+              
             }
             catch (Exception)
             {

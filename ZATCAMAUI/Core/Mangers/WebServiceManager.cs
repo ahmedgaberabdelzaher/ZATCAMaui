@@ -32,6 +32,7 @@ using ZATCAMAUI.Models.SignUP;
 using ZATCAMAUI.Models.Authentication;
 using ZATCAMAUI.Models.NewModelAPI.Logout;
 using ZATCAMAUI.Models.AttachmentRequest;
+using Microsoft.Maui;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -8473,6 +8474,19 @@ namespace ZATCAMAUI.Core.Mangers
                 var apiResponse = await client.PostAsync(uri, contentPost);
                 var result = await apiResponse.Content.ReadAsStringAsync();
                 response = JsonConvert.DeserializeObject<NafathChangeMobileNumberCheckOTPModelResponse>(result);
+                if (!string.IsNullOrEmpty(result) && response.d == null)
+                {
+                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
+                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    {
+                        string errorMessage = string.Empty;
+                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        errorMessage = WithReplacedString;
+                        throw new GAZTErrorException(errorMessage);
+                    }
+                }
             }
             return response;
         }
@@ -8838,5 +8852,16 @@ namespace ZATCAMAUI.Core.Mangers
             return null;
         }
 
+        public static string PrepareErrorMessageByJson(string ErrorResposnse)
+        {
+            SignupErrorModelRootObject errorMesg = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ErrorResposnse);
+            StringBuilder Message = new StringBuilder();
+            foreach (ErrorDetail itemerror in errorMesg.header.moreInformation.errorDetails)
+            {
+                Message.Append(itemerror.message);
+            }
+            return Message.ToString().Replace("An exception was raised", string.Empty);
+        }
+        
     }
 }

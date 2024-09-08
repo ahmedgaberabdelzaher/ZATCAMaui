@@ -93,6 +93,7 @@ using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage;
 using ZATCAMAUI.Views.NewDesign.AccountStatements;
 using ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages;
+using ZATCAMAUI.Views.NewDesign.ChangeMobile;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.Common.NativeNafath;
 using ZATCAMAUI.Views.NewDesign.ContractReleasePages;
@@ -2752,6 +2753,7 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.VATInstalmentPopupRevokePageView, typeof(VATInstalmentPopupRevokePageView));
             navigationService.Configure(App.VatInstalmentPlanRevokePageView, typeof(VatInstalmentPlanRevokePageView));
             navigationService.Configure(App.VATInstalmentPopupNotesPageView, typeof(VATInstalmentPopupNotesPageView));
+            navigationService.Configure(App.NafathLoginView, typeof(NafathLoginView));
 
 
             #endregion
@@ -2946,7 +2948,10 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.ZakatExemptionRequestListPageView, typeof(ZakatExemptionRequestListPageView));
             navigationService.Configure(App.NafathPopUpPage,typeof(NafathPopUpPage));
             navigationService.Configure(App.OtpLoginPageView, typeof(OTPPageView));
-
+            navigationService.Configure(App.NafathAuthenticationView, typeof(NafathAuthenticationView));
+            navigationService.Configure(App.NafathChangeMobileNumberView, typeof(NafathChangeMobileNumberView));
+            navigationService.Configure(App.NafathChangeMobileNumberOTPView, typeof(NafathChangeMobileNumberOTPView));
+            navigationService.Configure(App.NafathChangeMobileNumberSuccessView, typeof(NafathChangeMobileNumberSuccessView));
             #endregion
 
             return navigationService;

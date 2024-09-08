@@ -152,6 +152,7 @@
                                     <ViewCell.View>
                                         <Border
                                             Padding="12"
+                                            Margin="8"
                                             HorizontalOptions="FillAndExpand"
                                             StrokeShape="RoundRectangle 15"
                                             Style="{StaticResource GreyBorderFrameWithShadow}"

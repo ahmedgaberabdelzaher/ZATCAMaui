@@ -152,19 +152,10 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         string __vATObjectionSummaryData = vATObjectionSummaryResponse.Content.ReadAsStringAsync().Result;
                         _vATObjectionSummaryModel = JsonConvert.DeserializeObject<VATObjectionSummaryModel>(__vATObjectionSummaryData);
-                        if (!string.IsNullOrEmpty(__vATObjectionSummaryData))
+                        if (!string.IsNullOrEmpty(__vATObjectionSummaryData) && _vATObjectionSummaryModel.result == null )
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(__vATObjectionSummaryData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                            {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
-                            }
+                            string errorMessage = WebServiceManager.PrepareErrorMessageByJson(__vATObjectionSummaryData);
+                            throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
                     }
                     return _vATObjectionSummaryModel;

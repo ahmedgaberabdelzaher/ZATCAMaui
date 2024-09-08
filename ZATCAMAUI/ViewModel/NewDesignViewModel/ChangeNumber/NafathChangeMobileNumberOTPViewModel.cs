@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -10,6 +11,76 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
     {
         public ICommand VerifyOTPCommand { get; set; }
         public ICommand ResendCommand { get; set; }
+        public ICommand GoToNextEntryCommandMobile
+        {
+
+            get
+            {
+                return new Command<object>((e) =>
+                {
+                    if (e != null)
+                    {
+
+                        var entry = e as GAZTBorderlessEntry;
+
+                        switch (entry.ClassId)
+                        {
+                            case "2":
+                                if (!string.IsNullOrEmpty(FirstDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            case "3":
+                                if (!string.IsNullOrEmpty(SecondDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            case "4":
+                                if (!string.IsNullOrEmpty(ThirdDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            case "5":
+                                if (!string.IsNullOrEmpty(FourthDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            case "6":
+                                if (!string.IsNullOrEmpty(FifthDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+
+
+                    }
+                });
+            }
+        }
+        public ICommand FocusEntryCommand
+        {
+
+            get
+            {
+                return new Command<object>((e) =>
+                {
+                    if (e != null)
+                    {
+
+                        var entry = e as GAZTBorderlessEntry;
+
+                        entry.Focus();
+                    }
+                });
+            }
+        }
 
 
         public NafathChangeMobileNumberSendOTPResponse Request { get; set; }
@@ -164,6 +235,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
         {
             VerifyOTPCommand = new Command(async () => await VerifyOTP());
             ResendCommand = new Command(() => Resend());
+
         }
 
         private async Task VerifyOTP()
@@ -177,16 +249,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
                 model.Lang = WebServiceManager.GetLangZParameterAREN();
                 model.Otp = FirstDigit + SecondDigit + ThirdDigit + FourthDigit + FifthDigit + SixthDigit;
                 var response = await WebServiceManager.NafathChangeMobileNumberCheckOTP(model);
-                if (response != null)
+                if (response != null && response.d != null)
                 {
-                    if (string.IsNullOrEmpty(response.d.ErrorMsg))
-                    {
-                        _navigationService.NavigateTo(App.NafathChangeMobileNumberSuccessView);
-                    }
-                    else
-                    {
-                       await _dialogService.ShowMessage(response.d.ErrorMsg, AppResources.Information);
-                    }
+                    _navigationService.NavigateTo(App.NafathChangeMobileNumberSuccessView);
+                }
+                else
+                {
+                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                 }
             }
         }

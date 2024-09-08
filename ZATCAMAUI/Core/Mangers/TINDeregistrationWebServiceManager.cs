@@ -285,8 +285,8 @@ namespace ZATCAMAUI.Core.Mangers
             tinDeregistrationSendResponseModel.LegacyDocNo = tinDeregistrationResponseModel.LegacyDocNo;
             tinDeregistrationSendResponseModel.Langz = lang;
             tinDeregistrationSendResponseModel.FormGuid = tinDeregistrationResponseModel.FormGuid;
-            tinDeregistrationSendResponseModel.Fbnumz = tinDeregistrationResponseModel.Fbnumz;
-            tinDeregistrationSendResponseModel.Fbnum = tinDeregistrationResponseModel.Fbnum;
+            tinDeregistrationSendResponseModel.Fbnumz = tinDeregistrationResponseModel.Fbnumz??string.Empty;
+            tinDeregistrationSendResponseModel.Fbnum = tinDeregistrationResponseModel.Fbnum ?? string.Empty;
             tinDeregistrationSendResponseModel.Fbust = tinDeregistrationResponseModel.Fbust;
             tinDeregistrationSendResponseModel.Dflag = tinDeregistrationResponseModel.Dflag;
             tinDeregistrationSendResponseModel.CreateTxAssesz = tinDeregistrationResponseModel.CreateTxAssesz;

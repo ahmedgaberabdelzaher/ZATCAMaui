@@ -696,7 +696,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             App.selectedVATItem = "";
             App.selectedVATItemFbust = "";
-            await Application.Current.MainPage.Navigation.PushAsync(new VatReviewPageView());
+            _navigationService.NavigateTo(App.VatReviewPageView);
         }
 
         public void ResetListData()
@@ -781,7 +781,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        throw ex;
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     }
                     catch (InternetException ex)
                     {

@@ -8,6 +8,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+
     x:Name="page"
     Title="NafathChangeMobileNumberOTPView"
     ios:Page.UseSafeArea="true"
@@ -82,7 +84,7 @@
                     <Grid
                         Padding="10,0"
                         ColumnDefinitions="*,*,*,*,*,*"
-                        ColumnSpacing="8">
+                        ColumnSpacing="15">
 
                         <Border
                             Grid.Column="0"
@@ -94,8 +96,10 @@
 
                             <custom:GAZTBorderlessEntry
                                 x:Name="FirstDigitEntry"
-                                FontAttributes="Bold"
-                                FontSize="Large"
+                                ClassId="1"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="16"
+                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -104,14 +108,19 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding FirstDigit}"
-                                TextChanged="OtpFirstEntry_TextChanged"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
-                                    <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding GoToNextEntryCommand}"
+                                        CommandParameter="{Binding Source={x:Reference SecondDigitEntry}}"
+                                        EventName="TextChanged" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
-
                             </custom:GAZTBorderlessEntry>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference SecondDigitEntry}}" />
+                            </Border.GestureRecognizers>
 
                         </Border>
 
@@ -125,8 +134,10 @@
 
                             <custom:GAZTBorderlessEntry
                                 x:Name="SecondDigitEntry"
-                                FontAttributes="Bold"
-                                FontSize="Large"
+                                ClassId="2"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="16"
+                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -135,14 +146,19 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding SecondDigit}"
-                                TextChanged="OtpSecondEntry_TextChanged"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
-                                    <behaviors:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding GoToNextEntryCommand}"
+                                        CommandParameter="{Binding Source={x:Reference ThirdDigitEntry}}"
+                                        EventName="TextChanged" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
-
                             </custom:GAZTBorderlessEntry>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference ThirdDigitEntry}}" />
+                            </Border.GestureRecognizers>
 
                         </Border>
 
@@ -156,8 +172,10 @@
 
                             <custom:GAZTBorderlessEntry
                                 x:Name="ThirdDigitEntry"
-                                FontAttributes="Bold"
-                                FontSize="Large"
+                                ClassId="3"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="16"
+                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -166,14 +184,19 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding ThirdDigit}"
-                                TextChanged="OtpThirdEntry_TextChanged"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
-                                    <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding GoToNextEntryCommand}"
+                                        CommandParameter="{Binding Source={x:Reference FourthDigitEntry}}"
+                                        EventName="TextChanged" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
-
                             </custom:GAZTBorderlessEntry>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference FourthDigitEntry}}" />
+                            </Border.GestureRecognizers>
 
                         </Border>
 
@@ -187,8 +210,10 @@
 
                             <custom:GAZTBorderlessEntry
                                 x:Name="FourthDigitEntry"
-                                FontAttributes="Bold"
-                                FontSize="Large"
+                                ClassId="4"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="16"
+                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -197,14 +222,19 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding FourthDigit}"
-                                TextChanged="OtpFourthEntry_TextChanged"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
-                                    <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFifthEntry" />
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding GoToNextEntryCommand}"
+                                        CommandParameter="{Binding Source={x:Reference FifthDigitEntry}}"
+                                        EventName="TextChanged" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
-
                             </custom:GAZTBorderlessEntry>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference FifthDigitEntry}}" />
+                            </Border.GestureRecognizers>
 
                         </Border>
 
@@ -218,8 +248,10 @@
 
                             <custom:GAZTBorderlessEntry
                                 x:Name="FifthDigitEntry"
-                                FontAttributes="Bold"
-                                FontSize="Large"
+                                ClassId="5"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="16"
+                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -228,19 +260,24 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding FifthDigit}"
-                                TextChanged="OtpFifthEntry_TextChanged"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
-                                    <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSixthEntry" />
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding GoToNextEntryCommand}"
+                                        CommandParameter="{Binding Source={x:Reference SixthDigitEntry}}"
+                                        EventName="TextChanged" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
-
                             </custom:GAZTBorderlessEntry>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference SixthDigitEntry}}" />
+                            </Border.GestureRecognizers>
 
                         </Border>
 
                         <Border
-                            Grid.Column="4"
+                            Grid.Column="5"
                             HeightRequest="50"
                             Stroke="Gray"
                             StrokeShape="RoundRectangle 10"
@@ -249,8 +286,10 @@
 
                             <custom:GAZTBorderlessEntry
                                 x:Name="SixthDigitEntry"
-                                FontAttributes="Bold"
-                                FontSize="Large"
+                                ClassId="5"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="16"
+                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -262,9 +301,14 @@
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
+                                    <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />
                                 </custom:GAZTBorderlessEntry.Behaviors>
 
                             </custom:GAZTBorderlessEntry>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference SixthDigitEntry}}" />
+                            </Border.GestureRecognizers>
 
                         </Border>
 
@@ -272,7 +316,7 @@
 
                     <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
 
-                        <Image Source="clock" />
+                        <Image Source="clock" HeightRequest="24"/>
 
                         <Label
                             Style="{StaticResource CaptionLabelGrey}"

@@ -12,13 +12,45 @@
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
-    mc:Ignorable="d">
+    mc:Ignorable="d"> 
     <ContentPage.Content>
         <Grid>
             <Border Padding="0" Style="{StaticResource CommonTopCurves}">
 
                 <Grid Padding="015" RowDefinitions="auto,auto,*,auto">
+                    <!--#region Header  -->
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            x:Name="backArrow"
+                            HorizontalOptions="Start"
+                            Rotation="0"
+                            Source="arrowLeft.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BackCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image
+                            HeightRequest="40"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="ic_logo_gazt.png"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="34" />
+                    </StackLayout>
+                    <!--#endregion Header  -->
 
+                    <!--#region Title  -->
+                    <StackLayout
+                        Grid.Row="1"
+                        Spacing="10">
+                        <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZTERNewAccount}" />
+
+                        <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZSelectthetypeofEntity}" />
+
+                        <BoxView Style="{StaticResource SeparatorStyle}" />
+                    </StackLayout>
+                    <!--#endregion Title  -->
+
+                    <!--#region Action Icons  -->
                     <Grid
                         x:Name="ParentView"
                         Grid.Row="2"
@@ -109,45 +141,12 @@
                         </Grid>
 
                     </Grid>
-
-
-                    <StackLayout
-                        Grid.Row="1"
-                        Margin="0,0,0,10"
-                        Padding="0,48,0,0"
-                        Spacing="10">
-                        <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZTERNewAccount}" />
-
-                        <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZSelectthetypeofEntity}" />
-
-                        <BoxView Style="{StaticResource SeparatorStyle}" />
-                    </StackLayout>
-
-                    <!--  Header  -->
-                    <StackLayout Orientation="Horizontal">
-
-                        <Image
-                            x:Name="backArrow"
-                            HorizontalOptions="Start"
-                            Rotation="0"
-                            Source="arrowLeft.png">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnBackArrowTapped" />
-                            </Image.GestureRecognizers>
-                        </Image>
-
-                        <Image
-                            HeightRequest="40"
-                            HorizontalOptions="CenterAndExpand"
-                            Source="ic_logo_gazt.png"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="34" />
-                    </StackLayout>
-
-                    <!--  Loader Starts  -->
+                    <!--#endregion Action Icons  -->
                 </Grid>
+
             </Border>
 
+            <!--  Loader Starts  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>
