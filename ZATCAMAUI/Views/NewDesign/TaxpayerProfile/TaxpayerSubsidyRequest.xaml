@@ -9,16 +9,15 @@
     TitleText="{x:Static ResourceManager:AppResources.TaxPayerSubsidyRequest}">
 
     <newdesign:BaseContentPage.PancakeView>
-        <WebView
+      <Grid RowDefinitions="*">
+            <WebView
             x:Name="SubsidyWebView"
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            HeightRequest="1000"
             HorizontalOptions="FillAndExpand"
             Navigated="SubsidyWebView_Navigated"
             Navigating="SubsidyWebView_Navigating"
             Source="{Binding WebUrl}"
             VerticalOptions="FillAndExpand" />
+
+        </Grid>
     </newdesign:BaseContentPage.PancakeView>
 </newdesign:BaseContentPage>

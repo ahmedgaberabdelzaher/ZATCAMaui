@@ -1,8 +1,12 @@
 ﻿
 
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Mopups.Services;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Views.NewDesign.TaxpayerProfile;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -12,10 +16,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         #region Variable
         public string UpdatedMobileNumber = string.Empty;
         public string UpdatedEmail = string.Empty;
+        ObservableCollection<InternationalMobileData> mobileData = null;
         #endregion
 
         #region Properties
-       
+
         private TINStatus _listTINStatus;
         public TINStatus ListTINStatus
         {
@@ -143,27 +148,93 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
         }
 
+        public virtual ICommand OnManagerDetailsCommand
+        {
+            get
+            {
+                return new Command(_ =>
+                {
+                    MopupService.Instance.PushAsync(new UpdateManagerDetailsPopUp());
+
+                });
+            }
+        }
+
+
+        public virtual ICommand OnEmailEditCommand
+        {
+            get
+            {
+                return new Command(_ =>
+                {
+                    MopupService.Instance.PushAsync(new UpdateEmailPopUp());
+
+                });
+            }
+        }
+
+        public virtual ICommand OnPasswordEditCommand
+        {
+            get
+            {
+                return new Command(_ =>
+                {
+                    MopupService.Instance.PushAsync(new UpdatePasswordPopUp());
+
+                });
+            }
+        }
+
+        public virtual ICommand OnMobileEditCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                  
+
+                    try
+                    {
+                        IsLoading = true;
+
+                        if (mobileData == null)
+                            mobileData = await WebServiceManager.GAZTGetMobileRegionDropdown();
+
+                        await MopupService.Instance.PushAsync(new UpdateMobilePopUp(mobileData));
+
+                        IsLoading = false;
+                    }
+
+                    catch (Exception)
+                    {
+                       IsLoading = false;
+                    }
+
+                });
+            }
+        }
+
         public async Task GetTinStatusDATA()
         {
-            IsLoading = true;
-            string Lang = UtilityManager.GetLanguageParameter();
-            ListTINStatus = new TINStatus();
+          
 
             try
             {
+                IsLoading = true;
+                string Lang = UtilityManager.GetLanguageParameter();
+                ListTINStatus = new TINStatus();
                 ListTINStatus = await WebServiceManager.GAZTGetTinStatus(Lang, App.TP.TIN);
                 UpdateTinStatus();
                 IsLoading = false;
-                // Session Expired Or Not
                 PopToRootPage();
             }
 
-            catch(Exception ex)
+            catch (Exception )
             {
                 IsLoading = false;
                 TinStatusLabelText = " - ";
-                
-                
+
+
             }
         }
 
@@ -189,7 +260,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread( () =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
@@ -205,5 +276,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 });
             }
         }
+
     }
 }

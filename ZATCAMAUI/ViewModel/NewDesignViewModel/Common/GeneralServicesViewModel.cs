@@ -9,32 +9,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 
     public class GeneralServicesViewModel : BaseViewModel
     {
-       public List<GeneralServicesListModel> generalServicesListData = new List<GeneralServicesListModel>();
+        public List<GeneralServicesListModel> generalServicesListData = new List<GeneralServicesListModel>();
         string fileImage = string.Empty;
         public class GeneralServicesListModel
         {
             public string ZDTitle { get; set; }
             public string ZDImageSource { get; set; }
             public string ArrowImageSource { get; set; }
-
         }
-        //public ObservableCollection<CaseDetailsResultSet> _caseDetailedListViewData { get; set; }
-
-        //public ObservableCollection<CaseDetailsResultSet> CaseDetailedListViewData
-        //{
-        //    get { return _caseDetailedListViewData; }
-
-        //    set
-        //    {
-        //        if (_caseDetailedListViewData == value)
-        //        {
-        //            return;
-        //        }
-
-        //        _caseDetailedListViewData = value;
-        //        OnPropertyChanged("CaseDetailedListViewData");
-        //    }
-        //}
 
         public ObservableCollection<GeneralServicesListModel> _generalServicesList { get; set; }
         public ObservableCollection<GeneralServicesListModel> GeneralServicesList
@@ -64,6 +46,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                 OnPropertyChanged("RefundRequestMenuList");
             }
         }
+        public ObservableCollection<GeneralServicesListModel> _fillingFrquencyMenuList { get; set; }
+        public ObservableCollection<GeneralServicesListModel> FillingFrquencyMenuList
+        {
+            get
+            {
+                return _fillingFrquencyMenuList;
+            }
+
+            set
+            {
+                _fillingFrquencyMenuList = value;
+                OnPropertyChanged("FillingFrquencyMenuList");
+            }
+        }
         public ObservableCollection<CaseDetailsResultSet> _caseDetailedListViewData { get; set; }
 
         public ObservableCollection<CaseDetailsResultSet> CaseDetailedListViewData
@@ -81,32 +77,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                 OnPropertyChanged("CaseDetailedListViewData");
             }
         }
-        public ObservableCollection<GeneralServicesListModel> _fillingFrquencyMenuList { get; set; }
-        public ObservableCollection<GeneralServicesListModel> FillingFrquencyMenuList
-        {
-            get
-            {
-                return _fillingFrquencyMenuList;
-            }
-
-            set
-            {
-                _fillingFrquencyMenuList = value;
-                OnPropertyChanged("FillingFrquencyMenuList");
-            }
-        }
-
         public ICommand GoBackBtnTapped { get; set; }
 
         public GeneralServicesViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-          
+            GoBackBtnTapped = new Command(() =>
+            {
+                _navigationService.GoBack();
+            });
         }
 
         public void PopulateGeneralServicesListData()
         {
-
-            if(App.IsArabic)
+            if (App.IsArabic)
             {
                 fileImage = "arrowLeft.png";
             }
@@ -117,54 +100,42 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             }
 
             generalServicesListData.Add(new GeneralServicesListModel
-                {
-                    ZDTitle = AppResources.NDVATRegistrationVerification,
-                    ZDImageSource = "request_verification.png",
-                    ArrowImageSource = fileImage
-                });
-            
-            generalServicesListData.Add(new GeneralServicesListModel
-                {
-                    ZDTitle = AppResources.NDTaxEvasionReport,
-                    ZDImageSource = "taxEvasion.png",
-                    ArrowImageSource = fileImage
-                });
-
-            
-
-
-            if (App.LoginDataRetrieved.TpMpVip == null)
-            {
-
-            }
-            else
-            {
-                if (App.LoginDataRetrieved.TpMpVip.Equals("X"))
-                {
-                    generalServicesListData.Add(new GeneralServicesListModel
-                    {
-                        ZDTitle = AppResources.NDRelationContact,
-                        ZDImageSource = "details.png",
-                        ArrowImageSource = fileImage
-                    });
-                }
-            }
-
-            generalServicesListData.Add(new GeneralServicesListModel
             {
                 ZDTitle = AppResources.NDVATRegistrationVerification,
                 ZDImageSource = "request_verification.png",
                 ArrowImageSource = fileImage
-
             });
 
             generalServicesListData.Add(new GeneralServicesListModel
             {
-
-                ZDTitle = AppResources.ZakatExemptionRequest,
+                ZDTitle = AppResources.NDBankAccManagement,
                 ZDImageSource = "tax_evasion_green.png",
                 ArrowImageSource = fileImage
             });
+
+            generalServicesListData.Add(new GeneralServicesListModel
+            {
+                ZDTitle = AppResources.NDTaxEvasionReport,
+                ZDImageSource = "taxEvasion.png",
+                ArrowImageSource = fileImage
+            });
+            if (App.LoginDataRetrieved.TpMpVip.Equals("X"))
+            {
+                generalServicesListData.Add(new GeneralServicesListModel
+                {
+                    ZDTitle = AppResources.NDRelationContact,
+                    ZDImageSource = "details.png",
+                    ArrowImageSource = fileImage
+                });
+            }
+
+            //TODO CR7420 - Changes Commented for Golive
+            //generalServicesListData.Add(new GeneralServicesListModel
+            //{
+            //    ZDTitle = AppResources.ZakatExemptionRequest,
+            //    ZDImageSource = "tax_evasion_green.png",
+            //    ArrowImageSource = fileImage
+            //});
             GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
         }
 
@@ -221,18 +192,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 
             FillingFrquencyMenuList = new ObservableCollection<GeneralServicesListModel>(fillingFrequencyListData);
         }
-
         public async Task GetGstcCaseDetailSet()
         {
-
             IsLoading = true;
-
             try
             {
                 var escalatedGstcModel = await EscalatedCasesWebserviceManager.GAZTGetCaseDetailSet();
 
-                if (escalatedGstcModel != null && escalatedGstcModel != null && escalatedGstcModel.d != null&& escalatedGstcModel.d.Code!=null)
-                    {
+                if (escalatedGstcModel != null && escalatedGstcModel != null && escalatedGstcModel.d != null && escalatedGstcModel.d.Code != null)
+                {
                     if (escalatedGstcModel.d.Code.Equals("001"))
                     {
                         generalServicesListData.Add(new GeneralServicesListModel
@@ -252,17 +220,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                         }
                     }
                 }
-                    GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
+                GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
 
-                
+
                 if (escalatedGstcModel != null && escalatedGstcModel?.d?.CaseDetailSet?.results?.Count > 0)
                 {
                     CaseDetailedListViewData = new ObservableCollection<CaseDetailsResultSet>(escalatedGstcModel.d.CaseDetailSet.results);
-                   
+
                 }
                 else
                 {
-                   
+
                 }
 
 
@@ -281,7 +249,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             catch (InternetException ex)
             {
                 IsLoading = false;
-
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -290,5 +257,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             }
 
         }
+
     }
 }

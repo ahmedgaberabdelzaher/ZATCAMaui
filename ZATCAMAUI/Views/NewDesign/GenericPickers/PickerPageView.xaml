@@ -5,113 +5,120 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     BackgroundClicked="PopupPage_BackgroundClicked"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
 
 
-    <Border
-        BackgroundColor="White"
-        HorizontalOptions="EndAndExpand"
-        IsVisible="true"
-        StrokeShape="RoundRectangle 15,15,0,0"
-        VerticalOptions="EndAndExpand">
-        <StackLayout
-            BackgroundColor="Transparent"
-            HorizontalOptions="FillAndExpand"
-            Spacing="0"
-            VerticalOptions="End">
-            <Border
-                Margin="0,0,0,5"
-                Padding="0"
-                Stroke="Transparent"
-                Style="{StaticResource GreyBorderFrameWithShadow}">
-                <StackLayout Orientation="Horizontal">
-                    <buttons:SfButton
-                        x:Name="PickerDoneButton"
-                        Margin="10,0"
-                        Background="Transparent"
-                        Clicked="PopupClose_Clicked"
-                        FontFamily="{StaticResource SomarBold}"
-                        FontSize="Medium"
-                        HorizontalOptions="StartAndExpand"
-                        Text="{x:Static ResourceManager:AppResources.ZDone}"
-                        TextColor="{StaticResource Primary}"
-                        VerticalOptions="Center" />
-                    <buttons:SfButton
-                        x:Name="PickerCancelButton"
-                        Margin="10,0"
-                        Background="Transparent"
-                        Clicked="PopupCancel_Clicked"
-                        FontFamily="{StaticResource SomarBold}"
-                        FontSize="Medium"
-                        HorizontalOptions="End"
-                        Text="{x:Static ResourceManager:AppResources.ZZClose}"
-                        TextColor="{StaticResource Primary}"
-                        VerticalOptions="Center" />
-                </StackLayout>
-            </Border>
-            <StackLayout
-                Margin="0,8,0,0"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
+    <Grid VerticalOptions="EndAndExpand">
 
-                <Label
-                    x:Name="PickerTitle"
-                    Margin="0,16,0,0"
+        <Border
+            Padding="0"
+            BackgroundColor="White"
+            Stroke="{StaticResource NeutralLightGrey}"
+            Style="{StaticResource CommonTopCurves}"
+            VerticalOptions="EndAndExpand">
+
+              <StackLayout
                     BackgroundColor="Transparent"
-                    FontFamily="{StaticResource SomarBold}"
-                    HorizontalOptions="CenterAndExpand"
-                    Style="{StaticResource SectionTitleBlack}"
-                    Text="{Binding PickerTitle}" />
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="0"
+                    VerticalOptions="End">
 
-                <syncfusion:SfPicker
-                    x:Name="genericPicker"
-                    Margin="2"
-                    Background="White"
-                    IsOpen="True"
-                    ItemHeight="36"
-                    SelectionChanged="genericPicker_SelectionChanged"
-                    Style="{StaticResource PickerStyle}">
+                    <Border
+                        Stroke="Transparent"
+                        Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                        <StackLayout Orientation="Horizontal">
+                            <buttons:SfButton
+                                x:Name="PickerDoneButton"
+                                Background="Transparent"
+                                Clicked="PopupClose_Clicked"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Medium"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.ZDone}"
+                                TextColor="{StaticResource Primary}"
+                                VerticalOptions="Center" />
+
+                            <buttons:SfButton
+                                x:Name="PickerCancelButton"
+                                Background="Transparent"
+                                Clicked="PopupCancel_Clicked"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Medium"
+                                HorizontalOptions="End"
+                                Text="{x:Static ResourceManager:AppResources.ZZClose}"
+                                TextColor="{StaticResource Primary}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+
+                    </Border>
+
+                    <StackLayout
+                    Spacing="10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+
+                        <Label
+                            x:Name="PickerTitle"
+                            BackgroundColor="Transparent"
+                            FontFamily="{StaticResource SomarBold}"
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource SectionTitleBlack}"
+                            Text="{Binding PickerTitle}" />
+
+                        <syncfusion:SfPicker
+                            x:Name="genericPicker"
+                            Background="White"
+                            IsOpen="True"
+                            Mode="Default"
+                            SelectionChanged="genericPicker_SelectionChanged">
 
 
-                    <syncfusion:SfPicker.TextStyle>
-                        <syncfusion:PickerTextStyle
-                            FontFamily="{StaticResource SomarBoldForSfPicker}"
-                            FontSize="13"
-                            TextColor="{StaticResource NeutralBlack}" />
-                    </syncfusion:SfPicker.TextStyle>
+                            <syncfusion:SfPicker.TextStyle>
+                                <syncfusion:PickerTextStyle
+                                    FontFamily="{StaticResource SomarBoldForSfPicker}"
+                                    FontSize="13"
+                                    TextColor="{StaticResource NeutralBlack}" />
+                            </syncfusion:SfPicker.TextStyle>
 
-                    <syncfusion:SfPicker.Columns>
-                        <syncfusion:PickerColumn ItemsSource="{Binding PickerItemSource}" />
-                    </syncfusion:SfPicker.Columns>
 
-                    <syncfusion:SfPicker.SelectedTextStyle>
-                        <syncfusion:PickerTextStyle
-                            FontFamily="{StaticResource SomarBoldForSfPicker}"
-                            FontSize="13"
-                            TextColor="{StaticResource NeutralBlack}" />
-                    </syncfusion:SfPicker.SelectedTextStyle>
+                            <syncfusion:SfPicker.Columns>
+                                <syncfusion:PickerColumn ItemsSource="{Binding PickerItemSource}"
+                                                         Width="300"/>
+                            </syncfusion:SfPicker.Columns>
 
-                    <syncfusion:SfPicker.SelectionView>
-                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                            <syncfusion:SfPicker.SelectedTextStyle>
+                                <syncfusion:PickerTextStyle
+                                    FontFamily="{StaticResource SomarBoldForSfPicker}"
+                                    FontSize="13"
+                                    TextColor="{StaticResource NeutralBlack}" />
+                            </syncfusion:SfPicker.SelectedTextStyle>
 
-                    </syncfusion:SfPicker.SelectionView>
+                            <syncfusion:SfPicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
 
-                    <syncfusion:SfPicker.HeaderView>
+                            </syncfusion:SfPicker.SelectionView>
 
-                        <syncfusion:PickerHeaderView Height="46" Background="Transparent">
-                            <syncfusion:PickerHeaderView.TextStyle>
-                                <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarBoldForSfPicker}" TextColor="{StaticResource NeutralBlack}" />
-                            </syncfusion:PickerHeaderView.TextStyle>
-                        </syncfusion:PickerHeaderView>
+                            <!--<syncfusion:SfPicker.HeaderView>
 
-                    </syncfusion:SfPicker.HeaderView>
+                                <syncfusion:PickerHeaderView Height="46" Background="Transparent">
+                                    <syncfusion:PickerHeaderView.TextStyle>
+                                        <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarBoldForSfPicker}" TextColor="{StaticResource NeutralBlack}" />
+                                    </syncfusion:PickerHeaderView.TextStyle>
+                                </syncfusion:PickerHeaderView>
 
-                </syncfusion:SfPicker>
-            </StackLayout>
-        </StackLayout>
-    </Border>
+                            </syncfusion:SfPicker.HeaderView>-->
+
+                        </syncfusion:SfPicker>
+                    </StackLayout>
+
+              </StackLayout>
+           
+        </Border>
+
+    </Grid>
 </Mopups:PopupPage>

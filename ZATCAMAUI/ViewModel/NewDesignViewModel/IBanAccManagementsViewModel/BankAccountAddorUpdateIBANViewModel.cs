@@ -1,6 +1,4 @@
-﻿using System;
-
-using Mopups.Services;
+﻿using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
@@ -527,7 +525,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
 
 
-            GoBackBtnTapped = new Command(async () => { BackNavigations(); });
+            GoBackBtnTapped = new Command(() => { BackNavigations(); });
 
             ContinueButtonTapped = new Command(this.ContinueButtonClicked);
 
@@ -609,10 +607,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     WhichAttachment.IBANBankAccountTwo, IBANAccountDataFormGuid.d.FormGuid
                     ));
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -620,10 +614,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
-            }
-            catch (Exception ex)
-            {
-                
             }
         }
 

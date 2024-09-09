@@ -1,6 +1,4 @@
 ﻿using System.Timers;
-
-
 using Mopups.Services;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
@@ -363,6 +361,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         {
         }
 
+        
         // * Private methods
         private bool CheckOnlyNumber(char letter)
         {

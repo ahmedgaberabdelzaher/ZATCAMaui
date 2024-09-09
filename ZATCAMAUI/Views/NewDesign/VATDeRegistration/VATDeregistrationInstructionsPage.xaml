@@ -8,7 +8,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     FlowDirection="{Binding AppDirection}"
-    NavigationPage.HasNavigationBar="False">
+    BackgroundColor="#88000000">
 
 
     <Border

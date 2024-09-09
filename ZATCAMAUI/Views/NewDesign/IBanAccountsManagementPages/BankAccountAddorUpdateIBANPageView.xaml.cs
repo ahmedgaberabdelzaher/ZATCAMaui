@@ -384,53 +384,6 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
 
         }
 
-        private void OtherBanksTextChanged(object sender, TextChangedEventArgs e)
-        {
-            _viewModel.selectedOtherBankName = e.NewTextValue;
-
-        }
-
-        private void OtherBanksFocusChnaged(object sender, FocusEventArgs e)
-        {
-            // _viewModel.selectedOtherBankName = OtherBankName.Text;
-
-            if (_viewModel.selectedOtherBankName.Length == 0)
-            {
-                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-            }
-        }
-
-        private void IdNumberTextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-
-                _viewModel.SelectedIDNumber = e.NewTextValue;
-
-                //FrmIdNumber.HasError = false;
-
-                if (_viewModel.SelectedIDType == "")
-                {
-
-                }
-                else if (_viewModel.SelectedIDType == "")
-                {
-
-                }
-                else if (_viewModel.SelectedIDType == "")
-                {
-
-                }
-                else if (_viewModel.SelectedIDType == "")
-                {
-
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-        }
 
         private void EntryIDNumber_Unfocused(object sender, FocusEventArgs e)
         {

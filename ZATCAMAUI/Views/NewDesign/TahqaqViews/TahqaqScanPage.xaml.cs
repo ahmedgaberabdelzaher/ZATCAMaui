@@ -5,7 +5,6 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
 {
     public partial class TahqaqScanPage : ContentPage
     {
-        bool scanFinished = false;
         string barcodeResultValue;
         TahqaqScanPageViewModel viewModel;
         public TahqaqScanPage()

@@ -4,8 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -374,18 +376,18 @@
         <!--#endregion Success Result View-->
 
         <!--  Header  -->
-        <controls:Header
+        <custom:Header
             Grid.Row="0"
             Padding="0,35,0,10"
             TitleText="{x:Static ResourceManager:AppResources.EinvoiceScanning}" />
 
 
-        <controls:MsgView
+        <custom:MsgView
             Grid.Row="0"
             Grid.RowSpan="2"
             IsVisible="{Binding IsShowMsgView}" />
 
-        <controls:Loader
+        <custom:Loader
             Grid.Row="0"
             Grid.RowSpan="2"
             IsVisible="{Binding IsLoading}" />

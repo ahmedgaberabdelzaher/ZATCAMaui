@@ -5,12 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    BackgroundColor="#88000000"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
-    FlowDirection="{Binding AppDirection}"
-    NavigationPage.HasNavigationBar="False">
+    FlowDirection="{Binding AppDirection}">
     <Mopups:PopupPage.Animation>
         <animations:ScaleAnimation
             DurationIn="400"

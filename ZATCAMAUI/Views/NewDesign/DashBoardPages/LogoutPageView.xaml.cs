@@ -13,6 +13,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         public LogoutPageView(string ConfirmationText)
         {
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             _confirmationText = confirmationText.Text = ConfirmationText;
         }
 

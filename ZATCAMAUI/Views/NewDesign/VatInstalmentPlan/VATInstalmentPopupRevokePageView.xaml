@@ -6,13 +6,9 @@
     xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    x:Name="page"
     Title="VATInstalmentPopupRevokePageView"
-    ios:Page.UseSafeArea="true"
-    BackgroundImageSource="partials_background.png"
-    FlowDirection="{Binding AppDirection}"
-    NavigationPage.HasNavigationBar="False">
+    BackgroundColor="#88000000"
+    FlowDirection="{Binding AppDirection}">
 
     <Mopups:PopupPage.Animation>
         <Animations:ScaleAnimation

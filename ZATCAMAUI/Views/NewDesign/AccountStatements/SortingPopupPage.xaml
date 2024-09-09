@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Mopups:PopupPage
     x:Class="ZATCAMAUI.Views.NewDesign.AccountStatements.SortingPopupPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -6,6 +6,7 @@
     xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     Title="SortingPopupPage"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
 
     <Mopups:PopupPage.Animation>

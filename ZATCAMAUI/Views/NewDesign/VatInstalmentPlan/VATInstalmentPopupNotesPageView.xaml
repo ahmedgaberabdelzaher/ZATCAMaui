@@ -12,6 +12,7 @@
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     Title="VATInstalmentPopupNotesPageView"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
 
     <Mopups:PopupPage.Animation>

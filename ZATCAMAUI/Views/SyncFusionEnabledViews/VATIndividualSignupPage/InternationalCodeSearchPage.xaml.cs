@@ -1,7 +1,6 @@
 ﻿using Mopups.Pages;
 using Mopups.Services;
 using System.Collections.ObjectModel;
-using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 

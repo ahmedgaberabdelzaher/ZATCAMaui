@@ -6,6 +6,7 @@
     xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    BackgroundColor="#88000000"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
     FlowDirection="{Binding AppDirection}">
@@ -30,7 +31,6 @@
             BackgroundColor="White"
             HeightRequest="500"
             Stroke="{StaticResource NeutralLightGrey}"
-            StrokeShape="RoundRectangle 15,15,0,0"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
 

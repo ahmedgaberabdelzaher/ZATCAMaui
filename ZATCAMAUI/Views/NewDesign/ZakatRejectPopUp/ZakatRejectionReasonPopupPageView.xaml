@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Mopups:PopupPage
     x:Class="ZATCAMAUI.Views.NewDesign.ZakatRejectPopUp.ZakatRejectionReasonPopupPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -9,6 +9,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     Title="ZakatRejectionReasonPopupPageView"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
 
     <Mopups:PopupPage.Animation>

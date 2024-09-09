@@ -22,38 +22,62 @@ namespace ZATCAMAUI.Views.NewDesign.Common
 
         public FilesUploadPopUpPageView(List<Attachment> attachments, WhichAttachment whichAttachment, string returnIdz)
         {
-            InitializeComponent();
-            //App.IsArabic = false;
-            viewModel = App.Locator.FilesUploadPopUpView;
-            this.BindingContext = viewModel;
-            var attachement = new AttachmentsList();
-            attachement.results = attachments;
-            onPageLoadAsync(attachement, whichAttachment, returnIdz);
+            try
+            {
+                InitializeComponent();
+                //App.IsArabic = false;
+                viewModel = App.Locator.FilesUploadPopUpView;
+                this.BindingContext = viewModel;
+                var attachement = new AttachmentsList();
+                attachement.results = attachments;
+                onPageLoadAsync(attachement, whichAttachment, returnIdz);
+            }
+            catch (Exception ex)
+            {
+
+            }
+           
         }
 
         public FilesUploadPopUpPageView(List<Attachment> attachments, WhichAttachment whichAttachment, string returnIdz, string dmsType)
         {
-            InitializeComponent();
-            //App.IsArabic = false;
-            viewModel = App.Locator.FilesUploadPopUpView;
-            this.BindingContext = viewModel;
-            dmsTypeString = dmsType;
-            var attachement = new AttachmentsList();
-            attachement.results = attachments;
-            onPageLoadAsync(attachement, whichAttachment, returnIdz);
+            try
+            {
+                InitializeComponent();
+                //App.IsArabic = false;
+                viewModel = App.Locator.FilesUploadPopUpView;
+                this.BindingContext = viewModel;
+                dmsTypeString = dmsType;
+                var attachement = new AttachmentsList();
+                attachement.results = attachments;
+                onPageLoadAsync(attachement, whichAttachment, returnIdz);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
 
         }
 
         public FilesUploadPopUpPageView(List<Attachment> attachments, WhichAttachment whichAttachment, string returnIdz, string dmsType, string outletRef)
         {
-            InitializeComponent();
-            viewModel = App.Locator.FilesUploadPopUpView;
-            this.BindingContext = viewModel;
+            try
+            {
+                InitializeComponent();
+                viewModel = App.Locator.FilesUploadPopUpView;
+                this.BindingContext = viewModel;
 
-            var attachement = new AttachmentsList();
-            attachement.results = attachments;
-            _outletRef = outletRef;
-            onPageLoadAsync(attachement, whichAttachment, returnIdz);
+                var attachement = new AttachmentsList();
+                attachement.results = attachments;
+                _outletRef = outletRef;
+                onPageLoadAsync(attachement, whichAttachment, returnIdz);
+            }
+            catch (Exception ex)
+            {
+
+            }
+           
 
         }
 

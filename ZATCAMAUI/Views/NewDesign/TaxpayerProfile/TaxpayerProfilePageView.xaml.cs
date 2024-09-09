@@ -12,7 +12,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
     public partial class TaxpayerProfilePageView : ContentPage
     {
         NewTaxpayerProfileViewModel viewModel;
-        ObservableCollection<InternationalMobileData> mobileData = null;
+        
 
         public TaxpayerProfilePageView()
         {
@@ -61,38 +61,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             }
         }
 
-        private async void OnMobileEditTapped(object sender, EventArgs e)
-        {
-            viewModel.IsLoading = true;
-
-            try
-            {
-                if (mobileData == null)
-                    mobileData = await WebServiceManager.GAZTGetMobileRegionDropdown();
-
-                viewModel.IsLoading = false;
-               await MopupService.Instance.PushAsync(new UpdateMobilePopUp(mobileData));
-            }
-            catch (Exception ex)
-            {
-                viewModel.IsLoading = false;
-            }
-        }
-
-        private void OnEmailEditTapped(object sender, EventArgs e)
-        {
-            MopupService.Instance.PushAsync(new UpdateEmailPopUp());
-        }
-
-        private void OnPasswordEditTapped(object sender, EventArgs e)
-        {
-            MopupService.Instance.PushAsync(new UpdatePasswordPopUp());
-        }
-        private void OnManagerDetailsTapped(object sender, EventArgs e)
-        {
-            MopupService.Instance.PushAsync(new UpdateManagerDetailsPopUp());
-        }
-
+      
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -134,7 +103,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 

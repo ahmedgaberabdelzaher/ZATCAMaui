@@ -324,12 +324,6 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
             {
                 await Email.ComposeAsync("", "", email.Text);
             }
-            catch (FeatureNotSupportedException ex)
-            {
-                // Email is not supported on this device
-
-
-            }
             catch (Exception)
             {
 

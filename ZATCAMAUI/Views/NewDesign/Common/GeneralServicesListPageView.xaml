@@ -62,7 +62,7 @@
 
             <Border
                 Grid.Row="1"
-                Padding="10,0"
+                Padding="0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">

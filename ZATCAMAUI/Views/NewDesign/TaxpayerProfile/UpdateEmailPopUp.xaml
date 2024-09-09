@@ -9,13 +9,14 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FlowDirection="{Binding AppDirection}"
+    BackgroundColor="#88000000"
     mc:Ignorable="d">
     <Border
         Padding="0"
         Style="{StaticResource CommonTopCurves}"
+         Stroke="{StaticResource NeutralLightGrey}"
         VerticalOptions="EndAndExpand">
         <Grid RowDefinitions="*,auto">
 
@@ -48,90 +49,68 @@
                         Style="{StaticResource CaptionLabelGrey}"
                         Text="{x:Static ResourceManager:AppResources.ZCurrentEmail}" />
 
-                    <inputLayout:SfTextInputLayout
-                        ContainerBackground="White"
-                        ContainerType="Outlined"
-                        HorizontalOptions="FillAndExpand"
-                        InputViewPadding="16,0,16,0"
-                        IsHintAlwaysFloated="True"
-                        LeadingViewPosition="Inside"
-                        OutlineCornerRadius="10"
-                        Stroke="{StaticResource Primary}">
-                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                            <inputLayout:LabelStyle TextColor="#B00020" />
-                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <custom:GAZTBorderlessEntry
-                            InputTransparent="True"
-                            IsReadOnly="True"
-                            Keyboard="Email"
-                            Style="{StaticResource DefaultEntry}"
-                            Text="{Binding CurrentEmailText}"
-                            TextColor="{StaticResource NeutralBlack}">
-                            <custom:GAZTBorderlessEntry.Behaviors>
-                                <behaviors:AlphaNumericValidatorBehaviour />
-                            </custom:GAZTBorderlessEntry.Behaviors>
-                        </custom:GAZTBorderlessEntry>
-                    </inputLayout:SfTextInputLayout>
+                    <custom:CustomSfTextInputView>
+                        <custom:CustomSfTextInputView.TextInputView>
+                             <custom:GAZTBorderlessEntry
+                                InputTransparent="True"
+                                Placeholder="{x:Static ResourceManager:AppResources.ZCurrentEmail}"
+                                IsReadOnly="True"
+                                Keyboard="Email"
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding CurrentEmailText}"
+                                TextColor="{StaticResource NeutralBlack}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behaviors:AlphaNumericValidatorBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+                        </custom:CustomSfTextInputView.TextInputView>
+                    </custom:CustomSfTextInputView>
 
                     <Label
                         HorizontalOptions="Start"
                         Style="{StaticResource CaptionLabelGrey}"
                         Text="{x:Static ResourceManager:AppResources.NewEmail}" />
-                    <inputLayout:SfTextInputLayout
-                        x:Name="Frm_NewEmail"
-                        ContainerBackground="White"
-                        ContainerType="Outlined"
-                        HorizontalOptions="FillAndExpand"
-                        InputViewPadding="16,0,16,0"
-                        IsHintAlwaysFloated="True"
-                        LeadingViewPosition="Inside"
-                        OutlineCornerRadius="10"
-                        Stroke="{StaticResource Primary}">
-                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                            <inputLayout:LabelStyle TextColor="#B00020" />
-                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <custom:GAZTBorderlessEntry
-                            x:Name="NewEmail_Entry"
-                            Keyboard="Email"
-                            Style="{StaticResource DefaultEntry}"
-                            Text="{Binding NewEmailText}"
-                            TextColor="{StaticResource NeutralBlack}"
-                            Unfocused="NewEmail_Entry_Unfocused">
-                            <custom:GAZTBorderlessEntry.Behaviors>
-                                <behaviors:AlphaNumericValidatorBehaviour />
-                            </custom:GAZTBorderlessEntry.Behaviors>
-                        </custom:GAZTBorderlessEntry>
-                    </inputLayout:SfTextInputLayout>
+
+                    <custom:CustomSfTextInputView >
+                        <custom:CustomSfTextInputView.TextInputView>
+                             <custom:GAZTBorderlessEntry
+                                x:Name="NewEmail_Entry"
+                                Placeholder="{x:Static ResourceManager:AppResources.NewEmail}"
+                                Keyboard="Email"
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding NewEmailText}"
+                                TextColor="{StaticResource NeutralBlack}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behaviors:AlphaNumericValidatorBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+                        </custom:CustomSfTextInputView.TextInputView>
+                    </custom:CustomSfTextInputView>
 
                     <Label
                         HorizontalOptions="Start"
                         Style="{StaticResource CaptionLabelGrey}"
                         Text="{x:Static ResourceManager:AppResources.NDConfirmNewEmail}" />
-                    <inputLayout:SfTextInputLayout
-                        x:Name="Frm_confirmEmail"
-                        ContainerBackground="White"
-                        ContainerType="Outlined"
-                        HorizontalOptions="FillAndExpand"
-                        InputViewPadding="16,0,16,0"
-                        IsHintAlwaysFloated="True"
-                        LeadingViewPosition="Inside"
-                        OutlineCornerRadius="8"
-                        Stroke="{StaticResource Primary}">
-                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                            <inputLayout:LabelStyle TextColor="#B00020" />
-                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <custom:GAZTBorderlessEntry
-                            x:Name="ConfirmEmail_Entry"
-                            Keyboard="Email"
-                            Style="{StaticResource DefaultEntry}"
-                            Text="{Binding ConfirmEmailText}"
-                            TextColor="{StaticResource NeutralBlack}"
-                            Unfocused="ConfirmEmail_Entry_Unfocused">
-                            <custom:GAZTBorderlessEntry.Behaviors>
-                                <behaviors:AlphaNumericValidatorBehaviour />
-                            </custom:GAZTBorderlessEntry.Behaviors>
-                        </custom:GAZTBorderlessEntry>
-                    </inputLayout:SfTextInputLayout>
+
+                    <custom:CustomSfTextInputView >
+                        <custom:CustomSfTextInputView.TextInputView>
+                             <custom:GAZTBorderlessEntry
+                                x:Name="ConfirmEmail_Entry"
+                                Placeholder="{x:Static ResourceManager:AppResources.NDConfirmNewEmail}"
+                                Keyboard="Email"
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding ConfirmEmailText}"
+                                TextColor="{StaticResource NeutralBlack}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behaviors:AlphaNumericValidatorBehaviour />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+                        </custom:CustomSfTextInputView.TextInputView>
+                    </custom:CustomSfTextInputView>
+
                 </StackLayout>
 
                 <buttons:SfButton
