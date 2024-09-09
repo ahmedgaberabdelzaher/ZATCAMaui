@@ -152,7 +152,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         string __vATObjectionSummaryData = vATObjectionSummaryResponse.Content.ReadAsStringAsync().Result;
                         _vATObjectionSummaryModel = JsonConvert.DeserializeObject<VATObjectionSummaryModel>(__vATObjectionSummaryData);
-                        if (!string.IsNullOrEmpty(__vATObjectionSummaryData) && _vATObjectionSummaryModel.result == null )
+                        if (!string.IsNullOrEmpty(__vATObjectionSummaryData) && _vATObjectionSummaryModel.d == null )
                         {
                             string errorMessage = WebServiceManager.PrepareErrorMessageByJson(__vATObjectionSummaryData);
                             throw new GAZTVATRegistrationInProcessException(errorMessage);

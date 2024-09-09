@@ -403,8 +403,8 @@
                                                     Grid.Row="3"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
-                                                    Margin="-8,10,-8,-8"
-                                                    Padding="20"
+                                                    Margin="20"
+                                                    Padding="34"
                                                     BackgroundColor="{StaticResource Primary}"
                                                     HeightRequest="24"
                                                     HorizontalOptions="FillAndExpand"
@@ -1134,7 +1134,7 @@
 
                                         <StackLayout Padding="0">
 
-                                            <Grid Margin="8,0,8,8" Padding="0">
+                                            <Grid  Padding="0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
                                                     <RowDefinition Height="auto" />
@@ -1150,10 +1150,9 @@
                                                     Grid.Row="0"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
-                                                    Margin="-8,10,-8,-8"
-                                                    Padding="20"
+                                                    Padding="10"
                                                     BackgroundColor="{StaticResource Primary}"
-                                                    HeightRequest="24"
+                                                    HeightRequest="56"
                                                     HorizontalOptions="FillAndExpand"
                                                     Opacity="0.1"
                                                     Stroke="{StaticResource NewWarmGreyColor}"
@@ -1161,11 +1160,11 @@
                                                 <StackLayout
                                                     Grid.Row="0"
                                                     Grid.Column="0"
-                                                    Padding="0,10,10,0"
+                                                    Padding="10"
                                                     Orientation="Horizontal"
                                                     VerticalOptions="Center">
                                                     <Label
-                                                        LineHeight="0.8"
+                                                       
                                                         MaxLines="2"
                                                         Style="{StaticResource BodyLabelBlack}"
                                                         Text="{x:Static ResourceManager:AppResources.VATRefundsRequestedAmount}"
@@ -1175,7 +1174,7 @@
                                                     Grid.Row="0"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
-                                                    Padding="0,10,0,0"
+                                                    Padding="10"
                                                     HorizontalOptions="End"
                                                     Orientation="Horizontal"
                                                     VerticalOptions="Center">

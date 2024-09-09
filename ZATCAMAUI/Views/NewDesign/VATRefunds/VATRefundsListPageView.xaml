@@ -95,7 +95,7 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="3"
                     Margin="0"
-                    custom:RoundCornersEffect.CornerRadius="12"
+                    
                     BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="{Binding IsCloseButtonVisible}"
@@ -108,20 +108,18 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="10,0"
+                
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid>
 
-                    <Grid Padding="16,16,16,0">
-                        <Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <StackLayout Grid.Row="0" Spacing="0">
+                        <StackLayout Grid.Row="0">
                             <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.VATRefund}" />
                             <Label
-                                Margin="0,-3,0,32"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{Binding TotalReassessmentAmount}" />
                             <Border Style="{StaticResource GreyBorderFrameButtonWithShadow}">
@@ -234,11 +232,12 @@
                                                         </DataTrigger>
                                                     </Border.Triggers>
                                                 </Border>
-                                                <StackLayout
+                                                <Border
                                                     Grid.Row="0"
                                                     Grid.Column="1"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    VerticalOptions="FillAndExpand">
+                                                    StrokeShape="RoundRectangle 10"
+                                                    Padding="5"
+                                                    Style="{StaticResource GreyBorderFrame}">
                                                     <Label
                                                         HorizontalOptions="CenterAndExpand"
                                                         Style="{StaticResource CaptionLabelBlack}"
@@ -246,7 +245,6 @@
                                                         TextColor="{StaticResource Secondary}"
                                                         VerticalOptions="CenterAndExpand">
                                                         <Label.Triggers>
-                                                            <!--  Text="{Binding statusMessage}" TextColor="{Binding statusColor}"  -->
                                                             <DataTrigger
                                                                 Binding="{Binding Status}"
                                                                 TargetType="Label"
@@ -256,7 +254,7 @@
                                                             </DataTrigger>
                                                         </Label.Triggers>
                                                     </Label>
-                                                </StackLayout>
+                                                </Border>
                                             </Grid>
                                             <BoxView
                                                 BackgroundColor="LightGray"
@@ -265,6 +263,7 @@
                                             <Grid Padding="10,10,10,10" RowSpacing="15">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="*" />
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
@@ -275,7 +274,7 @@
                                                     Grid.Row="0"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
-                                                    Spacing="-1">
+                                                    >
                                                     <Label
                                                         HorizontalOptions="StartAndExpand"
                                                         Style="{StaticResource CaptionLabelGrey}"
@@ -297,8 +296,7 @@
 
                                                 <StackLayout
                                                     Grid.Row="1"
-                                                    Grid.Column="0"
-                                                    Spacing="-1">
+                                                    Grid.Column="0">
                                                     <Label
                                                         HorizontalOptions="StartAndExpand"
                                                         Style="{StaticResource CaptionLabelGrey}"
@@ -363,9 +361,6 @@
                                 </DataTemplate>
                             </listView:SfListView.ItemTemplate>
                         </listView:SfListView>
-
-                    </Grid>
-
                 </Grid>
 
             </Border>

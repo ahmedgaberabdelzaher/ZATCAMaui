@@ -15,10 +15,18 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
 
         public VATRefundsListPageView()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            viewModel = App.Locator.VATRefundsListPageView;
-            BindingContext = viewModel;
+                viewModel = App.Locator.VATRefundsListPageView;
+                BindingContext = viewModel;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            
         }
 
         protected override void OnAppearing()

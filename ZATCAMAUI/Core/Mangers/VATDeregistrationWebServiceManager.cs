@@ -647,14 +647,17 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             catch (Exception ex)
                             {
-                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
-                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                                {
-                                    WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-                                    String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-                                    WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
-                                    throw new GAZTErrorException(WebServiceManager.ErrorMessageForUnlockAccount);
-                                }
+                                string error = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
+                                throw new GAZTErrorException(error);
+
+                                //ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
+                                //if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                                //{
+                                //    WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                                //    String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                //    WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
+                                //    throw new GAZTErrorException(WebServiceManager.ErrorMessageForUnlockAccount);
+                                //}
                                 //Console.WriteLine(ex);
                                 //throw new GAZTErrorException(AppResources.Somethingwentwrong);
                             }
