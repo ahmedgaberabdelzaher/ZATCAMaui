@@ -7,7 +7,7 @@ using Color = Android.Graphics;
 namespace ZATCAMAUI.Platforms.Android;
 
 [Application]
-[MetaData("com.google.android.maps.v2.API_KEY",
+[MetaData("com.google.android.geo.API_KEY",
             Value = "AIzaSyBPiNAyWZbs1gGcT3PolpRFvjNJCk-Xbdk")]
 public class MainApplication : MauiApplication
 {
