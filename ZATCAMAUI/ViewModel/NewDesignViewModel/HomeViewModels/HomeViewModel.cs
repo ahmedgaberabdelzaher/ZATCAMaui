@@ -307,7 +307,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
                             _navigationService.NavigateTo("ExciseServices");
                             break;
                         case "4":
-                            //  _navigationService.NavigateTo("GeneralServices");
                             _navigationService.NavigateTo(MenuItem.ID);
                             break;
 

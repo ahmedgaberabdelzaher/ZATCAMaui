@@ -3475,8 +3475,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
         }
         public async Task LogOut()
         {
-
-
+            try
+            {
                 if (App.TP != null)
                     App.TP = null;
                 if (App.PreviousIsArabic)
@@ -3490,33 +3490,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     AppResources.Culture = new CultureInfo(langName);
                 }
 
-                try
-                {
-                    await WebServiceManager.GAZTLogOff();
-                }
-                catch (Exception ex)
-                {
-                    
-                    
-                }
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
+                IsLoading = true;
+                await WebServiceManager.GAZTLogOff();
                 IsLoading = false;
-                App.IsLogOut = true;
-                App.IsLoginCalled = false;
-                App.IsSamlApiCalledAndroid = false;
 
-                try
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
+                    App.IsLogOut = true;
+                    App.IsLoginCalled = false;
+                    App.IsSamlApiCalledAndroid = false;
+
+                    App.LoginDataRetrieved = null;
                     App.httpClientHandler = new HttpClientHandler();
                     App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                     App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-                }
-                catch (Exception ex)
-                {
-                }
-                await Application.Current.MainPage.Navigation.PopToRootAsync();
-            });
+                    _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+
+
+                });
+            }
+            catch (Exception)
+            {
+                IsLoading = false;
+
+            }
+
+
+
         }
 
         #endregion

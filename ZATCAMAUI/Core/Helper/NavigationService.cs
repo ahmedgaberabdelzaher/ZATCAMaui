@@ -23,74 +23,79 @@ namespace ZATCAMAUI.Core.Helper
         }
         public void NavigateTo(string pageKey, object parameter)
         {
-            bool isPageBack = pageKey.Contains("/");
-            pageKey = pageKey.Replace("/", "");
-            lock (_pagesByKey)
+            try
             {
-                if (_pagesByKey.ContainsKey(pageKey))
+                bool isPageBack = pageKey.Contains("/");
+                pageKey = pageKey.Replace("/", "");
+                lock (_pagesByKey)
                 {
-                    var type = _pagesByKey[pageKey];
-                    ConstructorInfo constructor;
-                    object[] parameters;
-                    if (parameter == null)
+                    if (_pagesByKey.ContainsKey(pageKey))
                     {
-                        constructor = type.GetTypeInfo()
-                            .DeclaredConstructors
-                            .FirstOrDefault(c => !c.GetParameters().Any());
-                        parameters = new object[]
+                        var type = _pagesByKey[pageKey];
+                        ConstructorInfo constructor;
+                        object[] parameters;
+                        if (parameter == null)
                         {
-                        };
-                    }
-                    else
-                    {
-                        constructor = type.GetTypeInfo()
-                            .DeclaredConstructors
-                            .FirstOrDefault(
-                                c =>
-                                {
-                                    var p = c.GetParameters();
-                                    return p.Count() == 1
-                                        && p[0].ParameterType == parameter.GetType();
-                                });
-                        parameters = new[]
+                            constructor = type.GetTypeInfo()
+                                .DeclaredConstructors
+                                .FirstOrDefault(c => !c.GetParameters().Any());
+                            parameters = new object[]
+                            {
+                            };
+                        }
+                        else
                         {
+                            constructor = type.GetTypeInfo()
+                                .DeclaredConstructors
+                                .FirstOrDefault(
+                                    c =>
+                                    {
+                                        var p = c.GetParameters();
+                                        return p.Count() == 1
+                                            && p[0].ParameterType == parameter.GetType();
+                                    });
+                            parameters = new[]
+                            {
                             parameter
                         };
-                    }
-                    if (constructor == null)
-                    {
-                        throw new InvalidOperationException(
-                            "No suitable constructor found for page " + pageKey);
-                    }
-                    var page = constructor.Invoke(parameters) as Page;
-                    _navigation.PushAsync(page);
-
-
-                    if (isPageBack)
-                    {
-                        var existingPages = _navigation.Navigation.NavigationStack.ToList();
-                        foreach (var cupage in existingPages)
+                        }
+                        if (constructor == null)
                         {
-                            if (cupage != page)
-                            {
+                            throw new InvalidOperationException(
+                                "No suitable constructor found for page " + pageKey);
+                        }
+                        var page = constructor.Invoke(parameters) as Page;
+                        _navigation.PushAsync(page);
 
-                                _navigation.Navigation.RemovePage(cupage);
+
+                        if (isPageBack)
+                        {
+                            var existingPages = _navigation.Navigation.NavigationStack.ToList();
+                            foreach (var cupage in existingPages)
+                            {
+                                if (cupage != page)
+                                {
+
+                                    _navigation.Navigation.RemovePage(cupage);
+                                }
                             }
                         }
                     }
-
-                    // else
-
-                }
-                else
-                {
-                    throw new ArgumentException(
-                        string.Format(
-                            "No such page: {0}. Did you forget to call NavigationService.Configure?",
-                            pageKey),
-                        "pageKey");
+                    else
+                    {
+                        throw new ArgumentException(
+                            string.Format(
+                                "No such page: {0}. Did you forget to call NavigationService.Configure?",
+                                pageKey),
+                            "pageKey");
+                    }
                 }
             }
+            catch (Exception)
+            {
+
+            }
+
         }
 
 

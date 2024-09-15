@@ -16,6 +16,7 @@ using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Models.Authentication;
 using Newtonsoft.Json;
 using ZATCAMAUI.Views.NewDesign.ChangeMobile;
+using ZATCAMAUI.Core.AppConfigurations;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 {
@@ -52,7 +53,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 {
                     try
                     {
-                        if (NetworkCheck.IsInternet())
+                        if (NetworkCheck.IsInternet() && PageSettings.Target_Environment.Equals("Prod"))
                         {
                             VersionTracking.Track();
                             await DependencyService.Get<IForceUpdate>().FetchAndActivateAsync();
@@ -141,23 +142,15 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         }
         private void WebLoginClicked(object obj)
         {
-            //_navigationService.NavigateTo(App.NFLoginView);
 
             _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_LOGIN);
         }
 
         private async void ChangeMobileClicked(object obj)
         {
-            //  _navigationService.NavigateTo(App.N);
-            //_navigationService.NavigateTo(App.NewChaneMobileView);
-            //await MopupService.Instance.PushAsync(new NafathPopup());
             await MopupService.Instance.PushAsync(new NafathChangeMobleNumberOptionsView());
         }
-        private void ChangeIAMClicked(object obj)
-        {
-            _navigationService.NavigateTo(App.NafathLoginPageView);
-            // _navigationService.NavigateTo(App.NafathPopUpPage);
-        }
+
         #endregion
         #region property
         private string _appVersion = App.AppVersion;
@@ -238,7 +231,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             {
                 if (_ISloadedURL == value) return;
 
-                //_ISloadedURL = value;
                 OnPropertyChanged("ISloadedURL");
             }
         }
@@ -755,7 +747,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             }
 
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
             }

@@ -4,11 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     ios:Page.UseSafeArea="True"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -26,13 +25,42 @@
             <!--#region Header-->
             <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
 
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        IsVisible="{Binding IsShowBottomSheet}"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+
                 <!--  Live video Label  -->
                 <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{x:Static ResourceManager:AppResources.LiveVideoTitle}"
+                    Text="{Binding HeaderTitle}"
                     VerticalOptions="Center" />
 
             </Grid>
@@ -46,119 +74,174 @@
                 Style="{StaticResource CommonTopCurves}"
                 VerticalOptions="FillAndExpand">
 
-                <StackLayout Padding="10,0" Spacing="20">
+                <Grid RowDefinitions="*" >
 
-                    <!--  Live Video Sub Title Label  -->
-                    <Label
-                        Margin="0,10,0,0"
-                        FontFamily="{StaticResource SomarRegular}"
-                        FontSize="28"
-                        HorizontalOptions="StartAndExpand"
-                        Text="{x:Static ResourceManager:AppResources.LiveVideoSubTitle}"
-                        TextColor="#58595B" />
+                    <ScrollView VerticalScrollBarVisibility="Never"
+                            VerticalOptions="FillAndExpand"
+                            Margin="0,0,0,100">
 
-                    <!--  Video URL  -->
-                    <Border
-                        Padding="0"
-                        HeightRequest="250"
-                        Stroke="#EBEBEB"
-                        StrokeShape="RoundRectangle 20,20,20,20"
-                        WidthRequest="470">
-                        <WebView Source="{Binding VideoUrl}" />
-                    </Border>
+                         <StackLayout Padding="10,0" Spacing="20">
 
-                    <!--  Live Video Sub Title Label  -->
-                    <Label
-                        FontFamily="{StaticResource SomarRegular}"
-                        FontSize="18"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="{Binding SelectedVideo}"
-                        TextColor="#58595B"
-                        VerticalOptions="Center" />
+                            <!--  Live Video Sub Title Label  -->
+                            <Label
+                                Margin="0,10,0,0"
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="20"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.LiveVideoSubTitle}"
+                                TextColor="#58595B" />
 
-                    <CollectionView
-                        x:Name="videosList"
-                        Margin="{x:OnPlatform Android='0,0,0,75',
-                                              iOS='0'}"
-                        CollectionView.ItemsSource="{Binding LiveVideosList}"
-                        HorizontalOptions="FillAndExpand"
-                        ItemSizingStrategy="MeasureAllItems"
-                        VerticalOptions="FillAndExpand">
+                            <!--  Port Field  -->
+                            <StackLayout Spacing="0">
 
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout
-                                HorizontalItemSpacing="15"
-                                Span="2"
-                                Orientation="Vertical"
-                                VerticalItemSpacing="15" />
-                        </CollectionView.ItemsLayout>
+                                <!--  Port Label  -->
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.PortName}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <!--  Port Entry  -->
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.SelectPortFirst}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding SelectedPortName}"
+                                            TextColor="#58595B">
+                                            <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OpenPortCommand}" />
+                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        </custom:GAZTBorderlessEntry>
 
 
-                        <CollectionView.ItemTemplate>
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                            <DataTemplate>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
 
-                                <Border
-                                    x:Name="Item"
-                                    Padding="0"
-                                    HeightRequest="150"
-                                    Stroke="#EBEBEB"
-                                    StrokeShape="RoundRectangle 20,20,20,20"
-                                    WidthRequest="140">
+                                     <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenPortCommand}" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                                    <StackLayout Padding="0">
+                                </custom:CustomSfTextInputView>
+                            
 
-                                        <!--  Live video Label  -->
-                                        <Label
-                                            Margin="5,0"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="14"
-                                            HorizontalOptions="CenterAndExpand"
-                                            HorizontalTextAlignment="Center"
-                                            LineBreakMode="WordWrap"
-                                            Text="{Binding VideoName}"
-                                            TextColor="#58595B"
-                                            VerticalOptions="CenterAndExpand" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenPortCommand}" />
+                                </StackLayout.GestureRecognizers>
 
-                                        <!--  Bottom bold frame  -->
-                                        <Border
-                                            BackgroundColor="#0996D4"
-                                            HorizontalOptions="FillAndExpand"
-                                            IsVisible="{Binding IsSelected}"
-                                            StrokeShape="RoundRectangle 0,0,15,15"
-                                            Style="{StaticResource CommonTopCurves}"
-                                            VerticalOptions="EndAndExpand" />
+                            </StackLayout>
 
-                                        <StackLayout.GestureRecognizers>
 
-                                            <TapGestureRecognizer
-                                                BindingContext="{Binding Source={x:Reference videosList}, Path=BindingContext}"
-                                                Command="{Binding SelectedVideoItemCommand}"
-                                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                            <!--  Video URL  -->
+                            <Border
+                                Padding="0"
+                                HeightRequest="250"
+                                IsVisible="{Binding ShowWebView}"
+                                Stroke="#EBEBEB"
+                                StrokeShape="RoundRectangle 20,20,20,20"
+                                WidthRequest="{OnPlatform iOS=370,Android=335}">
+                                <WebView Source="{Binding VideoUrl}" />
+                            </Border>
 
-                                        </StackLayout.GestureRecognizers>
+                            <!--  Live Video Sub Title Label  -->
+                            <Label
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="18"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{Binding SelectedVideo}"
+                                TextColor="#58595B"
+                                VerticalOptions="Center" />
 
-                                    </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand">
 
-                                    <Border.GestureRecognizers>
+                                <Grid
+                                    x:Name="videosList"
+                                    BindableLayout.ItemsSource="{Binding LiveVideosList}"
+                                    ColumnDefinitions="*,*"
+                                    ColumnSpacing="30"
+                                    RowDefinitions="150,150"
+                                    RowSpacing="30">
 
-                                        <TapGestureRecognizer
-                                            BindingContext="{Binding Source={x:Reference videosList}, Path=BindingContext}"
-                                            Command="{Binding SelectedVideoItemCommand}"
-                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
 
-                                    </Border.GestureRecognizers>
+                                    <BindableLayout.ItemTemplate>
 
-                                </Border>
-                            </DataTemplate>
+                                        <DataTemplate>
 
-                        </CollectionView.ItemTemplate>
+                                            <Border
+                                                x:Name="Item"
+                                                Grid.Row="{Binding Row}"
+                                                Grid.Column="{Binding Column}"
+                                                Padding="0"
+                                                Stroke="#EBEBEB"
+                                                StrokeShape="RoundRectangle 20">
 
-                    </CollectionView>
+                                                <Grid Padding="0" RowDefinitions="*,20">
 
-                </StackLayout>
+                                                    <!--  Live video Label  -->
+                                                    <Label
+                                                        Margin="5,0"
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        FontSize="14"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="WordWrap"
+                                                        Text="{Binding VideoName}"
+                                                        TextColor="#58595B"
+                                                        VerticalOptions="CenterAndExpand" />
+
+                                                    <!--  Bottom bold frame  -->
+                                                    <Border
+                                                        Grid.Row="1"
+                                                        BackgroundColor="#0996D4"
+                                                        StrokeShape="RoundRectangle 0,0,15,15"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        IsVisible="{Binding IsSelected}"
+                                                        Style="{StaticResource CommonTopCurves}"
+                                                        VerticalOptions="EndAndExpand" />
+
+                                                </Grid>
+
+                                                <Border.GestureRecognizers>
+
+                                                    <TapGestureRecognizer
+                                                        BindingContext="{Binding Source={x:Reference videosList}, Path=BindingContext}"
+                                                        Command="{Binding SelectedVideoItemCommand}"
+                                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+
+                                                </Border.GestureRecognizers>
+
+                                            </Border>
+
+                                        </DataTemplate>
+
+                                    </BindableLayout.ItemTemplate>
+
+                                </Grid>
+
+                             </StackLayout>
+
+                         </StackLayout>
+
+                    </ScrollView>
+
+                </Grid>
+                
+               
 
             </Border>
+
+            <!--  Bottom Sheet List  -->
+            <custom:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
 
             <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />

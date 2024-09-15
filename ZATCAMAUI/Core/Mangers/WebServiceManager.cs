@@ -1315,12 +1315,12 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     VATLookUp vATLookUp = new VATLookUp();
-                    String url = ZATCAConstants.GetVATLookUpDetails;
+                    string url = ZATCAConstants.GetVATLookUpDetails;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
-                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
-                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
-                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    string deviceOs = DependencyService.Get<IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<IDeviceInfoZATCA>().Model;
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -1350,13 +1350,13 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            if ((0 == string.Compare(NewToken, "Token has expaired")) || (0 == string.Compare(NewToken, "Invalid Token")))
                             {
                                 throw new GAZTSessionExpiredException();
                             }
                             App.Token = NewToken;
                         }
-                        String TINStatusResponse = GAZTVATLookUp.Content.ReadAsStringAsync().Result;
+                        string TINStatusResponse = GAZTVATLookUp.Content.ReadAsStringAsync().Result;
                         vATLookUp = JsonConvert.DeserializeObject<VATLookUp>(TINStatusResponse);
                     }
                     return vATLookUp;
@@ -1364,18 +1364,6 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
-                }
-                catch (HttpRequestException ex)
-                {
-                    throw ex;
-                }
-                catch (GAZTSessionExpiredException gex)
-                {
-                    throw gex;
-                }
-                catch (GAZTException gex)
-                {
-                    throw gex;
                 }
                 catch (Exception ex)
                 {

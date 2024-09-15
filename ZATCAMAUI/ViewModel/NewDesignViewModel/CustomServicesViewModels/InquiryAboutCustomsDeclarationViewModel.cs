@@ -792,7 +792,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     if (data.Item1.code != 200)
                     {
-                        //await _dialogService.ShowMessage(AppResources.DeclarationNotAvailableMsg,"");
                         MessageTxt = AppResources.DeclarationNotAvailableMsg;
                         IsShowMsgView = true;
                         IsMainPage = true;
@@ -810,7 +809,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
                 else
                 {
-                    // await _dialogService.ShowMessage(AppResources.DeclarationNotAvailableMsg,"");
                     IsShowMsgView = true;
                     MessageTxt = AppResources.DeclarationNotAvailableMsg;
                     IsMainPage = true;
@@ -1054,7 +1052,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     {
                         SelectedPort = e as CustomPort;
                         Ports = PortsStaticLst;
-                        //SelectedCarrier = null;
                     }
                     else if (type == typeof(DeclarationType))
                     {
@@ -1442,28 +1439,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             var res = PortsStaticLst.Where(c => c.Name.Contains(SearchTxt));
                             Ports = new ObservableCollection<CustomPort>(res);
                         }
-                        /* else
-                         {
-                             Ports = new ObservableCollection<CustomPort>(PortsStaticLst);
-                         }*/
                         if (!string.IsNullOrEmpty(SearchTxt) && IsDeclarationTypeOpened)
                         {
                             var res = DeclartionTpesStaticLst.Where(c => c.Value.Contains(SearchTxt));
                             DeclarationTypes = new ObservableCollection<DeclarationType>(res);
                         }
-                        /* else
-                         {
-                             DeclarationTypes = DeclartionTpesStaticLst;
-                         }*/
                         if (!string.IsNullOrEmpty(SearchTxt) && IsCarrierOpened)
                         {
                             var res = CarriersStaticLst.Where(c => c.carr_name.Contains(SearchTxt));
                             Carriers = new ObservableCollection<Carrier>(res);
                         }
-                        /*else
-                        {
-                            Carriers = CarriersStaticLst;
-                        }*/
 
                     }
                     catch (Exception)

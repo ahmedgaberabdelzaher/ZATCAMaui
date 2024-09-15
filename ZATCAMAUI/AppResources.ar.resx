@@ -11441,5 +11441,32 @@ info@zatca.gov.sa</value>
 </data>
 <data name="SAR" xml:space="preserve">
     <value>ريال</value>
-</data> 
+</data>
+<data name="InvalidTaxInvoice" xml:space="preserve">
+     <value>فاتورة ضريبية غير صحيحة</value>
+</data>
+  <data name="Aarar" xml:space="preserve">
+    <value>منفذ عرعر</value>
+  </data>
+   <data name="Alhaditha" xml:space="preserve">
+    <value>منفذ الحديثة</value>
+  </data>
+     <data name="Salwa" xml:space="preserve">
+    <value>منفذ سلوي</value>
+  </data>
+     <data name="HalatAmmar" xml:space="preserve">
+    <value>منفذ حالة عمار</value>
+  </data>
+     <data name="Khafji" xml:space="preserve">
+    <value>منفذ الخفجي</value>
+  </data>
+     <data name="Alwadeeaa" xml:space="preserve">
+    <value>منفذ الوديعة</value>
+  </data>
+ <data name="PortLiveVideoSubTitle" xml:space="preserve">
+        <value>البث المباشر ل</value>
+  </data>
+   <data name="PortLiveVideoSubTitle2" xml:space="preserve">
+        <value>البث المباشر للمنافذ البرية</value>
+  </data>
 </root>

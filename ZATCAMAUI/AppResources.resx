@@ -9504,7 +9504,7 @@ the Zakat, Tax and Customs
         <value>VAT Registered</value>
     </data>
     <data name="NotRegistered" xml:space="preserve">
-        <value>Not VAT Registered</value>
+        <value>Not Registered</value>
     </data>
     <data name="ThetotalamountplusVAT" xml:space="preserve">
         <value>The total amount plus VAT</value>
@@ -11729,5 +11729,32 @@ the credit balance of the current period will be carried forward, you can reques
     </data>
 	<data name="SAR" xml:space="preserve">
     <value>SAR</value>
-  </data> 
+  </data>
+   <data name="InvalidTaxInvoice" xml:space="preserve">
+    <value>Invalid Tax Invoice</value>
+  </data>
+    <data name="Aarar" xml:space="preserve">
+    <value>Aarar Port</value>
+  </data>
+   <data name="Alhaditha" xml:space="preserve">
+    <value>Alhaditha Port</value>
+  </data>
+   <data name="Salwa" xml:space="preserve">
+    <value>Salwa Port</value>
+  </data>
+     <data name="HalatAmmar" xml:space="preserve">
+    <value>Halat Ammar Port</value>
+  </data>
+     <data name="Khafji" xml:space="preserve">
+   <value>Khafji Port</value>
+  </data>
+     <data name="Alwadeeaa" xml:space="preserve">
+   <value>Alwadeeaa Port</value>
+  </data>
+   <data name="PortLiveVideoSubTitle" xml:space="preserve">
+       <value>Live stream for</value>
+  </data>
+     <data name="PortLiveVideoSubTitle2" xml:space="preserve">
+       <value>Land Ports Live Stream</value>
+  </data>
 </root>

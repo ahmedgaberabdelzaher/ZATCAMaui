@@ -96,7 +96,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
             else
             {
-                FeesCalculatorResponse = new Models.EDeclerationsModel.FeesCalculators.FeesCalculatorResponse();
+                FeesCalculatorResponse = new FeesCalculatorResponse();
                 _navigationService.GoBack();
 
             }
@@ -128,7 +128,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 DisplayRequiredDataMsg();
                                 return;
                             }
-                            Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
+                            Tobacco tobao = new Tobacco()
                             {
                                 harmonizedCode = long.Parse(SelectedTobacoItem.itemCode).ToString(),
                                 count = int.Parse(Quantity ?? "0"),
@@ -153,12 +153,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         {
                             if (!CheckProductDataNotNull(true))
                             {
-                                /*  if (int.Parse(Quantity ?? "0") <= 0)
-                                  {
-                                      IsShowMsgView = true;
-                                      MessageTxt = AppResources.QuantityValidation;
-                                      return;
-                                  }*/
                                 DisplayRequiredDataMsg();
                                 return;
                             }
@@ -193,20 +187,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
         }
 
-        public async Task<bool> CalculateFees(int operation = 1, Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
+        public async Task<bool> CalculateFees(int operation = 1, Tobacco tobacco = null, Product product = null)
         {
             try
             {
 
                 if (FeesCalculatorBody.tobacco == null)
                 {
-                    //{ new Tobacco() {  count=0, harmonizedCode="", value=0, Wight=0} }
-                    FeesCalculatorBody.tobacco = new List<Models.EDeclerationsModel.FeesCalculators.Tobacco>();
+                    FeesCalculatorBody.tobacco = new List<Tobacco>();
 
                 }
                 if (FeesCalculatorBody.product == null)
                 {
-                    FeesCalculatorBody.product = new List<Models.EDeclerationsModel.FeesCalculators.Product>();
+                    FeesCalculatorBody.product = new List<Product>();
 
                 }
                 if (tobacco != null)

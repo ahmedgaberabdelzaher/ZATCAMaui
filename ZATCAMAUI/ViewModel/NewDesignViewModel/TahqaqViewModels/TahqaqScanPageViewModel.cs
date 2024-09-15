@@ -31,14 +31,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
         string vatAmount;
         public string VatAmount { get { return vatAmount; } set { vatAmount = value; OnPropertyChanged(); } }
 
+        string taxInvoiceTitle;
+        public string TaxInvoiceTitle { get { return taxInvoiceTitle; } set { taxInvoiceTitle = value; OnPropertyChanged(); } }
+
 
         ITahqaqServices _tahqaqServices;
         public TahqaqScanPageViewModel(INavigationService navigationService, IDialogService dialogService, ITahqaqServices tahqaqServices) : base(navigationService, dialogService)
         {
             _tahqaqServices = tahqaqServices;
             eInvoiceQRModel = new EInvoiceQRModel();
-            //  scanCode = "SAA6216738003275";
-            //ScanEnvoiceQrCommand.Execute(null);
 
         }
 
@@ -128,6 +129,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 return new Command(() =>
 
                 {
+
                     _navigationService.NavigateTo("SubmitReportPage");
 
                 });
@@ -135,21 +137,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
         }
         public bool IsBase64(string base64String)
         {
-            if (string.IsNullOrEmpty(base64String)
-               || !Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None))
-                return false;
-
             try
             {
-                try
-                {
-                    Convert.FromBase64String(base64String);
-                    return true;
-                }
-                catch (Exception)
-                {
+
+                if (string.IsNullOrEmpty(base64String)
+               || !Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None))
                     return false;
-                }
+
+                Convert.FromBase64String(base64String);
+                return true;
 
             }
             catch (Exception)
@@ -159,6 +155,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
         }
 
         int NoofTags;
+
+
 
         public ICommand ScanEnvoiceQrCommand
         {
@@ -175,11 +173,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                             IsLoading = true;
 
                             string code = scanCode;
-                            code = "ASVaYW1pbCBPcGVyYXRpb25zICYgTWFpbnRlbmFuY2UgQ28gTHRkAg8zMTAxMzY4NDAzMDAwMDMDEzIwMjMtMTItMThUMDY6NDM6MjUEBzExNzYuOTEFBjE1My41MQYsVDI2RjBMYzVvTHpGenZTVjNIU1JLQnIwNSsvQmRmRG93bzU1VjhHNitwOD0HYE1FUUNJRGVnSUw5MStMTHN1c3F5Ukd2djd5cUZ5ZEtsTmQ0UnhXZ3JLQ1c0Vmd5cUFpQk04SDhYaWlMclhrZTZzVm9LeUo0TXRuS2NCZDUyV281VlpRUHZtcVByT1E9PQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEouqS1tSXHqT8suzSdB7CJVLlQZnGe8B12TYwC8O4PqJJVEFHOHV3nzdenUmVyRzExqlrGHhfJ1yB+jrEECWyZg==";
-                            if (code == "-1")
-                            {
-                                return;
-                            }
+
 
                             if (!IsBase64(code))
                             {
@@ -193,13 +187,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                             byte[] byteList = Convert.FromBase64String(code);
                             MemoryStream stream = new MemoryStream(byteList);
 
-
-
-                            int currentPosition = 1;
-                            int TagIndex = 0;
-                            int noOfTags = 0;
                             TlvEncoding.ProcessTlvStream(stream,
-                            (tag, data) => {
+                            (tag, data) =>
+                            {
                                 var messageAsText = Encoding.UTF8.GetString(data);
                                 SetDataToModel(int.Parse(tag.ToString()), messageAsText);
                                 NoofTags = (int)tag;
@@ -223,7 +213,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                             IsLoading = false;
                         }
-                        catch (Exception )
+                        catch (Exception exp)
                         {
                             IsLoading = false;
                             IsScanning = false;
@@ -353,10 +343,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
                 result = "VAT Amount not Valid ";
             }
-            /* else if (vat < 0)
-             {
-                 result = "VAT Amount is Negative ";
-             }*/
             else if (checkValidDate(qRcodeModelDetails.timeStamp.Replace(" ", "")) == false)
             {
 
@@ -375,6 +361,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             return result;
         }
 
+
         bool checkValidDate(string dateValue)
         {
             try
@@ -384,6 +371,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
 
                 if (DateTime.TryParse(dateValue, culture, styles, out myDate))
+
                 {
                     var olddate = DateTime.Parse(dateValue);
                     var olldkind = olddate.Kind;
@@ -416,15 +404,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 var location = await Geolocation.GetLocationAsync(request, cts.Token);
 
                 return location;
-            }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-            }
-            catch (FeatureNotEnabledException fneEx)
-            {
-            }
-            catch (PermissionException pEx)
-            {
             }
             catch (Exception)
             {
@@ -465,7 +444,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                     try
                     {
-                        if (!String.IsNullOrEmpty(scanCode))
+                        if (!string.IsNullOrEmpty(scanCode))
                         {
 
                             FromCheckWithCode = true;
@@ -569,20 +548,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 if (NetworkCheck.IsInternet())
                 {
                     IsClearedStatusVisible = false;
-                    var body = new EradQrBody() { idType = "3", idNumber = TinNo.Replace(" ","") };
-                    var res =await _tahqaqServices.GetEInvoiceDataEradAPI(body);
-                    var content =await res.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject< DATAPowerBaseResponseResult<VATLookUpD> >(content);
+                    var body = new EradQrBody() { idType = "3", idNumber = TinNo.Replace(" ", "") };
+                    var res = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
+                    var content = await res.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<VATLokupsDP>>(content);
                     var qrResponseData = result.result;
-                    if (qrResponseData != null&& qrResponseData.results != null & qrResponseData.results.Count>0)
+                    if (qrResponseData != null && qrResponseData.lookups != null & qrResponseData.lookups.Count > 0)
                     {
 
-                        if (qrResponseData.results[0].EinvEnfStatus == null)
+                        if (qrResponseData.lookups[0].einvEnfStatus == null)
                         {
-                            qrResponseData.results[0].EinvEnfStatus = "";
+                            qrResponseData.lookups[0].einvEnfStatus = "";
                         }
-                        var EInvEnfStatus = qrResponseData.results[0].EinvEnfStatus == "" ? 0 : int.Parse(qrResponseData.results[0].EinvEnfStatus);
-                        if (string.IsNullOrEmpty(qrResponseData.results[0].Description))
+                        var EInvEnfStatus = qrResponseData.lookups[0].einvEnfStatus == "" ? 0 : int.Parse(qrResponseData.lookups[0].einvEnfStatus);
+
+                        if (string.IsNullOrEmpty(qrResponseData.lookups[0].errorDescription))
                         {
 
                             if (NoofTags == 5 && EInvEnfStatus == 0)
@@ -605,15 +585,40 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 IsClearedStatusVisible = true;
 
                             }
-                            else if (NoofTags == 8)
+                            else
                             {
-                                 RegistredStatusWithDisplaQRRslt();
-                              
+                                if (NoofTags == 8)
+                                {
+                                    RegistredStatusWithDisplaQRRslt();
+                                }
+                                else
+                                {
+                                    RegistredStatusWithDisplaQRRslt();
+                                }
                             }
+                        }
+                        else if (qrResponseData.lookups[0].errorCode.Equals("1009"))
+                        {
+                            RegisterStatus = AppResources.NotRegistered;
+                            TaxInvoiceTitle = string.Empty;
+                            IsShowSubmitReport = true;
+                            IsShowRsltView = true;
+                            IsShowScanView = false;
+                        }
+                        else if (qrResponseData.lookups[0].errorCode.Equals("1001")
+                            || qrResponseData.lookups[0].errorCode.Equals("1002")
+                            || qrResponseData.lookups[0].errorCode.Equals("1007"))
+                        {
+                            RegisterStatus = AppResources.NotRegistered;
+                            TaxInvoiceTitle = AppResources.InvalidTaxInvoice;
+                            IsShowSubmitReport = true;
+                            IsShowRsltView = true;
+                            IsShowScanView = false;
                         }
                         else
                         {
                             RegisterStatus = AppResources.NotRegistered;
+                            TaxInvoiceTitle = string.Empty;
                             IsShowSubmitReport = true;
                             IsShowRsltView = true;
                             IsShowScanView = false;
@@ -644,8 +649,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
             finally
             {
-                RegisterStatus = AppResources.NotRegistered;
-                IsShowSubmitReport = true;
+
                 IsLoading = false;
                 IsScanning = false;
             }
@@ -656,6 +660,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
         private void RegistredStatusWithDisplaQRRslt()
         {
             RegisterStatus = AppResources.Registered;
+            TaxInvoiceTitle = AppResources.Correcttaxinvoice;
             IsShowSubmitReport = false;
             IsShowRsltView = true;
             IsShowScanView = false;

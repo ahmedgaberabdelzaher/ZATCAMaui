@@ -194,7 +194,22 @@
                             FontSize="24"
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.Correcttaxinvoice}"
-                            TextColor="{StaticResource PrimaryColor}" />
+                            TextColor="{StaticResource PrimaryColor}" >
+
+                            <Label.Triggers>
+
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding IsShowSubmitReport}"
+                                             Value="true">
+
+                                    <Setter Property="Text"
+                                            Value="{x:Static ResourceManager:AppResources.InCorrecttaxinvoice}"/>
+                                </DataTrigger>
+
+                            </Label.Triggers>
+
+
+                        </Label>
 
                         <Border
                             Margin="0"
@@ -224,6 +239,12 @@
                                                     Value="{x:Static ResourceManager:AppResources.Registered}">
                                                     <Setter Property="BackgroundColor" Value="#62B34F" />
                                                 </DataTrigger>
+                                                 <DataTrigger
+                                                    Binding="{Binding RegisterStatus}"
+                                                    TargetType="Border"
+                                                    Value="{x:Static ResourceManager:AppResources.NotRegistered}">
+                                                    <Setter Property="BackgroundColor" Value="Orange" />
+                                                </DataTrigger>
                                             </Border.Triggers>
 
                                         </Border>
@@ -240,7 +261,15 @@
                                                     Value="{x:Static ResourceManager:AppResources.Registered}">
                                                     <Setter Property="TextColor" Value="#62B34F" />
                                                 </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding RegisterStatus}"
+                                                    TargetType="Label"
+                                                    Value="{x:Static ResourceManager:AppResources.NotRegistered}">
+                                                    <Setter Property="TextColor" Value="Orange" />
+                                                </DataTrigger>
+
                                             </Label.Triggers>
+
 
                                         </Label>
 

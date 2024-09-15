@@ -2526,30 +2526,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 TxtIDType = AppResources.ZZGCCID;
                 SelectedIdType = signUpIdTypeListGulf[0];
             }
-            else
-            {
-
-                if (modelSSOID.results[0].Idnumber.Substring(0, 1) == "1")
-                {
-                    lst = signUpIdTypeListCitizenNC;
-                    IdTypeList = signUpIdTypeListCitizenNC;
-
-                    TxtIDType = AppResources.ZZNationalID;
-                    SelectedIdType = signUpIdTypeListCitizenNC[0];
-                }
-                else
-                {
-                    lst = signUpIdTypeListCitizenIQ;
-                    IdTypeList = signUpIdTypeListCitizenIQ;
-
-                    TxtIDType = AppResources.ZZIqamaID;
-                    SelectedIdType = signUpIdTypeListCitizenIQ[0];
-                }
-
-                Name = modelSSOID.results[0].Firstname;
-                DOB = JsonConvert.SerializeObject(modelSSOID.results[0].Birthdt.ToString());
-
-            }
+            
         }
 
         public async Task<string> ValidateIDs()
