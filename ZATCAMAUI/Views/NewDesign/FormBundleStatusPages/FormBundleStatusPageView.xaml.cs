@@ -124,9 +124,9 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
         private void OnBundleNumberClicked(object sender, EventArgs e)
         {
             BundleNumber.IsOpen = true;
-            if (viewModel.FormBundleApplicatioNumberList.Count == 1)
+            if (viewModel.FormBundleApplicatioNumberList.Count > 0 && string.IsNullOrWhiteSpace(viewModel.TxtFBnum))
             {
-                var selectedfbnum = BundleNumber.Columns[0].SelectedItem as FormBundleApplicationNumberModelResult;
+                var selectedfbnum = viewModel.FormBundleApplicatioNumberList[0];
                 viewModel.SelectedFormBindleFbnum = selectedfbnum;
                 viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
                 viewModel.TxtFBnum = selectedfbnum.Fbnum;
@@ -137,9 +137,9 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
         private void OnBundleTypeClicked(object sender, EventArgs e)
         {
             BundleType.IsOpen = true;
-            if (viewModel.FormBundleList.Count == 1)
+            if (viewModel.FormBundleList.Count > 0 && string.IsNullOrWhiteSpace(viewModel.TxtFBtype))
             {
-                var selectedfbtyp = BundleType.Columns[0].SelectedItem as FormBundleResult;
+                var selectedfbtyp = viewModel.FormBundleList[0];
                 viewModel.SelectedFormBindleFbnumPrev = null;
                 viewModel.SelectedFormBindleFbtyp = selectedfbtyp;
                 viewModel.TxtFBtype = selectedfbtyp.Txt50;
