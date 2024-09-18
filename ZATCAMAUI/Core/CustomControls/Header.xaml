@@ -4,23 +4,26 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Grid Padding="15,15" ColumnDefinitions="10*,80*,10*">
+    <Grid Padding="15,15" ColumnDefinitions="*,3*,*">
         <StackLayout Grid.Column="0">
             <Image
                 x:Name="backbutton"
                 HorizontalOptions="Start"
-                Rotation="180"
-                Source="arrowLeftwhite.png"
+                Rotation="0"
+                Source="whiteRightBack.png"
                 VerticalOptions="CenterAndExpand">
+
                 <Image.Triggers>
                     <DataTrigger
                         Binding="{Binding AppDirection}"
                         TargetType="Image"
                         Value="LeftToRight">
-                        <Setter Property="Rotation" Value="0" />
+                        <Setter Property="Rotation" Value="180" />
                     </DataTrigger>
                 </Image.Triggers>
+
             </Image>
+
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding BackCommand}" />
             </StackLayout.GestureRecognizers>

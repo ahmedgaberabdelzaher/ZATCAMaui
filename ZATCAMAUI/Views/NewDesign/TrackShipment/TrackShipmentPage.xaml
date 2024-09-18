@@ -171,7 +171,7 @@
                                 <!--  Declaration card  -->
                                 <Grid
                                     Padding="5"
-                                    HeightRequest="110"
+                                    HeightRequest="140"
                                     HorizontalOptions="StartAndExpand"
                                     WidthRequest="160">
 
@@ -185,7 +185,7 @@
                                                 Value="True">
                                                 <Setter Property="Source" Value="Unselected.png" />
                                                 <Setter Property="WidthRequest" Value="160" />
-                                                <Setter Property="HeightRequest" Value="110" />
+                                                <Setter Property="HeightRequest" Value="140" />
                                             </DataTrigger>
 
                                             <DataTrigger
@@ -194,7 +194,7 @@
                                                 Value="False">
                                                 <Setter Property="Source" Value="UnselectedCard.png" />
                                                 <Setter Property="WidthRequest" Value="160" />
-                                                <Setter Property="HeightRequest" Value="110" />
+                                                <Setter Property="HeightRequest" Value="140" />
                                             </DataTrigger>
 
                                         </Image.Triggers>
@@ -239,7 +239,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Text="{x:Static ResourceManager:AppResources.ShipmentDeclarationDetails}"
                                             TextColor="White"
-                                            VerticalOptions="EndAndExpand">
+                                            VerticalOptions="Start">
 
                                             <Label.Triggers>
 
@@ -271,7 +271,7 @@
 
                                 <!--  Bill Number Card  -->
                                 <Grid
-                                    HeightRequest="110"
+                                    HeightRequest="140"
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="StartAndExpand"
                                     WidthRequest="160">
@@ -286,7 +286,7 @@
                                                 Value="False">
                                                 <Setter Property="Source" Value="Unselected.png" />
                                                 <Setter Property="WidthRequest" Value="160" />
-                                                <Setter Property="HeightRequest" Value="110" />
+                                                <Setter Property="HeightRequest" Value="140" />
                                             </DataTrigger>
 
                                             <DataTrigger
@@ -295,7 +295,7 @@
                                                 Value="True">
                                                 <Setter Property="Source" Value="UnselectedCard.png" />
                                                 <Setter Property="WidthRequest" Value="160" />
-                                                <Setter Property="HeightRequest" Value="110" />
+                                                <Setter Property="HeightRequest" Value="140" />
                                             </DataTrigger>
 
                                         </Image.Triggers>
@@ -306,7 +306,7 @@
                                         Padding="15,10"
                                         HorizontalOptions="StartAndExpand"
                                         Spacing="10"
-                                        VerticalOptions="EndAndExpand">
+                                        VerticalOptions="CenterAndExpand">
 
                                         <!--  Bill image selected  -->
                                         <Image
