@@ -55,16 +55,148 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <Grid
-            Padding="0"
-            ColumnSpacing="0"
-            RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
+        <Grid RowDefinitions="Auto,*,Auto">
+            <!--#region Header-->
+            <StackLayout
+                Grid.Row="0"
+                Padding="20,15"
+                BackgroundColor="White"
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="StartAndExpand">
+                <!--#region BackButton Row-->
+                <Grid
+                    Padding="0,0,0,10"
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15*" />
+                        <ColumnDefinition Width="70*" />
+                        <ColumnDefinition Width="15*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        Source="arrowLeft.png"
+                        VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HeightRequest="40"
+                        Source="ic_logo_gazt.png"
+                        WidthRequest="34" />
 
+                    <StackLayout Grid.Row="0" Grid.Column="2">
+                        <StackLayout
+                            HorizontalOptions="EndAndExpand"
+                            Orientation="Horizontal"
+                            Rotation="90"
+                            Spacing="3"
+                            VerticalOptions="CenterAndExpand">
+                            <BoxView
+                                BackgroundColor="{StaticResource SecondaryNew}"
+                                CornerRadius="3"
+                                HeightRequest="5"
+                                WidthRequest="5" />
+                            <BoxView
+                                BackgroundColor="{StaticResource SecondaryNew}"
+                                CornerRadius="3"
+                                HeightRequest="5"
+                                WidthRequest="5" />
+                            <BoxView
+                                BackgroundColor="{StaticResource SecondaryNew}"
+                                CornerRadius="3"
+                                HeightRequest="5"
+                                WidthRequest="5" />
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Grid>
+                <!--#endregion-->
+                <commonView:PageIndicatorView
+                    Completed="{Binding MarkComplete}"
+                    DotSize="12"
+                    HorizontalOptions="End"
+                    MarkSize="24"
+                    MaxNum="{Binding MaxIndex}"
+                    MinNum="{Binding CurrentIndex}" />
+                <Label
+                    Margin="0,10,0,0"
+                    FontFamily="{StaticResource SomarBold}"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource PageTitleBlack}"
+                    Text="{Binding SelectedTabText}"
+                    VerticalOptions="Center" />
+                <Label
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="15"
+                    HorizontalOptions="StartAndExpand"
+                    Style="{StaticResource BodyLabelGrey}"
+                    Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" />
+                <BoxView Margin="0,15" Style="{StaticResource lineSeperator}" />
+
+                <!--#region Chip groups-->
+                <ScrollView
+                    x:Name="TabScrollView"
+                    HorizontalScrollBarVisibility="Never"
+                    Orientation="Horizontal">
+
+                    <SfChipGroup:SfChipGroup
+                        x:Name="TabSfChipGroup"
+                        Margin="0,5,0,0"
+                        ChipBackground="Transparent"
+                        ChipStroke="{StaticResource NeutralLightGrey}"
+                        ChipStrokeThickness="1"
+                        ChipType="Choice"
+                        HorizontalOptions="Start"
+                        ItemsSource="{Binding TabList}"
+                        SelectedItem="{Binding SelectedTabText}"
+                        SelectionChanged="SfChipGroup_SelectionChanged"
+                        SelectionChanging="SfChipGroup_SelectionChanging"
+                        VerticalOptions="Center">
+                        <SfChipGroup:SfChipGroup.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    Margin="0"
+                                    Padding="5,2,5,2"
+                                    Orientation="Horizontal"
+                                    Spacing="2">
+                                    <Label
+                                        HorizontalOptions="CenterAndExpand"
+                                        Style="{StaticResource CaptionLabelBlack}"
+                                        Text="{Binding}" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </SfChipGroup:SfChipGroup.ItemTemplate>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="ChipBackground" Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="ChipBackground" Value="{StaticResource PartialBg}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </SfChipGroup:SfChipGroup>
+
+                </ScrollView>
+                <!--#endregion-->
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Body-->
             <Grid
                 Grid.Row="1"
                 Padding="10,10,10,0"
@@ -72,10 +204,12 @@
                 HorizontalOptions="FillAndExpand"
                 RowSpacing="0"
                 VerticalOptions="FillAndExpand">
-                <StackLayout
+
+
+                <!--#region Registration Type-->
+                <Grid
                     x:Name="RegistrationTabMainGrid"
                     IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}"
-                    Spacing="3"
                     VerticalOptions="StartAndExpand">
                     <ScrollView
                         HorizontalOptions="FillAndExpand"
@@ -548,7 +682,8 @@
                                         <Grid
                                             x:Name="OtherTaxableIncomeGrid"
                                             Grid.Row="0"
-                                            Grid.Column="1">
+                                            Grid.Column="1"
+                                            HorizontalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="104" />
                                             </Grid.RowDefinitions>
@@ -560,8 +695,8 @@
                                                 Grid.Column="0"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
-                                                WidthRequest="171">
+                                                HorizontalOptions="FillAndExpand"
+                                                IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -574,7 +709,10 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         Source="unselected171x136"
                                                         VerticalOptions="FillAndExpand" />
-                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                    <StackLayout
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Style="{DynamicResource CardParentStacklayout}"
+                                                        VerticalOptions="EndAndExpand">
                                                         <Label Style="{DynamicResource CardLabelBlack}" Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" />
                                                     </StackLayout>
                                                 </Grid>
@@ -584,8 +722,7 @@
                                                 Grid.Column="0"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}"
-                                                WidthRequest="171">
+                                                IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -598,7 +735,10 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         Source="selected171x136"
                                                         VerticalOptions="FillAndExpand" />
-                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                                                    <StackLayout
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Style="{DynamicResource CardParentStacklayout}"
+                                                        VerticalOptions="EndAndExpand">
                                                         <Label Style="{DynamicResource CardLabelWhite}" Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" />
                                                     </StackLayout>
                                                 </Grid>
@@ -932,7 +1072,7 @@
                                                 Margin="0,0,24,0"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                WidthRequest="171">
+                                                HorizontalOptions="FillAndExpand">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -972,7 +1112,7 @@
                                                 Margin="0,0,24,0"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                WidthRequest="171">
+                                                HorizontalOptions="FillAndExpand">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -996,11 +1136,10 @@
                             </listView:SfListView>
                         </Grid>
                     </ScrollView>
-                </StackLayout>
-                <StackLayout
-                    x:Name="TaxpayerDetailsTabMain"
-                    IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}"
-                    Spacing="3">
+                </Grid>
+                <!--#endregion-->
+                <!--#region Taxpayer details-->
+                <Grid x:Name="TaxpayerDetailsTabMain" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
                     <ScrollView
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="StartAndExpand"
@@ -1064,7 +1203,7 @@
 
                                 </Grid>
 
-                                <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand">
+                                <StackLayout HorizontalOptions="FillAndExpand">
                                     <Label Style="{StaticResource forLightLabel}">
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -1076,41 +1215,44 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-
-                                    <Border
-                                        Stroke="#B1B1B1"
-                                        StrokeThickness="1"
-                                        Style="{StaticResource GreyBorderFrame}">
-
-                                        <StackLayout
-                                            Padding="5,15,5,15"
-                                            Orientation="Horizontal"
-                                            WidthRequest="160">
-
-                                            <Label
-                                                x:Name="dob"
+                                    <!--  date new  -->
+                                    <custom:CustomSfTextInputView
+                                        x:Name="FrmDBO"
+                                        ContainerBackground="White"
+                                        ContainerType="Outlined"
+                                        InputViewPadding="16,0,16,0"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="10"
+                                        Stroke="{StaticResource NeutralGreay}">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="DateEntry"
+                                                FontFamily="{StaticResource SomarLight}"
                                                 FontSize="Small"
-                                                HorizontalOptions="Start"
-                                                Style="{StaticResource GAZTSmallBlackLabel}"
-                                                Text="{Binding DisplaySelectedDOB}" />
-                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                                <Image Margin="5,0">
-                                                    <Image.Source>
-                                                        <FontImageSource
-                                                            FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                            Size="20"
-                                                            Color="{StaticResource SecondaryNew}" />
-                                                    </Image.Source>
-                                                </Image>
-                                            </StackLayout>
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="dd/MM/yyyy"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding DisplaySelectedDOB}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
 
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="dOBDateClicked" />
-                                            </StackLayout.GestureRecognizers>
 
-                                        </StackLayout>
-                                    </Border>
+                                        <custom:CustomSfTextInputView.TrailingView>
+                                            <Image
+                                                HorizontalOptions="EndAndExpand"
+                                                Source="calendar.png"
+                                                Style="{StaticResource SmallIcon}" />
+                                        </custom:CustomSfTextInputView.TrailingView>
+
+                                        <custom:CustomSfTextInputView.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="dOBDateClicked" />
+                                        </custom:CustomSfTextInputView.GestureRecognizers>
+
+                                    </custom:CustomSfTextInputView>
+
 
                                     <custom:CustomDatePicker
                                         x:Name="dobPicker"
@@ -1228,27 +1370,29 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside">
-                                        <custom:GAZTBorderlessEntry
-                                            Margin="10"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="15"
-                                            HeightRequest="48"
-                                            HorizontalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="Start"
-                                            IsReadOnly="{Binding TaxPayerDetailsAvailability.Title}"
-                                            IsSpellCheckEnabled="false"
-                                            PlaceholderColor="{StaticResource NeutralGreay}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding Title}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalOptions="Center"
-                                            VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="15"
+                                                HeightRequest="48"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                IsReadOnly="{Binding TaxPayerDetailsAvailability.Title}"
+                                                IsSpellCheckEnabled="false"
+                                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding Title}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
 
                                 <StackLayout HorizontalOptions="FillAndExpand">
@@ -1263,27 +1407,29 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside">
-                                        <custom:GAZTBorderlessEntry
-                                            Margin="10"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="15"
-                                            HeightRequest="48"
-                                            HorizontalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="Start"
-                                            IsReadOnly="{Binding TaxPayerDetailsAvailability.FirstName}"
-                                            IsSpellCheckEnabled="false"
-                                            PlaceholderColor="{StaticResource NeutralGreay}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding FirstName}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalOptions="Center"
-                                            VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="15"
+                                                HeightRequest="48"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                IsReadOnly="{Binding TaxPayerDetailsAvailability.FirstName}"
+                                                IsSpellCheckEnabled="false"
+                                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding FirstName}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
 
                                 <StackLayout HorizontalOptions="FillAndExpand">
@@ -1297,28 +1443,30 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
                                         IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         Style="{StaticResource TextInputLayout}">
-                                        <custom:GAZTBorderlessEntry
-                                            Margin="10"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="15"
-                                            HeightRequest="48"
-                                            HorizontalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="Start"
-                                            IsSpellCheckEnabled="false"
-                                            PlaceholderColor="{StaticResource NeutralGreay}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding LastName}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalOptions="Center"
-                                            VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="15"
+                                                HeightRequest="48"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                IsSpellCheckEnabled="false"
+                                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding LastName}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
 
                                 <StackLayout HorizontalOptions="FillAndExpand">
@@ -1332,30 +1480,32 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-6,0,-6"
+                                    <custom:CustomSfTextInputView
+                                        Margin="0,6,0,6"
                                         ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
                                         IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         Style="{StaticResource TextInputLayout}">
-                                        <custom:GAZTBorderlessEntry
-                                            Margin="10"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="15"
-                                            HeightRequest="48"
-                                            HorizontalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="Start"
-                                            IsReadOnly="{Binding TaxPayerDetailsAvailability.FathersName}"
-                                            IsSpellCheckEnabled="false"
-                                            PlaceholderColor="{StaticResource NeutralGreay}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding FatherName}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalOptions="Center"
-                                            VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="15"
+                                                HeightRequest="48"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                IsReadOnly="{Binding TaxPayerDetailsAvailability.FathersName}"
+                                                IsSpellCheckEnabled="false"
+                                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding FatherName}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="FillAndExpand">
                                     <Label Style="{StaticResource forLightLabel}">
@@ -1368,30 +1518,32 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-6,0,-6"
+                                    <custom:CustomSfTextInputView
+                                        Margin="0,6,0,6"
                                         ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
                                         IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         Style="{StaticResource TextInputLayout}">
-                                        <custom:GAZTBorderlessEntry
-                                            Margin="10"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="15"
-                                            HeightRequest="48"
-                                            HorizontalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="Start"
-                                            IsReadOnly="{Binding TaxPayerDetailsAvailability.GrandFathersName}"
-                                            IsSpellCheckEnabled="false"
-                                            PlaceholderColor="{StaticResource NeutralGreay}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding GrandFatherName}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalOptions="Center"
-                                            VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="15"
+                                                HeightRequest="48"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                IsReadOnly="{Binding TaxPayerDetailsAvailability.GrandFathersName}"
+                                                IsSpellCheckEnabled="false"
+                                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding GrandFatherName}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding TaxPayerDetailsAvailability.IsFamilyNameVisible}">
                                     <Label Style="{StaticResource forLightLabel}">
@@ -1404,30 +1556,32 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-6,0,-6"
+                                    <custom:CustomSfTextInputView
+                                        Margin="0,6,0,6"
                                         ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
                                         IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         Style="{StaticResource TextInputLayout}">
-                                        <custom:GAZTBorderlessEntry
-                                            Margin="10"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="15"
-                                            HeightRequest="48"
-                                            HorizontalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="Start"
-                                            IsEnabled="{Binding TaxPayerDetailsAvailability.FamilyName}"
-                                            IsSpellCheckEnabled="false"
-                                            PlaceholderColor="{StaticResource NeutralGreay}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding FamilyName}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalOptions="Center"
-                                            VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="15"
+                                                HeightRequest="48"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                IsEnabled="{Binding TaxPayerDetailsAvailability.FamilyName}"
+                                                IsSpellCheckEnabled="false"
+                                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding FamilyName}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding TaxPayerDetailsAvailability.IsInitialVisible}">
                                     <Label Style="{StaticResource forLightLabel}">
@@ -1440,30 +1594,32 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-6,0,-6"
+                                    <custom:CustomSfTextInputView
+                                        Margin="0,6,0,6"
                                         ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
                                         IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         Style="{StaticResource TextInputLayout}">
-                                        <custom:GAZTBorderlessEntry
-                                            Margin="10"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="15"
-                                            HeightRequest="48"
-                                            HorizontalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="Start"
-                                            IsEnabled="{Binding TaxPayerDetailsAvailability.Initial}"
-                                            IsSpellCheckEnabled="false"
-                                            PlaceholderColor="{StaticResource NeutralGreay}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding Initial}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalOptions="Center"
-                                            VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="15"
+                                                HeightRequest="48"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                IsEnabled="{Binding TaxPayerDetailsAvailability.Initial}"
+                                                IsSpellCheckEnabled="false"
+                                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding Initial}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
                                 <StackLayout
                                     HorizontalOptions="FillAndExpand"
@@ -1570,21 +1726,19 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <StackLayout>
-                                        <buttons:SfButton
-                                            Padding="5"
-                                            Command="{Binding OnPDNatinalitySelectButtonClick}"
-                                            CornerRadius="14"
-                                            HorizontalTextAlignment="Start"
-                                            ImageAlignment="End"
-                                            ImageSource="arrowDropdown.png"
-                                            IsEnabled="{Binding TaxPayerDetailsAvailability.Nationality}"
-                                            ShowIcon="True"
-                                            Stroke="{StaticResource NeutralGreay}"
-                                            StrokeThickness="1"
-                                            Style="{StaticResource ButtonBlackBold16}"
-                                            Text="{Binding SelectedTaxpayerPDNationality}" />
-                                    </StackLayout>
+                                    <buttons:SfButton
+                                        Padding="5"
+                                        Command="{Binding OnPDNatinalitySelectButtonClick}"
+                                        CornerRadius="14"
+                                        HorizontalTextAlignment="Start"
+                                        ImageAlignment="End"
+                                        ImageSource="arrowDropdown.png"
+                                        IsEnabled="{Binding TaxPayerDetailsAvailability.Nationality}"
+                                        ShowIcon="True"
+                                        Stroke="{StaticResource NeutralGreay}"
+                                        StrokeThickness="1"
+                                        Style="{StaticResource ButtonBlackBold16}"
+                                        Text="{Binding SelectedTaxpayerPDNationality}" />
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="Start">
                                     <Label Style="{StaticResource forLightLabel}">
@@ -1644,11 +1798,10 @@
                             </StackLayout>
                         </Grid>
                     </ScrollView>
-                </StackLayout>
-                <StackLayout
-                    x:Name="PassportDetailsTabMainGrid"
-                    IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}}"
-                    Spacing="3">
+                </Grid>
+                <!--#endregion-->
+                <!--#region Passport details-->
+                <Grid x:Name="PassportDetailsTabMainGrid" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}}">
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                         <Grid
                             x:Name="PassportDetailsTab"
@@ -1699,37 +1852,38 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-6,0,-6"
+                                <custom:CustomSfTextInputView
+                                    Margin="0,6,0,6"
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
                                     IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     Style="{StaticResource TextInputLayout}">
-                                    <custom:GAZTBorderlessEntry
-                                        Margin="10"
-                                        FontFamily="{StaticResource SomarRegular}"
-                                        FontSize="15"
-                                        HeightRequest="48"
-                                        HorizontalOptions="FillAndExpand"
-                                        HorizontalTextAlignment="Start"
-                                        IsEnabled="{Binding PassportDetails.PassportNo}"
-                                        IsSpellCheckEnabled="false"
-                                        MaxLength="15"
-                                        PlaceholderColor="{StaticResource NeutralGreay}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding PassportNumber}"
-                                        TextColor="{StaticResource NeutralBlack}"
-                                        VerticalOptions="Center"
-                                        VerticalTextAlignment="Center">
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviors:RestrictSpecialCharactorsBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            FontFamily="{StaticResource SomarRegular}"
+                                            FontSize="15"
+                                            HeightRequest="48"
+                                            HorizontalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            IsEnabled="{Binding PassportDetails.PassportNo}"
+                                            IsSpellCheckEnabled="false"
+                                            MaxLength="15"
+                                            PlaceholderColor="{StaticResource NeutralGreay}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding PassportNumber}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:RestrictSpecialCharactorsBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
 
-                                    </custom:GAZTBorderlessEntry>
+                                        </custom:GAZTBorderlessEntry>
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
                             <StackLayout Grid.Row="2" HorizontalOptions="FillAndExpand">
                                 <Label Style="{StaticResource forLightLabel}">
@@ -1743,20 +1897,19 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <StackLayout IsEnabled="{Binding PassportDetails.IssueCountry}">
-                                    <buttons:SfButton
-                                        Padding="5"
-                                        Command="{Binding OnPassportIssueCountryButtonClick}"
-                                        HorizontalTextAlignment="Start"
-                                        ImageAlignment="End"
-                                        ImageSource="arrowDropdown.png"
-                                        IsEnabled="{Binding PassportDetails.IssueCountry}"
-                                        ShowIcon="True"
-                                        Stroke="{StaticResource NeutralGreay}"
-                                        StrokeThickness="1"
-                                        Style="{StaticResource ButtonBlackBold16}"
-                                        Text="{Binding SelectedPassportIssueCountry}" />
-                                </StackLayout>
+                                <buttons:SfButton
+                                    Padding="5"
+                                    Command="{Binding OnPassportIssueCountryButtonClick}"
+                                    HorizontalTextAlignment="Start"
+                                    ImageAlignment="End"
+                                    ImageSource="arrowDropdown.png"
+                                    IsEnabled="{Binding PassportDetails.IssueCountry}"
+                                    ShowIcon="True"
+                                    Stroke="{StaticResource NeutralGreay}"
+                                    StrokeThickness="1"
+                                    Style="{StaticResource ButtonBlackBold16}"
+                                    Text="{Binding SelectedPassportIssueCountry, TargetNullValue=''}" />
+
                             </StackLayout>
                             <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand">
                                 <Label Style="{StaticResource CaptionLabelGrey}">
@@ -1771,41 +1924,42 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <Border
+                                <custom:CustomSfTextInputView
+                                    ContainerBackground="White"
+                                    ContainerType="Outlined"
+                                    InputViewPadding="16,0,16,0"
                                     IsEnabled="{Binding PassportDetails.IssueDate}"
-                                    Stroke="#B1B1B1"
-                                    StrokeThickness="1"
-                                    Style="{StaticResource GreyBorderFrame}">
-
-                                    <StackLayout
-                                        Padding="5,15,5,15"
-                                        Orientation="Horizontal"
-                                        WidthRequest="160">
-
-                                        <Label
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="10"
+                                    Stroke="{StaticResource NeutralGreay}">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
                                             x:Name="PassportIssueDate"
+                                            FontFamily="{StaticResource SomarLight}"
                                             FontSize="Small"
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource GAZTSmallBlackLabel}"
-                                            Text="{Binding DisplayPassportIssueDate}" />
-                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <Image Margin="5,0">
-                                                <Image.Source>
-                                                    <FontImageSource
-                                                        FontFamily="UserIconFont"
-                                                        Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                        Size="20"
-                                                        Color="{StaticResource SecondaryNew}" />
-                                                </Image.Source>
-                                            </Image>
-                                        </StackLayout>
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding DisplayPassportIssueDate}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalTextAlignment="Center" />
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="PassportIssueDateClicked" />
-                                        </StackLayout.GestureRecognizers>
 
-                                    </StackLayout>
-                                </Border>
+                                    <custom:CustomSfTextInputView.TrailingView>
+                                        <Image
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="calendar.png"
+                                            Style="{StaticResource SmallIcon}" />
+                                    </custom:CustomSfTextInputView.TrailingView>
+
+                                    <custom:CustomSfTextInputView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PassportIssueDateClicked" />
+                                    </custom:CustomSfTextInputView.GestureRecognizers>
+
+                                </custom:CustomSfTextInputView>
+
                                 <custom:CustomDatePicker
                                     x:Name="passportIssuePicker"
                                     Margin="10,0,10,0"
@@ -1916,41 +2070,43 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Border
+
+                                <custom:CustomSfTextInputView
+                                    ContainerBackground="White"
+                                    ContainerType="Outlined"
+                                    InputViewPadding="16,0,16,0"
                                     IsEnabled="{Binding PassportDetails.ExpiryDate}"
-                                    Stroke="#B1B1B1"
-                                    StrokeThickness="1"
-                                    Style="{StaticResource GreyBorderFrame}">
-
-                                    <StackLayout
-                                        Padding="5,15,5,15"
-                                        Orientation="Horizontal"
-                                        WidthRequest="160">
-
-                                        <Label
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="10"
+                                    Stroke="{StaticResource NeutralGreay}">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
                                             x:Name="PassportExpiryDate"
+                                            FontFamily="{StaticResource SomarLight}"
                                             FontSize="Small"
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource GAZTSmallBlackLabel}"
-                                            Text="{Binding DisplayPassportExpireDate}" />
-                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <Image Margin="5,0">
-                                                <Image.Source>
-                                                    <FontImageSource
-                                                        FontFamily="UserIconFont"
-                                                        Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                        Size="20"
-                                                        Color="{StaticResource SecondaryNew}" />
-                                                </Image.Source>
-                                            </Image>
-                                        </StackLayout>
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding DisplayPassportExpireDate}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalTextAlignment="Center" />
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="PassportExpiryDateClicked" />
-                                        </StackLayout.GestureRecognizers>
 
-                                    </StackLayout>
-                                </Border>
+                                    <custom:CustomSfTextInputView.TrailingView>
+                                        <Image
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="calendar.png"
+                                            Style="{StaticResource SmallIcon}" />
+                                    </custom:CustomSfTextInputView.TrailingView>
+
+                                    <custom:CustomSfTextInputView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PassportExpiryDateClicked" />
+                                    </custom:CustomSfTextInputView.GestureRecognizers>
+
+                                </custom:CustomSfTextInputView>
+
                                 <custom:CustomDatePicker
                                     x:Name="passportExpiryPicker"
                                     Margin="10,0,10,0"
@@ -2075,33 +2231,46 @@
                                     </Image>
                                 </StackLayout>
                                 <StackLayout>
-                                    <Border
-                                        Margin="0,0,0,10"
+
+                                    <custom:CustomSfTextInputView
+                                        ContainerBackground="White"
+                                        ContainerType="Outlined"
+                                        InputViewPadding="16,0,16,0"
                                         IsEnabled="{Binding PassportDetails.Attachment}"
-                                        Stroke="#B1B1B1"
-                                        StrokeThickness="1"
-                                        Style="{StaticResource GreyBorderFrame}">
-                                        <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
-                                            <Label
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="10"
+                                        Stroke="{StaticResource NeutralGreay}">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarLight}"
+                                                FontSize="Small"
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="dd/MM/yyyy"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+
+
+                                        <custom:CustomSfTextInputView.TrailingView>
+
+                                            <Image
+                                                HeightRequest="20"
                                                 HorizontalOptions="Start"
-                                                Style="{StaticResource GAZTSmallBlackLabel}"
-                                                Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}" />
-                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    Margin="5,0"
-                                                    HeightRequest="20"
-                                                    HorizontalOptions="Start"
-                                                    Source="ic_attachment"
-                                                    VerticalOptions="Center"
-                                                    WidthRequest="20" />
-                                            </StackLayout>
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnPassportAttachmentTapped}" />
-                                            </StackLayout.GestureRecognizers>
-                                        </StackLayout>
-                                    </Border>
+                                                Source="ic_attachment"
+                                                Style="{StaticResource SmallIcon}"
+                                                VerticalOptions="Center"
+                                                WidthRequest="20" />
+                                        </custom:CustomSfTextInputView.TrailingView>
+
+                                        <custom:CustomSfTextInputView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnPassportAttachmentTapped}" />
+                                        </custom:CustomSfTextInputView.GestureRecognizers>
+
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
                                 <StackLayout IsVisible="{Binding IsVisbleAttachmentPassportList}">
                                     <Label
@@ -2165,7 +2334,9 @@
                             </StackLayout>
                         </Grid>
                     </ScrollView>
-                </StackLayout>
+                </Grid>
+                <!--#endregion-->
+                <!--#region Outletsdetails-->
                 <Grid
                     x:Name="OutletsTabMainLayout"
                     HorizontalOptions="FillAndExpand"
@@ -2189,35 +2360,32 @@
                         Style="{StaticResource ButtonBlackBold16}"
                         Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}"
                         TextColor="{StaticResource NewDarkGreenColor}" />
-                    <inputLayout:SfTextInputLayout
+                    <custom:CustomSfTextInputView
                         Grid.Row="1"
                         Margin="0"
-                        InputViewPadding="10"
-                        IsHintAlwaysFloated="True"
-                        Style="{StaticResource InputTableTextInputLayoutStyle}">
-                        <Entry
-                            Margin="10"
-                            FontFamily="{StaticResource SomarRegular}"
-                            FontSize="15"
-                            HeightRequest="48"
-                            HorizontalOptions="FillAndExpand"
-                            HorizontalTextAlignment="Start"
-                            IsSpellCheckEnabled="false"
-                            Placeholder="{x:Static ResourceManager:AppResources.SearchText}"
-                            PlaceholderColor="{StaticResource NeutralGreay}"
-                            Text="{Binding SearchText}"
-                            TextColor="{StaticResource NeutralBlack}"
-                            VerticalOptions="Center"
-                            VerticalTextAlignment="Center" />
+                        IsHintAlwaysFloated="True">
+                        <custom:CustomSfTextInputView.TextInputView>
+                            <custom:GAZTBorderlessEntry
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="15"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Start"
+                                IsSpellCheckEnabled="false"
+                                Placeholder="{x:Static ResourceManager:AppResources.SearchText}"
+                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                Text="{Binding SearchText}"
+                                TextColor="{StaticResource NeutralBlack}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </custom:CustomSfTextInputView.TextInputView>
                         <inputLayout:SfTextInputLayout.TrailingView>
                             <Image Source="grey_search.png" />
                         </inputLayout:SfTextInputLayout.TrailingView>
-                    </inputLayout:SfTextInputLayout>
+                    </custom:CustomSfTextInputView>
 
                     <listView:SfListView
                         x:Name="outerListView"
                         Grid.Row="2"
-                        Margin="0,30,0,0"
                         AutoFitMode="DynamicHeight"
                         BackgroundColor="White"
                         ItemsSource="{Binding OutlettUiList}"
@@ -2232,7 +2400,7 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <cards:SfCardView
-                                        Margin="5,0,0,0"
+                                        Margin="5,0,0,10"
                                         BackgroundColor="White"
                                         BorderColor="{StaticResource NeutralLightGrey}"
                                         BorderWidth="1"
@@ -2262,7 +2430,6 @@
                                                 HorizontalTextAlignment="Start"
                                                 ImageSource="arrowDropdown.png"
                                                 ShowIcon="True"
-                                                StrokeThickness="1"
                                                 Style="{StaticResource NoBackgroundButtonStyle}"
                                                 TextColor="{StaticResource NeutralBlack}"
                                                 WidthRequest="100" />
@@ -2270,6 +2437,7 @@
                                                 Grid.Row="0"
                                                 Grid.Column="1"
                                                 Grid.ColumnSpan="2"
+                                                Margin="0,0,0,10"
                                                 Orientation="Horizontal">
                                                 <buttons:SfButton
                                                     Padding="5"
@@ -2300,37 +2468,34 @@
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="0">
                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletOutletNumber}" />
-                                                <StackLayout HorizontalOptions="StartAndExpand">
-                                                    <Label
-                                                        HorizontalOptions="StartAndExpand"
-                                                        Style="{StaticResource ValueLabelBlack}"
-                                                        Text="{Binding ActNo}"
-                                                        VerticalTextAlignment="Center" />
-                                                </StackLayout>
+                                                <Label
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    Text="{Binding ActNo}"
+                                                    VerticalTextAlignment="Center" />
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="1">
                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
-                                                <StackLayout HorizontalOptions="StartAndExpand">
-                                                    <Label
-                                                        Grid.Row="1"
-                                                        Grid.Column="0"
-                                                        Style="{StaticResource ValueLabelBlack}"
-                                                        Text="{Binding ActCatDesc}"
-                                                        TextColor="{StaticResource NeutralBlack}" />
-                                                </StackLayout>
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    Text="{Binding ActCatDesc}"
+                                                    TextColor="{StaticResource NeutralBlack}" />
                                             </StackLayout>
+
                                             <StackLayout Grid.Row="1" Grid.Column="2">
                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNo}" />
-                                                <StackLayout HorizontalOptions="StartAndExpand">
-                                                    <Label
-                                                        HorizontalOptions="StartAndExpand"
-                                                        Style="{StaticResource ValueLabelBlack}"
-                                                        Text="{Binding Crlicenceno}"
-                                                        VerticalTextAlignment="Center" />
-                                                </StackLayout>
+                                                <Label
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    Text="{Binding Crlicenceno}"
+                                                    VerticalTextAlignment="Center" />
                                             </StackLayout>
                                         </Grid>
                                     </cards:SfCardView>
+                                    <!--#region Inner CR Details list data-->
                                     <listView:SfListView
                                         x:Name="innerListView"
                                         Grid.Row="1"
@@ -2364,7 +2529,7 @@
                                                         Padding="10"
                                                         BackgroundColor="#DBE9FA">
                                                         <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="Auto" />
@@ -2514,7 +2679,9 @@
                                             </DataTemplate>
                                         </listView:SfListView.FooterTemplate>
                                     </listView:SfListView>
+                                    <!--#endregion-->
 
+                                    <!--#region Inner License list data-->
                                     <listView:SfListView
                                         x:Name="innerListView2"
                                         Grid.Row="2"
@@ -2686,12 +2853,15 @@
                                             </DataTemplate>
                                         </listView:SfListView.FooterTemplate>
                                     </listView:SfListView>
+                                    <!--#endregion-->
                                 </Grid>
                             </DataTemplate>
                         </listView:SfListView.ItemTemplate>
 
                     </listView:SfListView>
                 </Grid>
+                <!--#endregion-->
+                <!--#region Financial deatils-->
                 <ScrollView
                     x:Name="FinancialDetailMainTab"
                     IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}"
@@ -3056,6 +3226,8 @@
                         </listView:SfListView>
                     </StackLayout>
                 </ScrollView>
+                <!--#endregion-->
+                <!--#region SummaryDeclaration-->
                 <ScrollView
                     x:Name="DeclarationMainTab"
                     IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}"
@@ -3965,150 +4137,12 @@
                                 Style="{DynamicResource IsInstrunctionCheckedStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}"
                                 VerticalOptions="CenterAndExpand"
-                                VerticalTextAlignment="Start">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
+                                VerticalTextAlignment="Start" />
                         </Grid>
                     </StackLayout>
                 </ScrollView>
+                <!--#endregion-->
             </Grid>
-
-            <StackLayout
-                Grid.Row="0"
-                Padding="20,15"
-                BackgroundColor="White"
-                HorizontalOptions="FillAndExpand"
-                Spacing="0"
-                VerticalOptions="StartAndExpand">
-                <Grid
-                    Padding="0,0,0,10"
-                    ColumnSpacing="0"
-                    RowSpacing="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="15*" />
-                        <ColumnDefinition Width="70*" />
-                        <ColumnDefinition Width="15*" />
-                    </Grid.ColumnDefinitions>
-                    <Image
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        HorizontalOptions="Start"
-                        Source="arrowLeft.png"
-                        VerticalOptions="Center">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <Image
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        HeightRequest="40"
-                        Source="ic_logo_gazt.png"
-                        WidthRequest="34" />
-
-                    <StackLayout Grid.Row="0" Grid.Column="2">
-                        <StackLayout
-                            HorizontalOptions="EndAndExpand"
-                            Orientation="Horizontal"
-                            Rotation="90"
-                            Spacing="3"
-                            VerticalOptions="CenterAndExpand">
-                            <BoxView
-                                BackgroundColor="{StaticResource SecondaryNew}"
-                                CornerRadius="3"
-                                HeightRequest="5"
-                                WidthRequest="5" />
-                            <BoxView
-                                BackgroundColor="{StaticResource SecondaryNew}"
-                                CornerRadius="3"
-                                HeightRequest="5"
-                                WidthRequest="5" />
-                            <BoxView
-                                BackgroundColor="{StaticResource SecondaryNew}"
-                                CornerRadius="3"
-                                HeightRequest="5"
-                                WidthRequest="5" />
-                        </StackLayout>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" NumberOfTapsRequired="1" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </Grid>
-                <commonView:PageIndicatorView
-                    Completed="{Binding MarkComplete}"
-                    DotSize="12"
-                    HorizontalOptions="End"
-                    MarkSize="24"
-                    MaxNum="{Binding MaxIndex}"
-                    MinNum="{Binding CurrentIndex}" />
-                <Label
-                    Margin="0,10,0,0"
-                    FontFamily="{StaticResource SomarBold}"
-                    HorizontalOptions="Start"
-                    Style="{StaticResource PageTitleBlack}"
-                    Text="{Binding SelectedTabText}"
-                    VerticalOptions="Center" />
-                <Label
-                    FontFamily="{StaticResource SomarRegular}"
-                    FontSize="15"
-                    HorizontalOptions="StartAndExpand"
-                    Style="{StaticResource BodyLabelGrey}"
-                    Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" />
-                <BoxView Margin="0,15" Style="{StaticResource lineSeperator}" />
-                <ScrollView
-                    x:Name="TabScrollView"
-                    HorizontalScrollBarVisibility="Never"
-                    Orientation="Horizontal">
-
-                    <SfChipGroup:SfChipGroup
-                        x:Name="TabSfChipGroup"
-                        Margin="0,10,0,0"
-                        ChipBackground="Transparent"
-                        ChipStroke="{StaticResource NeutralLightGrey}"
-                        ChipStrokeThickness="1"
-                        ChipType="Choice"
-                        HorizontalOptions="Start"
-                        ItemsSource="{Binding TabList}"
-                        SelectedItem="{Binding SelectedTabText}"
-                        SelectionChanged="SfChipGroup_SelectionChanged"
-                        SelectionChanging="SfChipGroup_SelectionChanging"
-                        VerticalOptions="Center">
-                        <SfChipGroup:SfChipGroup.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout
-                                    Margin="0"
-                                    Padding="5,-2,5,-2"
-                                    Orientation="Horizontal"
-                                    Spacing="2">
-                                    <Label
-                                        HorizontalOptions="CenterAndExpand"
-                                        Style="{StaticResource CaptionLabelBlack}"
-                                        Text="{Binding}" />
-                                </StackLayout>
-                            </DataTemplate>
-                        </SfChipGroup:SfChipGroup.ItemTemplate>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal">
-                                    <VisualState.Setters>
-                                        <Setter Property="ChipBackground" Value="Transparent" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                                <VisualState x:Name="Selected">
-                                    <VisualState.Setters>
-                                        <Setter Property="ChipBackground" Value="{StaticResource PartialBg}" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                    </SfChipGroup:SfChipGroup>
-
-                </ScrollView>
-            </StackLayout>
 
             <Grid
                 Grid.Row="2"
@@ -4125,8 +4159,11 @@
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{Binding NxtButtonLabel}" />
             </Grid>
+            <!--#endregion-->
 
+            <!--#region Loader-->
             <custom:Loader Grid.RowSpan="3" IsVisible="{Binding IsLoading}" />
+            <!--#endregion-->
 
 
         </Grid>

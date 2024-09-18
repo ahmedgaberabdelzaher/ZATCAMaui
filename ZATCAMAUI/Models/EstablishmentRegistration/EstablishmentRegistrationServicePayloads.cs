@@ -866,7 +866,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
     
     public class TaxpayerNationality : TaxpayerNationalityLandx50
     {
-        public override string ToString() => Landx50;
+        public override string ToString() => string.IsNullOrEmpty(Landx50) ? "" : Landx50;
     }
     
     public class TaxpayerNationalityLandx50

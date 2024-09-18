@@ -16,10 +16,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public ZakatRegistrationOutletsDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackBtnTapped = new Command(async () =>
-            {
-                _navigationService.GoBack();
-            });
         }
 
         public async Task LoadDataOutletDetails()

@@ -99,6 +99,8 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+
+            <!--#region Body-->
             <Border
                 Grid.Row="1"
                 Padding="0"
@@ -185,7 +187,7 @@
 
                                                 </StackLayout>
                                                 <Label
-                                                    Margin="0,-10,0,0"
+                                                    Margin="0,10,0,0"
                                                     HorizontalOptions="Start"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource CaptionLabelBlack}"
@@ -334,31 +336,26 @@
                                                         Padding="0,0,0,0"
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.TIN}" />
-                                                    <inputLayout:SfTextInputLayout
-                                                        Margin="0,-6,0,-6"
-                                                        ContainerType="Outlined"
-                                                        Hint="{x:Static ResourceManager:AppResources.TINS}"
+                                                    <custom:CustomSfTextInputView
                                                         HorizontalOptions="FillAndExpand"
-                                                        InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.TinEntry1, Source={x:Reference VATRegistration}}"
-                                                        LeadingViewPosition="Inside"
-                                                        Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <custom:GAZTBorderlessEntry
-                                                            InputTransparent="True"
-                                                            IsReadOnly="True"
-                                                            Placeholder="{x:Static ResourceManager:AppResources.TINS}"
-                                                            Style="{StaticResource DefaultEntry}"
-                                                            Text="{Binding Gpartz}"
-                                                            TextColor="#bbbbbb">
-                                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                                <behaviors:OnlyNumericValuesBehaviour />
-                                                            </custom:GAZTBorderlessEntry.Behaviors>
-                                                        </custom:GAZTBorderlessEntry>
-                                                    </inputLayout:SfTextInputLayout>
+                                                        <custom:CustomSfTextInputView.TextInputView>
+                                                            <custom:GAZTBorderlessEntry
+                                                                InputTransparent="True"
+                                                                IsReadOnly="True"
+                                                                Style="{StaticResource DefaultEntry}"
+                                                                Text="{Binding Gpartz}"
+                                                                TextColor="#bbbbbb">
+                                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                                    <behaviors:OnlyNumericValuesBehaviour />
+                                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                                            </custom:GAZTBorderlessEntry>
+                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                    </custom:CustomSfTextInputView>
                                                 </StackLayout>
 
                                                 <StackLayout Grid.Row="1">
@@ -366,24 +363,19 @@
                                                         Padding="0,0,0,0"
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZName}" />
-                                                    <inputLayout:SfTextInputLayout
-                                                        Margin="0,-6,0,-6"
-                                                        ContainerType="Outlined"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        InputViewPadding="16,0,16,0"
-                                                        IsHintAlwaysFloated="True"
-                                                        LeadingViewPosition="Inside"
-                                                        Stroke="{StaticResource Primary}"
-                                                        Style="{StaticResource TextInputLayout}">
+                                                    <custom:CustomSfTextInputView HorizontalOptions="FillAndExpand" Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <custom:GAZTBorderlessEntry
-                                                            InputTransparent="True"
-                                                            IsReadOnly="True"
-                                                            Style="{StaticResource DefaultEntry}"
-                                                            Text="{Binding TinNm}" />
-                                                    </inputLayout:SfTextInputLayout>
+                                                        <custom:CustomSfTextInputView.TextInputView>
+                                                            <custom:GAZTBorderlessEntry
+                                                                InputTransparent="True"
+                                                                IsReadOnly="True"
+                                                                Style="{StaticResource DefaultEntry}"
+                                                                Text="{Binding TinNm}" />
+                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                    </custom:CustomSfTextInputView>
+
                                                 </StackLayout>
 
                                                 <StackLayout Grid.Row="2">
@@ -391,53 +383,49 @@
                                                         Padding="0,0,0,0"
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZVATRMainOutlet}" />
-                                                    <inputLayout:SfTextInputLayout
-                                                        Margin="0,-6,0,-6"
-                                                        ContainerType="Outlined"
+                                                    <custom:CustomSfTextInputView
                                                         HasError="False"
                                                         HorizontalOptions="FillAndExpand"
-                                                        InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.MainOutletEntry1, Source={x:Reference VATRegistration}}"
-                                                        IsHintAlwaysFloated="True"
-                                                        LeadingViewPosition="Inside"
-                                                        Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <custom:GAZTBorderlessEntry
-                                                            InputTransparent="True"
-                                                            IsReadOnly="True"
-                                                            Style="{StaticResource DefaultEntry}"
-                                                            Text="{Binding CrNo}">
-                                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                                <behaviors:OnlyNumericValuesBehaviour />
-                                                            </custom:GAZTBorderlessEntry.Behaviors>
-                                                        </custom:GAZTBorderlessEntry>
-                                                    </inputLayout:SfTextInputLayout>
+                                                        <custom:CustomSfTextInputView.TextInputView>
+                                                            <custom:GAZTBorderlessEntry
+                                                                InputTransparent="True"
+                                                                IsReadOnly="True"
+                                                                Style="{StaticResource DefaultEntry}"
+                                                                Text="{Binding CrNo}">
+                                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                                    <behaviors:OnlyNumericValuesBehaviour />
+                                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                                            </custom:GAZTBorderlessEntry>
+                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                    </custom:CustomSfTextInputView>
 
-                                                    <inputLayout:SfTextInputLayout
-                                                        Margin="0,-6,0,-6"
-                                                        ContainerType="Outlined"
+                                                    <custom:CustomSfTextInputView
+                                                        Margin="0,6,0,6"
                                                         HasError="False"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.MainOutletEntry2, Source={x:Reference VATRegistration}}"
                                                         IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
-                                                        Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <custom:GAZTBorderlessEntry
-                                                            FontSize="Small"
-                                                            InputTransparent="True"
-                                                            IsReadOnly="True"
-                                                            Style="{StaticResource DefaultEntry}"
-                                                            Text="{Binding CrNm}"
-                                                            TextColor="#bbbbbb" />
-                                                    </inputLayout:SfTextInputLayout>
+                                                        <custom:CustomSfTextInputView.TextInputView>
+                                                            <custom:GAZTBorderlessEntry
+                                                                FontSize="Small"
+                                                                InputTransparent="True"
+                                                                IsReadOnly="True"
+                                                                Style="{StaticResource DefaultEntry}"
+                                                                Text="{Binding CrNm}"
+                                                                TextColor="#bbbbbb" />
+                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                    </custom:CustomSfTextInputView>
                                                 </StackLayout>
 
                                                 <StackLayout Grid.Row="3">
@@ -445,20 +433,14 @@
                                                         Padding="0,0,0,0"
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZZVATRStartDate}" />
-                                                    <inputLayout:SfTextInputLayout
-                                                        Margin="0,-6,0,-6"
-                                                        ContainerType="Outlined"
+                                                    <custom:CustomSfTextInputView
                                                         HasError="False"
                                                         HorizontalOptions="FillAndExpand"
-                                                        InputViewPadding="16,0,16,0"
-                                                        IsHintAlwaysFloated="True"
-                                                        LeadingViewPosition="Inside"
-                                                        Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <StackLayout Orientation="Horizontal">
+                                                        <custom:CustomSfTextInputView.TextInputView>
                                                             <custom:GAZTBorderlessEntry
                                                                 x:Name="Entry_CrStdt"
                                                                 Margin="0"
@@ -466,8 +448,8 @@
                                                                 IsReadOnly="True"
                                                                 Style="{StaticResource DefaultEntry}"
                                                                 Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.StartdateToshow}" />
-                                                        </StackLayout>
-                                                    </inputLayout:SfTextInputLayout>
+                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                    </custom:CustomSfTextInputView>
                                                 </StackLayout>
 
                                                 <StackLayout Grid.Row="4">
@@ -475,16 +457,12 @@
                                                         Padding="0,0,0,0"
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatAddress}" />
-                                                    <inputLayout:SfTextInputLayout
-                                                        Margin="0,-6,0,-6"
-                                                        ContainerType="Outlined"
+                                                    <custom:CustomSfTextInputView
                                                         HasError="False"
                                                         HorizontalOptions="FillAndExpand"
-                                                        InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.AddressEntry1, Source={x:Reference VATRegistration}}"
                                                         IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
-                                                        Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -494,27 +472,23 @@
                                                             IsReadOnly="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineOne}" />
-                                                    </inputLayout:SfTextInputLayout>
-                                                    <inputLayout:SfTextInputLayout
-                                                        Margin="0,-6,0,-6"
-                                                        ContainerType="Outlined"
+                                                    </custom:CustomSfTextInputView>
+                                                    <custom:CustomSfTextInputView
                                                         HasError="False"
                                                         HorizontalOptions="FillAndExpand"
-                                                        InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.AddressEntry2, Source={x:Reference VATRegistration}}"
-                                                        IsHintAlwaysFloated="True"
-                                                        LeadingViewPosition="Inside"
-                                                        Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <custom:GAZTBorderlessEntry
-                                                            InputTransparent="True"
-                                                            IsReadOnly="True"
-                                                            Style="{StaticResource DefaultEntry}"
-                                                            Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineTwo}" />
-                                                    </inputLayout:SfTextInputLayout>
+                                                        <custom:CustomSfTextInputView.TextInputView>
+                                                            <custom:GAZTBorderlessEntry
+                                                                InputTransparent="True"
+                                                                IsReadOnly="True"
+                                                                Style="{StaticResource DefaultEntry}"
+                                                                Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineTwo}" />
+                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                    </custom:CustomSfTextInputView>
                                                 </StackLayout>
 
                                                 <StackLayout Grid.Row="5">
@@ -522,26 +496,22 @@
                                                         Padding="0,0,0,0"
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZVATRSource}" />
-                                                    <inputLayout:SfTextInputLayout
-                                                        Margin="0,-6,0,-6"
-                                                        ContainerType="Outlined"
+                                                    <custom:CustomSfTextInputView
                                                         HasError="False"
                                                         HorizontalOptions="FillAndExpand"
-                                                        InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.SourceEntry, Source={x:Reference VATRegistration}}"
-                                                        IsHintAlwaysFloated="True"
-                                                        LeadingViewPosition="Inside"
-                                                        Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <custom:GAZTBorderlessEntry
-                                                            InputTransparent="True"
-                                                            IsReadOnly="True"
-                                                            Style="{StaticResource DefaultEntry}"
-                                                            Text="{Binding Source}" />
-                                                    </inputLayout:SfTextInputLayout>
+                                                        <custom:CustomSfTextInputView.TextInputView>
+                                                            <custom:GAZTBorderlessEntry
+                                                                InputTransparent="True"
+                                                                IsReadOnly="True"
+                                                                Style="{StaticResource DefaultEntry}"
+                                                                Text="{Binding Source}" />
+                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                    </custom:CustomSfTextInputView>
                                                 </StackLayout>
 
                                                 <StackLayout Grid.Row="6" Margin="0,0,0,15">
@@ -685,68 +655,121 @@
                                                     </Border>
 
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="7">
-                                                    <StackLayout>
-                                                        <Grid>
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto" />
-                                                                <RowDefinition Height="auto" />
-                                                                <RowDefinition Height="auto" />
-                                                            </Grid.RowDefinitions>
-                                                            <Label
-                                                                Grid.Row="0"
-                                                                Padding="0,0,0,0"
-                                                                HorizontalOptions="Start"
-                                                                Style="{StaticResource ComponentHeaderBlackBold}">
+                                                <StackLayout Grid.Row="7" Orientation="Vertical">
 
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.VATREligibleStartDate}" />
-                                                                        <Span Text="*" TextColor="#e84941" />
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                            <inputLayout:SfTextInputLayout
-                                                                x:Name="FrmEStartDate"
-                                                                Grid.Row="1"
-                                                                Margin="0,-6,0,-6"
-                                                                ContainerType="Outlined"
-                                                                HasError="False"
-                                                                HorizontalOptions="FillAndExpand"
-                                                                InputViewPadding="16,0,16,0"
-                                                                IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled, Source={x:Reference VATRegistration}}"
-                                                                IsHintAlwaysFloated="True"
-                                                                LeadingViewPosition="Inside"
-                                                                Stroke="{StaticResource Primary}"
-                                                                Style="{StaticResource TextInputLayout}">
-                                                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                <StackLayout Orientation="Horizontal">
-                                                                    <custom:GAZTBorderlessEntry
-                                                                        x:Name="DateEntry"
-                                                                        Focused="DateEntry_Focused"
-                                                                        IsEnabled="False"
-                                                                        Placeholder="{x:Static ResourceManager:AppResources.ddmmyyyyformat}"
-                                                                        Style="{StaticResource DefaultEntry}"
-                                                                        Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
-                                                                        TextChanged="DateEntry_TextChanged_1"
-                                                                        Unfocused="DateEntry_Unfocused" />
-                                                                    <Image HorizontalOptions="EndAndExpand">
-                                                                        <Image.Source>
-                                                                            <FontImageSource
-                                                                                FontFamily="UserIconFont"
-                                                                                Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                                                Size="20"
-                                                                                Color="{StaticResource SecondaryNew}" />
-                                                                        </Image.Source>
-                                                                    </Image>
-                                                                    <StackLayout.GestureRecognizers>
+                                                    <StackLayout Orientation="Vertical">
+                                                        <Label
+                                                            Padding="0,0,0,0"
+                                                            HorizontalOptions="Start"
+                                                            Style="{StaticResource ComponentHeaderBlackBold}">
+
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.VATREligibleStartDate}" />
+                                                                    <Span Text="*" TextColor="#e84941" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+
+                                                        <custom:CustomSfTextInputView
+                                                            x:Name="FrmEStartDate"
+                                                            Padding="0"
+                                                            HasError="False"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled, Source={x:Reference VATRegistration}}"
+                                                            LeadingViewPosition="Inside">
+
+
+                                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                                <custom:GAZTBorderlessEntry
+                                                                    x:Name="DateEntry"
+                                                                    Focused="DateEntry_Focused"
+                                                                    IsEnabled="False"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.ddmmyyyyformat}"
+                                                                    Style="{StaticResource DefaultEntry}"
+                                                                    Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
+                                                                    TextChanged="DateEntry_TextChanged_1"
+                                                                    Unfocused="DateEntry_Unfocused">
+                                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="VATEligibleDateClicked" />
-                                                                    </StackLayout.GestureRecognizers>
-                                                                </StackLayout>
-                                                            </inputLayout:SfTextInputLayout>
-                                                            <StackLayout
+                                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                                </custom:GAZTBorderlessEntry>
+
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                                                <inputLayout:LabelStyle TextColor="#B00020" />
+                                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="VATEligibleDateClicked" />
+                                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                                <Image
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    Source="calendar.png"
+                                                                    Style="{StaticResource SmallIcon}" />
+                                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                                        </custom:CustomSfTextInputView>
+                                                        <custom:CustomDatePicker
+                                                            x:Name="DpEStartDate"
+                                                            Background="White"
+                                                            Closed="DpEStartDate_Closed"
+                                                            FutureDay="False"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled, Source={x:Reference VATRegistration}}"
+                                                            ItemHeight="45"
+                                                            Mode="Dialog"
+                                                            OkButtonClicked="DpEStartDate_OkButtonClicked"
+                                                            SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
+                                                            SelectionChanged="DpEStartDate_SelectionChanged">
+
+                                                            <custom:CustomDatePicker.ColumnHeaderView>
+                                                                <syncfusion:PickerColumnHeaderView Height="46" />
+                                                            </custom:CustomDatePicker.ColumnHeaderView>
+
+
+                                                            <custom:CustomDatePicker.SelectionView>
+                                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                            </custom:CustomDatePicker.SelectionView>
+
+                                                            <custom:CustomDatePicker.SelectedTextStyle>
+                                                                <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                                            </custom:CustomDatePicker.SelectedTextStyle>
+
+                                                            <custom:CustomDatePicker.HeaderView>
+
+                                                                <syncfusion:PickerHeaderView
+                                                                    Height="46"
+                                                                    Background="{StaticResource PrimaryColor}"
+                                                                    Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
+
+                                                                    <syncfusion:PickerHeaderView.TextStyle>
+                                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                                    </syncfusion:PickerHeaderView.TextStyle>
+
+                                                                </syncfusion:PickerHeaderView>
+
+                                                            </custom:CustomDatePicker.HeaderView>
+
+                                                            <custom:CustomDatePicker.FooterView>
+
+                                                                <syncfusion:PickerFooterView Height="46" Background="{StaticResource PrimaryColor}">
+
+                                                                    <syncfusion:PickerFooterView.TextStyle>
+                                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                                    </syncfusion:PickerFooterView.TextStyle>
+
+                                                                </syncfusion:PickerFooterView>
+
+                                                            </custom:CustomDatePicker.FooterView>
+
+                                                        </custom:CustomDatePicker>
+                                                    </StackLayout>
+
+
+
+
+                                                    <!--<StackLayout
                                                                 Grid.Row="1"
                                                                 HorizontalOptions="End"
                                                                 IsVisible="false"
@@ -780,65 +803,8 @@
                                                                 Background="Transparent"
                                                                 Clicked="btn1_Clicked"
                                                                 IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled, Source={x:Reference VATRegistration}}"
-                                                                IsVisible="false" />
-                                                            <custom:CustomDatePicker
-                                                                x:Name="DpEStartDate"
-                                                                Grid.Row="1"
-                                                                Margin="2"
-                                                                Background="White"
-                                                                Closed="DpEStartDate_Closed"
-                                                                FutureDay="False"
-                                                                HorizontalOptions="FillAndExpand"
-                                                                IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled, Source={x:Reference VATRegistration}}"
-                                                                ItemHeight="45"
-                                                                Mode="Dialog"
-                                                                OkButtonClicked="DpEStartDate_OkButtonClicked"
-                                                                SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
-                                                                SelectionChanged="DpEStartDate_SelectionChanged">
+                                                                IsVisible="false" />-->
 
-                                                                <custom:CustomDatePicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="46" />
-                                                                </custom:CustomDatePicker.ColumnHeaderView>
-
-
-                                                                <custom:CustomDatePicker.SelectionView>
-                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                                                </custom:CustomDatePicker.SelectionView>
-
-                                                                <custom:CustomDatePicker.SelectedTextStyle>
-                                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                                                </custom:CustomDatePicker.SelectedTextStyle>
-
-                                                                <custom:CustomDatePicker.HeaderView>
-
-                                                                    <syncfusion:PickerHeaderView
-                                                                        Height="46"
-                                                                        Background="{StaticResource PrimaryColor}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
-
-                                                                        <syncfusion:PickerHeaderView.TextStyle>
-                                                                            <syncfusion:PickerTextStyle TextColor="White" />
-                                                                        </syncfusion:PickerHeaderView.TextStyle>
-
-                                                                    </syncfusion:PickerHeaderView>
-
-                                                                </custom:CustomDatePicker.HeaderView>
-
-                                                                <custom:CustomDatePicker.FooterView>
-
-                                                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource PrimaryColor}">
-
-                                                                        <syncfusion:PickerFooterView.TextStyle>
-                                                                            <syncfusion:PickerTextStyle TextColor="White" />
-                                                                        </syncfusion:PickerFooterView.TextStyle>
-
-                                                                    </syncfusion:PickerFooterView>
-
-                                                                </custom:CustomDatePicker.FooterView>
-
-                                                            </custom:CustomDatePicker>
-                                                        </Grid>
-                                                    </StackLayout>
 
                                                     <StackLayout IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible, Source={x:Reference VATRegistration}}">
 
@@ -857,7 +823,7 @@
                                                                 </Label.FormattedText>
                                                             </Label>
 
-                                                            <inputLayout:SfTextInputLayout
+                                                            <custom:CustomSfTextInputView
                                                                 x:Name="FrmENewStartDate"
                                                                 ContainerType="Outlined"
                                                                 HorizontalOptions="FillAndExpand"
@@ -865,17 +831,18 @@
                                                                 LeadingViewPosition="Inside"
                                                                 Stroke="#005e4b"
                                                                 Style="{StaticResource TextInputLayout}">
+                                                                <custom:CustomSfTextInputView.TextInputView>
 
-                                                                <custom:GAZTBorderlessEntry
-                                                                    x:Name="NewDateEntry"
-                                                                    Focused="DateEntry_Focused"
-                                                                    IsEnabled="False"
-                                                                    Placeholder="DD/MM/YYYY"
-                                                                    Style="{StaticResource DefaultEntry}"
-                                                                    Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}"
-                                                                    TextChanged="DateEntry_TextChanged_1"
-                                                                    Unfocused="DateEntry_Unfocused" />
-
+                                                                    <custom:GAZTBorderlessEntry
+                                                                        x:Name="NewDateEntry"
+                                                                        Focused="DateEntry_Focused"
+                                                                        IsEnabled="False"
+                                                                        Placeholder="DD/MM/YYYY"
+                                                                        Style="{StaticResource DefaultEntry}"
+                                                                        Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}"
+                                                                        TextChanged="DateEntry_TextChanged_1"
+                                                                        Unfocused="DateEntry_Unfocused" />
+                                                                </custom:CustomSfTextInputView.TextInputView>
 
 
                                                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -898,7 +865,7 @@
 
                                                                 </inputLayout:SfTextInputLayout.TrailingView>
 
-                                                            </inputLayout:SfTextInputLayout>
+                                                            </custom:CustomSfTextInputView>
 
                                                             <custom:CustomDatePicker
                                                                 x:Name="DpENewStartDate"
@@ -1071,10 +1038,10 @@
                                                             IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}"
                                                             Style="{StaticResource ComponentHeaderBlackBold}"
                                                             Text="{x:Static ResourceManager:AppResources.VATRAttachment}" />
-                                                        <inputLayout:SfTextInputLayout
+                                                        <custom:CustomSfTextInputView
                                                             x:Name="FrmAttachmentOptional"
                                                             Grid.Row="1"
-                                                            Margin="0,-6,0,-6"
+                                                            Margin="0,6,0,6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             InputViewPadding="16,0,16,0"
@@ -1106,7 +1073,7 @@
                                                                     </Image.GestureRecognizers>
                                                                 </Image>
                                                             </StackLayout>
-                                                        </inputLayout:SfTextInputLayout>
+                                                        </custom:CustomSfTextInputView>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="9" IsEnabled="{Binding BindingContext.IsTaxPayerIBANEnabled, Source={x:Reference VATRegistration}}">
                                                         <Grid>
@@ -1121,22 +1088,20 @@
                                                                     Text="{x:Static ResourceManager:AppResources.VATRBankAccount}" />
                                                             </StackLayout>
 
-                                                            <inputLayout:SfTextInputLayout
+                                                            <custom:CustomSfTextInputView
                                                                 Grid.Row="1"
-                                                                Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="False"
                                                                 HorizontalOptions="FillAndExpand"
-                                                                InputViewPadding="16,0,16,0"
                                                                 IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
-                                                                Stroke="{StaticResource Primary}"
                                                                 Style="{StaticResource TextInputLayout}">
                                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                <StackLayout Orientation="Horizontal">
-                                                                    <!--  New Accounts  -->
+                                                                <!--  New Accounts  -->
+                                                                <custom:CustomSfTextInputView.TextInputView>
+
                                                                     <custom:GAZTBorderlessEntry
                                                                         HorizontalOptions="FillAndExpand"
                                                                         IsEnabled="False"
@@ -1144,7 +1109,10 @@
                                                                         Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewAccountText}"
                                                                         TextColor="{StaticResource Primary}"
                                                                         VerticalTextAlignment="Center" />
-                                                                    <Image HorizontalOptions="EndAndExpand" Rotation="270">
+                                                                </custom:CustomSfTextInputView.TextInputView>
+
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                                    <Image Rotation="270">
                                                                         <Image.Source>
                                                                             <FontImageSource
                                                                                 FontFamily="UserIconFont"
@@ -1153,8 +1121,9 @@
                                                                                 Color="{StaticResource SecondaryNew}" />
                                                                         </Image.Source>
                                                                     </Image>
-                                                                </StackLayout>
-                                                            </inputLayout:SfTextInputLayout>
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                            </custom:CustomSfTextInputView>
                                                             <buttons:SfButton
                                                                 x:Name="NewAccount"
                                                                 Grid.Row="1"
@@ -1685,23 +1654,19 @@
                                                                 Text="{x:Static ResourceManager:AppResources.ZZZAmendFinancialRepreGtext}" />
                                                         </StackLayout>
 
-                                                        <inputLayout:SfTextInputLayout
+                                                        <custom:CustomSfTextInputView
                                                             x:Name="FrmNewAttachment"
                                                             Grid.Row="1"
-                                                            Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             HorizontalOptions="FillAndExpand"
-                                                            InputViewPadding="16,0,16,0"
                                                             IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
-                                                            Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                            <StackLayout Orientation="Horizontal">
-
+                                                            <custom:CustomSfTextInputView.TextInputView>
                                                                 <!--  New Attachment  -->
                                                                 <custom:GAZTBorderlessEntry
                                                                     IsEnabled="False"
@@ -1709,7 +1674,9 @@
                                                                     Text="{x:Static ResourceManager:AppResources.VATRNewAttachment}"
                                                                     TextColor="{StaticResource Primary}"
                                                                     VerticalTextAlignment="Center" />
-                                                                <Image HorizontalOptions="EndAndExpand" Rotation="270">
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                                <Image Rotation="270">
                                                                     <Image.Source>
                                                                         <FontImageSource
                                                                             FontFamily="UserIconFont"
@@ -1718,8 +1685,9 @@
                                                                             Color="{StaticResource SecondaryNew}" />
                                                                     </Image.Source>
                                                                 </Image>
-                                                            </StackLayout>
-                                                        </inputLayout:SfTextInputLayout>
+                                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                        </custom:CustomSfTextInputView>
                                                         <buttons:SfButton
                                                             x:Name="NewAttachment"
                                                             Grid.Row="1"
@@ -1881,33 +1849,33 @@
                                                                 <StackLayout Grid.Row="0">
 
                                                                     <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.TIN}" />
-                                                                    <inputLayout:SfTextInputLayout
-                                                                        Margin="0,-6,0,-6"
+                                                                    <custom:CustomSfTextInputView
                                                                         ContainerType="Outlined"
                                                                         HasError="False"
                                                                         HorizontalOptions="FillAndExpand"
-                                                                        InputViewPadding="16,0,16,0"
                                                                         IsHintAlwaysFloated="True"
                                                                         LeadingViewPosition="Inside"
-                                                                        Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
                                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                        <custom:GAZTBorderlessEntry
-                                                                            IsEnabled="False"
-                                                                            IsSpellCheckEnabled="False"
-                                                                            MaxLength="10"
-                                                                            Placeholder="{x:Static ResourceManager:AppResources.TINS}"
-                                                                            Style="{StaticResource DefaultEntry}"
-                                                                            Text="{Binding GpartFR}"
-                                                                            TextChanged="EntryTINNumber_TextChanged"
-                                                                            Unfocused="EntryTINNumber_Unfocused">
-                                                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                                                <behaviors:OnlyNumericValuesBehaviour />
-                                                                            </custom:GAZTBorderlessEntry.Behaviors>
-                                                                        </custom:GAZTBorderlessEntry>
-                                                                    </inputLayout:SfTextInputLayout>
+                                                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                                                            <custom:GAZTBorderlessEntry
+                                                                                IsEnabled="False"
+                                                                                IsSpellCheckEnabled="False"
+                                                                                MaxLength="10"
+                                                                                Placeholder="{x:Static ResourceManager:AppResources.TINS}"
+                                                                                Style="{StaticResource DefaultEntry}"
+                                                                                Text="{Binding GpartFR}"
+                                                                                TextChanged="EntryTINNumber_TextChanged"
+                                                                                Unfocused="EntryTINNumber_Unfocused">
+                                                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                                                    <behaviors:OnlyNumericValuesBehaviour />
+                                                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                                                            </custom:GAZTBorderlessEntry>
+                                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                                    </custom:CustomSfTextInputView>
 
                                                                 </StackLayout>
 
@@ -1922,35 +1890,25 @@
                                                                             Grid.Row="0"
                                                                             Style="{StaticResource ComponentHeaderBlackBold}"
                                                                             Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
-                                                                        <inputLayout:SfTextInputLayout
+                                                                        <custom:CustomSfTextInputView
                                                                             Grid.Row="1"
-                                                                            Margin="0,-6,0,-6"
-                                                                            ContainerType="Outlined"
                                                                             HasError="False"
                                                                             HorizontalOptions="FillAndExpand"
-                                                                            InputViewPadding="16,0,16,0"
-                                                                            IsHintAlwaysFloated="True"
-                                                                            LeadingViewPosition="Inside"
-                                                                            Stroke="{StaticResource Primary}"
                                                                             Style="{StaticResource TextInputLayout}">
-                                                                            <StackLayout Orientation="Horizontal">
+                                                                            <custom:CustomSfTextInputView.TextInputView>
                                                                                 <custom:GAZTBorderlessEntry
                                                                                     HorizontalOptions="FillAndExpand"
                                                                                     IsSpellCheckEnabled="False"
                                                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
                                                                                     Style="{StaticResource DefaultEntry}"
                                                                                     Text="{Binding TxtIDTypeFR}" />
-                                                                                <Image HorizontalOptions="End" Rotation="270">
-                                                                                    <Image.Source>
-                                                                                        <FontImageSource
-                                                                                            FontFamily="UserIconFont"
-                                                                                            Glyph="{x:Static FontImage:IconFonts.LessThan}"
-                                                                                            Size="20"
-                                                                                            Color="{StaticResource SecondaryNew}" />
-                                                                                    </Image.Source>
-                                                                                </Image>
-                                                                            </StackLayout>
-                                                                        </inputLayout:SfTextInputLayout>
+
+                                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                                            <inputLayout:SfTextInputLayout.TrailingView>
+
+                                                                                <Image Aspect="AspectFit" Source="greyDropDown" />
+                                                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                                                        </custom:CustomSfTextInputView>
 
                                                                         <buttons:SfButton
                                                                             Grid.Row="1"
@@ -1959,7 +1917,6 @@
                                                                             FontSize="Small" />
 
                                                                         <syncfusion:SfPicker
-                                                                            Grid.Row="1"
                                                                             Margin="10,0,10,0"
                                                                             Background="White"
                                                                             ItemHeight="40"
@@ -2022,8 +1979,8 @@
                                                                         IsVisible="{Binding IDNumberVisibility}"
                                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                                         Text="{x:Static ResourceManager:AppResources.IDNumber}" />
-                                                                    <inputLayout:SfTextInputLayout
-                                                                        Margin="0,-6,0,-6"
+                                                                    <custom:CustomSfTextInputView
+                                                                        Margin="0,6,0,6"
                                                                         ContainerType="Outlined"
                                                                         HasError="{Binding FrameIDError}"
                                                                         HorizontalOptions="FillAndExpand"
@@ -2031,27 +1988,29 @@
                                                                         IsEnabled="False"
                                                                         IsHintAlwaysFloated="True"
                                                                         LeadingViewPosition="Inside"
-                                                                        Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
                                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                        <custom:GAZTBorderlessEntry
-                                                                            FontFamily="{StaticResource SomarSemiBold}"
-                                                                            IsSpellCheckEnabled="False"
-                                                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                                                  iOS=Default}"
-                                                                            MaxLength="{Binding MaxLengthID}"
-                                                                            Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
-                                                                            Style="{StaticResource DefaultEntry}"
-                                                                            Text="{Binding IdnumberFR}"
-                                                                            TextChanged="EntryIDNo_TextChanged"
-                                                                            Unfocused="EntryIDNo_Unfocused">
-                                                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                                                <behaviors:OnlyNumericValuesBehaviour />
-                                                                            </custom:GAZTBorderlessEntry.Behaviors>
-                                                                        </custom:GAZTBorderlessEntry>
-                                                                    </inputLayout:SfTextInputLayout>
+                                                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                                                            <custom:GAZTBorderlessEntry
+                                                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                                                IsSpellCheckEnabled="False"
+                                                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                                                      iOS=Default}"
+                                                                                MaxLength="{Binding MaxLengthID}"
+                                                                                Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
+                                                                                Style="{StaticResource DefaultEntry}"
+                                                                                Text="{Binding IdnumberFR}"
+                                                                                TextChanged="EntryIDNo_TextChanged"
+                                                                                Unfocused="EntryIDNo_Unfocused">
+                                                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                                                    <behaviors:OnlyNumericValuesBehaviour />
+                                                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                                                            </custom:GAZTBorderlessEntry>
+                                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                                    </custom:CustomSfTextInputView>
                                                                 </StackLayout>
 
                                                                 <StackLayout
@@ -2070,9 +2029,9 @@
                                                                             IsVisible="{Binding DOBNonMandatoryVisibility}"
                                                                             Style="{StaticResource ComponentHeaderBlackBold}"
                                                                             Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
-                                                                        <inputLayout:SfTextInputLayout
+                                                                        <custom:CustomSfTextInputView
                                                                             Grid.Row="1"
-                                                                            Margin="0,-6,0,-6"
+                                                                            Margin="0,6,0,6"
                                                                             ContainerType="Outlined"
                                                                             HasError="{Binding FrameDOBError}"
                                                                             HorizontalOptions="FillAndExpand"
@@ -2080,29 +2039,26 @@
                                                                             IsHintAlwaysFloated="True"
                                                                             IsVisible="{Binding DOBMandatoryVisibility}"
                                                                             LeadingViewPosition="Inside"
-                                                                            Stroke="{StaticResource Primary}"
                                                                             Style="{StaticResource TextInputLayout}">
                                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                            <StackLayout IsVisible="{Binding DOBMandatoryVisibility}" Orientation="Horizontal">
+
+                                                                            <custom:CustomSfTextInputView.TextInputView>
                                                                                 <custom:GAZTBorderlessEntry
                                                                                     HorizontalOptions="FillAndExpand"
                                                                                     IsEnabled="False"
                                                                                     Placeholder="YYYY/MM/DD"
                                                                                     Style="{StaticResource DefaultEntry}"
                                                                                     Text="{Binding DOB}" />
-                                                                                <Image HorizontalOptions="End">
-                                                                                    <Image.Source>
-                                                                                        <FontImageSource
-                                                                                            FontFamily="UserIconFont"
-                                                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                                                            Size="20"
-                                                                                            Color="{StaticResource SecondaryNew}" />
-                                                                                    </Image.Source>
-                                                                                </Image>
-                                                                            </StackLayout>
-                                                                        </inputLayout:SfTextInputLayout>
+                                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                                                <Image
+                                                                                    HorizontalOptions="EndAndExpand"
+                                                                                    Source="calendar.png"
+                                                                                    Style="{StaticResource SmallIcon}" />
+                                                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                                                        </custom:CustomSfTextInputView>
 
                                                                         <buttons:SfButton
                                                                             Grid.Row="1"
@@ -2167,36 +2123,35 @@
                                                                 <StackLayout Grid.Row="4">
 
                                                                     <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
-                                                                    <inputLayout:SfTextInputLayout
-                                                                        Margin="0,-6,0,-6"
+                                                                    <custom:CustomSfTextInputView
                                                                         ContainerType="Outlined"
                                                                         HasError="False"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         InputViewPadding="16,0,16,0"
                                                                         IsHintAlwaysFloated="True"
                                                                         LeadingViewPosition="Inside"
-                                                                        Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
                                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                        <custom:GAZTBorderlessEntry
-                                                                            IsEnabled="False"
-                                                                            IsSpellCheckEnabled="False"
-                                                                            Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
-                                                                            Style="{StaticResource DefaultEntry}"
-                                                                            Text="{Binding FirstnmFR}">
-                                                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                                                <behaviors:AlphabetandArabicCharacters />
-                                                                            </custom:GAZTBorderlessEntry.Behaviors>
-                                                                        </custom:GAZTBorderlessEntry>
-                                                                    </inputLayout:SfTextInputLayout>
+                                                                        <custom:CustomSfTextInputView.TextInputView>
+                                                                            <custom:GAZTBorderlessEntry
+                                                                                IsEnabled="False"
+                                                                                IsSpellCheckEnabled="False"
+                                                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
+                                                                                Style="{StaticResource DefaultEntry}"
+                                                                                Text="{Binding FirstnmFR}">
+                                                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                                                    <behaviors:AlphabetandArabicCharacters />
+                                                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                                                            </custom:GAZTBorderlessEntry>
+                                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                                    </custom:CustomSfTextInputView>
                                                                 </StackLayout>
                                                                 <StackLayout Grid.Row="5">
 
                                                                     <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.ZZZVATRSurName}" />
                                                                     <inputLayout:SfTextInputLayout
-                                                                        Margin="0,-6,0,-6"
                                                                         ContainerType="Outlined"
                                                                         HasError="False"
                                                                         HorizontalOptions="FillAndExpand"
@@ -2204,7 +2159,6 @@
                                                                         IsEnabled="False"
                                                                         IsHintAlwaysFloated="True"
                                                                         LeadingViewPosition="Inside"
-                                                                        Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
                                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -2223,64 +2177,65 @@
                                                                 <StackLayout Grid.Row="6">
 
                                                                     <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.Email}" />
-                                                                    <inputLayout:SfTextInputLayout
+                                                                    <custom:CustomSfTextInputView
                                                                         Grid.Row="13"
                                                                         Grid.Column="0"
                                                                         Grid.ColumnSpan="2"
-                                                                        Margin="0,-6,0,-6"
-                                                                        ContainerType="Outlined"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         InputViewPadding="16,0,16,0"
                                                                         IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}"
                                                                         IsHintAlwaysFloated="True"
                                                                         IsVisible="{Binding DOBMandatoryVisibility}"
                                                                         LeadingViewPosition="Inside"
-                                                                        Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
                                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                        <custom:GAZTBorderlessEntry
-                                                                            IsSpellCheckEnabled="False"
-                                                                            Placeholder="{x:Static ResourceManager:AppResources.Email}"
-                                                                            Style="{StaticResource DefaultEntry}"
-                                                                            Text="{Binding SmtpAddrFR}"
-                                                                            Unfocused="EntryEmail_Unfocused" />
-                                                                    </inputLayout:SfTextInputLayout>
+                                                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                                                            <custom:GAZTBorderlessEntry
+                                                                                IsSpellCheckEnabled="False"
+                                                                                Placeholder="{x:Static ResourceManager:AppResources.Email}"
+                                                                                Style="{StaticResource DefaultEntry}"
+                                                                                Text="{Binding SmtpAddrFR}"
+                                                                                Unfocused="EntryEmail_Unfocused" />
+                                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                                    </custom:CustomSfTextInputView>
                                                                 </StackLayout>
                                                                 <StackLayout Grid.Row="7">
 
                                                                     <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
-                                                                    <inputLayout:SfTextInputLayout
+                                                                    <custom:CustomSfTextInputView
                                                                         Grid.Row="15"
                                                                         Grid.Column="0"
                                                                         Grid.ColumnSpan="2"
-                                                                        Margin="0,-6,0,-6"
                                                                         ContainerType="Outlined"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         InputViewPadding="16,0,16,0"
                                                                         IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}"
                                                                         LeadingViewPosition="Inside"
-                                                                        Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
                                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                        <custom:GAZTBorderlessEntry
-                                                                            FontFamily="{StaticResource SomarSemiBold}"
-                                                                            HorizontalTextAlignment="Start"
-                                                                            IsSpellCheckEnabled="False"
-                                                                            Keyboard="Telephone"
-                                                                            MaxLength="14"
-                                                                            Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                                                            Style="{StaticResource DefaultEntry}"
-                                                                            Text="{Binding MobNumberFR}"
-                                                                            Unfocused="EntryPhoneNumber_Unfocused_1">
-                                                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                                                <behaviors:OnlyNumericValuesBehaviour />
-                                                                            </custom:GAZTBorderlessEntry.Behaviors>
-                                                                        </custom:GAZTBorderlessEntry>
-                                                                    </inputLayout:SfTextInputLayout>
+                                                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                                                            <custom:GAZTBorderlessEntry
+                                                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                                                HorizontalTextAlignment="Start"
+                                                                                IsSpellCheckEnabled="False"
+                                                                                Keyboard="Telephone"
+                                                                                MaxLength="14"
+                                                                                Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                                                                Style="{StaticResource DefaultEntry}"
+                                                                                Text="{Binding MobNumberFR}"
+                                                                                Unfocused="EntryPhoneNumber_Unfocused_1">
+                                                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                                                    <behaviors:OnlyNumericValuesBehaviour />
+                                                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                                                            </custom:GAZTBorderlessEntry>
+                                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                                    </custom:CustomSfTextInputView>
                                                                 </StackLayout>
                                                             </Grid>
                                                             <!--</ViewCell>-->
@@ -2318,35 +2273,35 @@
                                                     <StackLayout Grid.Row="0">
 
                                                         <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.TIN}" />
-                                                        <inputLayout:SfTextInputLayout
+                                                        <custom:CustomSfTextInputView
                                                             x:Name="FrmTINNumber"
-                                                            Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             HorizontalOptions="FillAndExpand"
-                                                            InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding FinancialRepresentative.TinEntry}"
                                                             IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
-                                                            Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                            <custom:GAZTBorderlessEntry
-                                                                x:Name="EntryTINNumber"
-                                                                IsSpellCheckEnabled="False"
-                                                                MaxLength="10"
-                                                                Placeholder="{x:Static ResourceManager:AppResources.TINS}"
-                                                                Style="{StaticResource DefaultEntry}"
-                                                                Text="{Binding GpartFR}"
-                                                                TextChanged="EntryTINNumber_TextChanged"
-                                                                Unfocused="EntryTINNumber_Unfocused">
-                                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                                    <behaviors:OnlyNumericValuesBehaviour />
-                                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                                            </custom:GAZTBorderlessEntry>
-                                                        </inputLayout:SfTextInputLayout>
+                                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                                <custom:GAZTBorderlessEntry
+                                                                    x:Name="EntryTINNumber"
+                                                                    IsSpellCheckEnabled="False"
+                                                                    MaxLength="10"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.TINS}"
+                                                                    Style="{StaticResource DefaultEntry}"
+                                                                    Text="{Binding GpartFR}"
+                                                                    TextChanged="EntryTINNumber_TextChanged"
+                                                                    Unfocused="EntryTINNumber_Unfocused">
+                                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                                        <behaviors:OnlyNumericValuesBehaviour />
+                                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry>
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                        </custom:CustomSfTextInputView>
 
                                                     </StackLayout>
 
@@ -2361,31 +2316,34 @@
                                                                 Grid.Row="0"
                                                                 Style="{StaticResource ComponentHeaderBlackBold}"
                                                                 Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
-                                                            <inputLayout:SfTextInputLayout
+                                                            <custom:CustomSfTextInputView
                                                                 x:Name="FrmIDType"
                                                                 Grid.Row="1"
-                                                                Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="False"
                                                                 HorizontalOptions="FillAndExpand"
-                                                                InputViewPadding="16,0,16,0"
                                                                 IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
-                                                                Stroke="{StaticResource Primary}"
                                                                 Style="{StaticResource TextInputLayout}">
                                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                <StackLayout Orientation="Horizontal">
+                                                                <custom:CustomSfTextInputView.TextInputView>
+
                                                                     <custom:GAZTBorderlessEntry
                                                                         HorizontalOptions="FillAndExpand"
                                                                         IsSpellCheckEnabled="False"
                                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
                                                                         Style="{StaticResource DefaultEntry}"
                                                                         Text="{Binding TxtIDTypeFR}" />
-                                                                    <Image Source="arrowDropdown.png" />
-                                                                </StackLayout>
-                                                            </inputLayout:SfTextInputLayout>
+                                                                </custom:CustomSfTextInputView.TextInputView>
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                                    <Image
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        Source="arrowDropdown.png"
+                                                                        Style="{StaticResource SmallIcon}" />
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                                            </custom:CustomSfTextInputView>
 
                                                             <buttons:SfButton
                                                                 x:Name="btnID"
@@ -2474,38 +2432,38 @@
                                                             </Label.FormattedText>
                                                         </Label>
 
-                                                        <inputLayout:SfTextInputLayout
+                                                        <custom:CustomSfTextInputView
                                                             x:Name="FrmIDNo"
-                                                            Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="{Binding FrameIDError}"
                                                             HorizontalOptions="FillAndExpand"
-                                                            InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding FinancialRepresentative.IDNoEntry}"
                                                             IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
-                                                            Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                            <custom:GAZTBorderlessEntry
-                                                                x:Name="EntryIDNo"
-                                                                FontFamily="{StaticResource SomarSemiBold}"
-                                                                IsSpellCheckEnabled="False"
-                                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                                      iOS=Default}"
-                                                                MaxLength="{Binding MaxLengthID}"
-                                                                Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
-                                                                Style="{StaticResource DefaultEntry}"
-                                                                Text="{Binding IdnumberFR}"
-                                                                TextChanged="EntryIDNo_TextChanged"
-                                                                Unfocused="EntryIDNo_Unfocused">
-                                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                                    <behaviors:OnlyNumericValuesBehaviour />
-                                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                                            </custom:GAZTBorderlessEntry>
-                                                        </inputLayout:SfTextInputLayout>
+                                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                                <custom:GAZTBorderlessEntry
+                                                                    x:Name="EntryIDNo"
+                                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                                    IsSpellCheckEnabled="False"
+                                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                                          iOS=Default}"
+                                                                    MaxLength="{Binding MaxLengthID}"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
+                                                                    Style="{StaticResource DefaultEntry}"
+                                                                    Text="{Binding IdnumberFR}"
+                                                                    TextChanged="EntryIDNo_TextChanged"
+                                                                    Unfocused="EntryIDNo_Unfocused">
+                                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                                        <behaviors:OnlyNumericValuesBehaviour />
+                                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry>
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                        </custom:CustomSfTextInputView>
                                                     </StackLayout>
 
                                                     <StackLayout
@@ -2543,22 +2501,21 @@
 
 
 
-                                                            <inputLayout:SfTextInputLayout
+                                                            <custom:CustomSfTextInputView
                                                                 x:Name="FrmDBO"
                                                                 Grid.Row="1"
-                                                                Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameDOBError}"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
                                                                 IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
-                                                                Stroke="{StaticResource Primary}"
                                                                 Style="{StaticResource TextInputLayout}">
                                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                <StackLayout Orientation="Horizontal">
+                                                                <custom:CustomSfTextInputView.TextInputView>
+
                                                                     <custom:GAZTBorderlessEntry
                                                                         x:Name="DateEntryFR"
                                                                         HorizontalOptions="FillAndExpand"
@@ -2566,17 +2523,15 @@
                                                                         Placeholder="YYYY/MM/DD"
                                                                         Style="{StaticResource DefaultEntry}"
                                                                         Text="{Binding DOB}" />
-                                                                    <Image HorizontalOptions="End">
-                                                                        <Image.Source>
-                                                                            <FontImageSource
-                                                                                FontFamily="UserIconFont"
-                                                                                Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                                                Size="20"
-                                                                                Color="{StaticResource SecondaryNew}" />
-                                                                        </Image.Source>
-                                                                    </Image>
-                                                                </StackLayout>
-                                                            </inputLayout:SfTextInputLayout>
+
+                                                                </custom:CustomSfTextInputView.TextInputView>
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                                    <Image
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        Source="calendar.png"
+                                                                        Style="{StaticResource SmallIcon}" />
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                                            </custom:CustomSfTextInputView>
 
                                                             <buttons:SfButton
                                                                 x:Name="btn4"
@@ -2640,9 +2595,8 @@
                                                     <StackLayout Grid.Row="4">
 
                                                         <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
-                                                        <inputLayout:SfTextInputLayout
+                                                        <custom:CustomSfTextInputView
                                                             x:Name="FrmFirstName"
-                                                            Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             HorizontalOptions="FillAndExpand"
@@ -2650,30 +2604,31 @@
                                                             IsEnabled="False"
                                                             IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
-                                                            Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                            <custom:GAZTBorderlessEntry
-                                                                x:Name="EntryFirstName"
-                                                                IsSpellCheckEnabled="False"
-                                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
-                                                                Style="{StaticResource DefaultEntry}"
-                                                                Text="{Binding FirstnmFR}"
-                                                                Unfocused="EntryFirstName_Unfocused_1">
-                                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                                    <behaviors:AlphabetandArabicCharacters />
-                                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                                            </custom:GAZTBorderlessEntry>
-                                                        </inputLayout:SfTextInputLayout>
+                                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                                <custom:GAZTBorderlessEntry
+                                                                    x:Name="EntryFirstName"
+                                                                    IsSpellCheckEnabled="False"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
+                                                                    Style="{StaticResource DefaultEntry}"
+                                                                    Text="{Binding FirstnmFR}"
+                                                                    Unfocused="EntryFirstName_Unfocused_1">
+                                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                                        <behaviors:AlphabetandArabicCharacters />
+                                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry>
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                        </custom:CustomSfTextInputView>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="5">
 
                                                         <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.ZZZVATRSurName}" />
-                                                        <inputLayout:SfTextInputLayout
+                                                        <custom:CustomSfTextInputView
                                                             x:Name="FrmLastName"
-                                                            Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             HorizontalOptions="FillAndExpand"
@@ -2681,33 +2636,34 @@
                                                             IsEnabled="False"
                                                             IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
-                                                            Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                            <custom:GAZTBorderlessEntry
-                                                                x:Name="EntryLastName"
-                                                                IsSpellCheckEnabled="False"
-                                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRSurName}"
-                                                                Style="{StaticResource DefaultEntry}"
-                                                                Text="{Binding LastnmFR}"
-                                                                Unfocused="EntryLastName_Unfocused_1">
-                                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                                    <behaviors:AlphabetandArabicCharacters />
-                                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                                            </custom:GAZTBorderlessEntry>
-                                                        </inputLayout:SfTextInputLayout>
+                                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                                <custom:GAZTBorderlessEntry
+                                                                    x:Name="EntryLastName"
+                                                                    IsSpellCheckEnabled="False"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRSurName}"
+                                                                    Style="{StaticResource DefaultEntry}"
+                                                                    Text="{Binding LastnmFR}"
+                                                                    Unfocused="EntryLastName_Unfocused_1">
+                                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                                        <behaviors:AlphabetandArabicCharacters />
+                                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry>
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                        </custom:CustomSfTextInputView>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="6">
 
                                                         <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.Email}" />
-                                                        <inputLayout:SfTextInputLayout
+                                                        <custom:CustomSfTextInputView
                                                             x:Name="FrmEmailAddress"
                                                             Grid.Row="13"
                                                             Grid.Column="0"
                                                             Grid.ColumnSpan="2"
-                                                            Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             HorizontalOptions="FillAndExpand"
@@ -2715,55 +2671,58 @@
                                                             IsEnabled="False"
                                                             IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
-                                                            Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                            <custom:GAZTBorderlessEntry
-                                                                x:Name="EntryEmail"
-                                                                IsSpellCheckEnabled="False"
-                                                                Placeholder="{x:Static ResourceManager:AppResources.Email}"
-                                                                Style="{StaticResource DefaultEntry}"
-                                                                Text="{Binding SmtpAddrFR}"
-                                                                Unfocused="EntryEmail_Unfocused" />
-                                                        </inputLayout:SfTextInputLayout>
+                                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                                <custom:GAZTBorderlessEntry
+                                                                    x:Name="EntryEmail"
+                                                                    IsSpellCheckEnabled="False"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.Email}"
+                                                                    Style="{StaticResource DefaultEntry}"
+                                                                    Text="{Binding SmtpAddrFR}"
+                                                                    Unfocused="EntryEmail_Unfocused" />
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                        </custom:CustomSfTextInputView>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="7">
 
                                                         <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
-                                                        <inputLayout:SfTextInputLayout
+                                                        <custom:CustomSfTextInputView
                                                             x:Name="FrmPhoneNumber"
                                                             Grid.Row="15"
                                                             Grid.Column="0"
                                                             Grid.ColumnSpan="2"
-                                                            Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="False"
                                                             IsHintAlwaysFloated="True"
-                                                            Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                            <custom:GAZTBorderlessEntry
-                                                                x:Name="EntryPhoneNumber"
-                                                                FontFamily="{StaticResource SomarSemiBold}"
-                                                                HorizontalTextAlignment="Start"
-                                                                IsSpellCheckEnabled="False"
-                                                                Keyboard="Telephone"
-                                                                MaxLength="14"
-                                                                Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                                                Style="{StaticResource GAZTEntry}"
-                                                                Text="{Binding MobNumberFR}"
-                                                                Unfocused="EntryPhoneNumber_Unfocused">
-                                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                                    <behaviors:OnlyNumericValuesBehaviour />
-                                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                                            </custom:GAZTBorderlessEntry>
-                                                        </inputLayout:SfTextInputLayout>
+                                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                                <custom:GAZTBorderlessEntry
+                                                                    x:Name="EntryPhoneNumber"
+                                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                                    HorizontalTextAlignment="Start"
+                                                                    IsSpellCheckEnabled="False"
+                                                                    Keyboard="Telephone"
+                                                                    MaxLength="14"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                                                    Style="{StaticResource GAZTEntry}"
+                                                                    Text="{Binding MobNumberFR}"
+                                                                    Unfocused="EntryPhoneNumber_Unfocused">
+                                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                                        <behaviors:OnlyNumericValuesBehaviour />
+                                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry>
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                        </custom:CustomSfTextInputView>
                                                     </StackLayout>
                                                 </Grid>
                                             </StackLayout>
@@ -2979,6 +2938,7 @@
 
                                                 </StackLayout>
                                             </Border>
+                                            <!--  -Expense details summary  -->
                                             <Border Margin="0,24,0,0" Style="{StaticResource ComponentFrameWithRadius14}">
                                                 <StackLayout Spacing="0">
                                                     <Grid
@@ -3058,6 +3018,7 @@
 
                                                 </StackLayout>
                                             </Border>
+                                            <!--  -Financial representative summary  -->
                                             <Border Margin="0,24,0,0" Style="{StaticResource ComponentFrameWithRadius14}">
                                                 <StackLayout Spacing="0">
                                                     <Grid
@@ -3103,6 +3064,7 @@
                                                     <BoxView Style="{StaticResource lineSeperator}" />
                                                     <Grid Padding="10,5,10,10">
                                                         <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
@@ -3206,9 +3168,7 @@
                                                 Margin="0,24,0,0"
                                                 ColumnDefinitions="1*,2*,7*"
                                                 ColumnSpacing="10"
-                                                HeightRequest="32"
-                                                IsVisible="{Binding IsDeclarationViewEnabled}"
-                                                WidthRequest="32">
+                                                IsVisible="{Binding IsDeclarationViewEnabled}">
                                                 <custom:CheckboxCustom
                                                     Grid.Row="0"
                                                     Grid.Column="0"
@@ -3224,7 +3184,7 @@
                                                     <Label.Margin>
                                                         <OnPlatform x:TypeArguments="Thickness">
                                                             <On Platform="iOS" Value="0,0,0,0" />
-                                                            <On Platform="Android" Value="0,-14,0,0" />
+                                                            <On Platform="Android" Value="0,14,0,0" />
                                                         </OnPlatform>
                                                     </Label.Margin>
                                                 </Label>
@@ -3239,117 +3199,117 @@
                                                     BackgroundColor="White"
                                                     ColumnSpacing="0"
                                                     HorizontalOptions="FillAndExpand"
-                                                    RowDefinitions="auto,auto,auto"
+                                                    RowDefinitions="Auto,Auto,Auto,Auto"
                                                     RowSpacing="15"
                                                     VerticalOptions="FillAndExpand">
 
                                                     <StackLayout Grid.Row="0">
-                                                        <Grid>
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto" />
-                                                                <RowDefinition Height="auto" />
-                                                            </Grid.RowDefinitions>
-                                                            <Label Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
 
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.VATRIDType}" />
-                                                                        <Span Text="*" TextColor="#e84941" />
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                            <inputLayout:SfTextInputLayout
-                                                                Grid.Row="1"
-                                                                Margin="0,-6,0,-6"
-                                                                ContainerType="Outlined"
-                                                                HasError="False"
-                                                                HorizontalOptions="FillAndExpand"
-                                                                InputViewPadding="16,0,16,0"
-                                                                IsHintAlwaysFloated="True"
-                                                                LeadingViewPosition="Inside"
-                                                                Stroke="{StaticResource Primary}"
-                                                                Style="{StaticResource TextInputLayout}">
-                                                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                <StackLayout Orientation="Horizontal">
-                                                                    <custom:GAZTBorderlessEntry
-                                                                        HorizontalOptions="FillAndExpand"
-                                                                        IsEnabled="{Binding Declaration.IDTypeOrNoPicker}"
-                                                                        IsSpellCheckEnabled="False"
-                                                                        Placeholder="{x:Static ResourceManager:AppResources.VATRIDType}"
-                                                                        Style="{StaticResource DefaultEntry}"
-                                                                        Text="{Binding TxtIDTypeSR}" />
-                                                                    <Image Source="arrowDropdown.png" />
-                                                                </StackLayout>
-                                                            </inputLayout:SfTextInputLayout>
-                                                            <buttons:SfButton
-                                                                x:Name="btnContactID"
-                                                                Grid.Row="1"
-                                                                Margin="0,0,0,0"
-                                                                Background="Transparent"
-                                                                Clicked="btnContactID_Clicked"
-                                                                FontSize="Small"
-                                                                IsEnabled="{Binding Declaration.IDTypeOrNoPicker}" />
-                                                            <custom:CustomSfPicker
-                                                                x:Name="DDlContactIDType"
-                                                                Grid.Row="1"
-                                                                Margin="0,0,0,0"
-                                                                Background="White"
-                                                                ItemHeight="40"
-                                                                Mode="Dialog"
-                                                                OkButtonClicked="DDlIDTypeSR_OkayButtonClicked"
-                                                                SelectionChanged="DDlContactIDType_SelectionChanged_1">
+                                                        <Label Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
 
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.VATRIDType}" />
+                                                                    <Span Text="*" TextColor="#e84941" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                        <custom:CustomSfTextInputView
+                                                            Grid.Row="1"
+                                                            ContainerType="Outlined"
+                                                            HasError="False"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            InputViewPadding="16,0,16,0"
+                                                            IsHintAlwaysFloated="True"
+                                                            LeadingViewPosition="Inside"
+                                                            Style="{StaticResource TextInputLayout}">
+                                                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                                                <inputLayout:LabelStyle TextColor="#B00020" />
+                                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                                            <custom:CustomSfTextInputView.TextInputView>
 
-                                                                <syncfusion:SfPicker.HeaderView>
+                                                                <custom:GAZTBorderlessEntry
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    IsEnabled="{Binding Declaration.IDTypeOrNoPicker}"
+                                                                    IsSpellCheckEnabled="False"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.VATRIDType}"
+                                                                    Style="{StaticResource DefaultEntry}"
+                                                                    Text="{Binding TxtIDTypeSR}">
 
-                                                                    <syncfusion:PickerHeaderView
-                                                                        Height="40"
-                                                                        Background="{StaticResource Primary}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZIDType}">
-                                                                        <syncfusion:PickerHeaderView.TextStyle>
-                                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
-                                                                        </syncfusion:PickerHeaderView.TextStyle>
-                                                                    </syncfusion:PickerHeaderView>
+                                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                                        <TapGestureRecognizer Command="{Binding btnContactID_Clicked}" />
+                                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                                </custom:GAZTBorderlessEntry>
 
-                                                                </syncfusion:SfPicker.HeaderView>
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding btnContactID_Clicked}" />
+                                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                                <Image
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    Source="arrowDropdown.png"
+                                                                    Style="{StaticResource SmallIcon}" />
+                                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                                        </custom:CustomSfTextInputView>
 
-                                                                <syncfusion:SfPicker.TextStyle>
-                                                                    <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
-                                                                </syncfusion:SfPicker.TextStyle>
-
-                                                                <syncfusion:SfPicker.Columns>
-                                                                    <syncfusion:PickerColumn
-                                                                        Width="270"
-                                                                        DisplayMemberPath="Name"
-                                                                        ItemsSource="{Binding IdTypeListSR}"
-                                                                        SelectedIndex="{Binding IDTypeIndexSR}" />
-                                                                </syncfusion:SfPicker.Columns>
-
-                                                                <syncfusion:SfPicker.SelectedTextStyle>
-                                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                                                </syncfusion:SfPicker.SelectedTextStyle>
+                                                        <custom:CustomSfPicker
+                                                            x:Name="DDlContactIDType"
+                                                            Margin="0,0,0,0"
+                                                            Background="White"
+                                                            ItemHeight="40"
+                                                            Mode="Dialog"
+                                                            OkButtonClicked="DDlIDTypeSR_OkayButtonClicked"
+                                                            SelectionChanged="DDlContactIDType_SelectionChanged_1">
 
 
-                                                                <syncfusion:SfPicker.SelectionView>
-                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                                                </syncfusion:SfPicker.SelectionView>
+                                                            <syncfusion:SfPicker.HeaderView>
 
-                                                                <syncfusion:SfPicker.FooterView>
+                                                                <syncfusion:PickerHeaderView
+                                                                    Height="40"
+                                                                    Background="{StaticResource Primary}"
+                                                                    Text="{x:Static ResourceManager:AppResources.ZZIDType}">
+                                                                    <syncfusion:PickerHeaderView.TextStyle>
+                                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                                    </syncfusion:PickerHeaderView.TextStyle>
+                                                                </syncfusion:PickerHeaderView>
 
-                                                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                                            </syncfusion:SfPicker.HeaderView>
 
-                                                                        <syncfusion:PickerFooterView.TextStyle>
-                                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
-                                                                        </syncfusion:PickerFooterView.TextStyle>
+                                                            <syncfusion:SfPicker.TextStyle>
+                                                                <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
+                                                            </syncfusion:SfPicker.TextStyle>
 
-                                                                    </syncfusion:PickerFooterView>
+                                                            <syncfusion:SfPicker.Columns>
+                                                                <syncfusion:PickerColumn
+                                                                    Width="270"
+                                                                    DisplayMemberPath="Name"
+                                                                    ItemsSource="{Binding IdTypeListSR}"
+                                                                    SelectedIndex="{Binding IDTypeIndexSR}" />
+                                                            </syncfusion:SfPicker.Columns>
 
-                                                                </syncfusion:SfPicker.FooterView>
+                                                            <syncfusion:SfPicker.SelectedTextStyle>
+                                                                <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                                            </syncfusion:SfPicker.SelectedTextStyle>
 
-                                                            </custom:CustomSfPicker>
-                                                        </Grid>
+
+                                                            <syncfusion:SfPicker.SelectionView>
+                                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                            </syncfusion:SfPicker.SelectionView>
+
+                                                            <syncfusion:SfPicker.FooterView>
+
+                                                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+
+                                                                    <syncfusion:PickerFooterView.TextStyle>
+                                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                                    </syncfusion:PickerFooterView.TextStyle>
+
+                                                                </syncfusion:PickerFooterView>
+
+                                                            </syncfusion:SfPicker.FooterView>
+
+                                                        </custom:CustomSfPicker>
                                                     </StackLayout>
 
                                                     <StackLayout Grid.Row="1">
@@ -3363,9 +3323,8 @@
                                                             </Label.FormattedText>
                                                         </Label>
 
-                                                        <inputLayout:SfTextInputLayout
+                                                        <custom:CustomSfTextInputView
                                                             x:Name="FrmContactIDNumber"
-                                                            Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             HorizontalOptions="FillAndExpand"
@@ -3373,30 +3332,35 @@
                                                             IsEnabled="{Binding Declaration.IDTypeOrNoPicker}"
                                                             IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
-                                                            Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                            <custom:GAZTBorderlessEntry
-                                                                x:Name="EntryContactIDNumber"
-                                                                IsSpellCheckEnabled="False"
-                                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                                      iOS=Default}"
-                                                                MaxLength="{Binding MaxLengthIDSR}"
-                                                                Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
-                                                                Style="{StaticResource DefaultEntry}"
-                                                                Text="{Binding IdNumberSR}"
-                                                                TextChanged="EntryContactIDNumber_TextChanged"
-                                                                Unfocused="EntryContactIDNumber_Unfocused">
-                                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                                    <behaviors:OnlyNumericValuesBehaviour />
-                                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                                            </custom:GAZTBorderlessEntry>
-                                                        </inputLayout:SfTextInputLayout>
+                                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                                <custom:GAZTBorderlessEntry
+                                                                    x:Name="EntryContactIDNumber"
+                                                                    IsSpellCheckEnabled="False"
+                                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                                          iOS=Default}"
+                                                                    MaxLength="{Binding MaxLengthIDSR}"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
+                                                                    Style="{StaticResource DefaultEntry}"
+                                                                    Text="{Binding IdNumberSR}"
+                                                                    TextChanged="EntryContactIDNumber_TextChanged"
+                                                                    Unfocused="EntryContactIDNumber_Unfocused">
+                                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                                        <behaviors:OnlyNumericValuesBehaviour />
+                                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry>
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                        </custom:CustomSfTextInputView>
                                                     </StackLayout>
 
-                                                    <StackLayout Grid.Row="2" Grid.Column="0">
+                                                    <StackLayout
+                                                        Grid.Row="2"
+                                                        Grid.Column="0"
+                                                        BackgroundColor="Red">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
@@ -3416,10 +3380,9 @@
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
-                                                            <inputLayout:SfTextInputLayout
+                                                            <custom:CustomSfTextInputView
                                                                 x:Name="FrmContactDBO"
                                                                 Grid.Row="1"
-                                                                Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameContactDOBError}"
                                                                 HorizontalOptions="FillAndExpand"
@@ -3427,12 +3390,12 @@
                                                                 IsHintAlwaysFloated="True"
                                                                 IsVisible="false"
                                                                 LeadingViewPosition="Inside"
-                                                                Stroke="{StaticResource Primary}"
                                                                 Style="{StaticResource TextInputLayout}">
                                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                <StackLayout Orientation="Horizontal">
+                                                                <custom:CustomSfTextInputView.TextInputView>
+
                                                                     <custom:GAZTBorderlessEntry
                                                                         x:Name="ContactDateEntry"
                                                                         HorizontalOptions="FillAndExpand"
@@ -3441,21 +3404,17 @@
                                                                         Style="{StaticResource DefaultEntry}"
                                                                         Text="{Binding ContactDOB}"
                                                                         TextChanged="ContactDateEntry_TextChanged" />
-                                                                    <Image HorizontalOptions="End">
-                                                                        <Image.Source>
-                                                                            <FontImageSource
-                                                                                FontFamily="UserIconFont"
-                                                                                Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                                                Size="20"
-                                                                                Color="{StaticResource SecondaryNew}" />
-                                                                        </Image.Source>
-                                                                    </Image>
-                                                                </StackLayout>
-                                                            </inputLayout:SfTextInputLayout>
+                                                                </custom:CustomSfTextInputView.TextInputView>
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                                    <Image
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        Source="calendar.png"
+                                                                        Style="{StaticResource SmallIcon}" />
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                                            </custom:CustomSfTextInputView>
 
                                                             <buttons:SfButton
                                                                 x:Name="btnSR"
-                                                                Grid.Row="1"
                                                                 Margin="0,0,0,0"
                                                                 Background="Transparent"
                                                                 Clicked="btn4_Clicked"
@@ -3464,7 +3423,6 @@
 
                                                             <custom:CustomDatePicker
                                                                 x:Name="ContactDOBPicker"
-                                                                Grid.Row="1"
                                                                 Margin="2"
                                                                 Background="White"
                                                                 Closed="ContactDOBPicker_Closed"
@@ -3518,7 +3476,7 @@
                                                         </Grid>
                                                     </StackLayout>
 
-                                                    <StackLayout Grid.Row="3">
+                                                    <StackLayout Grid.Row="3" BackgroundColor="DarkGreen">
                                                         <Label Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
 
                                                             <Label.FormattedText>
@@ -3528,9 +3486,8 @@
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
-                                                        <inputLayout:SfTextInputLayout
+                                                        <custom:CustomSfTextInputView
                                                             x:Name="FrmContactName"
-                                                            Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             HorizontalOptions="FillAndExpand"
@@ -3538,23 +3495,25 @@
                                                             IsEnabled="{Binding Declaration.ContactNameEntry}"
                                                             IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
-                                                            Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                            <custom:GAZTBorderlessEntry
-                                                                x:Name="EntryContactName"
-                                                                IsSpellCheckEnabled="False"
-                                                                Placeholder="{x:Static ResourceManager:AppResources.VATRContactPersonName}"
-                                                                Style="{StaticResource DefaultEntry}"
-                                                                Text="{Binding FirstNameSR}"
-                                                                TextChanged="EntryContactName_TextChanged">
-                                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                                    <behaviors:AlphabetandArabicCharacters />
-                                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                                            </custom:GAZTBorderlessEntry>
-                                                        </inputLayout:SfTextInputLayout>
+                                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                                <custom:GAZTBorderlessEntry
+                                                                    x:Name="EntryContactName"
+                                                                    IsSpellCheckEnabled="False"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.VATRContactPersonName}"
+                                                                    Style="{StaticResource DefaultEntry}"
+                                                                    Text="{Binding FirstNameSR}"
+                                                                    TextChanged="EntryContactName_TextChanged">
+                                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                                        <behaviors:AlphabetandArabicCharacters />
+                                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry>
+                                                            </custom:CustomSfTextInputView.TextInputView>
+                                                        </custom:CustomSfTextInputView>
                                                     </StackLayout>
 
                                                 </Grid>
@@ -3563,21 +3522,21 @@
                                             <Grid
                                                 Margin="20,10,20,0"
                                                 BackgroundColor="Transparent"
-                                                ColumnDefinitions="auto"
+                                                ColumnDefinitions="Auto"
                                                 HorizontalOptions="FillAndExpand"
                                                 IsVisible="{Binding IsDeclarationViewEnabledNew}"
-                                                RowDefinitions="auto"
+                                                RowDefinitions="Auto"
                                                 VerticalOptions="FillAndExpand">
 
                                                 <Grid
                                                     Grid.Row="0"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
-                                                    RowDefinitions="auto">
+                                                    RowDefinitions="Auto">
 
-                                                    <StackLayout Grid.Row="0">
+                                                    <StackLayout Grid.Row="0" Grid.ColumnSpan="2">
 
-                                                        <StackLayout Orientation="Horizontal">
+                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 
                                                             <custom:CheckboxCustom
                                                                 IsChecked="{Binding IsDeclarationChecked}"
@@ -3624,7 +3583,7 @@
                                     CornerRadius="14"
                                     IsEnabled="{Binding IsContinueButtonEnable}"
                                     Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{Binding CurrentStep}" />
+                                    Text="{Binding CurrentStep, TargetNullValue=''}" />
                             </StackLayout>
                         </ScrollView>
 
@@ -3632,7 +3591,7 @@
                     <StackLayout
                         Grid.Row="0"
                         Grid.Column="0"
-                        Margin="15,-15,15,0"
+                        Margin="15,15,15,0"
                         Padding="0"
                         BackgroundColor="White">
                         <Grid Margin="0,7,0,0">
@@ -3712,7 +3671,7 @@
                     </StackLayout>
                 </Grid>
             </Border>
-
+            <!--#endregion-->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>

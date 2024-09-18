@@ -35,7 +35,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 OnPropertyChanged(nameof(ListOutletTypes));
             }
         }
-        private string _selectedOutletType;
+        private string _selectedOutletType=string.Empty;
         public string SelectedOutletType
         {
             get => _selectedOutletType;
