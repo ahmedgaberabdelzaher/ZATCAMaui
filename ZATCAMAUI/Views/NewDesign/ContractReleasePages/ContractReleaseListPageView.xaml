@@ -77,7 +77,6 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="10,0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
@@ -86,7 +85,6 @@
 
                         <StackLayout>
                             <Grid
-                                Margin="20,32,20,0"
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand"
                                 IsVisible="{Binding IsContractListsVisible}"
@@ -133,14 +131,7 @@
                                         StrokeShape="RoundRectangle 15,15,15,15"
                                         Style="{StaticResource GreyBorderFrameWithShadow}"
                                         VerticalOptions="FillAndExpand">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
+                                        <StackLayout Orientation="Horizontal">
                                             <Image
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -157,10 +148,11 @@
                                                 Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                 Text="{x:Static ResourceManager:AppResources.CRRequestContractRelease}"
                                                 VerticalOptions="CenterAndExpand" />
-                                            <Grid.GestureRecognizers>
+                                            <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding RequestContractReleaseBtnTapped}" />
-                                            </Grid.GestureRecognizers>
-                                        </Grid>
+                                            </StackLayout.GestureRecognizers>
+                                            
+                                        </StackLayout>
                                     </Border>
 
                                     <Grid

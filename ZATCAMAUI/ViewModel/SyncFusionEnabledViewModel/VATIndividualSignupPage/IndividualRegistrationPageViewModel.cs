@@ -2526,7 +2526,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 TxtIDType = AppResources.ZZGCCID;
                 SelectedIdType = signUpIdTypeListGulf[0];
             }
-            
         }
 
         public async Task<string> ValidateIDs()

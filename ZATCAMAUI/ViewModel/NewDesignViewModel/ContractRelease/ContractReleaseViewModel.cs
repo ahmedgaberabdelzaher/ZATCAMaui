@@ -61,6 +61,7 @@ public class ContractReleaseViewModel : BaseViewModel
     public ICommand TotalDuesCommand { get; set; }
     public ICommand NewContractCopyAttachmentTapped { get; set; }
     public ICommand NewInvoiceAttachmentTapped { get; set; }
+    public ICommand ReleaseAmtUnfocused { get; set; }
 
     #endregion
 
@@ -352,6 +353,20 @@ public class ContractReleaseViewModel : BaseViewModel
 
             _contractTotalAmount = value;
             OnPropertyChanged("ContractTotalAmount");
+        }
+    }
+
+    public string _contractReleaseAmount = "";
+
+    public string ContractReleaseAmount
+    {
+        get { return _contractReleaseAmount; }
+        set
+        {
+            if (_contractReleaseAmount == value) return;
+
+            _contractReleaseAmount = value;
+            OnPropertyChanged("ContractReleaseAmount");
         }
     }
 
@@ -873,9 +888,11 @@ public class ContractReleaseViewModel : BaseViewModel
         ContractInstructionsClicked = new Command(InstructionsTapped);
         NewInvoiceAttachmentTapped = new Command(NewInvoiceAttachmentClicked);
         NewContractCopyAttachmentTapped = new Command(NewContractCopyAttachmentClicked);
-
+        ReleaseAmtUnfocused = new Command(CalculateReleaseAmt);
         setPickerModel();
     }
+
+    
 
     private void setPickerModel()
     {
@@ -1933,6 +1950,26 @@ public class ContractReleaseViewModel : BaseViewModel
         catch (Exception)
         {
 
+        }
+    }
+
+    private void CalculateReleaseAmt(object obj)
+    {
+        try
+        {
+            if (ContractTotalAmount < double.Parse(ContractReleaseAmount))
+            {
+                _dialogService.ShowMessageBox(AppResources.CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract, AppResources.CRWarning);
+            }
+            AmountToRelease = double.Parse(ContractReleaseAmount);
+
+            MakeCalculations();
+            ContractReleaseAmount = string.Format(CultureInfo.InvariantCulture,
+                            "{0:0.00}", Convert.ToDouble(ContractReleaseAmount));
+
+        }
+        catch (Exception)
+        {
         }
     }
 
