@@ -63,7 +63,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
             try
             {
                 base.OnAppearing();
-
+                
                 viewModel.EnableVATLandingPage();
                 viewModel.AddOutletDecisionOptions();
 
@@ -72,7 +72,9 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
                     if (arg == true)
                     {
                         viewModel.EnableVAtInstalmentPlan();
+                        viewModel.IsLoading = true;
                         await viewModel.GetVATInstalmentPlanList();
+                        viewModel.IsLoading = false;
                     }
                     else
                     {
@@ -86,7 +88,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
 
                 viewModel.NumberOfInstalmentPlans = "" + AppResources.ZakatInstalmetPlan;
 
-
+               
 
 
             }
@@ -100,6 +102,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
 
         async void outletDecisionOptionsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
         {
+            viewModel.IsLoading = true;
             InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             await Task.Delay(1000);
@@ -113,11 +116,12 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
                 viewModel.EnableDisplayInstalment();
                 await viewModel.GetVATDisplaySchedule();
             }
-
+            viewModel.IsLoading = false;
         }
 
         private async void SummaryattachmentsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            viewModel.IsLoading = true;
             var item = e.DataItem as Result31;
 
 
@@ -131,24 +135,23 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
 
             else
             {
-
-                //viewModel.SummaryData();
                 var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
                 await viewModel.GetDetailsClicked(index);
                 viewModel.EnableVAtInstalmentSummary();
             }
-
+            viewModel.IsLoading = false;
 
         }
 
         private async void DisplayListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            viewModel.IsLoading = true;
             var item = e.DataItem as VtiaIaSetResult;
             var index = viewModel.RequestForScheduleList.IndexOf(item);
             await viewModel.GetDisplayDetailsClicked(index);
 
-
             viewModel.EnableDisplayDetails();
+            viewModel.IsLoading = false;
         }
     }
 }

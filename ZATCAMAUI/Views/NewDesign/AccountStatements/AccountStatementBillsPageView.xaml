@@ -17,7 +17,7 @@
             <!--#region Header-->
             <Grid
                 Padding="20,15"
-                ColumnDefinitions="*,2*,*"
+                ColumnDefinitions="*,3*,*"
                 RowDefinitions="*,*">
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="0">
@@ -92,10 +92,9 @@
                     <SearchBar
                         Grid.Column="0"
                         Margin="0"
-                        custom:RoundCornersEffect.CornerRadius="12"
                         BackgroundColor="White"
                         HorizontalOptions="FillAndExpand"
-                        IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}"
+                        IsVisible="{Binding IsCloseButtonVisible}"
                         Placeholder="{x:Static ResourceManager:AppResources.SerachFieldinAcc}"
                         TextChanged="SearchBar_TextChanged"
                         VerticalOptions="FillAndExpand" />

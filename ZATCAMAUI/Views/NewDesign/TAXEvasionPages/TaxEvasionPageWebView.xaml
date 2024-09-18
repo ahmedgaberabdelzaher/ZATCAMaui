@@ -12,11 +12,49 @@
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <Grid RowDefinitions="auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                       <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TOnBackButtonClicked" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                   Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
 
             <Border
                 Grid.Row="1"
@@ -44,33 +82,11 @@
                 </Grid>
             </Border>
 
-            <custom:Loader IsVisible="{Binding IsLoading}" />
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
 
-            <Grid Grid.Row="0" Padding="20,5,20,5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*" />
-                    <ColumnDefinition Width="80*" />
-                    <ColumnDefinition Width="10*" />
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="0">
-                    <Image
-                        HorizontalOptions="Start"
-                        Source="arrowLeftwhite.png"
-                        
-                        VerticalOptions="CenterAndExpand" />
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TOnBackButtonClicked" />
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-                <Label
-                    Grid.Column="1"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
-                    VerticalOptions="Center" />
-            </Grid>
+           
         </Grid>
     </ContentPage.Content>
 </ContentPage>

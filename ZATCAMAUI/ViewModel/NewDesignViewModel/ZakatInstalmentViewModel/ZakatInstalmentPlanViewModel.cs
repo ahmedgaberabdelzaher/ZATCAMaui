@@ -1,8 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
-
-
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
@@ -144,7 +142,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         public ICommand SummaryInstallmentDetailsBtnTapped { get; set; }
         public ICommand OnZakatInstalmentReasonTapped { get; set; }
         public ICommand VATInstalationClicked { get; set; }
-        public ICommand NewAttachmentTapped { get; set; }
         public ICommand InstallmentDetailsBtnTapped { get; set; }
 
         public ICommand DisplayDetailsButtonTapped { get; set; }
@@ -2274,20 +2271,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 EnableAttachmentsView();
             });
 
-            VATInstalationClicked = new Command(VATInstalationTapped);
-            ReasonContinueBtnTapped = new Command(ReasonContinueBtnClicked);
+            VATInstalationClicked = new Command(async () => await  VATInstalationTapped());
+            ReasonContinueBtnTapped = new Command(async () => await ReasonContinueBtnClicked());
 
-            AggrementContinueBtnTapped = new Command(AggrementContinueBtnClicked);
-            BillContinueBtnTapped = new Command(BillContinueBtnClicked);
-            AttachmentsContinueBtnTapped = new Command(AttachmentsContinueBtnClicked);
-            StatementsContinueBtnTapped = new Command(StatementsContinueBtnClicked);
-            SummaryContinueBtnTapped = new Command(SummaryContinueBtnClicked);
-            SummaryInstallmentDetailsBtnTapped = new Command(SummaryInstallmentDetailsBtnClicked);
-            DisplayDetailsButtonTapped = new Command(DisplayDetailsButtonClicked);
-            OnZakatInstalmentReasonTapped = new Command(OnZakatInstalmentReasonClicked);
-            NewAttachmentTapped = new Command(NewAttachmentClicked);
-            BankStatementsAttachmentTapped = new Command(BankStatementsAttachmentClicked);
-            FinanceAttachmentTapped = new Command(FinanceAttachmentClicked);
+            AggrementContinueBtnTapped = new Command(async () => await AggrementContinueBtnClicked());
+            BillContinueBtnTapped = new Command(async () => await BillContinueBtnClicked());
+            AttachmentsContinueBtnTapped = new Command(async () => await AttachmentsContinueBtnClicked());
+            StatementsContinueBtnTapped = new Command(async () => await StatementsContinueBtnClicked());
+            SummaryContinueBtnTapped = new Command(async () => await SummaryContinueBtnClicked());
+            SummaryInstallmentDetailsBtnTapped = new Command(async () => await SummaryInstallmentDetailsBtnClicked());
+            DisplayDetailsButtonTapped = new Command(async () => await DisplayDetailsButtonClicked());
+            OnZakatInstalmentReasonTapped = new Command(async () => await OnZakatInstalmentReasonClicked());
+            BankStatementsAttachmentTapped = new Command(async () => await BankStatementsAttachmentClicked());
+            FinanceAttachmentTapped = new Command(async () => await FinanceAttachmentClicked());
 
             InstallmentDetailsBtnTapped = new Command(async () =>
             {
@@ -2383,79 +2379,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 EnableSlectionView();
             }
-            catch (GAZTUnlockAccountException)
-            {
-
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await ShowDialog(ex.Message);
                     _navigationService.GoBack();
                 });
             }
         }
 
-        private async void ShowMoreOptionsPopUp()
-        {
-            try
-            {
-                if (ListOfActionButtonsApplicable != null && ListOfActionButtonsApplicable.Count() != 0)
-                {
-                    string action = await Application.Current.MainPage.DisplayActionSheet("", AppResources.ZZCancel, null, ListOfActionButtonsApplicable.ToArray());
-                    if (App.IsArabic)
-                    {
-                        ArButtons buttonId = ArButtons.None;
-                        if (!string.IsNullOrEmpty(action))
-                        {
-                            action = action.Replace(" ", "");
-                        }
-                        Enum.TryParse(action, out buttonId);
-                        switch (buttonId)
-                        {
-
-                            case ArButtons.إلغاء:
-                                VATSetReturnVoidAsync();
-                                break;
-                            case ArButtons.حفظكمسودة:
-
-                                OnSaveDraftClicked();
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        Buttons buttonId = Buttons.None;
-                        if (!string.IsNullOrEmpty(action))
-                        {
-                            action = action.Replace(" ", "");
-                        }
-                        Enum.TryParse(action, out buttonId);
-                        switch (buttonId)
-                        {
-
-                            case Buttons.Void:
-                                VATSetReturnVoidAsync();
-                                break;
-
-                            case Buttons.SaveasDraft:
-
-                                OnSaveDraftClicked();
-
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
+      
 
         public void setMoreOptioButtons()
         {
@@ -2518,52 +2452,45 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             ZakatAgreementOptions = zakatAgreementOptions;
         }
 
-        public void BindVATSelectionView()
-        {
-
-            if (ZakatInstalments != null)
-            {
-            }
-        }
-
+      
 
         public void BindStatementsView()
         {
 
-            if (ZakatInstalments.result.insPlanSet != null&& ZakatInstalments.result.insPlanSet.Count>0)
+            if (ZakatInstalments.result.insPlanSet != null && ZakatInstalments.result.insPlanSet.Count > 0)
             {
                 try
                 {
-                var statementList = ZakatInstalments.result.insPlanSet;
+                    var statementList = ZakatInstalments.result.insPlanSet;
 
-                for (int i = 0; i < statementList.Count; i++)
-                {
-                    DateTime dateStart = new DateTime();
-                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                    string apiDate = @"""" + statementList[i].DueDt + @"""";
-                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                    for (int i = 0; i < statementList.Count; i++)
+                    {
+                        DateTime dateStart = new DateTime();
+                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                        string apiDate = @"""" + statementList[i].DueDt + @"""";
+                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
 
-                    GregorianCalendar hjCalendar = new GregorianCalendar();
-                    int year = hjCalendar.GetYear(dateStart);
-                    int month = hjCalendar.GetMonth(dateStart);
-                    int day = hjCalendar.GetDayOfMonth(dateStart);
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-                    statementList[i].DueDt = dateStr;
+                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                        statementList[i].DueDt = dateStr;
 
-                    string dt1 = string.Empty;
-                    string[] dts = null;
-                    dts = statementList[i].DueDt.Split('/');
-                    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                    statementList[i].DueDt = dt1;
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = statementList[i].DueDt.Split('/');
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                        statementList[i].DueDt = dt1;
+                    }
+                    StatementList = statementList;
                 }
-                StatementList = statementList;
-                }catch(Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
                 }
 
-                
+
             }
         }
 
@@ -2950,7 +2877,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
         }
 
-        public async void VATInstalationTapped()
+        public async Task VATInstalationTapped()
         {
             try
             {
@@ -2960,30 +2887,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 }
                 else
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.BPInstructionsAndConditionsAlert, AppResources.Information);
-                    });
-                    // await showAlert("Please accept VAT Instructions and Conditions to continue");
+                    await ShowDialog(AppResources.BPInstructionsAndConditionsAlert);
                 }
-                // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
-        public async void ReasonContinueBtnClicked()
+        public async Task ReasonContinueBtnClicked()
         {
             try
             {
@@ -3020,47 +2933,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 }
                 else
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZakatInstalmentPleaseChooseOneReason, AppResources.Information);
-                    });
+                    await _dialogService.ShowMessage(AppResources.ZakatInstalmentPleaseChooseOneReason, AppResources.Information);
                 }
 
             }
-            catch (GAZTUnlockAccountException er)
-            {
-                Console.WriteLine(er.StackTrace.ToString());
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
 
-        public async void showDialog(string msg)
+        public async Task ShowDialog(string msg)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(msg, AppResources.Information);
-            });
+            await _dialogService.ShowMessage(msg, AppResources.Information);
         }
 
-        public void BillContinueBtnClicked()
+        public async Task BillContinueBtnClicked()
         {
             try
             {
                 double totalAmount = double.Parse(TotalAmountSAR.Replace(" SAR", ""));
                 if (totalAmount == 0)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZakatNoInvoicesToBeAdded, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(AppResources.ZakatNoInvoicesToBeAdded, AppResources.Information);
+                    _navigationService.GoBack();
                 }
                 else
                 {
@@ -3068,73 +2965,46 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 }
                 return;
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
 
 
-        public async void AggrementContinueBtnClicked()
+        public async Task AggrementContinueBtnClicked()
         {
             try
             {
                 if (Year1.Length < 4 || Year2.Length < 4 || Year3.Length < 4)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields + "(" + AppResources.ZakatYearOne + ", " + AppResources.ZakatYearTwo + ", " + AppResources.ZakatYearThree + ")", AppResources.Information);
-                    });
+                    await _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields + "(" + AppResources.ZakatYearOne + ", " + AppResources.ZakatYearTwo + ", " + AppResources.ZakatYearThree + ")", AppResources.Information);
                     return;
                 }
                 EnableAttachmentsView();
             }
-            catch (GAZTUnlockAccountException)
-            {
-
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
 
 
-        public void OutletContinueBtnClicked()
+        public async Task OutletContinueBtnClicked()
         {
             try
             {
                 EnableAttachmentsView();
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
-        public void DisplayDetailsButtonClicked()
+        public async Task DisplayDetailsButtonClicked()
         {
             try
             {
@@ -3150,28 +3020,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     EnableAttachmentsView();
 
                 }
-
-
-
-                // EnableSummaryView();
-                //PopulateSummaryReasonData();
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
 
-        public async void AttachmentsContinueBtnClicked()
+        public async Task AttachmentsContinueBtnClicked()
         {
             try
             {
@@ -3186,19 +3043,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     await _dialogService.ShowMessage(AppResources.VRUploadYourDocument, AppResources.Information);
                 }
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
-        public void StatementsContinueBtnClicked()
+        public async Task StatementsContinueBtnClicked()
         {
             try
             {
@@ -3210,16 +3062,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 EnableAttachmentsView();
 
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
 
@@ -3286,7 +3132,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
         public bool isDraftClicked = false;
-        public async void OnSaveDraftClicked()
+        public async Task OnSaveDraftClicked()
         {
 
             double totalAmount = double.Parse(TotalAmountSAR.Replace(" SAR", ""));
@@ -3296,12 +3142,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 try
                 {
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        IsNewLoading = true;
-                    });
-                    await Task.Run(async () =>
-                    {
+                    IsNewLoading = true;
 
                         if (StatementList != null)
                         {
@@ -3447,74 +3288,49 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             {
 
                                 IsInitialDraft = true;
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    App.selectedZakatItem = ZakatInstalments.result.Fbnum;
-                                    setMoreOptioButtons();
+                                App.selectedZakatItem = ZakatInstalments.result.Fbnum;
+                                setMoreOptioButtons();
 
-                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                    headerAmountInfo.IsLinkAvailable = false;
-                                    //                                    headerAmountInfo.Message = string.Format(AppResources.ZakatDraftSaved, "  " + ZakatInstalments.d.Fbnum);
-                                    headerAmountInfo.Message = string.Format(AppResources.ZakatDraftSaved + " " + ZakatInstalments.result.Fbnum + " " + AppResources.ZakatDraftSaved1, " " + ZakatInstalments.result.Fbnum);
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = string.Format(AppResources.ZakatDraftSaved + " " + ZakatInstalments.result.Fbnum + " " + AppResources.ZakatDraftSaved1, " " + ZakatInstalments.result.Fbnum);
 
 
-                                    headerWithInfos.Add(headerAmountInfo);
+                                headerWithInfos.Add(headerAmountInfo);
 
-                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-
-                                    //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
-                                });
+                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                             }
                             else
                             {
 
                                 if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                                 {
-                                    await Task.Run(() =>
-                                    {
-                                        IsLoading = false;
-                                        IsNewLoading = false;
-                                    });
-                                    MainThread.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        IsNewLoading = false;
-                                        IsLoading = false;
-                                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                    });
+
+                                    IsNewLoading = false;
+                                    IsLoading = false;
+                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
 
 
                                 }
                                 else
                                 {
-                                    await Task.Run(() =>
-                                    {
-                                        IsLoading = false;
-                                        IsNewLoading = false;
-                                    });
-                                    MainThread.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        IsNewLoading = false;
-                                        IsLoading = false;
-                                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                    });
+                                    IsNewLoading = false;
+                                    IsLoading = false;
+                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                 }
                             }
                         }
 
 
-                    });
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        IsNewLoading = false;
-                    });
+                   
+                    IsNewLoading = false;
                 }
                 catch (Exception)
                 {
@@ -3523,19 +3339,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             else
             {
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZakatNoInvoicesToBeAdded, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+                await _dialogService.ShowMessage(AppResources.ZakatNoInvoicesToBeAdded, AppResources.Information);
+                _navigationService.GoBack();
 
+            }
         }
 
-        public async void VoidMsg()
+        public async Task VoidMsg()
         {
-            //var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
-            //if (answer)
 
 
             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
@@ -3556,98 +3367,121 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         }
 
-        public async void VATSetReturnVoidAsync()
+        public async Task VATSetReturnVoidAsync()
         {
             try
             {
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    IsNewLoading = true;
-                });
-                await Task.Run(async () =>
+                IsNewLoading = true;
+
+                if (StatementList != null)
                 {
 
-                    if (StatementList != null)
+                    var instalmentsList = StatementList.ToList();
+
+
+                    if (instalmentsList.Count != 0)
                     {
 
-                        var instalmentsList = StatementList.ToList();
+
+                        string apiDate = instalmentsList[0].DueDt;
+                        if (!apiDate.Contains("Date"))
+                        {
+
+                            for (int i = 0; i < instalmentsList.Count; i++)
+                            {
+
+                                DateTime dt = Convert.ToDateTime(instalmentsList[i].DueDt);
+                                JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                                {
+                                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                                };
+                                //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                                var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                                string[] dateList = jsonDateTime.Split('+');
+                                jsonDateTime = dateList[0].Replace("\"\\", "");
+                                jsonDateTime = jsonDateTime + ")/";
+                                instalmentsList[i].DueDt = jsonDateTime;
+
+                            }
+                        }
+
+                    }
+                }
 
 
-                        if (instalmentsList.Count != 0)
+
+
+                ZakatInstalments.d.DecCb = "X";
+                ZakatInstalments.d.OffPlanDur = "00";
+                ZakatInstalments.d.OffPymntFreq = "00";
+                ZakatInstalments.d.OffPymntFreq = "00";
+
+                if (CurrentIndex == 1)
+                {
+                    ZakatInstalments.d.StepNumber = "01";
+
+                }
+                else if (CurrentIndex == 2 || CurrentIndex == 3)
+                {
+                    ZakatInstalments.d.StepNumber = "03";
+
+                }
+                else
+                {
+                    ZakatInstalments.d.StepNumber = "04";
+
+                }
+
+                ZakatInstalments.d.DataVersion = "00000";
+
+                ZakatInstalments.d.Operation = "04";
+
+
+                if (!isDraftClicked)
+                {
+                    isDraftClicked = true;
+                    ZakatInstalments = await SubmitClicked();
+
+                    if (ZakatInstalments != null && ZakatInstalments.result != null)
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
 
 
-                            string apiDate = instalmentsList[0].DueDt;
-                            if (!apiDate.Contains("Date"))
-                            {
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = AppResources.ZZGeneralMessage_ZakatCancelled;
 
-                                for (int i = 0; i < instalmentsList.Count; i++)
-                                {
-
-                                    DateTime dt = Convert.ToDateTime(instalmentsList[i].DueDt);
-                                    JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
-                                    {
-                                        DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                                    };
-                                    //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                                    var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
-                                    string[] dateList = jsonDateTime.Split('+');
-                                    jsonDateTime = dateList[0].Replace("\"\\", "");
-                                    jsonDateTime = jsonDateTime + ")/";
-                                    instalmentsList[i].DueDt = jsonDateTime;
-
-                                }
-                            }
-
-                        }
-                    }
+                            headerWithInfos.Add(headerAmountInfo);
 
 
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                            _navigationService.GoBack();
 
 
-                    ZakatInstalments.d.DecCb = "X";
-                    ZakatInstalments.d.OffPlanDur = "00";
-                    ZakatInstalments.d.OffPymntFreq = "00";
-                    ZakatInstalments.d.OffPymntFreq = "00";
-
-                    if (CurrentIndex == 1)
-                    {
-                        ZakatInstalments.d.StepNumber = "01";
-
-                    }
-                    else if (CurrentIndex == 2 || CurrentIndex == 3)
-                    {
-                        ZakatInstalments.d.StepNumber = "03";
-
+                        });
                     }
                     else
                     {
-                        ZakatInstalments.d.StepNumber = "04";
-
-                    }
-
-                    ZakatInstalments.d.DataVersion = "00000";
-
-                    ZakatInstalments.d.Operation = "04";
-
-
-                    if (!isDraftClicked)
-                    {
-                        isDraftClicked = true;
-                        ZakatInstalments = await SubmitClicked();
-
-                        if (ZakatInstalments != null && ZakatInstalments.result != null)
+                        IsLoading = false;
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-
-
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                                 headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = AppResources.ZZGeneralMessage_ZakatCancelled;
+                                headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
                                 headerWithInfos.Add(headerAmountInfo);
 
@@ -3658,74 +3492,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                                 await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
+
+
                                 _navigationService.GoBack();
-
-
-                                //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
                             });
                         }
                         else
                         {
-                            IsLoading = false;
-                            if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                    headerAmountInfo.IsLinkAvailable = false;
-                                    headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
+                                headerWithInfos.Add(headerAmountInfo);
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    headerWithInfos.Add(headerAmountInfo);
+                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-
-                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-
-
-                                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                    _navigationService.GoBack();
-                                });
-                            }
-                            else
-                            {
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                    headerAmountInfo.IsLinkAvailable = false;
-                                    headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
-                                    headerWithInfos.Add(headerAmountInfo);
-                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-                                    WebServiceManager.ErrorMessageForVAT = string.Empty;
-                                });
-                            }
-                            //MainThread.BeginInvokeOnMainThread(async () =>
-                            //{
-                            //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            //});
+                                WebServiceManager.ErrorMessageForVAT = string.Empty;
+                            });
                         }
                     }
+                }
 
-
-                });
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    IsNewLoading = false;
-                });
+                IsNewLoading = false;
             }
             catch (Exception)
             {
@@ -3734,7 +3529,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
         bool isSubmitClicked = false;
-        public async void SummaryContinueBtnClicked()
+        public async Task SummaryContinueBtnClicked()
         {
             try
             {
@@ -3854,14 +3649,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 ZakatInstalments.d.Operation = "58";
                 ZakatInstalments.d.DataVersion = "00001";
 
-                if (IsInitialDraft || App.selectedZakatItem != "")
-                {
-
-                }
-                else
-                {
-                    // ZakatInstalments.d.Fbnum = "";
-                }
                 if (!isSubmitClicked)
                 {
                     isSubmitClicked = true;
@@ -3875,33 +3662,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                         await EnableSucessScreenAsync();
                     }
-                    else
-                    {
-
-                    }
 
                 }
 
-
-                //Display Success Screen
-
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
 
 
 
-        public void OnZakatInstalmentReasonClicked()
+        public async Task OnZakatInstalmentReasonClicked()
         {
             try
             {
@@ -3911,68 +3685,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 ZakatreasonData.Add(AppResources.TinDeregistrationReasonLiquidation);
                 ZakatreasonData.Add(AppResources.TinDeregistrationReasonEstablishmentToCompany);
 
-                //await MopupService.Instance.PushAsync(new PickerPageView(ZakatreasonData));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-            catch (Exception ex)
-            {
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
-        public void NewAttachmentClicked()
-        {
-            try
-            {
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
 
-                Console.WriteLine(ex.Message);
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-            catch (Exception ex)
-            {
 
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
-            }
-        }
-        public async void SummaryInstallmentDetailsBtnClicked()
+        public async Task SummaryInstallmentDetailsBtnClicked()
         {
             try
             {
                 await Application.Current.MainPage.DisplayAlert("Alert", "Instalment details schedule is displayed here.", "OK");
 
-
-
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
             }
         }
 
@@ -3999,7 +3731,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         }
 
-        public async void BankStatementsAttachmentClicked()
+        public async Task BankStatementsAttachmentClicked()
         {
             if (MopupService.Instance.PopupStack.Count > 0) return;
             _bankStatementsAttachment = true;
@@ -4020,7 +3752,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await ShowDialog(ex.Message);
                     _navigationService.GoBack();
                 });
             }
@@ -4029,7 +3761,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
         }
 
-        public async void FinanceAttachmentClicked()
+        public async Task FinanceAttachmentClicked()
         {
             if (MopupService.Instance.PopupStack.Count > 0) return;
             _bankStatementsAttachment = false;
@@ -4054,7 +3786,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await ShowDialog(ex.Message);
                     _navigationService.GoBack();
                 });
             }
@@ -4166,193 +3898,168 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 selectedList.Clear();
 
-                await Task.Run(() =>
+                IsLoading = true;
+
+                ZakatInvoiceList invoiceList = null;
+                // ZakatInvoicesList = null;
+
+                try
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
+                    invoiceList = await ZakatInstallmentPlanWebServiceManager.GetZakatInvoicesList(IsZakat, App.selectedZakatItem);
 
-                    IsLoading = true;
-
-                    ZakatInvoiceList invoiceList = null;
-                    // ZakatInvoicesList = null;
-
-                    try
+                    if (invoiceList != null && invoiceList.d?.Count > 0)
                     {
-                        invoiceList = await ZakatInstallmentPlanWebServiceManager.GetZakatInvoicesList(IsZakat, App.selectedZakatItem);
 
-                        if (invoiceList != null && invoiceList.d?.Count>0)
+
+                        var totalAmount = 0.0;
+                        var totalAmountDue = 0.0;
+
+                        ZakatInvoicesList = invoiceList.d;
+                        EnableVATBillView();
+                        for (int i = 0; i < ZakatInvoicesList.Count; i++)
+                        {
+                            if (ZakatInvoicesList[i].Abtyp.Equals("ITAX"))
+                            {
+                                ZakatInvoicesList[i].Abtyp = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                            }
+                            else if (ZakatInvoicesList[i].Abtyp.Equals("ZAKT"))
+                            {
+                                ZakatInvoicesList[i].Abtyp = AppResources.FORM5Zakat;
+                            }
+
+                            DateTime dateStart = new DateTime();
+                            CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                            string apiDate = @"""" + ZakatInvoicesList[i].DueDt + @"""";
+                            dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                            GregorianCalendar hjCalendar = new GregorianCalendar();
+                            int year = hjCalendar.GetYear(dateStart);
+                            int month = hjCalendar.GetMonth(dateStart);
+                            int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                            string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                            ZakatInvoicesList[i].DueDt = dateStr;
+
+                            string dt1 = string.Empty;
+                            string[] dts = null;
+                            dts = ZakatInvoicesList[i].DueDt.Split('/');
+                            dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                            ZakatInvoicesList[i].DueDt = dt1;
+
+
+                            if (ZakatInvoicesList[i].InvCb == "X")
+                            {
+                                selectedList.Add(ZakatInvoicesList[i]);
+                                totalAmountDue += Convert.ToDouble(ZakatInvoicesList[i].DueAmt);
+                            }
+
+                            totalAmount += Convert.ToDouble(ZakatInvoicesList[i].InvAmt);
+                        }
+
+                        TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " SAR";
+                        VATBillDueAmount = string.Format("{0:N2}", totalAmountDue) + " SAR";
+
+                        if (totalAmountDue > 0)
+                        {
+                            MaxAmount = Math.Round(totalAmountDue, 2);
+                            MaxAmountTitle = AppResources.ZakatMax + " " + MaxAmount;
+
+                        }
+                        if (totalAmountDue > 0)
+                        {
+                            MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                            //DownPaymentAmount = MinAmount;
+                            MinAmountTitle = AppResources.ZakatMin + " " + MinAmount;
+                            DownPaymentSliderValue = DownPaymentAmount;
+                        }
+
+                        if (App.selectedZakatItem != "")
                         {
 
-
-                            var totalAmount = 0.0;
-                            var totalAmountDue = 0.0;
-
-                            ZakatInvoicesList = invoiceList.d;
-                            EnableVATBillView();
-                            for (int i = 0; i < ZakatInvoicesList.Count; i++)
+                            if (ZakatInstalments.d.DpAmt != null && double.Parse(ZakatInstalments.d.DpAmt) > 0)
                             {
-                                if (ZakatInvoicesList[i].Abtyp.Equals("ITAX"))
-                                {
-                                    ZakatInvoicesList[i].Abtyp = AppResources.ZakatInstalmetSelectTypeIncomeTax;
-                                }
-                                else if (ZakatInvoicesList[i].Abtyp.Equals("ZAKT"))
-                                {
-                                    ZakatInvoicesList[i].Abtyp = AppResources.FORM5Zakat;
-                                }
 
-                                DateTime dateStart = new DateTime();
-                                CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                                string apiDate = @"""" + ZakatInvoicesList[i].DueDt + @"""";
-                                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
-
-                                GregorianCalendar hjCalendar = new GregorianCalendar();
-                                int year = hjCalendar.GetYear(dateStart);
-                                int month = hjCalendar.GetMonth(dateStart);
-                                int day = hjCalendar.GetDayOfMonth(dateStart);
-
-                                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-                                ZakatInvoicesList[i].DueDt = dateStr;
-
-                                string dt1 = string.Empty;
-                                string[] dts = null;
-                                dts = ZakatInvoicesList[i].DueDt.Split('/');
-                                dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                                ZakatInvoicesList[i].DueDt = dt1;
-
-
-                                if (ZakatInvoicesList[i].InvCb == "X")
-                                {
-                                    selectedList.Add(ZakatInvoicesList[i]);
-                                    totalAmountDue += Convert.ToDouble(ZakatInvoicesList[i].DueAmt);
-                                }
-
-                                totalAmount += Convert.ToDouble(ZakatInvoicesList[i].InvAmt);
+                                DownPaymentSliderValue = double.Parse(ZakatInstalments.d.DpAmt);
                             }
 
-                            TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " SAR";
-                            VATBillDueAmount = string.Format("{0:N2}", totalAmountDue) + " SAR";
-
-                            if (totalAmountDue > 0)
+                            if (ZakatInstalments.d.TotAmt != null && double.Parse(ZakatInstalments.d.TotAmt) > 0)
                             {
-                                MaxAmount = Math.Round(totalAmountDue, 2);
-                                MaxAmountTitle = AppResources.ZakatMax + " " + MaxAmount;
-
-                            }
-                            if (totalAmountDue > 0)
-                            {
-                                MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                                //DownPaymentAmount = MinAmount;
-                                MinAmountTitle = AppResources.ZakatMin + " " + MinAmount;
-                                DownPaymentSliderValue = DownPaymentAmount;
+                                TotalAmountSAR = ZakatInstalments.d.TotAmt;
                             }
 
-                            if (App.selectedZakatItem != "")
+                            if (ZakatInstalments.d.PlanDur != null && int.Parse(ZakatInstalments.d.PlanDur) > 0)
                             {
+                                NumberOFInstalmentSliderValue = int.Parse(ZakatInstalments.d.PlanDur);
+                            }
 
-                                if (ZakatInstalments.d.DpAmt != null && double.Parse(ZakatInstalments.d.DpAmt) > 0)
+                            if (ZakatInstalments.d.PymntFreq != null && double.Parse(ZakatInstalments.d.PymntFreq) > 0)
+                            {
+                                SelectedFrequencyType = ZakatInstalments.d.PymntFreq;
+                                MessagingCenter.Send<object, string>(this, "SelectedFrequencyType", SelectedFrequencyType);
+                            }
+
+                            if (ZakatInstalments.d.AttachSet != null && ZakatInstalments.d.AttachSet != null)
+                            {
+                                var bankAttachmentListViewData = new ObservableCollection<Attachment>();
+                                var financialAttachmentListViewData = new ObservableCollection<Attachment>();
+                                foreach (var attach in ZakatInstalments.d.AttachSet)
                                 {
-
-                                    DownPaymentSliderValue = double.Parse(ZakatInstalments.d.DpAmt);
-                                }
-
-                                if (ZakatInstalments.d.TotAmt != null && double.Parse(ZakatInstalments.d.TotAmt) > 0)
-                                {
-                                    TotalAmountSAR = ZakatInstalments.d.TotAmt;
-                                }
-
-                                if (ZakatInstalments.d.PlanDur != null && int.Parse(ZakatInstalments.d.PlanDur) > 0)
-                                {
-                                    NumberOFInstalmentSliderValue = int.Parse(ZakatInstalments.d.PlanDur);
-                                }
-
-                                if (ZakatInstalments.d.PymntFreq != null && double.Parse(ZakatInstalments.d.PymntFreq) > 0)
-                                {
-                                    SelectedFrequencyType = ZakatInstalments.d.PymntFreq;
-                                    MessagingCenter.Send<object, string>(this, "SelectedFrequencyType", SelectedFrequencyType);
-                                }
-
-                                if (ZakatInstalments.d.AttachSet != null && ZakatInstalments.d.AttachSet != null)
-                                {
-                                    var bankAttachmentListViewData = new ObservableCollection<Attachment>();
-                                    var financialAttachmentListViewData = new ObservableCollection<Attachment>();
-                                    foreach (var attach in ZakatInstalments.d.AttachSet)
+                                    if (attach.Dotyp == "ZIP2")
                                     {
-                                        if (attach.Dotyp == "ZIP2")
-                                        {
-                                            bankAttachmentListViewData.Add(attach);
-                                        }
-                                        else if (attach.Dotyp == "ZIP3")
-                                        {
-                                            financialAttachmentListViewData.Add(attach);
-                                        }
+                                        bankAttachmentListViewData.Add(attach);
                                     }
-                                    BankStatementsAttachmentsListViewData = bankAttachmentListViewData;
-                                    FinanceAttachmentsListViewData = financialAttachmentListViewData;
-
-                                    if (BankStatementsAttachmentsListViewData != null && FinanceAttachmentsListViewData != null)
+                                    else if (attach.Dotyp == "ZIP3")
                                     {
-
-                                        IsDeclarationEnabled = true;
-
+                                        financialAttachmentListViewData.Add(attach);
                                     }
+                                }
+                                BankStatementsAttachmentsListViewData = bankAttachmentListViewData;
+                                FinanceAttachmentsListViewData = financialAttachmentListViewData;
+
+                                if (BankStatementsAttachmentsListViewData != null && FinanceAttachmentsListViewData != null)
+                                {
+
+                                    IsDeclarationEnabled = true;
+
                                 }
                             }
                         }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                        IsLoading = false;
                     }
-
-                    catch (InternetException ex)
+                    else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-
+                        await ShowDialog(AppResources.ZZSomethingwentwrong);
+                        _navigationService.GoBack();
                     }
-                });
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
+                }
+
+                catch (InternetException ex)
+                {
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await ShowDialog(ex.Message);
+                        IsLoading = false;
+                        _navigationService.GoBack();
+                    });
+
+                }
+                IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                    await ShowDialog(AppResources.ZZSomethingwentwrong);
+                _navigationService.GoBack();
             }
         }
 
@@ -4366,97 +4073,68 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                ZakatInstalments = null;
+                try
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
+                    ZakatInstalments = await ZakatInstallmentPlanWebServiceManager.GetZakatInstalmentPostData(App.selectedZakatItem);
 
-                    IsLoading = true;
-                    ZakatInstalments = null;
-                    try
+                    if (ZakatInstalments != null)
                     {
-                        ZakatInstalments = await ZakatInstallmentPlanWebServiceManager.GetZakatInstalmentPostData(App.selectedZakatItem);
 
-                        if (ZakatInstalments != null)
+                        if (IsZakat)
                         {
+                            await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetPlanTitle,
+               _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                   .Instructions));
+                            ZakatInstallmentPlanWebServiceManager.ZATCAgetReasonsLIST("01", ZakatInstalments.d.TxnTp);
 
-                            if (IsZakat)
-                            {
-                                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetPlanTitle,
-                   _dialogType: InstructionsBottomPopUpViewModel.DialogType
-                       .Instructions));
-                                ZakatInstallmentPlanWebServiceManager.ZATCAgetReasonsLIST("01",ZakatInstalments.d.TxnTp);
-
-                            }
-                            else
-                            {
-                                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetSelectTypeIncomeTax,
-                   _dialogType: InstructionsBottomPopUpViewModel.DialogType
-                       .Instructions));
-                                ZakatInstallmentPlanWebServiceManager.ZATCAgetReasonsLIST("02", ZakatInstalments.d.TxnTp);
-
-                            }
-
-                            if (ZakatInstalments.d.InstReqReason != null && App.selectedZakatItem != "")
-                            {
-
-                                MessagingCenter.Send<object, string>(this, "SelectedReason", ZakatInstalments.d.InstReqReason);
-                            }
-
-                            BindZakatBillsList();
                         }
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
+                            await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetSelectTypeIncomeTax,
+               _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                   .Instructions));
+                            ZakatInstallmentPlanWebServiceManager.ZATCAgetReasonsLIST("02", ZakatInstalments.d.TxnTp);
+
                         }
-                        IsLoading = false;
-                    }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
+
+                        if (ZakatInstalments.d.InstReqReason != null && App.selectedZakatItem != "")
                         {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
+
+                            MessagingCenter.Send<object, string>(this, "SelectedReason", ZakatInstalments.d.InstReqReason);
+                        }
+
+                        BindZakatBillsList();
                     }
-                    catch (InternetException ex)
+                    else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
+                        await ShowDialog(AppResources.ZZSomethingwentwrong);
+                        _navigationService.GoBack();
                     }
-                });
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    await ShowDialog(ex.Message);
+                    IsLoading = false;
+                    _navigationService.GoBack();
+                }
+                catch (InternetException ex)
+                {
+                    await ShowDialog(ex.Message);
+                    IsLoading = false;
+                    _navigationService.GoBack();
+                }
+                IsLoading = false;
 
             }
 
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await ShowDialog(AppResources.ZZSomethingwentwrong);
+                _navigationService.GoBack();
             }
         }
 
@@ -4478,27 +4156,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         }
 
         #endregion
-        #region Method
 
-        public void setDATA()
-        {
-            try
-            {
-                if (NoOfInstalments == 0)
-                {
-                }
-                else
-                {
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-
-
-        }
-        #endregion
 
         #region MAP_VAT_RequestObject
 
@@ -4724,10 +4382,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
 
                 request = BuildRequestObject();
 
@@ -4757,13 +4412,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-
-                });
+                IsLoading = false;
+                await ShowDialog(ex.Message);
+                _navigationService.GoBack();
                 return response;
             }
 

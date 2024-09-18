@@ -10,13 +10,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
  
     public partial class OldZakatInstalmentPlanListPageView : ContentPage
     {
-
-
-
         #region Variable
         OldZakatInstalmentPlanListViewModel viewModel;
-
-
         #endregion
 
         public OldZakatInstalmentPlanListPageView()
@@ -41,6 +36,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
         async void outletDecisionOptionsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
         {
+            viewModel.IsLoading = true;
             InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;
             await Task.Delay(1000);
 
@@ -53,35 +49,17 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             else if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 1)
             {
                 viewModel.EnableRevokZakatInstalment();
-                // viewModel.GetZakatRevokList();
             }
-
+            viewModel.IsLoading = false;
         }
 
-        protected async override void OnAppearing()
-        {
-            try
-            {
-                base.OnAppearing();
-
-                viewModel.ResetData();
-                viewModel.EnableCreateZakatInstalment();
-                await viewModel.GetZakatInstalmentPlanList();
-
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
 
 
         private async void SummaryattachmentsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             try
             {
+                viewModel.IsLoading = true;
                 var item = e.DataItem as OldZakatListModel;
                 if (item != null)
                 {
@@ -90,13 +68,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                     if (item.statusType == "IP017")
                     {
                         App.selectedZakatItem = item.fbNum;
-
-
-
-
                         viewModel._navigationService.NavigateTo(App.OldZakatInstalmentPlanPageView);
-
-
 
                     }
                     else
@@ -109,12 +81,12 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                         viewModel.EnableZakatInstalmentSummary();
                     }
                 }
-
+                viewModel.IsLoading = false;
 
             }
             catch (Exception)
             {
-
+                viewModel.IsLoading = false;
 
             }
 

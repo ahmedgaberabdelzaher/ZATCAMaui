@@ -95,7 +95,6 @@
                         x:Name="searchBar"
                         Grid.Column="0"
                         Margin="0"
-                        custom:RoundCornersEffect.CornerRadius="12"
                         BackgroundColor="White"
                         HorizontalOptions="FillAndExpand"
                         Keyboard="{OnPlatform Android=Numeric,

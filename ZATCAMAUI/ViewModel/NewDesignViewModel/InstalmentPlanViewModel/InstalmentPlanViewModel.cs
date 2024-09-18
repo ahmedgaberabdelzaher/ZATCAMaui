@@ -13,14 +13,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 
         public InstalmentPlanViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackClick = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
-
-            ZakatBtnTapped = new Command(ZakatBtnClicked);
-            IncomeTaxBtnTapped = new Command(IncomeTaxBtnClicked);
-            VatBtnTapped = new Command(VatBtnClicked);
+            ZakatBtnTapped = new Command(async () => await ZakatBtnClicked());
+            IncomeTaxBtnTapped = new Command(async ()=> await IncomeTaxBtnClicked());
+            VatBtnTapped = new Command(async () => await VatBtnClicked());
             instalmentPlanModel = new InstalmentPlanModel();
             SelectedOutletOption = new InstalmentPlanModel();
 
@@ -32,79 +27,49 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
         public ICommand ZakatBtnTapped { get; set; }
         public ICommand IncomeTaxBtnTapped { get; set; }
         public ICommand VatBtnTapped { get; set; }
-        public ICommand GoBackClick { get; set; }
 
 
         #endregion
 
         #region Button Actions
 
-        public void ZakatBtnClicked()
+        public async Task ZakatBtnClicked()
         {
             try
             {
                 _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
-                //_navigationService.NavigateTo(App.ZakatInstalmentPlanListPageView);
-            }
-            catch (GAZTUnlockAccountException)
-            {
-
-
-
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
-        public void IncomeTaxBtnClicked()
+        public async Task IncomeTaxBtnClicked()
         {
             try
             {
                  _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
-                //_navigationService.NavigateTo(App.ZakatInstalmentPlanListPageView);
-
-            }
-            catch (GAZTUnlockAccountException)
-            {
-
-
 
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
-        public void VatBtnClicked()
+        public async Task VatBtnClicked()
         {
             try
             {
                 _navigationService.NavigateTo(App.VatInstalmentPlanListPageView);
             }
-            catch (GAZTUnlockAccountException)
-            {
-
-
-
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -184,7 +149,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
             set
             {
                 _selectedOutletOption = value;
-                //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
                 OnPropertyChanged("SelectedOutletOption");
             }
         }
@@ -242,13 +206,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 
 
             OutletDecisionOptions = outletDecisionOptions;
-
-            Task startupWork = new Task(() => { SimulateStartup(); });
-            startupWork.Start();
-        }
-        async void SimulateStartup()
-        {
-            await Task.Delay(3000); // Simulate a bit of startup work.
 
         }
     }

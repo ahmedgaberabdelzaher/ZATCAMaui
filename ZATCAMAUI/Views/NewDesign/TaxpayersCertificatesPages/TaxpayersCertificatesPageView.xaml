@@ -66,107 +66,94 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="20"
+                Padding="15"
                 Style="{StaticResource CommonTopCurves}">
 
-                <Grid RowDefinitions="auto,*" VerticalOptions="FillAndExpand">
+                <StackLayout>
 
+                    <HorizontalStackLayout>
 
-                    <StackLayout Grid.Row="0" Spacing="5">
+                        <custom:CustomSfPicker
+                            x:Name="TaxTypePicker"
+                            Background="White"
+                            IsOpen="False"
+                            ItemHeight="40"
+                            Mode="Dialog"
+                            SelectionChanged="TaxTypePicker_SelectionChanged">
 
+                            <syncfusion:SfPicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                            </syncfusion:SfPicker.SelectionView>
 
-                        <Grid ColumnDefinitions="auto,*">
+                            <syncfusion:SfPicker.Columns>
+                                <syncfusion:PickerColumn
+                                    Width="300"
+                                    DisplayMemberPath="TaxType"
+                                    ItemsSource="{Binding TaxTypeForFilter}" />
+                            </syncfusion:SfPicker.Columns>
 
-                            <custom:CustomSfPicker
-                                x:Name="TaxTypePicker"
-                                Background="White"
-                                IsOpen="False"
-                                ItemHeight="40"
-                                Mode="Dialog"
-                                SelectionChanged="TaxTypePicker_SelectionChanged">
+                            <syncfusion:SfPicker.TextStyle>
+                                <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                            </syncfusion:SfPicker.TextStyle>
 
-                                <syncfusion:SfPicker.SelectionView>
-                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                </syncfusion:SfPicker.SelectionView>
+                            <syncfusion:SfPicker.SelectedTextStyle>
+                                <syncfusion:PickerTextStyle
+                                    FontAttributes="Bold"
+                                    FontSize="15"
+                                    TextColor="{StaticResource NeutralBlack}" />
+                            </syncfusion:SfPicker.SelectedTextStyle>
 
-                                <syncfusion:SfPicker.Columns>
-                                    <syncfusion:PickerColumn
-                                        Width="300"
-                                        DisplayMemberPath="TaxType"
-                                        ItemsSource="{Binding TaxTypeForFilter}" />
-                                </syncfusion:SfPicker.Columns>
+                            <syncfusion:SfPicker.HeaderView>
 
-                                <syncfusion:SfPicker.TextStyle>
-                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                </syncfusion:SfPicker.TextStyle>
+                                <syncfusion:PickerHeaderView
+                                    Height="55"
+                                    Background="{StaticResource Primary}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
+                                    <syncfusion:PickerHeaderView.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                    </syncfusion:PickerHeaderView.TextStyle>
+                                </syncfusion:PickerHeaderView>
 
-                                <syncfusion:SfPicker.SelectedTextStyle>
-                                    <syncfusion:PickerTextStyle
-                                        FontAttributes="Bold"
-                                        FontSize="15"
-                                        TextColor="{StaticResource NeutralBlack}" />
-                                </syncfusion:SfPicker.SelectedTextStyle>
+                            </syncfusion:SfPicker.HeaderView>
 
-                                <syncfusion:SfPicker.HeaderView>
+                            <syncfusion:SfPicker.FooterView>
 
-                                    <syncfusion:PickerHeaderView
-                                        Height="55"
-                                        Background="{StaticResource Primary}"
-                                        Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
-                                        <syncfusion:PickerHeaderView.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="White" />
-                                        </syncfusion:PickerHeaderView.TextStyle>
-                                    </syncfusion:PickerHeaderView>
+                                <syncfusion:PickerFooterView
+                                    Height="46"
+                                    Background="{StaticResource Primary}"
+                                    CancelButtonText="{x:Static ResourceManager:AppResources.CancelText}"
+                                    OkButtonText="{x:Static ResourceManager:AppResources.OKText}">
 
-                                </syncfusion:SfPicker.HeaderView>
+                                    <syncfusion:PickerFooterView.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                    </syncfusion:PickerFooterView.TextStyle>
 
-                                <syncfusion:SfPicker.FooterView>
+                                </syncfusion:PickerFooterView>
 
-                                    <syncfusion:PickerFooterView
-                                        Height="46"
-                                        Background="{StaticResource Primary}"
-                                        CancelButtonText="{x:Static ResourceManager:AppResources.CancelText}"
-                                        OkButtonText="{x:Static ResourceManager:AppResources.OKText}">
+                            </syncfusion:SfPicker.FooterView>
+                        </custom:CustomSfPicker>
 
-                                        <syncfusion:PickerFooterView.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="White" />
-                                        </syncfusion:PickerFooterView.TextStyle>
+                        <Label FontFamily="{StaticResource SomarBold}"
+                               FontSize="24"
+                               Text="{Binding FilterLabelText}"
+                               TextColor="{StaticResource Primary}"/>
 
-                                    </syncfusion:PickerFooterView>
+                        <Image
+                            HorizontalOptions="StartAndExpand"
+                            Source="arrowDropdown"
+                            VerticalOptions="Center"/>
 
-                                </syncfusion:SfPicker.FooterView>
-                            </custom:CustomSfPicker>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btn_Clicked" />
 
-                            <Label Style="{StaticResource PageTitleBlack}" Text="{Binding FilterLabelText}" />
+                        </HorizontalStackLayout.GestureRecognizers>
 
-                            <Image
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                HorizontalOptions="StartAndExpand"
-                                Source="arrowDropdown"
-                                VerticalOptions="Center">
-                                <Image.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS" Value="5,-5,5,0" />
-                                        <On Platform="Android" Value="5,15,5,0" />
-                                    </OnPlatform>
-                                </Image.Margin>
-                            </Image>
+                    </HorizontalStackLayout>
 
+                        
+                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
 
-
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btn_Clicked" />
-
-                            </Grid.GestureRecognizers>
-                        </Grid>
-
-                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
-
-                    </StackLayout>
-
-
-                    <StackLayout Grid.Row="1">
+                    <Grid RowDefinitions="*" >
                         <!--  My Bills template UI Starts  -->
 
                         <!--  My Bills template UI Ends  ItemTapped="Bills_ItemTapped"  -->
@@ -225,10 +212,10 @@
                             Text="{x:Static ResourceManager:AppResources.Nocertificateavailable}"
                             VerticalOptions="Center" />
 
-                    </StackLayout>
+                    </Grid>
 
 
-                </Grid>
+                </StackLayout>
 
 
             </Border>

@@ -67,7 +67,7 @@
                 VerticalOptions="CenterAndExpand">
                 <Image
                     HeightRequest="20"
-                    IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}"
+                    IsVisible="{Binding IsSearchButtonVisible}"
                     Source="search"
                     WidthRequest="20">
                     <Image.GestureRecognizers>
@@ -100,17 +100,16 @@
                         x:Name="searchBar"
                         Grid.Column="0"
                         Margin="0"
-                        custom:RoundCornersEffect.CornerRadius="12"
                         BackgroundColor="White"
                         HorizontalOptions="FillAndExpand"
-                        IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}"
+                        IsVisible="{Binding IsCloseButtonVisible}"
                         TextChanged="SearchBar_TextChanged"
                         VerticalOptions="FillAndExpand" />
 
                     <Image
                         Grid.Column="1"
                         HeightRequest="24"
-                        IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}"
+                        IsVisible="{Binding IsCloseButtonVisible}"
                         Source="close"
                         WidthRequest="24">
                         <Image.GestureRecognizers>

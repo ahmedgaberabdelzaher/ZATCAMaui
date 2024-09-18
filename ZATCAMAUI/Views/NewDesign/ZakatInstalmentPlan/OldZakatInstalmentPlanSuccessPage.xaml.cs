@@ -94,7 +94,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
 
 
-        private async void Download_Acknowledgement(object sender, EventArgs e)
+        private  void Download_Acknowledgement(object sender, EventArgs e)
         {
             viewModel.IsLoading = true;
             if (viewModel.ZakatReferanceNumber != null)
@@ -110,7 +110,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
            
         }
 
-        private async void Download_Form(object sender, EventArgs e)
+        private  void Download_Form(object sender, EventArgs e)
         {
 
             viewModel.IsLoading = true;

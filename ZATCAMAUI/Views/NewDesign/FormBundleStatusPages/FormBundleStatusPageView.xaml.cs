@@ -109,12 +109,9 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
             {
                 //TODO
                 FormBundleApplicationNumberModelResult selectedfbnum = viewModel.FormBundleApplicatioNumberList[e.NewValue];
-                //BundleNumber.SelectedItem = selectedfbnum;//Fbnum
                 viewModel.SelectedFormBindleFbnum = selectedfbnum;
                 viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
                 viewModel.TxtFBnum = selectedfbnum.Fbnum;
-                //var item = sender as Picker;
-                //var selectedItem = item.SelectedItem as FormBundleApplicationNumberModelResult;
                 viewModel.populate();
             }
             catch (Exception)
@@ -127,10 +124,26 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
         private void OnBundleNumberClicked(object sender, EventArgs e)
         {
             BundleNumber.IsOpen = true;
+            if (viewModel.FormBundleApplicatioNumberList.Count == 1)
+            {
+                var selectedfbnum = BundleNumber.Columns[0].SelectedItem as FormBundleApplicationNumberModelResult;
+                viewModel.SelectedFormBindleFbnum = selectedfbnum;
+                viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
+                viewModel.TxtFBnum = selectedfbnum.Fbnum;
+                viewModel.populate();
+            }
+                
         }
         private void OnBundleTypeClicked(object sender, EventArgs e)
         {
             BundleType.IsOpen = true;
+            if (viewModel.FormBundleList.Count == 1)
+            {
+                var selectedfbtyp = BundleType.Columns[0].SelectedItem as FormBundleResult;
+                viewModel.SelectedFormBindleFbnumPrev = null;
+                viewModel.SelectedFormBindleFbtyp = selectedfbtyp;
+                viewModel.TxtFBtype = selectedfbtyp.Txt50;
+            }
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)

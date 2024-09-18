@@ -113,12 +113,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                 ArrowImageSource = fileImage
             });
 
-            generalServicesListData.Add(new GeneralServicesListModel
-            {
-                ZDTitle = AppResources.NDTaxEvasionReport,
-                ZDImageSource = "taxEvasion.png",
-                ArrowImageSource = fileImage
-            });
+          
             if (App.LoginDataRetrieved.TpMpVip.Equals("X"))
             {
                 generalServicesListData.Add(new GeneralServicesListModel

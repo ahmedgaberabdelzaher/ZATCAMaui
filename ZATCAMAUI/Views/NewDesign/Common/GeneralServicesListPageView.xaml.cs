@@ -38,12 +38,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                     _viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-                else if (selectedItem.ZDTitle == AppResources.NDTaxEvasionReport)
-                {
-                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TaxEvasion_Tapped", "Tax Evasion eService");
-                    _viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
-                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-                }
                 else if (selectedItem.ZDTitle == AppResources.NDRelationContact)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "Relationship manager contact details Tapped", "Relationship manager contact details");

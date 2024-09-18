@@ -2025,7 +2025,6 @@
                             <buttons:SfButton
                                 Grid.Row="2"
                                 Margin="0,20"
-                                Clicked="SfButton_Clicked"
                                 Command="{Binding ReasonContinueBtnTapped}"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
@@ -2291,7 +2290,6 @@
                                     ItemsSource="{Binding BankStatementsAttachmentsListViewData}"
                                     ScrollBarVisibility="Never"
                                     SelectionBackground="Transparent"
-                                    SelectionChanged="attachmentsListView_SelectionChanged"
                                     SelectionMode="SingleDeselect"
                                     TapCommand="{Binding BankStatementsAttachmentTapped}"
                                     VerticalOptions="Center">

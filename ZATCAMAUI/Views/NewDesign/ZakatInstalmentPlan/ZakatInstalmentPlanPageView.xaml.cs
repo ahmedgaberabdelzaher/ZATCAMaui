@@ -314,10 +314,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-        void attachmentsListView_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
-        {
-            //MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(VatInstalments.d.AttachmentSet.results,WhichAttachment.VATInstalment,viewModel.VatInstalments.d.ReturnIdz));
-        }
 
         protected override void OnDisappearing()
         {
@@ -576,10 +572,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
 
                 }
-                else if (DeviceInfo.Platform == DevicePlatform.Android)
-                {
-
-                }
 
             }
             catch (Exception)
@@ -595,13 +587,13 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             {
                 if (double.Parse(downPaymentEntry.Text) > viewModel.MaxAmount)
                 {
-                    viewModel.showDialog(AppResources.ZakatInstalmentCannotExceed + " " + viewModel.MaxAmount);
+                    viewModel.ShowDialog(AppResources.ZakatInstalmentCannotExceed + " " + viewModel.MaxAmount);
                     downPaymentEntry.Text = viewModel.MinAmount.ToString();
                     downPaymentSlider.Value = viewModel.MinAmount;
                 }
                 else if (double.Parse(downPaymentEntry.Text) < viewModel.MinAmount)
                 {
-                    viewModel.showDialog(AppResources.ZakatInstalmentCannotBeLessThan + viewModel.MinAmount);
+                    viewModel.ShowDialog(AppResources.ZakatInstalmentCannotBeLessThan + viewModel.MinAmount);
                     downPaymentEntry.Text = viewModel.MinAmount.ToString();
                     downPaymentSlider.Value = viewModel.MinAmount;
                 }

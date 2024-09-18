@@ -1092,11 +1092,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 ActiveOutletDecisionOptions = AppResources.VATInstalmentRequestToVatDisplayInstalment,
                 ActiveOutletDecisionOptionsIsSelected = false
             });
-            outletDecisionOptions.Add(new InstalmentPlanModel
-            {
-                ActiveOutletDecisionOptions = AppResources.VATInstallmentRevoke,
-                ActiveOutletDecisionOptionsIsSelected = false
-            });
+            //outletDecisionOptions.Add(new InstalmentPlanModel
+            //{
+            //    ActiveOutletDecisionOptions = AppResources.VATInstallmentRevoke,
+            //    ActiveOutletDecisionOptionsIsSelected = false
+            //});
             OutletDecisionOptions = outletDecisionOptions;
         }
 

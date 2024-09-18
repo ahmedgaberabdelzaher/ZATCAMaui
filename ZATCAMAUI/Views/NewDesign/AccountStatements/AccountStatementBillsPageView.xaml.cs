@@ -28,9 +28,9 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             {
                 try
                 {
-
+                    viewModel.IsLoading = true;
                     BillInfo billInfo = new BillInfo();
-                   await viewModel.onPageLoad(billInfo);
+                    await viewModel.onPageLoad(billInfo);
                     if (viewModel.MyBillsOriginal != null)
                     {
                         viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "P"));
@@ -38,7 +38,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                     await viewModel.PopulateReturnTypeList();
                     await viewModel.PopulateASFilterData();
                     viewModel.populateStatusChips();
-
+                    viewModel.IsLoading = false;
 
                 }
                 catch (Exception)
@@ -50,7 +50,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
 
 
         }
-      
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

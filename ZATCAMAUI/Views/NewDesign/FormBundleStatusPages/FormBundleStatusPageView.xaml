@@ -81,32 +81,28 @@
                             </Label>
 
                             <StackLayout>
-                                <inputLayout:SfTextInputLayout
-                                    x:Name="txtBundleType"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="8"
-                                    Stroke="{StaticResource Primary}">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                       <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding TxtFBtype}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalTextAlignment="Center" />
 
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                    <custom:GAZTBorderlessEntry
-                                        InputTransparent="True"
-                                        IsReadOnly="True"
-                                        Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding TxtFBtype}"
-                                        TextColor="{StaticResource NeutralBlack}"
-                                        VerticalTextAlignment="Center" />
-                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image Source="arrowDropdown.png" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
-                                </inputLayout:SfTextInputLayout>
+
+                                     <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnBundleTypeClicked" />
+
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                </custom:CustomSfTextInputView>
 
                                 <custom:CustomSfPicker
                                     x:Name="BundleType"
@@ -185,33 +181,28 @@
                             </Label>
 
                             <StackLayout>
-                                <inputLayout:SfTextInputLayout
-                                    x:Name="txtBundleNumber"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="8"
-                                    Stroke="{StaticResource Primary}">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding TxtFBnum}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalTextAlignment="Center" />
 
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                    <custom:GAZTBorderlessEntry
-                                        InputTransparent="True"
-                                        IsReadOnly="True"
-                                        Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding TxtFBnum}"
-                                        TextColor="{StaticResource NeutralBlack}"
-                                        VerticalTextAlignment="Center" />
-
-                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image Source="arrowDropdown.png" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
-                                </inputLayout:SfTextInputLayout>
+
+                                     <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnBundleNumberClicked" />
+
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                </custom:CustomSfTextInputView>
 
                                 <custom:CustomSfPicker
                                     x:Name="BundleNumber"
@@ -282,6 +273,7 @@
                                 Margin="0,10,0,10"
                                 BackgroundColor="White"
                                 HasUnevenRows="True"
+                                VerticalScrollBarVisibility="Never"
                                 HorizontalOptions="FillAndExpand"
                                 ItemTapped="ListView_ItemTapped"
                                 ItemsSource="{Binding ListFormBudles}"

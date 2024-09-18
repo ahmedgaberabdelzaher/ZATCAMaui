@@ -40,8 +40,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                 outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0];
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
                 viewModel.setMoreOptioButtons();
-
-                //downPaymentSlider.ValueChanged += (a,e)=>{ downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString()); };
             }
             catch (Exception)
             {
@@ -100,7 +98,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatDisputeInFavorOfGAZT];
             }
             else
-            //if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 2)
             {
                 viewModel.IsZakatSelected = false;
                 viewModel.IsIncomeTaxViewEnabled = false;
@@ -246,13 +243,10 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                         viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                     }
 
-                    //viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                     viewModel.MinAmountTitle = AppResources.ZakatMin + " " + string.Format("{0:N}", viewModel.MinAmount);
-                    //viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
                     viewModel.MaxAmountTitle = AppResources.ZakatMax + " " + string.Format("{0:N}", viewModel.MaxAmount);
                     viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
 
-                    //downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
 
                 }
                 catch (Exception)
@@ -272,10 +266,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-        void attachmentsListView_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
-        {
-            //MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(VatInstalments.d.AttachmentSet.results,WhichAttachment.VATInstalment,viewModel.VatInstalments.d.ReturnIdz));
-        }
 
         protected override void OnDisappearing()
         {
@@ -302,7 +292,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.IsZakat = Preferences.Get("isZakat", false);
                 viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
 
-                //getActionCommand();
                 getYesCommand();
                 getNoCommand();
 
@@ -355,7 +344,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                             }
 
                         }
-                        //viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                         viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                         viewModel.MinAmountTitle = AppResources.ZakatMin + " " + viewModel.MinAmount;
                         viewModel.PeriodicInstalment = Math.Round(totalAmountDue - viewModel.MinAmount);
@@ -373,7 +361,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                 {
                     viewModel.YesNoPickerModel = arg;
                     viewModel.updatePicker();
-                    // (arg);
 
                 });
 
@@ -407,7 +394,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case ArButtons.إلغاء:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.VoidMsg();
+                                   await viewModel.VoidMsg();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 case ArButtons.عادةتعيين:
@@ -418,7 +405,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case ArButtons.حفظكمسودة:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.OnSaveDraftClicked();
+                                   await viewModel.OnSaveDraftClicked();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 default:
@@ -567,46 +554,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
             }
         }
-
-        private void downPaymentEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-            try
-            {
-                if (viewModel.DownPaymentAmount > viewModel.MaxAmount)
-                {
-                    viewModel.showDialog(AppResources.ZakatInstalmentCannotExceed + " " + viewModel.MaxAmount);
-                    viewModel.DownPaymentAmount = viewModel.MaxAmount;
-                    //viewModel.DownPaymentSliderValue = viewModel.MinAmount;
-                }
-                else if (viewModel.DownPaymentAmount < viewModel.MinAmount)
-                {
-                    viewModel.showDialog(AppResources.ZakatInstalmentCannotBeLessThan + viewModel.MinAmount);
-                    viewModel.DownPaymentAmount = viewModel.MinAmount;
-                    //viewModel.DownPaymentSliderValue = viewModel.MaxAmount;
-                }
-
-                else
-                {
-                    // downPaymentSlider.Value = viewModel.DownPaymentAmount;
-                }
-                if (viewModel.DownPaymentAmount > 0)
-                {
-
-                   //downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
-
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-
-
-
-
-
 
         private void calculation_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -771,8 +718,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                         }
                     }
 
-                    //await MopupService.Instance.PopAsync();
-                    // await viewModel.VATSetReturnVoidAsync();
                 });
             }
             catch (Exception)
@@ -911,10 +856,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-        void SfButton_Clicked(object sender, EventArgs e)
-        {
-            //downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
-        }
 
     }
 }

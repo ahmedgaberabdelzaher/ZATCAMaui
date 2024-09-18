@@ -33,9 +33,6 @@ namespace ZATCAMAUI.Views.NewDesign.InstalmentPlan
         {
             InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
-            //            viewModel.ReasonContinueBtnClicked();
-
-
             if (selectedItem.ActiveOutletDecisionOptions == AppResources.DBSMZakatInstalmentPlan)
             {
                 viewModel.IsZakatSelected = true;

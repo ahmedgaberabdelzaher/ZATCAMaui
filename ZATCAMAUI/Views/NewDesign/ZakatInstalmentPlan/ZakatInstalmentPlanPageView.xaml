@@ -2007,7 +2007,6 @@
                                         ItemsSource="{Binding BankStatementsAttachmentsListViewData}"
                                         ScrollBarVisibility="Never"
                                         SelectionBackground="Transparent"
-                                        SelectionChanged="attachmentsListView_SelectionChanged"
                                         SelectionMode="SingleDeselect"
                                         TapCommand="{Binding BankStatementsAttachmentTapped}"
                                         VerticalOptions="Center">

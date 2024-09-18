@@ -380,7 +380,7 @@
         <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
         <!--<Setter Property="HasShadow" Value="False" />-->
         <Setter Property="HeightRequest" Value="56" />
-        <Setter Property="WidthRequest" Value="366" />
+        <Setter Property="WidthRequest" Value="{OnPlatform iOS=366,Android=320}" />
         <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
         <!--<Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />-->
     </Style>
