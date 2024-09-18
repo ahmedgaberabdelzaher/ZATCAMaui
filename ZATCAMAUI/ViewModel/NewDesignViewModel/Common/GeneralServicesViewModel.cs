@@ -124,13 +124,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                 });
             }
 
-            //TODO CR7420 - Changes Commented for Golive
-            //generalServicesListData.Add(new GeneralServicesListModel
-            //{
-            //    ZDTitle = AppResources.ZakatExemptionRequest,
-            //    ZDImageSource = "tax_evasion_green.png",
-            //    ArrowImageSource = fileImage
-            //});
+            generalServicesListData.Add(new GeneralServicesListModel
+            {
+                ZDTitle = AppResources.ZakatExemptionRequest,
+                ZDImageSource = "tax_evasion_green.png",
+                ArrowImageSource = fileImage
+            });
             GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
         }
 

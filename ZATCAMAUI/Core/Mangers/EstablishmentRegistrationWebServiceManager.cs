@@ -77,7 +77,7 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-                    
+
                 }
             }
             else
@@ -180,7 +180,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
             }
@@ -279,7 +279,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -349,8 +349,10 @@ namespace ZATCAMAUI.Core.Mangers
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         try
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
-                            if (ESTBranchesDropDownResponseJSON == null)
+
+                            string deserialisedResponseJSONs = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"]?.ToString();
+
+                            if (deserialisedResponseJSONs == null)
                             {
                                 ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
                                 if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count > 0)
@@ -385,17 +387,17 @@ namespace ZATCAMAUI.Core.Mangers
 
                             else
                             {
-                                if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                                if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
                                 {
-                                    taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                                    taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
                                 }
                             }
                         }
                         catch (Exception ex)
                         {
-                            
-                            
-                            System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
+
+
+                            System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex);
                             if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                             {
                                 ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
@@ -419,10 +421,10 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException )
+                catch (HttpRequestException)
                 {
                 }
-                catch (GAZTException )
+                catch (GAZTException)
                 {
                 }
                 catch (Exception)
@@ -499,10 +501,10 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException )
+                catch (HttpRequestException)
                 {
                 }
-                catch (GAZTException )
+                catch (GAZTException)
                 {
                 }
                 catch (Exception)
@@ -702,10 +704,10 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException )
+                catch (HttpRequestException)
                 {
                 }
-                catch (GAZTException )
+                catch (GAZTException)
                 {
                 }
                 catch (Exception)
@@ -775,17 +777,17 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException )
+                catch (HttpRequestException)
                 {
                 }
-                catch (GAZTException )
+                catch (GAZTException)
                 {
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
             }
@@ -853,7 +855,8 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ){
+                catch (JsonReaderException)
+                {
                     throw new GAZTInvalidDataException();
                 }
                 catch (HttpRequestException)
@@ -1016,7 +1019,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -1026,7 +1029,7 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (GAZTException)
                 {
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
             }
@@ -1350,10 +1353,10 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (HttpRequestException)
                 {
                 }
-                catch (GAZTException )
+                catch (GAZTException)
                 {
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
             }
@@ -1440,7 +1443,7 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (HttpRequestException)
                 {
                 }
-                catch (GAZTException )
+                catch (GAZTException)
                 {
                 }
                 catch (Exception)

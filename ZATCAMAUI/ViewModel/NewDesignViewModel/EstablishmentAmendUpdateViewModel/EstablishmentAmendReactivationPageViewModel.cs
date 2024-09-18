@@ -15,10 +15,11 @@ using ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Core.Interfaces;
+using System.Diagnostics;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 {
-   
+
     public class EstablishmentAmendUpdatePageViewModel : BaseViewModel
     {
 
@@ -39,47 +40,55 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             get => _currentTab;
             set
             {
-                /// if (_currentTab == value) return;
-                if (_currentTab == value)
+                try
                 {
-                    if (!IsNavigationCompletedToSuccessfulPage)
+                    /// if (_currentTab == value) return;
+                    if (_currentTab == value)
                     {
-                        MainThread.BeginInvokeOnMainThread(async () => fetchTabDataAndBind(_currentTab));
+                        if (!IsNavigationCompletedToSuccessfulPage)
+                        {
+                            MainThread.BeginInvokeOnMainThread(async () => fetchTabDataAndBind(_currentTab));
+                        }
+                        return;
                     }
-                    return;
+                    _currentTab = value;
+                    OnPropertyChanged(nameof(currentTab));
+                    CurrentIndex = (int)_currentTab;
+                    OnPropertyChanged(nameof(CurrentIndex));
+                    switch (value)
+                    {
+                        case EstablishmentRegistrationTabsEnum.TaxpayerDetail:
+                            SelectedTabText = AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel;
+                            NxtButtonLabel = AppResources.ZZNext;
+                            break;
+                        case EstablishmentRegistrationTabsEnum.PassportDetails:
+                            SelectedTabText = AppResources.ESTPassportDetailsTabTitleLabel;
+                            NxtButtonLabel = AppResources.ZZNext;
+                            break;
+                        case EstablishmentRegistrationTabsEnum.Outlets:
+                            SelectedTabText = AppResources.ESTOutletsTabTitleLabel;
+                            NxtButtonLabel = AppResources.ZZNext;
+                            break;
+                        case EstablishmentRegistrationTabsEnum.FinancialDetail:
+                            SelectedTabText = AppResources.VATRFinancialDetails;
+                            NxtButtonLabel = AppResources.ZZNext;
+                            break;
+                        case EstablishmentRegistrationTabsEnum.Declaration:
+                            SelectedTabText = AppResources.ZVatSummary;
+                            NxtButtonLabel = AppResources.Submit;
+                            break;
+                        case EstablishmentRegistrationTabsEnum.RegistrationType:
+                        default:
+                            SelectedTabText = AppResources.ESTRegTaxTabTitleLabel;
+                            NxtButtonLabel = AppResources.ZZNext;
+                            break;
+                    }
                 }
-                _currentTab = value;
-                OnPropertyChanged(nameof(currentTab));
-                CurrentIndex = (int)_currentTab;
-                OnPropertyChanged(nameof(CurrentIndex));
-                switch (value)
+                catch (NullReferenceException ex)
                 {
-                    case EstablishmentRegistrationTabsEnum.TaxpayerDetail:
-                        SelectedTabText = AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel;
-                        NxtButtonLabel = AppResources.ZZNext;
-                        break;
-                    case EstablishmentRegistrationTabsEnum.PassportDetails:
-                        SelectedTabText = AppResources.ESTPassportDetailsTabTitleLabel;
-                        NxtButtonLabel = AppResources.ZZNext;
-                        break;
-                    case EstablishmentRegistrationTabsEnum.Outlets:
-                        SelectedTabText = AppResources.ESTOutletsTabTitleLabel;
-                        NxtButtonLabel = AppResources.ZZNext;
-                        break;
-                    case EstablishmentRegistrationTabsEnum.FinancialDetail:
-                        SelectedTabText = AppResources.VATRFinancialDetails;
-                        NxtButtonLabel = AppResources.ZZNext;
-                        break;
-                    case EstablishmentRegistrationTabsEnum.Declaration:
-                        SelectedTabText = AppResources.ZVatSummary;
-                        NxtButtonLabel = AppResources.Submit;
-                        break;
-                    case EstablishmentRegistrationTabsEnum.RegistrationType:
-                    default:
-                        SelectedTabText = AppResources.ESTRegTaxTabTitleLabel;
-                        NxtButtonLabel = AppResources.ZZNext;
-                        break;
+                    Debug.WriteLine($"NullReferenceException caught: {ex}");
                 }
+
                 MainThread.BeginInvokeOnMainThread(async () => fetchTabDataAndBind(_currentTab));
             }
         }
@@ -1175,7 +1184,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         newItem.ShowEditIcon = true;
                     }
 
-                    
+
                     OutlettUiList.Add(newItem);
                 });
                 OnPropertyChanged(SearchText);
@@ -1707,7 +1716,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                     MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
-                catch (GAZTUnlockAccountException )
+                catch (GAZTUnlockAccountException)
                 {
 
                 }
@@ -1754,7 +1763,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                     MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
-                catch (GAZTUnlockAccountException )
+                catch (GAZTUnlockAccountException)
                 {
 
                 }
@@ -1876,7 +1885,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                     MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
-                catch (GAZTUnlockAccountException )
+                catch (GAZTUnlockAccountException)
                 {
 
                 }
@@ -2156,93 +2165,101 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
         void SetUIAvailability()
         {
-            switch (App.ZAKATType)
+            try
             {
-                case PageExecutionType.Amend:
-                    RegTaxPayerTypeAvailability.ReportingBranch = false;
-                    RegTaxPayerTypeAvailability.IsReportingBranchVisible = false;
-                    RegTaxPayerTypeAvailability.EntityType = false;
-                    RegTaxPayerTypeAvailability.TaxPayerType = false;
-                    RegTaxPayerTypeAvailability.IsTaxPayerTypeVisible = false;
-                    RegTaxPayerTypeAvailability.Nationality = false;
-                    RegTaxPayerTypeAvailability.IsNationalityStatusVisible = true;
-                    RegTaxPayerTypeAvailability.ResidencyStatus = true;
+                switch (App.ZAKATType)
+                {
+                    case PageExecutionType.Amend:
+                        RegTaxPayerTypeAvailability.ReportingBranch = false;
+                        RegTaxPayerTypeAvailability.IsReportingBranchVisible = false;
+                        RegTaxPayerTypeAvailability.EntityType = false;
+                        RegTaxPayerTypeAvailability.TaxPayerType = false;
+                        RegTaxPayerTypeAvailability.IsTaxPayerTypeVisible = false;
+                        RegTaxPayerTypeAvailability.Nationality = false;
+                        RegTaxPayerTypeAvailability.IsNationalityStatusVisible = true;
+                        RegTaxPayerTypeAvailability.ResidencyStatus = true;
 
-                    TaxPayerDetailsAvailability.DOB = true;
-                    TaxPayerDetailsAvailability.Title = false;
-                    TaxPayerDetailsAvailability.FirstName = false;
-                    TaxPayerDetailsAvailability.LastName = true;
-                    TaxPayerDetailsAvailability.FathersName = false;
-                    TaxPayerDetailsAvailability.GrandFathersName = false;
-                    TaxPayerDetailsAvailability.IsFamilyNameVisible = false;
-                    TaxPayerDetailsAvailability.IsInitialVisible = false;
-                    TaxPayerDetailsAvailability.IsGenderVisible = false;
-                    TaxPayerDetailsAvailability.Nationality = false;
-                    TaxPayerDetailsAvailability.IsNationalityVisible = false;
-                    TaxPayerDetailsAvailability.Citizen = false;
-                    TaxPayerDetailsAvailability.IsCitizenVisible = false;
-                    TaxPayerDetailsAvailability.Residence = false;
-                    TaxPayerDetailsAvailability.IsResidenceVisible = false;
+                        TaxPayerDetailsAvailability.DOB = true;
+                        TaxPayerDetailsAvailability.Title = false;
+                        TaxPayerDetailsAvailability.FirstName = false;
+                        TaxPayerDetailsAvailability.LastName = true;
+                        TaxPayerDetailsAvailability.FathersName = false;
+                        TaxPayerDetailsAvailability.GrandFathersName = false;
+                        TaxPayerDetailsAvailability.IsFamilyNameVisible = false;
+                        TaxPayerDetailsAvailability.IsInitialVisible = false;
+                        TaxPayerDetailsAvailability.IsGenderVisible = false;
+                        TaxPayerDetailsAvailability.Nationality = false;
+                        TaxPayerDetailsAvailability.IsNationalityVisible = false;
+                        TaxPayerDetailsAvailability.Citizen = false;
+                        TaxPayerDetailsAvailability.IsCitizenVisible = false;
+                        TaxPayerDetailsAvailability.Residence = false;
+                        TaxPayerDetailsAvailability.IsResidenceVisible = false;
 
-                    PassportDetails.PassportNo = true;
-                    PassportDetails.IssueCountry = true;
-                    PassportDetails.IssueDate = true;
-                    PassportDetails.ExpiryDate = true;
-                    PassportDetails.Attachment = true;
+                        PassportDetails.PassportNo = true;
+                        PassportDetails.IssueCountry = true;
+                        PassportDetails.IssueDate = true;
+                        PassportDetails.ExpiryDate = true;
+                        PassportDetails.Attachment = true;
 
-                    FinancialDetails.FinancialRecords = true;
-                    FinancialDetails.CalendarType = false;
-                    FinancialDetails.FiscalMonthEnd = false;
-                    FinancialDetails.FiscalDayEnd = false;
-                    FinancialDetails.CommencementDate = false;
-                    FinancialDetails.TaxableDate = false;
-                    break;
-                case PageExecutionType.Update:
-                    RegTaxPayerTypeAvailability.ReportingBranch = false;
-                    RegTaxPayerTypeAvailability.IsReportingBranchVisible = true;
-                    RegTaxPayerTypeAvailability.EntityType = false;
-                    RegTaxPayerTypeAvailability.TaxPayerType = false;
-                    RegTaxPayerTypeAvailability.IsTaxPayerTypeVisible = false;
-                    RegTaxPayerTypeAvailability.Nationality = false;
-                    RegTaxPayerTypeAvailability.IsNationalityStatusVisible = false;
-                    RegTaxPayerTypeAvailability.ResidencyStatus = false;
-                    RegTaxPayerTypeAvailability.IsResidencyStatusVisible = false;
+                        FinancialDetails.FinancialRecords = true;
+                        FinancialDetails.CalendarType = false;
+                        FinancialDetails.FiscalMonthEnd = false;
+                        FinancialDetails.FiscalDayEnd = false;
+                        FinancialDetails.CommencementDate = false;
+                        FinancialDetails.TaxableDate = false;
+                        break;
+                    case PageExecutionType.Update:
+                        RegTaxPayerTypeAvailability.ReportingBranch = false;
+                        RegTaxPayerTypeAvailability.IsReportingBranchVisible = true;
+                        RegTaxPayerTypeAvailability.EntityType = false;
+                        RegTaxPayerTypeAvailability.TaxPayerType = false;
+                        RegTaxPayerTypeAvailability.IsTaxPayerTypeVisible = false;
+                        RegTaxPayerTypeAvailability.Nationality = false;
+                        RegTaxPayerTypeAvailability.IsNationalityStatusVisible = false;
+                        RegTaxPayerTypeAvailability.ResidencyStatus = false;
+                        RegTaxPayerTypeAvailability.IsResidencyStatusVisible = false;
 
-                    TaxPayerDetailsAvailability.DOB = true;
-                    TaxPayerDetailsAvailability.Title = false;
-                    TaxPayerDetailsAvailability.FirstName = false;
-                    TaxPayerDetailsAvailability.LastName = true;
-                    TaxPayerDetailsAvailability.FathersName = false;
-                    TaxPayerDetailsAvailability.GrandFathersName = false;
-                    TaxPayerDetailsAvailability.FamilyName = false;
-                    TaxPayerDetailsAvailability.Initial = false;
-                    TaxPayerDetailsAvailability.Gender = true;
-                    TaxPayerDetailsAvailability.IsFamilyNameVisible = true;
-                    TaxPayerDetailsAvailability.IsInitialVisible = true;
-                    TaxPayerDetailsAvailability.IsGenderVisible = true;
-                    TaxPayerDetailsAvailability.Nationality = true;
-                    TaxPayerDetailsAvailability.IsNationalityVisible = true;
-                    TaxPayerDetailsAvailability.Citizen = true;
-                    TaxPayerDetailsAvailability.IsCitizenVisible = true;
-                    TaxPayerDetailsAvailability.Residence = true;
-                    TaxPayerDetailsAvailability.IsResidenceVisible = true;
+                        TaxPayerDetailsAvailability.DOB = true;
+                        TaxPayerDetailsAvailability.Title = false;
+                        TaxPayerDetailsAvailability.FirstName = false;
+                        TaxPayerDetailsAvailability.LastName = true;
+                        TaxPayerDetailsAvailability.FathersName = false;
+                        TaxPayerDetailsAvailability.GrandFathersName = false;
+                        TaxPayerDetailsAvailability.FamilyName = false;
+                        TaxPayerDetailsAvailability.Initial = false;
+                        TaxPayerDetailsAvailability.Gender = true;
+                        TaxPayerDetailsAvailability.IsFamilyNameVisible = true;
+                        TaxPayerDetailsAvailability.IsInitialVisible = true;
+                        TaxPayerDetailsAvailability.IsGenderVisible = true;
+                        TaxPayerDetailsAvailability.Nationality = true;
+                        TaxPayerDetailsAvailability.IsNationalityVisible = true;
+                        TaxPayerDetailsAvailability.Citizen = true;
+                        TaxPayerDetailsAvailability.IsCitizenVisible = true;
+                        TaxPayerDetailsAvailability.Residence = true;
+                        TaxPayerDetailsAvailability.IsResidenceVisible = true;
 
-                    PassportDetails.PassportNo = false;
-                    PassportDetails.IssueCountry = false;
-                    PassportDetails.IssueDate = false;
-                    PassportDetails.ExpiryDate = false;
-                    PassportDetails.Attachment = false;
+                        PassportDetails.PassportNo = false;
+                        PassportDetails.IssueCountry = false;
+                        PassportDetails.IssueDate = false;
+                        PassportDetails.ExpiryDate = false;
+                        PassportDetails.Attachment = false;
 
-                    FinancialDetails.FinancialRecords = false;
-                    FinancialDetails.CalendarType = false;
-                    FinancialDetails.FiscalMonthEnd = false;
-                    FinancialDetails.FiscalDayEnd = false;
-                    FinancialDetails.CommencementDate = false;
-                    FinancialDetails.TaxableDate = false;
-                    break;
-                default:
-                    break;
+                        FinancialDetails.FinancialRecords = false;
+                        FinancialDetails.CalendarType = false;
+                        FinancialDetails.FiscalMonthEnd = false;
+                        FinancialDetails.FiscalDayEnd = false;
+                        FinancialDetails.CommencementDate = false;
+                        FinancialDetails.TaxableDate = false;
+                        break;
+                    default:
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
         private async void navigateToNext()
@@ -2336,11 +2353,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 }
 
                 SetUIAvailability();
+
             }
+            catch (NullReferenceException ex)
+            {
+                Debug.WriteLine($"NullReferenceException caught: {ex.Message}");
+            }
+
             catch (Exception)
             {
-
-
             }
             finally
             {
@@ -3662,10 +3683,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         obj.IssuedCountry = resultCountry.Landx;
                     }
-                  
+
                     if (App.IsArabic)
                     {
-                        
+
                         if (obj.IssuedCountry == "SA" || obj.IssuedCountry == "Saudi Arabia" || obj.IssuedCountry.Equals("السعودية"))
                         {
                             obj.IssuedBy = ZATCAConstants.ArIssueBy["90702"];
@@ -3677,7 +3698,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     }
                     else
                     {
-                        
+
                         if (obj.IssuedCountry == "SA" || obj.IssuedCountry == "Saudi Arabia" || obj.IssuedCountry.Equals("السعودية"))
                         {
                             obj.IssuedBy = ZATCAConstants.EnIssueBy["90702"];
@@ -4026,7 +4047,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
             }
             catch (Exception)
-            {}
+            { }
             return true;
         }
 

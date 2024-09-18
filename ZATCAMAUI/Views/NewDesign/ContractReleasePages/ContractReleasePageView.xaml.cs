@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
@@ -316,7 +317,8 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             {
                 viewModel.ContractTotalAmount = double.Parse(ContractTotalAmountText.Text);
                 viewModel.MakeCalculations();
-                ContractTotalAmountText.Text = string.Format("{0:N}", Convert.ToDouble(ContractTotalAmountText.Text));
+                ContractTotalAmountText.Text = string.Format(CultureInfo.InvariantCulture,
+                                "{0:0.00}", Convert.ToDouble(ContractTotalAmountText.Text));
 
             }
             catch (Exception)
@@ -328,23 +330,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 
         private void AmountToReleaseUnfocused(object sender, FocusEventArgs e)
         {
-            try
-            {
-                if (viewModel.ContractTotalAmount < double.Parse(AmountoReleaseTxt.Text))
-                {
-                    viewModel._dialogService.ShowMessageBox(AppResources.CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract, AppResources.CRWarning);
-                }
-                viewModel.AmountToRelease = double.Parse(AmountoReleaseTxt.Text);
-
-                viewModel.MakeCalculations();
-                AmountoReleaseTxt.Text = string.Format("{0:N}", Convert.ToDouble(AmountoReleaseTxt.Text));
-
-            }
-            catch (Exception)
-            {
-
-
-            }
+            
 
         }
 

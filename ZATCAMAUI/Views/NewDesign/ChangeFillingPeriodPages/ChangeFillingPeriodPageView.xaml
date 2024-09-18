@@ -13,7 +13,8 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector" xmlns:inputLayout="http://schemas.syncfusion.com/maui"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -198,17 +199,9 @@
                                             Padding="10,3,10,3"
                                             HorizontalOptions="FillAndExpand"
                                             Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
+                                            StrokeShape="RoundRectangle 12"
                                             VerticalOptions="FillAndExpand">
-                                            <Grid
-                                                Padding="0,5,0,5"
-                                                ColumnSpacing="0"
-                                                HorizontalOptions="FillAndExpand"
-                                                RowSpacing="0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
+                                            <StackLayout>
                                                 <Label
                                                     Grid.Row="0"
                                                     Margin="0"
@@ -223,7 +216,8 @@
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource ValueLabelBlackBold}"
                                                     Text="{Binding CurrentFrequency}" />
-                                            </Grid>
+
+                                            </StackLayout>
                                         </Border>
 
                                         <Border
@@ -235,15 +229,7 @@
                                             Stroke="Gray"
                                             StrokeShape="RoundRectangle 12,12,12,12"
                                             VerticalOptions="FillAndExpand">
-                                            <Grid
-                                                Padding="0,5,0,5"
-                                                ColumnSpacing="0"
-                                                HorizontalOptions="FillAndExpand"
-                                                RowSpacing="0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
+                                            <StackLayout>
                                                 <Label
                                                     Grid.Row="0"
                                                     Grid.Column="0"
@@ -263,11 +249,13 @@
                                                     Style="{StaticResource ValueLabelBlackBold}"
                                                     Text="{Binding NewFrequency}"
                                                     VerticalOptions="Start" />
-                                            </Grid>
+
+                                            </StackLayout>
                                         </Border>
                                     </Grid>
 
                                     <Grid
+                                        HorizontalOptions="StartAndExpand"
                                         Grid.Row="2"
                                         Grid.ColumnSpan="2"
                                         ColumnSpacing="0"
@@ -279,8 +267,20 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
+                                        
+                                        
 
-                                        <Label
+                                        
+
+                                    </Grid>
+
+
+                                    <StackLayout HorizontalOptions="StartAndExpand"
+                                        Grid.Row="2"
+                                        Grid.ColumnSpan="2"
+                                        HeightRequest="80"
+                                        WidthRequest="171" >
+                                            <Label
                                             Grid.Row="0"
                                             Margin="0"
                                             Padding="0"
@@ -296,64 +296,56 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <Border
-                                            Grid.Row="1"
-                                            Margin="0,5,0,0"
-                                            Padding="10,0,10,0"
-                                            HorizontalOptions="FillAndExpand"
-                                            Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12">
-                                            <StackLayout
+                                            <Border
+                                                Grid.Row="1"
+                                                Margin="0,5,0,0"
+                                                Padding="10,0,10,0"
                                                 HorizontalOptions="FillAndExpand"
-                                                Orientation="Horizontal"
-                                                VerticalOptions="CenterAndExpand">
-                                                <custom:GAZTBorderlessEntry
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    FontSize="Small"
+                                                Stroke="Gray"
+                                                StrokeShape="RoundRectangle 12,12,12,12">
+                                                <StackLayout
                                                     HorizontalOptions="FillAndExpand"
-                                                    IsEnabled="False"
-                                                    PlaceholderColor="Gray"
-                                                    Text="{Binding EffectiveDatePicked}"
-                                                    TextColor="{StaticResource PrimaryColor}"
+                                                    Orientation="Horizontal"
                                                     VerticalOptions="CenterAndExpand">
-                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding EffectiveDateSpinnerClicked}" />
-                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                                </custom:GAZTBorderlessEntry>
-                                                <Image
-                                                    Margin="12"
-                                                    HeightRequest="24"
-                                                    Source="arrowDropdown.png"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    WidthRequest="24">
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding EffectiveDateSpinnerClicked}" />
-                                                    </Image.GestureRecognizers>
-                                                </Image>
-                                            </StackLayout>
-                                            <Border.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding EffectiveDateSpinnerClicked}" />
-                                            </Border.GestureRecognizers>
-                                        </Border>
+                                                    <custom:GAZTBorderlessEntry
+                                                        FontFamily="{StaticResource SomarBold}"
+                                                        FontSize="Small"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        IsEnabled="False"
+                                                        PlaceholderColor="Gray"
+                                                        Text="{Binding EffectiveDatePicked}"
+                                                        TextColor="{StaticResource PrimaryColor}"
+                                                        VerticalOptions="CenterAndExpand">
+                                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding EffectiveDateSpinnerClicked}" />
+                                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    </custom:GAZTBorderlessEntry>
 
-                                    </Grid>
+                                                    <Image
+                                                        Margin="12"
+                                                        HeightRequest="24"
+                                                        Source="arrowDropdown.png"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="24">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding EffectiveDateSpinnerClicked}" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
 
-                                    <StackLayout
+                                                 </StackLayout>
+                                                <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding EffectiveDateSpinnerClicked}" />
+                                                </Border.GestureRecognizers>
+                                            </Border>
+                                        </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal"
                                         Grid.Row="3"
                                         Grid.ColumnSpan="2"
-                                        Margin="10,25,10,0"
+                                        Spacing="10"
                                         IsVisible="{Binding IsDecCheckBoxVisible}">
 
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <custom:CheckboxCustom
+                                        <custom:CheckboxCustom
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 CheckChanged="OnFrequechCheckChanged"
@@ -381,26 +373,31 @@
                                                     </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
+                                        <!--<Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            
 
 
-                                        </Grid>
+                                        </Grid>-->
                                     </StackLayout>
 
-                                    <Border
-                                        Grid.Row="4"
-                                        Grid.ColumnSpan="2"
-                                        Margin="-20,0"
-                                        VerticalOptions="End">
+                                    <buttons:SfButton
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="{Binding FrequencyDetailsButtonBackGroundColor}"
+                                    Command="{Binding FrequencyContinueBtnTapped}"
+                                    HeightRequest="48"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" />
 
-                                        <buttons:SfButton
-                                            BackgroundColor="{Binding FrequencyDetailsButtonBackGroundColor}"
-                                            Command="{Binding FrequencyContinueBtnTapped}"
-                                            HeightRequest="48"
-                                            Style="{StaticResource PrimaryButtonStyle}"
-                                            Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
-                                            WidthRequest="366" />
-
-                                    </Border>
                                 </Grid>
 
 
@@ -408,20 +405,10 @@
                                 <!--  Attachments screen  -->
 
                                 <StackLayout
-                                    Margin="20,10,20,0"
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding IsAttachmentsViewEnabled}"
                                     VerticalOptions="FillAndExpand">
-                                    <Grid
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="2">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="1" />
-                                        </Grid.RowDefinitions>
                                         <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
@@ -440,7 +427,6 @@
                                             Grid.Column="0"
                                             Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    </Grid>
 
                                     <Grid
                                         Grid.Row="1"
@@ -746,75 +732,47 @@
                                         </StackLayout>
                                     </Border>
 
-                                    <Border
-                                        Grid.Row="4"
-                                        Grid.ColumnSpan="2"
-                                        Margin="-20,0"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="End">
-
-                                        <buttons:SfButton
+                                     <buttons:SfButton
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
                                             BackgroundColor="{Binding AttachButtonBackGroundColor}"
                                             Command="{Binding AttachmentsContinueBtnTapped}"
                                             HeightRequest="48"
-                                            HorizontalOptions="FillAndExpand"
                                             Style="{StaticResource PrimaryButtonStyle}"
-                                            Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
-                                            WidthRequest="366" />
-
-                                    </Border>
+                                            Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" />
+                                       
 
                                 </StackLayout>
 
                                 <!--  Declaration screen  -->
 
-                                <Grid
-                                    Margin="20,10,20,0"
+                                <StackLayout
+                                    
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding IsDeclarationViewEnabled}"
                                     VerticalOptions="FillAndExpand">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid
+                                    
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
-                                        Grid.ColumnSpan="2">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="1" />
-                                        </Grid.RowDefinitions>
-                                        <Label
-                                            Grid.Row="0"
-                                            Grid.Column="0"
-                                            FontSize="28"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlackBold}"
-                                            Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodDeclaration}" />
-                                        <Label
-                                            Grid.Row="1"
-                                            Grid.Column="0"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodDeclarationSub}" />
-                                        <BoxView
-                                            Grid.Row="2"
-                                            Grid.Column="0"
-                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                        FontSize="28"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource SectionTitleBlackBold}"
+                                        Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodDeclaration}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodDeclarationSub}" />
+                                    <BoxView
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    </Grid>
-                                    <Grid
+                                    <!--<Grid
                                         Grid.Row="1"
                                         Grid.ColumnSpan="2"
                                         IsVisible="{Binding IsDeclarationViewEnabledNew}">
@@ -844,7 +802,7 @@
 
                                             </StackLayout>
                                         </StackLayout>
-                                    </Grid>
+                                    </Grid>-->
 
                                     <StackLayout
                                         Grid.Row="1"
@@ -855,9 +813,7 @@
                                         Orientation="Horizontal"
                                         VerticalOptions="End">
 
-
-
-                                        <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
                                             <custom:CheckboxCustom
                                                 CheckChanged="CheckBox_CheckedChanged"
                                                 IsChecked="{Binding IsCheckboxChecked}"
@@ -866,6 +822,7 @@
                                             <Label
                                                 FontFamily="{StaticResource SomarRegular}"
                                                 FontSize="11"
+                                                VerticalOptions="StartAndExpand"
                                                 HorizontalTextAlignment="Start"
                                                 Text="{x:Static ResourceManager:AppResources.CFPDeclarationCheckbox}">
                                                 <Label.Triggers>
@@ -886,20 +843,9 @@
                                         </StackLayout>
 
                                     </StackLayout>
-                                    <Grid
-                                        Grid.Row="2"
-                                        Grid.ColumnSpan="2"
-                                        ColumnSpacing="0"
-                                        HeightRequest="80"
-                                        IsVisible="{Binding IsDeclarationViewEnabledOld}"
-                                        RowSpacing="0"
-                                        WidthRequest="171">
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                        </Grid.RowDefinitions>
-
+                                    <StackLayout
+                                        IsVisible="{Binding IsDeclarationViewEnabledOld}">
                                         <Label
                                             Grid.Row="0"
                                             Margin="0"
@@ -951,21 +897,13 @@
                                             </StackLayout>
                                         </Border>
 
-                                    </Grid>
+                                    </StackLayout>
+                                   
                                     <StackLayout
-                                        Grid.Row="3"
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="2"
+                                        
                                         IsVisible="{Binding IsDeclarationViewEnabledOld}">
 
-                                        <Grid HeightRequest="80" WidthRequest="366">
-
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-
-                                            <Label
+                                        <Label
                                                 Grid.Row="0"
                                                 Margin="0"
                                                 Padding="0"
@@ -1011,7 +949,7 @@
                                                 </StackLayout>
                                             </Border>
 
-                                        </Grid>
+
 
                                         <Grid
                                             HeightRequest="80"
@@ -1040,6 +978,7 @@
                                                 </Label.FormattedText>
                                             </Label>
 
+                                            
                                             <Border
                                                 Grid.Row="1"
                                                 Margin="0,5,0,0"
@@ -1069,26 +1008,14 @@
                                                     </Image>
                                                 </StackLayout>
                                             </Border>
-
                                         </Grid>
 
 
 
                                     </StackLayout>
-                                    <Grid
-                                        Grid.Row="4"
-                                        Grid.ColumnSpan="2"
-                                        ColumnSpacing="0"
-                                        HeightRequest="80"
-                                        IsVisible="{Binding IsDeclarationViewEnabledOld}"
-                                        RowSpacing="0"
-                                        WidthRequest="171">
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                        </Grid.RowDefinitions>
-
+                                    <StackLayout
+                                        IsVisible="{Binding IsDeclarationViewEnabledOld}">
                                         <Label
                                             Grid.Row="0"
                                             Margin="0"
@@ -1129,25 +1056,21 @@
                                                     VerticalOptions="CenterAndExpand" />
                                             </StackLayout>
                                         </Border>
-                                    </Grid>
 
-                                    <Border
-                                        Grid.Row="5"
-                                        Grid.ColumnSpan="2"
-                                        Margin="-20,0"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="End">
-                                        <buttons:SfButton
+                                    </StackLayout>
+                                    
+
+                                    <buttons:SfButton
+                                        Margin="10"
                                             BackgroundColor="{Binding DeclarationButtonBackGroundColor}"
                                             Command="{Binding DeclarationContinueBtnTapped}"
                                             HeightRequest="48"
                                             HorizontalOptions="FillAndExpand"
                                             Style="{StaticResource PrimaryButtonStyle}"
                                             Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
-                                            WidthRequest="366" />
-
-                                    </Border>
-                                </Grid>
+                                             />
+                                    
+                                </StackLayout>
 
                                 <!--  Summary screens  -->
 

@@ -50,7 +50,7 @@ public class OTPPageViewModel : BaseViewModel
     
     public OTPPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
     {
-        OTPSentOnThisMobileNumber = AppResources.ZZMobileNumber + " xxxxxxx" + App.MobileNumber?.Substring(7, 3);
+        OTPSentOnThisMobileNumber = AppResources.ZZMobileNumber + " " + App.MobileNumber;
     }
 
     public ICommand GoToNextEntryCommand
@@ -184,6 +184,7 @@ public class OTPPageViewModel : BaseViewModel
                     App.Token = result?.Result?.AccessToken;
                     await LoginCompleted();
                     _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView,false);
+                    OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = string.Empty;
                 }
             }
             else if (tokenResponse != null && tokenResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)

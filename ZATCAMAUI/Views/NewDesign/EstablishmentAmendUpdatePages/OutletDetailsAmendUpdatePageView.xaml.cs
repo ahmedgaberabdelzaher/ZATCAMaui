@@ -1,5 +1,6 @@
 ﻿
 using Mopups.Services;
+using Syncfusion.Maui.Core.Chips;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
@@ -49,7 +50,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse");
         }
-        void SfChipGroup_SelectionChanged(object sender, Syncfusion.Maui.Core.Chips.SelectionChangingEventArgs e)
+        void SfChipGroup_SelectionChanged(object sender,SelectionChangingEventArgs e)
         {
             try
             {
@@ -66,7 +67,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             }
         }
 
-        void OutletTabSfChipGroup_SelectionChanging(object sender, Syncfusion.Maui.Core.Chips.SelectionChangingEventArgs e)
+        void OutletTabSfChipGroup_SelectionChanging(object sender, SelectionChangingEventArgs e)
         {
             try
             {
