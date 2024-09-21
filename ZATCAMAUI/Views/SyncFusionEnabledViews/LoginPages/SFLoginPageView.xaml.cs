@@ -132,6 +132,19 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
             viewModel.SelectedTin = string.Empty;
         }
 
+        private void ImageSeePassword_Tapped(object sender, TappedEventArgs e)
+        {
+            if (viewModel.IsPasswordEncripted)
+            {
+                viewModel.IsPasswordEncripted = false;
+                ImageSeePassword.Source = "showPassword";
+            }
+            else
+            {
+                viewModel.IsPasswordEncripted = true;
+                ImageSeePassword.Source = "hidePassword";
+            }
+        }
 
 
 

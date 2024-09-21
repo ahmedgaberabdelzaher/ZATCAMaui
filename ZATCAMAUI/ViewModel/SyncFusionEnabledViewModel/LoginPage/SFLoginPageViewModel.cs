@@ -596,6 +596,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 _NavigaateToThisService = value;
             }
         }
+        private bool _isPasswordEncripted = true;
+        public bool IsPasswordEncripted
+        {
+            get
+            {
+                return _isPasswordEncripted;
+            }
+            set
+            {
+                if (_isPasswordEncripted == value) return;
+
+                _isPasswordEncripted = value;
+                OnPropertyChanged("IsPasswordEncripted");
+            }
+        }
         #endregion
         #region Command
         /// <summary>

@@ -11,15 +11,22 @@ public partial class ZakatExemptionRequestListPageView : ContentPage
 
 	public ZakatExemptionRequestListPageView()
 	{
-		InitializeComponent();
+		try
+		{
+            InitializeComponent();
 
-		viewModel = App.Locator.ZakatExemptionRequestListPageView;
-		this.BindingContext = viewModel;
+            viewModel = App.Locator.ZakatExemptionRequestListPageView;
+            this.BindingContext = viewModel;
 
-		Task.Run(() => this.viewModel.GetDetailsForZakatExeListAsync()).Wait();
+            viewModel.GetDetailsForZakatExeListAsync().Wait();
 
-		viewModel.PopulateStatusTypeList();
-		this.BindingContext = viewModel;
+            viewModel.PopulateStatusTypeList();
+        }
+		catch (Exception ex)
+		{
+
+		}
+		
 
 	}
 
