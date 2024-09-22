@@ -532,7 +532,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                         {
                             if (item.TestDueAmount != null)
                             {
-                                Amount = Amount + Convert.ToDouble(item.TestDueAmount);
+                                Amount = Amount + double.Parse(item.TestDueAmount,NumberStyles.Number, CultureInfo.InvariantCulture);
                             }
                             item.StatusTextColor = (Color)App.Current.Resources["Error"];
                             item.StatusBackGColor = (Color)App.Current.Resources["ErrorBg"];
@@ -552,7 +552,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                             if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
                             {
                                 // Amount = Amount + Convert.ToDouble(item.TotalRemainingAmount);
-                                Amount = Amount +  (Convert.ToDouble(item.BETRW) - Convert.ToDouble(item.Paidamt));
+                                Amount = Amount +  (double.Parse(item.BETRW, NumberStyles.Number, CultureInfo.InvariantCulture) - double.Parse(item.Paidamt, NumberStyles.Number, CultureInfo.InvariantCulture));
                             }
                             item.StatusTextColor = (Color)App.Current.Resources["Partial"];
                             item.StatusBackGColor = (Color)App.Current.Resources["PartialBg"];
@@ -561,7 +561,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                         {
                             if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
                             {
-                                Amount = Amount + Convert.ToDouble(item.TotalRemainingAmount);
+                                Amount = Amount + double.Parse(item.TotalRemainingAmount, NumberStyles.Number, CultureInfo.InvariantCulture);
                             }
                             item.StatusTextColor = (Color)App.Current.Resources["color"];
                             item.StatusBackGColor = (Color)App.Current.Resources["gray"];
@@ -571,7 +571,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     }
 
                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                    decimal d = Convert.ToDecimal(Amount.ToString());
+                    //  decimal d = Convert.ToDecimal(Amount.ToString());
+                    var vvalue = Amount.ToString().Replace(',', '.');
+                    decimal d = decimal.Parse(vvalue);
+                    //// decimal d = decimal.Parse(Amount.ToString().Replace(',','.'), NumberStyles.Number, CultureInfo.InvariantCulture);
                     decimal positiveMoney = d;
                     positiveMoney.ToString(format);  //will return $24,508,975.94
                     string TestDueAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
@@ -724,9 +727,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                                 if (!string.IsNullOrEmpty(myBills.BETRW) && !string.IsNullOrEmpty(myBills.Paidamt))
                                 {
-                                    myBills.TotalRemainingAmount = (Convert.ToDouble(myBills.BETRW) - Convert.ToDouble(myBills.Paidamt)).ToString();
+                                    myBills.TotalRemainingAmount = (double.Parse(myBills.BETRW, NumberStyles.Number, CultureInfo.InvariantCulture) - double.Parse(myBills.Paidamt, NumberStyles.Number, CultureInfo.InvariantCulture)).ToString();
+                                    // myBills.TotalRemainingAmount = (Convert.ToDouble(myBills.BETRW) - Convert.ToDouble(myBills.Paidamt)).ToString();
                                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                                    decimal dRem = Convert.ToDecimal(myBills.TotalRemainingAmount);
+                                    decimal dRem = decimal.Parse(myBills.TotalRemainingAmount, NumberStyles.Number, CultureInfo.InvariantCulture);
                                     decimal positiveMoneyRem = dRem;
                                     positiveMoneyRem.ToString(format);  //will return $24,508,975.94
                                     myBills.TotalRemainingAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoneyRem.ToString());
@@ -1098,7 +1102,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     if (FromTxAmount != "" && ToTxAmount != "")
                     {
                         var filterItems = MyBills;
-                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => Convert.ToDouble(p.BETRW) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.BETRW) <= Convert.ToDouble(ToTxAmount)));
+
+                        MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => double.Parse(p.BETRW, NumberStyles.Number, CultureInfo.InvariantCulture) >= double.Parse(FromTxAmount, NumberStyles.Number, CultureInfo.InvariantCulture) && double.Parse(p.BETRW, NumberStyles.Number, CultureInfo.InvariantCulture) <= double.Parse(ToTxAmount, NumberStyles.Number, CultureInfo.InvariantCulture)));
 
                         FilterOnTaxType(MyBills);
 

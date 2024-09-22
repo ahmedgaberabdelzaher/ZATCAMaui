@@ -192,7 +192,8 @@ namespace ZATCAMAUI.Models.AccountStatements
                 if (!string.IsNullOrEmpty(_debit))
                 {
                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                    decimal d = Convert.ToDecimal(_debit);
+                    // decimal d = Convert.ToDecimal(_debit);
+                    decimal d = decimal.Parse(_debit, NumberStyles.Number, CultureInfo.InvariantCulture);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
                     OpeningAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString());
@@ -260,7 +261,7 @@ namespace ZATCAMAUI.Models.AccountStatements
                 if (!string.IsNullOrEmpty(_debit))
                 {
                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                    decimal d = Convert.ToDecimal(_debit);
+                    decimal d = decimal.Parse(_debit, NumberStyles.Number, CultureInfo.InvariantCulture);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
                     DebitAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString());
@@ -297,7 +298,7 @@ namespace ZATCAMAUI.Models.AccountStatements
                 if (!string.IsNullOrEmpty(_credit))
                 {
                     string format = "$#,##0.00;$#,##0.00-;Zero";
-                    decimal d = Convert.ToDecimal(_credit);
+                    decimal d = decimal.Parse(_credit, NumberStyles.Number, CultureInfo.InvariantCulture);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
                     CreditAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString());
@@ -336,7 +337,7 @@ namespace ZATCAMAUI.Models.AccountStatements
                 if (!string.IsNullOrEmpty(_close))
                 {
                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                    decimal d = Convert.ToDecimal(_close);
+                    decimal d = decimal.Parse(_close, NumberStyles.Number, CultureInfo.InvariantCulture);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
                     CloseAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString()) + " " + AppResources.ZSAR;
@@ -465,7 +466,7 @@ namespace ZATCAMAUI.Models.AccountStatements
                 if (!string.IsNullOrEmpty(_betrh))
                 {
                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                    decimal d = Convert.ToDecimal(_betrh);
+                    decimal d = decimal.Parse(_betrh, NumberStyles.Number, CultureInfo.InvariantCulture);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
                     BetrhAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString());

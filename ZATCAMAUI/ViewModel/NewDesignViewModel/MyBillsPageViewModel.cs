@@ -279,7 +279,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
 
                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                    decimal d = Convert.ToDecimal(Amount.ToString());
+                    decimal d = decimal.Parse(Amount.ToString(), NumberStyles.Number, CultureInfo.InvariantCulture);
                     decimal positiveMoney = d;
                     positiveMoney.ToString(format);  //will return $24,508,975.94
                     string TestDueAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
@@ -608,9 +608,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                                 if (!string.IsNullOrEmpty(myBills.BETRW) && !string.IsNullOrEmpty(myBills.Paidamt))
                                 {
-                                    myBills.TotalRemainingAmount = (Convert.ToDouble(myBills.BETRW) - Convert.ToDouble(myBills.Paidamt)).ToString();
+                                    myBills.TotalRemainingAmount = (double.Parse(myBills.BETRW, NumberStyles.Number, CultureInfo.InvariantCulture) - double.Parse(myBills.Paidamt, NumberStyles.Number, CultureInfo.InvariantCulture)).ToString();
                                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                                    decimal dRem = Convert.ToDecimal(myBills.TotalRemainingAmount);
+                                    decimal dRem = decimal.Parse(myBills.TotalRemainingAmount ,NumberStyles.Number, CultureInfo.InvariantCulture);
+
                                     decimal positiveMoneyRem = dRem;
                                     positiveMoneyRem.ToString(format);  //will return $24,508,975.94
                                     myBills.TotalRemainingAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoneyRem.ToString());

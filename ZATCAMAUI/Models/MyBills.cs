@@ -188,7 +188,8 @@ namespace ZATCAMAUI.Models
                 if (!string.IsNullOrEmpty(_BETRW))
                 {
                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                    decimal d = Convert.ToDecimal(_BETRW);
+                    decimal d = decimal.Parse(_BETRW, NumberStyles.Number, CultureInfo.InvariantCulture);
+                    // decimal d = Convert.ToDecimal(_BETRW);
                     decimal positiveMoney = d;
                     positiveMoney.ToString(format);  //will return $24,508,975.94
                     TestDueAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
@@ -247,7 +248,8 @@ namespace ZATCAMAUI.Models
                 if (!string.IsNullOrEmpty(_paidamt))
                 {
                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                    decimal d = Convert.ToDecimal(_paidamt);
+                    decimal d = decimal.Parse(_paidamt, NumberStyles.Number, CultureInfo.InvariantCulture);
+                  //  decimal d = Convert.ToDecimal(_paidamt);
                     decimal positiveMoney = d;
                     positiveMoney.ToString(format);  //will return $24,508,975.94
                     TotalPaidAmt = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
