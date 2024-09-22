@@ -422,12 +422,12 @@
                                                                     <Label
                                                                         HorizontalOptions="Start"
                                                                         Style="{StaticResource BodyLabelBlackMedium}"
-                                                                        Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}">
+                                                                        Text="{Binding amount, Converter={StaticResource commaSeparatorConverter}}">
 
                                                                         <Label.FormattedText>
 
                                                                             <FormattedString>
-                                                                                <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                                <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding amount, Converter={StaticResource commaSeparatorConverter}}" />
                                                                                 <Span Text=" " />
                                                                                 <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                             </FormattedString>
@@ -437,7 +437,7 @@
 
                                                                     <Label
                                                                         Style="{StaticResource CaptionLabelGrey}"
-                                                                        Text="{Binding Abtypt}"
+                                                                        Text="{Binding revenueTaxType}"
                                                                         VerticalOptions="End" />
 
                                                                 </StackLayout>
@@ -722,13 +722,13 @@
                                                                             HorizontalOptions="StartAndExpand"
                                                                             IsVisible="{Binding IsUnSubmittedReturn}"
                                                                             Style="{StaticResource ValueLabelBlackMedium}"
-                                                                            Text="{Binding Incotext}" />
+                                                                            Text="{Binding inboundCorrespondenceTypeDescription}" />
 
                                                                         <Label
                                                                             HorizontalOptions="StartAndExpand"
                                                                             IsVisible="{Binding IsPaymentOverdue}"
                                                                             Style="{StaticResource ValueLabelBlackMedium}"
-                                                                            Text="{Binding Txt50}" />
+                                                                            Text="{Binding periodDescription}" />
 
                                                                         <Label
                                                                             HorizontalOptions="StartAndExpand"

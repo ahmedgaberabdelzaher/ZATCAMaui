@@ -95,23 +95,14 @@ namespace ZATCAMAUI.Models
                     {
                         if (!CalTyp.Equals("Gregorian"))
                         {
-                            //if (App.IsArabic)
-                            //{
-                            //    string[] dts = Faednar.Split('/');
-                            //    FormatedFaedn = UtilityManager.FormatAccordingToDeviceHijriArabic(dts[2] + "-" + dts[1] + "-" + dts[0]);
-                            //}
-                            //else
-                            //{
-                                FormatedFaedn = UtilityManager.FormatAccordingToDeviceHijriEnglish(Faednar);
-                            //}
+                            FormatedFaedn = UtilityManager.FormatAccordingToDeviceHijriEnglish(Faednar);
                         }
                         else
                         {
                             FormatedFaedn = UtilityManager.FormatAccordingToDeviceForVAT(Faednar);
                         }
-
+                        FormatedFaedn = FormatedFaedn.Replace("T00:00:00", "");
                     }
-
                 }
             }
         }
