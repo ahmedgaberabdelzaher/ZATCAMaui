@@ -287,7 +287,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private  void btnContinue_Clicked(object sender, EventArgs e)
+        private void btnContinue_Clicked(object sender, EventArgs e)
         {
 
 
@@ -486,7 +486,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                     else
                     {
-                      await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                     }
 
                 }
@@ -511,7 +511,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     chkDeclaration.Focus();
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
 
@@ -749,7 +749,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -820,7 +820,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         viewModel.IsLoading = false;
                     }
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     viewModel.IsLoading = false;
                 }
@@ -887,7 +887,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     viewModel.IsLoading = false;
 
@@ -962,7 +962,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         viewModel.IsLoading = false;
                     }
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
 
@@ -1033,7 +1033,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         viewModel.Attachments = AppResources.Attachments;
                     }
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
             }
@@ -1114,7 +1114,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 triggerIban(message);
                             }
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
                         }
 
@@ -1223,7 +1223,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                                 viewModel.VoidMsg();
 
-                              
+
                             }
                             else
                             {
@@ -1234,7 +1234,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 });
 
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
         }
@@ -1322,7 +1322,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 triggerIban(viewModel.VATRegistrationDetailsData.d.OptIban);
             }
         }
-       
+
         private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
         {
             try
@@ -2047,8 +2047,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         catch (Exception ex)
                         {
-                            
-                            
+
+
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
@@ -2074,12 +2074,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -2103,12 +2103,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2143,14 +2143,14 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
                                 });
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2159,7 +2159,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
@@ -2487,13 +2487,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         public async void ValidateIDNumberContact()
         {
-           MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-            });
+            MainThread.BeginInvokeOnMainThread(async () =>
+             {
+                 await Task.Run(() =>
+                 {
+                     viewModel.IsLoading = true;
+                 });
+             });
             string dob = viewModel.ContactDOB.Replace("/", "-");
             if (viewModel.SelectedIdTypeSR.ID == "ZS0001")
             {
@@ -2568,43 +2568,43 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel.IsLoading = false;
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                             {
+                                 viewModel.IsLoading = false;
 
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                viewModel._navigationService.GoBack();
-                            });
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                 viewModel._navigationService.GoBack();
+                             });
                         }
                         catch (InternetException ex)
                         {
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
-                            });
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                             {
+                                 MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                 await Task.Run(() =>
+                                 {
+                                     viewModel.IsLoading = false;
+                                 });
+                             });
                         }
                         catch (HttpRequestException ex)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                             {
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                             });
                         }
                         catch (Exception ex)
                         {
-                            
-                            
+
+
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                             {
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                             });
                         }
                     }
                 }
@@ -2679,42 +2679,42 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel.IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                viewModel._navigationService.GoBack();
-                            });
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                             {
+                                 viewModel.IsLoading = false;
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                 viewModel._navigationService.GoBack();
+                             });
                         }
                         catch (InternetException ex)
                         {
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
-                            });
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                             {
+                                 MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                 await Task.Run(() =>
+                                 {
+                                     viewModel.IsLoading = false;
+                                 });
+                             });
                         }
                         catch (HttpRequestException ex)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                             {
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                             });
                         }
                         catch (Exception ex)
                         {
-                            
-                            
+
+
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                             {
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                             });
                         }
                     }
                 }
@@ -2813,7 +2813,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                       await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                         await Task.Run(() =>
                         {
                             viewModel.IsLoading = false;
@@ -2831,8 +2831,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -2990,8 +2990,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
@@ -3359,8 +3359,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
@@ -3381,8 +3381,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
@@ -3399,10 +3399,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 ValidateIDNumberContact();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                
-                
             }
         }
 
