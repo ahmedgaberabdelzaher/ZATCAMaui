@@ -687,7 +687,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         viewModel.CurrentIndex++;
                     viewModel.IsFDNameMobEmailEnable = false;
                     viewModel.Attachments = AppResources.Attachments;
-                    if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "R")
+                    if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "Resident")
                     {
                         viewModel.IsResident = true;
                         setAnsWerOneSlider();
