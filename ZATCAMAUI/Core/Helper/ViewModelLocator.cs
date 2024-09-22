@@ -477,7 +477,7 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<UpdateManagerViewModel>()
                 .AddSingleton<ChangeMobileRequestViewModel>()
                 .AddSingleton<NafathPopupPageViewModel>()
-
+                .AddSingleton<ZakatExemptionRequestListViewModel>()
 
             #endregion
 

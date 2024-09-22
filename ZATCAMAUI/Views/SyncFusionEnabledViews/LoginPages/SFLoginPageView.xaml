@@ -114,19 +114,29 @@
 
                         <custom:GAZTBorderlessEntry
                             x:Name="LoginPassword"
-                            IsPassword="true"
+                            IsPassword="{Binding IsPasswordEncripted}"
                             Placeholder="{x:Static ResourceManager:AppResources.PasswordPlaceholder}"
                             Style="{StaticResource DefaultEntry}"
                             Text="{Binding Password}"
                             TextColor="#58595B" />
 
-
-
                     </custom:CustomSfTextInputView.TextInputView>
-                    <custom:CustomSfTextInputView.LeadingView>
+                     <custom:CustomSfTextInputView.LeadingView>
                         <Image Aspect="AspectFit" Source="password_key.png" />
 
                     </custom:CustomSfTextInputView.LeadingView>
+                    <custom:CustomSfTextInputView.TrailingView>
+                        <Image x:Name="ImageSeePassword"
+                               Source="hidePassword.png"
+                               Aspect="AspectFit"
+                               HeightRequest="40" WidthRequest="40">
+
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImageSeePassword_Tapped"/>
+                            </Image.GestureRecognizers>
+
+                        </Image>
+                    </custom:CustomSfTextInputView.TrailingView>
                 </custom:CustomSfTextInputView>
 
                 <Label
