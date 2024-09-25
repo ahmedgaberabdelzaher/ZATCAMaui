@@ -652,9 +652,16 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 {
                     viewModel.BillCount = string.Empty;
                     viewModel.BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
+
+                    //To load default commintments 
+                    viewModel.SelectedCommitmentFilterLabelValue = viewModel.CommitmentsListFilter[0];
+                    viewModel.SelectedCommitmentFilterValue = viewModel.CommitmentsListFilter[0];
+
                     viewModel.PopulateBillsInformation();
                     viewModel.PopulateReturnsInformation();
                     viewModel.PopualateCommittmentsInformation();
+
+
                     viewModel.IsLoading = false;
                 });
             }

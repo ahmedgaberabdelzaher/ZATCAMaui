@@ -2940,7 +2940,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                 }
                                 else
                                 {
-                                    if (item.calendarType.Equals("H") || item.inboundCorrespondenceType.StartsWith("H"))
+                                    if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
                                         item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)
@@ -3037,8 +3037,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                         }
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        Console.WriteLine(ex.StackTrace);
                     }
 
                     if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))

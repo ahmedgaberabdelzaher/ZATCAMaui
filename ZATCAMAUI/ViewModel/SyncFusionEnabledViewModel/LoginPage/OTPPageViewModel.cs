@@ -15,10 +15,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
 public class OTPPageViewModel : BaseViewModel
 {
 
-    public static int LoginAttempt = 0;
-    private TimeSpan remainingTime = TimeSpan.FromMinutes(2);
-    private bool isTimeRemaining = false;
+    private int counter = 120;
 
+    private System.Timers.Timer timer;
+    
+
+    public static int LoginAttempt = 0;
+    
     string oTPSentOnThisMobileNumber;
     public string OTPSentOnThisMobileNumber { get { return oTPSentOnThisMobileNumber; } set { oTPSentOnThisMobileNumber = value; OnPropertyChanged(); } }
 
@@ -121,7 +124,7 @@ public class OTPPageViewModel : BaseViewModel
             {
                 try
                 {
-                    StopTimer();
+                    
                     var tokenRequestModel = new TokenRequestModel() { Token = App.Token, Lang =App.IsArabic ? "ar":"en", OTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit, SourceType = "M", OsName = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem, BrowserName = "chrome" };
                     await TokenPostRequest(tokenRequestModel);
                 }
@@ -153,14 +156,11 @@ public class OTPPageViewModel : BaseViewModel
         {
             return new Command(() =>
             {
-                if (!isTimeRemaining)
+                if (IsResendCodeEnabled)
                 {
                     ResendToken().ConfigureAwait(false);
-                    ResendCodeTextColor = Colors.Gray;
-                    ResendCodeOpacity = 0.3;
-                    IsResendCodeEnabled = false;
+                    Dissable_Resend();
                     OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = string.Empty;
-                    remainingTime = TimeSpan.FromMinutes(2);
                     StartTimer();
                 }
             });
@@ -177,24 +177,22 @@ public class OTPPageViewModel : BaseViewModel
             string response = tokenResponse.Content.ReadAsStringAsync().Result;
             if (tokenResponse != null && tokenResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
-
                 var result = JsonConvert.DeserializeObject<TokenResponseModel>(response);
                 if (result?.Result != null)
                 {
                     App.Token = result?.Result?.AccessToken;
                     await LoginCompleted();
+                    StopTimer();
                     _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView,false);
-                    OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = string.Empty;
                 }
             }
             else if (tokenResponse != null && tokenResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.OTPScreenErrMsg;
-
+                StopTimer();
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                 _navigationService.GoBack();
-
             }
             else
             {
@@ -204,12 +202,13 @@ public class OTPPageViewModel : BaseViewModel
                 MessageTxt = AppResources.OTPScreenErrMsg;
                 if (result.Result.ErrorCode.Equals("M012"))
                 {
+                    StopTimer();
                     _navigationService.GoBack();
                     _navigationService.NavigateTo(App.AccountLockedPageView);
-                    
                 }
 
             }
+            
             IsLoading = false;
         }
         catch (Exception)
@@ -221,36 +220,92 @@ public class OTPPageViewModel : BaseViewModel
     }
 
 
-    private void StartTimer()
+    //private void StartTimer()
+    //{
+    //    isTimeRemaining = true;
+    //    Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+    //    {
+    //        remainingTime = remainingTime.Subtract(TimeSpan.FromSeconds(1));
+    //        if (remainingTime.TotalSeconds <= -1)
+    //        {
+    //            StopTimer();
+    //            return false;
+    //        }
+    //        UpdateTimerLabel();
+    //        return true;
+    //    });
+    //}
+
+    //private void StopTimer()
+    //{
+    //    IsResendCodeEnabled = true;
+    //    ResendCodeTextColor = Color.FromArgb("#0996D4");
+    //    ResendCodeOpacity = 1;
+    //    isTimeRemaining = false;
+    //}
+
+    //private void UpdateTimerLabel()
+    //{
+    //    MainThread.BeginInvokeOnMainThread(() =>
+    //    {
+    //        LblCountDownTimer = remainingTime.ToString(@"mm\:ss");
+    //    });
+    //}
+
+    public void StartTimer()
     {
-        isTimeRemaining = true;
-        Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-        {
-            remainingTime = remainingTime.Subtract(TimeSpan.FromSeconds(1));
-            if (remainingTime.TotalSeconds <= -1)
-            {
-                StopTimer();
-                return false;
-            }
-            UpdateTimerLabel();
-            return true;
-        });
+        timer = new System.Timers.Timer();
+        LblCountDownTimer = GetTime(counter);
+        timer.Interval = 1000;
+        timer.Elapsed += Timer_Elapsed;
+        timer.Start();
+
     }
 
-    private void StopTimer()
+    private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+    {
+        if (counter > 0)
+        {
+            counter--;
+            LblCountDownTimer = GetTime(counter);
+        }
+        else
+        {
+            timer.Stop();
+            Enable_Resend();
+            counter = 120;//To rest
+        }
+    }
+
+    private void Enable_Resend()
     {
         IsResendCodeEnabled = true;
         ResendCodeTextColor = Color.FromArgb("#0996D4");
         ResendCodeOpacity = 1;
-        isTimeRemaining = false;
     }
 
-    private void UpdateTimerLabel()
+    private void Dissable_Resend()
     {
-        MainThread.BeginInvokeOnMainThread(() =>
+        ResendCodeTextColor = Colors.Gray;
+        ResendCodeOpacity = 0.3;
+        IsResendCodeEnabled = false;
+    }
+
+    public void StopTimer()
+    {
+        if (timer != null)
         {
-            LblCountDownTimer = remainingTime.ToString(@"mm\:ss");
-        });
+            Enable_Resend();
+            timer.Stop();
+            counter = 120;//To rest
+            OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = string.Empty;
+        }
+    }
+
+    private string GetTime(int s)
+    {
+        TimeSpan time = TimeSpan.FromSeconds(s);
+        return time.ToString(@"m\:ss");
     }
 
     public async Task ResendToken()
