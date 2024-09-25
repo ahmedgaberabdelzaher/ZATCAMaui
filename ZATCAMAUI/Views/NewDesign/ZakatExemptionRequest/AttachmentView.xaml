@@ -108,7 +108,7 @@
                     Style="{StaticResource MicroGrayLabelStyle}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" Style="{StaticResource MicroGrayLabelStyle}"/>
+                            <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" />
                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>

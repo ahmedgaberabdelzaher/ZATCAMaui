@@ -33,9 +33,6 @@ public partial class ZakatExemptionRequestListPageView : ContentPage
 
 	protected async override void OnAppearing()
 	{
-
-
-
 		MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
 		{
 			viewModel.FilterWithStatus(viewModel.PickerModel.SelectedValue);

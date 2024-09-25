@@ -440,7 +440,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             try
             {
-                zakatExemptionListModel = await ZakatExemptionWebServiceManager.GetZakatExemptionListRequest();
+                zakatExemptionListModel = await ZakatExemptionWebServiceManager.GetZakatExemptionListRequest().ConfigureAwait(false);
 
                 if (zakatExemptionListModel != null && zakatExemptionListModel.D != null && zakatExemptionListModel.D.FbnumListSet.Count() > 0)
                 {
