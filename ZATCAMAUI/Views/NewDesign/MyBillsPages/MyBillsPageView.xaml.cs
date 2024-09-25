@@ -68,10 +68,10 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                 }
 
             }
-            catch (Exception)
+            catch (Exception exp)
             {
 
-
+                viewModel.IsLoading = false;
             }
             Bills.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
@@ -134,7 +134,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
                 });
             }
-            catch (Exception)
+            catch (Exception exp)
             {
 
             }
@@ -157,7 +157,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                 MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
 
             }
-            catch (Exception)
+            catch (Exception exp)
             {
             }
         }

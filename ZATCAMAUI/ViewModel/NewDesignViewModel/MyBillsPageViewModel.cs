@@ -255,7 +255,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     //if (_myBills.Count != 0)
                     //{
-                    double Amount = 0.00;
+                    decimal Amount=0 ;
                     foreach (var item in MyBillsOriginal)
                     {
                         //P = 0 - Paid
@@ -266,14 +266,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             if (item.TestDueAmount != null)
                             {
-                                Amount = Amount + Convert.ToDouble(item.TestDueAmount);
+                                Amount = Amount + decimal.Parse(item.TestDueAmount,CultureInfo.InvariantCulture);
                             }
                         }
                         else if (item.Status == "Partially Paid")
                         {
                             if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
                             {
-                                Amount = Amount + Convert.ToDouble(item.TotalRemainingAmount);
+                                decimal TotalRemainingAmount;
+                                if (decimal.TryParse(item.TotalRemainingAmount, CultureInfo.InvariantCulture, out TotalRemainingAmount))
+                                {
+                                   Amount = Amount + TotalRemainingAmount;
+                                } 
+                               
                             }
                         }
                     }
@@ -290,7 +295,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     //}
 
-                    if (Amount == 0.00)
+                    if (Amount == 0)
                     {
                         isNoDataLableVisible = false;
                     }
@@ -531,7 +536,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             }
         }
-        public async void onPageLoad(BillInfo billInfo)
+        public async Task onPageLoad(BillInfo billInfo)
         {
             IsLoading = true;
             MyBills = null;
@@ -618,7 +623,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                             }
                         }
-                        FilterIfTypeAndStausFilterSelected(false);
+                      await  FilterIfTypeAndStausFilterSelected(false);
                     }
                     else
                     {
@@ -893,12 +898,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
 
 
-        public async void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
+        public async Task FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
 
             calculateMyBills = isTaxTypeFilter;
 
@@ -938,17 +940,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     FilterOnTaxType(MyBills);
                 }
 
-                await Task.Run(() =>
-                {
+              
                     IsLoading = false;
-                });
+           
             }
             else
             {
-                await Task.Run(() =>
-                {
+           
                     IsLoading = false;
-                });
+              
             }
 
         }
