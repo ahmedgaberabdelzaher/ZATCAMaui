@@ -6,7 +6,8 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     x:Name="page"
     Title="NafathLoginView"
     ios:Page.UseSafeArea="true"
@@ -75,21 +76,21 @@
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource SectionTitleBlack}"
                             Text="{x:Static ResourceManager:AppResources.ZIBANNationalID}" />
-
+                        
                         <custom:CustomSfTextInputView
                             ContainerBackground="White"
                             ContainerType="Outlined"
-                            Hint="{x:Static ResourceManager:AppResources.EnterYourNationalIdHere}"
                             InputViewPadding="16,0,16,0"
                             OutlineCornerRadius="10"
                             Stroke="{StaticResource Primary}">
                             <custom:CustomSfTextInputView.TextInputView>
+
                                 <custom:GAZTBorderlessEntry
-                                Style="{StaticResource DefaultEntry}"
-                                Text="{Binding NafathId}">
-                            </custom:GAZTBorderlessEntry>
+                                    Placeholder="{x:Static ResourceManager:AppResources.EnterYourNationalIdHere}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding NafathId}"
+                                    TextColor="#58595B" />
                             </custom:CustomSfTextInputView.TextInputView>
-                            
                         </custom:CustomSfTextInputView>
 
                         <Label

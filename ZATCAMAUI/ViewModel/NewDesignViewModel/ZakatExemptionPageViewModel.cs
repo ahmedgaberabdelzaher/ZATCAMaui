@@ -63,7 +63,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
         public ICommand NewOtherAttachmentTapped { get; set; }
         public ICommand AddtionalAtachmentTapped { get; set; }
 
-        enum PagesEnum
+        public enum PagesEnum
         {
             ZakatExcemptionTPDetails,
             ZakatExemptionYear,
@@ -110,19 +110,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     MarkComplete = false;
                     OnPropertyChanged(nameof(MarkComplete));
                 }
-            }
-        }
-
-        private bool _isLoading = false;
-        private bool IsLoading
-        {
-            get { return _isLoading; }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                OnPropertyChanged("IsLoading");
             }
         }
 
@@ -1197,20 +1184,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             }
             catch (Exception ex)
             {
-                //IsLoading = false;
+                IsLoading = false;
             }
             return zakatExemptionModel;
         }
         internal async Task GetDetailsForZakatExeRwqAsync()
         {
-           // IsLoading = true;
+            IsLoading = true;
             try
             {
                 zakatExemptionModel  = await ZakatExemptionWebServiceManager.GetRequestToZakatExemtionRequest(null);
-                zakatExemptionModel.d = zakatExemptionModel.data;
+                IsLoading = false;
                 if (zakatExemptionModel != null && zakatExemptionModel.data!=null)
                 {
-                   // IsLoading = false;
+                    zakatExemptionModel.d = zakatExemptionModel.data;
                    if(zakatExemptionModel.data.CR6774.Equals("X"))
                     {
                         IsNew = true;
@@ -1222,7 +1209,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 }
             }
             catch (Exception ex) {
-               // IsLoading = false;
+                IsLoading = false;
             }
            
         }
@@ -1247,7 +1234,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     selectedPage = (int)PagesEnum.ZakatExemptionYear;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1623,7 +1610,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             {
                 setExemptionYearPickerModel();
                 await MopupService.Instance.PushAsync(new PickerPageView(PickerModelExcemptionYear));
-
             }
             catch (GAZTUnlockAccountException ex)
             {
