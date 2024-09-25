@@ -11,5 +11,7 @@ public partial class NafathChangeMobleNumberOptionsView : PopupPage
 		InitializeComponent();
 		viewModel = App.Locator.NafathChangeMobileNumberOptionsViewModel;
 		BindingContext = viewModel;
-	}
+        viewModel.IndividualEnabled = false;
+        viewModel. CompanyEnabled = false;
+    }
 }
