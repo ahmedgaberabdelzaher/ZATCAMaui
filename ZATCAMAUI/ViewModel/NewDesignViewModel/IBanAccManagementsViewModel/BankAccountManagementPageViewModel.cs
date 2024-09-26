@@ -126,7 +126,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
 
 
-                if (IBANPostResponse != null)
+                if (IBANPostResponse.d != null)
                 {
                     IsLoading = false;
                     if (actionFlag == "D")

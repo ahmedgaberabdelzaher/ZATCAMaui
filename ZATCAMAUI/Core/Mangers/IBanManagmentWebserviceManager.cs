@@ -190,10 +190,10 @@ namespace ZATCAMAUI.Manager
                     if (IBANPostResponse == null || IBANPostResponse.d == null)
                     {
                         ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        if (errorMesg != null && errorMesg.header != null && errorMesg.header.moreInformation != null && errorMesg.header.moreInformation.errorDetails != null && errorMesg.header.moreInformation.errorDetails[0].message != null)
                         {
-                            WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
-                            WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                            WebServiceManager.ErrorMessageForVAT = errorMesg.header.moreInformation.errorDetails[0].message;
+                            WebServiceManager.ErrorMessageForVAT += errorMesg.header.moreInformation.errorDetails[1].message;
                             String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
                             WebServiceManager.ErrorMessageForVAT = WithReplacedString;
                             //ErrorMessageForVAT

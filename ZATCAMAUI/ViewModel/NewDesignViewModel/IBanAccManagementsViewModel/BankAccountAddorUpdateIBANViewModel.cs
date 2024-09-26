@@ -12,6 +12,10 @@ using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Core.Mangers;
+using Newtonsoft.Json.Linq;
+using Syncfusion.Maui.Core.Carousel;
+
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 {
     public class BankAccountAddorUpdateIBANViewModel : BaseViewModel
@@ -26,6 +30,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         public ICommand SummaryConBtnTapped { get; set; }
         public ICommand OnAttachmentClickOne { get; set; }
         public ICommand OnAttachmentClickTwo { get; set; }
+        public ICommand IBANNumberUnfocused { get; set; }
+
         int SelectedAttachmentNumber = 0;
 
 
@@ -544,9 +550,92 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             });
             NewFormVisible = true;
 
+            IBANNumberUnfocused = new Command(CheckIBanIsValidOrNot);
 
         }
 
+        public async void CheckIBanIsValidOrNot()
+        {
+            if ((IBANValue.Length > 0) && (IBANValue.Length < 24))
+            {
+
+                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
+
+            }
+            if ((IBANValue.Length > 0) && (IBANValue.Length == 24))
+            {
+                App.IBanValidatedResponse = string.Empty;
+                IsLoading = true;
+                try
+                {
+                    try
+                    {
+                        App.IBanValidatedResponse = string.Empty;
+                        var response = await WebServiceManager.GAZTCheckIBAN(IBANValue);
+                        if (response != null)
+                        {
+                            //IBan is Valid
+                            isIBanValid = true;
+                            IsLoading = false;
+                            string bankName = string.Empty;
+                            bankName = JObject.Parse(App.IBanValidatedResponse)["result"].ToString();
+                            string IBanSelectedBankName = JObject.Parse(bankName)["bankDetails"].ToString();
+
+                            IsIBanDropDownEnabled = false;
+
+                            if (string.IsNullOrEmpty(IBanSelectedBankName))
+                            {
+                                SelectedBankName = AppResources.IBanSelectedOtherBankName;
+                                SelectedBankNameField = AppResources.IBanSelectedOtherBankName;
+                                OtherBanksVisible = true;
+                            }
+                            else
+                            {
+                                SelectedBankName = JObject.Parse(bankName)["bankDetails"].ToString();
+                                SelectedBankNameField = JObject.Parse(bankName)["bankDetails"].ToString();
+                                OtherBanksVisible = false;
+                            }
+
+
+                        }
+                        else
+                        {
+                            IsIBanDropDownEnabled = true;
+                            IsLoading = false;
+                            SelectedIDNumber = "";
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                            {
+                                isIBanValid = false;
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
+                            });
+                        }
+                    }
+                    catch (InternetException ex)
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            IsLoading = false;
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                        });
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    //IBan is InValid
+                    isIBanValid = false;
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
+
+                    });
+                }
+
+
+            }
+        }
         public async Task IBANBankAccountFormGUID()
         {
             try
@@ -559,9 +648,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                 IsLoading = false;
             }
-            catch (Exception )
+            catch (Exception)
             {
-                
+
             }
 
         }
