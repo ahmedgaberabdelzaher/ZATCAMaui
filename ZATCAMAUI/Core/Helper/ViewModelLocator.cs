@@ -324,8 +324,8 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<VATInstalmentNotesPageViewModel>()
                 .AddSingleton<VATInstalmentPlanRevokeViewModel>()
                 .AddSingleton<OTPPageViewModel>()
+                .AddTransient<AttachmentViewModel>()
                 .AddSingleton<AccountLockedViewModel>()
-                .AddSingleton<AttachmentViewModel>()
 
             #endregion
 

@@ -35,6 +35,7 @@ namespace ZATCAMAUI.Core.Manager
                     client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
                     client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    client.Timeout = TimeSpan.FromSeconds(60);
 
 
 
@@ -131,17 +132,20 @@ namespace ZATCAMAUI.Core.Manager
                     client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
                     client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    client.Timeout = TimeSpan.FromSeconds(60);
+
 
                     //String url = Constants.ZakatExemtionRequestList + "Euser='',Fbguid='',Tin=" + "'" + App.LoginDataRetrieved.TIN + "',UserTyp='TP',Langz=" + "'" + lang + "')?&$expand=FbnumListSet,statusSet&$format=json";
                     String url = ZATCAConstants.ZakatExemtionRequestList + "TIN=" + App.LoginDataRetrieved.TIN + "&userType=TP&language="+ lang;
 
                     var uri = new Uri(url);
-                    HttpResponseMessage _requestZakatExemtionReqResponse = await client.GetAsync(uri);
+                    HttpResponseMessage _requestZakatExemtionReqResponse = await client.GetAsync(uri).ConfigureAwait(false);
+
                     if (_requestZakatExemtionReqResponse != null)
                     {
                         if (_requestZakatExemtionReqResponse.StatusCode == HttpStatusCode.Unauthorized)
                         {
-                            App.IsSessionExpired = true;
+                            App.IsSessionExpired = true; 
                             return null;
                         }
                         HttpHeaders headers = _requestZakatExemtionReqResponse.Headers;
