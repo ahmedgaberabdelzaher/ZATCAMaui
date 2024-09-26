@@ -240,9 +240,9 @@
 
                                     </custom:CustomSfTextInputView>
 
-                                    <StackLayout.GestureRecognizers>
+                                    <!--<StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ShowIDNumberPicker}" />
-                                    </StackLayout.GestureRecognizers>
+                                    </StackLayout.GestureRecognizers>-->
 
                                 </StackLayout>
 
@@ -840,35 +840,17 @@
 
 
 
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="10">
 
-                                            <Grid VerticalOptions="FillAndExpand"
-                                                  ColumnSpacing="10">
-                                               
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                </Grid.ColumnDefinitions>
-                                                <custom:CheckboxCustom
+                                            <custom:CheckboxCustom
                                                     x:Name="chkDeclaration"
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
                                                     HeightRequest="32"
                                                     IsChecked="{Binding IsInstrunctionChecked}"
                                                     VerticalOptions="Start"
                                                     WidthRequest="32" />
-                                                <Label
-                                                    x:Name="AckText"
-                                                    Grid.Row="0" HeightRequest="400"
-                                                    Grid.Column="1"
-                                                    Style="{StaticResource BodyLabelGrey}"
-                                                    VerticalOptions="Start"
-                                                    LineBreakMode="WordWrap"/>
-
-
-                                            </Grid>
-
-
+                                            <Label x:Name="AckText"
+                                                   Style="{StaticResource BodyLabelGrey}"
+                                                   HorizontalOptions="FillAndExpand"/>
                                         </StackLayout>
 
                                     </StackLayout>
