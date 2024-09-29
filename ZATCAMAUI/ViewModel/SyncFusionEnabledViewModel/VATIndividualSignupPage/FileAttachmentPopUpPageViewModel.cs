@@ -20,6 +20,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     public class FileAttachmentPopUpPageViewModel : BaseViewModel
     {
         public ICommand OnAttachmentClick { get; set; }
+        public ICommand GoButtonClick { get; set; }
 
         public static decimal AttachmentUploadedSize = 0;
         public static bool IsToBeFilled = false;
@@ -357,6 +358,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 IsLoading = true;
                 await AddAttachmentEx();
                 IsLoading = false;
+            });
+
+            GoButtonClick = new Command(() =>
+            {
+                MopupService.Instance.PopAsync();
             });
 
         }
