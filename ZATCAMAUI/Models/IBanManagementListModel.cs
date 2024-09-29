@@ -343,9 +343,13 @@ namespace ZATCAMAUI.Models
     
     public class IBANClickRequest
     {
+        [JsonProperty("action")]
         public string Action { get; set; }
+        [JsonProperty("formBundleNumber")]
         public string Fbnum { get; set; }
+        [JsonProperty("formGUID")]
         public string FormGuid { get; set; }
+        [JsonProperty("IBAN")]
         public string Iban { get; set; }
 
     }

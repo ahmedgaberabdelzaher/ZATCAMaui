@@ -67,15 +67,14 @@ public class NafathChangeMobileNumberOptionsViewModel : BaseViewModel
 
             if (IndividualEnabled)
             {
-                _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_CHANGE_MOBILE_NUMBER);
-
                 await MopupService.Instance.PopAsync();
+                _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_CHANGE_MOBILE_NUMBER);
             }
             else if (CompanyEnabled)
             {
                 Dictionary<string, string> d = new Dictionary<string, string>();
-                _navigationService.NavigateTo(App.ChangeMobileRequestPageView, d);
                 await MopupService.Instance.PopAsync();
+                _navigationService.NavigateTo(App.ChangeMobileRequestPageView, d);
             }
             IndividualEnabled = false;
             CompanyEnabled = false;

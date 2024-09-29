@@ -54,6 +54,31 @@ namespace ZATCAMAUI.Models
         public class ErrorObj
         {
             public Error error { get; set; }
+            public Header header { get; set; }
         }
+        public class ErrorDetails
+        {
+            public string code { get; set; }
+            public string message { get; set; }
+        }
+
+        public class Header
+        {
+            public string requestID { get; set; }
+            public Status status { get; set; }
+            public MoreInformation moreInformation { get; set; }
+        }
+
+        public class MoreInformation
+        {
+            public List<ErrorDetails> errorDetails { get; set; }
+        }
+
+        public class Status
+        {
+            public string code { get; set; }
+            public string description { get; set; }
+        }
+
     }
 }

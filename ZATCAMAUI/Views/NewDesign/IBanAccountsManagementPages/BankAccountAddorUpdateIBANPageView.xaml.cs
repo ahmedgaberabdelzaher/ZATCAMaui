@@ -249,9 +249,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
             _viewModel.IsIBanDropDownEnabled = true;
             string allowedchar = "0123456789";
             allowedchar += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            // if (e.NewTextValue.Length > 0) {
-
-            //string str = e.NewTextValue.Substring(0, 2);
+          
             _viewModel.IBANValue = e.NewTextValue;
 
             if (e.NewTextValue.Length >= 2)
@@ -261,20 +259,16 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                     count = count + 1;
                     BankAccountIBAN.Text = "";
                     _viewModel.IBANValue = "";
-                    if (count == 1)
-                    {
-                        // MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforSA));
 
-                        var somewarningpopup = new AttachmentInformationPopUp(AppResources.NDIBANValidationforSA)
-                        {
-                            CloseWhenBackgroundIsClicked = false
-                        };
-                        somewarningpopup.OnDone = async () =>
-                        {
-                            count = 0;
-                        };
-                        MopupService.Instance.PushAsync(somewarningpopup);
-                    }
+                    var somewarningpopup = new AttachmentInformationPopUp(AppResources.NDIBANValidationforSA)
+                    {
+                        CloseWhenBackgroundIsClicked = false
+                    };
+                    somewarningpopup.OnDone = async () =>
+                    {
+                        count = 0;
+                    };
+                    MopupService.Instance.PushAsync(somewarningpopup);
                 }
                 else
                 {
@@ -283,104 +277,21 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                         if (!_viewModel.IBANValue.Substring(2).All(allowedchar.Contains))
                         {
                             _viewModel.IBANValue = _viewModel.IBANValue.Remove(_viewModel.IBANValue.Length - 1);
-
-
                         }
                     }
 
                 }
             }
+          
 
         }
 
-        private async void checkIBanIsValidOrNot()
-        {
-            App.IBanValidatedResponse = string.Empty;
-            _viewModel.IsLoading = true;
-            try
-            {
-                try
-                {
-                    App.IBanValidatedResponse = string.Empty;
-                    var response = await WebServiceManager.GAZTCheckIBAN(_viewModel.IBANValue);
-                    if (response != null)
-                    {
-                        //IBan is Valid
-                        _viewModel.isIBanValid = true;
-                        _viewModel.IsLoading = false;
-                        string bankName = string.Empty;
-                        bankName = JObject.Parse(App.IBanValidatedResponse)["result"].ToString();
-                        string IBanSelectedBankName = JObject.Parse(bankName)["bankDetails"].ToString();
-
-                        _viewModel.IsIBanDropDownEnabled = false;
-
-                        if (string.IsNullOrEmpty(IBanSelectedBankName))
-                        {
-                            _viewModel.SelectedBankName = AppResources.IBanSelectedOtherBankName;
-                            _viewModel.SelectedBankNameField = AppResources.IBanSelectedOtherBankName;
-                            _viewModel.OtherBanksVisible = true;
-                        }
-                        else
-                        {
-                            _viewModel.SelectedBankName = JObject.Parse(bankName)["bankDetails"].ToString();
-                            _viewModel.SelectedBankNameField = JObject.Parse(bankName)["bankDetails"].ToString();
-                            _viewModel.OtherBanksVisible = false;
-                        }
-
-
-                    }
-                    else
-                    {
-                        _viewModel.IsIBanDropDownEnabled = true;
-                        _viewModel.IsLoading = false;
-                        _viewModel.SelectedIDNumber = "";
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            _viewModel.isIBanValid = false;
-                            //_viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
-                        });
-                    }
-                }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        _viewModel.IsLoading = false;
-                        //_viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                //IBan is InValid
-                _viewModel.isIBanValid = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    _viewModel.IsLoading = false;
-                    //_viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
-                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
-
-                });
-            }
-        }
+       
 
         private void IBANFocusChnaged(object sender, TextChangedEventArgs e)
         {
 
-            if ((_viewModel.IBANValue.Length > 0) && (_viewModel.IBANValue.Length < 24))
-            {
-
-                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
-
-            }
-            if ((_viewModel.IBANValue.Length > 0) && (_viewModel.IBANValue.Length == 24))
-            {
-                //_viewModel.isIBanValid = true;
-                checkIBanIsValidOrNot();
-            }
+            
 
         }
 

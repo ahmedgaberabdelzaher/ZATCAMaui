@@ -17,14 +17,24 @@
         <Grid>
             <Border Padding="0" Style="{StaticResource CommonTopCurves}">
 
-                <Grid Padding="015" RowDefinitions="auto,auto,*,auto">
+                <Grid Padding="15" RowDefinitions="auto,auto,*,auto">
                     <!--#region Header  -->
                     <StackLayout Orientation="Horizontal">
                         <Image
-                            x:Name="backArrow"
-                            HorizontalOptions="Start"
-                            Rotation="0"
-                            Source="arrowLeft.png">
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="arrowRight.png"
+                        VerticalOptions="CenterAndExpand">
+
+                            <Image.Triggers>
+                                <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                    <Setter Property="Rotation" Value="180" />
+                                </DataTrigger>
+                            </Image.Triggers>
+
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding BackCommand}" />
                             </Image.GestureRecognizers>

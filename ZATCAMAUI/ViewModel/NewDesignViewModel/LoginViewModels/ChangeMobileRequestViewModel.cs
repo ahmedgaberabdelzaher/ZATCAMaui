@@ -377,7 +377,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     {
                         OTPFirstDigit = string.Empty;
                     }
-                    
+
                 }
 
                 OnPropertyChanged("OTPFirstDigit");
@@ -616,12 +616,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
-        public ChangeMobileRequestViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
+        public ChangeMobileRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
             ShowIdTypePicker = new Command(async () =>
             {
-                await ShowIDTypeDialogAsync();
+                if (ChangeMobModel?.d?.IDTYPSet != null)
+                    await ShowIDTypeDialogAsync();
             });
 
             ContinueBtnTapped = new Command(async () =>
@@ -636,7 +637,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
             CancelBtnTapped = new Command(async () =>
             {
-                if(NafathGUID.Length > 0)
+                if (NafathGUID.Length > 0)
                 {
                     _navigationService.GoBack();
                 }
@@ -707,7 +708,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                 ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
                                 ChangeMobModel.d = ChangeMobModel.result;
                                 ShowOTPSection = true;
-                               // DissableSendOtp = false;
+                                // DissableSendOtp = false;
 
                                 StartOTPTimer();
                             }
@@ -722,13 +723,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         }
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine("----->"+ex.StackTrace);
+                    Console.WriteLine("----->" + ex.StackTrace);
                 }
-                
+
             });
-            VerifyOTPBtnCliked = new Command(async () => {
+            VerifyOTPBtnCliked = new Command(async () =>
+            {
                 EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
                 if (EnteredOTP.Length != 4)
                 {
@@ -757,7 +759,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                 //ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
                                 var response = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
 
-                                if(response != null && response.result == null)
+                                if (response != null && response.result == null)
                                 {
                                     await ShowErrorWithQuitAsync(data.Item2);
                                 }
@@ -797,8 +799,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         {
                             EnteredOTP = OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = string.Empty;
 
-                            OTPAttemptsCount = OTPAttemptsCount+1;
-                            if(OTPAttemptsCount >= 3)
+                            OTPAttemptsCount = OTPAttemptsCount + 1;
+                            if (OTPAttemptsCount >= 3)
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.OTPMaxAttempts));
                                 TxtMobileNumber = string.Empty;
@@ -823,7 +825,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 }
 
             });
-            OnResendOTPClicked = new Command(async () => {
+            OnResendOTPClicked = new Command(async () =>
+            {
                 ChangeMobModel.d.Operationz = "85";
                 changeMobModel.d.NewTlnmbr = TxtCountryCode.Replace("+", "00") + TxtMobileNumber;
                 IsLoading = true;
@@ -854,7 +857,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             OnTransferCopyOfCRChoiceButtonClick = new Command(async (type) =>
             {
                 var typeValue = type as string;
-                if (AttachedForms.Count < 1 )
+                if (AttachedForms.Count < 1)
                 {
                     if (string.IsNullOrEmpty(NafathGUID))
                     {
@@ -875,8 +878,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
             });
 
-            SubmitBtnClicked = new Command(async () => {
-                if(ShowAttachmentSection == true && AttachedForms.Count != 1)
+            SubmitBtnClicked = new Command(async () =>
+            {
+                if (ShowAttachmentSection == true && AttachedForms.Count != 1)
                 {
                     await _dialogService.ShowError(AppResources.AttachmentWarnMsg, "Information", "Ok", null);
                     return;
@@ -913,13 +917,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 }
             });
 
-            NafathClicked = new Command(async () =>{
+            NafathClicked = new Command(async () =>
+            {
                 try
                 {
                     // Constants.ChangeMobNafath = ChangeMobModel.d.Link;
                     App.GUIDFrChangeMob = "";
                     _navigationService.GoBack();
-                    _navigationService.NavigateTo(App.NafathLoginView,ZATCAConstants.NAFATH_COMPANY_CHANGE_MOBILE_NUMBER);
+                    _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_COMPANY_CHANGE_MOBILE_NUMBER);
                 }
                 catch (Exception ex)
                 {
@@ -929,7 +934,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
             });
 
-            PrintFormClicked = new Command(async () => {
+            PrintFormClicked = new Command(async () =>
+            {
                 try
                 {
                     PrintForm(ChangeMobModel.d.Fbnumz);
@@ -1000,7 +1006,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                             string[] ExtentionArray = fileData.FileName.Split('.');
                             string Extention = ExtentionArray.Last();
 
-                            if ( (!ShowPrintFormButton && (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")) || (ShowPrintFormButton && Extention.ToLower() == "pdf"))
+                            if ((!ShowPrintFormButton && (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")) || (ShowPrintFormButton && Extention.ToLower() == "pdf"))
                             {
                                 attachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 2);
                                 decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 4);
@@ -1015,8 +1021,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                         }
                                         catch (Exception ex)
                                         {
-                                            
-                                            
+
+
                                         }
                                     }
                                     else
@@ -1061,8 +1067,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                
-                
+
+
 
             }
         }
@@ -1073,7 +1079,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 IsLoading = true;
                 string CRLicenseNo = string.Empty;
                 Attachment dd = await WebServiceManager.ChangeMobileNumberAttachment(attachmentByteData, fileName, ChangeMobModel?.d.ReturnId, docType, contentType);
-                if(dd != null)
+                if (dd != null)
                 {
                     dd.Dotyp = docType;
                     AttachedForms.Add(dd);
@@ -1082,8 +1088,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                
-                
+
+
             }
             finally
             {
@@ -1092,7 +1098,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         }
         private async void OnDeleteAttachment(Attachment item, string docType)
         {
-           
+
         }
 
         private bool _eSTLedge = false;
@@ -1105,7 +1111,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 if (_eSTLedge == value) return;
 
                 _eSTLedge = value;
-             //   IsDeclarationBtnEnabled = _eSTLedge;
+                //   IsDeclarationBtnEnabled = _eSTLedge;
                 OnPropertyChanged(nameof(ESTLedge));
 
             }
@@ -1127,7 +1133,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 ChangeMobModel.d.Tintyp = "N";
                 ChangeMobModel.d.Mgrid = ManagerId;
                 ChangeMobModel.d.Langz = UtilityManager.GetLanguageParameter();
-                if(NafathGUID.Length > 0)
+                if (NafathGUID.Length > 0)
                 {
                     ChangeMobModel.d.Tintyp = "R";
                     ChangeMobModel.d.Idtyp = "";
@@ -1199,7 +1205,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                         //OtpSection1 = true;
 
 
-                                        
+
                                     }
                                 }
                                 else
@@ -1255,7 +1261,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
                 if (result)
                 {
-                    
+
                     ChangeMobModel.d.Operationz = "08";
                     var data = await WebServiceManager.SaveChangeMobileNumberAsync(ChangeMobModel);
                     IsLoading = false;
@@ -1291,11 +1297,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            
+
         }
 
         private string GetSelectedIDtype()
@@ -1305,7 +1311,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         private async Task<bool> ProceedContinueAsync()
         {
-            if(!string.IsNullOrEmpty(ManagerName.Trim()))
+            if (!string.IsNullOrEmpty(ManagerName.Trim()))
             {
                 if (!string.IsNullOrEmpty(SelectedIDType))
                 {
@@ -1315,7 +1321,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         {
                             if (TinNumber.StartsWith("3"))
                             {
-                                if(TinNumber.Length == 10)
+                                if (TinNumber.Length == 10)
                                 {
                                     return true;
                                 }
@@ -1627,7 +1633,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         public void ShowTpDetailsPage()
         {
-            if(NafathGUID.Length > 0)
+            if (NafathGUID.Length > 0)
             {
                 ShowAutoTPDetails = true;
                 ShowManualTPDetails = false;
@@ -1678,8 +1684,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
             catch (GAZTUnlockAccountException ex)
             {
-                
-                
+
+
             }
             catch (InternetException ex)
             {
@@ -1758,7 +1764,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
             catch (Exception ex)
             {
-                
+
             }
             finally
             {
@@ -1772,7 +1778,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             var data = await WebServiceManager.GetIDTypesForChangeMobNumber(guidNf);
 
             IsLoading = false;
-            if (data.Item1 != null)
+            if (data?.Item1 != null)
             {
                 if (data.Item1.IsSuccessStatusCode)
                 {
@@ -1782,13 +1788,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
                         ManagerName = ChangeMobModel.d.Mgrnm;
                         ManagerId = ChangeMobModel.d.Mgrid;
-                        foreach(var item in ChangeMobModel.d.IDTYPSet)
+                        foreach (var item in ChangeMobModel.d.IDTYPSet)
                         {
                             CopyIDTypes.Add(item);
                         }
                     }
                 }
-                else if(data.Item1.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                else if (data?.Item1.StatusCode == System.Net.HttpStatusCode.BadRequest)
                 {
                     await ShowErrorWithQuitAsync(data.Item2);
                 }
@@ -1944,7 +1950,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         public void PrintForm(string fbnumz)
         {
-        //https://sapgatewayd.zatca.gov.sa/sap/opu/odata/SAP/Z_DOWN_FORM_EXT_SRV/cover_formSet(Utype='',Fbnum='40000006834')/$value
+            //https://sapgatewayd.zatca.gov.sa/sap/opu/odata/SAP/Z_DOWN_FORM_EXT_SRV/cover_formSet(Utype='',Fbnum='40000006834')/$value
             String pdfUrl = ZATCAConstants.PrintFormUrl + fbnumz;
             ShowPdf(pdfUrl);
         }
@@ -1967,9 +1973,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             catch (Exception ex)
             {
 
-                
-                
-                
+
+
+
             }
         }
 
@@ -2003,7 +2009,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         internal void StopTimer()
         {
-            if(otpTimer!= null)
+            if (otpTimer != null)
             {
                 otpTimer.Stop();
             }
