@@ -1138,8 +1138,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                     viewModel.Logout = AppResources.ZLogout;
                     App.HasToRefreshLoaderOnDashboard = true;
                     SetLTRDirection();
-
-
+                    viewModel.GetHomeMenuLst();
                     Instrumentation.EndCall(callTracker);
                 }
                 else
@@ -1162,6 +1161,8 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                     viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
                     viewModel.Logout = AppResources.ZLogout;
                     App.HasToRefreshLoaderOnDashboard = true;
+                    viewModel.GetHomeMenuLst();
+
                     SetRTLDirection();
 
                     Instrumentation.EndCall(callTracker);

@@ -3170,7 +3170,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 IsBillsTotalAmountEN = false;
             }
             else
-            {
+            { 
                 IsBillsTotalAmountAR = false;
                 IsBillsTotalAmountEN = true;
 

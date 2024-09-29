@@ -37,9 +37,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
 
         public Services CurrentService { get; set; } = Services.CustomServices;
 
-        ObservableCollection<MenuModel> menuLst;
-        public ObservableCollection<MenuModel> MenuLst { get { return menuLst; } set { menuLst = value; OnPropertyChanged(); } }
-
+      
         ObservableCollection<MenuModel> customeMenuLst;
         public ObservableCollection<MenuModel> CustomeMenuLst { get { return customeMenuLst; } set { customeMenuLst = value; OnPropertyChanged(); } }
 
@@ -56,30 +54,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
             GetCustomServiceMenuLst(); GetDashBoardMenuLst(3);
         }
 
-        private void GetHomeMenuLst()
-        {
-            MenuLst = new ObservableCollection<MenuModel>()
-        {
-            new MenuModel()
-            {
-               Name=AppResources.ZatcaInfoMenu, ID="1",ImageSource="ExciseTaxServices"
-            },
-             new MenuModel()
-            {
-               Name=AppResources.NDVATServices, ID="2",ImageSource="VatServices"
-            },
-                 new MenuModel()
-            {
-               Name=AppResources.EXCISETAXServices, ID="3",ImageSource="CustomServices"
-            },
-             new MenuModel()
-            {
-                              Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports"
-
-             //  Name=AppResources.GeneralServices, ID="4",ImageSource="GeneralServices"
-            },
-        };
-        }
 
         public async void OpenBrowser(Uri uri)
         {
