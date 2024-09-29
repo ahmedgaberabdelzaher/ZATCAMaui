@@ -2884,7 +2884,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                                 if (App.IsArabic)
                                 {
-                                    if (item.calendarType.Equals("H") || item.inboundCorrespondenceType.StartsWith("H"))
+                                    if (item.calendarType?.Equals("H")==true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
                                         item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)

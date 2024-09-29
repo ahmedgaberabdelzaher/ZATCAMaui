@@ -145,7 +145,7 @@
                         StrokeShape="RoundRectangle 12,12,0,0"
                         VerticalOptions="FillAndExpand">
 
-                        <ScrollView Scrolled="ScrollView_Scrolled" VerticalScrollBarVisibility="Never">
+                        <ScrollView Scrolled="ScrollView_Scrolled" Margin="0,0,0,10" VerticalScrollBarVisibility="Never">
 
                             <StackLayout Spacing="0">
 
@@ -293,6 +293,12 @@
                                         Grid.Column="2"
                                         HorizontalOptions="EndAndExpand"
                                         Source="WhiteCircle_arrow_right.png">
+                                          <Image.Triggers>
+                                                    <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
+                                                        <Setter Property="Rotation" Value="180"></Setter>
+                                                    </DataTrigger>
+
+                                                </Image.Triggers>
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnZakatNowTapped" />
                                         </Image.GestureRecognizers>
@@ -350,7 +356,14 @@
                                                     </Label.FormattedText>
                                                 </Label>
 
-                                                <Image Source="circle_arrow_right.png" VerticalOptions="Center">
+                                                <Image Source="circle_arrow_right.png" 
+                                                       VerticalOptions="Center">
+                                                      <Image.Triggers>
+                                                    <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
+                                                        <Setter Property="Rotation" Value="180"></Setter>
+                                                    </DataTrigger>
+
+                                                </Image.Triggers>
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="TappedOnMyBills" />
                                                     </Image.GestureRecognizers>
@@ -944,6 +957,12 @@
                                                 Text="{x:Static ResourceManager:AppResources.DashboardLastTransaction}"
                                                 VerticalOptions="Center" />
                                             <Image HorizontalOptions="EndAndExpand" Source="circle_arrow_right.png">
+                                                <Image.Triggers>
+                                                    <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
+                                                        <Setter Property="Rotation" Value="180"></Setter>
+                                                    </DataTrigger>
+
+                                                </Image.Triggers>
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
                                                 </Image.GestureRecognizers>
@@ -1130,6 +1149,12 @@
                                                 Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}"
                                                 VerticalOptions="Center" />
                                             <Image HorizontalOptions="EndAndExpand" Source="circle_arrow_right.png">
+                                                  <Image.Triggers>
+                                                    <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
+                                                        <Setter Property="Rotation" Value="180"></Setter>
+                                                    </DataTrigger>
+
+                                                </Image.Triggers>
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="InstalmentPlan_Tapped" />
                                                 </Image.GestureRecognizers>

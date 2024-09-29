@@ -76,7 +76,7 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
                     if (dueDate != null)
                     {
 
-                        string formatedDate = string.Format(Convert.ToDateTime(dueDate).ToString("dd/MM/yyyy", new CultureInfo("en-US")));
+                        string formatedDate = string.Format(DateTime.Parse(dueDate).ToString("dd/MM/yyyy", new CultureInfo("en-US")));
 
                         if (calendarType.Equals("G"))
                         {
@@ -213,18 +213,18 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
                 _dueDate = value;
                 if (_dueDate != null)
                 {
-                    Day = Convert.ToDateTime(_dueDate).ToString("dd", new CultureInfo("en-US"));
+                    Day = DateTime.Parse(_dueDate).ToString("dd", new CultureInfo("en-US"));
                     if (App.IsArabic)
                     {
-                        Month = UtilityManager.GetMonthName(Convert.ToDateTime(_dueDate).ToString("MMMM", new CultureInfo("en-US")));
+                        Month = UtilityManager.GetMonthName(DateTime.Parse(_dueDate).ToString("MMMM", new CultureInfo("en-US")));
                     }
                     else
                     {
-                        Month = Convert.ToDateTime(_dueDate).ToString("MMM", new CultureInfo("en-US"));
+                        Month = DateTime.Parse(_dueDate).ToString("MMM", new CultureInfo("en-US"));
                     }
                     // Month = Convert.ToDateTime(_dueDate).ToString("MMM", new CultureInfo("en-US"));
-                    FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    DueDateDateTime = Convert.ToDateTime(_dueDate);
+                    FormatedSingleDueDate = DateTime.Parse(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    DueDateDateTime = DateTime.Parse(_dueDate);
                     //if (App.IsArabic)
                     //{
                     //    string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));

@@ -88,5 +88,23 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
         }
 
+      async  void paymentItemsListView_ItemSelected(System.Object sender, Microsoft.Maui.Controls.SelectedItemChangedEventArgs e)
+        {
+
+            PaymentOptionsModel selectedItem = e.SelectedItem as PaymentOptionsModel;
+            if (selectedItem.CardLabel == AppResources.PaymentMethodCardPayment)
+            {
+                MessagingCenter.Send<object, string>(this, "Card_Payment", "Yes");
+                OnSelect?.Invoke("Card_Payment");
+                await MopupService.Instance.PopAsync();
+
+            }
+            else if (selectedItem.CardLabel == AppResources.Sadad)
+            {
+                MessagingCenter.Send<object, string>(this, "SADAD", "Yes");
+                OnSelect?.Invoke("SADAD");
+                await MopupService.Instance.PopAsync();
+            }
+        }
     }
 }

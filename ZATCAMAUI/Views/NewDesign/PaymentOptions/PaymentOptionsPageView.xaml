@@ -55,8 +55,8 @@
                                 HeightRequest="150"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="Start">
+                                 <cards:SfCardView.Content>
                                 <StackLayout
-                                    Padding="0,-4"
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
                                     VerticalOptions="CenterAndExpand">
@@ -69,13 +69,13 @@
                                         Source="{Binding SelectedCardIcon}"
                                         VerticalOptions="CenterAndExpand"
                                         WidthRequest="100" />
-                                    <Label
+                                    <Label TextColor="Black"
                                         Padding="8,0"
                                         HorizontalOptions="Start"
-                                        Style="{DynamicResource CardLabelBlack}"
                                         Text="{Binding CardLabel}"
                                         VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
+                         </cards:SfCardView.Content>
                             </cards:SfCardView>
 
                         </DataTemplate>
