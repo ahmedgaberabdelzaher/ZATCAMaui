@@ -8,6 +8,7 @@
     BackgroundColor="#88000000"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     x:Name="page"
     Title="NafathChangeMobleNumberOptionsView"
     FlowDirection="{Binding AppDirection}">
@@ -25,34 +26,36 @@
         <StackLayout>
             <Border
                 Padding="0"
-                BackgroundColor="Green"
                 HorizontalOptions="FillAndExpand"
                 Style="{StaticResource CommonTopCurves}"
                 VerticalOptions="EndAndExpand">
                 <StackLayout
-                    BackgroundColor="Orange"
+                    
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
                     <StackLayout
-                        BackgroundColor="White"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="CenterAndExpand">
-                        <Grid BackgroundColor="{StaticResource Secondary}" HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Secondary}" HorizontalOptions="FillAndExpand">
                             <Label
                                 FontSize="24"
-                                HorizontalOptions="Center"
+                                HorizontalOptions="CenterAndExpand"
                                 Style="{StaticResource SectionTitleWhiteBold}"
                                 Text="{x:Static ResourceManager:AppResources.ChangeMobileNumber}"
                                 VerticalOptions="Start" />
-                            <Image
-                                BackgroundColor="Transparent"
-                                HorizontalOptions="End"
-                                Source="ic_close.png">
+                            <Image HorizontalOptions="EndAndExpand">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="UserIconFont"
+                                        Glyph="{x:Static FontImage:IconFonts.Close}"
+                                        Size="25"
+                                        Color="White" />
+                                </Image.Source>
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding CloseCommand}" />
                                 </Image.GestureRecognizers>
                             </Image>
-                        </Grid>
+                        </StackLayout>
                         <StackLayout Padding="20">
                             <RadioButton
                                 Content="{x:Static ResourceManager:AppResources.IndividualOrEstablishment}"

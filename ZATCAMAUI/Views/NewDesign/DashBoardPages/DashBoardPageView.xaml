@@ -741,7 +741,7 @@
                                                                             HorizontalOptions="StartAndExpand"
                                                                             IsVisible="{Binding IsPaymentOverdue}"
                                                                             Style="{StaticResource ValueLabelBlackMedium}"
-                                                                            Text="{Binding periodDescription}" />
+                                                                            Text="{Binding taxTypeDescription}" />
 
                                                                         <Label
                                                                             HorizontalOptions="StartAndExpand"
@@ -767,7 +767,7 @@
                                                                                 <FormattedString>
                                                                                     <Span Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZAmount}" />
                                                                                     <Span Style="{StaticResource ValueLabelGrey}" Text=" : " />
-                                                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding amount, Converter={StaticResource commaSeparatorConverter}}" />
                                                                                     <Span Text=" " />
                                                                                     <!--<Span Text="{Binding Amount}"></Span>-->
                                                                                     <Span Text="&#160;&#160;" />

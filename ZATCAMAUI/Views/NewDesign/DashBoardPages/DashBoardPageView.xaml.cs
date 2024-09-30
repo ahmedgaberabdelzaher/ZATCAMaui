@@ -307,6 +307,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
             try
             {
+                MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
                 MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", (sender, arg) =>
                 {
                     viewModel.showPaymentOptions();

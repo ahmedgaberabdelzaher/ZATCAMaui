@@ -2562,7 +2562,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                         {
 
 
-                                            if (singleItem.calendarType.Equals("G"))
+                                            if (singleItem.calendarType?.Equals("G") == true)
                                             {
                                                 singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("en-US")));
 
@@ -2651,7 +2651,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                         {
 
 
-                                            if (singleItem.calendarType.Equals("G"))
+                                            if (singleItem.calendarType?.Equals("G") == true)
                                             {
                                                 singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("en-US")));
 
@@ -2884,7 +2884,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                                 if (App.IsArabic)
                                 {
-                                    if (item.calendarType?.Equals("H")==true || item.inboundCorrespondenceType.StartsWith("H"))
+                                    if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
                                         item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)

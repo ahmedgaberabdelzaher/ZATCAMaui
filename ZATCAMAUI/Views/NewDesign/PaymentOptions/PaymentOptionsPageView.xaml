@@ -37,7 +37,7 @@
                     x:Name="paymentItemsListView"
                     HorizontalOptions="EndAndExpand"
                     IsScrollingEnabled="False"
-                    ItemSpacing="12"
+                    ItemSpacing="5"
                     ScrollBarVisibility="Never"
                     SelectionBackground="Transparent"
                     SelectionChanged="paymentItemSelectionChanged"
@@ -52,7 +52,6 @@
                                 BorderColor="{StaticResource NeutralLightGrey}"
                                 BorderWidth="1"
                                 CornerRadius="10"
-                                HeightRequest="150"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="Start">
                                  <cards:SfCardView.Content>
