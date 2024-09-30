@@ -21,33 +21,23 @@
     </ContentView.Resources>
     <ContentView.Content>
         <StackLayout>
-            <Grid Margin="0,11,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <inputLayout:SfTextInputLayout
-                    x:Name="EmailInputLayout"
+            <Grid Margin="0,11,0,0"
+                  ColumnDefinitions="*,Auto">
+
+                <custom:CustomSfTextInputView
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Margin="10,-6,10,-6"
-                    ContainerType="Outlined"
-                    HasError="False"
-                    Hint="{x:Static ResourceManager:AppResources.TinEmail}"
-                    IsHintAlwaysFloated="True"
-                    OutlineCornerRadius="8"
-                    Stroke="{StaticResource Primary}">
-                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <inputLayout:LabelStyle TextColor="#B00020" />
-                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    <custom:GAZTBorderlessEntry
+                    x:Name="EmailInputLayout"
+                    Grid.ColumnSpan="2">
+
+                     <custom:GAZTBorderlessEntry
                         x:Name="email"
                         FontSize="Small"
                         PlaceholderColor="Gray"
                         Text="{Binding Email}"
                         TextColor="White"
                         Unfocused="Email_UnFocused" />
-                </inputLayout:SfTextInputLayout>
+
+                </custom:CustomSfTextInputView>
             </Grid>
             <Label
                 x:Name="ValidationLabel"
@@ -71,29 +61,22 @@
                     <ColumnDefinition Width="80*" />
                     <ColumnDefinition Width="20*" />
                 </Grid.ColumnDefinitions>
-                <inputLayout:SfTextInputLayout
-                    x:Name="TINSLayout"
+                 <custom:CustomSfTextInputView
+                     x:Name="TINSLayout"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Margin="10,-6,10,-6"
-                    ContainerType="Outlined"
-                    HasError="False"
-                    Hint="{x:Static ResourceManager:AppResources.TINS}"
-                    IsHintAlwaysFloated="True"
-                    IsVisible="{Binding IsVisibleTinIds}"
-                    OutlineCornerRadius="8"
-                    Stroke="{StaticResource Primary}">
-                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <inputLayout:LabelStyle TextColor="#B00020" />
-                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    <custom:GAZTBorderlessEntry
+                     IsVisible="{Binding IsVisibleTinIds}"
+                    Grid.ColumnSpan="2">
+
+                     <custom:GAZTBorderlessEntry
                         x:Name="TinDropdown"
                         FontFamily="{StaticResource SomarBold}"
                         FontSize="Small"
                         Text="{Binding TINID}"
                         TextColor="White" />
-                </inputLayout:SfTextInputLayout>
+
+                </custom:CustomSfTextInputView>
+
                 <buttons:SfButton
                     x:Name="TinsButton"
                     Grid.Row="0"

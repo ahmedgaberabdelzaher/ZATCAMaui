@@ -11,8 +11,8 @@
         <!-- Display name -->
         <ApplicationTitle>ZATCAMAUI</ApplicationTitle>
         <!-- App Identifier -->
-        <ApplicationId>com.gazt.egazt</ApplicationId>
-        <!-- <ApplicationId>com.gazt.enterprise.zatca</ApplicationId> -->
+        <!--<ApplicationId>com.gazt.egazt</ApplicationId>-->
+         <ApplicationId>com.zatca.Maui</ApplicationId> 
         <ApplicationIdGuid>c26ce74b-6e11-469c-a8c0-b07fe33a9b2d</ApplicationIdGuid>
         <!-- Versions -->
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -23,14 +23,6 @@
     <!-- <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))"> 
      <RuntimeIdentifier>ios-arm64</RuntimeIdentifier> 
      </PropertyGroup> -->
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-        <CreatePackage>false</CreatePackage>
-        <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-        <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
-        <MtouchLink>None</MtouchLink>
-        <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-        <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    </PropertyGroup>
 
     <ItemGroup>
         <MauiFont Remove="Resources\Fonts\MyMaterialIcon.ttf" />
@@ -60,8 +52,13 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
-        <CodesignProvision>ZATCADEV</CodesignProvision>
-        <CodesignKey>Apple Development: ahmed gaber (9VPCFT6L35)</CodesignKey>
+        <CodesignProvision>ZATCA App Enterprise Dev profile</CodesignProvision>
+        <CodesignKey>Apple Development: Anas Alshahrani (FBC5Q68T24)</CodesignKey>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+      <CreatePackage>false</CreatePackage>
+      <CodesignProvision>Automatic</CodesignProvision>
+      <CodesignKey>iPhone Developer</CodesignKey>
     </PropertyGroup>
     <ItemGroup>
         <Compile Remove="KeyStore\**" />

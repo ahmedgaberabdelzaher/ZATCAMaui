@@ -60,11 +60,11 @@ namespace ZATCAMAUI.Core.Helper
 
 
         //QA
-        //public static string BaseUrlOfODataServices = "https://test-api.zatca.gov.sa/test/third-party";
-        //public static string BaseUrlForSSLCheck = "https://test-api.zatca.gov.sa";
-        //public static string ClientId = "30ba76941a06e8b1141131800cd87139";
-        //public static string ClientSecret = "3bfa87a6be6b87fcbc2fad2f6690c4e5";
-        //public static string publicKeyStr = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJMtl5sh5y3FjSasKyyfcAWLvhjSkECAm3sJmkyJbCg/PN3olhTqknqecmZ8qQw4MNbyfEUkWjQfV+0fJXtRJOUIoeVJxQRDTOZ10abWGOenXj8IC5ETxnpVZ6XqKAYUGGQRtSBU4U3Uk+78gKw68pCNJCcgq/Z88rbLQ+KB//dwIDAQAB";
+        public static string BaseUrlOfODataServices = "https://test-api.zatca.gov.sa/test/third-party";
+        public static string BaseUrlForSSLCheck = "https://test-api.zatca.gov.sa";
+        public static string ClientId = "30ba76941a06e8b1141131800cd87139";
+        public static string ClientSecret = "3bfa87a6be6b87fcbc2fad2f6690c4e5";
+        public static string publicKeyStr = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJMtl5sh5y3FjSasKyyfcAWLvhjSkECAm3sJmkyJbCg/PN3olhTqknqecmZ8qQw4MNbyfEUkWjQfV+0fJXtRJOUIoeVJxQRDTOZ10abWGOenXj8IC5ETxnpVZ6XqKAYUGGQRtSBU4U3Uk+78gKw68pCNJCcgq/Z88rbLQ+KB//dwIDAQAB";
 
 
         //UAT
@@ -74,11 +74,11 @@ namespace ZATCAMAUI.Core.Helper
         //public static string ClientSecret = "24ad1c31fc1a9372119d4bb5934c92e1";
 
         //ECT
-        public static string BaseUrlOfODataServices = "https://test-api.zatca.gov.sa/pre-production/third-party";
-        public static string BaseUrlForSSLCheck = "https://test-api.zatca.gov.sa";
-        public static string ClientId = "f2050eb80c977daa819f806ad7820c8e";
-        public static string ClientSecret = "5a6d51d98aa856c572322ae3b99418ff";
-        public static string publicKeyStr = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqx7E3lJHpDDjrO4JsxpBllhkDm9YhMJpE64k0plrZoZ+f4jpmsP6+yFwWXwO7hnrD0WcWHyoQANfUtAe08p1m841p2TZH+ieRE8oxMK+mNEpYMM+7tXEe1gIR14aOrnjbjzdtdLGy/DTz4J2BJOVNFkgQN5OqHzFRP4KyGEUVUn3Qd8XG/+izXJ0YNdQDWrW5KQBC/2TPWhGC9HIPHWNrfxqndAR0fGfI4pEnLgbOAUXFk/Oi88oSg9mbhQWlpak46K8SE2R148xzEXvEb5QrYFmI11O87kZoa9CCfG2lmKnP8oZx9EDYfh4dHfzFItF9TLTe9e0MTFkfU4v2+uKQQIDAQAB";
+        //public static string BaseUrlOfODataServices = "https://test-api.zatca.gov.sa/pre-production/third-party";
+        //public static string BaseUrlForSSLCheck = "https://test-api.zatca.gov.sa";
+        //public static string ClientId = "f2050eb80c977daa819f806ad7820c8e";
+        //public static string ClientSecret = "5a6d51d98aa856c572322ae3b99418ff";
+        //public static string publicKeyStr = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqx7E3lJHpDDjrO4JsxpBllhkDm9YhMJpE64k0plrZoZ+f4jpmsP6+yFwWXwO7hnrD0WcWHyoQANfUtAe08p1m841p2TZH+ieRE8oxMK+mNEpYMM+7tXEe1gIR14aOrnjbjzdtdLGy/DTz4J2BJOVNFkgQN5OqHzFRP4KyGEUVUn3Qd8XG/+izXJ0YNdQDWrW5KQBC/2TPWhGC9HIPHWNrfxqndAR0fGfI4pEnLgbOAUXFk/Oi88oSg9mbhQWlpak46K8SE2R148xzEXvEb5QrYFmI11O87kZoa9CCfG2lmKnP8oZx9EDYfh4dHfzFItF9TLTe9e0MTFkfU4v2+uKQQIDAQAB";
         //PRD
         //public static string BaseUrlOfODataServices = "";
         //public static string BaseUrlForSSLCheck = "";
