@@ -16,6 +16,7 @@ namespace ZATCAMAUI.Views.NewDesign.HomePages
             if (tab == "3")
             {
                 tab = "0";
+                viewModel.GetHomeMenuLst();
                 viewModel.GetDashBoardMenuLst(3);
                 HasBackButton = true;
                 preLoginMenu.IsVisible = false;
@@ -23,6 +24,7 @@ namespace ZATCAMAUI.Views.NewDesign.HomePages
             }
             else
             {
+                viewModel.GetDashBoardMenuLst();
                 HasBackButton = false;
                 beforeLoginMenu.IsVisible = false;
                 preLoginMenu.IsVisible = true;
