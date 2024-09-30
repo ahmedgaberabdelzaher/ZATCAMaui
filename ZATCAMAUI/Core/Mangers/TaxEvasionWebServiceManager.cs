@@ -1131,21 +1131,16 @@ namespace ZATCAMAUI.Core.Mangers
             HttpClient client = new HttpClient(App.httpClientHandler);
             string lang = WebServiceManager.GetLangZParameterAREN();
             string url = ZATCAConstants.VatSignUPURL; // "https://test-api.zatca.gov.sa/test/third-party/v1/vat-signup/cases";
-            // var uri = new Uri(url);
-
-            //  HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+          
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("X-Session-Language", "EN");
             client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
             client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
 
             var serilized = JsonConvert.SerializeObject(createVatSignUPRequest);
-            Console.WriteLine("API for readCaptcha+ ----------------" + serilized);
             HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
             HttpResponseMessage res = await client.PostAsync(url, contentPost);
             var detailJson = res.Content.ReadAsStringAsync().Result;
-            //var dataresponse = JsonConvert.DeserializeObject<CreateVatSignUPResponse>(detailJson);
-            Console.WriteLine("API for forgotPasswordCaptcha+ ----------------" + detailJson);
             return detailJson;
 
         }

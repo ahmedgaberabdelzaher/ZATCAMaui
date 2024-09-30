@@ -15,4 +15,9 @@ namespace ZATCAMAUI.Models
         public string processType { get; set; }
         
     }
+    public class LocationServicesModel
+    {
+        public string lattitude = string.Empty;
+        public string longitude = string.Empty;
+    }
 }

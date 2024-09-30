@@ -34,36 +34,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private async void Image_Copy_Tapped(object sender, EventArgs e)
-        {
-            Clipboard.SetTextAsync(Label_Tin.Text);
-            if (Clipboard.HasText)
-            {
-                var text = await Clipboard.GetTextAsync();
-                var displayText = AppResources.TINS + " " + text;
-                copyLabel.IsVisible = true;
-                await Task.Delay(2000); // Delay for 2 seconds
-                copyLabel.IsVisible = false;
-                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                headerAmountInfo.IsLinkAvailable = false;
-                headerAmountInfo.Message = displayText;
-                if (App.IsArabic)
-                {
-                    headerAmountInfo.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    headerAmountInfo.FlowDirections = "LeftToRight";
-                }
-                headerWithInfos.Add(headerAmountInfo);
-                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                newDesignPopUp.MainHeader = AppResources.Copied;
-                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-            }
-        }
         protected override bool OnBackButtonPressed() => true;
 
     }

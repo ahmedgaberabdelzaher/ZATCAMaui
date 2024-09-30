@@ -1,6 +1,7 @@
 ﻿
 using Mopups.Pages;
 using Mopups.Services;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat;
 
 namespace ZATCAMAUI.Views.NewDesign.Nafat
@@ -16,7 +17,6 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
 
         private async void TappedGulf(object sender, EventArgs e)
         {
-            //this.Navigation.PopAsync();
             App.successMsg = true;
             GulfImage.Source = "vat_tile_IbanCard_background.png";
             GulfText.TextColor = Colors.White;
@@ -29,7 +29,6 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
         private async void TappedCitizen(object sender, EventArgs e)
         {
             App.successMsg = false;
-            //this.Navigation.PopAsync();
             GulfImage.Source = "vat_tile_IbanCard_background_white.png";
             GulfText.TextColor = Colors.CadetBlue;
             CitigenImage.Source = "vat_tile_IbanCard_background.png";
@@ -41,7 +40,8 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
             await MopupService.Instance.PopAsync();
             try
             {
-                viewModel._navigationService.NavigateTo(App.NafathLoginPageView);
+                viewModel._navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_SIGNUP);
+
             }
             catch (Exception)
             {

@@ -1915,7 +1915,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             Title = string.Empty;
             ShowIqamaTypeDesc = false;
             IqamaTypeDesc = string.Empty;
-
+            Captcha = string.Empty;
         }
         public void SetBackFormVisibility()
         {
@@ -2849,82 +2849,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 response.data = response.Result;
                 if (response.data == null)
                 {
-                    ErrorObj SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<ErrorObj>(res);
+                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(res);
 
-                    StringBuilder Message = new StringBuilder();
-                    foreach (Errordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                    string Message = string.Empty;
+                    if (errorMesg != null && errorMesg.header != null && errorMesg.header.moreInformation != null && errorMesg.header.moreInformation.errorDetails != null && errorMesg.header.moreInformation.errorDetails[0].message != null)
                     {
-                        if (itemerror.code.Contains("ZD_ZVTX/006"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage6);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/007"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage7);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/008"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage8);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/009"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage9);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/0010"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage10);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/0011"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage11);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/001"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage1);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/002"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage2);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/003"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage3);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/004"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage4);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/005"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage5);
-                        }
-
-                        if (itemerror.code.Contains("ZD_ZREG/303"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErrorMessage303);
-                        }
-                        else
-                        {
-                            Message.AppendLine(itemerror.message);
-                        }
+                        WebServiceManager.ErrorMessageForVAT = errorMesg.header.moreInformation.errorDetails[0].message;
+                        WebServiceManager.ErrorMessageForVAT += errorMesg.header.moreInformation.errorDetails[1].message;
+                        Message = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
                     }
-                    Message = Message.Replace("An exception was raised", "");
                     OTP = string.Empty;
-
-
-                    //_dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
 
 

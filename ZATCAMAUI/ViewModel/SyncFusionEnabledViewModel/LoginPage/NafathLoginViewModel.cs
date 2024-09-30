@@ -30,6 +30,8 @@ public class NafathLoginViewModel : BaseViewModel
         }
     }
 
+    public LocationServicesModel LocationData { get; set; } = new LocationServicesModel();
+
     public ICommand LoginCommand { get; set; }
     public NafathLoginViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
     {

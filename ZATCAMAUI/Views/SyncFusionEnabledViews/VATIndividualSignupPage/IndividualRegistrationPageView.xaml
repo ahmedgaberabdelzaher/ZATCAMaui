@@ -48,11 +48,22 @@
             <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
 
                 <Image
-                    HorizontalOptions="Start"
-                    IsVisible="{Binding BackArrowVisible}"
-                    Source="arrowLeft.png">
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="arrowRight.png"
+                        VerticalOptions="CenterAndExpand">
+
+                    <Image.Triggers>
+                        <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                            <Setter Property="Rotation" Value="180" />
+                        </DataTrigger>
+                    </Image.Triggers>
+
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnBackButtonClick}" />
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
 
@@ -147,7 +158,14 @@
                                 </StackLayout>
 
                                 <StackLayout x:Name="IDNumber" Grid.Row="1">
-                                    
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Style="{StaticResource CardLabelBlack}" Text="{x:Static ResourceManager:AppResources.IDNumber}" />
+                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                     <Border
                                         Stroke="{StaticResource Gray}"
                                         StrokeShape="RoundRectangle 10,10,10,10"
@@ -265,14 +283,7 @@
 
 
                                     <custom:CustomSfTextInputView
-                                        x:Name="FrmIDType"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.ZZIDType}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
+                                        x:Name="FrmIDType">
 
                                         <custom:CustomSfTextInputView.ErrorLabelStyle>
                                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -285,7 +296,6 @@
                                             InputTransparent="True"
                                             IsReadOnly="True"
                                             IsSpellCheckEnabled="False"
-                                            Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding TxtIDType}" />
                                         </custom:CustomSfTextInputView.TextInputView>
@@ -371,13 +381,7 @@
 
                                     <custom:CustomSfTextInputView
                                         x:Name="FrmIDNumber"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        HasError="{Binding FrameIDError}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
+                                        HasError="{Binding FrameIDError}">
 
                                         <custom:CustomSfTextInputView.ErrorLabelStyle>
                                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -446,14 +450,7 @@
 
                                     <custom:CustomSfTextInputView
                                         x:Name="FrmDBO"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        HasError="{Binding FrameDOBError}"
-                                        Hint="dd/MM/yyyy"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
+                                        HasError="{Binding FrameDOBError}">
 
                                         <custom:CustomSfTextInputView.ErrorLabelStyle>
                                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -600,13 +597,7 @@
 
                                     <custom:CustomSfTextInputView
                                         x:Name="FrmName"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        HasError="{Binding FrameNameError}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
+                                        HasError="{Binding FrameNameError}">
 
                                         <custom:CustomSfTextInputView.ErrorLabelStyle>
                                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -677,13 +668,8 @@
 
                                         <custom:CustomSfTextInputView
                                             x:Name="Frame_Country"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="False"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
 
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
@@ -722,14 +708,8 @@
 
                                         <custom:CustomSfTextInputView
                                             x:Name="GCCFrame_Country"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="{Binding FrameGccCountyError}"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
 
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
@@ -834,15 +814,9 @@
 
                                         <custom:CustomSfTextInputView
                                             x:Name="Frame_Region"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="{Binding FrameRegionError}"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
                                             IsVisible="{Binding SetStateListVisibility}"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
 
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
@@ -955,15 +929,9 @@
 
                                         <custom:CustomSfTextInputView
                                             x:Name="Frame_City"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="{Binding FrameCityError}"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCity}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
                                             IsVisible="{Binding SetCityListVisibility}"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
                                                 <inputLayout:LabelStyle TextColor="#B00020" />
@@ -1055,14 +1023,8 @@
 
                                     <custom:CustomSfTextInputView
                                             x:Name="Neighborhood"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="False"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
                                             Style="{StaticResource TextInputLayout}">
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
@@ -1090,14 +1052,8 @@
 
                                     <custom:CustomSfTextInputView
                                             x:Name="PostalCode"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="False"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
                                             Style="{StaticResource TextInputLayout}">
                                         <custom:CustomSfTextInputView.TextInputView>
@@ -1122,14 +1078,8 @@
 
                                     <custom:CustomSfTextInputView
                                             x:Name="BuildingNumber"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="False"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
                                             Style="{StaticResource TextInputLayout}">
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
@@ -1154,14 +1104,8 @@
 
                                     <custom:CustomSfTextInputView
                                             x:Name="UnitNumber"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="False"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZUnitNumber}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
                                             Style="{StaticResource TextInputLayout}">
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
@@ -1229,18 +1173,13 @@
 
                                     <custom:CustomSfTextInputView
                                             x:Name="FrmEmailAddress"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="{Binding FrameEmailError}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                             </custom:CustomSfTextInputView.ErrorLabelStyle>
-                                            <custom:CustomSfTextInputView>
+                                            <custom:CustomSfTextInputView.TextInputView>
                                                  <custom:GAZTBorderlessEntry
                                                 x:Name="EntryEmail"
                                                 IsSpellCheckEnabled="False"
@@ -1254,7 +1193,7 @@
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
 
-                                            </custom:CustomSfTextInputView>
+                                            </custom:CustomSfTextInputView.TextInputView>
                                            
                                         </custom:CustomSfTextInputView>
                                     </StackLayout>
@@ -1272,13 +1211,8 @@
 
                                     <custom:CustomSfTextInputView
                                             x:Name="FrmConfirmEmail"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="{Binding FrameConfirmEmailError}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
                                                 <inputLayout:LabelStyle TextColor="#B00020" />
@@ -1878,20 +1812,15 @@
                                         </Label>
 
                                         <custom:CustomSfTextInputView
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="{Binding FramePasswordError}"
-                                            Hint="{x:Static ResourceManager:AppResources.NewPassword}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                             </custom:CustomSfTextInputView.ErrorLabelStyle>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
+                                                HorizontalOptions="StartAndExpand"
                                                 x:Name="EntryPassword"
                                                 IsPassword="{Binding IsPasswordEncripted}"
                                                 MaxLength="16"
@@ -1938,14 +1867,8 @@
                                         </Label>
 
                                         <custom:CustomSfTextInputView
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="{Binding FrameConfirmPasswordError}"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
                                             HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
                                             <custom:CustomSfTextInputView.ErrorLabelStyle>
                                                 <inputLayout:LabelStyle TextColor="#B00020" />
@@ -1953,6 +1876,7 @@
                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                 <custom:GAZTBorderlessEntry
+                                                HorizontalOptions="StartAndExpand"
                                                 x:Name="EntryConfirmPassword"
                                                 FontSize="Small"
                                                 IsPassword="{Binding IsConfirmPasswordEncripted}"
@@ -2070,14 +1994,9 @@
                                         Text="{x:Static ResourceManager:AppResources.EnterOTP}" />
 
                                     <custom:CustomSfTextInputView
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
                                         HasError="{Binding FrameOTPError}"
                                         HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
                                         IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
                                         Stroke="{StaticResource Primary}">
                                         <custom:CustomSfTextInputView.ErrorLabelStyle>
                                             <inputLayout:LabelStyle TextColor="#B00020" />
