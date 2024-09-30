@@ -31,20 +31,18 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <inputLayout:SfTextInputLayout
-                    x:Name="notesInputLayout"
-                    Grid.Row="0"
-                    ContainerType="Outlined"
-                    ErrorText="{x:Static ResourceManager:AppResources.ZZZRequired}"
-                    Hint="{x:Static ResourceManager:AppResources.VoidReasonHint}"
-                    IsHintAlwaysFloated="True"
-                    ShowHint="True">
-                    <custom:GAZTBorderlessEntry
+
+                 <custom:CustomSfTextInputView ErrorText="{x:Static ResourceManager:AppResources.ZZZRequired}"
+                                               x:Name="notesInputLayout">
+                    <custom:CustomSfTextInputView.TextInputView>
+                        <custom:GAZTBorderlessEntry
                         x:Name="notes"
                         IsSpellCheckEnabled="false"
                         MaxLength="132"
                         TextChanged="notes_TextChanged" />
-                </inputLayout:SfTextInputLayout>
+                    </custom:CustomSfTextInputView.TextInputView>
+                </custom:CustomSfTextInputView>
+
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />

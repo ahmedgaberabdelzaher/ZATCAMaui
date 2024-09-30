@@ -253,18 +253,11 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Grid>
 
-                                    <inputLayout:SfTextInputLayout
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.ReportType}"
-                                        InputViewPadding="16,0,16,0"
-                                        OutlineCornerRadius="14"
-                                        Style="{StaticResource InputTableTextInputLayoutStyleWuthoutHeighandWidth}">
-                                        <Grid>
-                                            <StackLayout Orientation="Horizontal">
+                                <StackLayout>
+                                     <custom:CustomSfTextInputView>
 
-                                                <custom:GAZTBorderlessEntry
+                                           <custom:GAZTBorderlessEntry
                                                     InputTransparent="True"
                                                     IsReadOnly="True"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ReportType}"
@@ -272,43 +265,34 @@
                                                     Text="{Binding SelectedBalaghType.Name}"
                                                     TextColor="{StaticResource NeutralBlack}"
                                                     VerticalTextAlignment="Center" />
-                                                <Image HorizontalOptions="EndAndExpand" Source="arrowDropdown.png" />
-                                            </StackLayout>
-                                            <StackLayout
-                                                Grid.Row="0"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand">
 
-                                                <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding SelectBalaghTypeCommand}" />
-                                                </StackLayout.GestureRecognizers>
-                                            </StackLayout>
-                                        </Grid>
-                                    </inputLayout:SfTextInputLayout>
-                                    <Grid.GestureRecognizers>
+                                        
+                                            <custom:CustomSfTextInputView.TrailingView>
+                                                <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
+                                            </custom:CustomSfTextInputView.TrailingView>
+
+                                          <custom:CustomSfTextInputView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SelectBalaghTypeCommand}" />
+                                        </custom:CustomSfTextInputView.GestureRecognizers>
+
+                                    </custom:CustomSfTextInputView>
+
+                                    <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding SelectBalaghTypeCommand}" />
-                                    </Grid.GestureRecognizers>
-                                </Grid>
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,5,0,9"
-                                    ContainerType="Outlined"
-                                    ErrorText="{x:Static ResourceManager:AppResources.FieldRequired}"
-                                    HasError="{Binding BalaghOtherTypeTxtHasError}"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    IsVisible="{Binding IsBalaghTypeOOther}"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="14"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="Red" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    </StackLayout.GestureRecognizers>
+
+                                </StackLayout>
+
+                                 <custom:CustomSfTextInputView
+                                    IsVisible="{Binding IsBalaghTypeOOther}">
+
                                     <custom:GAZTBorderlessEntry
                                         Placeholder="{x:Static ResourceManager:AppResources.IndicateTheTypeOfReport}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding BalaghTypeOtherTxt}"
                                         VerticalTextAlignment="Center" />
-                                </inputLayout:SfTextInputLayout>
+
+                                 </custom:CustomSfTextInputView>
 
                             </StackLayout>
 

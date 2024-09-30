@@ -343,43 +343,38 @@
                         ColumnSpacing="10"
                         RowDefinitions="auto">
 
+                        <custom:CustomSfTextInputView>
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                    HorizontalOptions="FillAndExpand"
+                                    Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
+                                    PlaceholderColor="#888888"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SearchKey}"
+                                    VerticalTextAlignment="Center">
 
-                        <inputLayout:SfTextInputLayout
-                            ContainerBackground="White"
-                            ContainerType="Outlined"
-                            Hint="{x:Static ResourceManager:AppResources.SearchField}"
-                            InputViewPadding="16,0,16,0"
-                            LeadingViewPosition="Inside"
-                            OutlineCornerRadius="15"
-                            Stroke="#B1B1B1">
+
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding SearchCommand}"
+                                            CommandParameter="{Binding SearchKey}"
+                                            EventName="Completed" />
+
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding ViewSearchViewCommand}"
+                                            CommandParameter="{Binding SearchKey}"
+                                            EventName="Focused" />
+
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
+
+                            </custom:CustomSfTextInputView.TextInputView>
 
                             <inputLayout:SfTextInputLayout.LeadingView>
-                                <Image Source="topsearchicon" />
+                               <Image Source="topsearchicon" />
                             </inputLayout:SfTextInputLayout.LeadingView>
 
-                            <custom:GAZTBorderlessEntry
-                                HorizontalOptions="FillAndExpand"
-                                Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
-                                PlaceholderColor="#888888"
-                                Style="{StaticResource DefaultEntry}"
-                                Text="{Binding SearchKey}"
-                                VerticalTextAlignment="Center">
-
-
-                                <custom:GAZTBorderlessEntry.Behaviors>
-                                    <xct:EventToCommandBehavior
-                                        Command="{Binding SearchCommand}"
-                                        CommandParameter="{Binding SearchKey}"
-                                        EventName="Completed" />
-
-                                    <xct:EventToCommandBehavior
-                                        Command="{Binding ViewSearchViewCommand}"
-                                        CommandParameter="{Binding SearchKey}"
-                                        EventName="Focused" />
-
-                                </custom:GAZTBorderlessEntry.Behaviors>
-                            </custom:GAZTBorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
+                        </custom:CustomSfTextInputView>
 
                         <Label
                             Grid.Column="1"
