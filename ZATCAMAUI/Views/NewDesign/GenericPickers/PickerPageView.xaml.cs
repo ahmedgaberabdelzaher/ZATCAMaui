@@ -73,12 +73,16 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             try
             {
                 MopupService.Instance.PopAsync();
-                if(viewModel.PickerItemSource.Count == 1)
+                if (viewModel.PickerItemSource.Count == 1)
                 {
                     viewModel.DataSource.SelectedValue = viewModel.DataSource.PickerData[0];
                     MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
                 }
-                else if(viewModel.DataSource.SelectedValue != null)
+                else if (_pageCode == 1)
+                {
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelected", viewModel.DataSource);
+                }
+                else if (viewModel.DataSource.SelectedValue != null)
                     MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
 
             }

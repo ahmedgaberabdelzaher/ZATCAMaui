@@ -36,15 +36,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_sadad.png", UnSelectedCardIcon = "ic_sadad_white.png", CardLabel = AppResources.Sadad });
             paymentItemsListView.ItemsSource = paymentOptions;
 
-            if (paymentOptions.Count > 2)
-            {
-                paymentItemsListView.HeightRequest = 240;
-            }
-            else
-            {
-                paymentItemsListView.HeightRequest = 140;
-            }
-
             if (isAmountLess || isAlreadyPaid)
             {
                 FrameMadaPaymentText.IsVisible = true;

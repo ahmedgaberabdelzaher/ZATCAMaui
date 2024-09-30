@@ -5808,7 +5808,7 @@
         <value>Comercial Name</value>
     </data>
     <data name="NDCompany" xml:space="preserve">
-        <value>Company</value>
+        <value>شركة</value>
     </data>
     <data name="NDEndOfFinancialYear" xml:space="preserve">
         <value>End Of Financial Year</value>
@@ -11105,7 +11105,7 @@ info@zatca.gov.sa</value>
     <value>الرجاء فتح تطبيق نفاذ وتأكيد الطلب بإختيارالرقم اعلاه</value>
 </data>
 <data name="IndividualOrEstablishment" xml:space="preserve">
-    <value>Individual / Establishment</value>
+    <value>أفراد/مؤسسات</value>
 </data>
 <data name="NafathAuthentication" xml:space="preserve">
     <value>تطبيق نفاذ</value>

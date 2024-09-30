@@ -873,7 +873,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
                 else if (AttachedForms.Count != 1 || AttachedForms.Count != 1)
                 {
-                    await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
+                    await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information, AppResources.OKText, null);
                 }
 
             });
@@ -882,12 +882,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 if (ShowAttachmentSection == true && AttachedForms.Count != 1)
                 {
-                    await _dialogService.ShowError(AppResources.AttachmentWarnMsg, "Information", "Ok", null);
+                    await _dialogService.ShowError(AppResources.AttachmentWarnMsg, AppResources.Information, AppResources.OKText, null);
                     return;
                 }
                 if (ESTLedge == false && ChangeMobModel.d.Tintyp != "A")
                 {
-                    await _dialogService.ShowError(AppResources.ESTValidatePledge, "Information", "Ok", null);
+                    await _dialogService.ShowError(AppResources.ESTValidatePledge, AppResources.Information, AppResources.OKText, null);
                     return;
                 }
                 else
@@ -1775,8 +1775,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         private async void getIdTypesData(string guidNf)
         {
+            IsLoading = true;
             var data = await WebServiceManager.GetIDTypesForChangeMobNumber(guidNf);
-
             IsLoading = false;
             if (data?.Item1 != null)
             {
