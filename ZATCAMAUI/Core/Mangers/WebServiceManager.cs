@@ -6117,7 +6117,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(_paymentsubmitResponse);
 
-                if (!string.IsNullOrEmpty(_paymentsubmitResponse))
+                if (paymentResponse == null)
                 {
                     string errorMessage = PrepareErrorMessageByJson(_paymentsubmitResponse);
                     throw new GAZTVATRegistrationInProcessException(errorMessage);
