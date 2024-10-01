@@ -30,7 +30,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     viewModel.IsAcknowledgementButtonVisible = false;
                     viewModel.IsCreditCarriedTextVisible = false;
                     viewModel.VATDeclarationData = vATDeclaration;
-                    viewModel.ReturnReferenceNumber = vATDeclaration.data.Fbnum;
+                    viewModel.ReturnReferenceNumber = vATDeclaration.data.Fbnumz;
                     viewModel.TaxablePeriod = vATDeclaration.data.Perslt;
 
                     if (App.ICRStatus == "E0045" && viewModel.VATDeclarationData.data.RefundFg != "1")

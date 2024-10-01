@@ -129,8 +129,16 @@
                                 Grid.Column="0"
                                 HorizontalOptions="StartAndExpand"
                                 IsVisible="{Binding IsBackStepButtonVisible}"
-                                Source="arrowLeft.png"
+                                Source="arrowRight.png"
                                 VerticalOptions="CenterAndExpand">
+                                <Image.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding AppDirection}"
+                                        TargetType="Image"
+                                        Value="LeftToRight">
+                                        <Setter Property="Rotation" Value="180" />
+                                    </DataTrigger>
+                                </Image.Triggers>
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TappedOnBackButton" />
                                 </Image.GestureRecognizers>
@@ -818,7 +826,7 @@
                                                             Grid.Column="0"
                                                             CornerRadius="20"
                                                             HeightRequest="104"
-                                                            WidthRequest="171">
+                                                            WidthRequest="150">
                                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                 <Grid.RowDefinitions>
                                                                     <RowDefinition Height="104" />
@@ -847,7 +855,7 @@
                                                             Grid.Column="1"
                                                             CornerRadius="20"
                                                             HeightRequest="104"
-                                                            WidthRequest="171">
+                                                            WidthRequest="150">
                                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                 <Grid.RowDefinitions>
                                                                     <RowDefinition Height="104" />
@@ -1735,17 +1743,9 @@
                                                         <custom:CustomSfTextInputView
                                                             x:Name="FrmIDType"
                                                             Grid.Row="1"
-                                                            ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
-                                                            InputViewPadding="16,0,16,0"
-                                                            IsHintAlwaysFloated="True"
-                                                            LeadingViewPosition="Inside"
-                                                            OutlineCornerRadius="8"
                                                             Stroke="#003672"
                                                             Style="{StaticResource TextInputLayout}">
-                                                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                                 <custom:GAZTBorderlessEntry
@@ -1896,15 +1896,16 @@
                                                             </Grid.RowDefinitions>
 
 
-                                                            <Label
-                                                                Grid.Row="0"
+                                                            
+
+
+                                                            <StackLayout Grid.Row="0">
+                                                                <Label
+                                                                
                                                                 IsVisible="{Binding DOBNonMandatoryVisibility}"
                                                                 Style="{StaticResource CaptionLabelGrey}"
                                                                 Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
-
-
-                                                            <Label
-                                                                Grid.Row="0"
+                                                                <Label
                                                                 Padding="0,0,0,0"
                                                                 IsVisible="{Binding DOBMandatoryVisibility}"
                                                                 Style="{StaticResource CaptionLabelGrey}">
@@ -1915,26 +1916,20 @@
                                                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                                </Label>
 
 
 
-                                                            <custom:CustomSfTextInputView
+                                                                <custom:CustomSfTextInputView
                                                                 x:Name="FrmDBO"
-                                                                Grid.Row="1"
-                                                                ContainerType="Outlined"
+                                                                
                                                                 HasError="{Binding FrameDOBError}"
                                                                 HorizontalOptions="FillAndExpand"
-                                                                InputViewPadding="16,0,16,0"
                                                                 IsHintAlwaysFloated="True"
                                                                 IsVisible="{Binding DOBMandatoryVisibility}"
-                                                                LeadingViewPosition="Inside"
-                                                                OutlineCornerRadius="8"
                                                                 Stroke="#003672"
                                                                 Style="{StaticResource TextInputLayout}">
-                                                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                                                
                                                                 <custom:CustomSfTextInputView.TextInputView  IsVisible="{Binding DOBMandatoryVisibility}">
                                                                     <custom:GAZTBorderlessEntry
                                                                         x:Name="DateEntryFR"
@@ -1942,7 +1937,11 @@
                                                                         IsEnabled="False"
                                                                         Placeholder="DD/MM/YYYY"
                                                                         Style="{StaticResource DefaultEntry}"
-                                                                        Text="{Binding DOB}" />
+                                                                        Text="{Binding DOB}" >
+                                                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                                            <TapGestureRecognizer Tapped="btnDate_Clicked" />
+                                                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                                      </custom:GAZTBorderlessEntry>
                                                                 </custom:CustomSfTextInputView.TextInputView>
                                                                 <inputLayout:SfTextInputLayout.TrailingView>
                                                                     <Image HorizontalOptions="End">
@@ -1955,18 +1954,15 @@
                                                                         </Image.Source>
                                                                     </Image>
                                                                 </inputLayout:SfTextInputLayout.TrailingView>
+                                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="btnDate_Clicked" />
+                                                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                                                             </custom:CustomSfTextInputView>
 
-                                                            <buttons:SfButton
-                                                                x:Name="btn4"
-                                                                Grid.Row="1"
-                                                                Margin="0,0,0,0"
-                                                                Background="Transparent"
-                                                                Clicked="btnDate_Clicked" />
+                                                            </StackLayout>
 
                                                             <custom:CustomDatePicker
                                                                 x:Name="SignUpDOB"
-                                                                Grid.Row="1"
                                                                 Margin="2"
                                                                 Background="White"
                                                                 Closed="SignUpDOB_Closed"

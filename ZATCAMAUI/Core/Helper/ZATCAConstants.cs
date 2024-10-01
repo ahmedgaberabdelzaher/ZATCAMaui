@@ -420,7 +420,7 @@ namespace ZATCAMAUI.Core.Helper
         public static string GetVATObjViewApplicationDREGSuspensionReasonSetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetReasonSet?$filter=TxnTp eq 'VT_SUSP' and Lang eq 'E'&$format=json";
 
         public static string GetVATObjSuspensionDetailSetURL = BaseUrlOfODataServices + "/v1/suspensions?TIN=";
-        public static string GetVATDeRegistrationDeclaration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_DECLARE_SRV/DeclareSet(Fbnum=";
+        public static string GetVATDeRegistrationDeclaration = BaseUrlOfODataServices + "/v1/declarations/texts?formBundleNumber=";
 
         #endregion
 

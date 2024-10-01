@@ -11,6 +11,7 @@ using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Core.Exceptions;
 using Slider = Microsoft.Maui.Controls.Slider;
+using ZATCAMAUI.Core.CustomControls;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
@@ -351,14 +352,15 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.SetVisibility();
                     viewModel.IsSummaryVisible = true;
 
-                    if (viewModel.IsDeclarationChecked)
+                    if (viewModel.VatDeregDeclaration != null && viewModel.VatDeregDeclaration.D != null && string.IsNullOrEmpty(viewModel.VatDeregDeclaration.D.Zterms))
                     {
-                        viewModel.IsContinueButtonEnable = true;
-
+                        viewModel.IsDeclarationViewEnabled = true;
+                        viewModel.Zterms = "";
                     }
                     else
                     {
-                        viewModel.IsContinueButtonEnable = false;
+                        viewModel.IsDeclarationViewEnabledNew = true;
+                        viewModel.Zterms = viewModel.VatDeregDeclaration.D.Zterms;
                     }
                 }
                 else if (viewModel.CurrentStep == AppResources.ZTEReportCategorySubmitBtn)
@@ -442,22 +444,23 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (viewModel.IsDeclarationChecked == true)
                 {
                     bool flag = true;
-                    if (viewModel.SelectedIdTypeSR == null)
+                    if (!viewModel.IsDeclarationViewEnabledNew) //When Zterms is empty then only do the validation of ID Details.
                     {
-                        flag = false;
+                        if (viewModel.SelectedIdTypeSR == null)
+                        {
+                            flag = false;
+                        }
+                        if (string.IsNullOrEmpty(viewModel.IdNumberSR))
+                        {
+                            flag = false;
+                            viewModel.FrameContactIDError = true;
+                        }
+                        if (string.IsNullOrEmpty(viewModel.FirstNameSR))
+                        {
+                            flag = false;
+                            FrmContactName.HasError = true;
+                        }
                     }
-                    if (string.IsNullOrEmpty(viewModel.IdNumberSR))
-                    {
-                        flag = false;
-                        viewModel.FrameContactIDError = true;
-                    }
-                    if (string.IsNullOrEmpty(viewModel.FirstNameSR))
-                    {
-                        flag = false;
-                        FrmContactName.HasError = true;
-
-                    }
-
                     if (flag)
                     {
 
@@ -595,7 +598,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
 
-                    if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "R")
+                    if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "Resident")
                     {
                         viewModel.IsResident = true;
                         setAnsWerOneSlider();
@@ -1547,7 +1550,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
+                
                 ClearFinancialRepresentativeData();
+                CustomSfPicker item = sender as CustomSfPicker;
+                viewModel.IDTypeIndexFR = item.Columns[0].SelectedIndex;
                 if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("00000"))
                 {
                     EntryTINNumber.IsEnabled = true;

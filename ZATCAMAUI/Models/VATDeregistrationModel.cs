@@ -598,6 +598,25 @@ namespace ZATCAMAUI.Models
         public string SummaryData { get; set; }
         public bool IsEditVisible { get; set; }
     }
+    public class VATDeregDeclaration
+    {
+        [JsonProperty("data")]
+        public VATDeregDeclarationData D;
+    }
+    public class VATDeregDeclarationData
+    {
+        [JsonProperty("__metadata")]
+        public Metadata Metadata;
+
+        [JsonProperty("formBundleNumber")]
+        public string Fbnum;
+
+        [JsonProperty("language")]
+        public string Spras;
+
+        [JsonProperty("terms")]
+        public string Zterms;
+    }
 
 
 }
