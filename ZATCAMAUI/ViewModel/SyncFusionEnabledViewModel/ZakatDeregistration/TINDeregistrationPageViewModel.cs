@@ -3002,9 +3002,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
                     _navigationService.GoBack();
                 });
             }
@@ -3038,9 +3036,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
                     _navigationService.GoBack();
                 });
             }
@@ -3069,7 +3065,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -3301,10 +3296,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             // IsLoading = false;
                             if (MopupService.Instance.PopupStack.Count() > 0)
                                 await MopupService.Instance.PopAsync();
-                            // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
-                            //_navigationService.GoBack();
                         });
                     }
                     catch (Exception)
@@ -3442,7 +3434,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     if (MopupService.Instance.PopupStack.Count() > 0)
                         await MopupService.Instance.PopAsync();
                 }
-                catch (Exception _ex)
+                catch (Exception)
                 {
                     try
                     {
@@ -3520,7 +3512,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         });
                     }
-                    catch (HttpRequestException ex)
+                    catch (HttpRequestException)
                     {
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3647,7 +3639,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     if (MopupService.Instance.PopupStack.Count() > 0)
                         await MopupService.Instance.PopAsync();
                 }
-                catch (Exception _ex)
+                catch (Exception)
                 {
                     try
                     {
@@ -3729,7 +3721,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         });
                     }
-                    catch (HttpRequestException ex)
+                    catch (HttpRequestException)
                     {
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3893,7 +3885,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                             IsLoading = false;
@@ -4040,7 +4031,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                             IsLoading = false;
@@ -4060,7 +4050,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -4076,7 +4065,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -4531,7 +4519,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
 
 
@@ -4540,7 +4528,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -4809,7 +4796,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedReason.ReasonDesc) || string.IsNullOrEmpty(SelectedIdtype))
                     {
-                        // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4818,7 +4804,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (TINNumber == App.LoginDataRetrieved.TIN)
                         {
-                            //   await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
@@ -4827,7 +4812,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(SelectedIdtype)) // If Taxpayer enter TIN Number, That will point one of the Id Type from the list
                             {
-                                // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -4837,7 +4821,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.name2) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
-                                //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -4847,7 +4830,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.name2) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
-                                //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -4857,7 +4839,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.name2) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
-                                //    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -4872,7 +4853,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (SelectedReason == null)
                     {
-                        //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4936,7 +4916,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SingleDeregistrationDate) || string.IsNullOrEmpty(SelectedIdtype))
                     {
-                        //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4947,7 +4926,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber))
                             {
-                                //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -4957,7 +4935,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.name1) || string.IsNullOrEmpty(IDTypeDataModel.name2))
                             {
-                                //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -4967,7 +4944,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || (DobText.IsEditable && string.IsNullOrEmpty(SelectedDob)) || FirstNameText.IsEditable && string.IsNullOrEmpty(IDTypeDataModel.name1) || SurnameText.IsEditable && string.IsNullOrEmpty(IDTypeDataModel.name2))
                             {
-                                //     await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
