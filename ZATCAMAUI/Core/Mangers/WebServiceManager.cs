@@ -6117,58 +6117,23 @@ namespace ZATCAMAUI.Core.Mangers
 
                 paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(_paymentsubmitResponse);
 
-                if (!string.IsNullOrEmpty(_paymentsubmitResponse))
-
+                if (paymentResponse == null)
                 {
-
-                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_paymentsubmitResponse);
-
-                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-
-                    {
-
-                        string errorMessage = string.Empty;
-
-                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
-
-                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
-
-                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-
-                        errorMessage = WithReplacedString;
-
-                        throw new GAZTVATRegistrationInProcessException(errorMessage);
-
-                    }
-
+                    string errorMessage = PrepareErrorMessageByJson(_paymentsubmitResponse);
+                    throw new GAZTVATRegistrationInProcessException(errorMessage);
                 }
-
-
-
             }
 
             catch (GAZTVATRegistrationInProcessException ex)
-
             {
-
                 throw new GAZTVATRegistrationInProcessException(ex.Message);
-
             }
-
             catch (Exception)
             {
                 App.IsSessionExpired = true;
-
                 return null;
-
             }
-
             return paymentResponse;
-
-
-
-
-
         }
 
 
@@ -6841,18 +6806,9 @@ namespace ZATCAMAUI.Core.Mangers
                         paymentResponse = JsonConvert.DeserializeObject<CreateMadaResponseRoot>(paymentData);
                         if (!string.IsNullOrEmpty(paymentData) && paymentResponse.result == null)
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(paymentData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                            {
-                                string errorCode = AppResources.ZError;
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                errorCode += errorMesg.error.innererror.errordetails[1].code;
-                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                throw new GAZTValidateMadaPaymentException(errorCode, errorMessage);
-                            }
+                            string errorCode = AppResources.ZError;
+                            string errorMessage = PrepareErrorMessageByJson(paymentData);
+                            throw new GAZTValidateMadaPaymentException(errorCode, errorMessage);
                         }
                     }
                 }

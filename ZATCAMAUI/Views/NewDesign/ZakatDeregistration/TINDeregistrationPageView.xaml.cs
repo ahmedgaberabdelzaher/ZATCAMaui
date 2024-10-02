@@ -29,6 +29,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             viewModel.ClearData();
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             BindingContext = viewModel;
+           
             viewModel.LoadReasonSet();
             viewModel.PopulateAttachmentsListViewTemplate();
             if (viewModel.TinDeregistrationData != null)
@@ -67,7 +68,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             viewModel.IsSummaryViewEnabled = false;
         }
 
-      
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -288,7 +289,20 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception)
             {
+            }
+        }
 
+        private void OnSurnameTextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID)
+                {
+                    viewModel.SurName = e.NewTextValue;
+                }
+            }
+            catch (Exception)
+            {
 
             }
         }
@@ -326,24 +340,13 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         private void EntryMobileNo_Unfocused(object sender, FocusEventArgs e)
         {
 
-            PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
             if (!string.IsNullOrEmpty(viewModel.TinDeregistrationData.ADecTelNo))
             {
                 if (viewModel.TinDeregistrationData.ADecTelNo.Substring(0, 1) != "5")
                 {
-                    popUp.Message = AppResources.ZZMobilenumberhastostartwithnumber5;
-                    popUp.IsLinkAvailable = false;
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-                    MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                    var Message = AppResources.ZZMobilenumberhastostartwithnumber5;
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message));
 
                 }
                 else
@@ -352,25 +355,13 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     {
                         if (viewModel.TinDeregistrationData.ADecTelNo.Length < 9)
                         {
-                            // popUp.Message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                             Messages.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                         }
                         if (Messages.Length > 0)
                         {
-                            popUp.Message = Messages.ToString();
-                            popUp.IsLinkAvailable = false;
-                            if (App.IsArabic)
-                            {
-                                popUp.FlowDirections = "RightToLeft";
-                                popUp.isFontSet = true;
-                            }
-                            else
-                            {
-                                popUp.FlowDirections = "LeftToRight";
-                            }
+                            var Message = Messages.ToString();
 
-                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
-
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message));
                         }
                     }
                 }
@@ -383,7 +374,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                PopUp popUp = new PopUp();
+                var message = string.Empty;
                 StringBuilder Messages = new StringBuilder();
                 if (!string.IsNullOrEmpty(viewModel.SelectedIdtype))
                 {
@@ -391,22 +382,12 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "1")
                         {
-                            popUp.Message = AppResources.ZZNationalIDstartswith1;
-                            popUp.IsLinkAvailable = false;
-                            if (App.IsArabic)
-                            {
-                                popUp.FlowDirections = "RightToLeft";
-                                popUp.isFontSet = true;
-                            }
-                            else
-                            {
-                                popUp.FlowDirections = "LeftToRight";
-                            }
-                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
-                            //FrmIDNumber.HasError = true;
+                            message = AppResources.ZZNationalIDstartswith1;
+
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
-                            //ZZPleaseenteravalidNationalID
                         }
                         else
                         {
@@ -420,19 +401,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             }
                             if (Messages.Length > 0)
                             {
-                                popUp.Message = Messages.ToString();
-                                popUp.IsLinkAvailable = false;
-                                if (App.IsArabic)
-                                {
-                                    popUp.FlowDirections = "RightToLeft";
-                                    popUp.isFontSet = true;
-                                }
-                                else
-                                {
-                                    popUp.FlowDirections = "LeftToRight";
-                                }
+                                message = Messages.ToString();
 
-                                MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                                 viewModel.FrameIDError = true;
                                 viewModel.SelectedIdNumber = string.Empty;
                             }
@@ -451,18 +422,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "2")
                         {
-                            popUp.Message = AppResources.ZZIqamaIDstartswith2;
-                            popUp.IsLinkAvailable = false;
-                            if (App.IsArabic)
-                            {
-                                popUp.FlowDirections = "RightToLeft";
-                                popUp.isFontSet = true;
-                            }
-                            else
-                            {
-                                popUp.FlowDirections = "LeftToRight";
-                            }
-                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                            message = AppResources.ZZIqamaIDstartswith2;
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
                         }
@@ -479,18 +440,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
                             if (Messages.Length > 0)
                             {
-                                popUp.Message = Messages.ToString();
-                                popUp.IsLinkAvailable = false;
-                                if (App.IsArabic)
-                                {
-                                    popUp.FlowDirections = "RightToLeft";
-                                    popUp.isFontSet = true;
-                                }
-                                else
-                                {
-                                    popUp.FlowDirections = "LeftToRight";
-                                }
-                                MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                                message = Messages.ToString();
+
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
                                 viewModel.SelectedIdNumber = string.Empty;
@@ -512,36 +464,17 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         if (viewModel.SelectedIdNumber.Substring(0, 1) == "0")
                         {
                             //Have to change to neww error message
-                            popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
-                            popUp.IsLinkAvailable = false;
-                            if (App.IsArabic)
-                            {
-                                popUp.FlowDirections = "RightToLeft";
-                                popUp.isFontSet = true;
-                            }
-                            else
-                            {
-                                popUp.FlowDirections = "LeftToRight";
-                            }
-                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                            message = AppResources.ZZGCCIDdonotstartwith0;
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
                         }
                         else if (!(viewModel.SelectedIdNumber.Length <= 15 && viewModel.SelectedIdNumber.Length >= 7))
                         {
-                            popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
-                            popUp.IsLinkAvailable = false;
-                            if (App.IsArabic)
-                            {
-                                popUp.FlowDirections = "RightToLeft";
-                                popUp.isFontSet = true;
-                            }
-                            else
-                            {
-                                popUp.FlowDirections = "LeftToRight";
-                            }
-                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                            message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
+
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -559,18 +492,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "7")
                         {
                             //Have to change to neww error message
-                            popUp.Message = AppResources.TinDeregistrationCompanyIDCheck;
-                            popUp.IsLinkAvailable = false;
-                            if (App.IsArabic)
-                            {
-                                popUp.FlowDirections = "RightToLeft";
-                                popUp.isFontSet = true;
-                            }
-                            else
-                            {
-                                popUp.FlowDirections = "LeftToRight";
-                            }
-                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                           message = AppResources.TinDeregistrationCompanyIDCheck;
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -578,18 +501,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         else if (viewModel.SelectedIdNumber.Length > 10)
                         {
                             //Have to change to neww error message
-                            popUp.Message = AppResources.CompanyIDlengthis10digit;
-                            popUp.IsLinkAvailable = false;
-                            if (App.IsArabic)
-                            {
-                                popUp.FlowDirections = "RightToLeft";
-                                popUp.isFontSet = true;
-                            }
-                            else
-                            {
-                                popUp.FlowDirections = "LeftToRight";
-                            }
-                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                            message = AppResources.CompanyIDlengthis10digit;
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -608,8 +521,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -806,6 +717,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 DpDboHijri.IsOpen = true;
             }
         }
+        
 
         private void OnIDDOBClicked(object sender, EventArgs e)
         {
@@ -1006,7 +918,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
         void BorderlessTINEntry_Unfocused(object sender, FocusEventArgs e)
         {
-            PopUp popUp = new PopUp();
+            var message = string.Empty;
             StringBuilder Messages = new StringBuilder();
             if (!string.IsNullOrEmpty(EntryTIN.Text))
             {
@@ -1028,20 +940,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 }
                 if (Messages.Length > 0)
                 {
-                    popUp.Message = Messages.ToString();
-                    popUp.IsLinkAvailable = false;
-
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-
-                    MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                    message = Messages.ToString();
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                     EntryTIN.Text = string.Empty;
                 }
                 else
@@ -1056,19 +956,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 // viewModel.FrameTinError = true;
                 //Messages.Append(AppResources.ZZPleasefillallthemandatoryfields);
 
-                popUp.Message = Messages.ToString();
-                popUp.IsLinkAvailable = false;
-
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                    popUp.isFontSet = true;
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-
+                message = Messages.ToString();
+               
                 //  MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                 EntryTIN.Text = string.Empty;
             }
@@ -1392,7 +1281,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
                         }
                         break;
-                   
+
                 }
             }
             catch (Exception)
@@ -1462,7 +1351,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
                         }
                         break;
-                   
+
                 }
             }
             catch (Exception)
@@ -1489,8 +1378,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             else
             {
                 viewModel.outletEditIsVisible = false;
-
-
             }
         }
 

@@ -49,7 +49,16 @@
                 <Image
                     HorizontalOptions="Start"
                     IsVisible="{Binding BackArrowVisible}"
-                    Source="arrowLeft.png">
+                    Source="arrowRight.png">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding AppDirection}"
+                            TargetType="Image"
+                            Value="LeftToRight">
+                        <Setter Property="Rotation" Value="180" />
+                        </DataTrigger>
+                    </Image.Triggers>
+
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnBackButtonClick}" />
                     </Image.GestureRecognizers>
@@ -617,7 +626,7 @@
                                 Style="{StaticResource lineSeperator}"
                                 WidthRequest="380" />
 
-                            <ScrollView>
+                            <ScrollView VerticalScrollBarVisibility="Never">
 
                                 <StackLayout>
 
@@ -783,6 +792,7 @@
                                                 FontFamily="{StaticResource SomarLight}"
                                                 FontSize="Small"
                                                 IsSpellCheckEnabled="False"
+                                                IsReadOnly="True"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding Region}"
@@ -865,17 +875,13 @@
                                     <StackLayout IsVisible="{Binding SetCityListVisibility}">
 
                                         <Label
-                                            FontFamily="{StaticResource SomarLight}"
                                             HorizontalOptions="Start"
-                                            IsVisible="{Binding SetCityListVisibility}"
+                                            IsVisible="{Binding SetStateListVisibility}"
                                             Style="{StaticResource CaptionLabelBlack}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span
-                                                        FontFamily="{StaticResource SomarSemiBold}"
-                                                        Style="{StaticResource CaptionLabelBlack}"
-                                                        Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
+                                                    <Span Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -891,6 +897,7 @@
                                                 <custom:GAZTBorderlessEntry
                                                 x:Name="Entry_City"
                                                 FontSize="Small"
+                                                IsReadOnly="True"
                                                 IsSpellCheckEnabled="False"
                                                 IsVisible="{Binding SetCityListVisibility}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZCity}"
@@ -1092,7 +1099,7 @@
                                 Style="{StaticResource lineSeperator}"
                                 WidthRequest="380" />
 
-                            <ScrollView>
+                            <ScrollView VerticalScrollBarVisibility="Never">
 
                                 <StackLayout>
                                     <StackLayout>
@@ -1245,18 +1252,22 @@
 
                                         </Label>
 
-                                    <StackLayout >
+                                    <StackLayout Orientation="Horizontal">
                                         <custom:CustomSfTextInputView HasError="{Binding FrameCaptchaError}">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
+                                                    WidthRequest="100"
                                                     FontFamily="{StaticResource SomarLight}"
                                                     FontSize="Small"
                                                     Keyboard="Plain"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.CaptchaCode}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Captcha}" />
                                             </custom:CustomSfTextInputView.TextInputView>
-                                            <custom:CustomSfTextInputView.TrailingView>
-                                                <StackLayout Orientation="Horizontal"
+                                            
+                                        </custom:CustomSfTextInputView>
+
+                                        <StackLayout Orientation="Horizontal"
                                                              Spacing="5">
                                                     <Image
                                                         HeightRequest="50"
@@ -1276,9 +1287,6 @@
                                                     </Image>
 
                                                 </StackLayout>
-
-                                            </custom:CustomSfTextInputView.TrailingView>
-                                        </custom:CustomSfTextInputView>
                                         
                                       
                                     </StackLayout>

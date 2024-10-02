@@ -1089,11 +1089,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 IsLoading = false;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-
                     var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    //_navigationService.GoBack();
                 });
                 return null;
             }
