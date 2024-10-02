@@ -205,7 +205,7 @@ namespace ZATCAMAUI.Core.Helper
         #endregion
 
         public static string GetLoginDetaialsSSO = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZVTIA_SIGNUP_SRV/signup_headerSet?$filter=Type eq '1' and Mguid eq '";//6094
-        public static string GetGstcCaseDetailsApi = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_GSTC_CASEDET_SRV/TINSet(";
+        public static string GetGstcCaseDetailsApi = BaseUrlOfODataServices + "/v1/gstc/escalated-cases?TIN=";
         public static string GetRMContactDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_VOC_SURVEY_SRV/RelationManagerSurveySet(Gpart";
         public static string CheckVocAvailability = "https://vocstg.gazt.gov.sa/v1/response/survey/availability";
         public static string ComplaintsEngUrl = "https://gazt.gov.sa/en/ContactUs/Pages/default.aspx#topic_complaint";
