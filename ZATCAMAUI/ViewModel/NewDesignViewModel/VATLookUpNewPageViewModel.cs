@@ -442,7 +442,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             VatNumber = vatLookUp.d.results[0].Idnumber;
                             VATCertificateNumber = vatLookUp.d.results[0].VatCertNo;
 
-                            //IsNameVisible = true;
+                            IsNameVisible = true;
                             LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
                             return;
                         }
@@ -458,6 +458,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             TIN = "--";
                             Region = "--";
                             VATCertificateNumber = "--";
+                            IsNameVisible = false;
                             LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
                             return;
                         }

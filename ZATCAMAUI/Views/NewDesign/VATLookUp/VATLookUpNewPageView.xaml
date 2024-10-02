@@ -513,7 +513,7 @@
                                         Text="{x:Static ResourceManager:AppResources.ZZTaxPayerName}" />
 
                                     <Label
-                                        HorizontalOptions="Start"
+                                        HorizontalOptions="EndAndExpand"
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{Binding Name}" />
 

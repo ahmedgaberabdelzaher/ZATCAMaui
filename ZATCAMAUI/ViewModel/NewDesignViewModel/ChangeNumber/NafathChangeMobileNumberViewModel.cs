@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Mopups.Services;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -185,7 +186,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
                     model.ErrorMsg = string.Empty;
                     model.SendResendOtp = "1";
                     model.Lang = WebServiceManager.GetLangZParameterAREN();
-                    model.Scrid = string.Empty;
+                    model.Scrid = Device.RuntimePlatform == Device.iOS ? "C3" : "C4";
                     var response = await WebServiceManager.NafathChangeMobileNumberSendOTP(model);
                     IsLoading = false;
                     if (response != null && response.d != null)
@@ -198,9 +199,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
                     }
                 }
             }
-            catch (Exception)
+            catch (GAZTErrorException ex)
             {
-
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
             finally
             {
@@ -251,20 +252,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             if (string.IsNullOrEmpty(CountryCode))
             {
                 IsError = true;
-                MobileNumberError = "Please select country code.";
+                MobileNumberError = AppResources.PleaseSelectCountryCode;
             }
 
             else if (string.IsNullOrEmpty(MobileNumber))
             {
                 IsError = true;
-                MobileNumberError += "Please enter your mobile number.";
+                MobileNumberError += AppResources.EnterNewMobileNumber;
             }
 
-            //else if (MobileNumber.Length < 10)
-            //{
-            //    IsError = true;
-            //    MobileNumberError += "Mobile number should be 10 digit length.";
-            //}
+            else if (MobileNumber.Length != 9)
+            {
+                IsError = true;
+                MobileNumberError += AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+            }
             return IsError;
         }
 

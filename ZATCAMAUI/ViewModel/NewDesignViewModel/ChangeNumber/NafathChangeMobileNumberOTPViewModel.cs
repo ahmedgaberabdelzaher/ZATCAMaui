@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Windows.Input;
+using Mopups.Services;
 using ZATCAMAUI.Core.CustomControls;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
 {
@@ -244,7 +247,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             {
                 NafathChangeMobileNumberCheckOTPModel model = new NafathChangeMobileNumberCheckOTPModel();
                 model.Guid = Request.d.Guid;
-                model.Scrid = string.Empty;
+                model.Scrid = Device.RuntimePlatform == Device.iOS ? "C3" : "C4";
                 model.ErrorMsg = string.Empty;
                 model.Lang = WebServiceManager.GetLangZParameterAREN();
                 model.Otp = FirstDigit + SecondDigit + ThirdDigit + FourthDigit + FifthDigit + SixthDigit;
@@ -253,7 +256,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
                 {
                     _navigationService.NavigateTo(App.NafathChangeMobileNumberSuccessView);
                 }
-                else
+                else 
                 {
                     await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                 }
@@ -267,7 +270,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             if (string.IsNullOrEmpty(FirstDigit) || string.IsNullOrEmpty(SecondDigit) || string.IsNullOrEmpty(ThirdDigit) || string.IsNullOrEmpty(FourthDigit))
             {
                 IsError = true;
-                ErrorMessage = "Please enter verification code.";
+                ErrorMessage = AppResources.ZZPleaseenteraccessCode;
             }
             return IsError;
         }
@@ -333,22 +336,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
 
         private async Task ResendOTP()
         {
-            NafathChangeMobileNumberSendOTPModel model = new NafathChangeMobileNumberSendOTPModel();
-            model.Partner = Request.d.Partner;
-            model.Guid = Request.d.Guid;
-            model.MobExten = Request.d.MobExten;
-            model.MobNum = Request.d.MobNum;
-            model.ErrorMsg = string.Empty;
-            model.SendResendOtp = "2";
-            model.Lang = WebServiceManager.GetLangZParameterAREN();
-            model.Scrid = string.Empty;
-            var response = await WebServiceManager.NafathChangeMobileNumberSendOTP(model);
-            if (response != null && response.d != null)
+            try
             {
-                IsResendEnabled = false;
-                ResendOtpColor = (Color)Application.Current.Resources["ResendOTPTextColor"];
-                timer.Start();
+                NafathChangeMobileNumberSendOTPModel model = new NafathChangeMobileNumberSendOTPModel();
+                model.Partner = Request.d.Partner;
+                model.Guid = Request.d.Guid;
+                model.MobExten = Request.d.MobExten;
+                model.MobNum = Request.d.MobNum;
+                model.ErrorMsg = string.Empty;
+                model.SendResendOtp = "2";
+                model.Lang = WebServiceManager.GetLangZParameterAREN();
+                model.Scrid = Device.RuntimePlatform == Device.iOS ? "C3" : "C4";
+                var response = await WebServiceManager.NafathChangeMobileNumberSendOTP(model);
+                if (response != null && response.d != null)
+                {
+                    Request.d.Guid = response.d.Guid;
+                    IsResendEnabled = false;
+                    ResendOtpColor = (Color)Application.Current.Resources["ResendOTPTextColor"];
+                    timer.Start();
+                }
             }
+            catch (GAZTErrorException ex)
+            {
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
         public void OnAppearing()
