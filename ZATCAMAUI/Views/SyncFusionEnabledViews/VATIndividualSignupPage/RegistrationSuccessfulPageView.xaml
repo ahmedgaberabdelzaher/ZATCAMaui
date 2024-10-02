@@ -75,42 +75,6 @@
                     StrokeShape="RoundRectangle 20,20,0,0"
                     VerticalOptions="EndAndExpand">
                     <StackLayout>
-                        <Border
-                            Margin="0,20,0,0"
-                            Padding="0"
-                            Stroke="LightGray"
-                            StrokeShape="RoundRectangle 8,8,8,8">
-                            <StackLayout Padding="10" Orientation="Horizontal">
-                                <Label
-                                    FontFamily="{StaticResource SomarSemiBold}"
-                                    FontSize="11"
-                                    HorizontalOptions="StartAndExpand"
-                                    Text="{x:Static ResourceManager:AppResources.TINS}"
-                                    TextColor="{StaticResource DarkGrayTextColor}"
-                                    VerticalOptions="Center" />
-                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                    <Label
-                                        x:Name="Label_Tin"
-                                        FontFamily="{StaticResource SomarSemiBold}"
-                                        FontSize="15"
-                                        Text="{Binding TINnumber}"
-                                        TextColor="#010101" />
-                                    <Image x:Name="Image_Copy">
-                                        <Image.Source>
-                                            <FontImageSource
-                                                FontFamily="UserIconFont"
-                                                Glyph="{x:Static FontImage:IconFonts.ContentPaste}"
-                                                Size="25"
-                                                Color="{StaticResource SecondaryNew}" />
-                                        </Image.Source>
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="Image_Copy_Tapped" />
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                </StackLayout>
-                            </StackLayout>
-                        </Border>
-
                         <buttons:SfButton
                             x:Name="btnDashboard"
                             Grid.ColumnSpan="2"

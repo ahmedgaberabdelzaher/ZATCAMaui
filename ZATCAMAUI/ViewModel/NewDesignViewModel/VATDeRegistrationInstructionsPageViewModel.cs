@@ -11,6 +11,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
     {
         #region Variable
         public ICommand GoBackClick { get; set; }
+        public ICommand VATDeregistrationClicked { get; set; }
         #endregion
         private Color _continueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
@@ -81,7 +82,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged(nameof(isInstructionCheckedEnable));
             }
         }
-        public ICommand VATDeregistrationClicked { get; set; }
+        
 
         public VATDeRegistrationInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
@@ -91,7 +92,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             });
 
             IsContinueButtonEnable = false;
-            VATDeregistrationClicked = new Command(VATDeregistrationTapped);
+            VATDeregistrationClicked = new Command(() =>
+            {
+                VATDeregistrationTapped();
+            });
+
+            
         }
 
         public async void VATDeregistrationTapped()

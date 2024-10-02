@@ -10,7 +10,6 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
@@ -50,7 +49,16 @@
                 <Image
                     HorizontalOptions="Start"
                     IsVisible="{Binding BackArrowVisible}"
-                    Source="arrowLeft.png">
+                    Source="arrowRight.png">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding AppDirection}"
+                            TargetType="Image"
+                            Value="LeftToRight">
+                        <Setter Property="Rotation" Value="180" />
+                        </DataTrigger>
+                    </Image.Triggers>
+
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnBackButtonClick}" />
                     </Image.GestureRecognizers>
@@ -264,30 +272,18 @@
                                     </Label>
 
 
-                                    <custom:CustomSfTextInputView
-                                        x:Name="FrmIDType"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.ZZIDType}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
-
-                                        <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </custom:CustomSfTextInputView.ErrorLabelStyle>
+                                    <custom:CustomSfTextInputView x:Name="FrmIDType">
 
                                         <custom:CustomSfTextInputView.TextInputView>
-                                        <custom:GAZTBorderlessEntry
-                                            FontFamily="{StaticResource SomarLight}"
-                                            FontSize="Small"
-                                            InputTransparent="True"
-                                            IsReadOnly="True"
-                                            IsSpellCheckEnabled="False"
-                                            Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding TxtIDType}" />
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarLight}"
+                                                FontSize="Small"
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                IsSpellCheckEnabled="False"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding TxtIDType}" />
                                         </custom:CustomSfTextInputView.TextInputView>
 
                                         <custom:CustomSfTextInputView.TrailingView>
@@ -357,7 +353,7 @@
                                 </StackLayout>
 
                                 <!--  Id Number  -->
-                                <StackLayout Grid.Row="1">
+                                <StackLayout>
 
                                     <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}">
 
@@ -369,37 +365,28 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <custom:CustomSfTextInputView
-                                        x:Name="FrmIDNumber"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        HasError="{Binding FrameIDError}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
+                                    <custom:CustomSfTextInputView x:Name="FrmIDNumber"
+                                        HasError="{Binding FrameIDError}">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="EntryIDNumber"
+                                                FontFamily="{StaticResource SomarLight}"
+                                                FontSize="Small"
+                                                IsSpellCheckEnabled="False"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
+                                                MaxLength="{Binding MaxLengthID}"
+                                                Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding IdNumber}"
+                                                TextChanged="GAZTBorderlessEntry_TextChanged"
+                                                Unfocused="EntryIDNumber_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviors:OnlyNumericValuesBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
 
-                                        <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </custom:CustomSfTextInputView.ErrorLabelStyle>
-
-                                        <custom:GAZTBorderlessEntry
-                                            x:Name="EntryIDNumber"
-                                            FontFamily="{StaticResource SomarLight}"
-                                            FontSize="Small"
-                                            IsSpellCheckEnabled="False"
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
-                                            MaxLength="{Binding MaxLengthID}"
-                                            Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding IdNumber}"
-                                            TextChanged="GAZTBorderlessEntry_TextChanged"
-                                            Unfocused="EntryIDNumber_Unfocused">
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviors:OnlyNumericValuesBehaviour />
-                                            </custom:GAZTBorderlessEntry.Behaviors>
-                                        </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
                                     </custom:CustomSfTextInputView>
 
                                 </StackLayout>
@@ -446,32 +433,23 @@
 
                                     <custom:CustomSfTextInputView
                                         x:Name="FrmDBO"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        HasError="{Binding FrameDOBError}"
-                                        Hint="dd/MM/yyyy"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
+                                        HasError="{Binding FrameDOBError}">
 
-                                        <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </custom:CustomSfTextInputView.ErrorLabelStyle>
-
-                                        <custom:GAZTBorderlessEntry
-                                            x:Name="DateEntry"
-                                            FontFamily="{StaticResource SomarLight}"
-                                            FontSize="Small"
-                                            InputTransparent="True"
-                                            IsReadOnly="True"
-                                            Keyboard="Text"
-                                            Placeholder="dd/MM/yyyy"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding DOBddyymm}"
-                                            TextChanged="DateEntry_TextChanged"
-                                            TextColor="{StaticResource Primary}"
-                                            Unfocused="DatePicker_Unfocused" />
+                                         <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="DateEntry"
+                                                FontFamily="{StaticResource SomarLight}"
+                                                FontSize="Small"
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="dd/MM/yyyy"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding DOBddyymm}"
+                                                TextChanged="DateEntry_TextChanged"
+                                                TextColor="{StaticResource Primary}"
+                                                Unfocused="DatePicker_Unfocused" />
+                                        </custom:CustomSfTextInputView.TextInputView>
 
                                         <custom:CustomSfTextInputView.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="btnDate_Clicked" />
@@ -599,19 +577,8 @@
                                     </Label>
 
                                     <custom:CustomSfTextInputView
-                                        x:Name="FrmName"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        HasError="{Binding FrameNameError}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
-
-                                        <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </custom:CustomSfTextInputView.ErrorLabelStyle>
-
+                                        x:Name="FrmName">
+                                        <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
                                             x:Name="EntryName"
                                             FontFamily="{StaticResource SomarLight}"
@@ -627,6 +594,7 @@
                                             </custom:GAZTBorderlessEntry.Behaviors>
 
                                         </custom:GAZTBorderlessEntry>
+                                    </custom:CustomSfTextInputView.TextInputView>
                                     </custom:CustomSfTextInputView>
                                 </StackLayout>
 
@@ -658,7 +626,7 @@
                                 Style="{StaticResource lineSeperator}"
                                 WidthRequest="380" />
 
-                            <ScrollView>
+                            <ScrollView VerticalScrollBarVisibility="Never">
 
                                 <StackLayout>
 
@@ -676,27 +644,16 @@
                                         </Label>
 
                                         <custom:CustomSfTextInputView
-                                            x:Name="Frame_Country"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            HasError="False"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}">
-
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
+                                            x:Name="Frame_Country">
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                IsReadOnly="{Binding SetEnabilityToCountryList}"
-                                                IsSpellCheckEnabled="False"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding CountryName}" />
+                                                    IsReadOnly="{Binding SetEnabilityToCountryList}"
+                                                    InputTransparent="{Binding SetEnabilityToCountryList}"
+                                                    IsSpellCheckEnabled="False"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding CountryName}" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                             
 
@@ -721,24 +678,13 @@
                                         </Label>
 
                                         <custom:CustomSfTextInputView
-                                            x:Name="GCCFrame_Country"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            HasError="{Binding FrameGccCountyError}"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCountry}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}">
+                                            x:Name="GCCFrame_Country">
 
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                 x:Name="GccCountryName"
                                                 FontSize="Small"
+                                                InputTransparent="{Binding SetEnabilityToCountryList}"
                                                 IsReadOnly="{Binding SetEnabilityToCountryList}"
                                                 IsSpellCheckEnabled="False"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
@@ -746,12 +692,15 @@
                                                 Text="{Binding CountryName}"
                                                 TextChanged="GccCountryName_TextChanged" />
                                             </custom:CustomSfTextInputView.TextInputView>
+
                                             <custom:CustomSfTextInputView.TrailingView>
                                                 <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
                                             </custom:CustomSfTextInputView.TrailingView>
+
                                             <custom:CustomSfTextInputView.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="GCCPickerBtn_Country_Clicked" />
                                             </custom:CustomSfTextInputView.GestureRecognizers>
+
                                         </custom:CustomSfTextInputView>
 
                                         <syncfusion:SfPicker
@@ -834,26 +783,16 @@
 
                                         <custom:CustomSfTextInputView
                                             x:Name="Frame_Region"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="{Binding FrameRegionError}"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            IsVisible="{Binding SetStateListVisibility}"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}">
+                                            IsVisible="{Binding SetStateListVisibility}">
 
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                 x:Name="Entry_Region"
                                                 FontFamily="{StaticResource SomarLight}"
                                                 FontSize="Small"
                                                 IsSpellCheckEnabled="False"
+                                                IsReadOnly="True"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding Region}"
@@ -936,17 +875,13 @@
                                     <StackLayout IsVisible="{Binding SetCityListVisibility}">
 
                                         <Label
-                                            FontFamily="{StaticResource SomarLight}"
                                             HorizontalOptions="Start"
-                                            IsVisible="{Binding SetCityListVisibility}"
+                                            IsVisible="{Binding SetStateListVisibility}"
                                             Style="{StaticResource CaptionLabelBlack}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span
-                                                        FontFamily="{StaticResource SomarSemiBold}"
-                                                        Style="{StaticResource CaptionLabelBlack}"
-                                                        Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
+                                                    <Span Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -955,23 +890,14 @@
 
                                         <custom:CustomSfTextInputView
                                             x:Name="Frame_City"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
                                             HasError="{Binding FrameCityError}"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCity}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            IsVisible="{Binding SetCityListVisibility}"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}">
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
+                                            IsVisible="{Binding SetCityListVisibility}">
+
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                 x:Name="Entry_City"
                                                 FontSize="Small"
+                                                IsReadOnly="True"
                                                 IsSpellCheckEnabled="False"
                                                 IsVisible="{Binding SetCityListVisibility}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZCity}"
@@ -1054,20 +980,8 @@
                                     </StackLayout>
 
                                     <custom:CustomSfTextInputView
-                                            x:Name="Neighborhood"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            HasError="False"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}"
-                                            Style="{StaticResource TextInputLayout}">
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
+                                            x:Name="Neighborhood">
+
 
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
@@ -1089,18 +1003,10 @@
                                         </custom:CustomSfTextInputView>
 
                                     <custom:CustomSfTextInputView
-                                            x:Name="PostalCode"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            HasError="False"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}"
-                                            Style="{StaticResource TextInputLayout}">
+                                            x:Name="PostalCode">
+
                                         <custom:CustomSfTextInputView.TextInputView>
+
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryPostalCode"
                                                 FontFamily="{StaticResource SomarLight}"
@@ -1113,28 +1019,20 @@
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding PostalCode}"
                                                 Unfocused="EntryPostalCode_Unfocused">
+
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:OnlyNumericValuesBehaviour />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
+
                                             </custom:GAZTBorderlessEntry>
+
                                         </custom:CustomSfTextInputView.TextInputView>
+
                                         </custom:CustomSfTextInputView>
 
                                     <custom:CustomSfTextInputView
-                                            x:Name="BuildingNumber"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            HasError="False"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}"
-                                            Style="{StaticResource TextInputLayout}">
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
+                                            x:Name="BuildingNumber">
+
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryBuildingNumber"
@@ -1153,20 +1051,9 @@
                                         </custom:CustomSfTextInputView>
 
                                     <custom:CustomSfTextInputView
-                                            x:Name="UnitNumber"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            HasError="False"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZUnitNumber}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}"
-                                            Style="{StaticResource TextInputLayout}">
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
+                                            x:Name="UnitNumber">
+
+
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryUnitNumber"
@@ -1212,7 +1099,7 @@
                                 Style="{StaticResource lineSeperator}"
                                 WidthRequest="380" />
 
-                            <ScrollView>
+                            <ScrollView VerticalScrollBarVisibility="Never">
 
                                 <StackLayout>
                                     <StackLayout>
@@ -1229,18 +1116,9 @@
 
                                     <custom:CustomSfTextInputView
                                             x:Name="FrmEmailAddress"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            HasError="{Binding FrameEmailError}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}">
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
-                                            <custom:CustomSfTextInputView>
+                                            HasError="{Binding FrameEmailError}">
+
+                                            <custom:CustomSfTextInputView.TextInputView>
                                                  <custom:GAZTBorderlessEntry
                                                 x:Name="EntryEmail"
                                                 IsSpellCheckEnabled="False"
@@ -1254,7 +1132,7 @@
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
 
-                                            </custom:CustomSfTextInputView>
+                                            </custom:CustomSfTextInputView.TextInputView>
                                            
                                         </custom:CustomSfTextInputView>
                                     </StackLayout>
@@ -1272,17 +1150,8 @@
 
                                     <custom:CustomSfTextInputView
                                             x:Name="FrmConfirmEmail"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            HasError="{Binding FrameConfirmEmailError}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}">
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
+                                            HasError="{Binding FrameConfirmEmailError}">
+
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                 x:Name="EntryConfirmEmail"
@@ -1384,44 +1253,42 @@
                                         </Label>
 
                                     <StackLayout Orientation="Horizontal">
+                                        <custom:CustomSfTextInputView HasError="{Binding FrameCaptchaError}">
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                                    WidthRequest="100"
+                                                    FontFamily="{StaticResource SomarLight}"
+                                                    FontSize="Small"
+                                                    Keyboard="Plain"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.CaptchaCode}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding Captcha}" />
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                            
+                                        </custom:CustomSfTextInputView>
 
-                                       
-                                        <inputLayout:SfTextInputLayout
-                                            ContainerType="Outlined"
-                                            HasError="{Binding FrameCaptchaError}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}">
+                                        <StackLayout Orientation="Horizontal"
+                                                             Spacing="5">
+                                                    <Image
+                                                        HeightRequest="50"
+                                                        Source="{Binding Path=Image}"
+                                                        WidthRequest="150" />
+                                                    <Image>
+                                                        <Image.Source>
+                                                            <FontImageSource
+                                                                FontFamily="UserIconFont"
+                                                                Glyph="{x:Static FontImage:IconFonts.RefreshCircle}"
+                                                                Size="32"
+                                                                Color="{StaticResource SecondaryNew}" />
+                                                        </Image.Source>
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="RefreshCaptchaClicked" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
 
-                                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-
-                                            <custom:GAZTBorderlessEntry
-                                                FontFamily="{StaticResource SomarLight}"
-                                                FontSize="Small"
-                                                Keyboard="Plain"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding Captcha}" />
-                                        </inputLayout:SfTextInputLayout>
-                                        <Image
-                                            HeightRequest="50"
-                                            Source="{Binding Path=Image}"
-                                            WidthRequest="150" />
-                                        <Image>
-                                            <Image.Source>
-                                                <FontImageSource
-                                                    FontFamily="UserIconFont"
-                                                    Glyph="{x:Static FontImage:IconFonts.RefreshCircle}"
-                                                    Size="32"
-                                                    Color="{StaticResource SecondaryNew}" />
-                                            </Image.Source>
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="RefreshCaptchaClicked" />
-                                            </Image.GestureRecognizers>
-                                        </Image>
+                                                </StackLayout>
+                                        
+                                      
                                     </StackLayout>
 
                                 </StackLayout>
@@ -1878,18 +1745,8 @@
                                         </Label>
 
                                         <custom:CustomSfTextInputView
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            HasError="{Binding FramePasswordError}"
-                                            Hint="{x:Static ResourceManager:AppResources.NewPassword}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}">
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
+                                            HasError="{Binding FramePasswordError}">
+
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                 x:Name="EntryPassword"
@@ -1938,18 +1795,8 @@
                                         </Label>
 
                                         <custom:CustomSfTextInputView
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            HasError="{Binding FrameConfirmPasswordError}"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}">
-                                            <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </custom:CustomSfTextInputView.ErrorLabelStyle>
+                                            HasError="{Binding FrameConfirmPasswordError}">
+
                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                 <custom:GAZTBorderlessEntry
@@ -2070,18 +1917,8 @@
                                         Text="{x:Static ResourceManager:AppResources.EnterOTP}" />
 
                                     <custom:CustomSfTextInputView
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        HasError="{Binding FrameOTPError}"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource Primary}">
-                                        <custom:CustomSfTextInputView.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </custom:CustomSfTextInputView.ErrorLabelStyle>
+                                        HasError="{Binding FrameOTPError}">
+
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
                                             FontFamily="{StaticResource SomarLight}"

@@ -1902,7 +1902,80 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("ListOfActionButtonsApplicable");
             }
         }
+        private bool _isDeclarationViewEnabled;
+        public bool IsDeclarationViewEnabled
+        {
+            get
+            {
+                return _isDeclarationViewEnabled;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabled == value) return;
 
+                _isDeclarationViewEnabled = value;
+                OnPropertyChanged("IsDeclarationViewEnabled");
+            }
+        }
+
+
+        private bool _isDeclarationViewEnabledNew;
+        public bool IsDeclarationViewEnabledNew
+        {
+            get
+            {
+                return _isDeclarationViewEnabledNew;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabledNew == value) return;
+
+                _isDeclarationViewEnabledNew = value;
+                OnPropertyChanged("IsDeclarationViewEnabledNew");
+            }
+        }
+        public VATDeregDeclaration _vatDeregDeclaration;
+        public VATDeregDeclaration VatDeregDeclaration
+        {
+            get
+            {
+                return _vatDeregDeclaration;
+            }
+            set
+            {
+                if (_vatDeregDeclaration == value) return;
+
+                _vatDeregDeclaration = value;
+                OnPropertyChanged("VatDeregDeclaration");
+            }
+        }
+        public string _zterms;
+        public string Zterms
+        {
+            get
+            {
+                return _zterms;
+            }
+            set
+            {
+                if (_zterms == value) return;
+
+                _zterms = value;
+                OnPropertyChanged("Zterms");
+            }
+        }
+
+        private TextAlignment _termsAlignment;
+        public TextAlignment TermsAlignment
+        {
+            get { return _termsAlignment; }
+            set
+            {
+                if (_termsAlignment == value) return;
+                _termsAlignment = value;
+                OnPropertyChanged("TermsAlignment");
+            }
+        }
         #endregion
 
         public VATRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
@@ -2236,7 +2309,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 try
                 {
                     vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationData();
-
+                    //TODO 7062 Changes
+                    VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(vATRegistration.d.Fbnumz);
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (vATRegistration != null && vATRegistration.d != null)

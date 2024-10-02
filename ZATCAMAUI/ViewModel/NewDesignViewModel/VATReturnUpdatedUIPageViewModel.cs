@@ -6175,120 +6175,83 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-                try
+                IsLoading = true;
+                var platform = DeviceInfo.Platform == DevicePlatform.iOS ? "C4" : "C3";
+
+                ValidatePayment modelDetails = new ValidatePayment();
+                modelDetails.Fbnum = fbNum;
+                modelDetails.Pymntty = paymentType;
+                modelDetails.Tin = App.LoginDataRetrieved.TIN;
+                modelDetails.Srcid = platform;
+                modelDetails.Srctile = "36";
+                modelDetails.Sadad = "";
+
+                PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
+
+                if (PaymentData != null && PaymentData.d != null)
                 {
-
-                    IsLoading = true;
-
-                    var platform = "";
-
-                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                     {
-                        platform = "C4";
+                        await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
+                        return;
                     }
-                    else if (DeviceInfo.Platform == DevicePlatform.Android)
+
+                    if (PaymentData.d.Guid != null)
                     {
-                        platform = "C3";
+                        App.PaymentGuid = PaymentData.d.Guid;
                     }
-                    //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform,paymentType);
-
-
-                    ValidatePayment modelDetails = new ValidatePayment();
-                    modelDetails.Fbnum = fbNum;
-                    modelDetails.Pymntty = paymentType;
-                    modelDetails.Tin = App.LoginDataRetrieved.TIN;
-                    modelDetails.Srcid = platform;
-                    modelDetails.Srctile = "36";
-                    modelDetails.Sadad = "";
-
-                    PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
-
-                    if (PaymentData != null && PaymentData.d != null)
+                    if (paymentType == "Mada Payment")
                     {
-
-                        if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
-                            return;
-                        }
-
-                        if (PaymentData.d.Guid != null)
-                        {
-
-                            App.PaymentGuid = PaymentData.d.Guid;
-
-                        }
-
-                        if (paymentType == "Mada Payment")
-                        {
-
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
                             IsLoading = true;
                             //CR7420
                             CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
                             IsLoading = false;
-                                if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
-                                {
-                                    App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
-                                    _navigationService.NavigateTo(App.PaymentProcessWebview, 1);
-                                    //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
-                                }
-
-                            });
-                        }
-                        else
-                        {
-
-                            ApplePayStatus = await ProcessApplePay();
-                        }
-
-
-
+                            if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
+                            {
+                                App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                                _navigationService.NavigateTo(App.PaymentProcessWebview, 1);
+                            }
+                        });
                     }
-
-                    IsLoading = false;
-
                 }
-                catch (GAZTValidatePaymentInProcessException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-                }
-                catch (InternetException )
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
 
-                        IsLoading = false;
-                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
-                    });
-                }
-                catch (GAZTNetworkConnectivityIssueException )
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                IsLoading = false;
 
-                    });
-                }
-            }
-            catch (InternetException )
+            }catch(GAZTVATRegistrationInProcessException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (GAZTValidatePaymentInProcessException ex)
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (InternetException)
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
+                });
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                 });
             }
         }
@@ -6313,8 +6276,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    //_navigationService.GoBack();
                 });
                 return null;
             }

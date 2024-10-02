@@ -449,14 +449,7 @@
                                                 </Label.FormattedText>
                                             </Label>
 
-                                            <custom:CustomSfTextInputView
-                                                ContainerBackground="White"
-                                                ContainerType="Outlined"
-                                                Hint="{x:Static ResourceManager:AppResources.ZZName}"
-                                                InputViewPadding="16,0,16,0"
-                                                LeadingViewPosition="Inside"
-                                                OutlineCornerRadius="10"
-                                                Stroke="{StaticResource NeutralGreay}">
+                                            <custom:CustomSfTextInputView>
                                                 <custom:CustomSfTextInputView.TextInputView>
                                                     <custom:GAZTBorderlessEditor
                                                         x:Name="Report_Details_Tx"

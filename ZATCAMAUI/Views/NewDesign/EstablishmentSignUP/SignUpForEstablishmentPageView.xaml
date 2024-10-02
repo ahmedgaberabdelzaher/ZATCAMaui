@@ -469,14 +469,7 @@
                                     </SfChipGroup:SfChipGroup>
 
                                     <custom:CustomSfTextInputView
-                                        x:Name="FrmDBO"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="dd/MM/yyyy"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
+                                        x:Name="FrmDBO">
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
                                             x:Name="DateEntry"
@@ -618,14 +611,7 @@
                                 </Label>
 
                                 <custom:CustomSfTextInputView
-                                    x:Name="FrmName"
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.ZZName}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="10"
-                                    Stroke="{StaticResource NeutralGreay}">
+                                    x:Name="FrmName">
                                     <custom:CustomSfTextInputView.TextInputView>
 
                                         <custom:GAZTBorderlessEntry
@@ -819,13 +805,7 @@
                                             </Label.FormattedText>
                                         </Label>
                                         <custom:CustomSfTextInputView
-                                            x:Name="FrmlicenceNumberIssuedbyframe"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10">
+                                            x:Name="FrmlicenceNumberIssuedbyframe">
 
                                             <custom:GAZTBorderlessEntry
                                                 InputTransparent="True"
@@ -915,13 +895,7 @@
                                         </Label>
 
                                         <custom:CustomSfTextInputView
-                                            x:Name="FrmIssuedByCity"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10">
+                                            x:Name="FrmIssuedByCity">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                  <custom:GAZTBorderlessEntry
                                                 InputTransparent="True"
@@ -1113,13 +1087,7 @@
                                 <!--  Phone Number  -->
                                  <StackLayout>
                                     <custom:CustomSfTextInputView
-                                    x:Name="FrmPhoneNumber"
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.ZZPhoneNumber}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="10">
+                                    x:Name="FrmPhoneNumber">
 
                                     <custom:GAZTBorderlessEntry
                                         x:Name="EntryPhoneNumber"
@@ -1590,25 +1558,19 @@
                                              </Label.FormattedText>
                                          </Label>
 
-                                        <custom:CustomSfTextInputView
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.NDNewPassword}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10">
-                                        <custom:CustomSfTextInputView.TextInputView>
-                                            <custom:GAZTBorderlessEntry
-                                            x:Name="EntryPass"
-                                            IsPassword="{Binding IsPasswordEncripted}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding TxtPassword}"
-                                            TextChanged="EntryPass_TextChanged"
-                                            TextColor="{StaticResource NeutralBlack}">
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviors:PasswordTextBehaviour />
-                                            </custom:GAZTBorderlessEntry.Behaviors>
-                                        </custom:GAZTBorderlessEntry>
+                                        <custom:CustomSfTextInputView>
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                                x:Name="EntryPass"
+                                                IsPassword="{Binding IsPasswordEncripted}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding TxtPassword}"
+                                                TextChanged="EntryPass_TextChanged"
+                                                TextColor="{StaticResource NeutralBlack}">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviors:PasswordTextBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </custom:CustomSfTextInputView.TextInputView>
                                         
 
@@ -1637,25 +1599,20 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10">
-                                        <custom:CustomSfTextInputView.TextInputView>
-                                            <custom:GAZTBorderlessEntry
-                                            x:Name="EntryCfrmPass"
-                                            IsPassword="{Binding IsConfirmPasswordEncripted}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding TxtConfirmPassword}"
-                                            TextColor="{StaticResource NeutralBlack}">
+                                        <custom:CustomSfTextInputView>
 
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviors:PasswordTextBehaviour />
-                                            </custom:GAZTBorderlessEntry.Behaviors>
-                                        </custom:GAZTBorderlessEntry>
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                                x:Name="EntryCfrmPass"
+                                                IsPassword="{Binding IsConfirmPasswordEncripted}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding TxtConfirmPassword}"
+                                                TextColor="{StaticResource NeutralBlack}">
+
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviors:PasswordTextBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </custom:CustomSfTextInputView.TextInputView>
                                         
 

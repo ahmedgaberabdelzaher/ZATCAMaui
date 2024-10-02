@@ -25,11 +25,11 @@
      </PropertyGroup> -->
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
-        <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-        <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+        <CodesignProvision>ZATCA App Enterprise Distribution profile</CodesignProvision>
+        <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
         <MtouchLink>None</MtouchLink>
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-        <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+        <CodesignEntitlements></CodesignEntitlements>
     </PropertyGroup>
 
     <ItemGroup>
@@ -60,8 +60,9 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
-        <CodesignProvision>ZATCADEV</CodesignProvision>
-        <CodesignKey>Apple Development: ahmed gaber (9VPCFT6L35)</CodesignKey>
+        <CodesignProvision>ZATCA App Enterprise Dev profile</CodesignProvision>
+        <CodesignKey>Apple Development: Anas Alshahrani (FBC5Q68T24)</CodesignKey>
+        <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     </PropertyGroup>
     <ItemGroup>
         <Compile Remove="KeyStore\**" />
