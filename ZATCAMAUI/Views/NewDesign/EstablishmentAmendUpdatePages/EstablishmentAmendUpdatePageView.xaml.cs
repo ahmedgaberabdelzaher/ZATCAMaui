@@ -385,7 +385,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
                     DateTime.TryParseExact(viewModel?.DisplaySelectedDOB, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _dob);
                     viewModel.SelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
-                var dob = viewModel.SelectedDOB.Replace("/", "");
+                var dob = viewModel.SelectedDOB.Replace("/", "-");
                 await viewModel.ValidateIDAndDOB(viewModel.idItem?.Type, viewModel.GCCIDTypeIdNumberValue, dob);
             }
             catch (Exception)
