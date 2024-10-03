@@ -38,14 +38,14 @@ public partial class NafathLoginView : ContentPage
                 viewModel.LocationData.longitude = "UNKNOWN";
             }
         }
-        catch (FeatureNotEnabledException Fe)
+        catch (FeatureNotEnabledException )
         {
             viewModel.LocationData.lattitude = "UNKNOWN";
             viewModel.LocationData.longitude = "UNKNOWN";
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            Console.WriteLine(ex.ToString());
+
         }
     }
 

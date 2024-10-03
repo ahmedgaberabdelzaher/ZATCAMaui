@@ -1261,7 +1261,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
                 if (result)
                 {
-
+                    EnableContinue2 = false;
                     ChangeMobModel.d.Operationz = "08";
                     var data = await WebServiceManager.SaveChangeMobileNumberAsync(ChangeMobModel);
                     IsLoading = false;
@@ -1817,59 +1817,59 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WithReplacedString));
         }
 
-        public async Task GetCaptchAndGUID(string CaptchaRequestCode)
-        {
-            try
-            {
+        //public async Task GetCaptchAndGUID(string CaptchaRequestCode, string guid = "", string captchaCode = "")
+        //{
+        //    try
+        //    {
 
-                IsLoading = true;
+        //        IsLoading = true;
 
-                string lang = UtilityManager.GetLanguageParameter();
-                string st = ZATCAConstants.CaptchaAndGUID;
-                string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
-                GenerateCaptchaGUID forgotPasswordOTP = new GenerateCaptchaGUID();
-                Models.Metadata metadata = new Models.Metadata();
-                metadata.id = st;
-                metadata.uri = st;
-                metadata.type = type;
+        //        string lang = UtilityManager.GetLanguageParameter();
+        //        string st = ZATCAConstants.CaptchaAndGUID;
+        //        string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+        //        GenerateCaptchaGUID forgotPasswordOTP = new GenerateCaptchaGUID();
+        //        Models.Metadata metadata = new Models.Metadata();
+        //        metadata.id = st;
+        //        metadata.uri = st;
+        //        metadata.type = type;
 
-                GetCaptcha d = new GetCaptcha();
-                d.__metadata = metadata;
-                d.captchaCode = "";
-                d.GUID = "";
-                d.taxpayer = "";
-                d.refresh = "";
-                d.applicationName = CaptchaRequestCode;
+        //        GetCaptcha d = new GetCaptcha();
+        //        d.__metadata = metadata;
+        //        d.captchaCode = captchaCode;
+        //        d.GUID = guid;
+        //        d.taxpayer = "";
+        //        d.refresh = "";
+        //        d.applicationName = CaptchaRequestCode;
 
-                forgotPasswordOTP.result = d;
-                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(d);
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+        //        forgotPasswordOTP.result = d;
+        //        forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(d);
+        //        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                if (forgotPasswordOTP?.result != null && !string.IsNullOrEmpty(forgotPasswordOTP.result.captchaCode))
-                {
-                    Captcha = forgotPasswordOTP.result.captchaCode;
-                    GUID = forgotPasswordOTP.result.GUID;
-                    IsAPICalledSuccessfully = true;
-                }
-                IsLoading = false;
-            }
+        //        if (forgotPasswordOTP?.result != null && !string.IsNullOrEmpty(forgotPasswordOTP.result.captchaCode))
+        //        {
+        //            Captcha = forgotPasswordOTP.result.captchaCode;
+        //            GUID = forgotPasswordOTP.result.GUID;
+        //            IsAPICalledSuccessfully = true;
+        //        }
+        //        IsLoading = false;
+        //    }
 
-            catch (InternetException ex)
-            {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+        //    catch (InternetException ex)
+        //    {
+        //        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                    // UserIDLayoutVisibility = true;
-                });
-            }
-            finally
-            {
-                IsLoading = false;
-            }
-        }
+        //        //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+        //        await Task.Run(() =>
+        //        {
+        //            IsLoading = false;
+        //            // UserIDLayoutVisibility = true;
+        //        });
+        //    }
+        //    finally
+        //    {
+        //        IsLoading = false;
+        //    }
+        //}
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)

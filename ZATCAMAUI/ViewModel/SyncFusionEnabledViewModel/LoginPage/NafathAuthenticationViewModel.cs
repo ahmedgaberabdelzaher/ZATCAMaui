@@ -1,11 +1,14 @@
 using System;
+using System.Net;
 using System.Windows.Input;
 using AppDynamics.Agent;
+using Mopups.Services;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
 
@@ -152,7 +155,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
 
         var response = await WebServiceManager.NafathSSOUserAccountsInquiry(Response.idNumber, guid, idType);
 
-        if (response != null)
+        if (response != null && response.data != null && response.data.SSOUserAccounts != null)
         {
             if (response.data!.SSOUserAccounts!.Count > 0)
             {
@@ -172,13 +175,19 @@ public class NafathAuthenticationViewModel : BaseViewModel
 
     private async Task Login(string TIN, string guid)
     {
+        IsLoading = true;
         NafathLoginModel model = new NafathLoginModel();
         model.TIN = TIN;
         model.GUID = guid;
-        model.latitude = string.Empty;
-        model.longitude = string.Empty;
+        model.latitude = Response.lattitude;
+        model.longitude = Response.longitude;
+        model.ipaddress = Dns.GetHostAddresses(Dns.GetHostName()).FirstOrDefault().ToString();
+        model.osname = DeviceInfo.Platform.ToString();
+        model.sourceType = "ZM";
+        model.browsername = DeviceInfo.Platform.ToString();
         model.language = WebServiceManager.GetLangZParameterAREN();
         var response = await WebServiceManager.NafathLogin(model);
+        IsLoading = false;
         if (response != null && response.result != null && response.result.accessToken != null)
         {
             if (App.LoginDataRetrieved == null)
@@ -188,8 +197,15 @@ public class NafathAuthenticationViewModel : BaseViewModel
             App.LoginDataRetrieved.TIN = TIN;
             App.Token = response.result.accessToken;
             await LoginCompleted();
-            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView, false);
+            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
         }
+        else
+        {
+            IsLoading = false;
+            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(response.result?.error_description));
+
+        }
+
     }
 
     public async Task LoginCompleted()

@@ -8461,6 +8461,19 @@ namespace ZATCAMAUI.Core.Mangers
                 var apiResponse = await client.GetAsync(uri);
                 var result = await apiResponse.Content.ReadAsStringAsync();
                 response = JsonConvert.DeserializeObject<SSOUserAccountModelResponse>(result);
+                if (!string.IsNullOrEmpty(result) && response.data == null)
+                {
+                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
+                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    {
+                        string errorMessage = string.Empty;
+                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        errorMessage = WithReplacedString;
+                        throw new GAZTErrorException(errorMessage);
+                    }
+                }
             }
             return response;
 
@@ -8487,14 +8500,6 @@ namespace ZATCAMAUI.Core.Mangers
                 client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
                 client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung");
                 client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
-
-                //TODO
-                model.browsername = "safari";
-                model.sourceType = "ZM";
-                model.osname = "Android";
-                model.ipaddress = "124.22.3.0";
-                model.latitude = "24.755562";
-                model.longitude = "46.589584";
 
                 var serilized = JsonConvert.SerializeObject(model);
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);

@@ -11,8 +11,11 @@ namespace ZATCAMAUI.Models
         public string VTRE2 { get; set; } //SadadPaymentNumber
         [JsonProperty("MADAButton")]
         public string MadabutFg { get; set; } //Mada Payment
+        [JsonProperty("messageDescription")]
         public string OpenliMsg { get; set; } //Mada Payment Message
+        [JsonProperty("periodKey")]
         public string Persl { get; set; } //Mada Payment
+        [JsonProperty("documentNumber")]
         public string Opbel { get; set; } //CR1265
         [JsonProperty("paymentStatus")]
         public string PymtStatus { get; set; }

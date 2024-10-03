@@ -2758,7 +2758,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Mguid = string.Empty;
                 }
 
-
+                Begindate = "2022-02-23T08:05:26";
+                EndDate = "2025-02-23T08:05:26";
                 string newCountryCodeString = TxtCountryCode.Replace("+", "00");
                 CreateVatSignUPRequest createVatSignUPRequest = new CreateVatSignUPRequest();
                 createVatSignUPRequest.taxpayerTitle = "";

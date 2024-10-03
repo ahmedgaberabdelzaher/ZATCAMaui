@@ -11184,10 +11184,10 @@ Best regards,
     </value>
     </data>
     <data name="PleaseEnterYourNationalId" xml:space="preserve">
-        <value>Please enter your national ID</value>
+	   <value>Please enter your National ID/Iqama ID</value>
     </data>
     <data name="EnterYourNationalIdHere" xml:space="preserve">
-        <value>Enter your National  Id here</value>
+	    <value>Enter your National Id/Iqama ID here</value>
     </data>
     <data name="ApproveInNafathApp" xml:space="preserve">
         <value>Please open Nafath mobile app and approve the request by selecting above number.</value>
@@ -11664,6 +11664,9 @@ the credit balance of the current period will be carried forward, you can reques
     <data name="PleaseSelectTIN" xml:space="preserve">
         <value>Please select TIN</value>
     </data>
+     <data name="PleaseSelectCountryCode" xml:space="preserve">
+    <value>Please select country code.</value>
+  </data>
     <data name="PleaseSelectAnOption" xml:space="preserve">
         <value>Please select an option</value>
     </data>
@@ -11756,5 +11759,8 @@ the credit balance of the current period will be carried forward, you can reques
   </data>
      <data name="PortLiveVideoSubTitle2" xml:space="preserve">
        <value>Land Ports Live Stream</value>
-  </data> 
+  </data>
+   <data name="NationalIDstartswith1AndIqamaIDstartswith2" xml:space="preserve">
+    <value>National/Iqama ID should start with 1/2</value>
+  </data>
 </root>

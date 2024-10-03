@@ -25,6 +25,10 @@ namespace ZATCAMAUI.Models
         public string APICall { get; set; }
         public string statusCode { get; set; }
         public string statusDescription { get; set; }
+
+        /*added manually for sending location data to authenticatio page to DashBoardAPI*/
+        public string lattitude = string.Empty;
+        public string longitude = string.Empty;
     }
 
 }
