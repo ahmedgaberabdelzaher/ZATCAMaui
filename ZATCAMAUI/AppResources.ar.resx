@@ -10728,7 +10728,7 @@ info@zatca.gov.sa</value>
     <value>رقم هوية المدير</value>
 </data>
 <data name="NafathLinkText" xml:space="preserve">
-    <value>للمواطنين / المقيمين. تسجيل الدخول عن طريق نفاذ</value>
+    <value>تسجيل الدخول عبر منصة النفاذ الوطني للمواطنيين والمقيمين</value>
 </data>
 <data name="ManualRequestTitle" xml:space="preserve">
     <value>في حال كانت خدمة نفاذ غير متوفرة ، الرجاء تقديم الطلب اليدوي</value>
@@ -11095,17 +11095,11 @@ info@zatca.gov.sa</value>
 رقم الطلب {2}
     </value>
 </data>
-<data name="PleaseEnterYourNationalId" xml:space="preserve">
-    <value>Please enter your national ID</value>
-</data>
-<data name="EnterYourNationalIdHere" xml:space="preserve">
-    <value>ادخل رقم الهوية الخاص بك</value>
-</data>
 <data name="ApproveInNafathApp" xml:space="preserve">
     <value>الرجاء فتح تطبيق نفاذ وتأكيد الطلب بإختيارالرقم اعلاه</value>
 </data>
 <data name="IndividualOrEstablishment" xml:space="preserve">
-    <value>أفراد/مؤسسات</value>
+	<value>أفراد/مؤسساتt</value>
 </data>
 <data name="NafathAuthentication" xml:space="preserve">
     <value>تطبيق نفاذ</value>
@@ -11468,5 +11462,17 @@ info@zatca.gov.sa</value>
   </data>
    <data name="PortLiveVideoSubTitle2" xml:space="preserve">
         <value>البث المباشر للمنافذ البرية</value>
-  </data> 
+  </data>
+   <data name="NationalIDstartswith1AndIqamaIDstartswith2" xml:space="preserve">
+    <value>رقم بطاقة الأحوال/الاقامة يجب أن يبدأ برقم 1/2</value>
+  </data>
+  <data name="PleaseSelectCountryCode" xml:space="preserve">
+    <value>الرجاء تحديد رمز البلد</value>
+  </data>
+  	<data name="PleaseEnterYourNationalId" xml:space="preserve">
+	 <value>الرجاء إدخال رقم الهوية الوطنية / معرف الإقامة</value>
+ </data>
+	<data name="EnterYourNationalIdHere" xml:space="preserve">
+     <value>الرجاء إدخال رقم الهوية الوطنية / معرف الإقامة</value>
+  </data>
 </root>

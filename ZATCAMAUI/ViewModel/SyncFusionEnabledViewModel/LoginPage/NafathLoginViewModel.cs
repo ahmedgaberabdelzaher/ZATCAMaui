@@ -29,6 +29,7 @@ public class NafathLoginViewModel : BaseViewModel
             OnPropertyChanged(nameof(Error));
         }
     }
+    private NafathLoginResponseModel NafathLoginResponse { get; set; } = new NafathLoginResponseModel();
 
     public LocationServicesModel LocationData { get; set; } = new LocationServicesModel();
 
@@ -51,6 +52,10 @@ public class NafathLoginViewModel : BaseViewModel
                     if (!string.IsNullOrEmpty(result.result.randomNumber))
                     {
                         result.navigation = navigation;
+
+                        //setting location Data
+                        result.result.lattitude = LocationData.lattitude;
+                        result.result.longitude = LocationData.longitude;
                         _navigationService.NavigateTo(App.NafathAuthenticationView, result);
 
                         var _navigation = Application.Current.MainPage.Navigation;
@@ -95,9 +100,9 @@ public class NafathLoginViewModel : BaseViewModel
             Error = AppResources.ZZNationalIDlengthis10digit;
             return false;
         }
-        else if (!id.StartsWith("1"))
+        else if (!(id.StartsWith("1") || id.StartsWith("2")))
         {
-            Error = AppResources.ZZNationalIDstartswith1;
+            Error = AppResources.NationalIDstartswith1AndIqamaIDstartswith2;
             return false;
         }
         Error = string.Empty;
@@ -115,8 +120,8 @@ public class NafathLoginViewModel : BaseViewModel
             processType = navigation
         };
 
-        var result = await WebServiceManager.NafathLogin(model);
-        result.result.idNumber = NafathId;
-        return result;
+        NafathLoginResponse = await WebServiceManager.NafathLogin(model);
+        NafathLoginResponse.result.idNumber = NafathId;
+        return NafathLoginResponse;
     }
 }

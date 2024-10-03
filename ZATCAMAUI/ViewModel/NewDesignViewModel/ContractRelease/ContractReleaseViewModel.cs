@@ -799,6 +799,109 @@ public class ContractReleaseViewModel : BaseViewModel
         }
     }
 
+    private bool isDECCheckBox = false;
+    public bool IsDECCheckBox
+    {
+        get { return isDECCheckBox; }
+        set
+        {
+            if (isDECCheckBox == value) return;
+
+            isDECCheckBox = value;
+            OnPropertyChanged("IsDECCheckBox");
+        }
+    }
+
+    private bool shouldShowAR = false;
+    public bool ShouldShowAR
+    {
+        get { return shouldShowAR; }
+        set
+        {
+            if (shouldShowAR == value) return;
+
+            shouldShowAR = value;
+            OnPropertyChanged("ShouldShowAR");
+        }
+    }
+    private bool shouldShowEN = false;
+    public bool ShouldShowEN
+    {
+        get { return shouldShowEN; }
+        set
+        {
+            if (shouldShowEN == value) return;
+
+            shouldShowEN = value;
+            OnPropertyChanged("ShouldShowEN");
+        }
+    }
+
+    private bool _isDeclarationViewEnabled;
+    public bool IsDeclarationViewEnabled
+    {
+        get
+        {
+            return _isDeclarationViewEnabled;
+        }
+        set
+        {
+            if (_isDeclarationViewEnabled == value) return;
+
+            _isDeclarationViewEnabled = value;
+            OnPropertyChanged("IsDeclarationViewEnabled");
+        }
+    }
+
+    private bool _isDeclarationViewEnabledNew;
+    public bool IsDeclarationViewEnabledNew
+    {
+        get
+        {
+            return _isDeclarationViewEnabledNew;
+        }
+        set
+        {
+            if (_isDeclarationViewEnabledNew == value) return;
+
+            _isDeclarationViewEnabledNew = value;
+            OnPropertyChanged("IsDeclarationViewEnabledNew");
+        }
+    }
+
+    public VATDeregDeclaration _vatDeregDeclaration;
+    public VATDeregDeclaration VatDeregDeclaration
+    {
+        get
+        {
+            return _vatDeregDeclaration;
+        }
+        set
+        {
+            if (_vatDeregDeclaration == value) return;
+
+            _vatDeregDeclaration = value;
+            OnPropertyChanged("VatDeregDeclaration");
+        }
+    }
+
+    public string _zterms;
+    public string Zterms
+    {
+        get
+        {
+            return _zterms;
+        }
+        set
+        {
+            if (_zterms == value) return;
+
+            _zterms = value;
+            OnPropertyChanged("Zterms");
+        }
+    }
+
+
     int selectedPage = (int)PagesEnum.CrReleaseDetailsView;
 
     public ContractReleaseInterface contractReleaseInterface { get; set; }
@@ -1194,15 +1297,33 @@ public class ContractReleaseViewModel : BaseViewModel
     {
         try
         {
-            if (!IsDeclarationEnabled)
+            if (IsDeclarationViewEnabledNew)
             {
-                return;
+                IsDeclarationEnabled = true;
+                if (!string.IsNullOrEmpty(Zterms) && !IsDECCheckBox)
+                {
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    return;
+                }
             }
+            else
+            {
+                if (!IsDeclarationEnabled)
+                {
+                    return;
+                }
+            }
+
             EnableSummaryView();
+        }
+        catch (GAZTUnlockAccountException ex)
+        {
+            Console.Write(ex.ToString());
+            Console.Write(ex.StackTrace.ToString());
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
+            Device.BeginInvokeOnMainThread(async () =>
             {
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
@@ -1822,6 +1943,28 @@ public class ContractReleaseViewModel : BaseViewModel
         AttachmentsVisible = false;
         RemarksAndDescVisible = false;
         DeclarationVisible = true;
+        if (VatDeregDeclaration != null && VatDeregDeclaration.D != null && string.IsNullOrEmpty(VatDeregDeclaration.D.Zterms))
+        {
+            IsDeclarationViewEnabled = true;
+            IsDeclarationViewEnabledNew = false;
+        }
+        else
+        {
+            Zterms = VatDeregDeclaration.D.Zterms;
+            IsDeclarationViewEnabled = false;
+            IsDeclarationViewEnabledNew = true;
+            if (App.IsArabic)
+            {
+                ShouldShowAR = true;
+                ShouldShowEN = false;
+            }
+            else
+            {
+                ShouldShowEN = true;
+                ShouldShowAR = false;
+            }
+
+        }
         SummaryVisible = false;
         selectedPage = (int)PagesEnum.CrDeclarationView;
     }
@@ -1869,6 +2012,8 @@ public class ContractReleaseViewModel : BaseViewModel
             ContractReleaseData = await ContractReleaseWebServiceManager.GAZTGetContractReleaseRequestData();
             if (ContractReleaseData != null && ContractReleaseData.d != null)
             {
+                //TODO 7062 Changes
+                VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(ContractReleaseData.d.Fbnum);
                 bindDataToUI();
 
                 if (ContractReleaseData.d.ACalTp == "Hijri")
@@ -1964,8 +2109,7 @@ public class ContractReleaseViewModel : BaseViewModel
             AmountToRelease = double.Parse(ContractReleaseAmount);
 
             MakeCalculations();
-            ContractReleaseAmount = string.Format(CultureInfo.InvariantCulture,
-                            "{0:0.00}", Convert.ToDouble(ContractReleaseAmount));
+            ContractReleaseAmount = UtilityManager.GetCommaSeparatedAmount(ContractReleaseAmount);
 
         }
         catch (Exception)
@@ -2071,13 +2215,20 @@ public class ContractReleaseViewModel : BaseViewModel
 
     public void EnableDeclarationContinue()
     {
-        if (ContactPersonName == "" || Designation == "")
+        if (IsDeclarationViewEnabledNew)
         {
-            IsDeclarationEnabled = false;
+            IsDeclarationEnabled = true;
         }
         else
         {
-            IsDeclarationEnabled = true;
+            if (ContactPersonName == "" || Designation == "")
+            {
+                IsDeclarationEnabled = false;
+            }
+            else
+            {
+                IsDeclarationEnabled = true;
+            }
         }
     }
 

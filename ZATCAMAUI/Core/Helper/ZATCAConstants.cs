@@ -205,7 +205,7 @@ namespace ZATCAMAUI.Core.Helper
         #endregion
 
         public static string GetLoginDetaialsSSO = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZVTIA_SIGNUP_SRV/signup_headerSet?$filter=Type eq '1' and Mguid eq '";//6094
-        public static string GetGstcCaseDetailsApi = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_GSTC_CASEDET_SRV/TINSet(";
+        public static string GetGstcCaseDetailsApi = BaseUrlOfODataServices + "/v1/gstc/escalated-cases?TIN=";
         public static string GetRMContactDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_VOC_SURVEY_SRV/RelationManagerSurveySet(Gpart";
         public static string CheckVocAvailability = "https://vocstg.gazt.gov.sa/v1/response/survey/availability";
         public static string ComplaintsEngUrl = "https://gazt.gov.sa/en/ContactUs/Pages/default.aspx#topic_complaint";
@@ -420,7 +420,7 @@ namespace ZATCAMAUI.Core.Helper
         public static string GetVATObjViewApplicationDREGSuspensionReasonSetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetReasonSet?$filter=TxnTp eq 'VT_SUSP' and Lang eq 'E'&$format=json";
 
         public static string GetVATObjSuspensionDetailSetURL = BaseUrlOfODataServices + "/v1/suspensions?TIN=";
-        public static string GetVATDeRegistrationDeclaration = BaseUrlOfODataServices + "/v1/declarations/texts?formBundleNumber=";
+        public static string GetVATDeRegistrationDeclaration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_DECLARE_SRV/DeclareSet(Fbnum=";
 
         #endregion
 

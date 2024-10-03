@@ -5,38 +5,43 @@ using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
 {
-    
+
     public class EscalatedGstcModel
     {
+        [JsonProperty("data")]
         public D d { get; set; }
-        
-         public class Metadata
+
+       
+        public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-        
+       
         public class Deferred
         {
             public string uri { get; set; }
         }
-        
+       
         public class TINSet
         {
             public Deferred __deferred { get; set; }
         }
-
-        
+       
         public class CaseDetailsResultSet
         {
             public Metadata __metadata { get; set; }
+
+            //   [JsonProperty("CaseDate")]
+            //public DateTime CaseDate { get; set; }
+
             [JsonIgnore]
             public string CaseDateString { get; set; }
 
             [JsonIgnore]
             public DateTime? _caseDate;
-            [JsonProperty("CaseDate")]
+            [JsonProperty("caseDate")]
             public DateTime? CaseDate
             {
                 get
@@ -57,25 +62,25 @@ namespace ZATCAMAUI.Models
                 }
             }
 
-            [JsonProperty("TotalObjectItemsAmt")]
+            [JsonProperty("totalObjectItemsAmount")]
             public string TotalObjectItemsAmt { get; set; }
-            [JsonProperty("Tin")]
+            [JsonProperty("TIN")]
             public string Tin { get; set; }
-            [JsonProperty("CaseId")]
+            [JsonProperty("caseId")]
             public string CaseId { get; set; }
-            [JsonProperty("GrevienceNumber")]
+            [JsonProperty("grevienceNumber")]
             public string GrevienceNumber { get; set; }
-            [JsonProperty("Name")]
+            [JsonProperty("name")]
             public string Name { get; set; }
-            [JsonProperty("CaseNumber")]
+            [JsonProperty("caseNumber")]
             public string CaseNumber { get; set; }
-            [JsonProperty("CaseSubject")]
+            [JsonProperty("caseSubject")]
             public string CaseSubject { get; set; }
 
 
             [JsonIgnore]
             private string _type = " -- ";
-            [JsonProperty("Type")]
+            [JsonProperty("type")]
             public string Type
             {
                 get
@@ -98,7 +103,7 @@ namespace ZATCAMAUI.Models
 
             [JsonIgnore]
             private string _typeAr = " -- ";
-            [JsonProperty("TypeAr")]
+            [JsonProperty("typeArabic")]
             public string TypeAr
             {
                 get
@@ -112,13 +117,17 @@ namespace ZATCAMAUI.Models
                     {
                         ZType = TypeAr;
                     }
+                    else
+                    {
+
+                    }
                 }
             }
 
 
             [JsonIgnore]
             private string _statusName = " -- ";
-            [JsonProperty("StatusName")]
+            [JsonProperty("statusName")]
             public string StatusName
             {
                 get
@@ -136,7 +145,7 @@ namespace ZATCAMAUI.Models
             }
             [JsonIgnore]
             private string _statusNameAr = " -- ";
-            [JsonProperty("StatusNameAr")]
+            [JsonProperty("statusNameArabic")]
             public string StatusNameAr
             {
                 get
@@ -154,7 +163,7 @@ namespace ZATCAMAUI.Models
             }
             [JsonIgnore]
             private string _mileStone = "--";
-            [JsonProperty("Milestone")]
+            [JsonProperty("milestone")]
             public string Milestone
             {
                 get
@@ -172,7 +181,7 @@ namespace ZATCAMAUI.Models
             }
             [JsonIgnore]
             private string _mileStoneAr = "--";
-            [JsonProperty("MilestoneAr")]
+            [JsonProperty("milestoneArabic")]
             public string MilestoneAr
             {
                 get
@@ -190,7 +199,7 @@ namespace ZATCAMAUI.Models
             }
             [JsonIgnore]
             private string _degreeLitigation = "--";
-            [JsonProperty("DegreeLitigation")]
+            [JsonProperty("degreeLitigation")]
             public string DegreeLitigation
             {
                 get
@@ -207,7 +216,7 @@ namespace ZATCAMAUI.Models
                 }
             }
             private string _degreeLitigationAr = "--";
-            [JsonProperty("DegreeLitigationAr")]
+            [JsonProperty("degreeLitigationArabic")]
             public string DegreeLitigationAr
             {
                 get
@@ -224,12 +233,12 @@ namespace ZATCAMAUI.Models
                 }
             }
 
-            [JsonProperty("CaseType")]
+            [JsonProperty("caseType")]
             public string CaseType { get; set; }
 
             [JsonIgnore]
             private string _casetypeDes = " -- ";
-            [JsonProperty("CasetypeDes")]
+            [JsonProperty("casetypeDescription")]
             public string CasetypeDes
             {
                 get
@@ -248,7 +257,7 @@ namespace ZATCAMAUI.Models
 
             [JsonIgnore]
             private string _casetypeDesAr = " -- ";
-            [JsonProperty("CasetypeDesAr")]
+            [JsonProperty("casetypeDescriptionArabic")]
             public string CasetypeDesAr
             {
                 get
@@ -265,12 +274,12 @@ namespace ZATCAMAUI.Models
                 }
             }
 
-            [JsonProperty("CaseClassification")]
+            [JsonProperty("caseClassification")]
             public string CaseClassification { get; set; }
 
             [JsonIgnore]
             private string _caseClassificationDes = "--";
-            [JsonProperty("CaseClassificationDes")]
+            [JsonProperty("caseClassificationDescription")]
             public string CaseClassificationDes
             {
                 get
@@ -288,7 +297,7 @@ namespace ZATCAMAUI.Models
             }
             [JsonIgnore]
             private string _caseClassificationDesAr = "--";
-            [JsonProperty("CaseClassificationDesAr")]
+            [JsonProperty("caseClassificationDescriptionArabic")]
             public string CaseClassificationDesAr
             {
                 get
@@ -306,7 +315,7 @@ namespace ZATCAMAUI.Models
             }
 
 
-            [JsonProperty("Link")]
+            [JsonProperty("link")]
             public string Link { get; set; }
             [JsonProperty("TINSet")]
             public TINSet TINSet { get; set; }
@@ -331,25 +340,29 @@ namespace ZATCAMAUI.Models
             public string ZStatusName { get; set; }
 
         }
-        
+       
         public class CaseDetailSet
         {
+            [JsonProperty("results")]
             public List<CaseDetailsResultSet> results { get; set; }
         }
-        
+       
         public class D
         {
             public Metadata __metadata { get; set; }
-            [JsonProperty("Code")]
+            [JsonProperty("code")]
             public string Code { get; set; }
-            [JsonProperty("MessageType")]
+            [JsonProperty("messageType")]
             public string MessageType { get; set; }
-            [JsonProperty("TotalCount")]
+            [JsonProperty("totalCount")]
             public int TotalCount { get; set; }
-            [JsonProperty("Tin")]
+            [JsonProperty("TIN")]
             public string Tin { get; set; }
-            [JsonProperty("CaseDetailSet")]
+            [JsonProperty("caseDetailSet")]
             public CaseDetailSet CaseDetailSet { get; set; }
         }
+
+
+
     }
 }

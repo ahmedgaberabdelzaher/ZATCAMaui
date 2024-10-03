@@ -92,7 +92,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <StackLayout Grid.Row="0">
+                            <StackLayout Grid.Row="0" Spacing="5">
                                 <Label HorizontalOptions="Start" Style="{StaticResource forLightLabel}">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -102,7 +102,7 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <StackLayout>
-                                    <buttons:SfButton
+                                    <!--<buttons:SfButton
                                         Padding="5"
                                         Command="{Binding OnReportingBranchSelectButtonClick}"
                                         CornerRadius="10"
@@ -114,7 +114,31 @@
                                         StrokeThickness="1"
                                         Style="{StaticResource NoBackgroundButtonStyle}"
                                         Text="{Binding SelectedReportingBranch}"
-                                        TextColor="{StaticResource NeutralBlack}" />
+                                        TextColor="{StaticResource NeutralBlack}" />-->
+                                    <custom:CustomSfTextInputView  Style="{StaticResource TextInputLayout}">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.FORM5Branch}"
+                                            Style="{StaticResource NoBackgroundButtonStyle}"
+                                            Text="{Binding SelectedReportingBranch}"
+                                            TextColor="{StaticResource NeutralBlack}">
+                                                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnReportingBranchSelectButtonClick}" />
+                                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnReportingBranchSelectButtonClick}" />
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout Grid.Row="1">
@@ -1512,7 +1536,7 @@
                                     FontSize="18"
                                     Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"
                                     TextColor="{StaticResource NeutralBlack}" />
-                                <StackLayout Margin="0,0,0,10" HorizontalOptions="Start">
+                                <StackLayout Margin="0,0,0,10" HorizontalOptions="Start" Spacing="5">
                                     <Label Style="{StaticResource forLightLabel}">
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -1522,7 +1546,7 @@
                                         </Label.FormattedText>
                                     </Label>
                                     <StackLayout>
-                                        <buttons:SfButton
+                                        <!--<buttons:SfButton
                                             Padding="5"
                                             Command="{Binding OnPDNatinalitySelectButtonClick}"
                                             CornerRadius="10"
@@ -1534,10 +1558,33 @@
                                             StrokeThickness="1"
                                             Style="{StaticResource NoBackgroundButtonStyle}"
                                             Text="{Binding SelectedTaxpayerPDNationality}"
-                                            TextColor="{StaticResource NeutralBlack}" />
+                                            TextColor="{StaticResource NeutralBlack}" />-->
+                                        <custom:CustomSfTextInputView  Style="{StaticResource TextInputLayout}">
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.PassengerNationality}"
+                                            Style="{StaticResource NoBackgroundButtonStyle}"
+                                            Text="{Binding SelectedTaxpayerPDNationality}"
+                                            TextColor="{StaticResource NeutralBlack}">
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnPDNatinalitySelectButtonClick}" />
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                </custom:GAZTBorderlessEntry>
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnPDNatinalitySelectButtonClick}" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image Aspect="AspectFit" Source="greyDropDown" />
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                        </custom:CustomSfTextInputView>
                                     </StackLayout>
                                 </StackLayout>
-                                <StackLayout Margin="0,0,0,10" HorizontalOptions="Start">
+                                <StackLayout Margin="0,0,0,10" HorizontalOptions="Start" Spacing="5">
                                     <Label Style="{StaticResource forLightLabel}">
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -1547,7 +1594,7 @@
                                         </Label.FormattedText>
                                     </Label>
                                     <StackLayout>
-                                        <buttons:SfButton
+                                        <!--<buttons:SfButton
                                             Padding="5"
                                             Command="{Binding OnPDCitizenSelectButtonClick}"
                                             CornerRadius="10"
@@ -1559,10 +1606,33 @@
                                             StrokeThickness="1"
                                             Style="{StaticResource NoBackgroundButtonStyle}"
                                             Text="{Binding SelectedCitizen}"
-                                            TextColor="{StaticResource NeutralBlack}" />
+                                            TextColor="{StaticResource NeutralBlack}" />-->
+                                        <custom:CustomSfTextInputView  Style="{StaticResource TextInputLayout}">
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.Citizen}"
+                                            Style="{StaticResource NoBackgroundButtonStyle}"
+                                            Text="{Binding SelectedCitizen}"
+                                            TextColor="{StaticResource NeutralBlack}">
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnPDCitizenSelectButtonClick}" />
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                </custom:GAZTBorderlessEntry>
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnPDCitizenSelectButtonClick}" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image Aspect="AspectFit" Source="greyDropDown" />
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                        </custom:CustomSfTextInputView>
                                     </StackLayout>
                                 </StackLayout>
-                                <StackLayout Margin="0,0,0,10" HorizontalOptions="Start">
+                                <StackLayout Margin="0,0,0,10" HorizontalOptions="Start" Spacing="5">
                                     <Label Style="{StaticResource forLightLabel}">
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -1572,7 +1642,7 @@
                                         </Label.FormattedText>
                                     </Label>
                                     <StackLayout>
-                                        <buttons:SfButton
+                                        <!--<buttons:SfButton
                                             Padding="5"
                                             Command="{Binding OnPDResidenceSelectButtonClick}"
                                             CornerRadius="10"
@@ -1584,7 +1654,30 @@
                                             StrokeThickness="1"
                                             Style="{StaticResource NoBackgroundButtonStyle}"
                                             Text="{Binding SelectedResidence}"
-                                            TextColor="{StaticResource NeutralBlack}" />
+                                            TextColor="{StaticResource NeutralBlack}" />-->
+                                         <custom:CustomSfTextInputView  Style="{StaticResource TextInputLayout}">
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ESTResidenceLabel}"
+                                            Style="{StaticResource NoBackgroundButtonStyle}"
+                                            Text="{Binding SelectedResidence}"
+                                            TextColor="{StaticResource NeutralBlack}">
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnPDResidenceSelectButtonClick}" />
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                </custom:GAZTBorderlessEntry>
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnPDResidenceSelectButtonClick}" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image Aspect="AspectFit" Source="greyDropDown" />
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                        </custom:CustomSfTextInputView>
                                     </StackLayout>
                                 </StackLayout>
 
@@ -1684,7 +1777,8 @@
                             <StackLayout
                                 Grid.Row="2"
                                 Margin="0,0,0,10"
-                                HorizontalOptions="Start">
+                                HorizontalOptions="Start"
+                                Spacing="5">
                                 <Label Style="{StaticResource forLightLabel}">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -1694,7 +1788,7 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <StackLayout>
-                                    <buttons:SfButton
+                                    <!--<buttons:SfButton
                                         Padding="5"
                                         Command="{Binding OnPassportIssueCountryButtonClick}"
                                         CornerRadius="10"
@@ -1708,7 +1802,30 @@
                                         StrokeThickness="1"
                                         Style="{StaticResource NoBackgroundButtonStyle}"
                                         Text="{Binding SelectedPassportIssueCountry}"
-                                        TextColor="{StaticResource NeutralBlack}" />
+                                        TextColor="{StaticResource NeutralBlack}" />-->
+                                    <custom:CustomSfTextInputView  Style="{StaticResource TextInputLayout}">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.Passport}"
+                                            Style="{StaticResource NoBackgroundButtonStyle}"
+                                            Text="{Binding SelectedPassportIssueCountry}"
+                                            TextColor="{StaticResource NeutralBlack}">
+                                                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnPassportIssueCountryButtonClick}" />
+                                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnPassportIssueCountryButtonClick}" />
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand">

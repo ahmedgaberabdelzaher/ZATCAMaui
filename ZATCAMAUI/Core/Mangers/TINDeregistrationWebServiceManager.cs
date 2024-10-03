@@ -127,10 +127,10 @@ namespace ZATCAMAUI.Core.Mangers
                         else if (!string.IsNullOrEmpty(_responseData))
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            if (errorMesg != null && errorMesg.header != null && errorMesg.header.moreInformation != null && errorMesg.header.moreInformation?.errorDetails != null && errorMesg.header.moreInformation.errorDetails[0].message != null)
                             {
-                                string errorCode = errorMesg.error.innererror.errordetails[0].code;
-                                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                                string errorCode = errorMesg.header.moreInformation.errorDetails[0].code;
+                                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.header.moreInformation.errorDetails[0].message;
 
                                 string WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
                                 WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;

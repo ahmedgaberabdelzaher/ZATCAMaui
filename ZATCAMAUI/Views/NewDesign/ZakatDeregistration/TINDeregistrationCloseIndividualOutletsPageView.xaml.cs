@@ -1,6 +1,7 @@
 ﻿
 using Mopups.Pages;
 using Mopups.Services;
+using Syncfusion.Maui.Core;
 using System.Collections.ObjectModel;
 using System.Text;
 using ZATCAMAUI.Core.CustomControls;
@@ -31,11 +32,10 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception)
             {
-
-
                 return;
             }
         }
+
         private void CloseDeregDatePicker_Unfocused(object sender, FocusEventArgs e)
         {
             //ValidateIDNumber();
@@ -754,7 +754,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             viewModel.SetDefaultDate();
 
         }
-       
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -1205,8 +1205,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 genericDatePickerModel.PickerId = "DeregOutletSingleDatePicker";
                 datepickermessagecenter();
                 await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
-             
-              
+
+
             }
             catch (InternetException)
             {
@@ -1265,9 +1265,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     var parameterVal = (e as TappedEventArgs).Parameter.ToString();
                     viewModel.OnOutletPermitTypeDeRegisrtationReasonDateTapped.Execute(parameterVal);
                 }
-                    datepickermessagecenter();
-                    await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
-               
+                datepickermessagecenter();
+                await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+
             }
             catch (InternetException)
             {
@@ -1577,9 +1577,15 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
         void Button_Clicked(object sender, EventArgs e)
         {
-
-
-            var permit = ((Button)sender).CommandParameter as PermitSetResult;
+            var permit = new PermitSetResult();
+            if (sender is GAZTBorderlessEntry borderlessEntry)
+            {
+                 permit = borderlessEntry.BindingContext as PermitSetResult;
+            }
+            else if (sender is SfTextInputLayout textInputLayout)
+            {
+                 permit = textInputLayout.BindingContext as PermitSetResult;
+            }
             viewModel.selectedCalPermitNo = permit.APermitNoTb;
             MainThread.BeginInvokeOnMainThread(() =>
              {

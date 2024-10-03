@@ -153,19 +153,15 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         String VatRegistrationData = GAZTVATRegistrationDataResponse.Content.ReadAsStringAsync().Result;
-                        Console.WriteLine("VatRegistrationData----------------" + VatRegistrationData);
-                        //var isResponse = JsonConvert.DeserializeObject<NewVATRegistrationResponseModel>(VatRegistrationData);
                         vATRegistrationDetails = JsonConvert.DeserializeObject<VATRegistrationDetails>(VatRegistrationData);
                         if (!string.IsNullOrEmpty(VatRegistrationData) && vATRegistrationDetails.d == null)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            if (errorMesg != null && errorMesg.header != null && errorMesg.header.moreInformation != null && errorMesg.header.moreInformation.errorDetails[0].message != null)
                             {
                                 string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
+                                errorMessage = errorMesg.header.moreInformation.errorDetails[0].message;
+                                errorMessage += errorMesg.header.moreInformation.errorDetails[1].message;
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }

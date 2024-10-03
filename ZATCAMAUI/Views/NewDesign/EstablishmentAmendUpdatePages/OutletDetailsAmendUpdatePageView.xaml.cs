@@ -17,22 +17,30 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         private OutletDetailsAmendUpdatePageViewModel viewModel;
         public OutletDetailsAmendUpdatePageView(OutletNavigationModels outletNavigation)
         {
-            InitializeComponent();
-            //_outletNavigation = outletNavigation;
-            viewModel = App.Locator.OutletDetailsAmendUpdatePageView;
-            viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
-            viewModel.idItem = outletNavigation.idItem;
-            viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;
-            viewModel.IsEditingMode = outletNavigation.IsEditingMode;
-            viewModel.currentTab = outletNavigation.openedTab;
-
-            BindingContext = viewModel;
-            viewModel.SetUIAvailability();
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            try
             {
+                InitializeComponent();
+                //_outletNavigation = outletNavigation;
+                viewModel = App.Locator.OutletDetailsAmendUpdatePageView;
+                viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
+                viewModel.idItem = outletNavigation.idItem;
+                viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;
+                viewModel.IsEditingMode = outletNavigation.IsEditingMode;
+                viewModel.currentTab = outletNavigation.openedTab;
 
-                viewModel.PickerModel = arg;
-            });
+                BindingContext = viewModel;
+                viewModel.SetUIAvailability();
+                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+                {
+
+                    viewModel.PickerModel = arg;
+                });
+            }
+            catch (Exception ex)
+            {
+            }
+
+
         }
 
 
@@ -50,7 +58,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse");
         }
-        void SfChipGroup_SelectionChanged(object sender,SelectionChangingEventArgs e)
+        void SfChipGroup_SelectionChanged(object sender, SelectionChangingEventArgs e)
         {
             try
             {

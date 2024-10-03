@@ -619,10 +619,7 @@
                                                                       iOS=Default}"
                                                 TextColor="{StaticResource NeutralBlack}"
                                                 Unfocused="TotalAmountUnFocused">
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behavior:OnlyNumericValuesBehaviour />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
-
+                                                
                                             </custom:GAZTBorderlessEntry>
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
@@ -656,10 +653,8 @@
                                                 TextColor="{StaticResource NeutralBlack}"
                                                 Unfocused="AmountToReleaseUnfocused">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behavior:OnlyNumericValuesBehaviour />
                                                     <xct:EventToCommandBehavior Command="{Binding ReleaseAmtUnfocused}" EventName="Completed" />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
-
                                             </custom:GAZTBorderlessEntry>
 
                                             </custom:CustomSfTextInputView.TextInputView>
@@ -1541,7 +1536,17 @@
                                         <BoxView
                                             
                                             Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                                    <StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" VerticalOptions="StartAndExpand" IsVisible="{Binding IsDeclarationViewEnabledNew}">
+
+                                        <custom:CheckboxCustom VerticalOptions="Start" IsChecked="{Binding IsDECCheckBox}" MinimumHeightRequest="32" MinimumWidthRequest="32"/>
+                                    <!--<htmlLabel:HtmlLabel VerticalOptions="FillAndExpand" TextType="Html" HorizontalOptions="StartAndExpand" Text="{Binding Zterms}" Style="{StaticResource CheckboxUnselectedFontStyle}"/>-->
+                                        <!--<Label HeightRequest="350" TextType="Html" Text="{Binding Zterms}" HorizontalTextAlignment="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Style="{StaticResource CheckboxUnselectedFontStyle}" IsVisible="{Binding ShouldShowAR}"/>-->
+                                        <Label HeightRequest="350" TextType="Html" Text="{Binding Zterms}" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Style="{StaticResource CheckboxUnselectedFontStyle}" /><!--IsVisible="{Binding ShouldShowEN}"-->
+ 
+                                    </StackLayout>
+
+                                    <StackLayout IsVisible="{Binding IsDeclarationViewEnabled}">
                                         <Label
                                         
                                         HorizontalOptions="StartAndExpand"
@@ -1562,9 +1567,9 @@
                                                 TextChanged="ContactPersonNameTextChanged" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
-                                    </StackLayout>
+                                    </StackLayout >
                                     
-                                    <StackLayout>
+                                    <StackLayout IsVisible="{Binding IsDeclarationViewEnabled}">
                                         <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}">
@@ -1592,7 +1597,6 @@
                                         Background="{Binding DeclarationButtonBackGroundColor}"
                                         Command="{Binding DeclarationConBtnTapped}"
                                         HeightRequest="48"
-                                        IsEnabled="{Binding IsDeclarationEnabled}"
                                         Style="{StaticResource PrimaryButtonStyle}"
                                         Text="{x:Static ResourceManager:AppResources.CRContinue}"
                                         VerticalOptions="End"

@@ -8,6 +8,7 @@ using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ZATCAMAUI.Views.NewDesign.DashBoardPages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
@@ -183,7 +184,12 @@ public class OTPPageViewModel : BaseViewModel
                     App.Token = result?.Result?.AccessToken;
                     await LoginCompleted();
                     StopTimer();
-                    _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView,false);
+                    //_navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView,false);
+
+                    var navigation = Application.Current.MainPage.Navigation;
+                    var currentPage = navigation.NavigationStack.LastOrDefault();
+                    navigation.InsertPageBefore(new GAZTNewDesignDashBoardPageView(false), currentPage);
+                    _navigationService.GoBack();
                 }
             }
             else if (tokenResponse != null && tokenResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
