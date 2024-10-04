@@ -254,7 +254,7 @@ namespace ZATCAMAUI.Models
     public class vATDeRegistration
     {
         public __metadata __metadata { get; set; }
-        //[JsonProperty("result")]
+        [JsonProperty("headerSet")]
         public HeaderSet headerSet { get; set; }
         [JsonProperty("addressSet")]
         public List<ResultsItemSet> AddressSet { get; set; }

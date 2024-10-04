@@ -8,155 +8,83 @@
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
-    xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
 
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <Grid>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <Border
-                        Grid.Row="1"
-                        Padding="0,0,0,0"
-                        BackgroundColor="White"
-                        StrokeShape="RoundRectangle 15,15,0,0">
-                        <Grid RowSpacing="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-
-                            <Grid
-                                x:Name="VATRMainGrid"
-                                Grid.Row="1"
-                                Margin="0"
-                                Padding="0,15,0,0"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                RowSpacing="0"
-                                VerticalOptions="FillAndExpand">
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="100*" />
-                                </Grid.RowDefinitions>
-
-                                <ContentPresenter
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    BackgroundColor="White"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand" />
-                            </Grid>
-
-                            <StackLayout
-                                Grid.Row="0"
-                                BackgroundColor="White"
-                                Orientation="Horizontal"
-                                VerticalOptions="CenterAndExpand">
-                                <Image
-                                    Margin="0,35,0,0"
-                                    HorizontalOptions="Start"
-                                    Source="arrowLeft.png"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{TemplateBinding BindingContext.BackButtonTapped}" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                                <commonView:PageIndicatorView
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Margin="0,35,0,0"
-                                    Completed="{TemplateBinding BindingContext.MarkComplete}"
-                                    DotSize="12"
-                                    HorizontalOptions="End"
-                                    MaxNum="{TemplateBinding BindingContext.MaxIndex}"
-                                    MinNum="{TemplateBinding BindingContext.CurrentIndex}"
-                                    VerticalOptions="CenterAndExpand" />
-
-
-                            </StackLayout>
-
-                        </Grid>
-                    </Border>
-                    <Grid
-                        Grid.Row="0"
-                        Margin="8,0"
-                        Padding="0,10,0,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*" />
-                            <ColumnDefinition Width="60*" />
-                            <ColumnDefinition Width="20*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            HorizontalOptions="CenterAndExpand"
-                            Style="{StaticResource SectionTitleWhiteBold}"
-                            Text="{x:Static ResourceManager:AppResources.DBSMVATDeregistration}"
-                            VerticalOptions="Center" />
-                        <Image
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            HorizontalOptions="StartAndExpand"
-                            Source="arrowLeftwhite"
-                            VerticalOptions="CenterAndExpand">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Image
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            HorizontalOptions="EndAndExpand"
-                            IsVisible="{TemplateBinding BindingContext.VoidIsVisible}"
-                            Source="close"
-                            VerticalOptions="CenterAndExpand">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="voidTapped" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-
     <ContentPage.Content>
-        <Grid>
-            <Grid>
+        <Grid RowDefinitions="Auto,*">
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.VatDeregDetailsTitle}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+
+            <!--#region Body-->
+            <Border
+                Grid.Row="1"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <Grid>
                 <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid>
 
                         <Grid
-                            Margin="20,10,20,0"
                             BackgroundColor="Transparent"
                             ColumnDefinitions="50*,50*"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsReasonViewEnabled}"
-                            RowDefinitions="auto,auto,auto,auto,auto"
+                            RowDefinitions="auto,auto,auto,auto,auto,auto"
                             VerticalOptions="FillAndExpand">
-
 
                             <Grid
                                 Grid.Row="0"
@@ -181,7 +109,6 @@
                                     Grid.Column="0"
                                     Style="{StaticResource NeutralGrayOpacity90BoxView}" />
                             </Grid>
-
                             <Label
                                 Grid.Row="1"
                                 HorizontalOptions="StartAndExpand"
@@ -255,38 +182,37 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" />
-                                    <Border
-                                        Margin="10,0,10,0"
-                                        Stroke="#B1B1B1"
-                                        StrokeThickness="1"
-                                        Style="{StaticResource GreyBorderFrame}">
+                                    
+                                        <StackLayout>
+                                            <custom:CustomSfTextInputView>
+                                                <custom:CustomSfTextInputView.TextInputView>
+                                                    <custom:GAZTBorderlessEntry
+                                                        Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationReason}"
+                                                        IsReadOnly="True"
+                                                        InputTransparent="True"
+                                                        Text="{Binding ReasonTitle}"
+                                                        TextColor="{StaticResource NeutralBlack}"
+                                                        Style="{StaticResource DefaultEntry}"/>
+                                                </custom:CustomSfTextInputView.TextInputView>
 
-                                        <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
+                                                <custom:CustomSfTextInputView.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" />
+                                                </custom:CustomSfTextInputView.GestureRecognizers>
 
-                                            <Label
-                                                HorizontalOptions="Start"
-                                                Style="{StaticResource ValueLabelBlackMedium}"
-                                                Text="{Binding ReasonTitle}" />
-                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    Margin="5,0"
-                                                    HeightRequest="15"
-                                                    HorizontalOptions="Start"
-                                                    Source="arrowDropdown"
-                                                    VerticalOptions="Center"
-                                                    WidthRequest="15" />
+                                                <custom:CustomSfTextInputView.TrailingView>
+                                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                                </custom:CustomSfTextInputView.TrailingView>
 
-                                            </StackLayout>
+                                                </custom:CustomSfTextInputView>
+
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" />
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                    </Border>
-                                    <StackLayout Spacing="2">
 
-                                        <custom:CustomSfTextInputView IsVisible="{Binding IsOthersEditorVisible}">
+                                    <StackLayout Spacing="2" Margin="10" IsVisible="{Binding IsOthersEditorVisible}">
+
+                                        <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                     HeightRequest="100"
@@ -300,7 +226,7 @@
                                         </custom:CustomSfTextInputView>
 
                                         <Label
-                                            Margin="0,-15,0,10"
+                                            Margin="0,10,0,10"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{Binding TextCount}" />
 
@@ -309,7 +235,6 @@
 
 
                             </Grid>
-
                             <StackLayout
                                 Grid.Row="4"
                                 Grid.Column="0"
@@ -325,35 +250,36 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" />
-                                            <Border
-                                                Margin="10,0,10,0"
-                                                Stroke="#B1B1B1"
-                                                StrokeThickness="1"
-                                                Style="{StaticResource GreyBorderFrame}">
 
-                                                <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
+                                                <StackLayout>
+                                            <custom:CustomSfTextInputView ContainerBackground="White"
+                                                    Stroke="{StaticResource Primary}">
+                                                <custom:CustomSfTextInputView.TextInputView>
+                                                    <custom:GAZTBorderlessEntry
+                                                        Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationReason}"
+                                                        IsReadOnly="True"
+                                                        InputTransparent="True"
+                                                        Text="{Binding ReasonTitle}"
+                                                        TextColor="{StaticResource NeutralBlack}"
+                                                        Style="{StaticResource DefaultEntry}"/>
 
-                                                    <Label
-                                                        HorizontalOptions="Start"
-                                                        Style="{StaticResource GAZTSmallBlackLabel}"
-                                                        Text="{Binding ReasonTitle}" />
-                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                                        <Image
-                                                            Grid.Row="0"
-                                                            Grid.Column="1"
-                                                            Margin="5,0"
-                                                            HeightRequest="15"
-                                                            HorizontalOptions="Start"
-                                                            Source="arrowDropdown"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="15" />
+                                                </custom:CustomSfTextInputView.TextInputView>
 
-                                                    </StackLayout>
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" />
-                                                    </StackLayout.GestureRecognizers>
-                                                </StackLayout>
-                                            </Border>
+                                                <custom:CustomSfTextInputView.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" />
+                                                </custom:CustomSfTextInputView.GestureRecognizers>
+
+                                                    <custom:CustomSfTextInputView.TrailingView>
+                                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                                </custom:CustomSfTextInputView.TrailingView>
+
+                                                </custom:CustomSfTextInputView>
+
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+
                                             <StackLayout Spacing="2">
                                                 <custom:CustomSfTextInputView x:Name="OthersTxt" IsVisible="{Binding IsOthersEditorVisible}">
                                                     <custom:CustomSfTextInputView.TextInputView>
@@ -364,14 +290,12 @@
                                                             Text="{Binding OtherField}"
                                                             TextChanged="Others_Entry_TextChanged" />
                                                     </custom:CustomSfTextInputView.TextInputView>
-
                                                 </custom:CustomSfTextInputView>
 
                                                 <Label
-                                                    Margin="0,-15,0,10"
+                                                    Margin="0,10,0,10"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     Text="{Binding TextCount}" />
-
                                             </StackLayout>
                                         </StackLayout>
                                         <Grid>
@@ -435,7 +359,6 @@
                                                                     Color="{StaticResource SecondaryNew}" />
                                                             </Image.Source>
                                                         </Image>
-
                                                     </StackLayout>
 
                                                     <StackLayout.GestureRecognizers>
@@ -552,7 +475,6 @@
                                 </StackLayout>
 
                             </StackLayout>
-
                             <buttons:SfButton
                                 x:Name="btnReasonContinue"
                                 Grid.Row="5"
@@ -565,7 +487,6 @@
                                 VerticalOptions="End" />
                         </Grid>
 
-
                         <Grid
                             Margin="20,10,20,0"
                             BackgroundColor="Transparent"
@@ -573,9 +494,6 @@
                             IsVisible="{Binding IsAttachmentsViewEnabled}"
                             VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
@@ -592,7 +510,8 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
-                                    <RowDefinition Height="1" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <Label
                                     Grid.Row="0"
@@ -613,6 +532,7 @@
                                     Grid.Row="2"
                                     Grid.Column="0"
                                     Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
                                 <listView:SfListView
                                     x:Name="outletDocumentOptionsListView"
                                     Grid.Row="3"
@@ -664,24 +584,13 @@
                             </Grid>
 
                             <StackLayout
-                                Grid.Row="4"
+                                Grid.Row="1"
                                 Grid.ColumnSpan="2"
                                 Spacing="2">
                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentInputTitle2}" />
-                                <inputLayout:SfTextInputLayout
-                                    x:Name="FrmAttachmentOptional"
-                                    Margin="10,-6,0,-6"
-                                    ContainerType="Outlined"
-                                    HasError="False"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="8"
-                                    Stroke="{StaticResource Primary}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:CustomSfTextInputView x:Name="FrmAttachmentOptional">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                    
                                     <!--  Attachments  -->
                                     <custom:GAZTBorderlessEntry
                                         HorizontalTextAlignment="Start"
@@ -689,8 +598,9 @@
                                         Placeholder="{x:Static ResourceManager:AppResources.VatDeregAttachmentInputPlaceholder}"
                                         Style="{StaticResource DefaultEntry}"
                                         VerticalOptions="Center" />
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                    <custom:CustomSfTextInputView.TrailingView>
                                         <Image
                                             HorizontalOptions="CenterAndExpand"
                                             Source="ic_attachment.png"
@@ -699,16 +609,16 @@
                                                 <TapGestureRecognizer Command="{Binding NewAttachmentTapped}" />
                                             </Image.GestureRecognizers>
                                         </Image>
+                                    </custom:CustomSfTextInputView.TrailingView>
+                                </custom:CustomSfTextInputView>
 
-                                    </inputLayout:SfTextInputLayout.TrailingView>
-                                </inputLayout:SfTextInputLayout>
                             </StackLayout>
                             <StackLayout
-                                Grid.Row="5"
+                                Grid.Row="2"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 BindableLayout.ItemsSource="{Binding FilterVatAttachmentsList}"
-                                HorizontalOptions="Center">
+                                HorizontalOptions="FillAndExpand">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <Border
@@ -752,7 +662,7 @@
 
                             <buttons:SfButton
                                 x:Name="btnAttachmentsContinue"
-                                Grid.Row="6"
+                                Grid.Row="3"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 Margin="10,10,0,36"
@@ -763,6 +673,7 @@
 
 
                         </Grid>
+
                         <Grid
                             Margin="20,10,20,0"
                             BackgroundColor="Transparent"
@@ -826,32 +737,34 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" />
-                                        <Border
-                                            Stroke="#B1B1B1"
-                                            StrokeThickness="1"
-                                            Style="{StaticResource GreyBorderFrame}">
+                                        
+                                            <StackLayout>
+                                            <custom:CustomSfTextInputView>
+                                                <custom:CustomSfTextInputView.TextInputView>
+                                                    <custom:GAZTBorderlessEntry
+                                                        Placeholder="{x:Static ResourceManager:AppResources.VatDeregIDType}"
+                                                        IsReadOnly="True"
+                                                        InputTransparent="True"
+                                                        Text="{Binding IDType}"
+                                                        TextColor="{StaticResource NeutralBlack}"
+                                                        Style="{StaticResource DefaultEntry}"/>
 
-                                            <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
+                                                </custom:CustomSfTextInputView.TextInputView>
 
-                                                <Label
-                                                    HorizontalOptions="Start"
-                                                    Style="{StaticResource GAZTSmallBlackLabel}"
-                                                    Text="{Binding IDType}" />
-                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                                    <Image
-                                                        Margin="10,0,10,0"
-                                                        HeightRequest="15"
-                                                        HorizontalOptions="Start"
-                                                        Source="arrowDropdown"
-                                                        VerticalOptions="Center"
-                                                        WidthRequest="15" />
-                                                </StackLayout>
-
-                                                <StackLayout.GestureRecognizers>
+                                                <custom:CustomSfTextInputView.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="VatDeregIdClicked" />
-                                                </StackLayout.GestureRecognizers>
-                                            </StackLayout>
-                                        </Border>
+                                                </custom:CustomSfTextInputView.GestureRecognizers>
+
+                                                    <custom:CustomSfTextInputView.TrailingView>
+                                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                                </custom:CustomSfTextInputView.TrailingView>
+
+                                                </custom:CustomSfTextInputView>
+
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="VatDeregIdClicked" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
 
                                     </StackLayout>
                                     <StackLayout
@@ -864,31 +777,27 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.IDNumber}" />
-                                            <inputLayout:SfTextInputLayout
-                                                x:Name="FrmIDNumber"
-                                                Margin="0,0,0,0"
-                                                ContainerType="Outlined"
-                                                IsHintAlwaysFloated="True"
-                                                OutlineCornerRadius="13"
-                                                Stroke="{StaticResource Primary}">
-                                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                <custom:GAZTBorderlessEntry
-                                                    x:Name="EntryIDNumber"
-                                                    FontSize="Micro"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
-                                                    Style="{StaticResource CaptionLabelBlack}"
-                                                    Text="{Binding TxtIDNumber}"
-                                                    TextChanged="IDNumberEntry_TextChanged"
-                                                    TextColor="{StaticResource PrimaryColor}"
-                                                    Unfocused="EntryIDNo_Unfocused">
+                                            <custom:CustomSfTextInputView
+                                                x:Name="FrmIDNumber">
+                                                <custom:CustomSfTextInputView.TextInputView>
+                                                    <custom:GAZTBorderlessEntry
+                                                        x:Name="EntryIDNumber"
+                                                        FontSize="Micro"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
+                                                        Style="{StaticResource CaptionLabelBlack}"
+                                                        Text="{Binding TxtIDNumber}"
+                                                        TextChanged="IDNumberEntry_TextChanged"
+                                                        TextColor="{StaticResource PrimaryColor}"
+                                                        Unfocused="EntryIDNo_Unfocused">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
-                                            </inputLayout:SfTextInputLayout>
+
+                                                </custom:CustomSfTextInputView.TextInputView>
+                                                
+                                            </custom:CustomSfTextInputView>
                                         </StackLayout>
                                         <StackLayout
                                             Grid.ColumnSpan="2"
@@ -941,18 +850,9 @@
                                             IsEnabled="{Binding IsContactPersonEnabled}"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregContactPerson}" />
-                                        <inputLayout:SfTextInputLayout
-                                            Margin="0,-6,0,-6"
-                                            ContainerType="Outlined"
-                                            HasError="False"
-                                            HorizontalOptions="StartAndExpand"
-                                            IsHintAlwaysFloated="True"
-                                            OutlineCornerRadius="13"
-                                            Stroke="{StaticResource Primary}">
-                                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                            <custom:GAZTBorderlessEntry
+                                        <custom:CustomSfTextInputView>
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
                                                 x:Name="ContactName"
                                                 FontSize="Micro"
                                                 HorizontalOptions="StartAndExpand"
@@ -964,8 +864,9 @@
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:AlphabetandArabicCharacters />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
-                                            </custom:GAZTBorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
+                                                </custom:GAZTBorderlessEntry>
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                        </custom:CustomSfTextInputView>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <CheckBox
@@ -981,7 +882,7 @@
                                         <Label
                                             Margin="5,10,0,15"
                                             Style="{StaticResource GAZTMicroMediumGrayLabel}"
-                                            Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationCheckBoxText}" />
+                                            Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationCheckBoxText}" LineBreakMode="WordWrap" />
                                     </StackLayout>
                                     <Border
                                         Margin="0,20,0,10"
@@ -1024,6 +925,7 @@
                                 </StackLayout>
                             </Grid>
                         </Grid>
+
                         <Grid
                             Margin="20,10,20,0"
                             BackgroundColor="Transparent"
@@ -1100,6 +1002,7 @@
 
                             </Grid>
                         </Grid>
+
                         <Grid
                             Margin="20,10,20,0"
                             BackgroundColor="Transparent"
@@ -1440,10 +1343,11 @@
 
                 </ScrollView>
 
-
             </Grid>
 
-            <custom:Loader IsVisible="{Binding IsLoading}" />
+            </Border>
+
+            <custom:Loader Grid.Row="1" IsVisible="{Binding IsLoading}" />
 
         </Grid>
 

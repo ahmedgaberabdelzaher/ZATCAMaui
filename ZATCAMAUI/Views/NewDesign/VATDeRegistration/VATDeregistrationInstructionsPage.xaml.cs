@@ -18,6 +18,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
         }
         protected override void OnAppearing()
         {
+            base.OnAppearing();
         }
     }
 }

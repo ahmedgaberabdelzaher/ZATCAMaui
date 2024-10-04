@@ -98,15 +98,18 @@
                     </Label.Triggers>
                 </Label>
             </StackLayout>
+
+            
             <buttons:SfButton
                 x:Name="btnVATDeregistration"
-                Grid.ColumnSpan="2"
                 Margin="0,24,0,24"
-                Background="{Binding ContinueButtonnBackroundColor}"
                 Command="{Binding VATDeregistrationClicked}"
-                IsEnabled="{Binding IsContinueButtonEnable}"
                 Style="{StaticResource PrimaryButtonStyle}"
-                Text="{x:Static ResourceManager:AppResources.VATDeregistration}" />
+                Text="{x:Static ResourceManager:AppResources.VATDeregistration}"
+                />
+            <!--Background="{Binding ContinueButtonnBackroundColor}"
+                
+                IsEnabled="{Binding IsContinueButtonEnable}"-->
         </StackLayout>
     </Border>
 
