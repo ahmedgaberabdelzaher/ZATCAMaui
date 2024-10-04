@@ -31,29 +31,7 @@
             <converters:ESTresidentialStatusConverter x:Key="residentialStatusConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <Border
-                Margin="0"
-                Padding="0"
-                BackgroundColor="White"
-                HorizontalOptions="FillAndExpand"
-                StrokeShape="RoundRectangle 15,15,0,0"
-                VerticalOptions="FillAndExpand">
-                <StackLayout
-                    Margin="0"
-                    Padding="0"
-                    HorizontalOptions="FillAndExpand"
-                    Spacing="0"
-                    VerticalOptions="FillAndExpand">
-                    <ContentPresenter
-                        BackgroundColor="White"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand" />
-                </StackLayout>
-            </Border>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
+
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*,Auto">
             <!--#region Header-->
@@ -200,6 +178,7 @@
             <Grid
                 Grid.Row="1"
                 Padding="10,10,10,0"
+                BackgroundColor="White"
                 ColumnSpacing="0"
                 HorizontalOptions="FillAndExpand"
                 RowSpacing="0"
@@ -621,6 +600,7 @@
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Grid
                                             x:Name="PermanentEstablishmentGrid"
@@ -682,8 +662,7 @@
                                         <Grid
                                             x:Name="OtherTaxableIncomeGrid"
                                             Grid.Row="0"
-                                            Grid.Column="1"
-                                            HorizontalOptions="FillAndExpand">
+                                            Grid.Column="1">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="104" />
                                             </Grid.RowDefinitions>
@@ -695,8 +674,8 @@
                                                 Grid.Column="0"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                HorizontalOptions="FillAndExpand"
-                                                IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
+                                                IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
+                                                WidthRequest="171">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -709,10 +688,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         Source="unselected171x136"
                                                         VerticalOptions="FillAndExpand" />
-                                                    <StackLayout
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Style="{DynamicResource CardParentStacklayout}"
-                                                        VerticalOptions="EndAndExpand">
+                                                    <StackLayout HorizontalOptions="FillAndExpand" Style="{DynamicResource CardParentStacklayout}">
                                                         <Label Style="{DynamicResource CardLabelBlack}" Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" />
                                                     </StackLayout>
                                                 </Grid>
@@ -735,10 +711,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         Source="selected171x136"
                                                         VerticalOptions="FillAndExpand" />
-                                                    <StackLayout
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Style="{DynamicResource CardParentStacklayout}"
-                                                        VerticalOptions="EndAndExpand">
+                                                    <StackLayout HorizontalOptions="FillAndExpand" Style="{DynamicResource CardParentStacklayout}">
                                                         <Label Style="{DynamicResource CardLabelWhite}" Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" />
                                                     </StackLayout>
                                                 </Grid>
@@ -780,8 +753,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
-                                                WidthRequest="171">
+                                                IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -802,8 +774,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}"
-                                                WidthRequest="171">
+                                                IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -835,8 +806,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedConstructionSitePE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
-                                                WidthRequest="171">
+                                                IsVisible="{Binding IsClickedConstructionSitePE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -857,8 +827,8 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedConstructionSitePE}"
-                                                WidthRequest="171">
+                                                HorizontalOptions="FillAndExpand"
+                                                IsVisible="{Binding IsClickedConstructionSitePE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -890,8 +860,8 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedInstallationPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
-                                                WidthRequest="171">
+                                                HorizontalOptions="FillAndExpand"
+                                                IsVisible="{Binding IsClickedInstallationPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -912,8 +882,8 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedInstallationPE}"
-                                                WidthRequest="171">
+                                                HorizontalOptions="FillAndExpand"
+                                                IsVisible="{Binding IsClickedInstallationPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -945,8 +915,8 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedAFixedBasePE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
-                                                WidthRequest="171">
+                                                HorizontalOptions="FillAndExpand"
+                                                IsVisible="{Binding IsClickedAFixedBasePE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -967,8 +937,8 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedAFixedBasePE}"
-                                                WidthRequest="171">
+                                                HorizontalOptions="FillAndExpand"
+                                                IsVisible="{Binding IsClickedAFixedBasePE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -1000,8 +970,8 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedNonResidentPartnerPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
-                                                WidthRequest="171">
+                                                HorizontalOptions="FillAndExpand"
+                                                IsVisible="{Binding IsClickedNonResidentPartnerPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -1022,8 +992,8 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                IsVisible="{Binding IsClickedNonResidentPartnerPE}"
-                                                WidthRequest="171">
+                                                HorizontalOptions="FillAndExpand"
+                                                IsVisible="{Binding IsClickedNonResidentPartnerPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="104" />
@@ -1216,14 +1186,7 @@
                                         </Label.FormattedText>
                                     </Label>
                                     <!--  date new  -->
-                                    <custom:CustomSfTextInputView
-                                        x:Name="FrmDBO"
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
+                                    <custom:CustomSfTextInputView x:Name="FrmDBO" Stroke="{StaticResource NeutralGreay}">
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="DateEntry"
@@ -1370,11 +1333,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <custom:CustomSfTextInputView
-                                        ContainerType="Outlined"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside">
+                                    <custom:CustomSfTextInputView HorizontalOptions="FillAndExpand">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
@@ -1407,11 +1366,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <custom:CustomSfTextInputView
-                                        ContainerType="Outlined"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside">
+                                    <custom:CustomSfTextInputView HorizontalOptions="FillAndExpand">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
@@ -1443,13 +1398,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <custom:CustomSfTextInputView
-                                        ContainerType="Outlined"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        Style="{StaticResource TextInputLayout}">
+                                    <custom:CustomSfTextInputView HorizontalOptions="FillAndExpand" Style="{StaticResource TextInputLayout}">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
@@ -1482,11 +1431,7 @@
                                     </Label>
                                     <custom:CustomSfTextInputView
                                         Margin="0,6,0,6"
-                                        ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
                                         Style="{StaticResource TextInputLayout}">
                                         <custom:CustomSfTextInputView.TextInputView>
 
@@ -1520,11 +1465,7 @@
                                     </Label>
                                     <custom:CustomSfTextInputView
                                         Margin="0,6,0,6"
-                                        ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
                                         Style="{StaticResource TextInputLayout}">
                                         <custom:CustomSfTextInputView.TextInputView>
 
@@ -1558,11 +1499,7 @@
                                     </Label>
                                     <custom:CustomSfTextInputView
                                         Margin="0,6,0,6"
-                                        ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
                                         Style="{StaticResource TextInputLayout}">
                                         <custom:CustomSfTextInputView.TextInputView>
 
@@ -1596,11 +1533,7 @@
                                     </Label>
                                     <custom:CustomSfTextInputView
                                         Margin="0,6,0,6"
-                                        ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
                                         Style="{StaticResource TextInputLayout}">
                                         <custom:CustomSfTextInputView.TextInputView>
 
@@ -1854,11 +1787,7 @@
                                 </Label>
                                 <custom:CustomSfTextInputView
                                     Margin="0,6,0,6"
-                                    ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
                                     Style="{StaticResource TextInputLayout}">
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
@@ -1924,14 +1853,7 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <custom:CustomSfTextInputView
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    InputViewPadding="16,0,16,0"
-                                    IsEnabled="{Binding PassportDetails.IssueDate}"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="10"
-                                    Stroke="{StaticResource NeutralGreay}">
+                                <custom:CustomSfTextInputView IsEnabled="{Binding PassportDetails.IssueDate}" Stroke="{StaticResource NeutralGreay}">
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
                                             x:Name="PassportIssueDate"
@@ -2071,14 +1993,7 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <custom:CustomSfTextInputView
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    InputViewPadding="16,0,16,0"
-                                    IsEnabled="{Binding PassportDetails.ExpiryDate}"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="10"
-                                    Stroke="{StaticResource NeutralGreay}">
+                                <custom:CustomSfTextInputView IsEnabled="{Binding PassportDetails.ExpiryDate}" Stroke="{StaticResource NeutralGreay}">
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
                                             x:Name="PassportExpiryDate"
@@ -2232,14 +2147,7 @@
                                 </StackLayout>
                                 <StackLayout>
 
-                                    <custom:CustomSfTextInputView
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
-                                        IsEnabled="{Binding PassportDetails.Attachment}"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="10"
-                                        Stroke="{StaticResource NeutralGreay}">
+                                    <custom:CustomSfTextInputView IsEnabled="{Binding PassportDetails.Attachment}" Stroke="{StaticResource NeutralGreay}">
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
                                                 FontFamily="{StaticResource SomarLight}"
@@ -2532,6 +2440,7 @@
                                                             <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
                                                             <ColumnDefinition Width="Auto" />
                                                             <ColumnDefinition Width="Auto" />
                                                             <ColumnDefinition Width="Auto" />

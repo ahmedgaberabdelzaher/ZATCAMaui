@@ -1242,8 +1242,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
         private Dictionary<string, string> EnMethodList = new Dictionary<string, string>()
         {
-            {"A", AppResources.NDAccounting },
-            {"E", AppResources.NDEstimated }
+             {"Accounting Method", AppResources.NDAccounting },
+             {"Estimated Method", AppResources.NDEstimated }
         };
         private Dictionary<string, string> EnCalendarTypeList = new Dictionary<string, string>()
         {
@@ -3045,8 +3045,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
                     EnMethodList = new Dictionary<string, string>()
                     {
-                        /*{"Accounting", AppResources.NDAccounting },
-                        {"Estimated", AppResources.NDEstimated }*/
                         {"Accounting Method", AppResources.NDAccounting },
                         {"Estimated Method", AppResources.NDEstimated }
                     };
@@ -3281,12 +3279,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                 if (!string.IsNullOrEmpty(SelectedMethod))
                 {
-                    selectedFintype = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Value;
+                    selectedFintype = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
                 }
                 else
                 {
                     selectedFintype = taxPayerDetails.Accmethod;
                 }
+
 
 
                 financialDetailPeriod = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDateForPeriod(new FinancialDetailPeriodRequest()
@@ -3865,6 +3864,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
         {
             IsLoading = true;
             string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(IDType, IDNumber, DOB);
+            IsLoading = false;
             VATSignUp vATSignUpData = new VATSignUp();
             vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
             if (vATSignUpData.d == null)
