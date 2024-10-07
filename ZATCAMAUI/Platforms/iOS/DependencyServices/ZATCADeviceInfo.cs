@@ -1,4 +1,6 @@
 ﻿
+using System.Net;
+using System.Net.Sockets;
 using Foundation;
 using MobileCoreServices;
 using UIKit;
@@ -187,6 +189,18 @@ namespace ZATCAMAUI.Platforms.iOS.DependencyServices
             }
 
             return base64Image;
+        }
+        public string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No IPv4 address found for the local machine.");
         }
     }
 }

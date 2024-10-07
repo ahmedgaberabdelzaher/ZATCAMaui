@@ -27,17 +27,19 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     var lang = UtilityManager.GetLanguageParameter();
-                    // String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet,deregistration_reasonSet&$format=json";
-                    // String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
+               
                     String url = ZATCAConstants.OutletDeregistrationNewRequestUrl + App.LoginDataRetrieved.TIN + "&deregister=1" + "&language=" + lang + "&approve=" + tinDeregistrationResponseModel.Approvez + "&reject=" + tinDeregistrationResponseModel.Rejectz;
                     HttpClient client = new HttpClient(App.httpClientHandler);
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
-                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
-                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     var uri = new Uri(url);
 
@@ -399,13 +401,16 @@ namespace ZATCAMAUI.Core.Mangers
 
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
-                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
-                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
 

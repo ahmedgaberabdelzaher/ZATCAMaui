@@ -478,7 +478,6 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<ChangeMobileRequestViewModel>()
                 .AddSingleton<NafathPopupPageViewModel>()
                 .AddSingleton<ZakatExemptionRequestListViewModel>()
-
             #endregion
 
                 .BuildServiceProvider());
@@ -2754,7 +2753,7 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.VatInstalmentPlanRevokePageView, typeof(VatInstalmentPlanRevokePageView));
             navigationService.Configure(App.VATInstalmentPopupNotesPageView, typeof(VATInstalmentPopupNotesPageView));
             navigationService.Configure(App.NafathLoginView, typeof(NafathLoginView));
-
+            navigationService.Configure(App.NafathChangeMobleNumberOptionsView, typeof(NafathChangeMobleNumberOptionsView));
 
             #endregion
 
