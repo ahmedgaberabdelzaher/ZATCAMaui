@@ -110,6 +110,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
                 await Task.Run(async () =>
                 {
                     await viewModel.OnPageLoad();
+                    Bills_Auto_select();
 
                 });
             }
@@ -120,7 +121,53 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
             }
         }
 
+        private void Bills_Auto_select()
+        {
+            if (!viewModel.IsViewEnable)
+            {
+                return;
+            }
 
+
+            try
+            {
+                var itemsSource = viewModel.VatInstalments.d.VTIASet.ToList();
+
+                itemsSource.ForEach(i => i.IsArabic = App.IsArabic);
+
+                BillsVATListVIew.ItemsSource = itemsSource;
+                Console.WriteLine(itemsSource.Count);
+                Double dueAmount = 0.0;
+                foreach (var dataItem in viewModel.VatInstalments.d.VTIASet)
+                {
+                    if (dataItem.Xsele == "X")
+                    {
+                        viewModel.selectedList.Add(dataItem);
+                        dueAmount = dueAmount + Convert.ToDouble(dataItem.Betrh);
+                    }
+                    viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + viewModel.currencyUnits;
+                }
+                //    for (int i = 0; i < itemsSource.Count-1; i++)
+                //{
+                //    var dataItem = itemsSource[i] as VATResults4;
+                //    Console.WriteLine(dataItem);
+                //    if (dataItem.Xsele == "X")
+                //    {
+                //        //BillsVATListVIew.SelectedItem = itemsSource[i];
+                //        viewModel.selectedList.Add(dataItem);
+                //        dueAmount = dueAmount + Convert.ToDouble(viewModel.selectedList[i].Betrh);
+                //        //viewModel. [i] = false;
+                //    }
+                //    viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + dataItem.Waers;
+                //}
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
+        }
         private void DownPayment_ValueChanged(object sender, ValueChangedEventArgs args)
         {
             viewModel.DownPaymentAmount = args.NewValue;

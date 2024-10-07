@@ -766,7 +766,10 @@
                                 <listView:SfListView.ItemTemplate>
 
                                     <DataTemplate>
-                                        <cards:SfCardView BackgroundColor="Transparent" CornerRadius="10">
+                                        <cards:SfCardView
+                                            BackgroundColor="Transparent"
+                                            CornerRadius="10"
+                                            HorizontalOptions="FillAndExpand">
 
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <Image

@@ -142,10 +142,15 @@
                                     VerticalOptions="Center">
 
                                     <listView:SfListView.ItemsLayout>
-
-                                        <listView:LinearLayout x:Name="GridLayout"
-                                                            />
-
+                                        <listView:GridLayout x:Name="GridLayout">
+                                            <listView:GridLayout.SpanCount>
+                                                <OnIdiom
+                                                    x:TypeArguments="x:Int32"
+                                                    Desktop="5"
+                                                    Phone="2"
+                                                    Tablet="4" />
+                                            </listView:GridLayout.SpanCount>
+                                        </listView:GridLayout>
                                     </listView:SfListView.ItemsLayout>
 
                                 </listView:SfListView>
