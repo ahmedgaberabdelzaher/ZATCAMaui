@@ -102,6 +102,7 @@
                         HorizontalOptions="StartAndExpand"
                         Style="{StaticResource PageTitleBlack}"
                         Text="{Binding PageTitle}"
+                        LineHeight="0"
                         VerticalOptions="Start" />
 
                     <Label
@@ -305,6 +306,7 @@
                                         Background="Transparent"
                                         ItemHeight="46"
                                         Mode="Dialog"
+                                        CancelButtonClicked="IDTypePicker_CancelButtonClicked"
                                         OkButtonClicked="DDlIDType_OkayButtonClicked"
                                         SelectionChanged="IDTypePicker_SelectionChanged">
 
@@ -358,6 +360,9 @@
 
                                     </syncfusion:SfPicker>
 
+                                      <StackLayout.GestureRecognizers>
+                                           <TapGestureRecognizer Tapped="OnIDTypeClicked" />
+                                       </StackLayout.GestureRecognizers>
                                 </StackLayout>
 
                                 <!--  ID Number  -->
@@ -596,7 +601,9 @@
 
                                     </custom:CustomHijriDatePicker>
 
-
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnDOBClicked" />
+                                    </StackLayout.GestureRecognizers>
 
                                 </StackLayout>
 
@@ -806,16 +813,17 @@
                                         </Label>
                                         <custom:CustomSfTextInputView
                                             x:Name="FrmlicenceNumberIssuedbyframe">
-
-                                            <custom:GAZTBorderlessEntry
-                                                InputTransparent="True"
-                                                IsReadOnly="True"
-                                                IsSpellCheckEnabled="False"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding TxtLOrCIssuedBy}"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                VerticalTextAlignment="Center" />
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    IsSpellCheckEnabled="False"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding TxtLOrCIssuedBy}"
+                                                    TextColor="{StaticResource NeutralBlack}"
+                                                    VerticalTextAlignment="Center" />
+                                            </custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:CustomSfTextInputView.TrailingView>
                                                 <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
@@ -882,6 +890,11 @@
 
                                             </syncfusion:SfPicker.FooterView>
                                         </syncfusion:SfPicker>
+
+                                           <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="LIssuedBy_Clicked" />
+
+                                            </StackLayout.GestureRecognizers>
                                     </StackLayout>
                                     <!--  issuein city  -->
                                     <StackLayout>
@@ -978,6 +991,10 @@
 
 
                                         </syncfusion:SfPicker>
+                                        <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="LIssuedByCity_Clicked" />
+
+                                            </StackLayout.GestureRecognizers>
                                     </StackLayout>
                                     
                                 </StackLayout>
@@ -1071,6 +1088,7 @@
                                                     x:Name="EntryMobileNumber"
                                                     HorizontalOptions="FillAndExpand"
                                                     IsSpellCheckEnabled="False"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}"
                                                     Keyboard="Telephone"
                                                     MaxLength="{Binding MaxDigids}"
                                                     Style="{StaticResource DefaultEntry}"
@@ -1088,24 +1106,25 @@
                                  <StackLayout>
                                     <custom:CustomSfTextInputView
                                     x:Name="FrmPhoneNumber">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="EntryPhoneNumber"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                        iOS=Default}"
+                                                MaxLength="9"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZPhoneNumber}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding TxtPhoneNumber}"
+                                                TextChanged="EntryPhoneNumber_TextChanged"
+                                                Unfocused="EntryPhoneNumber_Unfocused"
+                                                VerticalTextAlignment="Center">
 
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="EntryPhoneNumber"
-                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                iOS=Default}"
-                                        MaxLength="9"
-                                        Placeholder="{x:Static ResourceManager:AppResources.ZZPhoneNumber}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding TxtPhoneNumber}"
-                                        TextChanged="EntryPhoneNumber_TextChanged"
-                                        Unfocused="EntryPhoneNumber_Unfocused"
-                                        VerticalTextAlignment="Center">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviors:OnlyNumericValuesBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
 
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviors:OnlyNumericValuesBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
-
-                                    </custom:GAZTBorderlessEntry>
+                                            </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
                                     </custom:CustomSfTextInputView>
 
                                 </StackLayout>
@@ -1361,11 +1380,6 @@
                                                     ReturnType="Next"
                                                     Text="{Binding MOTPFirstDigit}"
                                                     WidthRequest="100">
-
-                                                    <!--<custom:GAZTBorderlessEntry.Behaviors>
-                                                        <behaviors:OnlyNumericValuesBehaviour />
-                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
-                                                    </custom:GAZTBorderlessEntry.Behaviors>-->
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
                                                         <xct:EventToCommandBehavior
@@ -1491,7 +1505,6 @@
                                                     WidthRequest="100">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
-                                                        <!--<xct:EventToCommandBehavior Command="{Binding OnNextButtonClick}" EventName="Completed" />-->
                                                    </custom:GAZTBorderlessEntry.Behaviors>
 
                                                 </custom:GAZTBorderlessEntry>
@@ -1562,6 +1575,7 @@
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                 x:Name="EntryPass"
+                                                 Placeholder="{x:Static ResourceManager:AppResources.NDNewPassword}"
                                                 IsPassword="{Binding IsPasswordEncripted}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding TxtPassword}"
@@ -1604,6 +1618,7 @@
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                 x:Name="EntryCfrmPass"
+                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
                                                 IsPassword="{Binding IsConfirmPasswordEncripted}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding TxtConfirmPassword}"

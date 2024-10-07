@@ -215,16 +215,15 @@
                                             <Image
                                                 HeightRequest="20"
                                                 HorizontalOptions="EndAndExpand"
-                                                Rotation="180"
                                                 Source="LstArrow"
                                                 VerticalOptions="CenterAndExpand"
                                                 WidthRequest="10">
                                                 <Image.Triggers>
                                                     <DataTrigger
-                                                        Binding="{Binding AppDirection}"
+                                                        Binding="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
                                                         TargetType="Image"
-                                                        Value="LeftToRight">
-                                                        <Setter Property="Rotation" Value="0" />
+                                                        Value="RightToLeft">
+                                                        <Setter Property="Rotation" Value="180" />
                                                     </DataTrigger>
 
                                                 </Image.Triggers>
