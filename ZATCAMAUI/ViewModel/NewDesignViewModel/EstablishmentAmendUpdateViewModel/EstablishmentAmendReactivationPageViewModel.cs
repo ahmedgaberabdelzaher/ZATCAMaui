@@ -2368,36 +2368,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 CanExecute = true;
             }
         }
-        private void navigateToPre()
-        {
-            if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.PassportDetails)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
-            {
-                currentTab = IsSaudi ? EstablishmentRegistrationTabsEnum.TaxpayerDetail : EstablishmentRegistrationTabsEnum.PassportDetails;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.Outlets;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                _navigationService.GoBack();
-            }
-            SetUIAvailability();
-        }
-
+       
 
         private void ShowValidationPopup(string _message)
         {

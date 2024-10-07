@@ -35,6 +35,7 @@
                     x:Name="VATTitle"
                     Grid.Row="0"
                     Grid.Column="1"
+                     LineHeight="0"
                     Style="{StaticResource SectionTitleBlack}"
                     Text="{x:Static ResourceManager:AppResources.ZZZZRegisterinVATNow}"
                     TextColor="White"
@@ -43,7 +44,7 @@
                     x:Name="VATDecp"
                     Grid.Row="1"
                     Grid.Column="1"
-                    LineHeight="0.7"
+                     LineHeight="0"
                     Style="{StaticResource BodyLabelBlack}"
                     Text="{x:Static ResourceManager:AppResources.NDLessThan5MinRegister}"
                     TextColor="White"
@@ -75,6 +76,7 @@
                 <Label
                     Grid.Row="0"
                     Grid.Column="1"
+                     LineHeight="0"
                     Style="{StaticResource SectionTitleBlack}"
                     Text="{x:Static ResourceManager:AppResources.NDRegisterZAKAT}"
                     TextColor="White"
@@ -82,7 +84,7 @@
                 <Label
                     Grid.Row="1"
                     Grid.Column="1"
-                    LineHeight="0.7"
+                    LineHeight="0"
                     Style="{StaticResource BodyLabelBlack}"
                     Text="{x:Static ResourceManager:AppResources.NDRegZakatin5mins}"
                     TextColor="White"

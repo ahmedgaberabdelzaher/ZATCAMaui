@@ -19,6 +19,7 @@
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
             <converters:EstablishmentRegistrationOutletTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
         </ResourceDictionary>
@@ -69,18 +70,24 @@
                         <ColumnDefinition Width="15*" />
                     </Grid.ColumnDefinitions>
 
-
                     <Image
-                        Grid.Row="0"
-                        Grid.Column="0"
                         HorizontalOptions="Start"
+                        Rotation="180"
                         Source="arrowLeft.png"
-                        VerticalOptions="Center">
-                        <Image.GestureRecognizers>
+                        VerticalOptions="CenterAndExpand">
+                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
                         </Image.GestureRecognizers>
-                    </Image>
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="0" />
+                            </DataTrigger>
+                        </Image.Triggers>
 
+                    </Image>
 
                     <Image
                         Grid.Row="0"
@@ -213,7 +220,7 @@
                             Stroke="{StaticResource NeutralGreay}"
                             StrokeThickness="1"
                             Style="{StaticResource NoBackgroundButtonStyle}"
-                            Text="{Binding SelectedOutletType, TargetNullValue=''}"
+                            Text="{Binding SelectedOutletType}"
                             TextColor="{StaticResource NeutralBlack}" />
                         <Label
                             Margin="0,10,0,0"
@@ -230,15 +237,7 @@
                             </Label.FormattedText>
                         </Label>
                         <custom:CustomSfTextInputView
-                            Margin="0,6,0,6"
-                            ContainerType="Outlined"
-                            HorizontalOptions="FillAndExpand"
-                            InputViewPadding="16,0,16,0"
-                            IsEnabled="{Binding OutletDetails.OutletName}"
-                            IsHintAlwaysFloated="True"
-                            LeadingViewPosition="Inside"
-                            Stroke="{StaticResource Primary}"
-                            Style="{StaticResource TextInputLayout}">
+                            IsEnabled="{Binding OutletDetails.OutletName}">
                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <inputLayout:LabelStyle TextColor="#B00020" />
 
@@ -301,11 +300,22 @@
                                         Style="{StaticResource ValueLabelPrimary}"
                                         Text="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
                                         VerticalOptions="CenterAndExpand" />
-                                    <Image
+
+                                     <Image
                                         Grid.Column="2"
-                                        HorizontalOptions="Center"
-                                        Source="arrowRight.png"
-                                        VerticalOptions="Center" />
+                                        Rotation="0"
+                                        Source="arrowLeft.png"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding AppDirection}"
+                                                TargetType="Image"
+                                                Value="LeftToRight">
+                                                <Setter Property="Rotation" Value="180" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+
+                                    </Image>
                                 </Grid>
                             </Border>
                         </SfEffectsView:SfEffectsView>
@@ -341,11 +351,23 @@
                                         Style="{StaticResource ValueLabelPrimary}"
                                         Text="{x:Static ResourceManager:AppResources.ESTLicenseDetails}"
                                         VerticalOptions="CenterAndExpand" />
+
                                     <Image
                                         Grid.Column="2"
-                                        HorizontalOptions="Center"
-                                        Source="arrowRight.png"
-                                        VerticalOptions="Center" />
+                                        Rotation="0"
+                                        Source="arrowLeft.png"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding AppDirection}"
+                                                TargetType="Image"
+                                                Value="LeftToRight">
+                                                <Setter Property="Rotation" Value="180" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+
+                                    </Image>
+
                                 </Grid>
                             </Border>
                         </SfEffectsView:SfEffectsView>
@@ -495,11 +517,7 @@
                             <custom:CustomSfTextInputView
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                Margin="0"
-                                InputViewPadding="10,0,10,0"
-                                IsEnabled="{Binding AddressDetails.HouseNo}"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource TextInputLayout}">
+                                IsEnabled="{Binding AddressDetails.HouseNo}">
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         FontFamily="{StaticResource SomarRegular}"
@@ -519,10 +537,7 @@
                             <custom:CustomSfTextInputView
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Margin="0"
-                                IsEnabled="{Binding AddressDetails.BuildinNo}"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource TextInputLayout}">
+                                IsEnabled="{Binding AddressDetails.BuildinNo}">
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         FontFamily="{StaticResource SomarRegular}"
@@ -553,11 +568,7 @@
                             </Label.FormattedText>
                         </Label>
                         <custom:CustomSfTextInputView
-                            Margin="0"
-                            InputViewPadding="10,0,10,0"
-                            IsEnabled="{Binding AddressDetails.Floor}"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource TextInputLayout}">
+                            IsEnabled="{Binding AddressDetails.Floor}">
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
                                     FontFamily="{StaticResource SomarRegular}"
@@ -587,11 +598,7 @@
                             </Label.FormattedText>
                         </Label>
                         <custom:CustomSfTextInputView
-                            Margin="0"
-                            InputViewPadding="10,0,10,0"
-                            IsEnabled="{Binding AddressDetails.Street}"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource TextInputLayout}">
+                            IsEnabled="{Binding AddressDetails.Street}">
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
                                     FontFamily="{StaticResource SomarRegular}"
@@ -621,11 +628,7 @@
                             </Label.FormattedText>
                         </Label>
                         <custom:CustomSfTextInputView
-                            Margin="0"
-                            InputViewPadding="10,0,10,0"
-                            IsEnabled="{Binding AddressDetails.Quarter}"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource TextInputLayout}">
+                            IsEnabled="{Binding AddressDetails.Quarter}">
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
                                     FontFamily="{StaticResource SomarRegular}"
@@ -655,11 +658,7 @@
                             </Label.FormattedText>
                         </Label>
                         <custom:CustomSfTextInputView
-                            Margin="0"
-                            InputViewPadding="10,0,10,0"
-                            IsEnabled="{Binding AddressDetails.PostelCode}"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource TextInputLayout}">
+                            IsEnabled="{Binding AddressDetails.PostelCode}">
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
                                     FontFamily="{StaticResource SomarRegular}"
@@ -689,11 +688,7 @@
                             Text="{x:Static ResourceManager:AppResources.ESTAddNumber}"
                             VerticalOptions="Center" />
                         <custom:CustomSfTextInputView
-                            Margin="0"
-                            InputViewPadding="10,0,10,0"
-                            IsEnabled="{Binding AddressDetails.AddNo}"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource TextInputLayout}">
+                            IsEnabled="{Binding AddressDetails.AddNo}">
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
                                     FontFamily="{StaticResource SomarRegular}"
@@ -726,9 +721,8 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsEnabled="{Binding AddressDetails.Country}"
-                                    IsReadOnly="True"
+                                    InputTransparent="{Binding AddressDetails.Country,Converter={StaticResource InverseBoolConverter}}"
+                                    IsReadOnly="{Binding AddressDetails.Country,Converter={StaticResource InverseBoolConverter}}"
                                     Keyboard="Text"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding Country, TargetNullValue=''}"
@@ -761,9 +755,8 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsEnabled="{Binding AddressDetails.Province}"
-                                    IsReadOnly="True"
+                                    InputTransparent="{Binding AddressDetails.Province,Converter={StaticResource InverseBoolConverter}}"
+                                    IsReadOnly="{Binding AddressDetails.Province,Converter={StaticResource InverseBoolConverter}}"
                                     Keyboard="Text"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding Provinance, TargetNullValue=''}"
@@ -796,9 +789,8 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsEnabled="{Binding AddressDetails.City}"
-                                    IsReadOnly="True"
+                                     InputTransparent="{Binding AddressDetails.City,Converter={StaticResource InverseBoolConverter}}"
+                                     IsReadOnly="{Binding AddressDetails.City,Converter={StaticResource InverseBoolConverter}}"
                                     Keyboard="Text"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding City, TargetNullValue=''}"
@@ -883,10 +875,7 @@
                                 </Label>
                                 <custom:CustomSfTextInputView
                                     Grid.Row="1"
-                                    Grid.Column="0"
-                                    Margin="0"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource TextInputLayout}">
+                                    Grid.Column="0">
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
                                             FontFamily="{StaticResource SomarRegular}"
@@ -905,11 +894,7 @@
                                 </custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView
                                     Grid.Row="1"
-                                    Grid.Column="1"
-                                    Margin="0"
-                                    InputViewPadding="10,0,10,0"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource TextInputLayout}">
+                                    Grid.Column="1">
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
                                             FontFamily="{StaticResource SomarRegular}"
@@ -939,11 +924,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <custom:CustomSfTextInputView
-                                Margin="0"
-                                InputViewPadding="10,0,10,0"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource TextInputLayout}">
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         FontFamily="{StaticResource SomarRegular}"
@@ -972,11 +953,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <custom:CustomSfTextInputView
-                                Margin="0"
-                                InputViewPadding="10,0,10,0"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource TextInputLayout}">
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         FontFamily="{StaticResource SomarRegular}"
@@ -1004,11 +981,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <custom:CustomSfTextInputView
-                                Margin="0"
-                                InputViewPadding="10,0,10,0"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource TextInputLayout}">
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         FontFamily="{StaticResource SomarRegular}"
@@ -1036,11 +1009,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <custom:CustomSfTextInputView
-                                Margin="0"
-                                InputViewPadding="10,0,10,0"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource TextInputLayout}">
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         FontFamily="{StaticResource SomarRegular}"
@@ -1069,11 +1038,7 @@
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.ESTAddNumber}"
                                 VerticalOptions="Center" />
-                            <custom:CustomSfTextInputView
-                                Margin="0"
-                                InputViewPadding="10,0,10,0"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource TextInputLayout}">
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         FontFamily="{StaticResource SomarRegular}"

@@ -13,6 +13,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         public ZAKATOkCancelPopUpView(string ConfirmationText)
         {
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             if(ConfirmationText.Equals("DeleteVATAttachment"))
             {
                 _confirmationText = "DeleteVATAttachment";

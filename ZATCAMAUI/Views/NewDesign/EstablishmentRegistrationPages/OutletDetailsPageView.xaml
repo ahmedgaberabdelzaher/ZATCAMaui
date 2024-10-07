@@ -8,9 +8,9 @@
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     ios:Page.UseSafeArea="true"
@@ -52,24 +52,24 @@
                             IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.OutletDetail}}"
                             Spacing="0"
                             VerticalOptions="FillAndExpand">
+
                             <Label
-                                Margin="0,-10,0,0"
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="15"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletNumber}"
                                 TextColor="{StaticResource NeutralGreay}"
                                 VerticalOptions="Center" />
+
                             <Label
-                                Margin="0,-5,0,0"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 FontSize="15"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{Binding OutletActNumber}"
                                 TextColor="{StaticResource NeutralBlack}"
                                 VerticalOptions="Center" />
+
                             <Label
-                                Margin="0,10,0,0"
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="11"
                                 HorizontalOptions="StartAndExpand"
@@ -82,17 +82,12 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <inputLayout:SfTextInputLayout
-                                ContainerType="Outlined"
-                                HorizontalOptions="FillAndExpand"
-                                InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
-                                LeadingViewPosition="Inside">
+
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
-                                    Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
-                                    HeightRequest="48"
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     IsSpellCheckEnabled="false"
@@ -103,17 +98,22 @@
                                     TextColor="{StaticResource NeutralBlack}"
                                     VerticalOptions="Center"
                                     VerticalTextAlignment="Center" />
-                            </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                            </custom:CustomSfTextInputView>
                         </StackLayout>
+
                         <ScrollView
                             IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.ActivityDetails}}"
-                            VerticalOptions="Fill"
+                            VerticalOptions="StartAndExpand"
                             VerticalScrollBarVisibility="Never">
+
                             <StackLayout
                                 HorizontalOptions="FillAndExpand"
                                 Spacing="0"
                                 VerticalOptions="FillAndExpand">
+
                                 <SfEffectsView:SfEffectsView TouchDownCommand="{Binding OnActivityItemButtonClick}" TouchDownCommandParameter="{x:Static models:EstablishmentOutletActivitiesTabsEnum.CRDetails}">
+
                                     <Border
                                         Padding="15"
                                         Stroke="{StaticResource NeutralGreay}"
@@ -142,18 +142,32 @@
                                                 Style="{StaticResource ValueLabelPrimary}"
                                                 Text="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
                                                 VerticalOptions="CenterAndExpand" />
+
                                             <Image
                                                 Grid.Column="2"
-                                                HorizontalOptions="Center"
-                                                Source="arrowRight.png"
-                                                VerticalOptions="Center" />
+                                                Rotation="0"
+                                                Source="arrowLeft.png"
+                                                VerticalOptions="CenterAndExpand">
+                                                <Image.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding AppDirection}"
+                                                        TargetType="Image"
+                                                        Value="LeftToRight">
+                                                        <Setter Property="Rotation" Value="180" />
+                                                    </DataTrigger>
+                                                </Image.Triggers>
+
+                                            </Image>
                                         </Grid>
                                     </Border>
+
                                 </SfEffectsView:SfEffectsView>
+
                                 <SfEffectsView:SfEffectsView
                                     Margin="0,20"
                                     TouchDownCommand="{Binding OnActivityItemButtonClick}"
                                     TouchDownCommandParameter="{x:Static models:EstablishmentOutletActivitiesTabsEnum.LicenseDetails}">
+
                                     <Border
                                         Padding="15"
                                         Stroke="{StaticResource NeutralGreay}"
@@ -182,14 +196,28 @@
                                                 Style="{StaticResource ValueLabelPrimary}"
                                                 Text="{x:Static ResourceManager:AppResources.ESTLicenseDetails}"
                                                 VerticalOptions="CenterAndExpand" />
+
                                             <Image
                                                 Grid.Column="2"
-                                                HorizontalOptions="Center"
-                                                Source="arrowRight.png"
-                                                VerticalOptions="Center" />
+                                                Rotation="0"
+                                                Source="arrowLeft.png"
+                                                VerticalOptions="CenterAndExpand">
+                                                <Image.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding AppDirection}"
+                                                        TargetType="Image"
+                                                        Value="LeftToRight">
+                                                        <Setter Property="Rotation" Value="180" />
+                                                    </DataTrigger>
+                                                </Image.Triggers>
+
+                                            </Image>
+
                                         </Grid>
                                     </Border>
+
                                 </SfEffectsView:SfEffectsView>
+
                                 <Border
                                     Padding="15"
                                     Stroke="{StaticResource NeutralGreay}"
@@ -234,6 +262,7 @@
                                             VerticalTextAlignment="Start" />
                                     </Grid>
                                 </Border>
+
                                 <Border
                                     Margin="0,20,0,10"
                                     Padding="15"
@@ -279,12 +308,16 @@
                                             VerticalTextAlignment="Start" />
                                     </Grid>
                                 </Border>
+
                             </StackLayout>
+
                         </ScrollView>
+
                         <ScrollView
                             IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.AddressDetails}}"
-                            VerticalOptions="Fill"
+                            VerticalOptions="StartAndExpand"
                             VerticalScrollBarVisibility="Never">
+
                             <StackLayout
                                 HorizontalOptions="FillAndExpand"
                                 Spacing="0"
@@ -332,56 +365,65 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         Grid.Row="1"
-                                        Grid.Column="0"
-                                        Margin="0,-6,0,-6"
-                                        ContainerType="Outlined"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        Style="{StaticResource TextInputLayout}">
+                                        Grid.Column="0">
+                                        <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
-                                            HeightRequest="48"
+                                             Keyboard="{OnPlatform Android=Numeric,
+                                                              iOS=Default}"
                                             HorizontalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Start"
                                             IsSpellCheckEnabled="false"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ESTHouseNumber}"
                                             MaxLength="10"
                                             PlaceholderColor="{StaticResource NeutralGreay}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding HouseNumber}"
                                             TextColor="{StaticResource NeutralBlack}"
                                             VerticalOptions="Center"
-                                            VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
-                                    <inputLayout:SfTextInputLayout
+                                            VerticalTextAlignment="Center" >
+                                                 <custom:GAZTBorderlessEntry.Behaviors>
+
+                                                  <behaviors:OnlyNumericValuesBehaviour/>
+
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                                            </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
+
+                                    <custom:CustomSfTextInputView
                                         Grid.Row="1"
-                                        Grid.Column="1"
-                                        ContainerType="Outlined"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside">
-                                        <custom:GAZTBorderlessEntry
-                                            Margin="10"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="15"
-                                            HeightRequest="48"
-                                            HorizontalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="Start"
-                                            IsSpellCheckEnabled="false"
-                                            MaxLength="20"
-                                            PlaceholderColor="{StaticResource NeutralGreay}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding BuildingNumber}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalOptions="Center"
-                                            VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                        Grid.Column="1">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="15"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                IsSpellCheckEnabled="false"
+                                                 Keyboard="{OnPlatform Android=Numeric,
+                                                              iOS=Default}"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}"
+                                                MaxLength="20"
+                                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding BuildingNumber}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" >
+                                                 <custom:GAZTBorderlessEntry.Behaviors>
+
+                                                  <behaviors:OnlyNumericValuesBehaviour/>
+
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                                            </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                 </Grid>
                                 <Label
                                     Margin="0,10,0,0"
@@ -395,28 +437,33 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
-                                        Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
-                                        HeightRequest="48"
                                         HorizontalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Start"
                                         IsSpellCheckEnabled="false"
+                                        Keyboard="{OnPlatform Android=Numeric,
+                                                              iOS=Default}"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ESTFloorNumber}"
                                         MaxLength="10"
                                         PlaceholderColor="{StaticResource NeutralGreay}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding FloorNumber}"
                                         TextColor="{StaticResource NeutralBlack}"
                                         VerticalOptions="Center"
-                                        VerticalTextAlignment="Center" />
-                                </inputLayout:SfTextInputLayout>
+                                        VerticalTextAlignment="Center" >
+                                          <custom:GAZTBorderlessEntry.Behaviors>
+
+                                                  <behaviors:OnlyNumericValuesBehaviour/>
+
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                                        </custom:GAZTBorderlessEntry>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
                                 <Label
                                     Margin="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
@@ -429,21 +476,14 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-6,0,-6"
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    Style="{StaticResource TextInputLayout}">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
-                                        Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
-                                        HeightRequest="48"
                                         HorizontalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Start"
+                                        Placeholder="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}"
                                         IsSpellCheckEnabled="false"
                                         MaxLength="60"
                                         PlaceholderColor="{StaticResource NeutralGreay}"
@@ -452,7 +492,8 @@
                                         TextColor="{StaticResource NeutralBlack}"
                                         VerticalOptions="Center"
                                         VerticalTextAlignment="Center" />
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
                                 <Label
                                     Margin="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
@@ -465,30 +506,24 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-6,0,-6"
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    Style="{StaticResource TextInputLayout}">
+                                <custom:CustomSfTextInputView>
+                                  <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
-                                        Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
-                                        HeightRequest="48"
                                         HorizontalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Start"
                                         IsSpellCheckEnabled="false"
                                         MaxLength="40"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ESTQuarter}"
                                         PlaceholderColor="{StaticResource NeutralGreay}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding Quarter}"
                                         TextColor="{StaticResource NeutralBlack}"
                                         VerticalOptions="Center"
                                         VerticalTextAlignment="Center" />
-                                </inputLayout:SfTextInputLayout>
+                                   </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
                                 <Label
                                     Margin="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
@@ -501,21 +536,15 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    Style="{StaticResource TextInputLayout}">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
-                                        Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
-                                        HeightRequest="48"
                                         HorizontalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Start"
                                         IsSpellCheckEnabled="false"
+                                         Placeholder="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
                                         Keyboard="{OnPlatform Android=Numeric,
                                                               iOS=Default}"
                                         MaxLength="6"
@@ -529,28 +558,23 @@
                                             <behaviors:NumericValidationBehavior />
                                         </custom:GAZTBorderlessEntry.Behaviors>
                                     </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
                                 <Label
                                     Margin="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.ESTAddNumber}"
                                     VerticalOptions="Center" />
-                                <inputLayout:SfTextInputLayout
-                                    ContainerType="Outlined"
-                                    HorizontalOptions="FillAndExpand"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    Style="{StaticResource TextInputLayout}">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
-                                        Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
-                                        HeightRequest="48"
                                         HorizontalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Start"
                                         IsSpellCheckEnabled="false"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ESTAddNumber}"
                                         MaxLength="10"
                                         PlaceholderColor="{StaticResource NeutralGreay}"
                                         Style="{StaticResource DefaultEntry}"
@@ -558,7 +582,11 @@
                                         TextColor="{StaticResource NeutralBlack}"
                                         VerticalOptions="Center"
                                         VerticalTextAlignment="Center" />
-                                </inputLayout:SfTextInputLayout>
+
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
+
                                 <Label
                                     Margin="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
@@ -571,22 +599,32 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <buttons:SfButton
-                                    Margin="0,5,0,0"
-                                    Padding="5"
-                                    Command="{Binding OnCountrySelectButtonClick}"
-                                    CornerRadius="10"
-                                    FontFamily="{StaticResource SomarBold}"
-                                    FontSize="15"
-                                    HorizontalTextAlignment="Start"
-                                    ImageAlignment="End"
-                                    ImageSource="arrowDropdown.png"
-                                    ShowIcon="True"
-                                    Stroke="{StaticResource NeutralGreay}"
-                                    StrokeThickness="1"
-                                    Style="{StaticResource NoBackgroundButtonStyle}"
-                                    Text="{Binding Country}"
-                                    TextColor="{StaticResource NeutralBlack}" />
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.CountryText}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding Country}"
+                                            TextColor="#58595B">
+                                            <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnCountrySelectButtonClick}"/>
+                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        </custom:GAZTBorderlessEntry>
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnCountrySelectButtonClick}"
+                                                              />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </custom:CustomSfTextInputView>
+
                                 <Label
                                     Margin="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
@@ -599,22 +637,32 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <buttons:SfButton
-                                    Margin="0,5,0,0"
-                                    Padding="5"
-                                    Command="{Binding OnProvinanceSelectButtonClick}"
-                                    CornerRadius="10"
-                                    FontFamily="{StaticResource SomarBold}"
-                                    FontSize="15"
-                                    HorizontalTextAlignment="Start"
-                                    ImageAlignment="End"
-                                    ImageSource="arrowDropdown.png"
-                                    ShowIcon="True"
-                                    Stroke="{StaticResource NeutralGreay}"
-                                    StrokeThickness="1"
-                                    Style="{StaticResource NoBackgroundButtonStyle}"
-                                    Text="{Binding Provinance}"
-                                    TextColor="{StaticResource NeutralBlack}" />
+
+                                 <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ESTProvinance}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding Provinance}"
+                                            TextColor="#58595B">
+                                            <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnProvinanceSelectButtonClick}" />
+                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        </custom:GAZTBorderlessEntry>
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnProvinanceSelectButtonClick}" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </custom:CustomSfTextInputView>
+
                                 <Label
                                     Margin="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
@@ -627,22 +675,32 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <buttons:SfButton
-                                    Margin="0,5,0,0"
-                                    Padding="5"
-                                    Command="{Binding OnCitySelectButtonClick}"
-                                    CornerRadius="10"
-                                    FontFamily="{StaticResource SomarBold}"
-                                    FontSize="15"
-                                    HorizontalTextAlignment="Start"
-                                    ImageAlignment="End"
-                                    ImageSource="arrowDropdown.png"
-                                    ShowIcon="True"
-                                    Stroke="{StaticResource NeutralGreay}"
-                                    StrokeThickness="1"
-                                    Style="{StaticResource NoBackgroundButtonStyle}"
-                                    Text="{Binding City}"
-                                    TextColor="{StaticResource NeutralBlack}" />
+
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ESTOutletCity}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding City}"
+                                            TextColor="#58595B">
+                                            <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnCitySelectButtonClick}" />
+                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        </custom:GAZTBorderlessEntry>
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnCitySelectButtonClick}" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </custom:CustomSfTextInputView>
+
                                 <Label
                                     Margin="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
@@ -708,46 +766,37 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <inputLayout:SfTextInputLayout
+                                        <custom:CustomSfTextInputView
                                             Grid.Row="1"
-                                            Grid.Column="0"
-                                            ContainerType="Outlined"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
-                                            LeadingViewPosition="Inside">
+                                            Grid.Column="0">
+                                            <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                Margin="10"
                                                 FontFamily="{StaticResource SomarRegular}"
                                                 FontSize="15"
-                                                HeightRequest="48"
                                                 HorizontalOptions="FillAndExpand"
                                                 HorizontalTextAlignment="Start"
                                                 IsSpellCheckEnabled="false"
                                                 MaxLength="10"
+                                                 Placeholder="{x:Static ResourceManager:AppResources.ESTHouseNumber}"
                                                 PlaceholderColor="{StaticResource NeutralGreay}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding HouseNumberSame}"
                                                 TextColor="{StaticResource NeutralBlack}"
                                                 VerticalOptions="Center"
                                                 VerticalTextAlignment="Center" />
-                                        </inputLayout:SfTextInputLayout>
-                                        <inputLayout:SfTextInputLayout
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                        </custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView
                                             Grid.Row="1"
-                                            Grid.Column="1"
-                                            ContainerType="Outlined"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
-                                            LeadingViewPosition="Inside">
+                                            Grid.Column="1">
+                                            <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                Margin="10"
                                                 FontFamily="{StaticResource SomarRegular}"
                                                 FontSize="15"
-                                                HeightRequest="48"
                                                 HorizontalOptions="FillAndExpand"
                                                 HorizontalTextAlignment="Start"
                                                 IsSpellCheckEnabled="false"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}"
                                                 MaxLength="20"
                                                 PlaceholderColor="{StaticResource NeutralGreay}"
                                                 Style="{StaticResource DefaultEntry}"
@@ -755,7 +804,8 @@
                                                 TextColor="{StaticResource NeutralBlack}"
                                                 VerticalOptions="Center"
                                                 VerticalTextAlignment="Center" />
-                                        </inputLayout:SfTextInputLayout>
+                                                </custom:CustomSfTextInputView.TextInputView>
+                                        </custom:CustomSfTextInputView>
                                     </Grid>
                                     <Label
                                         Margin="0,10,0,0"
@@ -769,20 +819,15 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
-                                        ContainerType="Outlined"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside">
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
-                                            HeightRequest="48"
                                             HorizontalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Start"
                                             IsSpellCheckEnabled="false"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ESTFloorNumber}"
                                             MaxLength="10"
                                             PlaceholderColor="{StaticResource NeutralGreay}"
                                             Style="{StaticResource DefaultEntry}"
@@ -790,7 +835,8 @@
                                             TextColor="{StaticResource NeutralBlack}"
                                             VerticalOptions="Center"
                                             VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                     <Label
                                         Margin="0,10,0,0"
                                         HorizontalOptions="StartAndExpand"
@@ -803,28 +849,23 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
-                                        ContainerType="Outlined"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        Style="{StaticResource TextInputLayout}">
+                                    <custom:CustomSfTextInputView>
+                                       <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
-                                            HeightRequest="48"
                                             HorizontalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Start"
                                             MaxLength="60"
+                                            Placeholder="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}"
                                             PlaceholderColor="{StaticResource NeutralGreay}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding StreetSame}"
                                             TextColor="{StaticResource NeutralBlack}"
                                             VerticalOptions="Center"
                                             VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                     <Label
                                         Margin="0,10,0,0"
                                         HorizontalOptions="StartAndExpand"
@@ -837,28 +878,23 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
-                                        ContainerType="Outlined"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        Style="{StaticResource TextInputLayout}">
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
-                                            HeightRequest="48"
                                             HorizontalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Start"
                                             MaxLength="40"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ESTQuarter}"
                                             PlaceholderColor="{StaticResource NeutralGreay}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding QuarterSame}"
                                             TextColor="{StaticResource NeutralBlack}"
                                             VerticalOptions="Center"
                                             VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                     <Label
                                         Margin="0,10,0,0"
                                         HorizontalOptions="StartAndExpand"
@@ -871,21 +907,14 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-6,0,-6"
-                                        ContainerType="Outlined"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        Style="{StaticResource TextInputLayout}">
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
-                                            HeightRequest="48"
                                             HorizontalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Start"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
                                             IsSpellCheckEnabled="false"
                                             Keyboard="{OnPlatform Android=Numeric,
                                                                   iOS=Default}"
@@ -900,26 +929,20 @@
                                                 <behaviors:NumericValidationBehavior />
                                             </custom:GAZTBorderlessEntry.Behaviors>
                                         </custom:GAZTBorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                     <Label
                                         Margin="0,10,0,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.ESTAddNumber}"
                                         VerticalOptions="Center" />
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-6,0,-6"
-                                        ContainerType="Outlined"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        Style="{StaticResource TextInputLayout}">
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ESTAddNumber}"
                                             FontSize="15"
-                                            HeightRequest="48"
                                             HorizontalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Start"
                                             IsSpellCheckEnabled="false"
@@ -930,7 +953,8 @@
                                             TextColor="{StaticResource NeutralBlack}"
                                             VerticalOptions="Center"
                                             VerticalTextAlignment="Center" />
-                                    </inputLayout:SfTextInputLayout>
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
                                     <Label
                                         Margin="0,10,0,0"
                                         HorizontalOptions="StartAndExpand"
@@ -943,21 +967,31 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <buttons:SfButton
-                                        Margin="0,5,0,0"
-                                        Padding="5"
-                                        Command="{Binding OnCountrySelectButtonClick}"
-                                        CommandParameter="same"
-                                        CornerRadius="10"
-                                        HorizontalTextAlignment="Start"
-                                        ImageAlignment="End"
-                                        ImageSource="arrowDropdown.png"
-                                        ShowIcon="True"
-                                        Stroke="{StaticResource NeutralGreay}"
-                                        StrokeThickness="1"
-                                        Style="{StaticResource NoBackgroundButtonStyle}"
-                                        Text="{Binding CountrySame}"
-                                        TextColor="{StaticResource NeutralBlack}" />
+                                     <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="{x:Static ResourceManager:AppResources.CountryText}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding CountrySame}"
+                                                TextColor="#58595B">
+                                                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnCountrySelectButtonClick}" CommandParameter="same"/>
+                                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            </custom:GAZTBorderlessEntry>
+
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnCountrySelectButtonClick}" CommandParameter="same"/>
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </custom:CustomSfTextInputView>
+
                                     <Label
                                         Margin="0,10,0,0"
                                         HorizontalOptions="StartAndExpand"
@@ -970,23 +1004,32 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <buttons:SfButton
-                                        Margin="0,5,0,0"
-                                        Padding="5"
-                                        Command="{Binding OnProvinanceSelectButtonClick}"
-                                        CommandParameter="same"
-                                        CornerRadius="10"
-                                        FontFamily="{StaticResource SomarBold}"
-                                        FontSize="15"
-                                        HorizontalTextAlignment="Start"
-                                        ImageAlignment="End"
-                                        ImageSource="arrowDropdown.png"
-                                        ShowIcon="True"
-                                        Stroke="{StaticResource NeutralGreay}"
-                                        StrokeThickness="1"
-                                        Style="{StaticResource NoBackgroundButtonStyle}"
-                                        Text="{Binding ProvinanceSame}"
-                                        TextColor="{StaticResource NeutralBlack}" />
+
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ESTProvinance}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding ProvinanceSame}"
+                                                TextColor="#58595B">
+                                                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnProvinanceSelectButtonClick}" CommandParameter="same" />
+                                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            </custom:GAZTBorderlessEntry>
+
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnProvinanceSelectButtonClick}" CommandParameter="same"/>
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </custom:CustomSfTextInputView>
+
                                     <Label
                                         Margin="0,10,0,0"
                                         HorizontalOptions="StartAndExpand"
@@ -999,26 +1042,37 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <buttons:SfButton
-                                        Margin="0,5,0,0"
-                                        Padding="5"
-                                        Command="{Binding OnCitySelectButtonClick}"
-                                        CommandParameter="same"
-                                        CornerRadius="10"
-                                        FontFamily="{StaticResource SomarBold}"
-                                        FontSize="15"
-                                        HorizontalTextAlignment="Start"
-                                        ImageAlignment="End"
-                                        ImageSource="arrowDropdown.png"
-                                        ShowIcon="True"
-                                        Stroke="{StaticResource NeutralGreay}"
-                                        StrokeThickness="1"
-                                        Style="{StaticResource NoBackgroundButtonStyle}"
-                                        Text="{Binding CitySame}"
-                                        TextColor="{StaticResource NeutralBlack}" />
+
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ESTOutletCity}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding CitySame}"
+                                                TextColor="#58595B">
+                                                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnCitySelectButtonClick}"  CommandParameter="same"/>
+                                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            </custom:GAZTBorderlessEntry>
+
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnCitySelectButtonClick}" CommandParameter="same"/>
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </custom:CustomSfTextInputView>
+
                                 </StackLayout>
                             </StackLayout>
+
                         </ScrollView>
+
                     </Grid>
 
                     <StackLayout
@@ -1039,14 +1093,22 @@
                             </Grid.ColumnDefinitions>
 
                             <Image
-                                Grid.Row="0"
-                                Grid.Column="0"
                                 HorizontalOptions="Start"
+                                Rotation="180"
                                 Source="arrowLeft.png"
-                                VerticalOptions="Center">
-                                <Image.GestureRecognizers>
+                                VerticalOptions="CenterAndExpand">
+                                    <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
                                 </Image.GestureRecognizers>
+                                <Image.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding AppDirection}"
+                                        TargetType="Image"
+                                        Value="LeftToRight">
+                                        <Setter Property="Rotation" Value="0" />
+                                    </DataTrigger>
+                                </Image.Triggers>
+
                             </Image>
 
                             <Image
@@ -1056,6 +1118,7 @@
                                 Source="ic_logo_gazt.png"
                                 WidthRequest="27" />
                         </Grid>
+
                         <commonView:PageIndicatorView
                             Completed="{Binding MarkComplete}"
                             DotSize="12"
@@ -1063,24 +1126,27 @@
                             MarkSize="24"
                             MaxNum="{Binding MaxIndex}"
                             MinNum="{Binding CurrentIndex}" />
+
                         <Label
-                            Padding="0,-5,0,-10"
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="28"
                             HorizontalOptions="Start"
                             Style="{StaticResource SectionTitleBlack}"
                             Text="{Binding SelectedOutletTabText}"
                             VerticalOptions="Center" />
+
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="15"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource forLightLabel}"
                             Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" />
+
                         <BoxView
                             Margin="0,15"
                             BackgroundColor="WhiteSmoke"
                             HeightRequest="1" />
+
                         <SfEffectsView:SfChipGroup
                             x:Name="TabSfChipGroup"
                             Margin="0,10,0,0"
@@ -1098,7 +1164,7 @@
                                 <DataTemplate>
                                     <StackLayout
                                         Margin="0"
-                                        Padding="5,-2,5,-2"
+                                        Padding="10"
                                         Orientation="Horizontal"
                                         Spacing="2">
                                         <Label
@@ -1109,6 +1175,7 @@
                                 </DataTemplate>
                             </SfEffectsView:SfChipGroup.ItemTemplate>
                         </SfEffectsView:SfChipGroup>
+
                         <ScrollView
                             x:Name="OutletTabScrollView"
                             HorizontalScrollBarVisibility="Never"
@@ -1131,7 +1198,7 @@
                                     <DataTemplate>
                                         <StackLayout
                                             Margin="0"
-                                            Padding="5,-2,5,-2"
+                                            Padding="10"
                                             Orientation="Horizontal"
                                             Spacing="2">
                                             <Label
@@ -1143,6 +1210,7 @@
                                 </SfEffectsView:SfChipGroup.ItemTemplate>
                             </SfEffectsView:SfChipGroup>
                         </ScrollView>
+
                     </StackLayout>
 
                     <Grid
@@ -1150,10 +1218,12 @@
                         Margin="0,0,0,20"
                         Padding="20,15"
                         BackgroundColor="White">
+
                         <buttons:SfButton
                             Command="{Binding OnNextButtonClick}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{Binding NxtButtonLabel}" />
+
                     </Grid>
 
 

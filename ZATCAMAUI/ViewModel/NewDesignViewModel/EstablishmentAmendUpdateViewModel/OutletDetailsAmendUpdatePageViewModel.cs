@@ -891,7 +891,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             }); ;
         }
 
-        private async void navigateToNext()
+        private async Task navigateToNext()
         {
             CanExecute = false;
             if (await validateForm())
@@ -917,7 +917,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     try
                     {
                         IsLoading = true;
-                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+                        DateTime.TryParseExact("2060/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
 
                         taxPayerDetails?.Nreg_AddressSet?.Clear();
                         Nreg_AddressItem defaultAddress = new Nreg_AddressItem();
@@ -1013,7 +1013,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             SetUIAvailability();
             CanExecute = true;
         }
-        private async void addActivities(List<Nreg_ActivityItem> list)
+        private async Task addActivities(List<Nreg_ActivityItem> list)
         {
             IsLoading = true;
             try
@@ -1043,23 +1043,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 IsLoading = false;
             }
         }
-        private void navigateToPre()
-        {
-            if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
-            {
-                currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
-            }
-            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
-            {
-                currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
-            }
-            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
-            {
-                _navigationService.GoBack();
-            }
-            SetUIAvailability();
-        }
-        private async void fetchTabDataAndBind(EstablishmentRegistrationOutletTabsEnum _enum)
+       
+        private async Task fetchTabDataAndBind(EstablishmentRegistrationOutletTabsEnum _enum)
         {
             try
             {

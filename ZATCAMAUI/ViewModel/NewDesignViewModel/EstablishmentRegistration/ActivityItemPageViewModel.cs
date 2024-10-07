@@ -70,7 +70,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private bool CanExecuteClickCommand(object args) => EnableInputFields;
         private bool CanIssueByExecuteClickCommand(object args) => EnableIssueByDropDown;
 
-        private CountryDropdownItem _cRIssueCountry = null;
+        private CountryDropdownItem _cRIssueCountry = new CountryDropdownItem();
         public CountryDropdownItem CRIssueCountry
         {
             get => _cRIssueCountry;
@@ -81,7 +81,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(nameof(CRIssueCountry));
             }
         }
-        private string _cRIssueBy = null;
+        private string _cRIssueBy = string.Empty;
         public string CRIssueBy
         {
             get => _cRIssueBy;
@@ -93,7 +93,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(nameof(CRIssueBy));
             }
         }
-        private CityDropdownItem _cRIssueCity = null;
+        private CityDropdownItem _cRIssueCity = new CityDropdownItem();
         public CityDropdownItem CRIssueCity
         {
             get => _cRIssueCity;
@@ -249,7 +249,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(nameof(MainActivity));
             }
         }
-        private ActGroupSet _cRMainGroup = null;
+        private ActGroupSet _cRMainGroup = new ActGroupSet();
         public ActGroupSet CRMainGroup
         {
             get => _cRMainGroup;
@@ -264,7 +264,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-        private ActGroupSet _cRSubGroup = null;
+        private ActGroupSet _cRSubGroup = new ActGroupSet();
         public ActGroupSet CRSubGroup
         {
             get => _cRSubGroup;
@@ -276,7 +276,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(nameof(CRSubGroup));
             }
         }
-        private ActGroupSet _cRAcitivity;
+        private ActGroupSet _cRAcitivity = new ActGroupSet();
         public ActGroupSet CRAcitivity
         {
             get => _cRAcitivity;
@@ -372,7 +372,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(nameof(DisplayValidFrom));
             }
         }
-        private CountryDropdownItem _licenseIssueCountry = null;
+        private CountryDropdownItem _licenseIssueCountry = new CountryDropdownItem();
         public CountryDropdownItem LicenseIssueCountry
         {
             get => _licenseIssueCountry;
@@ -384,7 +384,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(nameof(LicenseIssueCountry));
             }
         }
-        private string _licenseIssueBy = null;
+        private string _licenseIssueBy = string.Empty;
         public string LicenseIssueBy
         {
             get => _licenseIssueBy;
@@ -396,7 +396,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(nameof(LicenseIssueBy));
             }
         }
-        private CityDropdownItem _licenseIssueCity = null;
+        private CityDropdownItem _licenseIssueCity = new CityDropdownItem();
         public CityDropdownItem LicenseIssueCity
         {
             get => _licenseIssueCity;
@@ -445,7 +445,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(nameof(CrName));
             }
         }
-        private ActGroupSet _licenseMainGroup = null;
+        private ActGroupSet _licenseMainGroup = new ActGroupSet();
         public ActGroupSet LicenseMainGroup
         {
             get => _licenseMainGroup;
@@ -457,7 +457,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(nameof(LicenseMainGroup));
             }
         }
-        private ActGroupSet _licenseSubGroup = null;
+        private ActGroupSet _licenseSubGroup = new ActGroupSet();
         public ActGroupSet LicenseSubGroup
         {
             get => _licenseSubGroup;
@@ -469,7 +469,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(nameof(LicenseSubGroup));
             }
         }
-        private ActGroupSet _licenseAcitivity;
+        private ActGroupSet _licenseAcitivity = new ActGroupSet();
         public ActGroupSet LicenseAcitivity
         {
             get => _licenseAcitivity;
@@ -875,22 +875,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime crIssueDate);
                         DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
-                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+                        DateTime.TryParseExact("2060/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
                         Nreg_ActivityItem item = new Nreg_ActivityItem
                         {
                             Type = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? "BUP002" : "ZS0004",
+
                             ValidDateFrom = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? crIssueDate.ToString("yyyy-MM-ddThh:mm:ss") : issueDate.ToString("yyyy-MM-ddThh:mm:ss"),
+
                             ValidDateTo = maxDate.ToString("yyyy-MM-ddThh:mm:ss"),
+
                             Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber,
-                            Country = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCountry.Land1 : LicenseIssueCountry.Land1,
-                            City = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityName : LicenseIssueCity.CityName,
-                            CityCode = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityCode : LicenseIssueCity.CityCode,
-                            Activity = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRAcitivity.IndSector : LicenseAcitivity.IndSector,
-                            ActMgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRMainGroup.IndSector : LicenseMainGroup.IndSector,
-                            ActSgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRSubGroup.IndSector : LicenseSubGroup.IndSector,
+
+                            Country = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCountry?.Land1 : LicenseIssueCountry?.Land1,
+
+                            City = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity?.CityName : LicenseIssueCity?.CityName,
+
+                            CityCode = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity?.CityCode : LicenseIssueCity?.CityCode,
+
+                            Activity = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRAcitivity?.IndSector : LicenseAcitivity?.IndSector,
+
+                            ActMgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRMainGroup?.IndSector : LicenseMainGroup?.IndSector,
+
+                            ActSgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRSubGroup?.IndSector : LicenseSubGroup?.IndSector,
+
                             Actcat = MainActivity ? "M" : "S",
+
                             Actno = $"{Int16.Parse(newNumber?.Actno):00000}",
+
                             Crattfg = CRsCopies.Count > 0 ? "X" : string.Empty,
+
                             ActName = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CrName : LicenseName
                         };
 
@@ -926,8 +939,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            catch (Exception)
-            { }
+            catch (Exception ex)
+            {
+            }
             finally
             {
                 CanExecute = true;
@@ -1015,7 +1029,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception)
             { }
         }
-        private async void fetchTabDataAndBind()
+
+        private async Task fetchTabDataAndBind()
         {
             try
             {
@@ -1055,12 +1070,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         CRIssueBy = App.IsArabic ? ZATCAConstants.ArIssueBy[SelectedCRItem?.Institute] : ZATCAConstants.EnIssueBy[SelectedCRItem?.Institute];
                         CRValidFrom = SelectedCRItem?.ValidDateFrom;
 
-                        //CRIssueCity = new CityDropdownItem()
-                        //{
-                        //    CityName = SelectedCRItem?.City,
-                        //    CityCode = SelectedCRItem?.CityCode
-                        //};
-
+                      
                         if (SelectedCRItem.Actcat.Equals("M"))
                         {
                             MainActivity = true;
@@ -1103,7 +1113,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
                     if (!string.IsNullOrEmpty(CRNumber))
-                        validateCRNumber();
+                       await validateCRNumber();
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 {
@@ -1170,15 +1180,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsSubGrpmEnable = true;
                     IsActivityEnable = true;
 
-                    
+
                 }
                 else
                 {
                     LicenseData = NregActivityList.Where(i => i.Type == "ZS0004").ToList();
                 }
             }
-            catch (Exception)
-            {}
+            catch (Exception ex)
+            {
+
+            }
             finally
             {
                 IsLoading = false;
@@ -1187,55 +1199,65 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
         private void updateDatePickers(EstablishmentOutletActivitiesTabsEnum _enum)
         {
-            DateTime dob = DateTime.Now;
-            ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
-            if (taxPayerDetails?.Caltp == "Gregorian")
+            try
             {
-                _selectedDOBDate?.Clear();
-                _selectedDOBDate.Add($"{dob.Day:00}");
-                _selectedDOBDate.Add($"{dob.Month:00}");
-                _selectedDOBDate.Add(dob.Year.ToString());
-            }
-            else
-            {
-                _selectedDOBDate?.Clear();
-                var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
-                var arr = hijiriDate.Split('/');
-                _selectedDOBDate.Add(arr[2]);
-                _selectedDOBDate.Add(arr[1]);
-                _selectedDOBDate.Add(arr[0]);
-            }
-            if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-            {
-                DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _crValidFrom);
+
+
+                DateTime dob = DateTime.Now;
+                ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
                 if (taxPayerDetails?.Caltp == "Gregorian")
                 {
-                    SelectedCRValidFromDate = _selectedDOBDate;
-                    if (!string.IsNullOrWhiteSpace(CRValidFrom))
-                        DisplayCRValidFrom = _crValidFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    _selectedDOBDate?.Clear();
+                    _selectedDOBDate.Add($"{dob.Day:00}");
+                    _selectedDOBDate.Add($"{dob.Month:00}");
+                    _selectedDOBDate.Add(dob.Year.ToString());
                 }
                 else
                 {
-                    SelectedCRValidFromHijiriDate = _selectedDOBDate;
-                    if (!string.IsNullOrWhiteSpace(CRValidFrom))
-                        DisplayCRValidFrom = HijriDateString(DateTime.Parse(CRValidFrom));
+                    _selectedDOBDate?.Clear();
+                    var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                    var arr = hijiriDate.Split('/');
+                    _selectedDOBDate.Add(arr[2]);
+                    _selectedDOBDate.Add(arr[1]);
+                    _selectedDOBDate.Add(arr[0]);
                 }
+                if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                {
+                    DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _crValidFrom);
+                    if (taxPayerDetails?.Caltp == "Gregorian")
+                    {
+                        SelectedCRValidFromDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(CRValidFrom))
+                            DisplayCRValidFrom = _crValidFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    }
+                    else
+                    {
+                        SelectedCRValidFromHijiriDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(CRValidFrom))
+                            DisplayCRValidFrom = HijriDateString(DateTime.Parse(CRValidFrom));
+                    }
+                }
+                else if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                {
+                    DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _validFrom);
+                    if (taxPayerDetails?.Caltp == "Gregorian")
+                    {
+                        SelectedValidFromDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(ValidFrom))
+                            DisplayValidFrom = HijriDateString(Convert.ToDateTime(ValidFrom));
+                    }
+                    else
+                    {
+                        SelectedValidFromHijiriDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(ValidFrom))
+                            DisplayValidFrom = Convert.ToDateTime(ValidFrom).ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                    }
+                }
+
             }
-            else if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+            catch (Exception ex)
             {
-                DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _validFrom);
-                if (taxPayerDetails?.Caltp == "Gregorian")
-                {
-                    SelectedValidFromDate = _selectedDOBDate;
-                    if (!string.IsNullOrWhiteSpace(ValidFrom))
-                        DisplayValidFrom = HijriDateString(Convert.ToDateTime(ValidFrom));
-                }
-                else
-                {
-                    SelectedValidFromHijiriDate = _selectedDOBDate;
-                    if (!string.IsNullOrWhiteSpace(ValidFrom))
-                        DisplayValidFrom = Convert.ToDateTime(ValidFrom).ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
-                }
+
             }
         }
 
@@ -1264,7 +1286,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        public async void validateCRNumber()
+        public async Task validateCRNumber()
         {
             IsLoading = true;
 
@@ -1352,6 +1374,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
             updateDatePickers(EstablishmentOutletActivitiesTabsEnum.CRDetails);
         }
+
         private void PrepareError(string result)
         {
             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
@@ -1398,6 +1421,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 });
             }
         }
+
         private void updateCRAttachments()
         {
             List<Attachment> list = new List<Attachment>();
@@ -1443,6 +1467,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             TransferCRsCopies = new ObservableCollection<Attachment>(list);
         }
+
         private void resetForm()
         {
             if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
@@ -1479,6 +1504,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 LicenseAcitivity = null;
             }
         }
+
         private async Task SaveAttachment(Stream attachmentByteData, string fileName, string docType, string contentType)
         {
             try
@@ -1517,7 +1543,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = false;
             }
         }
-        private async void OnDeleteAttachment(Attachment item, string docType)
+
+        private async Task OnDeleteAttachment(Attachment item, string docType)
         {
             string QuestionMark = string.Empty;
             if (App.IsArabic)
@@ -1597,11 +1624,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRValidFrom));
                     return false;
                 }
-                //else if (CRsCopies == null || CRsCopies.Count == 0)
-                //{
-                //    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
-                //    return false;
-                //}
                 else if (CRMainGroup == null)
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
@@ -1654,11 +1676,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateALicenseValidFrom));
                     return false;
                 }
-                //else if (LicensesCopies == null || LicensesCopies.Count == 0)
-                //{
-                //    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachLicense));
-                //    return false;
-                //}
                 else if (LicenseMainGroup == null)
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
@@ -1693,6 +1710,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             CurrentTab = EstablishmentOutletActivitiesTabsEnum.LicenseDetails;
             SelectedLicenseItem = LicenseData;
         }
+
         private bool IsFileAlreadyAttached(string doctype, string FileName)
         {
             bool isFileAlreadyAttached = false;
@@ -1744,6 +1762,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             return isFileAlreadyAttached;
         }
+
         private string HijriDateString(DateTime date)
         {
             try
