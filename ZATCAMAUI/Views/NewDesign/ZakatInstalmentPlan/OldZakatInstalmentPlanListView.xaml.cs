@@ -23,13 +23,11 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
                 viewModel = App.Locator.OldZakatInstalmentPlanListPageView;
                 BindingContext = viewModel;
-
+                viewModel.ReqVatInstalmentPlanResponseList = null;
 
             }
             catch (Exception)
             {
-
-
             }
 
         }

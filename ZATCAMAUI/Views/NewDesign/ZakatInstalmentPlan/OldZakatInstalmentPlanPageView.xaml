@@ -124,7 +124,8 @@
 
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                        <!--  Data Entry/calculations screen  -->
+
+                        <!--#region Data Entry/calculations screen-->
                         <Grid
                             Margin="5,10"
                             BackgroundColor="Transparent"
@@ -223,10 +224,12 @@
                                 Margin="0,10,0,0"
                                 HorizontalOptions="FillAndExpand"
                                 IsEnabled="{Binding IsFinsancialStatementsEditable}"
+                                RowDefinitions="auto"
                                 VerticalOptions="FillAndExpand">
 
                                 <cards:SfCardView
                                     Padding="10"
+                                    BackgroundColor="Transparent"
                                     CornerRadius="20"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand">
@@ -261,6 +264,7 @@
                                             VerticalOptions="EndAndExpand">
                                             <Border
                                                 Padding="10"
+                                                BackgroundColor="White"
                                                 HorizontalOptions="FillAndExpand"
                                                 Style="{StaticResource GreyBorderFrame}">
 
@@ -761,10 +765,12 @@
                                                 Style="{StaticResource GreyBorderFrame}"
                                                 VerticalOptions="FillAndExpand">
 
-                                                <Label
+                                                <custom:GAZTBorderlessEntry
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Text="{Binding ProfitRatioY1, Converter={StaticResource commaSeparatorConverter}}"
                                                     TextColor="{StaticResource PrimaryColor}"
                                                     VerticalOptions="Center" />
@@ -795,10 +801,12 @@
                                                 HorizontalOptions="FillAndExpand"
                                                 Style="{StaticResource GreyBorderFrame}">
 
-                                                <Label
+                                                <custom:GAZTBorderlessEntry
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Text="{Binding CashRatioY1, Converter={StaticResource commaSeparatorConverter}}"
                                                     TextColor="{StaticResource PrimaryColor}"
                                                     VerticalOptions="FillAndExpand" />
@@ -818,6 +826,7 @@
                                 VerticalOptions="FillAndExpand">
                                 <cards:SfCardView
                                     Padding="10"
+                                    BackgroundColor="Transparent"
                                     CornerRadius="20"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand">
@@ -1337,10 +1346,12 @@
                                                 HorizontalOptions="FillAndExpand"
                                                 Style="{StaticResource GreyBorderFrame}">
 
-                                                <Label
+                                                <custom:GAZTBorderlessEntry
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Text="{Binding ProfitRatioY2, Converter={StaticResource commaSeparatorConverter}}"
                                                     TextColor="{StaticResource PrimaryColor}"
                                                     VerticalOptions="Center" />
@@ -1370,10 +1381,12 @@
                                                 HorizontalOptions="FillAndExpand"
                                                 Style="{StaticResource GreyBorderFrame}">
 
-                                                <Label
+                                                <custom:GAZTBorderlessEntry
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Text="{Binding CashRatioY2, Converter={StaticResource commaSeparatorConverter}}"
                                                     TextColor="{StaticResource PrimaryColor}"
                                                     VerticalOptions="Center" />
@@ -1391,6 +1404,7 @@
                                 VerticalOptions="FillAndExpand">
                                 <cards:SfCardView
                                     Padding="10"
+                                    BackgroundColor="Transparent"
                                     CornerRadius="20"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand">
@@ -1910,10 +1924,12 @@
                                                 HorizontalOptions="FillAndExpand"
                                                 Style="{StaticResource GreyBorderFrame}">
 
-                                                <Label
+                                                <custom:GAZTBorderlessEntry
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Text="{Binding ProfitRatioY3, Converter={StaticResource commaSeparatorConverter}}"
                                                     TextColor="{StaticResource PrimaryColor}"
                                                     VerticalOptions="Center" />
@@ -1943,10 +1959,12 @@
                                                 HorizontalOptions="FillAndExpand"
                                                 Style="{StaticResource GreyBorderFrame}">
 
-                                                <Label
+                                                <custom:GAZTBorderlessEntry
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
                                                     Text="{Binding CashRatioY3, Converter={StaticResource commaSeparatorConverter}}"
                                                     TextColor="{StaticResource PrimaryColor}"
                                                     VerticalOptions="Center" />
@@ -1966,6 +1984,7 @@
                                 Text="{x:Static ResourceManager:AppResources.CRContinue}" />
 
                         </Grid>
+                        <!--#endregion-->
 
                         <Grid
                             HorizontalOptions="FillAndExpand"
@@ -2031,7 +2050,8 @@
                                 VerticalOptions="End" />
                         </Grid>
 
-                        <!--  Code for Zakat & VAT Agreeemtns  -->
+
+                        <!--#region Code for Zakat & VAT Agreeemtns-->
                         <Grid
                             ColumnDefinitions="50*,50*"
                             HorizontalOptions="FillAndExpand"
@@ -2055,7 +2075,8 @@
                             <Grid
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                Grid.ColumnSpan="2">
+                                Grid.ColumnSpan="2"
+                                RowSpacing="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
@@ -2130,7 +2151,7 @@
                                 Grid.ColumnSpan="2"
                                 Margin="0,10,0,0">
 
-                                <cards:SfCardView CornerRadius="20">
+                                <cards:SfCardView BackgroundColor="Transparent" CornerRadius="20">
                                     <StackLayout Padding="10">
 
                                         <Label
@@ -2148,19 +2169,17 @@
                                             BackgroundColor="Transparent"
                                             IsVisible="{Binding InstalmentSliderVisible}"
                                             StrokeShape="RoundRectangle 10,10,10,10">
-                                            <StackLayout>
-                                                <Slider
-                                                    x:Name="installmentsSlider"
-                                                    Margin="5,5,5,10"
-                                                    Maximum="{Binding MaxInstalments}"
-                                                    MaximumTrackColor="LightSlateGray"
-                                                    Minimum="{Binding MinInstalments}"
-                                                    MinimumTrackColor="{StaticResource Primary}"
-                                                    ThumbColor="{StaticResource Primary}"
-                                                    ValueChanged="Installment_ValueChanged"
-                                                    Value="{Binding NumberOFInstalmentSliderValue}" />
+                                            <Slider
+                                                x:Name="installmentsSlider"
+                                                Margin="5,5,5,10"
+                                                Maximum="{Binding MaxInstalments}"
+                                                MaximumTrackColor="LightSlateGray"
+                                                Minimum="{Binding MinInstalments}"
+                                                MinimumTrackColor="{StaticResource Primary}"
+                                                ThumbColor="{StaticResource Primary}"
+                                                ValueChanged="Installment_ValueChanged"
+                                                Value="{Binding NumberOFInstalmentSliderValue}" />
 
-                                            </StackLayout>
                                         </Border>
                                         <StackLayout
                                             Padding="10"
@@ -2241,8 +2260,9 @@
                             </Grid>
 
                         </Grid>
+                        <!--#endregion-->
 
-                        <!--  Code for Zakat & VAT Attachments  -->
+                        <!--#region  Code for Zakat & VAT Attachments-->
                         <Grid
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsAttachmentsViewEnabled}"
@@ -2560,8 +2580,10 @@
                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}" />
 
                         </Grid>
+                        <!--#endregion-->
 
-                        <!--  Code for VAT Bill selection  -->
+
+                        <!--#region  Code for VAT Bill selection-->
                         <Grid
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsVATBillsViewEnabled}"
@@ -2584,7 +2606,10 @@
                                     <DataTemplate>
                                         <ViewCell>
                                             <ViewCell.View>
-                                                <Grid HorizontalOptions="FillAndExpand" RowDefinitions="auto,auto,auto,auto,auto">
+                                                <Grid
+                                                    HorizontalOptions="FillAndExpand"
+                                                    RowDefinitions="auto,auto,auto,auto,auto"
+                                                    RowSpacing="10">
 
                                                     <Grid
                                                         Grid.Row="0"
@@ -2704,7 +2729,7 @@
 
                                             <Grid
                                                 HorizontalOptions="FillAndExpand"
-                                                RowDefinitions="*"
+                                                RowDefinitions="auto"
                                                 VerticalOptions="FillAndExpand">
 
                                                 <Grid
@@ -2712,7 +2737,7 @@
                                                     ColumnDefinitions="50*,50*"
                                                     HorizontalOptions="FillAndExpand"
                                                     RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto"
-                                                    RowSpacing="0"
+                                                    RowSpacing="10"
                                                     VerticalOptions="FillAndExpand">
 
                                                     <Label
@@ -2821,7 +2846,10 @@
                                 <listView:SfListView.SelectedItemTemplate>
                                     <DataTemplate>
                                         <cards:SfCardView BackgroundColor="Transparent" CornerRadius="10">
-                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Grid
+                                                HorizontalOptions="FillAndExpand"
+                                                RowDefinitions="auto"
+                                                VerticalOptions="FillAndExpand">
                                                 <Image
                                                     Aspect="AspectFill"
                                                     HorizontalOptions="FillAndExpand"
@@ -2830,6 +2858,7 @@
                                                 <Grid
                                                     Padding="10"
                                                     HorizontalOptions="FillAndExpand"
+                                                    RowSpacing="10"
                                                     VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
@@ -2950,8 +2979,9 @@
                                 </listView:SfListView.SelectedItemTemplate>
                             </listView:SfListView>
                         </Grid>
+                        <!--#endregion-->
 
-                        <!--  Code for Zakat Statements  -->
+                        <!--#region Code for Zakat Statements-->
                         <Grid
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsDisplayInstalmentsVisible}"
@@ -3180,8 +3210,9 @@
                             </listView:SfListView>
 
                         </Grid>
+                        <!--#endregion-->
 
-                        <!--  Summary View  -->
+                        <!--#region Summary View-->
                         <Grid
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsSummaryViewEnabled}"
@@ -3705,6 +3736,7 @@
                                     Text="{x:Static ResourceManager:AppResources.Submit}" />
                             </Grid>
                         </Grid>
+                        <!--#endregion-->
 
 
                     </Grid>
