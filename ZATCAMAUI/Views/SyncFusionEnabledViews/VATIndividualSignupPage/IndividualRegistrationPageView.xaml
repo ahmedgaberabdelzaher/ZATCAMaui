@@ -155,7 +155,14 @@
                                 </StackLayout>
 
                                 <StackLayout x:Name="IDNumber" Grid.Row="1">
-                                    
+                                     <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Style="{StaticResource CardLabelBlack}" Text="{x:Static ResourceManager:AppResources.IDNumber}" />
+                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                     <Border
                                         Stroke="{StaticResource Gray}"
                                         StrokeShape="RoundRectangle 10,10,10,10"

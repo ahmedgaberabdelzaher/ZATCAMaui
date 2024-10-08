@@ -5808,13 +5808,16 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
-                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
-                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
 
@@ -7719,23 +7722,22 @@ namespace ZATCAMAUI.Core.Mangers
                         guid = App.GUIDFrSSO;
 
                     }
-                    // String url = ZATCAConstants.GetLoginDetaialsSSO + guid + "'&$format=json&sap-language=" + LangZAREN;
                     String url = ZATCAConstants.GAZTGetVATSignUpCaseIdURL + "&GUID=" + guid;
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
-                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
-                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
-
-                    // HttpResponseMessage res = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var uri = new Uri(url);
                     HttpResponseMessage res = await client.GetAsync(uri);
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
-                    //  _zakatReturnDetailsDesponsestr = JObject.Parse(_zakatReturnDetailsDesponsestr)["data"].ToString();
                     LoginSSOModelClassERAD SSOModel = JsonConvert.DeserializeObject<LoginSSOModelClassERAD>(_zakatReturnDetailsDesponsestr);
 
                     if (res.IsSuccessStatusCode)
@@ -7831,9 +7833,7 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClient client = new HttpClient();
                     string lang = WebServiceManager.GetLangZParameterAREN();
                     string url = ZATCAConstants.ChangePassword;
-                    // var uri = new Uri(url);
-
-                    //  HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", "EN");
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -7844,14 +7844,7 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpResponseMessage res = await client.PostAsync(url, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     var dataresponse = JsonConvert.DeserializeObject<PasswordChangeResponse>(detailJson);
-                    //var serilized = JsonConvert.SerializeObject(otpRequest);
-                    //        Console.WriteLine("RequestOTP" + serilized);
-                    //        // var serilized = "{\r\n  \"TIN\": \"3311688087\",\r\n  \"email\": \"JABUYASIN-C@ZATCA.GOV.SA\",\r\n  \"birthDate\": \"1436-10-09T22:50:00\",\r\n  \"language\": \"EN\",\r\n  \"captchaCode\": \"6jldgr\",\r\n  \"GUID\": \"005056B1365C1EEDB6898A55D5A2433F\"\r\n}";
-                    //        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-                    //        HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    //        var detailJson = res.Content.ReadAsStringAsync().Result;
-                    //        var OTPREsponses = JsonConvert.DeserializeObject<OTPResponse>(detailJson);
-
+                
                     if (!string.IsNullOrEmpty(detailJson) && dataresponse.result == null)
                     {
                         ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
@@ -7896,9 +7889,7 @@ namespace ZATCAMAUI.Core.Mangers
                     string lang = WebServiceManager.GetLangZParameterAREN();
 
                     string url = ZATCAConstants.ValidateOTP;
-                    // var uri = new Uri(url);
 
-                    //  HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", "EN");
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -7909,13 +7900,6 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpResponseMessage res = await client.PostAsync(url, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     var dataresponse = JsonConvert.DeserializeObject<ValidateOTPREsponse>(detailJson);
-                    //var serilized = JsonConvert.SerializeObject(otpRequest);
-                    //        Console.WriteLine("RequestOTP" + serilized);
-                    //        // var serilized = "{\r\n  \"TIN\": \"3311688087\",\r\n  \"email\": \"JABUYASIN-C@ZATCA.GOV.SA\",\r\n  \"birthDate\": \"1436-10-09T22:50:00\",\r\n  \"language\": \"EN\",\r\n  \"captchaCode\": \"6jldgr\",\r\n  \"GUID\": \"005056B1365C1EEDB6898A55D5A2433F\"\r\n}";
-                    //        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-                    //        HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    //        var detailJson = res.Content.ReadAsStringAsync().Result;
-                    //        var OTPREsponses = JsonConvert.DeserializeObject<OTPResponse>(detailJson);
 
                     if (!string.IsNullOrEmpty(detailJson) && dataresponse.result == null)
                     {
@@ -7969,9 +7953,6 @@ namespace ZATCAMAUI.Core.Mangers
                 String url = ZATCAConstants.GetMyBills + App.TP.TIN;
                 HttpResponseMessage UpdatePWDResponse = await client.GetAsync(url);
 
-
-
-                //  HttpResponseMessage UpdatePWDResponse = await client.GetAsync(url);
                 if (UpdatePWDResponse != null)
                 {
                     if (UpdatePWDResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -8090,7 +8071,6 @@ namespace ZATCAMAUI.Core.Mangers
                     absherTaxPayerRequest.taxpayerBirthDate = DBO;
                     var lang = UtilityManager.GetLanguageParameter();
                     String url = ZATCAConstants.GAZTSiguupValidateIDTypesDecl;
-                    //+ "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
 
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -8103,14 +8083,6 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpResponseMessage SignupIsIDTypeValidList = await client.PostAsync(url, contentPost);
                     var detailJson = SignupIsIDTypeValidList.Content.ReadAsStringAsync().Result;
 
-                    //HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
-                    //crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-
-
-                    //HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                    //tring url = ZATCAConstants.GAZTSiguupValidateIDTypesDecl + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
-                    //var uri = new Uri(url);
-                    //HttpResponseMessage SignupIsIDTypeValidList = await client.GetAsync(uri);
                     if (SignupIsIDTypeValidList != null)
                     {
                         if (SignupIsIDTypeValidList.StatusCode == HttpStatusCode.Unauthorized)
@@ -8175,13 +8147,8 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     string LangZAREN = WebServiceManager.GetLangZParameterAREN();
-                    //String url = ZATCAConstants.GetTpManagersList + "Gpart eq '" + App.TP.Tin + "'&$format=json";
                     String url = ZATCAConstants.GetTpManagersList + "?TIN=" + App.TP.Tin;
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -8196,7 +8163,6 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
-                    //response = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var uri = new Uri(url);
                     response = await client.GetAsync(uri);
                     result = response.Content.ReadAsStringAsync().Result.ToString();
@@ -8230,10 +8196,6 @@ namespace ZATCAMAUI.Core.Mangers
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var serilized = JsonConvert.SerializeObject(modelDetails);
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -8271,14 +8233,9 @@ namespace ZATCAMAUI.Core.Mangers
             NafathLoginResponseModel response = null;
             if (NetworkCheck.IsInternet())
             {
-                //string lang = WebServiceManager.GetLangZParameterAREN();
                 String url = ZATCAConstants.NafathAuthentication;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
-
-                //client.DefaultRequestHeaders.Add("Token", "123");
-                //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
                 client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                 client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
@@ -8298,14 +8255,9 @@ namespace ZATCAMAUI.Core.Mangers
             NafathLoginResponseModel response = null;
             if (NetworkCheck.IsInternet())
             {
-                //string lang = WebServiceManager.GetLangZParameterAREN();
                 String url = ZATCAConstants.NafathAuthenticationVerification;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
-
-                //client.DefaultRequestHeaders.Add("Token", "123");
-                //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
                 client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                 client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
@@ -8326,15 +8278,9 @@ namespace ZATCAMAUI.Core.Mangers
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    //string lang = WebServiceManager.GetLangZParameterAREN();
                     String url = ZATCAConstants.NafathChangeMobileNumber;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     string LangZ = WebServiceManager.GetLangZParameterAREN();
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
@@ -8348,7 +8294,6 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
                     client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
-                    //client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
                     var serilized = JsonConvert.SerializeObject(model);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
@@ -8369,19 +8314,21 @@ namespace ZATCAMAUI.Core.Mangers
             NafathChangeMobileNumberSendOTPResponse response = null;
             if (NetworkCheck.IsInternet())
             {
-                //string lang = WebServiceManager.GetLangZParameterAREN();
                 String url = ZATCAConstants.NafathChangeMobileNumberSendOTP;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
 
                 var lang = UtilityManager.GetLanguageParameter();
+                string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
                 client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                 client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                 client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
-                client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
-                client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
                 //client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
                 var serilized = JsonConvert.SerializeObject(model);
@@ -8389,6 +8336,19 @@ namespace ZATCAMAUI.Core.Mangers
                 var apiResponse = await client.PostAsync(uri, contentPost);
                 var result = await apiResponse.Content.ReadAsStringAsync();
                 response = JsonConvert.DeserializeObject<NafathChangeMobileNumberSendOTPResponse>(result);
+                if (!string.IsNullOrEmpty(result) && response.d == null)
+                {
+                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
+                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    {
+                        string errorMessage = string.Empty;
+                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        errorMessage = WithReplacedString;
+                        throw new GAZTErrorException(errorMessage);
+                    }
+                }
             }
             return response;
         }
@@ -8398,19 +8358,21 @@ namespace ZATCAMAUI.Core.Mangers
             NafathChangeMobileNumberCheckOTPModelResponse response = null;
             if (NetworkCheck.IsInternet())
             {
-                //string lang = WebServiceManager.GetLangZParameterAREN();
                 String url = ZATCAConstants.NafathChangeMobileNumberCheckOTP;
                 var uri = new Uri(url);
                 var lang = UtilityManager.GetLanguageParameter();
 
                 HttpClient client = new HttpClient(App.httpClientHandler);
+                string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
                 client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                 client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                 client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
-                client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
-                client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
                 //client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
                 var serilized = JsonConvert.SerializeObject(model);
@@ -8498,7 +8460,7 @@ namespace ZATCAMAUI.Core.Mangers
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
                 client.DefaultRequestHeaders.Add("X-Session-Language", LangZ);
                 client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
-                client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung");
+                client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
                 client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
 
                 var serilized = JsonConvert.SerializeObject(model);
@@ -8569,13 +8531,16 @@ namespace ZATCAMAUI.Core.Mangers
                     var serilized = JsonConvert.SerializeObject(modelDetails.d);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
-                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
-                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     response = client.PostAsync(uri, contentPost).Result;
@@ -8623,13 +8588,17 @@ namespace ZATCAMAUI.Core.Mangers
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
-                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
-                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
+              
                     var serilized = JsonConvert.SerializeObject(attachment);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage response = client.PostAsync(uri, contentPost).Result;
@@ -8668,14 +8637,16 @@ namespace ZATCAMAUI.Core.Mangers
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
-                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
-                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
-
 
                     var content = new MultipartFormDataContent();
                     var fileContent = new ByteArrayContent(AttachmentByte);

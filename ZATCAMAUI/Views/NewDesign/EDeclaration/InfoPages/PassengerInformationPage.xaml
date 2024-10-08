@@ -850,7 +850,8 @@
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                   <Image Aspect="AspectFit" Source="calendar.png"
+                                          WidthRequest="25" HeightRequest="25"/>
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                             </custom:CustomSfTextInputView>
@@ -923,7 +924,8 @@
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                   <Image Aspect="AspectFit" Source="calendar.png"
+                                          WidthRequest="25" HeightRequest="25"/>
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                             </custom:CustomSfTextInputView>
@@ -990,7 +992,8 @@
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                    <Image Aspect="AspectFit" Source="calendar.png"
+                                           WidthRequest="25" HeightRequest="25"/>
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                             </custom:CustomSfTextInputView>

@@ -22,13 +22,16 @@ namespace ZATCAMAUI.Core.Manager
                 {
                     HttpClient client = new HttpClient();
                     var lang = UtilityManager.GetLanguageParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
-                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
-                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
 

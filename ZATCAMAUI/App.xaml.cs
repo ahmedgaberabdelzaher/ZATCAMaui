@@ -160,7 +160,7 @@ namespace ZATCAMAUI
         public static string NafathChangeMobileNumberOTPView = "NafathChangeMobileNumberOTPView";
         public static string NafathChangeMobileNumberSuccessView = "NafathChangeMobileNumberSuccessView";
         public static string AccountLockedPageView = "AccountLockedPageView";
-
+        public static string NafathChangeMobleNumberOptionsView = "NafathChangeMobleNumberOptionsView";
         #endregion
 
         #region new design views Release2

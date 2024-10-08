@@ -293,7 +293,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-        private CountryDropdownItem _country = null;
+        private CountryDropdownItem _country;
         public CountryDropdownItem Country
         {
             get => _country;
@@ -312,7 +312,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-        private StateDropdownItem _provinance = null;
+        private StateDropdownItem _provinance;
         public StateDropdownItem Provinance
         {
             get => _provinance;
@@ -331,7 +331,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-        private CityDropdownItem _city = null;
+        private CityDropdownItem _city ;
         public CityDropdownItem City
         {
             get => _city;
@@ -510,7 +510,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-        private CountryDropdownItem _countrySame = null;
+        private CountryDropdownItem _countrySame ;
         public CountryDropdownItem CountrySame
         {
             get => _countrySame;
@@ -525,7 +525,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-        private StateDropdownItem _provinanceSame = null;
+        private StateDropdownItem _provinanceSame ;
         public StateDropdownItem ProvinanceSame
         {
             get => _provinanceSame;
@@ -540,7 +540,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-        private CityDropdownItem _citySame = null;
+        private CityDropdownItem _citySame;
         public CityDropdownItem CitySame
         {
             get => _citySame;
@@ -556,7 +556,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private OutletDropDowns _outletDropDowns = null;
+        private OutletDropDowns _outletDropDowns;
         public OutletDropDowns OutletDropDowns
         {
             get => _outletDropDowns;
@@ -594,9 +594,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public OutletDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnNextButtonClick = new Command(() =>
+            OnNextButtonClick = new Command(async () =>
             {
-                navigateToNext();
+              await  navigateToNext();
             }, () =>
             {
                 return CanExecute;
@@ -606,7 +606,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 selectedOutletItem = null;
                 _navigationService.GoBack();
             });
-            OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
+            OnActivityItemButtonClick = new Command(async(_enum) => await openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
             OnCountrySelectButtonClick = new Command((str) =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet);
@@ -717,10 +717,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Method
-        public void OnAppearing()
-        {
-        }
-        private async void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
+        private async Task openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
         {
             try
             {
@@ -742,9 +739,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             openedTab = _enum,
                             taxPayerDetails = taxPayerDetails,
                             nextNumber = newNumber,
-                            goBackAction = (List<Nreg_ActivityItem> list) =>
+                            goBackAction = async (List<Nreg_ActivityItem> list) =>
                             {
-                                addActivities(list);
+                               await addActivities(list);
                             }
                         }); ;
                     });
@@ -752,7 +749,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else
                 {
-                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                   await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                 }
 
             }
@@ -763,7 +760,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         }
 
-        private async void navigateToNext()
+        private async Task navigateToNext()
         {
             CanExecute = false;
             if (await validateForm())
@@ -780,9 +777,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             nextNumber = newNumber,
                             validateCR = validateCR,
                             validateLicense = PreLoadedLicenseItem,
-                            goBackAction = (List<Nreg_ActivityItem> list) =>
+                            goBackAction = async (List<Nreg_ActivityItem> list) =>
                             {
-                                addActivities(list);
+                               await addActivities(list);
                                 currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
                             }
                         });
@@ -801,7 +798,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     try
                     {
                         IsLoading = true;
-                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+                        DateTime.TryParseExact("2060/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
 
                         taxPayerDetails?.Nreg_AddressSet?.Clear();
                         Nreg_AddressItem defaultAddress = new Nreg_AddressItem();
@@ -874,7 +871,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             CanExecute = true;
         }
-        private async void addActivities(List<Nreg_ActivityItem> list)
+        private async Task addActivities(List<Nreg_ActivityItem> list)
         {
             IsLoading = true;
             try
@@ -895,24 +892,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = false;
             }
         }
-        private void navigateToPre()
-        {
-            if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
-            {
-                currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
-            }
-            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
-            {
-                currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
-            }
-            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
-            {
-                _navigationService.GoBack();
-            }
-        }
-
-
-        private async void fetchTabDataAndBind(EstablishmentRegistrationOutletTabsEnum _enum)
+     
+        private async Task fetchTabDataAndBind(EstablishmentRegistrationOutletTabsEnum _enum)
         {
             try
             {
@@ -1252,7 +1233,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 WebServiceManager.ErrorMessageForUnlockAccount = line1;
 
-                String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                string WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {

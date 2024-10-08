@@ -19,6 +19,7 @@
 
         bool IsJailBreakDetected();
         byte[] GetImagePathByteArray(string filePath);
+        string GetLocalIPAddress();
 
 
         // bool IsJailBreakDetected { get; }

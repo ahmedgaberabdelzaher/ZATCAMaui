@@ -175,36 +175,58 @@ public class NafathAuthenticationViewModel : BaseViewModel
 
     private async Task Login(string TIN, string guid)
     {
-        IsLoading = true;
-        NafathLoginModel model = new NafathLoginModel();
-        model.TIN = TIN;
-        model.GUID = guid;
-        model.latitude = Response.lattitude;
-        model.longitude = Response.longitude;
-        model.ipaddress = Dns.GetHostAddresses(Dns.GetHostName()).FirstOrDefault().ToString();
-        model.osname = DeviceInfo.Platform.ToString();
-        model.sourceType = "ZM";
-        model.browsername = DeviceInfo.Platform.ToString();
-        model.language = WebServiceManager.GetLangZParameterAREN();
-        var response = await WebServiceManager.NafathLogin(model);
-        IsLoading = false;
-        if (response != null && response.result != null && response.result.accessToken != null)
+        try
         {
-            if (App.LoginDataRetrieved == null)
+            IsLoading = true;
+            NafathLoginModel model = new NafathLoginModel();
+            model.TIN = TIN;
+            model.GUID = guid;
+            var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+            if (status != PermissionStatus.Granted)
             {
-                App.LoginDataRetrieved = new LoginModel();
+                status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
             }
-            App.LoginDataRetrieved.TIN = TIN;
-            App.Token = response.result.accessToken;
-            await LoginCompleted();
-            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+            if (status == PermissionStatus.Granted)
+            {
+                var location = await Geolocation.GetLocationAsync();
+                model.latitude = location?.Latitude.ToString();
+                model.longitude = location?.Longitude.ToString();
+            }
+            else
+            {
+                model.latitude = "UNKNOWN";
+                model.longitude = "UNKNOWN";
+            }
+            model.ipaddress = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetLocalIPAddress();
+            model.osname = DeviceInfo.Platform.ToString();
+            model.sourceType = "ZM";
+            model.browsername = DeviceInfo.Platform.ToString();
+            model.language = WebServiceManager.GetLangZParameterAREN();
+            var response = await WebServiceManager.NafathLogin(model);
+            IsLoading = false;
+            if (response != null && response.result != null && response.result.accessToken != null)
+            {
+                if (App.LoginDataRetrieved == null)
+                {
+                    App.LoginDataRetrieved = new LoginModel();
+                }
+                App.LoginDataRetrieved.TIN = TIN;
+                App.Token = response.result.accessToken;
+                await LoginCompleted();
+                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView, false);
+            }
+            else
+            {
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(response.result?.error_description));
+
+            }
         }
-        else
+        catch (Exception)
         {
             IsLoading = false;
-            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(response.result?.error_description));
-
         }
+       
 
     }
 

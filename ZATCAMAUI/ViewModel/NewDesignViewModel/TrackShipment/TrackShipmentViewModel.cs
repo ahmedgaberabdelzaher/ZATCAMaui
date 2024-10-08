@@ -403,10 +403,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                 {
                     try
                     {
-
-                        IsShowBottomSheet = true;
-                        HeaderTitle = AppResources.ImporterYear;
-                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        GetYears();
+                       
 
                     }
                     catch (Exception)
@@ -457,7 +455,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
         private void GetYears()
         {
             UmAlQuraCalendar hijriCalendar = new UmAlQuraCalendar();
-
+            BottomSheetList = new ObservableCollection<BottomSheetModel>();
             for (int i = hijriCalendar.GetYear(DateTime.Today); i >=  1349 ; i--)
             {
                 BottomSheetList.Add(new BottomSheetModel()
@@ -466,6 +464,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                 });
 
             }
+            HeaderTitle = AppResources.ImporterYear;
+            IsShowBottomSheet = true;
+            TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
         }
 
         private void FillDataFromAPI(Tuple<Models.BaseModels.DATAPowerBaseResponse<TrackShipmentModel>, bool, string> result)
@@ -785,7 +786,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
         {
             _commonServices = commonServices;
             _trackShipment = trackShipment;
-            GetYears();
+           
 
         }
     }

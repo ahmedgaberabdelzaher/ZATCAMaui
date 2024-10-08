@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ZATCAMAUI.Core.Exceptions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ZATCAMAUI.Models.EstablishmentRegistration
 {
@@ -79,7 +80,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string language { get; set; }
         public override string ToString()
         {
-            return branchDescription;
+            return branchDescription = string.IsNullOrEmpty(branchDescription) ? "" : branchDescription;
         }
     }
     
@@ -899,7 +900,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
 
         [JsonProperty("superRegion")]
         public string PrqSpregt { get; set; }
-        public override string ToString() => Landx50;
+        public override string ToString() =>  string.IsNullOrEmpty(Landx50) ? "" : Landx50;
     }
     
     public class OutletNumber
@@ -931,23 +932,10 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         [JsonProperty("industryName")]
         public string TextShort { get; set; }
 
-        public override string ToString() => Text;
+        public override string ToString() => string.IsNullOrEmpty(Text) ? "" : Text;
     }
     
-    //public class ActSubgroupSet
-    //{
-    //    public List<ActivityGroupSubGroup> results { get; set; }
-    //}
-    
-    //public class ActivitySet
-    //{
-    //    public List<ActivityGroupSubGroup> results { get; set; }
-    //}
-    
-    //public class ActGroupSet
-    //{
-    //    public List<ActivityGroupSubGroup> results { get; set; }
-    //}
+  
     
     public class ActivitySetsList
     {
@@ -983,7 +971,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         [JsonProperty("industryName")]
         public string TextShort { get; set; }
 
-        public override string ToString() => Text;
+        public override string ToString() => string.IsNullOrEmpty(Text) ? "" : Text;
     }
 
     public class ActivitySet
@@ -999,7 +987,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         [JsonProperty("industryName")]
         public string TextShort { get; set; }
 
-        public override string ToString() => Text;
+        public override string ToString() => string.IsNullOrEmpty(Text) ? "" : Text;
     }
 
     public class ActSubgroupSet
@@ -1015,7 +1003,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         [JsonProperty("industryName")]
         public string TextShort { get; set; }
 
-        public override string ToString() => Text;
+        public override string ToString() => string.IsNullOrEmpty(Text) ? "" : Text;
     }
 
     
@@ -1084,7 +1072,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Region { get; set; }
         [JsonProperty("cityName")]
         public string CityName { get; set; }
-        public override string ToString() => CityName;
+        public override string ToString() => string.IsNullOrEmpty(CityName) ? "" : CityName;
     }
 
     
@@ -1106,7 +1094,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Bland { get; set; }
         [JsonProperty("description")]
         public string Bezei { get; set; } //desc
-        public override string ToString() => Bezei;
+        public override string ToString() =>  string.IsNullOrEmpty(Bezei) ? string.Empty : Bezei;
     }
     
     public class StateDropdownSet
@@ -1131,7 +1119,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Natio50 { get; set; }
         [JsonProperty("superRegion")]
         public string PrqSpregt { get; set; }
-        public override string ToString() => Landx50;
+        public override string ToString() =>   string.IsNullOrEmpty(Landx50) ? "" : Landx50;
     }
     
     public class CountryDropdownSet

@@ -111,14 +111,6 @@ namespace ZATCAMAUI.Core.Helper
                     else
                         client.DefaultRequestHeaders.Add("LanguageCode", "en");
                     client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
-                    /*if (routPortCode!="99")
-                   {
-                       routPortCode = "1" + routPortCode;
-                   }*/
-
-                    /*  client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
-                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
-                    */
                     var response = await client.GetAsync(requestUrl);
                     if (response != null)
                     {
@@ -190,14 +182,6 @@ namespace ZATCAMAUI.Core.Helper
                     else
                         client.DefaultRequestHeaders.Add("LanguageCode", "en");
                     client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
-                    /*if (routPortCode!="99")
-                    {
-                        routPortCode = "1" + routPortCode;
-                    }*/
-
-                    /*  client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
-                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
-                    */
                     var response = await client.GetAsync(requestUrl);
                     if (response != null)
                     {
@@ -206,14 +190,7 @@ namespace ZATCAMAUI.Core.Helper
                         if (response.IsSuccessStatusCode)
                         {
                             var responseJson = await response.Content.ReadAsStringAsync();
-                            // if (requestUrl== "https://payments-eservices.zatca.gov.sa/payment/dummy")
-                            {
-
-                                return Tuple.Create(responseJson, true, "");
-                            }
-
-                            // var JsonObject = JsonConvert.DeserializeObject<string>(responseJson);
-                            // return Tuple.Create(JsonObject, true, "");
+                            return Tuple.Create(responseJson, true, "");
                         }
                         else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                         {
@@ -289,12 +266,6 @@ namespace ZATCAMAUI.Core.Helper
                     HttpClient client = new HttpClient(clientHandler);
                     client.DefaultRequestHeaders.Add("zatca-apikey", "z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
                     client.DefaultRequestHeaders.Add("LanguageCode", App.IsArabic ? "ar" : "en");
-                    //var JsonObject = JsonConvert.SerializeObject(Data);
-                    // client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
-                    /*
-                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
-                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
-                    */
                     if (token != "")
                     {
                         client.DefaultRequestHeaders.Add("Authorization", token);

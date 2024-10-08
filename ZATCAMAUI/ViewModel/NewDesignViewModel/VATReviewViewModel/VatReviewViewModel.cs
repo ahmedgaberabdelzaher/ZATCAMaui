@@ -1536,18 +1536,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-        public string _totalPenalities = "";
-        public string TotalPenalities
-        {
-            get { return _totalPenalities; }
-            set
-            {
-                if (_totalPenalities == value) return;
+        //public string _totalPenalities = "";
+        //public string TotalPenalities
+        //{
+        //    get { return _totalPenalities; }
+        //    set
+        //    {
+        //        if (_totalPenalities == value) return;
 
-                _totalPenalities = value;
-                OnPropertyChanged("TotalPenalities");
-            }
-        }
+        //        _totalPenalities = value;
+        //        OnPropertyChanged("TotalPenalities");
+        //    }
+        //}
 
         public string _taxPaid = "";
         public string TaxPaid
@@ -1622,21 +1622,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-        private bool isTotalPenaltiesVisible = false;
-        public bool IsTotalPenaltiesVisible
-        {
-            get
-            {
-                return isTotalPenaltiesVisible;
-            }
-            set
-            {
-                if (isTotalPenaltiesVisible == value) return;
+        //private bool isTotalPenaltiesVisible = false;
+        //public bool IsTotalPenaltiesVisible
+        //{
+        //    get
+        //    {
+        //        return isTotalPenaltiesVisible;
+        //    }
+        //    set
+        //    {
+        //        if (isTotalPenaltiesVisible == value) return;
 
-                isTotalPenaltiesVisible = value;
-                OnPropertyChanged("IsTotalPenaltiesVisible");
-            }
-        }
+        //        isTotalPenaltiesVisible = value;
+        //        OnPropertyChanged("IsTotalPenaltiesVisible");
+        //    }
+        //}
 
         public DateTime? vRTIDEffectiveDateFrom = null;
         public DateTime? VRTIDEffectiveDateFrom
@@ -2210,6 +2210,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 OnPropertyChanged("FullPaymentCheckBox");
             }
         }
+
         private Dictionary<string, string> IDToNameDictionary = new Dictionary<string, string>
         {
             {"ZS0001",AppResources.VFCNationalID},
@@ -3070,7 +3071,93 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 OnPropertyChanged("OptionTextLabel");
             }
         }
+        private bool shouldShowAR = false;
+        public bool ShouldShowAR
+        {
+            get { return shouldShowAR; }
+            set
+            {
+                if (shouldShowAR == value) return;
 
+                shouldShowAR = value;
+                OnPropertyChanged("ShouldShowAR");
+            }
+        }
+        private bool shouldShowEN = false;
+        public bool ShouldShowEN
+        {
+            get { return shouldShowEN; }
+            set
+            {
+                if (shouldShowEN == value) return;
+
+                shouldShowEN = value;
+                OnPropertyChanged("ShouldShowEN");
+            }
+        }
+        private bool _isDeclarationViewEnabled;
+        public bool IsDeclarationViewEnabled
+        {
+            get
+            {
+                return _isDeclarationViewEnabled;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabled == value) return;
+
+                _isDeclarationViewEnabled = value;
+                OnPropertyChanged("IsDeclarationViewEnabled");
+            }
+        }
+
+        private bool _isDeclarationViewEnabledNew;
+        public bool IsDeclarationViewEnabledNew
+        {
+            get
+            {
+                return _isDeclarationViewEnabledNew;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabledNew == value) return;
+
+                _isDeclarationViewEnabledNew = value;
+                OnPropertyChanged("IsDeclarationViewEnabledNew");
+            }
+        }
+
+        public VATDeregDeclaration _vatDeregDeclaration;
+        public VATDeregDeclaration VatDeregDeclaration
+        {
+            get
+            {
+                return _vatDeregDeclaration;
+            }
+            set
+            {
+                if (_vatDeregDeclaration == value) return;
+
+                _vatDeregDeclaration = value;
+                OnPropertyChanged("VatDeregDeclaration");
+            }
+        }
+
+        public string _zterms;
+        public string Zterms
+        {
+            get
+            {
+                return _zterms;
+            }
+            set
+            {
+                if (_zterms == value) return;
+
+                _zterms = value;
+                OnPropertyChanged("Zterms");
+            }
+        }
         private Dictionary<string, string> IDTypeDictionary = null;
         private Dictionary<string, string> VGSupplicesDictionary = null;
         private Dictionary<string, string> VGPurchasesDictionary = null;
@@ -3828,16 +3915,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         {
             try
             {
-                if (IsDeclarationEnabled)
+                if (IsDeclarationViewEnabledNew)
                 {
-                    EnableSummaryView();
+                    IsDeclarationEnabled = true;
+                    if (!string.IsNullOrEmpty(Zterms) && !IsDECCheckBox)
+                    {
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        return;
+                    }
+                }
+                else
+                {
+                    if (!IsDeclarationEnabled)
+                    {
+                        return;
+                    }
                 }
 
+                EnableSummaryView();
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
 
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
@@ -4041,6 +4144,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             SecurityPaymentVisible = false;
             LateFilingObjectionsVisible = false;
             DeclarationVisible = true;
+            if (VatDeregDeclaration != null && VatDeregDeclaration.D != null && string.IsNullOrEmpty(VatDeregDeclaration.D.Zterms))
+            {
+                IsDeclarationViewEnabled = true;
+                IsDeclarationViewEnabledNew = false;
+            }
+            else
+            {
+                Zterms = VatDeregDeclaration.D.Zterms;
+                IsDeclarationViewEnabled = false;
+                IsDeclarationViewEnabledNew = true;
+                if (App.IsArabic)
+                {
+                    ShouldShowAR = true;
+                    ShouldShowEN = false;
+                }
+                else
+                {
+                    ShouldShowEN = true;
+                    ShouldShowAR = false;
+                }
+
+            }
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.Declaration;
 
@@ -4713,14 +4838,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     if (selectedApplicationRef.Fbtyp == "VTPC" || selectedApplicationRef.Fbtyp == "VTPN")
                     {
                         var rejectedForm = _VATObjectionRejected.d.RejectedFormSet.Where(x => x.Opbel == appRefNum || x.Fbnum == appRefNum).FirstOrDefault();
-                        if (rejectedForm != null)
-                        {
-                            TaxPaid = UtilityManager.GetCommaSeparatedAmount(rejectedForm.PenPaidAmt.ToString());
-                        }
+                        //if (rejectedForm != null)
+                        //{
+                        //    TaxPaid = UtilityManager.GetCommaSeparatedAmount(rejectedForm.PenPaidAmt.ToString());
+                        //}
+                        TaxPaid = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Penamount.ToString());
                     }
                     else
                     {
-                        TaxPaid = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Clramt.ToString());
+                        TaxPaid = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Penamount.ToString());
                     }
                 }
                 catch (Exception )
@@ -4736,10 +4862,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     .ToString();
                     var secAmount = _VATObjectionRejected.d.RejectedFormSet.Where(x => x.Opbel == appRefNum || x.Fbnum == appRefNum).FirstOrDefault();// x => x.Opbel == appRefNum
 
-                    if (secAmount != null)
-                    {
-                        SecurityAmount = secAmount.Secamt;
-                    }
+                    //if (secAmount != null)
+                    //{
+                    //    SecurityAmount = secAmount.Secamt;
+                    //}
 
                 }
                 catch (Exception )
@@ -4804,18 +4930,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     {
 
 
-                        await _dialogService.ShowMessage(AppResources.VATWarningAssessment, AppResources.CRWarning, AppResources.OKText, () =>
-                        {
-                            //CR6490 new enhancements
-                            TotalPenalities = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Penamount.ToString());
-                            if (selectedApplicationRef?.Bgmsgflg == "X")
-                            {
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await _dialogService.ShowMessage(selectedApplicationRef?.Bgmsgtxt, AppResources.CRWarning);
-                                });
-                            }
-                        });
+                        await _dialogService.ShowMessage(AppResources.VATWarningAssessment, AppResources.CRWarning);
+                        //AppResources.OKText, () =>
+                        //{
+                        //    //CR6490 new enhancements
+                        //    TotalPenalities = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Penamount.ToString());
+                        //    if (selectedApplicationRef?.Bgmsgflg == "X")
+                        //    {
+                        //        MainThread.BeginInvokeOnMainThread(async () =>
+                        //        {
+                        //            await _dialogService.ShowMessage(selectedApplicationRef?.Bgmsgtxt, AppResources.CRWarning);
+                        //        });
+                        //    }
+                        //}
                         EnableReviewReasonConButton();
                     });
                 }
@@ -5327,13 +5454,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public void EnableDeclarationConButton()
         {
-            if (ContactPersonName == "" || !IsIDVerified || !IsDECCheckBox)
+            if (IsDeclarationViewEnabledNew)
             {
-                IsDeclarationEnabled = false;
+                IsDeclarationEnabled = true;
             }
             else
             {
-                IsDeclarationEnabled = true;
+                if (ContactPersonName == "" || !IsIDVerified || !IsDECCheckBox)
+                {
+                    IsDeclarationEnabled = false;
+                }
+                else
+                {
+                    IsDeclarationEnabled = true;
+                }
             }
         }
         public async void ShowInstructionsDialog()
@@ -5682,6 +5816,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         }
 
 
+                        VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(modelVATReview.d.Fbnumx);
 
                         if (modelVATReview != null && modelVATReview.d != null)
                         {
@@ -5737,7 +5872,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                             setReviewReasonPickerModel();
 
                             //CR6490 
-                            IsTotalPenaltiesVisible = (modelVATReview.d.Cr6490Fg == "X") ? true : false;
+                            //IsTotalPenaltiesVisible = (modelVATReview.d.Cr6490Fg == "X") ? true : false;
 
                         }
 

@@ -6,7 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" xmlns:buttons="http://schemas.syncfusion.com/maui"
     x:Name="page"
     Title="NafathAuthenticationView"
     ios:Page.UseSafeArea="true"
@@ -96,14 +96,12 @@
                         Text="{x:Static ResourceManager:AppResources.ApproveInNafathApp}"
                         VerticalOptions="CenterAndExpand" />
                     
-                    <Button
-                        Margin="24,24"
-                        BackgroundColor="#0996d4"
-                        BorderWidth="1.5"
+                    <buttons:SfButton
+                        StrokeThickness="1.5"
                         Command="{Binding CancelCommand}"
                         CornerRadius="15"
                         Text="{x:Static ResourceManager:AppResources.CancelText}"
-                        TextColor="White" />
+                        Style="{StaticResource PrimaryButtonStyle}"/>
                 </StackLayout>
 
             </Border>

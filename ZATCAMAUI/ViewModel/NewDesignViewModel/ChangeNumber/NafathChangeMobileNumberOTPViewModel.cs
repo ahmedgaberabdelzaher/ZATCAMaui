@@ -243,24 +243,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
 
         private async Task VerifyOTP()
         {
-            if (!Validate())
+            try
             {
-                NafathChangeMobileNumberCheckOTPModel model = new NafathChangeMobileNumberCheckOTPModel();
-                model.Guid = Request.d.Guid;
-                model.Scrid = Device.RuntimePlatform == Device.iOS ? "C3" : "C4";
-                model.ErrorMsg = string.Empty;
-                model.Lang = WebServiceManager.GetLangZParameterAREN();
-                model.Otp = FirstDigit + SecondDigit + ThirdDigit + FourthDigit + FifthDigit + SixthDigit;
-                var response = await WebServiceManager.NafathChangeMobileNumberCheckOTP(model);
-                if (response != null && response.d != null)
+                if (!Validate())
                 {
-                    _navigationService.NavigateTo(App.NafathChangeMobileNumberSuccessView);
-                }
-                else 
-                {
-                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                    NafathChangeMobileNumberCheckOTPModel model = new NafathChangeMobileNumberCheckOTPModel();
+                    model.Guid = Request.d.Guid;
+                    model.Scrid = Device.RuntimePlatform == Device.iOS ? "C3" : "C4";
+                    model.ErrorMsg = string.Empty;
+                    model.Lang = WebServiceManager.GetLangZParameterAREN();
+                    model.Otp = FirstDigit + SecondDigit + ThirdDigit + FourthDigit + FifthDigit + SixthDigit;
+                    var response = await WebServiceManager.NafathChangeMobileNumberCheckOTP(model);
+                    if (response != null && response.d != null)
+                    {
+                        _navigationService.NavigateTo(App.NafathChangeMobileNumberSuccessView);
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+            }
+
         }
 
         private bool Validate()
