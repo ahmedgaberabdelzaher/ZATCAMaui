@@ -15,7 +15,9 @@ namespace ZATCAMAUI.Views.NewDesign.Survey
         void WebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
             viewModel.IsLoading = true;
-            if (e.Url.Contains("https://zatca.gov.sa/") || e.Url.Contains("http://gazt.gov.sa/"))
+            if (e.Url.Contains("https://zatca.gov.sa/")
+                || e.Url.Contains("http://gazt.gov.sa/")
+                || e.Url.Contains("http://zatca.gov.sa/"))
             {
                 Navigation.PopAsync();
             }
