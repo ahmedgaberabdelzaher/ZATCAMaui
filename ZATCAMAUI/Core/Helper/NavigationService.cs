@@ -17,17 +17,17 @@ namespace ZATCAMAUI.Core.Helper
         {
             _navigation.PopAsync();
         }
-        public void NavigateTo(string pageKey)
+        public async Task NavigateTo(string pageKey)
         {
-            NavigateTo(pageKey, null);
+           await NavigateTo(pageKey, null);
         }
-        public void NavigateTo(string pageKey, object parameter)
+        public async Task NavigateTo(string pageKey, object parameter)
         {
             try
             {
                 bool isPageBack = pageKey.Contains("/");
                 pageKey = pageKey.Replace("/", "");
-                lock (_pagesByKey)
+               // lock (_pagesByKey)
                 {
                     if (_pagesByKey.ContainsKey(pageKey))
                     {
@@ -65,9 +65,7 @@ namespace ZATCAMAUI.Core.Helper
                                 "No suitable constructor found for page " + pageKey);
                         }
                         var page = constructor.Invoke(parameters) as Page;
-                        _navigation.PushAsync(page);
-
-
+                        await _navigation.PushAsync(page);
                         if (isPageBack)
                         {
                             var existingPages = _navigation.Navigation.NavigationStack.ToList();
@@ -76,10 +74,13 @@ namespace ZATCAMAUI.Core.Helper
                                 if (cupage != page)
                                 {
 
-                                    _navigation.Navigation.RemovePage(cupage);
+                                  //  RemovePageFromStackAsync(cupage);
+                                   _navigation.Navigation.RemovePage(cupage);
                                 }
+                               
                             }
                         }
+
                     }
                     else
                     {
@@ -91,14 +92,32 @@ namespace ZATCAMAUI.Core.Helper
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception exp)
             {
 
             }
 
         }
 
+        public async Task RemovePageFromStackAsync(Page pageToRemove)
+        {
+            var navStack = _navigation.Navigation.NavigationStack.ToList(); // Get a copy of the navigation stack
 
+            // Check if the page is in the stack
+            if (navStack.Contains(pageToRemove))
+            {
+                navStack.Remove(pageToRemove); // Remove the page
+
+                // Clear the existing stack
+                await _navigation.Navigation.PopToRootAsync(); // Navigate back to the root
+
+                // Re-push the remaining pages back onto the stack
+                foreach (var page in navStack)
+                {
+                    await _navigation.Navigation.PushAsync(page);
+                }
+            }
+        }
         public void NavigateToWithBack(string pageKey, object parameter)
         {
             lock (_pagesByKey)
