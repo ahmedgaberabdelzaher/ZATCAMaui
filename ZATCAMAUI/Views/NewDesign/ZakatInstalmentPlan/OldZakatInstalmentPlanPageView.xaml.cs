@@ -143,7 +143,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
             }
         }
-        private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void SearchItem_PropertyChanged(object sender, TextChangedEventArgs e)
         {
 
             try
@@ -279,10 +279,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             MessagingCenter.Unsubscribe<object, string>(this, "SelectedFrequencyType");
             MessagingCenter.Unsubscribe<object, string>(this, "SelectedReason");
             MessagingCenter.Unsubscribe<object, AttachmentsList>(this, "PickerSelectedItem");
-
-
-
-
         }
         protected override void OnAppearing()
         {

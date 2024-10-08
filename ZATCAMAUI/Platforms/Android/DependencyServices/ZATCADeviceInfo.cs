@@ -4,6 +4,8 @@ using Environment = Android.OS.Environment;
 using Application = Android.App.Application;
 using B = Android.OS.Build;
 using ZATCAMAUI.Platforms.Android.DependencyServices;
+using Android.Content;
+using Android.Net.Wifi;
 
 [assembly: Dependency(typeof(ZATCADeviceInfo))]
 namespace ZATCAMAUI.Platforms.Android.DependencyServices
@@ -147,6 +149,13 @@ namespace ZATCAMAUI.Platforms.Android.DependencyServices
 
             }
             return base64Image;
+        }
+        public string GetLocalIPAddress()
+        {
+            var context = Platform.CurrentActivity.ApplicationContext;
+            var wifiManager = (WifiManager)context.GetSystemService(Context.WifiService);
+            var ipAddress = wifiManager.ConnectionInfo.IpAddress;
+            return string.Join(".", Enumerable.Range(0, 4).Select(i => (ipAddress >> (i * 8)) & 0xFF));
         }
     }
 }

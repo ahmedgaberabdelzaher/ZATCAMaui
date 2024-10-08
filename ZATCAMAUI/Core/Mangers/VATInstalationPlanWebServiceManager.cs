@@ -526,9 +526,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             WebServiceManager.ErrorMessage = string.Empty;
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            if (errorMesg?.header?.moreInformation?.errorDetails[0]?.message != null)
                             {
-                                WebServiceManager.ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                WebServiceManager.ErrorMessage = errorMesg?.header?.moreInformation?.errorDetails[0]?.message;
                                 throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessage);
 
                             }

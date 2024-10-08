@@ -23,20 +23,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
 
         public VATDeregistrationDetailsPage()
         {
-            InitializeComponent();
-            viewModel = App.Locator.VATDeregistrationDetailsPage;
-            this.BindingContext = viewModel;
-
-
-            Task.Run(async () =>
+            try
             {
-                viewModel.IsLoading = true;
-                await GetVatDeRegistrationData();
-            });
+                InitializeComponent();
+                viewModel = App.Locator.VATDeregistrationDetailsPage;
+                this.BindingContext = viewModel;
 
-            viewModel.VoidIsVisible = false;
-            ContactName.IsEnabled = true;
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel.IsLoading = true;
+                    await GetVatDeRegistrationData();
+                    viewModel.VoidIsVisible = false;
+                    ContactName.IsEnabled = true;
+                });
+                
 
+                
+            }
+            catch(Exception ex)
+            {
+                
+            }
         }
 
 
@@ -188,14 +195,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    await viewModel.onPageLoad();
-                });
+                viewModel.IsLoading = true;
+                await viewModel.onPageLoad();
+                //await Task.Run(() =>
+                //{
+                //    viewModel.IsLoading = true;
+                //});
+                //await Task.Run(async () =>
+                //{
+
+                //});
                 //await Task.Run(() =>
                 //{
                 //    viewModel.IsLoading = false;
@@ -253,13 +262,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
 
         public async void ValidateIDNumberContact()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-            });
+            viewModel.IsLoading = true;
             string dob = viewModel.DOB.Replace("/", "-");
 
             if (viewModel.IDType == AppResources.NationaID)
@@ -368,10 +371,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                                 //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
+                                viewModel.IsLoading = false;
                             });
                         }
                         catch (HttpRequestException)
@@ -507,10 +507,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                                 //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
+                                viewModel.IsLoading = false;
                             });
                         }
                         catch (HttpRequestException)
@@ -547,13 +544,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             {
                 ContactName.IsEnabled = true;
             }
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            });
+            viewModel.IsLoading = false;
         }
 
         public static double quarterDiff(DateTime first, DateTime second)
@@ -674,57 +665,43 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
         {
             try
             {
-                await Task.Run(() =>
+                viewModel.IsLoading = true;
+                if (result)
                 {
-                    viewModel.IsLoading = true;
-                });
-                await Task.Run(() =>
-                {
-                    if (result)
+                    // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                    string results = VATDeregistrationWebServiceManager.GAZTDeleteVATDeRegistrationAttachment(attachment.Filename, attachment.Doguid, viewModel.DocTypeString);
+                    if (results == "X")
                     {
-                        // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-                        string results = VATDeregistrationWebServiceManager.GAZTDeleteVATDeRegistrationAttachment(attachment.Filename, attachment.Doguid, viewModel.DocTypeString);
-                        if (results == "X")
-                        {
 
 
-                            Attachment listitem = (from itm in viewModel.VatAttachmentsList
-                                                   where itm.Doguid == attachment.Doguid.ToString()
-                                                   select itm)
-                                              .FirstOrDefault<Attachment>();
+                        Attachment listitem = (from itm in viewModel.VatAttachmentsList
+                                               where itm.Doguid == attachment.Doguid.ToString()
+                                               select itm)
+                                          .FirstOrDefault<Attachment>();
 
-                            if (listitem != null)
-                                viewModel.VatAttachmentsList.Remove(listitem);
-
-
-                            viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.Remove(listitem);
+                        if (listitem != null)
+                            viewModel.VatAttachmentsList.Remove(listitem);
 
 
-                            //if (indexToReduceTheSize != -1)
-                            // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
-                            viewModel.AttachmentCount--;
-                            viewModel.filterList();
-                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
-                        }
+                        viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.Remove(listitem);
+
+
+                        //if (indexToReduceTheSize != -1)
+                        // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                        viewModel.AttachmentCount--;
                         viewModel.filterList();
                         viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                     }
-                });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                    viewModel.filterList();
+                    viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
+                }
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
-
-
                 viewModel.IsLoading = false;
             }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
+            viewModel.IsLoading = false;
         }
 
         void attachmentsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
@@ -1197,10 +1174,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                                 //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
+                                viewModel.IsLoading = false;
                             });
                         }
                         catch (HttpRequestException)
@@ -1333,10 +1307,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                                 //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
+                                viewModel.IsLoading = false;
                             });
                         }
                         catch (HttpRequestException)
@@ -1368,13 +1339,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                     }
                 }
             }
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            });
+            viewModel.IsLoading = false;
         }
 
         private void IDNumberEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -1415,10 +1380,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             {
                 try
                 {
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = true;
-                    });
+                    viewModel.IsLoading = true;
                     Image arrowImage = sender as Image;
                     Attachment attachment = (Attachment)arrowImage.BindingContext;
                     //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
@@ -1432,20 +1394,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                     }
 
                     //}
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                    viewModel.IsLoading = false;
                 }
                 catch (Exception)
                 {
-
-
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
-
+                    viewModel.IsLoading = false;
                 }
             }
             catch (InternetException ex)
@@ -1456,10 +1409,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                     await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
+            viewModel.IsLoading = false;
         }
 
         async void voidTapped(object sender, EventArgs e)

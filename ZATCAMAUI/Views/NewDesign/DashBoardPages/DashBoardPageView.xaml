@@ -306,18 +306,10 @@
                                     <Label
                                         Grid.Row="1"
                                         Grid.Column="1"
-                                        LineHeight="0.7"
                                         Style="{StaticResource BodyLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDRegZakatin5mins}"
                                         TextColor="White"
                                         VerticalOptions="Center" />
-                                    <Border
-                                        Grid.Row="2"
-                                        Grid.ColumnSpan="3"
-                                        Margin="-15,10,-15,-8"
-                                        BackgroundColor="White"
-                                        HeightRequest="10"
-                                        StrokeShape="RoundRectangle 12,12,0,0" />
                                 </Grid>
 
                                 <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand">
@@ -789,20 +781,6 @@
 
                                         </StackLayout>
 
-                                        <StackLayout.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding IsVatRegistrationTileVisible}"
-                                                TargetType="StackLayout"
-                                                Value="True">
-                                                <Setter Property="BackgroundColor" Value="LightGray" />
-                                            </DataTrigger>
-                                            <DataTrigger
-                                                Binding="{Binding IsEstablishmentRegistrationTileVisible}"
-                                                TargetType="StackLayout"
-                                                Value="True">
-                                                <Setter Property="BackgroundColor" Value="LightGray" />
-                                            </DataTrigger>
-                                        </StackLayout.Triggers>
 
                                     </StackLayout>
 

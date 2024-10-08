@@ -35,7 +35,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         {
             base.OnAppearing();
 
-            viewModel?.OnAppearing();
             if (!viewModel.PostalAsPhysical)
             {
                 viewModel.PostalAddressVisibility = true;

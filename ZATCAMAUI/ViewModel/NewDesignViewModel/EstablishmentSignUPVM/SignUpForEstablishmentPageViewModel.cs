@@ -2715,7 +2715,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     IDTypeIndex = 0;
                     SelectedIssuedBy = null;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     
                     
@@ -2848,9 +2848,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             IsLoading = true;
             try
             {
-                //CityList = null;
                 SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
-                //ObservableCollection<City> CityR = new ObservableCollection<City>();
                 if (CityListSignup.d.cities.Count == 0)
                 {
                     await App.Current.MainPage.DisplayAlert("no records", "no rec", "OK");
@@ -2895,29 +2893,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 
                 
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
-            }
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
                 IsLoading = false;
 
-            });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+            }
+            IsLoading = false;
         }
 
         public void TimerStart(int Seconds)
@@ -3045,14 +3033,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("TxtEmailCode");
             }
         }
-        public async void CreateGaZTAccount()
+        public async Task CreateGaZTAccount()
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 CreateGaztAccountModel CreateModel = new CreateGaztAccountModel();
                 CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
                 CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
@@ -3134,10 +3119,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                     else
                     {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
+                        IsLoading = false;
                         //est signup user created succesfully
                         string tin = string.Empty;
                         tin = ResultFirstSubmitModel.d.signupD.ATin;
@@ -3167,42 +3149,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                 }
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
+                IsLoading = false;
 
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
             catch (HttpRequestException)
             {
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
+                IsLoading = false;
 
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
             catch (Exception)
             {
 
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
+                IsLoading = false;
 
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
         }
 
@@ -3229,7 +3198,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             // Stop timer
             if (countDownSeconds == 0)
             {
-                //ContinueButtonEnability = false;
                 IsResendOTPEnabled = true;
                 IsNextButtonEnable = false;
                 otpTimer.Stop();
@@ -3254,35 +3222,40 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         public async Task StepfivedataValidation(AbsherOTPResponse otpRecvided)
         {
-            OTPModelvalidateD otp = new OTPModelvalidateD();
-            otpVlidate d = new otpVlidate();
-            this.IsLoading = true;
-            if (otpRecvided != null)
+            try
             {
-                d.Captcha = otpRecvided.result.captcha;
-                d.Guid16 = otpRecvided.result.formBundleGUID;
-                d.Idnum = otpRecvided.result.idNumber;
-                d.OtpCode = "0106";//OTP;
-                otp.d = d;
-                await Task.Run(async () =>
+                OTPModelvalidateD otp = new OTPModelvalidateD();
+                otpVlidate d = new otpVlidate();
+                this.IsLoading = true;
+                if (otpRecvided != null)
                 {
+                    d.Captcha = otpRecvided.result.captcha;
+                    d.Guid16 = otpRecvided.result.formBundleGUID;
+                    d.Idnum = otpRecvided.result.idNumber;
+                    d.OtpCode = "0106";//OTP;
+                    otp.d = d;
                     ValidateAbhserOTPModel otpRecvided2 = await WebServiceManager.ValidateAbsher(otp, false);
                     if (otpRecvided2 != null)
                     {
                         MessagingCenter.Send<Object, object>(this, "Otpvalidated", otpRecvided2);
-                        
+
                     }
                     else
                     {
                         MessagingCenter.Send<Object, object>(this, "Otpvalidated", "error");
                     }
-                });
+                }
+                else
+                {
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                    return;
+                }
             }
-            else
+            catch (Exception )
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
-                return;
+
             }
+          
         }
         #endregion
 

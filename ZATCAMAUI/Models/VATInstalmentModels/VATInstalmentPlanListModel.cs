@@ -612,8 +612,11 @@ namespace ZATCAMAUI.Models.VATInstalmentModels
         public class PednRtn
         {
             public Metadata __metadata { get; set; }
+            [JsonProperty("periodDescription")]
             public string Perslt { get; set; }
+            [JsonProperty("periodKey")]
             public string Persl { get; set; }
+            [JsonProperty("taxpayerType")]
             public string Taxtp { get; set; }
         }
 

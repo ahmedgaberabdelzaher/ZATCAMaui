@@ -54,4 +54,9 @@ public partial class NafathLoginView : ContentPage
 		viewModel.NafathId = string.Empty;
 		viewModel.Error = string.Empty;
 	}
+    protected override void OnDisappearing()
+    {
+        viewModel.IsLoading = false;
+        base.OnDisappearing();
+    }
 }

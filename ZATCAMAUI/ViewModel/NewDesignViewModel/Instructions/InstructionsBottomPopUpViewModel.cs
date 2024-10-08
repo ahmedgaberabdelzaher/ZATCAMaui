@@ -215,14 +215,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
 
                 if (_isInstuctionsChecked)
                 {
-                    InstructionsContinue();
                     await MopupService.Instance.PopAsync();
+                    InstructionsContinue();
                 }
                 else
                 {
-
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.BPInstructionsAndConditionsAlert));
-
                 }
             });
 

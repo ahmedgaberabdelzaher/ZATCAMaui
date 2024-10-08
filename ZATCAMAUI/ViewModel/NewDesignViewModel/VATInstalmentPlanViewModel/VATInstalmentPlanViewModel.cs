@@ -27,8 +27,8 @@ public class VATInstalmentPlanViewModel : BaseViewModel
 {
     #region Variable
     public System.Collections.Generic.List<VATResults4> selectedList = new System.Collections.Generic.List<VATResults4>();
+    public string currencyUnits = AppResources.ZSAR;
 
-   
     private string _vATDueAmount = "0.00";
     public string VATDueAmount
     {

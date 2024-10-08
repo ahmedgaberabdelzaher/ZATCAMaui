@@ -16,6 +16,7 @@ using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 using ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan;
 using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
@@ -2853,7 +2854,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         public async Task ShowDialog(string msg)
         {
-            await _dialogService.ShowMessage(msg, AppResources.Information);
+            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(msg));
+
         }
 
         public async Task BillContinueBtnClicked()
@@ -2917,8 +2919,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 if (IsFinsancialStatementsEditable && (Year1.Length < 4 || Year2.Length < 4 || Year3.Length < 4))
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields + "(" + AppResources.ZakatYearOne + ", " + AppResources.ZakatYearTwo + ", " + AppResources.ZakatYearThree + ")", AppResources.Information);
-                    return;
+                    await ShowDialog(AppResources.ZZPleasefillthemandatoryfields + "(" + AppResources.ZakatYearOne + ", " + AppResources.ZakatYearTwo + ", " + AppResources.ZakatYearThree + ")"); return;
                 }
                 if (IsFinsancialStatementsEditable && (string.IsNullOrEmpty(CashBankY1) ||
                     string.IsNullOrEmpty(CashBankY2) ||
@@ -2957,7 +2958,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     string.IsNullOrEmpty(ZakatY2) ||
                     string.IsNullOrEmpty(ZakatY3)))
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                    await ShowDialog(AppResources.ZZPleasefillthemandatoryfields);
                     return;
                 }
 
@@ -3256,7 +3257,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             {
                                 IsNewLoading = false;
                                 IsLoading = false;
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                await ShowDialog(AppResources.ZZSomethingwentwrong);
 
 
                             }
@@ -3264,7 +3265,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             {
                                 IsNewLoading = false;
                                 IsLoading = false;
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                await ShowDialog(AppResources.ZZSomethingwentwrong);
                             }
                         }
                     }
@@ -3283,8 +3284,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             else
             {
-
-                await _dialogService.ShowMessage(AppResources.ZakatNoInvoicesToBeAdded, AppResources.Information);
+                await ShowDialog(AppResources.ZakatNoInvoicesToBeAdded);
                 _navigationService.GoBack();
             }
 
@@ -3966,7 +3966,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     MaxAmount = Math.Round(totalAmountDue, 2);
 
                     MaxAmountTitle = AppResources.ZakatMax + " " + string.Format("{0:N}", MaxAmount);
-                    
+
                 }
                 if (totalAmountDue > 0)
                 {
@@ -4335,7 +4335,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 }
 
-                if (ZakatInstalments != null)
+                if (ZakatInstalments?.d != null)
                 {
 
                     if (IsZakat)
@@ -4412,7 +4412,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             catch (Exception)
             {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                await ShowDialog(AppResources.ZZSomethingwentwrong);
                 _navigationService.GoBack();
             }
         }
@@ -4688,7 +4688,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         {
 
                             DateTime dt = Convert.ToDateTime(ZakatInstalments.d.Z_INVOICE_UI5Set[i].ADueDtTb);
-                            
+
                             ZakatInstalments.d.Z_INVOICE_UI5Set[i].ADueDtTb = dt.ToString("yyyy-MM-ddTHH:mm:ss");
                         }
 

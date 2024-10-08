@@ -3,7 +3,6 @@
     x:Class="ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages.EstablishmentAmendUpdatePageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:SfChipGroup="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
@@ -52,15 +51,24 @@
                         <ColumnDefinition Width="70*" />
                         <ColumnDefinition Width="15*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Grid.Row="0"
-                        Grid.Column="0"
+
+                     <Image
                         HorizontalOptions="Start"
+                        Rotation="180"
                         Source="arrowLeft.png"
-                        VerticalOptions="Center">
-                        <Image.GestureRecognizers>
+                        VerticalOptions="CenterAndExpand">
+                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
                         </Image.GestureRecognizers>
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="0" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
                     </Image>
                     <Image
                         Grid.Row="0"
@@ -1671,7 +1679,7 @@
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeThickness="1"
                                         Style="{StaticResource ButtonBlackBold16}"
-                                        Text="{Binding SelectedTaxpayerPDNationality}" />
+                                        Text="{Binding SelectedTaxpayerPDNationality?.Landx50}" />
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="Start">
                                     <Label Style="{StaticResource forLightLabel}">
@@ -1697,7 +1705,7 @@
                                             Stroke="{StaticResource NeutralGreay}"
                                             StrokeThickness="1"
                                             Style="{StaticResource ButtonBlackBold16}"
-                                            Text="{Binding SelectedCitizen}" />
+                                            Text="{Binding SelectedCitizen?.Landx50}" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="Start">
@@ -1724,7 +1732,7 @@
                                             Stroke="{StaticResource NeutralGreay}"
                                             StrokeThickness="1"
                                             Style="{StaticResource ButtonBlackBold16}"
-                                            Text="{Binding SelectedResidence}" />
+                                            Text="{Binding SelectedResidence?.Landx50}" />
                                     </StackLayout>
                                 </StackLayout>
 
@@ -1837,7 +1845,7 @@
                                     Stroke="{StaticResource NeutralGreay}"
                                     StrokeThickness="1"
                                     Style="{StaticResource ButtonBlackBold16}"
-                                    Text="{Binding SelectedPassportIssueCountry, TargetNullValue=''}" />
+                                    Text="{Binding SelectedPassportIssueCountry?.Landx50}" />
 
                             </StackLayout>
                             <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand">

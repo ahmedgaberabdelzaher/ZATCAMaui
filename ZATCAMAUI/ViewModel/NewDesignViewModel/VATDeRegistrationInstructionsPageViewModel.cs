@@ -86,16 +86,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public VATDeRegistrationInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackClick = new Command(() =>
+            try
             {
-                _navigationService.GoBack();
-            });
+                GoBackClick = new Command(() =>
+                {
+                    _navigationService.GoBack();
+                });
 
-            IsContinueButtonEnable = false;
-            VATDeregistrationClicked = new Command(() =>
+                IsContinueButtonEnable = false;
+                VATDeregistrationClicked = new Command(() =>
+                {
+                    VATDeregistrationTapped();
+                });
+            }
+            catch(Exception ex)
             {
-                VATDeregistrationTapped();
-            });
+
+            }
+            
 
             
         }
