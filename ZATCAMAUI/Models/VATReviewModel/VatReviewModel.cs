@@ -523,14 +523,14 @@ namespace ZATCAMAUI.Models.VATReviewModel
             public string periodStartDate { set { Abrzu = value; } }
             [JsonProperty("periodEndDate")]
             public string periodEndDate { set { Abrzo = value; } }
-            [JsonProperty("securityAmount")]
-            public string Secamt { get; set; }
-            [JsonProperty("penaltyPaidAmount")]
-            public string PenPaidAmt { get; set; }
-            [JsonProperty("messageFlag")]
-            public string Bgmsgflg { get; set; }
-            [JsonProperty("messageText")]
-            public string Bgmsgtxt { get; set; }
+            //[JsonProperty("securityAmount")]
+            //public string Secamt { get; set; }
+            //[JsonProperty("penaltyPaidAmount")]
+            //public string PenPaidAmt { get; set; }
+            //[JsonProperty("messageFlag")]
+            //public string Bgmsgflg { get; set; }
+            //[JsonProperty("messageText")]
+            //public string Bgmsgtxt { get; set; }
 
         }
 
@@ -1036,8 +1036,8 @@ namespace ZATCAMAUI.Models.VATReviewModel
             //public string transactionType { get; set; }
             // [JsonProperty("")]
             public string UserTypx { get; set; }
-            [JsonProperty("CR6490Flag")]
-            public string Cr6490Fg { get; set; }
+            //[JsonProperty("CR6490Flag")]
+            //public string Cr6490Fg { get; set; }
 
             [JsonProperty("reasons")]
             public List<ReasonSetResult> ReasonSet { get; set; }
