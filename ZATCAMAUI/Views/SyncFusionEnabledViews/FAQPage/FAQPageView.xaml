@@ -42,7 +42,7 @@
                     </Image>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoBackClick}" />
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
 
                 </StackLayout>

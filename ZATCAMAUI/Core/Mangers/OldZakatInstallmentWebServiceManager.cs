@@ -39,7 +39,7 @@ namespace ZATCAMAUI.Core.Mangers
                     //  "Auditor='" + auditor + "'," +
                     //"Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
                     //"Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "')?$expand=ListSet,AuthServSet&$format=json&sap-language=" + LangZAREN;
-                    String url = ZATCAConstants.ZakatOldInstalmentsListUrl + App.LoginDataRetrieved.TIN + "&authenticationUser1=" + euser1 + "&authenticationUser2=" + euser2 + "&authenticationUser3=" + euser3 + "&authenticationUser4=" + euser4 + "&authenticationUser5=" + euser5 + "&language=" + lang;
+                    String url = ZATCAConstants.ZakatOldInstalmentsListUrl + App.LoginDataRetrieved.TIN + "&authenticationUser1=" + euser1 + "&authenticationUser2=" + euser2 + "&authenticationUser3=" + euser3 + "&authenticationUser4=" + euser4 + "&authenticationUser5=" + euser5 + "&language=" + lang+ "&formBundleGUID="+ fbguid;
                     var uri = new Uri(url);
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();

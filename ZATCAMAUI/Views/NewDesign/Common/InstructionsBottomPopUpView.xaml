@@ -9,21 +9,21 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    BackgroundColor="#88000000"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="#88000000"
     CloseWhenBackgroundIsClicked="False"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
 
 
-    <Grid>
+    <Grid MaximumHeightRequest="700" VerticalOptions="End">
         <Border
             Padding="15,0"
             BackgroundColor="White"
             IsVisible="{Binding IsCancelButtonVisible}"
             Stroke="{StaticResource NeutralLightGrey}"
             StrokeShape="RoundRectangle 15,15,0,0"
-            VerticalOptions="EndAndExpand">
+            VerticalOptions="End">
 
 
             <Grid RowDefinitions="auto,auto,*,*">
@@ -175,7 +175,7 @@
             BackgroundColor="White"
             IsVisible="{Binding IsInstructions}"
             StrokeShape="RoundRectangle 15,15,0,0"
-            VerticalOptions="EndAndExpand">
+            VerticalOptions="End">
             <Grid RowDefinitions="auto,*">
 
 
@@ -297,7 +297,7 @@
                             </Label>
                         </StackLayout>
 
-                         <buttons:SfButton
+                        <buttons:SfButton
                             Grid.Row="2"
                             Margin="0,24"
                             Background="{Binding ContinueBackGroundColor}"
@@ -309,7 +309,7 @@
                     </Grid>
                 </ScrollView>
 
-               
+
 
             </Grid>
         </Border>
@@ -319,7 +319,7 @@
             BackgroundColor="White"
             IsVisible="{Binding IsTerms}"
             StrokeShape="RoundRectangle 15,15,0,0"
-            VerticalOptions="EndAndExpand">
+            VerticalOptions="End">
             <Grid RowDefinitions="auto,*,*">
 
                 <Label
