@@ -20,6 +20,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
                 viewModel = App.Locator.NewYesorNoView;
                 BindingContext = viewModel;
                 MakeFalse();
+                viewModel.GetApplicationRequestAsync();
             }
             catch (Exception)
             {
@@ -29,31 +30,54 @@ namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
 
         private async void OnSubmitButtonClicked(object sender, EventArgs e)
         {
-            if (YesQ1.IsChecked == false && NoQ1.IsChecked == false)
+            if (viewModel.ShowDeregQuestion == true)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
-                viewModel.rq1 = (Color)Application.Current.Resources["Red"];
-                return;
-            }
-
-
-            if (viewModel.QA1 == "R" || viewModel.QA1 == "r")
-            {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZProfitOnGoodsQ1M01Validation));
-                // IsLoading = false;
-                return;
-            }
-
-
-            if (viewModel.basedonQ1 == true)
-            {
-                if (Yes.IsChecked == false && No.IsChecked == false)
+                if (viewModel.IsYesQ3Checked == false)
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
-                    viewModel.rq2 = (Color)Application.Current.Resources["Red"];
                     return;
                 }
+
             }
+            else
+            {
+                if (YesQ1.IsChecked == false && NoQ1.IsChecked == false)
+                {
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
+                    viewModel.rq1 = (Color)Application.Current.Resources["Red"];
+                    return;
+                }
+
+
+                if (viewModel.QA1 == "R" || viewModel.QA1 == "r")
+                {
+                    if (!viewModel.ProfitGoodsModel.RegFlag.ToUpper().Equals("X"))
+                    {
+                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.DeRegConfirmationmsg, AppResources.ZNo, AppResources.ZYes);
+                        if (!result)
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZProfitOnGoodsQ1M01Validation));
+                        return;
+                    }
+                }
+
+
+                if (viewModel.basedonQ1 == true)
+                {
+                    if (Yes.IsChecked == false && No.IsChecked == false)
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
+                        viewModel.rq2 = (Color)Application.Current.Resources["Red"];
+                        return;
+                    }
+                }
+            }
+            viewModel.IsLoading = true;
             viewModel.callSubmit();
         }
         private void OnCancelButtonClicked(object sender, EventArgs e)

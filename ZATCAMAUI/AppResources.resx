@@ -11154,6 +11154,9 @@ The following returns should be filled before proceeding with the instalment pla
     <data name="NoChangesInTheApplication" xml:space="preserve">
         <value>No changes in the application to submit</value>
     </data>
+    	<data name="DeRegConfirmationmsg" xml:space="preserve">
+        <value>Do you want to deregister?</value>
+    </data>
     <data name="VATGoodsDeregisterMsg" xml:space="preserve">
         <value>
 Dear {0}

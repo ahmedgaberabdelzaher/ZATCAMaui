@@ -33,6 +33,7 @@ namespace ZATCAMAUI.Models.VATgoodsOnprofit
             public object Erdat { get; set; }
             [JsonProperty("time")]
             public string Erzet { get; set; }
+            public string RegFlag { get; set; }
             [JsonProperty("deregistrationFormBundleNumber")]
             public string DregFbnum { get; set; }
             public string taxpayerName { get; set; }
@@ -42,6 +43,8 @@ namespace ZATCAMAUI.Models.VATgoodsOnprofit
             public string returnId { get; set; }
             public string systemCode { get; set; }
             public string VATProfitMargin { get; set; }
+            public string TpName { get; set; }
+
         }
 
         public class Metadata
@@ -60,9 +63,17 @@ namespace ZATCAMAUI.Models.VATgoodsOnprofit
         {
 
 
+            [JsonProperty("TIN")]
             public string Gpart { get; set; }
+            [JsonProperty("isSaleUsedGoods")]
             public bool SaleUgmCb { get; set; }
+            [JsonProperty("isOtherActivity")]
             public bool OthActyCb { get; set; }
+            [JsonProperty("formBundleNumber")]
+            public string Fbnum { get; set; }
+            [JsonProperty("taxpayerName")]
+            public string TpName { get; set; }
+
 
         }
         public class ProfitGoodsResponse

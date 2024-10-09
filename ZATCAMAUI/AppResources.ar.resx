@@ -11071,8 +11071,11 @@ info@zatca.gov.sa</value>
     <value>كلمة المرور</value>
 </data>
 <data name="NoChangesInTheApplication" xml:space="preserve">
-    <value>No changes in the application to submit</value>
+    <value>لا توجد تغييرات في الطلب لتقديمه</value>
 </data>
+  <data name="DeRegConfirmationmsg" xml:space="preserve">
+    <value>هل تريد إلغاء التسجيل؟</value>
+  </data>
 <data name="VATGoodsDeregisterMsg" xml:space="preserve">
     <value>
   عزيزنا: {0}

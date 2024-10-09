@@ -60,11 +60,11 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 //CR6264 data
                 if (App.TP.VtpmFg == "X")
                 {
-                    viewModel.istileUpdated = true;
+                    viewModel.VatProfitGoodsTileTxt = AppResources.VATProfitDeregisterTile;
                 }
                 else
                 {
-                    viewModel.istileUpdated = false;
+                    viewModel.VatProfitGoodsTileTxt = AppResources.ZProfitgoodsSCSRTile;
                 }
 
                 //ends 
@@ -74,8 +74,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 {
 
                     viewModel.istileUpdated = false;
-                    tileUpdatedView.IsVisible = false;
-                    tileUpdatedBoxView.IsVisible = false;
 
                     OnDataLoad();
                 });
@@ -435,12 +433,13 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 {
                     if (App.TP.VtpmFg == "X")
                     {
-                        viewModel.istileUpdated = true;
+                        viewModel.VatProfitGoodsTileTxt = AppResources.VATProfitDeregisterTile;
                     }
                     else
                     {
-                        viewModel.istileUpdated = false;
+                        viewModel.VatProfitGoodsTileTxt = AppResources.ZProfitgoodsSCSRTile;
                     }
+                    viewModel.istileUpdated = true;
                     if (App.LoginDataRetrieved.ZkReg == "X")
                     {
                         viewModel.IsEstablishmentRegistrationTileVisible = false;

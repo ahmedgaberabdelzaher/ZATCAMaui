@@ -2295,7 +2295,104 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             }
         }
     }
+    private bool shouldShowAR = false;
+    public bool ShouldShowAR
+    {
+        get { return shouldShowAR; }
+        set
+        {
+            if (shouldShowAR == value) return;
 
+            shouldShowAR = value;
+            OnPropertyChanged("ShouldShowAR");
+        }
+    }
+    private bool shouldShowEN = false;
+    public bool ShouldShowEN
+    {
+        get { return shouldShowEN; }
+        set
+        {
+            if (shouldShowEN == value) return;
+
+            shouldShowEN = value;
+            OnPropertyChanged("ShouldShowEN");
+        }
+    }
+    private TextAlignment _termsAlignment;
+    public TextAlignment TermsAlignment
+    {
+        get { return _termsAlignment; }
+        set
+        {
+            if (_termsAlignment == value) return;
+            _termsAlignment = value;
+            OnPropertyChanged("TermsAlignment");
+        }
+    }
+    private bool _isDeclarationViewEnabled;
+    public bool IsDeclarationViewEnabled
+    {
+        get
+        {
+            return _isDeclarationViewEnabled;
+        }
+        set
+        {
+            if (_isDeclarationViewEnabled == value) return;
+
+            _isDeclarationViewEnabled = value;
+            OnPropertyChanged("IsDeclarationViewEnabled");
+        }
+    }
+
+    private bool _isDeclarationViewEnabledNew;
+    public bool IsDeclarationViewEnabledNew
+    {
+        get
+        {
+            return _isDeclarationViewEnabledNew;
+        }
+        set
+        {
+            if (_isDeclarationViewEnabledNew == value) return;
+
+            _isDeclarationViewEnabledNew = value;
+            OnPropertyChanged("IsDeclarationViewEnabledNew");
+        }
+    }
+
+    public VATDeregDeclaration _vatDeregDeclaration;
+    public VATDeregDeclaration VatDeregDeclaration
+    {
+        get
+        {
+            return _vatDeregDeclaration;
+        }
+        set
+        {
+            if (_vatDeregDeclaration == value) return;
+
+            _vatDeregDeclaration = value;
+            OnPropertyChanged("VatDeregDeclaration");
+        }
+    }
+
+    public string _zterms;
+    public string Zterms
+    {
+        get
+        {
+            return _zterms;
+        }
+        set
+        {
+            if (_zterms == value) return;
+
+            _zterms = value;
+            OnPropertyChanged("Zterms");
+        }
+    }
     #region Item Availability Properties
 
     private InstAndConditionAvailability _instAndCondition = new InstAndConditionAvailability();
@@ -2971,45 +3068,259 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
     {
         try
         {
-            await Task.Run(() =>
+
+            IsLoading = true;
+            GetSignUpIdType();
+            VATRegistrationDetailsData = null;
+            VATRegistrationOtherDetails = null;
+            ADDRESSSetData = null;
+            VATRegistrationDetails vATRegistration = null;
+            VATRegistrationOtherDetails vATRegistrationOther = null;
+            try
             {
-                IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-                GetSignUpIdType();
-                IsLoading = true;
-                VATRegistrationDetailsData = null;
-                VATRegistrationOtherDetails = null;
-                ADDRESSSetData = null;
-                VATRegistrationDetails vATRegistration = null;
-                VATRegistrationOtherDetails vATRegistrationOther = null;
-                try
+                string pageType = string.Empty;
+                if (App.VATType == PageExecutionType.Amend)
                 {
-                    string pageType = string.Empty;
+                    if (App.isVatEffectDateNav)
+                    {
+                        pageType = "16";
+                    }
+
+                    else
+                        pageType = "05";
+                }
+
+                else if (App.VATType == PageExecutionType.Reactivation)
+                    pageType = "07";
+                else
+                    pageType = "04";
+
+                vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationData(pageType);
+                //  PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(vATRegistration.d.Fbnumz);
+
+                if (vATRegistration != null && vATRegistration.d != null)
+                {
                     if (App.VATType == PageExecutionType.Amend)
                     {
                         if (App.isVatEffectDateNav)
                         {
-                            pageType = "16";
-                        }
+                            if (vATRegistration.d.TxnTpz == "VT_EFDT")
+                            {
+                                IsCheckEnabled = false;
+                                IsChangeEmailCheckBoxEnabled = false;
+                                IsAddFinancialRepresentativeCheckBoxEnabled = false;
+                                VatEligibleStartDateInsVisible = false;
+                                IsNewVatEligibleDateInsVisible = true;
+                            }
 
-                        else
-                            pageType = "05";
+                            else
+                                IsCheckEnabled = true;
+
+                        }
                     }
 
-                    else if (App.VATType == PageExecutionType.Reactivation)
-                        pageType = "07";
-                    else
-                        pageType = "04";
 
-                    vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationData(pageType);
-                    //  PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                    if (vATRegistration != null && vATRegistration.d != null)
+                    //step 4 and 5 data set
+                    if (vATRegistration.d.CONTACT_PERSONSet != null)
                     {
+                        if (vATRegistration.d.CONTACT_PERSONSet != null)
+                        {
+                            if (!string.IsNullOrEmpty(vATRegistration.d.CONTACT_PERSONSet[0].Idnumber))
+                            {
+                                MainThread.BeginInvokeOnMainThread(() =>
+                                {
+                                    if (App.isVatEffectDateNav)
+                                    {
+                                        if (vATRegistration.d.TxnTpz == "VT_EFDT")
+                                        {
+                                            IsCheckEnabled = false;
+                                            IsChangeEmailCheckBoxEnabled = false;
+                                            IsAddFinancialRepresentativeCheckBoxEnabled = false;
+                                            VatEligibleStartDateInsVisible = false;
+                                            IsNewVatEligibleDateInsVisible = true;
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        IsChangeEmailCheckBoxEnabled = true;
+                                    }
+
+                                });
+                            }
+
+                            else
+                            {
+                                MainThread.BeginInvokeOnMainThread(() =>
+                                {
+                                    IsChangeEmailCheckBoxEnabled = false;
+                                });
+                            }
+                        }
+
+
+
+                        GpartFR = vATRegistration.d.CONTACT_PERSONSet[0].Gpart;
+                        IdnumberFR = vATRegistration.d.CONTACT_PERSONSet[0].Idnumber;
+                        FirstnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Firstnm;
+                        LastnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Lastnm;
+                        PrimaryMobNumberFR = vATRegistration.d.CONTACTDTSet[0].MobNumber;
+                        PrimarySmtpAddrFR = vATRegistration.d.CONTACTDTSet[0].SmtpAddr;
+                        try
+                        {
+                            TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type)?.FirstOrDefault()?.Name;
+                        }
+                        catch (Exception ex)
+                        {
+
+
+                        }
+
+                        GpartSum = vATRegistration.d.CONTACT_PERSONSet[0].Gpart;
+                        IdnumberSum = vATRegistration.d.CONTACT_PERSONSet[0].Idnumber;
+                        FirstnmSum = vATRegistration.d.CONTACT_PERSONSet[0].Firstnm;
+                        LastnmSum = vATRegistration.d.CONTACT_PERSONSet[0].Lastnm;
+                        PrimaryMobNumberFR = vATRegistration.d.CONTACTDTSet[0].MobNumber;
+                        PrimarySmtpAddrFR = vATRegistration.d.CONTACTDTSet[0].SmtpAddr;
+                        try
+                        {
+                            TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type)?.FirstOrDefault()?.Name;
+                        }
+                        catch (Exception ex)
+                        {
+
+
+                        }
+
                         if (App.VATType == PageExecutionType.Amend)
                         {
+                            GpartFR = string.Empty;
+                            IdnumberFR = string.Empty;
+                            FirstnmFR = string.Empty;
+                            LastnmFR = string.Empty;
+                            PrimarySmtpAddrFR = string.Empty;
+                            PrimaryMobNumberFR = string.Empty;
+                            TxtIDTypeFR = string.Empty;
+                        }
+                        if (App.VATType == PageExecutionType.Amend || App.VATType == PageExecutionType.Reactivation)
+                        {
+
+                            var listFRep = new List<FinancialRepresentativesModel>();
+                            int count = 0;
+                            foreach (var item in vATRegistration.d.CONTACT_PERSONSet)
+                            {
+                                try
+                                {
+                                    SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type)?.FirstOrDefault();
+
+                                    string selectedIdTypeName = "";
+
+                                    if (SelectedIdTypeFR != null && string.IsNullOrEmpty(SelectedIdTypeFR.Name))
+                                    {
+
+                                        selectedIdTypeName = SelectedIdTypeFR.Name;
+                                    }
+                                    listFRep.Add(new FinancialRepresentativesModel()
+                                    {
+                                        GpartFR = item.Gpart,
+                                        IdnumberFR = item.Idnumber,
+                                        FirstnmFR = item.Firstnm,
+                                        LastnmFR = item.Lastnm,
+                                        MobNumberFR = vATRegistration.d.CONTACTDTSet[count].MobNumber,
+                                        SmtpAddrFR = vATRegistration.d.CONTACTDTSet[count].SmtpAddr,
+                                        TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[count].Type)?.FirstOrDefault()?.Name
+
+                                    });
+                                    TempDataContacts.Add(new TempDataContact
+                                    {
+                                        tempEmail = vATRegistration.d.CONTACTDTSet[count].SmtpAddr,
+                                        tempmobile = vATRegistration.d.CONTACTDTSet[count].MobNumber
+                                    });
+                                    count++;
+                                }
+                                catch (Exception ex)
+                                {
+
+
+                                }
+                            }
+                            ListFinanceRepresenatives = listFRep;
+                        }
+                        try
+                        {
+                            SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type).FirstOrDefault();
+
+                            TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type).FirstOrDefault()?.Name;
+                        }
+                        catch (Exception ex)
+                        {
+
+
+                        }
+                        ATTDETSetObject = new List<Attachment>();
+                        ATTDETSetObject = vATRegistration.d.ATTDETSet;
+                    }
+
+                    //Step 5
+                    if (vATRegistration.d.Decfg == "1")
+                    {
+                        IsDeclarationChecked = true;
+                        //VATRegistrationDetailsData.d.Decfg = "1";
+                    }
+                    else if (vATRegistration.d.Decfg == "0")
+                    {
+                        IsDeclarationChecked = false;
+                    }
+                    if (vATRegistration.d.Stp2Cbbox == "1")
+                    {
+                        IsAddAdditionalInfoChecked = true;
+                        AddAdditionalInfoCheckBoxEnabled = false;
+                    }
+                    else if (vATRegistration.d.Stp2Cbbox == "0" || string.IsNullOrEmpty(vATRegistration.d.Stp2Cbbox))
+                    {
+                        IsAddAdditionalInfoChecked = false;
+                        AddAdditionalInfoCheckBoxEnabled = true;
+                    }
+                    if (vATRegistration.d.Stp3Cbbox == "1")
+                    {
+                        IsFDChangeSectionChecked = true;
+                        IsFinancialDChangeSectionEnabled = false;
+                    }
+                    else if (vATRegistration.d.Stp3Cbbox == "0" || string.IsNullOrEmpty(vATRegistration.d.Stp3Cbbox))
+                    {
+                        IsFDChangeSectionChecked = false;
+                        IsFinancialDChangeSectionEnabled = true;
+                    }
+                    if (vATRegistration.d.Stp4Cbbox1 == "1")
+                    {
+                        IsChangeEmailChecked = true;
+                    }
+                    else
+                    {
+                        IsChangeEmailChecked = false;
+
+                    }
+                    if (vATRegistration.d.Stp4Cbbox2 == "1")
+                    {
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            IsAddNewRepresentativeChecked = true;
+                            IsNewFinancialRepVisible = true;
+                        });
+                    }
+                    else if (vATRegistration.d.Stp4Cbbox2 == "0")
+                    {
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            IsAddNewRepresentativeChecked = false;
+                            IsNewFinancialRepVisible = false;
+                        });
+                    }
+                    switch (App.VATType)
+                    {
+                        case PageExecutionType.Amend:
                             if (App.isVatEffectDateNav)
                             {
                                 if (vATRegistration.d.TxnTpz == "VT_EFDT")
@@ -3017,374 +3328,155 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
                                     IsCheckEnabled = false;
                                     IsChangeEmailCheckBoxEnabled = false;
                                     IsAddFinancialRepresentativeCheckBoxEnabled = false;
-                                    VatEligibleStartDateInsVisible = false;
-                                    IsNewVatEligibleDateInsVisible = true;
                                 }
-
                                 else
                                     IsCheckEnabled = true;
 
                             }
-                        }
 
-
-
-                        //step 4 and 5 data set
-                        if (vATRegistration.d.CONTACT_PERSONSet != null)
+                            IsInstrunctionChecked = true;
+                            break;
+                        case PageExecutionType.Reactivation:
+                            IsInstrunctionChecked = true;
+                            break;
+                        case PageExecutionType.Register:
+                            break;
+                        default:
+                            break;
+                    }
+                    if (vATRegistration.d.AgrFg != null)
+                    {
+                        if (vATRegistration.d.AgrFg == "1")
                         {
-                            if (vATRegistration.d.CONTACT_PERSONSet != null)
-                            {
-                                if (!string.IsNullOrEmpty(vATRegistration.d.CONTACT_PERSONSet[0].Idnumber))
-                                {
-                                    MainThread.BeginInvokeOnMainThread(() =>
-                                    {
-                                        if (App.isVatEffectDateNav)
-                                        {
-                                            if (vATRegistration.d.TxnTpz == "VT_EFDT")
-                                            {
-                                                IsCheckEnabled = false;
-                                                IsChangeEmailCheckBoxEnabled = false;
-                                                IsAddFinancialRepresentativeCheckBoxEnabled = false;
-                                                VatEligibleStartDateInsVisible = false;
-                                                IsNewVatEligibleDateInsVisible = true;
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            IsChangeEmailCheckBoxEnabled = true;
-                                        }
-
-                                    });
-                                }
-
-                                else
-                                {
-                                    MainThread.BeginInvokeOnMainThread(() =>
-                                    {
-                                        IsChangeEmailCheckBoxEnabled = false;
-                                    });
-                                }
-                            }
-
-
-
-                            GpartFR = vATRegistration.d.CONTACT_PERSONSet[0].Gpart;
-                            IdnumberFR = vATRegistration.d.CONTACT_PERSONSet[0].Idnumber;
-                            FirstnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Firstnm;
-                            LastnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Lastnm;
-                            PrimaryMobNumberFR = vATRegistration.d.CONTACTDTSet[0].MobNumber;
-                            PrimarySmtpAddrFR = vATRegistration.d.CONTACTDTSet[0].SmtpAddr;
-                            try
-                            {
-                                TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type)?.FirstOrDefault()?.Name;
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                            }
-
-                            GpartSum = vATRegistration.d.CONTACT_PERSONSet[0].Gpart;
-                            IdnumberSum = vATRegistration.d.CONTACT_PERSONSet[0].Idnumber;
-                            FirstnmSum = vATRegistration.d.CONTACT_PERSONSet[0].Firstnm;
-                            LastnmSum = vATRegistration.d.CONTACT_PERSONSet[0].Lastnm;
-                            PrimaryMobNumberFR = vATRegistration.d.CONTACTDTSet[0].MobNumber;
-                            PrimarySmtpAddrFR = vATRegistration.d.CONTACTDTSet[0].SmtpAddr;
-                            try
-                            {
-                                TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type)?.FirstOrDefault()?.Name;
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                            }
-
-                            if (App.VATType == PageExecutionType.Amend)
-                            {
-                                GpartFR = string.Empty;
-                                IdnumberFR = string.Empty;
-                                FirstnmFR = string.Empty;
-                                LastnmFR = string.Empty;
-                                PrimarySmtpAddrFR = string.Empty;
-                                PrimaryMobNumberFR = string.Empty;
-                                TxtIDTypeFR = string.Empty;
-                            }
-                            if (App.VATType == PageExecutionType.Amend || App.VATType == PageExecutionType.Reactivation)
-                            {
-
-                                var listFRep = new List<FinancialRepresentativesModel>();
-                                int count = 0;
-                                foreach (var item in vATRegistration.d.CONTACT_PERSONSet)
-                                {
-                                    try
-                                    {
-                                        SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type)?.FirstOrDefault();
-
-                                        string selectedIdTypeName = "";
-
-                                        if (SelectedIdTypeFR != null && string.IsNullOrEmpty(SelectedIdTypeFR.Name))
-                                        {
-
-                                            selectedIdTypeName = SelectedIdTypeFR.Name;
-                                        }
-                                        listFRep.Add(new FinancialRepresentativesModel()
-                                        {
-                                            GpartFR = item.Gpart,
-                                            IdnumberFR = item.Idnumber,
-                                            FirstnmFR = item.Firstnm,
-                                            LastnmFR = item.Lastnm,
-                                            MobNumberFR = vATRegistration.d.CONTACTDTSet[count].MobNumber,
-                                            SmtpAddrFR = vATRegistration.d.CONTACTDTSet[count].SmtpAddr,
-                                            TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[count].Type)?.FirstOrDefault()?.Name
-
-                                        });
-                                        TempDataContacts.Add(new TempDataContact
-                                        {
-                                            tempEmail = vATRegistration.d.CONTACTDTSet[count].SmtpAddr,
-                                            tempmobile = vATRegistration.d.CONTACTDTSet[count].MobNumber
-                                        });
-                                        count++;
-                                    }
-                                    catch (Exception ex)
-                                    {
-
-
-                                    }
-                                }
-                                ListFinanceRepresenatives = listFRep;
-                            }
-                            try
-                            {
-                                SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type).FirstOrDefault();
-
-                                TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type).FirstOrDefault()?.Name;
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                            }
-                            ATTDETSetObject = new List<Attachment>();
-                            ATTDETSetObject = vATRegistration.d.ATTDETSet;
+                            IsInstrunctionChecked = true;
                         }
-
-                        //Step 5
-                        if (vATRegistration.d.Decfg == "1")
+                        if (vATRegistration.d.AgrFg == "0")
                         {
-                            IsDeclarationChecked = true;
-                            //VATRegistrationDetailsData.d.Decfg = "1";
+                            IsInstrunctionChecked = false;
                         }
-                        else if (vATRegistration.d.Decfg == "0")
-                        {
-                            IsDeclarationChecked = false;
-                        }
-                        if (vATRegistration.d.Stp2Cbbox == "1")
-                        {
-                            IsAddAdditionalInfoChecked = true;
-                            AddAdditionalInfoCheckBoxEnabled = false;
-                        }
-                        else if (vATRegistration.d.Stp2Cbbox == "0" || string.IsNullOrEmpty(vATRegistration.d.Stp2Cbbox))
-                        {
-                            IsAddAdditionalInfoChecked = false;
-                            AddAdditionalInfoCheckBoxEnabled = true;
-                        }
-                        if (vATRegistration.d.Stp3Cbbox == "1")
-                        {
-                            IsFDChangeSectionChecked = true;
-                            IsFinancialDChangeSectionEnabled = false;
-                        }
-                        else if (vATRegistration.d.Stp3Cbbox == "0" || string.IsNullOrEmpty(vATRegistration.d.Stp3Cbbox))
-                        {
-                            IsFDChangeSectionChecked = false;
-                            IsFinancialDChangeSectionEnabled = true;
-                        }
-                        if (vATRegistration.d.Stp4Cbbox1 == "1")
-                        {
-                            IsChangeEmailChecked = true;
-                        }
-                        else
-                        {
-                            IsChangeEmailChecked = false;
+                    }
+                    if (vATRegistration.d.DecidTy != null && vATRegistration.d.DecidTy != "")
+                    {
+                        SelectedIdTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy)?.FirstOrDefault();
+                        TxtIDTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy)?.FirstOrDefault()?.Name;
 
-                        }
-                        if (vATRegistration.d.Stp4Cbbox2 == "1")
-                        {
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                IsAddNewRepresentativeChecked = true;
-                                IsNewFinancialRepVisible = true;
-                            });
-                        }
-                        else if (vATRegistration.d.Stp4Cbbox2 == "0")
-                        {
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                IsAddNewRepresentativeChecked = false;
-                                IsNewFinancialRepVisible = false;
-                            });
-                        }
-                        switch (App.VATType)
-                        {
-                            case PageExecutionType.Amend:
-                                if (App.isVatEffectDateNav)
-                                {
-                                    if (vATRegistration.d.TxnTpz == "VT_EFDT")
-                                    {
-                                        IsCheckEnabled = false;
-                                        IsChangeEmailCheckBoxEnabled = false;
-                                        IsAddFinancialRepresentativeCheckBoxEnabled = false;
-                                    }
-                                    else
-                                        IsCheckEnabled = true;
+                        //myList.FindIndex(a => a.Prop == oProp);
 
-                                }
+                        IDTypeIndexSR = IdTypeListSR.FindIndex(x => x.ID == SelectedIdTypeSR.ID);
+                    }
+                    if (vATRegistration.d.Decconno != null)
+                        IdNumberSR = vATRegistration.d.DecidNo;
+                    FirstNameSR = vATRegistration.d.Decname;
 
-                                IsInstrunctionChecked = true;
-                                break;
-                            case PageExecutionType.Reactivation:
-                                IsInstrunctionChecked = true;
-                                break;
-                            case PageExecutionType.Register:
-                                break;
-                            default:
-                                break;
-                        }
-                        if (vATRegistration.d.AgrFg != null)
+                    if (vATRegistration.d.CrStdt != null)
+                    {
+                        StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    }
+                    VATRegistrationDetailsData = vATRegistration;
+                    setIban();
+                    if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.Count != 0)
+                    {
+                        ADDRESSSetData = VATRegistrationDetailsData.d.ADDRESSSet[0];
+                        AddressLineOne = ADDRESSSetData.BuildingNo + " " + ADDRESSSetData.Street + " " + ADDRESSSetData.Quarter;
+                        if (ADDRESSSetData.PostalCd.Equals("00000"))
                         {
-                            if (vATRegistration.d.AgrFg == "1")
-                            {
-                                IsInstrunctionChecked = true;
-                            }
-                            if (vATRegistration.d.AgrFg == "0")
-                            {
-                                IsInstrunctionChecked = false;
-                            }
+                            //commenting the below line for save as draft data comparison
+                            // ADDRESSSetData.PostalCd = string.Empty;
                         }
-                        if (vATRegistration.d.DecidTy != null && vATRegistration.d.DecidTy != "")
-                        {
-                            SelectedIdTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy)?.FirstOrDefault();
-                            TxtIDTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy)?.FirstOrDefault()?.Name;
-
-                            //myList.FindIndex(a => a.Prop == oProp);
-
-                            IDTypeIndexSR = IdTypeListSR.FindIndex(x => x.ID == SelectedIdTypeSR.ID);
-                        }
-                        if (vATRegistration.d.Decconno != null)
-                            IdNumberSR = vATRegistration.d.DecidNo;
-                        FirstNameSR = vATRegistration.d.Decname;
-
-                        if (vATRegistration.d.CrStdt != null)
-                        {
-                            StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                        }
-                        VATRegistrationDetailsData = vATRegistration;
-                        setIban();
-                        if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.Count != 0)
-                        {
-                            ADDRESSSetData = VATRegistrationDetailsData.d.ADDRESSSet[0];
-                            AddressLineOne = ADDRESSSetData.BuildingNo + " " + ADDRESSSetData.Street + " " + ADDRESSSetData.Quarter;
-                            if (ADDRESSSetData.PostalCd.Equals("00000"))
-                            {
-                                //commenting the below line for save as draft data comparison
-                                // ADDRESSSetData.PostalCd = string.Empty;
-                            }
-                            AddressLineTwo = ADDRESSSetData.RegionDesc + " " + ADDRESSSetData.City + " " + ADDRESSSetData.PostalCd;
-                        }
-                        if (VATRegistrationDetailsData.d.VatTaxDt != null)
-                        {
-                            string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATRegistrationDetailsData.d.VatTaxDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            VatEligibleStartDate = Convert.ToDateTime(convertedDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                        }
-                        if (VATRegistrationDetailsData.d.ImFg == "1")
-                        {
-                            ImporterImageSource = "vat_tile_IbanCard_background.png";
-                            ImporterTextColor = Colors.White;
-                        }
-                        else
-                        {
-                            ImporterImageSource = "vat_tile_IbanCard_background_white.png";
-                            ImporterTextColor = (Color)App.Current.Resources["Primary"];
-                        }
-                        if (VATRegistrationDetailsData.d.ExFg == "1")
-                        {
-                            ExporterImageSource = "vat_tile_IbanCard_background.png";
-                            ExporterTextColor = Colors.White;
-                        }
-                        else
-                        {
-                            ExporterImageSource = "vat_tile_IbanCard_background_white.png";
-                            ExporterTextColor = (Color)App.Current.Resources["Primary"];
-                        }
-                        if (VATRegistrationDetailsData.d.QUESCONFIG_MSet != null && VATRegistrationDetailsData.d.QUESCONFIG_MSet.Count > 0)
-                        {
-                            MinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
-                            MinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(VATRegistrationDetailsData.d.QUESCONFIG_MSet);
-                            MaximumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue)?.FirstOrDefault() == null ? 0 : MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue).FirstOrDefault();
-                            MinimumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue)?.FirstOrDefault() == null ? 0 : MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue).FirstOrDefault();
-
-                            MaximumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue)?.FirstOrDefault() == null ? 0 : MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();
-                            MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue)?.FirstOrDefault() == null ? 0 : MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
-
-                            MaximumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
-                            MaximumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
-
-                            TextQuestion3First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "003" && x.QoptNo == "031")?.Select(x => x.QoptTxt)?.FirstOrDefault();
-                            TextQuestion3Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptTxt).FirstOrDefault();
-
-                            TextQuestion4First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "004" && x.QoptNo == "041")?.Select(x => x.QoptTxt)?.FirstOrDefault();
-                            TextQuestion4Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "004" && x.QoptNo == "042")?.Select(x => x.QoptTxt)?.FirstOrDefault();
-
-                            setQuestionImage();
-                        }
-                        if (VATRegistrationDetailsData.d.QUESTIONSSet != null)
-                        {
-                            answer1selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "001" && s.QoptAns == "1").Count();
-                            answer2selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "002" && s.QoptAns == "1").Count();
-                            answer3selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "003" && s.QoptAns == "1").Count();
-                            answer4selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "004" && s.QoptAns == "1").Count();
-                        }
-
-                        vATRegistrationOther = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
-                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        if (vATRegistrationOther != null && vATRegistrationOther.d != null)
-                        {
-                            VATRegistrationOtherDetails = vATRegistrationOther;
-                            SetApplicableButtons();
-                        }
-                        OriginalData = JsonConvert.SerializeObject(VATRegistrationDetailsData);
-                        VATRegistrationData = JsonConvert.DeserializeObject<VATRegistrationDetails>(OriginalData);
-
+                        AddressLineTwo = ADDRESSSetData.RegionDesc + " " + ADDRESSSetData.City + " " + ADDRESSSetData.PostalCd;
+                    }
+                    if (VATRegistrationDetailsData.d.VatTaxDt != null)
+                    {
+                        string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATRegistrationDetailsData.d.VatTaxDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        VatEligibleStartDate = Convert.ToDateTime(convertedDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    }
+                    if (VATRegistrationDetailsData.d.ImFg == "1")
+                    {
+                        ImporterImageSource = "vat_tile_IbanCard_background.png";
+                        ImporterTextColor = Colors.White;
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                            _navigationService.GoBack();
-                        });
+                        ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                        ImporterTextColor = (Color)App.Current.Resources["Primary"];
                     }
-                    IsLoading = false;
+                    if (VATRegistrationDetailsData.d.ExFg == "1")
+                    {
+                        ExporterImageSource = "vat_tile_IbanCard_background.png";
+                        ExporterTextColor = Colors.White;
+                    }
+                    else
+                    {
+                        ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                        ExporterTextColor = (Color)App.Current.Resources["Primary"];
+                    }
+                    if (VATRegistrationDetailsData.d.QUESCONFIG_MSet != null && VATRegistrationDetailsData.d.QUESCONFIG_MSet.Count > 0)
+                    {
+                        MinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
+                        MinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                        MaximumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue)?.FirstOrDefault() == null ? 0 : MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue).FirstOrDefault();
+                        MinimumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue)?.FirstOrDefault() == null ? 0 : MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue).FirstOrDefault();
+
+                        MaximumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue)?.FirstOrDefault() == null ? 0 : MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();
+                        MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue)?.FirstOrDefault() == null ? 0 : MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
+
+                        MaximumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
+                        MaximumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
+
+                        TextQuestion3First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "003" && x.QoptNo == "031")?.Select(x => x.QoptTxt)?.FirstOrDefault();
+                        TextQuestion3Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptTxt).FirstOrDefault();
+
+                        TextQuestion4First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "004" && x.QoptNo == "041")?.Select(x => x.QoptTxt)?.FirstOrDefault();
+                        TextQuestion4Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "004" && x.QoptNo == "042")?.Select(x => x.QoptTxt)?.FirstOrDefault();
+
+                        setQuestionImage();
+                    }
+                    if (VATRegistrationDetailsData.d.QUESTIONSSet != null)
+                    {
+                        answer1selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "001" && s.QoptAns == "1").Count();
+                        answer2selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "002" && s.QoptAns == "1").Count();
+                        answer3selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "003" && s.QoptAns == "1").Count();
+                        answer4selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "004" && s.QoptAns == "1").Count();
+                    }
+
+                    vATRegistrationOther = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
+                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    if (vATRegistrationOther != null && vATRegistrationOther.d != null)
+                    {
+                        VATRegistrationOtherDetails = vATRegistrationOther;
+                        SetApplicableButtons();
+                    }
+                    OriginalData = JsonConvert.SerializeObject(VATRegistrationDetailsData);
+                    VATRegistrationData = JsonConvert.DeserializeObject<VATRegistrationDetails>(OriginalData);
+
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw ex;
-                }
-                catch (InternetException ex)
+                else
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         _navigationService.GoBack();
                     });
                 }
-            });
-            await Task.Run(() =>
-            {
                 IsLoading = false;
-            });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                throw ex;
+            }
+            catch (InternetException ex)
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    IsLoading = false;
+                    _navigationService.GoBack();
+                });
+            }
+
+
+            IsLoading = false;
+
 
         }
         catch (GAZTVATRegistrationInProcessException ex)

@@ -1519,24 +1519,20 @@
                                             <!--  CR6264 starts  -->
 
                                             <Grid
-                                                x:Name="tileUpdatedView"
                                                 ColumnDefinitions="auto,*"
-                                                ColumnSpacing="20"
-                                                IsVisible="{Binding istileUpdated}">
+                                                ColumnSpacing="20">
                                                 <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
                                                 <Label
                                                     Grid.Column="1"
                                                     Style="{StaticResource ButtonLabelWhiteBold}"
-                                                    Text="{x:Static ResourceManager:AppResources.ZProfitgoodsSCSRTile}" />
+                                                    Text="{Binding VatProfitGoodsTileTxt}"/>
                                                 <Grid.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="ProfitOnGoods_Tapped" />
                                                 </Grid.GestureRecognizers>
                                             </Grid>
                                             <BoxView
                                                 x:Name="tileUpdatedBoxView"
-                                                IsVisible="{Binding istileUpdated}"
                                                 Style="{StaticResource WhiteLineSeperator}" />
-
                                             <!--  CR6264 ends  -->
                                             <!--  RateUS  Starts  -->
                                             <StackLayout Spacing="20">

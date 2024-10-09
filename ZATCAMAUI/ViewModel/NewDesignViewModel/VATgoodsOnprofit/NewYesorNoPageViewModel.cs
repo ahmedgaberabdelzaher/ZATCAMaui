@@ -130,7 +130,103 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
                 OnPropertyChanged("IsNoQ2Checked");
             }
         }
+        private bool _yesQ1Enable = false;
+        public bool YesQ1Enable
+        {
+            get { return _yesQ1Enable; }
+            set
+            {
+                if (_yesQ1Enable == value) return;
+                _yesQ1Enable = value;
+                OnPropertyChanged("YesQ1Enable");
+            }
+        }
 
+        private bool _noQ1Enable = false;
+        public bool NoQ1Enable
+        {
+            get { return _noQ1Enable; }
+            set
+            {
+                if (_noQ1Enable == value) return;
+                _noQ1Enable = value;
+                OnPropertyChanged("NoQ1Enable");
+            }
+        }
+
+        private bool isYesQ3Checked = false;
+        public bool IsYesQ3Checked
+        {
+            get { return isYesQ3Checked; }
+            set
+            {
+                if (isYesQ3Checked == value) return;
+                isYesQ3Checked = value;
+                OnPropertyChanged("IsYesQ3Checked");
+            }
+        }
+
+        private bool isNoQ3Checked = false;
+        public bool IsNoQ3Checked
+        {
+            get { return isNoQ3Checked; }
+            set
+            {
+                if (isNoQ3Checked == value) return;
+                isNoQ3Checked = value;
+                OnPropertyChanged("IsNoQ3Checked");
+            }
+        }
+
+        private bool showDeregQuestion = false;
+        public bool ShowDeregQuestion
+        {
+            get { return showDeregQuestion; }
+            set
+            {
+                if (showDeregQuestion == value) return;
+                showDeregQuestion = value;
+                OnPropertyChanged("ShowDeregQuestion");
+            }
+        }
+
+        private bool showQ1 = false;
+        public bool ShowQ1
+        {
+            get { return showQ1; }
+            set
+            {
+                if (showQ1 == value) return;
+                showQ1 = value;
+                OnPropertyChanged("ShowQ1");
+            }
+        }
+
+
+
+        private ProfitGoods profitGoodsModel = new ProfitGoods();
+        public ProfitGoods ProfitGoodsModel
+        {
+            get { return profitGoodsModel; }
+            set
+            {
+                if (profitGoodsModel == value) return;
+                profitGoodsModel = value;
+                OnPropertyChanged("ProfitGoodsModel");
+            }
+        }
+
+        private VATFoodResults _previousRequest = new VATFoodResults();
+        public VATFoodResults PreviousRequest
+        {
+            get { return _previousRequest; }
+            set
+            {
+                if (_previousRequest == value) return;
+                _previousRequest = value;
+                OnPropertyChanged("PreviousRequest");
+            }
+        }
         public NewYesorNoPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             GoBackBtnTapped = new Command(() =>
@@ -139,7 +235,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
             });
         }
 
-        public async void callSubmit()
+        public async Task callSubmit()
         {
             IsLoading = true;
             try
@@ -147,50 +243,124 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
 
                 VATFoodResults modelDetails = new VATFoodResults();
                 modelDetails.Gpart = App.LoginDataRetrieved.TIN;
-                if (QA1 == "X")
-                {
-                    modelDetails.SaleUgmCb = true;
-                }
-                else
+                modelDetails.Fbnum = ProfitGoodsModel.Fbnum;
+                modelDetails.TpName = ProfitGoodsModel.taxpayerName;
+                if (showDeregQuestion)
                 {
                     modelDetails.SaleUgmCb = false;
-                }
-                if (QA2 == "X")
-                {
-                    modelDetails.OthActyCb = true;
+                    modelDetails.OthActyCb = false;
                 }
                 else
                 {
-                    modelDetails.OthActyCb = false;
+                    if (QA1 == "X")
+                    {
+                        modelDetails.SaleUgmCb = true;
+                    }
+                    else
+                    {
+                        modelDetails.SaleUgmCb = false;
+                    }
+                    if (QA2 == "X")
+                    {
+                        modelDetails.OthActyCb = true;
+                    }
+                    else
+                    {
+                        modelDetails.OthActyCb = false;
+                    }
+                    if (PreviousRequest.SaleUgmCb == modelDetails.SaleUgmCb && PreviousRequest.OthActyCb == modelDetails.OthActyCb)
+                    {
+                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NoChangesInTheApplication));
+                        return;
+                    }
                 }
 
-
-                //API Call for submitting the value;
                 ProfitGoods response = await WebServiceManager.SaveVAtProfitGoodsAsync(modelDetails);
                 if (response != null)
                 {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsSuccessmessage));
-                    MessagingCenter.Send<object>(this, "HideProfitGoods");
-
-                    App.IsVAtProfitForGoods = false;
-
+                    if (ShowDeregQuestion)//De reg
+                    {
+                        App.TP.VtpmFg = "";
+                        String message = String.Format(AppResources.VATGoodsDeregisterSuccessMsg, response.taxpayerName, response.Gpart, response.Fbnum);
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                      
+                    }
+                    else
+                    { // Reg
+                        App.TP.VtpmFg = "X";
+                        await _dialogService.ShowMessage(AppResources.ZprofitsOnGoodsSuccessmessage, AppResources.Information);
+                    }
                     IsLoading = false;
+                    App.HasToRefreshLoaderOnDashboard = true;
                     _navigationService.GoBack();
-
+                    MessagingCenter.Send<object>(this, "HideProfitGoods");
+                  
                 }
                 else
                 {
                     IsLoading = false;
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsfailuremessage));
                 }
+               
             }
             catch (Exception)
             {
-
+                IsLoading = false;
             }
 
 
         }
+        internal async Task GetApplicationRequestAsync()
+        {
+            try
+            {
+                IsLoading = true;
+                ProfitGoodsModel = await WebServiceManager.GetVATProfitGoodsAsync();
+                IsLoading = false;
+                if (!string.IsNullOrEmpty(ProfitGoodsModel.DregFbnum))
+                {
+                    String message = String.Format(AppResources.VATGoodsDeregisterMsg, ProfitGoodsModel.taxpayerName, ProfitGoodsModel.Gpart, ProfitGoodsModel.DregFbnum);
+
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    _navigationService.GoBack();
+                    return;
+                }
+
+
+                if (ProfitGoodsModel.registration.ToUpper().Equals("X"))
+                {
+                    ShowDeregQuestion = true;
+                    ShowQ1 = false;
+
+                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATProfitDeregisterQuestion, AppResources.ZYes, AppResources.ZNo);
+                    if (result)
+                    {
+                        IsLoading = true;
+                        await Task.Delay(500);
+                        await callSubmit();
+                    }
+                    else
+                    {
+                        _navigationService.GoBack();
+                    }
+                }
+                else
+                {
+                    ShowDeregQuestion = false;
+                    ShowQ1 = true;
+                    YesQ1Enable = true;
+                    NoQ1Enable = true;
+
+
+                }
+            }
+            catch (Exception)
+            {
+                IsLoading = false;
+            }
+        }
+
     }
 }
 
