@@ -1166,36 +1166,34 @@
                                                             HorizontalOptions="FillAndExpand">
 
                                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-
-
                                                                 <!--  SFChart Instalments  -->
-
                                                                 <Grid
                                                                     HeightRequest="80"
                                                                     VerticalOptions="CenterAndExpand"
                                                                     WidthRequest="80">
 
-                                                                    <chart:SfCartesianChart
+                                                                    <chart:SfCircularChart
                                                                         HeightRequest="80"
-                                                                        Rotation="-90"
-                                                                        Series="{Binding Series}"
-                                                                        VerticalOptions="CenterAndExpand"
-                                                                        WidthRequest="80">
-
-                                                                        <chart:SfCartesianChart.XAxes>
-                                                                            <chart:CategoryAxis />
-                                                                        </chart:SfCartesianChart.XAxes>
-                                                                        <chart:SfCartesianChart.YAxes>
-                                                                            <chart:NumericalAxis />
-                                                                        </chart:SfCartesianChart.YAxes>
-                                                                    </chart:SfCartesianChart>
-
-                                                                    <Image
+                                                                        WidthRequest="80"
+                                                                        VerticalOptions="CenterAndExpand">
+                                                                        
+                                                                        <chart:DoughnutSeries
+                                                                            PaletteBrushes="{Binding ChartColors}"
+                                                                            ItemsSource="{Binding Series}"
+                                                                            InnerRadius="0.7"
+                                                                            XBindingPath="XValue"
+                                                                            YBindingPath="YValue">
+                                                                            <chart:DoughnutSeries.CenterView>
+                                                                                 <Image
                                                                         Margin="2,2,0,0"
                                                                         HeightRequest="32"
                                                                         Source="sf_Payment.png"
                                                                         VerticalOptions="Center"
                                                                         WidthRequest="32" />
+                                                                                </chart:DoughnutSeries.CenterView>
+                                                                          
+                                                                        </chart:DoughnutSeries>
+                                                                    </chart:SfCircularChart>
                                                                 </Grid>
 
                                                                 <!--  SFChart Instalments End  -->
@@ -1206,11 +1204,10 @@
                                                                         Margin="0,-4,0,-4"
                                                                         Padding="0"
                                                                         Style="{StaticResource SectionTitleBlackBold}"
-                                                                        Text="{Binding TaxTypeDes}" />
+                                                                        Text="{Binding TaxTypeDescription}" />
 
                                                                     <Label
-                                                                        Margin="0,-4,0,-4"
-                                                                        Padding="0"
+                                                                        
                                                                         FontSize="15"
                                                                         Style="{StaticResource ValueLabelBlackLight}">
                                                                         <Label.FormattedText>
@@ -1218,7 +1215,7 @@
                                                                                 <Span
                                                                                     FontSize="15"
                                                                                     Style="{StaticResource ValueLabelBlackLight}"
-                                                                                    Text="{Binding TotalInstAmt, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                                    Text="{Binding InstallmentTotalAmount, Converter={StaticResource commaSeparatorConverter}}" />
                                                                                 <Span Text=" " />
                                                                                 <Span
                                                                                     FontSize="15"
@@ -1229,18 +1226,16 @@
                                                                     </Label>
 
                                                                     <Label
-                                                                        Margin="0,0,0,-4"
-                                                                        Padding="0"
                                                                         Style="{StaticResource BodyLabelBlackMedium}"
                                                                         Text="{x:Static ResourceManager:AppResources.DashBoardNextPaymentDue}" />
 
                                                                     <Label
-                                                                        Margin="0,0,10,0"
+                                                                        
                                                                         FontSize="15"
                                                                         Style="{StaticResource ValueLabelBlackLight}"
-                                                                        Text="{Binding DayMonthToDisplay}" />
+                                                                        Text="{Binding DayMonth}" />
 
-                                                                    <StackLayout Margin="0,-4,5,-4" Orientation="Horizontal">
+                                                                    <StackLayout  Orientation="Horizontal">
 
 
                                                                         <BoxView
@@ -1253,13 +1248,10 @@
                                                                             WidthRequest="8" />
 
 
-                                                                        <Label Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding NextInstAmt, Converter={StaticResource commaSeparatorConverter}}">
-
-
-
+                                                                        <Label Style="{StaticResource BodyLabelBlackMedium}">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding NextInstAmt, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                                    <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding NextInstallmentAmount, Converter={StaticResource commaSeparatorConverter}}" />
                                                                                     <Span Text=" " />
                                                                                     <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                                 </FormattedString>

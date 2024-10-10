@@ -2775,11 +2775,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
             var items = new ObservableCollection<InstalmentPlanResult>();
 
-            ChartColorCollection ColorsChild = new ChartColorCollection
+            ObservableCollection<Brush> CustomBrushes = new ObservableCollection<Brush>()
             {
-                (Color)Application.Current.Resources["Primary"],
-                (Color)Application.Current.Resources["NewProgressLightGreenColor"],
-                (Color)Application.Current.Resources["TabGray"]
+                new SolidColorBrush(Color.FromRgba("#042e66")), //Primary - InstallmentTotalAmount
+                new SolidColorBrush(Color.FromRgba("#61b34f")), //SuccessColor - NextInstallmentAmount
+                new SolidColorBrush(Color.FromRgba("#999999")) //NeutralGreay
             };
 
 
@@ -2788,22 +2788,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 double totalPaidBills = 0;
                 double nextBill = 0;
                 double unPaidBills = 0;
-                var chartData = new ObservableCollection<Model>();
+                var Data = new ObservableCollection<Model>();
                 totalPaidBills = String.IsNullOrEmpty(singleItem.TotalInstallmentsPaid) ? 0 : int.Parse(singleItem.TotalInstallmentsPaid);
                 nextBill = String.IsNullOrEmpty(singleItem.NextInstallmentAmount) ? 0 : 1;
                 unPaidBills = String.IsNullOrEmpty(singleItem.TotalInstallmentsPaid) ? 0 : int.Parse(singleItem.TotalInstallmentsPaid);
                 if (unPaidBills > 0) { unPaidBills = unPaidBills--; }
-                chartData.Add(new Model("Paid", totalPaidBills));
-                chartData.Add(new Model("nextPayment", nextBill));
-                chartData.Add(new Model("Remaining", unPaidBills));
 
-                var doughnutSeries = new DoughnutSeries();
-                doughnutSeries.Radius = 0.99;
-                doughnutSeries.InnerRadius = 0.85;
-                doughnutSeries.PaletteBrushes = ColorsChild;
-                doughnutSeries.ItemsSource = chartData;
-                singleItem.Series = new ChartSeriesCollection() { doughnutSeries };
-
+                Data.Add(new Model("Paid", totalPaidBills));
+                Data.Add(new Model("nextPayment", nextBill));
+                Data.Add(new Model("Remaining", unPaidBills));
+                singleItem.Series = Data;
+                singleItem.ChartColors = CustomBrushes;
                 items.Add(singleItem);
 
             }

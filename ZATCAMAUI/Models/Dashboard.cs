@@ -1,6 +1,6 @@
 ﻿
 using Newtonsoft.Json;
-using Syncfusion.Maui.Charts;
+using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 
 namespace ZATCAMAUI.Models
@@ -93,7 +93,9 @@ namespace ZATCAMAUI.Models
         public string TotalInstallmentsUnpaid { get; set; }
 
         [JsonIgnore]
-        public ChartSeriesCollection Series { get; set; }
+        public ObservableCollection<Model> Series { get; set; } = new ObservableCollection<Model>();
+        [JsonIgnore]
+        public ObservableCollection<Brush> ChartColors { get; set; } = new ObservableCollection<Brush>();
         [JsonIgnore]
         public string DayMonthToDisplay { get; set; }
 
