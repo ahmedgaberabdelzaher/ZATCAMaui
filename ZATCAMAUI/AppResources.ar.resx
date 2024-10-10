@@ -3372,10 +3372,6 @@
         <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
         <comment>Vat Lookup</comment>
     </data>
-    <data name="ZZZVatLookUpTitleNew" xml:space="preserve">
-        <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
-        <comment>Vat Lookup</comment>
-    </data>
     <data name="ZZTaxPayerName" xml:space="preserve">
         <value>اسم المكلف</value>
         <comment>Vat Lookup</comment>
@@ -11071,8 +11067,11 @@ info@zatca.gov.sa</value>
     <value>كلمة المرور</value>
 </data>
 <data name="NoChangesInTheApplication" xml:space="preserve">
-    <value>No changes in the application to submit</value>
+    <value>لا توجد تغييرات في الطلب لتقديمه</value>
 </data>
+  <data name="DeRegConfirmationmsg" xml:space="preserve">
+    <value>هل تريد إلغاء التسجيل؟</value>
+  </data>
 <data name="VATGoodsDeregisterMsg" xml:space="preserve">
     <value>
   عزيزنا: {0}
@@ -11475,4 +11474,4 @@ info@zatca.gov.sa</value>
 	<data name="EnterYourNationalIdHere" xml:space="preserve">
      <value>الرجاء إدخال رقم الهوية الوطنية / معرف الإقامة</value>
   </data>
-</root>
+</root> 

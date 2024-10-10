@@ -7532,7 +7532,7 @@ namespace ZATCAMAUI.Core.Mangers
             }
 
         }
-        public static async Task<ProfitGoods> GetVATProfitGoodsAsync(string TIN)
+        public static async Task<ProfitGoods> GetVATProfitGoodsAsync()
         {
             if (NetworkCheck.IsInternet())
             {
@@ -7541,7 +7541,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
                     string LangZ = WebServiceManager.GetLangZParameterAREN();
-                    String url = ZATCAConstants.TaxpayervatgoodsAmrgin + "?TIN=" + TIN + "&formBundleGUID=" + App.LoginDataRetrieved.FbGuid;
+                    String url = ZATCAConstants.TaxpayervatgoodsAmrgin + "?TIN=" + App.TP.TIN + "&formBundleGUID=" + App.LoginDataRetrieved.FbGuid;
                     var uri = new Uri(url);
 
                     HttpClient client = new HttpClient();

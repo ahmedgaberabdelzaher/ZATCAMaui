@@ -3509,10 +3509,6 @@ Should we require further information, we would be in contact.</value>
         <value>VAT Registration Verification Service</value>
         <comment>Vat Lookup</comment>
     </data>
-    <data name="ZZZVatLookUpTitleNew" xml:space="preserve">
-        <value>VAT Verification</value>
-        <comment>Vat Lookup</comment>
-    </data>
     <data name="ZZTaxPayerName" xml:space="preserve">
         <value>Taxpayer Name</value>
         <comment>Vat Lookup tax payer name</comment>
@@ -11154,6 +11150,9 @@ The following returns should be filled before proceeding with the instalment pla
     <data name="NoChangesInTheApplication" xml:space="preserve">
         <value>No changes in the application to submit</value>
     </data>
+    	<data name="DeRegConfirmationmsg" xml:space="preserve">
+        <value>Do you want to deregister?</value>
+    </data>
     <data name="VATGoodsDeregisterMsg" xml:space="preserve">
         <value>
 Dear {0}
@@ -11763,4 +11762,4 @@ the credit balance of the current period will be carried forward, you can reques
    <data name="NationalIDstartswith1AndIqamaIDstartswith2" xml:space="preserve">
     <value>National/Iqama ID should start with 1/2</value>
   </data>
-</root>
+</root> 

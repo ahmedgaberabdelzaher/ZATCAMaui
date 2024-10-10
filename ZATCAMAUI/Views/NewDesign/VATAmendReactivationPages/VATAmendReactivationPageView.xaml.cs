@@ -372,6 +372,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         viewModel.CurrentStep = AppResources.ZTEReportCategorySubmitBtn;
                         viewModel.SetVisibility();
                         viewModel.IsSummaryVisible = true;
+                        if (viewModel.VatDeregDeclaration != null && viewModel.VatDeregDeclaration.D != null && string.IsNullOrEmpty(viewModel.VatDeregDeclaration.D.Zterms))
+                        {
+                            viewModel.IsDeclarationViewEnabled = true;
+                            viewModel.IsDeclarationViewEnabledNew = false;
+                        }
+                        else
+                        {
+                            viewModel.IsDeclarationViewEnabled = false;
+                            viewModel.IsDeclarationViewEnabledNew = true;
+                            viewModel.Zterms = viewModel.VatDeregDeclaration.D.Zterms;
+                            if (App.IsArabic)
+                            {
+                                viewModel.ShouldShowAR = true;
+                                viewModel.ShouldShowEN = false;
+                            }
+                            else
+                            {
+                                viewModel.ShouldShowEN = true;
+                                viewModel.ShouldShowAR = false;
+                            }
+                        }
                         SetfifthBoxColor();
                         if (viewModel.CurrentIndex == 4)
                             viewModel.CurrentIndex++;
@@ -529,26 +550,29 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 bool flag = true;
                 if (App.VATType == PageExecutionType.Reactivation)
                 {
-                    if (viewModel.SelectedIdTypeSR == null)
+                    if (!viewModel.IsDeclarationViewEnabledNew) //When Zterms is empty then only do the validation of ID Details.
                     {
-                        flag = false;
-                    }
-                    if (string.IsNullOrEmpty(viewModel.IdNumberSR))
-                    {
-                        flag = false;
-                        viewModel.FrameContactIDError = true;
-                    }
-                    if (string.IsNullOrEmpty(viewModel.FirstNameSR))
-                    {
-                        flag = false;
-                        FrmContactName.HasError = true;
+                        if (viewModel.SelectedIdTypeSR == null)
+                        {
+                            flag = false;
+                        }
+                        if (string.IsNullOrEmpty(viewModel.IdNumberSR))
+                        {
+                            flag = false;
+                            viewModel.FrameContactIDError = true;
+                        }
+                        if (string.IsNullOrEmpty(viewModel.FirstNameSR))
+                        {
+                            flag = false;
+                            FrmContactName.HasError = true;
 
-                    }
-                    if (btnSR.IsVisible && string.IsNullOrEmpty(viewModel.ContactDOB))
-                    {
-                        flag = false;
-                        viewModel.FrameContactDOBError = true;
+                        }
+                        if (btnSR.IsVisible && string.IsNullOrEmpty(viewModel.ContactDOB))
+                        {
+                            flag = false;
+                            viewModel.FrameContactDOBError = true;
 
+                        }
                     }
                 }
                 if (flag)
@@ -1144,17 +1168,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 string message = string.Empty;
                 MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
                 {
-                    if (res)
-                        Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
-                    else
-                        Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                    //if (res)
+                    //    Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    //else
+                    //    Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 });
                 MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsDeclarationChecked", (obj, res) =>
                 {
-                    if (res)
-                        Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
-                    else
-                        Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                    //if (res)
+                      // Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
+                    //else
+                       // Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 });
                 MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsAddAdditionalInfoChecked", (obj, res) =>
                 {

@@ -66,9 +66,9 @@
 
                 <ScrollView Padding="20" VerticalScrollBarVisibility="Never">
 
-                    <StackLayout Spacing="30">
+                    <StackLayout Spacing="30" >
 
-                        <Grid RowDefinitions="auto,auto">
+                        <Grid RowDefinitions="auto,auto" IsVisible="{Binding ShowQ1}">
                             <Label Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQ1}" />
 
                             <buttons:SfRadioGroup
@@ -138,12 +138,14 @@
 
                         <buttons:SfButton
                             x:Name="btnSubmit"
+                            IsVisible="{Binding ShowQ1}"
                             Clicked="OnSubmitButtonClicked"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZprofitsOnGoodsSubmit}" />
 
                         <buttons:SfButton
                             x:Name="btnCancel"
+                            IsVisible="{Binding ShowQ1}"
                             Clicked="OnCancelButtonClicked"
                             Style="{StaticResource SecondaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZprofitsOnGoodscancel}" />

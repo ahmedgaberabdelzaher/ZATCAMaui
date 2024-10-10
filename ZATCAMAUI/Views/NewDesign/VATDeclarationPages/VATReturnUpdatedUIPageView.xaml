@@ -4045,7 +4045,7 @@
 
                                     </VerticalStackLayout>
 
-                                    <buttons:SfButton
+                                    <buttons:SfButton Margin="5"
                                         x:Name="btnpaynow"
                                         Clicked="OnPayNowButtonClicked"
                                         IsVisible="{Binding IsPayNowVisible}"

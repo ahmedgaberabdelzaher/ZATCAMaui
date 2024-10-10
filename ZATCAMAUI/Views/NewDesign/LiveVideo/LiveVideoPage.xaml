@@ -88,7 +88,7 @@
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="20"
                                 HorizontalOptions="StartAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.LiveVideoSubTitle}"
+                                Text="{Binding LiveVideoSubTitle}"
                                 TextColor="#58595B" />
 
                             <!--  Port Field  -->
