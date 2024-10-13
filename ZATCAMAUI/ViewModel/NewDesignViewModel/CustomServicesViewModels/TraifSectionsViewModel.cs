@@ -483,9 +483,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set { isitemDetilsVisible = value; OnPropertyChanged(); }
         }
 
-        string title;
-        public string Title { get { return title; } set { title = value; OnPropertyChanged(); } }
-
         public string ChapterTitle { get; set; }
         public string MainHarmonizedTitle { get; set; }
         ITraiffSectionsServices _traiffSectionServices;
@@ -503,7 +500,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 return new Command(async () =>
                 {
-
                     SetFlowDirection();
                     if (IsSectionView)
                     {
@@ -523,7 +519,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                     await Clipboard.SetTextAsync(SelectedSubHarmonizedTariffs.hrmnzd_code);
                     var toastConfig = new ToastConfig($"{SelectedSubHarmonizedTariffs.hrmnzd_code} {AppResources.Copied}");
-                    //toastConfig.
                     toastConfig.SetDuration(1500);
                     toastConfig.SetBackgroundColor(System.Drawing.Color.Black);
                     toastConfig.SetPosition(ToastPosition.Bottom);
@@ -538,7 +533,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command<string>(async (e) =>
+                return new Command<string>( (e) =>
                 {
                     if (IsChapterSection)
                     {
@@ -557,7 +552,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command<string>(async (e) =>
+                return new Command<string>( (e) =>
                 {
                     if (e == "1")
                     {
@@ -629,20 +624,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     {
                         try
                         {
-                            /*IsSearchFilterVisbible = false;
-                            var res = TraiffSectionsLst.Where(c => c.Name.Contains(e.ToString()));
-                            TraiffSections = new ObservableCollection<Section>(res);
-                            */
+                          
                             await TariffSearch();
                         }
                         catch (Exception)
                         {
 
                         }
-                    }
-                    else
-                    {
-                        // TraiffSections = TraiffSectionsLst;
                     }
 
                 });
@@ -688,11 +676,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                 if (SelectedItem != null)
                 {
-                    /*  if (SelectedItem.item_type == 3 || SelectedItem.item_type == 1)
-                      {
-                          SelectedItem = null;
-                          return;
-                      }*/
                     var last4digit = SelectedItem.hrmnzd_code.Substring(8, 4);
                     var third2digit = SelectedItem.hrmnzd_code.Substring(4, 2);
                     var fr2digit = SelectedItem.hrmnzd_code.Substring(6, 2);
@@ -702,7 +685,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     bool isAllzeros = last4digit.All(c => c == '0');
                     if (!isAllzeros)
                     {
-                        //SelectedHarmonizedTariffslvl2.hrmnzd_code.Remove(8, 4);
                         ParentCode = SelectedItem.hrmnzd_code.Substring(0, 8);
                     }
                     else
@@ -762,7 +744,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
                 if (SelectedItem != null)
                 {
-                    //GetMainHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
                     if (SelectedItem.item_type == 3 || SelectedItem.item_type == 1)
                     {
                         SelectedItem = null;
@@ -845,13 +826,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command(() =>
+                return new Command(async() =>
                 {
                     if (SelectedTraiffSections != null)
                     {
-                        GetTraiffChapters(SelectedTraiffSections.sect_code);
+                        await GetTraiffChapters(SelectedTraiffSections.sect_code);
                         Title = SelectedTraiffSections.Name;
-                        ChapterTitle = title;
+                        ChapterTitle = SelectedTraiffSections.Name;
                         SectionNotesLst = SelectedTraiffSections.notes;
                         SelectedTraiffSections = null;
                         IsChapterSection = true;
@@ -875,14 +856,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                               {
                                   IsChapterSection = false;
                                   IsHarmonizedTarrifs = true;
-                                  //GetMainHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
                                   HarmonizedTariffs = await GetHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
                                   IsHarmonizedTarrifs = true;
                                   Title = SelectedTraiffChapters.Name;
                                   MainHarmonizedTitle = Title;
 
                                   IsSectionView = false;
-                                  //IsMainHarmonizedTariffs = true;
                                   Level1Title = SelectedTraiffChapters.Name;
                                   LevelNo = 0;
                                   ChapterNotesLst = SelectedTraiffChapters.notes;
@@ -933,7 +912,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                         if (SelectedHarmonizedTariffs != null)
                         {
-                            //GetMainHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
                             if (SelectedHarmonizedTariffs.item_type == 3 || SelectedHarmonizedTariffs.item_type == 1)
                             {
                                 return;
@@ -1251,7 +1229,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
             else if (IsHarmonizedTariffs4lvl)
             {
-                // HarmonizedTariffslvl4 = new ObservableCollection<HarmonizedTarrif>();
                 LevelNo = 2;
                 Title = level3Title;
                 IsHarmonizedTariffs4lvl = false;
@@ -1266,17 +1243,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
             else if (LevelNo == 1)
             {
-                // HarmonizedTariffslvl2 = new ObservableCollection<HarmonizedTarrif>();
                 LevelNo = 0;
-                //IsChapterSection = true;
-
                 Title = level1Title;
                 IsHarmonizedTariffs2lvl = false;
                 IsHarmonizedTarrifs = true;
             }
             else if (LevelNo == 0)
             {
-                // HarmonizedTariffs = new ObservableCollection<HarmonizedTarrif>();
                 LevelNo = null;
                 IsHarmonizedTarrifs = false;
                 IsChapterSection = true;
@@ -1299,7 +1272,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     IsChapterSection = false;
                     IsSectionView = true;
-                    //  List<Task> tasks = new List<Task>();
 
                 });
             }
@@ -1313,7 +1285,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     SearchKey = "";
                     IsSearchFilterVisbible = true;
-                    //  List<Task> tasks = new List<Task>();
 
                 });
             }
@@ -1332,6 +1303,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     var res = data.Item1.data;
                     TraiffSections = res;
                     traiffSectionsLst = res;
+                }
+                else if (!string.IsNullOrWhiteSpace(data?.Item3))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = data?.Item3;
                 }
             }
             catch (Exception)
@@ -1353,6 +1329,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     var res = data.Item1.data;
                     TraiffChapters = res;
                 }
+                else if (!string.IsNullOrWhiteSpace(data?.Item3))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = data?.Item3;
+                }
             }
             catch (Exception)
             {
@@ -1373,6 +1354,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     var res = data.Item1.data;
                     MainHarmonizedTariffs = res;
                 }
+                else if (!string.IsNullOrWhiteSpace(data?.Item3))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = data?.Item3;
+                }
             }
             catch (Exception)
             {
@@ -1385,6 +1371,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             try
             {
+               
                 IsLoading = true;
                 var data = await _traiffSectionServices.GetSubHarmonizedTariffs(chptCode, mainItemCode);
                 if (data.Item2)
@@ -1392,6 +1379,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                     var res = data.Item1.data;
                     SubHarmonizedTariffs = res;
+                }
+                else if (!string.IsNullOrWhiteSpace(data?.Item3))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = data?.Item3;
                 }
             }
             catch (Exception)
@@ -1405,6 +1397,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             try
             {
+              
                 IsLoading = true;
                 var data = await _traiffSectionServices.Search(SearchBy, SearchKey);
                 if (data.Item2)
@@ -1413,6 +1406,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     var res = data.Item1.data;
                     SearchResultLst = res;
                     IsSearchFilterVisbible = false;
+                }
+                else if (!string.IsNullOrWhiteSpace(data?.Item3))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = data?.Item3;
                 }
             }
             catch (Exception)
@@ -1442,6 +1440,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     }
 
                 }
+                else if(!string.IsNullOrWhiteSpace(data?.Item3))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = data?.Item3;
+                }
                 return new ObservableCollection<HarmonizedTarrif>();
             }
             catch (Exception)
@@ -1451,5 +1454,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             finally { IsLoading = false; }
         }
 
+        
     }
 }

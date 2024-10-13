@@ -6,6 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -349,8 +350,14 @@
 
                                         <Image
                                             Aspect="AspectFit"
-                                            Source="info"
-                                            ToolTipProperties.Text="{x:Static ResourceManager:AppResources.CustomFeesDisclaimer}" />
+                                            Source="info" >
+
+                                           <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding CustomFeesDisclaimerCommand}"/>
+
+                                            </Image.GestureRecognizers>
+
+                                        </Image>
 
                                         <StackLayout.Triggers>
                                             <DataTrigger
@@ -417,8 +424,14 @@
 
                                         <Image
                                             Aspect="AspectFit"
-                                            Source="info"
-                                            ToolTipProperties.Text="{x:Static ResourceManager:AppResources.TrackVATDisclaimer}" />
+                                            Source="info" >
+
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TrackVATDisclaimerCommand}"/>
+
+                                            </Image.GestureRecognizers>
+
+                                        </Image>
 
                                         <StackLayout.Triggers>
                                             <DataTrigger
@@ -618,12 +631,15 @@
                                             TextColor="#999999"
                                             VerticalOptions="Start" />
 
-
-
                                         <Image
                                             Aspect="AspectFit"
-                                            Source="info"
-                                            ToolTipProperties.Text="{x:Static ResourceManager:AppResources.TrackTotalDisclaimer}" />
+                                            Source="info" >
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TrackTotalDisclaimerCommand}"/>
+
+                                            </Image.GestureRecognizers>
+
+                                        </Image>
 
                                         <StackLayout.Triggers>
                                             <DataTrigger
@@ -684,6 +700,9 @@
 
             </Border>
             <!--#endregion Body-->
+
+             <!--  Popup Msg  -->
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
 
         </Grid>
 

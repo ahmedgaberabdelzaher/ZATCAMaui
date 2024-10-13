@@ -22,7 +22,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
         string searchInput;
         public string SearchInput { get { return searchInput; } set { searchInput = value; OnPropertyChanged(); } }
 
-
         public ICommand OnAppearingCommand
         {
             get
@@ -31,6 +30,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     try
                     {
+                        if (!NetworkCheck.IsInternet())
+                        {
+                            IsShowMsgView = true;
+                            IsLoading = false;
+                            MessageTxt = AppResources.NoInternet;
+                            return;
+                        }
                         IsLoading = true;
                         var travelId = App.Locator.StateManager.GetItem("TravelId") as string;
                         var result = await DeclerationServices?.GetListInquireDecleration(travelId);
@@ -118,10 +124,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                                 if (inquireDecleration != null)
                                 {
                                     App.Locator.StateManager.SetItem("inquireDeclaration", inquireDecleration);
-                                    _navigationService.NavigateTo("ReviewRequestPage");
+                                   await _navigationService.NavigateTo("ReviewRequestPage");
 
                                 }
                                 IsLoading = false;
+                            }
+                            else if(!string.IsNullOrWhiteSpace(result?.Item3))
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = result?.Item3;
                             }
                             else
                             {

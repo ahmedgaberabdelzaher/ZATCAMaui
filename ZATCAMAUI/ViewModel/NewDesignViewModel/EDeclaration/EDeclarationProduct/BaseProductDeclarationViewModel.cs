@@ -14,6 +14,7 @@ using ZATCAMAUI.Models.BaseModels;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Core.Helper;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 {
@@ -176,6 +177,41 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                 return new Command(async () =>
                 {
                     await MopupService.Instance.PopAsync(true);
+                });
+            }
+        }
+
+        public ICommand CustomsdeclarationDisclaimerCommand
+        {
+            get
+            {
+                return new Command( () =>
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.CustomsdeclarationDisclaimer;
+                });
+            }
+        }
+
+        public ICommand VATCertificatesDisclaimerCommand
+        {
+            get
+            {
+                return new Command( () =>
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.VATCertificatesDisclaimer;
+                });
+            }
+        }
+         public ICommand NDTotalDisclaimerCommand
+        {
+            get
+            {
+                return new Command( () =>
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.NDTotalDisclaimer;
                 });
             }
         }
@@ -374,6 +410,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                         if (Units == null || Units.Count > 0)
                         {
                             var units = await DeclerationServices.GetUnits();
+                            if(!string.IsNullOrWhiteSpace(units?.Item3))
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = units?.Item3;
+                                return;
+                            }
                             Units = units?.Item1.data;
                         }
 
@@ -737,6 +779,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
         {
             try
             {
+                if (!NetworkCheck.IsInternet())
+                {
+                    IsShowMsgView = true;
+                    IsLoading = false;
+                    MessageTxt = AppResources.NoInternet;
+                    return false;
+                }
 
                 if (FeesCalculatorBody.tobacco == null)
                 {

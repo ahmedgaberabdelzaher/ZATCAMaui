@@ -10,6 +10,7 @@ using ZATCAMAUI.Models.CustomServices.Tawreed;
 using ZATCAMAUI.Models.NativeNafath;
 using ZATCAMAUI.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Core.Helper;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 {
@@ -149,7 +150,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     try
                     {
-
+                        if (!NetworkCheck.IsInternet())
+                        {
+                            IsShowMsgView = true;
+                            IsLoading = false;
+                            MessageTxt = AppResources.NoInternet;
+                            return;
+                        }
                         IsLoading = true;
                         if (!int.TryParse(BuildingNo.ToString(), out int value) || BuildingNo.ToString().Length != 4)
                         {
@@ -185,7 +192,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 IsShowMsgView = true;
                                 return;
                             }
-                            if (String.IsNullOrWhiteSpace(SelectedCRNo) && IsEntity)
+                            if (string.IsNullOrWhiteSpace(SelectedCRNo) && IsEntity)
                             {
                                 MessageTxt = AppResources.RequiredData;
                                 IsShowMsgView = true;
@@ -225,7 +232,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 if (result.header.status.code == "I000000")
                                 {
                                     var refNo = result.result.referenceNumber;
-                                    _navigationService.NavigateTo("/SuccessView", refNo.ToString());
+                                   await _navigationService.NavigateTo("/SuccessView", refNo.ToString());
                                     clearData();
                                 }
                                 else
@@ -266,6 +273,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     try
                     {
+                        if (!NetworkCheck.IsInternet())
+                        {
+                            IsShowMsgView = true;
+                            IsLoading = false;
+                            MessageTxt = AppResources.NoInternet;
+                            return;
+                        }
                         IsLoading = true;
 
                         if (!string.IsNullOrWhiteSpace(CRNo) && CRNo.Length == 10)
@@ -390,6 +404,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     }
 
                 }
+                else if(!string.IsNullOrWhiteSpace(response?.Item3))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = response?.Item3;
+                    return;
+                }
                 else
                 {
                     MessageTxt = AppResources.RequestTimeoutDescription;
@@ -422,7 +442,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             var act = data.taxpayers.FirstOrDefault(c => c.idStatus == "ACTIVE");
                             if (act != null)
                             {
-                                if (!String.IsNullOrEmpty(act.TINNumber))
+                                if (!string.IsNullOrEmpty(act.TINNumber))
                                 {
                                     TIN = long.Parse(act.TINNumber);
                                     IsTinNoVisible = true;
@@ -448,19 +468,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                             return;
                         }
-                        //   MessageTxt = AppResources.RequestTimeoutDescription;
-                        //   IsShowMsgView = true;
                     }
 
                 }
-                else
+                else if (!string.IsNullOrWhiteSpace(response?.Item3))
                 {
-                    // MessageTxt = AppResources.RequestTimeoutDescription;
-                    // IsShowMsgView = true;
+                    IsShowMsgView = true;
+                    MessageTxt = response?.Item3;
+                    return;
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }

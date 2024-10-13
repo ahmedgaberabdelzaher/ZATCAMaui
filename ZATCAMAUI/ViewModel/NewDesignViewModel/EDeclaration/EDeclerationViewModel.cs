@@ -51,8 +51,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                     }
                     else
                     {
-
-                         //_navigationService.NavigateTo("IAMLoginView", 1);
                         _navigationService.NavigateTo("NativeNafathPage", "NewDeclarationPage");
                     }
                     ShowReviewEntries = false;
@@ -84,10 +82,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                             if (inquireDecleration != null)
                             {
                                 App.Locator.StateManager.SetItem("inquireDeclaration", inquireDecleration);
-                                _navigationService.NavigateTo("ReviewRequestPage");
+                              await  _navigationService.NavigateTo("ReviewRequestPage");
 
                             }
                             IsLoading = false;
+                        }
+                        else if (!string.IsNullOrWhiteSpace(result?.Item3))
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = result?.Item3;
                         }
                         else
                         {

@@ -198,10 +198,6 @@
                 <inputLayout:LabelStyle TextColor="#58595B" />
             </inputLayout:SfTextInputLayout.HelperLabelStyle>
 
-            <inputLayout:SfTextInputLayout.TrailingView>
-                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-            </inputLayout:SfTextInputLayout.TrailingView>
-
         </custom:CustomSfTextInputView>
 
         <Label

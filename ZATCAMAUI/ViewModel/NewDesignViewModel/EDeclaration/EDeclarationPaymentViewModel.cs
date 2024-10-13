@@ -51,7 +51,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                         PaymentCard.SADADImage = "ColorSadad.png";
 
                         PaymentCard.VisaCardTextColor = Colors.White;
-                        PaymentCard.SADADTextColor = Color.FromHex("#002447");
+                        PaymentCard.SADADTextColor = Color.FromArgb("#002447");
                     }
 
                     else if (selectedPaymentType == (int)PaymentTypes.SADAD)
@@ -62,7 +62,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                         PaymentCard.VisaCardImage = "ic_iconpay.png";
                         PaymentCard.SADADImage = "WhiteSadad.png";
 
-                        PaymentCard.VisaCardTextColor = Color.FromHex("#002447");
+                        PaymentCard.VisaCardTextColor = Color.FromArgb("#002447");
                         PaymentCard.SADADTextColor = Colors.White;
                     }
 
@@ -88,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                         else
                         {
                             SADADNewTXT = string.Empty;
-                            _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
+                          await  _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
                         }
                     }
                     catch (Exception)

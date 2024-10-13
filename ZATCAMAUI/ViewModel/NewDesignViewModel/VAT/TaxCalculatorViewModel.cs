@@ -201,18 +201,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VAT
                                 TaxValue = Math.Round(Tax, 2, MidpointRounding.AwayFromZero);
                             }
 
-
-
-                            //else
-                            //{
-                            //    IsValidationError = true;
-                            //     MessageTxt = AppResources.ZZPleasefillthemandatoryfields;
-                            //    return;
-                            //}
-
                         }
                         IsShowMsgView = true;
-                        // MessageTxt = Tax.ToString();
                     }
                     catch (Exception)
                     {

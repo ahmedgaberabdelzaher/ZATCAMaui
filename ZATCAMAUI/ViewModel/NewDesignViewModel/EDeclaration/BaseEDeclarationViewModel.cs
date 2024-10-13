@@ -197,6 +197,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
         {
             try
             {
+                if (!NetworkCheck.IsInternet())
+                {
+                    IsShowMsgView = true;
+                    IsLoading = false;
+                    MessageTxt = AppResources.NoInternet;
+                    return;
+                }
                 IsLoading = true;
                 PremiumResidencytypeBody premiumResidencytypeBody = new PremiumResidencytypeBody()
                 {
@@ -250,13 +257,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 
                         }
                     }
-                   /* else if (!string.IsNullOrWhiteSpace(data.header.status.description))
-                    {
-                        MessageTxt = data.header.status.description;
-                        IsShowMsgView = true;
-                        IsLoading = false;
-
-                    }*/
+                   
                     else
                     {
                         SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
