@@ -2322,31 +2322,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     
                 }
 
+                await GetAccountStatments();
+                await GetBillsAndReturns();
+
                 if (App.isMybillsRefresh)
                 {
-
                     _ = Task.Run(async () =>
                     {
-                        await GetAccountStatments();
-                        await GetBillsAndReturns();
                         PopulateBillsInformation();
-                   
                     });
                 }
                 else
                 {
-
                     _ = Task.Run(async () =>
                     {
-                        await GetAccountStatments();
-                        await GetBillsAndReturns();
                         PopualateCommittmentsInformation();
                     });
-                    //_ = Task.Run(GetAccountStatments);
-                    // _ = Task.Run(GetBillsAndReturns);
                     if (DashboardData.data[0] != null && DashboardData.data[0].instructionAction != null)
                     {
-
                         if (DashboardData.data[0].instructionAction == "X")
                         {
                             IsInstalmentPlanVisible = true;
@@ -2354,10 +2347,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                         }
                         else
                         {
-
                             IsInstalmentPlanVisible = false;
                         }
-
                     }
                 }
             }
