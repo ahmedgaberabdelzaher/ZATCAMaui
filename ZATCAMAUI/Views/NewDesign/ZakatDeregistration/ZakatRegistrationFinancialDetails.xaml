@@ -4,297 +4,219 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="false">
 
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <Grid BackgroundColor="Transparent">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-
-                    </Grid.RowDefinitions>
-                    <Border
-                        Grid.Row="1"
-                        Padding="0"
-                        BackgroundColor="Black"
-                        StrokeShape="RoundRectangle 15,15,0,0">
-                        <Grid
-                            x:Name="VATRMainGrid"
-                            Margin="0"
-                            Padding="0,0,0,0"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand">
-
-                            <Grid.RowDefinitions>
-                                <!--<RowDefinition Height="10*" />-->
-                                <RowDefinition Height="100*" />
-                            </Grid.RowDefinitions>
-                            <ContentPresenter
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" />
-                        </Grid>
-                    </Border>
-                    <Grid
-                        Grid.Row="0"
-                        Margin="8,0"
-                        Padding="0,10,0,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*" />
-                            <ColumnDefinition Width="60*" />
-                            <ColumnDefinition Width="20*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            HorizontalOptions="CenterAndExpand"
-                            Style="{StaticResource SectionTitleWhiteBold}"
-                            Text="{x:Static ResourceManager:AppResources.VATRFinancialDetails}"
-                            VerticalOptions="Center" />
-                        <Image
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            HorizontalOptions="StartAndExpand"
-                            IsVisible="true"
-                            Source="arrowLeftwhite"
-                            
-                            VerticalOptions="CenterAndExpand">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <Grid>
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid
+                Grid.Row="0"
+                Padding="20,10"
+                ColumnDefinitions="Auto,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackBtnTapped}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.VATRFinancialDetails}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
             <Border
+                Grid.Row="1"
                 Padding="0"
                 BackgroundColor="Black"
-                StrokeShape="RoundRectangle 42,42,0,0">
+                Style="{StaticResource CommonTopCurves}">
                 <Grid
                     x:Name="VATRDMainGrid"
                     Margin="0"
-                    Padding="0,15,0,0"
+                    Padding="15"
                     BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100*" />
-
-                    </Grid.RowDefinitions>
-
+                    <!--  Summery  -->
                     <Grid
+                        x:Name="SummeryView"
                         Grid.Row="0"
                         Grid.Column="0"
-                        Margin="0"
-                        Padding="15,15,15,0"
-                        BackgroundColor="White"
+                        Padding="0,0,0,0"
                         HorizontalOptions="FillAndExpand"
-                        RowSpacing="0"
+                        IsVisible="true"
                         VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="98*" />
-                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                        </Grid.ColumnDefinitions>
-
-                        <Grid
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Margin="0"
-                            Padding="0,0,0,10"
-                            BackgroundColor="White"
-                            HorizontalOptions="FillAndExpand"
-                            RowSpacing="0"
-                            VerticalOptions="FillAndExpand">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="100*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100*" />
-                            </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" HorizontalOptions="FillAndExpand">
+                            <Border
+                                Margin="0,10,0,0"
+                                Padding="0"
+                                HorizontalOptions="FillAndExpand"
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 8,8,8,8"
+                                VerticalOptions="StartAndExpand">
 
 
-                            <!--  Summery  -->
-                            <Grid
-                                x:Name="SummeryView"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Padding="0,0,0,0"
-                                IsVisible="true">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <StackLayout Grid.Row="0">
-                                    <Border
-                                        Margin="0,10,0,0"
-                                        Padding="0"
-                                        HorizontalOptions="Center"
-                                        Stroke="LightGray"
-                                        StrokeShape="RoundRectangle 8,8,8,8"
-                                        VerticalOptions="StartAndExpand">
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Grid Padding="5" RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
 
 
-                                        <StackLayout>
-                                            <Grid Padding="5" RowSpacing="0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
-
-                                                <Frame
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    Margin="10,10,10,0"
-                                                    BackgroundColor="Transparent"
-                                                    CornerRadius="32"
-                                                    HasShadow="False"
-                                                    HeightRequest="24"
-                                                    HorizontalOptions="Start"
-                                                    IsClippedToBounds="True"
-                                                    Opacity=".2"
-                                                    VerticalOptions="Center"
-                                                    WidthRequest="24" />
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    Margin="10,15,10,10"
-                                                    Aspect="AspectFit"
-                                                    HeightRequest="24"
-                                                    HorizontalOptions="Center"
-                                                    Source="details"
-                                                    VerticalOptions="Center"
-                                                    WidthRequest="24" />
-                                                <StackLayout
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    Padding="8,0">
-                                                    <Label
-                                                        FontSize="Medium"
-                                                        Style="{StaticResource SectionTitleBlackBold}"
-                                                        Text="{x:Static ResourceManager:AppResources.VATRFinancialDetails}"
-                                                        VerticalOptions="CenterAndExpand" />
-                                                </StackLayout>
-                                            </Grid>
-                                            <BoxView Style="{StaticResource lineSeperator}" />
-                                            <Grid Padding="10,5,10,10">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="40*" />
-                                                    <ColumnDefinition Width="50*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    Style="{StaticResource CaptionLabelGrey}"
-                                                    Text="{x:Static ResourceManager:AppResources.FORM5AccountingMethod}" />
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding SelectedMethod}" />
-
-                                                <Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="0"
-                                                    Style="{StaticResource CaptionLabelGrey}"
-                                                    Text="{x:Static ResourceManager:AppResources.FORM5CalendarType}" />
-                                                <Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding CalendarType}" />
-
-                                                <Label
-                                                    Grid.Row="2"
-                                                    Grid.Column="0"
-                                                    Style="{StaticResource CaptionLabelGrey}"
-                                                    Text="{x:Static ResourceManager:AppResources.ESTEndOfFiscalMonth}" />
-                                                <Label
-                                                    Grid.Row="2"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding FiscalMonth}" />
-
-                                                <Label
-                                                    Grid.Row="3"
-                                                    Grid.Column="0"
-                                                    Style="{StaticResource CaptionLabelGrey}"
-                                                    Text="{x:Static ResourceManager:AppResources.ESTEndOfFiscalDay}" />
-                                                <Label
-                                                    Grid.Row="3"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding FiscalDay}" />
-
-                                                <Label
-                                                    Grid.Row="4"
-                                                    Grid.Column="0"
-                                                    Style="{StaticResource CaptionLabelGrey}"
-                                                    Text="{x:Static ResourceManager:AppResources.ESTBusinessCommencementDate}" />
-                                                <Label
-                                                    Grid.Row="4"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding CommDate}" />
-
-                                                <Label
-                                                    Grid.Row="5"
-                                                    Grid.Column="0"
-                                                    Style="{StaticResource CaptionLabelGrey}"
-                                                    Text="{x:Static ResourceManager:AppResources.ESTDebtEndDate}" />
-
-                                                <Label
-                                                    Grid.Row="5"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding TaxDate}" />
-                                            </Grid>
+                                        <Image
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Margin="10,15,10,10"
+                                            Aspect="AspectFit"
+                                            HeightRequest="24"
+                                            HorizontalOptions="Center"
+                                            Source="details"
+                                            VerticalOptions="Center"
+                                            WidthRequest="24" />
+                                        <StackLayout
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Padding="8,0">
+                                            <Label
+                                                FontSize="Medium"
+                                                Style="{StaticResource SectionTitleBlackBold}"
+                                                Text="{x:Static ResourceManager:AppResources.VATRFinancialDetails}"
+                                                VerticalOptions="CenterAndExpand" />
                                         </StackLayout>
-                                    </Border>
-                                </StackLayout>
-                            </Grid>
+                                    </Grid>
+                                    <BoxView Style="{StaticResource lineSeperator}" />
+                                    <Grid
+                                        Padding="10,5,10,10"
+                                        ColumnDefinitions="40*,50*"
+                                        RowDefinitions="auto,auto,auto,auto,auto,auto,auto">
 
-                        </Grid>
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.FORM5AccountingMethod}" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            HorizontalOptions="EndAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="{Binding SelectedMethod}" />
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.FORM5CalendarType}" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            HorizontalOptions="EndAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="{Binding CalendarType}" />
+
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.ESTEndOfFiscalMonth}" />
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            HorizontalOptions="EndAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="{Binding FiscalMonth}" />
+
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.ESTEndOfFiscalDay}" />
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            HorizontalOptions="EndAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="{Binding FiscalDay}" />
+
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.ESTBusinessCommencementDate}" />
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="1"
+                                            HorizontalOptions="EndAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="{Binding CommDate}" />
+
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="0"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.ESTDebtEndDate}" />
+
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="1"
+                                            HorizontalOptions="EndAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="{Binding TaxDate}" />
+                                    </Grid>
+                                </StackLayout>
+                            </Border>
+                        </StackLayout>
                     </Grid>
+
                 </Grid>
             </Border>
+            <!--#endregion-->
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -9,6 +9,7 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
