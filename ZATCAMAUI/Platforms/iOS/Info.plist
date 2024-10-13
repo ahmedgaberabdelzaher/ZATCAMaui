@@ -33,7 +33,7 @@
 	<key>MinimumOSVersion</key>
 	<string>14.2</string>
 	<key>CFBundleName</key>
-	<string>GAZT</string>
+	<string>ZATCA</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Please grant access to share supported images of docuemts</string>
 	<key>NSCalendarsUsageDescription</key>
@@ -89,11 +89,11 @@
 	<key>NSSiriUsageDescription</key>
 	<string>Please grant access to siri </string>
 	<key>CFBundleShortVersionString</key>
-	<string>263</string>
+	<string>266</string>
 	<key>CFBundleVersion</key>
-	<string>5.0.268</string>
+	<string>5.0.274</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.zatca.Maui</string>
+	<string>com.gazt.egazt</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>This app requires access to your Apple Music library to allow you to play and manage your music collection.</string>
 </dict>

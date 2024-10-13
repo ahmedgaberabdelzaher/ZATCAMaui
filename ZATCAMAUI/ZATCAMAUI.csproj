@@ -11,7 +11,7 @@
         <!-- Display name -->
         <ApplicationTitle>ZATCAMAUI</ApplicationTitle>
         <!-- App Identifier -->
-        <ApplicationId>com.gazt.egazt</ApplicationId>
+        <ApplicationId>com.zatca.Maui</ApplicationId>
         <!-- <ApplicationId>com.gazt.enterprise.zatca</ApplicationId> -->
         <ApplicationIdGuid>c26ce74b-6e11-469c-a8c0-b07fe33a9b2d</ApplicationIdGuid>
         <!-- Versions -->
@@ -20,16 +20,19 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
     </PropertyGroup>
-    <!-- <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))"> 
+<!--     <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))"> 
      <RuntimeIdentifier>ios-arm64</RuntimeIdentifier> 
      </PropertyGroup> -->
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
-        <CodesignProvision>ZATCA App Enterprise Distribution profile</CodesignProvision>
-        <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
-        <MtouchLink>None</MtouchLink>
+        <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+        <CodesignProvision>ZATCA Mobile</CodesignProvision>
+        <MtouchLink>SdkOnly</MtouchLink>
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
         <CodesignEntitlements></CodesignEntitlements>
+    </PropertyGroup>
+     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+         <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     </PropertyGroup>
 
     <ItemGroup>
@@ -52,6 +55,7 @@
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
+
     <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
         <IPhoneResourcePrefix>Platforms/iOS/Resources</IPhoneResourcePrefix>
     </PropertyGroup>
@@ -60,9 +64,10 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
-        <CodesignProvision>ZATCA App Enterprise Dev profile</CodesignProvision>
+        <CodesignProvision>Automatic</CodesignProvision>
         <CodesignKey>Apple Development: Anas Alshahrani (FBC5Q68T24)</CodesignKey>
-        <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+        <CodesignEntitlements></CodesignEntitlements>
+        <MtouchLink>None</MtouchLink>
     </PropertyGroup>
     <ItemGroup>
         <Compile Remove="KeyStore\**" />
@@ -136,9 +141,9 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Acr.UserDialogs" Version="9.1.0" />
-        <PackageReference Include="CardsView.Maui" Version="0.0.9" />
-        <PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
-        <PackageReference Include="CommunityToolkit.Maui.Maps" Version="2.0.2" />
+        <PackageReference Include="CardsView.Maui" Version="1.0.2" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
+        <PackageReference Include="CommunityToolkit.Maui.Maps" Version="2.0.3" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Plugin.MediaManager.Forms" Version="1.2.2" />
         <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
@@ -162,11 +167,11 @@
         <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
         <PackageReference Include="Syncfusion.Maui.Cards" Version="26.2.14" />
         <PackageReference Include="TlvLib" Version="1.0.0" />
-        <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
-        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.91" />
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.91" />
         <PackageReference Include="Syncfusion.Maui.Rotator" Version="26.2.14" />
         <PackageReference Include="Mopups" Version="1.3.1" />
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
         <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
     </ItemGroup>
     <ItemGroup>

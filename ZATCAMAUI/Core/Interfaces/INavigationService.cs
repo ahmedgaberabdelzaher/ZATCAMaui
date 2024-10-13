@@ -4,8 +4,8 @@
     {
         void PopToRootPage();
         void GoBack();
-        void NavigateTo(string pageKey);
-        void NavigateTo(string pageKey, object parameter);
+         Task NavigateTo(string pageKey);
+         Task NavigateTo(string pageKey, object parameter);
         void NavigateToWithBack(string pageKey, object parameter);
     }
 }

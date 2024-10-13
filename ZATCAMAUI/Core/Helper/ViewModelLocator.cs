@@ -457,6 +457,7 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<EDeclarationInformationsViewModel>()
                 .AddSingleton<RegisterZATCAUserViewModel>()
                 .AddSingleton<NativeNafathLoginPageViewModel>()
+                .AddSingleton<NativeConfirmNafathPageViewModel>()
                 .AddSingleton<EDeclarationPaymentViewModel>()
                 .AddSingleton<TransactionReceptionViewModel>()
                 .AddSingleton<IAMLoginViewModel>()
@@ -653,6 +654,20 @@ namespace ZATCAMAUI.Core.Helper
                 try
                 {
                     return Ioc.Default.GetService<NativeNafathLoginPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public NativeConfirmNafathPageViewModel NativeConfirmNafathPageViewModel
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<NativeConfirmNafathPageViewModel>();
                 }
                 catch (Exception)
                 {

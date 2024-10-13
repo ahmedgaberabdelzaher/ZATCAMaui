@@ -10,7 +10,6 @@ using Mopups.Services;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages;
 using ZATCAMAUI.Models.BaseModels;
 using Result = ZATCAMAUI.Models.EDeclerationsModel.SubmitModels.Result;
-using Mopups.Services;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -101,10 +100,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
             }
         }
 
+      
+
         private async Task<bool> SubmitDecleration()
         {
             try
             {
+                if (!NetworkCheck.IsInternet())
+                {
+                    IsShowMsgView = true;
+                    IsLoading = false;
+                    MessageTxt = AppResources.NoInternet;
+                    return false;
+                }
                 IsLoading = true;
                 var submitRes = await DeclerationServices.SubmitDecleration(SubmitModel);
                 if (submitRes.IsSuccessStatusCode)
@@ -187,15 +195,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
 
                                 TravelerDeclarationResponse.fees?.ForEach(f => { DetailsTotalFeesList.Add(new BottomSheetModel { Name = f.Name, Id = (Math.Round(f.value, 2)).ToString() }); });
 
-                                _navigationService.NavigateTo("/EDeclarationSuccessPage");
+                                await _navigationService.NavigateTo("/EDeclarationSuccessPage");
 
                                 TripCard.AirImage = "QSelected.png";
                                 TripCard.SeaImage = "QUnselected.png";
                                 TripCard.LandImage = "QUnselected.png";
 
                                 TripCard.AirTextColor = Colors.White;
-                                TripCard.SeaTextColor = Color.FromHex("#002447");
-                                TripCard.LandTextColor = Color.FromHex("#002447");
+                                TripCard.SeaTextColor = Color.FromArgb("#002447");
+                                TripCard.LandTextColor = Color.FromArgb("#002447");
 
                                 MobileNumber = string.Empty;
                             }
@@ -205,6 +213,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                         {
                             IsShowMsgView = true;
                             MessageTxt = AppResources.RequestTimeoutDescription;
+                            MobileNumber = string.Empty;
                         }
 
                     }

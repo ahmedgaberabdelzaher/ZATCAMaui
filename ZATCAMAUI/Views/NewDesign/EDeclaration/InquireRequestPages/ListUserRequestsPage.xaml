@@ -299,6 +299,9 @@
             <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
+             <!--  Popup Msg  -->
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
         </Grid>
 
     </ContentPage.Content>

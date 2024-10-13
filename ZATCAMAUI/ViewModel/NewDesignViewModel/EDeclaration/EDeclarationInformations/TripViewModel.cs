@@ -64,8 +64,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                         TripCard.SeaImage = "QUnselected.png";
                         TripCard.LandImage = "QSelected.png";
 
-                        TripCard.AirTextColor = Color.FromHex("#002447");
-                        TripCard.SeaTextColor = Color.FromHex("#002447");
+                        TripCard.AirTextColor = Color.FromArgb("#002447");
+                        TripCard.SeaTextColor = Color.FromArgb("#002447");
                         TripCard.LandTextColor = Colors.White;
                         SubmitModel.travelerDeclaration.tripeType = int.Parse(e); // 2=>Land
                         TripCard.IsAirTripSelected = false;
@@ -77,9 +77,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                         TripCard.SeaImage = "QSelected.png";
                         TripCard.LandImage = "QUnselected.png";
 
-                        TripCard.AirTextColor = Color.FromHex("#002447");
+                        TripCard.AirTextColor = Color.FromArgb("#002447");
                         TripCard.SeaTextColor = Colors.White;
-                        TripCard.LandTextColor = Color.FromHex("#002447");
+                        TripCard.LandTextColor = Color.FromArgb("#002447");
 
                         TripCard.IsAirTripSelected = false;
                         TripCard.IsLandTripSelected = false;
@@ -211,6 +211,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                         isPlatesCountrySelected = false;
                         isPlatesCitySelected = false;
                         var result = await DeclerationServices.GetPorts(SubmitModel.travelerDeclaration.tripeType);
+                        if (!string.IsNullOrWhiteSpace(result?.Item3))
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = result?.Item3;
+                            return;
+                        }
                         var ports = result?.Item1?.data?.ToList();
                         var bottom = ports?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
@@ -245,6 +251,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                         isPlatesCountrySelected = false;
                         isPlatesCitySelected = false;
                         var result = await DeclerationServices.GetTravelPurpose();
+                        if (!string.IsNullOrWhiteSpace(result?.Item3))
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = result?.Item3;
+                            return;
+                        }
                         var travelPurposes = result?.Item1?.data?.ToList();
                         var bottom = travelPurposes?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
@@ -309,6 +321,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                         isPlatesCountrySelected = false;
                         isPlatesCitySelected = true;
                         var result = await DeclerationServices.GetPlatesCity(SubmitModel.travelerDeclaration.plateCountryCode);
+                        if (!string.IsNullOrWhiteSpace(result?.Item3))
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = result?.Item3;
+                            return;
+                        }
                         var platesCity = result?.Item1?.data?.ToList();
                         var bottom = platesCity?.Select(pc => new BottomSheetModel() { Id = pc.cityCode.ToString(), Name = pc.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);

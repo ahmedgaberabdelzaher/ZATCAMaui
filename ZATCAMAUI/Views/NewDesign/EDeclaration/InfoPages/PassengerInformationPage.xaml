@@ -484,10 +484,11 @@
                         <StackLayout Spacing="0">
 
                             <!--  ID Number Label  -->
-                            <Label Style="{StaticResource CaptionLabelGrey}">
+                            <Label Style="{StaticResource CaptionLabelGrey}"
+                                   HorizontalOptions="Start">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{Binding IDName}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{Binding IDName}"/>
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -502,13 +503,7 @@
                                         Placeholder="{Binding IDNumberPlaceHolder}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitModel.travelerDeclaration.travelID}"
-                                        TextColor="#58595B">
-
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behavior:OnlyNumericValuesBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
-
-                                    </custom:GAZTBorderlessEntry>
+                                        TextColor="#58595B"/>
 
                                 </custom:CustomSfTextInputView.TextInputView>
 

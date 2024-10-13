@@ -310,10 +310,6 @@
 
             </custom:CustomSfTextInputView.TextInputView>
 
-            <inputLayout:SfTextInputLayout.TrailingView>
-                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-            </inputLayout:SfTextInputLayout.TrailingView>
-
         </custom:CustomSfTextInputView>
 
         <Label

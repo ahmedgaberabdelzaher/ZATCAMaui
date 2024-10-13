@@ -3,13 +3,16 @@
     x:Class="ZATCAMAUI.Core.CustomControls.TraifItemsControl"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="page"
     FlowDirection="{Binding AppDirection}">
-    <Grid x:Name="TraiffPage" Padding="24,6,24,6">
+    <Grid x:Name="TraiffPage" Padding="24,6,24,6"
+          FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
         <Border
             Padding="20,15,17,15"
             Stroke="#D8D8D8"
             StrokeShape="RoundRectangle 14,14,14,14">
-            <StackLayout Orientation="Horizontal">
+            <Grid ColumnDefinitions="*,auto"
+                  ColumnSpacing="10">
                 <Label
                     x:Name="nameLabl"
                     FontSize="16"
@@ -35,6 +38,7 @@
                 <Image
                     x:Name="arrow"
                     HeightRequest="20"
+                    Grid.Column="1"
                     HorizontalOptions="EndAndExpand"
                     Rotation="0"
                     Source="LstArrow"
@@ -50,7 +54,7 @@
                     </Image.Triggers>
                 </Image>
 
-            </StackLayout>
+            </Grid>
         </Border>
     </Grid>
 
