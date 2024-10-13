@@ -3281,7 +3281,7 @@
                         VerticalOptions="Start"
                         VerticalScrollBarVisibility="Never">
 
-                        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto" RowSpacing="15">
+                        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto" >
 
                             <cards:SfCardView
                                 x:Name="RegistrationTaxpayerTypeSummaryView"
@@ -3291,7 +3291,7 @@
                                 BorderColor="{StaticResource NeutralLightGrey}"
                                 BorderWidth="1">
                                 <Grid RowDefinitions="auto,auto,auto">
-                                    <Grid Padding="16" BackgroundColor="Red">
+                                    <StackLayout Padding="16" Orientation="Horizontal">
 
                                         <Border
                                             BackgroundColor="{StaticResource BackgroundGray}"
@@ -3334,6 +3334,7 @@
 
                                         <Label
                                             Grid.Column="2"
+                                            HorizontalOptions="EndAndExpand"
                                             Style="{StaticResource ValueLabelPrimary}"
                                             Text="{x:Static ResourceManager:AppResources.ESTEdit}"
                                             VerticalOptions="Center">
@@ -3345,7 +3346,7 @@
                                             </Label.GestureRecognizers>
                                         </Label>
 
-                                    </Grid>
+                                    </StackLayout>
 
                                     <BoxView
                                         Grid.Row="1"
