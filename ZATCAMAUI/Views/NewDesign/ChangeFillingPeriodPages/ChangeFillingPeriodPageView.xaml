@@ -267,11 +267,6 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        
-                                        
-
-                                        
-
                                     </Grid>
 
 
@@ -299,7 +294,6 @@
                                             <Border
                                                 Grid.Row="1"
                                                 Margin="0,5,0,0"
-                                                Padding="10,0,10,0"
                                                 HorizontalOptions="FillAndExpand"
                                                 Stroke="Gray"
                                                 StrokeShape="RoundRectangle 12,12,12,12">
@@ -760,7 +754,12 @@
                                         Grid.Column="0"
                                         Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                  
+                                    <StackLayout  Orientation="Horizontal" IsVisible="{Binding IsDeclarationViewEnabledNew}">
+                                        <custom:CheckboxCustom VerticalOptions="Start" CheckChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsCheckboxChecked}" MinimumHeightRequest="32" MinimumWidthRequest="32"/>
+                                        <Label TextType="Html" Text="{Binding Zterms}" HorizontalTextAlignment="{Binding TermsAlignment}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Style="{StaticResource CheckboxUnselectedFontStyle}"/>
+                                    </StackLayout>
+
+
                                     <StackLayout
                                         Grid.Row="1"
                                         Grid.ColumnSpan="2"
@@ -798,11 +797,7 @@
                                                 </Label.Triggers>
                                             </Label>
                                         </StackLayout>
-
-                                    </StackLayout>
-
-                                    <StackLayout
-                                        IsVisible="{Binding IsDeclarationViewEnabledOld}">
+                                        <StackLayout>
                                         <Label
                                             Grid.Row="0"
                                             Margin="0"
@@ -855,10 +850,8 @@
                                         </Border>
 
                                     </StackLayout>
-                                   
-                                    <StackLayout
-                                        
-                                        IsVisible="{Binding IsDeclarationViewEnabledOld}">
+
+                                        <StackLayout>
 
                                         <Label
                                                 Grid.Row="0"
@@ -970,51 +963,55 @@
 
 
                                     </StackLayout>
+                                        <StackLayout>
+                                            <Label
+                                                Grid.Row="0"
+                                                Margin="0"
+                                                Padding="0"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MiniNewGrayLabelStyle}"
+                                                Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}">
 
-                                    <StackLayout
-                                        IsVisible="{Binding IsDeclarationViewEnabledOld}">
-                                        <Label
-                                            Grid.Row="0"
-                                            Margin="0"
-                                            Padding="0"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MiniNewGrayLabelStyle}"
-                                            Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Style="{StaticResource MiniNewGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}" />
+                                                        <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
 
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Style="{StaticResource MiniNewGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}" />
-                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-
-                                        <Border
-                                            Grid.Row="1"
-                                            Margin="0,5,0,0"
-                                            Padding="10,0,10,0"
-                                            HorizontalOptions="FillAndExpand"
-                                            Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12">
-                                            <StackLayout
+                                            <Border
+                                                Grid.Row="1"
+                                                Margin="0,5,0,0"
+                                                Padding="10,0,10,0"
                                                 HorizontalOptions="FillAndExpand"
-                                                Orientation="Horizontal"
-                                                VerticalOptions="CenterAndExpand">
-                                                <custom:GAZTBorderlessEntry
-                                                    x:Name="ContactPersonEntry"
-                                                    HeightRequest="50"
+                                                Stroke="Gray"
+                                                StrokeShape="RoundRectangle 12,12,12,12">
+                                                <StackLayout
                                                     HorizontalOptions="FillAndExpand"
-                                                    IsEnabled="{Binding ContractPersonEditable}"
-                                                    Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding ContactPersonName}"
-                                                    TextColor="{StaticResource PrimaryColor}"
-                                                    Unfocused="ContactPersonTextUnFocus"
-                                                    VerticalOptions="CenterAndExpand" />
-                                            </StackLayout>
-                                        </Border>
-
+                                                    Orientation="Horizontal"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <custom:GAZTBorderlessEntry
+                                                        x:Name="ContactPersonEntry"
+                                                        HeightRequest="50"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        IsEnabled="{Binding ContractPersonEditable}"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Text="{Binding ContactPersonName}"
+                                                        TextColor="{StaticResource PrimaryColor}"
+                                                        Unfocused="ContactPersonTextUnFocus"
+                                                        VerticalOptions="CenterAndExpand" />
+                                                </StackLayout>
+                                            </Border>
+                                        </StackLayout>
                                     </StackLayout>
+
+                                    
+                                   
+                                    
+
+                                    
                                     
 
                                     <buttons:SfButton
