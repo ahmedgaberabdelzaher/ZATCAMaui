@@ -368,7 +368,7 @@
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
-                                </Label>
+                                </Label> 
 
                                 <custom:CustomSfTextInputView>
                                     <custom:CustomSfTextInputView.TextInputView>
@@ -491,10 +491,9 @@
 
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image
-                                                HeightRequest="20"
+                                                Style="{StaticResource SmallIcon}"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="calendar.png"
-                                                WidthRequest="20" />
+                                                Source="calendar.png"/>
                                         </inputLayout:SfTextInputLayout.TrailingView>
 
                                         <inputLayout:SfTextInputLayout.GestureRecognizers>
@@ -1315,7 +1314,7 @@
                     BackgroundColor="White"
                     StrokeShape="RoundRectangle 15,15,0,0"
                     Style="{StaticResource CommonTopCurves}"
-                    VerticalOptions="EndAndExpand">
+                    VerticalOptions="FillAndExpand">
 
                     <Grid
                         Margin="0,0,0,0"

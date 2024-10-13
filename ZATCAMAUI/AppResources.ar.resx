@@ -11471,4 +11471,13 @@ info@zatca.gov.sa</value>
 	<data name="EnterYourNationalIdHere" xml:space="preserve">
      <value>الرجاء إدخال رقم الهوية الوطنية / معرف الإقامة</value>
   </data>
+  <data name="NAFATHStatus" xml:space="preserve">
+     <value>يوجد طلب نفاذ مسبقاٌ، برجاء الأنتظار</value>
+  </data>
+   <data name="NAFATHREJECTED" xml:space="preserve">
+     <value>عذراً، تم رفض الطلب</value>
+  </data>
+  <data name="NAFATHEXPIRED" xml:space="preserve">
+     <value>عذراً، تم انتهاء مدة الطلب</value>
+  </data>
 </root> 

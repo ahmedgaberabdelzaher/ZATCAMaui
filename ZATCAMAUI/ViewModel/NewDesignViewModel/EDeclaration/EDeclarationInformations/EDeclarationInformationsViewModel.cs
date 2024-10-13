@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Models.EDeclerationsModel;
 using ZATCAMAUI.Core.Services.Interface;
@@ -57,6 +56,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                     {
                         IsLoading = true;
                         var result = await DeclerationServices.GetCountries();
+                        if(!string.IsNullOrWhiteSpace(result?.Item3))
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = result?.Item3;
+                            return;
+                        }
                         countries = result?.Item1?.data?.ToList();
                         isFirstTime = false;
                         IsLoading = false;
@@ -336,24 +341,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
             {
                 return new Command(_ =>
                 {
-                //_navigationService.NavigateTo("EDeclarationPaymentPage", TravelerDeclarationResponse);
                  var decreptedURlParam = EncryptionHelper.EncryptStringAES($"\\refCode={TravelerDeclarationResponse.ReferenceID}&travilID={ TravelerDeclarationResponse.travelID}\\");
 
 
-                    //     var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{TravelerDeclarationResponse.ReferenceID}&travilID={TravelerDeclarationResponse.travelID}";
                     var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{decreptedURlParam}";
 
                     Browser.OpenAsync(paymentRedirectURL, new BrowserLaunchOptions
                     {
                         LaunchMode = BrowserLaunchMode.SystemPreferred,
                         TitleMode = BrowserTitleMode.Show,
-                        PreferredToolbarColor = Color.FromHex("#002447"),
-                        PreferredControlColor = Color.FromHex("#0996d4"),
+                        PreferredToolbarColor = Color.FromArgb("#002447"),
+                        PreferredControlColor = Color.FromArgb("#0996d4"),
                     });
-
-                  
-
-                  //  Xamarin.Essentials.Launcher.OpenAsync(paymentRedirectURL);
 
                 });
             }

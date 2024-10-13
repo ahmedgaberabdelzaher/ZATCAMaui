@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 
 using Newtonsoft.Json;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
@@ -156,7 +157,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 DisplayRequiredDataMsg();
                                 return;
                             }
-                            Models.EDeclerationsModel.FeesCalculators.Product product = new Models.EDeclerationsModel.FeesCalculators.Product()
+                            Product product = new Product()
                             {
                                 harmonizedCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : IsProductItemHaveSubType ? SelectedProductSubTypes.code : SelectedProductTypes.code,
                                 value = double.Parse(TotalValue),
@@ -191,6 +192,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             try
             {
+                if (!NetworkCheck.IsInternet())
+                {
+                    IsShowMsgView = true;
+                    IsLoading = false;
+                    MessageTxt = AppResources.NoInternet;
+                    return false;
+                }
 
                 if (FeesCalculatorBody.tobacco == null)
                 {

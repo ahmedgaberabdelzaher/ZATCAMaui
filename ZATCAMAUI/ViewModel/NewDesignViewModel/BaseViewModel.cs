@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Resources;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
@@ -111,7 +112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
 
 
-
+      
         public void SetFlowDirection()
         {
 
@@ -141,6 +142,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 return new Command<string>((tab) =>
                 {
+                    if (!NetworkCheck.IsInternet())
+                    {
+                        IsShowMsgView = true;
+                        IsLoading = false;
+                        MessageTxt = AppResources.NoInternet;
+                        return;
+                    }
+
                     if (tab != CurrentTab.ToString())
                     {
                         switch (tab)

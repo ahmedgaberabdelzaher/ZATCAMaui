@@ -34,7 +34,7 @@
             BackgroundColor="White"
             StrokeShape="RoundRectangle 15,15,0,0"
             Style="{StaticResource CommonTopCurves}"
-            VerticalOptions="EndAndExpand">
+            VerticalOptions="FillAndExpand">
 
             <Grid
                 Margin="0,0,0,0"

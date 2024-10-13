@@ -51,6 +51,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                         if (ProductTypes == null || ProductTypes.Count > 0)
                         {
                             var productTypes = await DeclerationServices.GetProductTypes();
+                            if(!string.IsNullOrWhiteSpace(productTypes?.Item3))
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = productTypes?.Item3;
+                                return;
+                            }
                             ProductTypes = productTypes?.Item1.data;
                             ProductSubTypes = null;
                         }
@@ -99,6 +105,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                             if (ProductSubTypes == null || ProductSubTypes.Count > 0)
                             {
                                 var productSubTypes = await DeclerationServices.GetProductSubTypes(SelectedProductTypes.ID.ToString());
+                                if (!string.IsNullOrWhiteSpace(productSubTypes?.Item3))
+                                {
+                                    IsShowMsgView = true;
+                                    MessageTxt = productSubTypes?.Item3;
+                                    return;
+                                }
                                 ProductSubTypes = productSubTypes?.Item1.data;
                             }
 
@@ -255,6 +267,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                 if (ProductTypes == null || ProductTypes.Count > 0)
                 {
                     var productTypes = await DeclerationServices.GetProductTypes();
+                    if (!string.IsNullOrWhiteSpace(productTypes?.Item3))
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = productTypes?.Item3;
+                        return;
+                    }
                     ProductTypes = productTypes?.Item1.data;
                     ProductSubTypes = null;
                 }

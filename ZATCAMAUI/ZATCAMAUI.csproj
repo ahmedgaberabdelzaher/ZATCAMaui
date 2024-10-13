@@ -31,6 +31,9 @@
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
         <CodesignEntitlements></CodesignEntitlements>
     </PropertyGroup>
+     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+         <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    </PropertyGroup>
 
     <ItemGroup>
         <MauiFont Remove="Resources\Fonts\MyMaterialIcon.ttf" />
@@ -52,6 +55,7 @@
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
+
     <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
         <IPhoneResourcePrefix>Platforms/iOS/Resources</IPhoneResourcePrefix>
     </PropertyGroup>
@@ -60,9 +64,10 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
-        <CodesignProvision>ZATCA Enterprise - PROD</CodesignProvision>
-        <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
+        <CodesignProvision>Automatic</CodesignProvision>
+        <CodesignKey>Apple Development: Anas Alshahrani (FBC5Q68T24)</CodesignKey>
         <CodesignEntitlements></CodesignEntitlements>
+        <MtouchLink>None</MtouchLink>
     </PropertyGroup>
     <ItemGroup>
         <Compile Remove="KeyStore\**" />

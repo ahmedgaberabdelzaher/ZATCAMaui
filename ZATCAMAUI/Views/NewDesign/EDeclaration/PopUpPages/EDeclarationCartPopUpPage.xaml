@@ -9,6 +9,7 @@
     BackgroundColor="#88000000"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     FlowDirection="{Binding AppDirection}">
 
     <Mopups:PopupPage.Resources>
@@ -341,7 +342,9 @@
                                     <ImageButton
                                         Aspect="AspectFit"
                                         Source="info"
-                                        ToolTipProperties.Text="{x:Static ResourceManager:AppResources.CustomsdeclarationDisclaimer}" />
+                                        Command="{Binding CustomsdeclarationDisclaimerCommand}" />
+
+
 
                                     <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
@@ -374,7 +377,7 @@
                                     <ImageButton
                                         Aspect="AspectFit"
                                         Source="info"
-                                        ToolTipProperties.Text="{x:Static ResourceManager:AppResources.VATCertificatesDisclaimer}" />
+                                        Command="{Binding VATCertificatesDisclaimerCommand}" />
 
                                     <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
@@ -427,7 +430,7 @@
                                         Margin="5,0"
                                         Aspect="AspectFit"
                                         Source="info"
-                                        ToolTipProperties.Text="{x:Static ResourceManager:AppResources.NDTotalDisclaimer}" />
+                                        Command="{Binding NDTotalDisclaimerCommand}" />
 
                                     <!--  Price Label  -->
                                     <Label
@@ -463,6 +466,9 @@
                     </StackLayout>
 
                 </ScrollView>
+
+                <!--  Popup Msg  -->
+                <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
             </Grid>
         </Border>
 

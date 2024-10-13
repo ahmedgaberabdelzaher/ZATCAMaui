@@ -122,6 +122,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                         if (Currencies == null || Currencies.Count > 0)
                         {
                             var currencies = await DeclerationServices.GetCurrencies();
+                            if(!string.IsNullOrWhiteSpace(currencies?.Item3))
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = currencies?.Item3;
+                                return;
+                            }
                             Currencies = currencies?.Item1.data;
                         }
 

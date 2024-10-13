@@ -54,6 +54,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                         if (TobacoTypes == null || TobacoTypes.Count > 0)
                         {
                             var topacoTypes = await DeclerationServices.GetTobacoTypes();
+                            if (!string.IsNullOrWhiteSpace(topacoTypes?.Item3))
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = topacoTypes?.Item3;
+                                return;
+                            }
                             TobacoTypes = topacoTypes?.Item1.data;
                             TobacoItems = null;
                         }
@@ -103,6 +109,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                             if (TobacoItems == null || TobacoItems.Count > 0)
                             {
                                 var topacoTypes = await DeclerationServices.GetTobacoItem(int.Parse(SelectedTobacoType.typeID));
+                                if (!string.IsNullOrWhiteSpace(topacoTypes?.Item3))
+                                {
+                                    IsShowMsgView = true;
+                                    MessageTxt = topacoTypes?.Item3;
+                                    return;
+                                }
                                 TobacoItems = topacoTypes?.Item1.data;
                             }
 

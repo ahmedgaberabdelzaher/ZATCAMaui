@@ -38,10 +38,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                         {
                             LaunchMode = BrowserLaunchMode.SystemPreferred,
                             TitleMode = BrowserTitleMode.Show,
-                            PreferredToolbarColor = Color.FromHex("#002447"),
-                            PreferredControlColor = Color.FromHex("#0996d4")
+                            PreferredToolbarColor = Color.FromArgb("#002447"),
+                            PreferredControlColor = Color.FromArgb("#0996d4")
                         });
-                        //_navigationService.NavigateTo("EDeclarationPaymentPage", Inquire);
                     }
                 });
             }

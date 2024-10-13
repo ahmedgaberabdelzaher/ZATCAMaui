@@ -5,19 +5,8 @@
         public TraifItemsControl()
         {
             InitializeComponent();
-            if (!App.IsArabic)
-            {
-                arrow.Rotation = 0;
-
-
-            }
-            else
-            {
-                arrow.Rotation = 180;
-
-
-                // Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
+            arrow.Rotation = App.IsArabic ? 180 : 0;
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
 
 

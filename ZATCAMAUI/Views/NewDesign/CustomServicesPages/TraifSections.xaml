@@ -201,19 +201,22 @@
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout>
+                                <StackLayout FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}">
                                     <Border
                                         Padding="20,15,17,15"
                                         Stroke="#D8D8D8"
                                         StrokeShape="RoundRectangle 14,14,14,14">
-                                        <StackLayout Orientation="Horizontal">
+                                        <Grid ColumnDefinitions="*,auto"
+                                              ColumnSpacing="10">
                                             <Label
                                                 FontSize="16"
                                                 HorizontalOptions="StartAndExpand"
+                                                LineBreakMode="WordWrap"
                                                 Text="{Binding Name}"
                                                 TextColor="{StaticResource Primary}" />
                                             <Image
                                                 HeightRequest="20"
+                                                Grid.Column="1"
                                                 HorizontalOptions="EndAndExpand"
                                                 Source="LstArrow"
                                                 VerticalOptions="CenterAndExpand"
@@ -232,7 +235,7 @@
 
 
 
-                                        </StackLayout>
+                                        </Grid>
                                     </Border>
                                 </StackLayout>
                             </DataTemplate>
@@ -250,7 +253,7 @@
                         SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <custom:TraifItemsControl />
+                                <custom:TraifItemsControl FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"/>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -267,7 +270,7 @@
                         SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <custom:TraifItemsControl />
+                                <custom:TraifItemsControl FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"/>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -283,7 +286,9 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
-                                <Grid x:Name="Item" Padding="24,6,24,6">
+                                <Grid x:Name="Item"
+                                      FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
+                                      Padding="24,6,24,6">
 
                                     <Border
                                         Padding="20,15,17,15"
@@ -297,7 +302,8 @@
                                                 CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
                                         </Border.GestureRecognizers>
 
-                                        <StackLayout Orientation="Horizontal">
+                                        <Grid ColumnDefinitions="*,auto"
+                                              ColumnSpacing="10">
                                             <Label
                                                 FontSize="16"
                                                 HorizontalOptions="StartAndExpand"
@@ -312,12 +318,13 @@
                                             </Label>
                                             <Image
                                                 HeightRequest="22"
+                                                Grid.Column="1"
                                                 HorizontalOptions="EndAndExpand"
                                                 Source="LstDetailsIcon"
                                                 VerticalOptions="CenterAndExpand"
                                                 WidthRequest="20" />
 
-                                        </StackLayout>
+                                        </Grid>
 
                                     </Border>
 
@@ -527,6 +534,7 @@
                                     <Grid
                                         HorizontalOptions="FillAndExpand"
                                         RowDefinitions="*"
+                                        FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
                                         VerticalOptions="FillAndExpand">
                                         <Border
                                             Padding="10"
@@ -615,14 +623,16 @@
                         SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid x:Name="Item" Padding="24,6,24,6">
+                                <Grid x:Name="Item"
+                                       FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
+                                      Padding="24,6,24,6">
 
                                     <Border
                                         Padding="20,15,17,15"
                                         Stroke="#D8D8D8"
                                         StrokeShape="RoundRectangle 14,14,14,14">
 
-                                        <StackLayout Orientation="Horizontal">
+                                        <Grid ColumnDefinitions="*,auto">
 
                                             <Label
                                                 x:Name="nameLabl"
@@ -652,6 +662,7 @@
                                                 HeightRequest="22"
                                                 HorizontalOptions="EndAndExpand"
                                                 Source="LstArrow"
+                                                Grid.Column="1"
                                                 VerticalOptions="CenterAndExpand"
                                                 WidthRequest="20">
                                                 <Image.GestureRecognizers>
@@ -707,7 +718,7 @@
                                                 </Image.Triggers>
                                             </Image>
 
-                                        </StackLayout>
+                                        </Grid>
                                     </Border>
 
                                 </Grid>
@@ -728,13 +739,16 @@
                         SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid x:Name="Item" Padding="24,6,24,6">
+                                <Grid x:Name="Item"
+                                       FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
+                                      Padding="24,6,24,6">
 
                                     <Border
                                         Padding="20,15,17,15"
                                         Stroke="#D8D8D8"
                                         StrokeShape="RoundRectangle 14,14,14,14">
-                                        <StackLayout Orientation="Horizontal">
+                                        <Grid ColumnDefinitions="*,auto"
+                                              ColumnSpacing="10">
                                             <Label
                                                 x:Name="nameLabl"
                                                 FontSize="16"
@@ -762,6 +776,7 @@
                                                 HeightRequest="22"
                                                 HorizontalOptions="EndAndExpand"
                                                 Source="LstArrow"
+                                                Grid.Column="1"
                                                 VerticalOptions="CenterAndExpand"
                                                 WidthRequest="20">
                                                 <Image.GestureRecognizers>
@@ -817,7 +832,7 @@
                                                 </Image.Triggers>
                                             </Image>
 
-                                        </StackLayout>
+                                        </Grid>
                                     </Border>
                                 </Grid>
                             </DataTemplate>
@@ -839,13 +854,16 @@
                     SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid x:Name="Item" Padding="24,6,24,6">
+                            <Grid x:Name="Item"
+                                   FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
+                                  Padding="24,6,24,6">
 
                                 <Border
                                     Padding="20,15,17,15"
                                     Stroke="#D8D8D8"
                                     StrokeShape="RoundRectangle 14,14,14,14">
-                                    <StackLayout Orientation="Horizontal">
+                                    <Grid ColumnDefinitions="*,auto"
+                                          ColumnSpacing="10">
                                         <Label
                                             x:Name="nameLabl"
                                             FontSize="16"
@@ -873,6 +891,7 @@
                                             HeightRequest="22"
                                             HorizontalOptions="EndAndExpand"
                                             Source="LstArrow"
+                                            Grid.Column="1"
                                             VerticalOptions="CenterAndExpand"
                                             WidthRequest="20">
                                             <Image.GestureRecognizers>
@@ -928,7 +947,7 @@
                                             </Image.Triggers>
                                         </Image>
 
-                                    </StackLayout>
+                                    </Grid>
                                 </Border>
                             </Grid>
                         </DataTemplate>
@@ -944,13 +963,16 @@
                     SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid x:Name="Item" Padding="24,6,24,6">
+                            <Grid x:Name="Item"
+                                   FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
+                                  Padding="24,6,24,6">
 
                                 <Border
                                     Padding="20,15,17,15"
                                     Stroke="#D8D8D8"
                                     StrokeShape="RoundRectangle 14,14,14,14">
-                                    <StackLayout Orientation="Horizontal">
+                                    <Grid ColumnSpacing="10"
+                                          ColumnDefinitions="*,auto">
                                         <Label
                                             x:Name="nameLabl"
                                             FontSize="16"
@@ -978,6 +1000,7 @@
                                             HeightRequest="22"
                                             HorizontalOptions="EndAndExpand"
                                             Source="LstArrow"
+                                            Grid.Column="1"
                                             VerticalOptions="CenterAndExpand"
                                             WidthRequest="20">
                                             <Image.GestureRecognizers>
@@ -1033,7 +1056,7 @@
                                             </Image.Triggers>
                                         </Image>
 
-                                    </StackLayout>
+                                    </Grid>
                                 </Border>
                             </Grid>
                         </DataTemplate>
@@ -1049,13 +1072,16 @@
                     SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid x:Name="Item" Padding="24,6,24,6">
+                            <Grid x:Name="Item"
+                                   FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
+                                  Padding="24,6,24,6">
 
                                 <Border
                                     Padding="20,15,17,15"
                                     Stroke="#D8D8D8"
                                     StrokeShape="RoundRectangle 14,14,14,14">
-                                    <StackLayout Orientation="Horizontal">
+                                    <Grid ColumnDefinitions="*,auto"
+                                          ColumnSpacing="10">
                                         <Label
                                             x:Name="nameLabl"
                                             FontSize="16"
@@ -1083,6 +1109,7 @@
                                             HeightRequest="22"
                                             HorizontalOptions="EndAndExpand"
                                             Source="LstArrow"
+                                            Grid.Column="1"
                                             VerticalOptions="CenterAndExpand"
                                             WidthRequest="20">
                                             <Image.GestureRecognizers>
@@ -1138,7 +1165,7 @@
                                             </Image.Triggers>
                                         </Image>
 
-                                    </StackLayout>
+                                    </Grid>
                                 </Border>
                             </Grid>
                         </DataTemplate>
@@ -1191,7 +1218,9 @@
                         <StackLayout BindableLayout.ItemsSource="{Binding SectionNotesLst}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <Label LineBreakMode="WordWrap" Text="{Binding ChaptNote}" />
+                                    <Label LineBreakMode="WordWrap" Text="{Binding ChaptNote}"
+                                           HorizontalOptions="Start"
+                                            FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"/>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
@@ -1243,7 +1272,9 @@
                         <StackLayout BindableLayout.ItemsSource="{Binding ChapterNotesLst}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <Label LineBreakMode="WordWrap" Text="{Binding ChaptNote}" />
+                                    <Label LineBreakMode="WordWrap" Text="{Binding ChaptNote}"
+                                           HorizontalOptions="Start"
+                                            FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"/>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
@@ -1312,7 +1343,8 @@
                                     <StackLayout BindableLayout.ItemsSource="{Binding SelectedSubHarmonizedTariffs.tariffreleaseprocedures}">
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Label>
+                                                <Label HorizontalOptions="Start"
+                                                        FlowDirection="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding prcdr_code}" />
@@ -1406,5 +1438,8 @@
         </Grid>
 
         <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+        <!--  Popup Msg  -->
+        <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
     </Grid>
 </ContentPage>

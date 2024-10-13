@@ -20,8 +20,7 @@ namespace ZATCAMAUI.Core.Helper
                 if (NetworkCheck.IsInternet())
                 {
 
-                    //  using (var client = new HttpClient(new System.Net.Http.HttpClientHandler()))
-                    {
+                    
                         HttpClientHandler clientHandler = new HttpClientHandler();
                         clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
 
@@ -63,7 +62,7 @@ namespace ZATCAMAUI.Core.Helper
                                 return null;
                             }
                         }
-                    }
+                    
 
                 }
                 else
