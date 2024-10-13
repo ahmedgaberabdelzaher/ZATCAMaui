@@ -20,13 +20,13 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
     </PropertyGroup>
-    <!-- <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))"> 
+<!--     <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))"> 
      <RuntimeIdentifier>ios-arm64</RuntimeIdentifier> 
      </PropertyGroup> -->
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
-        <CodesignProvision>ZATCA Enterprise - PROD</CodesignProvision>
-        <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
+        <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+        <CodesignProvision>ZATCA Mobile</CodesignProvision>
         <MtouchLink>SdkOnly</MtouchLink>
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
         <CodesignEntitlements></CodesignEntitlements>
