@@ -104,7 +104,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
             OnPropertyChanged("VATBillDueAmount");
         }
     }
-    private int _currenrIndex = 1;
+    private int _currenrIndex = 0;
     public int CurrentIndex
     {
         get => _currenrIndex;
@@ -2102,7 +2102,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
     {
         //SelectedOutletOption = OutletDecisionOptions[0];
         //SelectedOutletOptionIndex = 0;
-        CurrentIndex = 1;
+        CurrentIndex = 0;
         IsBackButtonVisible = false;
         IsSelectionViewEnabled = true;
         IsOutletViewEnabled = false;
@@ -2263,7 +2263,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         //SelectedOutletOption = OutletDecisionOptions[0];
         //SelectedOutletOptionIndex = 0;
 
-        CurrentIndex = 2;
+        CurrentIndex = 1;
         IsBackButtonVisible = true;
         IsSelectionViewEnabled = false;
         IsOutletViewEnabled = false;
@@ -2281,7 +2281,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
 
     public void EnableAgreementView()
     {
-        CurrentIndex = 3;
+        CurrentIndex = 2;
         IsBackButtonVisible = true;
         IsSelectionViewEnabled = false;
         IsOutletViewEnabled = false;
@@ -2297,7 +2297,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
     }
     public void EnableStatementsView()
     {
-        CurrentIndex = 4;
+        CurrentIndex = 3;
         IsBackButtonVisible = true;
         IsSelectionViewEnabled = false;
         IsOutletViewEnabled = false;
@@ -2316,7 +2316,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
 
     public void EnableAttachmentsView()
     {
-        CurrentIndex = 5;
+        CurrentIndex = 4;
         IsSelectionViewEnabled = false;
         IsOutletViewEnabled = false;
         IsAttachmentsViewEnabled = true;
@@ -2344,7 +2344,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
 
 
-        CurrentIndex = 6;
+        CurrentIndex = 5;
         IsSelectionViewEnabled = false;
         IsOutletViewEnabled = false;
         IsAttachmentsViewEnabled = false;
@@ -3149,7 +3149,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
 
 
 
-        if (CurrentIndex == 1)
+        if (CurrentIndex == 0)
         {
             VatInstalments.d.StepNumberz = "01";
             if (VatInstalments.d.VTISSet.Count != 0)
@@ -3162,7 +3162,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
             }
 
         }
-        else if (CurrentIndex == 2)
+        else if (CurrentIndex == 1)
         {
             VatInstalments.d.StepNumberz = "03";
             if (VatInstalments.d.VTISSet.Count != 0)
@@ -3176,7 +3176,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
 
 
         }
-        else if (CurrentIndex == 3)
+        else if (CurrentIndex == 2)
         {
             VatInstalments.d.StepNumberz = "03";
 

@@ -51,7 +51,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
         int selectedPage = (int)PagesEnum.IBANNewForm;
 
-        private int _currenrIndex = 1;
+        private int _currenrIndex = 0;
 
         public int CurrentIndex
         {
@@ -762,7 +762,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
         private void EnableNewFormView()
         {
-            CurrentIndex = 1;
+            CurrentIndex = 0;
             NewFormVisible = true;
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.IBANNewForm;
@@ -770,7 +770,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
         private void EnableSummaryView()
         {
-            CurrentIndex = 2;
+            CurrentIndex = 1;
             NewFormVisible = false;
             SummaryVisible = true;
             selectedPage = (int)PagesEnum.IBANSummary;

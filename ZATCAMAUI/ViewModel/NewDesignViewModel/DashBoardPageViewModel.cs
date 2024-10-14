@@ -279,7 +279,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
         }
 
-        private int _currenrIndex = 1;
+        private int _currenrIndex = 0;
         public int CurrentIndex
         {
             get => _currenrIndex;

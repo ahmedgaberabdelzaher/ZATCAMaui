@@ -106,13 +106,16 @@
                     </StackLayout>
                 </Grid>
                 <!--#endregion-->
-                <commonView:PageIndicatorView
-                    Completed="{Binding MarkComplete}"
-                    DotSize="12"
+                <IndicatorView 
+                    IndicatorColor="LightGray"
+                    IndicatorSize="16"
+                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
                     HorizontalOptions="End"
-                    MarkSize="24"
-                    MaxNum="{Binding MaxIndex}"
-                    MinNum="{Binding CurrentIndex}" />
+                    MaximumVisible="{Binding MaxIndex}"
+                    Count="{Binding MaxIndex}"
+                    VerticalOptions="CenterAndExpand"
+                    Position="{Binding CurrentIndex}"
+                    />
                 <Label
                     Margin="0,10,0,0"
                     FontFamily="{StaticResource SomarBold}"

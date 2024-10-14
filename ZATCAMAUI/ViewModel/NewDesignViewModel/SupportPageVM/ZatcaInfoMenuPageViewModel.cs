@@ -21,7 +21,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
             }
         }
 
-        private int _currenrIndex = 1;
+        private int _currenrIndex = 0;
         public int CurrentIndex
         {
             get => _currenrIndex;

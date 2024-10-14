@@ -139,7 +139,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
-        private int _currenrIndex = 1;
+        private int _currenrIndex = 0;
 
         public int CurrentIndex
         {
@@ -1633,6 +1633,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         public void ShowTpDetailsPage()
         {
+            CurrentIndex = 0;
             if (NafathGUID.Length > 0)
             {
                 ShowAutoTPDetails = true;
@@ -1649,6 +1650,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         public void ShowMobileDetailsPage()
         {
+            CurrentIndex = 1;
             ShowManualTPDetails = false;
             ShowAutoTPDetails = false;
             ShowMobileNumberDetails = true;
@@ -1657,6 +1659,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         public void ShowAttachmentDetailsPage()
         {
+            CurrentIndex = 2;
             ShowManualTPDetails = false;
             ShowAutoTPDetails = false;
             ShowMobileNumberDetails = false;

@@ -79,7 +79,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
     public int DeregistrationType = 0;
 
 
-    private int _currenrIndex = 1;
+    private int _currenrIndex = 0;
 
     public int CurrentIndex
     {
@@ -740,7 +740,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
     private void GotoDeregReasonsPage()
     {
-        CurrentIndex = 1;
+        CurrentIndex = 0;
         ShouldShowList = true;
         ShouldShowAttachments = false;
         selectedPage = (int)PagesEnum.TinOutLetDeregReason;
@@ -798,7 +798,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
         if (ContinueButtonEnabled)
         {
-            CurrentIndex = 2;
+            CurrentIndex = 1;
             ShouldShowAttachments = true;
             ShouldShowList = !ShouldShowAttachments;
             selectedPage = (int)PagesEnum.Attachments;

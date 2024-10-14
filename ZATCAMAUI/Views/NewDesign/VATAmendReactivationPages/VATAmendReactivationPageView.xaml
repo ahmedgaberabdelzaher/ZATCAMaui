@@ -3645,11 +3645,16 @@
                                 Padding="10,0,0,10"
                                 BackgroundColor="White"
                                 HorizontalOptions="FillAndExpand">
-                                <commonView:PageIndicatorView
-                                    DotSize="12"
+                                <IndicatorView 
+                                    IndicatorColor="LightGray"
+                                    IndicatorSize="16"
+                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
                                     HorizontalOptions="End"
-                                    MaxNum="{Binding MaxIndex}"
-                                    MinNum="{Binding CurrentIndex}" />
+                                    MaximumVisible="{Binding MaxIndex}"
+                                    Count="{Binding MaxIndex}"
+                                    VerticalOptions="CenterAndExpand"
+                                    Position="{Binding CurrentIndex}"
+                                    />
 
                             </StackLayout>
 

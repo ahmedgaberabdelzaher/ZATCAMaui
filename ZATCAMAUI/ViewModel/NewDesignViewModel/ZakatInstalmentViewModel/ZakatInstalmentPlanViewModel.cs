@@ -1586,7 +1586,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
         }
 
-        private int _currenrIndex = 1;
+        private int _currenrIndex = 0;
         public int CurrentIndex
         {
            
@@ -2189,7 +2189,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             VATPenalityAmount = "0.00";
             VATBillDueAmount = "0.00 SAR";
             VATLiabilityAmount = "0.00 SAR";
-            CurrentIndex = 1;
+            CurrentIndex = 0;
             DownPaymentSliderValue = MinAmount;
             Year1 = "";
             Year2 = "";
@@ -2255,7 +2255,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             CloseClick = new Command(() =>
             {
-                CurrentIndex = 1;
+                CurrentIndex = 0;
                 EnableSlectionView();
             });
             GoBackToBills = new Command(() =>
@@ -2509,7 +2509,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             InstalmentPlanAgreementsVisible = false;
             IsStatementViewEnabled = false;
             IsVATBillsViewEnabled = false;
-            CurrentIndex = 3;
+            CurrentIndex = 2;
             selectedPage = (int)PagesEnum.IsDisplayInstalmentsVisible;
 
         }
@@ -2559,7 +2559,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             IsBillsViewEnabled = false;
             IsVATBillsViewEnabled = true;
             IsStatementViewEnabled = false;
-            CurrentIndex = 1;
+            CurrentIndex = 0;
             selectedPage = (int)PagesEnum.ZakatBillView;
 
             MessagingCenter.Send<ZakatInstalmentPlanViewModel, bool>(this, "InvoiceBillsLoadedNew", true);
@@ -2580,7 +2580,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             IsDisplayInstalmentsVisible = false;
             IsStatementViewEnabled = false;
             InstalmentPlanAgreementsVisible = false;
-            CurrentIndex = 2;
+            CurrentIndex = 1;
             selectedPage = (int)PagesEnum.ZakatAggrementView;
 
         }
@@ -2614,7 +2614,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             IsStatementViewEnabled = false;
             IsDisplayInstalmentsVisible = false;
             InstalmentPlanAgreementsVisible = false;
-            CurrentIndex = 5;
+            CurrentIndex = 4;
             selectedPage = (int)PagesEnum.ZakatAttachmentsView;
 
         }
@@ -2632,7 +2632,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             IsStatementViewEnabled = false;
             IsDisplayInstalmentsVisible = false;
             InstalmentPlanAgreementsVisible = false;
-            CurrentIndex = 6;
+            CurrentIndex = 5;
             selectedPage = (int)PagesEnum.ZakatSummaryView;
 
 
@@ -2652,7 +2652,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             IsStatementViewEnabled = false;
             IsDisplayInstalmentsVisible = false;
             InstalmentPlanAgreementsVisible = true;
-            CurrentIndex = 4;
+            CurrentIndex = 3;
             selectedPage = (int)PagesEnum.InstalmentPlanAgreementsVisible;
 
         }
@@ -3247,12 +3247,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         ZakatInstalments.d.OffPlanDur = "00";
                         ZakatInstalments.d.OffPymntFreq = "00";
                         ZakatInstalments.d.OffPymntFreq = "00";
-                        if (CurrentIndex == 1)
+                        if (CurrentIndex == 0)
                         {
                             ZakatInstalments.d.StepNumber = "01";
 
                         }
-                        else if (CurrentIndex == 2 || CurrentIndex == 3)
+                        else if (CurrentIndex == 1 || CurrentIndex == 2)
                         {
                             ZakatInstalments.d.StepNumber = "03";
 
@@ -3416,12 +3416,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 ZakatInstalments.d.OffPymntFreq = "00";
                 ZakatInstalments.d.OffPymntFreq = "00";
 
-                if (CurrentIndex == 1)
+                if (CurrentIndex == 0)
                 {
                     ZakatInstalments.d.StepNumber = "01";
 
                 }
-                else if (CurrentIndex == 2 || CurrentIndex == 3)
+                else if (CurrentIndex == 1 || CurrentIndex == 2)
                 {
                     ZakatInstalments.d.StepNumber = "03";
 

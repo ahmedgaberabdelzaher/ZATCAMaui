@@ -2,8 +2,8 @@
 {
     public enum CustomsEnum
     {
-        parentCstoms = 1,
-        customsTarrifs = 2,
-        customsDelecrations = 3,
+        parentCstoms = 0,
+        customsTarrifs = 1,
+        customsDelecrations = 2,
     }
 }

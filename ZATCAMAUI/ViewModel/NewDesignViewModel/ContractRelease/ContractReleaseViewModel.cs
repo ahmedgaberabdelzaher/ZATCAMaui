@@ -678,7 +678,7 @@ public class ContractReleaseViewModel : BaseViewModel
         }
     }
 
-    private int _currenrIndex = 1;
+    private int _currenrIndex = 0;
 
     public int CurrentIndex
     {
@@ -1901,7 +1901,7 @@ public class ContractReleaseViewModel : BaseViewModel
 
     private void EnableReleaseDetailsView()
     {
-        CurrentIndex = 1;
+        CurrentIndex = 0;
         IsBackButtonVisible = false;
         IsReleaseDetailsVisible = true;
         AttachmentsVisible = false;
@@ -1913,7 +1913,7 @@ public class ContractReleaseViewModel : BaseViewModel
 
     private void EnableAttachmentsView()
     {
-        CurrentIndex = 2;
+        CurrentIndex = 1;
         IsBackButtonVisible = true;
         IsReleaseDetailsVisible = false;
         AttachmentsVisible = true;
@@ -1925,7 +1925,7 @@ public class ContractReleaseViewModel : BaseViewModel
 
     private void EnableRemarksAndDescView()
     {
-        CurrentIndex = 3;
+        CurrentIndex = 2;
         IsBackButtonVisible = true;
         IsReleaseDetailsVisible = false;
         AttachmentsVisible = false;
@@ -1937,7 +1937,7 @@ public class ContractReleaseViewModel : BaseViewModel
 
     private void EnableDeclarationView()
     {
-        CurrentIndex = 4;
+        CurrentIndex = 3;
         IsBackButtonVisible = true;
         IsReleaseDetailsVisible = false;
         AttachmentsVisible = false;
@@ -1971,7 +1971,7 @@ public class ContractReleaseViewModel : BaseViewModel
 
     private void EnableSummaryView()
     {
-        CurrentIndex = 5;
+        CurrentIndex = 4;
         IsBackButtonVisible = true;
         IsReleaseDetailsVisible = false;
         AttachmentsVisible = false;

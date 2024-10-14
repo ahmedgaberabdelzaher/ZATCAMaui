@@ -26,7 +26,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #region Variable
 
 
-        private int _currenrIndex = 1;
+        private int _currenrIndex = 0;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -626,7 +626,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isInstrunctionVisible)
                 {
                     IsBackStepButtonVisible = false;
-                    CurrentIndex = 1;
+                    CurrentIndex = 0;
                 }
                 else
                 {
@@ -649,7 +649,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _isTaxPayersVisible = value;
                 if (_isTaxPayersVisible)
                 {
-                    CurrentIndex = 2;
+                    CurrentIndex = 1;
                 }
                 OnPropertyChanged("IsTaxPayersVisible");
             }
@@ -668,7 +668,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _isSalesVisible = value;
                 if (_isSalesVisible)
                 {
-                    CurrentIndex = 3;
+                    CurrentIndex = 2;
                 }
                 OnPropertyChanged("IsSalesVisible");
             }
@@ -703,7 +703,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isFinancialVisible)
                 {
                     IsContinueButtonEnable = true;
-                    CurrentIndex = 4;
+                    CurrentIndex = 3;
                 }
                 OnPropertyChanged("IsFinancialVisible");
             }
@@ -722,7 +722,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _isSummaryVisible = value;
                 if (_isSummaryVisible)
                 {
-                    CurrentIndex = 5;
+                    CurrentIndex = 4;
                 }
                 OnPropertyChanged("IsSummaryVisible");
             }

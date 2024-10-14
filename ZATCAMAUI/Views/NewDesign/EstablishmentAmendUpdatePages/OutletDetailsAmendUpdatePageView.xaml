@@ -97,13 +97,16 @@
                         WidthRequest="27" />
                 </Grid>
                 <!--#endregion-->
-                <commonView:PageIndicatorView
-                    Completed="{Binding MarkComplete}"
-                    DotSize="12"
+                <IndicatorView 
+                    IndicatorColor="LightGray"
+                    IndicatorSize="16"
+                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
                     HorizontalOptions="End"
-                    MarkSize="24"
-                    MaxNum="{Binding MaxIndex}"
-                    MinNum="{Binding CurrentIndex}" />
+                    MaximumVisible="{Binding MaxIndex}"
+                    Count="{Binding MaxIndex}"
+                    VerticalOptions="CenterAndExpand"
+                    Position="{Binding CurrentIndex}"
+                    />
                 <Label
                     Padding="0,5,0,10"
                     FontFamily="{StaticResource SomarBold}"

@@ -1732,7 +1732,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
-                viewModel.CurrentIndex = 1;
+                viewModel.CurrentIndex = 0;
                 viewModel.CurrentStep = AppResources.VATRStep2;
                 SetfirstBoxColor();
                 if (viewModel.IsInstrunctionChecked)
@@ -1744,7 +1744,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
-                viewModel.CurrentIndex = 2;
+                viewModel.CurrentIndex = 1;
                 viewModel.CurrentStep = AppResources.VATRStep3;
                 SetsecondBoxColor();
                 setAttachmentImporterExporterVisibility();
@@ -1753,7 +1753,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 viewModel.SetVisibility();
                 viewModel.IsSalesVisible = true;
-                viewModel.CurrentIndex = 3;
+                viewModel.CurrentIndex = 2;
                 viewModel.CurrentStep = AppResources.VATRStep4;
                 SetthirdBoxColor();
             }
@@ -1761,7 +1761,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 viewModel.SetVisibility();
                 viewModel.IsFinancialVisible = true;
-                viewModel.CurrentIndex = 4;
+                viewModel.CurrentIndex = 3;
                 viewModel.CurrentStep = AppResources.VATRStep5;
                 SetfourthBoxColor();
             }
@@ -4411,7 +4411,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private void GoBackToTaxPayerDetails(object sender, EventArgs e)
         {
-            viewModel.CurrentIndex = 2;
+            viewModel.CurrentIndex = 1;
             viewModel.CurrentStep = AppResources.VATRStep2;
             viewModel.SetVisibility();
             viewModel.IsTaxPayersVisible = true;
@@ -4420,18 +4420,18 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private void GoBackToSalesDetails(object sender, EventArgs e)
         {
-            viewModel.CurrentIndex = 3;
+            viewModel.CurrentIndex = 2;
             step3Validation();
         }
 
         private void GoBackToVATExpenseDetails(object sender, EventArgs e)
         {
-            viewModel.CurrentIndex = 3;
+            viewModel.CurrentIndex = 2;
             step3Validation();
         }
         private void GoBackToFinacialRepresentativeDetails(object sender, EventArgs e)
         {
-            viewModel.CurrentIndex = 4;
+            viewModel.CurrentIndex = 3;
             if (viewModel.RegTypeCode == "Not Eligible")
             {
                 if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.Count > 0)

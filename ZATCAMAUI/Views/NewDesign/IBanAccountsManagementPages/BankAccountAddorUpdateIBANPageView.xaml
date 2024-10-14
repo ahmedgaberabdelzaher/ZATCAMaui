@@ -81,13 +81,16 @@
                                      Spacing="10"
                               VerticalOptions="FillAndExpand">
 
-                            <commonView:PageIndicatorView
-                                Completed="{Binding MarkComplete}"
-                                DotSize="16"
-                                MaxNum="{Binding MaxIndex}"
-                                MinNum="{Binding CurrentIndex}"
-                                VerticalOptions="Start" />
-
+                            <IndicatorView 
+                                IndicatorColor="LightGray"
+                                IndicatorSize="16"
+                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                HorizontalOptions="End"
+                                MaximumVisible="{Binding MaxIndex}"
+                                Count="{Binding MaxIndex}"
+                                VerticalOptions="Start"
+                                Position="{Binding CurrentIndex}"
+                                />
                              <StackLayout
                                 IsVisible="{Binding NewFormVisible}"
                                 HorizontalOptions="FillAndExpand"

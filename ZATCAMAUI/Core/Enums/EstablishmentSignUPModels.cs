@@ -3,12 +3,12 @@
 
     public enum EstablishmentSignUPTabEnum
     {
-        TermsAndConditions = 1,
-        IndividualInformation = 2,
-        BusinessInformation = 3,
-        ContactInformation = 4,
-        MobileVerification = 5,
-        EmailVerification = 6,
-        Password = 7
+        TermsAndConditions = 0,
+        IndividualInformation = 1,
+        BusinessInformation = 2,
+        ContactInformation = 3,
+        MobileVerification = 4,
+        EmailVerification = 5,
+        Password = 6
     }
 }

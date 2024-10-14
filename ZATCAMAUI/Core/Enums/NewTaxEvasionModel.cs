@@ -3,9 +3,9 @@
 
     public enum NewTaxEvasionTabEnum
     {
-        ReporterInfo = 1,
-        FacilityInfo = 2,
-        ReportDetails = 3,
-        Summary = 4
+        ReporterInfo = 0,
+        FacilityInfo = 1,
+        ReportDetails = 2,
+        Summary = 3
     }
 }

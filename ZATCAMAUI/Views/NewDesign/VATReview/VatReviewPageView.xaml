@@ -191,14 +191,16 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
-                                <commonView:PageIndicatorView
-                                    Margin="20,25,20,0"
-                                    Completed="{Binding MarkComplete}"
-                                    DotSize="12"
+                                <IndicatorView 
+                                    IndicatorColor="LightGray"
+                                    IndicatorSize="16"
+                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
                                     HorizontalOptions="End"
-                                    MaxNum="{Binding MaxIndex}"
-                                    MinNum="{Binding CurrentIndex}"
-                                    VerticalOptions="CenterAndExpand" />
+                                    MaximumVisible="{Binding MaxIndex}"
+                                    Count="{Binding MaxIndex}"
+                                    VerticalOptions="CenterAndExpand"
+                                    Position="{Binding CurrentIndex}"
+                                />
                             </Grid>
 
 

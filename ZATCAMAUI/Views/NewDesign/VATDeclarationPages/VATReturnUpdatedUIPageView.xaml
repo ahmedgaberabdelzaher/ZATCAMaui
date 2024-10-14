@@ -127,13 +127,16 @@
                             </Label.GestureRecognizers>
                         </Label>
 
-                        <commonView:PageIndicatorView
-                            Completed="{Binding MarkComplete}"
-                            DotSize="12"
-                            HorizontalOptions="EndAndExpand"
-                            MaxNum="{Binding MaxIndex}"
-                            MinNum="{Binding CurrentIndex}"
-                            VerticalOptions="CenterAndExpand" />
+                        <IndicatorView 
+                                IndicatorColor="LightGray"
+                                IndicatorSize="16"
+                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                HorizontalOptions="End"
+                                MaximumVisible="{Binding MaxIndex}"
+                                Count="{Binding MaxIndex}"
+                                VerticalOptions="CenterAndExpand"
+                                Position="{Binding CurrentIndex}"
+                                />
 
                     </StackLayout>
 
