@@ -3171,7 +3171,7 @@
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 FontSize="15"
                                 Style="{StaticResource CaptionLabelBlack}"
-                                Text="{Binding TaxDate, Converter={StaticResource dateFormatConverter}}" />
+                                Text="{Binding TaxDate, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
 
                             <!--  Trail List  -->
                             <listView:SfListView
@@ -3213,11 +3213,11 @@
                                                 <Label Grid.Column="2" Style="{DynamicResource CardLabelBlack}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Style="{DynamicResource CardLabelBlack}" Text="{Binding FromDate, Converter={StaticResource dateFormatConverter}}" />
+                                                            <Span Style="{DynamicResource CardLabelBlack}" Text="{Binding FromDate, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
                                                             <Span Text=" " />
                                                             <Span Style="{DynamicResource CardLabelBlack}" Text="{x:Static ResourceManager:AppResources.To}" />
                                                             <Span Text=" " />
-                                                            <Span Style="{DynamicResource CardLabelBlack}" Text="{Binding ToDate, Converter={StaticResource dateFormatConverter}}" />
+                                                            <Span Style="{DynamicResource CardLabelBlack}" Text="{Binding ToDate, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -3253,11 +3253,11 @@
                                                     <Label Style="{DynamicResource CardLabelWhite}">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{DynamicResource CardLabelWhite}" Text="{Binding FromDate, Converter={StaticResource dateFormatConverter}}" />
+                                                                <Span Style="{DynamicResource CardLabelWhite}" Text="{Binding FromDate, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
                                                                 <Span Text=" " />
                                                                 <Span Style="{DynamicResource CardLabelWhite}" Text="{x:Static ResourceManager:AppResources.To}" />
                                                                 <Span Text=" " />
-                                                                <Span Style="{DynamicResource CardLabelWhite}" Text="{Binding ToDate, Converter={StaticResource dateFormatConverter}}" />
+                                                                <Span Style="{DynamicResource CardLabelWhite}" Text="{Binding ToDate, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>

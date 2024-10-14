@@ -8,8 +8,9 @@ namespace ZATCAMAUI.Core.Converters
         {
             if (value is string dateString && DateTime.TryParse(dateString, out DateTime dateTime))
             {
-                // Format the DateTime to yyyy-MM-dd
-                return dateTime.ToString("yyyy/MM/dd");
+                // Use the provided parameter as the format string
+                string format = parameter as string ?? "yyyy/MM/dd"; // Default format if parameter is not provided
+                return dateTime.ToString(format);
             }
             return value;
         }
