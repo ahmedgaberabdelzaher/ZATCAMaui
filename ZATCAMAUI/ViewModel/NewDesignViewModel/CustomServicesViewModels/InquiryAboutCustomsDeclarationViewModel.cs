@@ -879,7 +879,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
 
                     var dcltn_isn = DeclarionByInformationInquireLst[0].dcltn_isn;
-                    //  IsLoading = true;
                     var data = await _customInquiryService.GetDclStatmentItems(selectedPort.port_cd, int.Parse(dcltn_isn.Replace(".0", "")), declType);
                     if (data.Item2)
                     {
@@ -1142,6 +1141,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     try
                     {
                         IsLoading = true;
+                       
                         if (IsOtpValid)
                         {
 
@@ -1149,6 +1149,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
                             if (EnteredOTP == Preferences.Get("OTPValue", ""))
                             {
+                               
                                 await LoadInquiryDetails();
                                 ClearOTPData();
                             }
@@ -1263,10 +1264,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 ResendOTPTextColor = (Color)Application.Current.Resources["ResendOTPTextColor"];
                 IsResendCodeEnabled = false;
                 StartOTPTimer();
-                if (data.Item2)
-                {
-
-                }
             }
             catch (Exception)
             {

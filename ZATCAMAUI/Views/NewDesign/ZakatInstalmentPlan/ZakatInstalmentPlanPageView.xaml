@@ -1848,8 +1848,7 @@
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="downPaymentEntry"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     Style="{StaticResource SectionTitleBlackBold}"
                                                     Text="{Binding DownPaymentAmount, StringFormat='{0:N} SAR', Converter={StaticResource commaSeparatorConverter}}"
                                                     TextChanged="downPaymentEntry_TextChanged"

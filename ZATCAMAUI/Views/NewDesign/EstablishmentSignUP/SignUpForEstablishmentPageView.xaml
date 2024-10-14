@@ -1173,8 +1173,7 @@
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding OTPFirstDigit}"
@@ -1216,8 +1215,7 @@
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding OTPSecondDigit}"
@@ -1259,8 +1257,7 @@
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding OTPThirdDigit}"
@@ -1300,8 +1297,7 @@
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     IsEnabled="{Binding IsOTPEntryEnable}"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="1"
                                                     ReturnType="Next"
                                                     Text="{Binding OTPFourthDigit}"
