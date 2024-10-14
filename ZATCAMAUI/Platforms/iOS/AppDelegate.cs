@@ -6,6 +6,7 @@ using AppDynamics.Agent;
 using Microsoft.Maui.Handlers;
 using ZATCAMAUI.Core.CustomControls;
 using Foundation;
+using System.Drawing;
 
 namespace ZATCAMAUI.Platforms.iOS;
 
@@ -22,6 +23,25 @@ public class AppDelegate : MauiUIApplicationDelegate
                 handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
                 handler.PlatformView.Layer.BorderWidth = 0;
                 handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+
+                //Create a new toolbar.
+                var toolbar = new UIToolbar(new RectangleF(0.0f, 0.0f, 50.0f, 44.0f));
+
+                //Create a new UIBarButton with a delegate to clear the focus on the Entry by calling a method that forces the text to stop being edited.
+                var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, delegate
+                {
+                    handler.PlatformView.EndEditing(true);
+                    handler.VirtualView.Completed();
+                });
+
+                //Add the button to the toolbar previosly created
+                toolbar.Items = new UIBarButtonItem[]
+                {
+                    new UIBarButtonItem (UIBarButtonSystemItem.FlexibleSpace),doneButton
+                };
+                handler.PlatformView.InputAccessoryView = toolbar;
+
+
             }
         });
 

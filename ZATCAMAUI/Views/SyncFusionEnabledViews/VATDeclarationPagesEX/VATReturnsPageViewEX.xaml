@@ -4438,8 +4438,7 @@
                                                     Grid.Row="6"
                                                     Focused="EntryPreperiodcorrFocused"
                                                     IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PropertyChanged="EntryPreperiodcorr_PropertyChanged"
                                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"
@@ -4538,8 +4537,7 @@
                                                     x:Name="EntryCreditVat"
                                                     InputTransparent="True"
                                                     IsReadOnly="True"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CreditVat}"
                                                     TextChanged="EntryCreditVat_TextChanged"
@@ -4613,8 +4611,7 @@
                                                     x:Name="EntryNetdueVat"
                                                     InputTransparent="True"
                                                     IsReadOnly="True"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}"
                                                     TextChanged="EntryNetdueVat_TextChanged"
