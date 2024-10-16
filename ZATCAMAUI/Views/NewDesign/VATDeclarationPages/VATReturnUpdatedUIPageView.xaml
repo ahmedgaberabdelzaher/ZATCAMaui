@@ -127,16 +127,16 @@
                             </Label.GestureRecognizers>
                         </Label>
 
-                        <IndicatorView 
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                HorizontalOptions="End"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Count="{Binding MaxIndex}"
-                                VerticalOptions="CenterAndExpand"
-                                Position="{Binding CurrentIndex}"
-                                />
+                        <IndicatorView
+                            Count="{Binding MaxIndex}"
+                            HorizontalOptions="End"
+                            IndicatorColor="LightGray"
+                            IndicatorSize="16"
+                            InputTransparent="True"
+                            MaximumVisible="{Binding MaxIndex}"
+                            Position="{Binding CurrentIndex}"
+                            SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                            VerticalOptions="CenterAndExpand" />
 
                     </StackLayout>
 
@@ -4006,8 +4006,9 @@
 
                                     </VerticalStackLayout>
 
-                                    <buttons:SfButton Margin="5"
+                                    <buttons:SfButton
                                         x:Name="btnpaynow"
+                                        Margin="5"
                                         Clicked="OnPayNowButtonClicked"
                                         IsVisible="{Binding IsPayNowVisible}"
                                         Style="{StaticResource PrimaryButtonStyle}"

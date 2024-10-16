@@ -98,15 +98,15 @@
                             <Grid Grid.Row="0">
                                 <IndicatorView
                                     Margin="10"
+                                    Count="{Binding MaxIndex}"
+                                    HorizontalOptions="End"
                                     IndicatorColor="LightGray"
                                     IndicatorSize="16"
-                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                    HorizontalOptions="End"
+                                    InputTransparent="True"
                                     MaximumVisible="{Binding MaxIndex}"
-                                    Count="{Binding MaxIndex}"
-                                    VerticalOptions="CenterAndExpand"
                                     Position="{Binding CurrentIndex}"
-                                    />
+                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                    VerticalOptions="CenterAndExpand" />
                             </Grid>
 
                             <Grid Grid.Row="1">

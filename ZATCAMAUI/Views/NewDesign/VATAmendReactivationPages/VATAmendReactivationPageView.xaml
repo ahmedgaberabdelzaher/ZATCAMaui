@@ -3518,38 +3518,40 @@
 
                                                 </Grid>
                                             </StackLayout>
-                                           
+
 
                                             <StackLayout
-                                                 Margin="10,5"
-                                                 Orientation="Horizontal"
-                                                 VerticalOptions="FillAndExpand"
-                                                 Spacing="10"
-                                                 BackgroundColor="Transparent"
-                                                 IsVisible="{Binding IsDeclarationViewEnabledNew}">
+                                                Margin="10,5"
+                                                BackgroundColor="Transparent"
+                                                IsVisible="{Binding IsDeclarationViewEnabledNew}"
+                                                Orientation="Horizontal"
+                                                Spacing="10"
+                                                VerticalOptions="FillAndExpand">
 
 
                                                 <custom:CheckboxCustom
-                                                                IsChecked="{Binding IsDeclarationChecked}"
-                                                                MinimumHeightRequest="32"
-                                                                MinimumWidthRequest="32"
-                                                                VerticalOptions="Start" />
+                                                    IsChecked="{Binding IsDeclarationChecked}"
+                                                    MinimumHeightRequest="32"
+                                                    MinimumWidthRequest="32"
+                                                    VerticalOptions="Start" />
 
-                                                <Label HeightRequest="350"
-                                                       HorizontalTextAlignment="Start"
-                                                       IsVisible="{Binding ShouldShowEN}"
-                                                       Style="{StaticResource CheckboxUnselectedFontStyle}"
-                                                       Text="{Binding Zterms}"
-                                                       TextType="Html"
-                                                       HorizontalOptions="FillAndExpand"/>
+                                                <Label
+                                                    HeightRequest="350"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    HorizontalTextAlignment="Start"
+                                                    IsVisible="{Binding ShouldShowEN}"
+                                                    Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                                    Text="{Binding Zterms}"
+                                                    TextType="Html" />
 
-                                                <Label HeightRequest="350"
-                                                       HorizontalOptions="FillAndExpand"
-                                                       HorizontalTextAlignment="Start"
-                                                       IsVisible="{Binding ShouldShowAR}"
-                                                       Style="{StaticResource CheckboxUnselectedFontStyle}"
-                                                       Text="{Binding Zterms}"
-                                                       TextType="Html"/>
+                                                <Label
+                                                    HeightRequest="350"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    HorizontalTextAlignment="Start"
+                                                    IsVisible="{Binding ShouldShowAR}"
+                                                    Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                                    Text="{Binding Zterms}"
+                                                    TextType="Html" />
 
 
                                             </StackLayout>
@@ -3645,16 +3647,16 @@
                                 Padding="10,0,0,10"
                                 BackgroundColor="White"
                                 HorizontalOptions="FillAndExpand">
-                                <IndicatorView 
+                                <IndicatorView
+                                    Count="{Binding MaxIndex}"
+                                    HorizontalOptions="End"
                                     IndicatorColor="LightGray"
                                     IndicatorSize="16"
-                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                    HorizontalOptions="End"
+                                    InputTransparent="True"
                                     MaximumVisible="{Binding MaxIndex}"
-                                    Count="{Binding MaxIndex}"
-                                    VerticalOptions="CenterAndExpand"
                                     Position="{Binding CurrentIndex}"
-                                    />
+                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                    VerticalOptions="CenterAndExpand" />
 
                             </StackLayout>
 

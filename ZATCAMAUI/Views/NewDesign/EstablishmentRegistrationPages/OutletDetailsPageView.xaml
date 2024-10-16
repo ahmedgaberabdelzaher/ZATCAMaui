@@ -1097,16 +1097,16 @@
                                 WidthRequest="27" />
                         </Grid>
 
-                        <IndicatorView 
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                HorizontalOptions="End"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Count="{Binding MaxIndex}"
-                                VerticalOptions="CenterAndExpand"
-                                Position="{Binding CurrentIndex}"
-                                />
+                        <IndicatorView
+                            Count="{Binding MaxIndex}"
+                            HorizontalOptions="End"
+                            IndicatorColor="LightGray"
+                            IndicatorSize="16"
+                            InputTransparent="True"
+                            MaximumVisible="{Binding MaxIndex}"
+                            Position="{Binding CurrentIndex}"
+                            SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                            VerticalOptions="CenterAndExpand" />
 
                         <Label
                             FontFamily="{StaticResource SomarBold}"

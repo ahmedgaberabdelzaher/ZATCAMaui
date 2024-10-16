@@ -55,7 +55,7 @@
                             Binding="{Binding AppDirection}"
                             TargetType="Image"
                             Value="LeftToRight">
-                        <Setter Property="Rotation" Value="180" />
+                            <Setter Property="Rotation" Value="180" />
                         </DataTrigger>
                     </Image.Triggers>
 
@@ -98,9 +98,20 @@
                     VerticalScrollBarVisibility="Never">
 
                     <StackLayout Margin="0,0" VerticalOptions="FillAndExpand">
+                        <IndicatorView
+                            Count="{Binding MaxIndex}"
+                            HorizontalOptions="End"
+                            IndicatorColor="LightGray"
+                            IndicatorSize="16"
+                            InputTransparent="True"
+                            MaximumVisible="{Binding MaxIndex}"
+                            Position="{Binding CurrentIndex}"
+                            SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                            VerticalOptions="Start" />
 
-                        <!--  Individual Registration  -->
+                        <!--#region Individual Registration-->
                         <StackLayout x:Name="IndividualRegistrationView" IsVisible="{Binding IndividualRegistrationView}">
+
 
                             <!--  Titles  -->
                             <Label
@@ -155,7 +166,7 @@
                                 </StackLayout>
 
                                 <StackLayout x:Name="IDNumber" Grid.Row="1">
-                                     <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Style="{StaticResource CardLabelBlack}" Text="{x:Static ResourceManager:AppResources.IDNumber}" />
@@ -372,8 +383,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <custom:CustomSfTextInputView x:Name="FrmIDNumber"
-                                        HasError="{Binding FrameIDError}">
+                                    <custom:CustomSfTextInputView x:Name="FrmIDNumber" HasError="{Binding FrameIDError}">
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryIDNumber"
@@ -438,11 +448,9 @@
                                     </SfChipGroup:SfChipGroup>
 
 
-                                    <custom:CustomSfTextInputView
-                                        x:Name="FrmDBO"
-                                        HasError="{Binding FrameDOBError}">
+                                    <custom:CustomSfTextInputView x:Name="FrmDBO" HasError="{Binding FrameDOBError}">
 
-                                         <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="DateEntry"
                                                 FontFamily="{StaticResource SomarLight}"
@@ -583,33 +591,33 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <custom:CustomSfTextInputView
-                                        x:Name="FrmName">
+                                    <custom:CustomSfTextInputView x:Name="FrmName">
                                         <custom:CustomSfTextInputView.TextInputView>
-                                        <custom:GAZTBorderlessEntry
-                                            x:Name="EntryName"
-                                            FontFamily="{StaticResource SomarLight}"
-                                            FontSize="Small"
-                                            IsSpellCheckEnabled="False"
-                                            Placeholder="{x:Static ResourceManager:AppResources.ZZName}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding Name}"
-                                            TextChanged="EntryName_TextChanged">
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="EntryName"
+                                                FontFamily="{StaticResource SomarLight}"
+                                                FontSize="Small"
+                                                IsSpellCheckEnabled="False"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZName}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding Name}"
+                                                TextChanged="EntryName_TextChanged">
 
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviors:AlphabetandArabicCharacters />
-                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviors:AlphabetandArabicCharacters />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
 
-                                        </custom:GAZTBorderlessEntry>
-                                    </custom:CustomSfTextInputView.TextInputView>
+                                            </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
                                     </custom:CustomSfTextInputView>
                                 </StackLayout>
 
                             </StackLayout>
 
                         </StackLayout>
+                        <!--#endregion-->
 
-                        <!--  National Address  -->
+                        <!--#region National Address-->
                         <StackLayout x:Name="NationalAddressView" IsVisible="{Binding NationalAddressView}">
 
                             <Label
@@ -650,19 +658,18 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView
-                                            x:Name="Frame_Country">
+                                        <custom:CustomSfTextInputView x:Name="Frame_Country">
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                    IsReadOnly="{Binding SetEnabilityToCountryList}"
                                                     InputTransparent="{Binding SetEnabilityToCountryList}"
+                                                    IsReadOnly="{Binding SetEnabilityToCountryList}"
                                                     IsSpellCheckEnabled="False"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding CountryName}" />
                                             </custom:CustomSfTextInputView.TextInputView>
-                                            
+
 
                                             <custom:CustomSfTextInputView.TrailingView>
                                                 <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
@@ -684,20 +691,19 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView
-                                            x:Name="GCCFrame_Country">
+                                        <custom:CustomSfTextInputView x:Name="GCCFrame_Country">
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                x:Name="GccCountryName"
-                                                FontSize="Small"
-                                                InputTransparent="{Binding SetEnabilityToCountryList}"
-                                                IsReadOnly="{Binding SetEnabilityToCountryList}"
-                                                IsSpellCheckEnabled="False"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding CountryName}"
-                                                TextChanged="GccCountryName_TextChanged" />
+                                                    x:Name="GccCountryName"
+                                                    FontSize="Small"
+                                                    InputTransparent="{Binding SetEnabilityToCountryList}"
+                                                    IsReadOnly="{Binding SetEnabilityToCountryList}"
+                                                    IsSpellCheckEnabled="False"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding CountryName}"
+                                                    TextChanged="GccCountryName_TextChanged" />
                                             </custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:CustomSfTextInputView.TrailingView>
@@ -795,17 +801,17 @@
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                x:Name="Entry_Region"
-                                                FontFamily="{StaticResource SomarLight}"
-                                                FontSize="Small"
-                                                IsSpellCheckEnabled="False"
-                                                IsReadOnly="True"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding Region}"
-                                                TextChanged="Entry_Region_TextChanged" />
+                                                    x:Name="Entry_Region"
+                                                    FontFamily="{StaticResource SomarLight}"
+                                                    FontSize="Small"
+                                                    IsReadOnly="True"
+                                                    IsSpellCheckEnabled="False"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding Region}"
+                                                    TextChanged="Entry_Region_TextChanged" />
                                             </custom:CustomSfTextInputView.TextInputView>
-                                            
+
                                             <custom:CustomSfTextInputView.TrailingView>
                                                 <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
                                             </custom:CustomSfTextInputView.TrailingView>
@@ -902,17 +908,17 @@
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                x:Name="Entry_City"
-                                                FontSize="Small"
-                                                IsReadOnly="True"
-                                                IsSpellCheckEnabled="False"
-                                                IsVisible="{Binding SetCityListVisibility}"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZZCity}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding CityName}"
-                                                TextChanged="Entry_City_TextChanged" />
+                                                    x:Name="Entry_City"
+                                                    FontSize="Small"
+                                                    IsReadOnly="True"
+                                                    IsSpellCheckEnabled="False"
+                                                    IsVisible="{Binding SetCityListVisibility}"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZZCity}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding CityName}"
+                                                    TextChanged="Entry_City_TextChanged" />
                                             </custom:CustomSfTextInputView.TextInputView>
-                                            
+
                                             <custom:CustomSfTextInputView.TrailingView>
                                                 <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
 
@@ -986,8 +992,7 @@
 
                                     </StackLayout>
 
-                                    <custom:CustomSfTextInputView
-                                            x:Name="Neighborhood">
+                                    <custom:CustomSfTextInputView x:Name="Neighborhood">
 
 
                                         <custom:CustomSfTextInputView.TextInputView>
@@ -1005,12 +1010,11 @@
                                             </custom:GAZTBorderlessEntry>
                                         </custom:CustomSfTextInputView.TextInputView>
 
-                                            
 
-                                        </custom:CustomSfTextInputView>
 
-                                    <custom:CustomSfTextInputView
-                                            x:Name="PostalCode">
+                                    </custom:CustomSfTextInputView>
+
+                                    <custom:CustomSfTextInputView x:Name="PostalCode">
 
                                         <custom:CustomSfTextInputView.TextInputView>
 
@@ -1035,10 +1039,9 @@
 
                                         </custom:CustomSfTextInputView.TextInputView>
 
-                                        </custom:CustomSfTextInputView>
+                                    </custom:CustomSfTextInputView>
 
-                                    <custom:CustomSfTextInputView
-                                            x:Name="BuildingNumber">
+                                    <custom:CustomSfTextInputView x:Name="BuildingNumber">
 
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
@@ -1055,10 +1058,9 @@
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                         </custom:CustomSfTextInputView.TextInputView>
-                                        </custom:CustomSfTextInputView>
+                                    </custom:CustomSfTextInputView>
 
-                                    <custom:CustomSfTextInputView
-                                            x:Name="UnitNumber">
+                                    <custom:CustomSfTextInputView x:Name="UnitNumber">
 
 
                                         <custom:CustomSfTextInputView.TextInputView>
@@ -1075,8 +1077,8 @@
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                         </custom:CustomSfTextInputView.TextInputView>
-                                            
-                                        </custom:CustomSfTextInputView>
+
+                                    </custom:CustomSfTextInputView>
 
                                 </StackLayout>
 
@@ -1084,8 +1086,9 @@
 
 
                         </StackLayout>
+                        <!--#endregion-->
 
-                        <!--  Contact Information  Grid.ColumnSpan="2"  -->
+                        <!--#region Contact Information-->
                         <StackLayout x:Name="ContactInformationView" IsVisible="{Binding ContactInformationView}">
 
                             <Label
@@ -1121,29 +1124,27 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                    <custom:CustomSfTextInputView
-                                            x:Name="FrmEmailAddress"
-                                            HasError="{Binding FrameEmailError}">
+                                        <custom:CustomSfTextInputView x:Name="FrmEmailAddress" HasError="{Binding FrameEmailError}">
 
                                             <custom:CustomSfTextInputView.TextInputView>
-                                                 <custom:GAZTBorderlessEntry
-                                                x:Name="EntryEmail"
-                                                IsSpellCheckEnabled="False"
-                                                Keyboard="Email"
-                                                Placeholder="{x:Static ResourceManager:AppResources.Email}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding Email}"
-                                                Unfocused="EntryEmail_Unfocused">
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behaviors:AlphaNumericValidatorBehaviour />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                            </custom:GAZTBorderlessEntry>
+                                                <custom:GAZTBorderlessEntry
+                                                    x:Name="EntryEmail"
+                                                    IsSpellCheckEnabled="False"
+                                                    Keyboard="Email"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.Email}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding Email}"
+                                                    Unfocused="EntryEmail_Unfocused">
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behaviors:AlphaNumericValidatorBehaviour />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                </custom:GAZTBorderlessEntry>
 
                                             </custom:CustomSfTextInputView.TextInputView>
-                                           
+
                                         </custom:CustomSfTextInputView>
                                     </StackLayout>
-                                    
+
                                     <StackLayout>
                                         <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
 
@@ -1155,27 +1156,25 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                    <custom:CustomSfTextInputView
-                                            x:Name="FrmConfirmEmail"
-                                            HasError="{Binding FrameConfirmEmailError}">
+                                        <custom:CustomSfTextInputView x:Name="FrmConfirmEmail" HasError="{Binding FrameConfirmEmailError}">
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                x:Name="EntryConfirmEmail"
-                                                FontFamily="{StaticResource SomarLight}"
-                                                FontSize="Small"
-                                                IsSpellCheckEnabled="False"
-                                                Keyboard="Email"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZZConfirmEmail}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding ConfirmEmail}"
-                                                Unfocused="EntryConfirmEmail_Unfocused">
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behaviors:AlphaNumericValidatorBehaviour />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                            </custom:GAZTBorderlessEntry>
+                                                    x:Name="EntryConfirmEmail"
+                                                    FontFamily="{StaticResource SomarLight}"
+                                                    FontSize="Small"
+                                                    IsSpellCheckEnabled="False"
+                                                    Keyboard="Email"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZZConfirmEmail}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding ConfirmEmail}"
+                                                    Unfocused="EntryConfirmEmail_Unfocused">
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behaviors:AlphaNumericValidatorBehaviour />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                </custom:GAZTBorderlessEntry>
                                             </custom:CustomSfTextInputView.TextInputView>
-                                            
+
                                         </custom:CustomSfTextInputView>
 
                                     </StackLayout>
@@ -1190,14 +1189,14 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                    <Border
+                                        <Border
                                             Padding="18,0,18,6"
                                             Stroke="LightGray"
                                             StrokeShape="RoundRectangle 8,8,8,8">
 
                                             <StackLayout
                                                 Padding="0"
-                                                FlowDirection="LeftToRight"
+                                                FlowDirection="{Binding AppDirection}"
                                                 Orientation="Horizontal"
                                                 VerticalOptions="CenterAndExpand">
 
@@ -1222,7 +1221,7 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryMobileNumber"
-                                                    Margin="0,-5,0,0"
+                                                    Margin="0,5,0,0"
                                                     HorizontalOptions="FillAndExpand"
                                                     HorizontalTextAlignment="Start"
                                                     IsSpellCheckEnabled="False"
@@ -1246,56 +1245,55 @@
 
                                     </StackLayout>
 
-                                    
 
-                                     <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
 
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.CaptchaCode}" />
-                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
 
-                                        </Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.CaptchaCode}" />
+                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+
+                                    </Label>
 
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomSfTextInputView HasError="{Binding FrameCaptchaError}">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                    WidthRequest="100"
                                                     FontFamily="{StaticResource SomarLight}"
                                                     FontSize="Small"
                                                     Keyboard="Plain"
                                                     Placeholder="{x:Static ResourceManager:AppResources.CaptchaCode}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding Captcha}" />
+                                                    Text="{Binding Captcha}"
+                                                    WidthRequest="100" />
                                             </custom:CustomSfTextInputView.TextInputView>
-                                            
+
                                         </custom:CustomSfTextInputView>
 
-                                        <StackLayout Orientation="Horizontal"
-                                                             Spacing="5">
-                                                    <Image
-                                                        HeightRequest="50"
-                                                        Source="{Binding Path=Image}"
-                                                        WidthRequest="150" />
-                                                    <Image>
-                                                        <Image.Source>
-                                                            <FontImageSource
-                                                                FontFamily="UserIconFont"
-                                                                Glyph="{x:Static FontImage:IconFonts.RefreshCircle}"
-                                                                Size="32"
-                                                                Color="{StaticResource SecondaryNew}" />
-                                                        </Image.Source>
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="RefreshCaptchaClicked" />
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Image
+                                                HeightRequest="50"
+                                                Source="{Binding Path=Image}"
+                                                WidthRequest="150" />
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource
+                                                        FontFamily="UserIconFont"
+                                                        Glyph="{x:Static FontImage:IconFonts.RefreshCircle}"
+                                                        Size="32"
+                                                        Color="{StaticResource SecondaryNew}" />
+                                                </Image.Source>
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="RefreshCaptchaClicked" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
 
-                                                </StackLayout>
-                                        
-                                      
+                                        </StackLayout>
+
+
                                     </StackLayout>
 
                                 </StackLayout>
@@ -1303,8 +1301,9 @@
                             </ScrollView>
 
                         </StackLayout>
+                        <!--#endregion-->
 
-                        <!--  SummeryView  -->
+                        <!--#region SummeryView-->
                         <Grid
                             x:Name="SummeryView"
                             Padding="0,10,0,0"
@@ -1708,8 +1707,9 @@
 
                             </StackLayout>
                         </Grid>
+                        <!--#endregion-->
 
-                        <!--  Password  -->
+                        <!--#region Password-->
                         <StackLayout x:Name="PasswordView" IsVisible="{Binding PasswordView}">
 
 
@@ -1751,26 +1751,25 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView
-                                            HasError="{Binding FramePasswordError}">
+                                        <custom:CustomSfTextInputView HasError="{Binding FramePasswordError}">
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                x:Name="EntryPassword"
-                                                IsPassword="{Binding IsPasswordEncripted}"
-                                                MaxLength="16"
-                                                Placeholder="{x:Static ResourceManager:AppResources.NewPassword}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding Password}"
-                                                TextChanged="EntryPassword_TextChanged"
-                                                WidthRequest="128">
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behaviors:PasswordTextBehaviour />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                            </custom:GAZTBorderlessEntry>
+                                                    x:Name="EntryPassword"
+                                                    IsPassword="{Binding IsPasswordEncripted}"
+                                                    MaxLength="16"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.NewPassword}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding Password}"
+                                                    TextChanged="EntryPassword_TextChanged"
+                                                    WidthRequest="128">
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behaviors:PasswordTextBehaviour />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                </custom:GAZTBorderlessEntry>
 
                                             </custom:CustomSfTextInputView.TextInputView>
-                                            
+
                                             <custom:CustomSfTextInputView.TrailingView>
                                                 <Image
                                                     x:Name="ImageSeePassword"
@@ -1801,27 +1800,26 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView
-                                            HasError="{Binding FrameConfirmPasswordError}">
+                                        <custom:CustomSfTextInputView HasError="{Binding FrameConfirmPasswordError}">
 
                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                 <custom:GAZTBorderlessEntry
-                                                x:Name="EntryConfirmPassword"
-                                                FontSize="Small"
-                                                IsPassword="{Binding IsConfirmPasswordEncripted}"
-                                                MaxLength="16"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding ConfirmPassword}"
-                                                TextChanged="EntryConfirmPassword_TextChanged"
-                                                WidthRequest="128">
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behaviors:PasswordTextBehaviour />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                            </custom:GAZTBorderlessEntry>
+                                                    x:Name="EntryConfirmPassword"
+                                                    FontSize="Small"
+                                                    IsPassword="{Binding IsConfirmPasswordEncripted}"
+                                                    MaxLength="16"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding ConfirmPassword}"
+                                                    TextChanged="EntryConfirmPassword_TextChanged"
+                                                    WidthRequest="128">
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behaviors:PasswordTextBehaviour />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                </custom:GAZTBorderlessEntry>
                                             </custom:CustomSfTextInputView.TextInputView>
-                                            
+
                                             <custom:CustomSfTextInputView.TrailingView>
                                                 <Image
                                                     x:Name="ImageSeeConfirmPassword"
@@ -1923,30 +1921,29 @@
                                         Style="{StaticResource GAZTSmallGrayLabelStyle}"
                                         Text="{x:Static ResourceManager:AppResources.EnterOTP}" />
 
-                                    <custom:CustomSfTextInputView
-                                        HasError="{Binding FrameOTPError}">
+                                    <custom:CustomSfTextInputView HasError="{Binding FrameOTPError}">
 
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                            FontFamily="{StaticResource SomarLight}"
-                                            FontSize="Small"
-                                            HorizontalOptions="StartAndExpand"
-                                            IsPassword="{Binding IsOTPEncripted}"
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
-                                            MaxLength="4"
-                                            Placeholder="{x:Static ResourceManager:AppResources.EnterOTP}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding OTP}"
-                                            WidthRequest="128">
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviors:OnlyNumericValuesBehaviour />
-                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                                FontFamily="{StaticResource SomarLight}"
+                                                FontSize="Small"
+                                                HorizontalOptions="StartAndExpand"
+                                                IsPassword="{Binding IsOTPEncripted}"
+                                                Keyboard="{OnPlatform Android=Numeric,
+                                                                      iOS=Default}"
+                                                MaxLength="4"
+                                                Placeholder="{x:Static ResourceManager:AppResources.EnterOTP}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding OTP}"
+                                                WidthRequest="128">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviors:OnlyNumericValuesBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
 
-                                        </custom:GAZTBorderlessEntry>
+                                            </custom:GAZTBorderlessEntry>
 
                                         </custom:CustomSfTextInputView.TextInputView>
-                                        
+
                                     </custom:CustomSfTextInputView>
 
                                     <!--  ResendOTP  -->
@@ -1966,6 +1963,7 @@
                             </StackLayout>
 
                         </StackLayout>
+                        <!--#endregion-->
 
                         <buttons:SfButton
                             x:Name="btnContinue"

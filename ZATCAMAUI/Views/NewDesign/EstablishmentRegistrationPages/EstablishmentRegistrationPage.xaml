@@ -138,6 +138,7 @@
                     HorizontalOptions="End"
                     IndicatorColor="LightGray"
                     IndicatorSize="16"
+                    InputTransparent="True"
                     MaximumVisible="{Binding MaxIndex}"
                     Position="{Binding CurrentIndex}"
                     SelectedIndicatorColor="{StaticResource PrimaryColor}"

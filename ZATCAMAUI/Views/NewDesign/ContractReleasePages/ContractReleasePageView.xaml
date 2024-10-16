@@ -16,7 +16,6 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -108,16 +107,16 @@
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
                                 <IndicatorView
-                                Margin="10"
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                HorizontalOptions="End"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Count="{Binding MaxIndex}"
-                                VerticalOptions="CenterAndExpand"
-                                Position="{Binding CurrentIndex}"
-                                />
+                                    Margin="10"
+                                    Count="{Binding MaxIndex}"
+                                    HorizontalOptions="End"
+                                    IndicatorColor="LightGray"
+                                    IndicatorSize="16"
+                                    InputTransparent="True"
+                                    MaximumVisible="{Binding MaxIndex}"
+                                    Position="{Binding CurrentIndex}"
+                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                    VerticalOptions="CenterAndExpand" />
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -155,14 +154,11 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}" />
-                                        <BoxView
-                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                        <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
                                     </StackLayout>
 
                                     <StackLayout Grid.Row="1">
-                                        <Label
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource ValueLabelBlack}">
+                                        <Label HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.CRContractonName}" />
@@ -172,22 +168,20 @@
                                         </Label>
                                         <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
-                                                    <custom:GAZTBorderlessEntry
-                                                x:Name="ContractNameText"
-                                                FontFamily="{StaticResource SomarRegular}"
-                                                FontSize="15"
-                                                HorizontalOptions="FillAndExpand"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                Unfocused="ContractNameFiledUnfocused" />
+                                                <custom:GAZTBorderlessEntry
+                                                    x:Name="ContractNameText"
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="15"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    TextColor="{StaticResource NeutralBlack}"
+                                                    Unfocused="ContractNameFiledUnfocused" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
                                     </StackLayout>
                                     <StackLayout Grid.Row="2">
 
                                         <StackLayout>
-                                            <Label
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource ValueLabelBlack}">
+                                            <Label HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlack}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.CRContractNumber}" />
@@ -197,31 +191,31 @@
                                             </Label>
 
                                             <custom:CustomSfTextInputView>
-                                                 <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:CustomSfTextInputView.TextInputView>
                                                     <custom:GAZTBorderlessEntry
-                                                x:Name="ContractNumberText"
-                                                FontFamily="{StaticResource SomarRegular}"
-                                                FontSize="15"
-                                                HorizontalOptions="FillAndExpand"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
-                                                TextChanged="OnTextChanged"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                Unfocused="ContractNumberUnfocused">
+                                                        x:Name="ContractNumberText"
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        FontSize="15"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Keyboard="{OnPlatform Android=Numeric,
+                                                                              iOS=Default}"
+                                                        TextChanged="OnTextChanged"
+                                                        TextColor="{StaticResource NeutralBlack}"
+                                                        Unfocused="ContractNumberUnfocused">
 
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behavior:OnlyNumericValuesBehaviour />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <behavior:OnlyNumericValuesBehaviour />
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
 
-                                            </custom:GAZTBorderlessEntry>
-                                                 </custom:CustomSfTextInputView.TextInputView>
-                                             </custom:CustomSfTextInputView>
+                                                    </custom:GAZTBorderlessEntry>
+                                                </custom:CustomSfTextInputView.TextInputView>
+                                            </custom:CustomSfTextInputView>
 
                                         </StackLayout>
 
 
-                                        
-                                        
+
+
                                     </StackLayout>
                                     <StackLayout Grid.Row="3">
                                         <Label
@@ -237,82 +231,80 @@
                                             </Label.FormattedText>
                                         </Label>
                                         <Border
-                                                Grid.Row="1"
-                                                Grid.ColumnSpan="2"
-                                                Padding="10"
-                                                Style="{StaticResource GreyBorderFrame}">
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="auto" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Label
-                                                        Grid.Row="0"
-                                                        Grid.Column="0"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Style="{StaticResource BodyLabelBlack}"
-                                                        Text="{Binding PickedContract}" />
-                                                    <Image
-                                                        Grid.Row="0"
-                                                        Grid.Column="1"
-                                                        HorizontalOptions="Center">
-                                                        <Image.Source>
-
-                                                            <FontImageSource
-                                                                FontFamily="UserIconFont"
-                                                                Glyph="{x:Static FontImage:IconFonts.ChevronDown}"
-                                                                Size="28"
-                                                                Color="{StaticResource SecondaryNew}" />
-                                                        </Image.Source>
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Command="{Binding ShowPicker}" />
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
-
-                                                </Grid>
-                                            </Border>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="4">
-                                        
-                                        <SfChipGroup:SfChipGroup
-                                                x:Name="ChipGroup_statusFilter"
-                                                ChipBackground="Transparent"
-                                                ChipStroke="{StaticResource NeutralLightGrey}"
-                                                ChipStrokeThickness="1"
-                                                ChipType="Choice"
-                                                HorizontalOptions="Start"
-                                                ItemsSource="{Binding ChipDataFilterlist}"
-                                                SelectedChipBackground="{StaticResource PartialBg}"
-                                                SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
-                                                VerticalOptions="Center">
-                                                <SfChipGroup:SfChipGroup.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <StackLayout WidthRequest="80">
-                                                            <Label
-                                                                HorizontalOptions="FillAndExpand"
-                                                                HorizontalTextAlignment="Center"
-                                                                Style="{StaticResource CaptionLabelBlack}"
-                                                                StyleId="OnBoardText"
-                                                                Text="{Binding Text}" />
-                                                        </StackLayout>
-                                                    </DataTemplate>
-                                                </SfChipGroup:SfChipGroup.ItemTemplate>
-                                            </SfChipGroup:SfChipGroup>
-
-                                        <Label HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlack}">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
-                                                        <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                        <Border
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="2"
                                             Padding="10"
                                             Style="{StaticResource GreyBorderFrame}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}"
+                                                    Text="{Binding PickedContract}" />
+                                                <Image
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    HorizontalOptions="Center">
+                                                    <Image.Source>
+
+                                                        <FontImageSource
+                                                            FontFamily="UserIconFont"
+                                                            Glyph="{x:Static FontImage:IconFonts.ChevronDown}"
+                                                            Size="28"
+                                                            Color="{StaticResource SecondaryNew}" />
+                                                    </Image.Source>
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding ShowPicker}" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+
+                                            </Grid>
+                                        </Border>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="4">
+
+                                        <SfChipGroup:SfChipGroup
+                                            x:Name="ChipGroup_statusFilter"
+                                            ChipBackground="Transparent"
+                                            ChipStroke="{StaticResource NeutralLightGrey}"
+                                            ChipStrokeThickness="1"
+                                            ChipType="Choice"
+                                            HorizontalOptions="Start"
+                                            ItemsSource="{Binding ChipDataFilterlist}"
+                                            SelectedChipBackground="{StaticResource PartialBg}"
+                                            SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
+                                            VerticalOptions="Center">
+                                            <SfChipGroup:SfChipGroup.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout WidthRequest="80">
+                                                        <Label
+                                                            HorizontalOptions="FillAndExpand"
+                                                            HorizontalTextAlignment="Center"
+                                                            Style="{StaticResource CaptionLabelBlack}"
+                                                            StyleId="OnBoardText"
+                                                            Text="{Binding Text}" />
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </SfChipGroup:SfChipGroup.ItemTemplate>
+                                        </SfChipGroup:SfChipGroup>
+
+                                        <Label HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlack}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
+                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Border Padding="10" Style="{StaticResource GreyBorderFrame}">
                                             <Grid>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
@@ -445,7 +437,7 @@
                                         </custom:CustomHijriDatePicker>
                                     </StackLayout>
                                     <StackLayout Grid.Row="5">
-                                        
+
                                         <Label
                                             Grid.Row="0"
                                             Grid.ColumnSpan="2"
@@ -614,22 +606,20 @@
                                         <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                x:Name="ContractTotalAmountText"
-                                                FontFamily="{StaticResource SomarRegular}"
-                                                FontSize="15"
-                                                HorizontalOptions="FillAndExpand"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                Unfocused="TotalAmountUnFocused">
-                                                
-                                            </custom:GAZTBorderlessEntry>
+                                                    x:Name="ContractTotalAmountText"
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="15"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
+                                                    TextColor="{StaticResource NeutralBlack}"
+                                                    Unfocused="TotalAmountUnFocused" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
                                     </StackLayout>
 
                                     <StackLayout Grid.Row="7">
-                                        
+
                                         <Label
                                             Grid.Row="0"
                                             Grid.ColumnSpan="2"
@@ -642,26 +632,27 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-<!--                                                x:Name="AmountoReleaseTxt"
--->
+                                        <!--
+                                            x:Name="AmountoReleaseTxt"
+                                        -->
                                         <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                FontFamily="{StaticResource SomarRegular}"
-                                                FontSize="15"
-                                                Text="{Binding ContractReleaseAmount}"
-                                                HorizontalOptions="FillAndExpand"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                        iOS=Default}"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                Unfocused="AmountToReleaseUnfocused">
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <xct:EventToCommandBehavior Command="{Binding ReleaseAmtUnfocused}" EventName="Completed" />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                            </custom:GAZTBorderlessEntry>
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="15"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Keyboard="{OnPlatform Android=Numeric,
+                                                                          iOS=Default}"
+                                                    Text="{Binding ContractReleaseAmount}"
+                                                    TextColor="{StaticResource NeutralBlack}"
+                                                    Unfocused="AmountToReleaseUnfocused">
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <xct:EventToCommandBehavior Command="{Binding ReleaseAmtUnfocused}" EventName="Completed" />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                </custom:GAZTBorderlessEntry>
 
                                             </custom:CustomSfTextInputView.TextInputView>
-                                            </custom:CustomSfTextInputView>
+                                        </custom:CustomSfTextInputView>
 
                                     </StackLayout>
 
@@ -672,30 +663,29 @@
                                         BorderWidth="1"
                                         CornerRadius="20">
                                         <StackLayout>
-                                            
+
                                             <StackLayout Orientation="Horizontal">
 
                                                 <Label
-                                                Margin="10,0,0,0"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource BodyLabelBlackMedium}"
-                                                Text="{x:Static ResourceManager:AppResources.CRContractprofitEstimatedRate}" />
+                                                    Margin="10,0,0,0"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource BodyLabelBlackMedium}"
+                                                    Text="{x:Static ResourceManager:AppResources.CRContractprofitEstimatedRate}" />
 
-                                            <Image
-                                                HorizontalOptions="End">
-                                                <Image.Source>
-                                                    <FontImageSource
-                                                        FontFamily="UserIconFont"
-                                                        Glyph="{x:Static FontImage:IconFonts.InformationOutline}"
-                                                        Size="24"
-                                                        Color="{StaticResource SecondaryNew}" />
-                                                </Image.Source>
+                                                <Image HorizontalOptions="End">
+                                                    <Image.Source>
+                                                        <FontImageSource
+                                                            FontFamily="UserIconFont"
+                                                            Glyph="{x:Static FontImage:IconFonts.InformationOutline}"
+                                                            Size="24"
+                                                            Color="{StaticResource SecondaryNew}" />
+                                                    </Image.Source>
 
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding ContractProfitPercentCommand}" />
-                                                </Image.GestureRecognizers>
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding ContractProfitPercentCommand}" />
+                                                    </Image.GestureRecognizers>
 
-                                            </Image>
+                                                </Image>
                                             </StackLayout>
 
                                             <Label
@@ -720,38 +710,35 @@
                                         BorderWidth="1"
                                         CornerRadius="20">
                                         <StackLayout>
-                                            
+
                                             <StackLayout Orientation="Horizontal">
                                                 <Label
-                                                Margin="10,0,0,0"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource BodyLabelBlackMedium}"
-                                                Text="{x:Static ResourceManager:AppResources.CRProfitEstimatedForContract}" />
+                                                    Margin="10,0,0,0"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource BodyLabelBlackMedium}"
+                                                    Text="{x:Static ResourceManager:AppResources.CRProfitEstimatedForContract}" />
 
-                                            <Image
-                                                HorizontalOptions="Center">
-                                                <Image.Source>
-                                                    <FontImageSource
-                                                        FontFamily="UserIconFont"
-                                                        Glyph="{x:Static FontImage:IconFonts.InformationOutline}"
-                                                        Size="24"
-                                                        Color="{StaticResource SecondaryNew}" />
-                                                </Image.Source>
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding ProfitEstimatedContractCommand}" />
-                                                </Image.GestureRecognizers>
-                                            </Image>
+                                                <Image HorizontalOptions="Center">
+                                                    <Image.Source>
+                                                        <FontImageSource
+                                                            FontFamily="UserIconFont"
+                                                            Glyph="{x:Static FontImage:IconFonts.InformationOutline}"
+                                                            Size="24"
+                                                            Color="{StaticResource SecondaryNew}" />
+                                                    </Image.Source>
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding ProfitEstimatedContractCommand}" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
 
                                             </StackLayout>
 
                                             <Label
-                                               
                                                 Margin="10,0,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.CRAmount}" />
                                             <Label
-                                                
                                                 Margin="10,0,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}">
@@ -775,22 +762,19 @@
                                         BorderWidth="1"
                                         CornerRadius="20">
                                         <StackLayout>
-                                            
+
 
                                             <StackLayout
                                                 HorizontalOptions="FillAndExpand"
                                                 Orientation="Horizontal"
                                                 VerticalOptions="FillAndExpand">
                                                 <Label
-                                                   
                                                     Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource BodyLabelBlackMedium}"
                                                     Text="{x:Static ResourceManager:AppResources.CREstimatedProfitforZakat}" />
 
-                                                <Image
-                                                    
-                                                    HorizontalOptions="End">
+                                                <Image HorizontalOptions="End">
                                                     <Image.Source>
                                                         <FontImageSource
                                                             FontFamily="UserIconFont"
@@ -807,44 +791,43 @@
 
 
                                             <StackLayout Orientation="Horizontal">
-                                                 <Label
-                                                Margin="10,0,0,0"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}"
-                                                Text="{x:Static ResourceManager:AppResources.CRAmount}" />
+                                                <Label
+                                                    Margin="10,0,0,0"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}"
+                                                    Text="{x:Static ResourceManager:AppResources.CRAmount}" />
 
                                                 <Label
-                                                HorizontalOptions="EndAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}"
-                                                Text="{x:Static ResourceManager:AppResources.CRPercentage}" />
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}"
+                                                    Text="{x:Static ResourceManager:AppResources.CRPercentage}" />
 
                                             </StackLayout>
-                                           
-                                             <StackLayout Orientation="Horizontal">
+
+                                            <StackLayout Orientation="Horizontal">
                                                 <Label
-                                               Margin="10,0,0,0"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource SectionTitleBlackBold}">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding EstimatedProfitForZakatAmount, Converter={StaticResource commaSeparatorConverter}}" />
-                                                        <Span Text="&#160;" />
-                                                        <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
+                                                    Margin="10,0,0,0"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource SectionTitleBlackBold}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding EstimatedProfitForZakatAmount, Converter={StaticResource commaSeparatorConverter}}" />
+                                                            <Span Text="&#160;" />
+                                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
 
-                                            <Label
-                                               
-                                                Margin="10,0,0,0"
-                                                HorizontalOptions="EndAndExpand"
-                                                Style="{StaticResource SectionTitleBlackBold}"
-                                                Text="{Binding EstimatedProfitForZakatPercent, StringFormat='{0} %'}" />
+                                                <Label
+                                                    Margin="10,0,0,0"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Style="{StaticResource SectionTitleBlackBold}"
+                                                    Text="{Binding EstimatedProfitForZakatPercent, StringFormat='{0} %'}" />
 
                                             </StackLayout>
-                                            
 
-                                            
+
+
 
                                         </StackLayout>
 
@@ -858,7 +841,6 @@
                                         CornerRadius="20">
                                         <StackLayout>
                                             <StackLayout
-                                                
                                                 HorizontalOptions="FillAndExpand"
                                                 Orientation="Horizontal"
                                                 VerticalOptions="FillAndExpand">
@@ -868,8 +850,7 @@
                                                     Style="{StaticResource BodyLabelBlackMedium}"
                                                     Text="{x:Static ResourceManager:AppResources.CREstimatedProfitforTax}" />
 
-                                                <Image
-                                                    HorizontalOptions="End">
+                                                <Image HorizontalOptions="End">
                                                     <Image.Source>
                                                         <FontImageSource
                                                             FontFamily="UserIconFont"
@@ -935,8 +916,8 @@
                                         BorderWidth="1"
                                         CornerRadius="20">
                                         <StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label
                                                     Grid.Row="0"
                                                     Grid.Column="0"
                                                     Margin="10,0,0,0"
@@ -944,7 +925,7 @@
                                                     Style="{StaticResource BodyLabelBlackMedium}"
                                                     Text="{x:Static ResourceManager:AppResources.CRTheValueofZakatdues}" />
 
-                                                    <Image
+                                                <Image
                                                     Grid.Row="0"
                                                     Grid.Column="1"
                                                     HorizontalOptions="Center">
@@ -959,34 +940,34 @@
                                                         <TapGestureRecognizer Command="{Binding ValueofZakatDuesCommand}" />
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                </StackLayout>
+                                            </StackLayout>
 
-                                                <Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="0"
-                                                    Grid.ColumnSpan="2"
-                                                    Margin="10,0,0,0"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource CaptionLabelGrey}"
-                                                    Text="{x:Static ResourceManager:AppResources.CRAmount}" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="2"
+                                                Margin="10,0,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                Text="{x:Static ResourceManager:AppResources.CRAmount}" />
 
-                                                <Label
-                                                    Grid.Row="2"
-                                                    Grid.Column="0"
-                                                    Grid.ColumnSpan="2"
-                                                    Margin="10,-10,0,0"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource SectionTitleBlackBold}">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding ZakatDues, Converter={StaticResource commaSeparatorConverter}}" />
-                                                            <Span Text="&#160;" />
-                                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
+                                            <Label
+                                                Grid.Row="2"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="2"
+                                                Margin="10,-10,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlackBold}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding ZakatDues, Converter={StaticResource commaSeparatorConverter}}" />
+                                                        <Span Text="&#160;" />
+                                                        <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
 
-                                            </StackLayout> 
+                                        </StackLayout>
 
                                     </cards:SfCardView>
 
@@ -997,7 +978,7 @@
                                         BorderWidth="1"
                                         CornerRadius="20">
                                         <StackLayout>
-                                            <StackLayout Orientation="Horizontal"> 
+                                            <StackLayout Orientation="Horizontal">
                                                 <Label
                                                     Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
@@ -1125,7 +1106,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding AttachmentsVisible}"
                                     VerticalOptions="FillAndExpand">
-                                    
+
 
                                     <Label
                                         Padding="0,10,0,0"
@@ -1137,280 +1118,273 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}" />
-                                    <BoxView
-                                        Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                                     <Label
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRAttachACopyOfTheContractRequiredToReleaseAndAmounts}" />
                                     <listView:SfListView
-                                            
-                                            AutoFitMode="Height"
-                                            HorizontalOptions="Center"
-                                            IsScrollingEnabled="False"
-                                            ItemSpacing="5"
-                                            ItemsSource="{Binding ContractCopyAttachmentsListViewData}"
-                                            ScrollBarVisibility="Never"
-                                            SelectionBackground="Transparent"
-                                            SelectionMode="SingleDeselect"
-                                            TapCommand="{Binding NewContractCopyAttachmentTapped}"
-                                            VerticalOptions="Center">
-                                            <listView:SfListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid HorizontalOptions="FillAndExpand">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-
-                                                        <Border
-                                                            Grid.Row="0"
-                                                            Margin="0,0,0,10"
-                                                            Padding="12"
-                                                            Style="{StaticResource SfStyleGreyBorderFrame}">
-                                                            <Grid>
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="auto" />
-                                                                </Grid.RowDefinitions>
-
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="auto" />
-                                                                    <ColumnDefinition Width="*" />
-                                                                    <ColumnDefinition Width="auto" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <Image
-                                                                    Grid.Row="0"
-                                                                    Grid.Column="0"
-                                                                    Margin="5,0"
-                                                                    HeightRequest="25"
-                                                                    HorizontalOptions="Start"
-                                                                    Source="newui_ic_pdf"
-                                                                    VerticalOptions="Center"
-                                                                    WidthRequest="25" />
-
-                                                                <Label
-                                                                    Grid.Row="0"
-                                                                    Grid.Column="1"
-                                                                    HorizontalOptions="FillAndExpand"
-                                                                    Style="{StaticResource CaptionLabelBlack}"
-                                                                    Text="{Binding Filename}"
-                                                                    VerticalOptions="Center" />
-
-                                                                <Image
-                                                                    Grid.Row="0"
-                                                                    Grid.Column="2"
-                                                                    HorizontalOptions="Center"
-                                                                    Rotation="90"
-                                                                    VerticalOptions="Center">
-                                                                    <Image.Source>
-                                                                        <FontImageSource
-                                                                            FontFamily="UserIconFont"
-                                                                            Glyph="{x:Static FontImage:IconFonts.Close}"
-                                                                            Size="24"
-                                                                            Color="{StaticResource SecondaryNew}" />
-                                                                    </Image.Source>
-                                                                </Image>
-                                                            </Grid>
-                                                        </Border>
-
-
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </listView:SfListView.ItemTemplate>
-                                        </listView:SfListView>
-
-                                    <StackLayout  HorizontalOptions="FillAndExpand">
-                                            <Label
-                                                FontFamily="{StaticResource SomarRegular}"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" />
-                                                        <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Border
-                                                
-                                                Margin="0,0,0,10"
-                                                Padding="10"
-                                                Style="{StaticResource SfStyleGreyBorderFrame}">
-                                                <Grid>
+                                        AutoFitMode="Height"
+                                        HorizontalOptions="Center"
+                                        IsScrollingEnabled="False"
+                                        ItemSpacing="5"
+                                        ItemsSource="{Binding ContractCopyAttachmentsListViewData}"
+                                        ScrollBarVisibility="Never"
+                                        SelectionBackground="Transparent"
+                                        SelectionMode="SingleDeselect"
+                                        TapCommand="{Binding NewContractCopyAttachmentTapped}"
+                                        VerticalOptions="Center">
+                                        <listView:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid HorizontalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
                                                     </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="auto" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Label
+
+                                                    <Border
                                                         Grid.Row="0"
-                                                        Grid.Column="0"
-                                                        FontFamily="{StaticResource SomarRegular}"
-                                                        FontSize="Small"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                        TextColor="{StaticResource PrimaryColor}" />
-                                                    <Image
-                                                        Grid.Row="0"
-                                                        Grid.Column="1"
-                                                        HorizontalOptions="Center"
-                                                        Rotation="90"
-                                                        VerticalOptions="Center">
-                                                        <Image.Source>
-                                                            <FontImageSource
-                                                                FontFamily="UserIconFont"
-                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"
-                                                                Size="24"
-                                                                Color="{StaticResource SecondaryNew}" />
-                                                        </Image.Source>
-                                                    </Image>
+                                                        Margin="0,0,0,10"
+                                                        Padding="12"
+                                                        Style="{StaticResource SfStyleGreyBorderFrame}">
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Image
+                                                                Grid.Row="0"
+                                                                Grid.Column="0"
+                                                                Margin="5,0"
+                                                                HeightRequest="25"
+                                                                HorizontalOptions="Start"
+                                                                Source="newui_ic_pdf"
+                                                                VerticalOptions="Center"
+                                                                WidthRequest="25" />
+
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Style="{StaticResource CaptionLabelBlack}"
+                                                                Text="{Binding Filename}"
+                                                                VerticalOptions="Center" />
+
+                                                            <Image
+                                                                Grid.Row="0"
+                                                                Grid.Column="2"
+                                                                HorizontalOptions="Center"
+                                                                Rotation="90"
+                                                                VerticalOptions="Center">
+                                                                <Image.Source>
+                                                                    <FontImageSource
+                                                                        FontFamily="UserIconFont"
+                                                                        Glyph="{x:Static FontImage:IconFonts.Close}"
+                                                                        Size="24"
+                                                                        Color="{StaticResource SecondaryNew}" />
+                                                                </Image.Source>
+                                                            </Image>
+                                                        </Grid>
+                                                    </Border>
+
+
                                                 </Grid>
-                                            </Border>
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding NewContractCopyAttachmentTapped}" />
-                                            </StackLayout.GestureRecognizers>
-                                        </StackLayout>
+                                            </DataTemplate>
+                                        </listView:SfListView.ItemTemplate>
+                                    </listView:SfListView>
+
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                        <Label
+                                            FontFamily="{StaticResource SomarRegular}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" />
+                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Border
+                                            Margin="0,0,0,10"
+                                            Padding="10"
+                                            Style="{StaticResource SfStyleGreyBorderFrame}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="Small"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                                    TextColor="{StaticResource PrimaryColor}" />
+                                                <Image
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    HorizontalOptions="Center"
+                                                    Rotation="90"
+                                                    VerticalOptions="Center">
+                                                    <Image.Source>
+                                                        <FontImageSource
+                                                            FontFamily="UserIconFont"
+                                                            Glyph="{x:Static FontImage:IconFonts.Attachment}"
+                                                            Size="24"
+                                                            Color="{StaticResource SecondaryNew}" />
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                        </Border>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NewContractCopyAttachmentTapped}" />
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
                                     <Label
-                                        
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRAttachacopyofinvoicesandpurchase}" />
                                     <listView:SfListView
-                                            Grid.Row="0"
-                                            AutoFitMode="Height"
-                                            HorizontalOptions="Center"
-                                            IsScrollingEnabled="False"
-                                            ItemSpacing="5"
-                                            ItemsSource="{Binding InvoiceAttachmentsListViewData}"
-                                            ScrollBarVisibility="Never"
-                                            SelectionBackground="Transparent"
-                                            SelectionMode="SingleDeselect"
-                                            TapCommand="{Binding NewInvoiceAttachmentTapped}"
-                                            VerticalOptions="Center">
-                                            <listView:SfListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid HorizontalOptions="FillAndExpand">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-
-                                                        <Border
-                                                            Grid.Row="0"
-                                                            Margin="0,0,0,10"
-                                                            Padding="12"
-                                                            Style="{StaticResource SfStyleGreyBorderFrame}">
-                                                            <Grid>
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="auto" />
-                                                                </Grid.RowDefinitions>
-
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="auto" />
-                                                                    <ColumnDefinition Width="*" />
-                                                                    <ColumnDefinition Width="auto" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <Image
-                                                                    Grid.Row="0"
-                                                                    Grid.Column="0"
-                                                                    Margin="5,0"
-                                                                    HeightRequest="25"
-                                                                    HorizontalOptions="Start"
-                                                                    Source="newui_ic_pdf"
-                                                                    VerticalOptions="Center"
-                                                                    WidthRequest="25" />
-
-                                                                <Label
-                                                                    Grid.Row="0"
-                                                                    Grid.Column="1"
-                                                                    HorizontalOptions="FillAndExpand"
-                                                                    Style="{StaticResource CaptionLabelBlack}"
-                                                                    Text="{Binding Filename}"
-                                                                    VerticalOptions="Center" />
-
-                                                                <Image
-                                                                    Grid.Row="0"
-                                                                    Grid.Column="2"
-                                                                    HorizontalOptions="Center"
-                                                                    Rotation="90"
-                                                                    VerticalOptions="Center">
-                                                                    <Image.Source>
-                                                                        <FontImageSource
-                                                                            FontFamily="UserIconFont"
-                                                                            Glyph="{x:Static FontImage:IconFonts.Close}"
-                                                                            Size="24"
-                                                                            Color="{StaticResource SecondaryNew}" />
-                                                                    </Image.Source>
-                                                                </Image>
-                                                            </Grid>
-                                                        </Border>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </listView:SfListView.ItemTemplate>
-                                        </listView:SfListView>
-                                    <StackLayout
-                                            
-                                            HorizontalOptions="FillAndExpand">
-                                            
-                                            <Label
-                                                Grid.Row="0"
-                                                FontFamily="{StaticResource SomarRegular}"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" />
-                                                        <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Border
-                                                Grid.Row="1"
-                                                Margin="0,0,0,10"
-                                                Padding="10"
-                                                Style="{StaticResource SfStyleGreyBorderFrame}">
-                                                <Grid>
+                                        Grid.Row="0"
+                                        AutoFitMode="Height"
+                                        HorizontalOptions="Center"
+                                        IsScrollingEnabled="False"
+                                        ItemSpacing="5"
+                                        ItemsSource="{Binding InvoiceAttachmentsListViewData}"
+                                        ScrollBarVisibility="Never"
+                                        SelectionBackground="Transparent"
+                                        SelectionMode="SingleDeselect"
+                                        TapCommand="{Binding NewInvoiceAttachmentTapped}"
+                                        VerticalOptions="Center">
+                                        <listView:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid HorizontalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
                                                     </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="auto" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Label
+
+                                                    <Border
                                                         Grid.Row="0"
-                                                        Grid.Column="0"
-                                                        FontFamily="{StaticResource SomarRegular}"
-                                                        FontSize="Small"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                        TextColor="{StaticResource PrimaryColor}" />
-                                                    <Image
-                                                        Grid.Row="0"
-                                                        Grid.Column="1"
-                                                        HorizontalOptions="Center"
-                                                        Rotation="90"
-                                                        VerticalOptions="Center">
-                                                        <Image.Source>
-                                                            <FontImageSource
-                                                                FontFamily="UserIconFont"
-                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"
-                                                                Size="24"
-                                                                Color="{StaticResource SecondaryNew}" />
-                                                        </Image.Source>
-                                                    </Image>
+                                                        Margin="0,0,0,10"
+                                                        Padding="12"
+                                                        Style="{StaticResource SfStyleGreyBorderFrame}">
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Image
+                                                                Grid.Row="0"
+                                                                Grid.Column="0"
+                                                                Margin="5,0"
+                                                                HeightRequest="25"
+                                                                HorizontalOptions="Start"
+                                                                Source="newui_ic_pdf"
+                                                                VerticalOptions="Center"
+                                                                WidthRequest="25" />
+
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Style="{StaticResource CaptionLabelBlack}"
+                                                                Text="{Binding Filename}"
+                                                                VerticalOptions="Center" />
+
+                                                            <Image
+                                                                Grid.Row="0"
+                                                                Grid.Column="2"
+                                                                HorizontalOptions="Center"
+                                                                Rotation="90"
+                                                                VerticalOptions="Center">
+                                                                <Image.Source>
+                                                                    <FontImageSource
+                                                                        FontFamily="UserIconFont"
+                                                                        Glyph="{x:Static FontImage:IconFonts.Close}"
+                                                                        Size="24"
+                                                                        Color="{StaticResource SecondaryNew}" />
+                                                                </Image.Source>
+                                                            </Image>
+                                                        </Grid>
+                                                    </Border>
                                                 </Grid>
-                                            </Border>
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding NewInvoiceAttachmentTapped}" />
-                                            </StackLayout.GestureRecognizers>
-                                        </StackLayout>
+                                            </DataTemplate>
+                                        </listView:SfListView.ItemTemplate>
+                                    </listView:SfListView>
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+
+                                        <Label
+                                            Grid.Row="0"
+                                            FontFamily="{StaticResource SomarRegular}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" />
+                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Border
+                                            Grid.Row="1"
+                                            Margin="0,0,0,10"
+                                            Padding="10"
+                                            Style="{StaticResource SfStyleGreyBorderFrame}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="Small"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                                    TextColor="{StaticResource PrimaryColor}" />
+                                                <Image
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    HorizontalOptions="Center"
+                                                    Rotation="90"
+                                                    VerticalOptions="Center">
+                                                    <Image.Source>
+                                                        <FontImageSource
+                                                            FontFamily="UserIconFont"
+                                                            Glyph="{x:Static FontImage:IconFonts.Attachment}"
+                                                            Size="24"
+                                                            Color="{StaticResource SecondaryNew}" />
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                        </Border>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NewInvoiceAttachmentTapped}" />
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
 
                                     <buttons:SfButton
-                                       
                                         Margin="0,16,0,16"
                                         Background="{Binding AttachButtonBackGroundColor}"
                                         Command="{Binding AttachmentsConBtnTapped}"
@@ -1428,44 +1402,37 @@
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding RemarksAndDescVisible}"
                                     VerticalOptions="FillAndExpand">
-                                <Label
-                                    
-                                    Padding="0,10,0,0"
-                                    HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource PageTitleBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.CRRemarksAndDescription}" />
-                                <Label
-                                    
-                                    HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource BodyLabelGrey}"
-                                    Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}" />
-                                <BoxView
-                                    
-                                    Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                                <Label
-                                    
-                                    HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource BodyLabelGrey}"
-                                    Text="{x:Static ResourceManager:AppResources.CRRemarks}" />
+                                    <Label
+                                        Padding="0,10,0,0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource PageTitleBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.CRRemarksAndDescription}" />
+                                    <Label
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}" />
+                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                    <Label
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.CRRemarks}" />
 
                                     <custom:CustomSfTextInputView>
-                                                 <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEditor
-                                            x:Name="RemarksText"
-                                            AutoSize="TextChanges"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="15"
-                                            HorizontalOptions="FillAndExpand"
-                                            MaxLength="255"
-                                            PlaceholderColor="Gray"
-                                            TextChanged="RemarksTextChanged"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalOptions="CenterAndExpand" />
-                                                 </custom:CustomSfTextInputView.TextInputView>
+                                                x:Name="RemarksText"
+                                                AutoSize="TextChanges"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="15"
+                                                HorizontalOptions="FillAndExpand"
+                                                MaxLength="255"
+                                                PlaceholderColor="Gray"
+                                                TextChanged="RemarksTextChanged"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalOptions="CenterAndExpand" />
+                                        </custom:CustomSfTextInputView.TextInputView>
                                     </custom:CustomSfTextInputView>
-                                    <Label
-                                        HorizontalOptions="EndAndExpand"
-                                        Style="{StaticResource MicroGrayLabelStyle}">
+                                    <Label HorizontalOptions="EndAndExpand" Style="{StaticResource MicroGrayLabelStyle}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{Binding charCountRemarksText}" />
@@ -1473,31 +1440,27 @@
                                         </Label.FormattedText>
                                     </Label>
                                     <Label
-                                       
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRDetailDescription}" />
-                                        <custom:CustomSfTextInputView>
-                                                 <custom:CustomSfTextInputView.TextInputView>
-                                        <custom:GAZTBorderlessEditor
-                                            x:Name="DetailDescription"
-                                            AutoSize="TextChanges"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="15"
-                                            HorizontalOptions="FillAndExpand"
-                                            MaxLength="132"
-                                            MinimumHeightRequest="150"
-                                            PlaceholderColor="Gray"
-                                            TextChanged="DetailDescriptionTextChanged"
-                                            TextColor="{StaticResource NeutralBlack}" />
-                                                 </custom:CustomSfTextInputView.TextInputView>
-                                        </custom:CustomSfTextInputView>
-                                    
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEditor
+                                                x:Name="DetailDescription"
+                                                AutoSize="TextChanges"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="15"
+                                                HorizontalOptions="FillAndExpand"
+                                                MaxLength="132"
+                                                MinimumHeightRequest="150"
+                                                PlaceholderColor="Gray"
+                                                TextChanged="DetailDescriptionTextChanged"
+                                                TextColor="{StaticResource NeutralBlack}" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                    </custom:CustomSfTextInputView>
 
-                                    <Label
-                                        
-                                        HorizontalOptions="EndAndExpand"
-                                        Style="{StaticResource MicroGrayLabelStyle}">
+
+                                    <Label HorizontalOptions="EndAndExpand" Style="{StaticResource MicroGrayLabelStyle}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{Binding charCountDetailDescription}" />
@@ -1523,59 +1486,66 @@
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding DeclarationVisible}"
                                     VerticalOptions="FillAndExpand">
-                                    
+
                                     <Label
-                                            
-                                            Padding="0,10,0,0"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource PageTitleBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.CRDeclaration}" />
-                                        <Label
-                                           
-                                            Margin="0,0,0,0"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}" />
-                                        <BoxView
-                                            
-                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                        Padding="0,10,0,0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource PageTitleBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.CRDeclaration}" />
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}" />
+                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Orientation="Horizontal" Grid.Row="1" VerticalOptions="StartAndExpand" IsVisible="{Binding IsDeclarationViewEnabledNew}">
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        IsVisible="{Binding IsDeclarationViewEnabledNew}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="StartAndExpand">
 
-                                        <custom:CheckboxCustom VerticalOptions="Start" IsChecked="{Binding IsDECCheckBox}" MinimumHeightRequest="32" MinimumWidthRequest="32"/>
-                                    <!--<htmlLabel:HtmlLabel VerticalOptions="FillAndExpand" TextType="Html" HorizontalOptions="StartAndExpand" Text="{Binding Zterms}" Style="{StaticResource CheckboxUnselectedFontStyle}"/>-->
+                                        <custom:CheckboxCustom
+                                            IsChecked="{Binding IsDECCheckBox}"
+                                            MinimumHeightRequest="32"
+                                            MinimumWidthRequest="32"
+                                            VerticalOptions="Start" />
+                                        <!--<htmlLabel:HtmlLabel VerticalOptions="FillAndExpand" TextType="Html" HorizontalOptions="StartAndExpand" Text="{Binding Zterms}" Style="{StaticResource CheckboxUnselectedFontStyle}"/>-->
                                         <!--<Label HeightRequest="350" TextType="Html" Text="{Binding Zterms}" HorizontalTextAlignment="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Style="{StaticResource CheckboxUnselectedFontStyle}" IsVisible="{Binding ShouldShowAR}"/>-->
-                                        <Label HeightRequest="350" TextType="Html" Text="{Binding Zterms}" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Style="{StaticResource CheckboxUnselectedFontStyle}" /><!--IsVisible="{Binding ShouldShowEN}"-->
- 
+                                        <Label
+                                            HeightRequest="350"
+                                            HorizontalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                            Text="{Binding Zterms}"
+                                            TextType="Html"
+                                            VerticalOptions="FillAndExpand" />
+                                        <!--  IsVisible="{Binding ShouldShowEN}"  -->
+
                                     </StackLayout>
 
                                     <StackLayout IsVisible="{Binding IsDeclarationViewEnabled}">
-                                        <Label
-                                        
-                                        HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRContactPersonFullName}" />
-                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                        <Label HorizontalOptions="StartAndExpand" Style="{StaticResource BodyLabelGrey}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRContactPersonFullName}" />
+                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                HorizontalOptions="FillAndExpand"
-                                                PlaceholderColor="Gray"
-                                                Style="{StaticResource DefaultEntry}"
-                                                TextChanged="ContactPersonNameTextChanged" />
+                                                    HorizontalOptions="FillAndExpand"
+                                                    PlaceholderColor="Gray"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    TextChanged="ContactPersonNameTextChanged" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
-                                    </StackLayout >
-                                    
+                                    </StackLayout>
+
                                     <StackLayout IsVisible="{Binding IsDeclarationViewEnabled}">
-                                        <Label
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}">
+                                        <Label HorizontalOptions="StartAndExpand" Style="{StaticResource BodyLabelGrey}">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRDesignation}" />
@@ -1585,17 +1555,16 @@
                                         </Label>
                                         <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
-                                        <custom:GAZTBorderlessEntry
-                                                HorizontalOptions="FillAndExpand"
-                                                PlaceholderColor="Gray"
-                                                Style="{StaticResource DefaultEntry}"
-                                                TextChanged="DesignationTextChanged" />
-                                                </custom:CustomSfTextInputView.TextInputView>
-                                            </custom:CustomSfTextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    PlaceholderColor="Gray"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    TextChanged="DesignationTextChanged" />
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                        </custom:CustomSfTextInputView>
                                     </StackLayout>
 
                                     <buttons:SfButton
-                                        
                                         Margin="0,16,0,16"
                                         Background="{Binding DeclarationButtonBackGroundColor}"
                                         Command="{Binding DeclarationConBtnTapped}"
