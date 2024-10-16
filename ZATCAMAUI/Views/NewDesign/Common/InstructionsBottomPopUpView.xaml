@@ -16,7 +16,7 @@
     mc:Ignorable="d">
 
 
-    <Grid MaximumHeightRequest="700" VerticalOptions="End">
+    <Grid VerticalOptions="End">
         <Border
             Padding="15,0"
             BackgroundColor="White"
@@ -176,7 +176,7 @@
             IsVisible="{Binding IsInstructions}"
             StrokeShape="RoundRectangle 15,15,0,0"
             VerticalOptions="End">
-            <Grid RowDefinitions="auto,*">
+            <Grid RowDefinitions="auto,auto">
 
 
                 <StackLayout

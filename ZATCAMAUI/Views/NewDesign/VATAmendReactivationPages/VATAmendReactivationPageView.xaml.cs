@@ -329,8 +329,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 viewModel.SetVisibility();
                                 viewModel.IsFinancialVisible = true;
                                 SetfourthBoxColor();
-                                if (viewModel.CurrentIndex == 3)
-                                    viewModel.CurrentIndex++;
+                                //if (viewModel.CurrentIndex == 3)
+                                //    viewModel.CurrentIndex++;
                             }
                             else
                             {
@@ -343,8 +343,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             viewModel.SetVisibility();
                             viewModel.IsFinancialVisible = true;
                             SetfourthBoxColor();
-                            if (viewModel.CurrentIndex == 3)
-                                viewModel.CurrentIndex++;
+                            //if (viewModel.CurrentIndex == 3)
+                            //    viewModel.CurrentIndex++;
                         }
                     }
                     else if (viewModel.CurrentStep == AppResources.VATRStep5)
@@ -394,8 +394,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             }
                         }
                         SetfifthBoxColor();
-                        if (viewModel.CurrentIndex == 4)
-                            viewModel.CurrentIndex++;
+                        //if (viewModel.CurrentIndex == 4)
+                        //    viewModel.CurrentIndex++;
                         if (viewModel.IsDeclarationChecked)
                         {
                             viewModel.IsContinueButtonEnable = true;
@@ -652,8 +652,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
                 SetsecondBoxColor();
-                if (viewModel.CurrentIndex == 1)
-                    viewModel.CurrentIndex++;
+                //if (viewModel.CurrentIndex == 1)
+                //    viewModel.CurrentIndex++;
                 setdefaultvalueforTPDetailscreen();
                 if (string.IsNullOrEmpty(viewModel.VatEligibleStartDate))
                 {
@@ -707,8 +707,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SetVisibility();
                     viewModel.IsSalesVisible = true;
                     SetthirdBoxColor();
-                    if (viewModel.CurrentIndex == 2)
-                        viewModel.CurrentIndex++;
+                    //if (viewModel.CurrentIndex == 2)
+                    //    viewModel.CurrentIndex++;
                     viewModel.IsFDNameMobEmailEnable = false;
                     viewModel.Attachments = AppResources.Attachments;
                     if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "Resident")
@@ -4441,8 +4441,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SetVisibility();
                     viewModel.IsFinancialVisible = true;
                     SetfourthBoxColor();
-                    if (viewModel.CurrentIndex == 3)
-                        viewModel.CurrentIndex++;
+                    //if (viewModel.CurrentIndex == 3)
+                    //    viewModel.CurrentIndex++;
                 }
                 else
                 {
@@ -4455,8 +4455,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.SetVisibility();
                 viewModel.IsFinancialVisible = true;
                 SetfourthBoxColor();
-                if (viewModel.CurrentIndex == 3)
-                    viewModel.CurrentIndex++;
+                //if (viewModel.CurrentIndex == 3)
+                //    viewModel.CurrentIndex++;
             }
         }
 

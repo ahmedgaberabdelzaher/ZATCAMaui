@@ -529,6 +529,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             if (_isInstrunctionVisible)
             {
                 IsBackStepButtonVisible = false;
+                CurrentIndex = 0;
             }
             else
             {
@@ -564,6 +565,10 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             if (_isTaxPayersVisible == value) return;
 
             _isTaxPayersVisible = value;
+            if (_isTaxPayersVisible)
+            {
+                CurrentIndex = 1;
+            }
             OnPropertyChanged("IsTaxPayersVisible");
         }
     }
@@ -579,6 +584,10 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             if (_isSalesVisible == value) return;
 
             _isSalesVisible = value;
+            if (_isSalesVisible)
+            {
+                CurrentIndex = 2;
+            }
             OnPropertyChanged("IsSalesVisible");
         }
     }
@@ -612,6 +621,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             if (_isFinancialVisible)
             {
                 IsContinueButtonEnable = true;
+                CurrentIndex = 3;
             }
             OnPropertyChanged("IsFinancialVisible");
         }
@@ -676,6 +686,10 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             if (_isSummaryVisible == value) return;
 
             _isSummaryVisible = value;
+            if (_isSummaryVisible)
+            {
+                CurrentIndex = 4;
+            }
             OnPropertyChanged("IsSummaryVisible");
         }
     }

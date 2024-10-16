@@ -1090,12 +1090,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                     return;
                 }
-                if (AccountOwnerName.Contains("."))
+                if (!IBANAccountData.d.AutoPopFg)
                 {
-                    IsBorderColorRed = Colors.Red;
-                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields));
+                    if (AccountOwnerName.Contains("."))
+                    {
+                        IsBorderColorRed = Colors.Red;
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields));
 
-                    return;
+                        return;
+                    }
                 }
                 if (!IBANAccountData.d.AutoPopFg && !Regex.IsMatch(AccountOwnerName, @"^[a-zA-Z]+$"))
                 {

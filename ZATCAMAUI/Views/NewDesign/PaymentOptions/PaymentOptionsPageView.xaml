@@ -25,7 +25,8 @@
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
 
-        <Grid RowDefinitions="auto,auto,auto">
+        <Grid RowDefinitions="auto,auto,auto"
+              Margin="0,0,0,35">
             <Label
                 Margin="10"
                 Style="{StaticResource TPProfileLabelBlackBold}"

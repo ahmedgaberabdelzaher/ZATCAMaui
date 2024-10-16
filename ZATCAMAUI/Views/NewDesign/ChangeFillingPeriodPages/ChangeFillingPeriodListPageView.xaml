@@ -115,14 +115,13 @@
                                     RowDefinitions="auto"
                                     VerticalOptions="FillAndExpand">
 
-                                    <Border
+                                    <Border 
                                         Grid.Row="0"
                                         Margin="0,20,0,0"
-                                        Padding="8"
+                                        Padding="16"
                                         HorizontalOptions="FillAndExpand"
-                                        StrokeShape="RoundRectangle 14,14,14,14"
-                                        Style="{StaticResource GreyBorderFrameWithShadow}"
-                                        VerticalOptions="FillAndExpand">
+                                        StrokeShape="RoundRectangle 15,15,15,15"
+                                        Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="auto" />
@@ -134,15 +133,14 @@
                                                 HeightRequest="24"
                                                 HorizontalOptions="Start"
                                                 Source="ic_add1.png"
-                                                VerticalOptions="CenterAndExpand"
                                                 WidthRequest="24" />
-                                            <Label
+                                            <Label 
                                                 x:Name="Filinglbl"
                                                 Grid.Column="1"
+                                                HorizontalOptions="StartAndExpand"
                                                 FontSize="15"
                                                 Style="{StaticResource GAZTSmallGreenLabelStyle}"
-                                                Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}"
-                                                VerticalOptions="CenterAndExpand" />
+                                                Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}"/>
 
 
                                             <Grid.GestureRecognizers>
