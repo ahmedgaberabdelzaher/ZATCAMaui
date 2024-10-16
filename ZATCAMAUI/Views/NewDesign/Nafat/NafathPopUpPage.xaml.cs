@@ -12,15 +12,15 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
         public NafathPopUpPage()
         {
             InitializeComponent();
-            BindingContext = viewModel =App.Locator.NafathPopupPageViewModel;
+            BindingContext = viewModel = App.Locator.NafathPopupPageViewModel;
         }
 
         private async void TappedGulf(object sender, EventArgs e)
         {
             App.successMsg = true;
-            GulfImage.Source = "vat_tile_IbanCard_background.png";
+            GulfImage.Source = "vat_tile_listofsignup.png";
             GulfText.TextColor = Colors.White;
-            CitigenImage.Source = "vat_tile_IbanCard_background_white.png";
+            CitigenImage.Source = "vat_tile_listofsignup_W.png";
             CitigenText.TextColor = Colors.CadetBlue;
 
             await MopupService.Instance.PopAsync();
@@ -28,20 +28,19 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
         }
         private async void TappedCitizen(object sender, EventArgs e)
         {
-            App.successMsg = false;
-            GulfImage.Source = "vat_tile_IbanCard_background_white.png";
-            GulfText.TextColor = Colors.CadetBlue;
-            CitigenImage.Source = "vat_tile_IbanCard_background.png";
-            CitigenText.TextColor = Colors.White;
-
-
-            App.GUIDFrSSO = "";
-
-            await MopupService.Instance.PopAsync();
             try
             {
-                viewModel._navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_SIGNUP);
+                App.successMsg = false;
+                GulfImage.Source = "vat_tile_listofsignup_W.png";
+                GulfText.TextColor = Colors.CadetBlue;
+                CitigenImage.Source = "vat_tile_listofsignup.png";
+                CitigenText.TextColor = Colors.White;
 
+
+                App.GUIDFrSSO = "";
+
+                await MopupService.Instance.PopAsync();
+                viewModel._navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_SIGNUP);
             }
             catch (Exception)
             {

@@ -7,7 +7,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    BackgroundColor="#88000000"
+    BackgroundColor="#88000000" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
@@ -26,106 +26,71 @@
                     Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"
                     TextColor="#010101" />
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
+                <Grid ColumnSpacing="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*" />
-                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <cards:SfCardView
-                        Grid.Row="1"
+                    <Grid
+                        Grid.Row="0"
                         Grid.Column="0"
-                        Margin="3"
+                        Margin="0"
                         Padding="0"
-                        CornerRadius="3"
-                        HorizontalOptions="FillAndExpand">
-                        <!--  Mohit change  -->
-                        <Grid>
+                        BackgroundColor="White"
+                        ColumnSpacing="0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                        <Image
+                            x:Name="CitigenImage"
+                            Aspect="Fill"
+                            HorizontalOptions="FillAndExpand"
+                            Source="vat_tile_listofsignup.png"
+                            VerticalOptions="FillAndExpand" />
+                        <Label
+                            x:Name="CitigenText"
+                            Padding="10"
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="Small"
+                            Text="{x:Static ResourceManager:AppResources.ZREGCitizen}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                        <Grid.GestureRecognizers>
 
-                            <Image
-                                x:Name="GulfImage"
-                                Grid.Row="0"
-                                Margin="0"
-                                Aspect="AspectFill"
-                                Source="vat_tile_IbanCard_background_white.png" />
-
-                            <Grid
-                                Grid.Row="0"
-                                Padding="10"
-                                VerticalOptions="End">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <StackLayout Grid.Row="1" Spacing="0">
-                                    <Label
-                                        x:Name="GulfText"
-                                        FontFamily="{StaticResource SomarSemiBold}"
-                                        FontSize="Small"
-                                        Text="{x:Static ResourceManager:AppResources.ZREGGulfCtzn}"
-                                        TextColor="CadetBlue" />
-                                </StackLayout>
-
-                            </Grid>
-
-                        </Grid>
-                        <cards:SfCardView.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TappedGulf" />
-                        </cards:SfCardView.GestureRecognizers>
-                    </cards:SfCardView>
-
-                    <cards:SfCardView
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Margin="3"
-                        Padding="0"
-                        CornerRadius="3"
-                        HorizontalOptions="FillAndExpand">
-
-                        <Grid
-                            Margin="0"
-                            Padding="0"
-                            VerticalOptions="FillAndExpand">
-                            <Border Grid.Row="0" BackgroundColor="White">
-                                <Image
-                                    x:Name="CitigenImage"
-                                    Aspect="AspectFill"
-                                    HorizontalOptions="FillAndExpand"
-                                    Source="vat_tile_IbanCard_background.png"
-                                    VerticalOptions="FillAndExpand" />
-                            </Border>
-
-                            <Grid
-                                Grid.Row="0"
-                                Padding="10"
-                                VerticalOptions="End">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <StackLayout Grid.Row="1" Spacing="0">
-                                    <Label
-                                        x:Name="CitigenText"
-                                        FontFamily="{StaticResource SomarSemiBold}"
-                                        FontSize="Small"
-                                        Text="{x:Static ResourceManager:AppResources.ZREGCitizen}"
-                                        TextColor="White"
-                                        VerticalOptions="End" />
-                                </StackLayout>
-
-                            </Grid>
-                        </Grid>
-                        <cards:SfCardView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TappedCitizen" />
-                        </cards:SfCardView.GestureRecognizers>
-                    </cards:SfCardView>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0"
+                        Padding="0"
+                        ColumnSpacing="0"
+                        HorizontalOptions="FillAndExpand"
+                        RowSpacing="0"
+                        VerticalOptions="FillAndExpand">
+                        <Image
+                            x:Name="GulfImage"
+                            Aspect="Fill"
+                            HorizontalOptions="FillAndExpand"
+                            Source="vat_tile_listofsignup_W.png"
+                            VerticalOptions="FillAndExpand" />
+
+                        <Label
+                            x:Name="GulfText"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Padding="10"
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="Small"
+                            Text="{x:Static ResourceManager:AppResources.ZREGGulfCtzn}"
+                            TextColor="CadetBlue"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TappedGulf" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
                 </Grid>
-
-
-
             </StackLayout>
 
         </Border>
