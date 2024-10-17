@@ -444,7 +444,8 @@ namespace ZATCAMAUI
                 PageSettings.CheckTarget_Environment("STG");
                 PageSettings.GetBaseURL("STG");
 
-                Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXhccnRTRGJfVkd3X0M="); //MAUI 26.*
+              //  Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXhccnRTRGJfVkd3X0M="); //MAUI 26.*
+              Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzUyMzAyMUAzMjM3MmUzMDJlMzBQbGhybFVDcUVRclBQN1IzbjIwSHZtUUo1UDkybUZMVFJyUGUrU0N6dGg4PQ=="); //MAUI 27.*
 
                 AppResources.Culture = CultureInfo.CurrentUICulture;
                 bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
