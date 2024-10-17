@@ -27,9 +27,7 @@
         <CreatePackage>false</CreatePackage>
         <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
         <CodesignProvision>ZATCA Mobile</CodesignProvision>
-        <MtouchLink>SdkOnly</MtouchLink>
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-        <CodesignEntitlements></CodesignEntitlements>
     </PropertyGroup>
      <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
          <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
@@ -65,7 +63,7 @@
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
         <CodesignProvision>Automatic</CodesignProvision>
-        <CodesignKey>Apple Development: Anas Alshahrani (FBC5Q68T24)</CodesignKey>
+        <CodesignKey>iPhone Developer</CodesignKey>
         <CodesignEntitlements></CodesignEntitlements>
         <MtouchLink>None</MtouchLink>
     </PropertyGroup>

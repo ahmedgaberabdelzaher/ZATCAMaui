@@ -6,7 +6,6 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -15,6 +14,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     ios:Page.UseSafeArea="true"
+    x:Name="vATReturn"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -116,22 +116,34 @@
 
 
                     <!--  Sub Header  -->
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0,10">
 
-                        <Label
+                         <!--  Back Button  -->
+                        <Image
                             HorizontalOptions="Start"
-                            Style="{StaticResource IconLabelStyle}"
-                            Text="{DynamicResource StyleReverseBack}">
-                            <Label.GestureRecognizers>
+                            Rotation="180"
+                            Source="arrowLeft.png"
+                            VerticalOptions="CenterAndExpand">
+
+                            <Image.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding AppDirection}"
+                                    TargetType="Image"
+                                    Value="LeftToRight">
+                                    <Setter Property="Rotation" Value="0" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                            <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="BackButtonClicked" />
-                            </Label.GestureRecognizers>
-                        </Label>
+                            </Image.GestureRecognizers>
+                        </Image>
 
                         <IndicatorView 
                                 IndicatorColor="LightGray"
                                 IndicatorSize="16"
                                 SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                HorizontalOptions="End"
+                                HorizontalOptions="EndAndExpand"
                                 MaximumVisible="{Binding MaxIndex}"
                                 Count="{Binding MaxIndex}"
                                 VerticalOptions="CenterAndExpand"

@@ -59,16 +59,50 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #endregion
 
         #region Commands
-        public ICommand OnFinishClick { get; private set; }
-        public ICommand OnBackButtonClick { get; private set; }
+
+        public ICommand OnAppearingZakatAcknowledgmentPageCommand
+        {
+            get
+            {
+                return new Command( _ =>
+                {
+                    LoadZakatForm5_ACK_Data();
+
+                });
+            }
+        }
+
+        public ICommand OnFinishedCommand
+        {
+            get
+            {
+                return new Command( _ =>
+                {
+                    try
+                    {
+                        var _navigation = Application.Current.MainPage.Navigation;
+                        if (_navigation.NavigationStack.Count > 0)
+                        {
+                            Page pg = _navigation.NavigationStack[_navigation.NavigationStack.Count - 2];
+                            _navigation.RemovePage(pg);
+                        }
+                        _navigationService.GoBack();
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                   
+
+                });
+            }
+        }
+
         #endregion
 
         #region Constructor
         public ZakatAcknowledgmentPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-
-            OnFinishClick = new Command(() => navigateToNext());
-            OnBackButtonClick = new Command(() => navigateBack());
         }
         #endregion
 
@@ -95,16 +129,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             }
 
-
-        }
-
-        private void navigateToNext()
-        {
-
-        }
-
-        private void navigateBack()
-        {
 
         }
     }

@@ -14,6 +14,7 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     FlowDirection="{Binding AppDirection}"
     BackgroundColor="#88000000"
+    x:Name="refundAccountPopupPageView"
     mc:Ignorable="d">
     <Border
         BackgroundColor="White"
@@ -284,6 +285,7 @@
                                     <Grid
                                         Margin="0"
                                         Padding="0"
+                                        FlowDirection="{Binding Source={x:Reference refundAccountPopupPageView}, Path=FlowDirection}"
                                         ColumnSpacing="0"
                                         HorizontalOptions="FillAndExpand"
                                         RowSpacing="10"

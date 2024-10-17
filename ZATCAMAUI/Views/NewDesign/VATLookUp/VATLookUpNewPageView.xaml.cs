@@ -104,28 +104,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             }
         }
 
-        void PPicker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-            VATParameterType vATParameterType =viewModel.ParameterTypeList[e.NewValue];
-            //PPicker.SelectedItem = vATParameterType;
-            viewModel.SelectedParameterType = vATParameterType;
-        }
-
+      
         private void BorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             MainThread.BeginInvokeOnMainThread(() =>
           viewModel.IsNameVisible = false);
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            viewModel.onDissapear();
-        }
 
         private void zxing_BarcodesDetected(object sender, BarcodeDetectionEventArgs e)
         {
-            MainThread.BeginInvokeOnMainThread(() =>
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
                 try
                 {
@@ -136,7 +125,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
                     }
 
                     viewModel.SelectedParameterType = viewModel.ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
-                    viewModel.getBarcodeData(barcodeResultValue);
+                    await viewModel.getBarcodeData(barcodeResultValue);
                 }
                 catch (Exception)
                 {
@@ -147,5 +136,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             });
         }
 
+        void PPicker_OkButtonClicked(System.Object sender, System.EventArgs e)
+        {
+            var newvalue = sender as SfPicker;
+            VATParameterType vATParameterType = viewModel.ParameterTypeList[newvalue.Columns[0].SelectedIndex];
+            viewModel.SelectedParameterType = vATParameterType;
+        }
     }
 }

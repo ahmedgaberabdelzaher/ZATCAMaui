@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -14,10 +13,16 @@
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
+    x:Name="zakatForm"
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingZakatFormPageCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ZakatForm5TabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
@@ -50,9 +55,37 @@
             <!--  Header  -->
             <Grid
                 Grid.Row="0"
-                Padding="15,10,15,10"
-                ColumnDefinitions="40,100*,40"
+                Padding="20,10"
+                ColumnDefinitions="auto,3*"
                 RowDefinitions="auto,auto">
+
+                 <!--  Back Button  -->
+                <StackLayout>
+
+                    <!--  Back Image  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="180"
+                        IsVisible="{Binding IsBackStepButtonVisible}"
+                        Source="arrowLeft.png"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="0" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnBackButtonClick}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
 
                 <Image
                     Grid.Row="0"
@@ -63,30 +96,7 @@
                     VerticalOptions="Center"
                     WidthRequest="50" />
 
-                <Image
-                    x:Name="Image_backArrow"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    HorizontalOptions="Start"
-                    IsVisible="{Binding IsBackStepButtonVisible}"
-                    Source="arrowLeft"
-                    VerticalOptions="CenterAndExpand">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnBackButtonClick}" />
-                    </Image.GestureRecognizers>
-                </Image>
-
-
-                <IndicatorView 
-                    IndicatorColor="LightGray"
-                    IndicatorSize="16"
-                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                    HorizontalOptions="End"
-                    MaximumVisible="{Binding MaxIndex}"
-                    Count="{Binding MaxIndex}"
-                    VerticalOptions="CenterAndExpand"
-                    Position="{Binding CurrentIndex}"
-                    />
+              
             </Grid>
 
             <Border
@@ -96,25 +106,37 @@
 
                 <Grid RowDefinitions="auto,*,auto" RowSpacing="0">
 
+                      <IndicatorView
+                        Margin="20,10"
+                        IndicatorColor="LightGray"
+                        IndicatorSize="20"
+                        SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                        HorizontalOptions="End"
+                        MaximumVisible="{Binding MaxIndex}"
+                        Count="{Binding MaxIndex}"
+                        VerticalOptions="Start"
+                        Position="{Binding CurrentIndex}"
+                        />
 
                     <!--  Start Of Basic Information View  -->
                     <Grid
                         x:Name="BasicInformation"
                         Grid.Row="1"
-                        Padding="20,0,20,0"
+                        Padding="20,0"
+                        RowDefinitions="auto,*"
                         IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.BasicInformation}}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
 
                         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+
                             <StackLayout>
+
                                 <!--  Start of Return Details  -->
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
 
-                                        <StackLayout Padding="10" Orientation="Horizontal">
+                                        <StackLayout Padding="10"
+                                                     Spacing="10"
+                                                     Orientation="Horizontal">
                                             <Image
                                                 Margin="0"
                                                 Source="return_vatRefunds.png"
@@ -187,12 +209,14 @@
                                         </StackLayout>
                                     </StackLayout>
                                 </Border>
-
                                 <!--  End of Return Details  -->
+
                                 <!--  Start of Taxpayer Details  -->
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
-                                        <StackLayout Padding="10" Orientation="Horizontal">
+                                        <StackLayout Padding="10"
+                                                     Spacing="10"
+                                                     Orientation="Horizontal">
                                             <Image
                                                 Margin="0"
                                                 Source="vat_user"
@@ -209,14 +233,19 @@
                                             HorizontalOptions="FillAndExpand" />
 
                                         <StackLayout Padding="10" Spacing="10">
-                                            <StackLayout Orientation="Horizontal">
+                                            <Grid ColumnDefinitions="*,*"
+                                                  HorizontalOptions="Fill">
+
                                                 <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5Taxpayer}" />
+
                                                 <Label
-                                                    HorizontalOptions="EndAndExpand"
+                                                    HorizontalOptions="End"
+                                                    Grid.Column="1"
                                                     HorizontalTextAlignment="End"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{Binding Taxpayer}" />
-                                            </StackLayout>
+                                            </Grid>
+
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5Branch}" />
                                                 <Label
@@ -225,30 +254,25 @@
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{Binding Branch}" />
                                             </StackLayout>
-                                            <StackLayout Orientation="Horizontal">
+
+                                            <Grid ColumnDefinitions="*,*"
+                                                  HorizontalOptions="Fill">
                                                 <Label
                                                     x:Name="addressLbL"
+                                                    HorizontalOptions="Start"
                                                     Style="{StaticResource ValueLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.ZVatAddress}"
                                                     WidthRequest="140" />
+
                                                 <Label
-                                                    FlowDirection="LeftToRight"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    HorizontalTextAlignment="Start"
+                                                    Grid.Column="1"
+                                                    HorizontalOptions="End"
+                                                    HorizontalTextAlignment="End"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     StyleId="ValueLabel"
-                                                    Text="{Binding Address}">
-                                                    <Label.Triggers>
-                                                        <DataTrigger
-                                                            Binding="{Binding Source={x:Reference addressLbL}, Path=Text}"
-                                                            TargetType="Label"
-                                                            Value="Address">
-                                                            <Setter Property="HorizontalOptions" Value="EndAndExpand" />
-                                                            <Setter Property="HorizontalTextAlignment" Value="End" />
-                                                        </DataTrigger>
-                                                    </Label.Triggers>
-                                                </Label>
-                                            </StackLayout>
+                                                    Text="{Binding Address}"/>
+
+                                            </Grid>
                                             <StackLayout Orientation="Horizontal">
                                                 <Label
                                                     Style="{StaticResource ValueLabelGrey}"
@@ -272,10 +296,13 @@
                                     </StackLayout>
                                 </Border>
                                 <!--  End of Taxpayer Details  -->
+
                                 <!--  Start of Registration Information  -->
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
-                                        <StackLayout Padding="10" Orientation="Horizontal">
+                                        <StackLayout Padding="10"
+                                                     Spacing="10"
+                                                     Orientation="Horizontal">
                                             <Image
                                                 Margin="0"
                                                 Source="ic_vat_bill"
@@ -379,19 +406,27 @@
                                     </StackLayout>
                                 </Border>
                                 <!--  End of Registration Information  -->
-                                <!--   <StackLayout Orientation="Horizontal" Margin="0,0,0,15">
-                                    <CheckBox IsChecked="{Binding IsConditionRadio}" IsEnabled="False"/>
-                                    <Label Text="{x:Static ResourceManager:AppResources.FORM5IsCorrect}" StyleId="ValueLabel" Style="{StaticResource ValueLabelGrey}" />
-                                </StackLayout>-->
 
 
                             </StackLayout>
+
                         </ScrollView>
-                        <StackLayout Grid.Row="0" BackgroundColor="White">
-                            <Label Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.FORM5BasicInformation}" />
-                            <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" />
+
+                         <!-- Title Selections -->
+                        <StackLayout Grid.Row="0"
+                                     Spacing="10"
+                                     BackgroundColor="White">
+
+                            <Label Style="{StaticResource SectionTitleBlackBold}"
+                                   Text="{x:Static ResourceManager:AppResources.FORM5BasicInformation}" />
+
+                            <Label Style="{StaticResource ValueLabelGrey}"
+                                   Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" />
+
                             <BoxView Margin="0,0,0,10" Style="{StaticResource lineSeperator}" />
+
                         </StackLayout>
+
                     </Grid>
                     <!--  End of Basic Information View  -->
 
@@ -399,17 +434,15 @@
                     <Grid
                         x:Name="FinancialInformation"
                         Grid.Row="1"
+                        RowDefinitions="auto,*"
                         Padding="20,0,20,0"
                         IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.FinancialInformation}}">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+                        <ScrollView Grid.Row="1"
+                                    VerticalScrollBarVisibility="Never"
+                                    BackgroundColor="White">
 
-                        <ScrollView Grid.Row="1">
-
-                            <StackLayout>
+                            <Grid RowDefinitions="*">
                                 <!--  On Cabs Clicked Starts  -->
                                 <StackLayout x:Name="Cabs" IsVisible="{Binding isCabVisible}">
 
@@ -431,9 +464,12 @@
                                                 <ViewCell>
                                                     <!--  Start of General taxi Office  -->
 
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                            FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
-                                                            <StackLayout Padding="10" Orientation="Horizontal">
+                                                            <StackLayout Padding="10"
+                                                                         Orientation="Horizontal">
                                                                 <Image
                                                                     Margin="0"
                                                                     Source="ic_vat_bill"
@@ -466,6 +502,7 @@
                                                                         Style="{StaticResource ValueLabelBlack}"
                                                                         Text="{Binding NoOfCars}" />
                                                                 </StackLayout>
+
                                                                 <StackLayout Orientation="Horizontal" Spacing="5">
                                                                     <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5AvgDailyIncome}" />
                                                                     <Label
@@ -482,6 +519,7 @@
                                                                         </Label.FormattedText>
                                                                     </Label>
                                                                 </StackLayout>
+
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5OccupancyRate}" />
                                                                     <Label
@@ -489,6 +527,7 @@
                                                                         Style="{StaticResource ValueLabelBlack}"
                                                                         Text="{Binding OccRate, StringFormat='{0:F2} %'}" />
                                                                 </StackLayout>
+
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5NetProfitPer}" />
                                                                     <Label
@@ -499,7 +538,6 @@
 
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" />
-                                                                    <!--<Label Text="{Binding Revenue, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">-->
                                                                     <Label
                                                                         HorizontalOptions="EndAndExpand"
                                                                         HorizontalTextAlignment="End"
@@ -554,6 +592,7 @@
                                                                     </Label>
 
                                                                 </Grid>
+
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5NetProfit}" />
                                                                     <Label
@@ -569,6 +608,7 @@
                                                                         </Label.FormattedText>
                                                                     </Label>
                                                                 </StackLayout>
+
                                                             </StackLayout>
                                                         </StackLayout>
                                                     </Border>
@@ -577,6 +617,7 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
+
                                 </StackLayout>
                                 <!--  On Cabs Clicked Ends  -->
 
@@ -599,7 +640,9 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <!--  Start Of Land Travel Starts  -->
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                             FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
                                                             <StackLayout Padding="10" Orientation="Horizontal">
                                                                 <Image
@@ -725,7 +768,9 @@
                                             <DataTemplate>
                                                 <ViewCell>
 
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                             FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
                                                             <StackLayout Padding="10" Orientation="Horizontal">
                                                                 <Image
@@ -1235,7 +1280,8 @@
                                 <!--  On Buy and Sell Clicked ends  -->
 
                                 <!--  On Labour Occupancy clicked Starts  -->
-                                <StackLayout x:Name="LabourOccupancy" IsVisible="{Binding isLabourOccupancyVisible}">
+                                <StackLayout x:Name="LabourOccupancy"
+                                            IsVisible="{Binding isLabourOccupancyVisible}">
                                     <ListView
                                         x:Name="LabourOccupList"
                                         BackgroundColor="White"
@@ -1252,9 +1298,14 @@
                                             <DataTemplate>
                                                 <ViewCell>
 
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                                        <StackLayout>
-                                                            <StackLayout Padding="10" Orientation="Horizontal">
+                                                    <Border Margin="0,10,0,10"
+                                                            FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                                        <Grid RowDefinitions="auto,auto,*">
+                                                            <StackLayout Padding="10"
+                                                                         Spacing="10"
+                                                                         Orientation="Horizontal">
                                                                 <Image
                                                                     Margin="0"
                                                                     Source="ic_vat_bill"
@@ -1266,9 +1317,13 @@
                                                                     VerticalTextAlignment="Center" />
                                                             </StackLayout>
 
-                                                            <BoxView Style="{StaticResource lineSeperator}" />
+                                                            <BoxView Style="{StaticResource lineSeperator}"
+                                                                     Grid.Row="1"/>
 
-                                                            <StackLayout Padding="10" Spacing="15">
+                                                            <Grid Padding="10"
+                                                                  Grid.Row="2"
+                                                                  RowSpacing="15"
+                                                                  RowDefinitions="*,*,*,*,*">
 
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <Label
@@ -1283,7 +1338,8 @@
                                                                         Text="{Binding ActDesc}" />
                                                                 </StackLayout>
 
-                                                                <StackLayout Orientation="Horizontal">
+                                                                <StackLayout Orientation="Horizontal"
+                                                                             Grid.Row="1">
                                                                     <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5NoofLabours}" />
                                                                     <Label
                                                                         HorizontalOptions="EndAndExpand"
@@ -1292,7 +1348,8 @@
                                                                         Text="{Binding NoOfLabour}" />
                                                                 </StackLayout>
 
-                                                                <StackLayout Orientation="Horizontal">
+                                                                <StackLayout Orientation="Horizontal"
+                                                                             Grid.Row="2">
                                                                     <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" />
                                                                     <Label
                                                                         HorizontalOptions="EndAndExpand"
@@ -1308,49 +1365,46 @@
                                                                     </Label>
                                                                 </StackLayout>
 
-                                                                <Grid RowSpacing="0">
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition Height="auto" />
+                                                                <Grid RowSpacing="0"
+                                                                      Grid.Row="3"
+                                                                      RowDefinitions="auto,auto"
+                                                                      ColumnDefinitions="*,auto">
 
-                                                                    </Grid.RowDefinitions>
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="*" />
-                                                                        <ColumnDefinition Width="*" />
-                                                                    </Grid.ColumnDefinitions>
-                                                                    <StackLayout
-                                                                        Grid.Row="0"
-                                                                        Grid.Column="0"
-                                                                        Orientation="Horizontal">
-                                                                        <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5Expenses}" />
+                                                                     <Label Style="{StaticResource ValueLabelGrey}"
+                                                                            Text="{x:Static ResourceManager:AppResources.FORM5Expenses}" />
+
+                                                                    <StackLayout Orientation="Horizontal"
+                                                                                 Spacing="10"
+                                                                                 HorizontalOptions="Start"
+                                                                                 Grid.Column="1">
+
+                                                                        <Label
+                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                            StyleId="ValueLabel"
+                                                                            Text="{Binding IsExpensesApplicable}" />
+
+                                                                        <Label
+                                                                            IsVisible="{Binding IsApplicableVisible}"
+                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                            StyleId="ValueLabel">
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Expenses}" />
+                                                                                    <Span Text=" " />
+                                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                        </Label>
+
                                                                     </StackLayout>
-
-                                                                    <Label
-                                                                        Grid.Row="0"
-                                                                        Grid.Column="1"
-                                                                        HorizontalTextAlignment="End"
-                                                                        Style="{StaticResource ValueLabelBlack}"
-                                                                        StyleId="ValueLabel"
-                                                                        Text="{Binding IsExpensesApplicable}" />
-                                                                    <Label
-                                                                        Grid.Row="1"
-                                                                        Grid.Column="1"
-                                                                        HorizontalTextAlignment="End"
-                                                                        IsVisible="{Binding IsApplicableVisible}"
-                                                                        Style="{StaticResource ValueLabelBlack}"
-                                                                        StyleId="ValueLabel">
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding Expenses}" />
-                                                                                <Span Text=" " />
-                                                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
+                                                                   
 
                                                                 </Grid>
 
-                                                                <StackLayout Orientation="Horizontal">
-                                                                    <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5NetProfit}" />
+                                                                <StackLayout Orientation="Horizontal"
+                                                                             Grid.Row="4">
+                                                                    <Label Style="{StaticResource ValueLabelGrey}"
+                                                                           Text="{x:Static ResourceManager:AppResources.FORM5NetProfit}" />
                                                                     <Label
                                                                         HorizontalOptions="EndAndExpand"
                                                                         HorizontalTextAlignment="End"
@@ -1365,9 +1419,10 @@
                                                                     </Label>
                                                                 </StackLayout>
 
-                                                            </StackLayout>
+                                                            </Grid>
 
-                                                        </StackLayout>
+                                                        </Grid>
+
                                                     </Border>
 
 
@@ -1397,7 +1452,9 @@
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                             FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
                                                             <StackLayout Padding="10" Orientation="Horizontal">
                                                                 <Image
@@ -1556,7 +1613,9 @@
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                             FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
                                                             <StackLayout Padding="10" Orientation="Horizontal">
                                                                 <Image
@@ -1771,7 +1830,9 @@
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                             FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
                                                             <StackLayout Padding="10" Orientation="Horizontal">
                                                                 <Image
@@ -1912,7 +1973,9 @@
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                             FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
                                                             <StackLayout Padding="10" Orientation="Horizontal">
                                                                 <Image
@@ -2131,9 +2194,9 @@
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
-
-
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                             FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
                                                             <StackLayout Padding="10" Orientation="Horizontal">
                                                                 <Image
@@ -2282,7 +2345,9 @@
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                             FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
                                                             <StackLayout Padding="10" Orientation="Horizontal">
                                                                 <Image
@@ -2442,7 +2507,9 @@
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                             FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
                                                             <StackLayout Padding="10" Orientation="Horizontal">
                                                                 <Image
@@ -2575,7 +2642,9 @@
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
-                                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <Border Margin="0,10,0,10"
+                                                             FlowDirection="{Binding Source={x:Reference zakatForm}, Path=FlowDirection}"
+                                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                                         <StackLayout>
                                                             <StackLayout Padding="10" Orientation="Horizontal">
                                                                 <Image
@@ -2692,10 +2761,15 @@
                                 <!--  On Minerals Clicked Ends  -->
 
                                 <!--  On Additional Info Clicked Starts  -->
-                                <StackLayout x:Name="AdditionalInfo" IsVisible="{Binding isAdditionalVisible}">
-                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout x:Name="AdditionalInfo"
+                                             Spacing="10"
+                                             IsVisible="{Binding isAdditionalVisible}">
+
+                                    <Border  Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout>
-                                            <StackLayout Padding="10" Orientation="Horizontal">
+                                            <StackLayout Padding="10"
+                                                         Spacing="10"
+                                                         Orientation="Horizontal">
                                                 <Image
                                                     Margin="0"
                                                     Source="ic_vat_bill"
@@ -2760,7 +2834,8 @@
                                                 </Grid>
 
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatBase}" />
+                                                    <Label Style="{StaticResource ValueLabelGrey}"
+                                                           Text="{x:Static ResourceManager:AppResources.FORM5ZakatBase}" />
                                                     <Label
                                                         HorizontalOptions="EndAndExpand"
                                                         HorizontalTextAlignment="End"
@@ -2781,7 +2856,9 @@
 
                                     <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout>
-                                            <StackLayout Padding="10" Orientation="Horizontal">
+                                            <StackLayout Padding="10"
+                                                         Spacing="10"
+                                                         Orientation="Horizontal">
                                                 <Image
                                                     Margin="0"
                                                     Source="ic_vat_bill"
@@ -2851,16 +2928,12 @@
                                                     </Label>
                                                 </Grid>
 
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="40*" />
-                                                        <ColumnDefinition Width="10*" />
-                                                        <ColumnDefinition Width="50*" />
-                                                    </Grid.ColumnDefinitions>
+                                                <Grid ColumnDefinitions="40*,10*,50*">
                                                     <Label
                                                         Grid.Column="0"
                                                         Style="{StaticResource ValueLabelGrey}"
                                                         Text="{x:Static ResourceManager:AppResources.FORM5TotalofAnnualSalary}" />
+
                                                     <StackLayout Grid.Column="1" />
 
                                                     <Label
@@ -2886,23 +2959,31 @@
                                 <!--  On Additional Info Clicked Ends  -->
 
 
-                            </StackLayout>
+                            </Grid>
                         </ScrollView>
 
+                         <!-- Title Selections -->
                         <StackLayout Grid.Row="0" BackgroundColor="White">
-                            <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.FORM5FinancialInfo}" />
+
+                            <Label Style="{StaticResource PageTitleBlack}"
+                                   Text="{x:Static ResourceManager:AppResources.FORM5FinancialInfo}" />
+
                             <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" />
+
                             <BoxView Margin="0,0,0,10" Style="{StaticResource lineSeperator}" />
 
-
+                            <!-- Chips Selections -->
                             <ScrollView
                                 HorizontalScrollBarVisibility="Never"
                                 Orientation="Horizontal"
                                 VerticalScrollBarVisibility="Never">
-                                <StackLayout Padding="10" Orientation="Horizontal">
+
+                                <StackLayout Padding="10"
+                                             Spacing="10"
+                                             Orientation="Horizontal">
+
                                     <buttons:SfButton
                                         x:Name="Cabsbtn"
-                                        Padding="12,8,12,8"
                                         Background="{StaticResource OpacityPrimary}"
                                         Clicked="Cabs_Clicked"
                                         CornerRadius="20"
@@ -2910,7 +2991,7 @@
                                         FontSize="11"
                                         IsVisible="{Binding IsCabBtn}"
                                         Stroke="{StaticResource NeutralLightGrey}"
-                                        StrokeThickness="1"
+                                        StrokeThickness="5"
                                         Text="{x:Static ResourceManager:AppResources.FORM5Cabs}"
                                         TextColor="{StaticResource Primary}">
                                         <buttons:SfButton.Triggers>
@@ -2926,7 +3007,6 @@
 
                                     <buttons:SfButton
                                         x:Name="ProfessionalBtn"
-                                        Padding="12,8,12,8"
                                         Background="White"
                                         Clicked="Professional_Clicked"
                                         CornerRadius="20"
@@ -2934,7 +3014,7 @@
                                         FontSize="11"
                                         IsVisible="{Binding IsProfessionBtn}"
                                         Stroke="{StaticResource NeutralLightGrey}"
-                                        StrokeThickness="1"
+                                        StrokeThickness="5"
                                         Text="{x:Static ResourceManager:AppResources.FORM5Professionals}"
                                         TextColor="{StaticResource PrimaryColor}">
                                         <buttons:SfButton.Triggers>
@@ -2950,15 +3030,14 @@
 
                                     <buttons:SfButton
                                         x:Name="SellBtn"
-                                        Padding="12,8,12,8"
                                         Background="White"
                                         Clicked="Sell_Clicked"
                                         CornerRadius="20"
+                                        StrokeThickness="5"
                                         FontFamily="{StaticResource ValueLabelBlackLight}"
                                         FontSize="11"
                                         IsVisible="{Binding IsSellBtn}"
                                         Stroke="{StaticResource NeutralLightGrey}"
-                                        StrokeThickness="1"
                                         Text="{x:Static ResourceManager:AppResources.FORM5SellAndBuy}"
                                         TextColor="{StaticResource PrimaryColor}">
                                         <buttons:SfButton.Triggers>
@@ -2971,9 +3050,9 @@
                                             </DataTrigger>
                                         </buttons:SfButton.Triggers>
                                     </buttons:SfButton>
+
                                     <buttons:SfButton
                                         x:Name="LabourBtn"
-                                        Padding="12,8,12,8"
                                         Background="White"
                                         Clicked="Labour_Clicked"
                                         CornerRadius="20"
@@ -2981,7 +3060,7 @@
                                         FontSize="11"
                                         IsVisible="{Binding IsLabourBtn}"
                                         Stroke="{StaticResource NeutralLightGrey}"
-                                        StrokeThickness="1"
+                                        StrokeThickness="5"
                                         Text="{x:Static ResourceManager:AppResources.FORM5LabourOccupancy}"
                                         TextColor="{StaticResource PrimaryColor}">
                                         <buttons:SfButton.Triggers>
@@ -2994,12 +3073,13 @@
                                             </DataTrigger>
                                         </buttons:SfButton.Triggers>
                                     </buttons:SfButton>
+
                                     <buttons:SfButton
                                         x:Name="IndustryBtn"
-                                        Padding="12,8,12,8"
                                         Clicked="Industry_Clicked"
                                         FontFamily="{StaticResource ValueLabelBlackLight}"
                                         FontSize="11"
+                                        StrokeThickness="5"
                                         IsVisible="{Binding IsIndustryBtn}"
                                         Style="{StaticResource BackgroundWhiteBtn}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5Industry}">
@@ -3013,12 +3093,13 @@
                                             </DataTrigger>
                                         </buttons:SfButton.Triggers>
                                     </buttons:SfButton>
+
                                     <buttons:SfButton
                                         x:Name="ContractingBtn"
-                                        Padding="12,8,12,8"
                                         Clicked="Contracting_Clicked"
                                         FontFamily="{StaticResource ValueLabelBlackLight}"
                                         FontSize="11"
+                                        StrokeThickness="5"
                                         IsVisible="{Binding IsContractBtn}"
                                         Style="{StaticResource BackgroundWhiteBtn}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5ContractingCo}">
@@ -3035,10 +3116,10 @@
 
                                     <buttons:SfButton
                                         x:Name="InvestBtn"
-                                        Padding="12,8,12,8"
                                         Clicked="Invest_Clicked"
                                         FontFamily="{StaticResource ValueLabelBlackLight}"
                                         FontSize="11"
+                                        StrokeThickness="5"
                                         IsVisible="{Binding IsInvestBtn}"
                                         Style="{StaticResource BackgroundWhiteBtn}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5InvestAndRealEst}">
@@ -3055,10 +3136,10 @@
 
                                     <buttons:SfButton
                                         x:Name="Hotelsbtn"
-                                        Padding="12,8,12,8"
                                         Clicked="Hotels_Clicked"
                                         FontFamily="{StaticResource ValueLabelBlackLight}"
                                         FontSize="11"
+                                        StrokeThickness="5"
                                         IsVisible="{Binding IsHotelsBtn}"
                                         Style="{StaticResource BackgroundWhiteBtn}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5Hotels}">
@@ -3075,10 +3156,10 @@
 
                                     <buttons:SfButton
                                         x:Name="EducationBtn"
-                                        Padding="12,8,12,8"
                                         Clicked="Education_Clicked"
                                         FontFamily="{StaticResource ValueLabelBlackLight}"
                                         FontSize="11"
+                                        StrokeThickness="5"
                                         IsVisible="{Binding IsEduBtn}"
                                         Style="{StaticResource BackgroundWhiteBtn}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5EduAndHealth}">
@@ -3095,10 +3176,10 @@
 
                                     <buttons:SfButton
                                         x:Name="Poultrybtn"
-                                        Padding="12,8,12,8"
                                         Clicked="Poultry_Clicked"
                                         FontFamily="{StaticResource ValueLabelBlackLight}"
                                         FontSize="11"
+                                        StrokeThickness="5"
                                         IsVisible="{Binding IsPoultryBtn}"
                                         Style="{StaticResource BackgroundWhiteBtn}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5PoultryAndFish}">
@@ -3112,12 +3193,13 @@
                                             </DataTrigger>
                                         </buttons:SfButton.Triggers>
                                     </buttons:SfButton>
+
                                     <buttons:SfButton
                                         x:Name="Carsbtn"
-                                        Padding="12,8,12,8"
                                         Clicked="Cars_Clicked"
                                         FontFamily="{StaticResource ValueLabelBlackLight}"
                                         FontSize="11"
+                                        StrokeThickness="5"
                                         IsVisible="{Binding IsCarBtn}"
                                         Style="{StaticResource BackgroundWhiteBtn}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5Cars}">
@@ -3134,10 +3216,10 @@
 
                                     <buttons:SfButton
                                         x:Name="Mineralsbtn"
-                                        Padding="12,8,12,8"
                                         Clicked="Minerals_Clicked"
                                         FontFamily="{StaticResource ValueLabelBlackLight}"
                                         FontSize="11"
+                                        StrokeThickness="5"
                                         IsVisible="{Binding IsMineralsBtn}"
                                         Style="{StaticResource BackgroundWhiteBtn}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5Minerals}">
@@ -3157,6 +3239,7 @@
                                         Clicked="Additional_Clicked"
                                         FontFamily="{StaticResource ValueLabelBlackLight}"
                                         FontSize="11"
+                                        StrokeThickness="5"
                                         IsVisible="{Binding IsAddBtn}"
                                         Style="{StaticResource BackgroundWhiteBtn}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5AdditionalInfo}">
@@ -3183,44 +3266,32 @@
                     <Grid
                         x:Name="ZakatEstimation"
                         Grid.Row="1"
+                        RowDefinitions="auto,*"
                         Padding="20,0,20,0"
                         IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.ZakatEstimation}}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
 
                         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                             <StackLayout>
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                    <StackLayout Padding="10" Spacing="-5">
+                                    <StackLayout Padding="10" Spacing="10">
 
 
 
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5Dear}" />
-                                            <Label Style="{StaticResource ValueLabelBlack}" Text=" " />
-                                            <!--<Label Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
-                                            <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Taxpayer}" />
-                                        </StackLayout>
+                                        <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5Dear}" />
+
+                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Taxpayer}" />
+
+                                         <Label Style="{StaticResource ValueLabelGrey}"
+                                                Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" />
+
+                                        <Label
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="{Binding ReferenceNumber}" />
 
 
-
-
-                                        <StackLayout>
-                                            <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" />
-                                            <Label
-                                                Padding="0,-10,0,0"
-                                                Style="{StaticResource ValueLabelBlack}"
-                                                Text="{Binding ReferenceNumber}" />
-                                        </StackLayout>
-
-
-
-                                        <StackLayout>
-                                            <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ForPeriod}" />
-                                        </StackLayout>
+                                         <Label Style="{StaticResource ValueLabelGrey}"
+                                                Text="{x:Static ResourceManager:AppResources.FORM5ForPeriod}" />
 
                                         <Label
                                             HorizontalOptions="StartAndExpand"
@@ -3235,6 +3306,7 @@
 
 
                                 <StackLayout x:Name="ZakatEstimationList" IsVisible="{Binding IsZakatEstListVisible}">
+
                                     <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <xct:Expander>
                                             <xct:Expander.Header>
@@ -3255,6 +3327,7 @@
                                                     </Image>
                                                 </StackLayout>
                                             </xct:Expander.Header>
+
                                             <StackLayout>
                                                 <!--  Cabs  -->
                                                 <StackLayout Padding="10" IsVisible="{Binding CabsSummaryIsVisible}">
@@ -3270,11 +3343,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding CabsSummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding CabsSummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3287,11 +3360,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding CabsSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding CabsSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
@@ -3315,11 +3388,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ProfessionalsSummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ProfessionalsSummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3332,11 +3405,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ProfessionalsSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ProfessionalsSummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3359,11 +3432,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Sell_BuySummary[0].ActivityCapitalTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Sell_BuySummary[0].ActivityCapitalRr}" />
                                                                 </StackLayout>
@@ -3376,11 +3449,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Sell_BuySummary[0].ExternalImportTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Sell_BuySummary[0].ExternalImportRr}" />
                                                                 </StackLayout>
@@ -3393,11 +3466,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Sell_BuySummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Sell_BuySummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3410,11 +3483,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Sell_BuySummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Sell_BuySummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3438,11 +3511,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding LabourOccupSummary[0].NoLaboursTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding LabourOccupSummary[0].NoLaboursRr}" />
                                                                 </StackLayout>
@@ -3456,11 +3529,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding LabourOccupSummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding LabourOccupSummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3473,11 +3546,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding LabourOccupSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding LabourOccupSummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3501,11 +3574,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding IndustrySummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding IndustrySummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3518,11 +3591,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding IndustrySummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding IndustrySummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3545,11 +3618,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ContractingSummary[0].GovtContractProfTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ContractingSummary[0].GovtContractProfRr}" />
                                                                 </StackLayout>
@@ -3562,11 +3635,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ContractingSummary[0].CivilContrRevTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ContractingSummary[0].CivilContrRevRr}" />
                                                                 </StackLayout>
@@ -3579,11 +3652,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ContractingSummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ContractingSummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3596,11 +3669,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ContractingSummary[0].NoLaboursTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ContractingSummary[0].NoLaboursRr}" />
                                                                 </StackLayout>
@@ -3613,11 +3686,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ContractingSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding ContractingSummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3641,11 +3714,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding InvstRealEstSummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding InvstRealEstSummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3658,11 +3731,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding InvstRealEstSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding InvstRealEstSummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3686,11 +3759,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding HotelsSummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding HotelsSummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3703,11 +3776,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding HotelsSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding HotelsSummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3732,11 +3805,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Edu_HealthSummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Edu_HealthSummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3749,11 +3822,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Edu_HealthSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Edu_HealthSummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3777,11 +3850,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Poultry_FishFarmSummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Poultry_FishFarmSummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3794,11 +3867,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Poultry_FishFarmSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Poultry_FishFarmSummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3822,11 +3895,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding CarsSummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding CarsSummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3839,11 +3912,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding CarsSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding CarsSummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3868,11 +3941,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding MineralsSummary[0].ActivityProfitTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding MineralsSummary[0].ActivityProfitRr}" />
                                                                 </StackLayout>
@@ -3885,11 +3958,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <StackLayout Grid.Column="0" Spacing="-8">
+                                                                <StackLayout Grid.Column="0" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnReclaTaxpayer}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding MineralsSummary[0].ZakatBaseTp}" />
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Column="1" Spacing="-8">
+                                                                <StackLayout Grid.Column="1" >
                                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatRulesConditions}" />
                                                                     <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding MineralsSummary[0].ZakatBaseRr}" />
                                                                 </StackLayout>
@@ -3902,20 +3975,31 @@
                                         </xct:Expander>
                                     </Border>
                                 </StackLayout>
+
                             </StackLayout>
                         </ScrollView>
 
-                        <StackLayout Grid.Row="0" BackgroundColor="White">
+                          <!-- Title Selections -->
+                        <Grid Grid.Row="0"
+                              RowSpacing="10"
+                              RowDefinitions="*,*,auto">
                             <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.FORM5ZakatEstimation}" />
-                            <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" />
-                            <BoxView Margin="0,0,0,10" Style="{StaticResource lineSeperator}" />
-                        </StackLayout>
+
+                            <Label Style="{StaticResource ValueLabelGrey}"
+                                   Grid.Row="1"
+                                   Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" />
+
+                            <BoxView Margin="0,0,0,10"
+                                     Grid.Row="2"
+                                     Style="{StaticResource lineSeperator}" />
+                        </Grid>
                     </Grid>
                     <!--  End of Zakat Estimation  -->
 
                     <buttons:SfButton
                         x:Name="btnprimary"
                         Grid.Row="2"
+                        Margin="0,20"
                         Command="{Binding OnNextButtonClick}"
                         Style="{StaticResource PrimaryButtonStyle}"
                         Text="{Binding NextText}" />

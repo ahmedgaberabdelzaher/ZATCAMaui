@@ -74,15 +74,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                         {
                             if (data.result.status == "EXPIRED" || data.result.status == "REJECTED")
                             {
+                                if (data.result.status == "EXPIRED") MessageTxt = AppResources.NAFATHEXPIRED;
+                                else MessageTxt = AppResources.NAFATHREJECTED;
+                                IsShowMsgView = true;
+
                                 var navigation = Application.Current.MainPage.Navigation;
                                 var currentPage = navigation.NavigationStack.LastOrDefault();
                                 IsLoading = false;
                                 isCancel = false;
+                               
+                                await Task.Delay(10000);
                                 _navigationService.GoBack();
-                                
-                                if (data.result.status == "EXPIRED") MessageTxt = AppResources.NAFATHEXPIRED;
-                                else MessageTxt = AppResources.NAFATHREJECTED;
-                                IsShowMsgView = true;
                                 return;
                             }
                             if (data.result.status == "WAITING")
