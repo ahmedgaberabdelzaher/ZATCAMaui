@@ -3,9 +3,9 @@
 
     public enum ZakatForm5TabEnum
     {
-        BasicInformation = 0,
-        FinancialInformation = 1,
-        ZakatEstimation = 2
+        BasicInformation = 1,
+        FinancialInformation = 2,
+        ZakatEstimation = 3
     }
 
 

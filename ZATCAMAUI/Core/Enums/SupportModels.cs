@@ -3,10 +3,10 @@
 
     public enum SupportTabEnum
     {
-        Parent = 0,
-        FAQ = 1,
-        Chat = 2,
-        ContactUs = 3,
-        BranchLocator = 4
+        Parent = 1,
+        FAQ = 2,
+        Chat = 3,
+        ContactUs = 4,
+        BranchLocator = 5
     }
 }

@@ -39,7 +39,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
     #region Variable
 
 
-    private int _currenrIndex = 0;
+    private int _currenrIndex = 1;
     public int CurrentIndex
     {
         get => _currenrIndex;
@@ -529,7 +529,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             if (_isInstrunctionVisible)
             {
                 IsBackStepButtonVisible = false;
-                CurrentIndex = 0;
+                CurrentIndex = 1;
             }
             else
             {
@@ -567,7 +567,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             _isTaxPayersVisible = value;
             if (_isTaxPayersVisible)
             {
-                CurrentIndex = 1;
+                CurrentIndex = 2;
             }
             OnPropertyChanged("IsTaxPayersVisible");
         }
@@ -586,7 +586,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             _isSalesVisible = value;
             if (_isSalesVisible)
             {
-                CurrentIndex = 2;
+                CurrentIndex = 3;
             }
             OnPropertyChanged("IsSalesVisible");
         }
@@ -621,7 +621,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             if (_isFinancialVisible)
             {
                 IsContinueButtonEnable = true;
-                CurrentIndex = 3;
+                CurrentIndex = 4;
             }
             OnPropertyChanged("IsFinancialVisible");
         }
@@ -688,7 +688,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             _isSummaryVisible = value;
             if (_isSummaryVisible)
             {
-                CurrentIndex = 4;
+                CurrentIndex = 5;
             }
             OnPropertyChanged("IsSummaryVisible");
         }

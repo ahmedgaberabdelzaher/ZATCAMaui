@@ -79,7 +79,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         #region Variable
 
-        private int _currenrIndex = 0;
+        private int _currenrIndex = 1;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -2114,7 +2114,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 ContactInformationView = false;
                 SummeryView = true;
-                CurrentIndex = 3;
+                CurrentIndex = 4;
                 ContinueButtonText = AppResources.Confirm;
             }
 
@@ -2160,7 +2160,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 NationalAddressView = false;
                 ContactInformationView = true;
-                CurrentIndex = 2;
+                CurrentIndex = 3;
                 ContinueButtonText = AppResources.ZZZZContinue;
             }
         }
@@ -2235,7 +2235,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         {
                             IndividualRegistrationView = false;
                             NationalAddressView = true;
-                            CurrentIndex = 1;
+                            CurrentIndex = 2;
                             //  currentStep++;
                             flag = true;
                             SetVisibilityToNationalAddressContent();
@@ -2880,7 +2880,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         {
                             passwordMainView = true;
                         }
-                        CurrentIndex = 4;
+                        CurrentIndex = 5;
                         int timeToExpireOTP = 120;
                         TimerStart(timeToExpireOTP);
                     }
@@ -3117,7 +3117,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 BoxColorThree = (Color)Application.Current.Resources["TabGray"];
                 BoxColorFour = (Color)Application.Current.Resources["TabGray"];
                 BoxColorFive = (Color)Application.Current.Resources["TabGray"];
-                CurrentIndex = 0;
+                CurrentIndex = 1;
             }
             else if (visiliblityItemName.Equals("NationalAddressView"))
             {
@@ -3126,7 +3126,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 BoxColorThree = (Color)Application.Current.Resources["TabGray"];
                 BoxColorFour = (Color)Application.Current.Resources["TabGray"];
                 BoxColorFive = (Color)Application.Current.Resources["TabGray"];
-                CurrentIndex = 1;
+                CurrentIndex = 2;
             }
             //ContactInformationView
             else if (visiliblityItemName.Equals("ContactInformationView"))
@@ -3136,7 +3136,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 BoxColorThree = (Color)Application.Current.Resources["Primary"];
                 BoxColorFour = (Color)Application.Current.Resources["TabGray"];
                 BoxColorFive = (Color)Application.Current.Resources["TabGray"];
-                CurrentIndex = 2;
+                CurrentIndex = 3;
             }
             else if (visiliblityItemName.Equals("SummeryView"))
             {
@@ -3145,7 +3145,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 BoxColorThree = (Color)Application.Current.Resources["Primary"];
                 BoxColorFour = (Color)Application.Current.Resources["Primary"];
                 BoxColorFive = (Color)Application.Current.Resources["TabGray"];
-                CurrentIndex = 3;
+                CurrentIndex = 4;
             }
             else if (visiliblityItemName.Equals("PasswordView"))
             {

@@ -329,8 +329,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 viewModel.SetVisibility();
                                 viewModel.IsFinancialVisible = true;
                                 SetfourthBoxColor();
-                                //if (viewModel.CurrentIndex == 3)
-                                //    viewModel.CurrentIndex++;
+                                if (viewModel.CurrentIndex == 3)
+                                    viewModel.CurrentIndex++;
                             }
                             else
                             {
@@ -343,8 +343,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             viewModel.SetVisibility();
                             viewModel.IsFinancialVisible = true;
                             SetfourthBoxColor();
-                            //if (viewModel.CurrentIndex == 3)
-                            //    viewModel.CurrentIndex++;
+                            if (viewModel.CurrentIndex == 3)
+                                viewModel.CurrentIndex++;
                         }
                     }
                     else if (viewModel.CurrentStep == AppResources.VATRStep5)
@@ -394,8 +394,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             }
                         }
                         SetfifthBoxColor();
-                        //if (viewModel.CurrentIndex == 4)
-                        //    viewModel.CurrentIndex++;
+                        if (viewModel.CurrentIndex == 4)
+                            viewModel.CurrentIndex++;
                         if (viewModel.IsDeclarationChecked)
                         {
                             viewModel.IsContinueButtonEnable = true;
@@ -652,8 +652,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
                 SetsecondBoxColor();
-                //if (viewModel.CurrentIndex == 1)
-                //    viewModel.CurrentIndex++;
+                if (viewModel.CurrentIndex == 1)
+                    viewModel.CurrentIndex++;
                 setdefaultvalueforTPDetailscreen();
                 if (string.IsNullOrEmpty(viewModel.VatEligibleStartDate))
                 {
@@ -707,8 +707,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SetVisibility();
                     viewModel.IsSalesVisible = true;
                     SetthirdBoxColor();
-                    //if (viewModel.CurrentIndex == 2)
-                    //    viewModel.CurrentIndex++;
+                    if (viewModel.CurrentIndex == 2)
+                        viewModel.CurrentIndex++;
                     viewModel.IsFDNameMobEmailEnable = false;
                     viewModel.Attachments = AppResources.Attachments;
                     if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "Resident")
@@ -1732,7 +1732,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
-                viewModel.CurrentIndex = 0;
+                viewModel.CurrentIndex = 1;
                 viewModel.CurrentStep = AppResources.VATRStep2;
                 SetfirstBoxColor();
                 if (viewModel.IsInstrunctionChecked)
@@ -1744,7 +1744,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
-                viewModel.CurrentIndex = 1;
+                viewModel.CurrentIndex = 2;
                 viewModel.CurrentStep = AppResources.VATRStep3;
                 SetsecondBoxColor();
                 setAttachmentImporterExporterVisibility();
@@ -1753,7 +1753,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 viewModel.SetVisibility();
                 viewModel.IsSalesVisible = true;
-                viewModel.CurrentIndex = 2;
+                viewModel.CurrentIndex = 3;
                 viewModel.CurrentStep = AppResources.VATRStep4;
                 SetthirdBoxColor();
             }
@@ -1761,7 +1761,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 viewModel.SetVisibility();
                 viewModel.IsFinancialVisible = true;
-                viewModel.CurrentIndex = 3;
+                viewModel.CurrentIndex = 4;
                 viewModel.CurrentStep = AppResources.VATRStep5;
                 SetfourthBoxColor();
             }
@@ -4411,7 +4411,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private void GoBackToTaxPayerDetails(object sender, EventArgs e)
         {
-            viewModel.CurrentIndex = 1;
+            viewModel.CurrentIndex = 2;
             viewModel.CurrentStep = AppResources.VATRStep2;
             viewModel.SetVisibility();
             viewModel.IsTaxPayersVisible = true;
@@ -4420,18 +4420,18 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private void GoBackToSalesDetails(object sender, EventArgs e)
         {
-            viewModel.CurrentIndex = 2;
+            viewModel.CurrentIndex = 3;
             step3Validation();
         }
 
         private void GoBackToVATExpenseDetails(object sender, EventArgs e)
         {
-            viewModel.CurrentIndex = 2;
+            viewModel.CurrentIndex = 3;
             step3Validation();
         }
         private void GoBackToFinacialRepresentativeDetails(object sender, EventArgs e)
         {
-            viewModel.CurrentIndex = 3;
+            viewModel.CurrentIndex = 4;
             if (viewModel.RegTypeCode == "Not Eligible")
             {
                 if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.Count > 0)
@@ -4441,8 +4441,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SetVisibility();
                     viewModel.IsFinancialVisible = true;
                     SetfourthBoxColor();
-                    //if (viewModel.CurrentIndex == 3)
-                    //    viewModel.CurrentIndex++;
+                    if (viewModel.CurrentIndex == 3)
+                        viewModel.CurrentIndex++;
                 }
                 else
                 {
@@ -4455,8 +4455,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.SetVisibility();
                 viewModel.IsFinancialVisible = true;
                 SetfourthBoxColor();
-                //if (viewModel.CurrentIndex == 3)
-                //    viewModel.CurrentIndex++;
+                if (viewModel.CurrentIndex == 3)
+                    viewModel.CurrentIndex++;
             }
         }
 
