@@ -131,7 +131,7 @@
                                                 x:Name="selectedProduct"
                                                 ColumnDefinitions="Auto,*,*"
                                                 ColumnSpacing="0"
-                                                RowDefinitions="Auto,Auto,Auto,Auto"
+                                                RowDefinitions="Auto,Auto,Auto,Auto,auto"
                                                 RowSpacing="5">
 
                                                 <!--  Delete Icon  -->
@@ -217,17 +217,28 @@
 
                                                     </Label>
 
+                                                </StackLayout>
+
+                                                <StackLayout
+                                                    Grid.Row="3"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalOptions="Fill"
+                                                    Orientation="Horizontal"
+                                                    Spacing="5"
+                                                    VerticalOptions="Start">
+
+                                                   
                                                     <!--  Total value Icon  -->
                                                     <Image
                                                         Aspect="AspectFit"
-                                                        HorizontalOptions="EndAndExpand"
+                                                        HorizontalOptions="Start"
                                                         Source="product"
                                                         VerticalOptions="Start" />
 
                                                     <!--  Total value  Value  -->
                                                     <Label
                                                         FontSize="14"
-                                                        HorizontalOptions="End"
+                                                        HorizontalOptions="Start"
                                                         LineBreakMode="WordWrap"
                                                         TextColor="#232323"
                                                         VerticalOptions="Start">

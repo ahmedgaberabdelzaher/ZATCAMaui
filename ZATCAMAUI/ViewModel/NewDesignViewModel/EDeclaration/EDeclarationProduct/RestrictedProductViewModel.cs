@@ -77,11 +77,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
 
             get
             {
-                return new Command(() =>
+                return new Command(async() =>
                 {
                     try
                     {
-                       Launcher.OpenAsync(PageSettings.GetProhibitedGoodsLstURl());
+                        var url = string.Empty;
+                        if (App.IsArabic)
+                        {
+                            url = "https://zatca.gov.sa/ar/RulesRegulations/Taxes/Pages/customs_individual/Prohibited-goods.aspx";
+                        }
+                        else
+                        {
+                            url = "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/customs_individual/Prohibited-goods.aspx";
+
+                        }
+
+                        await Launcher.OpenAsync(new Uri(url));
                     }
                     catch (Exception)
                     {

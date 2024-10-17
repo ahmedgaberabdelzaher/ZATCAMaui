@@ -55,7 +55,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
         }
 
 
-        public async void OpenBrowser(Uri uri)
+        public async Task OpenBrowser(Uri uri)
         {
             await Launcher.OpenAsync(uri);
         }
@@ -108,11 +108,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
         {
             get
             {
-                return new Command<MenuModel>((menuItem) =>
+                return new Command<MenuModel>(async(menuItem) =>
                 {
                     if (menuItem.ID.ToLower().Contains("http"))
                     {
-                        OpenBrowser(new Uri(menuItem.ID));
+                       await OpenBrowser(new Uri(menuItem.ID));
                         return;
                     }
                     if (menuItem.ID.Contains("ChangeLang"))
@@ -120,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
                         ChangeLanguage();
                         return;
                     }
-                    _navigationService.NavigateTo(menuItem.ID);
+                  await  _navigationService.NavigateTo(menuItem.ID);
                 });
             }
         }
