@@ -11,8 +11,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:sfconverter="clr-namespace:ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister"
-    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:view="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker" xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     x:Name="page"
     Title="TinOutletDeRegRequestPageView"
     ios:Page.UseSafeArea="true"
@@ -89,16 +88,9 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-                        <IndicatorView 
-                            IndicatorColor="LightGray"
-                            IndicatorSize="16"
-                            SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                            HorizontalOptions="End"
-                            MaximumVisible="{Binding MaxIndex}"
-                            Count="{Binding MaxIndex}"
-                            VerticalOptions="CenterAndExpand"
-                            Position="{Binding CurrentIndex}"
-                            />
+                        <commonView:PageIndicatorView Margin="20,10,20,0" MaxNum="{Binding MaxIndex}"
+                                                MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}"
+                                                VerticalOptions="CenterAndExpand" DotSize="12" HorizontalOptions="End"/>
                     </Grid>
 
                     <Grid Grid.Row="1" VerticalOptions="FillAndExpand">

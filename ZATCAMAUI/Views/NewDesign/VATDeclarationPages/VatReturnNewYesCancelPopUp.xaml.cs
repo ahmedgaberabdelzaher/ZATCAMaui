@@ -13,6 +13,7 @@ public partial class VatReturnNewYesCancelPopUp : PopupPage
 	{
 		InitializeComponent();
 		_confirmationText = confirmationText.Text = ConfirmationText;
+		FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
 	}
 
 	private async void OnOkayButtonClicked(object sender, EventArgs e)

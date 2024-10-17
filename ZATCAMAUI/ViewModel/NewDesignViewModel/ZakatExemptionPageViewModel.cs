@@ -89,7 +89,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             }
         }
 
-        private int _currenrIndex = 0;
+        private int _currenrIndex = 1;
 
         public int CurrentIndex
         {
@@ -1223,7 +1223,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     //EnableEntityDetailsView();
                     //EnableEntityDetailsConButton();
 
-                    CurrentIndex = 0;
+                    CurrentIndex = 1;
                     // IsBackVisible = true;
                     ZakatExcemptionTPDetailsVisible = false;
                     ZakatExemptionYearVisible = true;
@@ -1249,7 +1249,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     //EnableEntityDetailsView();
                     //EnableEntityDetailsConButton();
 
-                    CurrentIndex = 1;
+                    CurrentIndex = 2;
                     // IsBackVisible = true;
                     ZakatExcemptionTPDetailsVisible = false;
                     ZakatExemptionYearVisible = false;
@@ -1354,7 +1354,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     }
                     break;
             }
-            CurrentIndex = 2;
+            CurrentIndex = 3;
 
             ZakatExemptionYearVisible = false;
             EntityInformationVisible = false;
@@ -1412,7 +1412,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 {
                     if (ZakatAttachmentConButtonEnabled)
                     {
-                        CurrentIndex = 3;
+                        CurrentIndex = 4;
 
                         ZakatExemptionYearVisible = false;
                         EntityInformationVisible = false;
@@ -1474,7 +1474,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             {
                 if (ZakatJustificationConButtonEnabled)
                 {
-                    CurrentIndex = 4;
+                    CurrentIndex = 5;
                     ZakatExemptionYearVisible = false;
                     EntityInformationVisible = false;
                     AttachmentInformationVisible = false;
@@ -1503,7 +1503,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
 
         private void GoBackFromEntityDetailsView()
         {
-            CurrentIndex = 0;
+            CurrentIndex = 1;
             // IsBackVisible = true;
             ZakatExemptionYearVisible = true;
             EntityInformationVisible = false;
@@ -1517,7 +1517,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
 
         private void GoBackFromAttachmentsView()
         {
-            CurrentIndex = 1;
+            CurrentIndex = 2;
             // IsBackVisible = true;
             ZakatExemptionYearVisible = false;
             EntityInformationVisible = true;
@@ -1531,7 +1531,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
         
         private void GoBackFromJustification()
         {
-            CurrentIndex = 2;
+            CurrentIndex = 3;
             // IsBackVisible = true;
             ZakatExemptionYearVisible = false;
             EntityInformationVisible = false;
@@ -1552,7 +1552,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             }
             else
             {
-                CurrentIndex = 3;
+                CurrentIndex = 4;
                 // IsBackVisible = true;
                 ZakatExemptionYearVisible = false;
                 EntityInformationVisible = false;
@@ -1566,7 +1566,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
          
         private void GoBackFromExcepmtionYearPAge()
         {
-            CurrentIndex = 0;
+            CurrentIndex = 1;
             // IsBackVisible = true;
             ZakatExcemptionTPDetailsVisible = true;
             ZakatExemptionYearVisible = false;
@@ -2490,7 +2490,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
         {
             zakatExemptionModel = zakatExemptionModels;
             PageOnEditMode = zakatExemptionModel.d.OpenPageOnEdit;
-            CurrentIndex = 4;
+            CurrentIndex = 5;
             ZakatExemptionYearVisible = false;
             EntityInformationVisible = false;
             AttachmentInformationVisible = false;

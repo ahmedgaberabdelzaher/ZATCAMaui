@@ -292,7 +292,7 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<ChangeFillingPeriodViewModel>()
                 .AddSingleton<ContractReleaseViewModel>()
                 .AddSingleton<FilesUploadPopUpViewModel>()
-                .AddSingleton<InstructionsBottomPopUpViewModel>()
+                .AddTransient<InstructionsBottomPopUpViewModel>()
                 .AddSingleton<EstablishmentSignUPPageViewModel>()
                 .AddSingleton<SignUpForEstablishmentPageViewModel>()
                 .AddSingleton<AccountCreatedSuccessfullyPageViewModel>()

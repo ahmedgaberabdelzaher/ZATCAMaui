@@ -561,6 +561,7 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
+
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
@@ -579,8 +580,13 @@
 
                             </custom:CustomSfTextInputView.TextInputView>
 
+                             <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
+                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
                             <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Aspect="AspectFit" Source="newui_ic_pdf" />
+                                <Image Aspect="AspectFit" Source="newui_ic_pdf"
+                                       Style="{StaticResource SmallIcon}"/>
                             </inputLayout:SfTextInputLayout.TrailingView>
 
                         </custom:CustomSfTextInputView>

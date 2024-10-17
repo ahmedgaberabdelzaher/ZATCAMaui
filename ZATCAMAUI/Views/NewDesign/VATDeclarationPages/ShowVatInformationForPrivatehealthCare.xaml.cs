@@ -1,8 +1,5 @@
 ﻿using Mopups.Pages;
 using Mopups.Services;
-using Syncfusion.Maui.Picker;
-using System.Globalization;
-using System.Resources;
 
 namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 {
@@ -13,6 +10,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         public ShowVatInformationForPrivatehealthCare()
         {
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
 
         private void DoneButtonClicked(object sender, EventArgs e)

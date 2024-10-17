@@ -101,7 +101,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         #endregion
 
-        private int _currenrIndex = 0;
+        private int _currenrIndex = 1;
 
         public int CurrentIndex
         {

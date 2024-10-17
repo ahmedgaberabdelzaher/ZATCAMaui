@@ -3,11 +3,11 @@
 
     public enum VATReturnUpdatedUITabEnum
     {
-        Instrunction = 0,
-        VATReturns = 1,
-        Sales = 2,
-        Purchase = 3,
-        TotalVat = 4,
-        Summery = 5
+        Instrunction = 1,
+        VATReturns = 2,
+        Sales = 3,
+        Purchase = 4,
+        TotalVat = 5,
+        Summery = 6
     }
 }

@@ -28,7 +28,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged(nameof(CurrentIndex));
             }
         }
-        private int _currenrIndex = 0;
+        private int _currenrIndex = 1;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -279,6 +279,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #region Commands
         public ICommand OnNextButtonClick { get; private set; }
         public ICommand OnBackButtonClick { get; private set; }
+
+        public ICommand OnAppearingZakatFormPageCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    await LoadZakatForm5Data();
+                    App.IsComingFromSleepMode = false;
+                    NextText = AppResources.ZZNext;
+                    setCurrentTab();
+
+                });
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -1820,7 +1836,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         IsConditionRadio = true;
 
                         string CalenderType = ZakatForm5DataResult.Incotyp.Substring(0, 1);
-                        if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+                        if (CalenderType.Equals("H"))
                         {
                             ZakatFromDate = ZakatForm5DataResult.AFromDt.ToString("dd-MM-yyyy", new CultureInfo("ar-SA"));
                             string[] dts = ZakatFromDate.Split('-');
@@ -3033,11 +3049,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
                 IsLoading = false;
             }
 
@@ -3048,35 +3061,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+                if (App.TP != null)
+                    App.TP = null;
+                if (App.PreviousIsArabic)
                 {
-                    if (App.TP != null)
-                        App.TP = null;
-                    if (App.PreviousIsArabic)
+                    string langName = "ar-SA";
+                    AppResources.Culture = new CultureInfo(langName);
+                }
+                else
+                {
+                    string langName = "en-US";
+                    AppResources.Culture = new CultureInfo(langName);
+                }
+                var _navigation = Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
+                {
+                    if (item.GetType().Name == App.SFLoginPageView)
                     {
-                        string langName = "ar-SA";
-                        AppResources.Culture = new CultureInfo(langName);
+                        _navigation.RemovePage(item);
+                        break;
                     }
-                    else
-                    {
-                        string langName = "en-US";
-                        AppResources.Culture = new CultureInfo(langName);
-                    }
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
-                    {
-                        if (item.GetType().Name == App.SFLoginPageView)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
-                    }
-                    //_navigationService.NavigateTo(App.SFLoginPageView);
-                    //_navigation.NavigationStack.ToList().Clear();
+                }
 
-                    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                    _navigation.NavigationStack.ToList().Clear();
-                });
+                _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                _navigation.NavigationStack.ToList().Clear();
             }
         }
 

@@ -12,8 +12,9 @@
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="http://schemas.syncfusion.com/maui"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView" xmlns:inputLayout="http://schemas.syncfusion.com/maui"
+    xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -191,15 +192,14 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
-                                <IndicatorView 
-                                    IndicatorColor="LightGray"
-                                    IndicatorSize="16"
-                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                <commonView:PageIndicatorView
+                                    Margin="20,25,20,0"
+                                    Completed="{Binding MarkComplete}"
+                                    DotSize="12"
                                     HorizontalOptions="End"
-                                    MaximumVisible="{Binding MaxIndex}"
-                                    Count="{Binding MaxIndex}"
+                                    MaxNum="{Binding MaxIndex}"
+                                    MinNum="{Binding CurrentIndex}"
                                     VerticalOptions="CenterAndExpand"
-                                    Position="{Binding CurrentIndex}"
                                 />
                             </Grid>
 
@@ -221,7 +221,6 @@
                                         Style="{StaticResource PageTitleBlack}"
                                         Text="{x:Static ResourceManager:AppResources.VRReviewReason}" />
                                     <Label
-                                            
                                         Margin="0,-10,0,15"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
@@ -354,11 +353,11 @@
                                     <Grid Grid.Row="4" Margin="0,10,0,10">
                                         <StackLayout>
                                             <Label
-                                            Grid.Row="0"
-                                            FontFamily="{StaticResource SomarLight}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}"
-                                            Text="{x:Static ResourceManager:AppResources.VRRequestDate}" />
+                                                Grid.Row="0"
+                                                FontFamily="{StaticResource SomarLight}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}"
+                                                Text="{x:Static ResourceManager:AppResources.VRRequestDate}" />
 
                                             <Border
                                                 Grid.Row="1"
@@ -420,12 +419,10 @@
                                     IsVisible="{Binding ReportDetailsVisible}"
                                     VerticalOptions="FillAndExpand">
                                     <Label
-                                       
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource PageTitleBlack}"
                                         Text="{x:Static ResourceManager:AppResources.VRReportDetails}" />
                                     <Label
-                                       
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRCompleteTheBelowDetails}" />
@@ -435,7 +432,7 @@
                                         Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                                     <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand">
-                                        <StackLayout VerticalOptions="FillAndExpand" Grid.Row="1">
+                                        <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand">
 
                                             <Label
                                                 Grid.Row="0"
@@ -484,7 +481,6 @@
                                             </Label.FormattedText>
                                         </Label>
                                         <Label
-                                            
                                             HorizontalOptions="StartAndExpand"
                                             LineHeight="0.8"
                                             Style="{StaticResource ButtonLabelBlackBold}"
@@ -899,11 +895,11 @@
                                             ItemTapped="Dispute_Amount_ListView_ItemTapped"
                                             ItemsSource="{Binding DisputeAmountPaymentOptions}"
                                             ScrollBarVisibility="Never"
+                                            SelectedItem="{Binding DisputeSelectedItem, Mode=TwoWay}"
                                             SelectionBackground="Transparent"
                                             SelectionMode="Single"
-                                            VerticalOptions="StartAndExpand"
-                                            SelectedItem="{Binding DisputeSelectedItem, Mode=TwoWay}">
-                                            
+                                            VerticalOptions="StartAndExpand">
+
                                             <listView:SfListView.ItemTemplate>
 
                                                 <DataTemplate>
@@ -1262,7 +1258,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VRNewAttachment}"  Style="{StaticResource MicroGrayLabelStyle}"/>
+                                                    <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VRNewAttachment}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -1834,7 +1830,10 @@
 
                                     </Grid>
 
-                                    <Grid Grid.Row="1" ColumnSpacing="5" IsVisible="{Binding IsDeclarationViewEnabledNew}">
+                                    <Grid
+                                        Grid.Row="1"
+                                        ColumnSpacing="5"
+                                        IsVisible="{Binding IsDeclarationViewEnabledNew}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
@@ -1870,28 +1869,28 @@
                                             </Grid.ColumnDefinitions>
 
                                             <custom:CheckboxCustom
-                                            Grid.Column="0"
-                                            CheckChanged="DecCheckBox_CheckedChanged"
-                                            IsChecked="{Binding IsDECCheckBox}"
-                                            Style="{StaticResource CheckboxHeightWidth32}"
-                                            VerticalOptions="CenterAndExpand" />
+                                                Grid.Column="0"
+                                                CheckChanged="DecCheckBox_CheckedChanged"
+                                                IsChecked="{Binding IsDECCheckBox}"
+                                                Style="{StaticResource CheckboxHeightWidth32}"
+                                                VerticalOptions="CenterAndExpand" />
                                             <Label
-                                            Grid.Column="1"
-                                            HorizontalOptions="StartAndExpand"
-                                            Text="{x:Static ResourceManager:AppResources.VRDECCheckBox}"
-                                            VerticalOptions="CenterAndExpand">
+                                                Grid.Column="1"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{x:Static ResourceManager:AppResources.VRDECCheckBox}"
+                                                VerticalOptions="CenterAndExpand">
 
                                                 <Label.Triggers>
                                                     <DataTrigger
-                                                    Binding="{Binding IsDECCheckBox}"
-                                                    TargetType="Label"
-                                                    Value="True">
+                                                        Binding="{Binding IsDECCheckBox}"
+                                                        TargetType="Label"
+                                                        Value="True">
                                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                                                     </DataTrigger>
                                                     <DataTrigger
-                                                    Binding="{Binding IsDECCheckBox}"
-                                                    TargetType="Label"
-                                                    Value="False">
+                                                        Binding="{Binding IsDECCheckBox}"
+                                                        TargetType="Label"
+                                                        Value="False">
                                                         <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                                     </DataTrigger>
                                                 </Label.Triggers>
@@ -1899,70 +1898,70 @@
                                         </Grid>
 
                                         <Grid
-                                        Grid.Row="2"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsVisible="{Binding IsDeclarationViewEnabled}">
+                                            Grid.Row="2"
+                                            HorizontalOptions="FillAndExpand"
+                                            IsVisible="{Binding IsDeclarationViewEnabled}">
 
                                             <Border
-                                            Margin="0,20,0,0"
-                                            Padding="10,3,10,3"
-                                            HorizontalOptions="FillAndExpand"
-                                            StrokeShape="RoundRectangle 12,12,12,12"
-                                            Style="{StaticResource GreyBorderFrame}">
+                                                Margin="0,20,0,0"
+                                                Padding="10,3,10,3"
+                                                HorizontalOptions="FillAndExpand"
+                                                StrokeShape="RoundRectangle 12,12,12,12"
+                                                Style="{StaticResource GreyBorderFrame}">
                                                 <Label
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource ValueLabelBlack}"
-                                                Text="{x:Static ResourceManager:AppResources.VRDECDesc}" />
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    Text="{x:Static ResourceManager:AppResources.VRDECDesc}" />
 
                                             </Border>
                                         </Grid>
 
                                         <Grid
-                                        Grid.Row="3"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsVisible="{Binding IsDeclarationViewEnabled}">
+                                            Grid.Row="3"
+                                            HorizontalOptions="FillAndExpand"
+                                            IsVisible="{Binding IsDeclarationViewEnabled}">
 
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                                 <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
                                             <Label
-                                            Grid.Row="0"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}">
+                                                Grid.Row="0"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.VRIDType}"  Style="{StaticResource MicroGrayLabelStyle}"/>
+                                                        <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VRIDType}" />
                                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
 
                                             <Border
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2"
-                                            Margin="0,5,0,0"
-                                            Padding="10,0,10,0"
-                                            HorizontalOptions="FillAndExpand"
-                                            Stroke="Gray"
-                                            StrokeShape="RoundRectangle 12,12,12,12">
-                                                <StackLayout
+                                                Grid.Row="1"
+                                                Grid.ColumnSpan="2"
+                                                Margin="0,5,0,0"
+                                                Padding="10,0,10,0"
                                                 HorizontalOptions="FillAndExpand"
-                                                Orientation="Horizontal"
-                                                VerticalOptions="CenterAndExpand">
-                                                    <Label
+                                                Stroke="Gray"
+                                                StrokeShape="RoundRectangle 12,12,12,12">
+                                                <StackLayout
                                                     HorizontalOptions="FillAndExpand"
-                                                    IsEnabled="False"
-                                                    Style="{StaticResource BodyLabelBlack}"
-                                                    Text="{Binding IDType}"
-                                                    VerticalOptions="CenterAndExpand" />
+                                                    Orientation="Horizontal"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <Label
+                                                        HorizontalOptions="FillAndExpand"
+                                                        IsEnabled="False"
+                                                        Style="{StaticResource BodyLabelBlack}"
+                                                        Text="{Binding IDType}"
+                                                        VerticalOptions="CenterAndExpand" />
                                                     <Image
-                                                    Margin="12"
-                                                    HeightRequest="24"
-                                                    Source="arrowDropdown.png"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    WidthRequest="24">
+                                                        Margin="12"
+                                                        HeightRequest="24"
+                                                        Source="arrowDropdown.png"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="24">
                                                         <Image.GestureRecognizers>
                                                             <TapGestureRecognizer Command="{Binding IdTypeSpinnerTapped}" />
                                                         </Image.GestureRecognizers>
@@ -1973,9 +1972,9 @@
                                         </Grid>
 
                                         <Grid
-                                        Grid.Row="4"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsVisible="{Binding IsDeclarationViewEnabled}">
+                                            Grid.Row="4"
+                                            HorizontalOptions="FillAndExpand"
+                                            IsVisible="{Binding IsDeclarationViewEnabled}">
 
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
@@ -1991,33 +1990,33 @@
                                                     <RowDefinition Height="auto" />
                                                 </Grid.RowDefinitions>
                                                 <Label
-                                                Grid.Row="0"
-                                                FontFamily="{StaticResource SomarRegular}"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}">
+                                                    Grid.Row="0"
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource MicroGrayLabelStyle}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{x:Static ResourceManager:AppResources.VRIDNumber}"  Style="{StaticResource MicroGrayLabelStyle}"/>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VRIDNumber}" />
                                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
 
                                                 <Border
-                                                Grid.Row="1"
-                                                Margin="0,0,0,10"
-                                                Style="{StaticResource GreyBorderFrame}">
+                                                    Grid.Row="1"
+                                                    Margin="0,0,0,10"
+                                                    Style="{StaticResource GreyBorderFrame}">
 
                                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                         <custom:GAZTBorderlessEntry
-                                                        HeightRequest="48"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                              iOS=Default}"
-                                                        Style="{StaticResource BodyLabelBlack}"
-                                                        Text="{Binding IDNumber}"
-                                                        TextChanged="IdNumberTextChanged"
-                                                        Unfocused="OnIDNumberFocusChanged" />
+                                                            HeightRequest="48"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Keyboard="{OnPlatform Android=Numeric,
+                                                                                  iOS=Default}"
+                                                            Style="{StaticResource BodyLabelBlack}"
+                                                            Text="{Binding IDNumber}"
+                                                            TextChanged="IdNumberTextChanged"
+                                                            Unfocused="OnIDNumberFocusChanged" />
 
                                                     </StackLayout>
 
@@ -2026,30 +2025,30 @@
                                             </Grid>
 
                                             <Grid
-                                            Grid.Row="0"
-                                            Grid.Column="1"
-                                            IsVisible="{Binding IsDOBVisible}">
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                IsVisible="{Binding IsDOBVisible}">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
                                                     <RowDefinition Height="auto" />
                                                 </Grid.RowDefinitions>
                                                 <Label
-                                                Grid.Row="0"
-                                                FontFamily="{StaticResource SomarRegular}"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}">
+                                                    Grid.Row="0"
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource MicroGrayLabelStyle}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{x:Static ResourceManager:AppResources.VRDateOfBirth}"  Style="{StaticResource MicroGrayLabelStyle}"/>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VRDateOfBirth}" />
                                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
 
                                                 <Border
-                                                Grid.Row="1"
-                                                Margin="0,0,0,10"
-                                                Style="{StaticResource GreyBorderFrame}">
+                                                    Grid.Row="1"
+                                                    Margin="0,0,0,10"
+                                                    Style="{StaticResource GreyBorderFrame}">
 
                                                     <Grid HorizontalOptions="FillAndExpand">
                                                         <Grid.ColumnDefinitions>
@@ -2057,20 +2056,20 @@
                                                             <ColumnDefinition Width="Auto" />
                                                         </Grid.ColumnDefinitions>
                                                         <custom:GAZTBorderlessEntry
-                                                        Grid.Column="0"
-                                                        HeightRequest="48"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        IsEnabled="False"
-                                                        Style="{StaticResource BodyLabelBlack}"
-                                                        Text="{Binding PickedDateFullMonth, StringFormat='{0:dd MMM yyyy}'}"
-                                                        VerticalOptions="FillAndExpand" />
+                                                            Grid.Column="0"
+                                                            HeightRequest="48"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            IsEnabled="False"
+                                                            Style="{StaticResource BodyLabelBlack}"
+                                                            Text="{Binding PickedDateFullMonth, StringFormat='{0:dd MMM yyyy}'}"
+                                                            VerticalOptions="FillAndExpand" />
 
                                                         <Image
-                                                        Grid.Column="1"
-                                                        Margin="5,0,5,0"
-                                                        HeightRequest="20"
-                                                        Source="calendar.png"
-                                                        WidthRequest="20">
+                                                            Grid.Column="1"
+                                                            Margin="5,0,5,0"
+                                                            HeightRequest="20"
+                                                            Source="calendar.png"
+                                                            WidthRequest="20">
                                                             <Image.GestureRecognizers>
                                                                 <TapGestureRecognizer Command="{Binding ShowDatePicker}" />
                                                             </Image.GestureRecognizers>
@@ -2082,40 +2081,40 @@
                                         </Grid>
 
                                         <Grid
-                                        Grid.Row="5"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsVisible="{Binding IsDeclarationViewEnabled}">
+                                            Grid.Row="5"
+                                            HorizontalOptions="FillAndExpand"
+                                            IsVisible="{Binding IsDeclarationViewEnabled}">
 
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                                 <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
                                             <Label
-                                            Grid.Row="0"
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}">
+                                                Grid.Row="0"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{x:Static ResourceManager:AppResources.VRContactPersonName}"  Style="{StaticResource MicroGrayLabelStyle}"/>
+                                                        <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{x:Static ResourceManager:AppResources.VRContactPersonName}" />
                                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
 
                                             <Border
-                                            Grid.Row="1"
-                                            Margin="0,0,0,10"
-                                            Style="{StaticResource GreyBorderFrame}">
+                                                Grid.Row="1"
+                                                Margin="0,0,0,10"
+                                                Style="{StaticResource GreyBorderFrame}">
                                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                     <custom:GAZTBorderlessEntry
-                                                    x:Name="ContactPersonEntry"
-                                                    HeightRequest="48"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    IsReadOnly="False"
-                                                    Style="{StaticResource BodyLabelBlack}"
-                                                    Text="{Binding ContactPersonName}"
-                                                    Unfocused="ContactPersonTextUnFocus" />
+                                                        x:Name="ContactPersonEntry"
+                                                        HeightRequest="48"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        IsReadOnly="False"
+                                                        Style="{StaticResource BodyLabelBlack}"
+                                                        Text="{Binding ContactPersonName}"
+                                                        Unfocused="ContactPersonTextUnFocus" />
                                                 </StackLayout>
 
                                             </Border>
@@ -2138,7 +2137,7 @@
 
                                 </Grid>
 
-                                <StackLayout 
+                                <StackLayout
                                     Margin="20,10,20,0"
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"

@@ -8,14 +8,14 @@
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="BankAccountAddorUpdateIBANPageView"
-    BackgroundImageSource="partials_background.png"
     ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
@@ -73,27 +73,26 @@
 
                 <Grid RowDefinitions="*">
 
-                    <ScrollView HorizontalOptions="FillAndExpand"
-                                VerticalScrollBarVisibility="Never"
-                                VerticalOptions="FillAndExpand">
+                    <ScrollView
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never">
 
-                        <StackLayout HorizontalOptions="FillAndExpand"
-                                     Spacing="10"
-                              VerticalOptions="FillAndExpand">
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Spacing="10"
+                            VerticalOptions="FillAndExpand">
 
-                            <IndicatorView 
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                HorizontalOptions="End"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Count="{Binding MaxIndex}"
-                                VerticalOptions="Start"
-                                Position="{Binding CurrentIndex}"
-                                />
-                             <StackLayout
-                                IsVisible="{Binding NewFormVisible}"
+                            <commonView:PageIndicatorView
+                                Completed="{Binding MarkComplete}"
+                                DotSize="16"
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}"
+                                VerticalOptions="Start" />
+
+                            <StackLayout
                                 HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NewFormVisible}"
                                 Spacing="10"
                                 VerticalOptions="FillAndExpand">
 
@@ -107,10 +106,9 @@
                                     Style="{StaticResource BodyLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}" />
 
-                                <BoxView
-                                    Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                <!--  IBANAccName   -->
+                                <!--  IBANAccName  -->
                                 <StackLayout Spacing="0">
 
                                     <!--  IBANAccName Label  -->
@@ -123,17 +121,17 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                     <!--  IBANAccName Entry  -->
-                                    <custom:CustomSfTextInputView >
+                                    <!--  IBANAccName Entry  -->
+                                    <custom:CustomSfTextInputView>
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                IsEnabled="{Binding isNameEnabled}"
                                                 x:Name="AccountOwnerName"
+                                                IsEnabled="{Binding isNameEnabled}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.IBANAccName}"
+                                                Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding AccountOwnerName}"
                                                 TextChanged="AccountOwnerNameTextChanged"
                                                 TextColor="{StaticResource NeutralBlack}"
-                                                Style="{StaticResource DefaultEntry}"
                                                 Unfocused="AccountOwnerName_Unfocused" />
 
                                         </custom:CustomSfTextInputView.TextInputView>
@@ -158,12 +156,12 @@
                                     <custom:CustomSfTextInputView>
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                Placeholder="{x:Static ResourceManager:AppResources.IBANIdType}"
-                                                IsReadOnly="True"
                                                 InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Placeholder="{x:Static ResourceManager:AppResources.IBANIdType}"
+                                                Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding SelectedIDType}"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                Style="{StaticResource DefaultEntry}"/>
+                                                TextColor="{StaticResource NeutralBlack}" />
 
                                         </custom:CustomSfTextInputView.TextInputView>
 
@@ -171,7 +169,7 @@
                                             <TapGestureRecognizer Command="{Binding ShowIDTypePicker}" />
                                         </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                                         <inputLayout:SfTextInputLayout.TrailingView>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image Aspect="AspectFit" Source="greyDropDown" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
 
@@ -190,7 +188,7 @@
                                     <Label Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Style="{StaticResource ValueLabelBlack}"  Text="{Binding IdNumberTitle}" />
+                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding IdNumberTitle}" />
                                                 <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -200,30 +198,30 @@
                                     <custom:CustomSfTextInputView>
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
+                                                x:Name="EntryIDNumber"
                                                 IsEnabled="{Binding isNameEnabled}"
                                                 Placeholder="{Binding IdNumberTitle}"
-                                                Text="{Binding SelectedIDNumber}"
-                                                x:Name="EntryIDNumber"
-                                                TextColor="{StaticResource NeutralBlack}"
                                                 Style="{StaticResource DefaultEntry}"
-                                                Unfocused="EntryIDNumber_Unfocused" >
+                                                Text="{Binding SelectedIDNumber}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                Unfocused="EntryIDNumber_Unfocused">
 
-                                                 <custom:GAZTBorderlessEntry.Triggers>
+                                                <custom:GAZTBorderlessEntry.Triggers>
 
                                                     <DataTrigger
-                                                            Binding="{Binding IsDropdownVisibile}"
-                                                            TargetType="custom:GAZTBorderlessEntry"
-                                                            Value="true">
-                                                            <Setter Property="IsReadOnly" Value="True" />
-                                                            <Setter Property="InputTransparent" Value="True" />
+                                                        Binding="{Binding IsDropdownVisibile}"
+                                                        TargetType="custom:GAZTBorderlessEntry"
+                                                        Value="true">
+                                                        <Setter Property="IsReadOnly" Value="True" />
+                                                        <Setter Property="InputTransparent" Value="True" />
                                                     </DataTrigger>
 
                                                     <DataTrigger
-                                                            Binding="{Binding IsDropdownVisibile}"
-                                                            TargetType="custom:GAZTBorderlessEntry"
-                                                            Value="false">
-                                                            <Setter Property="IsReadOnly" Value="False" />
-                                                            <Setter Property="InputTransparent" Value="False" />
+                                                        Binding="{Binding IsDropdownVisibile}"
+                                                        TargetType="custom:GAZTBorderlessEntry"
+                                                        Value="false">
+                                                        <Setter Property="IsReadOnly" Value="False" />
+                                                        <Setter Property="InputTransparent" Value="False" />
                                                     </DataTrigger>
 
                                                 </custom:GAZTBorderlessEntry.Triggers>
@@ -232,12 +230,14 @@
 
                                         </custom:CustomSfTextInputView.TextInputView>
 
-                                          <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image Aspect="AspectFit" Source="greyDropDown"
-                                                   IsVisible="{Binding IsDropdownVisibile}"/>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image
+                                                Aspect="AspectFit"
+                                                IsVisible="{Binding IsDropdownVisibile}"
+                                                Source="greyDropDown" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
 
-                                         <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding ShowIDNumberPicker}" />
                                         </inputLayout:SfTextInputLayout.GestureRecognizers>
 
@@ -249,12 +249,12 @@
 
                                 </StackLayout>
 
-                                <Border Padding="10" 
-                                        Stroke="#bbbbbb"
-                                        StrokeShape="RoundRectangle 10,10,10,10">
+                                <Border
+                                    Padding="10"
+                                    Stroke="#bbbbbb"
+                                    StrokeShape="RoundRectangle 10,10,10,10">
 
-                                    <Grid  ColumnDefinitions="auto,*"
-                                           ColumnSpacing="10">
+                                    <Grid ColumnDefinitions="auto,*" ColumnSpacing="10">
 
                                         <Image
                                             HorizontalOptions="Start"
@@ -277,13 +277,13 @@
                                     </Grid>
                                 </Border>
 
-                                <Border Padding="10" 
-                                        IsVisible="{Binding IsIdInfoVisibility}"
-                                        Stroke="#bbbbbb"
-                                        StrokeShape="RoundRectangle 10,10,10,10">
+                                <Border
+                                    Padding="10"
+                                    IsVisible="{Binding IsIdInfoVisibility}"
+                                    Stroke="#bbbbbb"
+                                    StrokeShape="RoundRectangle 10,10,10,10">
 
-                                    <Grid ColumnDefinitions="auto,*"
-                                        ColumnSpacing="10">
+                                    <Grid ColumnDefinitions="auto,*" ColumnSpacing="10">
 
                                         <Image
                                             HorizontalOptions="Start"
@@ -308,13 +308,13 @@
                                 </Border>
 
                                 <!--  IBAN  -->
-                                <StackLayout Spacing="0" >
+                                <StackLayout Spacing="0">
 
                                     <!--  IBAN Label  -->
                                     <Label Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Style="{StaticResource ValueLabelBlack}"  Text="{x:Static ResourceManager:AppResources.IBAN}" />
+                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.IBAN}" />
                                                 <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -324,14 +324,14 @@
                                     <custom:CustomSfTextInputView>
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                 x:Name="BankAccountIBAN"
+                                                x:Name="BankAccountIBAN"
                                                 Placeholder="{x:Static ResourceManager:AppResources.IBAN}"
+                                                Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding IBANValue}"
                                                 TextChanged="IBANTextChanged"
                                                 TextColor="{StaticResource NeutralBlack}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Unfocused="IBANFocusChnaged" >
-                                                
+                                                Unfocused="IBANFocusChnaged">
+
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:EntryLengthValidatorBehavior MaxLength="24" />
                                                     <xct:EventToCommandBehavior Command="{Binding IBANNumberUnfocused}" EventName="Completed" />
@@ -345,14 +345,14 @@
 
                                 </StackLayout>
 
-                                 <!--  IBANBankName  -->
-                                <StackLayout Spacing="0" IsEnabled="{Binding IsIBanDropDownEnabled}">
+                                <!--  IBANBankName  -->
+                                <StackLayout IsEnabled="{Binding IsIBanDropDownEnabled}" Spacing="0">
 
                                     <!--  IBANBankName Label  -->
                                     <Label Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.IBANBankName}"/>
+                                                <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.IBANBankName}" />
                                                 <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -362,20 +362,20 @@
                                     <custom:CustomSfTextInputView>
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                Placeholder="{x:Static ResourceManager:AppResources.IBANBankName}"
                                                 InputTransparent="True"
                                                 IsReadOnly="True"
+                                                Placeholder="{x:Static ResourceManager:AppResources.IBANBankName}"
+                                                Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding SelectedBankNameField}"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                Style="{StaticResource DefaultEntry}" />
+                                                TextColor="{StaticResource NeutralBlack}" />
 
                                         </custom:CustomSfTextInputView.TextInputView>
 
-                                          <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image Aspect="AspectFit" Source="greyDropDown"/>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
 
-                                         <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding ShowBankNamePicker}" />
                                         </inputLayout:SfTextInputLayout.GestureRecognizers>
 
@@ -387,9 +387,10 @@
 
                                 </StackLayout>
 
-                                <Grid RowDefinitions="auto,*,auto,*"
-                                      RowSpacing="10"
-                                      IsVisible="{Binding AttachmentVisible}">
+                                <Grid
+                                    IsVisible="{Binding AttachmentVisible}"
+                                    RowDefinitions="auto,*,auto,*"
+                                    RowSpacing="10">
 
                                     <listView:SfListView
                                         Grid.Row="0"
@@ -406,8 +407,7 @@
 
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid HorizontalOptions="FillAndExpand"
-                                                        RowDefinitions="auto,auto">
+                                                <Grid HorizontalOptions="FillAndExpand" RowDefinitions="auto,auto">
 
                                                     <Border
                                                         Grid.Row="0"
@@ -484,9 +484,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Border
-                                            Padding="10"
-                                            Style="{StaticResource SfStyleGreyBorderFrame}">
+                                        <Border Padding="10" Style="{StaticResource SfStyleGreyBorderFrame}">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label
                                                     FontFamily="{StaticResource SomarRegular}"
@@ -530,9 +528,7 @@
                                             <DataTemplate>
                                                 <StackLayout HorizontalOptions="FillAndExpand">
 
-                                                    <Border
-                                                        Padding="12"
-                                                        Style="{StaticResource SfStyleGreyBorderFrame}">
+                                                    <Border Padding="12" Style="{StaticResource SfStyleGreyBorderFrame}">
 
                                                         <Grid>
                                                             <Grid.RowDefinitions>
@@ -646,31 +642,30 @@
                                 </Grid>
 
                                 <buttons:SfButton
-                                        Command="{Binding ContinueButtonTapped}"
-                                        Style="{StaticResource PrimaryButtonStyle}"
-                                        Text="{x:Static ResourceManager:AppResources.CRContinue}"/>
+                                    Command="{Binding ContinueButtonTapped}"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Text="{x:Static ResourceManager:AppResources.CRContinue}" />
 
-                             </StackLayout>
+                            </StackLayout>
 
-                            <StackLayout HorizontalOptions="FillAndExpand"
-                                       IsVisible="{Binding SummaryVisible}"
-                                        Spacing="10"
-                                        VerticalOptions="FillAndExpand">
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding SummaryVisible}"
+                                Spacing="10"
+                                VerticalOptions="FillAndExpand">
 
-                               <Label
-                                    LineHeight="0"
+                                <Label
                                     HorizontalOptions="StartAndExpand"
+                                    LineHeight="0"
                                     Style="{StaticResource PageTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.CRSummary}" />
 
                                 <Label
-
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource BodyLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.CRReviewthebelowinformation}" />
 
-                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}"
-                                         Margin="0,0,0,10"/>
+                                <BoxView Margin="0,0,0,10" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                                 <Border Style="{StaticResource GreyBorderFrameWithShadow}">
 
@@ -843,17 +838,21 @@
 
 
 
-                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="10">
+                                        <StackLayout
+                                            Orientation="Horizontal"
+                                            Spacing="10"
+                                            VerticalOptions="FillAndExpand">
 
                                             <custom:CheckboxCustom
-                                                    x:Name="chkDeclaration"
-                                                    HeightRequest="32"
-                                                    IsChecked="{Binding IsInstrunctionChecked}"
-                                                    VerticalOptions="Start"
-                                                    WidthRequest="32" />
-                                            <Label x:Name="AckText"
-                                                   Style="{StaticResource BodyLabelGrey}"
-                                                   HorizontalOptions="FillAndExpand"/>
+                                                x:Name="chkDeclaration"
+                                                HeightRequest="32"
+                                                IsChecked="{Binding IsInstrunctionChecked}"
+                                                VerticalOptions="Start"
+                                                WidthRequest="32" />
+                                            <Label
+                                                x:Name="AckText"
+                                                HorizontalOptions="FillAndExpand"
+                                                Style="{StaticResource BodyLabelGrey}" />
                                         </StackLayout>
 
                                     </StackLayout>

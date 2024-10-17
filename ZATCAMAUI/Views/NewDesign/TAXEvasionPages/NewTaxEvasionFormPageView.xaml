@@ -74,7 +74,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -95,7 +95,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" Style="{StaticResource CaptionLabelGrey}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -143,7 +143,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource CaptionLabelGrey}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -200,7 +200,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"  Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -268,7 +268,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}"  Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -350,7 +350,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}"  Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -433,7 +433,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}"  Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -456,7 +456,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}"  Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -490,7 +490,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -572,7 +572,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -1047,16 +1047,13 @@
                             Grid.Row="0"
                             Padding="0,0,0,25"
                             BackgroundColor="White">
-                            <IndicatorView 
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
+                            <commonView:PageIndicatorView
                                 Grid.Row="1"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                Completed="{Binding MarkComplete}"
+                                DotSize="12"
                                 HorizontalOptions="End"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Count="{Binding MaxIndex}"
-                                VerticalOptions="CenterAndExpand"
-                                Position="{Binding CurrentIndex}"
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}" 
                                 />
 
                             <Label Style="{StaticResource PageTitleBlack}" Text="{Binding PageTitle}" />
@@ -1091,7 +1088,6 @@
                         <Image
                             HorizontalOptions="Start"
                             Source="arrowLeftwhite.png"
-                            
                             VerticalOptions="CenterAndExpand" />
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnBackStepClicked}" />

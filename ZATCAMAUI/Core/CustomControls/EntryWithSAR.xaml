@@ -15,7 +15,6 @@
             <custom:CustomSfTextInputView.TextInputView>
                 <custom:GAZTBorderlessEntry
                     x:Name="TextValue"
-                    BackgroundColor="Red"
                     HorizontalOptions="Fill"
                     Keyboard="{OnPlatform Android=Numeric,
                                           iOS=Default}"

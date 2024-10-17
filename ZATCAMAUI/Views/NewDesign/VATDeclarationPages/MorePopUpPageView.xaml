@@ -8,6 +8,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FlowDirection="{Binding AppDirection}"
+    x:Name="morePopUpPageView"
     mc:Ignorable="d">
     <Border
         Padding="15"
@@ -31,7 +32,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <StackLayout HorizontalOptions="FillAndExpand"
+                                         FlowDirection="{Binding Source={x:Reference morePopUpPageView}, Path=FlowDirection}"
+                                         VerticalOptions="FillAndExpand">
                                 <Label
                                     BackgroundColor="White"
                                     HorizontalOptions="CenterAndExpand"

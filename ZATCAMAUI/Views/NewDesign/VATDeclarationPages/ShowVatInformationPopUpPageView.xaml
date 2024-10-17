@@ -10,6 +10,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     BackgroundColor="#88000000"
+    x:Name="gAZTNewDesignShowVatInformationPopUpPageView"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Mopups:PopupPage.Resources>
@@ -42,7 +43,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Margin="0,0,0,7" Spacing="15">
+                            <StackLayout Margin="0,0,0,7"
+                                         FlowDirection="{Binding Source={x:Reference gAZTNewDesignShowVatInformationPopUpPageView}, Path=FlowDirection}"
+                                         Spacing="15">
                                 <Border
                                     Padding="15"
                                     Stroke="{StaticResource DarkGrayTextColor}"

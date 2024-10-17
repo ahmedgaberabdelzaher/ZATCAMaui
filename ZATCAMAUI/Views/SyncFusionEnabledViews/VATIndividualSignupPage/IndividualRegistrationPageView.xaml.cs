@@ -84,7 +84,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.DOBddyymm = string.Empty;
                 viewModel.DOB = string.Empty;
                 SetPickerFont();
-                 _ = viewModel.GetCaptchImage();
+                _ = viewModel.GetCaptchImage();
 
             }
             catch (Exception ex)
@@ -380,12 +380,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -405,12 +405,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -448,17 +448,17 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 viewModel.IsLoading = false;
                             });
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
@@ -483,12 +483,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -507,12 +507,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.FrameIDError = true;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
-                               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -546,7 +546,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             viewModel.IsLoading = false;
                         }
-                        catch (HttpRequestException )
+                        catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -751,16 +751,17 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
-
-            idType.Text = "";
-            Number.Text = "";
-            Birthdt.Text = "";
-            Firstname.Text = "";
-            if (viewModel.IsCitizen)
+            try
             {
-                try
+                base.OnAppearing();
+
+                idType.Text = "";
+                Number.Text = "";
+                Birthdt.Text = "";
+                Firstname.Text = "";
+                if (viewModel.IsCitizen)
                 {
+
                     viewModel.modelSSOID = await WebServiceManager.LoginDataSSO();
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -786,7 +787,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                         Number.Text = viewModel.modelSSOID.results[0].Idnumber;
                         Birthdt.Text = UtilityManager.StringToDDMMYYYYFormat(viewModel.modelSSOID.results[0].Birthdt);
-                        viewModel.DOBddyymm = UtilityManager.StringToDDMMYYYYFormat(viewModel.modelSSOID.results[0].Birthdt);  
+                        viewModel.DOBddyymm = UtilityManager.StringToDDMMYYYYFormat(viewModel.modelSSOID.results[0].Birthdt);
                         Firstname.Text = viewModel.modelSSOID.results[0].Firstname;
                         viewModel.Begindate = UtilityManager.StringToDDMMYYYYFormat(viewModel.modelSSOID.results[0].Begda);
                         viewModel.EndDate = UtilityManager.StringToDDMMYYYYFormat(viewModel.modelSSOID.results[0].Endda);
@@ -797,72 +798,61 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.IsLoading = false;
                         });
                     });
-
                 }
-                catch (Exception)
+
+
+
+                if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
+                    DDlIDType.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
+                    GCCPicker_Country.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
+                    Picker_Region.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
+                    Picker_City.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
+                }
+                else
+                {
+                    DDlIDType.BackgroundColor = (Color)Application.Current.Resources["White"];
+                    GCCPicker_Country.BackgroundColor = (Color)Application.Current.Resources["White"];
+                    Picker_Region.BackgroundColor = (Color)Application.Current.Resources["White"];
+                    Picker_City.BackgroundColor = (Color)Application.Current.Resources["White"];
                 }
 
-            }
+                MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
+                {
+                    IntnlCodes.Text = arg;
+                    viewModel.TxtCountryCode = arg;
+                });
+                MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedCountryCode", (sender, arg) =>
+                {
 
+                    viewModel.MobileCountryCode = arg;
+                });
 
-
-            if (DeviceInfo.Platform == DevicePlatform.Android)
-            {
-                DDlIDType.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
-                GCCPicker_Country.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
-                Picker_Region.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
-                Picker_City.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
-            }
-            else
-            {
-                DDlIDType.BackgroundColor = (Color)Application.Current.Resources["White"];
-                GCCPicker_Country.BackgroundColor = (Color)Application.Current.Resources["White"];
-                Picker_Region.BackgroundColor = (Color)Application.Current.Resources["White"];
-                Picker_City.BackgroundColor = (Color)Application.Current.Resources["White"];
-            }
-
-            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
-            {
-                IntnlCodes.Text = arg;
-                viewModel.TxtCountryCode = arg;
-            });
-            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedCountryCode", (sender, arg) =>
-            {
-
-                viewModel.MobileCountryCode = arg;
-            });
-
-            if (DeviceInfo.Platform == DevicePlatform.Android)
-            {
-                IntnlCodes.Margin = new Thickness(0);
-            }
-            else
-            {
-                IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
-            }
-            try
-            {
+                if (DeviceInfo.Platform == DevicePlatform.Android)
+                {
+                    IntnlCodes.Margin = new Thickness(0);
+                }
+                else
+                {
+                    IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
+                }
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     mobileData = await WebServiceManager.GAZTGetMobileRegionDropdown();
                     viewModel.MobileCountry = mobileData.Where(x => x.Telefto == viewModel.TxtCountryCode).FirstOrDefault().Land1;
                 });
                 //mobileData = await WebServiceManager.GAZTGetMobileRegionDropdown();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
-            }
-            if (viewModel.currentStep == 5 && App.IsComingFromSleepMode)
-            {
 
-                int timeToExpireOTP = 120;
-                viewModel.TimerStart(timeToExpireOTP);
-            }
+                if (viewModel.currentStep == 5 && App.IsComingFromSleepMode)
+                {
 
+                    int timeToExpireOTP = 120;
+                    viewModel.TimerStart(timeToExpireOTP);
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
 
 
@@ -1118,9 +1108,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception)
             {
-
-
-
             }
         }
 
@@ -1159,8 +1146,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -1224,8 +1209,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception)
             {
-
-
             }
 
         }
@@ -1319,12 +1302,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception)
             {
-
-
             }
         }
 
-        void btnIdType_Clicked(object sender,TappedEventArgs e)
+        void btnIdType_Clicked(object sender, TappedEventArgs e)
         {
             DDlIDType.IsOpen = true;
         }

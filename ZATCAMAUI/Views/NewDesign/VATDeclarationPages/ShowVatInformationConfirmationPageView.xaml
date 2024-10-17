@@ -10,6 +10,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FlowDirection="{Binding AppDirection}"
     BackgroundColor="#88000000"
+    x:Name="showVatInformationConfirmationPageView"
     mc:Ignorable="d">
     <Border
         x:Name="MainPanCakeView1"
@@ -37,7 +38,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Margin="0,0,0,7" Spacing="15">
+                            <StackLayout Margin="0,0,0,7"
+                                         FlowDirection="{Binding Source={x:Reference showVatInformationConfirmationPageView}, Path=FlowDirection}"
+                                         Spacing="15">
                                 <Border
                                     Padding="15"
                                     Stroke="{StaticResource DarkGrayTextColor}"
@@ -73,7 +76,8 @@
                 Grid.Row="2"
                 Margin="0,0,0,0"
                 BackgroundColor="White"
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="FillAndExpand"
+                Spacing="10">
 
                 <buttons:SfButton
                     x:Name="btnprimary"

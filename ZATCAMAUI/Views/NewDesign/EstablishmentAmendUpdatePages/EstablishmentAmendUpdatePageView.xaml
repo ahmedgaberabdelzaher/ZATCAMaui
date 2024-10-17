@@ -28,6 +28,7 @@
             <converters:EstablishmentTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
             <converters:ESTresidentialStatusConverter x:Key="residentialStatusConverter" />
+            <converters:DateFormatConverter x:Key="dateFormatConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -52,12 +53,12 @@
                         <ColumnDefinition Width="15*" />
                     </Grid.ColumnDefinitions>
 
-                     <Image
+                    <Image
                         HorizontalOptions="Start"
                         Rotation="180"
                         Source="arrowLeft.png"
                         VerticalOptions="CenterAndExpand">
-                         <Image.GestureRecognizers>
+                        <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
                         </Image.GestureRecognizers>
                         <Image.Triggers>
@@ -106,15 +107,13 @@
                     </StackLayout>
                 </Grid>
                 <!--#endregion-->
-                <IndicatorView 
-                    IndicatorColor="LightGray"
-                    IndicatorSize="16"
-                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                <commonView:PageIndicatorView
+                    Completed="{Binding MarkComplete}"
+                    DotSize="12"
                     HorizontalOptions="End"
-                    MaximumVisible="{Binding MaxIndex}"
-                    Count="{Binding MaxIndex}"
-                    VerticalOptions="CenterAndExpand"
-                    Position="{Binding CurrentIndex}"
+                    MarkSize="24"
+                    MaxNum="{Binding MaxIndex}"
+                    MinNum="{Binding CurrentIndex}"
                     />
                 <Label
                     Margin="0,10,0,0"
@@ -3025,7 +3024,7 @@
                             FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="15"
                             Style="{StaticResource CaptionLabelBlack}"
-                            Text="{Binding TaxDate}" />
+                            Text="{Binding TaxDate, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
 
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
@@ -3036,7 +3035,7 @@
                             FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="15"
                             Style="{StaticResource CaptionLabelBlack}"
-                            Text="{Binding LastFulfilledReturn}" />
+                            Text="{Binding LastFulfilledReturn, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="11"
@@ -3088,11 +3087,11 @@
                                                 <Label LineHeight="0.8" Style="{DynamicResource CardLabelBlack}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Style="{DynamicResource CardLabelBlack}" Text="{Binding FromDate, StringFormat='{0:yyyy/MM/dd}'}" />
+                                                            <Span Style="{DynamicResource CardLabelBlack}" Text="{Binding FromDate, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
                                                             <Span Text=" " />
                                                             <Span Style="{DynamicResource CardLabelBlack}" Text="{x:Static ResourceManager:AppResources.To}" />
                                                             <Span Text=" " />
-                                                            <Span Style="{DynamicResource CardLabelBlack}" Text="{Binding ToDate, StringFormat='{0:yyyy/MM/dd}'}" />
+                                                            <Span Style="{DynamicResource CardLabelBlack}" Text="{Binding ToDate, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -3130,11 +3129,11 @@
                                                 <Label LineHeight="0.8" Style="{DynamicResource CardLabelWhite}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Style="{DynamicResource CardLabelWhite}" Text="{Binding FromDate, StringFormat='{0:yyyy/MM/dd}'}" />
+                                                            <Span Style="{DynamicResource CardLabelWhite}" Text="{Binding FromDate, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
                                                             <Span Text=" " />
                                                             <Span Style="{DynamicResource CardLabelWhite}" Text="{x:Static ResourceManager:AppResources.To}" />
                                                             <Span Text=" " />
-                                                            <Span Style="{DynamicResource CardLabelWhite}" Text="{Binding ToDate, StringFormat='{0:yyyy/MM/dd}'}" />
+                                                            <Span Style="{DynamicResource CardLabelWhite}" Text="{Binding ToDate, Converter={StaticResource dateFormatConverter}, ConverterParameter='yyyy/MM/dd'}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>

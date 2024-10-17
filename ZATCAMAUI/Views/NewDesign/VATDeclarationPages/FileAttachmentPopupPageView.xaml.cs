@@ -9,6 +9,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         public FileAttachmentPopupPageView()
         {
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
 
         private void OnClosedTapped(object sender, EventArgs e)

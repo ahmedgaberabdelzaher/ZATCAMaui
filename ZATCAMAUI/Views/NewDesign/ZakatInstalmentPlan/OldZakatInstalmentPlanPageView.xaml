@@ -135,16 +135,14 @@
                             RowSpacing="10"
                             VerticalOptions="FillAndExpand">
 
-                            <IndicatorView 
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                HorizontalOptions="End"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Count="{Binding MaxIndex}"
-                                VerticalOptions="CenterAndExpand"
-                                Position="{Binding CurrentIndex}"
-                                />
+                            <commonView:PageIndicatorView
+                                Margin="0,10"
+                                Completed="{Binding MarkComplete}"
+                                DotSize="12"
+                                HorizontalOptions="EndAndExpand"
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}"
+                                VerticalOptions="CenterAndExpand" />
 
                             <Grid
                                 Grid.Row="1"
@@ -274,8 +272,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="4"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}"
                                                     PlaceholderColor="Gray"
@@ -320,8 +317,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding CashBankY1}"
                                                     TextChanged="calculation_TextChanged"
@@ -365,8 +361,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding StiY1}"
                                                     TextChanged="calculation_TextChanged"
@@ -410,8 +405,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding DebitorsY1}"
                                                     TextChanged="calculation_TextChanged"
@@ -456,8 +450,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding InventoryY1}"
                                                     TextChanged="calculation_TextChanged"
@@ -501,8 +494,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding TcAssetsY1}"
                                                     TextChanged="calculation_TextChanged"
@@ -546,8 +538,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding ZakatY1}"
                                                     TextChanged="calculation_TextChanged"
@@ -591,8 +582,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding TcLiabilityY1}"
                                                     TextChanged="calculation_TextChanged"
@@ -637,8 +627,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding RevenueY1}"
                                                     TextChanged="calculation_TextChanged"
@@ -683,8 +672,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding NetIncomeY1}"
                                                     TextChanged="calculation_TextChanged"
@@ -728,8 +716,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding NcFlowY1}"
                                                     TextChanged="calculation_TextChanged"
@@ -869,8 +856,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="4"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}"
                                                     PlaceholderColor="Gray"
@@ -912,8 +898,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding CashBankY2}"
                                                     TextChanged="calculation2_TextChanged"
@@ -958,8 +943,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding StiY2}"
                                                     TextChanged="calculation2_TextChanged"
@@ -1003,8 +987,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding DebitorsY2}"
                                                     TextChanged="calculation2_TextChanged"
@@ -1047,8 +1030,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding InventoryY2}"
                                                     TextChanged="calculation2_TextChanged"
@@ -1089,8 +1071,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding TcAssetsY2}"
                                                     TextChanged="calculation2_TextChanged"
@@ -1133,8 +1114,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding ZakatY2}"
                                                     TextChanged="calculation2_TextChanged"
@@ -1177,8 +1157,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding TcLiabltyY2}"
                                                     TextChanged="calculation2_TextChanged"
@@ -1221,8 +1200,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding RevenueY2}"
                                                     TextChanged="calculation2_TextChanged"
@@ -1267,8 +1245,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding NetIncomeY2}"
                                                     TextChanged="calculation2_TextChanged"
@@ -1311,8 +1288,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding NcFlowY2}"
                                                     TextChanged="calculation2_TextChanged"
@@ -1447,8 +1423,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="4"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}"
                                                     PlaceholderColor="Gray"
@@ -1490,8 +1465,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding CashBankY3}"
                                                     TextChanged="calculation3_TextChanged"
@@ -1536,8 +1510,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding StiY3}"
                                                     TextChanged="calculation3_TextChanged"
@@ -1581,8 +1554,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding DebitorsY3}"
                                                     TextChanged="calculation3_TextChanged"
@@ -1625,8 +1597,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding InventoryY3}"
                                                     TextChanged="calculation3_TextChanged"
@@ -1667,8 +1638,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding TcAssetsY3}"
                                                     TextChanged="calculation3_TextChanged"
@@ -1711,8 +1681,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding ZakatY3}"
                                                     TextChanged="calculation3_TextChanged"
@@ -1755,8 +1724,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding TcLiabltyY3}"
                                                     TextChanged="calculation3_TextChanged"
@@ -1799,8 +1767,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding RevenueY3}"
                                                     TextChanged="calculation3_TextChanged"
@@ -1845,8 +1812,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding NetIncomeY3}"
                                                     TextChanged="calculation3_TextChanged"
@@ -1889,8 +1855,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     PlaceholderColor="Gray"
                                                     Text="{Binding NcFlowY3}"
                                                     TextChanged="calculation3_TextChanged"
@@ -2065,15 +2030,14 @@
                                 Grid.Row="0"
                                 Grid.ColumnSpan="3"
                                 HorizontalOptions="End">
-                                <IndicatorView 
-                                    IndicatorColor="LightGray"
-                                    IndicatorSize="16"
-                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                <commonView:PageIndicatorView
+                                    Margin="20,25,0,0"
+                                    Completed="{Binding MarkComplete}"
+                                    DotSize="12"
                                     HorizontalOptions="End"
-                                    MaximumVisible="{Binding MaxIndex}"
-                                    Count="{Binding MaxIndex}"
+                                    MaxNum="{Binding MaxIndex}"
+                                    MinNum="{Binding CurrentIndex}"
                                     VerticalOptions="CenterAndExpand"
-                                    Position="{Binding CurrentIndex}"
                                     />
                             </Grid>
                             <Grid
@@ -2273,17 +2237,15 @@
                             RowDefinitions="auto,auto,auto,auto,auto,auto,*"
                             VerticalOptions="FillAndExpand">
 
-                            <IndicatorView 
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                            <commonView:PageIndicatorView
+                                Margin="20,25,0,0"
+                                Completed="{Binding MarkComplete}"
+                                DotSize="12"
                                 HorizontalOptions="End"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Count="{Binding MaxIndex}"
-                                VerticalOptions="CenterAndExpand"
-                                Position="{Binding CurrentIndex}"
-                                />
-
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}"
+                                VerticalOptions="CenterAndExpand" />
+                               
                             <Grid Grid.Row="1" RowDefinitions="auto,auto,auto">
 
                                 <Label
@@ -2621,16 +2583,15 @@
                                                         Grid.Row="0"
                                                         Grid.ColumnSpan="3"
                                                         HorizontalOptions="EndAndExpand">
-                                                        <IndicatorView 
-                                                            IndicatorColor="LightGray"
-                                                            IndicatorSize="16"
-                                                            SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                                        <commonView:PageIndicatorView
+                                                            Margin="10,15,0,0"
+                                                            Completed="{Binding MarkComplete}"
+                                                            DotSize="12"
                                                             HorizontalOptions="End"
-                                                            MaximumVisible="{Binding MaxIndex}"
-                                                            Count="{Binding MaxIndex}"
-                                                            VerticalOptions="CenterAndExpand"
-                                                            Position="{Binding CurrentIndex}"
-                                                            />
+                                                            MaxNum="{Binding MaxIndex}"
+                                                            MinNum="{Binding CurrentIndex}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                           
                                                     </Grid>
 
                                                     <Label
@@ -3014,15 +2975,15 @@
                                                 <Grid HorizontalOptions="FillAndExpand" RowDefinitions="auto,auto,auto,auto">
 
                                                     <Grid Grid.Row="0" HorizontalOptions="End">
-                                                        <IndicatorView 
-                                                            IndicatorColor="LightGray"
-                                                            IndicatorSize="16"
-                                                            SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                                        <commonView:PageIndicatorView
+                                                            Margin="10,15,0,0"
+                                                            Completed="{Binding MarkComplete}"
+                                                            DotSize="12"
                                                             HorizontalOptions="End"
-                                                            MaximumVisible="{Binding MaxIndex}"
-                                                            Count="{Binding MaxIndex}"
-                                                            VerticalOptions="CenterAndExpand"
-                                                            Position="{Binding CurrentIndex}"
+                                                            MaxNum="{Binding MaxIndex}"
+                                                            MinNum="{Binding CurrentIndex}"
+                                                            VerticalOptions="CenterAndExpand" 
+                                                            
                                                             />
                                                     </Grid>
 
@@ -3230,15 +3191,14 @@
                             VerticalOptions="FillAndExpand">
 
                             <Grid Grid.Row="0" HorizontalOptions="End">
-                                <IndicatorView 
-                                    IndicatorColor="LightGray"
-                                    IndicatorSize="16"
-                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                <commonView:PageIndicatorView
+                                    Margin="10,15,0,0"
+                                    Completed="{Binding MarkComplete}"
+                                    DotSize="12"
                                     HorizontalOptions="End"
-                                    MaximumVisible="{Binding MaxIndex}"
-                                    Count="{Binding MaxIndex}"
-                                    VerticalOptions="CenterAndExpand"
-                                    Position="{Binding CurrentIndex}"
+                                    MaxNum="{Binding MaxIndex}"
+                                    MinNum="{Binding CurrentIndex}"
+                                    VerticalOptions="CenterAndExpand" 
                                     />
                             </Grid>
 

@@ -11,7 +11,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core" xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
     x:Name="page"
     Title="ChangeMobileRequestPageView"
     ios:Page.UseSafeArea="true"
@@ -88,16 +88,15 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                              <Grid Grid.Row="0">
-                                <IndicatorView 
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                <commonView:PageIndicatorView
+                                Margin="24,32,24,0"
+                                Completed="{Binding MarkComplete}"
+                                DotSize="16"
+                                HeightRequest="16"
                                 HorizontalOptions="End"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Count="{Binding MaxIndex}"
-                                VerticalOptions="CenterAndExpand"
-                                Position="{Binding CurrentIndex}"
-                                />
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}"
+                                VerticalOptions="CenterAndExpand" />
                             </Grid>
                             <!--#region Manual Form-->
                             <StackLayout

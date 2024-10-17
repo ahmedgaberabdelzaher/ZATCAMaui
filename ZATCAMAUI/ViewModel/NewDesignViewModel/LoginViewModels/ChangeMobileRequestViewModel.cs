@@ -17,6 +17,7 @@ using ZATCAMAUI.Core.Interfaces;
 using System.Text;
 using Microsoft.Maui.Controls.Shapes;
 using ZATCAMAUI.Core.CustomControls;
+using Syncfusion.Maui.ProgressBar;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 {
@@ -616,6 +617,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
+        /// <summary>
+        /// The Step progress bar item collection.
+        /// </summary>
+        private ObservableCollection<StepProgressBarItem> stepProgressItem;
+
+        /// <summary>
+        /// The Step progress bar item collection.
+        /// </summary>
+        public ObservableCollection<StepProgressBarItem> StepProgressItem
+        {
+            get
+            {
+                return stepProgressItem;
+            }
+            set
+            {
+                stepProgressItem = value;
+            }
+        }
+
         public ChangeMobileRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
@@ -947,6 +968,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             });
 
             OnDeleteAttachmentButtonClick = new Command((item) => OnDeleteAttachment(item as Attachment));
+            AddPageIndexes();
+        }
+
+        private void AddPageIndexes()
+        {
+            stepProgressItem = new ObservableCollection<StepProgressBarItem>
+            {
+                new StepProgressBarItem() { PrimaryText = "" },
+                new StepProgressBarItem() { PrimaryText = "" },
+                new StepProgressBarItem() { PrimaryText = "" },
+                new StepProgressBarItem() { PrimaryText = "" }
+            };
         }
 
         private async Task<bool> IsVaslidTIn()
@@ -1633,7 +1666,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         public void ShowTpDetailsPage()
         {
-            CurrentIndex = 0;
+            CurrentIndex = 1;
             if (NafathGUID.Length > 0)
             {
                 ShowAutoTPDetails = true;
@@ -1650,7 +1683,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         public void ShowMobileDetailsPage()
         {
-            CurrentIndex = 1;
+            CurrentIndex = 2;
             ShowManualTPDetails = false;
             ShowAutoTPDetails = false;
             ShowMobileNumberDetails = true;
@@ -1659,7 +1692,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         public void ShowAttachmentDetailsPage()
         {
-            CurrentIndex = 2;
+            CurrentIndex = 3;
             ShowManualTPDetails = false;
             ShowAutoTPDetails = false;
             ShowMobileNumberDetails = false;
