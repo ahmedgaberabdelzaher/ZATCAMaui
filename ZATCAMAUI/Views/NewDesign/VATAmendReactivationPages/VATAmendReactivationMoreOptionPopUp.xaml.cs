@@ -13,6 +13,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             InitializeComponent();
             this.OptionList = OptionList;
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
 
         protected override void OnAppearing()

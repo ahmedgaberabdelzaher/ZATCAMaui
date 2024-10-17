@@ -390,9 +390,9 @@
                                     x:Name="PPicker"
                                     Background="white"
                                     IsOpen="False"
+                                    OkButtonClicked="PPicker_OkButtonClicked"
                                     ItemHeight="40"
-                                    Mode="Dialog"
-                                    SelectionChanged="PPicker_SelectionChanged">
+                                    Mode="Dialog">
 
                                     <syncfusion:SfPicker.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
@@ -423,7 +423,7 @@
                                         <syncfusion:PickerHeaderView
                                             Height="55"
                                             Background="{StaticResource Primary}"
-                                            Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
+                                            Text="{x:Static ResourceManager:AppResources.ZSearchParameter}">
                                             <syncfusion:PickerHeaderView.TextStyle>
                                                 <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
                                             </syncfusion:PickerHeaderView.TextStyle>
@@ -431,9 +431,10 @@
 
                                     </syncfusion:SfPicker.HeaderView>
 
-                                    <syncfusion:SfPicker.FooterView>
+                                    <custom:CustomSfPicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
+                                        <syncfusion:PickerFooterView Height="46"
+                                                                     Background="{StaticResource NeutralBlack}">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="White" />
@@ -441,7 +442,7 @@
 
                                         </syncfusion:PickerFooterView>
 
-                                    </syncfusion:SfPicker.FooterView>
+                                    </custom:CustomSfPicker.FooterView>
 
                                 </custom:CustomSfPicker>
 

@@ -9516,7 +9516,7 @@ info@zatca.gov.sa</value>
     <value>اتصل بنا</value>
 </data>
 <data name="EdcuationJourney" xml:space="preserve">
-    <value>Edcuation Journey</value>
+    <value>الرحلة التعليمية</value>
 </data>
 <data name="SurveyQ1" xml:space="preserve">
     <value>مامستوى الرضا عن تجربتك لتطبيق الهيئة على الأجهزة الذكية ؟</value>
@@ -11483,4 +11483,13 @@ info@zatca.gov.sa</value>
   <data name="NAFATHEXPIRED" xml:space="preserve">
      <value>عذراً، تم انتهاء مدة الطلب</value>
   </data>
-</root> 
+  <data name="AdjustmentAmountDis" xml:space="preserve">
+     <value>إن مبلغ التعديل المدخل أكبر بنسبة 10% من مبلغ المبيعات القياسية المحلية. يرجى التحقق من المبلغ المدخل في الإرجاع أو المتابعة إذا كان المبلغ المدخل صحيحًا.</value>
+  </data>
+    <data name="AdjustmentAmount" xml:space="preserve">
+     <value>مبلغ التعديل</value>
+  </data>
+  <data name="VerifyAdjustmentAmount" xml:space="preserve">
+     <value>التحقق من مبلغ التعديل</value>
+  </data>
+</root>

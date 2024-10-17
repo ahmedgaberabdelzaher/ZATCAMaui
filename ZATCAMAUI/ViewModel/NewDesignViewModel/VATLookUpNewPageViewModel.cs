@@ -226,34 +226,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     ResetFormData();
                     _navigationService.GoBack();
                 });
+
                 OnSearchButtonClicked = new Command(async () =>
                 {
                     isMandatoryDataEntered = true;
-                    await Task.Run(() =>
+                    IsLoading = true;
+
+                    if (!string.IsNullOrEmpty(Name))
                     {
-                        IsLoading = true;
-                    });
-
-                    await Task.Run(() =>
+                        Name = string.Empty;
+                        IsNameVisible = false;
+                    }
+                    ValidateFormData();
+                    if (isMandatoryDataEntered)
                     {
-                        if (!string.IsNullOrEmpty(Name))
-                        {
-                            // ResetFormData();
-                            Name = string.Empty;
-                            IsNameVisible = false;
-                        }
-                        ValidateFormData();
-                        if (isMandatoryDataEntered)
-                        {
-                            getBarcodeData();
-                        }
-
-                    });
-
-
+                        await getBarcodeData();
+                    }
+                    IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -266,7 +258,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-               
+
                 VATACCOrCRNOOrVATCER = string.Empty;
                 List<VATParameterType> VATParameterList = new List<VATParameterType>
             {
@@ -328,11 +320,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             if (LookupNumber.Length != 15)
                             {
                                 isMandatoryDataEntered = false;
-                                MainThread.BeginInvokeOnMainThread(() =>
-                                {
-                                    IsLoading = false;
-                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseentertheVATAccountNocomposedof15digits));
-                                });
+                                IsLoading = false;
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseentertheVATAccountNocomposedof15digits));
                                 return;
                             }
                         }
@@ -341,11 +330,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             if (LookupNumber.Length != 10)
                             {
                                 isMandatoryDataEntered = false;
-                                MainThread.BeginInvokeOnMainThread(() =>
-                                {
-                                    IsLoading = false;
-                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseentertheCRcomposedof10digits));
-                                });
+                                IsLoading = false;
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseentertheCRcomposedof10digits));
                                 return;
                             }
                         }
@@ -354,11 +340,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             if (LookupNumber.Length != 15)
                             {
                                 isMandatoryDataEntered = false;
-                                MainThread.BeginInvokeOnMainThread(() =>
-                                {
-                                    IsLoading = false;
-                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATCertificateNumberValidation));
-                                });
+                                IsLoading = false;
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATCertificateNumberValidation));
                                 return;
                             }
                         }
@@ -366,23 +349,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     else
                     {
                         isMandatoryDataEntered = false;
-                        MainThread.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading = false;
-                            isMandatoryDataEntered = false;
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp($"{AppResources.PleaseEnter} {SelectedParameterType.ParameterType}"));
-                        });
+                        IsLoading = false;
+                        isMandatoryDataEntered = false;
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp($"{AppResources.PleaseEnter} {SelectedParameterType.ParameterType}"));
                         return;
                     }
                 }
                 else
                 {
                     isMandatoryDataEntered = false;
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        IsLoading = false;
-                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseselectparametertype));
-                    });
+                    IsLoading = false;
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseselectparametertype));
                     return;
                 }
             }
@@ -402,7 +379,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             LookupNumber = "";
             LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
         }
-        public async void getBarcodeData(string LookUpNo = "")
+        public async Task getBarcodeData(string LookUpNo = "")
         {
 
             try
@@ -418,8 +395,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     LookupNumber = LookUpNo;
                 }
-
-                //isMandatoryDataEntered = true;
                 string _language = "A"; //UtilityManager.GetLanguageParameter();
 
                 VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
@@ -496,23 +471,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                 }
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
+                IsLoading = false;
 
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
             catch (HttpRequestException)
             {
                 IsMainView = true;
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
+                IsLoading = false;
 
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
             catch (Exception)
             {
@@ -520,16 +489,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
+                IsLoading = false;
 
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
             finally
             {
-                IsMainView = true;
                 IsShowScanView = false;
             }
 
@@ -539,10 +504,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #endregion
 
 
-        public void onDissapear()
-        {
-       
-        }
         public override ICommand BackCommand
         {
             get

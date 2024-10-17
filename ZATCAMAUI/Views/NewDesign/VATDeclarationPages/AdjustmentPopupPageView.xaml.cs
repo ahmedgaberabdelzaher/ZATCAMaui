@@ -1,7 +1,4 @@
 ﻿using Mopups.Pages;
-using Syncfusion.Maui.Picker;
-using System.Globalization;
-using System.Resources;
 
 namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 {
@@ -12,6 +9,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         public AdjustmentPopupPageView()
         {
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
 
     }

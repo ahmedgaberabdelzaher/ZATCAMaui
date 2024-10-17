@@ -11771,4 +11771,13 @@ the credit balance of the current period will be carried forward, you can reques
   <data name="NAFATHEXPIRED" xml:space="preserve">
      <value>Sorry, the request has been expired.</value>
   </data>
-</root> 
+   <data name="AdjustmentAmountDis" xml:space="preserve">
+     <value>The adjustment amount entered is more than 10% larger than the amount of domestic standard-rated sales. please verify the amount entered in the return or continue if the amount entered is correct.</value>
+  </data>
+    <data name="AdjustmentAmount" xml:space="preserve">
+     <value>Adjustment amount</value>
+  </data>
+  <data name="VerifyAdjustmentAmount" xml:space="preserve">
+     <value>Verify adjustment amount</value>
+  </data>
+</root>

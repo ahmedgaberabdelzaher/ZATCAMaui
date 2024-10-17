@@ -163,11 +163,11 @@
                         </Border>
 
                         <!--  Next Button  -->
-                        <buttons:SfButton
+                        <Button
                             Margin="0,20,0,50"
                             Command="{Binding GoToProductDeclarationCommand}"
                             FontFamily="{StaticResource SomarBold}"
-                            Style="{StaticResource PrimaryButtonStyle}"
+                            Style="{StaticResource PrimaryMauiButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZZNext}" />
 
                     </StackLayout>

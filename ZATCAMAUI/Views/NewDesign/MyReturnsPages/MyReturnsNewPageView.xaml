@@ -11,10 +11,16 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     ios:Page.UseSafeArea="true"
+    x:Name="myReturns"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingMyReturnsPageCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
 
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
@@ -66,7 +72,7 @@
 
             <Border
                 Grid.Row="1"
-                Padding="0,0"
+                Padding="10,5"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="auto,*">
@@ -74,7 +80,7 @@
                     <Grid RowDefinitions="*,*">
 
                         <Grid
-                            Padding="10,0"
+                            Padding="0,0"
                             ColumnDefinitions="auto,30"
                             RowDefinitions="auto">
                             <Label
@@ -88,7 +94,7 @@
                                 Text="{Binding FilterLabelText}"
                                 TextColor="{StaticResource NeutralBlack}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="btn_Clicked" />
+                                    <TapGestureRecognizer Command="{Binding FilterLabelTextCommand}" />
                                 </Label.GestureRecognizers>
                             </Label>
 
@@ -105,36 +111,40 @@
                                     </OnPlatform>
                                 </Image.Margin>
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="btn_Clicked" />
+                                    <TapGestureRecognizer Command="{Binding FilterLabelTextCommand}" />
                                 </Image.GestureRecognizers>
                             </Image>
                         </Grid>
 
                         <Grid Grid.Row="1" RowDefinitions="*">
 
-                            <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+                            <ScrollView HorizontalScrollBarVisibility="Never"
+                                        HorizontalOptions="StartAndExpand"
+                                        Orientation="Horizontal">
 
                                 <SfChipGroup:SfChipGroup
                                     x:Name="ChipGroup_statusFilter"
                                     ChipType="Choice"
+                                    SelectedChipTextColor="{Binding SelectedChipTextColor}"
+                                    SelectedChipBackground="{Binding SelectedChipBackground}"
+                                    SelectedItem="{Binding SelectedChipFilterItem}"
                                     ItemsSource="{Binding ChipDataFilterlist}"
-                                    SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
                                     Style="{StaticResource ReturnsChipGroup}">
+                                     <SfChipGroup:SfChipGroup.Behaviors>
+                                       <xct:EventToCommandBehavior Command="{Binding ChipGroupSelectedCommand}"
+                                                            EventName="SelectionChanged" />
+                                     </SfChipGroup:SfChipGroup.Behaviors>
                                     <SfChipGroup:SfChipGroup.ItemTemplate>
                                         <DataTemplate>
-                                            <StackLayout Style="{StaticResource ChipParentLayout}">
+                                            <StackLayout Style="{StaticResource ChipParentLayout}"
+                                                        FlowDirection="{Binding Source={x:Reference myReturns}, Path=FlowDirection}">
                                                 <Image Source="{Binding ImageSource}" Style="{StaticResource ChipIcon}" />
                                                 <Label
                                                     Style="{StaticResource CaptionLabelBlack}"
                                                     Text="{Binding Text}"
-                                                    TextColor="{Binding TextColor}">
-                                                    <Label.Margin>
-                                                        <OnPlatform x:TypeArguments="Thickness">
-                                                            <On Platform="iOS" Value="0,0,0,0" />
-                                                            <On Platform="Android" Value="0,0,0,0" />
-                                                        </OnPlatform>
-                                                    </Label.Margin>
-                                                </Label>
+                                                    TextColor="{Binding TextColor}"/>
+
+
                                             </StackLayout>
                                         </DataTemplate>
                                     </SfChipGroup:SfChipGroup.ItemTemplate>
@@ -146,7 +156,7 @@
 
                     <StackLayout
                         Grid.Row="1"
-                        Padding="10,0"
+                        Padding="0,0"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
 
@@ -156,15 +166,21 @@
                             HasUnevenRows="True"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsListVisible}"
+                            SelectedItem="{Binding SelectedListItem}"
                             ItemsSource="{Binding ListToDisplay, Mode=TwoWay}"
                             SeparatorVisibility="None"
                             VerticalOptions="FillAndExpand"
                             VerticalScrollBarVisibility="Never">
+                             <ListView.Behaviors>
+                                <xct:EventToCommandBehavior Command="{Binding ItemSelectedCommand}"
+                                                            EventName="ItemSelected" />
+                             </ListView.Behaviors>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Border Margin="0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                            <StackLayout Padding="0,10">
+                                        <Border Margin="0,10" Style="{StaticResource GreyBorderFrameWithShadow}"
+                                                FlowDirection="{Binding Source={x:Reference myReturns}, Path=FlowDirection}">
+                                            <StackLayout Padding="0,0,0,10">
                                                 <Grid
                                                     Padding="10"
                                                     ColumnDefinitions="65*,35*"
@@ -216,6 +232,7 @@
                                                                 </DataTrigger>
                                                             </Label.Triggers>
                                                         </Label>
+
                                                         <Label
                                                             Margin="0,10,0,0"
                                                             Style="{StaticResource CaptionLabelGrey}"
@@ -281,8 +298,7 @@
                                                     <StackLayout
                                                         Grid.Row="0"
                                                         Grid.Column="0"
-                                                        Grid.ColumnSpan="2"
-                                                        Spacing="-5">
+                                                        Grid.ColumnSpan="2">
 
                                                         <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZReturnPeriod}" />
 
@@ -304,8 +320,7 @@
                                                     <StackLayout
                                                         Grid.Row="1"
                                                         Grid.Column="0"
-                                                        Grid.ColumnSpan="2"
-                                                        Spacing="-5">
+                                                        Grid.ColumnSpan="2">
 
                                                         <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDReturnType}" />
 
@@ -315,8 +330,7 @@
 
                                                     <StackLayout
                                                         Grid.Row="2"
-                                                        Grid.Column="0"
-                                                        Spacing="-5">
+                                                        Grid.Column="0">
 
                                                         <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDDescription}" />
 
@@ -325,8 +339,7 @@
 
                                                     <StackLayout
                                                         Grid.Row="2"
-                                                        Grid.Column="1"
-                                                        Spacing="-5">
+                                                        Grid.Column="1">
 
                                                         <Label
                                                             HorizontalTextAlignment="Start"
@@ -346,8 +359,7 @@
 
                                                     <StackLayout
                                                         Grid.Row="3"
-                                                        Grid.Column="0"
-                                                        Spacing="-5">
+                                                        Grid.Column="0">
 
                                                         <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDReturnNumber}" />
 
@@ -357,8 +369,7 @@
 
                                                     <StackLayout
                                                         Grid.Row="3"
-                                                        Grid.Column="1"
-                                                        Spacing="-5">
+                                                        Grid.Column="1">
 
                                                         <Label
                                                             HorizontalTextAlignment="Start"

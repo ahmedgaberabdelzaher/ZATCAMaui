@@ -8,6 +8,7 @@ using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
@@ -92,6 +93,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
+        Color selectedChipTextColor;
+        public Color SelectedChipTextColor { get { return selectedChipTextColor; } set { selectedChipTextColor = value; OnPropertyChanged(); } }
+
+        Color selectedChipBackground;
+        public Color SelectedChipBackground { get { return selectedChipBackground; } set { selectedChipBackground = value; OnPropertyChanged(); } }
+
         public int _index;
         public int Index
         {
@@ -134,163 +141,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _selectedListItem = value;
 
-                if (_selectedListItem != null)
-                {
-
-                    Task.Run(async () =>
-                    {
-                        IsLoading = true;
-
-                        if (_selectedListItem.error2064 == "X")
-                        {
-
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZakatReturnsErrorMessage));
-                            });
-                        }
-                        else
-                        {
-
-                            if (_selectedListItem.isOpen)
-                            {
-                                if (_selectedListItem.taxType.Equals("ITAX") || _selectedListItem.taxType.Equals("ZAKT"))
-                                {
-                                    //zakat
-
-                                    if (_selectedListItem.formBundleType.Equals("FZ12"))
-                                    {
-                                        App.IsZakatLoadingFromMyReturns = true;
-                                       MainThread.BeginInvokeOnMainThread(() =>
-                                        {
-                                            App.selectedForm12Fbguid = _selectedListItem.formBundleGUID;
-                                            _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.formBundleGUID);
-                                        });
-
-                                    }
-                                    else if (_selectedListItem.formBundleType.Equals("ZKTE"))
-                                    {
-
-                                        App.IsZakatLoadingFromMyReturns = true;
-                                       MainThread.BeginInvokeOnMainThread(() =>
-                                        {
-                                            _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.formBundleGUID);
-                                        });
-                                    }
-                                    else
-                                    {
-
-                                       MainThread.BeginInvokeOnMainThread(async () =>
-                                        {
-                                            IsLoading = false;
-                                            var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
-                                            if (App.IsArabic)
-                                            {
-                                                VisitPortalPopup.OnGotoPortal = () =>
-                                                {
-
-                                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
-
-                                                };
-                                            }
-                                            else
-                                            {
-                                                VisitPortalPopup.OnGotoPortal = () =>
-                                                {
-
-                                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
-
-                                                };
-                                            }
-                                            await MopupService.Instance.PushAsync(VisitPortalPopup);
-                                        });
-                                    }
-                                }
-
-                                if (_selectedListItem.taxType.Equals("VATX") || _selectedListItem.taxType.Equals("VTEP"))
-                                {
-                                    //Vat
-                                    await GetVATAllReturnsAsync(_selectedListItem);
-                                }
-                                if (_selectedListItem.taxType.Equals("ETAX"))
-                                {
-                                    //ET
-                                   MainThread.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        IsLoading = false;
-
-                                        var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
-                                        if (App.IsArabic)
-                                        {
-                                            VisitPortalPopup.OnGotoPortal = () =>
-                                            {
-                                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
-
-                                            };
-                                        }
-                                        else
-                                        {
-                                            VisitPortalPopup.OnGotoPortal = () =>
-                                            {
-
-                                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
-
-                                            };
-                                        }
-
-                                        await MopupService.Instance.PushAsync(VisitPortalPopup);
-                                    });
-
-                                }
-                                if (_selectedListItem.taxType.Equals("WHTX"))
-                                {
-                                    //WT
-                                   MainThread.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        IsLoading = false;
-
-                                        var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
-                                        if (App.IsArabic)
-                                        {
-                                            VisitPortalPopup.OnGotoPortal = () =>
-                                            {
-
-                                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
-
-                                            };
-                                        }
-                                        else
-                                        {
-                                            VisitPortalPopup.OnGotoPortal = () =>
-                                            {
-
-                                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
-
-                                            };
-                                        }
-
-                                        await MopupService.Instance.PushAsync(VisitPortalPopup);
-                                    });
-
-                                }
-                            }
-                            else
-                            {
-                               MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    IsLoading = false;
-                                    string messageTodisplay = string.Empty;
-                                    messageTodisplay = _selectedListItem.message;
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(messageTodisplay));
-                                });
-
-                            }
-                        }
-
-                    });
-
-                }
 
                 OnPropertyChanged("SelectedListItem");
 
@@ -447,18 +297,296 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-       
+
         #endregion
 
         #region Constructor
-        public GAZTNewDesignMyReturnsNewPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
+        public GAZTNewDesignMyReturnsNewPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-           
+
 
         }
         #endregion
 
+        #region Commands
+        public ICommand OnAppearingMyReturnsPageCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    try
+                    {
+                        IsLoading = true;
+                        MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+                        {
+                            PickerModel = arg;
+                            updatePicker();
+                        });
+
+                        VATDeclarationAttachmentPageViewModel.isToBeFilled = true;
+
+                        await OnPageLoad();
+                        PopulateDataInChips();
+
+                        SelectedChipFilterItem = null;
+                        // FilterAllData();
+                        if (Index == 0)
+                        {
+                            SelectedChipFilterItem = ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
+                            SelectedChipFilterItem = ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
+
+                        }
+                        if (Index == 1)
+                        {
+                            SelectedChipFilterItem = ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                            SelectedChipFilterItem = ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                        }
+                        if (Index == 2)
+                        {
+                            SelectedChipFilterItem = ChipDataFilterlist.Where(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
+                            SelectedChipFilterItem = ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
+
+                        }
+                        if (Index == 5)
+                        {
+                            SelectedTaxTypeForFilter = TaxTypeForFilter.Where(x => x.statementFilter == "02").FirstOrDefault();
+                            SelectedChipFilterItem = ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                            SelectedChipFilterItem = ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                        }
+                        if (Index == 6)
+                        {
+
+                            SelectedTaxTypeForFilter = TaxTypeForFilter.Where(x => x.statementFilter == "06").FirstOrDefault();
+
+                            SelectedChipFilterItem = ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                            SelectedChipFilterItem = ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                        }
+
+                        IsLoading = false;
+                    }
+                    catch (Exception)
+                    {
+
+
+
+                    }
+
+                });
+            }
+        }
+
+        public ICommand ItemSelectedCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    if (SelectedListItem != null)
+                    {
+                        try
+                        {
+                            IsLoading = true;
+                            await LoadSelctedListItem();
+                            SelectedListItem = null;
+                            IsLoading = false;
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+
+                    }
+
+                });
+            }
+        }
+
+        public ICommand ChipGroupSelectedCommand
+        {
+            get
+            {
+                return new Command( _ =>
+                {
+                    try
+                    {
+
+                        if (SelectedChipFilterItem.Text == AppResources.UnSubmitted)
+                        {
+                            SelectedChipTextColor = (Color)App.Current.Resources["Error"];
+                            SelectedChipBackground = (Color)App.Current.Resources["ErrorBg"];
+
+
+                        }
+                        else if (SelectedChipFilterItem.Text == AppResources.OverDue)
+                        {
+                            SelectedChipTextColor = (Color)App.Current.Resources["Error"];
+                           SelectedChipBackground = (Color)App.Current.Resources["ErrorBg"];
+
+                        }
+                        else if (SelectedChipFilterItem.Text == AppResources.Submitted)
+                        {
+                            SelectedChipTextColor = (Color)App.Current.Resources["Success"];
+                           SelectedChipBackground = (Color)App.Current.Resources["SuccessBg"];
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                });
+            }
+        }
+
+        public ICommand FilterLabelTextCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    await ShowPickerDialog();
+                });
+            }
+        }
+        #endregion Commands
+
         #region Method
+
+        private async Task LoadSelctedListItem()
+        {
+            IsLoading = true;
+
+            if (SelectedListItem.error2064 == "X")
+            {
+
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZakatReturnsErrorMessage));
+            }
+            else
+            {
+
+                if (SelectedListItem.isOpen)
+                {
+                    if (SelectedListItem.taxType.Equals("ITAX") || SelectedListItem.taxType.Equals("ZAKT"))
+                    {
+                        //zakat
+
+                        if (SelectedListItem.formBundleType.Equals("FZ12"))
+                        {
+                            App.IsZakatLoadingFromMyReturns = true;
+                            App.selectedForm12Fbguid = SelectedListItem.formBundleGUID;
+                            await _navigationService.NavigateTo(App.ZAKATReturnDetailsView, SelectedListItem.formBundleGUID);
+
+                        }
+                        else if (SelectedListItem.formBundleType.Equals("ZKTE"))
+                        {
+
+                            App.IsZakatLoadingFromMyReturns = true;
+                            await _navigationService.NavigateTo(App.GAZTForm5PageView, SelectedListItem.formBundleGUID);
+                        }
+                        else
+                        {
+
+                            IsLoading = false;
+                            var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                            if (App.IsArabic)
+                            {
+                                VisitPortalPopup.OnGotoPortal = () =>
+                                {
+
+                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
+
+                                };
+                            }
+                            else
+                            {
+                                VisitPortalPopup.OnGotoPortal = () =>
+                                {
+
+                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
+
+                                };
+                            }
+                            await MopupService.Instance.PushAsync(VisitPortalPopup);
+                        }
+                    }
+
+                    if (SelectedListItem.taxType.Equals("VATX") || SelectedListItem.taxType.Equals("VTEP"))
+                    {
+                        //Vat
+                        await GetVATAllReturnsAsync(SelectedListItem);
+                    }
+                    if (SelectedListItem.taxType.Equals("ETAX"))
+                    {
+                        //ET
+                        IsLoading = false;
+
+                        var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                        if (App.IsArabic)
+                        {
+                            VisitPortalPopup.OnGotoPortal = () =>
+                            {
+                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
+
+                            };
+                        }
+                        else
+                        {
+                            VisitPortalPopup.OnGotoPortal = () =>
+                            {
+
+                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
+
+                            };
+                        }
+
+                        await MopupService.Instance.PushAsync(VisitPortalPopup);
+
+                    }
+                    if (SelectedListItem.taxType.Equals("WHTX"))
+                    {
+                        //WT
+                        IsLoading = false;
+
+                        var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                        if (App.IsArabic)
+                        {
+                            VisitPortalPopup.OnGotoPortal = () =>
+                            {
+
+                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
+
+                            };
+                        }
+                        else
+                        {
+                            VisitPortalPopup.OnGotoPortal = () =>
+                            {
+
+                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
+
+                            };
+                        }
+
+                        await MopupService.Instance.PushAsync(VisitPortalPopup);
+
+                    }
+                }
+
+                else
+                {
+                    IsLoading = false;
+                    string messageTodisplay = string.Empty;
+                    messageTodisplay = SelectedListItem.message;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(messageTodisplay));
+
+                }
+            }
+
+            IsLoading = false;
+        }
 
         public async Task GetVATAllReturnsAsync(MyReturnsResult SelectedReturnsVAT)
         {
@@ -468,7 +596,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
         private async Task GetVATAllReturns(MyReturnsResult SelectedReturnsVAT)
         {
-            
+
             try
             {
                 IsLoading = true;
@@ -481,30 +609,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
+                        IsLoading = false;
+                        if (SelectedReturnsVAT.userStatus == "E0020")
                         {
-                            IsLoading = false;
-
-                            //await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
-                            if (SelectedReturnsVAT.userStatus == "E0020")
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZGotothePortalForVAT));
+                        }
+                        else
+                        {
+                            if (SelectedReturnsVAT.CR2215GoLive != null && SelectedReturnsVAT.CR2215GoLive == "X")
                             {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZGotothePortalForVAT));
+                                MessagingCenter.Subscribe<App, string>(this, "OnlyAddAttachments", async (sender, arg) =>
+                                {
+                                    IsLoading = true;
+                                    await GetVatAllReturnsForSelectedItem(selectedReturnsVATItem, true);
+                                    MessagingCenter.Unsubscribe<App, string>(this, "OnlyAddAttachments");
+                                });
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZReturnUnderReviewAddAttachments));
                             }
                             else
-                            {
-                                if (SelectedReturnsVAT.CR2215GoLive != null && SelectedReturnsVAT.CR2215GoLive == "X")
-                                {
-                                    MessagingCenter.Subscribe<App, string>(this, "OnlyAddAttachments", async (sender, arg) => {
-                                        IsLoading = true;
-                                        await GetVatAllReturnsForSelectedItem(selectedReturnsVATItem, true);
-                                        MessagingCenter.Unsubscribe<App, string>(this, "OnlyAddAttachments");
-                                    });
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZReturnUnderReviewAddAttachments));
-                                }
-                                else
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZReturnUnderReview));
-                            }
-                        });
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZReturnUnderReview));
+                        }
 
                     }
                 }
@@ -514,19 +638,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (InternetException)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    _navigationService.GoBack();
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                _navigationService.GoBack();
             }
-            
+
         }
 
         public async Task GetVatAllReturnsForSelectedItem(MyReturnsResult SelectedReturnsVAT, bool navigateToAttachments)
         {
-            String SelectedICRGUID = SelectedReturnsVAT.formBundleGUID;
+            string SelectedICRGUID = SelectedReturnsVAT.formBundleGUID;
             App.ICRStatus = SelectedReturnsVAT.userStatus;
             App.VATDeclrationFbguid = SelectedReturnsVAT.formBundleGUID;
             VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.formBundleGUID, SelectedReturnsVAT.formBundleNumber, App.TP.TIN, SelectedReturnsVAT.periodKey);
@@ -539,40 +659,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 VATDeclarationD vATDeclarationD = new VATDeclarationD();
                 if (_vATDeclaration.data.ATTACHSet != null && _vATDeclaration.data.ATTACHSet != null && _vATDeclaration.data.ATTACHSet.Count > 0)
                     numberOfAttachmentComingFromServer = _vATDeclaration.data.ATTACHSet.Count;
-                // Result5 result5 = new Result5();
-                //List<Result5> lst = new List<Result5>();
-                //ADRSet _aDRSet = new ADRSet();
-                //lst.Add(result5);
                 vATDeclaration.data = vATDeclarationD;
                 vATDeclaration.data.ADRSet = new List<Result5>();
-                //  vATDeclaration.data.ADRSet = lst;
-               MainThread.BeginInvokeOnMainThread(() =>
+                if (navigateToAttachments)
                 {
-                    if (navigateToAttachments)
-                    {
-                        _vATDeclaration.data.Cr2215 = SelectedReturnsVAT.CR2215GoLive;
-                        // MopupService.Instance.PushAsync(new VATDeclarationAttachmentPageView(_vATDeclaration));
-                        //MessagingCenter.Send<Object, string>(this, "IsCR2215AttachmentEnable", SelectedReturnsVAT.Cr2215);
-                        MopupService.Instance.PushAsync(new MoreOptionsNote(_vATDeclaration));
+                    _vATDeclaration.data.Cr2215 = SelectedReturnsVAT.CR2215GoLive;
+                    await MopupService.Instance.PushAsync(new MoreOptionsNote(_vATDeclaration));
 
-                    }
-                    else
-                        _navigationService.NavigateTo(App.GAZTNewDesignVATReturnUpdatedUIPageView, _vATDeclaration);
-                    // _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
-                });
+                }
+                else
+                    await _navigationService.NavigateTo(App.GAZTNewDesignVATReturnUpdatedUIPageView, _vATDeclaration);
             }
             else
             {
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
-                });
-
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
             }
+
         }
 
 
@@ -592,43 +695,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             if (App.IsSessionExpired)
             {
-               MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
-                    {
-                        if (item.GetType().Name == App.SFLoginPageView)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
-                    }
-                    //_navigationService.NavigateTo(App.SFLoginPageView);
-                    //_navigation.NavigationStack.ToList().Clear();
+                MainThread.BeginInvokeOnMainThread(() =>
+                 {
+                     var _navigation = Application.Current.MainPage.Navigation;
+                     foreach (var item in _navigation.NavigationStack)
+                     {
+                         if (item.GetType().Name == App.SFLoginPageView)
+                         {
+                             _navigation.RemovePage(item);
+                             break;
+                         }
+                     }
 
-                    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                    _navigation.NavigationStack.ToList().Clear();
-                    //var _navigation = Application.Current.MainPage.Navigation;
-                    //_navigation.PopToRootAsync();
-                });
+                     _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                     _navigation.NavigationStack.ToList().Clear();
+                 });
             }
         }
         public async Task OnPageLoad()
         {
-            List<MyReturnsResult> AllReturns = new List<MyReturnsResult>();
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-
             try
             {
+                IsLoading = true;
+                List<MyReturnsResult> AllReturns = new List<MyReturnsResult>();
+
                 MyReturns = await WebServiceManager.GAZTGetReturnData(App.TP.TIN);
+
                 SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
-                
+
+                IsLoading = false;
             }
             catch (AggregateException ae)
             {
+                IsLoading = false;
                 foreach (var gex in ae.InnerExceptions)
                 {
                     // Handle the GAZT custom exception.
@@ -647,47 +746,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                         }
-                       MainThread.BeginInvokeOnMainThread(async () =>
+                        if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
                         {
-                            if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
-                            {
-                                //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                _navigationService.GoBack();
-                            }
-                            else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
-                            {
-                                //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                _navigationService.GoBack();
-                            }
-                            else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
-                            {
-                                PopToRootPage();
-                            }
-                        });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            _navigationService.GoBack();
+                        }
+                        else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            _navigationService.GoBack();
+                        }
+                        else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
+                        {
+                            PopToRootPage();
+                        }
                     }
                 }
             }
             catch (GAZTSessionExpiredException)
             {
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    //await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZYourSessionhasexpiredPleaseLoginagain));
-                    PopToRootPage();
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZYourSessionhasexpiredPleaseLoginagain));
+                PopToRootPage();
             }
-            catch (Exception )
+            catch (Exception)
             {
-                
-                
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    PopToRootPage();
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                PopToRootPage();
             }
 
             IsLoading = false;
@@ -699,7 +783,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
-                    //AllReturns = MyReturns.d.results;
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "ITAX" || x.taxType == "ZAKT" || x.taxType == "VATX" || x.taxType == "VTEP" || x.taxType == "ETAX" || x.taxType == "WHTX"));
                     if (_selectedChipFilterItem != null)
                     {
@@ -711,8 +794,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
@@ -722,7 +805,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
-                    //AllReturns = MyReturns.d.results;
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "ZAKT"));
                     if (_selectedChipFilterItem != null)
                     {
@@ -732,8 +814,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
 
         }
@@ -744,7 +826,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
-                    //AllReturns = MyReturns.d.results;
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "ITAX"));
                     if (_selectedChipFilterItem != null)
                     {
@@ -754,8 +835,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
@@ -774,8 +855,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
@@ -785,7 +866,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
-                    //AllReturns = MyReturns.d.results;
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "ETAX"));
                     if (_selectedChipFilterItem != null)
                     {
@@ -796,8 +876,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
@@ -807,7 +887,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
                 {
-                    //AllReturns = MyReturns.d.results;
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.ICRReturns.Where(x => x.taxType == "WHTX"));
                     if (_selectedChipFilterItem != null)
                     {
@@ -817,8 +896,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
@@ -840,17 +919,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     foreach (MyBillsFilterDropdown dropdown in TaxTypeForFilter)
                     {
-                        try
-                        {
-                            list.Add(dropdown.revenueTypeDescription.ToUpper());
-                        }
-                        catch (Exception ex)
-                        {
-                            
-                            
-                        }
-
-
+                        list.Add(dropdown.revenueTypeDescription.ToUpper());
                     }
 
 
@@ -866,8 +935,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
 
 
@@ -882,25 +951,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         }
 
-        public async void showPickerDialog()
+        public async Task ShowPickerDialog()
         {
             try
             {
                 if (PickerModel != null)
                     await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
-            }
             catch (InternetException ex)
             {
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
         public void PopulateDataInChips()
@@ -929,7 +990,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             ChipDataFilterlist.Add(new ChipModel() { Text = item.returnStatusDescription, TemplateType = "OverDue", ImageSource = "clockNew.png", TextColor = (Color)App.Current.Resources["Error"] });
                         }
 
-                        //ChipDataFilterlist.Add(model);
                     }
                 }
             }

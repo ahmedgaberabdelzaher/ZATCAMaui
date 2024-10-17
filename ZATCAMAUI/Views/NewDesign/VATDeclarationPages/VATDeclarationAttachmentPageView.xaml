@@ -9,6 +9,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     Title="Attachments"
+    x:Name="vATDeclarationAttachmentPageView"
     BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
 
@@ -119,7 +120,9 @@
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
-                                                    <StackLayout Padding="0,5,0,5" HorizontalOptions="FillAndExpand">
+                                                    <StackLayout Padding="0,5,0,5"
+                                                                 FlowDirection="{Binding Source={x:Reference vATDeclarationAttachmentPageView}, Path=FlowDirection}"
+                                                                 HorizontalOptions="FillAndExpand">
 
                                                         <Border
                                                             Margin="0"

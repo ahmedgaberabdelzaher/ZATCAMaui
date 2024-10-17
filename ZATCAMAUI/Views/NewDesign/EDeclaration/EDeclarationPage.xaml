@@ -27,18 +27,20 @@
                 <Label
                     Margin="0,0,0,10"
                     FontFamily="{StaticResource SomarRegular}"
-                    FontSize="16"
+                    FontSize="14"
                     LineBreakMode="WordWrap"
                     LineHeight="1"
                     Style="{StaticResource CaptionLabelGrey}">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span
+                                FontSize="14"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
                                 TextColor="{StaticResource NeutralGreay}" />
                             <Span Text=" " />
                             <Span
+                                FontSize="14"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}"
                                 TextColor="{StaticResource Primary}" />

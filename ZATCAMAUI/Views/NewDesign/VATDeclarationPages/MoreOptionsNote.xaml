@@ -12,6 +12,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     Title="MoreOptionsNote"
+    x:Name="moreOptionsNote"
     FlowDirection="{Binding AppDirection}">
 
     <Mopups:PopupPage.Animation>
@@ -194,7 +195,9 @@
                                                         <ListView.ItemTemplate>
                                                             <DataTemplate>
                                                                 <ViewCell>
-                                                                    <StackLayout Padding="0,5,0,5" HorizontalOptions="FillAndExpand">
+                                                                    <StackLayout Padding="0,5,0,5"
+                                                                                  FlowDirection="{Binding Source={x:Reference moreOptionsNote}, Path=FlowDirection}"
+                                                                                 HorizontalOptions="FillAndExpand">
 
                                                                         <Border
                                                                             Margin="0"
