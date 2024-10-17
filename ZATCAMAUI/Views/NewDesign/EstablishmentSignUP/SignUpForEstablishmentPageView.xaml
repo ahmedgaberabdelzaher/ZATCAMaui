@@ -90,16 +90,12 @@
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <!--  Bullets  -->
-                    <IndicatorView
-                        Count="{Binding MaxIndex}"
-                        HorizontalOptions="End"
-                        IndicatorColor="LightGray"
-                        IndicatorSize="16"
-                        InputTransparent="True"
-                        MaximumVisible="{Binding MaxIndex}"
-                        Position="{Binding CurrentIndex}"
-                        SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                        VerticalOptions="Start" />
+                    <commonView:PageIndicatorView
+                                Completed="{Binding MarkComplete}"
+                                DotSize="16"
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}"
+                                VerticalOptions="Start" />
 
                     <Label
                         HorizontalOptions="StartAndExpand"

@@ -186,16 +186,8 @@
                                 Padding="10,0,0,10"
                                 BackgroundColor="White"
                                 HorizontalOptions="FillAndExpand">
-                                <IndicatorView
-                                    Count="{Binding MaxIndex}"
-                                    HorizontalOptions="End"
-                                    IndicatorColor="LightGray"
-                                    IndicatorSize="16"
-                                    InputTransparent="True"
-                                    MaximumVisible="{Binding MaxIndex}"
-                                    Position="{Binding CurrentIndex}"
-                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                    VerticalOptions="CenterAndExpand" />
+                                <commonView:PageIndicatorView MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" HorizontalOptions="End"/>
+
 
                             </StackLayout>
                         </Grid>

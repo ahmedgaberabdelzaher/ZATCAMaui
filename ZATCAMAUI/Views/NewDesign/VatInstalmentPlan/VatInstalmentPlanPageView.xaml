@@ -125,16 +125,15 @@
                             VerticalOptions="FillAndExpand">
 
 
-                            <IndicatorView
-                                Count="{Binding MaxIndex}"
+                            <commonView:PageIndicatorView
+                                Margin="20,25,0,0"
+                                Completed="{Binding MarkComplete}"
+                                DotSize="12"
                                 HorizontalOptions="End"
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                InputTransparent="True"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Position="{Binding CurrentIndex}"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                VerticalOptions="CenterAndExpand" />
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}"
+                                VerticalOptions="CenterAndExpand" 
+                                />
 
                             <Grid Grid.Row="1" RowDefinitions="auto,auto">
 
@@ -296,15 +295,13 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
-                                <IndicatorView
-                                    Count="{Binding MaxIndex}"
+                                <commonView:PageIndicatorView
+                                    Margin="20,25,0,0"
+                                    Completed="{Binding MarkComplete}"
+                                    DotSize="12"
                                     HorizontalOptions="End"
-                                    IndicatorColor="LightGray"
-                                    IndicatorSize="16"
-                                    InputTransparent="True"
-                                    MaximumVisible="{Binding MaxIndex}"
-                                    Position="{Binding CurrentIndex}"
-                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                                    MaxNum="{Binding MaxIndex}"
+                                    MinNum="{Binding CurrentIndex}"
                                     VerticalOptions="CenterAndExpand" />
                             </Grid>
                             <Grid Grid.Row="1">
@@ -456,16 +453,15 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
-                                <IndicatorView
-                                    Count="{Binding MaxIndex}"
+                                <commonView:PageIndicatorView
+                                    Margin="20,25,0,0"
+                                    Completed="{Binding MarkComplete}"
+                                    DotSize="12"
                                     HorizontalOptions="End"
-                                    IndicatorColor="LightGray"
-                                    IndicatorSize="16"
-                                    InputTransparent="True"
-                                    MaximumVisible="{Binding MaxIndex}"
-                                    Position="{Binding CurrentIndex}"
-                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                    VerticalOptions="CenterAndExpand" />
+                                    MaxNum="{Binding MaxIndex}"
+                                    MinNum="{Binding CurrentIndex}"
+                                    VerticalOptions="CenterAndExpand"
+                                    />
                             </Grid>
                             <Grid Grid.Row="1" Grid.Column="0">
                                 <Grid.RowDefinitions>
@@ -666,16 +662,15 @@
 
                                                 <Grid RowDefinitions="auto,auto,auto,auto,auto">
 
-                                                    <IndicatorView
-                                                        Count="{Binding MaxIndex}"
+                                                    <commonView:PageIndicatorView
+                                                        Margin="20,25,0,0"
+                                                        Completed="{Binding MarkComplete}"
+                                                        DotSize="12"
                                                         HorizontalOptions="End"
-                                                        IndicatorColor="LightGray"
-                                                        IndicatorSize="16"
-                                                        InputTransparent="True"
-                                                        MaximumVisible="{Binding MaxIndex}"
-                                                        Position="{Binding CurrentIndex}"
-                                                        SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                                        VerticalOptions="CenterAndExpand" />
+                                                        MaxNum="{Binding MaxIndex}"
+                                                        MinNum="{Binding CurrentIndex}"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        />
 
                                                     <Label
                                                         Grid.Row="1"
@@ -965,16 +960,15 @@
                                             <ViewCell.View>
                                                 <StackLayout>
                                                     <Grid Grid.Row="0">
-                                                        <IndicatorView
-                                                            Count="{Binding MaxIndex}"
+                                                        <commonView:PageIndicatorView
+                                                            Margin="0"
+                                                            Completed="{Binding MarkComplete}"
+                                                            DotSize="12"
                                                             HorizontalOptions="End"
-                                                            IndicatorColor="LightGray"
-                                                            IndicatorSize="16"
-                                                            InputTransparent="True"
-                                                            MaximumVisible="{Binding MaxIndex}"
-                                                            Position="{Binding CurrentIndex}"
-                                                            SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                                            VerticalOptions="CenterAndExpand" />
+                                                            MaxNum="{Binding MaxIndex}"
+                                                            MinNum="{Binding CurrentIndex}"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            />
                                                     </Grid>
 
                                                     <Label
@@ -1178,18 +1172,15 @@
                             IsVisible="{Binding IsSummaryViewEnabled}"
                             RowDefinitions="auto,auto,auto"
                             VerticalOptions="FillAndExpand">
-
-
-                            <IndicatorView
-                                Count="{Binding MaxIndex}"
+                            <commonView:PageIndicatorView
+                                Margin="20,25,0,0"
+                                Completed="{Binding MarkComplete}"
+                                DotSize="12"
                                 HorizontalOptions="End"
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                InputTransparent="True"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Position="{Binding CurrentIndex}"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                VerticalOptions="CenterAndExpand" />
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}"
+                                VerticalOptions="CenterAndExpand" 
+                                />
 
                             <Grid Grid.Row="1">
                                 <Grid.RowDefinitions>

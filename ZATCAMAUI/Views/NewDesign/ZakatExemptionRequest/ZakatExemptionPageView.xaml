@@ -93,16 +93,15 @@
 
 
                             <Grid Grid.Row="0">
-                                <IndicatorView
-                                    Count="{Binding MaxIndex}"
+                                <commonView:PageIndicatorView
+                                    Margin="20,25,20,0"
+                                    Completed="{Binding MarkComplete}"
+                                    DotSize="12"
                                     HorizontalOptions="End"
-                                    IndicatorColor="LightGray"
-                                    IndicatorSize="16"
-                                    InputTransparent="True"
-                                    MaximumVisible="{Binding MaxIndex}"
-                                    Position="{Binding CurrentIndex}"
-                                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                    VerticalOptions="CenterAndExpand" />
+                                    MaxNum="{Binding MaxIndex}"
+                                    MinNum="{Binding CurrentIndex}"
+                                    VerticalOptions="CenterAndExpand"
+                                    />
                             </Grid>
 
 

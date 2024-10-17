@@ -1047,17 +1047,14 @@
                             Grid.Row="0"
                             Padding="0,0,0,25"
                             BackgroundColor="White">
-                            <IndicatorView
+                            <commonView:PageIndicatorView
                                 Grid.Row="1"
-                                Count="{Binding MaxIndex}"
+                                Completed="{Binding MarkComplete}"
+                                DotSize="12"
                                 HorizontalOptions="End"
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                InputTransparent="True"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Position="{Binding CurrentIndex}"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                VerticalOptions="CenterAndExpand" />
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}" 
+                                />
 
                             <Label Style="{StaticResource PageTitleBlack}" Text="{Binding PageTitle}" />
                             <Label Style="{StaticResource BodyLabelGrey}" Text="{Binding BodyTitle}" />

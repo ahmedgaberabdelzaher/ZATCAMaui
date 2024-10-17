@@ -77,16 +77,13 @@
                 </Image>
 
 
-                <IndicatorView
-                    Count="{Binding MaxIndex}"
+                <commonView:PageIndicatorView
+                    Grid.Row="1"
+                    DotSize="12"
                     HorizontalOptions="End"
-                    IndicatorColor="LightGray"
-                    IndicatorSize="16"
-                    InputTransparent="True"
-                    MaximumVisible="{Binding MaxIndex}"
-                    Position="{Binding CurrentIndex}"
-                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                    VerticalOptions="CenterAndExpand" />
+                    MaxNum="{Binding MaxIndex}"
+                    MinNum="{Binding CurrentIndex}" 
+                    />
             </Grid>
 
             <Border

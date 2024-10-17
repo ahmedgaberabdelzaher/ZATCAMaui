@@ -109,31 +109,33 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                     };
                     Children.Add(completeMark);
                 }
+
+                var color = (Color)Application.Current.Resources["Primary"];
+
                 if (propertyName == MinNumProperty.PropertyName)
                 {
                     int counter = 0, childCounter = 0;
-                    Children.Where(c => c is BoxView).ToList().ForEach(box =>
+
+                    foreach(BoxView box in Children)
                     {
-                        //TODO
                         if (!string.IsNullOrEmpty(box.AutomationId))
                         {
                             if (counter < MinNum)
                             {
-                                box.Background.BackgroundColor = (Color)Application.Current.Resources["Primary"];
+                                box.Background = (Color)Application.Current.Resources["Primary"];
                                 if (childCounter - 1 > 0)
                                     Children[childCounter - 1].Background.BackgroundColor = (Color)Application.Current.Resources["Primary"];
                             }
                             else
                             {
-                                box.Background.BackgroundColor = (Color)Application.Current.Resources["NeutralLightGrey"];
+                                box.Background = (Color)Application.Current.Resources["NeutralLightGrey"];
                                 if (childCounter - 1 > 0)
                                     Children[childCounter - 1].Background.BackgroundColor = Colors.Transparent;
                             }
                             counter++;
                         }
-
                         childCounter++;
-                    });
+                    }
                 }
                 if (propertyName == CompletedProperty.PropertyName)
                 {

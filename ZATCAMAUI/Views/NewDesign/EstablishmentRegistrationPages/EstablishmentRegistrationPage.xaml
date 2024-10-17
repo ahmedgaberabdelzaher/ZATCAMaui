@@ -133,16 +133,14 @@
 
                 </Grid>
 
-                <IndicatorView
-                    Count="{Binding MaxIndex}"
+                <commonView:PageIndicatorView
+                    Completed="{Binding MarkComplete}"
+                    DotSize="12"
                     HorizontalOptions="End"
-                    IndicatorColor="LightGray"
-                    IndicatorSize="16"
-                    InputTransparent="True"
-                    MaximumVisible="{Binding MaxIndex}"
-                    Position="{Binding CurrentIndex}"
-                    SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                    VerticalOptions="CenterAndExpand" />
+                    MarkSize="24"
+                    MaxNum="{Binding MaxIndex}"
+                    MinNum="{Binding CurrentIndex}"
+                    />
 
                 <Label
                     Margin="0,15,0,0"
