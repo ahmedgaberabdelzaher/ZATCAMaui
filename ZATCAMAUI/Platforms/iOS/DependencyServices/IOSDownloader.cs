@@ -21,27 +21,18 @@ namespace ZATCAMAUI.Platforms.iOS.DependencyServices
         private readonly string _rootDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library");
 
         string filePath = "";
-        public  void Save(MemoryStream stream, string fileName)
+        public Task Save(MemoryStream stream, string fileName)
         {
             if (!Directory.Exists(_rootDir))
                 Directory.CreateDirectory(_rootDir);
 
             filePath = Path.Combine(_rootDir, fileName);
 
-            //using (var memoryStream = new MemoryStream())
-            //{
-            //    await stream.CopyToAsync(memoryStream);
-            //    File.WriteAllBytes(filePath, stream.ToArray());
-            //}
-
-
-
+         
             File.WriteAllBytes(filePath, stream.ToArray());
 
             ShowDocsPicker();
-
-
-            //Message("Downloaded File:" + filePath);
+            return Task.CompletedTask;
         }
 
         public UIViewController GetCurrentUIController()
@@ -88,26 +79,10 @@ namespace ZATCAMAUI.Platforms.iOS.DependencyServices
             }
             catch (Exception)
             {
-                //Exception Logging
-
 
             }
         }
 
-
-        public void Message(string message)
-        {
-            // ShowAlert(message, LONG_DELAY);
-        }
-        void ShowAlert(string message, double seconds)
-        {
-            alertDelay = NSTimer.CreateScheduledTimer(seconds, (obj) =>
-            {
-                dismissMessage();
-            });
-            alert = UIAlertController.Create(null, message, UIAlertControllerStyle.Alert);
-            UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(alert, true, null);
-        }
         void dismissMessage()
         {
             if (alert != null)
