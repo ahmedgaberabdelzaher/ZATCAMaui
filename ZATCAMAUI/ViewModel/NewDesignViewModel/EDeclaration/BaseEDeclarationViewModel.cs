@@ -11,6 +11,7 @@ using ZATCAMAUI.Models.NativeNafath;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages;
 using Mopups.Services;
 using ZATCAMAUI.Core.Interfaces;
+using Microsoft.Maui.Controls;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -98,7 +99,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                     await MopupService.Instance.PopAsync(true);
                     SubmitModel.travelerDeclaration.travelingType = IsArrivingPlaneSelected ? 1 : 2;
                     HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
-                    _navigationService.NavigateTo("ChooseQuestionsPage");
+                   await _navigationService.NavigateTo("ChooseQuestionsPage");
 
                 });
             }
@@ -121,12 +122,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 
             get
             {
-                return new Command(() =>
+                return new Command(async() =>
                 {
                     try
                     {
+                        var url = string.Empty;
+                        if (App.IsArabic)
+                        {
+                            url = "https://zatca.gov.sa/ar/RulesRegulations/Taxes/Pages/customs_individual/Travel_pages/declare.aspx";
+                        }
+                        else
+                        {
+                            url = "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/customs_individual/Travel_pages/declare.aspx";
 
-                        Launcher.OpenAsync(PageSettings.GetCustomDeclarationInformationURl());
+                        }
+
+                        await  Launcher.OpenAsync(new Uri(url));
                     }
                     catch (Exception)
                     {

@@ -53,17 +53,30 @@ namespace ZATCAMAUI.Core.Helper
                 var fileName = Guid.NewGuid().ToString();
 
                 Uri uri = new Uri(url);
+                var handler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) =>
+                    {
+                        // Allow any certificate (not recommended for production)
+                        return true; // Return true to accept all certificates
+                    }
+                };
                 // Download PDF locally for viewing
-                using (var httpClient = new HttpClient())
+                using (var httpClient = new HttpClient(handler))
                 {
                     MemoryStream pdfStream = new MemoryStream();
+                    // Create a custom HttpClientHandler
+                    
+
+                    // Use the handler in your HttpClient
+                    var response = await httpClient.GetAsync("https://vatapis.zatca.gov.sa");
 
                     await httpClient.GetStreamAsync(uri).Result.CopyToAsync(pdfStream);
                     await dependency.Save(pdfStream, $"{fileName}.xlsx");
                 }
                 return true;
             }
-            catch (Exception)
+            catch (Exception exp)
             {
                 return false;
             }

@@ -472,7 +472,8 @@
                                 </custom:CustomSfTextInputView.TextInputView>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Aspect="AspectFit" Source="calendar.png" />
+                                    <Image Aspect="AspectFit" Source="calendar.png"
+                                           Style="{StaticResource SmallIcon}"/>
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
