@@ -2329,7 +2329,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                             {
                                 if (await PushDatatoServer(currentTab))
                                 {
-                                    _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+                                   await _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
                                 }
 
 
@@ -2341,7 +2341,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                             if (await PushDatatoServer(currentTab))
                             {
-                                _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+                               await _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
                             }
                         }
 
@@ -3515,7 +3515,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 outletNavigationModels.selectedOutletItem = GetSelectedItem(item);
                 outletNavigationModels.IsEditingMode = true;
                 outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
-                _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
+              await  _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
             }
         }
         private void openNewOutlet()

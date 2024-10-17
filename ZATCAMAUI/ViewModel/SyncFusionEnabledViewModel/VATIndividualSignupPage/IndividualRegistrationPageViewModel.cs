@@ -2889,7 +2889,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         PasswordView = false;
                         currentStep = 1;
                         string TinNumber = response.data.TIN;
-                        _navigationService.NavigateTo(App.RegistrationSuccessfulPageView, TinNumber);
+                       await _navigationService.NavigateTo(App.RegistrationSuccessfulPageView, TinNumber);
                     }
                 }
             }

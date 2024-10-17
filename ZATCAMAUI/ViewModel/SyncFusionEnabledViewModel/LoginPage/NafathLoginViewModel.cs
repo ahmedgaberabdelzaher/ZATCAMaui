@@ -56,7 +56,7 @@ public class NafathLoginViewModel : BaseViewModel
                         //setting location Data
                         result.result.lattitude = LocationData.lattitude;
                         result.result.longitude = LocationData.longitude;
-                        _navigationService.NavigateTo(App.NafathAuthenticationView, result);
+                        await _navigationService.NavigateTo(App.NafathAuthenticationView, result);
 
                         var _navigation = Application.Current.MainPage.Navigation;
 

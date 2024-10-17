@@ -1015,11 +1015,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
                                 {
                                     App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
-                                    _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                                  await  _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
                                 }
 
 
-                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
 
                             });
                         }
@@ -1030,44 +1029,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 catch (GAZTValidatePaymentInProcessException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        //_navigationService.GoBack();
-                    });
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
-                    });
-                }
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                catch (InternetException)
                 {
                     IsLoading = false;
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
-                });
+                }
+            }
+            catch (InternetException)
+            {
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                _navigationService.GoBack();
             }
 
-            catch (GAZTNetworkConnectivityIssueException ex)
+            catch (GAZTNetworkConnectivityIssueException )
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
-                });
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
             }
         }
 
@@ -1087,11 +1069,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (GAZTValidateMadaPaymentException ex)
             {
                 IsLoading = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                });
+                var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                 return null;
             }
             catch (Exception)
@@ -1146,19 +1125,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 paymentInfo.Period = response.d.PerslTxt;
                             }
 
-                            _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
-
-                            //_navigationService.GoBack();
+                          await  _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
                         }
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                                //_navigationService.GoBack();
-
-                                await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
-                            });
+                            await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
 
                         }
 
@@ -1169,63 +1140,42 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 catch (GAZTValidatePaymentInProcessException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
-                    });
-                }
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                catch (InternetException )
                 {
                     IsLoading = false;
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
-                });
+                }
+            }
+            catch (InternetException )
+            {
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                _navigationService.GoBack();
             }
         }
 
-        //private async Task<bool> ProcessApplePay()
-        //{
 
-        //    var Amount = Convert.ToDouble(PaymentData.d.Amount);
-        //    var BillAmount = Math.Round(Amount, 2);
-        //    DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
-        //    return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
-        //}
-
-        public void MadaPaymentSelected()
+        public async Task MadaPaymentSelected()
         {
-            DoValidatePayment(selectedFbNum, selectedSadadNo, "Mada Payment");
+          await  DoValidatePayment(selectedFbNum, selectedSadadNo, "Mada Payment");
 
         }
 
         public async Task ApplePaySelected()
         {
-            DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo, "A");
+           await DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo, "A");
 
         }
 
         public async Task SadadPaymentSelected()
         {
-            //_navigationService.NavigateTo(App.MyBillsSuccessPageView, selectedSadadNo);
-            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, this);
+           await _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, this);
 
-            //_navigationService.GoBack();
 
         }
     }

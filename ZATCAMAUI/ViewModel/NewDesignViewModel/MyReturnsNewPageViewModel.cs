@@ -792,7 +792,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
 

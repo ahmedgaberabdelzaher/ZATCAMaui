@@ -99,10 +99,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         }
         private async void SummaryAttachments_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
         {
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-            });
+            viewModel.IsLoading = true;
             try
             {
                 var attachment = e.DataItem as Attachment;
@@ -115,7 +112,7 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
                 {
                     if (attachment.DocUrl != null)
                     {
-                        viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                      await  viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
                     }
                 }
                 else

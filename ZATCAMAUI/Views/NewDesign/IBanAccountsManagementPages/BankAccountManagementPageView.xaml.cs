@@ -43,7 +43,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                 }
                 else if (message.Equals("Update"))
                 {
-                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, _viewModel.IBANAccountData);
+                  await  _viewModel._navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, _viewModel.IBANAccountData);
                 }
 
 
@@ -86,7 +86,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                 else if (IBanSetResultModel.StatusText.Equals(AppResources.IBANUpdate))
                 {
                     _viewModel.IBANAccountData.d.isUpdateFlag = true;
-                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, _viewModel.IBANAccountData);
+                  await  _viewModel._navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, _viewModel.IBANAccountData);
                 }
             }
 

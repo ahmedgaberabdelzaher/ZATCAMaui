@@ -884,9 +884,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 openedTab = _enum,
                 taxPayerDetails = taxPayerDetails,
                 nextNumber = newNumber,
-                goBackAction = (List<Nreg_ActivityItem> list) =>
+                goBackAction = async (List<Nreg_ActivityItem> list) =>
                 {
-                    addActivities(list);
+                   await addActivities(list);
                 }
             }); ;
         }
@@ -1097,57 +1097,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                          );
 
 
-                        //As per 5250 commented below code, in amend we no need to call this api.
-                        //if (OutletActNumber == "00000")
-                        //{
-                        //    var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
-                        //    if (preLoadedItems.Count == 1)
-                        //    {
-                        //        var preLoadedItem = preLoadedItems.FirstOrDefault();
-                        //        if (preLoadedItem?.Type == "BUP002")
-                        //        {
-                        //            var result = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
-                        //            try
-                        //            {
-                        //                if (!string.IsNullOrEmpty(result))
-                        //                {
-                        //                    validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
-                        //                }
-                        //                if (validateCR.Crnum == null)
-                        //                {
-                        //                    PrepareError(result);
-                        //                }
-                        //            }
-                        //            catch (Exception ex)
-                        //            {
-
-                        //            }
-
-
-                        //            if (!string.IsNullOrEmpty(validateCR?.Crname))
-                        //            {
-                        //                OutletName = validateCR?.Crname;
-                        //                validateCR.Crnum = preLoadedItem?.Idnumber;
-                        //            }
-                        //            PreLoadedLicenseItem = null;
-                        //        }
-                        //        else if (preLoadedItem?.Type == "ZS0004")
-                        //        {
-                        //            validateCR = null;
-                        //            PreLoadedLicenseItem = preLoadedItem;
-                        //        }
-                        //        else
-                        //        {
-                        //            validateCR = null;
-                        //            PreLoadedLicenseItem = null;
-                        //        }
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    validateCR = null;
-                        //    PreLoadedLicenseItem = null;
-                        //}
+                       
                     }
                     catch (Exception)
                     {
@@ -1290,7 +1240,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                 });
 
-                //throw new GAZTErrorException(WithReplacedString);
             }
         }
         private void populateAddress(OutletAddress address)

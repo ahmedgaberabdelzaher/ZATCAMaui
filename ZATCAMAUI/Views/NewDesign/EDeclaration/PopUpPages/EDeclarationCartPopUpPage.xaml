@@ -132,7 +132,7 @@
                                                 ColumnDefinitions="Auto,*,*"
                                                 ColumnSpacing="0"
                                                 RowDefinitions="Auto,Auto,Auto,Auto,auto"
-                                                RowSpacing="5">
+                                                RowSpacing="10">
 
                                                 <!--  Delete Icon  -->
                                                 <Image

@@ -2506,15 +2506,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.YourPasswordhasbeenChangedsuccessfully));
                     var _navigation = Application.Current.MainPage.Navigation;
-                    /*foreach (var item in _navigation.NavigationStack)
-                    {
-                        if (item.GetType().Name == App.SFLoginPageView)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
-                    }*/
-                    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                   
+                   await _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                     _navigation.NavigationStack.ToList().Clear();
 
                 }
@@ -2550,85 +2543,61 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
         public async Task SetTinsListLayoutVisibility(bool IsEmailUserName)
         {
-            await Task.Run(() =>
+            IsLoading = true;
+            if (IsEmailUserName)
             {
-                IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-                if (IsEmailUserName)
+                TINs = new List<TINModel>();
+                List<TINModel> Tins = new List<TINModel>();
+                try
                 {
-                    TINs = new List<TINModel>();
-                    List<TINModel> Tins = new List<TINModel>();
                     try
                     {
-                        try
+                        await Task.Run(() =>
                         {
-                            await Task.Run(() =>
-                            {
-                                IsLoading = true;
-                            });
-                            SelectedTinId = null;
-                            Tins = await WebServiceManager.GAZTGetAllTins(Email);
-                            TINs = Tins;
-                            if (Tins.Count != 0)
-                            {
-                                Enabled = true;
-                                IsAPICalledSuccessfully = true;
-                                UserNameLabelText = AppResources.UserName;
-                                IsVisibleTinIds = true;
-                                SelectedTinId = TINs.FirstOrDefault();
-                            }
-                            else
-                            {
-                                IsAPICalledSuccessfully = false;
-
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    IsVisibleTinIds = false;
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NoTINsAvailable));
-
-                                });
-                            }
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
+                            IsLoading = true;
+                        });
+                        SelectedTinId = null;
+                        Tins = await WebServiceManager.GAZTGetAllTins(Email);
+                        TINs = Tins;
+                        if (Tins.Count != 0)
+                        {
+                            Enabled = true;
+                            IsAPICalledSuccessfully = true;
+                            UserNameLabelText = AppResources.UserName;
+                            IsVisibleTinIds = true;
+                            SelectedTinId = TINs.FirstOrDefault();
                         }
-                        catch (Exception ex)
+                        else
                         {
                             IsAPICalledSuccessfully = false;
 
                             IsVisibleTinIds = false;
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
-                            });
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
-                        }
-                    }
-                    catch (InternetException ex)
-                    {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NoTINsAvailable));
 
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (Exception )
+                    {
+                        IsAPICalledSuccessfully = false;
+
+                        IsVisibleTinIds = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
+                        IsLoading = false;
                     }
                 }
-                else
+                catch (InternetException ex)
                 {
-                    IsVisibleTinIds = false;
+
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    IsLoading = false;
                 }
-            });
-            await Task.Run(() =>
+            }
+            else
             {
-                IsLoading = false;
-            });
+                IsVisibleTinIds = false;
+            }
+            IsLoading = false;
         }
         private string GetTinId()
         {

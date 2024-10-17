@@ -78,7 +78,7 @@ namespace ZATCAMAUI.Core.Behaviors
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

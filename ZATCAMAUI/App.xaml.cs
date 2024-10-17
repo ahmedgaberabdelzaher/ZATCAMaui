@@ -788,7 +788,7 @@ namespace ZATCAMAUI
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

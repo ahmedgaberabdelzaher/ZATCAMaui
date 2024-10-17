@@ -87,7 +87,7 @@ namespace ZATCAMAUI.Manager
                     }
                     return IBanModelResponse;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;

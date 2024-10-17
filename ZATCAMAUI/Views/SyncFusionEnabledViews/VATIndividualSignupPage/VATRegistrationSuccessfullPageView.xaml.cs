@@ -40,7 +40,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void Image_Copy_Tapped(object sender, EventArgs e)
         {
-            Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+            await Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();

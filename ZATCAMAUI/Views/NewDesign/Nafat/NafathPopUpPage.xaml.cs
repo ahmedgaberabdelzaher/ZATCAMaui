@@ -24,7 +24,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
             CitigenText.TextColor = Colors.CadetBlue;
 
             await MopupService.Instance.PopAsync();
-            viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView, "Gulf");
+          await  viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView, "Gulf");
         }
         private async void TappedCitizen(object sender, EventArgs e)
         {
@@ -40,7 +40,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
                 App.GUIDFrSSO = "";
 
                 await MopupService.Instance.PopAsync();
-                viewModel._navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_SIGNUP);
+              await  viewModel._navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_SIGNUP);
             }
             catch (Exception)
             {

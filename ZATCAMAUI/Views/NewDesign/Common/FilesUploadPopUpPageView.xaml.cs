@@ -402,7 +402,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                         if (attachment.DocUrl != null)
                         {
                             await MopupService.Instance.PopAsync();
-                            viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                          await  viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
                         }
                     }
                     else

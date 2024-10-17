@@ -126,12 +126,12 @@ public class NafathAuthenticationViewModel : BaseViewModel
                         { Response.idNumber, guid }
                     };
 
-            _navigationService.NavigateTo(App.NafathChangeMobileNumberView, d);
+           await _navigationService.NavigateTo(App.NafathChangeMobileNumberView, d);
         }
         else if (navigation == ZATCAConstants.NAFATH_COMPANY_CHANGE_MOBILE_NUMBER)
         {
             Dictionary<string, string> d = new Dictionary<string, string> { { Response.idNumber, guid } };
-            _navigationService.NavigateTo(App.ChangeMobileRequestPageView, d);
+           await _navigationService.NavigateTo(App.ChangeMobileRequestPageView, d);
         }
         else if (navigation == ZATCAConstants.NAFATH_LOGIN || navigation == ZATCAConstants.NAFATH_SIGNUP)
         {
@@ -166,7 +166,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
                 else if (response.data.SSOUserAccounts[0].code == "101")
                 {
                     App.GUIDFrSSO = response.data.SSOUserAccounts[0].GUID;
-                    _navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
+                  await  _navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
                 }
             }
         }
@@ -213,7 +213,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
                 App.LoginDataRetrieved.TIN = TIN;
                 App.Token = response.result.accessToken;
                 await LoginCompleted();
-                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView, false);
+               await _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView, false);
             }
             else
             {
@@ -269,7 +269,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
                 

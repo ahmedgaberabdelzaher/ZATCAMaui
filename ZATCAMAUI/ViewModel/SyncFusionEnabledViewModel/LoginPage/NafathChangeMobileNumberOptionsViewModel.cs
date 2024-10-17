@@ -43,7 +43,7 @@ public class NafathChangeMobileNumberOptionsViewModel : BaseViewModel
 
     private void BindCommands()
     {
-        ChangeMobileNumberCommand = new Command(() => ChangeMobileNumberClicked());
+        ChangeMobileNumberCommand = new Command(async() =>await ChangeMobileNumberClicked());
         CloseCommand = new Command(async () =>
         {
             IndividualEnabled = false;
@@ -68,13 +68,13 @@ public class NafathChangeMobileNumberOptionsViewModel : BaseViewModel
             if (IndividualEnabled)
             {
                 await MopupService.Instance.PopAsync();
-                _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_CHANGE_MOBILE_NUMBER);
+              await  _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_CHANGE_MOBILE_NUMBER);
             }
             else if (CompanyEnabled)
             {
                 Dictionary<string, string> d = new Dictionary<string, string>();
                 await MopupService.Instance.PopAsync();
-                _navigationService.NavigateTo(App.ChangeMobileRequestPageView, d);
+               await _navigationService.NavigateTo(App.ChangeMobileRequestPageView, d);
             }
             IndividualEnabled = false;
             CompanyEnabled = false;

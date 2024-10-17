@@ -942,20 +942,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 try
                 {
-                    // Constants.ChangeMobNafath = ChangeMobModel.d.Link;
                     App.GUIDFrChangeMob = "";
                     _navigationService.GoBack();
-                    _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_COMPANY_CHANGE_MOBILE_NUMBER);
+                  await  _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_COMPANY_CHANGE_MOBILE_NUMBER);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.Message);
                 }
 
 
             });
 
-            PrintFormClicked = new Command(async () =>
+            PrintFormClicked = new Command( () =>
             {
                 try
                 {

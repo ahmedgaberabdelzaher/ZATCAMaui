@@ -21,7 +21,7 @@ namespace ZATCAMAUI.Platforms.iOS.DependencyServices
         private readonly string _rootDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library");
 
         string filePath = "";
-        public async Task Save(MemoryStream stream, string fileName)
+        public  void Save(MemoryStream stream, string fileName)
         {
             if (!Directory.Exists(_rootDir))
                 Directory.CreateDirectory(_rootDir);

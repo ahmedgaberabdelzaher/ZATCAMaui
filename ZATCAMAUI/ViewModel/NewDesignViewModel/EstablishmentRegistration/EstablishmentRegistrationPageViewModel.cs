@@ -2431,7 +2431,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         if (IsNavigationCompletedToSuccessfulPage == false)
                         {
                             IsNavigationCompletedToSuccessfulPage = true;
-                            _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                           await _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                         }
                     }
                     else
@@ -2632,7 +2632,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("01", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     if (!string.IsNullOrEmpty(taxPayerDetails?.Fbsta) && taxPayerDetails?.Fbsta != "IP011")
                     {
-                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                       await _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                     }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.authorizationGroup == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
@@ -2727,7 +2727,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("01", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     if (!string.IsNullOrEmpty(taxPayerDetails?.Fbsta) && taxPayerDetails?.Fbsta != "IP011")
                     {
-                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                      await  _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                     }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.authorizationGroup == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
@@ -3430,7 +3430,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     outletNavigationModels.idItem = idItem;
                     outletNavigationModels.selectedOutletItem = GetSelectedItem(item);
-                    _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
+                   await _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
                 }
 
             }

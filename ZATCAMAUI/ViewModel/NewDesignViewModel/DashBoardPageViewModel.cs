@@ -2112,7 +2112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                 if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
                                 {
                                     App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
-                                    _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                                 await   _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
                                 }
                             });
                         }
@@ -2241,7 +2241,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                 paymentInfo.Period = response.d.PerslTxt;
                             }
 
-                            _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
+                         await   _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
                         }
                         else
                         {
@@ -3481,7 +3481,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 await WebServiceManager.GAZTLogOff();
                 IsLoading = false;
 
-                MainThread.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread(async() =>
                 {
                     App.IsLogOut = true;
                     App.IsLoginCalled = false;
@@ -3491,7 +3491,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     App.httpClientHandler = new HttpClientHandler();
                     App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                     App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-                    _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                 await   _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
 
 
                 });

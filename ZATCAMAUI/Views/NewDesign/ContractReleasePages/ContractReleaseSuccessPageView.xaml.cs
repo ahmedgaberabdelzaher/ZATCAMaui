@@ -82,18 +82,12 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         {
             if (viewModel.ContractReleaseData.d.Fbnumz != null)
             {
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = true;
 
                 string downloadurl = ZATCAConstants.CRDownloadAcknowledementFile + viewModel.ContractReleaseData.d.Fbnumz;
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
 

@@ -96,7 +96,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatObjection
         {
             try
             {
-                viewModel.OnPageLoad();
+               await viewModel.OnPageLoad();
             }
             catch (Exception)
             {

@@ -464,7 +464,7 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                     return responseData;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     
                     

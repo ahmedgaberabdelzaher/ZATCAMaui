@@ -320,48 +320,33 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
 
                                 vATDeclaration.data = vATDeclarationD;
                                 vATDeclaration.data.ADRSet = new List<Result5>();
-                                MainThread.BeginInvokeOnMainThread(() =>
-                                {
-                                    _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
-                                });
+                              await  _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
                             }
                             else
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                MainThread.BeginInvokeOnMainThread(() =>
-                                {
-                                    IsLoading = false;
-                                });
+                                IsLoading = false;
                             }
                         }
                         else
                         {
                             await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                IsLoading = false;
-                            });
+                            IsLoading = false;
                         }
                     }
                 }
                 catch (InternetException)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        IsLoading = false;
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    IsLoading = false;
+                    _navigationService.GoBack();
                 }
             }
             catch (InternetException)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    IsLoading = false;
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                IsLoading = false;
+                _navigationService.GoBack();
             }
         }
         public bool isStatusNotValid()

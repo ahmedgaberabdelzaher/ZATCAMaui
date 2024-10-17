@@ -478,7 +478,7 @@ public partial class MoreOptionsNote : PopupPage
 			{
 				if (attachment.DocUrl != null)
 				{
-					viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+					await viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
 					await MopupService.Instance.PopAsync();
 				}
 			}
