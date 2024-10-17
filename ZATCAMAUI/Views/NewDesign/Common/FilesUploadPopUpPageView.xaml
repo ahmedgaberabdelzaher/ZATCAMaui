@@ -16,19 +16,18 @@
         Stroke="{StaticResource NeutralLightGrey}"
         StrokeShape="RoundRectangle 22,22,0,0"
         VerticalOptions="End">
-        <Grid>
-            <StackLayout Spacing="10"
-                         Padding="10">
+        <Grid RowDefinitions="Auto,Auto">
+            <StackLayout Padding="10" Spacing="10">
 
                 <buttons:SfButton
-                        Background="Transparent"
-                        Command="{Binding GoButtonClick}"
-                        FontAttributes="Bold"
-                        FontSize="Medium"
-                        HorizontalOptions="End"
-                        Style="{StaticResource GAZTVerifyButton}"
-                        Text="{x:Static ResourceManager:AppResources.CRDone}"
-                        TextColor="{StaticResource Primary}" />
+                    Background="Transparent"
+                    Command="{Binding GoButtonClick}"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="End"
+                    Style="{StaticResource GAZTVerifyButton}"
+                    Text="{x:Static ResourceManager:AppResources.CRDone}"
+                    TextColor="{StaticResource Primary}" />
 
                 <Label
                     Margin="0,0,0,0"
@@ -48,9 +47,9 @@
                     x:Name="List"
                     HasUnevenRows="True"
                     HorizontalOptions="FillAndExpand"
-                    MinimumHeightRequest="100"
                     ItemTapped="Attachmentlist_ItemTapped"
                     ItemsSource="{Binding AttachmentList}"
+                    MinimumHeightRequest="100"
                     SeparatorVisibility="None"
                     VerticalOptions="FillAndExpand">
                     <ListView.ItemTemplate>
