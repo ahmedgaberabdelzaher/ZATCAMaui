@@ -133,6 +133,9 @@
         <None Remove="ViewModel\NewDesignViewModel\UpdateVatEffectiveDateVM\" />
         <None Remove="ViewModel\NewDesignViewModel\ZakatRejectionPopUpViewModel\" />
         <None Remove="ViewModel\NewDesignViewModel\Nafat\" />
+        <None Remove="KeyStoreMaui\z-mobile.keystore" />
+        <None Remove="KeyStoreMaui\passowrd.rtf" />
+        <None Remove="KeyStoreMaui\z-mobile.keyInfo" />
     </ItemGroup>
     <ItemGroup>
         <Compile Remove="Platforms\Android\DependencyServices\CustomPdfRenderer.cs" />

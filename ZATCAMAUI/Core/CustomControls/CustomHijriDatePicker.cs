@@ -53,6 +53,8 @@ namespace ZATCAMAUI.Core.CustomControls
         }
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
+            this.FooterView.OkButtonText = AppResources.OKText;
+            this.FooterView.CancelButtonText = AppResources.CancelText;
             base.OnPropertyChanged(propertyName);
             if (propertyName == FutureDayProperty.PropertyName)
             {
@@ -62,9 +64,6 @@ namespace ZATCAMAUI.Core.CustomControls
         }
         public CustomHijriDatePicker()
         {
-            this.FooterView.OkButtonText = AppResources.OKText;
-            this.FooterView.CancelButtonText = AppResources.CancelText;
-
             if (!FutureDay) InitializeDatePicker();
             else InitializeFutureDatePicker();
         }
