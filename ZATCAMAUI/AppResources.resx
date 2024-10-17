@@ -11778,6 +11778,6 @@ the credit balance of the current period will be carried forward, you can reques
      <value>Adjustment amount</value>
   </data>
   <data name="VerifyAdjustmentAmount" xml:space="preserve">
-     <value>Verify adjustment amount</value>
+     <value>Verify adjustment amount</value> 
   </data>
 </root>
