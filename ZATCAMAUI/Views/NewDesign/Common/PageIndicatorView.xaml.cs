@@ -110,46 +110,48 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                     Children.Add(completeMark);
                 }
 
-                var color = (Color)Application.Current.Resources["Primary"];
-
                 if (propertyName == MinNumProperty.PropertyName)
                 {
                     int counter = 0, childCounter = 0;
 
-                    foreach(BoxView box in Children)
+                    foreach (var child in Children)
                     {
-                        if (!string.IsNullOrEmpty(box.AutomationId))
+                        if (child is BoxView box && !string.IsNullOrEmpty(box.AutomationId))
                         {
                             if (counter < MinNum)
                             {
-                                box.Background = (Color)Application.Current.Resources["Primary"];
-                                if (childCounter - 1 > 0)
-                                    Children[childCounter - 1].Background.BackgroundColor = (Color)Application.Current.Resources["Primary"];
+                                box.BackgroundColor = (Color)Application.Current.Resources["Primary"];
+                                if (childCounter - 1 > 0 && Children[childCounter - 1] is BoxView previousBox)
+                                {
+                                    previousBox.BackgroundColor = (Color)Application.Current.Resources["Primary"];
+                                }
                             }
                             else
                             {
-                                box.Background = (Color)Application.Current.Resources["NeutralLightGrey"];
-                                if (childCounter - 1 > 0)
-                                    Children[childCounter - 1].Background.BackgroundColor = Colors.Transparent;
+                                box.BackgroundColor = (Color)Application.Current.Resources["NeutralLightGrey"];
+                                if (childCounter - 1 > 0 && Children[childCounter - 1] is BoxView previousBox)
+                                {
+                                    previousBox.BackgroundColor = Colors.Transparent;
+                                }
                             }
                             counter++;
                         }
                         childCounter++;
                     }
                 }
+
                 if (propertyName == CompletedProperty.PropertyName)
                 {
-                    //TODO
                     var view = (View)Children.LastOrDefault();
                     if (view != null)
                         view.IsVisible = Completed;
-                    //Children.LastOrDefault().IsVisible = Completed;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                // Handle exceptions
             }
-            
         }
+
     }
 }

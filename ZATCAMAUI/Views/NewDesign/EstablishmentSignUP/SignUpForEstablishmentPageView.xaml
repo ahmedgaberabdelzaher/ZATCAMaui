@@ -91,11 +91,12 @@
 
                     <!--  Bullets  -->
                     <commonView:PageIndicatorView
-                                Completed="{Binding MarkComplete}"
-                                DotSize="16"
-                                MaxNum="{Binding MaxIndex}"
-                                MinNum="{Binding CurrentIndex}"
-                                VerticalOptions="Start" />
+                        Completed="{Binding MarkComplete}"
+                        DotSize="16"
+                        HorizontalOptions="EndAndExpand"
+                        MaxNum="{Binding MaxIndex}"
+                        MinNum="{Binding CurrentIndex}"
+                        VerticalOptions="Start" />
 
                     <Label
                         HorizontalOptions="StartAndExpand"
