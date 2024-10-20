@@ -6,6 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -13,8 +14,8 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
-    ios:Page.UseSafeArea="true"
     x:Name="vATReturn"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -116,10 +117,9 @@
 
 
                     <!--  Sub Header  -->
-                    <StackLayout Orientation="Horizontal"
-                                 Margin="0,10">
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
 
-                         <!--  Back Button  -->
+                        <!--  Back Button  -->
                         <Image
                             HorizontalOptions="Start"
                             Rotation="180"
@@ -139,16 +139,14 @@
                             </Image.GestureRecognizers>
                         </Image>
 
-                        <IndicatorView 
-                                IndicatorColor="LightGray"
-                                IndicatorSize="16"
-                                SelectedIndicatorColor="{StaticResource PrimaryColor}"
-                                HorizontalOptions="EndAndExpand"
-                                MaximumVisible="{Binding MaxIndex}"
-                                Count="{Binding MaxIndex}"
-                                VerticalOptions="CenterAndExpand"
-                                Position="{Binding CurrentIndex}"
-                                />
+
+                        <commonView:PageIndicatorView
+                            Completed="{Binding MarkComplete}"
+                            DotSize="16"
+                            HorizontalOptions="EndAndExpand"
+                            MaxNum="{Binding MaxIndex}"
+                            MinNum="{Binding CurrentIndex}"
+                            VerticalOptions="Start" />
 
                     </StackLayout>
 
@@ -4018,8 +4016,9 @@
 
                                     </VerticalStackLayout>
 
-                                    <buttons:SfButton Margin="5"
+                                    <buttons:SfButton
                                         x:Name="btnpaynow"
+                                        Margin="5"
                                         Clicked="OnPayNowButtonClicked"
                                         IsVisible="{Binding IsPayNowVisible}"
                                         Style="{StaticResource PrimaryButtonStyle}"
