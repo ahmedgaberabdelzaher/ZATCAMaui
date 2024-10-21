@@ -663,8 +663,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     IsSpellCheckEnabled="false"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="6"
                                     PlaceholderColor="{StaticResource NeutralGreay}"
                                     Text="{Binding PostalCode}"
@@ -1009,8 +1008,7 @@
                                         HorizontalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Start"
                                         IsSpellCheckEnabled="false"
-                                        Keyboard="{OnPlatform Android=Numeric,
-                                                              iOS=Default}"
+                                        Keyboard="Numeric"
                                         MaxLength="6"
                                         PlaceholderColor="{StaticResource NeutralGreay}"
                                         Text="{Binding PostalCodeSame}"

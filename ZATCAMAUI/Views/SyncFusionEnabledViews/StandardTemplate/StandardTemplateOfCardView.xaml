@@ -154,28 +154,29 @@
                             Text="Adjustment" />
 
 
-                        <inputLayout:SfTextInputLayout
+                        <custom:CustomSfTextInputView
                             Grid.Row="2"
-                            Grid.Column="0"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            Grid.Column="0">
+                            <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            </custom:CustomSfTextInputView.TextInputView>
 
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
                             </inputLayout:SfTextInputLayout.TrailingView>
 
-                        </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout
+                        </custom:CustomSfTextInputView>
+
+                        <custom:CustomSfTextInputView
                             Grid.Row="2"
-                            Grid.Column="1"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            Grid.Column="1">
+                            <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                             </custom:CustomSfTextInputView.TextInputView>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
                             </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+                        </custom:CustomSfTextInputView>
 
                         <Label
                             Grid.Row="3"
@@ -212,26 +213,30 @@
                             Text="Adjustment" />
 
 
-                        <inputLayout:SfTextInputLayout
+                        <custom:CustomSfTextInputView
                             Grid.Row="5"
-                            Grid.Column="0"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            Grid.Column="0">
+                            <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            </custom:CustomSfTextInputView.TextInputView>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
                             </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout
+                        </custom:CustomSfTextInputView>
+
+                        <custom:CustomSfTextInputView
                             Grid.Row="5"
-                            Grid.Column="1"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
-                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            Grid.Column="1">
+
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            </custom:CustomSfTextInputView.TextInputView>
+
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
                             </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+
+                        </custom:CustomSfTextInputView>
 
                         <Label
                             Grid.Row="6"
@@ -268,26 +273,30 @@
                             Text="Adjustment" />
 
 
-                        <inputLayout:SfTextInputLayout
+                        <custom:CustomSfTextInputView
                             Grid.Row="8"
-                            Grid.Column="0"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            Grid.Column="0">
+                            <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            </custom:CustomSfTextInputView.TextInputView>
+
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
                             </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout
+
+                        </custom:CustomSfTextInputView>
+
+                        <custom:CustomSfTextInputView
                             Grid.Row="8"
-                            Grid.Column="1"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            Grid.Column="1">
+                            <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            </custom:CustomSfTextInputView.TextInputView>
+
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
                             </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+                        </custom:CustomSfTextInputView>
 
                         <Label
                             Grid.Row="9"
@@ -324,25 +333,28 @@
                             Text="Adjustment" />
 
 
-                        <inputLayout:SfTextInputLayout
+                        <custom:CustomSfTextInputView
                             Grid.Row="11"
-                            Grid.Column="0"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            Grid.Column="0">
+                            <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            </custom:CustomSfTextInputView.TextInputView>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
                             </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout
+                        </custom:CustomSfTextInputView>
+
+                        <custom:CustomSfTextInputView
                             Grid.Row="11"
-                            Grid.Column="1"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            Grid.Column="1">
+
+                            <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                                </custom:CustomSfTextInputView.TextInputView>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
                             </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+                        </custom:CustomSfTextInputView>
 
                         <Label
                             Grid.Row="12"
@@ -379,26 +391,28 @@
                             Text="Adjustment" />
 
 
-                        <inputLayout:SfTextInputLayout
+                        <custom:CustomSfTextInputView
                             Grid.Row="14"
-                            Grid.Column="0"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            Grid.Column="0">
+                            <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            </custom:CustomSfTextInputView.TextInputView>
+
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
                             </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout
+                        </custom:CustomSfTextInputView>
+
+                        <custom:CustomSfTextInputView
                             Grid.Row="14"
-                            Grid.Column="1"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            Grid.Column="1">
+                            <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                             </custom:CustomSfTextInputView.TextInputView>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
                             </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+                        </custom:CustomSfTextInputView>
 
                         <BoxView
                             Grid.Row="15"

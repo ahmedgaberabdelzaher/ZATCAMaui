@@ -996,8 +996,7 @@
                                                 x:Name="rrAmountTxt"
                                                 HorizontalOptions="FillAndExpand"
                                                 IsEnabled="{Binding IsRRAmountEdit}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="{Binding RequestedReviewAmount}"
                                                 TextColor="{StaticResource Primary}"
@@ -2011,8 +2010,7 @@
                                                         <custom:GAZTBorderlessEntry
                                                             HeightRequest="48"
                                                             HorizontalOptions="FillAndExpand"
-                                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                                  iOS=Default}"
+                                                            Keyboard="Numeric"
                                                             Style="{StaticResource BodyLabelBlack}"
                                                             Text="{Binding IDNumber}"
                                                             TextChanged="IdNumberTextChanged"

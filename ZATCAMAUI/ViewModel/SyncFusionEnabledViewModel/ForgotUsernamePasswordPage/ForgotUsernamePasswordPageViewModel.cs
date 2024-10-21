@@ -18,8 +18,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         public ICommand OnChangePasswordSubmitClicked { get; set; }
-        public Command OnResendOTPClicked { get; set; }
-        public Command OnValidateOTPClicked { get; set; }
         public Command OnLogInClick { get; set; }
         public ICommand OnLoginPageLinkClicked { get; set; }
         public int currentAttempts = 0;
@@ -567,7 +565,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isResendOTPEnabled = value;
-                OnResendOTPClicked.ChangeCanExecute();
+                OnResendOTPClicked.CanExecute(IsResendOTPEnabled);
                 OnPropertyChanged("IsResendOTPEnabled");
             }
         }
@@ -633,7 +631,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isVerifyOTPEnabled = value;
-                OnValidateOTPClicked.ChangeCanExecute();
+                OnValidateOTPClicked.CanExecute(IsVerifyOTPEnabled);
                 OnPropertyChanged("IsVerifyOTPEnabled");
             }
         }
@@ -729,7 +727,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
 
                 }
             });
-            OnCaptchaRegenerateClicked = new Command(async () =>
+            OnCaptchaRegenerateClicked = new Command( () =>
             {
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
@@ -752,8 +750,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
 
                 }
             });
-            OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
-            OnValidateOTPClicked = new Command(ExecuteSubmitClickCommand, CanExecuteSubmitClickCommand);
+
             OnLoginPageLinkClicked = new Command(() =>
            {
                _navigationService.GoBack();
@@ -761,23 +758,30 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
         }
         #endregion Constructor
         #region Method
-        bool CanExecuteSubmitClickCommand(object arg)
+
+        public ICommand OnResendOTPClicked
         {
-            return _isVerifyOTPEnabled;
+            get
+            {
+                return new Command(async() =>
+                {
+                    await SendOTPToRegisterMobileNumber();
+                }, ()=> _isResendOTPEnabled);
+            }
         }
-        public async void ExecuteSubmitClickCommand(object obj)
+
+        public ICommand OnValidateOTPClicked
         {
-            await ValidateOTP();
+            get
+            {
+                return new Command(async () =>
+                {
+                    await ValidateOTP();
+                }, () => _isVerifyOTPEnabled);
+            }
         }
-        bool CanExecuteResendOTPClickCommand(object arg)
-        {
-            return _isResendOTPEnabled;
-        }
-        public async void ExecuteResendOTPClickCommand(object obj)
-        {
-            await SendOTPToRegisterMobileNumber();
-        }
-        public async Task OnPageLoad()
+
+        public Task OnPageLoad()
         {
             IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
             string lang = UtilityManager.GetLanguageParameter();
@@ -810,6 +814,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             }
             VerifyButtonDisableColor = (Color)Application.Current.Resources["Primary"];
             IsVerifyOTPEnabled = true;
+
+            return Task.CompletedTask;
         }
         private void SetLayoutVisibilityForSelectedForgotType()
         {
@@ -935,218 +941,173 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                try
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    try
+
+                    string idNumber = GetTinId();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                    string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                    string st1 = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                    string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
+                    string type = ZATCAConstants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                    ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
+                    Metadata metadata = new Metadata();
+                    metadata.id = id;
+                    metadata.uri = uri;
+                    metadata.type = type;
+                    D d = new D();
+                    //  d.__metadata = metadata;
+                    d.Action = "";
+                    d.Tin = idNumber;
+                    d.Langu = UtilityManager.GetLanguageParameter();
+                    d.CurrAttmps = currentAttempts;
+                    d.EmailId = "";
+                    d.TpType = "";
+                    d.MobileNo = "";
+                    d.SubType = "";
+                    d.Idnumber = "";
+                    d.Otp = "";
+                    d.Minutes = 0;
+                    d.Name = "";
+                    d.Attempts = 0;
+                    // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
+                    d.NewPwd = "";
+                    d.CnfPwd = "";
+                    d.RdBt = "P";
+                    d.Hyperlink = "";
+                    forgotPassword.d = d;
+                    forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(forgotPassword);
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
                     {
-
-                        string idNumber = GetTinId();
-                        string lang = UtilityManager.GetLanguageParameter();
-                        string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
-                        string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
-                        string st1 = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
-                        string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
-                        string type = ZATCAConstants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
-                        ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
-                        Metadata metadata = new Metadata();
-                        metadata.id = id;
-                        metadata.uri = uri;
-                        metadata.type = type;
-                        D d = new D();
-                        //  d.__metadata = metadata;
-                        d.Action = "";
-                        d.Tin = idNumber;
-                        d.Langu = UtilityManager.GetLanguageParameter();
-                        d.CurrAttmps = currentAttempts;
-                        d.EmailId = "";
-                        d.TpType = "";
-                        d.MobileNo = "";
-                        d.SubType = "";
-                        d.Idnumber = "";
-                        d.Otp = "";
-                        d.Minutes = 0;
-                        d.Name = "";
-                        d.Attempts = 0;
-                        // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
-                        d.NewPwd = "";
-                        d.CnfPwd = "";
-                        d.RdBt = "P";
-                        d.Hyperlink = "";
-                        forgotPassword.d = d;
-                        forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(forgotPassword);
-                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
-                        {
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
-                                MainPageLayoutVisibility = false;
-                                OTPLayoutVisibility = true;
-                                ButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
-                                VerifyButtonDisableColor = (Color)Application.Current.Resources["Primary"];
-                                IsResendOTPEnabled = false;
-                                IsVerifyOTPEnabled = true;
-                                IsOTPEntryEnable = true;
-                                string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
-                                MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                                numberOfSeconds = 120;
-                                TimerStart(numberOfSeconds);
-                            });
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
-                            });
-                        }
+                        MainPageLayoutVisibility = false;
+                        OTPLayoutVisibility = true;
+                        ButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                        VerifyButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+                        IsResendOTPEnabled = false;
+                        IsVerifyOTPEnabled = true;
+                        IsOTPEntryEnable = true;
+                        string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
+                        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                        numberOfSeconds = 120;
+                        TimerStart(numberOfSeconds);
                     }
-                    catch (Exception)
+                    else
                     {
-
-
+                        await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
                     }
-                });
-                await Task.Run(() =>
+                }
+                catch (Exception)
                 {
-                    IsLoading = false;
-                });
+
+
+                }
+                IsLoading = false;
             }
             catch (InternetException ex)
             {
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
         }
         private async Task ValidateOTP()
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                if (!string.IsNullOrEmpty(EnteredOTP))
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    if (!string.IsNullOrEmpty(EnteredOTP))
+                    currentAttempts++;
+                    string idNumber = GetTinId();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                    string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                    string st1 = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                    string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
+                    string type = ZATCAConstants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                    ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
+                    Metadata metadata = new Metadata();
+                    metadata.id = id;
+                    metadata.uri = uri;
+                    metadata.type = type;
+                    D d = new D();
+                    //d.__metadata = metadata;
+                    if (currentAttempts < 3)
                     {
-                        currentAttempts++;
-                        string idNumber = GetTinId();
-                        string lang = UtilityManager.GetLanguageParameter();
-                        string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
-                        string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
-                        string st1 = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
-                        string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
-                        string type = ZATCAConstants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
-                        ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
-                        Metadata metadata = new Metadata();
-                        metadata.id = id;
-                        metadata.uri = uri;
-                        metadata.type = type;
-                        D d = new D();
-                        //d.__metadata = metadata;
-                        if (currentAttempts < 3)
-                        {
-                            d.Action = "01";
-                        }
-                        else
-                        {
-                            d.Action = "42";
-                        }
-                        d.Tin = idNumber;
-                        d.Langu = UtilityManager.GetLanguageParameter();
-                        d.CurrAttmps = currentAttempts;
-                        d.EmailId = "";
-                        d.TpType = "1";
-                        d.MobileNo = "";
-                        d.SubType = "ZS001";
-                        d.Idnumber = "";
-                        d.Otp = EnteredOTP;
-                        d.Minutes = 0;
-                        d.Name = "";
-                        d.Attempts = 0;
-                        // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
-                        d.NewPwd = "";
-                        d.CnfPwd = "";
-                        d.RdBt = "P";
-                        d.Hyperlink = "";
-                        forgotPassword.d = d;
-                        forgotPassword = await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
-                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-                        if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("01"))
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
-                            });
-                            OTPLayoutVisibility = false;
-                            NewPasswordLayoutVisibility = true;
-                            MobileNumber = forgotPassword.d.MobileNo;
-                        }
-                        else if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("42"))
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                string messagefordialogue = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;
-                                if (!App.IsArabic)
-                                {
-                                    messagefordialogue = messagefordialogue.Replace("{0}", "3");
-                                }
-                                else
-                                {
-                                    messagefordialogue = messagefordialogue.Replace("}0{", "3");
-                                }
-
-                                await _dialogService.ShowMessageBox(messagefordialogue, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                        else
-                        {
-                            if (currentAttempts == 1)
-                            {
-                                //Invalied user name
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        //await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.ZError);
-                                        await _dialogService.ShowMessageBox(AppResources.ZZZWrongverificationcode, AppResources.ZError);
-                                    });
-                            }
-                            else if (currentAttempts == 2)
-                            {
-                                // You have one remaining attaampt
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        string message = string.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
-                                        await _dialogService.ShowMessageBox(message, AppResources.ZError);
-                                    });
-                            }
-                            else
-                            {
-                            }
-                            EnteredOTP = "";
-                        }
+                        d.Action = "01";
                     }
                     else
                     {
+                        d.Action = "42";
+                    }
+                    d.Tin = idNumber;
+                    d.Langu = UtilityManager.GetLanguageParameter();
+                    d.CurrAttmps = currentAttempts;
+                    d.EmailId = "";
+                    d.TpType = "1";
+                    d.MobileNo = "";
+                    d.SubType = "ZS001";
+                    d.Idnumber = "";
+                    d.Otp = EnteredOTP;
+                    d.Minutes = 0;
+                    d.Name = "";
+                    d.Attempts = 0;
+                    // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
+                    d.NewPwd = "";
+                    d.CnfPwd = "";
+                    d.RdBt = "P";
+                    d.Hyperlink = "";
+                    forgotPassword.d = d;
+                    forgotPassword = await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                    if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("01"))
+                    {
+
+                        await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
+                        OTPLayoutVisibility = false;
+                        NewPasswordLayoutVisibility = true;
+                        MobileNumber = forgotPassword.d.MobileNo;
+                    }
+                    else if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("42"))
+                    {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(AppResources.EnterVerificationCode, AppResources.Information);
+                            string messagefordialogue = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;
+                            if (!App.IsArabic)
+                            {
+                                messagefordialogue = messagefordialogue.Replace("{0}", "3");
+                            }
+                            else
+                            {
+                                messagefordialogue = messagefordialogue.Replace("}0{", "3");
+                            }
+
+                            await _dialogService.ShowMessageBox(messagefordialogue, AppResources.Information);
+                            _navigationService.GoBack();
                         });
                     }
-                });
-                await Task.Run(() =>
+                    else
+                    {
+                        if (currentAttempts == 1)
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.ZZZWrongverificationcode, AppResources.ZError);
+                        }
+                        else if (currentAttempts == 2)
+                        {
+                            string message = string.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
+                            await _dialogService.ShowMessageBox(message, AppResources.ZError);
+                        }
+                        EnteredOTP = "";
+                    }
+                }
+                else
                 {
-                    IsLoading = false;
-                });
+                    await _dialogService.ShowMessageBox(AppResources.EnterVerificationCode, AppResources.Information);
+                }
+                IsLoading = false;
             }
             catch (InternetException ex)
             {

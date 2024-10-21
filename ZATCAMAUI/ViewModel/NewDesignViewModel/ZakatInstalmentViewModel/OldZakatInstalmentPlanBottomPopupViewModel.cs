@@ -22,25 +22,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 _navigationService.GoBack();
             });
 
-            ZakatInstalationClicked = new Command(ZakatInstalationTapped);
+            ZakatInstalationClicked = new Command(async ()=> await ZakatInstalationTapped());
         }
 
-        public async void ZakatInstalationTapped()
+        public async Task ZakatInstalationTapped()
         {
             try
             {
                 await MopupService.Instance.PopAsync();
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-            }
             catch (InternetException ex)
             {
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
     }

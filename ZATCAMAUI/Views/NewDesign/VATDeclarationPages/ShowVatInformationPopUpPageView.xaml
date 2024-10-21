@@ -51,8 +51,10 @@
                                     Stroke="{StaticResource DarkGrayTextColor}"
                                     StrokeShape="RoundRectangle 12,12,12,12">
                                     <StackLayout>
-                                        <StackLayout IsVisible="{Binding IsHeaderAvailable}">
-                                            <StackLayout Orientation="Horizontal">
+                                        <StackLayout IsVisible="{Binding IsHeaderAvailable}"
+                                                     Spacing="10">
+                                            <StackLayout Orientation="Horizontal"
+                                                         Spacing="10">
                                                 <Image Source="ic_vat_info" />
                                                 <Label
                                                     x:Name="HeaderTextlbl"
@@ -86,11 +88,11 @@
             <StackLayout
                 Grid.Row="2"
                 Margin="0,0,0,0"
+                Spacing="10"
                 VerticalOptions="FillAndExpand">
 
                 <buttons:SfButton
                     x:Name="btnprimary"
-                    Margin="10,0,10,0"
                     Clicked="DoneButtonClicked"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
@@ -98,7 +100,6 @@
 
                 <buttons:SfButton
                     x:Name="FirstLink"
-                    Margin="0,-10,0,3"
                     Background="Transparent"
                     Clicked="FirstLinkClicked"
                     Style="{StaticResource PrimaryButtonStyle}"
@@ -117,7 +118,6 @@
 
                 <buttons:SfButton
                     x:Name="SecondLink"
-                    Margin="0,-10,0,3"
                     Background="Transparent"
                     Clicked="SecondLinkClicked"
                     Style="{StaticResource PrimaryButtonStyle}"

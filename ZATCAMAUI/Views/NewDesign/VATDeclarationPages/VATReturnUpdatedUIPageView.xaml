@@ -3247,8 +3247,7 @@
                                                 x:Name="EntryPreperiodcorr"
                                                 Focused="EntryPreperiodcorrFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryPreperiodcorr_PropertyChanged"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"

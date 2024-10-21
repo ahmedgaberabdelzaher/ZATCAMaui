@@ -105,8 +105,7 @@
 
                                 <custom:GAZTBorderlessEntry
                                     x:Name="OTPFirstEntry"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="1"
                                     Text="{Binding OTPFirstDigit}"
                                     WidthRequest="100">
@@ -136,8 +135,7 @@
                                 <custom:GAZTBorderlessEntry
                                     x:Name="OTPSecondEntry"
                                     ClassId="2"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="1"
                                     Text="{Binding OTPSecondDigit}"
                                     WidthRequest="100">
@@ -167,8 +165,7 @@
                                 <custom:GAZTBorderlessEntry
                                     x:Name="OTPThirdEntry"
                                     ClassId="3"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="1"
                                     Text="{Binding OTPThirdDigit}"
                                     WidthRequest="100">
@@ -198,8 +195,7 @@
                                 <custom:GAZTBorderlessEntry
                                     x:Name="OTPFourthEntry"
                                     ClassId="4"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="1"
                                     Text="{Binding OTPFourthDigit}"
                                     WidthRequest="100">
@@ -229,8 +225,7 @@
                                 <custom:GAZTBorderlessEntry
                                     x:Name="OTPFifthEntry"
                                     ClassId="5"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="1"
                                     Text="{Binding OTPFithDigit}"
                                     WidthRequest="100">
@@ -259,8 +254,7 @@
                                 <custom:GAZTBorderlessEntry
                                     x:Name="OTPSixEntry"
                                     ClassId="6"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="1"
                                     Text="{Binding OTPSixDigit}"
                                     WidthRequest="100">

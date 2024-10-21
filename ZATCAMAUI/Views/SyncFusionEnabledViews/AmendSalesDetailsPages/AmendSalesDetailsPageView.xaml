@@ -133,8 +133,7 @@
                                     x:Name="NewValue"
                                     Focused="OnEntryFocussed"
                                     FontFamily="{StaticResource SomarSemiBold}"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                     Text="{Binding NewValue}"
                                     TextChanged="OnNewValueTextChanged"

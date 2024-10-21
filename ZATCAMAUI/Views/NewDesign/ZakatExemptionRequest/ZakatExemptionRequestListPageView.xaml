@@ -106,8 +106,7 @@
                             BackgroundColor="White"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsCloseButtonVisible}"
-                            Keyboard="{OnPlatform Android=Numeric,
-                                                  iOS=Default}"
+                            Keyboard="Numeric"
                             TextChanged="SearchBar_TextChanged"
                             VerticalOptions="FillAndExpand" />
 

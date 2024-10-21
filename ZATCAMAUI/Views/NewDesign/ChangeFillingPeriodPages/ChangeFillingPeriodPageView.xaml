@@ -887,8 +887,7 @@
                                                     VerticalOptions="CenterAndExpand">
                                                     <custom:GAZTBorderlessEntry
                                                         HorizontalOptions="FillAndExpand"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                              iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding IDNumber}"
                                                         TextChanged="IdNumberTextChanged"

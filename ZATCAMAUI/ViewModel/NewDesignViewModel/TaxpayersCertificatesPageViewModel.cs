@@ -362,44 +362,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
         }
-        public async void ShowPdf(string pdfUrl)
+        public async Task ShowPdf(string pdfUrl)
         {
-            await Task.Run(() =>
-             {
-                 IsLoading = true;
-             });
-
-
+            IsLoading = true;
             if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 if (pdfUrl != null)
                 {
-                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                   await _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
-
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
-                    });
+                    IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                 }
             }
             else
             {
                 if (pdfUrl != null)
                 {
-                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                   await _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
-
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
-                    });
+                    IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                 }
             }
 

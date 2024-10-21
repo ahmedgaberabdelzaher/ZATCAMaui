@@ -16,8 +16,7 @@
                 <custom:GAZTBorderlessEntry
                     x:Name="TextValue"
                     HorizontalOptions="Fill"
-                    Keyboard="{OnPlatform Android=Numeric,
-                                          iOS=Default}"
+                    Keyboard="Numeric"
                     MaxLength="21"
                     Placeholder="{Binding Source={x:Reference CustomEntryWithSAR}, Path=Placeholder}"
                     Style="{StaticResource DefaultEntry}"

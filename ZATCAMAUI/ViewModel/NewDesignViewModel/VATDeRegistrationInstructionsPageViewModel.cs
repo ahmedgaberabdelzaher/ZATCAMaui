@@ -108,7 +108,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             
         }
 
-        public async void VATDeregistrationTapped()
+        public async Task VATDeregistrationTapped()
         {
             if (_isInstructionChecked)
             {

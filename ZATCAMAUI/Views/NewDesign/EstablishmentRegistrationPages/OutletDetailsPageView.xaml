@@ -396,8 +396,7 @@
                                                 HorizontalOptions="FillAndExpand"
                                                 HorizontalTextAlignment="Start"
                                                 IsSpellCheckEnabled="false"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 MaxLength="20"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}"
                                                 PlaceholderColor="{StaticResource NeutralGreay}"
@@ -435,8 +434,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Start"
                                             IsSpellCheckEnabled="false"
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
+                                            Keyboard="Numeric"
                                             MaxLength="10"
                                             Placeholder="{x:Static ResourceManager:AppResources.ESTFloorNumber}"
                                             PlaceholderColor="{StaticResource NeutralGreay}"
@@ -531,8 +529,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Start"
                                             IsSpellCheckEnabled="false"
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
+                                            Keyboard="Numeric"
                                             MaxLength="6"
                                             Placeholder="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
                                             PlaceholderColor="{StaticResource NeutralGreay}"
@@ -891,8 +888,7 @@
                                                 HorizontalOptions="FillAndExpand"
                                                 HorizontalTextAlignment="Start"
                                                 IsSpellCheckEnabled="false"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 MaxLength="6"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
                                                 PlaceholderColor="{StaticResource NeutralGreay}"

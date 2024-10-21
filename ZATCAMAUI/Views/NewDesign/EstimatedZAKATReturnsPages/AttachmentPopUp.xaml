@@ -12,6 +12,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FlowDirection="{Binding AppDirection}"
+    x:Name="page"
     mc:Ignorable="d">
     <Grid RowDefinitions="100*">
 
@@ -99,7 +100,9 @@
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <StackLayout Padding="0,5,0,5" HorizontalOptions="FillAndExpand">
+                                                <StackLayout Padding="0,5,0,5"
+                                                             FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                             HorizontalOptions="FillAndExpand">
 
                                                     <Border
                                                         Margin="0"

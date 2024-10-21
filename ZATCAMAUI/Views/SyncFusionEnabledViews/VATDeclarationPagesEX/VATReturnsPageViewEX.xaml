@@ -903,8 +903,7 @@
                                                 x:Name="EntryVatAmount"
                                                 Focused="EntryVatAmountFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
                                                 PropertyChanged="EntryVatAmount_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
@@ -970,8 +969,7 @@
                                                 x:Name="EntryVatAdjustmentWithSAR"
                                                 Focused="EntryVatAdjustmentFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryVatAdjustmentWithSAR_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding StdsalesAdj}"
@@ -1035,8 +1033,7 @@
                                                 x:Name="EntryStdsalesVat"
                                                 InputTransparent="True"
                                                 IsReadOnly="True"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat, StringFormat='{0:D2}'}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -1104,8 +1101,7 @@
                                                 x:Name="EntryVatAmount15"
                                                 Focused="EntryVatAmount15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
                                                 PropertyChanged="EntryVatAmount15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
@@ -1171,8 +1167,7 @@
                                                 x:Name="EntryVatAdjustmentWithSAR15"
                                                 Focused="EntryVatAdjustment15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryVatAdjustmentWithSAR15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdsalesAdj}"
@@ -1236,8 +1231,7 @@
                                                 x:Name="EntryStdsalesVat15"
                                                 InputTransparent="True"
                                                 IsReadOnly="True"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat15, StringFormat='{0:D2}'}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -1305,8 +1299,7 @@
                                                 x:Name="EntryVatAmount5"
                                                 Focused="EntryVatAmount5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
                                                 PropertyChanged="EntryVatAmount5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
@@ -1372,8 +1365,7 @@
                                                 x:Name="EntryVatAdjustmentWithSAR5"
                                                 Focused="EntryVatAdjustment5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryVatAdjustmentWithSAR5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdsalesAdj}"
@@ -1437,8 +1429,7 @@
                                                 x:Name="EntryStdsalesVat5"
                                                 InputTransparent="True"
                                                 IsReadOnly="True"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat5, StringFormat='{0:D2}'}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -1502,8 +1493,7 @@
                                                 x:Name="EntrySalesGccAmt"
                                                 Focused="EntrySalesGccAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntrySalesGccAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding SalesGccAmt}"
@@ -1567,8 +1557,7 @@
                                                 x:Name="EntrySalesGccAdj"
                                                 Focused="EntrySalesGccAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntrySalesGccAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding SalesGccAdj}"
@@ -1652,8 +1641,7 @@
                                                 x:Name="EntryZerosalesAmt"
                                                 Focused="EntryZerosalesAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryZerosalesAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ZerosalesAmt}"
@@ -1717,8 +1705,7 @@
                                                 x:Name="EntryZerosalesAdj"
                                                 Focused="EntryZerosalesAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryZerosalesAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ZerosalesAdj}"
@@ -1805,8 +1792,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryExportsAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
                                                 PropertyChanged="EntryExportsAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
@@ -1871,8 +1857,7 @@
                                                 x:Name="EntryExportsAdj"
                                                 Focused="EntryExportsAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryExportsAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ExportsAdj}"
@@ -1957,8 +1942,7 @@
                                                 x:Name="EntryExemptsalesAmt"
                                                 Focused="EntryExemptsalesAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryExemptsalesAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ExemptsalesAmt}"
@@ -2025,8 +2009,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryExemptsalesAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
                                                 PropertyChanged="EntryExemptsalesAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
@@ -2232,8 +2215,7 @@
                                                 x:Name="EntryStdpurchaseAmt"
                                                 Focused="EntryStdpurchaseAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryStdpurchaseAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding StdpurchaseAmt}"
@@ -2298,8 +2280,7 @@
                                                 x:Name="EntryStdpurchaseAdj"
                                                 Focused="EntryStdpurchaseAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryStdpurchaseAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding StdpurchaseAdj}"
@@ -2423,8 +2404,7 @@
                                                 x:Name="EntryStdpurchaseAmt15"
                                                 Focused="EntryStdpurchaseAmt15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryStdpurchaseAmt15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdpurchaseAmt}"
@@ -2489,8 +2469,7 @@
                                                 x:Name="EntryStdpurchaseAdj15"
                                                 Focused="EntryStdpurchaseAdj15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryStdpurchaseAdj15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdpurchaseAdj}"
@@ -2613,8 +2592,7 @@
                                                 x:Name="EntryStdpurchaseAmt5"
                                                 Focused="EntryStdpurchaseAmt5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryStdpurchaseAmt5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdpurchaseAmt}"
@@ -2679,8 +2657,7 @@
                                                 x:Name="EntryStdpurchaseAdj5"
                                                 Focused="EntryStdpurchaseAdj5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryStdpurchaseAdj5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.StdpurchaseAdj}"
@@ -2806,8 +2783,7 @@
                                                 x:Name="EntryZVatAmountWithSAR"
                                                 Focused="EntryZVatAmountWithSARFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryZVatAmountWithSAR_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ImportspaidAmt}"
@@ -2872,8 +2848,7 @@
                                                 x:Name="EntryImportspaidAdj"
                                                 Focused="EntryImportspaidAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryImportspaidAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ImportspaidAdj}"
@@ -2998,8 +2973,7 @@
                                                 x:Name="EntryZVatAmountWithSAR15"
                                                 Focused="EntryZVatAmountWithSAR15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryZVatAmountWithSAR15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportspaidAmt}"
@@ -3064,8 +3038,7 @@
                                                 x:Name="EntryImportspaidAdj15"
                                                 Focused="EntryImportspaidAdj15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryImportspaidAdj15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportspaidAdj}"
@@ -3190,8 +3163,7 @@
                                                 x:Name="EntryZVatAmountWithSAR5"
                                                 Focused="EntryZVatAmountWithSAR5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryZVatAmountWithSAR5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportspaidAmt}"
@@ -3257,8 +3229,7 @@
                                                 x:Name="EntryImportspaidAdj5"
                                                 Focused="EntryImportspaidAdj5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryImportspaidAdj5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportspaidAdj}"
@@ -3384,8 +3355,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryImportsaccAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ImportsaccAmt}"
@@ -3452,8 +3422,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryImportsaccAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ImportsaccAdj}"
@@ -3589,8 +3558,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAmt15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryImportsaccAmt15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportsaccAmt}"
@@ -3657,8 +3625,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAdj15Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryImportsaccAdj15_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.ImportsaccAdj}"
@@ -3793,8 +3760,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAmt5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryImportsaccAmt5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportsaccAmt}"
@@ -3861,8 +3827,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryImportsaccAdj5Focused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryImportsaccAdj5_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor5Percent.ImportsaccAdj}"
@@ -3997,8 +3962,7 @@
                                                 x:Name="EntryZeropurchaseAmt"
                                                 Focused="EntryZeropurchaseAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryZeropurchaseAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ZeropurchaseAmt}"
@@ -4063,8 +4027,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryZeropurchaseAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryZeropurchaseAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ZeropurchaseAdj}"
@@ -4149,8 +4112,7 @@
                                                 x:Name="EntryExemptpurchaseAmt"
                                                 Focused="EntryExemptpurchaseAmtFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryExemptpurchaseAmt_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ExemptpurchaseAmt}"
@@ -4215,8 +4177,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Focused="EntryExemptpurchaseAdjFocused"
                                                 IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabledForEntry}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 PropertyChanged="EntryExemptpurchaseAdj_PropertyChanged"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding ExemptpurchaseAdj}"

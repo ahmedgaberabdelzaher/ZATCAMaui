@@ -237,13 +237,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             IsCloseButtonVisible = false;
         }
 
-        public async void PopulateVATRefundsList()
+        public async Task PopulateVATRefundsList()
         {
-            //GAZTGetVAtRefundList
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
 
 
             try
@@ -255,39 +251,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 double total = VATRefundsSet.Sum(item => Convert.ToDouble(item.ReassessAmt));
                 TotalReassessmentAmount = string.Format("{0:0.00}", total);
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                    Console.WriteLine(ex.Message);
-                });
+                IsLoading = false;
             }
         }
 
@@ -306,9 +286,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 WiDtlSetResult[] sortedWidtlSet = VatRefundsListResultModel.WiDtlSet.Where(m => m.Fbnum == vatRefHeaderSetResult.RefundFbnum).ToArray();
                 VatRefundsListResultModel.WiDtlSet = sortedWidtlSet;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -316,53 +296,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
 
                 VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
 
                 VatRefundsIbanDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundGetIbanData("");
                 IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet);
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
+                IsLoading = false;
                 string message = ex.Message;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(message, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(message, AppResources.Information);
             }
             catch (Exception ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                    Console.WriteLine(ex.Message);
-                });
+                IsLoading = false;
             }
         }
 

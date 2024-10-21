@@ -235,7 +235,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
                         if (_currentAttempts < 5)
                         {
-                            ConfirmOtpBtnCommand(string.Empty);
+                            ConfirmOtpBtnClicked.Execute(string.Empty);
                         }
                     }
                 }
@@ -546,15 +546,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
         }
 
-        bool CanExecuteResendOTPClickCommand(object arg)
-        {
-            return _isResendOTPEnabled;
-        }
-
-        bool CanExecuteSubmitClickCommand(object arg)
-        {
-            return _isVerifyOTPEnabled;
-        }
 
         private bool _isVerifyOTPEnabled = true;
         public bool IsVerifyOTPEnabled
@@ -639,10 +630,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             IsContinueButtonEnable = false;
             IsLoading = false;
             EnableTINView();
-            VerifyTINBtnClicked = new Command(VerifyTinBtnCommand);
-            ConfirmPasswordBtnClicked = new Command(ConfirmPasswordBtnCommand);
-            OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
-            ConfirmOtpBtnClicked = new Command(ConfirmOtpBtnCommand, CanExecuteSubmitClickCommand);
+            VerifyTINBtnClicked = new Command(async () => await VerifyTinBtnCommand());
+            ConfirmPasswordBtnClicked = new Command(async () =>  await ConfirmPasswordBtnCommand());
+            OnResendOTPClicked = new Command(async () => await ExecuteResendOTPClickCommand(), () => IsResendOTPEnabled);
+            ConfirmOtpBtnClicked = new Command(async () => await ConfirmOtpBtnCommand(), ()=> IsVerifyOTPEnabled);
 
             UnlockAccountModel = new UnlockAccountModel();
             UnlockAccountModelOtp = new UnlockAccountModelOtp();
@@ -716,11 +707,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             IsOTPContentViewVisible = false;
             IsChangePasswordViewVisible = false;
             IsAccountUnlockedSuccessViewVisible = true;
-        }
-
-        public async Task ValidateTINNumberSendOtp(string tin)
-        {
-
         }
 
         public void TimerStart(int Seconds)
@@ -805,7 +791,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             Interlocked.Exchange(ref _CancellationTokenSource, new CancellationTokenSource()).Cancel();
         }
 
-        public async void VerifyTinBtnCommand()
+        public async Task VerifyTinBtnCommand()
         {
             if (!IsAPICalledSuccessfully)
             {
@@ -813,10 +799,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
             try
             {
-                await Task.Run(() =>
-                {
-                    App.DisplayProgressView();
-                });
+                App.DisplayProgressView();
 
                 UnlockaccountOTP unlockaccountOTP = new UnlockaccountOTP();
                 unlockaccountOTP.TIN = TxtTIN;
@@ -825,10 +808,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 //unlockaccountOTP.language = UtilityManager.GetLanguageParameter();
                 var result = await VatRegistrationWebServiceManager.SendOTP(unlockaccountOTP);
                 //UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccount(UnlockAccountModel);
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                App.HideProgressView();
 
                 if (result != null)
                 {
@@ -840,23 +820,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
             catch (GAZTUnlockAccountException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        App.HideProgressView();
-                    });
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                App.HideProgressView();
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     App.HideProgressView();
-                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                     _navigationService.GoBack();
-                 });
+                App.HideProgressView();
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -885,12 +856,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     GUID = captchResponse.result.GUID;
                     IsAPICalledSuccessfully = true;
                 }
-                else
-                {
-
-                }
-
-
                 IsLoading = false;
             }
 
@@ -899,12 +864,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                    // UserIDLayoutVisibility = true;
-                });
+                IsLoading = false;
             }
         }
 
@@ -914,15 +874,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                  {
-
-                     //var _navigation = Application.Current.MainPage.Navigation;
-                     //_navigation.PopToRootAsync();
                      await MopupService.Instance.PopAsync();
                  });
             }
         }
 
-        public async void ConfirmOtpBtnCommand(object obj)
+        public async Task ConfirmOtpBtnCommand()
         {
             try
             {
@@ -1011,35 +968,28 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     }
                     catch (InternetException)
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                         {
-                             IsOtpAPICalled = false;
-                             if (MopupService.Instance.PopupStack.Count > 0)
-                                 await MopupService.Instance.PopAsync(true);
+                        IsOtpAPICalled = false;
+                        if (MopupService.Instance.PopupStack.Count > 0)
+                            await MopupService.Instance.PopAsync(true);
 
 
 
-                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
-                         });
                     }
                     catch (Exception)
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                         {
-                             IsOtpAPICalled = false;
+                        IsOtpAPICalled = false;
 
-                             OtpFirstDigit = string.Empty;
-                             OtpSecondDigit = string.Empty;
-                             OtpThirdDigit = string.Empty;
-                             OtpFourthDigit = string.Empty;
+                        OtpFirstDigit = string.Empty;
+                        OtpSecondDigit = string.Empty;
+                        OtpThirdDigit = string.Empty;
+                        OtpFourthDigit = string.Empty;
 
-                             App.HideProgressView();
+                        App.HideProgressView();
 
-                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
-
-                         });
                     }
                 }
             }
@@ -1050,24 +1000,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
         }
 
-        public async void ExecuteResendOTPClickCommand(object obj)
+        public async Task ExecuteResendOTPClickCommand()
         {
             IsResendOTPEnabled = false;
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                ButtonDisableColor = (Color)Application.Current.Resources["NeutralGreay"];
-                VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
-            });
+            ButtonDisableColor = (Color)Application.Current.Resources["NeutralGreay"];
+            VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
             IsVerifyOTPEnabled = true;
             IsOTPEntryEnable = true;
             //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
             //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
             numberOfSeconds = 120;
             StopTimer = false;
-            VerifyTinBtnCommand();
+           await VerifyTinBtnCommand();
         }
 
-        public async void ConfirmPasswordBtnCommand()
+        public async Task ConfirmPasswordBtnCommand()
         {
             StringBuilder PopMsg = new StringBuilder();
             bool IsAllValid = true;
@@ -1189,43 +1136,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     }
 
                     App.HideProgressView();
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        _navigationService.GoBack();
-                        _navigationService.NavigateTo(App.UnlockAccountSuccessPageView, PasswordChangedSuccessfully);
-                    });
+                    _navigationService.GoBack();
+                  await  _navigationService.NavigateTo(App.UnlockAccountSuccessPageView, PasswordChangedSuccessfully);
 
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    await Task.Run(() =>
-                    {
-                        App.HideProgressView();
-                    });
+                    App.HideProgressView();
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
 
                 }
                 catch (InternetException)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                     {
-                         await Task.Run(() =>
-                         {
-                             App.HideProgressView();
-                         });
-                         await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                     });
+                    App.HideProgressView();
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                 }
                 catch (Exception)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                     {
-                         await Task.Run(() =>
-                         {
-                             App.HideProgressView();
-                         });
-                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                     });
+                    App.HideProgressView();
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                 }
             }
 

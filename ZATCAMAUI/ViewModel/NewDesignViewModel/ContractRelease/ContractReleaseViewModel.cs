@@ -969,26 +969,26 @@ public class ContractReleaseViewModel : BaseViewModel
         ShowStartDatePicker = new Command(async () =>
         {
             fromDatePicker = true;
-            showDatePickerDialog(AppResources.CRContractStartDate);
+           await showDatePickerDialog(AppResources.CRContractStartDate);
 
         });
 
-        ShowEndDatePicker = new Command(() =>
+        ShowEndDatePicker = new Command(async () =>
         {
             fromDatePicker = false;
-            showDatePickerDialog(AppResources.CRContractEndDate);
+           await showDatePickerDialog(AppResources.CRContractEndDate);
 
         });
 
-        ShowPicker = new Command(() => { showPickerDialog(); });
+        ShowPicker = new Command(async() => { await showPickerDialog(); });
 
 
-        ReleaseDetailsConBtnTapped = new Command(ReleaseDetailsConBtnClicked);
-        AttachmentsConBtnTapped = new Command(AttachmentsConBtnClicked);
-        RemarksAndDescConBtnTapped = new Command(RemarksAndDescConBtnClicked);
-        DeclarationConBtnTapped = new Command(DeclarationConBtnClicked);
-        SummaryConBtnTapped = new Command(SummaryConBtnClicked);
-        ContractInstructionsClicked = new Command(InstructionsTapped);
+        ReleaseDetailsConBtnTapped = new Command(async () => await ReleaseDetailsConBtnClicked());
+        AttachmentsConBtnTapped = new Command(async () => await AttachmentsConBtnClicked());
+        RemarksAndDescConBtnTapped = new Command(async () => await RemarksAndDescConBtnClicked());
+        DeclarationConBtnTapped = new Command(async () => await DeclarationConBtnClicked());
+        SummaryConBtnTapped = new Command(async () => await SummaryConBtnClicked());
+        ContractInstructionsClicked = new Command(async () => await InstructionsTapped());
         NewInvoiceAttachmentTapped = new Command(NewInvoiceAttachmentClicked);
         NewContractCopyAttachmentTapped = new Command(NewContractCopyAttachmentClicked);
         ReleaseAmtUnfocused = new Command(CalculateReleaseAmt);
@@ -1045,7 +1045,7 @@ public class ContractReleaseViewModel : BaseViewModel
         PickerModel = genericPickerModel;
     }
 
-    public async void showInstructionDialog()
+    public async Task showInstructionDialog()
     {
         await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
             instructionString: AppResources.CRInstructions, checkBoxString: AppResources.CRInstrCheckDesc,
@@ -1152,7 +1152,7 @@ public class ContractReleaseViewModel : BaseViewModel
     }
 
 
-    private async void showDatePickerDialog(string title)
+    private async Task showDatePickerDialog(string title)
     {
         GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
         genericPickerModel.DatePickerTitle = title;
@@ -1164,15 +1164,12 @@ public class ContractReleaseViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    private async void showPickerDialog()
+    private async Task showPickerDialog()
     {
         try
         {
@@ -1180,15 +1177,12 @@ public class ContractReleaseViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    public async void InstructionsTapped()
+    public async Task InstructionsTapped()
     {
         try
         {
@@ -1196,15 +1190,12 @@ public class ContractReleaseViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    private async void ReleaseDetailsConBtnClicked()
+    private async Task ReleaseDetailsConBtnClicked()
     {
         try
         {
@@ -1249,15 +1240,12 @@ public class ContractReleaseViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    private void AttachmentsConBtnClicked()
+    private async Task AttachmentsConBtnClicked()
     {
         try
         {
@@ -1269,15 +1257,12 @@ public class ContractReleaseViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    private void RemarksAndDescConBtnClicked()
+    private async Task RemarksAndDescConBtnClicked()
     {
         try
         {
@@ -1285,15 +1270,12 @@ public class ContractReleaseViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    private void DeclarationConBtnClicked()
+    private async Task DeclarationConBtnClicked()
     {
         try
         {
@@ -1302,7 +1284,7 @@ public class ContractReleaseViewModel : BaseViewModel
                 IsDeclarationEnabled = true;
                 if (!string.IsNullOrEmpty(Zterms) && !IsDECCheckBox)
                 {
-                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                  await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                     return;
                 }
             }
@@ -1316,30 +1298,20 @@ public class ContractReleaseViewModel : BaseViewModel
 
             EnableSummaryView();
         }
-        catch (GAZTUnlockAccountException ex)
-        {
-            Console.Write(ex.ToString());
-            Console.Write(ex.StackTrace.ToString());
-        }
         catch (InternetException ex)
         {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    private async void SummaryConBtnClicked()
+    private async Task SummaryConBtnClicked()
     {
 
         try
         {
-
             if (!isSubmitted)
             {
-                //await MopupService.Instance.PushAsync(App.ActivityIndicatorView, false);
                 await SubmitClicked();
             }
 
@@ -1348,30 +1320,21 @@ public class ContractReleaseViewModel : BaseViewModel
         {
             if (MopupService.Instance.PopupStack.Count > 0)
                 await MopupService.Instance.PopAsync(false);
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.ToString(), AppResources.Information);
-            });
+            await _dialogService.ShowMessage(ex.ToString(), AppResources.Information);
             return;
         }
         catch (GAZTVATRegistrationInProcessException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                if (MopupService.Instance.PopupStack.Count > 0)
-                    await MopupService.Instance.PopAsync(false);
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-            });
+            if (MopupService.Instance.PopupStack.Count > 0)
+                await MopupService.Instance.PopAsync(false);
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             return;
         }
 
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
         catch (Exception ex)
         {

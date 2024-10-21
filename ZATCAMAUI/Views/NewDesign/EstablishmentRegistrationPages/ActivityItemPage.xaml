@@ -981,8 +981,7 @@
                                     FontSize="15"
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="30"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"
                                     PlaceholderColor="{StaticResource NeutralGreay}"

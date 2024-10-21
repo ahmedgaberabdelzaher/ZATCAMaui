@@ -51,7 +51,7 @@
                         </Label.FormattedText>
                     </Label>
                     <!--  New CR  Entry  -->
-                    <inputLayout:SfTextInputLayout
+                    <custom:CustomSfTextInputView
                         ContainerBackground="White"
                         ContainerType="Outlined"
                         InputViewPadding="16,0,16,0"
@@ -66,7 +66,7 @@
                             Style="{StaticResource DefaultEntry}"
                             Text="{Binding CRNo}"
                             TextColor="#58595B" />
-                    </inputLayout:SfTextInputLayout>
+                    </custom:CustomSfTextInputView>
 
                 </StackLayout>
                 <!--#endregion-->

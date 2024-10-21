@@ -11,8 +11,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EscalatedCasesGSTCPageViewModel
     public class EscalatedCasesGSTCPageViewModel : BaseViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
-        public Command<CaseDetailsResultSet> LinkCommand { get; set; }
-
         private bool _isSearchButtonVisible = true;
 
         public bool IsSearchButtonVisible
@@ -174,15 +172,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EscalatedCasesGSTCPageViewModel
         #region Constructor
         public EscalatedCasesGSTCPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            LinkCommand = new Command<CaseDetailsResultSet>(OnCaseLinkTapped);
         }
-
-        private async void OnCaseLinkTapped(CaseDetailsResultSet obj)
+        public ICommand LinkCommand
         {
-            Uri uri = new Uri(obj.Link);
-            await Browser.OpenAsync(uri);
-        }
+            get
+            {
+                return new Command<CaseDetailsResultSet>(async (obj) =>
+                {
 
+                    Uri uri = new Uri(obj.Link);
+                    await Browser.OpenAsync(uri);
+
+                });
+            }
+        }
 
         #endregion
 

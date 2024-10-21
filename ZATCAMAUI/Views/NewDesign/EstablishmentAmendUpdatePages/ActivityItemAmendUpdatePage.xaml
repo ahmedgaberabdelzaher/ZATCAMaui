@@ -314,8 +314,7 @@
                                         HeightRequest="48"
                                         HorizontalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Start"
-                                        Keyboard="{OnPlatform Android=Numeric,
-                                                              iOS=Default}"
+                                        Keyboard="Numeric"
                                         MaxLength="10"
                                         PlaceholderColor="{StaticResource NeutralGreay}"
                                         Style="{StaticResource DefaultEntry}"
@@ -1057,8 +1056,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     IsEnabled="{Binding LicenseDetails.LicenseNo}"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="30"
                                     PlaceholderColor="{StaticResource NeutralGreay}"
                                     Text="{Binding LicenseNumber}"

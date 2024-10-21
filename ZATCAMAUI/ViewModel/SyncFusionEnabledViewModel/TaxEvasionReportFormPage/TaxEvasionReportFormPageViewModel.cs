@@ -836,7 +836,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                                             else
                                             {
                                                 AttachmentName = string.Empty;
-                                                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                            await    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
                                             }
                                         }
                                         catch (Exception)
@@ -848,14 +848,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                                     else
                                     {
                                         AttachmentName = string.Empty;
-                                        _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                      await  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                     }
                                 }
                             }
                         }
                         else
                         {
-                            _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                          await  _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                         }
                     }
                 }
@@ -889,73 +889,49 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                         }
                         else
                         {
-                            NoInternetGoBack();
+                          await  NoInternetGoBack();
                         }
 
                     }
-                    catch (InternetException ex)
+                    catch (InternetException )
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            _navigationService.GoBack();
-                        });
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
                     }
                 }
             }
             catch (Exception)
             {
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
-        public async void NoInternetGoBack()
+        public async Task NoInternetGoBack()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+            _navigationService.GoBack();
         }
         public async Task onSelectedTaxEvasionRegion()
         {
-            await Task.Run(() =>
-          {
-              IsLoading = true;
-          });
-            await Task.Run(async () =>
+         
+            try
             {
-                try
+                IsLoading = true;
+                if (SelectedTaxEvasionRegion != null)
                 {
-                    if (SelectedTaxEvasionRegion != null && SelectedTaxEvasionRegion.Id != null)
-                    {
-                        TaxEvasionRegionsCityModel citylist = new TaxEvasionRegionsCityModel();
-                        citylist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
-                        PopToRootPage();
-                        CList = citylist.Data;
-                    }
-                    else
-                    {
-
-                    }
+                    TaxEvasionRegionsCityModel citylist = new TaxEvasionRegionsCityModel();
+                    citylist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
+                    PopToRootPage();
+                    CList = citylist.Data;
                 }
-                catch (InternetException ex)
-                {
-                    //MainThread.BeginInvokeOnMainThread(async () =>
-                    //{
-                    //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    //});
-                    NoInternetGoBack();
-                }
-            });
-            await Task.Run(() =>
-            {
                 IsLoading = false;
-            });
+            }
+            catch (InternetException ex)
+            {
+                await NoInternetGoBack();
+            }
+          
         }
         public async Task SubmitCreatedReport()
         {
@@ -966,24 +942,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 date = DatePick;
                 TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportDetails();
                 TaxEvasionReportTobeUsedToSubmit.CreatedAt = date;
-                //TaxEvasionReportTobeUsedToSubmit.CompanyType = SelectedTaxEvasionCompanyType.Id;
 
                 TaxEvasionReportTobeUsedToSubmit.Category = _selectedCategory;
 
-                //Removed
-                //TaxEvasionReportTobeUsedToSubmit.Channel = "2";
-                //TaxEvasionReportTobeUsedToSubmit.ReporterName = TName;
-                //TaxEvasionReportTobeUsedToSubmit.ReporterEmail = TEmail;
-                //TaxEvasionReportTobeUsedToSubmit.CompanyType = "0";
-                //TaxEvasionReportTobeUsedToSubmit.HavingTIN = IsTINVisible.ToString().ToLower();
-                //TaxEvasionReportTobeUsedToSubmit.CompanyOwnerName = TFaciOwnerName;
-                //TaxEvasionReportTobeUsedToSubmit.CompanyEmail = TFaciEmail;
-
+               
                 TaxEvasionReportTobeUsedToSubmit.Tin = TxtTIN;
                 TaxEvasionReportTobeUsedToSubmit.Content = TReportDetail;
 
                 TaxEvasionReportTobeUsedToSubmit.Facilities = TFaciName;
-                //TaxEvasionReportTobeUsedToSubmit.PhoneNumber = TMobNumber;
                 TaxEvasionReportTobeUsedToSubmit.Id = TID;
                 TaxEvasionReportTobeUsedToSubmit.VatNumber = TVatNumber;
                 TaxEvasionReportTobeUsedToSubmit.Longitude = Longitude.ToString();
@@ -999,77 +965,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
 
                 TaxEvasionReportDetails tex = TaxEvasionReportTobeUsedToSubmit;
 
-                _navigationService.NavigateTo(App.TaxEvasionAttachmentPageView, tex);
+               await _navigationService.NavigateTo(App.TaxEvasionAttachmentPageView, tex);
             }
 
-            //    TaxEvasionCreateReportResponseModel response = new TaxEvasionCreateReportResponseModel();
-            //    response = await WebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
-
-            //    if (response != null && response.Status == true)
-            //    {
-            //        //ZTEReportReportSuccessResponsep1
-            //        var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
-            //        var newrm = resmessage.Replace("Report Number", response.Data.TicketId);
-            //        var newReplacedMsg = newrm.Replace("5","10");
-
-            //        await _dialogService.ShowMessage(newReplacedMsg, AppResources.ZZZSubmittedReport);
-            //        var _navigation = Application.Current.MainPage.Navigation;
-            //        var _lastPage = _navigation.NavigationStack.LastOrDefault();
-            //        //Remove last page
-            //        _navigation.RemovePage(_lastPage);
-            //        //Go back 
-            //        _navigation.PopAsync();
-            //        //_navigationService.NavigateTo(App.TaxEvasionReportListPageView);
-            //    }
-            //    else
-            //    {//ZTEReportReportSuccessResponsep2
-            //        _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2, " ");
-            //    }
-            //}
-            //catch (GAZTException gex)
-            //{
-            //    // Handle the GAZT custom exception.
-            //    string MessageForTheUser = gex.Message;
-            //    if (gex is GAZTInvalidDataException)
-            //    {
-            //        MessageForTheUser = AppResources.ZZSomethingwentwrong;
-            //    }
-            //    if (gex is GAZTNetworkConnectivityIssueException)
-            //    {
-            //        MessageForTheUser = AppResources.NetworkConnectivityIssue;
-            //    }
-            //    else if (gex is GAZTInternetException)
-            //    {
-            //        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-            //    }
-            //    else if (gex is GAZTSessionExpiredException)
-            //    {
-            //        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-            //    }
-            //    MainThread.BeginInvokeOnMainThread(async () =>
-            //    {
-            //        await Task.Run(() =>
-            //        {
-            //            IsLoading = false;
-            //        });
-
-            //        _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-            //        //viewModel._navigationService.GoBack();
-            //    });
-            //}
+           
             catch (Exception)
             {
-
-
-                //    MainThread.BeginInvokeOnMainThread(async () =>
-                //    {
-                //        await Task.Run(() =>
-                //        {
-                //            IsLoading = false;
-                //        });
-
-                //        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                //    });
             }
         }
         public void CreateCompanyTypeList()

@@ -1866,8 +1866,7 @@
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="EntryIDNo"
                                                                     IsSpellCheckEnabled="False"
-                                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                                          iOS=Default}"
+                                                                    Keyboard="Numeric"
                                                                     MaxLength="{Binding MaxLengthID}"
                                                                     Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                     Style="{StaticResource DefaultEntry}"
@@ -2593,8 +2592,7 @@
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="EntryContactIDNumber"
                                                                     IsSpellCheckEnabled="False"
-                                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                                          iOS=Default}"
+                                                                    Keyboard="Numeric"
                                                                     MaxLength="{Binding MaxLengthIDSR}"
                                                                     Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                     Style="{StaticResource DefaultEntry}"

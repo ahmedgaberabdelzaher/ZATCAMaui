@@ -79,19 +79,22 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
+
+                                <custom:CustomSfTextInputView
                                     Grid.Row="2"
                                     Grid.Column="0"
-                                    Margin="0,-6,0,-6"
-                                    HasError="{Binding IsTnameHasError}"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                    <custom:GAZTBorderlessEntry
-                                        IsEnabled="False"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding TName}"
-                                        TextChanged="TNameEntry_TextChanged" />
-                                </inputLayout:SfTextInputLayout>
+                                    HasError="{Binding IsTnameHasError}">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            IsEnabled="False"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding TName}"
+                                            TextChanged="TNameEntry_TextChanged" />
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                   
+                                </custom:CustomSfTextInputView>
+
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -100,18 +103,26 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
+
+                                <custom:CustomSfTextInputView
                                     x:Name="FrmNumber"
-                                    ContainerType="Outlined"
                                     FlowDirection="LeftToRight"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="8"
-                                    Stroke="{StaticResource Primary}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    HorizontalOptions="FillAndExpand">
+
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                         <custom:GAZTBorderlessEntry
+                                        x:Name="TMobNumber"
+                                        FlowDirection="LeftToRight"
+                                        FontSize="Medium"
+                                        HorizontalOptions="FillAndExpand"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Telephone"
+                                        PlaceholderColor="Gray"
+                                        Text="{Binding TMobNumber}"
+                                        TextColor="{StaticResource PrimaryColor}" />
+                                    </custom:CustomSfTextInputView.TextInputView>
+
                                     <inputLayout:SfTextInputLayout.LeadingView>
 
                                         <Label
@@ -127,18 +138,8 @@
                                             WidthRequest="80" />
 
                                     </inputLayout:SfTextInputLayout.LeadingView>
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="TMobNumber"
-                                        FlowDirection="LeftToRight"
-                                        FontSize="Medium"
-                                        HorizontalOptions="FillAndExpand"
-                                        InputTransparent="True"
-                                        IsReadOnly="True"
-                                        Keyboard="Telephone"
-                                        PlaceholderColor="Gray"
-                                        Text="{Binding TMobNumber}"
-                                        TextColor="{StaticResource PrimaryColor}" />
-                                </inputLayout:SfTextInputLayout>
+                                   
+                                </custom:CustomSfTextInputView>
 
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
@@ -148,21 +149,23 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
+                                <custom:CustomSfTextInputView
                                     Grid.Row="2"
-                                    Grid.Column="0"
-                                    Margin="0,-10,0,0"
-                                    IsHintAlwaysFloated="True">
-                                    <Editor
-                                        AutoSize="TextChanges"
-                                        InputTransparent="True"
-                                        IsReadOnly="True"
-                                        Text="{Binding RLocation}" />
+                                    Grid.Column="0">
+
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <Editor
+                                            AutoSize="TextChanges"
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Text="{Binding RLocation}" />
+
+                                    </custom:CustomSfTextInputView.TextInputView>
 
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image Source="ic_location_Outline.png" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
 
                                 <Border
                                     x:Name="FrmReportLocation"
@@ -206,12 +209,10 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <inputLayout:SfTextInputLayout
+                                <custom:CustomSfTextInputView
                                     x:Name="FrmFName"
-                                    Margin="0,-10,0,0"
-                                    HasError="{Binding IsFacilityNameHasError}"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    HasError="{Binding IsFacilityNameHasError}">
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         x:Name="TFaciName"
                                         FontSize="Small"
@@ -223,19 +224,19 @@
                                             <behaviors:AlphabetandArabicCharacters />
                                         </custom:GAZTBorderlessEntry.Behaviors>
                                     </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
 
-                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionTIN}" />
-                                <inputLayout:SfTextInputLayout
-                                    x:Name="FrmTIN"
-                                    Margin="0,-10,0,0"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                <Label Style="{StaticResource CaptionLabelGrey}"
+                                       Text="{x:Static ResourceManager:AppResources.NDTaxEvasionTIN}" />
+
+                                <custom:CustomSfTextInputView
+                                    x:Name="FrmTIN">
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         x:Name="TxtTIN"
                                         IsSpellCheckEnabled="False"
-                                        Keyboard="{OnPlatform Android=Numeric,
-                                                              iOS=Default}"
+                                        Keyboard="Numeric"
                                         MaxLength="10"
                                         Style="{StaticResource EntryHeight48}"
                                         Text="{Binding TxtTIN}"
@@ -244,18 +245,18 @@
                                             <behaviors:OnlyNumericValuesBehaviour />
                                         </custom:GAZTBorderlessEntry.Behaviors>
                                     </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
 
                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionVATNumber}" />
-                                <inputLayout:SfTextInputLayout
-                                    x:Name="FrmVAT"
-                                    Margin="0,-10,0,0"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+
+                                <custom:CustomSfTextInputView
+                                    x:Name="FrmVAT">
+                                    <custom:CustomSfTextInputView.TextInputView>
+
                                     <custom:GAZTBorderlessEntry
                                         x:Name="TVatNumber"
-                                        Keyboard="{OnPlatform Android=Numeric,
-                                                              iOS=Default}"
+                                        Keyboard="Numeric"
                                         MaxLength="15"
                                         Style="{StaticResource EntryHeight48}"
                                         Text="{Binding TVatNumber}"
@@ -264,7 +265,9 @@
                                             <behaviors:OnlyNumericValuesBehaviour />
                                         </custom:GAZTBorderlessEntry.Behaviors>
                                     </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
+
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -273,21 +276,25 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+
                                 <Grid>
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-10,0,0"
-                                        HasError="{Binding IsRegionHasError}"
-                                        IsHintAlwaysFloated="True"
-                                        Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                        <custom:GAZTBorderlessEntry
-                                            x:Name="Region_entry"
-                                            Style="{StaticResource EntryHeight48}"
-                                            Text="{Binding TxtReportDetailRegion}"
-                                            TextChanged="Region_entry_TextChanged" />
+
+                                    <custom:CustomSfTextInputView
+                                        HasError="{Binding IsRegionHasError}">
+                                        <custom:CustomSfTextInputView.TextInputView>
+
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="Region_entry"
+                                                Style="{StaticResource EntryHeight48}"
+                                                Text="{Binding TxtReportDetailRegion}"
+                                                TextChanged="Region_entry_TextChanged" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image Source="arrowDropdown.png" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
-                                    </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView>
+
                                     <buttons:SfButton Background="Transparent" Clicked="RegionBtnClicked" />
 
                                     <custom:CustomSfPicker
@@ -356,20 +363,23 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <Grid>
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-10,0,0"
-                                        HasError="{Binding IsCityHasError}"
-                                        IsHintAlwaysFloated="True"
-                                        Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                        <custom:GAZTBorderlessEntry
-                                            x:Name="City_entry"
-                                            Style="{StaticResource EntryHeight48}"
-                                            Text="{Binding TxtReportDetailCity}"
-                                            TextChanged="City_entry_TextChanged" />
+                                    <custom:CustomSfTextInputView
+                                        HasError="{Binding IsCityHasError}">
+
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="City_entry"
+                                                Style="{StaticResource EntryHeight48}"
+                                                Text="{Binding TxtReportDetailCity}"
+                                                TextChanged="City_entry_TextChanged" />
+                                        </custom:CustomSfTextInputView.TextInputView>
+
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image Source="arrowDropdown.png" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
-                                    </inputLayout:SfTextInputLayout>
+
+                                    </custom:CustomSfTextInputView>
+
                                     <buttons:SfButton Background="Transparent" Clicked="CityPickerButton_Clicked" />
 
                                     <custom:CustomSfPicker
@@ -439,20 +449,22 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <!--<Grid>-->
-                                <inputLayout:SfTextInputLayout
+                                <custom:CustomSfTextInputView
                                     x:Name="FrmFDAddress"
-                                    Margin="0,-10,0,0"
-                                    HasError="{Binding IsFDHasError}"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="TFDAdress"
-                                        IsSpellCheckEnabled="False"
-                                        MaxLength="100"
-                                        Style="{StaticResource EntryHeight48}"
-                                        Text="{Binding TFDAdress}"
-                                        Unfocused="TFDAdress_Unfocused" />
-                                </inputLayout:SfTextInputLayout>
+                                    HasError="{Binding IsFDHasError}">
+
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="TFDAdress"
+                                            IsSpellCheckEnabled="False"
+                                            MaxLength="100"
+                                            Style="{StaticResource EntryHeight48}"
+                                            Text="{Binding TFDAdress}"
+                                            Unfocused="TFDAdress_Unfocused" />
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+                                </custom:CustomSfTextInputView>
+
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -461,13 +473,11 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
+                                <custom:CustomSfTextInputView
                                     Grid.Row="2"
                                     Grid.Column="0"
-                                    Margin="0,-10,0,0"
-                                    HasError="{Binding IsFSHasError}"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    HasError="{Binding IsFSHasError}">
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         x:Name="TFSAddress"
                                         IsSpellCheckEnabled="False"
@@ -475,7 +485,8 @@
                                         Style="{StaticResource EntryHeight48}"
                                         Text="{Binding TFSAddress}"
                                         TextChanged="TFSAddress_TextChanged" />
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
                         </ScrollView>
                         <!--  Facility Information Ends  -->
@@ -496,15 +507,17 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <Grid>
-                                    <inputLayout:SfTextInputLayout Margin="0,-10,0,0" Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
                                             IsSpellCheckEnabled="False"
                                             Style="{StaticResource EntryHeight48}"
                                             Text="{Binding TxtReporttype}" />
+                                        </custom:CustomSfTextInputView.TextInputView>
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image Source="arrowDropdown.png" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
-                                    </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView>
                                     <buttons:SfButton Background="Transparent" Clicked="ReportTypeButton_Clicked" />
 
                                     <custom:CustomSfPicker
@@ -577,39 +590,32 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
+                                <custom:CustomSfTextInputView
                                     x:Name="FrmReportDetail"
-                                    Margin="0,-6,0,-6"
-                                    ContainerType="Outlined"
-                                    HasError="{Binding IsReportDetailHasError}"
-                                    IsHintAlwaysFloated="True"
-                                    OutlineCornerRadius="8"
-                                    Stroke="{StaticResource Primary}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <StackLayout Margin="0,16,0,0">
-                                        <Editor
-                                            x:Name="TReportDetail"
-                                            AutoSize="TextChanges"
-                                            FontSize="Small"
-                                            HorizontalOptions="FillAndExpand"
-                                            IsSpellCheckEnabled="False"
-                                            MaxLength="999"
-                                            Text="{Binding TReportDetail}"
-                                            Unfocused="TReportDetail_Unfocused" />
+                                    HasError="{Binding IsReportDetailHasError}">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                       <StackLayout Margin="0,16,0,0">
+                                            <Editor
+                                                x:Name="TReportDetail"
+                                                AutoSize="TextChanges"
+                                                FontSize="Small"
+                                                HorizontalOptions="FillAndExpand"
+                                                IsSpellCheckEnabled="False"
+                                                MaxLength="999"
+                                                Text="{Binding TReportDetail}"
+                                                Unfocused="TReportDetail_Unfocused" />
 
-                                        <Label
-                                            FontSize="Micro"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}"
-                                            Text="{Binding Source={x:Reference TReportDetail}, Path=Text.Length, StringFormat='{0}/999'}"
-                                            VerticalOptions="Start"
-                                            VerticalTextAlignment="Start" />
-                                    </StackLayout>
-
-
-                                </inputLayout:SfTextInputLayout>
+                                            <Label
+                                                FontSize="Micro"
+                                                HorizontalOptions="EndAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                Text="{Binding Source={x:Reference TReportDetail}, Path=Text.Length, StringFormat='{0}/999'}"
+                                                VerticalOptions="Start"
+                                                VerticalTextAlignment="Start" />
+                                        </StackLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                    
+                                </custom:CustomSfTextInputView>
 
 
                                 <Label
@@ -617,21 +623,22 @@
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.NDTaxEvasionAttachments}" />
                                 <Grid>
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-10,0,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                        <inputLayout:SfTextInputLayout.LeadingView>
-                                            <Image x:Name="Attachment_Tmg" Source="ic_attachment" />
-                                        </inputLayout:SfTextInputLayout.LeadingView>
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                       
                                         <custom:GAZTBorderlessEntry
                                             x:Name="Attachment_Frm"
                                             InputTransparent="True"
                                             IsReadOnly="True"
                                             Style="{StaticResource EntryHeight48}"
                                             Text="" />
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        <inputLayout:SfTextInputLayout.LeadingView>
+                                            <Image x:Name="Attachment_Tmg" Source="ic_attachment" />
+                                        </inputLayout:SfTextInputLayout.LeadingView>
+                                    </custom:CustomSfTextInputView>
+                                  
+
                                     <buttons:SfButton Background="Transparent" Clicked="OnAttachmentClick" />
                                 </Grid>
 
@@ -647,21 +654,21 @@
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackLayout>
-                                                <inputLayout:SfTextInputLayout
-                                                    Margin="0,0,0,0"
-                                                    IsHintAlwaysFloated="True"
-                                                    LeadingViewPosition="Inside"
-                                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                                    <inputLayout:SfTextInputLayout.LeadingView>
-                                                        <Image x:Name="Attachment_Tmg" Source="{Binding CorrespondingImageAccoringtoext}" />
-                                                    </inputLayout:SfTextInputLayout.LeadingView>
+                                                <custom:CustomSfTextInputView>
+
+                                                     <custom:CustomSfTextInputView.TextInputView>
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="Attachment_Frm"
                                                         InputTransparent="True"
                                                         IsReadOnly="True"
                                                         Style="{StaticResource EntryHeight48}"
                                                         Text="{Binding FileNameWithExtension}" />
+                                                     </custom:CustomSfTextInputView.TextInputView>
 
+                                                    <inputLayout:SfTextInputLayout.LeadingView>
+                                                        <Image x:Name="Attachment_Tmg" Source="{Binding CorrespondingImageAccoringtoext}" />
+                                                    </inputLayout:SfTextInputLayout.LeadingView>
+                                                   
                                                     <inputLayout:SfTextInputLayout.TrailingView>
                                                         <Image Source="close.png">
                                                             <Image.GestureRecognizers>
@@ -669,7 +676,8 @@
                                                             </Image.GestureRecognizers>
                                                         </Image>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
-                                                </inputLayout:SfTextInputLayout>
+
+                                                </custom:CustomSfTextInputView>
                                                 <Label
                                                     Margin="0,-15,0,0"
                                                     FlowDirection="LeftToRight"
@@ -1015,21 +1023,19 @@
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <Grid>
-                                                            <inputLayout:SfTextInputLayout
-                                                                Margin="0,10,0,0"
-                                                                IsHintAlwaysFloated="True"
-                                                                LeadingViewPosition="Inside"
-                                                                Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                            <custom:CustomSfTextInputView>
                                                                 <inputLayout:SfTextInputLayout.LeadingView>
                                                                     <Image x:Name="Attachment_Tmg" Source="{Binding CorrespondingImageAccoringtoext}" />
                                                                 </inputLayout:SfTextInputLayout.LeadingView>
+                                                                <custom:CustomSfTextInputView.TextInputView>
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="Attachment_Frm"
                                                                     InputTransparent="True"
                                                                     IsReadOnly="True"
                                                                     Style="{StaticResource EntryHeight48}"
                                                                     Text="{Binding FileNameWithExtension}" />
-                                                            </inputLayout:SfTextInputLayout>
+                                                                </custom:CustomSfTextInputView.TextInputView>
+                                                            </custom:CustomSfTextInputView>
                                                         </Grid>
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>

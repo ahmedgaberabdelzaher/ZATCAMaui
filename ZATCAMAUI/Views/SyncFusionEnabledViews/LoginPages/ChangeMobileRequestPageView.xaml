@@ -258,8 +258,7 @@
                                                         FontFamily="{StaticResource SomarRegular}"
                                                         HorizontalOptions="FillAndExpand"
                                                         Text="{Binding ManagerId}"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         TextColor="{StaticResource NeutralBlack}" />
                                                 </custom:CustomSfTextInputView.TextInputView>
 
@@ -287,8 +286,7 @@
                                                         FontFamily="{StaticResource SomarRegular}"
                                                         HorizontalOptions="FillAndExpand"
                                                         Text="{Binding TinNumber}"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         TextColor="{StaticResource NeutralBlack}" />
                                                 </custom:CustomSfTextInputView.TextInputView>
                                             </custom:CustomSfTextInputView>
@@ -582,8 +580,7 @@
                                                         IsPassword="True"
                                                         HorizontalTextAlignment="Center"
                                                         MaxLength="1"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                                iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         ReturnType="Next"
                                                         Text="{Binding OTPFirstDigit}"
                                                         TextColor="#0996D4"
@@ -618,8 +615,7 @@
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
                                                         IsPassword="True"
                                                         ClassId="2"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                                iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         MaxLength="1"
                                                         ReturnType="Next"
                                                         Text="{Binding OTPSecondDigit}"
@@ -655,8 +651,7 @@
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
                                                         IsPassword="True"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                                iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         MaxLength="1"
                                                         ReturnType="Next"
                                                         Text="{Binding OTPThirdDigit}"
@@ -692,8 +687,7 @@
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
                                                         IsPassword="True"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                                iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         MaxLength="1"
                                                         ReturnType="Next"
                                                         Text="{Binding OTPFourthDigit}"

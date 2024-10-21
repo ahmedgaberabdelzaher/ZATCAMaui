@@ -89,21 +89,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             OnContinueClickOTP = new Command(async () =>
             {
                 SetOTP();
-                if (!string.IsNullOrEmpty(EnteredOTP) && EnteredOTP.Length > 0)
-                {
-                    //await ValidateOTPAsync(); API Call
-                }
-                else
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
-                }
-            });
-            OnResendOTPClicked = new Command(async () =>
-            {
-                if (IsResendOTPEnabled)
-                {
-                    //await SendOTPToRegisterMobileNumber(SelectedFbNum, "");
-                }
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
             });
             CancelButton = new Command(async () =>
             {
@@ -121,14 +107,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 await showInstructionDialog();
             });
-            CreateNewRequestTapped = new Command(this.CreateNewRequest);
+            CreateNewRequestTapped = new Command(async () => await this.CreateNewRequest());
             AddOutletDecisionOptions();
 
 
 
             RequestInstalmentButtonTapped = new Command(RequestInstalmentButtonClicked);
 
-            CreateNewRequestTapped = new Command(this.CreateNewRequest);
+            CreateNewRequestTapped = new Command(async () => await this.CreateNewRequest());
 
 
 
@@ -2236,7 +2222,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
         #endregion
         #region CreateNewRequest
-        public async void CreateNewRequest()
+        public async Task CreateNewRequest()
         {
             try
             {
@@ -2247,11 +2233,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             catch (Exception ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
         #endregion

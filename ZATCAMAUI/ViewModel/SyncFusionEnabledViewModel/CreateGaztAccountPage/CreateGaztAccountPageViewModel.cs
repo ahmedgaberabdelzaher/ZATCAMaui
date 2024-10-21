@@ -402,14 +402,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
                 }
             });
         }
-        public async void CreateGaZTAccount()
+        public async Task CreateGaZTAccount()
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 CreateGaztAccountModel CreateModel = new CreateGaztAccountModel();
                 CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
                 CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
@@ -464,16 +461,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
                         {
                             IsLoading = false;
                         });
-                        _navigationService.NavigateTo(App.AccountCreatedPageView);
+                       await _navigationService.NavigateTo(App.AccountCreatedPageView);
                     }
                 }
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
         #endregion

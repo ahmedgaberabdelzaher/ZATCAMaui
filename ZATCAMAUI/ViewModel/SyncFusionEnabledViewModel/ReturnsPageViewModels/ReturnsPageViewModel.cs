@@ -689,7 +689,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 return ICRList;
             }
         }
-        public async void GetVATAllReturnsAsync()
+        public async Task GetVATAllReturnsAsync()
         {
             await GetVATAllReturns();
         }
@@ -747,22 +747,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 }
                 catch (InternetException )
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        // IsLoading = false;
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    // IsLoading = false;
+                    _navigationService.GoBack();
                 }
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    //  IsLoading = false;
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                //  IsLoading = false;
+                _navigationService.GoBack();
             }
         }
     }

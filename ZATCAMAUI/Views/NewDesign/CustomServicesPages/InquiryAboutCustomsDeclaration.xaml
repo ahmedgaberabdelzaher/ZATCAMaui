@@ -446,8 +446,7 @@
                                     <custom:CustomSfTextInputView>
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 MaxLength="10"
                                                 Placeholder="{x:Static ResourceManager:AppResources.DeclarationNumber}"
                                                 Style="{StaticResource DefaultEntry}"
@@ -576,8 +575,7 @@
                                     <custom:CustomSfTextInputView>
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 MaxLength="10"
                                                 Placeholder="{x:Static ResourceManager:AppResources.Billofladingnumber}"
                                                 Style="{StaticResource DefaultEntry}"

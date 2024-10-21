@@ -114,26 +114,15 @@
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.TIN}" />
 
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         x:Name="FrmTIN"
-                                        Margin="0,-6,0,-6"
-                                        ContainerType="Outlined"
-                                        HasError="False"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="8"
-                                        Stroke="{StaticResource Primary}"
-                                        TrailingViewPosition="Inside">
-                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <custom:GAZTBorderlessEntry
+                                        HorizontalOptions="FillAndExpand">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
                                             x:Name="EntryTIN"
                                             FontSize="Small"
                                             IsSpellCheckEnabled="False"
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
+                                            Keyboard="Numeric"
                                             MaxLength="10"
                                             Placeholder="{x:Static ResourceManager:AppResources.TIN}"
                                             PlaceholderColor="Gray"
@@ -146,7 +135,9 @@
                                             </custom:GAZTBorderlessEntry.Behaviors>
 
                                         </custom:GAZTBorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
                             </Grid>
 
@@ -291,19 +282,12 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         Grid.Row="0"
                                         Grid.Column="0"
-                                        Grid.ColumnSpan="1"
-                                        ContainerType="Outlined"
-                                        HasError="False"
-                                        IsHintAlwaysFloated="True"
-                                        OutlineCornerRadius="12"
-                                        Stroke="{StaticResource Primary}">
-                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <custom:GAZTBorderlessEntry
+                                        Grid.ColumnSpan="1">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                           <custom:GAZTBorderlessEntry
                                             x:Name="OtpFirstEntry"
                                             FontAttributes="Bold"
                                             FontSize="Small"
@@ -311,8 +295,7 @@
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
                                             IsPassword="True"
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
+                                            Keyboard="Numeric"
                                             MaxLength="1"
                                             ReturnType="Next"
                                             Style="{StaticResource GAZTOTPEntry}"
@@ -324,21 +307,16 @@
                                                 <behaviors:EntryFocusBehaviour NextFocusElementName="OtpSecondEntry" />
                                             </custom:GAZTBorderlessEntry.Behaviors>
                                         </custom:GAZTBorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        
+                                    </custom:CustomSfTextInputView>
 
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         Grid.Row="0"
                                         Grid.Column="1"
-                                        Grid.ColumnSpan="1"
-                                        ContainerType="Outlined"
-                                        HasError="False"
-                                        IsHintAlwaysFloated="True"
-                                        OutlineCornerRadius="12"
-                                        Stroke="{StaticResource Primary}">
-                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <custom:GAZTBorderlessEntry
+                                        Grid.ColumnSpan="1">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
                                             x:Name="OtpSecondEntry"
                                             FontAttributes="Bold"
                                             FontSize="Small"
@@ -346,8 +324,7 @@
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
                                             IsPassword="True"
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
+                                            Keyboard="Numeric"
                                             MaxLength="1"
                                             ReturnType="Next"
                                             Style="{StaticResource GAZTOTPEntry}"
@@ -359,21 +336,16 @@
                                                 <behaviors:EntryFocusBehaviour NextFocusElementName="OtpThirdEntry" />
                                             </custom:GAZTBorderlessEntry.Behaviors>
                                         </custom:GAZTBorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                       
+                                    </custom:CustomSfTextInputView>
 
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         Grid.Row="0"
                                         Grid.Column="2"
-                                        Grid.ColumnSpan="1"
-                                        ContainerType="Outlined"
-                                        HasError="False"
-                                        IsHintAlwaysFloated="True"
-                                        OutlineCornerRadius="12"
-                                        Stroke="{StaticResource Primary}">
-                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <custom:GAZTBorderlessEntry
+                                        Grid.ColumnSpan="1">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                           <custom:GAZTBorderlessEntry
                                             x:Name="OtpThirdEntry"
                                             FontAttributes="Bold"
                                             FontSize="Small"
@@ -381,8 +353,7 @@
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
                                             IsPassword="True"
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
+                                            Keyboard="Numeric"
                                             MaxLength="1"
                                             ReturnType="Next"
                                             Style="{StaticResource GAZTOTPEntry}"
@@ -394,22 +365,17 @@
                                                 <behaviors:EntryFocusBehaviour NextFocusElementName="OtpFourthEntry" />
                                             </custom:GAZTBorderlessEntry.Behaviors>
                                         </custom:GAZTBorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        
+                                    </custom:CustomSfTextInputView>
 
-                                    <inputLayout:SfTextInputLayout
+                                    <custom:CustomSfTextInputView
                                         x:Name="OtpFourthEntry"
                                         Grid.Row="0"
                                         Grid.Column="3"
-                                        Grid.ColumnSpan="1"
-                                        ContainerType="Outlined"
-                                        HasError="False"
-                                        IsHintAlwaysFloated="True"
-                                        OutlineCornerRadius="12"
-                                        Stroke="{StaticResource Primary}">
-                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <custom:GAZTBorderlessEntry
+                                        Grid.ColumnSpan="1">
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                           <custom:GAZTBorderlessEntry
                                             x:Name="OtpGAZTDarkGrayLabelStyleFourthEntry"
                                             FontAttributes="Bold"
                                             FontSize="Small"
@@ -417,15 +383,16 @@
                                             HorizontalTextAlignment="Center"
                                             IsEnabled="{Binding IsOTPEntryEnable}"
                                             IsPassword="True"
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
+                                            Keyboard="Numeric"
                                             MaxLength="1"
                                             Style="{StaticResource GAZTOTPEntry}"
                                             Text="{Binding OtpFourthDigit}"
                                             TextChanged="OtpGAZTDarkGrayLabelStyleFourthEntry_TextChanged"
                                             TextColor="#bbbbbb"
                                             WidthRequest="8" />
-                                    </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                       
+                                    </custom:CustomSfTextInputView>
 
                                 </Grid>
                                 <StackLayout
@@ -453,9 +420,6 @@
                                         Text="{Binding OTPValidDuration}" />
 
                                 </StackLayout>
-                                <!--<StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
-
-                        </StackLayout>-->
                             </Grid>
                             <buttons:SfButton
                                 x:Name="btnResendVerificationCode"
@@ -647,21 +611,13 @@
                                     Grid.Row="5"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="3">
-                                    <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static behaviors:AppResources.ZZZZRepeatPassword}"  Padding="0,0,0,0"/>-->
                                     <Label
                                         Padding="0,0,0,0"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}" />
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-6,0,-6"
-                                        ContainerType="Outlined"
-                                        HasError="{Binding FrameConfirmPasswordError}"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="8"
-                                        Stroke="{StaticResource Primary}"
-                                        TrailingViewPosition="Inside">
+                                    <custom:CustomSfTextInputView
+                                        HasError="{Binding FrameConfirmPasswordError}">
+                                        <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
                                             x:Name="EntryConfirmPassword"
                                             FontSize="Small"
@@ -674,6 +630,7 @@
                                             Text="{Binding ConfirmPassword}"
                                             TextChanged="EntryConfirmPassword_TextChanged"
                                             TextColor="{StaticResource PrimaryColor}" />
+                                        </custom:CustomSfTextInputView.TextInputView>
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image x:Name="ImageSeeConfirmPassword" HorizontalOptions="Center">
                                                 <Image.Source>
@@ -689,7 +646,7 @@
                                             </Image>
                                         </inputLayout:SfTextInputLayout.TrailingView>
 
-                                    </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
                                 <StackLayout
                                     x:Name="PasswordChecks"

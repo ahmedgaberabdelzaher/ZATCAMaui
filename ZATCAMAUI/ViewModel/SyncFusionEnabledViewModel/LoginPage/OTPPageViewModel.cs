@@ -19,10 +19,10 @@ public class OTPPageViewModel : BaseViewModel
     private int counter = 120;
 
     private System.Timers.Timer timer;
-    
+
 
     public static int LoginAttempt = 0;
-    
+
     string oTPSentOnThisMobileNumber;
     public string OTPSentOnThisMobileNumber { get { return oTPSentOnThisMobileNumber; } set { oTPSentOnThisMobileNumber = value; OnPropertyChanged(); } }
 
@@ -51,8 +51,8 @@ public class OTPPageViewModel : BaseViewModel
     public string OTPFourthDigit { get { return oTPFourthDigit; } set { oTPFourthDigit = value; OnPropertyChanged(); } }
 
 
-    
-    public OTPPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
+
+    public OTPPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
     {
         OTPSentOnThisMobileNumber = AppResources.ZZMobileNumber + " " + App.MobileNumber;
     }
@@ -125,14 +125,14 @@ public class OTPPageViewModel : BaseViewModel
             {
                 try
                 {
-                    
-                    var tokenRequestModel = new TokenRequestModel() { Token = App.Token, Lang =App.IsArabic ? "ar":"en", OTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit, SourceType = "M", OsName = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem, BrowserName = "chrome" };
+
+                    var tokenRequestModel = new TokenRequestModel() { Token = App.Token, Lang = App.IsArabic ? "ar" : "en", OTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit, SourceType = "M", OsName = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem, BrowserName = "chrome" };
                     await TokenPostRequest(tokenRequestModel);
                 }
                 catch (Exception)
                 {
-                   
-                   
+
+
                 }
 
 
@@ -210,11 +210,11 @@ public class OTPPageViewModel : BaseViewModel
                 {
                     StopTimer();
                     _navigationService.GoBack();
-                    _navigationService.NavigateTo(App.AccountLockedPageView);
+                    await _navigationService.NavigateTo(App.AccountLockedPageView);
                 }
 
             }
-            
+
             IsLoading = false;
         }
         catch (Exception)
@@ -225,38 +225,6 @@ public class OTPPageViewModel : BaseViewModel
         }
     }
 
-
-    //private void StartTimer()
-    //{
-    //    isTimeRemaining = true;
-    //    Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-    //    {
-    //        remainingTime = remainingTime.Subtract(TimeSpan.FromSeconds(1));
-    //        if (remainingTime.TotalSeconds <= -1)
-    //        {
-    //            StopTimer();
-    //            return false;
-    //        }
-    //        UpdateTimerLabel();
-    //        return true;
-    //    });
-    //}
-
-    //private void StopTimer()
-    //{
-    //    IsResendCodeEnabled = true;
-    //    ResendCodeTextColor = Color.FromArgb("#0996D4");
-    //    ResendCodeOpacity = 1;
-    //    isTimeRemaining = false;
-    //}
-
-    //private void UpdateTimerLabel()
-    //{
-    //    MainThread.BeginInvokeOnMainThread(() =>
-    //    {
-    //        LblCountDownTimer = remainingTime.ToString(@"mm\:ss");
-    //    });
-    //}
 
     public void StartTimer()
     {
@@ -339,7 +307,7 @@ public class OTPPageViewModel : BaseViewModel
             MessageTxt = AppResources.OTPScreenErrMsg;
             if (LoginAttempt == 3)
             {
-                _navigationService.NavigateTo(App.UnlockAccountTINPageView);
+                await _navigationService.NavigateTo(App.UnlockAccountTINPageView);
             }
         }
         IsLoading = false;

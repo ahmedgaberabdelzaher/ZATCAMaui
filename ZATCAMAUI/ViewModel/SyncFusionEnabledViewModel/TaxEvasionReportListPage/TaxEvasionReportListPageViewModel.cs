@@ -220,11 +220,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
             }
         }
 
-        public async void NavigateToAddReport()
+        public async Task NavigateToAddReport()
         {
             try
             {
-                _navigationService.NavigateTo(App.TaxEvasionReportTypePageView, App.TaxEvasionUserData.Mobile);
+               await _navigationService.NavigateTo(App.TaxEvasionReportTypePageView, App.TaxEvasionUserData.Mobile);
             }
             catch (GAZTException gex)
             {
@@ -261,17 +261,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
             catch (Exception)
             {
 
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    //viewModel._navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
             }
 
         }

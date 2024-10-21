@@ -2262,7 +2262,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
         }
 
-        private async void navigateToNext()
+        private async Task navigateToNext()
         {
             CanExecute = false;
             try
@@ -2355,11 +2355,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 SetUIAvailability();
 
             }
-            catch (NullReferenceException ex)
-            {
-                Debug.WriteLine($"NullReferenceException caught: {ex.Message}");
-            }
-
             catch (Exception)
             {
             }
@@ -2616,7 +2611,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
         }
 
-        public async void OnRentAddAttachmentTapped()
+        public async Task OnRentAddAttachmentTapped()
         {
             if (UploadedRentDocumentsList.Count() < 5)
             {
@@ -2653,7 +2648,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             }
         }
 
-        public async void OnPassportAddAttachmentButtonTapped()
+        public async Task OnPassportAddAttachmentButtonTapped()
         {
             if (UploadedPassportDocumentsList.Count() < 5)
             {
@@ -2831,11 +2826,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
         private void OnExpandCollapseGridViewClick(object _enum)
         {
-            System.Diagnostics.Debug.WriteLine(_enum);
             SummaryExpendedCard = (EstablishmentRegistrationTabsEnum)_enum;
         }
 
-        public async void fetchTabDataAndBind(EstablishmentRegistrationTabsEnum _enum)
+        public async Task fetchTabDataAndBind(EstablishmentRegistrationTabsEnum _enum)
         {
             clearFormData(_enum);
             try
@@ -3131,7 +3125,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 }
             }
         }
-        private async void udpdateDates(string selectedDate = null)
+        private async Task udpdateDates(string selectedDate = null)
         {
             try
             {
@@ -3319,7 +3313,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         TaxDate = financialDetailPeriod.EIsldate;
                     }
-                    //SelectedPeriod = PeriodList.FirstOrDefault();
 
 
                 }
@@ -3333,7 +3326,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
         }
-        private async void bindingOutletList()
+        private async Task bindingOutletList()
         {
             try
             {
@@ -3419,16 +3412,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     newItem.MciEntry = _out.MciEntry;
                     newItem.ShowEditIcon = true;
                     newItem.ShowDeleteIcon = true;
-                    //if (_out.MciEntry.ToUpper().Equals("X") || _out.Oldmst.ToUpper().Equals("X") || _out.Actnm.Equals("00000"))
-                    //{
-                    //    newItem.ShowDeleteIcon = false;
-                    //}
-                    //else
-                    //{
-                    //    newItem.ShowDeleteIcon = true;
-                    //}
-
-
+                   
                     if (newItem.ActCat.Equals("M"))
                     {
                         if (App.IsArabic)

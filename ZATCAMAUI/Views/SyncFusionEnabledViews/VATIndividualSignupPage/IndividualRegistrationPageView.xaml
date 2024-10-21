@@ -390,8 +390,7 @@
                                                 FontFamily="{StaticResource SomarLight}"
                                                 FontSize="Small"
                                                 IsSpellCheckEnabled="False"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 MaxLength="{Binding MaxLengthID}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                 Style="{StaticResource DefaultEntry}"
@@ -1023,8 +1022,7 @@
                                                 FontFamily="{StaticResource SomarLight}"
                                                 FontSize="Small"
                                                 IsSpellCheckEnabled="False"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 MaxLength="5"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
                                                 Style="{StaticResource DefaultEntry}"
@@ -1929,8 +1927,7 @@
                                                 FontSize="Small"
                                                 HorizontalOptions="StartAndExpand"
                                                 IsPassword="{Binding IsOTPEncripted}"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 MaxLength="4"
                                                 Placeholder="{x:Static ResourceManager:AppResources.EnterOTP}"
                                                 Style="{StaticResource DefaultEntry}"

@@ -85,49 +85,35 @@
                 <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
 
                 <!--  UserName  -->
-                <inputLayout:SfTextInputLayout
-                    Margin="0,0,0,-15"
-                    ContainerBackground="White"
-                    ContainerType="Outlined"
-                    InputViewPadding="0"
-                    IsHintAlwaysFloated="True"
-                    LeadingViewPosition="Inside"
-                    OutlineCornerRadius="15">
-                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <inputLayout:LabelStyle TextColor="#B00020" />
-                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    <custom:GAZTBorderlessEntry
+                <custom:CustomSfTextInputView>
+                    <custom:CustomSfTextInputView.TextInputView>
+                       <custom:GAZTBorderlessEntry
                         Placeholder="{x:Static ResourceManager:AppResources.UserName}"
                         Style="{StaticResource DefaultEntry}"
                         Text="{Binding UserNameTxt}"
                         TextColor="{StaticResource LightBlack}" />
+                    </custom:CustomSfTextInputView.TextInputView>
+                    
                     <inputLayout:SfTextInputLayout.LeadingView>
                         <Image Aspect="AspectFit" Source="user_profile" />
                     </inputLayout:SfTextInputLayout.LeadingView>
-                </inputLayout:SfTextInputLayout>
+                </custom:CustomSfTextInputView>
 
                 <!--  Password  -->
-                <inputLayout:SfTextInputLayout
-                    Margin="0,0,0,26"
-                    ContainerBackground="White"
-                    ContainerType="Outlined"
-                    EnablePasswordVisibilityToggle="True"
-                    InputViewPadding="0"
-                    IsHintAlwaysFloated="True"
-                    LeadingViewPosition="Inside"
-                    OutlineCornerRadius="15">
-                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <inputLayout:LabelStyle TextColor="#B00020" />
-                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    <custom:GAZTBorderlessEntry
+                <custom:CustomSfTextInputView
+                    EnablePasswordVisibilityToggle="True">
+                    <custom:CustomSfTextInputView.TextInputView>
+                        <custom:GAZTBorderlessEntry
                         IsPassword="True"
                         Placeholder="{x:Static ResourceManager:AppResources.Password}"
                         Style="{StaticResource DefaultEntry}"
                         Text="{Binding PasswordTxt}" />
+                    </custom:CustomSfTextInputView.TextInputView>
+                   
                     <inputLayout:SfTextInputLayout.LeadingView>
                         <Image Aspect="AspectFit" Source="ic_VAT_reg_w" />
                     </inputLayout:SfTextInputLayout.LeadingView>
-                </inputLayout:SfTextInputLayout>
+                </custom:CustomSfTextInputView>
 
                 <!--  ForgotPasswordUsername Label  -->
                 <Label

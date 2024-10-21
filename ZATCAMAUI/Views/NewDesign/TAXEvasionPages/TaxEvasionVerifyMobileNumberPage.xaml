@@ -144,18 +144,28 @@
                         </Label.FormattedText>
                     </Label>
 
-                    <inputLayout:SfTextInputLayout
+                    <custom:CustomSfTextInputView
                         x:Name="frmMobile"
-                        ContainerType="Outlined"
                         FlowDirection="LeftToRight"
-                        HorizontalOptions="FillAndExpand"
-                        IsHintAlwaysFloated="True"
-                        LeadingViewPosition="Inside"
-                        OutlineCornerRadius="8"
-                        Stroke="{StaticResource Primary}">
-                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                            <inputLayout:LabelStyle TextColor="#B00020" />
-                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                        HorizontalOptions="FillAndExpand">
+                        <custom:CustomSfTextInputView.TextInputView>
+                             <custom:GAZTBorderlessEntry
+                            x:Name="Mobile_Entry"
+                            FlowDirection="LeftToRight"
+                            FontSize="Medium"
+                            HorizontalOptions="FillAndExpand"
+                            Keyboard="Telephone"
+                            MaxLength="9"
+                            PlaceholderColor="Gray"
+                            Text="{Binding MobileNumber}"
+                            TextColor="{StaticResource PrimaryColor}"
+                            Unfocused="Mobile_Entry_Unfocused">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <behaviors:OnlyNumericValuesBehaviour />
+                            </custom:GAZTBorderlessEntry.Behaviors>
+                        </custom:GAZTBorderlessEntry>
+                        </custom:CustomSfTextInputView.TextInputView>
+
                         <inputLayout:SfTextInputLayout.LeadingView>
 
                             <Label
@@ -171,22 +181,8 @@
                                 WidthRequest="80" />
 
                         </inputLayout:SfTextInputLayout.LeadingView>
-                        <custom:GAZTBorderlessEntry
-                            x:Name="Mobile_Entry"
-                            FlowDirection="LeftToRight"
-                            FontSize="Medium"
-                            HorizontalOptions="FillAndExpand"
-                            Keyboard="Telephone"
-                            MaxLength="9"
-                            PlaceholderColor="Gray"
-                            Text="{Binding MobileNumber}"
-                            TextColor="{StaticResource PrimaryColor}"
-                            Unfocused="Mobile_Entry_Unfocused">
-                            <custom:GAZTBorderlessEntry.Behaviors>
-                                <behaviors:OnlyNumericValuesBehaviour />
-                            </custom:GAZTBorderlessEntry.Behaviors>
-                        </custom:GAZTBorderlessEntry>
-                    </inputLayout:SfTextInputLayout>
+                       
+                    </custom:CustomSfTextInputView>
 
                 </StackLayout>
 
@@ -237,8 +233,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding OTPFirstDigit}"
@@ -270,8 +265,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding OTPSecondDigit}"
@@ -303,8 +297,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding OTPThirdDigit}"
@@ -336,8 +329,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding OTPFourthDigit}"

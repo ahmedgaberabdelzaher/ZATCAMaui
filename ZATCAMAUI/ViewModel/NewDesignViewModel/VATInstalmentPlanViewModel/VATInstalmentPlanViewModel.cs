@@ -1629,13 +1629,13 @@ public class VATInstalmentPlanViewModel : BaseViewModel
     }
 
 
-    private async void ShowMoreOptionsPopUp()
+    private async Task ShowMoreOptionsPopUp()
     {
         try
         {
             if (ListOfActionButtonsApplicable != null && ListOfActionButtonsApplicable.Count() != 0)
             {
-                String action = await Application.Current.MainPage.DisplayActionSheet("", AppResources.ZZCancel, null, ListOfActionButtonsApplicable.ToArray());
+                string action = await Application.Current.MainPage.DisplayActionSheet("", AppResources.ZZCancel, null, ListOfActionButtonsApplicable.ToArray());
                 if (App.IsArabic)
                 {
                     ArButtons buttonId = ArButtons.None;
@@ -1714,40 +1714,55 @@ public class VATInstalmentPlanViewModel : BaseViewModel
     }
 
 
-    public async void VATSetReturnVoidAsync()
+    public async Task VATSetReturnVoidAsync()
     {
         VatInstalments.d.Operationz = "04";
         VatInstalments.d.Decflg = "1";
 
         try
         {
-            MainThread.BeginInvokeOnMainThread(() =>
+            IsLoading = true;
+            if (!isDraftClicked)
             {
-                IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-
-                if (!isDraftClicked)
+                isDraftClicked = true;
+                setDATA();
+                var VatInstalmentData = await SubmitClicked();
+                isDraftClicked = false;
+                if (VatInstalmentData != null && VatInstalmentData.d != null)
                 {
-                    isDraftClicked = true;
-                    setDATA();
-                    var VatInstalmentData = await SubmitClicked();
-                    isDraftClicked = false;
-                    if (VatInstalmentData != null && VatInstalmentData.d != null)
-                    {
-                        VatInstalments = VatInstalmentData;
+                    VatInstalments = VatInstalmentData;
 
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATCancelled;
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                    _navigationService.GoBack();
+                }
+                else
+                {
+                    IsLoading = false;
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                    {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-
-
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                             headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATCancelled;
+                            headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
                             headerWithInfos.Add(headerAmountInfo);
 
@@ -1757,67 +1772,28 @@ public class VATInstalmentPlanViewModel : BaseViewModel
                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
                             await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
                             _navigationService.GoBack();
-
-
-                            //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
                         });
                     }
                     else
                     {
-                        IsLoading = false;
-                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
+                        headerWithInfos.Add(headerAmountInfo);
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                headerWithInfos.Add(headerAmountInfo);
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-
-                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-
-
-                                //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
-                                headerWithInfos.Add(headerAmountInfo);
-                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-                                WebServiceManager.ErrorMessageForVAT = string.Empty;
-                            });
-                        }
+                        WebServiceManager.ErrorMessageForVAT = string.Empty;
                     }
                 }
-
-
-            });
+            }
             IsLoading = false;
         }
         catch (Exception)
@@ -1827,18 +1803,18 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
     }
 
-    public async void VATReturnAddNote()
+    public async Task VATReturnAddNote()
     {
         await MopupService.Instance.PushAsync(new AddNotesPopupPageView(NotesText, true));
     }
 
-    public async void VATReturnGetNotes()
+    public async Task VATReturnGetNotes()
     {
         await MopupService.Instance.PushAsync(new ViewNotesPopUpPageView(_vatInstalments.d.NotesSet));
     }
 
     public bool isDraftClicked = false;
-    public async void OnSaveDraftClicked()
+    public async Task OnSaveDraftClicked()
     {
 
         VatInstalments.d.Operationz = "05";
@@ -1847,82 +1823,56 @@ public class VATInstalmentPlanViewModel : BaseViewModel
 
         try
         {
-            /* MainThread.BeginInvokeOnMainThread(() =>
-             {*/
             IsLoading = true;
-            //  });
-            await Task.Run(async () =>
+            if (!isDraftClicked)
             {
+                isDraftClicked = true;
+                setDATA();
 
-                if (!isDraftClicked)
+                var VatInstalmentData = await SubmitClicked();
+
+                if (VatInstalmentData != null && VatInstalmentData.d != null)
                 {
-                    isDraftClicked = true;
-                    setDATA();
+                    VatInstalments = VatInstalmentData;
 
-                    var VatInstalmentData = await SubmitClicked();
+                    App.selectedVATItem = VatInstalments.d.Fbnumz;
+                    setMoreOptioButtons();
 
-                    if (VatInstalmentData != null && VatInstalmentData.d != null)
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = string.Format(AppResources.VATDraftSaved, "  " + VatInstalments.d.Fbnumz);
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                }
+                else
+                {
+
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                     {
-                        VatInstalments = VatInstalmentData;
-
-                        MainThread.BeginInvokeOnMainThread(async () =>
+                        await Task.Run(() =>
                         {
-                            App.selectedVATItem = VatInstalments.d.Fbnumz;
-                            setMoreOptioButtons();
-
-                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                            headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = string.Format(AppResources.VATDraftSaved, "  " + VatInstalments.d.Fbnumz);
-
-                            headerWithInfos.Add(headerAmountInfo);
-
-                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-
-                            //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
+                            IsLoading = false;
                         });
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     }
                     else
                     {
-
-                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
-                        {
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                IsLoading = false;
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            });
-
-
-                        }
-                        else
-                        {
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                IsLoading = false;
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            });
-                        }
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     }
                 }
-
-
-            });
+            }
             IsLoading = false;
         }
         catch (Exception)
@@ -1934,11 +1884,8 @@ public class VATInstalmentPlanViewModel : BaseViewModel
 
     }
 
-    public async void VoidMsg()
+    public async Task VoidMsg()
     {
-        //var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
-        //if (answer)
-
 
         List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
         HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -2029,17 +1976,17 @@ public class VATInstalmentPlanViewModel : BaseViewModel
 
         }
 
-        VATInstalationClicked = new Command(this.VATInstalationTapped);
-        ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
-        AggrementContinueBtnTapped = new Command(this.AggrementContinueBtnClicked);
-        BillContinueBtnTapped = new Command(this.BillContinueBtnClicked);
-        AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
-        StatementsContinueBtnTapped = new Command(this.StatementsContinueBtnClicked);
-        SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
-        OnZakatInstalmentReasonTapped = new Command(this.OnZakatInstalmentReasonClicked);
-        NewAttachmentTapped = new Command(this.NewAttachmentClicked);
-        SuccessGoToDashboardTapped = new Command(this.SuccessGoToDashboardClicked);
-        DownloadConfirmationTapped = new Command(this.DownloadConfirmationClicked);
+        VATInstalationClicked = new Command(async () => await VATInstalationTapped());
+        ReasonContinueBtnTapped = new Command(async () => await ReasonContinueBtnClicked());
+        AggrementContinueBtnTapped = new Command(async () => await AggrementContinueBtnClicked());
+        BillContinueBtnTapped = new Command(async () => await BillContinueBtnClicked());
+        AttachmentsContinueBtnTapped = new Command(async () => await AttachmentsContinueBtnClicked());
+        StatementsContinueBtnTapped = new Command(async() => await StatementsContinueBtnClicked());
+        SummaryContinueBtnTapped = new Command(async () => await SummaryContinueBtnClicked());
+        OnZakatInstalmentReasonTapped = new Command(async () => await OnZakatInstalmentReasonClicked());
+        NewAttachmentTapped = new Command(async () => await NewAttachmentClicked());
+        SuccessGoToDashboardTapped = new Command(async () => await SuccessGoToDashboardClicked());
+        DownloadConfirmationTapped = new Command(async () => await DownloadConfirmationClicked());
         onMoreOptionClicked = new Command(async () =>
         {
             await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
@@ -2421,29 +2368,21 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         NotesText = "";
     }
 
-    public async void VATInstalationTapped()
+    public async Task VATInstalationTapped()
     {
         try
         {
             await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: "Test", checkBoxString: "Test", continueString: "VAT Instalment",
              _dialogType: InstructionsBottomPopUpViewModel.DialogType
                  .Instructions));
-            // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
-        }
-        catch (GAZTUnlockAccountException)
-        {
-
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
-    public async void ReasonContinueBtnClicked()
+    public async Task ReasonContinueBtnClicked()
     {
 
 
@@ -2463,11 +2402,8 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
 
 
@@ -2475,7 +2411,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
 
     }
 
-    public async void BillContinueBtnClicked()
+    public async Task BillContinueBtnClicked()
     {
         try
         {
@@ -2490,15 +2426,12 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    public async void AggrementContinueBtnClicked()
+    public async Task AggrementContinueBtnClicked()
     {
 
 
@@ -2549,19 +2482,13 @@ public class VATInstalmentPlanViewModel : BaseViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
 
         }
@@ -2572,7 +2499,7 @@ public class VATInstalmentPlanViewModel : BaseViewModel
     }
 
 
-    public void OutletContinueBtnClicked()
+    public async Task OutletContinueBtnClicked()
     {
         try
         {
@@ -2580,15 +2507,12 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    public void AttachmentsContinueBtnClicked()
+    public async Task AttachmentsContinueBtnClicked()
     {
         try
         {
@@ -2599,14 +2523,11 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
-    public void StatementsContinueBtnClicked()
+    public async Task StatementsContinueBtnClicked()
     {
         try
         {
@@ -2651,15 +2572,12 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    private async void showTermsPopUp()
+    private async Task showTermsPopUp()
     {
 
         VatInstalments.d.Operationz = "01";
@@ -2700,26 +2618,19 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
     }
 
-    public void SummaryContinueBtnClicked()
+    public async Task SummaryContinueBtnClicked()
     {
         try
         {
-            showTermsPopUp();
-        }
-        catch (GAZTUnlockAccountException)
-        {
-
+          await  showTermsPopUp();
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
-    public void OnZakatInstalmentReasonClicked()
+    public async Task OnZakatInstalmentReasonClicked()
     {
         try
         {
@@ -2732,19 +2643,11 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
-        }
-        catch (Exception)
-        {
-
-
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
-    public async void NewAttachmentClicked()
+    public async Task NewAttachmentClicked()
     {
         if (MopupService.Instance.PopupStack.Count > 0) return;
         try
@@ -2754,20 +2657,12 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
-        }
-        catch (Exception)
-        {
-
-
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
    
-    public void SuccessGoToDashboardClicked()
+    public async Task SuccessGoToDashboardClicked()
     {
         try
         {
@@ -2778,20 +2673,12 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
-        }
-        catch (Exception)
-        {
-
-
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    public void DownloadConfirmationClicked()
+    public async Task DownloadConfirmationClicked()
     {
         try
         {
@@ -2800,16 +2687,8 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
-        }
-        catch (Exception)
-        {
-
-
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
@@ -2834,233 +2713,207 @@ public class VATInstalmentPlanViewModel : BaseViewModel
     {
         try
         {
-            await Task.Run(() =>
+            IsLoading = true;
+            IsLoading = true;
+            VatInstalments = null;
+            VatInstalmentPlanResponse vATInstalment = null;
+            try
             {
-                IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-
-                IsLoading = true;
-                VatInstalments = null;
-                VatInstalmentPlanResponse vATInstalment = null;
-                try
+                if (App.selectedVATItem != "")
                 {
-                    if (App.selectedVATItem != "")
+                    if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
                     {
-                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
-                        {
-                            IsViewEnable = false;
-                        }
-                        var selectedItemFormID = await VATInstalationPlanWebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, App.selectedVATItem, App.LoginDataRetrieved.TIN, "E0045", "VTIA");
-                        if (selectedItemFormID.d != null)
-                        {
-
-                            vATInstalment = await VATInstalationPlanWebServiceManager.GAZTGetVATInstalmentData(selectedItemFormID.d.Fbguid, selectedItemFormID.d.Euser);
-                            if (vATInstalment != null)
-                            {
-                                if (vATInstalment.d.NotesSet != null && vATInstalment.d.NotesSet.Count > 0)
-                                {
-                                    int notesCount = vATInstalment.d.NotesSet.Count;
-                                    var notesText = vATInstalment.d.NotesSet[notesCount - 1];
-                                    NotesText = notesText.Strline;
-                                }
-
-                            }
-                            VatInstalments = vATInstalment;
-                        }
+                        IsViewEnable = false;
                     }
-                    else
+                    var selectedItemFormID = await VATInstalationPlanWebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, App.selectedVATItem, App.LoginDataRetrieved.TIN, "E0045", "VTIA");
+                    if (selectedItemFormID.d != null)
                     {
-                        vATInstalment = await VATInstalationPlanWebServiceManager.GAZTGetVATInstalmentData("", "");
+
+                        vATInstalment = await VATInstalationPlanWebServiceManager.GAZTGetVATInstalmentData(selectedItemFormID.d.Fbguid, selectedItemFormID.d.Euser);
+                        if (vATInstalment != null)
+                        {
+                            if (vATInstalment.d.NotesSet != null && vATInstalment.d.NotesSet.Count > 0)
+                            {
+                                int notesCount = vATInstalment.d.NotesSet.Count;
+                                var notesText = vATInstalment.d.NotesSet[notesCount - 1];
+                                NotesText = notesText.Strline;
+                            }
+
+                        }
                         VatInstalments = vATInstalment;
                     }
+                }
+                else
+                {
+                    vATInstalment = await VATInstalationPlanWebServiceManager.GAZTGetVATInstalmentData("", "");
+                    VatInstalments = vATInstalment;
+                }
 
 
-                    if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
+                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
+                {
+                    IsFirstCheckboxChecked = true;
+
+                    if (App.selectedVATItemFbust == "E0013")
                     {
-                        IsFirstCheckboxChecked = true;
 
-                        if (App.selectedVATItemFbust == "E0013")
+                        foreach (var notes in VatInstalments.d.NotesSet)
                         {
 
-                            foreach (var notes in VatInstalments.d.NotesSet)
+                            if (string.IsNullOrEmpty(notes.Strline))
                             {
 
-                                if (string.IsNullOrEmpty(notes.Strline))
-                                {
-
-                                    NotesText = notes.Strline;
-                                }
-
+                                NotesText = notes.Strline;
                             }
+
                         }
-
-                    }
-                    else
-                    {
-
-                        IsFirstCheckboxChecked = false;
-
                     }
 
-                    PopToRootPage();
+                }
+                else
+                {
 
-                    if (VatInstalments != null && VatInstalments.d != null)
+                    IsFirstCheckboxChecked = false;
+
+                }
+
+                PopToRootPage();
+
+                if (VatInstalments != null && VatInstalments.d != null)
+                {
+
+                    if (App.selectedVATItem != "")
                     {
-
-                        if (App.selectedVATItem != "")
+                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
                         {
-                            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
-                            {
-                                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle, isEditable: true, _dialogType: InstructionsBottomPopUpViewModel.DialogType
-                        .Instructions));
-                            }
-                            else
-                            {
-
-                                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
-                                _dialogType: InstructionsBottomPopUpViewModel.DialogType
-                                .Instructions));
-                            }
-
-
+                            await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle, isEditable: true, _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                    .Instructions));
                         }
                         else
                         {
+
                             await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
-                                _dialogType: InstructionsBottomPopUpViewModel.DialogType
-                                .Instructions));
-                        }
-
-
-
-                        BindVATSelectionView();
-                        BindBillsListView();
-
-                        if (VatInstalments.d.Xstep1Conf != null)
-                        {
-                            if (VatInstalments.d.Xstep1Conf == "confirm")
-                            {
-                                IsInstrunctionChecked = true;
-
-                            }
-                            if (vATInstalment.d.Xstep1Conf == "not confirm")
-                            {
-                                IsInstrunctionChecked = false;
-                            }
-
-                        }
-
-                        if (App.selectedVATItem != "")
-                        {
-
-                            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
-                            {
-                                MessagingCenter.Send<Object, string>(this, "RejectScenario", App.selectedVATItem);
-                                if (VatInstalments.d.Noofinstallment != null)
-                                {
-                                    if (int.Parse(VatInstalments.d.Noofinstallment) > 0)
-                                    {
-                                        NoOfInstalments = int.Parse(VatInstalments.d.Noofinstallment);
-                                    }
-                                    else
-                                    {
-                                        NoOfInstalments = 2;
-                                    }
-
-
-                                }
-
-
-                                if (App.selectedVATItem != "")
-                                {
-
-                                    if (VatInstalments.d.AttachmentSet.Count > 0)
-                                    {
-
-                                        AttachmentsListViewData = new ObservableCollection<Attachment>();
-
-                                        var attch = new ObservableCollection<Attachment>();
-
-                                        foreach (var attachment in VatInstalments.d.AttachmentSet)
-                                        {
-
-                                            if (attachment.Dotyp == "ZVTA")
-                                            {
-
-                                                if (string.IsNullOrEmpty(attachment.Filename))
-                                                {
-                                                    attachment.Filename = DateTime.Now.ToString("yyyy/MM/dd");
-                                                }
-                                                attch.Add(attachment);
-                                            }
-
-
-                                        }
-
-
-                                        AttachmentsListViewData = attch;
-
-                                    }
-
-                                }
-                            }
-
-
+                            _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                            .Instructions));
                         }
 
 
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            _navigationService.GoBack();
-                        });
+                        await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
+                            _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                            .Instructions));
                     }
-                    IsLoading = false;
-                }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        IsLoading = false;
-                        _navigationService.GoBack();
-                    });
-                }
-            });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
 
+
+
+                    BindVATSelectionView();
+                    BindBillsListView();
+
+                    if (VatInstalments.d.Xstep1Conf != null)
+                    {
+                        if (VatInstalments.d.Xstep1Conf == "confirm")
+                        {
+                            IsInstrunctionChecked = true;
+
+                        }
+                        if (vATInstalment.d.Xstep1Conf == "not confirm")
+                        {
+                            IsInstrunctionChecked = false;
+                        }
+
+                    }
+
+                    if (App.selectedVATItem != "")
+                    {
+
+                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
+                        {
+                            MessagingCenter.Send<Object, string>(this, "RejectScenario", App.selectedVATItem);
+                            if (VatInstalments.d.Noofinstallment != null)
+                            {
+                                if (int.Parse(VatInstalments.d.Noofinstallment) > 0)
+                                {
+                                    NoOfInstalments = int.Parse(VatInstalments.d.Noofinstallment);
+                                }
+                                else
+                                {
+                                    NoOfInstalments = 2;
+                                }
+
+
+                            }
+
+
+                            if (App.selectedVATItem != "")
+                            {
+
+                                if (VatInstalments.d.AttachmentSet.Count > 0)
+                                {
+
+                                    AttachmentsListViewData = new ObservableCollection<Attachment>();
+
+                                    var attch = new ObservableCollection<Attachment>();
+
+                                    foreach (var attachment in VatInstalments.d.AttachmentSet)
+                                    {
+
+                                        if (attachment.Dotyp == "ZVTA")
+                                        {
+
+                                            if (string.IsNullOrEmpty(attachment.Filename))
+                                            {
+                                                attachment.Filename = DateTime.Now.ToString("yyyy/MM/dd");
+                                            }
+                                            attch.Add(attachment);
+                                        }
+
+
+                                    }
+
+
+                                    AttachmentsListViewData = attch;
+
+                                }
+
+                            }
+                        }
+
+
+                    }
+
+
+                }
+                else
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                }
+                IsLoading = false;
+            }
+            catch (InternetException ex)
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                IsLoading = false;
+                _navigationService.GoBack();
+            }
+            IsLoading = false;
         }
         catch (GAZTVATRegistrationInProcessException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            IsLoading = false;
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
 
         }
         catch (Exception)
         {
 
 
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            IsLoading = false;
+            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 

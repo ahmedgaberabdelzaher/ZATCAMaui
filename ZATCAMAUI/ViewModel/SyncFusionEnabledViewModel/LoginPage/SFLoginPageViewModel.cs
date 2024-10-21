@@ -129,24 +129,24 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 IsOldLoginHidden = true;
             }
 
-            SignUpCommand = new Command(SignUpClicked);
-            ForgotPasswordCommand = new Command(ForgotPasswordClicked);
+            SignUpCommand = new Command(async () => await SignUpClicked());
+            ForgotPasswordCommand = new Command(async () => await ForgotPasswordClicked());
             HamburgerMenuClickedCommand = new Command(HamburgerMenuClicked);
             this.LoginClickedCommand = new Command(async () => await LoginButtonClicked());
-            this.ChangeMCommand = new Command(this.ChangeMobileClicked);
+            this.ChangeMCommand = new Command(async () => await ChangeMobileClicked());
 
-            this.WebLoginCommand = new Command(this.WebLoginClicked);
+            this.WebLoginCommand = new Command(async () => await WebLoginClicked());
             this.ShowTinsPickerCommand = new Command(async () => await OpenTinsDropdown());
 
 
         }
-        private void WebLoginClicked(object obj)
+        private async Task WebLoginClicked()
         {
 
-            _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_LOGIN);
+            await _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_LOGIN);
         }
 
-        private async void ChangeMobileClicked(object obj)
+        private async Task ChangeMobileClicked()
         {
             await MopupService.Instance.PushAsync(new NafathChangeMobleNumberOptionsView());
         }
@@ -426,7 +426,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             }
         }
 
-       
+
         private TINModel _selectedTinId;
         public TINModel SelectedTinId
         {
@@ -652,18 +652,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         /// Invoked when the Sign Up button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void SignUpClicked(object obj)
+        private async Task SignUpClicked()
         {
-            _navigationService.NavigateTo(App.EstablishmentSignUPPageView);
+            await _navigationService.NavigateTo(App.EstablishmentSignUPPageView);
             // Do something
         }
         /// <summary>
         /// Invoked when the Forgot Password button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private async void ForgotPasswordClicked(object obj)
+        private async Task ForgotPasswordClicked()
         {
-            _navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
+            await _navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
         }
         private static byte[] ConvertRSAParametersField(BigInteger n, int size)
         {
@@ -736,8 +736,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                     App.Token = result.Result.Token;
                     App.MobileNumber = result.Result.MobileNumber;
                     App.LoginDataRetrieved = new LoginModel() { TIN = IsTinDropdownVisible ? this.SelectedTin : this.TIN };
-                    
-                    _navigationService.NavigateTo(App.OtpLoginPageView);
+
+                    await _navigationService.NavigateTo(App.OtpLoginPageView);
                 }
                 else if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
@@ -749,7 +749,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                     if (result.Result.ErrorCode.Equals("M002"))
                     {
                         _navigationService.GoBack();
-                        _navigationService.NavigateTo(App.AccountLockedPageView);
+                        await _navigationService.NavigateTo(App.AccountLockedPageView);
                         LoginError = false;
                     }
                 }
@@ -871,7 +871,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             try
             {
                 string deviceOs = DeviceInfo.Platform.ToString();
-                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                string deviceUdid = DependencyService.Get<IDeviceInfoZATCA>().GetDeviceUdid();
                 return WebServiceManager.CreateSAMLLoginURL("", deviceUdid, "", deviceOs, lang);
 
             }

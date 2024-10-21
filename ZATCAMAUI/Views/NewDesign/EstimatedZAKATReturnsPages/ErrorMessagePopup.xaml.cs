@@ -16,7 +16,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             InfromatationText.Text = infromationText;
-
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
 
 

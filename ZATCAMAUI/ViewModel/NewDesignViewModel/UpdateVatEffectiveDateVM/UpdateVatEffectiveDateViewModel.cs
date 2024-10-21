@@ -147,54 +147,47 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
 
         }
 
-        public async void GetAllVatEffectiveDateLogs()
+        public async Task GetAllVatEffectiveDateLogs()
         {
             List<ItemSetResult> VatLogss = new List<ItemSetResult>();
-            await Task.Run(() =>
+            IsLoading = true;
+            VatLogs?.Clear();
+            CopiedVatLogs?.Clear();
+
+            LogResponse = await VatEffectiveDateWebServiceManager.GAZTGetIBanAccounts();
+
+            PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+            IsLoading = false;
+
+            if (LogResponse != null && LogResponse.d != null && LogResponse.d.ItemSet != null
+            && LogResponse.d.ItemSet != null && LogResponse.d.ItemSet.Count > 0)
             {
-                IsLoading = true;
-            });
-
-            await Task.Run(async () =>
-            {
-                VatLogs?.Clear();
-                CopiedVatLogs?.Clear();
-
-                LogResponse = await VatEffectiveDateWebServiceManager.GAZTGetIBanAccounts();
-
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                IsLoading = false;
-
-                if (LogResponse != null && LogResponse.d != null && LogResponse.d.ItemSet != null
-                && LogResponse.d.ItemSet != null && LogResponse.d.ItemSet.Count > 0)
+                try
                 {
-                    try
-                    {
-                        IsListVisible = true;
-                        NoDataAvailable = false;
-                        //VatLogss = ;
-                        VatLogs = new ObservableCollection<ItemSetResult>(LogResponse.d.ItemSet);
-                        CopiedVatLogs.Clear();
-                        CopiedVatLogs = VatLogs;
+                    IsListVisible = true;
+                    NoDataAvailable = false;
+                    //VatLogss = ;
+                    VatLogs = new ObservableCollection<ItemSetResult>(LogResponse.d.ItemSet);
+                    CopiedVatLogs.Clear();
+                    CopiedVatLogs = VatLogs;
 
 
-                       
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
-                        IsLoading = false;
-                    }
 
                 }
-                else
+                catch (Exception ex)
                 {
-                    IsListVisible = false;
-                    NoDataAvailable = true;
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    IsLoading = false;
                 }
-                IsLoading = false;
-            });
+
+            }
+            else
+            {
+                IsListVisible = false;
+                NoDataAvailable = true;
+            }
+            IsLoading = false;
         }
 
         public void FilterWithReferenceNumber()

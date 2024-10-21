@@ -171,41 +171,26 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-10,0,0"
-                                    ContainerType="Outlined"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="14"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         Placeholder="{x:Static ResourceManager:AppResources.NameForImprter}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding Name}"
                                         VerticalTextAlignment="Center" />
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
                             <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
 
                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.PhoneNumber}" />
 
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-10,0,0"
-                                    ContainerType="Outlined"
+                                <custom:CustomSfTextInputView
                                     ErrorText="{x:Static ResourceManager:AppResources.PhoneNotCorrect}"
-                                    HasError="{Binding PhoneHasError}"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="14"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="Red" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
-                                        Keyboard="{OnPlatform Android=Numeric,
-                                                              iOS=Default}"
+                                    HasError="{Binding PhoneHasError}">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                          <custom:GAZTBorderlessEntry
+                                        Keyboard="Numeric"
                                         MaxLength="10"
                                         Placeholder="0xxxxxxxxx"
                                         Style="{StaticResource DefaultEntry}"
@@ -216,32 +201,27 @@
                                         </custom:GAZTBorderlessEntry.Behaviors>
 
                                     </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                  
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
                             <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
 
                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Email}" />
 
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-10,0,0"
-                                    ContainerType="Outlined"
+                                <custom:CustomSfTextInputView
                                     ErrorText="{x:Static ResourceManager:AppResources.Mailnotcorrect}"
-                                    HasError="{Binding MailHasError}"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="14"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="Red" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
+                                    HasError="{Binding MailHasError}">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                         <custom:GAZTBorderlessEntry
                                         Keyboard="Email"
                                         Placeholder="{x:Static ResourceManager:AppResources.Email}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding Mail}"
                                         VerticalTextAlignment="Center" />
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                   
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
                             <StackLayout Margin="0,9,0,0">
 
@@ -308,37 +288,37 @@
                                 </Label>
                                 <Grid>
 
-                                    <inputLayout:SfTextInputLayout
-                                        Margin="0,-10,0,0"
-                                        ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        OutlineCornerRadius="14"
-                                        Style="{StaticResource InputTableTextInputLayoutStyleWuthoutHeighandWidth}">
-                                        <Grid>
-                                            <StackLayout Orientation="Horizontal">
-
-                                                <custom:GAZTBorderlessEntry
+                                    <custom:CustomSfTextInputView>
+                                       <custom:CustomSfTextInputView.TextInputView>
+                                         <custom:GAZTBorderlessEntry
                                                     InputTransparent="True"
                                                     IsReadOnly="True"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ReportLocation}"
                                                     Style="{StaticResource DefaultEntryWithoutHeigh}"
                                                     Text="{Binding SelectedPort.Name}"
                                                     TextColor="{StaticResource NeutralBlack}"
-                                                    VerticalTextAlignment="Center" />
-                                                <Image HorizontalOptions="EndAndExpand" Source="arrowDropdown.png" />
-                                            </StackLayout>
-                                            <StackLayout
-                                                Grid.Row="0"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand">
+                                                    VerticalTextAlignment="Center" >
 
-                                                <StackLayout.GestureRecognizers>
+                                             <custom:GAZTBorderlessEntry.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding OpenPortsCommand}" />
-                                                </StackLayout.GestureRecognizers>
-                                            </StackLayout>
-                                        </Grid>
-                                    </inputLayout:SfTextInputLayout>
+                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                                            </custom:GAZTBorderlessEntry>
+
+                                        </custom:CustomSfTextInputView.TextInputView>
+
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+
+                                        
+                                    <custom:CustomSfTextInputView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenPortsCommand}" />
+                                    </custom:CustomSfTextInputView.GestureRecognizers>
+
+                                    </custom:CustomSfTextInputView>
+
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenPortsCommand}" />
                                     </Grid.GestureRecognizers>
@@ -360,25 +340,21 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <!--  HasError="{Binding BalaghTxtHasError}"  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerType="Outlined"
+                                <custom:CustomSfTextInputView
                                     ErrorText="{x:Static ResourceManager:AppResources.FieldRequired}"
-                                    HeightRequest="137"
-                                    IsHintAlwaysFloated="True"
-                                    OutlineCornerRadius="14"
-                                    Stroke="{StaticResource Primary}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <Editor
+                                    HeightRequest="137">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <Editor
                                         HeightRequest="137"
                                         HorizontalOptions="FillAndExpand"
                                         Text="{Binding Balaghtx}"
                                         VerticalOptions="FillAndExpand" />
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                  
 
 
 
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
 
                             </StackLayout>
                             <StackLayout Margin="0,10,0,10" Padding="0,10,0,10">

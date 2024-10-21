@@ -550,16 +550,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             });
             NewFormVisible = true;
 
-            IBANNumberUnfocused = new Command(CheckIBanIsValidOrNot);
+            IBANNumberUnfocused = new Command(async ()=>await CheckIBanIsValidOrNot());
 
         }
 
-        public async void CheckIBanIsValidOrNot()
+        public async Task CheckIBanIsValidOrNot()
         {
             if ((IBANValue.Length > 0) && (IBANValue.Length < 24))
             {
 
-                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
+              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
 
             }
             if ((IBANValue.Length > 0) && (IBANValue.Length == 24))
@@ -603,34 +603,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                             IsIBanDropDownEnabled = true;
                             IsLoading = false;
                             SelectedIDNumber = "";
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                isIBanValid = false;
-                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
-                            });
+                            isIBanValid = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
                         }
                     }
                     catch (InternetException ex)
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            IsLoading = false;
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                        });
+                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     }
                 }
 
-                catch (Exception ex)
+                catch (Exception )
                 {
                     //IBan is InValid
                     isIBanValid = false;
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
-
-                    });
+                    IsLoading = false;
+                  await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
                 }
 
 
@@ -933,7 +922,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
-        private async void SummaryConButtonClicked()
+        private async Task SummaryConButtonClicked()
         {
 
 
@@ -989,7 +978,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                             {
                                 CloseWhenBackgroundIsClicked = false
                             };
-                            somewarningpopup.OnDone = async () =>
+                            somewarningpopup.OnDone =  () =>
                             {
                                 _navigationService.GoBack();
                             };
@@ -1003,7 +992,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                         {
                             CloseWhenBackgroundIsClicked = false
                         };
-                        somewarningpopup.OnDone = async () =>
+                        somewarningpopup.OnDone =  () =>
                         {
                             _navigationService.GoBack();
                         };
@@ -1012,21 +1001,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
-
-
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
 
             }
@@ -1044,7 +1025,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     popUp.FlowDirections = "LeftToRight";
                 }
 
-                //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselecttermsandconditions));
             }
 
@@ -1073,7 +1053,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
                 
@@ -1115,7 +1095,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
                 if (SelectedIDNumber.Equals(""))
                 {
-                    //MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDNumber));
                     MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                     return;
@@ -1154,8 +1133,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                     return;
                 }
-                /*else
-                {*/
 
                 if (IBANValue.Length < 24)
                 {
@@ -1186,9 +1163,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 {
                     SelectedIDTypeValue = selectedType.IdType;
                 }
-
-
-
                 if (IsIBanUpdatePage)
                 {
 
@@ -1212,24 +1186,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     else
                         SelectedBankNameValue = "9999";
                 }
-
-
-
                 EnableSummaryView();
-                //}
-
-
-
             }
             catch (GAZTUnlockAccountException )
             {}
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
     }

@@ -1785,8 +1785,7 @@
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
                                                 HorizontalTextAlignment="Start"
-                                                Keyboard="{OnPlatform Android=Numeric,
-                                                                      iOS=Default}"
+                                                Keyboard="Numeric"
                                                 MaxLength="10"
                                                 Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
                                                 Text="{Binding TinDeregistrationData.ADecTelNo}"

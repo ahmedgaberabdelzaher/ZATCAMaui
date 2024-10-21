@@ -615,7 +615,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             GoBackToFrequencyDetails = new Command(this.GoBackToFrequencyDetailsClicked);
             GoBackToAttachments = new Command(this.GoBackToAttachmentsClicked);
             GoBackToDeclaration = new Command(this.GoBackToDeclarationClicked);
-            NewAttachmentTapped = new Command(this.NewAttachmentClicked);
+            NewAttachmentTapped = new Command(async () => await this.NewAttachmentClicked());
             SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
             setIdPickerModel();
             SelectedOutletOption = new ChangeFillingPeriodModel();
@@ -708,80 +708,59 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
 
         public bool isDraftClicked = false;
-        public async void OnSaveDraftClicked()
+        public async Task OnSaveDraftClicked()
         {
 
-            ChangeFillingResponse.d.Operationz = "05";
+            
 
             try
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+                IsLoading = true;
+                ChangeFillingResponse.d.Operationz = "05";
+                if (!isDraftClicked)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    if (!isDraftClicked)
+                    isDraftClicked = true;
+                    ChangeFillingResponse = await SubmitClicked();
+                    if (ChangeFillingResponse != null && ChangeFillingResponse.d1 != null)
                     {
-                        isDraftClicked = true;
-                        ChangeFillingResponse = await SubmitClicked();
-                        if (ChangeFillingResponse != null && ChangeFillingResponse.d1 != null)
+
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
+                            App.selectedVatFillingItem = ChangeFillingResponse.d1.Fbnumz;
+                            setMoreOptioButtons();
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                App.selectedVatFillingItem = ChangeFillingResponse.d1.Fbnumz;
-                                setMoreOptioButtons();
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = string.Format(AppResources.VATFillingDraftSaved, "  " + ChangeFillingResponse.d1.Fbnumz);
 
-                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = string.Format(AppResources.VATFillingDraftSaved, "  " + ChangeFillingResponse.d1.Fbnumz);
+                            headerWithInfos.Add(headerAmountInfo);
 
-                                headerWithInfos.Add(headerAmountInfo);
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-                            });
+                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        });
+                    }
+                    else
+                    {
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                        {
+                            IsLoading = false;
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         }
                         else
                         {
-                            if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
-                            {
-                                await Task.Run(() =>
-                                {
-                                    IsLoading = false;
-                                });
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    IsLoading = false;
-                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                });
-                            }
-                            else
-                            {
-                                await Task.Run(() =>
-                                {
-                                    IsLoading = false;
-                                });
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    IsLoading = false;
-                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                });
-                            }
+                            
+                            IsLoading = false;
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         }
                     }
-                });
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    IsLoading = false;
-                });
+                }
+                IsLoading = false;
             }
             catch (Exception)
             {
@@ -790,7 +769,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        public async void VoidMsg()
+        public async Task VoidMsg()
         {
             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -808,7 +787,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             await MopupService.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
         }
 
-        public async void VATSetReturnVoidAsync()
+        public async Task VATSetReturnVoidAsync()
         {
             ChangeFillingResponse.d.Operationz = "04";
 
@@ -822,14 +801,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     isDraftClicked = false;
                     if (ChangeFillingResponse != null && ChangeFillingResponse.d1 != null)
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATFillingCancelled;
+
+                        headerWithInfos.Add(headerAmountInfo);
+
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        _navigationService.GoBack();
+                    }
+                    else
+                    {
+                        IsLoading = false;
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                         {
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                             headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATFillingCancelled;
+                            headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
                             headerWithInfos.Add(headerAmountInfo);
 
@@ -839,51 +837,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                             await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                             _navigationService.GoBack();
-                        });
-                    }
-                    else
-                    {
-                        IsLoading = false;
-                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
-
-                                headerWithInfos.Add(headerAmountInfo);
-
-                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-                                _navigationService.GoBack();
-                            });
                         }
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
-                                headerWithInfos.Add(headerAmountInfo);
-                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
+                            headerWithInfos.Add(headerAmountInfo);
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-                                WebServiceManager.ErrorMessageForVAT = string.Empty;
-                            });
+                            WebServiceManager.ErrorMessageForVAT = string.Empty;
                         }
                     }
                 }
@@ -970,7 +940,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         }
 
 
-        public async void ValidateIdNumber()
+        public async Task ValidateIdNumber()
         {
             try
             {
@@ -995,7 +965,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
 
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
 
@@ -1024,7 +993,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
 
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
@@ -1058,7 +1026,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
 
-                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                         }
                         else
@@ -1084,7 +1051,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                                 IDNumber = string.Empty;
@@ -1115,7 +1081,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
 
                             IDNumber = string.Empty;
@@ -1133,7 +1098,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
 
                             IDNumber = string.Empty;
@@ -1156,7 +1120,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        public async void showInstructionDialog()
+        public async Task showInstructionDialog()
         {
             if (App.selectedVatFillingItem != "")
             {
@@ -1187,7 +1151,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                        .Instructions));
             }
         }
-        private async void showDatePickerDialog()
+        private async Task showDatePickerDialog()
         {
             try
             {
@@ -1195,39 +1159,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
-        private async void showEffectiveDatePickerDialog()
+        private async Task showEffectiveDatePickerDialog()
         {
             try
             {
                 selectedPicker = PickerEnum.EffectiveDate;
                 await MopupService.Instance.PushAsync(new PickerPageView(EffectiveDatePickerModel));
             }
-            catch (GAZTUnlockAccountException)
-            {
-               
-                
-            }
+          
             catch (InternetException ex)
             {
-               
-                
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
-        private async void showIdTypePickerDialog()
+        private async Task showIdTypePickerDialog()
         {
             try
             {
@@ -1236,13 +1189,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (InternetException ex)
             {
-               
-                
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -1252,7 +1200,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             EnableFrequencyDetails();
         }
 
-        public void updateIdTypePicker()
+        public async void updateIdTypePicker()
         {
             IDType = IDTypePickerModel.SelectedValue;
             ContactPersonName = "";
@@ -1268,7 +1216,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 ContractPersonEditable = false;
             }
 
-            ValidateIdNumber();
+          await  ValidateIdNumber();
         }
         private void setEffectiveDatePickerModel()
         {
@@ -1303,7 +1251,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IDTypePickerModel = genericPickerModel;
         }
 
-        public async void NewAttachmentClicked()
+        public async Task NewAttachmentClicked()
         {
 
             try
@@ -1342,11 +1290,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -1970,12 +1915,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    isSubmitted = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                IsLoading = false;
+                isSubmitted = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 return response;
             }
 

@@ -194,8 +194,7 @@
                                                         FontFamily="{StaticResource SomarRegular}"
                                                         FontSize="15"
                                                         HorizontalOptions="FillAndExpand"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                              iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         TextChanged="OnTextChanged"
                                                         TextColor="{StaticResource NeutralBlack}"
                                                         Unfocused="ContractNumberUnfocused">
@@ -607,8 +606,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="15"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     TextColor="{StaticResource NeutralBlack}"
                                                     Unfocused="TotalAmountUnFocused" />
                                             </custom:CustomSfTextInputView.TextInputView>
@@ -638,8 +636,7 @@
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="15"
                                                     HorizontalOptions="FillAndExpand"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     Text="{Binding ContractReleaseAmount}"
                                                     TextColor="{StaticResource NeutralBlack}"
                                                     Unfocused="AmountToReleaseUnfocused">

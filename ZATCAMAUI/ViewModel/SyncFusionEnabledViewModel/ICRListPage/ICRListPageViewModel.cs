@@ -278,12 +278,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                 });
             }
         }
-        public async void GetVATAllReturnsAsync()
+        public async Task GetVATAllReturnsAsync()
         {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             await GetVATAllReturns();
         }
         private async Task GetVATAllReturns()
@@ -373,7 +370,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                             break;
                         }
                     }
-                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                  await  _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                     _navigation.NavigationStack.ToList().Clear();
                 });
             }
