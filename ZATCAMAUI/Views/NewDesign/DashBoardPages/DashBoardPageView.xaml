@@ -384,6 +384,12 @@
                                                 </Label>
 
                                                 <Image Source="circle_arrow_right.png" VerticalOptions="Center">
+                                                    <Image.Triggers>
+                                                        <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
+                                                            <Setter Property="Rotation" Value="180"></Setter>
+                                                        </DataTrigger>
+
+                                                    </Image.Triggers>
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="TappedOnMyBills" />
                                                     </Image.GestureRecognizers>
@@ -795,6 +801,12 @@
                                                         Text="{x:Static ResourceManager:AppResources.NDReturns}"
                                                         VerticalOptions="Center" />
                                                     <Image HorizontalOptions="EndAndExpand" Source="circle_arrow_right.png">
+                                                        <Image.Triggers>
+                                                            <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
+                                                                <Setter Property="Rotation" Value="180"></Setter>
+                                                            </DataTrigger>
+
+                                                        </Image.Triggers>
                                                         <Image.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="TappedOnMyReturns" />
                                                         </Image.GestureRecognizers>

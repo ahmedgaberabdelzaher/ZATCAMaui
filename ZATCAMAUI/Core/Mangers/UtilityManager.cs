@@ -1590,21 +1590,33 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static string StringToDDMMYYYYFormat(string date)
         {
-            if (!string.IsNullOrEmpty(date))
+            try
             {
-                string[] dts = null;
-                DateTime originalDate = DateTime.Parse(date);
+                string requiredDate = string.Empty;
+                if (!string.IsNullOrEmpty(date))
+                {
+                    DateTime originalDate = DateTime.Parse(date);
+                    HijriCalendar hjCalendar = new HijriCalendar();
+                    int year = hjCalendar.GetYear(originalDate);
+                    int month = hjCalendar.GetMonth(originalDate);
+                    int day = hjCalendar.GetDayOfMonth(originalDate);
 
-                string formattedDate = originalDate.ToString("dd-MM-yyyy");
-                dts = formattedDate.Split('-');
-                string dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                return dt1;
+                    string dateStr = string.Format("{0:0000}-{1:00}-{2:00}", year, month, day);
+                    requiredDate = dateStr;
 
+                    return requiredDate;
+
+                }
+                else
+                {
+                    return "";
+                }
             }
-            else
+            catch (Exception )
             {
                 return "";
             }
+           
 
         }
         public static string FormatDateToYYYYDDMMFromDateTypeString(DateTime? dateToConvert)

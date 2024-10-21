@@ -26,12 +26,12 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             });
         }
 
-        private void OnEstablishmentTapped(object sender, TappedEventArgs e)
+        private async void OnEstablishmentTapped(object sender, TappedEventArgs e)
         {
             viewModel.IsLoading = true;
             viewModel.IndividualBackImg = "vat_tile_listofsignup_W.png";
             viewModel.EstablishmentBackImg = "vat_tile_listofsignup.png";
-            viewModel._navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
+            await viewModel._navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
 
         }
 
