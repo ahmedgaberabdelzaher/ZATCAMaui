@@ -283,7 +283,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             return IsError;
         }
 
-        private async void Resend()
+        private async Task Resend()
         {
             counter = 120;
             await ResendOTP();

@@ -72,27 +72,25 @@
                     VerticalOptions="Center" />
 
                 <!--  Report Type Entry  -->
-                <inputLayout:SfTextInputLayout
+                <custom:CustomSfTextInputView
                     Grid.ColumnSpan="2"
-                    ContainerBackground="White"
-                    ContainerType="Outlined"
                     HorizontalOptions="CenterAndExpand"
-                    InputViewPadding="10,0,10,0"
                     IsVisible="{Binding IsSearching}"
-                    OutlineCornerRadius="15"
-                    Stroke="{StaticResource NeutralGreay}"
                     VerticalOptions="CenterAndExpand">
+                    <custom:CustomSfTextInputView.TextInputView>
+                       <custom:GAZTBorderlessEntry
+                            Keyboard="Text"
+                            Style="{StaticResource DefaultEntry}"
+                            Text="{Binding SearchValue}"
+                            TextColor="#58595B">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <xct:EventToCommandBehavior Command="{Binding SearchReportCommand}" EventName="Completed" />
+                            </custom:GAZTBorderlessEntry.Behaviors>
+                        </custom:GAZTBorderlessEntry>
 
-                    <custom:GAZTBorderlessEntry
-                        Keyboard="Text"
-                        Style="{StaticResource DefaultEntry}"
-                        Text="{Binding SearchValue}"
-                        TextColor="#58595B">
-                        <custom:GAZTBorderlessEntry.Behaviors>
-                            <xct:EventToCommandBehavior Command="{Binding SearchReportCommand}" EventName="Completed" />
-                        </custom:GAZTBorderlessEntry.Behaviors>
-                    </custom:GAZTBorderlessEntry>
-                </inputLayout:SfTextInputLayout>
+                    </custom:CustomSfTextInputView.TextInputView>
+                    
+                </custom:CustomSfTextInputView>
 
                 <!--  Search Image  -->
                 <StackLayout Grid.Column="2" IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}">

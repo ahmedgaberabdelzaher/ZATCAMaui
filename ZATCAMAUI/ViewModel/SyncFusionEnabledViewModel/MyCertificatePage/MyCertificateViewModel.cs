@@ -404,49 +404,39 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                     }
                     if (string.IsNullOrWhiteSpace(localPath))
                     {
-                        //   DisplayAlert("Error loading PDF", "Computer says no", "OK");
                         return;
                     }
                 }
                 if (DeviceInfo.Platform == DevicePlatform.Android)
                     PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
-                //else
-                //    Path = url;
             }
             catch (Exception e)
             {
-                throw e;
             }
         }
-        public async void ShowPdf(string pdfUrl)
+        public async Task ShowPdf(string pdfUrl)
         {
             if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
                 if (pdfUrl != null)
                 {
-                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                   await _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    });
+                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                 }
             }
             else
             {
                 if (pdfUrl != null)
                 {
-                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                   await _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
                     //pop that certificate is not available
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    });
+                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                 }
             }
         }

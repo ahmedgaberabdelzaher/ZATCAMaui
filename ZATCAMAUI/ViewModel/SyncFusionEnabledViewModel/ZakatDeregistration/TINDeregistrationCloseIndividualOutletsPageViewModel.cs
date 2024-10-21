@@ -576,7 +576,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             IBANTypesList = IBANTypesDummyList;
         }
 
-        public async void OnIdTypeClicked()
+        public async Task OnIdTypeClicked()
         {
             List<string> idTypeData = new List<string>();
 
@@ -605,7 +605,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             FathersNameText = new FieldValidations();
             FamilyNameText = new FieldValidations();
             GrandFathersNameText = new FieldValidations();
-            OnTinRegisrtationReasonDateTapped = new Command(OnTinRegisrtationReasonDateClicked);
+            OnTinRegisrtationReasonDateTapped = new Command(async () => await OnTinRegisrtationReasonDateClicked());
 
             AddOutletDecisionOptions();
         }
@@ -636,7 +636,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             });
         }
 
-        public async void OnTinRegisrtationReasonDateClicked()
+        public async Task OnTinRegisrtationReasonDateClicked()
         {
             try
             {
@@ -648,30 +648,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
                 }
-                catch (GAZTUnlockAccountException ex)
-                {
-
-                }
                 catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-                }
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
-                });
+                }
+            }
+            catch (InternetException ex)
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 

@@ -229,26 +229,19 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
                 });
             }
         }
-        public async void onSelectedFormBindleFbtyp()
+        public async Task onSelectedFormBindleFbtyp()
         {
             try
             {
-                await Task.Run(() =>
-                 {
-                     IsLoading = true;
-                 });
-                await Task.Run(async () =>
-                {
-                    FormBundleApplicationNumberModel formbundleApplicationNumberList = new FormBundleApplicationNumberModel();
-                    formbundleApplicationNumberList = await WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
-                    PopToRootPage();
-                    if (formbundleApplicationNumberList != null)
-                        FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results.OrderBy(x => x.Fbnum).ToList();
-                });
-                await Task.Run(() =>
-                  {
-                      IsLoading = false;
-                  });
+                IsLoading = true;
+
+                FormBundleApplicationNumberModel formbundleApplicationNumberList = new FormBundleApplicationNumberModel();
+                formbundleApplicationNumberList = await WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
+                PopToRootPage();
+                if (formbundleApplicationNumberList != null)
+                    FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results.OrderBy(x => x.Fbnum).ToList();
+
+                IsLoading = false;
             }
             catch (GAZTException gex)
             {
@@ -271,41 +264,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
                     MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                 }
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
+                IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    //viewModel._navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
             }
 
-            catch (HttpRequestException ex)
+            catch (HttpRequestException )
             {
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    // IsLoading = false;
-
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    await Task.Run(() =>
-                     {
-                         IsLoading = false;
-                     });
-                });
+                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                IsLoading = false;
             }
 
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
-                await Task.Run(() =>
-                 {
-                     IsLoading = false;
-                 });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+               
             }
             catch (Exception)
             {
@@ -313,16 +287,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
 
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    // IsLoading = false;
-
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    await Task.Run(() =>
-                      {
-                          IsLoading = false;
-                      });
-                });
+                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                IsLoading = false;
             }
         }
         public void PopToRootPage()
@@ -340,7 +306,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
                             break;
                         }
                     }
-                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                   await _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                     _navigation.NavigationStack.ToList().Clear();
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();

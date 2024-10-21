@@ -138,39 +138,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public VATIndividualSignupPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
-            IndividualRegistrationCommand = new Command(OnIndividualRegistrationClicked);
-            EstablishmentSignupCommand = new Command(OnEstablishmentSignupClicked);
+            IndividualRegistrationCommand = new Command(async () => await OnIndividualRegistrationClicked());
+            EstablishmentSignupCommand = new Command(async () => await OnEstablishmentSignupClicked());
         }
         //EstablishmentSignupCommand
-        private async void OnIndividualRegistrationClicked(object obj)
+        private async Task OnIndividualRegistrationClicked()
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-                ImageIndividualTile = "vat_tile_listofsignup.png";
-               
-                ImageIndividualIcon = "vat_new_individual.png";
-            });
+            IsLoading = true;
+            ImageIndividualTile = "vat_tile_listofsignup.png";
 
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                _navigationService.NavigateTo(App.IndividualRegistrationPageView);
-                //_navigationService.NavigateTo(App.StyleTestUIPageView);
-                // IsLoading = false;
-            });
+            ImageIndividualIcon = "vat_new_individual.png";
+
+           await _navigationService.NavigateTo(App.IndividualRegistrationPageView);
         }
-        private void OnEstablishmentSignupClicked(object obj)
+        private async Task OnEstablishmentSignupClicked()
         {
 
             IsLoading = true;
             ImageEstimatedTile = "vat_tile_listofsignup.png";
             ImageEstimatedIcon = "vat_new_Establishment_W.png";
             EstimatedTileColor = Colors.White;
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                _navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
-                //IsLoading = false;
-            });
+            await _navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
         }
     }
 }

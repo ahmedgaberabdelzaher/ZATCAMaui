@@ -97,8 +97,7 @@
                         Margin="0"
                         BackgroundColor="White"
                         HorizontalOptions="FillAndExpand"
-                        Keyboard="{OnPlatform Android=Numeric,
-                                              iOS=Default}"
+                        Keyboard="Numeric"
                         TextChanged="SearchBar_TextChanged"
                         VerticalOptions="FillAndExpand" />
 

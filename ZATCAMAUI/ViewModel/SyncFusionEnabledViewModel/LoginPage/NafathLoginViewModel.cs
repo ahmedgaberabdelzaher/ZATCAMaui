@@ -82,7 +82,7 @@ public class NafathLoginViewModel : BaseViewModel
             }
             IsLoading = false;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             IsLoading = false;
         }

@@ -44,7 +44,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var text = await Clipboard.GetTextAsync();
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDReferenceNumber + " " + text));
 
-                // await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
             }
         }
 
@@ -52,8 +51,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
 
             var _navigation = Application.Current.MainPage.Navigation;
-
-            //viewModel._navigationService.GoBack();
 
 
             foreach (var item in _navigation.NavigationStack)

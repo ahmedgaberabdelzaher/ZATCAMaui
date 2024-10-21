@@ -94,26 +94,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             
 
             IsInstructionsChecked = false;
-            VATRefundInstructionsConfirmedBtnClicked = new Command(VATRefundInstructionsConfirmedBtnTapped);
+            VATRefundInstructionsConfirmedBtnClicked = new Command(async () => await VATRefundInstructionsConfirmedBtnTapped());
         }
 
-        public async void VATRefundInstructionsConfirmedBtnTapped()
+        public async Task VATRefundInstructionsConfirmedBtnTapped()
         {
             try
             {
                 await MopupService.Instance.PopAsync();
                 MessagingCenter.Send<object, string>(this, "InstructionsConfirmed", "NavigateToNewRequestPageView");
             }
-            catch (GAZTUnlockAccountException)
-            {
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -129,24 +123,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
 
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
                 App.HideProgressView();
 
                 try
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsInstructionsVisible = false;
+                    IsInstructionsVisible = false;
 
-                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                        await MopupService.Instance.PopAsync();
-                    });
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    await MopupService.Instance.PopAsync();
 
                 }
-                catch (Exception mex)
+                catch (Exception)
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
             catch (GAZTErrorException ex)
@@ -179,30 +169,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     await MopupService.Instance.PopAsync();
                 }
 
-                catch (Exception mex)
+                catch (Exception)
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
                 try
                 {
                     App.HideProgressView();
 
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsInstructionsVisible = false;
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PopAsync();
-                    });
+                    IsInstructionsVisible = false;
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await MopupService.Instance.PopAsync();
 
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
         }

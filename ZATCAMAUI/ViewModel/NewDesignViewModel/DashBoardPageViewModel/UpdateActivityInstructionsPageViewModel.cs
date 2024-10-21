@@ -112,10 +112,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             });
 
             IsContinueButtonEnable = false;
-            UpdateActivityClicked = new Command(this.AcceptClicked);
+            UpdateActivityClicked = new Command(async () => await AcceptClicked());
         }
 
-        public async void AcceptClicked()
+        public async Task AcceptClicked()
         {
             if (_isInstructionChecked)
             {
@@ -131,24 +131,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                     DashBoardUpdateResponseModel responsne =await WebServiceManager.getTaxPayerActivityUpdateStatusAfterTermsChecked(activityUpdateModel);
                     await MopupService.Instance.PopAsync();
-                   // _navigationService.NavigateTo(App.VATDeregistrationDetailsPage);
-                }
-                catch (GAZTUnlockAccountException ex)
-                {
-                    
-                    
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-                }
-                catch (Exception ex)
-                {
-                    
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
             }
         }

@@ -62,8 +62,7 @@
                                 x:Name="IbanOne"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="2"
                                 Placeholder="03"
                                 ReturnType="Next"
@@ -83,8 +82,7 @@
                                 x:Name="IbanTwo"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="8"
                                 Placeholder="80000000"
                                 ReturnType="Next"
@@ -104,8 +102,7 @@
                                 x:Name="IbanThree"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="4"
                                 Placeholder="0000"
                                 ReturnType="Next"
@@ -125,8 +122,7 @@
                                 x:Name="IbanFour"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="4"
                                 Placeholder="0000"
                                 ReturnType="Next"
@@ -146,8 +142,7 @@
                                 x:Name="IbanFive"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="Small"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="4"
                                 Placeholder="0000"
                                 Text="{Binding IbanPartFive}"

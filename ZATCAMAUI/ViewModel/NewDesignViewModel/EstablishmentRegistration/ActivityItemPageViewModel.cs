@@ -864,7 +864,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Method
-        private async void navigateToNext()
+        private async Task navigateToNext()
         {
             CanExecute = false;
             try
@@ -939,7 +939,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
             finally

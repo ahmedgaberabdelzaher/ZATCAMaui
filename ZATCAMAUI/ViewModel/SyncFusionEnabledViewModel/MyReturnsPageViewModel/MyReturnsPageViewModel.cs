@@ -998,17 +998,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         }
         #endregion
         #region Methods
-        public async void GetVATAllReturnsAsync(MyReturnsResult SelectedReturnsVAT)
+        public async Task GetVATAllReturnsAsync(MyReturnsResult SelectedReturnsVAT)
         {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             await GetVATAllReturns(SelectedReturnsVAT);
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                IsLoading = false;
-            });
+            IsLoading = false;
         }
         private async Task GetVATAllReturns(MyReturnsResult SelectedReturnsVAT)
         {

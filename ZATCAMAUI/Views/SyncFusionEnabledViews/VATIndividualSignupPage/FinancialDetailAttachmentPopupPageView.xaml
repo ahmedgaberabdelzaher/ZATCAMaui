@@ -61,30 +61,26 @@
                                     Padding="0,0,0,0"
                                     FontFamily="{StaticResource SomarBold}"
                                     Text="{x:Static ResourceManager:AppResources.VATRAttachmentCategory}" />
-                                <inputLayout:SfTextInputLayout
+
+                                <custom:CustomSfTextInputView
                                     x:Name="FrmIDType"
-                                    Grid.Row="1"
-                                    Margin="0,-6,0,-6"
-                                    ContainerType="Outlined"
-                                    HasError="False"
-                                    IsHintAlwaysFloated="True"
-                                    OutlineCornerRadius="8"
-                                    Stroke="{StaticResource Primary}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <StackLayout Orientation="Horizontal">
+                                    Grid.Row="1">
+
+                                    <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
                                             FontSize="Small"
                                             HorizontalOptions="FillAndExpand"
                                             IsSpellCheckEnabled="False"
                                             Text="{Binding AttachmentTypeTxt}"
                                             TextColor="{StaticResource PrimaryColor}" />
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                        <Image Source="arrowDropdown.png" />
+                                    <inputLayout:SfTextInputLayout.TrailingView>
 
-                                    </StackLayout>
-                                </inputLayout:SfTextInputLayout>
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </custom:CustomSfTextInputView>
+
                                 <buttons:SfButton
                                     x:Name="btn1"
                                     Grid.Row="1"
@@ -158,25 +154,30 @@
                                         Grid.Row="2"
                                         FontFamily="{StaticResource SomarBold}"
                                         Text="{x:Static ResourceManager:AppResources.Attachment}" />
-                                    <inputLayout:SfTextInputLayout
+
+                                    <custom:CustomSfTextInputView
                                         x:Name="FrmAttachmentOptional"
-                                        Grid.Row="3"
-                                        Margin="0,-6,0,-6"
-                                        ContainerType="Outlined"
-                                        HasError="False"
-                                        IsHintAlwaysFloated="True"
-                                        OutlineCornerRadius="8"
-                                        Stroke="#bbbbbb">
-                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                            <inputLayout:LabelStyle TextColor="#B00020" />
-                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <StackLayout x:Name="ExploreAttachmentLayout" Orientation="Horizontal">
-                                            <custom:GAZTBorderlessEntry
+                                        Grid.Row="3">
+
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                           <custom:GAZTBorderlessEntry
                                                 x:Name="EntryExploreAttachment"
                                                 FontFamily="{StaticResource SomarBold}"
                                                 FontSize="Small"
                                                 IsEnabled="False"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZExplore}" />
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZExplore}" >
+
+                                                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                                            </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
+
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+
                                             <Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                 <Image.Source>
                                                     <FontImageSource
@@ -186,11 +187,17 @@
                                                         Color="{StaticResource SecondaryNew}" />
                                                 </Image.Source>
                                             </Image>
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
-                                            </StackLayout.GestureRecognizers>
-                                        </StackLayout>
-                                    </inputLayout:SfTextInputLayout>
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+
+                                        <custom:CustomSfTextInputView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                                        </custom:CustomSfTextInputView.GestureRecognizers>
+                                    </custom:CustomSfTextInputView>
+
+                                     <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                                    </StackLayout.GestureRecognizers>
+
                                 </StackLayout>
 
                             </Grid>

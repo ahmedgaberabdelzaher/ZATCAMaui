@@ -40,7 +40,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
 
                 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 
             }
@@ -197,18 +197,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             {
                 viewModel.IsLoading = true;
                 await viewModel.onPageLoad();
-                //await Task.Run(() =>
-                //{
-                //    viewModel.IsLoading = true;
-                //});
-                //await Task.Run(async () =>
-                //{
-
-                //});
-                //await Task.Run(() =>
-                //{
-                //    viewModel.IsLoading = false;
-                //});
+               
             }
             catch (Exception)
             {
@@ -249,18 +238,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
 
                 }
             });
-            if (viewModel.IDType != null)
-            {
-                //MessagingCenterCallBacks();
-            }
-            //viewModel.PopulateSummaryReasonData();
-            viewModel.PopulateSummaryDeclarationData();
-            // viewModel.PopulateAttachmentsListViewTemplate();
-
-            // summaryAttachmentsListView.ItemsSource = viewModel.AttachmentsListViewData;  
+            viewModel.PopulateSummaryDeclarationData(); 
         }
 
-        public async void ValidateIDNumberContact()
+        public async Task ValidateIDNumberContact()
         {
             viewModel.IsLoading = true;
             string dob = viewModel.DOB.Replace("/", "-");
@@ -568,7 +549,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
 
 
 
-        void outletDecisionOptionsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
+        async void outletDecisionOptionsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
         {
             try
             {
@@ -585,7 +566,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                     RemovedItem.TextCol = (Color)Application.Current.Resources["Primary"];
                     RemovedItem.ImgSource = "vat_tile_listofsignup_W";
                 }
-                viewModel.AddOutletDocumentOptions();
+               await viewModel.AddOutletDocumentOptions();
             }
             catch (Exception)
             {
@@ -605,7 +586,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             if (vATDeRegistrationDetails != null && vATDeRegistrationDetails.d != null)
             {
                 viewModel.VATDeRegistrationDetailsForAttach = vATDeRegistrationDetails;
-                SetDocType();
+                
                 if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet != null && viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet != null)
                 {
                     if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.Count != 0)
@@ -656,12 +637,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             MessagingCenter.Unsubscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem");
 
         }
-        public void SetDocType()
-        {
-            viewModel.setDocType();
-        }
 
-        public async Task DeleteAttachment(bool result, Attachment attachment)
+        public Task DeleteAttachment(bool result, Attachment attachment)
         {
             try
             {
@@ -696,12 +673,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                     viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                 }
                 viewModel.IsLoading = false;
+                return Task.CompletedTask;
             }
             catch (Exception)
             {
                 viewModel.IsLoading = false;
+                return Task.CompletedTask;
             }
-            viewModel.IsLoading = false;
         }
 
         void attachmentsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
@@ -718,15 +696,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             }
         }
 
-        void btnReasonContinue_Clicked(object sender, EventArgs e)
+        async void btnReasonContinue_Clicked(object sender, EventArgs e)
         {
-            viewModel.ReasonContinueBtnClicked();
+           await viewModel.ReasonContinueBtnClicked();
         }
 
-        void Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
 
         void outletDocumentOptionsListView_SelectionChanged(object sender,ItemSelectionChangedEventArgs e)
         {

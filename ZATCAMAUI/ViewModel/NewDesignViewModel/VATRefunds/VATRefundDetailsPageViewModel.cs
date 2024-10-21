@@ -272,7 +272,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             VatNewReqSummaryData = new VatRefundDisplayDataModel();
         }
 
-        public async void ReloadData(VatRefundsListResultModel vATRefundsModel)
+        public async Task ReloadData(VatRefundsListResultModel vATRefundsModel)
         {
             IsNewReqSummary = false;
 
@@ -288,10 +288,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
 
                 VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(VatRefundsListResultModel.WiDtlSet[0].Fbguid);
                 SelectedIbanTypeFromList();
@@ -299,42 +296,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 IBANType selectedIdType = IBANTypesList.Where(m => m.key == VatRefundsDisplayDataModel.Idtype).FirstOrDefault();
                 SelectedIbanIdType = selectedIdType.Text;
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
         }
 
-        public async void LoadSummaryData(VatRefundDisplayDataModel vATRefundsSaveDataModel)
+        public async Task LoadSummaryData(VatRefundDisplayDataModel vATRefundsSaveDataModel)
         {
             IsNewReqSummary = true;
 
@@ -348,48 +330,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 SelectedIbanTypeFromList();
 
                 IBANType selectedIdType = IBANTypesList.Where(m => m.key == VatNewReqSummaryData.IdType).FirstOrDefault();
                 SelectedIbanIdType = selectedIdType.Text;
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
         }
         public void SelectedIbanTypeFromList()
@@ -412,7 +376,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             IBANTypesList = IBANTypesDummyList;
         }
 
-        public async void ConfirmSummaryBtnClicked()
+        public async Task ConfirmSummaryBtnClicked()
         {
             VatNewReqSummaryData.Operationx = "01";
             VatNewReqSummaryData.Gpartx = App.LoginDataRetrieved.TIN;
@@ -426,45 +390,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-
+                IsLoading = true;
                 VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatNewReqSummaryData);
 
-                _navigationService.NavigateTo(App.VATRefundsSuccessPageView, VatNewReqSummaryData);
+               await _navigationService.NavigateTo(App.VATRefundsSuccessPageView, VatNewReqSummaryData);
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
                 string message = ex.Message;
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(message, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(message, AppResources.Information);
             }
 
         }

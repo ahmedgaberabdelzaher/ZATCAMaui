@@ -211,31 +211,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             { IsAttachmentEnabled = true; }
             else { IsAttachmentEnabled = false; }
         }
-        public async void ShowPdf(string pdfUrl)
+        public async Task ShowPdf(string pdfUrl)
         {
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+            IsLoading = false;
             if (pdfUrl != null)
             {
-                _navigationService.NavigateTo(App.PdfView, pdfUrl);
+               await _navigationService.NavigateTo(App.PdfView, pdfUrl);
             }
             else
             {
                 //pop that certificate is not available
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    //await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
-                });
-            }
-            await Task.Run(() =>
-            {
                 IsLoading = false;
-            });
-            //}
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+            }
+            IsLoading = false;
         }
     }
 

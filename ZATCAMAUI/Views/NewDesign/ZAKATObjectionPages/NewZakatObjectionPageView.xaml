@@ -184,24 +184,21 @@
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="Sales" />
 
-                                <inputLayout:SfTextInputLayout
+                                <custom:CustomSfTextInputView
                                     Grid.Row="1"
-                                    Grid.Column="0"
-                                    Margin="0"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    Grid.Column="0">
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="400.00" />
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
 
-                                <inputLayout:SfTextInputLayout
+                                <custom:CustomSfTextInputView
                                     Grid.Row="1"
-                                    Grid.Column="1"
-                                    Margin="0"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    Grid.Column="1">
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="400.00" />
-
-                                </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
                             </Grid>
                         </StackLayout>
                     </ScrollView>
@@ -214,12 +211,11 @@
                         IsVisible="{Binding IsObjectionReasonVisible}">
                         <StackLayout>
                             <Label Style="{StaticResource CaptionLabelGrey}" Text="Write Your Objection Reason" />
-                            <inputLayout:SfTextInputLayout
-                                Margin="0"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" />
+                                </custom:CustomSfTextInputView.TextInputView>
+                            </custom:CustomSfTextInputView>
                         </StackLayout>
                     </ScrollView>
                     <!--  End Of Objection Reason  -->
@@ -366,22 +362,21 @@
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="Date of Birth" />
 
-                            <inputLayout:SfTextInputLayout
+                            <custom:CustomSfTextInputView
                                 Grid.Row="3"
-                                Grid.Column="0"
-                                Margin="0,-10,0,0"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                Grid.Column="0">
+                                <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="Q1720187" />
-                            </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView.TextInputView>
+                            </custom:CustomSfTextInputView>
 
-                            <inputLayout:SfTextInputLayout
+                            <custom:CustomSfTextInputView
                                 Grid.Row="3"
-                                Grid.Column="1"
-                                Margin="0,-10,0,0"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                Grid.Column="1">
+
+                                <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="7 jun 1995" />
+                                </custom:CustomSfTextInputView.TextInputView>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image>
@@ -395,7 +390,7 @@
                                     </Image>
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
-                            </inputLayout:SfTextInputLayout>
+                            </custom:CustomSfTextInputView>
 
 
                             <Label
@@ -405,14 +400,13 @@
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="Contact Person Name" />
 
-                            <inputLayout:SfTextInputLayout
+                            <custom:CustomSfTextInputView
                                 Grid.Row="5"
-                                Grid.ColumnSpan="2"
-                                Margin="0,-10,0,0"
-                                IsHintAlwaysFloated="True"
-                                Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                Grid.ColumnSpan="2">
+                                <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="Zaed Hardy" />
-                            </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView.TextInputView>
+                            </custom:CustomSfTextInputView>
 
                         </Grid>
                     </ScrollView>
@@ -437,11 +431,10 @@
                         <BoxView Style="{StaticResource lineSeperator}" />
                         <ScrollView>
                             <StackLayout>
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0"
-                                    IsHintAlwaysFloated="True"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                                    </custom:CustomSfTextInputView.TextInputView>
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image>
                                             <Image.Source>
@@ -453,7 +446,7 @@
                                             </Image.Source>
                                         </Image>
                                     </inputLayout:SfTextInputLayout.TrailingView>
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
 
                                 <Border
                                     Margin="0,10,0,10"

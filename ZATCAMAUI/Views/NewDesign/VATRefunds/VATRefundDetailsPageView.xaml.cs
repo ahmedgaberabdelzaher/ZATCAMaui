@@ -157,10 +157,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                 {
                     try
                     {
-                        await Task.Run(() =>
-                        {
-                            App.DisplayProgressView();
-                        });
+                        App.DisplayProgressView();
 
                         await viewModel.OnVoidBtnClicked();
 
@@ -173,29 +170,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                     }
                     catch (GAZTErrorException ex)
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            App.HideProgressView();
-                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        });
+                        App.HideProgressView();
+                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     }
                     catch (InternetException ex)
                     {
-                        await Task.Run(() =>
-                        {
-                            App.HideProgressView();
-                        });
+                        App.HideProgressView();
 
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            viewModel._navigationService.GoBack();
-                        });
-                    }
-                    catch (Exception)
-                    {
-
-
+                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        viewModel._navigationService.GoBack();
                     }
                 }
             }
@@ -207,17 +190,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                 {
                     try
                     {
-                        await Task.Run(() =>
-                        {
-                            App.DisplayProgressView();
-                        });
+                        App.DisplayProgressView();
 
                         await viewModel.OnVoidBtnClicked();
 
-                        await Task.Run(() =>
-                        {
-                            App.HideProgressView();
-                        });
+                        App.HideProgressView();
 
                         var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                         Navigation.RemovePage(firstPageToRemove);
@@ -226,29 +203,14 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                     }
                     catch (GAZTErrorException ex)
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            App.HideProgressView();
-                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        });
+                        App.HideProgressView();
+                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     }
                     catch (InternetException ex)
                     {
-                        await Task.Run(() =>
-                        {
-                            App.HideProgressView();
-                        });
-
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            viewModel._navigationService.GoBack();
-                        });
-                    }
-                    catch (Exception)
-                    {
-
-
+                        App.HideProgressView();
+                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        viewModel._navigationService.GoBack();
                     }
                 }
             }

@@ -17,7 +17,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             InitializeComponent();
             viewModel = App.Locator.ZakatReturnDetailsSuccessfullPageView;
 
-            // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
             _zakatReturnDetail = ZakatReturnDetail;
             BindingContext = viewModel;
             viewModel.TaxablePeriod = ZakatReturnDetail.Persl;
@@ -31,7 +30,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
             };
             ToolbarItems.Add(Refresh);
-            //  Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
 
 
         }

@@ -958,10 +958,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
         var x = SelectedOutletItem.IsOutletChecked;
 
     }
-
-    public async void SubmitButtonClicked() { }
-
-    public async void DeregAttachmentsPopup()
+    public async Task DeregAttachmentsPopup()
     {
         if (MopupService.Instance.PopupStack.Count > 0) return;
         if (DeregisterAttachmentsListViewData == null)
@@ -979,11 +976,8 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
@@ -1006,7 +1000,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
         }
     }
 
-    private async void showDeregTypeDialog()
+    private async Task showDeregTypeDialog()
     {
         try
         {
@@ -1016,15 +1010,13 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    private async void showDeregReasonDialog()
+    private async Task showDeregReasonDialog()
     {
         try
         {
@@ -1141,7 +1133,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
     }
 
-    private async void ShowOutletItemReasonsDialog()
+    private async Task ShowOutletItemReasonsDialog()
     {
         try
         {
@@ -1189,7 +1181,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
     }
 
-    private async void ShowPermitItemReasonsDialog()
+    private async Task ShowPermitItemReasonsDialog()
     {
         try
         {
@@ -1246,7 +1238,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
         item.IsInnerListVisible = !item.IsInnerListVisible;
     }
 
-    public async void GetTinOutletDeregistrationDataBeforeNewRequest(int DeregTypeCode, string fbGuid = "")
+    public async Task GetTinOutletDeregistrationDataBeforeNewRequest(int DeregTypeCode, string fbGuid = "")
     {
         IsLoading = true;
         await Task.Delay(500);
@@ -1285,13 +1277,10 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                     }
                     WebServiceManager.ErrorMessageForUnlockAccount = line1;
 
-                    String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                    string WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
 
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
-                        GoBackAftersubmission();
-                    });
+                    await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
+                    GoBackAftersubmission();
 
                     throw new GAZTErrorException(WithReplacedString);
                 }
@@ -1349,10 +1338,6 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                     ShowSaveSubmit = false;
                 }
             }
-            else
-            {
-                // IsListVisible = false;
-            }
             IsLoading = false;
         }
         catch (Exception)
@@ -1397,7 +1382,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
         }
     }
 
-    private async void OnSubmitRequest(int SubmitType)
+    private async Task OnSubmitRequest(int SubmitType)
     {
         //SubmitType = 1;
 
@@ -1664,7 +1649,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
         return index.ToString();
     }
 
-    private async void CopyResponseObjectToUiObject(TinOutletDeregisterListModel.OutletDeregisterListResponse outlettListResponse)
+    private  Task CopyResponseObjectToUiObject(TinOutletDeregisterListModel.OutletDeregisterListResponse outlettListResponse)
     {
 
         OutlettUiList.Clear();
@@ -1771,10 +1756,11 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
             }
 
             AllOutletsSelected();
+            return Task.CompletedTask;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            Console.WriteLine(ex.StackTrace);
+            return Task.CompletedTask;
         }
 
 
@@ -1955,7 +1941,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
     }
 
 
-    public async void LoadReasonSet()
+    public async Task LoadReasonSet()
     {
         try
         {
@@ -1966,33 +1952,13 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                 setDeregReasonPickerModel();
             }
         }
-        catch (InternetException ex)
+        catch (InternetException)
         {
-            
-            
-            await Task.Run(() =>
-            {
-                App.HideProgressView();
-            });
 
-            try
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    // await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
-                });
-            }
-            catch (Exception mex)
-            {
-                Console.WriteLine(mex.Message);
-            }
-        }
-        catch (GAZTErrorException ex)
-        {
-            
-            
+            App.HideProgressView();
+
+            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
         }
 
     }

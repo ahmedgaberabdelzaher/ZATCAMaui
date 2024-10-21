@@ -1127,10 +1127,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 IsLoading = false;
             }
         }
-        private async void OnDeleteAttachment(Attachment item, string docType)
-        {
-
-        }
 
         private bool _eSTLedge = false;
         public bool ESTLedge
@@ -1807,7 +1803,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         }
 
 
-        private async void getIdTypesData(string guidNf)
+        private async Task getIdTypesData(string guidNf)
         {
             IsLoading = true;
             var data = await WebServiceManager.GetIDTypesForChangeMobNumber(guidNf);
@@ -1847,63 +1843,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 Message.Append(itemerror.message);
             }
-            String WithReplacedString = Message.ToString().Replace("An exception was raised", string.Empty);
+            string WithReplacedString = Message.ToString().Replace("An exception was raised", string.Empty);
             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WithReplacedString));
         }
 
-        //public async Task GetCaptchAndGUID(string CaptchaRequestCode, string guid = "", string captchaCode = "")
-        //{
-        //    try
-        //    {
-
-        //        IsLoading = true;
-
-        //        string lang = UtilityManager.GetLanguageParameter();
-        //        string st = ZATCAConstants.CaptchaAndGUID;
-        //        string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
-        //        GenerateCaptchaGUID forgotPasswordOTP = new GenerateCaptchaGUID();
-        //        Models.Metadata metadata = new Models.Metadata();
-        //        metadata.id = st;
-        //        metadata.uri = st;
-        //        metadata.type = type;
-
-        //        GetCaptcha d = new GetCaptcha();
-        //        d.__metadata = metadata;
-        //        d.captchaCode = captchaCode;
-        //        d.GUID = guid;
-        //        d.taxpayer = "";
-        //        d.refresh = "";
-        //        d.applicationName = CaptchaRequestCode;
-
-        //        forgotPasswordOTP.result = d;
-        //        forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(d);
-        //        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-        //        if (forgotPasswordOTP?.result != null && !string.IsNullOrEmpty(forgotPasswordOTP.result.captchaCode))
-        //        {
-        //            Captcha = forgotPasswordOTP.result.captchaCode;
-        //            GUID = forgotPasswordOTP.result.GUID;
-        //            IsAPICalledSuccessfully = true;
-        //        }
-        //        IsLoading = false;
-        //    }
-
-        //    catch (InternetException ex)
-        //    {
-        //        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-        //        //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-        //        await Task.Run(() =>
-        //        {
-        //            IsLoading = false;
-        //            // UserIDLayoutVisibility = true;
-        //        });
-        //    }
-        //    finally
-        //    {
-        //        IsLoading = false;
-        //    }
-        //}
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -1917,7 +1860,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
-        internal async void InitCountryCodesAPI()
+        internal async Task InitCountryCodesAPI()
         {
             CountryCodesList = await WebServiceManager.GAZTGetMobileRegionDropdown();
         }
@@ -1936,11 +1879,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         {
             countDownSeconds--;
 
-            /*if (countDownSeconds <= 9)
-                LblCountDownTimer = "0:0" + countDownSeconds.ToString();
-            else
-                LblCountDownTimer = "0:" + countDownSeconds.ToString();*/
-
+          
 
             if (countDownSeconds <= 9 && countDownSeconds > 0)
                 LblCountDownTimer = "0:0" + countDownSeconds.ToString();
@@ -2025,11 +1964,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 ShowValidationPopup(AppResources.Somethingwentwrong);
             }
-            //if (UploadedRentDocumentsList == null || UploadedRentDocumentsList.Count() == 0)
-            //{
-            //    IsVisbleRentAttachmentmentList = false;
-
-            //}
+           
 
         }
         private void ShowValidationPopup(string _message)
@@ -2090,12 +2025,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                    // UserIDLayoutVisibility = true;
-                });
+                IsLoading = false;
             }
             finally
             {

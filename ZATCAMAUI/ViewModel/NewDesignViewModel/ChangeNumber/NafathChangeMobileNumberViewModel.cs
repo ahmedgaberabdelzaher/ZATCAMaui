@@ -171,7 +171,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             SelectedTIN = TinsPickerModel.SelectedValue;
         }
 
-        private async void Next()
+        private async Task Next()
         {
             try
             {
@@ -191,7 +191,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
                     IsLoading = false;
                     if (response != null && response.d != null)
                     {
-                        _navigationService.NavigateTo(App.NafathChangeMobileNumberOTPView, response);
+                       await _navigationService.NavigateTo(App.NafathChangeMobileNumberOTPView, response);
                     }
                     else
                     {

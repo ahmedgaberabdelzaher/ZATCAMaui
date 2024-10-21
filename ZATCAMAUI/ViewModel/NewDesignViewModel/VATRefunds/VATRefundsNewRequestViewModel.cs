@@ -298,33 +298,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
                 if (IBanListResponse != null && IBanListResponse.D != null && IBanListResponse.D.Results != null && IBanListResponse.D.Results.Count > 0)
                 {
-                    try {
+                    try
+                    {
                         var SlectedIban = IBanListResponse.D.Results.Where(m => m.Iban == SelectedIbanData.Iban).FirstOrDefault();
 
-                        if(SlectedIban != null) {
+                        if (SlectedIban != null)
+                        {
 
                             SelectedIdtype = SlectedIban.IdtypeDesc;
                             SelectedIdNumber = SlectedIban.IdNumber;
 
                             IBANType idType = IBANTypesList.Where(m => m.key == SlectedIban.IdType).FirstOrDefault();
                             SelectedIDTypeCode = idType.key;
-                          
+
                             _ = SetIBANIdNumber(idType.key);
                         }
 
 
-                       
+
 
                     }
-                    catch(Exception ex) {
+                    catch (Exception ex)
+                    {
 
                     }
 
-               
+
                 }
 
 
-                    OnPropertyChanged("SelectedIbanData");
+                OnPropertyChanged("SelectedIbanData");
             }
         }
 
@@ -485,7 +488,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
         public bool IsSelected { get; private set; }
 
-       
+
 
         public IBanListResponseModel IBanListResponse;
 
@@ -493,8 +496,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
         public VATRefundsNewRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            IbanIdTypeTapped = new Command(OnIbanIdTypeClicked);
-            IbanIdNumberTapped = new Command(OnIbanNumberClicked);
+            IbanIdTypeTapped = new Command(async () => await OnIbanIdTypeClicked());
+            IbanIdNumberTapped = new Command(async () => await OnIbanNumberClicked());
 
             SelectedIdtype = AppResources.ZZIDType;
             SelectedIdNumber = AppResources.IDNumber;
@@ -523,7 +526,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             throw new NotImplementedException();
         }
 
-        private async void ShowMoreOptionsPopUp()
+        private async Task ShowMoreOptionsPopUp()
         {
             try
             {
@@ -542,11 +545,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         {
 
                             case ArButtons.إلغاء:
-                                OnVoidBtnClicked();
+                              await  OnVoidBtnClicked();
                                 break;
                             case ArButtons.حفظكمسودة:
 
-                                OnSaveDraftClicked();
+                              await  OnSaveDraftClicked();
 
 
 
@@ -567,12 +570,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         {
 
                             case Buttons.Void:
-                                OnVoidBtnClicked();
+                              await  OnVoidBtnClicked();
                                 break;
 
                             case Buttons.SaveasDraft:
 
-                                OnSaveDraftClicked();
+                             await   OnSaveDraftClicked();
 
                                 break;
                             default:
@@ -585,7 +588,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             {
             }
         }
-        public async void VoidMsg()
+        public async Task VoidMsg()
         {
 
             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
@@ -607,11 +610,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
         }
         public bool isDraftClicked = false;
 
-        public async void OnSaveDraftClicked()
+        public async Task OnSaveDraftClicked()
         {
 
 
-            
+
 
             try
             {
@@ -624,7 +627,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
                     VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
                 }
-              //  VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
+                //  VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
                 VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
                 if (SelectedIDTypeCode != null)
                 {
@@ -651,43 +654,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
                 VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
 
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
 
                 VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
 
                 if (VatNewReqSummaryData.Operationx.Equals("05"))
                 {
                     App.selectedVATItem = VatNewReqSummaryData.Fbnumx;
-                   MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        App.selectedVATItem = VatNewReqSummaryData.Fbnumx;
-                        setMoreOptioButtons();
+                    App.selectedVATItem = VatNewReqSummaryData.Fbnumx;
+                    setMoreOptioButtons();
 
-                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                        headerAmountInfo.IsLinkAvailable = false;
-                        headerAmountInfo.Message = string.Format(AppResources.ZVatRefundRequestSavedAsDraft);
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = string.Format(AppResources.ZVatRefundRequestSavedAsDraft);
 
-                        headerWithInfos.Add(headerAmountInfo);
+                    headerWithInfos.Add(headerAmountInfo);
 
-                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
-                    });
-
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    IsLoading = false;
 
                 }
 
@@ -695,29 +688,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
                 string message = ex.Message;
 
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(message, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(message, AppResources.Information);
             }
             catch (Exception)
             {
@@ -745,10 +726,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+
+                IsLoading = true;
 
                 VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
                 VatfrmRefundsModel = new ObservableCollection<VatReffundAmtDetails>(VatRefundsDisplayDataModel.VAtRefundSET);//
@@ -757,35 +736,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet);
                 VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
 
-                if (VatRefundsDisplayDataModel.Cr1645GoliveFg == "X") {
+                if (VatRefundsDisplayDataModel.Cr1645GoliveFg == "X")
+                {
 
-                    if(VatRefundsDisplayDataModel.PendingIbanMsg != "")
+                    if (VatRefundsDisplayDataModel.PendingIbanMsg != "")
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
-                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        IsLoading = false;
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
-                            headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = AppResources.NDIBANIncomplete;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = AppResources.NDIBANIncomplete;
 
-                            headerWithInfos.Add(headerAmountInfo);
+                        headerWithInfos.Add(headerAmountInfo);
 
 
-                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
-                            //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Informati
-                        });
                         GetAllIbanList();
                     }
                     else
@@ -793,10 +766,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         GetAllIbanList();
                     }
 
-                    
+
                 }
 
-                
+
 
                 if (VatRefundsDisplayDataModel.Rfamt == "0")
                 {
@@ -833,95 +806,54 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
 
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
-            catch (InternetException )
+            catch (InternetException)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
-                try
-                {
-                   MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-
-                }
-                catch (Exception mex)
-                {
-                    Console.WriteLine(mex.Message);
-                }
+                IsLoading = false;
+                await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
                 string message = ex.Message;
 
-                try
+                PopUp popUp = new PopUp();
+                StringBuilder PopMsg = new StringBuilder();
+
+                popUp.Message = message;
+                popUp.HeaderText = AppResources.Information;
+
+                if (App.IsArabic)
                 {
-                    PopUp popUp = new PopUp();
-                    StringBuilder PopMsg = new StringBuilder();
-
-                    popUp.Message = message;
-                    popUp.HeaderText = AppResources.Information;
-
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-
-                    await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
-                    _navigationService.GoBack();
+                    popUp.FlowDirections = "RightToLeft";
+                    popUp.isFontSet = true;
                 }
-                catch (Exception mex)
+                else
                 {
-                    Console.WriteLine(mex.Message);
+                    popUp.FlowDirections = "LeftToRight";
                 }
+
+                await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                _navigationService.GoBack();
             }
-            catch(Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-                try
-                {
-                   MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-
-                }
-                catch (Exception mex)
-                {
-                    Console.WriteLine(mex.Message);
-                }
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
 
 
-        public async void GetAllIbanList()
+        public async Task GetAllIbanList()
         {
-            
-                try
-                {
-                     IBanListResponse = await WebServiceManager.GetIBanDataForCR1645();
+
+            try
+            {
+                IBanListResponse = await WebServiceManager.GetIBanDataForCR1645();
 
                 IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>();
 
@@ -942,11 +874,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
 
                 }
-                if(IbanData.Count > 0) {
+                if (IbanData.Count > 0)
+                {
 
                     SelectedIbanData = IbanData.FirstOrDefault();
 
-                  
+
 
                     IsTypeEditable = false;
                 }
@@ -954,31 +887,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
 
 
-                }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        _ = _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
-                }
-            
-            
+            }
+            catch (InternetException ex)
+            {
+                _ = _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            }
+
+
         }
 
         public async Task LoadDraftsData(VatRefundsListResultModel draftsData)
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(draftsData.WiDtlSet[0].Fbguid);
 
                 VatRefundsDisplayDataModel.Rfamt = "0.0";// VatRefundsDisplayDataModel.Rfamt.Replace("-",string.Empty);
 
-               
+
                 if (VatRefundsDisplayDataModel.Idnumber != null && VatRefundsDisplayDataModel.Idnumber != string.Empty)
                 {
                     SelectedIdNumber = VatRefundsDisplayDataModel.Idnum;
@@ -992,10 +919,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         IBANType idType = IBANTypesList.Where(m => m.key == SelectedIDTypeCode).FirstOrDefault();//"ZS0003" not suporrted
                         SelectedIdtype = idType.Text;
                     }
-                    catch(Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine("No ID type");
-                        Console.WriteLine(ex.Message);
+                      
                     }
                 }
 
@@ -1061,39 +987,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     }
                 }
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
-            catch (InternetException )
+            catch (InternetException)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
-                try
-                {
-                   MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-
-                }
-                catch (Exception mex)
-                {
-                    Console.WriteLine(mex.Message);
-                }
+                await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
+                IsLoading = false;
                 string message = ex.Message;
 
                 try
@@ -1118,32 +1023,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     _navigationService.GoBack();
                 }
 
-                catch (Exception mex)
+                catch (Exception)
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
                 try
                 {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    IsLoading = false;
 
-                   MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
 
                 }
-                catch (Exception mex)
+                catch (Exception)
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
         }
@@ -1181,15 +1076,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     IsAddAccountVisisble = false;
                 }
             }
-            catch(Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
             }
 
-            //VatRefundsIbanDataModel.IbanSet.Results
         }
 
-        public async void OnIbanIdTypeClicked()
+        public async Task OnIbanIdTypeClicked()
         {
             CreateIBANType();
             List<string> idTypeData = new List<string>();
@@ -1207,7 +1100,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
-        public async void OnIbanNumberClicked()
+        public async Task OnIbanNumberClicked()
         {
             if (IBANIDNumberList != null && IBANIDNumberList.Count > 0)
             {
@@ -1265,17 +1158,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             iBANType2.Text = AppResources.ZIBANCompanyID;
             IBANTypesDummyList.Add(iBANType2);
             IBANTypesList = IBANTypesDummyList;
-        } 
+        }
 
         public async Task SetIBANIdNumber(string selectedIbanIdType)
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-
+                IsLoading = true;
                 List<IBANIDNumber> iBANIDNumbersResponse = await WebServiceManager.GAZTGetIBANIdNumber(selectedIbanIdType);
 
                 PopToRootPage();
@@ -1284,31 +1173,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     IBANIDNumberList = new ObservableCollection<IBANIDNumber>(iBANIDNumbersResponse);
                 }
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (InternetException ex)
             {
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
-            catch(Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
         }
 
-        public async void ContinueBtnClicked()
+        public async Task ContinueBtnClicked()
         {
             VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
             VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
@@ -1317,7 +1194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
                 VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
             }
-           // VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
+            // VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
             VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
             if (SelectedIDTypeCode != null)
             {
@@ -1327,15 +1204,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundTpParameter;
             //VatRefundsDisplayDataModel.VAtRefundSET.results = VatfrmRefundsModel;
 
-           for (int i =0;i< VatfrmRefundsModel.Count; i++)
+            for (int i = 0; i < VatfrmRefundsModel.Count; i++)
             {
-                if(VatRefundsDisplayDataModel.VAtRefundSET[i].Fbnum == VatfrmRefundsModel[i].Fbnum)
+                if (VatRefundsDisplayDataModel.VAtRefundSET[i].Fbnum == VatfrmRefundsModel[i].Fbnum)
                 {
                     VatRefundsDisplayDataModel.VAtRefundSET[i].CheckFg = VatfrmRefundsModel[i].CheckFg;
-                }
-                else
-                {
-
                 }
             }
 
@@ -1355,20 +1228,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
 
 
-            //if (SelectedIdtype == string.Empty || SelectedIdtype == AppResources.ZZIDType)
-            //{
-            //    popUp.Message = AppResources.ZPleaseselectparametertype;
-            //    await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
-            //    return;
-            //}
-
-            //if (SelectedIdNumber == string.Empty || SelectedIdNumber == AppResources.IDNumber)
-            //{
-            //    popUp.Message = AppResources.ZVatRefundInformationSelectIBANIDNumber;
-            //    await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
-            //    return;
-            //}
-
+          
             if (SelectedIbanData == null)
             {
                 popUp.Message = AppResources.ZVatRefundInformationSelectIBAN;
@@ -1385,7 +1245,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
-        public async void OnVoidBtnClicked()
+        public async Task OnVoidBtnClicked()
         {
 
             VatRefundsDisplayDataModel.Operationx = "04";
@@ -1396,10 +1256,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
 
                 VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
                 if (VatNewReqSummaryData != null)
@@ -1408,46 +1265,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     ListOfActionButtonsApplicable = null;
 
                 }
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
+                IsLoading = false;
                 string message = ex.Message;
 
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(message, AppResources.Information);
-                });
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                await _dialogService.ShowMessage(message, AppResources.Information);
             }
 
         }
 
         //CR4914
-        
+
         public void CheckBoxSelected_update(VatReffundAmtDetails vatDetails, bool? isChecked)
         {
 
@@ -1458,7 +1295,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (VatfrmRefundsCopyModel[i].Fbnum == vatDetails.Fbnum)
                 {
                     decimal A = decimal.Parse(VatfrmRefundsCopyModel[i].Betrw);
-                    if (isChecked == true )
+                    if (isChecked == true)
                     {
                         VatfrmRefundsCopyModel[i].CheckFg = "X";
                         VatfrmRefundsCopyModel[i].IsItemSelected = true;

@@ -92,8 +92,7 @@
 
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="TxFromAmountEntry"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                              iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"
                                                         Text="{Binding FromAmount}"
                                                         TextChanged="From_Amount_Changed"
@@ -145,8 +144,7 @@
 
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="TxToAmountEntry"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                              iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}"
                                                         Text="{Binding ToAmount}"
                                                         TextChanged="To_Amount_Changed"

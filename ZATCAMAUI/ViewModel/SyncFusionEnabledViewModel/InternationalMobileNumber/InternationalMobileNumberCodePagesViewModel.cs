@@ -68,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumb
         {
         }
         #endregion
-        public async void onPageLoad()
+        public async Task onPageLoad()
         {
 
             mobileData = await WebServiceManager.GAZTGetMobileRegionDropdown();

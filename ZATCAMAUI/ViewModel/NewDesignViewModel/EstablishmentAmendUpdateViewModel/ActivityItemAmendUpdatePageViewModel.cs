@@ -1206,7 +1206,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             }
         }
 
-        private async void updateActivityCrOrLicense()
+        private async Task updateActivityCrOrLicense()
         {
             string type = string.Empty;
             try
@@ -1278,7 +1278,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             }
         }
 
-        private async void navigateToNext()
+        private async Task navigateToNext()
         {
             CanExecute = false;
             try
@@ -1491,13 +1491,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             catch (Exception)
             { }
         }
-        private async void updateActivityList(string indSector)
+        private async Task updateActivityList(string indSector)
         {
             IsLoading = true;
             activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList(indSector);
             IsLoading = false;
         }
-        private async void fetchTabDataAndBind()
+        private async Task fetchTabDataAndBind()
         {
             try
             {
@@ -1710,7 +1710,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 }
             }
         }
-        public async void validateCRNumber()
+        public async Task validateCRNumber()
         {
 
             if (CRNumber != null && CRNumber.Length > 0)
@@ -1960,7 +1960,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 IsLoading = false;
             }
         }
-        private async void OnDeleteAttachment(Attachment item, string docType)
+        private async Task OnDeleteAttachment(Attachment item, string docType)
         {
             string QuestionMark = string.Empty;
             if (App.IsArabic)

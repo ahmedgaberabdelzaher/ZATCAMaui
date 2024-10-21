@@ -183,7 +183,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
                 }
                 else
                 {
-                    NoInternetGoBack();
+                  await  NoInternetGoBack();
                 }
 
             }
@@ -196,23 +196,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
                     });
             }
         }
-        public async void NoInternetGoBack()
+        public async Task NoInternetGoBack()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-             {
-                 await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
-                 _navigationService.GoBack();
-             });
+            await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+            _navigationService.GoBack();
         }
 
         public async Task navigateToListPage()
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-
-            _navigationService.NavigateTo(App.TaxEvasionReportListPageView, App.TaxEvasionUserData.Mobile);
+            IsLoading = true;
+            await  _navigationService.NavigateTo(App.TaxEvasionReportListPageView, App.TaxEvasionUserData.Mobile);
         }
 
         public async Task RegisterCommandClick()
@@ -233,7 +226,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
                 if (taxEvasionUserRegistrationResponseModel.Status == true)
                 {
                     App.TaxEvasionUserData = taxEvasionUserRegistrationResponseModel.Data;
-                    navigateToListPage();
+                   await navigateToListPage();
                 }
             }
             catch (GAZTException gex)
@@ -256,29 +249,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
                 {
                     MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                 }
-                MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     await Task.Run(() =>
-                     {
-                         IsLoading = false;
-                     });
-                     await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                     //viewModel._navigationService.GoBack();
-                 });
+                IsLoading = false;
+                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
             }
             catch (Exception ex)
             {
+                IsLoading = false;
 
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     await Task.Run(() =>
-                     {
-                         IsLoading = false;
-                     });
-
-                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                 });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
     }

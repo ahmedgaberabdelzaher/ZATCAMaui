@@ -7,6 +7,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     BackgroundColor="#88000000"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -23,17 +24,9 @@
             <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZVatNotes}" />
 
 
-            <inputLayout:SfTextInputLayout
-                Margin="0,-6,0,-6"
-                ContainerType="Outlined"
-                HasError="{Binding IsReportDetailHasError}"
-                IsHintAlwaysFloated="True"
-                OutlineCornerRadius="8"
-                Stroke="{StaticResource Primary}">
-                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    <inputLayout:LabelStyle TextColor="#B00020" />
-                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                <StackLayout Margin="0,16,0,0">
+            <custom:CustomSfTextInputView>
+                <custom:CustomSfTextInputView.TextInputView>
+                   <StackLayout Margin="0,16,0,0">
                     <Editor
                         x:Name="NoteDetail"
                         AutoSize="TextChanges"
@@ -51,10 +44,11 @@
                         Text="{Binding Source={x:Reference NoteDetail}, Path=Text.Length, StringFormat='{0}/999'}"
                         VerticalOptions="Start"
                         VerticalTextAlignment="Start" />
-                </StackLayout>
+                 </StackLayout>
+                </custom:CustomSfTextInputView.TextInputView>
+                
 
-
-            </inputLayout:SfTextInputLayout>
+            </custom:CustomSfTextInputView>
 
 
             <buttons:SfButton

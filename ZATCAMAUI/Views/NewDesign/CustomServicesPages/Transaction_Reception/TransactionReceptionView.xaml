@@ -338,8 +338,7 @@
                                     Grid.Column="0">
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Keyboard="{OnPlatform Android=Numeric,
-                                                                  iOS=Default}"
+                                            Keyboard="Numeric"
                                             Placeholder="{x:Static ResourceManager:AppResources.Buildingnumber}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding BuildingNo}"

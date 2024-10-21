@@ -50,8 +50,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
         public TaxEvasionReportMobilePageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             BackButtonClicked = new Command(BackButtonClick);
-            VerifyCommand = new Command(VerifyCommandClick);
-            RegisterCommand = new Command(RegisterCommandClick);
+            VerifyCommand = new Command(async () => await VerifyCommandClick());
+            RegisterCommand = new Command(async () => await RegisterCommandClick());
 
         }
         public void BackButtonClick()
@@ -59,12 +59,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
             _navigationService.GoBack();
         }
 
-        public async void RegisterCommandClick()
+        public async Task RegisterCommandClick()
         {
-            _navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
+          await  _navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
         }
 
-        public async void VerifyCommandClick()
+        public async Task VerifyCommandClick()
         {
             try
             {
@@ -82,17 +82,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
 
                     try
                     {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = true;
-                        });
+                        IsLoading = false;
 
                         TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await TaxEvasionWebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
 
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
 
                         if (taxEvasionSendSmsResponseModel.Status == true)
                         {
@@ -100,14 +93,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
                             App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;
                             App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
 
-                            _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
+                          await  _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
                         }
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            });
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         }
                     }
                     catch (GAZTException gex)
@@ -132,52 +122,29 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
                             MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                         }
 
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
-
+                       
                             await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            //viewModel._navigationService.GoBack();
-                        });
                     }
                     catch (Exception)
                     {
 
-
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
-
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            //viewModel._navigationService.GoBack();
-                        });
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                       
                     }
 
 
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-
-                    await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (Exception)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
     }

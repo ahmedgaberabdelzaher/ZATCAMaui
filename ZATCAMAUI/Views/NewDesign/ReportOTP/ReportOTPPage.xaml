@@ -132,8 +132,7 @@
                                     FontSize="16"
                                     HorizontalTextAlignment="Center"
                                     IsPassword="True"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="1"
                                     ReturnType="Next"
                                     Style="{StaticResource DefaultEntry}"
@@ -173,8 +172,7 @@
                                     FontSize="16"
                                     HorizontalTextAlignment="Center"
                                     IsPassword="True"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                   Keyboard="Numeric"
                                     MaxLength="1"
                                     ReturnType="Next"
                                     Style="{StaticResource DefaultEntry}"
@@ -214,8 +212,7 @@
                                     FontSize="16"
                                     HorizontalTextAlignment="Center"
                                     IsPassword="True"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="1"
                                     ReturnType="Next"
                                     Style="{StaticResource DefaultEntry}"
@@ -255,8 +252,7 @@
                                     FontSize="16"
                                     HorizontalTextAlignment="Center"
                                     IsPassword="True"
-                                    Keyboard="{OnPlatform Android=Numeric,
-                                                          iOS=Default}"
+                                    Keyboard="Numeric"
                                     MaxLength="1"
                                     ReturnType="Go"
                                     Style="{StaticResource DefaultEntry}"

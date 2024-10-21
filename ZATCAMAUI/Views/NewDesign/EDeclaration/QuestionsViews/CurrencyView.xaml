@@ -445,21 +445,6 @@
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                             </custom:CustomSfTextInputView>
-
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-
-
-
-                            </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
                     </DataTemplate>

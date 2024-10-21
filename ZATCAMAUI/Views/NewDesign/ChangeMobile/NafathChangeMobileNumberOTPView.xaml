@@ -103,8 +103,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding FirstDigit}"
@@ -141,8 +140,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding SecondDigit}"
@@ -179,8 +177,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding ThirdDigit}"
@@ -217,8 +214,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding FourthDigit}"
@@ -255,8 +251,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding FifthDigit}"
@@ -293,8 +288,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
-                                Keyboard="{OnPlatform Android=Numeric,
-                                                      iOS=Default}"
+                                Keyboard="Numeric"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding SixthDigit}"

@@ -244,7 +244,7 @@ public class TINOutletDeregistrationViewModel : BaseViewModel
     }
 
     [Obsolete]
-    public async void CreateNewRequest()
+    public async Task CreateNewRequest()
     {
         try
         {

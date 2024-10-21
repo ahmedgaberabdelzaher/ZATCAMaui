@@ -234,8 +234,7 @@
                                                     FontFamily="{StaticResource SomarLight}"
                                                     FontSize="Small"
                                                     IsSpellCheckEnabled="False"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="10"
                                                     Placeholder="{x:Static ResourceManager:AppResources.TIN}"
                                                     Style="{StaticResource DefaultEntry}"
@@ -387,8 +386,7 @@
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryIDNumber"
                                                     IsSpellCheckEnabled="False"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="{Binding MaxLengthID}"
                                                     Placeholder="{x:Static ResourceManager:AppResources.NDIDNumber}"
                                                     Style="{StaticResource DefaultEntry}"
@@ -735,8 +733,7 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryCRNumber"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="10"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZCRNumber}"
                                                     Style="{StaticResource DefaultEntry}"
@@ -779,8 +776,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="EntryLicenceNumber"
                                                         IsSpellCheckEnabled="False"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                              iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         MaxLength="20"
                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"
                                                         Style="{StaticResource DefaultEntry}"
@@ -1105,8 +1101,7 @@
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryPhoneNumber"
-                                                    Keyboard="{OnPlatform Android=Numeric,
-                                                                          iOS=Default}"
+                                                    Keyboard="Numeric"
                                                     MaxLength="9"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZPhoneNumber}"
                                                     Style="{StaticResource DefaultEntry}"
@@ -1366,8 +1361,7 @@
                                                         HorizontalOptions="CenterAndExpand"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                              iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         MaxLength="1"
                                                         ReturnType="Next"
                                                         Text="{Binding MOTPFirstDigit}"
@@ -1408,8 +1402,7 @@
                                                         HorizontalOptions="CenterAndExpand"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                              iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         MaxLength="1"
                                                         ReturnType="Next"
                                                         Text="{Binding MOTPSecondDigit}"
@@ -1449,8 +1442,7 @@
                                                         HorizontalOptions="CenterAndExpand"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                              iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         MaxLength="1"
                                                         ReturnType="Next"
                                                         Text="{Binding MOTPThirdDigit}"
@@ -1489,8 +1481,7 @@
                                                         HorizontalOptions="CenterAndExpand"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding MIsOTPEntryEnable}"
-                                                        Keyboard="{OnPlatform Android=Numeric,
-                                                                              iOS=Default}"
+                                                        Keyboard="Numeric"
                                                         MaxLength="1"
                                                         ReturnType="Next"
                                                         Text="{Binding MOTPFourthDigit}"

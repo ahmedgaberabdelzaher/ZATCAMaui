@@ -113,25 +113,20 @@
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
 
-                <inputLayout:SfTextInputLayout
+                <custom:CustomSfTextInputView
                     x:Name="FrmLicenseIssuedBy"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Grid.ColumnSpan="7"
-                    Margin="10,0,10,0"
-                    ContainerType="Outlined"
-                    HasError="False"
-                    IsHintAlwaysFloated="True"
-                    OutlineCornerRadius="8"
-                    Stroke="{StaticResource Primary}">
-                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <inputLayout:LabelStyle TextColor="#B00020" />
-                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    <custom:GAZTBorderlessEntry
+                    Grid.ColumnSpan="7">
+                    <custom:CustomSfTextInputView.TextInputView>
+                        <custom:GAZTBorderlessEntry
                         FontSize="Small"
                         IsSpellCheckEnabled="False"
                         Text="{Binding TxtSelectedStatus}" />
-                </inputLayout:SfTextInputLayout>
+                    </custom:CustomSfTextInputView.TextInputView>
+                   
+                </custom:CustomSfTextInputView>
+
                 <buttons:SfButton
                     x:Name="BPickerButton"
                     Grid.Row="0"

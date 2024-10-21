@@ -867,94 +867,58 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
         {
             try
             {
-                if (!string.IsNullOrEmpty(selectedtaxEList.TicketId))
-                {
+                TaxEvasionRegionsCityModel regionlist = new TaxEvasionRegionsCityModel();
+                regionlist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllRegions();
 
+                if (regionlist != null && regionlist.Data.Count() != 0)
+                {
+                    if (CList != null && CList.Count > 0)
+                    {
+                        CList.Clear();
+                        TxtReportDetailCity = string.Empty;
+                    }
+
+                    RList = regionlist.Data;
                 }
                 else
                 {
-                    try
-                    {
-                        TaxEvasionRegionsCityModel regionlist = new TaxEvasionRegionsCityModel();
-                        regionlist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllRegions();
-
-                        if (regionlist != null && regionlist.Data.Count() != 0)
-                        {
-                            if (CList != null && CList.Count > 0)
-                            {
-                                CList.Clear();
-                                TxtReportDetailCity = string.Empty;
-                            }
-
-                            RList = regionlist.Data;
-                        }
-                        else
-                        {
-                            NoInternetGoBack();
-                        }
-
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            _navigationService.GoBack();
-                        });
-                    }
+                    await NoInternetGoBack();
                 }
             }
             catch (Exception)
             {
-
-
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
-        public async void NoInternetGoBack()
+        public async Task NoInternetGoBack()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+            _navigationService.GoBack();
         }
         public async Task onSelectedTaxEvasionRegion()
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-                try
-                {
-                    if (SelectedTaxEvasionRegion != null && SelectedTaxEvasionRegion.Id != null)
-                    {
-                        TaxEvasionRegionsCityModel citylist = new TaxEvasionRegionsCityModel();
-                        citylist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
-                        PopToRootPage();
-                        CList = citylist.Data;
-                    }
-                    else
-                    {
 
-                    }
-                }
-                catch (InternetException ex)
-                {
-                    NoInternetGoBack();
-                }
-            });
-            await Task.Run(() =>
+            IsLoading = true;
+            try
             {
-                IsLoading = false;
-            });
+                if (SelectedTaxEvasionRegion != null)
+                {
+                    TaxEvasionRegionsCityModel citylist = new TaxEvasionRegionsCityModel();
+                    citylist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
+                    PopToRootPage();
+                    CList = citylist.Data;
+                }
+                else
+                {
+
+                }
+            }
+            catch (InternetException )
+            {
+                await NoInternetGoBack();
+            }
+            IsLoading = false;
         }
         public async Task SubmitCreatedReport()
         {
@@ -986,7 +950,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
 
                 TaxEvasionReportDetails tex = TaxEvasionReportTobeUsedToSubmit;
 
-                _navigationService.NavigateTo(App.TaxEvasionAttachmentPageView, tex);
+              await  _navigationService.NavigateTo(App.TaxEvasionAttachmentPageView, tex);
             }
 
             catch (Exception)
