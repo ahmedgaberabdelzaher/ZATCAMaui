@@ -127,7 +127,7 @@
                     </custom:CustomSfTextInputView.LeadingView>
                     <custom:CustomSfTextInputView.TrailingView>
                         <Image x:Name="ImageSeePassword"
-                               Source="hidePassword.png"
+                               Source="showPassword.png"
                                Aspect="AspectFit"
                                HeightRequest="40" WidthRequest="40">
 

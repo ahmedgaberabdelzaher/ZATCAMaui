@@ -158,7 +158,7 @@ public partial class ZakatExemptionPageView : ContentPage
         viewModel.PageOnEditMode = false;
         viewModel.IsEditRequired = false;
         viewModel.ShowTermsOnSubmit = true;
-        viewModel.CurrentIndex = 0;
+        viewModel.CurrentIndex = 1;
 
         TPACTY.Text = " -- ";
         TPNAME.Text = " -- ";

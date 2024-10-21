@@ -137,12 +137,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
             if (viewModel.IsPasswordEncripted)
             {
                 viewModel.IsPasswordEncripted = false;
-                ImageSeePassword.Source = "showPassword";
+                ImageSeePassword.Source = "hidePassword";
             }
             else
             {
                 viewModel.IsPasswordEncripted = true;
-                ImageSeePassword.Source = "hidePassword";
+                ImageSeePassword.Source = "showPassword";
             }
         }
 
