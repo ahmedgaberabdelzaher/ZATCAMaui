@@ -1596,7 +1596,7 @@ namespace ZATCAMAUI.Core.Mangers
                 if (!string.IsNullOrEmpty(date))
                 {
                     DateTime originalDate = DateTime.Parse(date);
-                    HijriCalendar hjCalendar = new HijriCalendar();
+                    UmAlQuraCalendar hjCalendar = new UmAlQuraCalendar();
                     int year = hjCalendar.GetYear(originalDate);
                     int month = hjCalendar.GetMonth(originalDate);
                     int day = hjCalendar.GetDayOfMonth(originalDate);

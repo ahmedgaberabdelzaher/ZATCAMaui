@@ -180,16 +180,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         });
                     }
 
-                    //if (App.LoginDataRetrieved.ZkReg == "X")
-                    //{
-                    //    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                    //    {
-                    //        ZDTitle = AppResources.DeregistrationServiceTitle,//AppResources.DBSMTIN_OUTLET_Deregistration
-                    //        ZDImageSource = "ic_vatDe",
-                    //        ArrowImageSource = fileImage
-                    //    });
-                    //}
-
                 }
                 else if (App.LoginDataRetrieved.ZkReg == "U")
                 {
