@@ -16,17 +16,12 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
             <Style TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="10" />
                 <Setter Property="WidthRequest" Value="10" />
@@ -41,6 +36,11 @@
 
         </ResourceDictionary>
     </ContentPage.Resources>
+
+      <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingIndividualRegistrationCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
@@ -308,14 +308,13 @@
 
                                     </custom:CustomSfTextInputView>
 
-                                    <syncfusion:SfPicker
+                                    <custom:CustomSfPicker
                                         x:Name="DDlIDType"
                                         Background="White"
-                                        CancelButtonClicked="IDType_CancelButtonClicked"
                                         ItemHeight="46"
                                         Mode="Dialog"
-                                        OkButtonClicked="DDlIDType_OkayButtonClicked"
-                                        SelectionChanged="IDType_SelectedIndexChanged">
+                                        AcceptCommand="{Binding DDlIDTypeOkayButtonCommand}"
+                                        SelectionChangedCommand="{Binding IDTypeSelectedIndexCommand}">
 
                                         <syncfusion:SfPicker.TextStyle>
                                             <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
@@ -364,7 +363,7 @@
                                         </syncfusion:SfPicker.FooterView>
 
 
-                                    </syncfusion:SfPicker>
+                                    </custom:CustomSfPicker>
 
                                 </StackLayout>
 
@@ -392,10 +391,10 @@
                                                 MaxLength="{Binding MaxLengthID}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                 Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding IdNumber}"
-                                                TextChanged="GAZTBorderlessEntry_TextChanged"
-                                                Unfocused="EntryIDNumber_Unfocused">
+                                                Text="{Binding IdNumber}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <xct:EventToCommandBehavior Command="{Binding EntryIDNumberTextCommand}" EventName="TextChanged" />
+                                                    <xct:EventToCommandBehavior Command="{Binding EntryIDNumberUnfocusedCommand}" EventName="Unfocused" />
                                                     <behaviors:OnlyNumericValuesBehaviour />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
@@ -426,10 +425,14 @@
                                         ChipStrokeThickness="1"
                                         ChipType="Choice"
                                         HorizontalOptions="Start"
+                                        SelectedItem="{Binding ChipGroupStatusFilterSelectedItem}"
                                         ItemsSource="{Binding ChipDataFilterlist}"
                                         SelectedChipBackground="{StaticResource PartialBg}"
-                                        SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
                                         VerticalOptions="Center">
+                                         <SfChipGroup:SfChipGroup.Behaviors>
+                                           <xct:EventToCommandBehavior Command="{Binding ChipGroupSelectedCommand}"
+                                                                EventName="SelectionChanged" />
+                                         </SfChipGroup:SfChipGroup.Behaviors>
                                         <SfChipGroup:SfChipGroup.ItemTemplate>
                                             <DataTemplate>
                                                 <StackLayout WidthRequest="80">
@@ -458,9 +461,15 @@
                                                 Placeholder="dd/MM/yyyy"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding DOBddyymm}"
-                                                TextChanged="DateEntry_TextChanged"
-                                                TextColor="{StaticResource Primary}"
-                                                Unfocused="DatePicker_Unfocused" />
+                                                TextColor="{StaticResource Primary}" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <xct:EventToCommandBehavior Command="{Binding DateEntryTextChangedCommand}"
+                                                                                EventName="TextChanged" />
+                                                    <xct:EventToCommandBehavior Command="{Binding DatePickerUnfocusedCommand}"
+                                                                                EventName="Unfocused" />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                                            </custom:GAZTBorderlessEntry>
                                         </custom:CustomSfTextInputView.TextInputView>
 
                                         <custom:CustomSfTextInputView.GestureRecognizers>
@@ -478,12 +487,10 @@
                                     <custom:CustomDatePicker
                                         x:Name="SignUpDOB"
                                         Background="White"
-                                        CancelButtonClicked="DOB_CancelButtonClicked"
-                                        Closed="SignUpDOB_Closed"
                                         HorizontalOptions="FillAndExpand"
                                         ItemHeight="45"
                                         Mode="Dialog"
-                                        OkButtonClicked="DOB_OkButtonClicked"
+                                        AcceptCommand="{Binding DOBOkButtonCommand}"
                                         SelectedItem="{Binding TodayDate}">
 
                                         <custom:CustomDatePicker.ColumnHeaderView>
@@ -530,13 +537,10 @@
                                     <custom:CustomHijriDatePicker
                                         x:Name="SignUpDOBHijri"
                                         Background="White"
-                                        CancelButtonClicked="DOB_CancelButtonClicked"
-                                        Closed="SignUpDOB_Closed"
-                                        FlowDirection="RightToLeft"
                                         HorizontalOptions="FillAndExpand"
                                         ItemHeight="45"
                                         Mode="Dialog"
-                                        OkButtonClicked="DOB_OkButtonClicked"
+                                        AcceptCommand="{Binding DOBOkButtonCommand}"
                                         SelectedItem="{Binding TodayDateinHijri}">
 
                                         <custom:CustomHijriDatePicker.SelectionView>
@@ -595,13 +599,15 @@
                                                 FontFamily="{StaticResource SomarLight}"
                                                 FontSize="Small"
                                                 IsSpellCheckEnabled="False"
+                                                IsEnabled="{Binding IsEntryNameEnabled}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZName}"
                                                 Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding Name}"
-                                                TextChanged="EntryName_TextChanged">
+                                                Text="{Binding Name}">
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:AlphabetandArabicCharacters />
+                                                    <xct:EventToCommandBehavior Command="{Binding EntryNameTextChangedCommand}"
+                                                                                EventName="TextChanged" />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
 
                                             </custom:GAZTBorderlessEntry>
@@ -699,8 +705,13 @@
                                                     IsSpellCheckEnabled="False"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding CountryName}"
-                                                    TextChanged="GccCountryName_TextChanged" />
+                                                    Text="{Binding CountryName}" >
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <xct:EventToCommandBehavior Command="{Binding GccCountryNameTextChangedCommand}" EventName="TextChanged" />
+
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                                </custom:GAZTBorderlessEntry>
                                             </custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:CustomSfTextInputView.TrailingView>
@@ -713,17 +724,15 @@
 
                                         </custom:CustomSfTextInputView>
 
-                                        <syncfusion:SfPicker
+                                        <custom:CustomSfPicker
                                             x:Name="GCCPicker_Country"
                                             Background="White"
-                                            CancelButtonClicked="GCCCountry_CancelButtonClicked"
-                                            FlowDirection="RightToLeft"
                                             IsEnabled="{Binding SetEnabilityToCountryList}"
                                             IsVisible="{Binding SetGCCCountryVisibility}"
                                             ItemHeight="40"
                                             Mode="Dialog"
-                                            OkButtonClicked="GCCCountry_OkayButtonClicked"
-                                            SelectionChanged="GCCPicker_Country_SelectionChanged">
+                                            SelectionChangedCommand="{Binding GCCPickerCountrySelectionChanged}"
+                                            AcceptCommand="{Binding GCCCountryOkayButtonCommand}">
 
 
                                             <syncfusion:SfPicker.TextStyle>
@@ -772,7 +781,7 @@
                                             </syncfusion:SfPicker.FooterView>
 
 
-                                        </syncfusion:SfPicker>
+                                        </custom:CustomSfPicker>
 
                                     </StackLayout>
 
@@ -805,8 +814,14 @@
                                                     IsSpellCheckEnabled="False"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding Region}"
-                                                    TextChanged="Entry_Region_TextChanged" />
+                                                    Text="{Binding Region}">
+
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <xct:EventToCommandBehavior Command="{Binding EntryRegionTextChangedCommand}" EventName="TextChanged" />
+
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                                </custom:GAZTBorderlessEntry>
                                             </custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:CustomSfTextInputView.TrailingView>
@@ -820,15 +835,14 @@
 
                                         </custom:CustomSfTextInputView>
 
-                                        <syncfusion:SfPicker
+                                        <custom:CustomSfPicker
                                             x:Name="Picker_Region"
                                             Background="White"
-                                            CancelButtonClicked="Region_CancelButtonClicked"
                                             FlowDirection="RightToLeft"
                                             IsVisible="{Binding SetStateListVisibility}"
                                             ItemHeight="40"
                                             Mode="Dialog"
-                                            OkButtonClicked="Region_OkayButtonClicked">
+                                            AcceptCommand="{Binding RegionOkayButtonCommand}">
 
                                             <syncfusion:SfPicker.TextStyle>
                                                 <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
@@ -878,7 +892,7 @@
 
 
 
-                                        </syncfusion:SfPicker>
+                                        </custom:CustomSfPicker>
 
                                     </StackLayout>
 
@@ -912,8 +926,14 @@
                                                     IsVisible="{Binding SetCityListVisibility}"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZCity}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding CityName}"
-                                                    TextChanged="Entry_City_TextChanged" />
+                                                    Text="{Binding CityName}" >
+
+                                                     <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <xct:EventToCommandBehavior Command="{Binding EntryCityTextChangedCommand}" EventName="TextChanged" />
+
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                                </custom:GAZTBorderlessEntry>
                                             </custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:CustomSfTextInputView.TrailingView>
@@ -926,15 +946,13 @@
                                             </custom:CustomSfTextInputView.GestureRecognizers>
                                         </custom:CustomSfTextInputView>
 
-                                        <syncfusion:SfPicker
+                                        <custom:CustomSfPicker
                                             x:Name="Picker_City"
                                             Background="White"
-                                            CancelButtonClicked="City_CancelButtonClicked"
-                                            FlowDirection="RightToLeft"
                                             IsVisible="{Binding SetCityListVisibility}"
                                             ItemHeight="40"
                                             Mode="Dialog"
-                                            OkButtonClicked="City_OkayButtonClicked">
+                                            AcceptCommand="{Binding CityOkayButtonCommand}">
 
 
                                             <syncfusion:SfPicker.TextStyle>
@@ -985,7 +1003,7 @@
                                             </syncfusion:SfPicker.FooterView>
 
 
-                                        </syncfusion:SfPicker>
+                                        </custom:CustomSfPicker>
 
                                     </StackLayout>
 
@@ -1024,10 +1042,10 @@
                                                 MaxLength="5"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
                                                 Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding PostalCode}"
-                                                Unfocused="EntryPostalCode_Unfocused">
+                                                Text="{Binding PostalCode}">
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                                      <xct:EventToCommandBehavior Command="{Binding EntryPostalCodeUnfocusedCommand}" EventName="Unfocused" />
                                                     <behaviors:OnlyNumericValuesBehaviour />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
 
@@ -1129,9 +1147,9 @@
                                                     Keyboard="Email"
                                                     Placeholder="{x:Static ResourceManager:AppResources.Email}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding Email}"
-                                                    Unfocused="EntryEmail_Unfocused">
+                                                    Text="{Binding Email}">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <xct:EventToCommandBehavior Command="{Binding EntryEmailUnfocusedCommand}" EventName="Unfocused" />
                                                         <behaviors:AlphaNumericValidatorBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
@@ -1163,9 +1181,9 @@
                                                     Keyboard="Email"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZConfirmEmail}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding ConfirmEmail}"
-                                                    Unfocused="EntryConfirmEmail_Unfocused">
+                                                    Text="{Binding ConfirmEmail}">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
+                                                           <xct:EventToCommandBehavior Command="{Binding EntryConfirmEmailUnfocusedCommand}" EventName="Unfocused" />
                                                         <behaviors:AlphaNumericValidatorBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
@@ -1202,14 +1220,14 @@
                                                     Style="{StaticResource SmallIcon}">
 
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="CountryCodes_Clicked" />
+                                                        <TapGestureRecognizer Command="{Binding CountryCodesCommand}"/>
                                                     </Image.GestureRecognizers>
                                                 </Image>
 
                                                 <buttons:SfButton
                                                     x:Name="IntnlCodes"
                                                     Background="Transparent"
-                                                    Clicked="CountryCodes_Clicked"
+                                                    Command="{Binding CountryCodesCommand}"
                                                     HorizontalOptions="Start"
                                                     Text="{Binding TxtCountryCode}"
                                                     TextColor="{StaticResource PrimaryColor}"
@@ -1227,10 +1245,10 @@
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding MobileNumber}"
                                                     TextColor="{StaticResource PrimaryColor}"
-                                                    Unfocused="EntryMobileNumber_Unfocused"
                                                     VerticalOptions="Center">
 
                                                     <custom:GAZTBorderlessEntry.Behaviors>
+                                                         <xct:EventToCommandBehavior Command="{Binding EntryMobileNumberUnfocusedCommand}" EventName="Unfocused" />
                                                         <behaviors:OnlyNumericValuesBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
@@ -1254,7 +1272,8 @@
 
                                     </Label>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal"
+                                                 Spacing="10">
                                         <custom:CustomSfTextInputView HasError="{Binding FrameCaptchaError}">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
@@ -1283,7 +1302,7 @@
                                                         Color="{StaticResource SecondaryNew}" />
                                                 </Image.Source>
                                                 <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="RefreshCaptchaClicked" />
+                                                    <TapGestureRecognizer Command="{Binding RefreshCaptchaCommand}"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
 
@@ -1365,7 +1384,7 @@
                                                 x:Name="Btn_Edit_PersonalInformation"
                                                 Grid.Row="0"
                                                 Grid.Column="2"
-                                                Clicked="Btn_Edit_PersonalInformation_Clicked"
+                                                Command="{Binding EditPersonalInformationCommand}"
                                                 HorizontalOptions="End"
                                                 Style="{StaticResource NoBackgroundButtonStylePrimary}"
                                                 Text="{x:Static ResourceManager:AppResources.NDEdit}" />
@@ -1472,7 +1491,7 @@
                                                 x:Name="Btn_Edit_NationalAddress"
                                                 Grid.Row="0"
                                                 Grid.Column="2"
-                                                Clicked="Btn_Edit_NationalAddress_Clicked"
+                                                Command="{Binding EditNationalAddressCommand}"
                                                 HorizontalOptions="End"
                                                 Style="{StaticResource NoBackgroundButtonStylePrimary}"
                                                 Text="{x:Static ResourceManager:AppResources.NDEdit}" />
@@ -1619,7 +1638,7 @@
                                                 x:Name="Btn_Edit_ContactInformation"
                                                 Grid.Row="0"
                                                 Grid.Column="2"
-                                                Clicked="Btn_Edit_ContactInformation_Clicked"
+                                                Command="{Binding EditContactInformationCommand}"
                                                 HorizontalOptions="End"
                                                 Style="{StaticResource NoBackgroundButtonStylePrimary}"
                                                 Text="{x:Static ResourceManager:AppResources.NDEdit}" />
@@ -1757,9 +1776,9 @@
                                                     Placeholder="{x:Static ResourceManager:AppResources.NewPassword}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Password}"
-                                                    TextChanged="EntryPassword_TextChanged"
                                                     WidthRequest="128">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
+                                                         <xct:EventToCommandBehavior Command="{Binding EntryPasswordTextChangedCommand}" EventName="TextChanged" />
                                                         <behaviors:PasswordTextBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
@@ -1769,11 +1788,11 @@
                                             <custom:CustomSfTextInputView.TrailingView>
                                                 <Image
                                                     x:Name="ImageSeePassword"
-                                                    Source="hidePassword.png"
+                                                    Source="{Binding ImageSeePasswordSource}"
                                                     Style="{StaticResource SmallIcon}">
 
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="ImageSeePassword_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding ImageSeePasswordCommand}"/>
                                                     </Image.GestureRecognizers>
 
                                                 </Image>
@@ -1808,9 +1827,10 @@
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ConfirmPassword}"
-                                                    TextChanged="EntryConfirmPassword_TextChanged"
                                                     WidthRequest="128">
+
                                                     <custom:GAZTBorderlessEntry.Behaviors>
+                                                         <xct:EventToCommandBehavior Command="{Binding ConfirmPasswordTextChangedCommand}" EventName="TextChanged" />
                                                         <behaviors:PasswordTextBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
@@ -1819,11 +1839,11 @@
                                             <custom:CustomSfTextInputView.TrailingView>
                                                 <Image
                                                     x:Name="ImageSeeConfirmPassword"
-                                                    Source="hidePassword.png"
+                                                    Source="{Binding ImageSeeConfirmPasswordSource}"
                                                     Style="{StaticResource SmallIcon}">
 
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding ImageSeeConfirmPasswordCommand}"/>
                                                     </Image.GestureRecognizers>
 
                                                 </Image>

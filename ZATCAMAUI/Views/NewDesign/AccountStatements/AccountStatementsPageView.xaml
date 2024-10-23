@@ -622,7 +622,7 @@
                                     </Image>
                                 </StackLayout>
 
-                                <syncfusion:SfPicker
+                                <custom:CustomSfPicker
                                     x:Name="TransactionTypePicker"
                                     Grid.Row="0"
                                     Grid.Column="0"
@@ -679,7 +679,7 @@
 
                                     </syncfusion:SfPicker.FooterView>
 
-                                </syncfusion:SfPicker>
+                                </custom:CustomSfPicker>
 
                                 <!--  {Binding IsYearsChipVisible}  -->
                                 <ScrollView

@@ -6,13 +6,18 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" xmlns:buttons="http://schemas.syncfusion.com/maui"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:buttons="http://schemas.syncfusion.com/maui"
     x:Name="page"
     Title="NafathAuthenticationView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingNafathAuthenticationViewCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -28,8 +33,8 @@
 
         <Grid RowDefinitions="Auto,*">
 
-            <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+              <!--#region Header-->
+            <Grid Padding="15,10" ColumnDefinitions="*,4*,*">
 
                 <StackLayout>
 
@@ -60,11 +65,11 @@
                 <!--  Header Label  -->
                 <Label
                     Grid.Column="1"
-                    FontSize="15"
+                    FontSize="20"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{x:Static ResourceManager:AppResources.NafathAuthentication}"
+                    Text="{x:Static ResourceManager:AppResources.NafathLoginHeader}"
                     VerticalOptions="Center" />
 
             </Grid>
@@ -73,36 +78,70 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="10,0"
+                Padding="20,35,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <StackLayout
-                    Padding="24"
-                    Spacing="24"
-                    VerticalOptions="CenterAndExpand">
-                    <Border
-                        BackgroundColor="{StaticResource TiffanyBG}"
-                        HorizontalOptions="Center"
-                        Stroke="{StaticResource Primary}"
-                        StrokeShape="RoundRectangle 30">
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout Spacing="20" VerticalOptions="FillAndExpand">
+
+                        <!--  OpenNafath/Confirm Openning Nafath Label  -->
                         <Label
-                            FontSize="Large"
-                            Padding="20"
-                            Text="{Binding AuthenticationNumber}"
-                            TextColor="{StaticResource Primary}" />
-                    </Border>
-                    <Label
-                        HorizontalOptions="CenterAndExpand"
-                        Text="{x:Static ResourceManager:AppResources.ApproveInNafathApp}"
-                        VerticalOptions="CenterAndExpand" />
-                    
-                    <buttons:SfButton
-                        StrokeThickness="1.5"
-                        Command="{Binding CancelCommand}"
-                        CornerRadius="15"
-                        Text="{x:Static ResourceManager:AppResources.CancelText}"
-                        Style="{StaticResource PrimaryButtonStyle}"/>
-                </StackLayout>
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="18"
+                            LineBreakMode="WordWrap"
+                            LineHeight="1"
+                            Text="{x:Static ResourceManager:AppResources.ApproveInNafathApp}"
+                            TextColor="#002447"/>
+
+
+
+                        <!--  Horizontal Line  -->
+                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="2" />
+
+                        <!--  ConfirmOpenningNafath Label  -->
+                        <Border
+                            Margin="0,30,0,0"
+                            Padding="10"
+                            HeightRequest="50"
+                            HorizontalOptions="CenterAndExpand"
+                            Stroke="Black"
+                            StrokeShape="RoundRectangle 20,20,20,20"
+                            VerticalOptions="Start"
+                            WidthRequest="50">
+
+                            <!--  ConfirmOpenningNafath Label  -->
+                            <Label
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="20"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding AuthenticationNumber}"
+                                TextColor="{StaticResource Primary}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+
+                        </Border>
+
+                         <Label
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.ApproveInNafathApp}"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <!--  Cancel Button  -->
+                        <buttons:SfButton
+                            Margin="0,0,0,25"
+                            Background="Transparent"
+                            Command="{Binding CancelCommand}"
+                            FontFamily="{StaticResource SomarLight}"
+                            Stroke="Transparent"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.CancelText}"
+                            TextColor="{StaticResource Secondary}" />
+
+                    </StackLayout>
+
+                </ScrollView>
 
             </Border>
             <!--#endregion Body-->

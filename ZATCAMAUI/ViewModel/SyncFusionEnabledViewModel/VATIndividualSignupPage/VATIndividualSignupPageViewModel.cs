@@ -1,5 +1,6 @@
 ﻿
 
+using System.Windows.Input;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
@@ -159,6 +160,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             ImageEstimatedIcon = "vat_new_Establishment_W.png";
             EstimatedTileColor = Colors.White;
             await _navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
+        }
+
+        public ICommand OnAppearingVATIndividualSignupCommand
+        {
+
+            get
+            {
+                return new Command(() =>
+                {
+                    ImageIndividualTile = "vat_tile_listofsignup_W.png";
+
+                    ImageEstimatedTile = "vat_tile_listofsignup_W.png";
+
+                    ImageIndividualIcon = "vat_new_individual_G.png";
+
+                    ImageEstimatedIcon = "vat_new_Establishment_G.png";
+                    EstimatedTileColor = (Color)Application.Current.Resources["Primary"];
+                    IndividualTileColor = (Color)Application.Current.Resources["Primary"];
+
+                });
+            }
         }
     }
 }

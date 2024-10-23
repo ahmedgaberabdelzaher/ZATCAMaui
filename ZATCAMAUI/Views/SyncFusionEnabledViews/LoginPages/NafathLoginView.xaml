@@ -6,20 +6,26 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     x:Name="page"
     Title="NafathLoginView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingNafathLoginViewCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
 
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+            <Grid Padding="10,15" ColumnDefinitions="*,4*,*">
 
                 <StackLayout>
 
@@ -50,59 +56,96 @@
                 <!--  Header Label  -->
                 <Label
                     Grid.Column="1"
-                    FontSize="15"
+                    FontSize="20"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{x:Static ResourceManager:AppResources.NafathAuthentication}"
+                    Text="{x:Static ResourceManager:AppResources.NafathLoginHeader}"
                     VerticalOptions="Center" />
 
             </Grid>
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border
+             <Border
                 Grid.Row="1"
-                Padding="10,0"
+                Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <Grid>
-                    <StackLayout
-                        Padding="32"
-                        HorizontalOptions="FillAndExpand"
-                        Spacing="16"
-                        VerticalOptions="FillAndExpand">
-                        <Label
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource SectionTitleBlack}"
-                            Text="{x:Static ResourceManager:AppResources.ZIBANNationalID}" />
-                        
-                        <custom:CustomSfTextInputView
-                            ContainerBackground="White"
-                            ContainerType="Outlined"
-                            InputViewPadding="16,0,16,0"
-                            OutlineCornerRadius="10"
-                            Stroke="{StaticResource Primary}">
-                            <custom:CustomSfTextInputView.TextInputView>
+                <Grid RowDefinitions="*">
+                    <ScrollView VerticalScrollBarVisibility="Never">
 
-                                <custom:GAZTBorderlessEntry
-                                    Placeholder="{x:Static ResourceManager:AppResources.EnterYourNationalIdHere}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding NafathId}"
-                                    TextColor="#58595B" />
-                            </custom:CustomSfTextInputView.TextInputView>
-                        </custom:CustomSfTextInputView>
+                        <StackLayout Padding="10" VerticalOptions="FillAndExpand">
 
-                        <Label
-                            Padding="8,0,0,8"
-                            Text="{Binding Error}"
-                            TextColor="Red" />
-                        <buttons:SfButton
-                            Command="{Binding LoginCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.LogIn}" />
-                    </StackLayout>
+                            <!--  NafathLoginSubHeader Label  -->
+                            <Label
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="18"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.ZIBANNationalID}"
+                                TextColor="{StaticResource Primary}" />
 
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Margin="0,10"
+                                BackgroundColor="{StaticResource NeutralLightGrey}"
+                                HeightRequest="2" />
+
+                             <!--  NationalIqamaID Field  -->
+                            <StackLayout Spacing="0">
+
+                                <!--  NationalIqamaID Label  -->
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NationalIqamaID}" />
+                                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+
+                                <!--  NationalIqamaID Entry  -->
+                                <custom:CustomSfTextInputView Stroke="{StaticResource Primary}">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="entry"
+                                            Keyboard="Numeric"
+                                            Placeholder="{x:Static ResourceManager:AppResources.EnterYourNationalIdHere}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding NafathId}"
+                                            TextColor="#58595B">
+
+
+
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviour:OnlyNumericValuesBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                                        </custom:GAZTBorderlessEntry>
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+                                </custom:CustomSfTextInputView>
+
+                                <Label
+                                    Margin="0,-15,0,10"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.NumberHint}" />
+                            </StackLayout>
+
+                            <Label
+                                Padding="8,0,0,8"
+                                Text="{Binding Error}"
+                                TextColor="Red" />
+
+                            <Button
+                                Command="{Binding LoginCommand}"
+                                Style="{StaticResource PrimaryMauiButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.LogIn}" />
+
+                        </StackLayout>
+                    </ScrollView>
                 </Grid>
 
             </Border>

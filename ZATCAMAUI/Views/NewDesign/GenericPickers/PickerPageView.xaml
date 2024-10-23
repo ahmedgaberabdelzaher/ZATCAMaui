@@ -9,6 +9,7 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     BackgroundClicked="PopupPage_BackgroundClicked"
     BackgroundColor="#88000000"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     FlowDirection="{Binding AppDirection}">
 
 
@@ -70,7 +71,7 @@
                             Style="{StaticResource SectionTitleBlack}"
                             Text="{Binding PickerTitle}" />
 
-                        <syncfusion:SfPicker
+                        <custom:CustomSfPicker
                             x:Name="genericPicker"
                             Background="White"
                             IsOpen="True"
@@ -103,17 +104,9 @@
 
                             </syncfusion:SfPicker.SelectionView>
 
-                            <!--<syncfusion:SfPicker.HeaderView>
+                          
 
-                                <syncfusion:PickerHeaderView Height="46" Background="Transparent">
-                                    <syncfusion:PickerHeaderView.TextStyle>
-                                        <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarBoldForSfPicker}" TextColor="{StaticResource NeutralBlack}" />
-                                    </syncfusion:PickerHeaderView.TextStyle>
-                                </syncfusion:PickerHeaderView>
-
-                            </syncfusion:SfPicker.HeaderView>-->
-
-                        </syncfusion:SfPicker>
+                        </custom:CustomSfPicker>
                     </StackLayout>
 
               </StackLayout>

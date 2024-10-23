@@ -4763,7 +4763,7 @@
                                                     Clicked="btnIban_Clicked"
                                                     FontSize="13"
                                                     IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableIBAN}" />
-                                                <syncfusion:SfPicker
+                                                <custom:CustomSfPicker
                                                     x:Name="BPicker"
                                                     Grid.Row="1"
                                                     Grid.Column="0"
@@ -4818,7 +4818,7 @@
 
                                                     </syncfusion:SfPicker.FooterView>
 
-                                                </syncfusion:SfPicker>
+                                                </custom:CustomSfPicker>
                                                 <StackLayout
                                                     Grid.Row="2"
                                                     Grid.Column="0"
@@ -4883,7 +4883,7 @@
                                                     Clicked="btnIban1_Clicked"
                                                     FontSize="13"
                                                     IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableIBANType}" />
-                                                <syncfusion:SfPicker
+                                                <custom:CustomSfPicker
                                                     x:Name="BPicker1"
                                                     Grid.Row="4"
                                                     Grid.Column="0"
@@ -4940,7 +4940,7 @@
 
 
 
-                                                </syncfusion:SfPicker>
+                                                </custom:CustomSfPicker>
                                                 <Label
                                                     Grid.Row="5"
                                                     Grid.Column="0"
@@ -4981,7 +4981,7 @@
                                                     Clicked="btnIban2_Clicked"
                                                     FontSize="13"
                                                     IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableIBANIdNumber}" />
-                                                <syncfusion:SfPicker
+                                                <custom:CustomSfPicker
                                                     x:Name="BPicker2"
                                                     Grid.Row="6"
                                                     Grid.Column="0"
@@ -5037,7 +5037,7 @@
                                                     </syncfusion:SfPicker.FooterView>
 
 
-                                                </syncfusion:SfPicker>
+                                                </custom:CustomSfPicker>
                                                 <Border
                                                     Grid.Row="1"
                                                     Grid.Column="0"

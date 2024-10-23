@@ -84,15 +84,19 @@
 
             <Border
                 Grid.Row="1"
-                Padding="20,10,20,0"
+                Padding="15,0,15,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand"
+                      Padding="0"
+                    RowDefinitions="auto,auto,auto,auto,*"
+                    VerticalOptions="FillAndExpand">
 
                     <!--  Bullets  -->
                     <commonView:PageIndicatorView
                         Completed="{Binding MarkComplete}"
                         DotSize="16"
+                        Grid.Row="0"
                         HorizontalOptions="EndAndExpand"
                         MaxNum="{Binding MaxIndex}"
                         MinNum="{Binding CurrentIndex}"
@@ -101,6 +105,7 @@
                     <Label
                         HorizontalOptions="StartAndExpand"
                         LineHeight="0"
+                        Grid.Row="1"
                         Style="{StaticResource PageTitleBlack}"
                         Text="{Binding PageTitle}"
                         VerticalOptions="Start" />
@@ -108,28 +113,33 @@
                     <Label
                         Style="{StaticResource BodyLabelGrey}"
                         Text="{Binding BodyText}"
+                        Grid.Row="2"
                         VerticalOptions="Start" />
 
                     <BoxView
                         BackgroundColor="{StaticResource NeutralLightGrey}"
                         HeightRequest="1"
+                        Grid.Row="3"
                         Style="{StaticResource SeparatorStyle}"
                         VerticalOptions="Start" />
 
-                    <!--  step 1  -->
-                    <WebView
-                        x:Name="TCWebView"
-                        HeightRequest="550"
-                        IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}" />
-                    <Grid>
+                     <Grid RowDefinitions="*,auto,auto"
+                           Margin="0,0,0,10"
+                           Grid.Row="4">
+                        
+                        <!--  step 1  -->
+                        <WebView
+                            x:Name="TCWebView"
+                            HeightRequest="550"
+                            IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}" />
+
                         <ScrollView
                             Margin="0,10"
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand"
                             VerticalScrollBarVisibility="Never">
 
                             <StackLayout>
-
 
                                 <!--#region Individual information-->
                                 <StackLayout IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.IndividualInformation}}">
@@ -297,7 +307,7 @@
 
                                         </custom:CustomSfTextInputView>
 
-                                        <syncfusion:SfPicker
+                                        <custom:CustomSfPicker
                                             x:Name="IDTypePicker"
                                             Margin="0"
                                             Background="Transparent"
@@ -356,7 +366,7 @@
 
                                             </syncfusion:SfPicker.FooterView>
 
-                                        </syncfusion:SfPicker>
+                                        </custom:CustomSfPicker>
 
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnIDTypeClicked" />
@@ -828,7 +838,7 @@
                                                 </custom:CustomSfTextInputView.GestureRecognizers>
 
                                             </custom:CustomSfTextInputView>
-                                            <syncfusion:SfPicker
+                                            <custom:CustomSfPicker
                                                 x:Name="ddlLIssuedBy"
                                                 Background="White"
                                                 ItemHeight="46"
@@ -882,7 +892,7 @@
                                                     </syncfusion:PickerFooterView>
 
                                                 </syncfusion:SfPicker.FooterView>
-                                            </syncfusion:SfPicker>
+                                            </custom:CustomSfPicker>
 
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="LIssuedBy_Clicked" />
@@ -924,7 +934,7 @@
 
                                             </custom:CustomSfTextInputView>
 
-                                            <syncfusion:SfPicker
+                                            <custom:CustomSfPicker
                                                 x:Name="ddlLIssuedByCity"
                                                 Background="White"
                                                 ItemHeight="46"
@@ -982,7 +992,7 @@
                                                 </syncfusion:SfPicker.FooterView>
 
 
-                                            </syncfusion:SfPicker>
+                                            </custom:CustomSfPicker>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="LIssuedByCity_Clicked" />
 
@@ -2026,62 +2036,61 @@
                                 </StackLayout>
                                 <!--#endregion-->
 
-                                <!--  terms and condition  CheckBox  -->
-                                <StackLayout
-                                    Margin="0,0"
-                                    IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}"
-                                    Orientation="Horizontal">
-
-                                    <!--  terms and condition  CheckBox  -->
-                                    <custom:CheckboxCustom
-                                        x:Name="chkDeclaration"
-                                        IsChecked="{Binding IsDeclarationCheckedForInstruction}"
-                                        Style="{StaticResource CheckboxHeightWidth32}"
-                                        VerticalOptions="CenterAndExpand" />
-
-                                    <Label
-                                        FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
-                                        Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeTheseTermsCond}" />
-
-                                </StackLayout>
-
-                                <!--  Summary end  -->
-                                <buttons:SfButton
-                                    x:Name="btnprimary"
-                                    Clicked="btnSubmitNext_Clicked"
-                                    IsEnabled="{Binding IsNextButtonEnable}"
-                                    Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{Binding NextBTN}"
-                                    VerticalOptions="EndAndExpand">
-                                    <buttons:SfButton.Triggers>
-                                        <DataTrigger
-                                            Binding="{Binding IsNextButtonEnable}"
-                                            TargetType="buttons:SfButton"
-                                            Value="True">
-                                            <Setter Property="Background" Value="{StaticResource Secondary}" />
-                                        </DataTrigger>
-                                        <DataTrigger
-                                            Binding="{Binding IsNextButtonEnable}"
-                                            TargetType="buttons:SfButton"
-                                            Value="False">
-                                            <Setter Property="Background" Value="{StaticResource NeutralGreay}" />
-                                        </DataTrigger>
-                                    </buttons:SfButton.Triggers>
-                                </buttons:SfButton>
+                              
 
                             </StackLayout>
 
-
-
                         </ScrollView>
+
+                        <!--  terms and condition  CheckBox  -->
+                        <StackLayout
+                            Margin="0,10"
+                            Grid.Row="1"
+                            IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}"
+                            Orientation="Horizontal">
+
+                            <!--  terms and condition  CheckBox  -->
+                            <custom:CheckboxCustom
+                                x:Name="chkDeclaration"
+                                IsChecked="{Binding IsDeclarationCheckedForInstruction}"
+                                Style="{StaticResource CheckboxHeightWidth32}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <Label
+                                FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
+                                Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeTheseTermsCond}" />
+
+                        </StackLayout>
+
+                        <!--  Summary end  -->
+                        <buttons:SfButton
+                            x:Name="btnprimary"
+                            Grid.Row="2"
+                            Clicked="btnSubmitNext_Clicked"
+                            IsEnabled="{Binding IsNextButtonEnable}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{Binding NextBTN}"
+                            VerticalOptions="EndAndExpand">
+                            <buttons:SfButton.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding IsNextButtonEnable}"
+                                    TargetType="buttons:SfButton"
+                                    Value="True">
+                                    <Setter Property="Background" Value="{StaticResource Secondary}" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding IsNextButtonEnable}"
+                                    TargetType="buttons:SfButton"
+                                    Value="False">
+                                    <Setter Property="Background" Value="{StaticResource NeutralGreay}" />
+                                </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                        </buttons:SfButton>
+                        
                     </Grid>
 
-
-
-
-
-                </StackLayout>
+                </Grid>
 
             </Border>
 

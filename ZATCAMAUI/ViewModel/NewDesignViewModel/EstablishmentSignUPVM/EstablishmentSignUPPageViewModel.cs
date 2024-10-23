@@ -1,10 +1,13 @@
 ﻿
+using System.Windows.Input;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Views.NewDesign.Nafat;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
-   
+
     public class EstablishmentSignUPPageViewModel : BaseViewModel
     {
 
@@ -115,5 +118,47 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         {
         }
         #endregion
+
+
+        public ICommand OnEstablishmentCommand
+        {
+
+            get
+            {
+                return new Command(async() =>
+                {
+                    IndividualBackImg = "vat_tile_listofsignup_W.png";
+                    EstablishmentBackImg = "vat_tile_listofsignup.png";
+                    await _navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
+                });
+            }
+        }
+
+        public ICommand OnIndividualCommand
+        {
+
+            get
+            {
+                return new Command(async() =>
+                {
+                    IndividualBackImg = "vat_tile_listofsignup.png";
+                    EstablishmentBackImg = "vat_tile_listofsignup_W.png";
+                    await MopupService.Instance.PushAsync(new NafathPopUpPage());
+                });
+            }
+        }
+
+        public ICommand OnAppearingEstablishmentSignUPCommand
+        {
+
+            get
+            {
+                return new Command(() =>
+                {
+                    IndividualBackImg = "vat_tile_listofsignup_W.png";
+                    EstablishmentBackImg = "vat_tile_listofsignup_W.png";
+                });
+            }
+        }
     }
 }
