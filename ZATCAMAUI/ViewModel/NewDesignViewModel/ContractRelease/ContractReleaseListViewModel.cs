@@ -581,57 +581,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
+                cRApplicationFormData = null;
+                ContractReLeaseListSet = null;
                 await Task.Run(async () =>
                 {
-                    IsLoading = true;
-                    cRApplicationFormData = null;
-                    ContractReLeaseListSet = null;
+                    cRApplicationFormData = await ContractReleaseWebServiceManager.GetContractReleaseList();
 
-
-                    try
+                    if (cRApplicationFormData != null && cRApplicationFormData.d != null)
                     {
-                      
-                           
-
-                        cRApplicationFormData = await ContractReleaseWebServiceManager.GetContractReleaseList();
-
-                        if (cRApplicationFormData != null && cRApplicationFormData.d != null)
-                        {
-                            ContractReLeaseListSet = cRApplicationFormData.d.ListSet;
-                            UpdateDataToUI();
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                        IsLoading = false;
+                        ContractReLeaseListSet = cRApplicationFormData.d.ListSet;
+                        UpdateDataToUI();
                     }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
-                    }
-                    catch (InternetException ex)
+                    else
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                         });
-
                     }
+                    
                 });
-                await Task.Run(() =>
+            }
+            catch (InternetException ex)
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 });
 
             }
@@ -639,23 +617,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
-
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 

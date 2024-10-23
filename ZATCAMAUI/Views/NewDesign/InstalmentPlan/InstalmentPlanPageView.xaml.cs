@@ -27,9 +27,17 @@ namespace ZATCAMAUI.Views.NewDesign.InstalmentPlan
             }
 
         }
-       
-        
-        public void outletDecisionOptionsListView_SelectionChanged(object sender,ItemSelectionChangedEventArgs e)
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (outletDecisionOptionsListView != null)
+            {
+                outletDecisionOptionsListView.SelectedItem = null;
+            }
+
+        }
+
+        public void outletDecisionOptionsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
         {
             InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
