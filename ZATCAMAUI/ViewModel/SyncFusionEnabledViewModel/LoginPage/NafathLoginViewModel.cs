@@ -39,12 +39,58 @@ public class NafathLoginViewModel : BaseViewModel
         LoginCommand = new Command(async () => await LoginClicked());
     }
 
+    public ICommand OnAppearingNafathLoginViewCommand
+    {
+
+        get
+        {
+            return new Command(async () =>
+            {
+                await DisplayLocationPermissionDilaogAsync();
+
+            });
+        }
+    }
+
+    
+    private async Task DisplayLocationPermissionDilaogAsync()
+    {
+        try
+        {
+            var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+            if (status != PermissionStatus.Granted)
+            {
+                status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+            }
+            if (status == PermissionStatus.Granted)
+            {
+                var location = await Geolocation.GetLocationAsync();
+                LocationData.lattitude = location?.Latitude.ToString();
+                LocationData.longitude = location?.Longitude.ToString();
+            }
+            else
+            {
+                LocationData.lattitude = "UNKNOWN";
+                LocationData.longitude = "UNKNOWN";
+            }
+        }
+        catch (FeatureNotEnabledException)
+        {
+            LocationData.lattitude = "UNKNOWN";
+            LocationData.longitude = "UNKNOWN";
+        }
+        catch (Exception)
+        {
+
+        }
+    }
+
     private async Task LoginClicked()
     {
         try
         {
             IsLoading = true;
-            if (validateId(NafathId))
+            if (ValidateId(NafathId))
             {
                 var result = await Login();
                 if (result != null && result.result != null)
@@ -88,7 +134,7 @@ public class NafathLoginViewModel : BaseViewModel
         }
     }
 
-    bool validateId(string id)
+    private bool ValidateId(string id)
     {
         if (string.IsNullOrEmpty(id))
         {

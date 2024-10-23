@@ -11492,4 +11492,7 @@ info@zatca.gov.sa</value>
   <data name="VerifyAdjustmentAmount" xml:space="preserve">
      <value>التحقق من مبلغ التعديل</value> 
   </data>
+      <data name="VerificationCodeTitle" xml:space="preserve">
+        <value>رمز التحقق</value>
+    </data>
 </root>

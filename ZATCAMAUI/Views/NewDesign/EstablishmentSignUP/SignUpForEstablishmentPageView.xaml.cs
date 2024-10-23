@@ -1955,7 +1955,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
             else
             {
-                await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                 NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                 //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
             }
         }
@@ -2292,17 +2292,12 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
         }
 
-        public async Task NavigateToVerifyOTPScreenAsync(SignUpModelRootObject ResultFirstSubmitModel)
+        public  void NavigateToVerifyOTPScreenAsync(SignUpModelRootObject ResultFirstSubmitModel)
         {
             try
             {
 
-
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-                // viewModel.otpTimer.Stop();
+                viewModel.IsLoading = false;
                 viewModel.StartOTPTimer();
                 viewModel.ButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
                 viewModel.ButtonDisableTextColor = Colors.Gray;
@@ -2491,7 +2486,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     {
 
 
-                                        await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                         NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
 
                                     }
                                 }
@@ -2762,7 +2757,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 else
                                 {
 
-                                    await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                     NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
 
                                     //  viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
@@ -3065,7 +3060,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 }
                                 else
                                 {
-                                    await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                     NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                     //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
                             }
@@ -3335,7 +3330,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             }
                             else
                             {
-                                await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                 NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                 //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                             }
                         }
@@ -3565,7 +3560,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 }
                                 else
                                 {
-                                    await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                     NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                     // viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
                             }
@@ -3828,13 +3823,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             }
                             else
                             {
-                                MainThread.BeginInvokeOnMainThread(() =>
-                               {
-                                   viewModel.IsLoading = true;
-
-
-                               });
-                                await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                viewModel.IsLoading = true;
+                                NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                 //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                             }
                         }

@@ -194,7 +194,7 @@
 
                                 <!--#region Declaration/Bill Number Values-->
                                 <Grid
-                                    ColumnDefinitions="2*,*"
+                                    ColumnDefinitions="2*,auto"
                                     RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
                                     RowSpacing="10">
 
@@ -310,9 +310,19 @@
                                         <Label.FormattedText>
 
                                             <FormattedString>
-                                                <Span Text="{Binding TrackShipmentResponse.CIF, StringFormat='{0:n}'}" />
-                                                <Span Text="." />
-                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
+                                                <Span Text="{Binding TrackShipmentResponse.CIF, StringFormat='{0:n}'}"
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
+
+                                                <Span Text="." FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
+
+                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}"
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
                                             </FormattedString>
 
                                         </Label.FormattedText>
@@ -385,9 +395,20 @@
                                         <Label.FormattedText>
 
                                             <FormattedString>
-                                                <Span Text="{Binding TrackShipmentResponse.customs, StringFormat='{0:n}'}" />
-                                                <Span Text="." />
-                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
+                                                <Span Text="{Binding TrackShipmentResponse.customs, StringFormat='{0:n}'}"
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
+
+                                                <Span Text="."
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
+
+                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}"
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
                                             </FormattedString>
 
                                         </Label.FormattedText>
@@ -459,9 +480,20 @@
                                         <Label.FormattedText>
 
                                             <FormattedString>
-                                                <Span Text="{Binding TrackShipmentResponse.VAT, StringFormat='{0:n}'}" />
-                                                <Span Text="." />
-                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
+                                                <Span Text="{Binding TrackShipmentResponse.VAT, StringFormat='{0:n}'}"
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
+
+                                                <Span Text="."
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
+
+                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}"
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
                                             </FormattedString>
 
                                         </Label.FormattedText>
@@ -541,9 +573,19 @@
                                         <Label.FormattedText>
 
                                            <FormattedString>
-                                                <Span Text="{Binding TrackShipmentResponse.others, StringFormat='{0:n}'}" />
-                                                <Span Text="." />
-                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}" />
+                                                <Span Text="{Binding TrackShipmentResponse.others, StringFormat='{0:n}'}"
+                                                      FontFamily="{StaticResource SomarSemiBold}"
+                                                      TextColor="#002447"
+                                                      FontSize="14"/>
+
+                                                <Span Text="." FontFamily="{StaticResource SomarSemiBold}"
+                                                      TextColor="#002447"
+                                                      FontSize="14"/>
+
+                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}"
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
                                            </FormattedString>
 
                                         </Label.FormattedText>
@@ -598,9 +640,28 @@
                                         HorizontalOptions="Start"
                                         IsVisible="{Binding HasExciseTax}"
                                         LineBreakMode="WordWrap"
-                                        Text="{Binding TrackShipmentResponse.excisetax, StringFormat='{0:n}'}"
                                         TextColor="#002447"
                                         VerticalOptions="Start">
+
+                                        <Label.FormattedText>
+
+                                           <FormattedString>
+                                                <Span Text="{Binding TrackShipmentResponse.excisetax, StringFormat='{0:n}'}"
+                                                      FontFamily="{StaticResource SomarSemiBold}"
+                                                      TextColor="#002447"
+                                                      FontSize="14"/>
+
+                                                <Span Text="." FontFamily="{StaticResource SomarSemiBold}"
+                                                      TextColor="#002447"
+                                                      FontSize="14"/>
+
+                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}"
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
+                                           </FormattedString>
+
+                                        </Label.FormattedText>
 
                                         <Label.Triggers>
 
@@ -661,9 +722,28 @@
                                         FontSize="14"
                                         HorizontalOptions="Start"
                                         LineBreakMode="WordWrap"
-                                        Text="{Binding TrackShipmentResponse.totalFees, StringFormat='{0:n}'}"
                                         TextColor="#002447"
                                         VerticalOptions="Start">
+
+                                         <Label.FormattedText>
+
+                                           <FormattedString>
+                                                <Span Text="{Binding TrackShipmentResponse.totalFees, StringFormat='{0:n}'}"
+                                                      FontFamily="{StaticResource SomarSemiBold}"
+                                                      TextColor="#002447"
+                                                      FontSize="14"/>
+
+                                                <Span Text="." FontFamily="{StaticResource SomarSemiBold}"
+                                                      TextColor="#002447"
+                                                      FontSize="14"/>
+
+                                                <Span Text="{x:Static ResourceManager:AppResources.SAR}"
+                                                      FontSize="14"
+                                                      TextColor="#002447"
+                                                      FontFamily="{StaticResource SomarSemiBold}"/>
+                                           </FormattedString>
+
+                                        </Label.FormattedText>
 
                                         <Label.Triggers>
                                             <DataTrigger

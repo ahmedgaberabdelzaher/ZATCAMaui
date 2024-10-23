@@ -73,20 +73,22 @@
                                                 HorizontalOptions="Start"
                                                 Style="{StaticResource ValueLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.SADADNumber}" />
-                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                            <StackLayout HorizontalOptions="EndAndExpand"
+                                                         Spacing="10"
+                                                         Orientation="Horizontal">
                                                 <Label
                                                     HorizontalOptions="Start"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{Binding SadadBindNumber}" />
 
+                                                  <Image Source="zakat_copy.png">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnCopySADADNumberButtonClicked" />
+                                                    </Image.GestureRecognizers>
 
+                                                </Image>
                                             </StackLayout>
-                                            <Image Source="zakat_copy.png">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="OnCopySADADNumberButtonClicked" />
-                                                </Image.GestureRecognizers>
-
-                                            </Image>
+                                          
                                         </StackLayout>
                                     </Border>
 

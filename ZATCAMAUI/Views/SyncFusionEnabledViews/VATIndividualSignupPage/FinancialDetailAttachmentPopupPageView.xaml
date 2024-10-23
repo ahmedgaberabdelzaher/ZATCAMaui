@@ -89,7 +89,7 @@
                                     Clicked="btn1_Clicked"
                                     FontSize="Small" />
 
-                                <syncfusion:SfPicker
+                                <custom:CustomSfPicker
                                     x:Name="AttachmentTypePicker"
                                     Grid.Row="1"
                                     Margin="0,0,0,0"
@@ -147,7 +147,7 @@
                                     </syncfusion:SfPicker.FooterView>
 
 
-                                </syncfusion:SfPicker>
+                                </custom:CustomSfPicker>
                                 <!--  OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked"  -->
                                 <StackLayout Grid.Row="2" IsVisible="{Binding IsAttachmentVisibile}">
                                     <Label

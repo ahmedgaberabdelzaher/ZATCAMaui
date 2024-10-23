@@ -131,7 +131,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 
             SignUpCommand = new Command(async () => await SignUpClicked());
             ForgotPasswordCommand = new Command(async () => await ForgotPasswordClicked());
-            HamburgerMenuClickedCommand = new Command(HamburgerMenuClicked);
+            HamburgerMenuClickedCommand = new Command(async () => await HamburgerMenuClicked());
             this.LoginClickedCommand = new Command(async () => await LoginButtonClicked());
             this.ChangeMCommand = new Command(async () => await ChangeMobileClicked());
 
@@ -856,11 +856,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             PickerModelTins = genericPickerModel;
             SelectedTin = SelectedTin;
         }
-        private void HamburgerMenuClicked()
+        private async Task HamburgerMenuClicked()
         {
 
             var callTracker = Instrumentation.BeginCall("SFLoginPageView", "HamburgerMenuClicked", "Anonymous Menu Opened");
-            _navigationService.NavigateTo(App.DashboardAnonymousMenuPageView);
+             await  _navigationService.NavigateTo(App.DashboardAnonymousMenuPageView);
             Instrumentation.EndCall(callTracker);
         }
         #endregion

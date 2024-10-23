@@ -9,6 +9,7 @@
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    x:Name="page"
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
@@ -178,7 +179,8 @@
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
 
-                                            <StackLayout Margin="5">
+                                            <StackLayout Margin="5"
+                                                         FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                 <Grid Margin="5,0,5,0">
                                                     <Border
                                                         Grid.Row="0"
@@ -251,7 +253,9 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Border Margin="0,12" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <Border Margin="0,12"
+                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                Style="{StaticResource GreyBorderFrameWithShadow}">
                                             <StackLayout Spacing="0">
 
                                                 <Grid

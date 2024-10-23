@@ -7,6 +7,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     BackgroundColor="#88000000"
+    x:Name="page"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -98,7 +99,8 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <StackLayout x:Name="selectedItem">
+                            <StackLayout x:Name="selectedItem"
+                                         FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
 
                                 <StackLayout Orientation="Horizontal" Spacing="10">
 

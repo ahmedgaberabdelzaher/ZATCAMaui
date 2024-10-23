@@ -11,7 +11,6 @@ using ZATCAMAUI.Models.NativeNafath;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages;
 using Mopups.Services;
 using ZATCAMAUI.Core.Interfaces;
-using Microsoft.Maui.Controls;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -32,9 +31,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
         public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; OnPropertyChanged(); } }
 
         public ObservableCollection<BottomSheetModel> TempBottomSheetList { get; set; } = new ObservableCollection<BottomSheetModel>();
-
-        bool isShowBottomSheet;
-        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; OnPropertyChanged(); } }
 
         string headerTitle;
         public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; OnPropertyChanged(); } }

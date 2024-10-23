@@ -41,22 +41,20 @@
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
                         <Image
-                            x:Name="CitigenImage"
                             Aspect="Fill"
                             HorizontalOptions="FillAndExpand"
-                            Source="vat_tile_listofsignup.png"
+                            Source="{Binding CitigenImage}"
                             VerticalOptions="FillAndExpand" />
                         <Label
-                            x:Name="CitigenText"
                             Padding="10"
                             FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="Small"
                             Text="{x:Static ResourceManager:AppResources.ZREGCitizen}"
-                            TextColor="White"
+                            TextColor="{Binding CitigenTextColor}"
                             VerticalOptions="CenterAndExpand" />
                         <Grid.GestureRecognizers>
 
-                            <TapGestureRecognizer Tapped="TappedCitizen" />
+                            <TapGestureRecognizer Command="{Binding TappedCitizenCommand}" />
                         </Grid.GestureRecognizers>
                     </Grid>
                     <Grid
@@ -69,25 +67,23 @@
                         RowSpacing="0"
                         VerticalOptions="FillAndExpand">
                         <Image
-                            x:Name="GulfImage"
                             Aspect="Fill"
                             HorizontalOptions="FillAndExpand"
-                            Source="vat_tile_listofsignup_W.png"
+                            Source="{Binding GulfImage}"
                             VerticalOptions="FillAndExpand" />
 
                         <Label
-                            x:Name="GulfText"
                             Grid.Row="0"
                             Grid.Column="0"
                             Padding="10"
                             FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="Small"
                             Text="{x:Static ResourceManager:AppResources.ZREGGulfCtzn}"
-                            TextColor="CadetBlue"
+                            TextColor="{Binding GulfTextColor}"
                             VerticalOptions="CenterAndExpand" />
 
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TappedGulf" />
+                            <TapGestureRecognizer Command="{Binding TappedGulfCommand}" />
                         </Grid.GestureRecognizers>
                     </Grid>
                 </Grid>
