@@ -26,12 +26,6 @@ public partial class NafathAuthenticationView : ContentPage
 		viewModel.Response = model.result;
 	}
 
-	protected async override void OnAppearing()
-	{
-		base.OnAppearing();
-		viewModel._isTimerRepeatRequired = true;
-		viewModel.InitPeriodicStatusChecker();
-	}
 
 	protected override void OnDisappearing()
 	{

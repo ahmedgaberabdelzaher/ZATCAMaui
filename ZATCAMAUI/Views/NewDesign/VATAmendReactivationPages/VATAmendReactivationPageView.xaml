@@ -1801,7 +1801,7 @@
                                                                             Background="Transparent"
                                                                             FontSize="Small" />
 
-                                                                        <syncfusion:SfPicker
+                                                                        <custom:CustomSfPicker
                                                                             Margin="10,0,10,0"
                                                                             Background="White"
                                                                             ItemHeight="40"
@@ -1854,7 +1854,7 @@
 
                                                                             </syncfusion:SfPicker.FooterView>
 
-                                                                        </syncfusion:SfPicker>
+                                                                        </custom:CustomSfPicker>
 
                                                                     </Grid>
                                                                 </StackLayout>
@@ -2166,7 +2166,7 @@
                                                                 FontSize="Small"
                                                                 IsEnabled="{Binding FinancialRepresentative.IDTypeEntry}" />
 
-                                                            <syncfusion:SfPicker
+                                                            <custom:CustomSfPicker
                                                                 x:Name="DDlIDType"
                                                                 Grid.Row="1"
                                                                 Margin="10,0,10,0"
@@ -2223,7 +2223,7 @@
 
                                                                 </syncfusion:SfPicker.FooterView>
 
-                                                            </syncfusion:SfPicker>
+                                                            </custom:CustomSfPicker>
 
                                                         </Grid>
                                                     </StackLayout>

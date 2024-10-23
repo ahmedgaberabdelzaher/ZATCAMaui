@@ -296,6 +296,15 @@
 
                         </StackLayout>
 
+                         <Label
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="20"
+                            Text="{x:Static ResourceManager:AppResources.AccountLockedMsg}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            TextColor="#002447"
+                            VerticalOptions="Start" />
+
                         <!--  Resend msg Label  -->
                         <Label
                             FontFamily="{StaticResource SomarRegular}"

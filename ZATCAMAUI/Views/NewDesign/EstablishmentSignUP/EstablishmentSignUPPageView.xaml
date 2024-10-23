@@ -10,9 +10,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
-    mc:Ignorable="d"> 
+    mc:Ignorable="d">
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingEstablishmentSignUPCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
         <Grid>
             <Border Padding="0" Style="{StaticResource CommonTopCurves}">
@@ -105,7 +111,7 @@
                             </StackLayout>
 
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnIndividualTapped" />
+                                <TapGestureRecognizer Command="{Binding OnIndividualCommand}"/>
                             </Grid.GestureRecognizers>
 
                         </Grid>
@@ -145,7 +151,7 @@
                             </StackLayout>
 
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnEstablishmentTapped" />
+                                <TapGestureRecognizer Command="{Binding OnEstablishmentCommand}"/>
                             </Grid.GestureRecognizers>
 
                         </Grid>

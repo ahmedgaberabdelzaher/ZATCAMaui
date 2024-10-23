@@ -8,7 +8,6 @@
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
@@ -135,7 +134,7 @@
                     Margin="10,0,10,0"
                     Background="Transparent"
                     Clicked="BPickerButton_Clicked" />
-                <syncfusion:SfPicker
+                <custom:CustomSfPicker
                     x:Name="BPicker"
                     Grid.Row="0"
                     Grid.Column="0"
@@ -194,7 +193,7 @@
 
                     </syncfusion:SfPicker.FooterView>
 
-                </syncfusion:SfPicker>
+                </custom:CustomSfPicker>
                 <StackLayout
                     x:Name="ListLayout"
                     Grid.Row="1"

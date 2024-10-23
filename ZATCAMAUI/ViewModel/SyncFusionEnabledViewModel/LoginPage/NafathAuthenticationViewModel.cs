@@ -1,5 +1,4 @@
-using System;
-using System.Net;
+
 using System.Windows.Input;
 using AppDynamics.Agent;
 using Mopups.Services;
@@ -16,7 +15,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
 {
     public ICommand CancelCommand { get; set; }
     public override ICommand BackCommand { get; }
-    //public NafathLoginRequestModel RequestModel { get; set; }
+
     public NafathLoginResponse Response { get; set; }
 
     public bool _isTimerRepeatRequired = true;
@@ -40,6 +39,20 @@ public class NafathAuthenticationViewModel : BaseViewModel
         CancelCommand = new Command(() => CancelRequest());
         BackCommand = new Command(() => GoBack());
     }
+
+    public ICommand OnAppearingNafathAuthenticationViewCommand
+    {
+
+        get
+        {
+            return new Command(() =>
+            {
+                _isTimerRepeatRequired = true;
+                InitPeriodicStatusChecker();
+            });
+        }
+    }
+
 
     private void CancelRequest()
     {
@@ -73,46 +86,38 @@ public class NafathAuthenticationViewModel : BaseViewModel
 
     }
 
-    internal void InitPeriodicStatusChecker()
+    private void InitPeriodicStatusChecker()
     {
         var seconds = TimeSpan.FromSeconds(ZATCAConstants.NafathAPICallTimer);
         NafathLoginResponseModel response = null;
 
         Device.StartTimer(seconds, () =>
         {
-            if (response != null && response.result.statusCode.Equals("S"))
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+
+                if (response != null && response.result.statusCode.Equals("S"))
                 {
-                    //guid_chm = response.result.returnId;
-                    //await GetAccount(response.result.returnId);
                     await NavigateToNextSteps(response.result.returnId);
-                });
-                _isTimerRepeatRequired = false;
-            }
-            else if (response != null && response.result.statusCode.Equals("E"))
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                    _isTimerRepeatRequired = false;
+                }
+                else if (response != null && response.result.statusCode.Equals("E"))
                 {
                     await _dialogService.ShowMessage(response.result.statusDescription, AppResources.Information, AppResources.OKText, delegate ()
                     {
                         _navigationService.GoBack();
                     });
-                });
 
-                _isTimerRepeatRequired = false;
-            }
-            else
-            {
-                if (_isTimerRepeatRequired)
+                    _isTimerRepeatRequired = false;
+                }
+                else
                 {
-                    Task.Run(async () =>
+                    if (_isTimerRepeatRequired)
                     {
                         response = await WebServiceManager.CheckNafathAuthentication(Response);
-                    });
+                    }
                 }
-            }
-
+            });
             return _isTimerRepeatRequired;
         });
     }
@@ -126,12 +131,12 @@ public class NafathAuthenticationViewModel : BaseViewModel
                         { Response.idNumber, guid }
                     };
 
-           await _navigationService.NavigateTo(App.NafathChangeMobileNumberView, d);
+            await _navigationService.NavigateTo(App.NafathChangeMobileNumberView, d);
         }
         else if (navigation == ZATCAConstants.NAFATH_COMPANY_CHANGE_MOBILE_NUMBER)
         {
             Dictionary<string, string> d = new Dictionary<string, string> { { Response.idNumber, guid } };
-           await _navigationService.NavigateTo(App.ChangeMobileRequestPageView, d);
+            await _navigationService.NavigateTo(App.ChangeMobileRequestPageView, d);
         }
         else if (navigation == ZATCAConstants.NAFATH_LOGIN || navigation == ZATCAConstants.NAFATH_SIGNUP)
         {
@@ -166,7 +171,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
                 else if (response.data.SSOUserAccounts[0].code == "101")
                 {
                     App.GUIDFrSSO = response.data.SSOUserAccounts[0].GUID;
-                  await  _navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
+                    await _navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
                 }
             }
         }
@@ -213,7 +218,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
                 App.LoginDataRetrieved.TIN = TIN;
                 App.Token = response.result.accessToken;
                 await LoginCompleted();
-               await _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView, false);
+                await _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView, false);
             }
             else
             {
@@ -226,7 +231,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
         {
             IsLoading = false;
         }
-       
+
 
     }
 
@@ -271,8 +276,8 @@ public class NafathAuthenticationViewModel : BaseViewModel
             }
             catch (Exception)
             {
-                
-                
+
+
             }
 
         }
