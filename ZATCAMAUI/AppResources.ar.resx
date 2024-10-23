@@ -6753,7 +6753,7 @@
         <value>أكمل البيانات التالية:</value>
     </data>
     <data name="ChangeFillingPeriodButtonText" xml:space="preserve">
-        <value> تغيير فترة تقديم إقرارات ضريبة القيمة المضافة</value>
+        <value>تغيير فترة تقديم الإقرار</value>
     </data>
     <data name="ChangeFillingPeriodMyRequests" xml:space="preserve">
         <value>طلباتي</value>
