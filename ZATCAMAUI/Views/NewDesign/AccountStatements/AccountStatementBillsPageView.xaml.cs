@@ -163,7 +163,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             try
             {
                 var item = e.Item as MyBills;
-                viewModel.accoungtDetails1 = viewModel.ObjectBills(item.Opbel, item.Fbnum);
+                viewModel.accoungtDetails1 = await viewModel.ObjectBills(item.Opbel, item.Fbnum);
 
                 if (viewModel.accoungtDetails1 == null)
                 {

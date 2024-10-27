@@ -68,7 +68,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                 }
 
             }
-            catch (Exception exp)
+            catch (Exception)
             {
 
                 viewModel.IsLoading = false;
@@ -96,18 +96,18 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                     viewModel.updatePicker();
                 });
 
-                MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", async (sender, arg) =>
                 {
 
 
-                    viewModel.showPaymentOptions();
+                  await  viewModel.ShowPaymentOptions();
                     viewModel.isPayNowTapped = false;
 
                 });
-                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
 
-                    viewModel.MadaPaymentSelected();
+                  await  viewModel.MadaPaymentSelected();
                     viewModel.isPayNowTapped = false;
 
                 });
@@ -134,7 +134,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
                 });
             }
-            catch (Exception exp)
+            catch (Exception)
             {
 
             }
@@ -265,7 +265,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
             }
 
         }
-        private void payNow_Tapped(object sender, EventArgs eventArgs)
+        private async void payNow_Tapped(object sender, EventArgs eventArgs)
         {
             if (!viewModel.isPayNowTapped)
             {
@@ -273,7 +273,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                 StackLayout payNowCard = sender as StackLayout;
                 MyBills BModel = (MyBills)payNowCard.BindingContext;
 
-                viewModel.verifyPaymentAndShowBillsPopup(BModel);
+               await viewModel.verifyPaymentAndShowBillsPopup(BModel);
             }
 
         }

@@ -21,9 +21,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
     public class GAZTNewDesignMyBillsPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-        public ICommand OnBackButtonClicked { get; set; }
         public string selectedFbNum = "";
         MyBills BModel = null;
         public string selectedSadadNo = "";
@@ -255,7 +252,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     //if (_myBills.Count != 0)
                     //{
-                    decimal Amount=0 ;
+                    decimal Amount = 0;
                     foreach (var item in MyBillsOriginal)
                     {
                         //P = 0 - Paid
@@ -266,7 +263,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             if (item.TestDueAmount != null)
                             {
-                                Amount = Amount + decimal.Parse(item.TestDueAmount,CultureInfo.InvariantCulture);
+                                Amount = Amount + decimal.Parse(item.TestDueAmount, CultureInfo.InvariantCulture);
                             }
                         }
                         else if (item.Status == "Partially Paid")
@@ -276,9 +273,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 decimal TotalRemainingAmount;
                                 if (decimal.TryParse(item.TotalRemainingAmount, CultureInfo.InvariantCulture, out TotalRemainingAmount))
                                 {
-                                   Amount = Amount + TotalRemainingAmount;
-                                } 
-                               
+                                    Amount = Amount + TotalRemainingAmount;
+                                }
+
                             }
                         }
                     }
@@ -346,7 +343,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-       
+
 
         private bool _isListVisible = false;
         public bool IsListVisible
@@ -460,27 +457,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #region Constructor
         public GAZTNewDesignMyBillsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-            OnBackButtonClicked = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
+          
 
         }
         #endregion
 
         #region Method
 
-        public async void verifyPaymentAndShowBillsPopup(MyBills BModel)
+        public async Task verifyPaymentAndShowBillsPopup(MyBills BModel)
         {
             this.BModel = BModel;
             MultiplePayableBills = new ObservableCollection<MyBills>();
@@ -488,7 +472,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 MultiplePayableBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => (!String.IsNullOrEmpty(BModel.VTRE2) && x.VTRE2.Equals(BModel.VTRE2) && ((BModel.Status == "Partially Paid") || (BModel.Status == "Open")))).ToList());
 
-                //MultiplePayableBills = new ObservableCollection<MyBills>(MyBills.Where(x => (!String.IsNullOrEmpty(BModel.VTRE2) && x.VTRE2.Equals(BModel.VTRE2)) || (!String.IsNullOrEmpty(BModel.Fbnum) && x.Fbnum.Equals(BModel.Fbnum))).ToList());
+               
             }
 
             if (MultiplePayableBills != null && MultiplePayableBills.Count > 1)
@@ -500,13 +484,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             else
             {
-                showPaymentOptions();
+              await  ShowPaymentOptions();
             }
 
 
         }
 
-        public async void showPaymentOptions()
+        public async Task ShowPaymentOptions()
         {
 
             if (BModel != null)
@@ -548,7 +532,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     string lang = UtilityManager.GetLanguageParameter();
                     MyBills = await WebServiceManager.GetUserBills(App.TP.TIN, lang);
                     //  MyBills = await WebServiceManager.GetUserBills(App.TP.TIN, lang);
-                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                  await  PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (MyBills != null)
                     {
@@ -615,7 +599,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 {
                                     myBills.TotalRemainingAmount = (double.Parse(myBills.BETRW, NumberStyles.Number, CultureInfo.InvariantCulture) - double.Parse(myBills.Paidamt, NumberStyles.Number, CultureInfo.InvariantCulture)).ToString();
                                     string format = "$#,##0.00;-$#,##0.00;Zero";
-                                    decimal dRem = decimal.Parse(myBills.TotalRemainingAmount ,NumberStyles.Number, CultureInfo.InvariantCulture);
+                                    decimal dRem = decimal.Parse(myBills.TotalRemainingAmount, NumberStyles.Number, CultureInfo.InvariantCulture);
 
                                     decimal positiveMoneyRem = dRem;
                                     positiveMoneyRem.ToString(format);  //will return $24,508,975.94
@@ -623,7 +607,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                             }
                         }
-                      await  FilterIfTypeAndStausFilterSelected(false);
+                        FilterIfTypeAndStausFilterSelected(false);
                     }
                     else
                     {
@@ -633,12 +617,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 catch (Exception e)
                 {
 
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        // await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
-                        _navigationService.GoBack();
-                    });
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
+                    _navigationService.GoBack();
                     IsLoading = false;
                 }
             }
@@ -685,13 +665,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        public void PopulateFilterDropdown()
+        public async Task PopulateFilterDropdown()
         {
 
             try
             {
                 string lang = UtilityManager.GetLanguageParameter();
-                var FilterValues = WebServiceManager.GAZTGetMyBillsFilterDropdownValues(App.TP.TIN, lang);
+                var FilterValues = await WebServiceManager.GAZTGetMyBillsFilterDropdownValues(App.TP.TIN, lang);
                 if (FilterValues != null)
                 {
                     TaxTypeForFilter = FilterValues;
@@ -734,28 +714,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
 
-        //public void PopulateReturnTypeList()
-        //{
-        //    try
-        //    {
-        //        TaxTypeForFilter = new List<ReturnTypes>
-        //        {
-        //                new ReturnTypes {Id = "00",TaxType = AppResources.AllBills},
-        //                new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
-        //                new ReturnTypes {Id = "02",TaxType = AppResources.ZZVAT},
-        //                new ReturnTypes {Id = "03",TaxType = AppResources.ZZET},
-        //                new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
-        //                new ReturnTypes {Id = "05",TaxType = AppResources.ZZIncomeTax}
-        //        };
 
-        //        SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
-        //    }
-        //    catch
-        //    {
-        //    }
-
-
-        //}
         public void PopulateDataInChips()
 
         {
@@ -765,39 +724,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 new ChipModel(){Text =AppResources.PartiallyPaid, TemplateType = AppResources.PartiallyPaid,ImageSource = "clock.png",TextColor=(Color)Application.Current.Resources["Partial"]}
             };
         }
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             try
             {
                 if (App.IsSessionExpired)
                 {
-                    MainThread.BeginInvokeOnMainThread(() =>
+
+                    if (App.TP != null)
+                        App.TP = null;
+                    if (App.PreviousIsArabic)
                     {
-                        if (App.TP != null)
-                            App.TP = null;
-                        if (App.PreviousIsArabic)
+                        string langName = "ar-SA";
+                        AppResources.Culture = new CultureInfo(langName);
+                    }
+                    else
+                    {
+                        string langName = "en-US";
+                        AppResources.Culture = new CultureInfo(langName);
+                    }
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    foreach (var item in _navigation.NavigationStack)
+                    {
+                        if (item.GetType().Name == App.SFLoginPageView)
                         {
-                            string langName = "ar-SA";
-                            AppResources.Culture = new CultureInfo(langName);
+                            _navigation.RemovePage(item);
+                            break;
                         }
-                        else
-                        {
-                            string langName = "en-US";
-                            AppResources.Culture = new CultureInfo(langName);
-                        }
-                        var _navigation = Application.Current.MainPage.Navigation;
-                        foreach (var item in _navigation.NavigationStack)
-                        {
-                            if (item.GetType().Name == App.SFLoginPageView)
-                            {
-                                _navigation.RemovePage(item);
-                                break;
-                            }
-                        }
-                        // _navigationService.NavigateTo(App.SFLoginPageView);
-                        _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                        _navigation.NavigationStack.ToList().Clear();
-                    });
+                    }
+                    // _navigationService.NavigateTo(App.SFLoginPageView);
+                    await _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                    _navigation.NavigationStack.ToList().Clear();
+
                 }
 
             }
@@ -807,14 +765,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
         #endregion
-        public async void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
+        public void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
         {
 
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-
+            IsLoading = true;
 
             switch (SelectedTaxTypeForFilter.statementFilter)
             {
@@ -891,14 +845,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             }
 
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+            IsLoading = false;
         }
 
 
-        public async Task FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
+        public void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
             IsLoading = true;
 
@@ -940,15 +891,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     FilterOnTaxType(MyBills);
                 }
 
-              
-                    IsLoading = false;
-           
+
+                IsLoading = false;
+
             }
             else
             {
-           
-                    IsLoading = false;
-              
+
+                IsLoading = false;
+
             }
 
         }
@@ -1015,7 +966,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
                                 {
                                     App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
-                                  await  _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                                    await _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
                                 }
 
 
@@ -1046,7 +997,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _navigationService.GoBack();
             }
 
-            catch (GAZTNetworkConnectivityIssueException )
+            catch (GAZTNetworkConnectivityIssueException)
             {
                 IsLoading = false;
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
@@ -1125,7 +1076,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 paymentInfo.Period = response.d.PerslTxt;
                             }
 
-                          await  _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
+                            await _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
                         }
                         else
                         {
@@ -1144,14 +1095,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 }
-                catch (InternetException )
+                catch (InternetException)
                 {
                     IsLoading = false;
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 }
             }
-            catch (InternetException )
+            catch (InternetException)
             {
                 IsLoading = false;
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
@@ -1162,19 +1113,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public async Task MadaPaymentSelected()
         {
-          await  DoValidatePayment(selectedFbNum, selectedSadadNo, "Mada Payment");
+            await DoValidatePayment(selectedFbNum, selectedSadadNo, "Mada Payment");
 
         }
 
         public async Task ApplePaySelected()
         {
-           await DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo, "A");
+            await DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo, "A");
 
         }
 
         public async Task SadadPaymentSelected()
         {
-           await _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, this);
+            await _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, this);
 
 
         }

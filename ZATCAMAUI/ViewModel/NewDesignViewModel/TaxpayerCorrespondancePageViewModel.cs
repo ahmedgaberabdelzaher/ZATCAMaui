@@ -59,13 +59,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             get
             {
-               return _correspondenceobj;
+                return _correspondenceobj;
             }
             set
             {
                 if (_correspondenceobj == value) return;
                 _correspondenceobj = value;
-               // OnPropertyChanged("Correspondenceobj");
+                // OnPropertyChanged("Correspondenceobj");
             }
         }
 
@@ -101,7 +101,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged("ETCorres");
             }
         }
-        
+
         private CorrespondenceRootObject _collCorres;
         public CorrespondenceRootObject CollCorres
         {
@@ -491,27 +491,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             try
             {
                 IsLoading = true;
-                await Task.Run(() =>
-                {
-                    ZakatCorres = new CorrespondenceRootObject();
-                    VATCorres = new CorrespondenceRootObject();
-                    ETCorres = new CorrespondenceRootObject();
-                    CollCorres = new CorrespondenceRootObject();
+                ZakatCorres = new CorrespondenceRootObject();
+                VATCorres = new CorrespondenceRootObject();
+                ETCorres = new CorrespondenceRootObject();
+                CollCorres = new CorrespondenceRootObject();
 
-                    ZakatCorres = WebServiceManager.GAZTGetZakatCorrespondece();
-                    VATCorres = WebServiceManager.GAZTGetVATCorrespondece();
-                    ETCorres = WebServiceManager.GAZTGetETCorrespondece();
-                    CollCorres = WebServiceManager.GAZTGetCollectionsCorrespondece();
-                    PopToRootPage();
-                });
+                ZakatCorres = await WebServiceManager.GAZTGetZakatCorrespondece();
+                VATCorres = await WebServiceManager.GAZTGetVATCorrespondece();
+                ETCorres = await WebServiceManager.GAZTGetETCorrespondece();
+                CollCorres = await WebServiceManager.GAZTGetCollectionsCorrespondece();
+                PopToRootPage();
                 IsLoading = false;
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
         }
         public void SetData()
@@ -525,7 +519,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 ListVATCorrespondance = new List<CorrespondanceModel>();
                 ListETCorrespondance = new List<CorrespondanceModel>();
                 ListCollCorrespondance = new List<CorrespondanceModel>();
-                if (ZakatCorres != null && ZakatCorres.d!=null && ZakatCorres.d.results!=null && ZakatCorres.d.results.Count > 0)
+                if (ZakatCorres != null && ZakatCorres.d != null && ZakatCorres.d.results != null && ZakatCorres.d.results.Count > 0)
                 {
                     foreach (CorrespondenceResult itemZakat in ZakatCorres.d.results)
                     {
@@ -537,10 +531,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         childZakat.Coitm = itemZakat.Ctime;
                         childZakat.Ctime = itemZakat.Ctime;
                         childZakat.Cdate = itemZakat.Cdate;
-                        //if (itemZakat.Copri != null)
-                        //{
-                        //    childZakat.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Copri + @"""");
-                        //}
                         if (itemZakat.Coidt != null)
                         {
                             childZakat.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Coidt + @"""");
@@ -561,7 +551,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         DateTime? BegDate = DateTime.Now;
                         if (itemZakat.Cdate != null)
                         {
-                           // BegDate = childZakat.Cdate;
+                            // BegDate = childZakat.Cdate;
                         }
                         if (itemZakat.Zzfav == "1")
                         {
@@ -682,7 +672,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         DateTime? BegDate = DateTime.Now;
                         if (itemVAT.Cdate != null)
                         {
-                           // BegDate = childVAT.Cdate;
+                            // BegDate = childVAT.Cdate;
                         }
                         if (itemVAT.Zzfav == "1")
                         {
@@ -796,7 +786,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         DateTime? BegDate = DateTime.Now;
                         if (itemET.Cdate != null)
                         {
-                           // BegDate = childET.Cdate;
+                            // BegDate = childET.Cdate;
                         }
                         if (itemET.Zzfav == "1")
                         {
@@ -907,13 +897,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         catch (Exception ex)
                         {
-                            
-                            
+
+
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemColl.Cdate != null)
                         {
-                           // BegDate = childColl.Cdate;
+                            // BegDate = childColl.Cdate;
                         }
                         if (itemColl.Zzfav == "1")
                         {
@@ -1110,7 +1100,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     IsVisibleFavourite = false;
                 }
-                else if(SelectedTaxTypeDropdownItem.Id == "04")
+                else if (SelectedTaxTypeDropdownItem.Id == "04")
                 {
                     if (ListCollCorrespondance != null)
                     {
@@ -1122,7 +1112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        if(ListToDisplay!=null)
+                        if (ListToDisplay != null)
                         {
                             ClearList();
                         }
@@ -1141,41 +1131,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             IsListVisible = false;
             IsNoDataLableVisible = true;
         }
-        public async void ShowCorrespondenceDetails(CorrespondanceModel CorresModel)
+        public async Task ShowCorrespondenceDetails(CorrespondanceModel CorresModel)
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-
+            IsLoading = true;
             ObservableCollection<CorrDetails> attchModel = null;
             Correspondenceobj = new List<object>();
 
-            // MainThread.BeginInvokeOnMainThread(() =>
-            // {
-            //attchModel = WebServiceManager.ZATCACorrespondenceDetails(CorresModel.FBnum);
-           // });
 
-           //var t = Task.Run( () =>
-           // { 
-           //     MainThread.BeginInvokeOnMainThread(() =>
-           //     {
 
-                    if (attchModel != null)
-                    {
-                        Correspondenceobj.Add(attchModel);
-                    }
-
-                    Correspondenceobj.Add(CorresModel);
-                    _navigationService.NavigateTo(App.TaxpayerCorrespondanceDetailPageView, Correspondenceobj);
-            //    });
-            //});
-            //t.Wait();
-            
-            await Task.Run(() =>
+            if (attchModel != null)
             {
-                IsLoading = false;
-            });
+                Correspondenceobj.Add(attchModel);
+            }
+
+            Correspondenceobj.Add(CorresModel);
+          await  _navigationService.NavigateTo(App.TaxpayerCorrespondanceDetailPageView, Correspondenceobj);
+
+
+            IsLoading = false;
         }
 
         public void FilterOnbasisOfChipSelectedItem()

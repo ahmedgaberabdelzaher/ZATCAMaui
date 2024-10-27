@@ -114,7 +114,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
                                 if (attachment != null)
                                 {
                                     var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                                    DeleteAttachment(result, attachment);
+                                  await  DeleteAttachment(result, attachment);
                                 }
                             }
                         }
@@ -141,7 +141,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
                             if (attachment != null)
                             {
                                 var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                                DeleteAttachment(result, attachment);
+                              await  DeleteAttachment(result, attachment);
                             }
                         }
                     }
@@ -156,10 +156,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+               await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
         public async Task DeleteAttachment(bool result, VATAttachment attachment)
@@ -167,33 +164,30 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
             try
             {
                 viewModel.IsLoading = true;
-                await Task.Run(() =>
+                if (result)
                 {
-                    if (result)
+                    int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                    string results = await WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
+                    PopToRootPage();
+                    if (results == "X")
                     {
-                        int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-                        string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-                        PopToRootPage();
-                        if (results == "X")
-                        {
-                            Attachment listitem = (from itm in viewModel.VatAttachmentsList
-                                                   where itm.Doguid == attachment.Doguid.ToString()
-                                                   select itm)
-                                            .FirstOrDefault<Attachment>();
+                        Attachment listitem = (from itm in viewModel.VatAttachmentsList
+                                               where itm.Doguid == attachment.Doguid.ToString()
+                                               select itm)
+                                        .FirstOrDefault<Attachment>();
 
-                            VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
-                                                         where itm.Doguid == attachment.Doguid.ToString()
-                                                         select itm)
-                                            .FirstOrDefault<VATAttachment>();
+                        VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
+                                                     where itm.Doguid == attachment.Doguid.ToString()
+                                                     select itm)
+                                        .FirstOrDefault<VATAttachment>();
 
-                            viewModel.VatAttachmentsList.Remove(listitem);
-                            viewModel.AttachmentList.Remove(listitemTwo);
-                            viewModel.VATDeclarationDataForAttch.data.ATTACHSet.Remove(listitem);
-                            if (indexToReduceTheSize != -1)
-                                viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
-                        }
+                        viewModel.VatAttachmentsList.Remove(listitem);
+                        viewModel.AttachmentList.Remove(listitemTwo);
+                        viewModel.VATDeclarationDataForAttch.data.ATTACHSet.Remove(listitem);
+                        if (indexToReduceTheSize != -1)
+                            viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                     }
-                });
+                }
                 viewModel.IsLoading = false;
             }
             catch (Exception)

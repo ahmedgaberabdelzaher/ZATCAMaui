@@ -193,54 +193,40 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                await Task.Run(() =>
+                viewModel.IsLoading = true;
+                int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                string results = await WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
+               await PopToRootPage();
+                if (results == "X")
                 {
-                    viewModel.IsLoading = true;
-                });
-                await Task.Run(() =>
-                {
+                    Attachment listitem = (from itm in viewModel.VatAttachmentsList
+                                           where itm.Doguid == attachment.Doguid.ToString()
+                                           select itm)
+                                    .FirstOrDefault();
 
-                    int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-                    string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-                    PopToRootPage();
-                    if (results == "X")
-                    {
-                        Attachment listitem = (from itm in viewModel.VatAttachmentsList
-                                               where itm.Doguid == attachment.Doguid.ToString()
-                                               select itm)
-                                        .FirstOrDefault();
+                    VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
+                                                 where itm.Doguid == attachment.Doguid.ToString()
+                                                 select itm)
+                                    .FirstOrDefault();
 
-                        VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
-                                                     where itm.Doguid == attachment.Doguid.ToString()
-                                                     select itm)
-                                        .FirstOrDefault();
-
-                        viewModel.VatAttachmentsList.Remove(listitem);
-                        viewModel.AttachmentList.Remove(listitemTwo);
-                        viewModel.VATDeclarationDataForAttch.data.ATTACHSet.Remove(listitem);
-                        if (indexToReduceTheSize != -1)
-                            viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
-                    }
-
-                });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                    viewModel.VatAttachmentsList.Remove(listitem);
+                    viewModel.AttachmentList.Remove(listitemTwo);
+                    viewModel.VATDeclarationDataForAttch.data.ATTACHSet.Remove(listitem);
+                    if (indexToReduceTheSize != -1)
+                        viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                }
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
             }
         }
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
         }
         private async void OnDownloadAttachmentClicked(object sender, EventArgs e)
@@ -356,7 +342,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 {
                     if (attachment.DocUrl != null)
                     {
-                        viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                      await  viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
                         await MopupService.Instance.PopAsync();
                     }
                 }
@@ -375,56 +361,44 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         }
         public async Task email(string doguid, VATAttachment attachment)
         {
-            await Task.Run(() =>
+            viewModel.IsLoading = true;
+            try
             {
-                viewModel.IsLoading = true;
-            });
-            await Task.Run(() =>
-            {
-                try
+                string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+                byte[] PdfBytes;
+                HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
+                WebResponse myResp = myReq.GetResponse();
+                using (Stream streams = myResp.GetResponseStream())
+                using (MemoryStream Ms = new MemoryStream())
                 {
-                    string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
-                    byte[] PdfBytes;
-                    HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
-                    WebResponse myResp = myReq.GetResponse();
-                    using (Stream streams = myResp.GetResponseStream())
-                    using (MemoryStream Ms = new MemoryStream())
+                    int count = 0;
+                    do
                     {
-                        int count = 0;
-                        do
-                        {
-                            byte[] buf = new byte[1024];
-                            count = streams.Read(buf, 0, 1024);
-                            Ms.Write(buf, 0, count);
-                        } while (streams.CanRead && count > 0);
-                        PdfBytes = Ms.ToArray();
-                    }
-                    var message = new EmailMessage
-                    {
-                        Subject = "Attached Form :",
-                    };
-                    var fn = attachment.Filename;
-                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
-                    File.WriteAllBytes(file, PdfBytes);
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Share.RequestAsync(new ShareFileRequest
-                        {
-                            Title = Title,
-                            File = new ShareFile(file)
-                        });
-                    });
+                        byte[] buf = new byte[1024];
+                        count = streams.Read(buf, 0, 1024);
+                        Ms.Write(buf, 0, count);
+                    } while (streams.CanRead && count > 0);
+                    PdfBytes = Ms.ToArray();
+                }
+                var message = new EmailMessage
+                {
+                    Subject = "Attached Form :",
+                };
+                var fn = attachment.Filename;
+                var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                File.WriteAllBytes(file, PdfBytes);
 
-                }
-                catch (Exception)
+                await Share.RequestAsync(new ShareFileRequest
                 {
-                    viewModel.IsLoading = false;
-                }
-            });
-            await Task.Run(() =>
+                    Title = Title,
+                    File = new ShareFile(file)
+                });
+                viewModel.IsLoading = false;
+            }
+            catch (Exception)
             {
                 viewModel.IsLoading = false;
-            });
+            }
         }
 
 

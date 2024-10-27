@@ -21,11 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             this.BindingContext = viewModel;
 
         }
-
-
-       
-
-
         public PickerPageView(GenericPickerModel _pickerSource)
         {
             try

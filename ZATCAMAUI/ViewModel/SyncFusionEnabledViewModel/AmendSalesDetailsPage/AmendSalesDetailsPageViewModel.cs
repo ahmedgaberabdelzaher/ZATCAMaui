@@ -383,15 +383,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
 
             }
         }
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
         }
 
@@ -449,12 +446,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
         public async Task DeleteSelectedAttachment(string filename, string dougUD)
         {
             IsLoading = true;
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
                 try
                 {
-                    string res = WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
-                    PopToRootPage();
+                    string res = await WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
+                    await PopToRootPage();
                     if (res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
                     {
                         for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
@@ -471,13 +468,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
             });
-            
+
             IsLoading = false;
         }
         private bool IsFileAlreadyAttached(string FileName)
@@ -499,29 +493,26 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
         }
         private void IsValueChanged()
         {
-            MainThread.BeginInvokeOnMainThread( () =>
+            if (attachmentCount != SelectedSalesDetails.estimateZakatAttachment.Count)
             {
-                if (attachmentCount != SelectedSalesDetails.estimateZakatAttachment.Count)
-                {
-                    IsSaveButtonEnable = true;
-                    ButtonBackgroundColor = (Color)Application.Current.Resources["Primary"];
-                }
-                else if (newValue != NewValue && !isOnLoad)
-                {
-                    IsSaveButtonEnable = true;
-                    ButtonBackgroundColor = (Color)Application.Current.Resources["Primary"];
-                }
-                else if (changeReason != ChangeReason && !isOnLoad)// && !string.IsNullOrEmpty(ChangeReason)
-                {
-                    IsSaveButtonEnable = true;
-                    ButtonBackgroundColor = (Color)Application.Current.Resources["Primary"];
-                }
-                else
-                {
-                    IsSaveButtonEnable = false;
-                    ButtonBackgroundColor = (Color)Application.Current.Resources["ButtonGray"];
-                }
-            });
+                IsSaveButtonEnable = true;
+                ButtonBackgroundColor = (Color)Application.Current.Resources["Primary"];
+            }
+            else if (newValue != NewValue && !isOnLoad)
+            {
+                IsSaveButtonEnable = true;
+                ButtonBackgroundColor = (Color)Application.Current.Resources["Primary"];
+            }
+            else if (changeReason != ChangeReason && !isOnLoad)// && !string.IsNullOrEmpty(ChangeReason)
+            {
+                IsSaveButtonEnable = true;
+                ButtonBackgroundColor = (Color)Application.Current.Resources["Primary"];
+            }
+            else
+            {
+                IsSaveButtonEnable = false;
+                ButtonBackgroundColor = (Color)Application.Current.Resources["ButtonGray"];
+            }
         }
         private ObservableCollection<ZakatAttachment> CloneAttachmmentListInLocalList(ObservableCollection<EstimateZakatAttachment> estimateZakatAttachment)
         {
@@ -578,32 +569,29 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
         {
             try
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                if (ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0 && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
                 {
-                    if (ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0 && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
-                    {
-                        ButtonBackgroundColor = (Color)Application.Current.Resources["ButtonGray"];
-                        IsSaveButtonEnable = false;
-                    }
-                    else if (ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0 && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
-                    {
-                        ButtonBackgroundColor = (Color)Application.Current.Resources["ButtonGray"];
-                        IsSaveButtonEnable = false;
-                    }
-                    else if (ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count != 0 || !string.IsNullOrEmpty(NewValue) && NewValue.Equals(OldValue) || !string.IsNullOrEmpty(ChangeReason))
-                    {
-                        ButtonBackgroundColor = (Color)Application.Current.Resources["Primary"];
-                        IsSaveButtonEnable = true;
-                    }
-                    //else if(NewValue.Length)
+                    ButtonBackgroundColor = (Color)Application.Current.Resources["ButtonGray"];
+                    IsSaveButtonEnable = false;
+                }
+                else if (ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0 && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
+                {
+                    ButtonBackgroundColor = (Color)Application.Current.Resources["ButtonGray"];
+                    IsSaveButtonEnable = false;
+                }
+                else if (ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count != 0 || !string.IsNullOrEmpty(NewValue) && NewValue.Equals(OldValue) || !string.IsNullOrEmpty(ChangeReason))
+                {
+                    ButtonBackgroundColor = (Color)Application.Current.Resources["Primary"];
+                    IsSaveButtonEnable = true;
+                }
+                //else if(NewValue.Length)
 
 
-                    if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber == false)
-                    {
-                        ButtonBackgroundColor = (Color)Application.Current.Resources["ButtonGray"];
-                        IsSaveButtonEnable = false;
-                    }
-                });
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber == false)
+                {
+                    ButtonBackgroundColor = (Color)Application.Current.Resources["ButtonGray"];
+                    IsSaveButtonEnable = false;
+                }
             }
             catch (Exception)
             {

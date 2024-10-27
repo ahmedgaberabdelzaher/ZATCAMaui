@@ -19,41 +19,8 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             PopulateReturnTypeList();
             viewModel.PopulateFilterDropdownList();
             viewModel.PopulateDataInChips();
-            SetPickerFont();
         }
-        public void SetPickerFont()
-        {
-            try
-            {
-                switch (DeviceInfo.Platform)
-                {
-
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        {
-                            TaxTypeDownPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            TaxTypeDownPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            TaxTypeDownPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            TaxTypeDownPicker.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
-
-
-                        }
-                        break;
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-                        TaxTypeDownPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                        TaxTypeDownPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                        TaxTypeDownPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                        TaxTypeDownPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
-
+      
         public async Task PageLoad()
         {
 

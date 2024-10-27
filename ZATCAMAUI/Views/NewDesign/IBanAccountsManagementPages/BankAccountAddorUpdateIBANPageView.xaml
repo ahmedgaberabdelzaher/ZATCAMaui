@@ -329,8 +329,7 @@
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding IBANValue}"
                                                 TextChanged="IBANTextChanged"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                Unfocused="IBANFocusChnaged">
+                                                TextColor="{StaticResource NeutralBlack}">
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:EntryLengthValidatorBehavior MaxLength="24" />

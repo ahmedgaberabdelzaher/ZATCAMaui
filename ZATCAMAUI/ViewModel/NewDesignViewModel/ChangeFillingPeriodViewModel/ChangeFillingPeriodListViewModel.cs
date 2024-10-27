@@ -13,7 +13,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
     public class ChangeFillingPeriodListViewModel : BaseViewModel
     {
         public ICommand GoBackClick { get; set; }
-        public ICommand CloseClick { get; set; }
         public ICommand MyRequestsButtonTapped { get; set; }
 
         private bool _isBackVisible = false;
@@ -263,13 +262,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             navigationService, dialogService)
         {
 
-            CloseClick = new Command( () =>
-            {
-                _navigationService.GoBack();
-            });
 
-
-            GoBackClick = new Command( () =>
+            GoBackClick = new Command(() =>
             {
                 if (IsMyRequestsViewEnabled)
                 {
@@ -285,7 +279,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 App.selectedVatFillingItem = "";
                 App.selectedVATItemFbust = "";
-                _navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
+                await _navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
             });
         }
 
@@ -451,35 +445,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
                 else
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
                 }
                 IsLoading = false;
             }
             catch (GAZTVATChangeFillingPeriodException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                   
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
 
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 

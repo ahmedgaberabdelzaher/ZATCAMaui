@@ -112,7 +112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
 
 
-      
+
         public void SetFlowDirection()
         {
 
@@ -378,7 +378,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             },
              new MenuModel()
             {
-                              Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports"
+              Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports"
 
              //  Name=AppResources.GeneralServices, ID="4",ImageSource="GeneralServices"
             },
@@ -393,11 +393,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 return new Command<MenuModel>((Selecteditem) =>
                 {
-                    /* foreach (var item in AfterLoginMenuLst)
-                     {
-                         item.IsSelected = false;
-                     }
-                     Selecteditem.IsSelected = true;*/
                     if (Selecteditem.ID == "Home")
                     {
 

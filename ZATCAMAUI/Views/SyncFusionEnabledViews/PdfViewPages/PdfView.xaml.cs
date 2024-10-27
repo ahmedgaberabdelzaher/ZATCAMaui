@@ -1,6 +1,4 @@
-﻿using Mopups.Services;
-using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage;
-using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+﻿using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
 {
@@ -38,23 +36,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
 
             }
         }
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            viewModel.DownloadUrl = string.Empty;
-            viewModel.PdfUrl = string.Empty;
 
-            if (viewModel.StreamForDownloadURL != null)
-            {
-                viewModel.StreamForDownloadURL.Flush();
-
-                if (viewModel.StreamForDownloadURL != null)
-                    viewModel.StreamForDownloadURL.Close();
-            }
-
-            viewModel.StreamForDownloadURL = null;
-            await viewModel.OnPageLoad();
-        }
         protected async override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -64,51 +46,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
             viewModel.StreamForDownloadURL = null;
         }
        
-        private async void Share_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                await email();
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-        public async Task email()
-        {
-            try
-            {
-                viewModel.IsLoading = true;
-                var message = new EmailMessage
-                {
-                    Subject = "Attached Form :",
-                };
-                if (viewModel.PdfBytes != null)
-                {
-                    var fn = "GAZT" + viewModel.TaxPayerProfile + ".pdf";
-                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
-                    File.WriteAllBytes(file, viewModel.PdfBytes);
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Share.RequestAsync(new ShareFileRequest
-                        {
-                            Title = Title,
-                            File = new ShareFile(file)
-                        });
-                    });
-
-                }
-                else
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThefileisstillloading));
-                }
-                viewModel.IsLoading = false;
-            }
-            catch (Exception)
-            {
-            }
-        }
+        
     }
 }

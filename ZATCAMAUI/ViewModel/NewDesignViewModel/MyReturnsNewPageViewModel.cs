@@ -894,21 +894,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
 
             }
         }
 
-        public void PopulateReturnTypeList()
+        public async Task PopulateReturnTypeList()
         {
 
 
             try
             {
                 string lang = UtilityManager.GetLanguageParameter();
-                var FilterValues = WebServiceManager.GAZTGetMyBillsFilterDropdownValues(App.TP.TIN, lang);
+                var FilterValues = await WebServiceManager.GAZTGetMyBillsFilterDropdownValues(App.TP.TIN, lang);
                 if (FilterValues != null)
                 {
                     TaxTypeForFilter = FilterValues;
@@ -933,7 +933,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
 

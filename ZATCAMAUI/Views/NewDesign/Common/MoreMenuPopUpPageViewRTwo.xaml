@@ -8,6 +8,7 @@
     BackgroundColor="#88000000"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FlowDirection="{Binding AppDirection}"
+    x:Name="page"
     mc:Ignorable="d">
     <Border
         Padding="15"
@@ -33,6 +34,7 @@
                         <ViewCell>
 
                             <Label
+                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                 FontFamily="{StaticResource SomarBold}"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"

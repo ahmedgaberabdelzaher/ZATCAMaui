@@ -6,6 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    x:Name="page"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <ContentView.Resources>
@@ -63,7 +64,8 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
-                                <StackLayout x:Name="selectedItem">
+                                <StackLayout x:Name="selectedItem"
+                                             FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                     <Label
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="18"

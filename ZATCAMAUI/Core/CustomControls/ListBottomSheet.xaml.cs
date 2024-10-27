@@ -7,6 +7,7 @@ namespace ZATCAMAUI.Core.CustomControls
         public ListBottomSheet()
         {
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
     }
 }

@@ -14,6 +14,7 @@
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
+    x:Name="page"
     mc:Ignorable="d">
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
@@ -282,7 +283,8 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                            <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}"
+                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                 <StackLayout Padding="10">
                                                     <StackLayout Orientation="Horizontal">
                                                         <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZStatus}" />

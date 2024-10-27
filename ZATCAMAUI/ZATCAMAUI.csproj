@@ -11,7 +11,8 @@
         <!-- Display name -->
         <ApplicationTitle>ZATCAMAUI</ApplicationTitle>
         <!-- App Identifier -->
-        <ApplicationId>com.zatca.Maui</ApplicationId>
+        <ApplicationId>com.gazt.egazt</ApplicationId>
+        <!--<ApplicationId>com.zatca.Maui</ApplicationId>-->
         <!-- <ApplicationId>com.gazt.enterprise.zatca</ApplicationId> -->
         <ApplicationIdGuid>c26ce74b-6e11-469c-a8c0-b07fe33a9b2d</ApplicationIdGuid>
         <!-- Versions -->
@@ -233,6 +234,12 @@
         </Compile>
         <Compile Update="AppResources.ar.Designer.cs">
             <DependentUpon>AppResources.ar.resx</DependentUpon>
+        </Compile>
+        <Compile Update="AppResources.ar.Designer.cs">
+          <DependentUpon>AppResources.ar.resx</DependentUpon>
+        </Compile>
+        <Compile Update="AppResources.Designer.cs">
+          <DependentUpon>AppResources.resx</DependentUpon>
         </Compile>
     </ItemGroup>
     <ItemGroup>

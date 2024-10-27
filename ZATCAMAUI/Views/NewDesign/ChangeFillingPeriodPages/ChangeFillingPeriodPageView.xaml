@@ -17,6 +17,7 @@
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
+    x:Name="page"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -58,7 +59,7 @@
                     </Image>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        <TapGestureRecognizer Command="{Binding GoBackClick}" />
                     </StackLayout.GestureRecognizers>
 
                 </StackLayout>
@@ -112,7 +113,9 @@
 
                 <Grid>
 
-                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ScrollView HorizontalOptions="FillAndExpand"
+                                VerticalScrollBarVisibility="Never"
+                                VerticalOptions="FillAndExpand">
                         <Grid>
 
                             <Grid.RowDefinitions>
@@ -121,14 +124,14 @@
                             </Grid.RowDefinitions>
                             <!--<Grid Grid.Row="0" >-->
                              <commonView:PageIndicatorView
-                                                            HeightRequest="16"
-                                                            Margin="24,32,24,0"
-                                                            MaxNum="{Binding MaxIndex}"
-                                                            MinNum="{Binding CurrentIndex}"
-                                                            Completed="{Binding MarkComplete}"
-                                                            VerticalOptions="CenterAndExpand"
-                                                            HorizontalOptions="End"
-                                                            DotSize="12" />
+                                        HeightRequest="16"
+                                        Margin="24,32,24,0"
+                                        MaxNum="{Binding MaxIndex}"
+                                        MinNum="{Binding CurrentIndex}"
+                                        Completed="{Binding MarkComplete}"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="End"
+                                        DotSize="12" />
 
                             <Grid Grid.Row="1">
 
@@ -295,13 +298,12 @@
                                         <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    FontSize="Small"
                                                     HorizontalOptions="FillAndExpand"
-                                                    IsEnabled="False"
-                                                    PlaceholderColor="Gray"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.VFCEffectiveDate}"
+                                                    Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding EffectiveDatePicked}"
-                                                    TextColor="{StaticResource PrimaryColor}"
                                                     VerticalOptions="CenterAndExpand">
 
                                                     <custom:GAZTBorderlessEntry.GestureRecognizers>
@@ -317,6 +319,9 @@
                                                 <Image Aspect="AspectFit" Source="arrowDropdown.png" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                         </custom:CustomSfTextInputView>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding EffectiveDateSpinnerClicked}" />
+                                        </StackLayout.GestureRecognizers>
                                     </StackLayout>
 
                                     <StackLayout
@@ -463,7 +468,8 @@
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Grid HorizontalOptions="FillAndExpand">
+                                                        <Grid HorizontalOptions="FillAndExpand"
+                                                              FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
                                                                 <RowDefinition Height="auto" />
@@ -544,7 +550,8 @@
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Grid HorizontalOptions="FillAndExpand">
+                                                        <Grid HorizontalOptions="FillAndExpand"
+                                                              FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
                                                                 <RowDefinition Height="auto" />
@@ -1259,7 +1266,8 @@
                                                         VerticalOptions="Center">
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate>
-                                                                <Grid Padding="5" HorizontalOptions="FillAndExpand">
+                                                                <Grid Padding="5" HorizontalOptions="FillAndExpand"
+                                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                                     <Grid.RowDefinitions>
                                                                         <RowDefinition Height="auto" />
                                                                     </Grid.RowDefinitions>
@@ -1293,7 +1301,8 @@
                                                         VerticalOptions="Center">
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate>
-                                                                <Grid Padding="5">
+                                                                <Grid Padding="5"
+                                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="*" />
                                                                         <ColumnDefinition Width="*" />
@@ -1321,7 +1330,8 @@
                                                         VerticalOptions="Center">
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate>
-                                                                <Grid Padding="5,0">
+                                                                <Grid Padding="5,0"
+                                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="*" />
                                                                         <ColumnDefinition Width="*" />

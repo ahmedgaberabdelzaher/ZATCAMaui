@@ -242,7 +242,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         #region Methods
 
-        public void OnPageLoad()
+        public async Task OnPageLoad()
         {
             try
             {
@@ -253,7 +253,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 CertificateListToVAT = new List<Result>();
                 CertificateListToET = new List<Result>();
                 CertificateListToAll = new List<Result>();
-                allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.userId );
+                allCertificate = await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.userId );
                 PopToRootPage();
                 if (allCertificate != null)
                 {
@@ -292,15 +292,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (InternetException ex)
             {
                 //_dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 _navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
                 
                 //   _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
-                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
         }
         public void FilterCertificateOnBasisOfType()

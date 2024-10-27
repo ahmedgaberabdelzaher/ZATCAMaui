@@ -72,11 +72,6 @@ namespace ZATCAMAUI.Core.Mangers
             client.DefaultRequestHeaders.Add("Accept", "application/json");
 
             var uri = new Uri(string.Format(URL));
-            //var financeData = JsonConvert.SerializeObject(PayLoad, new JsonSerializerSettings
-            //{
-            //    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
-            //    DateTimeZoneHandling = DateTimeZoneHandling.Utc
-            //});
             HttpContent contentPost = new StringContent(PayLoad, Encoding.UTF8, ZATCAConstants.ContentType);
             HttpResponseMessage response = await client.PostAsync(uri, contentPost);
             return response;

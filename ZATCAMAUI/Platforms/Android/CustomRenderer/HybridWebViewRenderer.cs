@@ -300,7 +300,7 @@ namespace ZATCAMAUI.Platforms.Android.CustomRenderer
             base.OnReceivedError(view, request, error);
         }
 
-        public override void OnPageFinished(global::Android.Webkit.WebView view, string url)
+        public override async void OnPageFinished(global::Android.Webkit.WebView view, string url)
         {
             var cookieHeader = CookieManager.Instance.GetCookie(url);
 
@@ -360,7 +360,7 @@ namespace ZATCAMAUI.Platforms.Android.CustomRenderer
 
                 try
                 {
-                    App.LoginDataRetrieved = WebServiceManager.SFGAZTGetLoginDataAndroid(url);
+                    App.LoginDataRetrieved = await WebServiceManager.SFGAZTGetLoginDataAndroid(url);
                 }
                 catch (Exception)
                 {

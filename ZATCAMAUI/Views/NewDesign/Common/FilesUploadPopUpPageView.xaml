@@ -9,6 +9,7 @@
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     BackgroundColor="#88000000"
+     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     FlowDirection="{Binding AppDirection}">
 
     <Border
@@ -47,11 +48,15 @@
                     x:Name="List"
                     HasUnevenRows="True"
                     HorizontalOptions="FillAndExpand"
-                    ItemTapped="Attachmentlist_ItemTapped"
+                    SelectedItem="{Binding AttachmentItem}"
                     ItemsSource="{Binding AttachmentList}"
                     MinimumHeightRequest="100"
                     SeparatorVisibility="None"
                     VerticalOptions="FillAndExpand">
+                    <ListView.Behaviors>
+                        <xct:EventToCommandBehavior Command="{Binding AttachmentItemSelected}" EventName="ItemSelected"/>
+
+                    </ListView.Behaviors>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

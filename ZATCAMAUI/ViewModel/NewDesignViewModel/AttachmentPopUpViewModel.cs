@@ -314,15 +314,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         }
 
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
         }
 
@@ -347,32 +344,46 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public async Task DeleteSelectedAttachment(string filename, string dougUD)
         {
             IsLoading = true;
-            await Task.Run(() =>
+            try
             {
-                try
+                string res = await WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
+                await PopToRootPage();
+                if (res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
                 {
-                    string res = WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
-                    PopToRootPage();
-                    if (res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
+                    for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
                     {
-                        for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
+                        if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
                         {
-                            if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
-                            {
-                                SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment.RemoveAt(i);
-                                ZakatReturnAttachmentsList.RemoveAt(i);
-                            }
+                            SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment.RemoveAt(i);
+                            ZakatReturnAttachmentsList.RemoveAt(i);
                         }
                     }
                 }
-                catch (InternetException ex)
+            }
+            catch (InternetException ex)
+            {
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+            }
+            try
+            {
+                string res = await WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
+                await PopToRootPage();
+                if (res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
+                    for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
                     {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    });
+                        if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
+                        {
+                            SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment.RemoveAt(i);
+                            ZakatReturnAttachmentsList.RemoveAt(i);
+                        }
+                    }
                 }
-            });
+            }
+            catch (InternetException ex)
+            {
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+            }
             IsLoading = false;
         }
 
@@ -380,22 +391,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public async Task ClearAllAttachment(string filename, string dougUD)
         {
             IsLoading = true;
-            await Task.Run(() =>
+
+            try
             {
-                try
-                {
-                    string res = WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
-                    PopToRootPage();
-                    
-                }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    });
-                }
-            });
+                string res = await WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
+                await PopToRootPage();
+
+            }
+            catch (InternetException ex)
+            {
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+            }
             IsLoading = false;
         }
 

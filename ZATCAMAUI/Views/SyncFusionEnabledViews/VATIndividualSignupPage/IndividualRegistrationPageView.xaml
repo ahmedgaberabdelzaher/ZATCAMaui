@@ -838,7 +838,6 @@
                                         <custom:CustomSfPicker
                                             x:Name="Picker_Region"
                                             Background="White"
-                                            FlowDirection="RightToLeft"
                                             IsVisible="{Binding SetStateListVisibility}"
                                             ItemHeight="40"
                                             Mode="Dialog"
@@ -1261,7 +1260,9 @@
 
 
 
-                                    <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
+                                    <Label HorizontalOptions="Start"
+                                           Margin="0,15,0,0"
+                                           Style="{StaticResource CardLabelBlack}">
 
                                         <Label.FormattedText>
                                             <FormattedString>

@@ -514,11 +514,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                         {
                             try
                             {
-                                await Task.Run(() =>
-                                {
-                                    IsLoading = true;
-                                });
-                                TINs = WebServiceManager.SFGAZTGetAllTINs(Email);
+                                IsLoading = true;
+                                TINs = await WebServiceManager.SFGAZTGetAllTINs(Email);
                                 if (TINs != null && TINs.Count != 0)
                                 {
                                     if (SelectedTinId == null)
@@ -528,30 +525,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                                 }
                                 else
                                 {
-                                    MainThread.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        IsVisibleTinIds = false;
-                                        await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
-                                    });
+                                    IsVisibleTinIds = false;
+                                    await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
                                     IsVisibleTinIds = false;
                                 }
-                                await Task.Run(() =>
-                                {
-                                    IsLoading = false;
-                                });
+                                IsLoading = false;
                             }
                             catch (Exception)
                             {
                                 IsVisibleTinIds = false;
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    IsVisibleTinIds = false;
-                                    await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
-                                });
-                                await Task.Run(() =>
-                                {
-                                    IsLoading = false;
-                                });
+                                IsVisibleTinIds = false;
+                                await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                                IsLoading = false;
                             }
                         }
                         catch (GAZTException gex)
@@ -570,10 +555,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                             {
                                 MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             }
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            });
+                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                         }
                     });
                 }

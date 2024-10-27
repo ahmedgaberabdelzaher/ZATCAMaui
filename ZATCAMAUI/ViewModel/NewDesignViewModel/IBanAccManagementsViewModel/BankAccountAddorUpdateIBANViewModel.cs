@@ -539,7 +539,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             ShowIDNumberPicker = new Command(() => { showPickerDialog(2); });
             ShowBankNamePicker = new Command(() => { showPickerDialog(3); });
             GoBackToNewForm = new Command(() => { SummaryEditClicked(); });
-            SummaryConBtnTapped = new Command(() => { SummaryConButtonClicked(); });
+            SummaryConBtnTapped = new Command(async () => { await SummaryConButtonClicked(); });
             OnAttachmentClickOne = new Command(async () =>
             {
                 await AddAttachmentTestOne();
@@ -868,7 +868,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             PickerModel = genericPickerModel;
         }
 
-        private async void showPickerDialog(int pickerID)
+        private async Task showPickerDialog(int pickerID)
         {
             try
             {
@@ -881,20 +881,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
                 else if (pickerID == 2)
                 {
-                    try
+                    if (SelectedIDType == "")
+                        return;
+                    else
                     {
-                        if (SelectedIDType == "")
-                            return;
-                        else
-                        {
-                            setIDNumberPickerModel();
-                            await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
-                        }
-
-                    }
-                    catch (Exception )
-                    {
-
+                        setIDNumberPickerModel();
+                        await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
                     }
 
                 }
@@ -907,18 +899,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
 
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -966,7 +950,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                             {
                                 CloseWhenBackgroundIsClicked = false
                             };
-                            somewarningpopup.OnDone = async () =>
+                            somewarningpopup.OnDone = () =>
                             {
                                 _navigationService.GoBack();
                             };

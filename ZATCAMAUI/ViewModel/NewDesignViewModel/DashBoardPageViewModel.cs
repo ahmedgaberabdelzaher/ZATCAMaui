@@ -1,6 +1,9 @@
 ﻿
+using AppDynamics.Agent;
 using Mopups.Services;
+using Newtonsoft.Json;
 using Syncfusion.Maui.Charts;
+using Syncfusion.Maui.ProgressBar;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
@@ -8,6 +11,7 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Services.Interface;
@@ -146,7 +150,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
 
 
-        ObservableCollection<SurveyQuestions> imojiesLst=new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() { ImojieSource = "Stronglysatisfied", ID = "64087eadfe688b43c294529d" }, new SurveyQuestions() { ImojieSource = "Satisfied", ID = "64087eadfe688b43c294529c" },  new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied",ID= "64087eadfe688b43c294529b" }, new SurveyQuestions() { ImojieSource = "Dissatisfied", ID = "64087eadfe688b43c294529a" },new SurveyQuestions() { ImojieSource = "Angry", ID = "64087eadfe688b43c2945299" } };
+        ObservableCollection<SurveyQuestions> imojiesLst = new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() { ImojieSource = "Stronglysatisfied", ID = "64087eadfe688b43c294529d" }, new SurveyQuestions() { ImojieSource = "Satisfied", ID = "64087eadfe688b43c294529c" }, new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied", ID = "64087eadfe688b43c294529b" }, new SurveyQuestions() { ImojieSource = "Dissatisfied", ID = "64087eadfe688b43c294529a" }, new SurveyQuestions() { ImojieSource = "Angry", ID = "64087eadfe688b43c2945299" } };
         public ObservableCollection<SurveyQuestions> ImojiesLst
         {
             get
@@ -480,18 +484,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
         }
 
-        public async Task  getActivityUpdateStatus()
+        public async Task getActivityUpdateStatus()
         {
-           
+
             await Task.Run(async () =>
             {
                 DashBoardUpdateViewResponseModel dashBoardUpdateViewResponse = await WebServiceManager.getTaxPayerActivityUpdateStatus();
 
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                if(dashBoardUpdateViewResponse != null && dashBoardUpdateViewResponse.d!=null&&dashBoardUpdateViewResponse.d.results!=null
-                && dashBoardUpdateViewResponse.d.results.Count>0&& dashBoardUpdateViewResponse.d.results[0]!=null
+                if (dashBoardUpdateViewResponse != null && dashBoardUpdateViewResponse.d != null && dashBoardUpdateViewResponse.d.results != null
+                && dashBoardUpdateViewResponse.d.results.Count > 0 && dashBoardUpdateViewResponse.d.results[0] != null
                 && !string.IsNullOrEmpty(dashBoardUpdateViewResponse.d.results[0].Msg))
-                await MopupService.Instance.PushAsync(new UpdateActivityInstructionsPageView(false, dashBoardUpdateViewResponse.d.results[0].Msg));
+                    await MopupService.Instance.PushAsync(new UpdateActivityInstructionsPageView(false, dashBoardUpdateViewResponse.d.results[0].Msg));
             });
 
         }
@@ -623,6 +627,62 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             {
                 _IsAccountsStatementLoading = value;
                 OnPropertyChanged("IsAccountsStatementLoading");
+            }
+        }
+
+        private bool isRefundreqMenuVisible;
+        public bool IsRefundreqMenuVisible
+        {
+            get
+            {
+                return isRefundreqMenuVisible;
+            }
+            set
+            {
+                isRefundreqMenuVisible = value;
+                OnPropertyChanged("IsRefundreqMenuVisible");
+            }
+        }
+
+        private bool isRefundreqMenuBoxVisible;
+        public bool IsRefundreqMenuBoxVisible
+        {
+            get
+            {
+                return isRefundreqMenuBoxVisible;
+            }
+            set
+            {
+                isRefundreqMenuBoxVisible = value;
+                OnPropertyChanged("IsRefundreqMenuBoxVisible");
+            }
+        }
+
+        private bool isFillingMenuVisible;
+        public bool IsFillingMenuVisible
+        {
+            get
+            {
+                return isFillingMenuVisible;
+            }
+            set
+            {
+                isFillingMenuVisible = value;
+                OnPropertyChanged("IsFillingMenuVisible");
+            }
+        }
+
+        private bool isFillingMenuBoxVisible;
+        public bool IsFillingMenuBoxVisible
+        {
+            get
+            {
+                return isFillingMenuBoxVisible;
+            }
+            set
+            {
+                isFillingMenuBoxVisible = value;
+                OnPropertyChanged("IsFillingMenuBoxVisible");
             }
         }
 
@@ -1441,7 +1501,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 if (_liveChatVisible)
                 {
                     _homeIndicatorColor = (Color)Application.Current.Resources["Primary"];
-                    MenuIndicatorColor = Color.FromRgb(255,255,255);
+                    MenuIndicatorColor = Color.FromRgb(255, 255, 255);
                 }
 
                 this.OnPropertyChanged("LiveChatVisible");
@@ -1961,7 +2021,410 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
         #endregion
 
         #region Method
-        public async void verifyPaymentAndShowBillsPopup(OverduePaymentAndUnSubmittedReturn BModel)
+        public bool isTimerOff = false;
+        public bool isFirstTime = true;
+
+        public void RefreshDashboardCommand()
+        {
+            if (MenuViewVisible)
+            {
+
+                var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnMenuTapped", AppResources.ZZZMenu + " Page");
+                MenuViewVisible = true;
+                HomeViewVisible = false;
+                AccountStatementVisible = false;
+                LiveChatVisible = false;
+                HomeIndicatorColor = Microsoft.Maui.Graphics.Colors.White;
+                MenuIndicatorColor = (Color)Application.Current.Resources["Primary"];
+                StackMenuColor = Microsoft.Maui.Graphics.Colors.Transparent;
+                TabbarColor = Microsoft.Maui.Graphics.Colors.Transparent;
+                IsToolbarTaxVisible = false;
+
+                IsToolbarTaxVisible = false;
+
+
+                Instrumentation.EndCall(callTracker);
+            }
+            else
+            {
+
+                var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnHomeTapped", "Home Page");
+                MenuViewVisible = false;
+                HomeViewVisible = true;
+                AccountStatementVisible = false;
+                LiveChatVisible = false;
+                HomeIndicatorColor = (Color)Application.Current.Resources["Primary"];
+                MenuIndicatorColor = Microsoft.Maui.Graphics.Colors.White;
+                TabbarColor = Microsoft.Maui.Graphics.Colors.DarkGray;
+                StackMenuColor = Microsoft.Maui.Graphics.Colors.White;
+
+                IsToolbarTaxVisible = true;
+
+                IsToolbarTaxVisible = true;
+
+                Instrumentation.EndCall(callTracker);
+            }
+        }
+
+        public async Task OnAppearing()
+        {
+            try
+            {
+                await OnDataLoad();
+                RefreshDashboardCommand();
+                getYesCommandToLogout();
+
+
+                isPayNowTapped = false;
+
+                NextCommitmentsString = AppResources.ZZMyCommitments;
+                PaidString = AppResources.Paid + " " + PaidBillCount;
+                UnPaidString = AppResources.UnPaid + " " + UnPaidBillCount;
+                PartiallyPaidString = AppResources.Partiallynewui + " " + PartiallyPaidBillCount;
+                TotalString = AppResources.NDTotalNumberOfBills;
+                MessagingCenter.Subscribe<object>(this, "UpdateProgressBar", (sender) =>
+                {
+                    SfLinearProgressBar rangeColors = new SfLinearProgressBar();
+                    rangeColors.GradientStops.Add(new ProgressGradientStop
+                    {
+                        Color = (Color)Application.Current.Resources["Green"],
+                        Value = 0
+                    });
+                    rangeColors.GradientStops.Add(new ProgressGradientStop
+                    {
+                        Color = (Color)Application.Current.Resources["Error"],
+                        Value = 100
+                    });
+
+                });
+                isTimerOff = false;
+                StartTimer();
+                IsLoading = false;
+
+
+
+
+
+
+                if (App.isMybillsRefresh)
+                {
+
+                    await LoadDashboardData();
+
+                }
+
+
+                //code to refresh Dashboard Returns count 
+
+                if (SubmittedCount != null)
+                {
+
+                    IsLoading = true;
+
+                    DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.userId);
+
+                    PopulateReturnsInformation();
+                    IsLoading = false;
+
+                }
+
+                MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
+                MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", async (sender, arg) =>
+                {
+                    await ShowPaymentOptions();
+                    isPayNowTapped = false;
+
+                });
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", (sender, arg) =>
+                {
+                    MadaPaymentSelected();
+                    isPayNowTapped = false;
+
+                });
+                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
+                {
+                    await SadadPaymentSelected();
+                    isPayNowTapped = false;
+                });
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        public async Task OpenBrowser(Uri uri)
+        {
+            await Launcher.OpenAsync(uri);
+        }
+
+        public void getYesCommandToLogout()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesPressedToLogout", async (sender, arg) =>
+                {
+                    App.TP = null;
+                    await LogOut();
+                });
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+
+        private async Task LoadData()
+        {
+            try
+            {
+                IsLoading = true;
+
+
+                if (App.TP != null)
+                {
+                    await LoadDashboardData();
+
+                }
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    BillCount = string.Empty;
+                    BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
+
+                    //To load default commintments 
+                    SelectedCommitmentFilterLabelValue = CommitmentsListFilter[0];
+                    SelectedCommitmentFilterValue = CommitmentsListFilter[0];
+
+                    PopulateBillsInformation();
+                    PopulateReturnsInformation();
+                    PopualateCommittmentsInformation();
+
+
+                    IsLoading = false;
+                });
+            }
+            finally { IsLoading = false; }
+        }
+
+        public async Task OnDataLoad()
+        {
+
+            App.IsComingFromSleepMode = false;
+
+
+            try
+            {
+                await LoadData();
+
+                if (App.LoginDataRetrieved != null)
+                {
+                    if (App.TP.VtpmFg == "X")
+                    {
+                        VatProfitGoodsTileTxt = AppResources.VATProfitDeregisterTile;
+                    }
+                    else
+                    {
+                        VatProfitGoodsTileTxt = AppResources.ZProfitgoodsSCSRTile;
+                    }
+                    istileUpdated = true;
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        IsEstablishmentRegistrationTileVisible = false;
+                        IsVatRegistrationTileVisible = true;
+                        IsRegistrationDetailsTileVisible = true;
+                        IfRegInZakat = true;
+                        IsRefundreqMenuVisible = IsRefundreqMenuBoxVisible = false;
+                        IsFillingMenuVisible = IsFillingMenuBoxVisible = false;
+                    }
+                    else if (App.LoginDataRetrieved.ZkReg == "U")
+                    {
+                        IsEstablishmentRegistrationTileVisible = true;
+                        IsRegistrationDetailsTileVisible = false;
+
+                    }
+                    else if (App.LoginDataRetrieved.ZkReg == "N")
+                    {
+                        IsEstablishmentRegistrationTileVisible = false;
+                        IsRegistrationDetailsTileVisible = false;
+                    }
+
+                    if (App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        IsVatRegistrationTileVisible = false;
+                        IfRegInZakat = false;
+                        IsSubsidyTileVisible = true;
+
+                    }
+                    else if (App.LoginDataRetrieved.VtReg == "R")
+                    {
+                        IsVatRegistrationTileVisible = false;
+                        IfRegInZakat = false;
+                        IfnotRegInVATAndZakat = true;
+                        IfSignUpnNotRegInVATShowVATServie = true;
+                        IsSubsidyTileVisible = false;
+
+                    }
+                    else if (App.LoginDataRetrieved.VtReg == "")
+                    {
+                        IfSignUpnNotRegInVATShowVATServie = false;
+                    }
+
+                    if (App.LoginDataRetrieved.ZkSignup == "X")
+                    {
+                        if (App.LoginDataRetrieved.ZkReg == string.Empty)
+                        {
+                            IsVatRegistrationTileVisible = false;
+                            IsEstablishmentRegistrationTileVisible = true;
+                        }
+
+                    }
+                    else if (App.LoginDataRetrieved.VtSignup == "X")
+                    {
+                        if (App.LoginDataRetrieved.VtReg == string.Empty)
+                        {
+                            IsEstablishmentRegistrationTileVisible = false;
+                            IsVatRegistrationTileVisible = true;
+                            IfSignUpnNotRegInVAT = true;
+                            IsSubsidyTileVisible = false;
+                        }
+                    }
+                    if (App.LoginDataRetrieved.ZkReg == "X" && App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        IfRegInZakat = true;
+                        IsRefundreqMenuVisible = IsRefundreqMenuBoxVisible = true;
+                        IsFillingMenuVisible = IsFillingMenuBoxVisible = true;
+
+
+                    }
+
+                    if ((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
+                    {
+                        IfnotRegInVATAndZakat = false;
+                    }
+                    if (App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        IfnotRegInVATAndZakat = true;
+                        IfSignUpnNotRegInVATShowVATServie = true;
+                        IfSignUpnNotRegInVAT = false;
+                    }
+                    else if (App.LoginDataRetrieved.VtReg == string.Empty)
+                    {
+                        IfSignUpnNotRegInVATShowVATServie = false;
+                        IfSignUpnNotRegInVAT = true;
+                    }
+                    else if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        IfSignUpnNotRegInVAT = true;
+                    }
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        IfnotRegInVATAndZakat = true;
+                    }
+                    if (App.LoginDataRetrieved.CozatcaTile == "X")
+                    {
+                        IsContactZatcaEmpTileVisible = true;
+                    }
+                }
+
+            }
+            catch
+            {
+                IsVatRegistrationTileVisible = true;
+            }
+
+            App.HasToRefreshLoaderOnDashboard = false;
+
+
+        }
+
+
+        private void StartTimer()
+        {
+            int counter = 120;
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                counter = counter - 1;
+                if (counter == 0)
+                {
+                    if (App.TP != null)
+                    {
+
+                        counter = 120;
+                        App.HasToRefreshLoaderOnDashboard = true;
+                        OnDataLoad();
+                    }
+                    else
+                    {
+                        isTimerOff = true;
+
+                    }
+
+
+                }
+                return !isTimerOff;
+            });
+        }
+
+        public void SetRTLDirection()
+        {
+            try
+            {
+                string langName = "ar-AE";
+                CultureInfo ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+                TranslateText = "English";
+
+                NextCommitmentsString = AppResources.ZZMyCommitments;
+                BillString = AppResources.ZZZDBMyPayments;
+                ReturnString = AppResources.ZZZDBMyReturns;
+
+                PaidString = AppResources.Paid + " " + PaidBillCount;
+                UnPaidString = AppResources.UnPaid + " " + UnPaidBillCount;
+                PartiallyPaidString = AppResources.Partiallynewui + " " + PartiallyPaidBillCount;
+                TotalString = AppResources.NDTotalNumberOfBills;
+                WelcomeText = AppResources.ZZZWelcomeOnLanding;
+                Rotation = 180;
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        public void SetLTRDirection()
+        {
+            try
+            {
+                string langName = "en-US";
+                CultureInfo ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+                TranslateText = "عربي";
+
+                NextCommitmentsString = AppResources.ZZMyCommitments;
+                BillString = AppResources.ZZZDBMyPayments;
+                ReturnString = AppResources.ZZZDBMyReturns;
+
+                PaidString = AppResources.Paid + " " + PaidBillCount;
+                UnPaidString = AppResources.UnPaid + " " + UnPaidBillCount;
+                PartiallyPaidString = AppResources.Partiallynewui + " " + PartiallyPaidBillCount;
+                TotalString = AppResources.NDTotalNumberOfBills;
+                WelcomeText = AppResources.ZZZWelcomeOnLanding;
+                Rotation = 0;
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+        }
+
+        public async Task verifyPaymentAndShowBillsPopup(OverduePaymentAndUnSubmittedReturn BModel)
         {
             this.BModel = BModel;
             var newMultiplePayableBills = new ObservableCollection<MyBills>();
@@ -1969,21 +2432,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             foreach (var item in AllBills)
             {
 
-                newMultiplePayableBills.Add(new MyBills { 
-                    VTRE2=item.sadadBillNumber,
+                newMultiplePayableBills.Add(new MyBills
+                {
+                    VTRE2 = item.sadadBillNumber,
                     MadabutFg = item.MadabutFg,
-                    TestDueAmount =item.amount,
+                    TestDueAmount = item.amount,
                     //FormatedFaedn=item.FormatedDuedate,
-                    StatusText=item.ICRStatus,
-                    Fbnum=item.formBundleNumber,
-                    Txt30=item.taxTypeDescription
+                    StatusText = item.ICRStatus,
+                    Fbnum = item.formBundleNumber,
+                    Txt30 = item.taxTypeDescription
 
                 });
             }
 
             if (AllBills != null && AllBills.Count > 0)
             {
-                MultiplePayableBills = new ObservableCollection<MyBills>(newMultiplePayableBills.Where(x => !String.IsNullOrEmpty(BModel.sadadBillNumber) && x.VTRE2.Equals(BModel.sadadBillNumber)).ToList());
+                MultiplePayableBills = new ObservableCollection<MyBills>(newMultiplePayableBills.Where(x => !string.IsNullOrEmpty(BModel.sadadBillNumber) && x.VTRE2.Equals(BModel.sadadBillNumber)).ToList());
             }
 
             if (MultiplePayableBills != null && MultiplePayableBills.Count > 1)
@@ -1995,11 +2459,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
             else
             {
-                showPaymentOptions();
+                await ShowPaymentOptions();
             }
         }
 
-        public async void showPaymentOptions()
+        public async Task ShowPaymentOptions()
         {
 
             if (BModel != null)
@@ -2031,23 +2495,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
         public async Task SadadPaymentSelected()
         {
-            /*_navigationService.GoBack();*/
-            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, 0);
+            await _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, 0);
         }
 
         public async Task ApplePaySelected()
         {
 
-            DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo, "A");
+            await DoValidatePayment(fbNum: selectedFbNum, selectedSadadNo, "A");
         }
-        public void MadaPaymentSelected()
+        public async Task MadaPaymentSelected()
         {
-
-
-            DoValidatePayment(selectedFbNum, selectedSadadNo, "Mada Payment");
-
-
-
+            await DoValidatePayment(selectedFbNum, selectedSadadNo, "Mada Payment");
 
         }
 
@@ -2103,18 +2561,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                         if (paymentType == "Mada Payment")
                         {
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                            IsLoading = true;
+                            //CR7420
+                            CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
+                            IsLoading = false;
+                            if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
                             {
-                                IsLoading = true;
-                                //CR7420
-                                CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
-                                IsLoading = false;
-                                if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
-                                {
-                                    App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
-                                 await   _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
-                                }
-                            });
+                                App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                                await _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                            }
                         }
 
                     }
@@ -2124,44 +2579,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 }
                 catch (GAZTValidatePaymentInProcessException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        //_navigationService.GoBack();
-                    });
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
 
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
-                    });
-                }
-                catch (GAZTNetworkConnectivityIssueException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
-                    });
-                }
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                catch (InternetException)
                 {
                     IsLoading = false;
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
-                });
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                }
+            }
+            catch (InternetException)
+            {
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                _navigationService.GoBack();
             }
         }
 
@@ -2183,13 +2621,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             catch (GAZTValidateMadaPaymentException ex)
             {
                 IsLoading = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    //_navigationService.GoBack();
-                });
+                var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                 return null;
             }
             catch (Exception)
@@ -2241,15 +2674,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                 paymentInfo.Period = response.d.PerslTxt;
                             }
 
-                         await   _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
+                            await _navigationService.NavigateTo(App.MyBillsSuccessPageView, paymentInfo);
                         }
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
-                            });
-
+                            await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
                         }
 
                     }
@@ -2258,33 +2687,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 }
                 catch (GAZTValidatePaymentInProcessException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
-                catch (InternetException )
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
-                    });
-                }
-            }
-            catch (InternetException )
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                catch (InternetException)
                 {
                     IsLoading = false;
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
-                });
+                }
+            }
+            catch (InternetException)
+            {
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                _navigationService.GoBack();
             }
         }
 
@@ -2292,6 +2710,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
         {
             try
             {
+                IsLoading = true;
                 string UserId = App.LoginDataRetrieved.TIN;
                 TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileAndUpdatePasswordAPICall(UserId);
                 if (TPProfile != null)
@@ -2309,41 +2728,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                         }
                     }
                 }
-                try
-                {
-                    DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.LoginDataRetrieved.TIN);
-                   // ProfitGoods goods = await WebServiceManager.TilesSetRecovery();
-
-                }
-                catch (GAZTErrorException ex)
-                {
-
-                    
-                    
-                }
+                DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.LoginDataRetrieved.TIN);
 
                 await GetAccountStatments();
                 await GetBillsAndReturns();
 
                 if (App.isMybillsRefresh)
                 {
-                    _ = Task.Run(async () =>
-                    {
-                        PopulateBillsInformation();
-                    });
+                    PopulateBillsInformation();
                 }
                 else
                 {
-                    _ = Task.Run(async () =>
-                    {
-                        PopualateCommittmentsInformation();
-                    });
+                    PopualateCommittmentsInformation();
                     if (DashboardData.data[0] != null && DashboardData.data[0].instructionAction != null)
                     {
                         if (DashboardData.data[0].instructionAction == "X")
                         {
                             IsInstalmentPlanVisible = true;
-                            _ = Task.Run(getDashboardInstalmentPlan);
+                            await getDashboardInstalmentPlan();
                         }
                         else
                         {
@@ -2373,42 +2775,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                         {
                             MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                         }
-                        MainThread.BeginInvokeOnMainThread(async () =>
+                        if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
                         {
-                            if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
-                            {
-                                MainThread.BeginInvokeOnMainThread(() =>
-                                {
-                                    _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                });
-                                _navigationService.GoBack();
-                            }
-                            else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
-                            {
-                                MainThread.BeginInvokeOnMainThread(() =>
-                                {
-                                    _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                });
-                                _navigationService.GoBack();
-                            }
-                            else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
-                            {
-                                PopToRootPage();
-                            }
-                        });
+                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            _navigationService.GoBack();
+                        }
+                        else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
+                        {
+                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            _navigationService.GoBack();
+                        }
+                        else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
+                        {
+                            PopToRootPage();
+                        }
                     }
 
                 }
             }
             catch (GAZTSessionExpiredException)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                    PopToRootPage();
-                });
+                await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                PopToRootPage();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
             }
@@ -2427,7 +2817,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
             ObservableCollection<MyBills> ACBills = new ObservableCollection<MyBills>();
 
-            ObservableCollection<MyBills> TempBills = await WebServiceManager.GAZTGetMyBills(App.LoginDataRetrieved.TIN, lang,"Bills");
+            ObservableCollection<MyBills> TempBills = await WebServiceManager.GAZTGetMyBills(App.LoginDataRetrieved.TIN, lang, "Bills");
 
             if (TempBills != null)
             {
@@ -2470,7 +2860,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
 
 
-            
+
             if (ACStatementBills != null && ACStatementBills.Count > 2)
             {
                 LastTransactionsListHeight = 220;
@@ -2510,22 +2900,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(UtilityManager.GetLanguageParameter(), App.LoginDataRetrieved.TIN);
                 AllBills = TempBills;
 
-            if (TempBills != null)
-            {
-
-                var newItems = TempBills.ToList();
-
-                if (newItems != null)
+                if (TempBills != null)
                 {
-                    if (newItems.Count > 3)
+
+                    var newItems = TempBills.ToList();
+
+                    if (newItems != null)
                     {
-                        for (int i = 0; i < 3; i++)
+                        if (newItems.Count > 3)
                         {
-
-                            var singleItem = newItems[i];
-
-                            try
+                            for (int i = 0; i < 3; i++)
                             {
+
+                                var singleItem = newItems[i];
+
+                                try
+                                {
 
                                     if (singleItem.revenueType != null)
                                     {
@@ -2595,26 +2985,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                         }
                                     }
                                 }
-                            catch (Exception ex)
-                            {
-                                
-                                
-                                
+                                catch (Exception ex)
+                                {
 
+
+
+
+                                }
+
+
+                                pendingBills.Add(singleItem);
                             }
-
-
-                            pendingBills.Add(singleItem);
                         }
-                    }
-                    else
-                    {
-                        for (int i = 0; i < newItems.Count; i++)
+                        else
                         {
-                            var singleItem = newItems[i];
-
-                            try
+                            for (int i = 0; i < newItems.Count; i++)
                             {
+                                var singleItem = newItems[i];
+
+                                try
+                                {
 
                                     if (singleItem.revenueType != null)
                                     {
@@ -2684,63 +3074,60 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                         }
                                     }
                                 }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine(e.Message);
-                                Console.Write(e.StackTrace.ToString());
+                                catch (Exception)
+                                {
+                                }
 
+                                pendingBills.Add(singleItem);
                             }
-
-                            pendingBills.Add(singleItem);
                         }
-                    }
-                    foreach (OverduePaymentAndUnSubmittedReturn ee in newItems)
-                    {
-                        temp1.Add(ee);
-                        if (ee.amount != null)
+                        foreach (OverduePaymentAndUnSubmittedReturn ee in newItems)
                         {
-                            MyObligationAmount += Double.Parse(ee.amount);
+                            temp1.Add(ee);
+                            if (ee.amount != null)
+                            {
+                                MyObligationAmount += Double.Parse(ee.amount);
+                            }
                         }
                     }
                 }
-            }
 
 
-            if (MyObligationAmount > 0)
-            {
-                IsMyObligationsClear = false;
-                IsBodyMyTaxVisible = true;
-            }
-            else
-            {
-                IsMyObligationsClear = true;
-                IsBodyMyTaxVisible = false;
-            }
+                if (MyObligationAmount > 0)
+                {
+                    IsMyObligationsClear = false;
+                    IsBodyMyTaxVisible = true;
+                }
+                else
+                {
+                    IsMyObligationsClear = true;
+                    IsBodyMyTaxVisible = false;
+                }
 
-            MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
+                MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
 
-            Bills = temp1;
-            PendingBills = pendingBills;
-            if (PendingBills.Count == 0)
-            {
-                IsPendingBillsVisible = false;
-            }
-            else
-            {
-                IsPendingBillsVisible = true;
-            }
-            if (PendingBills != null && PendingBills.Count > 2)
-            {
-                PendingBillsListHeight = 250;
-            }
-            else if (PendingBills != null && PendingBills.Count > 1)
-            {
-                PendingBillsListHeight = 170;
-            }
-            else
-            {
-                PendingBillsListHeight = 83;
-            }
+                Bills = temp1;
+                PendingBills = pendingBills;
+                if (PendingBills.Count == 0)
+                {
+                    IsPendingBillsVisible = false;
+                }
+                else
+                {
+                    IsPendingBillsVisible = true;
+                }
+                if (PendingBills != null && PendingBills.Count > 2)
+                {
+                    PendingBillsListHeight = 250;
+                }
+                else if (PendingBills != null && PendingBills.Count > 1)
+                {
+                    PendingBillsListHeight = 170;
+                }
+                else
+                {
+                    PendingBillsListHeight = 83;
+                }
 
 
                 var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
@@ -2754,15 +3141,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             catch (GAZTErrorException ex)
             {
 
-                
-                
+
+
             }
 
         }
         private async Task getDashboardInstalmentPlan()
         {
 
-            InstalmentResponse = WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.LoginDataRetrieved.TIN);
+            InstalmentResponse = await WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.LoginDataRetrieved.TIN);
 
             var items = new ObservableCollection<InstalmentPlanResult>();
 
@@ -2855,9 +3242,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     {
                         if (SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
                         {
-                             BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a =>
-                             (a.dueDate!=null&&DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) <= 0)
-                             ||(a.dueDate != null && DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) <= 0)).ToList();
+                            BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a =>
+                            (a.dueDate != null && DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) <= 0)
+                            || (a.dueDate != null && DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) <= 0)).ToList();
 
                             foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
                             {
@@ -2865,7 +3252,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                                 if (item.IsPaymentOverdue)
                                 { date = Convert.ToDateTime(item.dueDate); }
-                                else { date = Convert.ToDateTime(item.dueDate);
+                                else
+                                {
+                                    date = Convert.ToDateTime(item.dueDate);
                                 }
 
                                 if (App.IsArabic)
@@ -2877,7 +3266,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                         {
                                             if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                             {
-                                            item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                                item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
                                                 if (!item.IsPaymentOverdue)
                                                 {
                                                     var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -2908,7 +3297,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                                 }
                                                 else
                                                 {
-                                                  item.Month = date.Year.ToString();
+                                                    item.Month = date.Year.ToString();
                                                 }
                                             }
                                             else
@@ -3122,7 +3511,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                 }
             }
-            catch (GAZTSessionExpiredException )
+            catch (GAZTSessionExpiredException)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -3156,7 +3545,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 IsBillsTotalAmountEN = false;
             }
             else
-            { 
+            {
                 IsBillsTotalAmountAR = false;
                 IsBillsTotalAmountEN = true;
 
@@ -3416,7 +3805,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
         }
 
-        public async void PopulateStatements(string taxType, string statementFilter, string year)
+        public async Task PopulateStatements(string taxType, string statementFilter, string year)
         {
             try
             {
@@ -3455,11 +3844,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     amountWithComma = _testDueAmount;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return amountWithComma;
         }
+
         public async Task LogOut()
         {
             try
@@ -3481,20 +3871,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 await WebServiceManager.GAZTLogOff();
                 IsLoading = false;
 
-                MainThread.BeginInvokeOnMainThread(async() =>
-                {
-                    App.IsLogOut = true;
-                    App.IsLoginCalled = false;
-                    App.IsSamlApiCalledAndroid = false;
+                App.IsLogOut = true;
+                App.IsLoginCalled = false;
+                App.IsSamlApiCalledAndroid = false;
 
-                    App.LoginDataRetrieved = null;
-                    App.httpClientHandler = new HttpClientHandler();
-                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-                 await   _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                App.LoginDataRetrieved = null;
+                App.httpClientHandler = new HttpClientHandler();
+                App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                await _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
 
-
-                });
             }
             catch (Exception)
             {
@@ -3507,6 +3893,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
         }
 
         #endregion
+
         #region Survey
         bool iSEndSurvey;
         public bool ISEndSurvey { get { return iSEndSurvey; } set { iSEndSurvey = value; OnPropertyChanged(); } }
@@ -3517,11 +3904,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             {
                 return new Command<string>(async (currentStep) =>
                 {
-
-                    /* if (currentStep== "3")
-                     {
-                         ISEndSurvey = true;
-                     } */
                     SurveyCurrentStep = int.Parse(currentStep);
 
                     if (SurveyCurrentStep == 4)
@@ -3553,7 +3935,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 {
 
                     SelctedImojy = selected;
-                    if (selected.ID== "64087eadfe688b43c294529a" || selected.ID== "64087eadfe688b43c2945299")
+                    if (selected.ID == "64087eadfe688b43c294529a" || selected.ID == "64087eadfe688b43c2945299")
                     {
                         QuestionTxt = AppResources.SurveyQ2;
                         QNumber = 2;
@@ -3611,13 +3993,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     if (!IsShowMsgView)
                     {
 
-                 IsShowMsgView = await HaveSurveyForToday();
+                        IsShowMsgView = await HaveSurveyForToday();
                         if (IsShowMsgView)
                         {
                             SurveyPopUp poupWindow = new SurveyPopUp();
                             await MopupService.Instance.PushAsync(poupWindow);
                         }
                     }
+
+                    await OnAppearing();
                 });
             }
         }
@@ -3631,6 +4015,395 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     SurveyCurrentStep = 3;
                     IsLoading = true;
                     await AddSurveyForToday(isdismiss == "0" ? false : true);
+                    IsLoading = false;
+                });
+            }
+        }
+
+        public ICommand VatRegistrationCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATRegistration_Details_Tapped", "VAT Registration Details eService");
+                    await _navigationService.NavigateTo(App.VATRegistrationPageView);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand GeneralServicesCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "GeneralServices_Tapped", "General Services");
+                    await _navigationService.NavigateTo(App.GeneralServicesListPageView);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand TappedOnMyBills
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnMyBills", AppResources.MyBills + " Page");
+                    BillInfo billInfo = new BillInfo();
+                    await _navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand TappedOnUnSubmitted
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Unsubmitted Return from Dashboard");
+                    await _navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 1);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand TappedOnSubmitted
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Submitted Return from Dashboard");
+                    await _navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 0);
+
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand TappedOnOverDue
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Overdue Return from Dashboard");
+                    await _navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 2);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand LabelMyBillsCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "MyBills_Tapped", "All Bills from Dashboard");
+
+                    BillInfo billInfo = new BillInfo();
+                    billInfo.BillTypeName = AppResources.UnPaid;
+                    await _navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand LabelMyRetunsCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "MyRetuns_Tapped", "Returns eService");
+
+                    await _navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand LabelMyProfileCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "MyProfile_Tapped", "My Profile eService");
+
+                    await _navigationService.NavigateTo(App.TaxpayerProfilePageView);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand TaxpayerCertificateCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TaxpayerCertificate_Tapped", "My Certificates eService");
+                    await _navigationService.NavigateTo(App.TaxpayersCertificatesPageView);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand OnApplicationStatusCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnApplicationStatus_Tapped", "Application Status eService");
+                    await _navigationService.NavigateTo(App.FormBundleStatusPageView);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand ToolbarMyTaxCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnMyBills", AppResources.MyBills + " Page");
+                    BillInfo billInfo = new BillInfo();
+                    billInfo.BillTypeName = AppResources.All;
+                    await _navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand OnEduLinkCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("DashboardPageView", "EduLink_Tapped", "Education Link");
+                    Uri uri = new Uri("https://edujourneys.zatca.gov.sa/home/tracks");
+                    await OpenBrowser(uri);
+
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand BillsPayNowCommand
+        {
+            get
+            {
+                return new Command<object>(async (sender) =>
+                {
+                    try
+                    {
+                        if (!isPayNowTapped)
+                        {
+                            isPayNowTapped = true;
+                            Border payNowCard = sender as Border;
+                            OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
+
+                            await verifyPaymentAndShowBillsPopup(BModel);
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                });
+            }
+        }
+
+        public ICommand InstalmentPlanCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ZakatInstalmentPlan_Tapped", "Zakat Instalment eService");
+                    await _navigationService.NavigateTo(App.InstalmentPlanPageView);
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand AccountStatements
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "AccountStatements_Tapped", "Account Statements eService");
+
+                    await _navigationService.NavigateTo(App.AccountStatementBillsPageView);
+
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand OnZakatNowCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnZakatNowTapped", "Establishment Registration eService");
+                    if (App.LoginDataRetrieved.ZkReg == "U")
+                    {
+                        App.ZAKATType = PageExecutionType.Update;
+                        await _navigationService.NavigateTo(App.EstablishmentAmendUpdatePage);
+                    }
+                    else
+                    {
+                        await _navigationService.NavigateTo(App.EstablishmentRegistrationPage);
+                    }
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand OnSupportCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnSupportTapped", "Support");
+                    await _navigationService.NavigateTo(App.SupportPageView);
+
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand InboxCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "Inbox_Tapped", "Inbox eService");
+
+                    await _navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+        public ICommand RefundRequestCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATRefundRequest_Tapped", "VAT Refund Request eService");
+                    await _navigationService.NavigateTo(App.VATRefundsListPageView);
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand LogoutCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await MopupService.Instance.PushAsync(new LogoutPageView(AppResources.LogoutConfirmationMessage));
+                });
+            }
+        }
+
+        public ICommand TappedOnMyReturnsCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnMyReturns", AppResources.Returns + " Page");
+                    await _navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 3);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand ProfitOnGoodsCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await _navigationService.NavigateTo(App.NewYesorNoPageView);
+                });
+            }
+        }
+
+        public ICommand TaxPayerSubsidyRequestCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TaxPayerSubsidyRequestTapped", "TaxPayer Subsidy Request");
+                    var a = App.LoginDataRetrieved;
+                    IsLoading = true;
+
+                    string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync("MSUB");
+
+                    if (response != null && response.Length > 0)
+                    {
+                        SubsidyResponseModel subsidyResponseModel = JsonConvert.DeserializeObject<SubsidyResponseModel>(response);
+                        if (subsidyResponseModel != null && subsidyResponseModel.Data != null)
+                        {
+
+                            if (!string.IsNullOrEmpty(subsidyResponseModel.Data.FormBundleGUID))
+                            {
+
+                                string url = subsidyResponseModel.Data.ExternalPortal;
+                                url += "?";
+                                url += "culture=" + WebServiceManager.GetLangZParameterAREN();
+                                url += "&tin=" + App.LoginDataRetrieved.TIN;
+                                url += "&token=" + subsidyResponseModel.Data.FormBundleGUID;
+                                url += "&device=MA";
+                                ZATCAConstants.TaxpayerSubsidyRequest = url;
+
+                                await _navigationService.NavigateTo(App.TaxpayerSubsidyRequest);
+                                Instrumentation.EndCall(callTracker);
+                            }
+
+
+                        }
+                    }
                     IsLoading = false;
                 });
             }
@@ -3739,6 +4512,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
         public async Task<bool> HaveSurveyForToday()
         {
+            IsLoading = true;
             CultureInfo enCul = new CultureInfo("en-US");
             var date = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
             var res = await _surveyServices.GetSurveyByDate(App.TP.Tin, date);
@@ -3751,20 +4525,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     return true;
                 }
             }
+            IsLoading = false;
             return false;
         }
 
         #endregion
+
         public override ICommand MenuNavigationCommand
         {
             get
             {
-                return new Command<MenuModel>((Selecteditem) =>
+                return new Command<MenuModel>(async (Selecteditem) =>
                 {
                     if (Selecteditem.ID == "Home")
                     {
 
-                        _navigationService.NavigateTo($"{Selecteditem.ID}", "3");
+                        await _navigationService.NavigateTo($"{Selecteditem.ID}", "3");
 
                         return;
                     }
@@ -3782,8 +4558,156 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                         HomeViewVisible = true;
                         return;
                     }
-                    _navigationService.NavigateTo($"{Selecteditem.ID}");
+                    await _navigationService.NavigateTo($"{Selecteditem.ID}");
 
+                });
+            }
+        }
+
+        public ICommand ContractReleaseCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ContractRelease_Tapped", "Contract Release eService");
+
+                    await _navigationService.NavigateTo(App.ContractReleaseListPageView);
+
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+        public ICommand ZakatInstalmentPlanCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ZakatInstalmentPlan_Tapped", "Zakat Instalment eService");
+
+                    await _navigationService.NavigateTo(App.InstalmentPlanPageView);
+
+
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+        public ICommand ChnageFillingPeriodCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ChangeFillingPeriod_Tapped", "Change Filing Period eService");
+
+                    await _navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
+
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand VatReviewCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "Vat_Review_Tapped", "Objections eService");
+
+                    await _navigationService.NavigateTo(App.ObjectionsSelectionPageView);
+
+                    Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
+        public ICommand ChangeLanguageCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var navigation = Application.Current.MainPage.Navigation;
+                    var currentPage = navigation.NavigationStack.LastOrDefault();
+                    if (App.IsArabic)
+                    {
+
+                        var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ChangeLanguage_Tapped", "Language Changed to English");
+
+                        App.IsArabic = false;
+                        App.changeFontFamily(App.appObj);
+
+                        var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
+
+                        SelectedCommitmentFilterValue = null;
+                        navigation.InsertPageBefore(vUpdatedPage, currentPage);
+                        await navigation.PopAsync();
+                        NDCommitments = AppResources.NDCommitments;
+                        ZBills = AppResources.Bills;
+                        Return = AppResources.Returns;
+
+                        AboutUs = AppResources.ZZZAboutUs;
+                        Contactus = AppResources.ZZZContactus;
+                        PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
+                        Logout = AppResources.ZLogout;
+                        App.HasToRefreshLoaderOnDashboard = true;
+                        SetLTRDirection();
+                        GetHomeMenuLst();
+                        Instrumentation.EndCall(callTracker);
+                    }
+                    else
+                    {
+
+                        var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ChangeLanguage_Tapped", "Language Changed to Arabic");
+
+                        App.IsArabic = true;
+                        App.changeFontFamily(App.appObj);
+                        var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
+                        SelectedCommitmentFilterValue = null;
+
+                        navigation.InsertPageBefore(vUpdatedPage, currentPage);
+                        await navigation.PopAsync();
+                        NDCommitments = AppResources.NDCommitments;
+                        ZBills = AppResources.Bills;
+                        Return = AppResources.Returns;
+
+                        AboutUs = AppResources.ZZZAboutUs;
+                        Contactus = AppResources.ZZZContactus;
+                        PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
+                        Logout = AppResources.ZLogout;
+                        App.HasToRefreshLoaderOnDashboard = true;
+                        GetHomeMenuLst();
+
+                        SetRTLDirection();
+
+                        Instrumentation.EndCall(callTracker);
+                    }
+                    await OnAppearing();
+                });
+            }
+        }
+        public ICommand TinRegistrationDetailsCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TinRegistrationDetails_Tapped", "Registration Details");
+
+                    await _navigationService.NavigateTo(App.ZakatRegistrationDetailsListPageView);
+
+
+                    Instrumentation.EndCall(callTracker);
                 });
             }
         }
@@ -3792,9 +4716,47 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
-                    _navigationService.NavigateTo("ChatPotView");
+                    await _navigationService.NavigateTo("ChatPotView");
+                });
+            }
+        }
+        
+        public ICommand ContactZatcaEmpCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ContactZatcaEmp_Tapped", "Contact ZATCA Employee");
+                    var a = App.LoginDataRetrieved;
+                    IsLoading = true;
+                    string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync("6741");
+
+                    if (response != null && response.Length > 0)
+                    {
+                        SubsidyResponseModel subsidyResponseModel = JsonConvert.DeserializeObject<SubsidyResponseModel>(response);
+                        if (subsidyResponseModel != null && subsidyResponseModel.Data != null)
+                        {
+
+                            if (!string.IsNullOrEmpty(subsidyResponseModel.Data.FormBundleGUID))
+                            {
+
+                                String url = subsidyResponseModel.Data.ExternalPortal;
+                                url = url.Replace("TINVALUE", App.LoginDataRetrieved.TIN);
+                                url = url.Replace("TOKENVALUE", subsidyResponseModel.Data.FormBundleGUID);
+                                ZATCAConstants.TaxpayerSubsidyRequest = url;
+
+                                IsLoading = false;
+                                await Browser.OpenAsync(url);
+                                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                            }
+
+
+                        }
+                    }
+                    IsLoading = false;
                 });
             }
         }
@@ -3803,9 +4765,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
-                    _navigationService.NavigateTo("RateUs");
+                    await _navigationService.NavigateTo("RateUs");
                 });
             }
         }

@@ -81,7 +81,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                 registerLabel.Text = AppResources.LoginRegister;
 
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
         }
@@ -105,10 +105,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
         }
 
 
-      async  void LoginTin_Unfocused(System.Object sender, FocusEventArgs e)
+        async void LoginTin_Unfocused(System.Object sender, FocusEventArgs e)
         {
             var entry = sender as Entry;
-           await viewModel.TinEntryUnfocusedAsync(entry.Text);
+            await viewModel.TinEntryUnfocusedAsync(entry.Text);
 
             //var x = UtilityManager.CheckEmailOrTin(entry.Text);
         }

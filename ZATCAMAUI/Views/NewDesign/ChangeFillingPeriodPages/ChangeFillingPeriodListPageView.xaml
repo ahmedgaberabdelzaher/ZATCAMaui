@@ -11,6 +11,7 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    x:Name="page"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
@@ -43,7 +44,7 @@
                     </Image>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        <TapGestureRecognizer Command="{Binding GoBackClick}" />
                     </StackLayout.GestureRecognizers>
 
                 </StackLayout>
@@ -68,7 +69,7 @@
                     VerticalOptions="CenterAndExpand"
                     WidthRequest="24">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" />
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
 
@@ -82,7 +83,9 @@
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
-                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ScrollView HorizontalOptions="FillAndExpand"
+                                VerticalScrollBarVisibility="Never"
+                                VerticalOptions="FillAndExpand">
                         <StackLayout>
 
                             <Grid
@@ -99,7 +102,7 @@
                                         Padding="0,10,0,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource PageTitleBlack}"
-                                        Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodMyNewRequests}" />
+                                        Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}" />
 
                                     <BoxView
                                         Grid.Row="2"
@@ -125,7 +128,7 @@
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <Image
                                                 Grid.Column="0"
@@ -170,6 +173,7 @@
                                             <DataTemplate>
                                                 <Border
                                                     Grid.Column="0"
+                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                     Margin="0,15,0,0"
                                                     Padding="10"
                                                     StrokeShape="RoundRectangle 15,15,15,15"
@@ -465,7 +469,7 @@
                                                 VerticalOptions="Center">
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Grid>
+                                                        <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
                                                             </Grid.RowDefinitions>
@@ -499,7 +503,7 @@
                                                 VerticalOptions="Center">
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Grid>
+                                                        <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
                                                             </Grid.RowDefinitions>
@@ -533,7 +537,7 @@
                                                 VerticalOptions="Center">
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Grid>
+                                                        <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
                                                             </Grid.RowDefinitions>

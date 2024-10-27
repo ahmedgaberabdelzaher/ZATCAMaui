@@ -2,7 +2,9 @@ using System.Collections.ObjectModel;
 
 using System.Windows.Input;
 using Mopups.Services;
+using Syncfusion.Maui.ListView;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -19,9 +21,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
     {
 
         public ICommand GoBackClick { get; set; }
-        public ICommand CloseClick { get; set; }
         public ICommand RequestContractReleaseBtnTapped { get; set; }
-        public ICommand GoBackBtnTapped { get; set; }
 
         private ContractReleaseSummaryModel.ContractReleaseSummaryData _contractReleaseSummaryData;
         public ContractReleaseSummaryModel.ContractReleaseSummaryData ContractReLeaseSummaryData
@@ -37,9 +37,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 OnPropertyChanged("ContractReLeaseSummaryData");
             }
         }
-        public ObservableCollection<ContractReLeaseApplicationFormModel.ContractResult> _contractListViewData { get; set; }
+        public ObservableCollection<ContractResult> _contractListViewData { get; set; }
 
-        public ObservableCollection<ContractReLeaseApplicationFormModel.ContractResult> ContractListViewData
+        public ObservableCollection<ContractResult> ContractListViewData
         {
             get { return _contractListViewData; }
 
@@ -127,22 +127,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        private ContractReLeaseApplicationFormModel _contractReLeaseApplicationFormModel;
-        public ContractReLeaseApplicationFormModel cRApplicationFormData
-        {
-            get
-            {
-                return _contractReLeaseApplicationFormModel;
-            }
-            set
-            {
-                if (_contractReLeaseApplicationFormModel == value) return;
+        ContractReLeaseApplicationFormModel _contractReLeaseApplicationFormModel;
+        public ContractReLeaseApplicationFormModel cRApplicationFormData { get { return _contractReLeaseApplicationFormModel; } set { _contractReLeaseApplicationFormModel = value; OnPropertyChanged(); } }
 
-                _contractReLeaseApplicationFormModel = value;
-                OnPropertyChanged("cRApplicationFormData");
-            }
-        }
-
+       
 
         private List<ContractResult> _contractReLeaseListSet;
         public List<ContractResult> ContractReLeaseListSet
@@ -370,6 +358,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
+        Attachment contractCopyAttachmentSelectedItem;
+        public Attachment ContractCopyAttachmentSelectedItem { get { return contractCopyAttachmentSelectedItem; } set { contractCopyAttachmentSelectedItem = value; OnPropertyChanged(); } }
+
+
         public ObservableCollection<Attachment> invoicesAttachmentsListViewData { get; set; }
 
         public ObservableCollection<Attachment> InvoiceAttachmentsListViewData
@@ -388,34 +380,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
+       
         public ContractResult _SelectedTypeFilter = new ContractResult();
 
-        //public ContractResult SelectedTypeFilter
-        //    _SelectedTypeFilter = value;
-
-        //        if (_SelectedTypeFilter != null)
-
-        //        {
-
-        //            // FilterLabelTxt = _SelectedTypeFilter.StatText;
-
-        //            //FilterOnBasisOfTaxType();
-
-        //        }
-
-        //        OnPropertyChanged("SelectedTaxTypeForFilter");
-
-        //private GenericPickerModel _pickerModel;
-        //public GenericPickerModel PickerModel
-        //{
-        //    get { return _pickerModel; }
-        //    set
-        //    {
-        //        if (_pickerModel == value) return;
-        //        _pickerModel = value;
-        //        OnPropertyChanged("PickerModel");
-        //    }
-        //}
+      
         public string _filterLabelTxt;
 
         public string FilterLabelTxt
@@ -445,22 +413,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         }
         public ContractReleaseListViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
-
-            CloseClick = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
             GoBackClick = new Command(() =>
             {
                 EnableContractListView();
             });
-            RequestContractReleaseBtnTapped = new Command(() =>
+            RequestContractReleaseBtnTapped = new Command( async () =>
             {
-                _navigationService.NavigateTo(App.ContractReleasePageView);
-            });
-            GoBackBtnTapped = new Command(() =>
-            {
-                _navigationService.GoBack();
+               await _navigationService.NavigateTo(App.ContractReleasePageView);
             });
         }
 
@@ -576,6 +535,50 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             PopulateFilter();
         }
 
+        public async static Task Email(string doguid, Attachment attachment)
+        {
+
+            try
+            {
+
+                string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+
+                MemoryStream pdfStream = new MemoryStream();
+
+
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                var uri = new Uri(attachmentURL);
+                HttpResponseMessage _fileDownloadResponse = await client.GetAsync(uri);
+
+                var fileName = Guid.NewGuid().ToString();
+
+                _fileDownloadResponse.EnsureSuccessStatusCode();
+                await _fileDownloadResponse.Content.CopyToAsync(pdfStream);
+
+                var message = new EmailMessage
+                {
+                    Subject = "Attached Form :",
+                };
+                var fn = attachment.Filename;
+                var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                File.WriteAllBytes(file, pdfStream.ToArray());
+
+                await Share.RequestAsync(new ShareFileRequest
+                {
+                    Title = "",
+                    File = new ShareFile(file)
+                });
+
+
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
         #region OnPageLoad
         public async Task OnPageLoad()
         {
@@ -584,7 +587,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 IsLoading = true;
                 cRApplicationFormData = null;
                 ContractReLeaseListSet = null;
-                await Task.Run(async () =>
+
+
+                try
                 {
                     cRApplicationFormData = await ContractReleaseWebServiceManager.GetContractReleaseList();
 
@@ -595,173 +600,122 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            _navigationService.GoBack();
-                        });
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
                     }
-                    
-                });
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                    IsLoading = false;
+                }
+                catch (InternetException ex)
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    IsLoading = false;
                     _navigationService.GoBack();
-                });
+                }
+                IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (Exception)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-            finally
-            {
                 IsLoading = false;
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
-        public async Task GetContractReleaseSummaryData(ContractReLeaseApplicationFormModel.ContractResult selectedItem)
+        public async Task GetContractReleaseSummaryData(ContractResult selectedItem)
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+
+                try
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
+                    ContractReLeaseSummaryData = new ContractReleaseSummaryModel.ContractReleaseSummaryData();
 
-                    IsLoading = true;
+                    var resultData = await ContractReleaseWebServiceManager.GAZTGetContractReleaseSummaryData("", selectedItem.Fbnum);
 
-                    try
+                    ContractReLeaseSummaryData.RequestNumber = resultData.d.Fbnumz;
+                    ContractReLeaseSummaryData.TaxpayerName = resultData.d.ATpNm;
+                    ContractReLeaseSummaryData.ContractingName = resultData.d.AContNm;
+                    ContractReLeaseSummaryData.Number = resultData.d.AContNo;
+                    ContractReLeaseSummaryData.Type = resultData.d.AType;
+                    ContractReLeaseSummaryData.ContractDate = resultData.d.AContDt1;
+                    ContractReLeaseSummaryData.ContractEnddate = resultData.d.AContEndDtCh;
+                    ContractReLeaseSummaryData.TotalAmountofContract = resultData.d.ATotalAmt;
+                    ContractReLeaseSummaryData.AmountRequiredtoRelease = resultData.d.AReqAmt;
+                    ContractReLeaseSummaryData.ContractprofitEstimatedRate = resultData.d.AContProfitPer;
+                    ContractReLeaseSummaryData.ProfitEstimatedforContract = resultData.d.AContProfit;
+                    ContractReLeaseSummaryData.EstimatedProfitforZakat = resultData.d.AZakatProfit;
+                    ContractReLeaseSummaryData.EstimatedProfitforTax = resultData.d.ATaxProfitPer;
+                    ContractReLeaseSummaryData.TheValueofZakatdues = resultData.d.ADueZakat;
+                    ContractReLeaseSummaryData.TheValueofTaxdues = resultData.d.ADueTax;
+                    ContractReLeaseSummaryData.TotalDues = resultData.d.ADueTot;
+                    ContractReLeaseSummaryData.AttDetSet = resultData.d.AttDetSet;
+                    ContractReLeaseSummaryData.znotesSet = resultData.d.znotesSet;
+                    ContractReLeaseSummaryData.Remark = resultData.d.ARemark;
+
+                    if (resultData.d.znotesSet.Length != 0)
                     {
-                        ContractReLeaseSummaryData = new ContractReleaseSummaryModel.ContractReleaseSummaryData();
 
-                        var resultData = await ContractReleaseWebServiceManager.GAZTGetContractReleaseSummaryData("", selectedItem.Fbnum);
-
-                        ContractReLeaseSummaryData.RequestNumber = resultData.d.Fbnumz;
-                        ContractReLeaseSummaryData.TaxpayerName = resultData.d.ATpNm;
-                        ContractReLeaseSummaryData.ContractingName = resultData.d.AContNm;
-                        ContractReLeaseSummaryData.Number = resultData.d.AContNo;
-                        ContractReLeaseSummaryData.Type = resultData.d.AType;
-                        ContractReLeaseSummaryData.ContractDate = resultData.d.AContDt1;
-                        ContractReLeaseSummaryData.ContractEnddate = resultData.d.AContEndDtCh;
-                        ContractReLeaseSummaryData.TotalAmountofContract = resultData.d.ATotalAmt;
-                        ContractReLeaseSummaryData.AmountRequiredtoRelease = resultData.d.AReqAmt;
-                        ContractReLeaseSummaryData.ContractprofitEstimatedRate = resultData.d.AContProfitPer;
-                        ContractReLeaseSummaryData.ProfitEstimatedforContract = resultData.d.AContProfit;
-                        ContractReLeaseSummaryData.EstimatedProfitforZakat = resultData.d.AZakatProfit;
-                        ContractReLeaseSummaryData.EstimatedProfitforTax = resultData.d.ATaxProfitPer;
-                        ContractReLeaseSummaryData.TheValueofZakatdues = resultData.d.ADueZakat;
-                        ContractReLeaseSummaryData.TheValueofTaxdues = resultData.d.ADueTax;
-                        ContractReLeaseSummaryData.TotalDues = resultData.d.ADueTot;
-                        ContractReLeaseSummaryData.AttDetSet = resultData.d.AttDetSet;
-                        ContractReLeaseSummaryData.znotesSet = resultData.d.znotesSet;
-                        ContractReLeaseSummaryData.Remark = resultData.d.ARemark;
-
-                        if(resultData.d.znotesSet.Length != 0)
-                        {
-
-                            ContractReLeaseSummaryData.DetaiiledDesc = resultData.d.znotesSet[0].Tdline;
-                        }
-
-                        if (ContractReLeaseSummaryData != null)
-                        {
-                            EnableSummaryView();
-                            BindSummaryData();
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-
-
-
-                        IsLoading = false;
+                        ContractReLeaseSummaryData.DetaiiledDesc = resultData.d.znotesSet[0].Tdline;
                     }
-                    catch (GAZTVATRegistrationInProcessException ex)
+
+                    if (ContractReLeaseSummaryData != null)
                     {
-                        throw ex;
+                        EnableSummaryView();
+                        BindSummaryData();
                     }
-                    catch (InternetException ex)
+                    else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
                     }
-                });
-                await Task.Run(() =>
-                {
+
+
+
                     IsLoading = false;
-                });
+                }
+                catch (InternetException ex)
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    IsLoading = false;
+                    _navigationService.GoBack();
 
+                }
+                IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
 
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
-        public async void showPickerDialog()
+        public async Task ShowPickerDialog()
         {
             try
             {
                 if (PickerModel != null)
                     await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-                
-                
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -777,7 +731,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                     list.Add(item);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 
@@ -805,6 +759,143 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         }
 
         #endregion
+
+        public ICommand OnAppearingContractReleaseListCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    try
+                    {
+                        ResetData();
+                        await OnPageLoad();
+
+                        MessagingCenter.Subscribe<PickerPageView, Models.GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+                        {
+                            updatePicker(arg);
+                        });
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                });
+            }
+        }
+
+        public ICommand ContractsListItemTappedCommand
+        {
+            get
+            {
+                return new Command<object>(async obj =>
+                {
+                    try
+                    {
+                        var item = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as ContractResult;
+                        await GetContractReleaseSummaryData(item);
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                });
+            }
+        }
+
+        public ICommand DownloadAcknowledgementForm
+        {
+            get
+            {
+                return new Command(async _=>
+                {
+                    try
+                    {
+                        if (ContractReLeaseSummaryData.RequestNumber != null)
+                        {
+                            IsLoading = true;
+                            string downloadurl = ZATCAConstants.CRDownloadCoverFormFile + ContractReLeaseSummaryData.RequestNumber;
+                            await _navigationService.NavigateTo(App.PdfView, downloadurl);
+
+                            IsLoading = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                });
+            }
+        }
+
+        public ICommand DownloadAcknowledgement
+        {
+            get
+            {
+                return new Command(async _=>
+                {
+                    try
+                    {
+                        if (ContractReLeaseSummaryData.RequestNumber != null)
+                        {
+                            IsLoading = true;
+                            string downloadurl = ZATCAConstants.CRDownloadAcknowledementFile + ContractReLeaseSummaryData.RequestNumber;
+                            await _navigationService.NavigateTo(App.PdfView, downloadurl);
+                            IsLoading = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                });
+            }
+        }
+
+
+        public ICommand SummaryAttachmentsItemCommand
+        {
+            get
+            {
+                return new Command(async _=>
+                {
+                    try
+                    {
+                        IsLoading = true;
+
+                        string[] Extentionarray = ContractCopyAttachmentSelectedItem.Filename.Split('.');
+                        string Extention = Extentionarray.Last();
+
+                        if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+                        {
+                            if (ContractCopyAttachmentSelectedItem.DocUrl != null)
+                            {
+                                await _navigationService.NavigateTo(App.PdfView, ContractCopyAttachmentSelectedItem.DocUrl);
+                            }
+                        }
+                        else
+                        {
+                            await Email(ContractCopyAttachmentSelectedItem.Doguid, ContractCopyAttachmentSelectedItem);
+                        }
+                        IsLoading = false;
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                });
+            }
+        }
+        public ICommand btn_ClickedBtnCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    await ShowPickerDialog();
+                });
+            }
+        }
 
     }
 }

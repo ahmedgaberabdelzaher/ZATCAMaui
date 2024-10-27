@@ -77,7 +77,7 @@
                                     <Image Source="ic_menu_Tax_check.png" />
                                     <Label
                                         Style="{StaticResource ValueLabelBlack}"
-                                        Text="{x:Static ResourceManager:AppResources.CustomsZatcaDelca}"
+                                        Text="{x:Static ResourceManager:AppResources.Inquiryaboutacustomsdeclaration}"
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"

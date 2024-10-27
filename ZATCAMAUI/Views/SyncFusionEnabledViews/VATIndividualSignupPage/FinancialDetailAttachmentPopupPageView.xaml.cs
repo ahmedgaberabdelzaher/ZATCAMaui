@@ -211,10 +211,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
         }
         public async Task DeleteAttachment(bool result, VATAttachment attachment)
@@ -222,39 +219,36 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 viewModel.IsLoading = true;
-                await Task.Run(() =>
+                if (result)
                 {
-                    if (result)
+                    // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                    string results = await WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
+                   await PopToRootPage();
+                    if (results == "X")
                     {
-                        // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-                        string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-                        PopToRootPage();
-                        if (results == "X")
-                        {
-                            Attachment listitem = (from itm in viewModel.VatAttachmentsList
-                                                   where itm.Doguid == attachment.Doguid.ToString()
-                                                   select itm)
-                                            .FirstOrDefault<Attachment>();
+                        Attachment listitem = (from itm in viewModel.VatAttachmentsList
+                                               where itm.Doguid == attachment.Doguid.ToString()
+                                               select itm)
+                                        .FirstOrDefault<Attachment>();
 
-                            VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
-                                                         where itm.Doguid == attachment.Doguid.ToString()
-                                                         select itm)
-                                            .FirstOrDefault<VATAttachment>();
+                        VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
+                                                     where itm.Doguid == attachment.Doguid.ToString()
+                                                     select itm)
+                                        .FirstOrDefault<VATAttachment>();
 
-                            viewModel.VatAttachmentsList.Remove(listitem);
-                            viewModel.AttachmentList.Remove(listitemTwo);
-                            viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.Remove(listitem);
-                            viewModel.VatAttachmentsList.Clear();
-                            viewModel.filterList();
-                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
-                            ResultsItemForDOCSetforsubmit _eligibledocset = new
-                                  ResultsItemForDOCSetforsubmit();
-                            _eligibledocset = viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault();
-                            viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.Remove(_eligibledocset);
+                        viewModel.VatAttachmentsList.Remove(listitem);
+                        viewModel.AttachmentList.Remove(listitemTwo);
+                        viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.Remove(listitem);
+                        viewModel.VatAttachmentsList.Clear();
+                        viewModel.filterList();
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                        ResultsItemForDOCSetforsubmit _eligibledocset = new
+                              ResultsItemForDOCSetforsubmit();
+                        _eligibledocset = viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault();
+                        viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.Remove(_eligibledocset);
 
-                        }
                     }
-                });
+                }
                 viewModel.IsLoading = false;
             }
             catch (Exception)
@@ -329,13 +323,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         }
 
 
-        public async void getYesForDeleteAttachment()
+        public void getYesForDeleteAttachment()
         {
             try
             {
                 MessagingCenter.Subscribe<object, string>(this, "YesPressedToDeleteFinancialAttachment", async (sender, arg) =>
                 {
-                    DeleteAttachmentForMessagingCenterCall();
+                  await  DeleteAttachmentForMessagingCenterCall();
                 });
             }
             catch (Exception)
@@ -345,14 +339,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        public async void DeleteAttachmentForMessagingCenterCall()
+        public async Task DeleteAttachmentForMessagingCenterCall()
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = true;
                 if (viewModel.VATAttachmentObj != null)
                 {
                     VATAttachment attachment = viewModel.VATAttachmentObj;
@@ -362,10 +353,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         await DeleteAttachment(true, attachment);
                     }
                 }
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
@@ -395,15 +383,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             ((ListView)sender).SelectedItem = null;
         }
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
 
         }

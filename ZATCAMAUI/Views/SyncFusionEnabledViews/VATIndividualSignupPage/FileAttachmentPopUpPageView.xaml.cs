@@ -9,7 +9,6 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
-using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
 
@@ -171,33 +170,20 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        public async void DeleteAttachmentForMessagingCenterCall()
+        public async Task DeleteAttachmentForMessagingCenterCall()
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-                // Image arrowImage = sender as Image;
+                viewModel.IsLoading = true;
                 if (viewModel.VATAttachmentObj != null)
                 {
                     VATAttachment attachment = viewModel.VATAttachmentObj;
-                    //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
-                    //{
-
                     if (attachment != null)
-                    {//ZZNotification
-                     // var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-
+                    {
                         await DeleteAttachment(true, attachment);
                     }
                 }
-                //}
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
@@ -237,44 +223,41 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 viewModel.IsLoading = true;
-                await Task.Run(() =>
+                if (result)
                 {
-                    if (result)
+                    string results = await WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
+                  await  PopToRootPage();
+                    if (results == "X")
                     {
-                        string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-                        PopToRootPage();
-                        if (results == "X")
-                        {
-                            Attachment listitem = (from itm in viewModel.VatAttachmentsList
-                                                   where itm.Doguid == attachment.Doguid.ToString()
-                                                   select itm)
-                                            .FirstOrDefault<Attachment>();
+                        Attachment listitem = (from itm in viewModel.VatAttachmentsList
+                                               where itm.Doguid == attachment.Doguid.ToString()
+                                               select itm)
+                                        .FirstOrDefault<Attachment>();
 
-                            VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
-                                                         where itm.Doguid == attachment.Doguid.ToString()
-                                                         select itm)
-                                            .FirstOrDefault<VATAttachment>();
+                        VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
+                                                     where itm.Doguid == attachment.Doguid.ToString()
+                                                     select itm)
+                                        .FirstOrDefault<VATAttachment>();
 
-                            if (listitem != null)
-                                viewModel.VatAttachmentsList.Remove(listitem);
+                        if (listitem != null)
+                            viewModel.VatAttachmentsList.Remove(listitem);
 
 
 
 
-                            if (listitemTwo != null)
-                                viewModel.AttachmentList.Remove(listitemTwo);
+                        if (listitemTwo != null)
+                            viewModel.AttachmentList.Remove(listitemTwo);
 
-                            viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.Remove(listitem);
+                        viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.Remove(listitem);
 
 
-                            viewModel.AttachmentCount--;
-                            viewModel.filterList();
-                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
-                        }
+                        viewModel.AttachmentCount--;
                         viewModel.filterList();
                         viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                     }
-                });
+                    viewModel.filterList();
+                    viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
+                }
                 viewModel.IsLoading = false;
             }
             catch (Exception)
@@ -283,20 +266,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 viewModel.IsLoading = false;
             }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
         }
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
         }
         

@@ -14,6 +14,7 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="True"
+    x:Name="page"
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -115,7 +116,7 @@
                                     </Grid>
 
                                     <Border.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_ToolbarMyTax" />
+                                        <TapGestureRecognizer Command="{Binding ToolbarMyTaxCommand}" />
                                     </Border.GestureRecognizers>
                                 </Border>
                             </StackLayout>
@@ -128,7 +129,7 @@
                                     Source="message"
                                     VerticalOptions="Center">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Inbox" />
+                                        <TapGestureRecognizer Command="{Binding InboxCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </StackLayout>
@@ -261,7 +262,7 @@
 
                                         </Grid>
                                         <Border.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_ToolbarMyTax" />
+                                            <TapGestureRecognizer Command="{Binding ToolbarMyTaxCommand}" />
                                         </Border.GestureRecognizers>
                                     </Border>
 
@@ -300,7 +301,7 @@
 
                                                 </Image.Triggers>
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnZakatNowTapped" />
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding OnZakatNowCommand}" />
                                         </Image.GestureRecognizers>
                                     </Image>
                                     <Label
@@ -357,7 +358,7 @@
 
                                                 </Image.Triggers>
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="TappedOnMyBills" />
+                                                        <TapGestureRecognizer Command="{Binding TappedOnMyBills}" />
                                                     </Image.GestureRecognizers>
                                                 </Image>
 
@@ -391,7 +392,7 @@
 
                                                     </Image.Triggers>
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="TappedOnMyBills" />
+                                                        <TapGestureRecognizer Command="{Binding TappedOnMyBills}" />
                                                     </Image.GestureRecognizers>
                                                 </Image>
 
@@ -417,6 +418,7 @@
 
                                                     <cards:SfCardView
                                                         Padding="5"
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         BackgroundColor="Transparent"
                                                         BorderColor="{StaticResource NeutralLightGrey}"
                                                         BorderWidth="1"
@@ -456,6 +458,7 @@
                                                                 <StackLayout Grid.Column="1" Spacing="5">
 
                                                                     <Border
+                                                                        x:Name="border"
                                                                         Grid.Row="0"
                                                                         Grid.Column="1"
                                                                         Padding="12,2,12,2"
@@ -487,7 +490,8 @@
                                                                         </StackLayout>
 
                                                                         <Border.GestureRecognizers>
-                                                                            <TapGestureRecognizer Tapped="BillsPayNowTapped" />
+                                                                            <TapGestureRecognizer Command="{Binding BillsPayNowCommand}"
+                                                                                                  CommandParameter="{Binding Source={x:Reference border}}"/>
                                                                         </Border.GestureRecognizers>
                                                                     </Border>
 
@@ -636,7 +640,9 @@
                                                 <CollectionView.ItemTemplate>
                                                     <DataTemplate>
 
-                                                        <StackLayout Orientation="Horizontal" WidthRequest="350">
+                                                        <StackLayout Orientation="Horizontal"
+                                                                     FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                                     WidthRequest="350">
 
                                                             <cards:SfCardView
                                                                 BackgroundColor="Transparent"
@@ -808,7 +814,7 @@
 
                                                         </Image.Triggers>
                                                         <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="TappedOnMyReturns" />
+                                                            <TapGestureRecognizer Command="{Binding TappedOnMyReturnsCommand}" />
                                                         </Image.GestureRecognizers>
                                                     </Image>
 
@@ -850,7 +856,7 @@
                                                                 VerticalOptions="Start" />
                                                         </StackLayout>
                                                         <cards:SfCardView.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="TappedOnSubmitted" />
+                                                            <TapGestureRecognizer Command="{Binding TappedOnSubmitted}" />
                                                         </cards:SfCardView.GestureRecognizers>
                                                     </cards:SfCardView>
 
@@ -883,7 +889,7 @@
                                                                 VerticalOptions="Start" />
                                                         </StackLayout>
                                                         <cards:SfCardView.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="TappedOnOverDue" />
+                                                            <TapGestureRecognizer Command="{Binding TappedOnOverDue}" />
                                                         </cards:SfCardView.GestureRecognizers>
                                                     </cards:SfCardView>
 
@@ -917,7 +923,7 @@
                                                                 VerticalOptions="Start" />
                                                         </StackLayout>
                                                         <cards:SfCardView.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="TappedOnUnSubmitted" />
+                                                            <TapGestureRecognizer Command="{Binding TappedOnUnSubmitted}" />
                                                         </cards:SfCardView.GestureRecognizers>
                                                     </cards:SfCardView>
 
@@ -954,7 +960,7 @@
 
                                                 </Image.Triggers>
                                                 <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
+                                                    <TapGestureRecognizer Command="{Binding AccountStatements}" />
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </StackLayout>
@@ -977,6 +983,7 @@
 
                                                         <cards:SfCardView
                                                             Margin="3"
+                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             BackgroundColor="Transparent"
                                                             BorderColor="{StaticResource NeutralLightGrey}"
                                                             BorderWidth="1"
@@ -1146,7 +1153,7 @@
 
                                                 </Image.Triggers>
                                                 <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="InstalmentPlan_Tapped" />
+                                                    <TapGestureRecognizer Command="{Binding InstalmentPlanCommand}" />
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </StackLayout>
@@ -1165,6 +1172,7 @@
 
                                                     <StackLayout
                                                         Padding="0,0,10,0"
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         Orientation="Horizontal"
                                                         WidthRequest="366">
 
@@ -1321,7 +1329,7 @@
                                     Source="message"
                                     VerticalOptions="Center">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Inbox" />
+                                        <TapGestureRecognizer Command="{Binding InboxCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </StackLayout>
@@ -1360,7 +1368,7 @@
                                                         Style="{StaticResource ButtonLabelWhiteBold}"
                                                         Text="{x:Static ResourceManager:AppResources.NDNewProfile}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="Label_MyProfile_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding LabelMyProfileCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1369,7 +1377,7 @@
                                                     <Image Source="ic_Payments" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="Label_MyBills" />
+                                                        <TapGestureRecognizer Command="{Binding LabelMyBillsCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1378,7 +1386,7 @@
                                                     <Image Source="menu_return.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.NDReturns}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding LabelMyRetunsCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1386,7 +1394,7 @@
                                                     <Image Source="ic_certificate.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.NDCertificates}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="TaxpayerCertificate_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding TaxpayerCertificateCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1397,7 +1405,7 @@
 
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.InstallmentPlans}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="ZakatInstalmentPlan_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding ZakatInstalmentPlanCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1405,33 +1413,39 @@
                                                     <Image Source="ic_ReportTaxEvasion" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.Objections}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="Vat_Review_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding VatReviewCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                                 <StackLayout
                                                     x:Name="refundreqMenu"
+                                                    IsVisible="{Binding IsRefundreqMenuVisible}"
                                                     Orientation="Horizontal"
                                                     Spacing="20">
                                                     <Image Source="amount_white.png" Style="{StaticResource SmallIcon}" />
 
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.DBRefundRequest}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="RefundRequest_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding RefundRequestCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
-                                                <BoxView x:Name="refundreqMenuBox" Style="{StaticResource WhiteLineSeperator}" />
+                                                <BoxView x:Name="refundreqMenuBox"
+                                                          IsVisible="{Binding IsRefundreqMenuBoxVisible}"
+                                                         Style="{StaticResource WhiteLineSeperator}" />
                                                 <StackLayout
                                                     x:Name="fillingMenu"
                                                     Orientation="Horizontal"
+                                                    IsVisible="{Binding IsFillingMenuVisible}"
                                                     Spacing="20">
                                                     <Image Source="menu_return.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding ChnageFillingPeriodCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
-                                                <BoxView x:Name="fillingMenuBox" Style="{StaticResource WhiteLineSeperator}" />
+                                                <BoxView x:Name="fillingMenuBox"
+                                                          IsVisible="{Binding IsFillingMenuBoxVisible}"
+                                                         Style="{StaticResource WhiteLineSeperator}" />
                                                 <StackLayout IsVisible="{Binding IfRegInZakat}">
                                                     <StackLayout
                                                         Margin="0,0,0,15"
@@ -1440,7 +1454,7 @@
                                                         <Image Source="ic_menu_cr_w" Style="{StaticResource SmallIcon}" />
                                                         <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.NDContractRelease}" />
                                                         <StackLayout.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="ContractRelease_Tapped" />
+                                                            <TapGestureRecognizer Command="{Binding ContractReleaseCommand}" />
                                                         </StackLayout.GestureRecognizers>
                                                     </StackLayout>
                                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1457,7 +1471,7 @@
                                                     <Image Source="ic_ReportTaxEvasion.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding AccountStatements}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1465,7 +1479,7 @@
                                                     <Image Source="refund" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding TinRegistrationDetailsCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1475,7 +1489,7 @@
                                                     <Image Source="documents_White.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.VatRegistration}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="Vat_Registration_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding VatRegistrationCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Margin="0,12,0,0" Style="{StaticResource WhiteLineSeperator}" />
@@ -1484,7 +1498,7 @@
                                                 <Image Source="ic_menu_Tax_check.png" Style="{StaticResource SmallIcon}" />
                                                 <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.DBApplicationStatus}" />
                                                 <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped" />
+                                                    <TapGestureRecognizer Command="{Binding OnApplicationStatusCommand}" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1492,7 +1506,7 @@
                                                 <Image Source="menu_return.png" Style="{StaticResource SmallIcon}" />
                                                 <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.GeneralServices}" />
                                                 <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="General_Services_Tapped" />
+                                                    <TapGestureRecognizer Command="{Binding GeneralServicesCommand}" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1502,7 +1516,7 @@
                                                     <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.TaxPayerSubsidyRequest}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TaxPayerSubsidyRequestTapped" />
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding TaxPayerSubsidyRequestCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1514,7 +1528,7 @@
                                                     <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ContactZatcaEmp}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="ContactZatcaEmp_Tapped" />
+                                                        <TapGestureRecognizer Command="{Binding ContactZatcaEmpCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView IsVisible="{Binding IsContactZatcaEmpTileVisible}" Style="{StaticResource WhiteLineSeperator}" />
@@ -1531,7 +1545,7 @@
                                                     Style="{StaticResource ButtonLabelWhiteBold}"
                                                     Text="{Binding VatProfitGoodsTileTxt}"/>
                                                 <Grid.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="ProfitOnGoods_Tapped" />
+                                                    <TapGestureRecognizer Command="{Binding ProfitOnGoodsCommand}" />
                                                 </Grid.GestureRecognizers>
                                             </Grid>
                                             <BoxView
@@ -1556,7 +1570,7 @@
 
                                                 <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ChangeLanguage}" />
                                                 <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="ChangeLanguage_Tapped" />
+                                                    <TapGestureRecognizer Command="{Binding ChangeLanguageCommand}" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1568,7 +1582,7 @@
                                                 <Image Source="education.png" Style="{StaticResource SmallIcon}" />
                                                 <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ZZZEducationLink}" />
                                                 <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="OnEduLinkTapped" />
+                                                    <TapGestureRecognizer Command="{Binding OnEduLinkCommand}" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
 
@@ -1580,7 +1594,7 @@
                                                 <Image Source="customerService.png" Style="{StaticResource SmallIcon}" />
                                                 <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ZZZSupport}" />
                                                 <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="OnSupportTapped" />
+                                                    <TapGestureRecognizer Command="{Binding OnSupportCommand}" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
 
@@ -1590,7 +1604,7 @@
                                                 <Image Source="log_out" Style="{StaticResource SmallIcon}" />
                                                 <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.DBLogOut}" />
                                                 <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="Logout_Tapped" />
+                                                    <TapGestureRecognizer Command="{Binding LogoutCommand}" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                         </StackLayout>
@@ -1751,7 +1765,9 @@
 
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
-                                        <StackLayout x:Name="Item" Margin="10">
+                                        <StackLayout x:Name="Item"
+                                                     FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                     Margin="10">
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                     BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"

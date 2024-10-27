@@ -169,7 +169,8 @@
                             <Grid Margin="0,5,0,0" VerticalOptions="Start">
                                 <CollectionView
                                     HeightRequest="50"
-                                    HorizontalOptions="StartAndExpand"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
                                     ItemsLayout="HorizontalList"
                                     ItemsSource="{Binding ChipDataFilterlistForStatus}"
                                     SelectionMode="None"
@@ -179,34 +180,33 @@
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
 
-                                            <StackLayout Margin="5"
-                                                         FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
-                                                <Grid Margin="5,0,5,0">
-                                                    <Border
-                                                        Grid.Row="0"
-                                                        Padding="10,10,10,10"
-                                                        BackgroundColor="{Binding TemplateType}"
-                                                        HeightRequest="20"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Opacity=".2"
-                                                        StrokeShape="RoundRectangle 14,14,14,14"
+                                            <Grid Margin="5,0,5,0"
+                                                  HorizontalOptions="Start"
+                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                <Border
+                                                    Grid.Row="0"
+                                                    Padding="10,10,10,10"
+                                                    BackgroundColor="{Binding TemplateType}"
+                                                    HeightRequest="20"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Opacity=".2"
+                                                    StrokeShape="RoundRectangle 14,14,14,14"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <StackLayout Grid.Row="0" Padding="10,0,10,0">
+                                                    <Label
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Style="{StaticResource CaptionLabelBlack}"
+                                                        Text="{Binding Text}"
+                                                        TextColor="{Binding TextColor}"
                                                         VerticalOptions="CenterAndExpand" />
-                                                    <StackLayout Grid.Row="0" Padding="10,0,10,0">
-                                                        <Label
-                                                            HorizontalOptions="CenterAndExpand"
-                                                            Style="{StaticResource CaptionLabelBlack}"
-                                                            Text="{Binding Text}"
-                                                            TextColor="{Binding TextColor}"
-                                                            VerticalOptions="CenterAndExpand" />
-                                                    </StackLayout>
+                                                </StackLayout>
 
-                                                    <Grid.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="ChipsData_Tapped" />
-                                                    </Grid.GestureRecognizers>
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="ChipsData_Tapped" />
+                                                </Grid.GestureRecognizers>
 
 
-                                                </Grid>
-                                            </StackLayout>
+                                            </Grid>
 
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>

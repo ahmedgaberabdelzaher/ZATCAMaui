@@ -298,7 +298,7 @@
 
                          <Label
                             FontFamily="{StaticResource SomarSemiBold}"
-                            FontSize="20"
+                            FontSize="16"
                             Text="{x:Static ResourceManager:AppResources.AccountLockedMsg}"
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"

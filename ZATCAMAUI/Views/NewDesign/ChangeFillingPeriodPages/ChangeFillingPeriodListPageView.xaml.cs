@@ -54,7 +54,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                 {
                     App.selectedVatFillingItem = item.Fbnum;
                     App.selectedVATItemFbust = item.Fbust;
-                    viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
+                   await viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
                 }
                 else
                 {
