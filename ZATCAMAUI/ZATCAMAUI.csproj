@@ -11,7 +11,8 @@
         <!-- Display name -->
         <ApplicationTitle>ZATCAMAUI</ApplicationTitle>
         <!-- App Identifier -->
-        <ApplicationId>com.zatca.Maui</ApplicationId>
+        <ApplicationId>com.gazt.egazt</ApplicationId>
+        <!--<ApplicationId>com.zatca.Maui</ApplicationId>-->
         <!-- <ApplicationId>com.gazt.enterprise.zatca</ApplicationId> -->
         <ApplicationIdGuid>c26ce74b-6e11-469c-a8c0-b07fe33a9b2d</ApplicationIdGuid>
         <!-- Versions -->
@@ -25,8 +26,8 @@
      </PropertyGroup> -->
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
-        <CodesignKey>iPhone Developer</CodesignKey>
-        <CodesignProvision>iOS Team Provisioning Profile: com.gazt.egazt</CodesignProvision>
+        <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+        <CodesignProvision>ZATCA Mobile</CodesignProvision>
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
     </PropertyGroup>
      <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
