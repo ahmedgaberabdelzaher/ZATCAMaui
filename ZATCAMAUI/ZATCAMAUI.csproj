@@ -25,8 +25,8 @@
      </PropertyGroup> -->
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
-        <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
-        <CodesignProvision>ZATCA Mobile</CodesignProvision>
+        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignProvision>iOS Team Provisioning Profile: com.gazt.egazt</CodesignProvision>
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
     </PropertyGroup>
      <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
@@ -233,6 +233,12 @@
         </Compile>
         <Compile Update="AppResources.ar.Designer.cs">
             <DependentUpon>AppResources.ar.resx</DependentUpon>
+        </Compile>
+        <Compile Update="AppResources.ar.Designer.cs">
+          <DependentUpon>AppResources.ar.resx</DependentUpon>
+        </Compile>
+        <Compile Update="AppResources.Designer.cs">
+          <DependentUpon>AppResources.resx</DependentUpon>
         </Compile>
     </ItemGroup>
     <ItemGroup>

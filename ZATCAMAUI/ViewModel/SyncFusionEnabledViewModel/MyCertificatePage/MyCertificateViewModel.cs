@@ -420,7 +420,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             {
                 if (pdfUrl != null)
                 {
-                   await _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                    await _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
@@ -431,7 +431,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             {
                 if (pdfUrl != null)
                 {
-                   await _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                    await _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
@@ -440,7 +440,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                 }
             }
         }
-        public void OnPageLoad()
+        public async Task OnPageLoad()
         {
             try
             {
@@ -450,8 +450,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
 
                 string lang = UtilityManager.GetLanguageParameter();
                 TaxPayerProfile = App.TP;
-                allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.userId);
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                allCertificate = await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.userId);
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 bool Flag = false;
                 if (allCertificate != null)
                 {
@@ -516,19 +516,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             }
             catch (InternetException ex)
             {
-                _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
         }
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
         }
 

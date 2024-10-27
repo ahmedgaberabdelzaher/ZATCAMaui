@@ -2,11 +2,13 @@
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages;
 using static ZATCAMAUI.Models.correspdncAttchModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
@@ -17,6 +19,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
         public ICommand OnFavClicked { get; set; }
+        public ICommand OnAppearingTaxpayerCorrespondanceDetailCommand { get; set; }
         private string _correspondenceTitle = string.Empty;
 
         private ObservableCollection<CorrDetails> _AttChDtlsSet;
@@ -122,6 +125,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged("CorrespondenceD");
             }
         }
+
+        private HtmlWebViewSource corWebViewSource;
+        public HtmlWebViewSource CorWebViewSource
+        {
+            get
+            {
+                return corWebViewSource;
+            }
+            set
+            {
+                if (corWebViewSource == value) return;
+
+                corWebViewSource = value;
+                OnPropertyChanged("CorWebViewSource");
+            }
+        }
+
+        private CorrespondanceModel corrModel;
+        public CorrespondanceModel CorrModel
+        {
+            get
+            {
+                return corrModel;
+            }
+            set
+            {
+                if (corrModel == value) return;
+
+                corrModel = value;
+                OnPropertyChanged("CorrModel");
+            }
+        }
         private string _favIcon = string.Empty;
         public string FavIcon
         {
@@ -158,18 +193,106 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 _navigationService.GoBack();
             });
-            OnAttachmentClick = new Command(() =>
+            OnAttachmentClick = new Command(async () =>
             {
                 if (CorrespondenceD != null)
                 {
                     if (IsAttachmentEnabled)
                     {
                         string Url = ZATCAConstants.GAZTGetCorrespondenceAttach +  CorrespondenceD.Cokey + "&correspondenceType=" + CorrespondenceD.Cotype ;
-                        ShowPdf(Url);
+                       await ShowPdf(Url);
                     }
                 }
             });
-            OnFavClicked = new Command(() =>
+
+            OnAppearingTaxpayerCorrespondanceDetailCommand = new Command(async () =>
+            {
+                IsFavoriteVisible = false;
+                CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
+                if (CorrModel != null)
+                {
+                    CorrespondenceTitle = CorrModel.Title;
+                    CorrespondenceDateTime = CorrModel.DateToDisplay;
+                    CorrespondenceTime = CorrModel.TimeToDisplay;
+                    if (string.IsNullOrEmpty(CorrModel.TaxtpFg))
+                    {
+                        IsFavoriteVisible = true;
+                    }
+                    else
+                    {
+                        IsFavoriteVisible = false;
+                    }
+                }
+                try
+                {
+                    IsAttachmentEnabled = false;
+                    CorrespondenceD = await WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
+                    if (CorrespondenceD != null && CorrespondenceD.d != null && CorrespondenceD.d.results != null)
+                    {
+                        string response = CorrespondenceD.d.results.LastOrDefault().Attfg;
+                        if (response.Equals("X"))
+                        {
+                            IsAttachmentEnabled = true;
+                        }
+                        else
+                        {
+                        }
+                    }
+                    await PopToRootPage();
+
+                }
+                catch (InternetException ex)
+                {
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                }
+                string HTMLContent = string.Empty;
+                string HTMLContentTest = string.Empty;
+                if (CorrespondenceD != null && CorrespondenceD.d != null && CorrespondenceD.d.results != null)
+                {
+                    foreach (CorrespondenceDetailsResult ItemC in CorrespondenceD.d.results)
+                    {
+                        HTMLContent = HTMLContent + ItemC.Tdline;
+                    }
+                    string newHTMLContent = HTMLContent.Replace("<img ", "<img src='ic_GAZT_Logo_Text.png' width='40%' ");
+
+                    newHTMLContent = newHTMLContent.Replace("FABB33", "0996d4");
+
+
+                    newHTMLContent = newHTMLContent.Replace("</html>", "<head><style type='text/css'>@font-face {font-family: MyFont;src:url('Somar-Regular.otf') format('opentype');}body { font-family: MyFont }</style></head></html>");
+
+
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    {
+                        string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:40px;margin:15;color:#042e66'>");
+                        var htmlSource = new HtmlWebViewSource();
+                        htmlSource.Html = newHTMLForFonts;
+                        htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
+                        CorWebViewSource = htmlSource;
+                    }
+                    else
+                    {
+                        string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:16px;margin:10;color:#042e66'>");
+                        var htmlSource = new HtmlWebViewSource();
+                        htmlSource.Html = newHTMLForFonts;
+                        htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
+                        CorWebViewSource = htmlSource;
+                    }
+                }
+                if (CorrModel != null)
+                {
+                    CorrespondenceTitle = CorrModel.Title;
+                    this.CorrespondenceD = CorrModel;
+                    if (CorrModel.IsFav == true)
+                    {
+                        FavIcon = "ic_star.png";
+                    }
+                    else
+                    {
+                        FavIcon = "ic_star_border.png";
+                    }
+                }
+            });
+            OnFavClicked = new Command(async () =>
             {
                 if (CorrespondenceD.IsFav == false)
                 {
@@ -183,7 +306,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     FavoriteM.Gpart = CorrespondenceD.Gpart;
                     FavoriteM.Zzfav = true;
                     FavoriteM.Vkont = CorrespondenceD.Vkont;
-                    string result = WebServiceManager.GAZTSetFavCorrespondence(FavoriteM);
+                    string result = await WebServiceManager.GAZTSetFavCorrespondence(FavoriteM);
                     CorrespondenceD.IsFav = true;
                     FavIcon = "ic_star.png";
                 }
@@ -199,7 +322,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     FavoriteM.Gpart = CorrespondenceD.Gpart;
                     FavoriteM.Zzfav = false;
                     FavoriteM.Vkont = CorrespondenceD.Vkont;
-                    string result = WebServiceManager.GAZTSetFavCorrespondence(FavoriteM);
+                    string result = await WebServiceManager.GAZTSetFavCorrespondence(FavoriteM);
                     CorrespondenceD.IsFav = false;
                     FavIcon = "ic_star_border.png";
                 }
@@ -225,6 +348,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
             }
             IsLoading = false;
+        }
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
         }
     }
 

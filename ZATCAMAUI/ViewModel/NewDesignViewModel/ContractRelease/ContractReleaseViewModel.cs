@@ -17,6 +17,7 @@ using ZATCAMAUI.Views.NewDesign.ContractReleasePages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using Metadata = ZATCAMAUI.Models.ContractRelease.Metadata;
+using ZATCAMAUI.Core.CustomControls;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
 
@@ -43,7 +44,6 @@ public class ContractReleaseViewModel : BaseViewModel
     public ICommand DeclarationConBtnTapped { get; set; }
     public ICommand SummaryConBtnTapped { get; set; }
     public ICommand ContractInstructionsClicked { get; set; }
-    public ICommand CloseClick { get; set; }
     public ICommand GoBackClick { get; set; }
     public ICommand GoBackToReleaseDetails { get; set; }
     public ICommand GoBackToAttachments { get; set; }
@@ -62,6 +62,242 @@ public class ContractReleaseViewModel : BaseViewModel
     public ICommand NewContractCopyAttachmentTapped { get; set; }
     public ICommand NewInvoiceAttachmentTapped { get; set; }
     public ICommand ReleaseAmtUnfocused { get; set; }
+
+    public ICommand OnAppearingContractReleaseCommand
+    {
+        get
+        {
+            return new Command(async _ =>
+            {
+                try
+                {
+                    IsLoading = true;
+
+                    ResetData();
+                    PopulateDataInChips();
+
+                    await GetContractReleaseData();
+
+                    await ShowInstructionDialog();
+
+
+                    
+                    ChipGroupSelectedItem = ChipDataFilterlist.Where(x => x.TemplateType == AppResources.NDGregorian).FirstOrDefault();
+                    IsHijriCal = false;
+
+                    MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+                    {
+                        PickerModel = arg;
+                        updatePicker();
+                    });
+
+                    MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
+                    {
+                        if (arg != null)
+                        {
+                            PopulateAttachments(arg.results);
+                        }
+                    });
+                    IsLoading = false;
+                }
+                catch (Exception ex)
+                {
+                    IsLoading = false;
+                }
+
+            });
+        }
+    }
+
+    public ICommand ChipGroupStatusFilterSelectionCommand
+    {
+        get
+        {
+            return new Command(_ =>
+            {
+                try
+                {
+                    if (ChipGroupSelectedItem.Text.Equals(AppResources.NDHijri))
+                    {
+                        IsHijriCal = true;
+
+                        if (TodayDateinHijriEnd != null)
+                        {
+                            string month = TodayDateinHijriStart[1].ToString();
+                            string day = TodayDateinHijriStart[0].ToString();
+                            string year = TodayDateinHijriStart[2].ToString();
+                            FromDate = year + "/" + month + "/" + day;
+                            ToDate = year + "/" + month + "/" + day;
+                        }
+
+                    }
+                    else
+                    {
+                        IsHijriCal = false;
+
+                        if (TodayDateEnd != null)
+                        {
+                            string month = TodayDateStart[1].ToString();
+                            string day = TodayDateStart[0].ToString();
+                            string year = TodayDateStart[2].ToString();
+                            FromDate = year + "/" + month + "/" + day;
+                            ToDate = year + "/" + month + "/" + day;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                }
+
+            });
+        }
+    }
+
+
+    public ICommand ContractNumberUnfocusedCommand
+    {
+        get
+        {
+            return new Command(_ =>
+            {
+                ContractNumber = ContractNumberText;
+
+            });
+        }
+    }
+
+    public ICommand DownloadAcknowledgementFormCommand
+    {
+        get
+        {
+            return new Command(async _ =>
+            {
+
+                if (ContractReleaseData1.d.Fbnumz != null)
+                {
+                    IsLoading = true;
+                    string downloadurl = ZATCAConstants.CRDownloadCoverFormFile + ContractReleaseData1.d.Fbnumz;
+                    await _navigationService.NavigateTo(App.PdfView, downloadurl);
+
+                    IsLoading = false;
+                }
+
+            });
+        }
+    }
+    public ICommand DownloadAcknowledgementCommand
+    {
+        get
+        {
+            return new Command(async _ =>
+            {
+
+                if (ContractReleaseData1.d.Fbnumz != null)
+                {
+                    IsLoading = true;
+                    string downloadurl = ZATCAConstants.CRDownloadCoverFormFile + ContractReleaseData1.d.Fbnumz;
+                    await _navigationService.NavigateTo(App.PdfView, downloadurl);
+
+                    IsLoading = false;
+                }
+
+            });
+        }
+    }
+
+    public ICommand ReferenceNumberCopyCommand
+    {
+        get
+        {
+            return new Command(async _ =>
+            {
+                try
+                {
+                    if (ContractReleaseData.d.Fbnumz != null)
+                    {
+                        await Clipboard.SetTextAsync(ContractReleaseData.d.Fbnumz);
+                        if (Clipboard.HasText)
+                        {
+                            var text = await Clipboard.GetTextAsync();
+                            await _dialogService.ShowMessageBox(AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+
+
+                }
+
+            });
+        }
+    }
+
+    public ICommand ContractNumberCopyCommand
+    {
+        get
+        {
+            return new Command(async _ =>
+            {
+                try
+                {
+                    if (ContractReleaseData.d.AContNo != null)
+                    {
+                        await Clipboard.SetTextAsync(ContractReleaseData.d.AContNo);
+                        if (Clipboard.HasText)
+                        {
+                            var text = await Clipboard.GetTextAsync();
+                            await _dialogService.ShowMessageBox(AppResources.CRContractingNumber + " " + text, AppResources.Copied);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+
+
+                }
+
+            });
+        }
+    }
+
+    public ICommand DashboardCommand
+    {
+        get
+        {
+            return new Command(async _ =>
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
+                {
+                    if (item.GetType().Name == App.ContractReleasePageView)
+                    {
+                        _navigation.RemovePage(item);
+                        break;
+                    }
+                }
+
+                foreach (var item in _navigation.NavigationStack)
+                {
+                    if (item.GetType().Name == App.ContractReleaseListPageView)
+                    {
+                        _navigation.RemovePage(item);
+                        break;
+                    }
+                }
+                foreach (var item in _navigation.NavigationStack)
+                {
+                    if (item.GetType().Name == App.ContractReleaseSuccessPageView)
+                    {
+                        _navigation.RemovePage(item);
+                        break;
+                    }
+                }
+                await _navigationService.NavigateTo(App.ContractReleaseListPageView);
+
+            });
+        }
+    }
 
     #endregion
 
@@ -110,6 +346,24 @@ public class ContractReleaseViewModel : BaseViewModel
             OnPropertyChanged("AttachmentsVisible");
         }
     }
+
+    private string contractNumberText;
+
+    public string ContractNumberText
+    {
+        get { return contractNumberText; }
+        set
+        {
+            if (contractNumberText == value) return;
+
+            contractNumberText = value;
+            OnPropertyChanged("ContractNumberText");
+        }
+    }
+
+    ChipModel chipGroupSelectedItem;
+    public ChipModel ChipGroupSelectedItem { get { return chipGroupSelectedItem; } set { chipGroupSelectedItem = value; OnPropertyChanged(); } }
+
 
     private bool _remarksAndDescVisible = false;
 
@@ -746,32 +1000,15 @@ public class ContractReleaseViewModel : BaseViewModel
 
     private Dictionary<string, string> ContractTypeIdDictionary = null;
 
-    private ContractReleaseFormResponse _contractReleaseData;
 
-    public ContractReleaseFormResponse ContractReleaseData
-    {
-        get { return _contractReleaseData; }
-        set
-        {
-            if (_contractReleaseData == value) return;
+    ContractReleaseFormResponse _contractReleaseData;
+    public ContractReleaseFormResponse ContractReleaseData { get { return _contractReleaseData; } set { _contractReleaseData = value; OnPropertyChanged(); } }
 
-            _contractReleaseData = value;
-            OnPropertyChanged("ContractReleaseData");
-        }
-    }
-    private ContractReleaseFormResponse1 _contractReleaseData1;
+    ContractReleaseFormResponse1 _contractReleaseData1;
+    public ContractReleaseFormResponse1 ContractReleaseData1 { get { return _contractReleaseData1; } set { _contractReleaseData1 = value; OnPropertyChanged(); } }
 
-    public ContractReleaseFormResponse1 ContractReleaseData1
-    {
-        get { return _contractReleaseData1; }
-        set
-        {
-            if (_contractReleaseData1 == value) return;
 
-            _contractReleaseData1 = value;
-            OnPropertyChanged("ContractReleaseData");
-        }
-    }
+
     private string _referenceNumberTxt = "";
 
     public string ReferenceNumberTxt
@@ -909,12 +1146,6 @@ public class ContractReleaseViewModel : BaseViewModel
     public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
     {
 
-
-        CloseClick = new Command(() =>
-        {
-            _navigationService.GoBack();
-        });
-
         GoBackClick = new Command(() => { BackNavigations(); });
 
         GoBackToReleaseDetails = new Command(() => { EnableReleaseDetailsView(); });
@@ -969,18 +1200,18 @@ public class ContractReleaseViewModel : BaseViewModel
         ShowStartDatePicker = new Command(async () =>
         {
             fromDatePicker = true;
-           await showDatePickerDialog(AppResources.CRContractStartDate);
+            await showDatePickerDialog(AppResources.CRContractStartDate);
 
         });
 
         ShowEndDatePicker = new Command(async () =>
         {
             fromDatePicker = false;
-           await showDatePickerDialog(AppResources.CRContractEndDate);
+            await showDatePickerDialog(AppResources.CRContractEndDate);
 
         });
 
-        ShowPicker = new Command(async() => { await showPickerDialog(); });
+        ShowPicker = new Command(async () => { await showPickerDialog(); });
 
 
         ReleaseDetailsConBtnTapped = new Command(async () => await ReleaseDetailsConBtnClicked());
@@ -989,13 +1220,13 @@ public class ContractReleaseViewModel : BaseViewModel
         DeclarationConBtnTapped = new Command(async () => await DeclarationConBtnClicked());
         SummaryConBtnTapped = new Command(async () => await SummaryConBtnClicked());
         ContractInstructionsClicked = new Command(async () => await InstructionsTapped());
-        NewInvoiceAttachmentTapped = new Command(NewInvoiceAttachmentClicked);
-        NewContractCopyAttachmentTapped = new Command(NewContractCopyAttachmentClicked);
+        NewInvoiceAttachmentTapped = new Command(async () => await NewInvoiceAttachmentClicked());
+        NewContractCopyAttachmentTapped = new Command(async () => await NewContractCopyAttachmentClicked());
         ReleaseAmtUnfocused = new Command(CalculateReleaseAmt);
         setPickerModel();
     }
 
-    
+
 
     private void setPickerModel()
     {
@@ -1045,7 +1276,7 @@ public class ContractReleaseViewModel : BaseViewModel
         PickerModel = genericPickerModel;
     }
 
-    public async Task showInstructionDialog()
+    public async Task ShowInstructionDialog()
     {
         await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
             instructionString: AppResources.CRInstructions, checkBoxString: AppResources.CRInstrCheckDesc,
@@ -1201,9 +1432,6 @@ public class ContractReleaseViewModel : BaseViewModel
         {
             CultureInfo calCul;
 
-
-
-
             if (IsHijriCal)
             {
                 calCul = new CultureInfo("ar-SA");
@@ -1284,7 +1512,7 @@ public class ContractReleaseViewModel : BaseViewModel
                 IsDeclarationEnabled = true;
                 if (!string.IsNullOrEmpty(Zterms) && !IsDECCheckBox)
                 {
-                  await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                     return;
                 }
             }
@@ -1786,13 +2014,6 @@ public class ContractReleaseViewModel : BaseViewModel
         return request;
     }
 
-    private static string GetLangZParameter()
-    {
-        if (App.IsArabic)
-            return "A";
-        else
-            return "E";
-    }
 
     public async Task<bool> SubmitClicked()
     {
@@ -1995,43 +2216,30 @@ public class ContractReleaseViewModel : BaseViewModel
             }
             else
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
-                        AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
+                       AppResources.Information);
+                _navigationService.GoBack();
             }
             IsLoading = false;
 
         }
         catch (GAZTVATRegistrationInProcessException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
 
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
             IsLoading = false;
         }
         catch (Exception)
         {
 
-
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                IsLoading = false;
-            });
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            IsLoading = false;
+            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
-    public async void NewContractCopyAttachmentClicked()
+    public async Task NewContractCopyAttachmentClicked()
     {
         if (MopupService.Instance.PopupStack.Count > 0) return;
         _isInvoiceAttachments = false;
@@ -2049,15 +2257,9 @@ public class ContractReleaseViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
-        }
-        catch (Exception)
-        {
 
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
@@ -2080,7 +2282,7 @@ public class ContractReleaseViewModel : BaseViewModel
         }
     }
 
-    public async void NewInvoiceAttachmentClicked()
+    public async Task NewInvoiceAttachmentClicked()
     {
         if (MopupService.Instance.PopupStack.Count > 0) return;
         _isInvoiceAttachments = true;
@@ -2099,11 +2301,8 @@ public class ContractReleaseViewModel : BaseViewModel
         }
         catch (InternetException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            });
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            _navigationService.GoBack();
         }
     }
 
@@ -2266,6 +2465,19 @@ public class ContractReleaseViewModel : BaseViewModel
         {
         }
     }
+    public async Task GetContractReleaseData()
+    {
+        try
+        {
+            IsLoading = true;
+            await OnPageLoad();
+            IsLoading = false;
+        }
+        catch (Exception)
+        {
 
+
+        }
+    }
     #endregion
 }

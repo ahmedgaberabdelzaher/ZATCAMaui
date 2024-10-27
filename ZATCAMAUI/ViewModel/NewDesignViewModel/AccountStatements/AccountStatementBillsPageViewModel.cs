@@ -661,10 +661,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
         }
 
-        public AccoungtDetails ObjectBills(string Opbel, string fbnum)
+        public async Task<AccoungtDetails> ObjectBills(string Opbel, string fbnum)
         {
             string lang = UtilityManager.GetLanguageParameter();
-            return WebServiceManager.ZATCAAccGetDetails(Opbel, fbnum, lang, "AccountStatements");
+            return await WebServiceManager.ZATCAAccGetDetails(Opbel, fbnum, lang, "AccountStatements");
         }
 
 
@@ -972,7 +972,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
 
 
-        public async void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
+        public async Task FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
             IsLoading = true;
             if (SelectedTransactionTypeFilter != null)
@@ -999,7 +999,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                         MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Paid" || x.Status == "Partially Paid" || x.Status == "Open").ToList());
 
                         FilterOnTaxType(MyBills);
-                        ApplyFilter();
+                       await ApplyFilter();
                         IsLoading = false;
                         return;
 
@@ -1043,7 +1043,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                             FilterOnTaxType(MyBills);
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception )
                     {
                         
                         
@@ -1087,7 +1087,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception )
                     {
 
                         
@@ -1223,7 +1223,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
         }
 
-        public async void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
+        public void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
         {
 
             IsLoading = true;
@@ -1289,7 +1289,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                             break;
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception) {
 
                     
                     
@@ -1318,10 +1318,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             IsLoading = false;
         }
 
-        public void ApplyFilter()
+        public async Task ApplyFilter()
         {
 
-            FilterIfTypeAndStausFilterSelected(false);
+           await FilterIfTypeAndStausFilterSelected(false);
 
         }
 
@@ -1334,7 +1334,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
        }
 
-        public async void showPickerDialog()
+        public async Task showPickerDialog()
         {
             try
             {
@@ -1343,11 +1343,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 

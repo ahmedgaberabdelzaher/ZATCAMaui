@@ -18,6 +18,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
         public ICommand OnHomeButtonClicked { get; set; }
         public int SelectedPickerIndex { get; set; }
         #endregion
+
         #region Property
         private string _txtSelectedStatus = string.Empty;
         public string TxtSelectedStatus
@@ -191,9 +192,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
         #region Constructor
         public ICRListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnHomeButtonClicked = new Command(() =>
+            OnHomeButtonClicked = new Command(async () =>
             {
-                _navigationService.NavigateTo(App.SFLandingPageView);
+               await _navigationService.NavigateTo(App.SFLandingPageView);
             });
         }
         #endregion
@@ -203,9 +204,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
-                    _navigationService.NavigateTo(App.SFLandingPageView);
+                   await  _navigationService.NavigateTo(App.SFLandingPageView);
                 });
             }
         }
@@ -213,69 +214,53 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                ICRList = null;
+                ICR icrList = null;
+                try
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(() =>
-                {
-                    ICRList = null;
-                    ICR icrList = null;
-                    try
+                    string lang = UtilityManager.GetLanguageParameter();
+                    icrList = await WebServiceManager.GAZTGetICRs(App.TP.TIN, lang);
+                   await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    if (icrList != null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                     {
-                        string lang = UtilityManager.GetLanguageParameter();
-                        icrList = WebServiceManager.GAZTGetICRs(App.TP.TIN, lang);
-                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        if (icrList != null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
-                        {
-                            ICRStatusList = new List<ICRStatus>();
-                            ICRStatusList = icrList.ICR_STATUSSet;
+                        ICRStatusList = new List<ICRStatus>();
+                        ICRStatusList = icrList.ICR_STATUSSet;
 
-                            if (string.IsNullOrEmpty(App.ICRStatus))
-                            {
-                                SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
-                            }
-                        }
-                        VATDeclaration vATDeclaration = new VATDeclaration();
-                        if (icrList != null && icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
+                        if (string.IsNullOrEmpty(App.ICRStatus))
                         {
-                            ICRList = new List<ICRListSet>();
-                            ICRList = icrList.ICR_LISTSet.OrderByDescending(x => x.DueDateDateTime).ToList();
-                            ICRDummyList = ICRList;
-                        }
-                        else
-                        {
-                            IsLoading = false;
-                            _navigationService.GoBack();
+                            SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
                         }
                     }
-                    catch (InternetException ex)
+                    VATDeclaration vATDeclaration = new VATDeclaration();
+                    if (icrList != null && icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
+                        ICRList = new List<ICRListSet>();
+                        ICRList = icrList.ICR_LISTSet.OrderByDescending(x => x.DueDateDateTime).ToList();
+                        ICRDummyList = ICRList;
                     }
-                });
-                await Task.Run(() =>
-                {
+                    else
+                    {
+                        IsLoading = false;
+                        _navigationService.GoBack();
+                    }
                     IsLoading = false;
-                });
+                }
+                catch (InternetException ex)
+                {
+
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    IsLoading = false;
+                    _navigationService.GoBack();
+                }
+             
 
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                IsLoading = false;
+                _navigationService.GoBack();
             }
         }
         public async Task GetVATAllReturnsAsync()
@@ -305,7 +290,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                             EUser = SelectedICR.Euser;
 
                             VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
-                            PopToRootPage();
+                           await PopToRootPage();
                             if (_vATDeclaration != null && _vATDeclaration.data != null)
                             {
                                 PreviousSelectedICRStatus = _selectedICRStatus;
@@ -355,24 +340,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             }
             return isValid;
         }
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                var _navigation = Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
                 {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
+                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
                     {
-                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
+                        _navigation.RemovePage(item);
+                        break;
                     }
-                  await  _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-                    _navigation.NavigationStack.ToList().Clear();
-                });
+                }
+                await _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                _navigation.NavigationStack.ToList().Clear();
             }
         }
         public void SetICRListData(ICRStatus selectedICRStat)

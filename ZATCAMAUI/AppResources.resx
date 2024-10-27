@@ -3026,14 +3026,6 @@ Should we require further information, we would be in contact.</value>
     <data name="ZZZMyCommitment" xml:space="preserve">
         <value>My commitments</value>
     </data>
-    <data name="ZZZApplicationStatusTitle" xml:space="preserve">
-        <value>Application Status</value>
-        <comment>Title</comment>
-    </data>
-    <data name="ZZZCorrespondenceTitle" xml:space="preserve">
-        <value>Correspondence</value>
-        <comment>Title</comment>
-    </data>
     <data name="ZZZEstimatedZakatTitle" xml:space="preserve">
         <value>Estimated Zakat</value>
         <comment>Title</comment>
@@ -7456,9 +7448,6 @@ I acknowledge to clarify in the original bank guarantee the TIN of the company a
         <value>Income Tax</value>
         <comment>My Return </comment>
     </data>
-    <data name="ZZZZMyCorrespondence" xml:space="preserve">
-        <value>My correspondence</value>
-    </data>
     <data name="CRContractStartDate" xml:space="preserve">
         <value>Contract Start Date</value>
     </data>
@@ -8986,9 +8975,6 @@ I acknowledge that the above bank account information is correct and assume full
     <data name="ddmmyyyyformat" xml:space="preserve">
         <value>DD/MM/YYYY</value>
     </data>
-    <data name="ChangeFillingPeriodMyNewRequests" xml:space="preserve">
-        <value>VAT Change Filling Period</value>
-    </data>
     <data name="ZZZZIAgreeTheseTermsCond" xml:space="preserve">
         <value>I agree with these Terms and Conditions</value>
     </data>
@@ -9030,9 +9016,6 @@ I acknowledge that the above bank account information is correct and assume full
     </data>
     <data name="CustomsZATCAIntegrat" xml:space="preserve">
         <value>Integrated Tarrifs</value>
-    </data>
-    <data name="CustomsZatcaDelca" xml:space="preserve">
-        <value>Inquire customs declaration</value>
     </data>
     <data name="ZZUploadDoc" xml:space="preserve">
         <value>Upload documents / view attached files</value>
@@ -11780,4 +11763,4 @@ the credit balance of the current period will be carried forward, you can reques
   <data name="VerifyAdjustmentAmount" xml:space="preserve">
      <value>Verify adjustment amount</value> 
   </data>
-</root>
+</root> 

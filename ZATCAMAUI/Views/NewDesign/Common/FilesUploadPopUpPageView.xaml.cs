@@ -2,13 +2,10 @@
 using System.Globalization;
 using Newtonsoft.Json;
 using Mopups.Pages;
-using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
-using Application = Microsoft.Maui.Controls.Application;
-using ListView = Microsoft.Maui.Controls.ListView;
 
 namespace ZATCAMAUI.Views.NewDesign.Common
 {
@@ -211,6 +208,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
 
             base.OnDisappearing();
         }
+
         public void SetDocType()
         {
             if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATInstalment)
@@ -329,101 +327,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
 
         }
 
-        public async Task email(string doguid, VATAttachment attachment)
-        {
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-                try
-                {
-
-
-                    string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
-
-                    MemoryStream pdfStream = new MemoryStream();
-
-
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(attachmentURL);
-                    HttpResponseMessage _fileDownloadResponse = await client.GetAsync(uri);
-
-                    var fileName = Guid.NewGuid().ToString();
-
-                    _fileDownloadResponse.EnsureSuccessStatusCode();
-                    await _fileDownloadResponse.Content.CopyToAsync(pdfStream);
-
-                    var message = new EmailMessage
-                    {
-                        Subject = "Attached Form :",
-                    };
-                    var fn = attachment.Filename;
-                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
-                    File.WriteAllBytes(file, pdfStream.ToArray());
-
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Share.RequestAsync(new ShareFileRequest
-                        {
-                            Title = "",
-                            File = new ShareFile(file)
-                        });
-                    });
-
-
-
-                }
-                catch (Exception)
-                {
-
-
-                }
-            });
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
-        }
-
-        private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            try
-            {
-                ListView Document = sender as ListView;
-                VATAttachment attachment = (VATAttachment)Document.SelectedItem;
-                //attachment.DocUrl;
-                if (attachment.Filename.Contains("."))
-                {
-                    string Extention = attachment.Filename.Split('.')[1];
-                    if (Extention.Equals("PDF") || Extention.Equals("pdf"))
-                    {
-                        if (attachment.DocUrl != null)
-                        {
-                            await MopupService.Instance.PopAsync();
-                          await  viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
-                        }
-                    }
-                    else
-                    {
-                        await email(attachment.Doguid, attachment);
-                    }
-                }
-                else
-                {
-                    await email(attachment.Doguid, attachment);
-                }
-
-
-                if (sender is ListView lv) lv.SelectedItem = null;
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
+       
 
         private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
@@ -431,10 +335,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             {
                 try
                 {
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = true;
-                    });
+                    viewModel.IsLoading = true;
                     Image arrowImage = sender as Image;
                     VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
 
@@ -445,22 +346,13 @@ namespace ZATCAMAUI.Views.NewDesign.Common
 
                         var result = await this.DisplayAlert(AppResources.ZZNotification, confirmation, AppResources.ZZZOkayText, AppResources.ZZCancel);
 
-                        await viewModel.DeleteAttachment(result, attachment);
+                        viewModel.DeleteAttachment(result, attachment);
                     }
-                    //}
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                    viewModel.IsLoading = false;
                 }
                 catch (Exception)
                 {
-
-
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                    viewModel.IsLoading = false;
 
                 }
             }
@@ -470,22 +362,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                 {
                     viewModel.IsLoading = false;
                     await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
-            }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
-        }
-
-        public void PopToRootPage()
-        {
-            if (App.IsSessionExpired)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
                 });
             }
         }

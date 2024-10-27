@@ -161,13 +161,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             }
         }
 
-        public Task getPdfStreamAsync()
+        public async Task getPdfStreamAsync()
         {
             Stream stream = null;
             try
             {
-                //HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
-                String lang = "EN";
+                string lang = "EN";
                 HttpWebRequest myReq = GetPdfDocument(DownloadUrl, lang);
 
 
@@ -211,7 +210,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
                                         {
                                             StreamForDownloadURL.Flush();
                                             StreamForDownloadURL.Close();
-                                            // StreamForDownloadURL = null;
                                         }
                                         IsShareButtonEnable = true;
                                         StreamForDownloadURL = stream;
@@ -221,7 +219,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
                                         IsShareButtonEnable = false;
                                     }
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     IsShareButtonEnable = false;
                                     
@@ -231,32 +229,20 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
                             else
                             {
                                 IsShareButtonEnable = false;
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    // await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
-                                });
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                             }
 
                         }
                         else
                         {
                             IsShareButtonEnable = false;
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                //   await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                         }
                     }
                     else
                     {
                         IsShareButtonEnable = false;
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            //await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
-                        });
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                     }
 
                 }
@@ -269,7 +255,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             {
             }
 
-            return Task.CompletedTask;
         }
 
         private static HttpWebRequest GetPdfDocument(string downloadUrl, string lang)
@@ -293,5 +278,74 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             return Req;
         }
         #endregion
+
+        public ICommand CShareCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    try
+                    {
+                        IsLoading = true;
+                        var message = new EmailMessage
+                        {
+                            Subject = "Attached Form :",
+                        };
+                        if (PdfBytes != null)
+                        {
+                            var fn = "GAZT" + TaxPayerProfile + ".pdf";
+                            var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                            File.WriteAllBytes(file, PdfBytes);
+                            await Share.RequestAsync(new ShareFileRequest
+                            {
+                                Title = Title,
+                                File = new ShareFile(file)
+                            });
+
+                        }
+                        else
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThefileisstillloading));
+                        }
+                        IsLoading = false;
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                });
+            }
+        }
+
+        public ICommand OnAppearingPdfViewCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    try
+                    {
+                        DownloadUrl = string.Empty;
+                        PdfUrl = string.Empty;
+
+                        if (StreamForDownloadURL != null)
+                        {
+                            StreamForDownloadURL.Flush();
+
+                            if (StreamForDownloadURL != null)
+                                StreamForDownloadURL.Close();
+                        }
+
+                        StreamForDownloadURL = null;
+                        await OnPageLoad();
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                });
+            }
+        }
     }
 }

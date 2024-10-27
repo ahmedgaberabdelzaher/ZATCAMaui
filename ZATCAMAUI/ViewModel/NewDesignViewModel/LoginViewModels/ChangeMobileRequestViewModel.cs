@@ -1952,9 +1952,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
-        public void OnRentAttachmentDeleteButtonTapped(Attachment obj)
+        public async Task OnRentAttachmentDeleteButtonTapped(Attachment obj)
         {
-            var delStatus = DeleteAttachment(obj.Filename, obj.RetGuid, obj.Dotyp, obj.Doguid);
+            var delStatus = await DeleteAttachment(obj.Filename, obj.RetGuid, obj.Dotyp, obj.Doguid);
 
             if (delStatus.ToLower() == "delete")
             {
@@ -1971,9 +1971,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         {
             MopupService.Instance.PushAsync(new AttachmentInformationPopUp(_message));
         }
-        private string DeleteAttachment(string filename, string retGuid, string dotyp, string doguid)
+        private async Task<string> DeleteAttachment(string filename, string retGuid, string dotyp, string doguid)
         {
-            return WebServiceManager.ChangeMobDeleteAttachment(filename, retGuid, dotyp, doguid);
+            return await WebServiceManager.ChangeMobDeleteAttachment(filename, retGuid, dotyp, doguid);
         }
 
         internal void StopTimer()

@@ -12,6 +12,7 @@
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
@@ -20,7 +21,12 @@
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     HideSoftInputOnTapped="True"
+    x:Name="page"
     NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingContractReleaseCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -58,7 +64,7 @@
                     </Image>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        <TapGestureRecognizer Command="{Binding GoBackClick}" />
                     </StackLayout.GestureRecognizers>
 
                 </StackLayout>
@@ -82,7 +88,7 @@
                     VerticalOptions="CenterAndExpand"
                     WidthRequest="24">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding CloseClick}" />
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
 
@@ -98,7 +104,9 @@
 
                 <Grid RowDefinitions="*">
 
-                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ScrollView HorizontalOptions="FillAndExpand"
+                                VerticalScrollBarVisibility="Never"
+                                VerticalOptions="FillAndExpand">
 
                         <Grid>
                             <Grid.RowDefinitions>
@@ -122,25 +130,8 @@
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding IsReleaseDetailsVisible}"
                                     RowSpacing="24"
+                                    RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto"
                                     VerticalOptions="FillAndExpand">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
 
                                     <StackLayout Grid.Row="0">
                                         <Label
@@ -169,12 +160,15 @@
                                                     x:Name="ContractNameText"
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="15"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.CRContractonName}"
                                                     HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource DefaultEntry}"
                                                     TextColor="{StaticResource NeutralBlack}"
                                                     Unfocused="ContractNameFiledUnfocused" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
                                     </StackLayout>
+
                                     <StackLayout Grid.Row="2">
 
                                         <StackLayout>
@@ -195,12 +189,15 @@
                                                         FontSize="15"
                                                         HorizontalOptions="FillAndExpand"
                                                         Keyboard="Numeric"
+                                                        Placeholder="{x:Static ResourceManager:AppResources.CRContractNumber}"
+                                                        Style="{StaticResource DefaultEntry}"
                                                         TextChanged="OnTextChanged"
-                                                        TextColor="{StaticResource NeutralBlack}"
-                                                        Unfocused="ContractNumberUnfocused">
+                                                        Text="{Binding ContractNumberText}"
+                                                        TextColor="{StaticResource NeutralBlack}">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <behavior:OnlyNumericValuesBehaviour />
+                                                            <xct:EventToCommandBehavior Command="{Binding ContractNumberUnfocusedCommand}" EventName="Unfocused"/>
                                                         </custom:GAZTBorderlessEntry.Behaviors>
 
                                                     </custom:GAZTBorderlessEntry>
@@ -213,6 +210,7 @@
 
 
                                     </StackLayout>
+
                                     <StackLayout Grid.Row="3">
                                         <Label
                                             Grid.Row="0"
@@ -226,45 +224,41 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Border
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2"
-                                            Padding="10"
-                                            Style="{StaticResource GreyBorderFrame}">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}"
-                                                    Text="{Binding PickedContract}" />
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="Center">
-                                                    <Image.Source>
 
-                                                        <FontImageSource
-                                                            FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.ChevronDown}"
-                                                            Size="28"
-                                                            Color="{StaticResource SecondaryNew}" />
-                                                    </Image.Source>
-                                                    <Image.GestureRecognizers>
+                                       <custom:CustomSfTextInputView >
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Keyboard="Text"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.CRContractType}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding PickedContract}"
+                                                    TextColor="#58595B">
+
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding ShowPicker}" />
-                                                    </Image.GestureRecognizers>
-                                                </Image>
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                </custom:GAZTBorderlessEntry>
 
-                                            </Grid>
-                                        </Border>
+                                            </custom:CustomSfTextInputView.TextInputView>
+
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowPicker}" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+
+                                                <Image Aspect="AspectFit" Source="greyDropDown" />
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        </custom:CustomSfTextInputView>
+
+                                           <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowPicker}" />
+                                            </StackLayout.GestureRecognizers>
+
                                     </StackLayout>
+
                                     <StackLayout Grid.Row="4">
 
                                         <SfChipGroup:SfChipGroup
@@ -272,15 +266,21 @@
                                             ChipBackground="Transparent"
                                             ChipStroke="{StaticResource NeutralLightGrey}"
                                             ChipStrokeThickness="1"
+                                            Margin="0,0,0,20"
                                             ChipType="Choice"
                                             HorizontalOptions="Start"
+                                            SelectedItem="{Binding ChipGroupSelectedItem}"
                                             ItemsSource="{Binding ChipDataFilterlist}"
                                             SelectedChipBackground="{StaticResource PartialBg}"
-                                            SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
                                             VerticalOptions="Center">
+                                            <SfChipGroup:SfChipGroup.Behaviors>
+                                                <xct:EventToCommandBehavior Command="{Binding ChipGroupStatusFilterSelectionCommand}" EventName="SelectionChanged"/>
+
+                                            </SfChipGroup:SfChipGroup.Behaviors>
                                             <SfChipGroup:SfChipGroup.ItemTemplate>
                                                 <DataTemplate>
-                                                    <StackLayout WidthRequest="80">
+                                                    <StackLayout WidthRequest="80"
+                                                                 FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                         <Label
                                                             HorizontalOptions="FillAndExpand"
                                                             HorizontalTextAlignment="Center"
@@ -300,43 +300,37 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Border Padding="10" Style="{StaticResource GreyBorderFrame}">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}"
-                                                    Text="{Binding FromDate}" />
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    Margin="5,0,5,0"
-                                                    HeightRequest="24"
-                                                    HorizontalOptions="Center"
-                                                    WidthRequest="24">
-                                                    <Image.Source>
 
-                                                        <FontImageSource
-                                                            FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.Calendar}"
-                                                            Size="28"
-                                                            Color="{StaticResource SecondaryNew}" />
-                                                    </Image.Source>
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="NormalCalendar_Tapped" />
-                                                    </Image.GestureRecognizers>
-                                                </Image>
+                                        <custom:CustomSfTextInputView >
+                                            <custom:CustomSfTextInputView.TextInputView>
 
-                                            </Grid>
-                                        </Border>
+                                                <custom:GAZTBorderlessEntry
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Keyboard="Text"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding FromDate}"
+                                                    TextColor="#58595B">
+
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="NormalCalendar_Tapped"/>
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                                                </custom:GAZTBorderlessEntry>
+
+                                            </custom:CustomSfTextInputView.TextInputView>
+
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="NormalCalendar_Tapped" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                               <Image Aspect="AspectFit" Source="calendar.png"
+                                                      WidthRequest="25" HeightRequest="25"/>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                        </custom:CustomSfTextInputView>
+                                        
                                         <custom:CustomDatePicker
                                             x:Name="NormalCalendar"
                                             Margin="2"
@@ -349,7 +343,7 @@
                                             Style="{StaticResource PickerStyle}">
 
                                             <custom:CustomDatePicker.ColumnHeaderView>
-                                                <syncfusion:PickerColumnHeaderView Height="46" />
+                                                <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
                                             </custom:CustomDatePicker.ColumnHeaderView>
 
 
@@ -361,9 +355,12 @@
 
                                                 <syncfusion:PickerHeaderView
                                                     Height="46"
-                                                    Background="Aqua"
-                                                    Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
-
+                                                     Background="{StaticResource NeutralBlack}"
+                                                    Text="{x:Static ResourceManager:AppResources.CRContractStartDate}">
+                                                    <syncfusion:PickerHeaderView.TextStyle>
+                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                    </syncfusion:PickerHeaderView.TextStyle>
+                                                </syncfusion:PickerHeaderView>
                                             </custom:CustomDatePicker.HeaderView>
 
 
@@ -373,10 +370,10 @@
 
                                             <custom:CustomDatePicker.FooterView>
 
-                                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                                <syncfusion:PickerFooterView Height="46"  Background="{StaticResource NeutralBlack}">
 
                                                     <syncfusion:PickerFooterView.TextStyle>
-                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                        <syncfusion:PickerTextStyle  TextColor="White" />
                                                     </syncfusion:PickerFooterView.TextStyle>
 
                                                 </syncfusion:PickerFooterView>
@@ -384,6 +381,7 @@
                                             </custom:CustomDatePicker.FooterView>
 
                                         </custom:CustomDatePicker>
+
                                         <!--  HijriDatePicker  -->
                                         <custom:CustomHijriDatePicker
                                             x:Name="HijriCalendar"
@@ -401,7 +399,7 @@
                                             </custom:CustomHijriDatePicker.SelectionView>
 
                                             <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                                <syncfusion:PickerColumnHeaderView Height="46" />
+                                                <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
                                             </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                             <custom:CustomHijriDatePicker.SelectedTextStyle>
@@ -412,17 +410,21 @@
 
                                                 <syncfusion:PickerHeaderView
                                                     Height="46"
-                                                    Background="Aqua"
-                                                    Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
+                                                     Background="{StaticResource NeutralBlack}"
+                                                    Text="{x:Static ResourceManager:AppResources.CRContractStartDate}">
+                                                    <syncfusion:PickerHeaderView.TextStyle>
+                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                    </syncfusion:PickerHeaderView.TextStyle>
+                                                </syncfusion:PickerHeaderView>
 
                                             </custom:CustomHijriDatePicker.HeaderView>
 
                                             <custom:CustomHijriDatePicker.FooterView>
 
-                                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                                <syncfusion:PickerFooterView Height="46"  Background="{StaticResource NeutralBlack}">
 
                                                     <syncfusion:PickerFooterView.TextStyle>
-                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                        <syncfusion:PickerTextStyle TextColor="White"  />
                                                     </syncfusion:PickerFooterView.TextStyle>
 
                                                 </syncfusion:PickerFooterView>
@@ -431,7 +433,9 @@
 
 
                                         </custom:CustomHijriDatePicker>
+
                                     </StackLayout>
+
                                     <StackLayout Grid.Row="5">
 
                                         <Label
@@ -447,49 +451,36 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <Border
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2"
-                                            Padding="10"
-                                            Style="{StaticResource GreyBorderFrame}">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
+                                        <custom:CustomSfTextInputView >
+                                            <custom:CustomSfTextInputView.TextInputView>
 
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}"
-                                                    Text="{Binding ToDate}" />
+                                                <custom:GAZTBorderlessEntry
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Keyboard="Text"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding ToDate}"
+                                                    TextColor="#58595B">
 
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    Margin="5,0,5,0"
-                                                    HeightRequest="24"
-                                                    HorizontalOptions="Center"
-                                                    WidthRequest="24">
-                                                    <Image.Source>
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="EndNormalCalendar_Tapped"/>
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
 
-                                                        <FontImageSource
-                                                            FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.Calendar}"
-                                                            Size="28"
-                                                            Color="{StaticResource SecondaryNew}" />
-                                                    </Image.Source>
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="EndNormalCalendar_Tapped" />
-                                                    </Image.GestureRecognizers>
-                                                </Image>
+                                                </custom:GAZTBorderlessEntry>
 
-                                            </Grid>
-                                        </Border>
+                                            </custom:CustomSfTextInputView.TextInputView>
+
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="EndNormalCalendar_Tapped" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                               <Image Aspect="AspectFit" Source="calendar.png"
+                                                      WidthRequest="25" HeightRequest="25"/>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                        </custom:CustomSfTextInputView>
+
                                         <custom:CustomDatePicker
                                             x:Name="EndDateNormalCalendar"
                                             Margin="2"
@@ -502,7 +493,7 @@
                                             Style="{StaticResource PickerStyle}">
 
                                             <custom:CustomDatePicker.ColumnHeaderView>
-                                                <syncfusion:PickerColumnHeaderView Height="46" />
+                                                <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
                                             </custom:CustomDatePicker.ColumnHeaderView>
 
 
@@ -517,19 +508,25 @@
 
                                             <custom:CustomDatePicker.HeaderView>
 
-                                                <syncfusion:PickerHeaderView
+                                                 <syncfusion:PickerHeaderView
                                                     Height="46"
-                                                    Background="Aqua"
-                                                    Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
+                                                    Background="{StaticResource NeutralBlack}"
+                                                    Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" >
+
+                                                        <syncfusion:PickerHeaderView.TextStyle>
+                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                    </syncfusion:PickerHeaderView.TextStyle>
+
+                                                </syncfusion:PickerHeaderView>
 
                                             </custom:CustomDatePicker.HeaderView>
 
                                             <custom:CustomDatePicker.FooterView>
 
-                                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                                <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
                                                     <syncfusion:PickerFooterView.TextStyle>
-                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                        <syncfusion:PickerTextStyle TextColor="White" />
                                                     </syncfusion:PickerFooterView.TextStyle>
 
                                                 </syncfusion:PickerFooterView>
@@ -556,7 +553,7 @@
                                             </custom:CustomHijriDatePicker.SelectionView>
 
                                             <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                                <syncfusion:PickerColumnHeaderView Height="46" />
+                                                <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
                                             </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                             <custom:CustomHijriDatePicker.SelectedTextStyle>
@@ -565,19 +562,25 @@
 
                                             <custom:CustomHijriDatePicker.HeaderView>
 
-                                                <syncfusion:PickerHeaderView
+                                                 <syncfusion:PickerHeaderView
                                                     Height="46"
-                                                    Background="Aqua"
-                                                    Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
+                                                    Background="{StaticResource NeutralBlack}"
+                                                    Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" >
+
+                                                        <syncfusion:PickerHeaderView.TextStyle>
+                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                    </syncfusion:PickerHeaderView.TextStyle>
+
+                                                </syncfusion:PickerHeaderView>
 
                                             </custom:CustomHijriDatePicker.HeaderView>
 
                                             <custom:CustomHijriDatePicker.FooterView>
 
-                                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                                <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
                                                     <syncfusion:PickerFooterView.TextStyle>
-                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                        <syncfusion:PickerTextStyle TextColor="White" />
                                                     </syncfusion:PickerFooterView.TextStyle>
 
                                                 </syncfusion:PickerFooterView>
@@ -585,7 +588,9 @@
                                             </custom:CustomHijriDatePicker.FooterView>
 
                                         </custom:CustomHijriDatePicker>
+
                                     </StackLayout>
+
                                     <StackLayout Grid.Row="6">
                                         <Label
                                             Grid.Row="0"
@@ -605,8 +610,10 @@
                                                     x:Name="ContractTotalAmountText"
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="15"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}"
                                                     HorizontalOptions="FillAndExpand"
                                                     Keyboard="Numeric"
+                                                    Style="{StaticResource DefaultEntry}"
                                                     TextColor="{StaticResource NeutralBlack}"
                                                     Unfocused="TotalAmountUnFocused" />
                                             </custom:CustomSfTextInputView.TextInputView>
@@ -627,19 +634,17 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <!--
-                                            x:Name="AmountoReleaseTxt"
-                                        -->
                                         <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="15"
                                                     HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource DefaultEntry}"
                                                     Keyboard="Numeric"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}"
                                                     Text="{Binding ContractReleaseAmount}"
-                                                    TextColor="{StaticResource NeutralBlack}"
-                                                    Unfocused="AmountToReleaseUnfocused">
+                                                    TextColor="{StaticResource NeutralBlack}">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <xct:EventToCommandBehavior Command="{Binding ReleaseAmtUnfocused}" EventName="Completed" />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
@@ -661,7 +666,6 @@
                                             <StackLayout Orientation="Horizontal">
 
                                                 <Label
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource BodyLabelBlackMedium}"
                                                     Text="{x:Static ResourceManager:AppResources.CRContractprofitEstimatedRate}" />
@@ -683,12 +687,10 @@
                                             </StackLayout>
 
                                             <Label
-                                                Margin="10,0,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.CRPercentage}" />
                                             <Label
-                                                Margin="10,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}"
                                                 Text="{Binding PickedContractPercent, StringFormat='{0} %'}" />
@@ -703,11 +705,10 @@
                                         BorderColor="{StaticResource NeutralLightGrey}"
                                         BorderWidth="1"
                                         CornerRadius="20">
-                                        <StackLayout>
+                                        <StackLayout Spacing="10">
 
                                             <StackLayout Orientation="Horizontal">
                                                 <Label
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource BodyLabelBlackMedium}"
                                                     Text="{x:Static ResourceManager:AppResources.CRProfitEstimatedForContract}" />
@@ -728,12 +729,10 @@
                                             </StackLayout>
 
                                             <Label
-                                                Margin="10,0,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.CRAmount}" />
                                             <Label
-                                                Margin="10,0,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}">
                                                 <Label.FormattedText>
@@ -755,7 +754,7 @@
                                         BorderColor="{StaticResource NeutralLightGrey}"
                                         BorderWidth="1"
                                         CornerRadius="20">
-                                        <StackLayout>
+                                        <StackLayout Spacing="10">
 
 
                                             <StackLayout
@@ -763,7 +762,6 @@
                                                 Orientation="Horizontal"
                                                 VerticalOptions="FillAndExpand">
                                                 <Label
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource BodyLabelBlackMedium}"
                                                     Text="{x:Static ResourceManager:AppResources.CREstimatedProfitforZakat}" />
@@ -784,9 +782,8 @@
 
 
 
-                                            <StackLayout Orientation="Horizontal">
+                                            <StackLayout Orientation="Horizontal" >
                                                 <Label
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.CRAmount}" />
@@ -800,7 +797,6 @@
 
                                             <StackLayout Orientation="Horizontal">
                                                 <Label
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource SectionTitleBlackBold}">
                                                     <Label.FormattedText>
@@ -813,7 +809,6 @@
                                                 </Label>
 
                                                 <Label
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="EndAndExpand"
                                                     Style="{StaticResource SectionTitleBlackBold}"
                                                     Text="{Binding EstimatedProfitForZakatPercent, StringFormat='{0} %'}" />
@@ -833,13 +828,12 @@
                                         BorderColor="{StaticResource NeutralLightGrey}"
                                         BorderWidth="1"
                                         CornerRadius="20">
-                                        <StackLayout>
+                                        <StackLayout Spacing="10">
                                             <StackLayout
                                                 HorizontalOptions="FillAndExpand"
                                                 Orientation="Horizontal"
                                                 VerticalOptions="FillAndExpand">
                                                 <Label
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource BodyLabelBlackMedium}"
                                                     Text="{x:Static ResourceManager:AppResources.CREstimatedProfitforTax}" />
@@ -862,7 +856,6 @@
                                                 <Label
                                                     Grid.Row="1"
                                                     Grid.Column="0"
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.CRAmount}" />
@@ -870,7 +863,6 @@
                                                 <Label
                                                     Grid.Row="1"
                                                     Grid.Column="1"
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="End"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.CRPercentage}" />
@@ -880,7 +872,6 @@
                                                 <Label
                                                     Grid.Row="2"
                                                     Grid.Column="0"
-                                                    Margin="10,-10,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource SectionTitleBlackBold}">
                                                     <Label.FormattedText>
@@ -894,7 +885,6 @@
                                                 <Label
                                                     Grid.Row="2"
                                                     Grid.Column="1"
-                                                    Margin="10,-10,0,0"
                                                     HorizontalOptions="EndAndExpand"
                                                     Style="{StaticResource SectionTitleBlackBold}"
                                                     Text="{Binding EstimatedProfitForTaxPercent, StringFormat='{0} %'}" />
@@ -909,12 +899,11 @@
                                         BorderColor="{StaticResource NeutralLightGrey}"
                                         BorderWidth="1"
                                         CornerRadius="20">
-                                        <StackLayout>
+                                        <StackLayout Spacing="10">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label
                                                     Grid.Row="0"
                                                     Grid.Column="0"
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource BodyLabelBlackMedium}"
                                                     Text="{x:Static ResourceManager:AppResources.CRTheValueofZakatdues}" />
@@ -940,7 +929,6 @@
                                                 Grid.Row="1"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                Margin="10,0,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.CRAmount}" />
@@ -949,7 +937,6 @@
                                                 Grid.Row="2"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                Margin="10,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}">
                                                 <Label.FormattedText>
@@ -971,10 +958,9 @@
                                         BorderColor="{StaticResource NeutralLightGrey}"
                                         BorderWidth="1"
                                         CornerRadius="20">
-                                        <StackLayout>
+                                        <StackLayout Spacing="10">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label
-                                                    Margin="10,0,0,0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource BodyLabelBlackMedium}"
                                                     Text="{x:Static ResourceManager:AppResources.CRTheValueTaxDues}" />
@@ -995,7 +981,6 @@
                                                 Grid.Row="1"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                Margin="10,0,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.CRAmount}" />
@@ -1004,7 +989,6 @@
                                                 Grid.Row="2"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                Margin="10,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}">
                                                 <Label.FormattedText>
@@ -1025,16 +1009,9 @@
                                             StrokeShape="RoundRectangle 15,15,15,15"
                                             VerticalOptions="FillAndExpand">
 
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
+                                            <Grid RowDefinitions="auto"
+                                                  ColumnSpacing="10"
+                                                  ColumnDefinitions="auto,*,auto">
                                                 <Label
                                                     Grid.Row="0"
                                                     Grid.Column="0"
@@ -1062,7 +1039,6 @@
                                                 <Image
                                                     Grid.Row="0"
                                                     Grid.Column="2"
-                                                    Margin="0,0,5,0"
                                                     HorizontalOptions="Center">
                                                     <Image.Source>
                                                         <FontImageSource
@@ -1118,6 +1094,7 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRAttachACopyOfTheContractRequiredToReleaseAndAmounts}" />
+
                                     <listView:SfListView
                                         AutoFitMode="Height"
                                         HorizontalOptions="Center"
@@ -1131,7 +1108,8 @@
                                         VerticalOptions="Center">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid HorizontalOptions="FillAndExpand">
+                                                <Grid HorizontalOptions="FillAndExpand"
+                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
                                                         <RowDefinition Height="auto" />
@@ -1205,50 +1183,42 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Border
-                                            Margin="0,0,0,10"
-                                            Padding="10"
-                                            Style="{StaticResource SfStyleGreyBorderFrame}">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    FontFamily="{StaticResource SomarRegular}"
-                                                    FontSize="Small"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                    TextColor="{StaticResource PrimaryColor}" />
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="Center"
-                                                    Rotation="90"
-                                                    VerticalOptions="Center">
-                                                    <Image.Source>
-                                                        <FontImageSource
-                                                            FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.Attachment}"
-                                                            Size="24"
-                                                            Color="{StaticResource SecondaryNew}" />
-                                                    </Image.Source>
-                                                </Image>
-                                            </Grid>
-                                        </Border>
+
+                                        <custom:CustomSfTextInputView>
+                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                <custom:GAZTBorderlessEntry
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Keyboard="Text"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    TextColor="#58595B" />
+
+                                            </custom:CustomSfTextInputView.TextInputView>
+
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image Aspect="AspectFit" Source="newui_ic_pdf" />
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NewContractCopyAttachmentTapped}" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                        </custom:CustomSfTextInputView>
+
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NewContractCopyAttachmentTapped}" />
                                         </StackLayout.GestureRecognizers>
+
                                     </StackLayout>
+
                                     <Label
                                         HorizontalOptions="StartAndExpand"
+                                        Margin="0,20"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRAttachacopyofinvoicesandpurchase}" />
+
                                     <listView:SfListView
                                         Grid.Row="0"
                                         AutoFitMode="Height"
@@ -1263,7 +1233,8 @@
                                         VerticalOptions="Center">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid HorizontalOptions="FillAndExpand">
+                                                <Grid HorizontalOptions="FillAndExpand"
+                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
                                                         <RowDefinition Height="auto" />
@@ -1322,6 +1293,7 @@
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                     </listView:SfListView>
+
                                     <StackLayout HorizontalOptions="FillAndExpand">
 
                                         <Label
@@ -1336,43 +1308,31 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Border
-                                            Grid.Row="1"
-                                            Margin="0,0,0,10"
-                                            Padding="10"
-                                            Style="{StaticResource SfStyleGreyBorderFrame}">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    FontFamily="{StaticResource SomarRegular}"
-                                                    FontSize="Small"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                    TextColor="{StaticResource PrimaryColor}" />
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="Center"
-                                                    Rotation="90"
-                                                    VerticalOptions="Center">
-                                                    <Image.Source>
-                                                        <FontImageSource
-                                                            FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.Attachment}"
-                                                            Size="24"
-                                                            Color="{StaticResource SecondaryNew}" />
-                                                    </Image.Source>
-                                                </Image>
-                                            </Grid>
-                                        </Border>
+
+                                         <custom:CustomSfTextInputView>
+                                            <custom:CustomSfTextInputView.TextInputView>
+
+                                                <custom:GAZTBorderlessEntry
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Keyboard="Text"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    TextColor="#58595B" />
+
+                                            </custom:CustomSfTextInputView.TextInputView>
+
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image Aspect="AspectFit" Source="newui_ic_pdf" />
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NewInvoiceAttachmentTapped}" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                        </custom:CustomSfTextInputView>
+
+                                        
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NewInvoiceAttachmentTapped}" />
                                         </StackLayout.GestureRecognizers>
@@ -1473,6 +1433,7 @@
                                         WidthRequest="366" />
 
                                 </StackLayout>
+
                                 <!--  Release Contract 4  -->
                                 <StackLayout
                                     Margin="20,10,20,0"
@@ -1569,6 +1530,7 @@
                                         WidthRequest="366" />
 
                                 </StackLayout>
+
                                 <!--  Release Contract 5  -->
                                 <Grid
                                     Margin="20,10,20,0"
@@ -1995,7 +1957,7 @@
                                                         VerticalOptions="Center">
                                                         <listView:SfListView.ItemTemplate>
                                                             <DataTemplate>
-                                                                <Grid>
+                                                                <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                                     <Grid.RowDefinitions>
                                                                         <RowDefinition Height="auto" />
                                                                     </Grid.RowDefinitions>
@@ -2032,7 +1994,7 @@
                                                         <listView:SfListView.ItemTemplate>
                                                             <DataTemplate>
 
-                                                                <Grid>
+                                                                <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                                     <Grid.RowDefinitions>
                                                                         <RowDefinition Height="auto" />
                                                                     </Grid.RowDefinitions>

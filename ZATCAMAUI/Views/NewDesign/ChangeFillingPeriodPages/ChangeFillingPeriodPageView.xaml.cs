@@ -67,7 +67,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                                 break;
                             case ArButtons.إلغاء:
                                 viewModel.isDraftClicked = true;
-                                viewModel.VoidMsg();
+                                await viewModel.VoidMsg();
                                 viewModel.isDraftClicked = false;
                                 break;
                             case ArButtons.عادةتعيين:
@@ -76,7 +76,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                                 break;
                             case ArButtons.حفظكمسودة:
                                 viewModel.isDraftClicked = true;
-                                viewModel.OnSaveDraftClicked();
+                                await viewModel.OnSaveDraftClicked();
                                 viewModel.isDraftClicked = false;
                                 break;
                             default:
@@ -101,7 +101,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                                 break;
                             case Buttons.Void:
                                 viewModel.isDraftClicked = true;
-                                viewModel.VoidMsg();
+                                await viewModel.VoidMsg();
                                 viewModel.isDraftClicked = false;
                                 break;
                             case Buttons.Reset:
@@ -110,7 +110,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                                 break;
                             case Buttons.SaveasDraft:
                                 viewModel.isDraftClicked = true;
-                                viewModel.OnSaveDraftClicked();
+                                await viewModel.OnSaveDraftClicked();
                                 viewModel.isDraftClicked = false;
                                 break;
                             default:
@@ -121,14 +121,14 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             });
 
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem",
-                (sender, arg) =>
+                async (sender, arg) =>
                 {
 
                     viewModel.PickedDate = arg.SelectedValue;
-                    viewModel.ValidateIdNumber();
+                    await viewModel.ValidateIdNumber();
                 });
 
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", async (sender, arg) =>
             {
                 if (viewModel.selectedPicker == ChangeFillingPeriodViewModel.PickerEnum.EffectiveDate)
                 {
@@ -138,7 +138,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                 else if (viewModel.selectedPicker == ChangeFillingPeriodViewModel.PickerEnum.IdType)
                 {
                     viewModel.IDTypePickerModel = arg;
-                    viewModel.updateIdTypePicker();
+                    await viewModel.updateIdTypePicker();
                 }
             });
 
@@ -175,7 +175,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                         if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
                         {
                             await MopupService.Instance.PopAsync();
-                            viewModel.VATSetReturnVoidAsync();
+                            await viewModel.VATSetReturnVoidAsync();
                         }
                         else if (arg == AppResources.ZZZRefundEnableMessage)
                         {
@@ -255,9 +255,9 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             }
         }
 
-        private void OnIDNumberFocusChanged(object sender, FocusEventArgs focusEventArgs)
+        private async void OnIDNumberFocusChanged(object sender, FocusEventArgs focusEventArgs)
         {
-            viewModel.ValidateIdNumber();
+            await viewModel.ValidateIdNumber();
         }
 
         private void IdNumberTextChanged(object sender, TextChangedEventArgs e)

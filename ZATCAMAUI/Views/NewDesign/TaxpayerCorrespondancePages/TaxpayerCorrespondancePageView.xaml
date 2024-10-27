@@ -14,6 +14,7 @@
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    x:Name="page"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -143,7 +144,8 @@
 
                                 <custom:CustomSfPicker.HeaderView>
 
-                                    <syncfusion:PickerHeaderView Height="55" Background="{StaticResource Primary}">
+                                    <syncfusion:PickerHeaderView Height="55" Text="{Binding FilterTaxTypeLabelText}"
+                                                                 Background="{StaticResource Primary}">
                                         <syncfusion:PickerHeaderView.TextStyle>
                                             <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
                                         </syncfusion:PickerHeaderView.TextStyle>
@@ -215,11 +217,11 @@
                                 <buttons:SfChipGroup.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             Margin="0"
-                                            Padding="5,-2,5,-2"
                                             HorizontalOptions="StartAndExpand"
                                             Orientation="Horizontal"
-                                            Spacing="2">
+                                            Spacing="10">
                                             <Image
                                                 HeightRequest="25"
                                                 HorizontalOptions="Center"
@@ -257,6 +259,7 @@
                                     <Border
                                         Grid.Column="0"
                                         Margin="0,15,0,0"
+                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                         Padding="10"
                                         StrokeShape="RoundRectangle 15,15,15,15"
                                         Style="{StaticResource GreyBorderFrameWithShadow}"
@@ -313,8 +316,35 @@
                                                     x:Name="ImageBackArrow"
                                                     HeightRequest="30"
                                                     Source="{Binding FavImg}"
-                                                    
-                                                    WidthRequest="30" />
+                                                    WidthRequest="30" >
+                                                    <Image.Triggers>
+                                                        <MultiTrigger TargetType="Image">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition 
+                                                                   Binding="{Binding IsFav}"
+                                                                    Value="False" />
+                                                                <BindingCondition 
+                                                                    Binding="{Binding AppDirection}"
+                                                                    Value="LeftToRight" />
+                                                            </MultiTrigger.Conditions>
+
+                                                            <Setter Property="Rotation" Value="180" />
+                                                        </MultiTrigger>
+                                                         <MultiTrigger TargetType="Image">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition 
+                                                                   Binding="{Binding IsFav}"
+                                                                    Value="False" />
+                                                                <BindingCondition 
+                                                                    Binding="{Binding AppDirection}"
+                                                                    Value="RightToLeft" />
+                                                            </MultiTrigger.Conditions>
+
+                                                            <Setter Property="Rotation" Value="0" />
+                                                        </MultiTrigger>
+                                                    </Image.Triggers>
+
+                                                </Image>
 
                                             </StackLayout>
                                         </Grid>

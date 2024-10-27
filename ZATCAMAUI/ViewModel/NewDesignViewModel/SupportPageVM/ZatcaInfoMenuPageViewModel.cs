@@ -108,7 +108,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
             }
             else
             {
-                PageTitle = AppResources.CustomsZatcaDelca;
+                PageTitle = AppResources.Inquiryaboutacustomsdeclaration;
                 currentTab = CustomsEnum.customsDelecrations;
             }
            

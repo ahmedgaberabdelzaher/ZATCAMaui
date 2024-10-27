@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Newtonsoft.Json.Linq;
-using Mopups.Services;
+﻿using Mopups.Services;
 using System.Text;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
@@ -8,8 +6,6 @@ using static ZATCAMAUI.Models.IBanManagementListModel;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
-using ZATCAMAUI.Core.Mangers;
-using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
 {
@@ -210,7 +206,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
 
                 });
             }
-            catch (Exception e)
+            catch (Exception )
             {
 
             }
@@ -264,7 +260,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                     {
                         CloseWhenBackgroundIsClicked = false
                     };
-                    somewarningpopup.OnDone = async () =>
+                    somewarningpopup.OnDone =  () =>
                     {
                         count = 0;
                     };
@@ -285,16 +281,6 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
           
 
         }
-
-       
-
-        private void IBANFocusChnaged(object sender, TextChangedEventArgs e)
-        {
-
-            
-
-        }
-
 
         private void EntryIDNumber_Unfocused(object sender, FocusEventArgs e)
         {

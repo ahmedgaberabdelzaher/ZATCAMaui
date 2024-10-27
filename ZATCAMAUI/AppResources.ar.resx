@@ -3016,14 +3016,6 @@
     <data name="ZZZMyCommitment" xml:space="preserve">
         <value>التزاماتي</value>
     </data>
-    <data name="ZZZApplicationStatusTitle" xml:space="preserve">
-        <value>الاستعلام عن حالة الطلب</value>
-        <comment>Title</comment>
-    </data>
-    <data name="ZZZCorrespondenceTitle" xml:space="preserve">
-        <value>المراسلات</value>
-        <comment>Title</comment>
-    </data>
     <data name="ZZZEstimatedZakatTitle" xml:space="preserve">
         <value>إقرار زكاة تقديري</value>
         <comment>Title</comment>
@@ -7264,9 +7256,6 @@
         <value>ضريبة الدخل</value>
         <comment>My Return </comment>
     </data>
-    <data name="ZZZZMyCorrespondence" xml:space="preserve">
-        <value>المراسلات</value>
-    </data>
     <data name="ZakatInstalmetPlan" xml:space="preserve">
         <value>خطط التقسيط</value>
     </data>
@@ -8911,9 +8900,6 @@ info@zatca.gov.sa</value>
 <data name="ddmmyyyyformat" xml:space="preserve">
     <value>DD/MM/YYYY</value>
 </data>
-<data name="ChangeFillingPeriodMyNewRequests" xml:space="preserve">
-    <value>تغيير فترة تقديم الإقرارات</value>
-</data>
 <data name="ZZZZIAgreeTheseTermsCond" xml:space="preserve">
     <value>اوافق على الشروط والأحكام</value>
 </data>
@@ -8955,9 +8941,6 @@ info@zatca.gov.sa</value>
 </data>
 <data name="CustomsZATCAIntegrat" xml:space="preserve">
     <value>التعريفة الجمركية المتكاملة</value>
-</data>
-<data name="CustomsZatcaDelca" xml:space="preserve">
-    <value>الاستعلام عن بيان جمركي</value>
 </data>
 <data name="TaxPayerSubsidyRequest" xml:space="preserve">
     <value>طلب دعم الفوترة الإلكترونية</value>
@@ -11495,4 +11478,4 @@ info@zatca.gov.sa</value>
       <data name="VerificationCodeTitle" xml:space="preserve">
         <value>رمز التحقق</value>
     </data>
-</root>
+</root> 
