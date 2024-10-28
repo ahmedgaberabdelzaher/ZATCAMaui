@@ -55,7 +55,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        private bool _summaryVisible = false;
+        private bool _summaryVisible ;
 
         public bool SummaryVisible
         {
@@ -99,7 +99,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
        
 
-        private bool _isContractListsVisible = false;
+        private bool _isContractListsVisible;
 
         public bool IsContractListsVisible
         {
@@ -113,7 +113,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        private bool _isBackButtonVisible = false;
+        private bool _isBackButtonVisible;
 
         public bool IsBackButtonVisible
         {
@@ -857,25 +857,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         {
             get
             {
-                return new Command(async _=>
+                return new Command<object>(async (obj)=>
                 {
                     try
                     {
                         IsLoading = true;
+                        var contractCopyAttachmentSelectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as Attachment;
 
-                        string[] Extentionarray = ContractCopyAttachmentSelectedItem.Filename.Split('.');
+                        string[] Extentionarray = contractCopyAttachmentSelectedItem.Filename.Split('.');
                         string Extention = Extentionarray.Last();
 
                         if (Extention.Equals("PDF") || Extention.Equals("pdf"))
                         {
-                            if (ContractCopyAttachmentSelectedItem.DocUrl != null)
+                            if (contractCopyAttachmentSelectedItem.DocUrl != null)
                             {
-                                await _navigationService.NavigateTo(App.PdfView, ContractCopyAttachmentSelectedItem.DocUrl);
+                                await _navigationService.NavigateTo(App.PdfView, contractCopyAttachmentSelectedItem.DocUrl);
                             }
                         }
                         else
                         {
-                            await Email(ContractCopyAttachmentSelectedItem.Doguid, ContractCopyAttachmentSelectedItem);
+                            await Email(contractCopyAttachmentSelectedItem.Doguid, contractCopyAttachmentSelectedItem);
                         }
                         IsLoading = false;
                     }

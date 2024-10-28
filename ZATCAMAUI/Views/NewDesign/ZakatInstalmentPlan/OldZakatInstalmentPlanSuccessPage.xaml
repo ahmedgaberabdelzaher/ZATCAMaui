@@ -116,7 +116,7 @@
                                 Grid.ColumnSpan="2"
                                 Margin="10,20,10,20"
                                 Background="{StaticResource Secondary}"
-                                Clicked="Download_Acknowledgement"
+                                Command="{Binding DownloadAcknowledgementCommand}"
                                 CornerRadius="10"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="15"
@@ -129,7 +129,7 @@
                                 Grid.ColumnSpan="2"
                                 Margin="10,20,10,20"
                                 Background="{StaticResource Secondary}"
-                                Clicked="Download_Form"
+                                Command="{Binding DownloadFormCommand}"
                                 CornerRadius="10"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="15"
@@ -146,7 +146,7 @@
                                 Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}"
                                 TextColor="{StaticResource Primary}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Instalment_plan_Tapped" />
+                                    <TapGestureRecognizer Command="{Binding InstalmentPlanCommand}" />
                                 </Label.GestureRecognizers>
                             </Label>
                         </StackLayout>

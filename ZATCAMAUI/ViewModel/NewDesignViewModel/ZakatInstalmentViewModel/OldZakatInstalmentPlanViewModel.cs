@@ -17,6 +17,7 @@ using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 using ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Core.Helper;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
@@ -103,6 +104,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         #region Commands
 
+        public ICommand InstalmentPlanCommand { get; set; }
         public ICommand ReasonContinueBtnTapped { get; set; }
         public ICommand BillContinueBtnTapped { get; set; }
         public ICommand AggrementContinueBtnTapped { get; set; }
@@ -120,6 +122,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         public ICommand OnZakatInstalmentReasonTapped { get; set; }
         public ICommand VATInstalationClicked { get; set; }
         public ICommand InstallmentDetailsBtnTapped { get; set; }
+        public ICommand DownloadAcknowledgementCommand { get; set; }
+        public ICommand DownloadFormCommand { get; set; }
         public ICommand ShowFinancialStatementPicker { get; set; }
 
 
@@ -2226,6 +2230,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             VATInstalationClicked = new Command(async()=> await VATInstalationTapped());
             ReasonContinueBtnTapped = new Command(async () => await ReasonContinueBtnClicked());
+            InstalmentPlanCommand = new Command(async () => await InstalmentPlanCommandClicked());
 
             AggrementContinueBtnTapped = new Command(async () => await AggrementContinueBtnClicked());
             BillContinueBtnTapped = new Command(async () => await BillContinueBtnClicked());
@@ -2244,12 +2249,76 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             });
 
+            DownloadAcknowledgementCommand = new Command(async () =>
+            {
+                IsLoading = true;
+                if (ZakatReferanceNumber != null)
+                {
+
+                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + "'" + ZakatReferanceNumber + "')/$value";
+                    //await WebServiceManager.FileDownload(downloadurl, "pdf");
+                    await _navigationService.NavigateTo(App.PdfView, downloadurl);
+
+
+                }
+                IsLoading = false;
+            });
+
+            DownloadFormCommand = new Command(async () =>
+            {
+                IsLoading = true;
+
+
+                if (ZakatReferanceNumber != null)
+                {
+                    string downloadurl = ZATCAConstants.OldZakatdownloadCoverFormFile + "'" + ZakatReferanceNumber + "')/$value";
+                    await _navigationService.NavigateTo(App.PdfView, downloadurl);
+
+                }
+                IsLoading = false;
+            });
+
             ZakatInstalmentPlanModel = new ZakatInstalmentPlanModel();
             SelectedOutletOption = new ZakatInstalmentPlanModel();
             AddOutletDecisionOptions();
             AddFrequencyOptions();
 
 
+        }
+
+        private async Task InstalmentPlanCommandClicked()
+        {
+            var _navigation = Application.Current.MainPage.Navigation;
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.OldZakatInstalmentPlanPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.OldZakatInstalmentPlanListPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.OldZakatInstalmentPlanSuccessPage)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+             await _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
+
+            MessagingCenter.Send<object, bool>(this, "ISCallBackFromSuccess", true);
         }
 
         private string _idType = "";

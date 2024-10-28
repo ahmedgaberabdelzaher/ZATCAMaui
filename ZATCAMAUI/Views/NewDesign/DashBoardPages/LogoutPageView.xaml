@@ -33,13 +33,13 @@
                     HorizontalOptions="FillAndExpand"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZYes}"
-                    WidthRequest="150" />
+                    WidthRequest="130" />
                 <buttons:SfButton
                     Clicked="OnCancelClicked"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZNo}"
                     VerticalOptions="FillAndExpand"
-                    WidthRequest="150" />
+                    WidthRequest="130" />
             </HorizontalStackLayout>
         </Grid>
     </Border>

@@ -15,6 +15,7 @@
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    x:Name="page"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -149,7 +150,7 @@
                                 SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"
                                 SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
                                 SelectionBackground="Transparent"
-                                SelectionChanged="outletDecisionOptionsListView_SelectionChanged"
+                                TapCommand="{Binding OutletDecisionOptionsListViewTapCommand}"
                                 SelectionMode="Single"
                                 VerticalOptions="StartAndExpand">
 
@@ -238,17 +239,18 @@
                                     HorizontalOptions="FillAndExpand"
                                     IsScrollingEnabled="False"
                                     ItemSpacing="0"
-                                    ItemTapped="SummaryattachmentsListView_ItemTapped"
                                     ItemsSource="{Binding VATInstalmentList}"
                                     ScrollBarVisibility="Never"
                                     SelectionBackground="Transparent"
                                     SelectionMode="Single"
+                                    TapCommand="{Binding SummaryattachmentsListViewItemCommand}"
                                     VerticalOptions="FillAndExpand">
                                     <listView:SfListView.ItemTemplate>
 
                                         <DataTemplate>
 
                                             <Border
+                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                 Grid.Column="0"
                                                 Margin="0,15,0,0"
                                                 Padding="10"
@@ -399,7 +401,9 @@
                                             VerticalOptions="Center">
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="10,5,10,0" Padding="0">
+                                                    <Grid Margin="10,5,10,0"
+                                                          FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                          Padding="0">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
@@ -627,7 +631,9 @@
                                             VerticalOptions="FillAndExpand">
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="10,5,10,5" Padding="0">
+                                                    <Grid Margin="10,5,10,5"
+                                                          FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                          Padding="0">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                         </Grid.RowDefinitions>
@@ -813,18 +819,19 @@
                                     HorizontalOptions="CenterAndExpand"
                                     IsScrollingEnabled="False"
                                     ItemSpacing="0"
-                                    ItemTapped="DisplayListView_ItemTapped"
                                     ItemsSource="{Binding RequestForScheduleList}"
                                     ScrollBarVisibility="Never"
                                     SelectionBackground="Transparent"
                                     SelectionMode="Single"
+                                    TapCommand="{Binding DisplayListViewItemCommand}"
                                     VerticalOptions="Center">
                                     <listView:SfListView.ItemTemplate>
 
 
 
                                         <DataTemplate>
-                                            <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}"
+                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                 <StackLayout Padding="0" Spacing="0">
                                                     <Grid Padding="15" RowSpacing="0">
                                                         <Grid.RowDefinitions>
@@ -973,7 +980,9 @@
                                     <listView:SfListView.ItemTemplate>
 
                                         <DataTemplate>
-                                            <Border Margin="0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <Border Margin="0,10"
+                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                    Style="{StaticResource GreyBorderFrameWithShadow}">
 
                                                 <StackLayout Padding="0" Spacing="0">
 

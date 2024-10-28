@@ -137,8 +137,8 @@
                                     SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"
                                     SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
                                     SelectionBackground="Transparent"
-                                    SelectionChanged="outletDecisionOptionsListView_SelectionChanged"
                                     SelectionMode="Single"
+                                    TapCommand="{Binding ItemSelectedCommand}"
                                     VerticalOptions="Center">
 
                                     <listView:SfListView.ItemsLayout>

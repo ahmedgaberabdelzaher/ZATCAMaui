@@ -11,6 +11,7 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    x:Name="page"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
@@ -152,6 +153,7 @@
                                         <StackLayout
                                             Margin="0"
                                             Padding="0"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             Spacing="2">
                                             <SfChipGroup:SfChip
                                                 BackgroundColor="White"
@@ -188,7 +190,9 @@
                             VerticalOptions="FillAndExpand">
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <Border Margin="0,10,0,10"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout Padding="0" Spacing="0">
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>

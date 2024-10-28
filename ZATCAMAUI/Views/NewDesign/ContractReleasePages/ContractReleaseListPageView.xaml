@@ -32,7 +32,7 @@
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        IsVisible="{Binding IsBackStepButtonVisible}"
+                        IsVisible="{Binding IsBackButtonVisible}"
                         Rotation="0"
                         Source="whiteRightBack.png"
                         VerticalOptions="CenterAndExpand">

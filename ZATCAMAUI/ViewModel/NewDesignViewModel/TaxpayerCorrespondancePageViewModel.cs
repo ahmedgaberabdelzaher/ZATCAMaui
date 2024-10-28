@@ -549,10 +549,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                         }
                         DateTime? BegDate = DateTime.Now;
-                        if (itemZakat.Cdate != null)
-                        {
-                            // BegDate = childZakat.Cdate;
-                        }
                         if (itemZakat.Zzfav == "1")
                         {
                             childZakat.IsFav = true;
@@ -574,7 +570,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         string time = string.Empty;
                         if (App.IsArabic)
                         {
-                            if (childZakat.StartDate != null)
+                            if (childZakat != null)
                             {
                                 StartDate = Convert.ToDateTime(childZakat.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
@@ -595,12 +591,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 childZakat.DateToDisplay = StartDate;
                                 childZakat.TimeToDisplay = time;
-                                StartDate = string.Concat(StartDate, time);
+                                StartDate = $"{StartDate} {time}";
                             }
                         }
                         else
                         {
-                            if (childZakat.StartDate != null)
+                            if (childZakat != null)
                             {
                                 StartDate = Convert.ToDateTime(childZakat.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
@@ -619,7 +615,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 childZakat.DateToDisplay = StartDate;
                                 childZakat.TimeToDisplay = time;
-                                StartDate = StartDate + "  " + time;
+                                StartDate = $"{StartDate} {time}";
                             }
                         }
 
@@ -648,10 +644,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         childVAT.Coitm = itemVAT.Ctime;
                         childVAT.Cdate = itemVAT.Cdate;
                         childVAT.Ctime = itemVAT.Ctime;
-                        //if (itemVAT.Copri != null)
-                        //{
-                        //    childVAT.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Copri + @"""");
-                        //}
+                       
                         if (itemVAT.Coidt != null)
                         {
                             childVAT.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Coidt + @"""");
@@ -695,7 +688,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         string time = string.Empty;
                         if (App.IsArabic)
                         {
-                            if (childVAT.StartDate != null)
+                            if (childVAT != null)
                             {
                                 StartDate = Convert.ToDateTime(childVAT.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
@@ -713,12 +706,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 childVAT.DateToDisplay = StartDate;
                                 childVAT.TimeToDisplay = time;
-                                StartDate = string.Concat(StartDate, time);
+                                StartDate = $"{StartDate} {time}";
                             }
                         }
                         else
                         {
-                            if (childVAT.StartDate != null)
+                            if (childVAT != null)
                             {
                                 StartDate = Convert.ToDateTime(childVAT.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
@@ -736,7 +729,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 childVAT.DateToDisplay = StartDate;
                                 childVAT.TimeToDisplay = time;
-                                StartDate = StartDate + "  " + time;
+                                StartDate = $"{StartDate} {time}";
                             }
                         }
                         childVAT.DateAndTime = StartDate;
@@ -809,7 +802,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         string time = string.Empty;
                         if (App.IsArabic)
                         {
-                            if (childET.StartDate != null)
+                            if (childET != null)
                             {
                                 StartDate = Convert.ToDateTime(childET.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
@@ -827,12 +820,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 childET.DateToDisplay = StartDate;
                                 childET.TimeToDisplay = time;
-                                StartDate = string.Concat(StartDate, time);
+                                StartDate = $"{StartDate} {time}";
                             }
                         }
                         else
                         {
-                            if (childET.StartDate != null)
+                            if (childET != null)
                             {
                                 StartDate = Convert.ToDateTime(childET.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
@@ -850,7 +843,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 childET.DateToDisplay = StartDate;
                                 childET.TimeToDisplay = time;
-                                StartDate = StartDate + time;
+                                StartDate = $"{StartDate} {time}";
                             }
                         }
                         childET.DateAndTime = StartDate;
@@ -878,10 +871,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         childColl.Ctime = itemColl.Ctime;
                         childColl.Cdate = itemColl.Cdate;
                         childColl.FBnum = itemColl.Fbnum;
-                        //if (itemColl.Copri != null)
-                        //{
-                        //    childColl.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemColl.Copri + @"""");
-                        //}
                         if (itemColl.Coidt != null)
                         {
                             childColl.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemColl.Coidt + @"""");
@@ -926,7 +915,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         string time = string.Empty;
                         if (App.IsArabic)
                         {
-                            if (childColl.StartDate != null)
+                            if (childColl != null)
                             {
                                 StartDate = Convert.ToDateTime(childColl.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
@@ -944,12 +933,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 childColl.DateToDisplay = StartDate;
                                 childColl.TimeToDisplay = time;
-                                StartDate = String.Concat(StartDate, time);
+                                StartDate = $"{StartDate} {time}";
                             }
                         }
                         else
                         {
-                            if (childColl.StartDate != null)
+                            if (childColl != null)
                             {
                                 StartDate = Convert.ToDateTime(childColl.StartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = StartDate.Split('-');
@@ -967,7 +956,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 childColl.DateToDisplay = StartDate;
                                 childColl.TimeToDisplay = time;
-                                StartDate = StartDate + time;
+                                StartDate = $"{StartDate} {time}";
                             }
                         }
                         childColl.DateAndTime = StartDate;
@@ -982,10 +971,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 SelectedDropdownItem = FilterListForDropDown.FirstOrDefault();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
+
         public void PopulateFilterDropdownList()
         {
             try
@@ -993,22 +983,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 List<ReturnTypes> FilterList = new List<ReturnTypes>
                 {
                     new ReturnTypes {Id = "00",TaxType = AppResources.ZZCorrespondence},
-                    //new ReturnTypes {Id = "01",TaxType = AppResources.ZAKATReturns},
                 };
 
                 FilterListForDropDown = new List<ReturnTypes>();
                 FilterListForDropDown = FilterList;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
+
         public void PopulateDataInChips()
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
                 new ChipModel(){Text =AppResources.Favorite, TemplateType = AppResources.ZZFavoriteAscending, ImageSource="ic_star_border.png"},
-                               //new ChipModel(){Text =AppResources.All, TemplateType = AppResources.All,ImageSource = "ic_money.png"}
             };
         }
         public void SetAllCorrespondancedata()

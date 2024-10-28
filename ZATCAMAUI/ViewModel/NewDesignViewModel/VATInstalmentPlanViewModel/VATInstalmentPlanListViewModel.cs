@@ -31,6 +31,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public ICommand CloseClick { get; set; }
         public ICommand SummaryContinueBtnTapped { get; set; }
         public ICommand SummaryRevokeBtnTapped { get; set; }
+        public ICommand DisplayListViewItemCommand { get; set; }
+        public ICommand SummaryattachmentsListViewItemCommand { get; set; }
+        public ICommand OutletDecisionOptionsListViewTapCommand { get; set; }
         public ICommand ContinueClick { get; set; }
         public ICommand CancelButton { get; set; }
         public ICommand NoteContinueTapped { get; set; }
@@ -107,12 +110,66 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 await showInstructionDialog();
             });
+
+            DisplayListViewItemCommand = new Command<object>(async (obj) =>
+            {
+                IsLoading = true;
+                var item = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as VtiaIaSetResult;
+                var index = RequestForScheduleList.IndexOf(item);
+                await GetDisplayDetailsClicked(index);
+
+                EnableDisplayDetails();
+
+                IsLoading = false;
+            });
+
+            SummaryattachmentsListViewItemCommand = new Command<object>(async (obj) =>
+            {
+                IsLoading = true;
+                var item = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as Result31;
+                if (item.Fbust == "E0018" || item.Fbust == "E0075" || item.Fbust == "E0074" || item.Fbust == "E0013")
+                {
+
+                    App.selectedVATItem = item.Fbnum;
+                    App.selectedVATItemFbust = item.Fbust;
+                    await _navigationService.NavigateTo(App.VatInstalmentPlanPageView);
+                }
+
+                else
+                {
+                    var index = RequestForInstalmentPlanList.IndexOf(item);
+                    await GetDetailsClicked(index);
+                    EnableVAtInstalmentSummary();
+                }
+
+                IsLoading = false;
+            });
+
+            OutletDecisionOptionsListViewTapCommand = new Command<object>(async (obj) =>
+            {
+                IsLoading = true;
+                var selectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as InstalmentPlanModel;
+                SelectedOutletOptionIndex =OutletDecisionOptions.IndexOf(selectedItem);
+                if (OutletDecisionOptions.IndexOf(selectedItem) == 0)
+                {
+                    EnableVAtInstalmentPlan();
+                    await GetVATInstalmentPlanList();
+                }
+                else if (OutletDecisionOptions.IndexOf(selectedItem) == 1)
+                {
+                    EnableDisplayInstalment();
+                    await GetVATDisplaySchedule();
+                }
+
+                IsLoading = false;
+            });
+
             CreateNewRequestTapped = new Command(async () => await this.CreateNewRequest());
             AddOutletDecisionOptions();
 
 
 
-            RequestInstalmentButtonTapped = new Command(RequestInstalmentButtonClicked);
+            RequestInstalmentButtonTapped = new Command(async () => await RequestInstalmentButtonClicked ());
 
             CreateNewRequestTapped = new Command(async () => await this.CreateNewRequest());
 
@@ -1252,7 +1309,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
         #region Button Action Declaration
 
-        public void RequestInstalmentButtonClicked()
+        public async Task RequestInstalmentButtonClicked()
         {
             try
             {
@@ -1263,16 +1320,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 CheckForPendingReturns();
 
             }
-            catch (GAZTUnlockAccountException)
-            {
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+               
             }
         }
         private void CheckForPendingReturns()

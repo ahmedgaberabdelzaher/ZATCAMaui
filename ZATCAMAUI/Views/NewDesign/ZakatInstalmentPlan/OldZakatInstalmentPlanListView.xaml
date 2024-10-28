@@ -17,6 +17,7 @@
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    x:Name="page"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -104,7 +105,9 @@
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ScrollView HorizontalOptions="FillAndExpand"
+                            VerticalScrollBarVisibility="Never"
+                            VerticalOptions="FillAndExpand">
 
                     <Grid>
 
@@ -159,8 +162,8 @@
                                     SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"
                                     SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
                                     SelectionBackground="Transparent"
-                                    SelectionChanged="outletDecisionOptionsListView_SelectionChanged"
                                     SelectionMode="Single"
+                                    TapCommand="{Binding OutletDecisionOptionsTapCommand}"
                                     VerticalOptions="StartAndExpand">
 
 
@@ -243,10 +246,10 @@
                                     HorizontalOptions="FillAndExpand"
                                     IsScrollingEnabled="False"
                                     ItemSpacing="0"
-                                    ItemTapped="SummaryattachmentsListView_ItemTapped"
                                     ItemsSource="{Binding ZakatListData}"
                                     ScrollBarVisibility="Never"
                                     SelectionBackground="Transparent"
+                                    TapCommand="{Binding SummaryattachmentsListViewItemCommand}"
                                     SelectionMode="Single"
                                     VerticalOptions="FillAndExpand">
                                     <listView:SfListView.ItemTemplate>
@@ -254,6 +257,7 @@
                                             <Border
                                                 Grid.Column="0"
                                                 Margin="0,15,0,0"
+                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                 Padding="10"
                                                 StrokeShape="RoundRectangle 15,15,15,15"
                                                 Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -467,6 +471,7 @@
                                                 <DataTemplate>
                                                     <Grid
                                                         Margin="10,5,10,0"
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         Padding="0"
                                                         ColumnDefinitions="50*,50*"
                                                         RowDefinitions="auto,auto,auto,auto,auto">
@@ -681,6 +686,7 @@
                                                     <Grid
                                                         Margin="10,5,10,0"
                                                         Padding="0"
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         ColumnDefinitions="auto,*"
                                                         RowDefinitions="auto,auto"
                                                         RowSpacing="0">
@@ -1122,6 +1128,7 @@
                                             Grid.Column="0"
                                             Margin="0,15,0,0"
                                             Padding="10"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             HorizontalOptions="FillAndExpand"
                                             StrokeShape="RoundRectangle 15,15,15,15"
                                             Style="{StaticResource GreyBorderFrameWithShadow}"
@@ -1266,6 +1273,7 @@
                                         <Border
                                             Grid.Column="0"
                                             Margin="0,15,0,0"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             Padding="10"
                                             HorizontalOptions="FillAndExpand"
                                             StrokeShape="RoundRectangle 15,15,15,15"

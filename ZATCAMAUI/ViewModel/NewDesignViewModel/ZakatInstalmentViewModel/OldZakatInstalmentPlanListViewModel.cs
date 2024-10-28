@@ -37,6 +37,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         public ICommand ReqInstalmentBtnTapped { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand CloseClick { get; set; }
+        public ICommand OutletDecisionOptionsTapCommand { get; set; }
+        public ICommand SummaryattachmentsListViewItemCommand { get; set; }
         public ICommand OnContinueClick { get; set; }
         public ICommand SummaryRevokeBtnTapped { get; set; }
         public Command NoteContinueTapped { get; set; }
@@ -52,6 +54,49 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             CloseClick = new Command(async () =>
             {
                 await Application.Current.MainPage.Navigation.PopAsync();
+            });
+
+            OutletDecisionOptionsTapCommand = new Command<object>(async (obj) =>
+            {
+                IsLoading = true;
+                var selectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as InstalmentPlanModel;
+
+                if (OutletDecisionOptions.IndexOf(selectedItem) == 0)
+                {
+                    EnableCreateZakatInstalment();
+                    await GetZakatInstalmentPlanList();
+
+                }
+                else if (OutletDecisionOptions.IndexOf(selectedItem) == 1)
+                {
+                    EnableRevokZakatInstalment();
+                }
+                IsLoading = false;
+            });
+
+
+            SummaryattachmentsListViewItemCommand = new Command<object>(async (obj) =>
+            {
+                IsLoading = true;
+                var selectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as OldZakatListModel;
+                if (selectedItem != null)
+                {
+                    if (selectedItem.statusType == "IP017")
+                    {
+                        App.selectedZakatItem = selectedItem.fbNum;
+                        await _navigationService.NavigateTo(App.OldZakatInstalmentPlanPageView);
+
+                    }
+                    else
+                    {
+                        SelectedFbNum = selectedItem.fbNum;
+                        var index = ZakatListData.IndexOf(selectedItem);
+
+                        await GetSummaryDetailsClickedAsync(index);
+                        EnableZakatInstalmentSummary();
+                    }
+                }
+                IsLoading = false;
             });
 
 
@@ -101,13 +146,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
 
-            ReqInstalmentBtnTapped = new Command(() =>
+            ReqInstalmentBtnTapped = new Command(async() =>
             {
                 IsLoading = true;
 
                 App.selectedZakatItem = "";
 
-                _navigationService.NavigateTo(App.OldZakatInstalmentPlanPageView);
+              await  _navigationService.NavigateTo(App.OldZakatInstalmentPlanPageView);
 
                 IsLoading = false;
             });
@@ -126,14 +171,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
 
-            ZDownloadForm = new Command( () =>
+            ZDownloadForm = new Command(async () =>
             {
                 IsLoading = true;
                 if (SelectedFbNum != null)
                 {
 
                     string downloadurl = ZATCAConstants.OldZakatdownloadCoverFormFile + SelectedFbNum;
-                    _navigationService.NavigateTo(App.PdfView, downloadurl);
+                   await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
                 IsLoading = false;
@@ -142,13 +187,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             });
 
-            Download_Acknowledgement = new Command( () =>
+            Download_Acknowledgement = new Command(async () =>
             {
                 IsLoading = true;
                 if (SelectedFbNum != null)
                 {
                     string downloadurl = ZATCAConstants.ZOdownloadAckLetter + SelectedFbNum;
-                    _navigationService.NavigateTo(App.PdfView, downloadurl);
+                  await  _navigationService.NavigateTo(App.PdfView, downloadurl);
                 }
                 IsLoading = false;
 
@@ -211,9 +256,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             DueInvoicesList = null;
             DueInvoicesListSet12 = null;
-
-
-
 
 
             var dueInvoicesList = new ObservableCollection<ZakatInstalmentValidateNewRequestModel.Result2>();
@@ -1325,10 +1367,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 });
             }
-            // SummarySelectedBillsList = summarySelectedBillsList;
-
-
-
 
             Attachments = new ObservableCollection<Attachment>();
 
@@ -1399,7 +1437,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 SeletedZakatForm = await OldZakatInstallmentWebServiceManager.GAZTGetOldZakatRequestDisplayData(item.referanceNumber, item.statusType);
 
-                PopToRootPage();
+               await PopToRootPage();
 
 
                 if (SeletedZakatForm != null && SeletedZakatForm.d != null)
@@ -1439,11 +1477,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 }
                 else
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
                 }
 
 
@@ -1451,33 +1486,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                IsLoading = false;
+                _navigationService.GoBack();
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
                 IsLoading = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-
-                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                     _navigationService.GoBack();
-                 });
-
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (Exception)
             {
                 IsLoading = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                     _navigationService.GoBack();
-                 });
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
 
         }
@@ -1518,44 +1542,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 }
                 else
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
                 }
                 IsLoading = false;
 
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
-                    _navigationService.GoBack();
-                });
-
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                IsLoading = false;
+                _navigationService.GoBack();
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                
-                MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     IsLoading = false;
-                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                     _navigationService.GoBack();
-                 });
+
+
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
 
             }
             catch (Exception)
             {
                 IsLoading = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                     _navigationService.GoBack();
-                 });
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -1575,15 +1587,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         #endregion
 
 
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     var _navigation = Application.Current.MainPage.Navigation;
-                     await _navigation.PopToRootAsync();
-                 });
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
         }
 

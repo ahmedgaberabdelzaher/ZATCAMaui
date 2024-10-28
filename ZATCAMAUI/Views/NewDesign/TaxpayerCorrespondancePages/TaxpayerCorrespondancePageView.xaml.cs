@@ -121,12 +121,12 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             }
         }
 
-        private void ListView_Correspondance_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
+        private async void ListView_Correspondance_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
         {
             try
             {
                 CorrespondanceModel Correspondence = e.DataItem as CorrespondanceModel;
-                viewModel.ShowCorrespondenceDetails(Correspondence);
+                await viewModel.ShowCorrespondenceDetails(Correspondence);
             }
             catch (Exception)
             {

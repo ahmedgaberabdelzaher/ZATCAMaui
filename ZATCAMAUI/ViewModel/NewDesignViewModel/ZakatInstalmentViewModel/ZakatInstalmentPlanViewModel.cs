@@ -13,7 +13,6 @@ using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 using ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan;
 using static ZATCAMAUI.Models.ZakatInstalationModels.ZAKATRequestPlanModel;
-using AttachSet = ZATCAMAUI.Models.ZakatInstalationModels.AttachSet;
 using NotesSet = ZATCAMAUI.Models.ZakatInstalationModels.NotesSet;
 using ZATCAMAUI.Core.Interfaces;
 

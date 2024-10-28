@@ -2190,22 +2190,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     await LoadDashboardData();
 
                 }
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    BillCount = string.Empty;
-                    BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
 
-                    //To load default commintments 
-                    SelectedCommitmentFilterLabelValue = CommitmentsListFilter[0];
-                    SelectedCommitmentFilterValue = CommitmentsListFilter[0];
+                BillCount = string.Empty;
+                BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
 
-                    PopulateBillsInformation();
-                    PopulateReturnsInformation();
-                    PopualateCommittmentsInformation();
+                //To load default commintments 
+                SelectedCommitmentFilterLabelValue = CommitmentsListFilter[0];
+                SelectedCommitmentFilterValue = CommitmentsListFilter[0];
+
+                PopulateBillsInformation();
+                PopulateReturnsInformation();
+                PopualateCommittmentsInformation();
 
 
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             finally { IsLoading = false; }
         }
