@@ -157,7 +157,14 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                         _viewModel.SelectedIDType = arg.SelectedValue;
                         if (_viewModel.IBANAccountData.d.AutoPopFg == true)
                         {
-                            _viewModel.IdNumberTitle = String.Format(AppResources.IBANIdNumberDynamic, _viewModel.SelectedIDType);
+                            if (!App.IsArabic)
+                            {
+                                _viewModel.IdNumberTitle = String.Format(AppResources.IBANIdNumberDynamic, _viewModel.SelectedIDType);
+                            }
+                            else
+                            {
+                                _viewModel.IdNumberTitle = _viewModel.SelectedIDType;
+                            }
                         }
                         else
                         {
