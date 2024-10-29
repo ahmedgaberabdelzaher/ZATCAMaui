@@ -522,11 +522,6 @@
                 </BindableLayout.ItemTemplate>
             </StackLayout>
 
-            <Label
-                Margin="0,-15,0,10"
-                Style="{StaticResource CaptionLabelGrey}"
-                Text="{x:Static ResourceManager:AppResources.PDFFileHintTwo}" />
-
         </StackLayout>
 
     </StackLayout>

@@ -494,7 +494,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
         }
-        private async Task<string> ConvertToBase64(Stream stream)
+        public async Task<string> ConvertToBase64(Stream stream)
         {
             if (stream is MemoryStream memoryStream)
             {

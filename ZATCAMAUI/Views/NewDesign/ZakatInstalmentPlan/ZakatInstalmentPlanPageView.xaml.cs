@@ -51,17 +51,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-
-                });
-                await Task.Run(async () =>
-                {
-                    await viewModel.OnPageLoad();
-
-                });
-
+                viewModel.IsLoading = true;
+                await viewModel.OnPageLoad();
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
@@ -89,9 +81,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             {
                 ZakatInstalmentPlanModel selectedItem = e.AddedItems[0] as ZakatInstalmentPlanModel;
                 viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
-                //            viewModel.ReasonContinueBtnClicked();
-
-
                 if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 0)
                 {
                     viewModel.IsZakatSelected = true;
@@ -425,7 +414,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case ArButtons.إلغاء:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.VoidMsg();
+                                   await viewModel.VoidMsg();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 case ArButtons.عادةتعيين:
@@ -436,7 +425,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case ArButtons.حفظكمسودة:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.OnSaveDraftClicked();
+                                    await viewModel.OnSaveDraftClicked();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 default:
@@ -464,7 +453,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case Buttons.Void:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.VoidMsg();
+                                   await viewModel.VoidMsg();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 case Buttons.Reset:
@@ -475,7 +464,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case Buttons.SaveasDraft:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.OnSaveDraftClicked();
+                                   await viewModel.OnSaveDraftClicked();
 
                                     viewModel.isDraftClicked = false;
                                     break;
@@ -581,19 +570,19 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-        private void downPaymentEntry_Unfocused(object sender, FocusEventArgs e)
+        private async void downPaymentEntry_Unfocused(object sender, FocusEventArgs e)
         {
             try
             {
                 if (double.Parse(downPaymentEntry.Text) > viewModel.MaxAmount)
                 {
-                    viewModel.ShowDialog(AppResources.ZakatInstalmentCannotExceed + " " + viewModel.MaxAmount);
+                   await viewModel.ShowDialog(AppResources.ZakatInstalmentCannotExceed + " " + viewModel.MaxAmount);
                     downPaymentEntry.Text = viewModel.MinAmount.ToString();
                     downPaymentSlider.Value = viewModel.MinAmount;
                 }
                 else if (double.Parse(downPaymentEntry.Text) < viewModel.MinAmount)
                 {
-                    viewModel.ShowDialog(AppResources.ZakatInstalmentCannotBeLessThan + viewModel.MinAmount);
+                  await viewModel.ShowDialog(AppResources.ZakatInstalmentCannotBeLessThan + viewModel.MinAmount);
                     downPaymentEntry.Text = viewModel.MinAmount.ToString();
                     downPaymentSlider.Value = viewModel.MinAmount;
                 }
@@ -690,7 +679,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case ArButtons.إلغاء:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.VoidMsg();
+                                  await  viewModel.VoidMsg();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 case ArButtons.عادةتعيين:
@@ -701,7 +690,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case ArButtons.حفظكمسودة:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.OnSaveDraftClicked();
+                                   await viewModel.OnSaveDraftClicked();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 default:
@@ -729,7 +718,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case Buttons.Void:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.VoidMsg();
+                                   await viewModel.VoidMsg();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 case Buttons.Reset:
@@ -740,7 +729,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case Buttons.SaveasDraft:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.OnSaveDraftClicked();
+                                   await viewModel.OnSaveDraftClicked();
 
                                     viewModel.isDraftClicked = false;
                                     break;
@@ -769,7 +758,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                         if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
                         {
                             await MopupService.Instance.PopAsync();
-                            viewModel.VATSetReturnVoidAsync();
+                           await viewModel.VATSetReturnVoidAsync();
                         }
                         else if (arg == AppResources.ZZZRefundEnableMessage)
                         {

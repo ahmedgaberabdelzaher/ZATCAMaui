@@ -44,7 +44,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             isTandCChecked = false;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
@@ -54,21 +54,21 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                 if (vatRefundsListResultModel == null)
                 {
                     viewModel.IsNewReqSummary = true;
-                    viewModel.LoadSummaryData(vatRefundsSaveDataModel);
+                   await viewModel.LoadSummaryData(vatRefundsSaveDataModel);
                 }
                 else
                 {
                     viewModel.IsNewReqSummary = false;
-                    viewModel.ReloadData(vatRefundsListResultModel);
+                   await viewModel.ReloadData(vatRefundsListResultModel);
                 }
-                MessagingCenter.Subscribe<YesNoAlertPopupView, bool>(this, "YesNoAlertPopupResponse", (obj, res) =>
+                MessagingCenter.Subscribe<YesNoAlertPopupView, bool>(this, "YesNoAlertPopupResponse", async (obj, res) =>
                 {
                     MopupService.Instance.PopAsync();
                     if (res)
                     {
                         try
                         {
-                            viewModel.ConfirmSummaryBtnClicked();
+                           await viewModel.ConfirmSummaryBtnClicked();
                         }
                         catch (Exception)
                         {
@@ -99,11 +99,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             }
             catch (InternetException ex)
             {
-                Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
-
+                viewModel.IsLoading = false;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -125,11 +121,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
 
        
 
-        void ConfirmButton_Tapped(object sender, EventArgs e)
+        async void ConfirmButton_Tapped(object sender, EventArgs e)
         {
             try
             {
-                viewModel._navigationService.NavigateTo(App.VATRefundsSuccessPageView);
+               await viewModel._navigationService.NavigateTo(App.VATRefundsSuccessPageView);
             }
             catch (Exception)
             {

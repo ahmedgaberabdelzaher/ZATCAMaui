@@ -100,6 +100,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         public ICommand DashboardTapped { get; set; }
         public ICommand ReferenceNumberCopyTapped { get; set; }
         public ICommand DownloadAcknowledgement { get; set; }
+        public ICommand OnAppearingChangeFillingPeriodPageCommand { get; set; }
+        public ICommand OnIDNumberFocusChanged { get; set; }
 
         #endregion
 
@@ -614,6 +616,129 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
+            });
+
+            OnIDNumberFocusChanged = new Command(async () =>
+            {
+                await ValidateIdNumber();
+            });
+
+            OnAppearingChangeFillingPeriodPageCommand = new Command(async () =>
+            {
+                IsLoading = true;
+                ResetData();
+                await GetVATChangeFillingData();
+
+                getYesCommand();
+                getNoCommand();
+
+                MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
+                {
+                    await MopupService.Instance.PopAsync();
+                    if (arg != null)
+                    {
+                        string message = arg;
+                        if (App.IsArabic)
+                        {
+                            ArButtons buttonId = ArButtons.None;
+                            if (!string.IsNullOrEmpty(message))
+                            {
+                                message = message.Replace(" ", "");
+                            }
+                            Enum.TryParse(message, out buttonId);
+                            switch (buttonId)
+                            {
+                                case ArButtons.إضافةملاحظات:
+                                    break;
+                                case ArButtons.عرضملاحظات:
+                                    break;
+                                case ArButtons.المرفقات:
+                                    break;
+                                case ArButtons.إلغاء:
+                                    isDraftClicked = true;
+                                    await VoidMsg();
+                                    isDraftClicked = false;
+                                    break;
+                                case ArButtons.عادةتعيين:
+                                    break;
+                                case ArButtons.تعديل:
+                                    break;
+                                case ArButtons.حفظكمسودة:
+                                    isDraftClicked = true;
+                                    await OnSaveDraftClicked();
+                                    isDraftClicked = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            Buttons buttonId = Buttons.None;
+                            if (!string.IsNullOrEmpty(message))
+                            {
+                                message = message.Replace(" ", "");
+                            }
+                            Enum.TryParse(message, out buttonId);
+                            switch (buttonId)
+                            {
+                                case Buttons.CreateNotes:
+                                    break;
+                                case Buttons.DisplayNotes:
+                                    break;
+                                case Buttons.Attachments:
+                                    break;
+                                case Buttons.Void:
+                                    isDraftClicked = true;
+                                    await VoidMsg();
+                                    isDraftClicked = false;
+                                    break;
+                                case Buttons.Reset:
+                                    break;
+                                case Buttons.Amend:
+                                    break;
+                                case Buttons.SaveasDraft:
+                                    isDraftClicked = true;
+                                    await OnSaveDraftClicked();
+                                    isDraftClicked = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                });
+
+                MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem",
+                    async (sender, arg) =>
+                    {
+
+                        PickedDate = arg.SelectedValue;
+                        await ValidateIdNumber();
+                    });
+
+                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", async (sender, arg) =>
+                {
+                    if (selectedPicker == ChangeFillingPeriodViewModel.PickerEnum.EffectiveDate)
+                    {
+                        EffectiveDatePickerModel = arg;
+                        updateEffectiveDatePicker();
+                    }
+                    else if (selectedPicker == ChangeFillingPeriodViewModel.PickerEnum.IdType)
+                    {
+                        IDTypePickerModel = arg;
+                        await updateIdTypePicker();
+                    }
+                });
+
+                MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        PopulateAttachments(arg.results);
+                    }
+                });
+                IsLoading = false;
             });
 
             ReferenceNumberCopyTapped = new Command(async () =>
@@ -2076,7 +2201,54 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 IsAttachmentAttached = true
             });
         }
+        public void getYesCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await MopupService.Instance.PopAsync();
+                            await VATSetReturnVoidAsync();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await MopupService.Instance.PopAsync();
+                        }
+                    }
+                });
+            }
+            catch (Exception)
+            {
+            }
+        }
 
+        public void getNoCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await MopupService.Instance.PopAsync();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await MopupService.Instance.PopAsync();
+                        }
+                    }
+                });
+            }
+            catch (Exception)
+            {
+            }
+        }
         #region API Integration
 
         public async Task GetVATChangeFillingData()

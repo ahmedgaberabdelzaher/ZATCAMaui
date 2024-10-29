@@ -599,7 +599,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case ArButtons.إلغاء:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.VoidMsg();
+                                   await viewModel.VoidMsg();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 case ArButtons.عادةتعيين:
@@ -610,7 +610,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case ArButtons.حفظكمسودة:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.OnSaveDraftClicked();
+                                  await  viewModel.OnSaveDraftClicked();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 default:
@@ -638,7 +638,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case Buttons.Void:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.VoidMsg();
+                                   await viewModel.VoidMsg();
                                     viewModel.isDraftClicked = false;
                                     break;
                                 case Buttons.Reset:
@@ -649,7 +649,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                                     break;
                                 case Buttons.SaveasDraft:
                                     viewModel.isDraftClicked = true;
-                                    viewModel.OnSaveDraftClicked();
+                                   await viewModel.OnSaveDraftClicked();
 
                                     viewModel.isDraftClicked = false;
                                     break;
@@ -679,7 +679,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                         if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
                         {
                             await MopupService.Instance.PopAsync();
-                            viewModel.VATSetReturnVoidAsync();
+                            await viewModel.VATSetReturnVoidAsync();
                         }
                         else if (arg == AppResources.ZZZRefundEnableMessage)
                         {

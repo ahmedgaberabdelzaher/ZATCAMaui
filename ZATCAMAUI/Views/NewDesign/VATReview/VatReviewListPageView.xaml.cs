@@ -1,8 +1,4 @@
-﻿
-using ZATCAMAUI.Core.Mangers;
-using ZATCAMAUI.Models;
-using ZATCAMAUI.Models.VATReviewModel;
-using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
+﻿using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.VATReview
 {
@@ -22,132 +18,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
             BindingContext = _viewModel;
 
-            _viewModel.ResetListData();
-
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-
-            _viewModel.isNewRequestCreated = false;
-            await _viewModel.VATObjectionList();
-
         }
 
       
-        private async void Reviews_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
-        {
-
-            try
-            {
-                var item = e.DataItem as VATObjectionListModel.Result3;
-
-
-                if (item.Fbust == "E0013")
-                {
-
-                    App.selectedVATItem = item.Fbnum;
-                    App.selectedVATItemFbust = item.Fbust;
-                    if (!_viewModel.isNewRequestCreated)
-                    {
-                        _viewModel.isNewRequestCreated = true;
-                        _viewModel._navigationService.NavigateTo(App.VatReviewPageView);
-                    }
-                }
-                else
-                {
-
-                    var index = _viewModel.VATobjListViewData.IndexOf(item);
-                    _viewModel.EnableSummaryView();
-                    await _viewModel.OnPageLoad1(index);
-
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
-
-        private async void BankGuranAttachTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
-        {
-            try
-            {
-                await Task.Run(() =>
-                {
-                    _viewModel.IsLoading = true;
-                });
-                var attachment = e.DataItem as Attachment;
-                //if (attachment.Filename.Contains(".")) ;
-                string Extention = attachment.Filename.Split('.')[1];
-                if (Extention.Equals("PDF") || Extention.Equals("pdf"))
-                {
-                    if (attachment.DocUrl != null)
-                    {
-                        _viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
-                    }
-                }
-                else
-                {
-
-
-                    await GetVATReviewWebServiceManager.email(attachment.Doguid, attachment);
-                }
-
-                await Task.Run(() =>
-                {
-                    _viewModel.IsLoading = false;
-                });
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-
-        private async void Attachments_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
-        {
-            try
-            {
-                await Task.Run(() =>
-                {
-                    _viewModel.IsLoading = true;
-                });
-                var attachment = e.DataItem as Attachment;
-
-                //if (attachment.Filename.Contains(".")) ;
-                string Extention = attachment.Filename.Split('.')[1];
-                if (Extention.Equals("PDF") || Extention.Equals("pdf"))
-                {
-                    if (attachment.DocUrl != null)
-                    {
-                        _viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
-                    }
-                }
-                else
-                {
-
-                    await GetVATReviewWebServiceManager.email(attachment.Doguid, attachment);
-                }
-
-
-
-                await Task.Run(() =>
-                {
-                    _viewModel.IsLoading = false;
-                });
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
 
     }
 }

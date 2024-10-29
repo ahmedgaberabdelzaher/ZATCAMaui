@@ -8,10 +8,12 @@ using static ZATCAMAUI.Models.VATgoodsOnprofit.NewYesorNoPageModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
 {
- 
+
     public class NewYesorNoPageViewModel : BaseViewModel
     {
-        public ICommand GoBackBtnTapped { get; set; }
+        public ICommand OnCancelButtonCommand { get; set; }
+        public ICommand OnSubmitButtonCommand { get; set; }
+        public ICommand OnAppearingNewYesorNoPageCommand { get; set; }
 
         private Color _RQ1 = (Color)Application.Current.Resources["DarkGrayTextColor"];
         public Color rq1
@@ -229,13 +231,90 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
         }
         public NewYesorNoPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackBtnTapped = new Command(() =>
+
+            OnSubmitButtonCommand = new Command(async () =>
             {
-                _navigationService.GoBack();
+                try
+                {
+                    if (ShowDeregQuestion == true)
+                    {
+                        if (IsYesQ3Checked == false)
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
+                            return;
+                        }
+
+                    }
+                    else
+                    {
+                        if (IsYesQ1Checked == false && IsNoQ1Checked == false)
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
+                            rq1 = (Color)Application.Current.Resources["Red"];
+                            return;
+                        }
+
+
+                        if (QA1 == "R" || QA1 == "r")
+                        {
+                            if (ProfitGoodsModel.registration.ToUpper().Equals("X"))
+                            {
+                                var result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.DeRegConfirmationmsg, AppResources.ZNo, AppResources.ZYes);
+                                if (!result)
+                                {
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZProfitOnGoodsQ1M01Validation));
+                                return;
+                            }
+                        }
+
+
+                        if (basedonQ1 == true)
+                        {
+                            if (IsYesQ2Checked == false && IsNoQ2Checked == false)
+                            {
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
+                                rq2 = (Color)Application.Current.Resources["Red"];
+                                return;
+                            }
+                        }
+                    }
+
+                    await CallSubmit();
+                }
+                catch (Exception ex)
+                {
+
+                }
+               
+            });
+
+            OnAppearingNewYesorNoPageCommand = new Command(async () =>
+            {
+                MakeFalse();
+                await GetApplicationRequestAsync();
+            });
+
+            OnCancelButtonCommand = new Command(async () =>
+            {
+               await ShowAlertPopup(AppResources.ZProfitOnGoodsConfrimationMsg);
             });
         }
 
-        public async Task callSubmit()
+       private void MakeFalse()
+        {
+            IsYesQ1Checked = false;
+            IsNoQ1Checked = false;
+            IsYesQ2Checked = false;
+            IsNoQ2Checked = false;
+        }
+
+
+        public async Task CallSubmit()
         {
             IsLoading = true;
             try
@@ -282,9 +361,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
                     if (ShowDeregQuestion)//De reg
                     {
                         App.TP.VtpmFg = "";
-                        String message = String.Format(AppResources.VATGoodsDeregisterSuccessMsg, response.taxpayerName, response.Gpart, response.Fbnum);
+                        string message = string.Format(AppResources.VATGoodsDeregisterSuccessMsg, response.taxpayerName, response.Gpart, response.Fbnum);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                      
+
                     }
                     else
                     { // Reg
@@ -295,14 +374,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
                     App.HasToRefreshLoaderOnDashboard = true;
                     _navigationService.GoBack();
                     MessagingCenter.Send<object>(this, "HideProfitGoods");
-                  
+
                 }
                 else
                 {
                     IsLoading = false;
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsfailuremessage));
                 }
-               
+                IsLoading = false;
             }
             catch (Exception)
             {
@@ -311,7 +390,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
 
 
         }
-        internal async Task GetApplicationRequestAsync()
+
+        private async Task GetApplicationRequestAsync()
         {
             try
             {
@@ -320,7 +400,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
                 IsLoading = false;
                 if (!string.IsNullOrEmpty(ProfitGoodsModel.DregFbnum))
                 {
-                    String message = String.Format(AppResources.VATGoodsDeregisterMsg, ProfitGoodsModel.taxpayerName, ProfitGoodsModel.Gpart, ProfitGoodsModel.DregFbnum);
+                    string message = string.Format(AppResources.VATGoodsDeregisterMsg, ProfitGoodsModel.taxpayerName, ProfitGoodsModel.Gpart, ProfitGoodsModel.DregFbnum);
 
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                     _navigationService.GoBack();
@@ -336,9 +416,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
                     var result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATProfitDeregisterQuestion, AppResources.ZYes, AppResources.ZNo);
                     if (result)
                     {
-                        IsLoading = true;
-                        await Task.Delay(500);
-                        await callSubmit();
+                        await CallSubmit();
                     }
                     else
                     {
@@ -360,6 +438,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
                 IsLoading = false;
             }
         }
+
+        private async Task ShowAlertPopup(string _message)
+        {
+             await Application.Current.MainPage.DisplayAlert(AppResources.Information, _message, AppResources.ZProfitOnGoodsConfrimationOk, AppResources.ZprofitsOnGoodscancel);
+            MakeFalse();
+            _navigationService.GoBack();
+        }
+
 
     }
 }

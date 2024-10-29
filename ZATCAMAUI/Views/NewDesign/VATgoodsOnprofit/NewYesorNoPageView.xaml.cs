@@ -1,7 +1,5 @@
-﻿using Mopups.Services;
-using Syncfusion.Maui.Buttons;
+﻿using Syncfusion.Maui.Buttons;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit;
-using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
@@ -19,123 +17,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
                 InitializeComponent();
                 viewModel = App.Locator.NewYesorNoView;
                 BindingContext = viewModel;
-                MakeFalse();
-                viewModel.GetApplicationRequestAsync();
+               
             }
             catch (Exception)
             {
 
             }
         }
-
-        private async void OnSubmitButtonClicked(object sender, EventArgs e)
-        {
-            if (viewModel.ShowDeregQuestion == true)
-            {
-                if (viewModel.IsYesQ3Checked == false)
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
-                    return;
-                }
-
-            }
-            else
-            {
-                if (YesQ1.IsChecked == false && NoQ1.IsChecked == false)
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
-                    viewModel.rq1 = (Color)Application.Current.Resources["Red"];
-                    return;
-                }
-
-
-                if (viewModel.QA1 == "R" || viewModel.QA1 == "r")
-                {
-                    if (!viewModel.ProfitGoodsModel.RegFlag.ToUpper().Equals("X"))
-                    {
-                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.DeRegConfirmationmsg, AppResources.ZNo, AppResources.ZYes);
-                        if (!result)
-                        {
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZProfitOnGoodsQ1M01Validation));
-                        return;
-                    }
-                }
-
-
-                if (viewModel.basedonQ1 == true)
-                {
-                    if (Yes.IsChecked == false && No.IsChecked == false)
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
-                        viewModel.rq2 = (Color)Application.Current.Resources["Red"];
-                        return;
-                    }
-                }
-            }
-            viewModel.IsLoading = true;
-            viewModel.callSubmit();
-        }
-        private void OnCancelButtonClicked(object sender, EventArgs e)
-        {
-            ShowAlertPopup(AppResources.ZProfitOnGoodsConfrimationMsg);
-        }
-
-        void backButton_Tapped(object sender, EventArgs e)
-        {
-            viewModel._navigationService.GoBack();
-        }
-
-
-
-        private async void ShowAlertPopup(string _message)
-        {
-            var alertResult = await DisplayAlert(AppResources.Information, _message, AppResources.ZProfitOnGoodsConfrimationOk, AppResources.ZprofitsOnGoodscancel);
-            if (!alertResult)
-            {
-
-            }
-            else
-            {
-                try
-                {
-                    MakeFalse();
-                    viewModel._navigationService.GoBack();
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-        }
-
-
-
-        void MakeFalse()
-        {
-
-            try
-            {
-                Yes.IsChecked = false;
-                YesQ1.IsChecked = false;
-                No.IsChecked = false;
-                NoQ1.IsChecked = false;
-
-                viewModel.IsYesQ1Checked = false;
-                viewModel.IsNoQ1Checked = false;
-                viewModel.IsYesQ2Checked = false;
-                viewModel.IsNoQ2Checked = false;
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
         void YesQ1_StateChanged(object sender, Syncfusion.Maui.Buttons.StateChangedEventArgs e)
         {
             try
@@ -154,13 +42,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
                     viewModel.basedonQ1 = false;
                     viewModel.rq1 = (Color)Application.Current.Resources["DarkGrayTextColor"];
                 }
-                else
-                {
-
-                }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

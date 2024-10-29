@@ -11,9 +11,14 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="page"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingChangeFillingPeriodListCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
 
     <ContentPage.Content>
 
@@ -163,7 +168,7 @@
                                         AutoFitMode="DynamicHeight"
                                         HorizontalOptions="Center"
                                         IsScrollingEnabled="False"
-                                        ItemTapped="Request_Item_Tapped"
+                                        TapCommand="{Binding RequestItemTapCommand}"
                                         ItemsSource="{Binding MyRequestsListViewData}"
                                         ScrollBarVisibility="Never"
                                         SelectionBackground="Transparent"
@@ -702,7 +707,7 @@
                                         <buttons:SfButton
                                             Grid.ColumnSpan="2"
                                             Margin="10,20,10,20"
-                                            Clicked="Download_Acknowledgement"
+                                            Command="{Binding DownloadAcknowledgementCommand}"
                                             CornerRadius="10"
                                             HeightRequest="48"
                                             Style="{StaticResource PrimaryButtonStyle}"

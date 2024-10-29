@@ -428,7 +428,7 @@
 
                                                         <StackLayout Margin="12">
 
-                                                            <Grid ColumnDefinitions="*,*" HorizontalOptions="FillAndExpand">
+                                                            <Grid ColumnDefinitions="*,auto" HorizontalOptions="FillAndExpand">
 
                                                                 <StackLayout Spacing="5">
 
@@ -497,7 +497,7 @@
 
                                                                     <Label
                                                                         Margin="0,0,0,0"
-                                                                        HorizontalOptions="EndAndExpand"
+                                                                        HorizontalOptions="End"
                                                                         Style="{StaticResource CaptionLabelGrey}">
 
                                                                         <Label.FormattedText>

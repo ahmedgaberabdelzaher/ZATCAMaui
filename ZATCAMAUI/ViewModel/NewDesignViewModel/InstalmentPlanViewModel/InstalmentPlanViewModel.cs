@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-
-
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.InstalmentPlanModel;
@@ -13,6 +11,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 
         public InstalmentPlanViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            ItemSelectedCommand = new Command<object>(async (obj) => await ItemSelectedMethod(obj));
             ZakatBtnTapped = new Command(async () => await ZakatBtnClicked());
             IncomeTaxBtnTapped = new Command(async ()=> await IncomeTaxBtnClicked());
             VatBtnTapped = new Command(async () => await VatBtnClicked());
@@ -22,8 +21,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 
         }
 
+        private async Task ItemSelectedMethod(object obj)
+        {
+            var selectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as InstalmentPlanModel;
+            SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(selectedItem);
+            if (selectedItem.ActiveOutletDecisionOptions == AppResources.DBSMZakatInstalmentPlan)
+            {
+                IsZakatSelected = true;
+                IsIncomeTaxViewEnabled = false;
+                Preferences.Set("isZakat", true);
+                await ZakatBtnClicked();
+            }
+            else if (selectedItem.ActiveOutletDecisionOptions == AppResources.DBSMIncomeTax)
+            {
+                IsZakatSelected = false;
+                IsIncomeTaxViewEnabled = true;
+                Preferences.Set("isZakat", false);
+                await IncomeTaxBtnClicked();
+            }
+            else
+            {
+                IsZakatSelected = false;
+                IsIncomeTaxViewEnabled = false;
+                await VatBtnClicked();
+            }
+        }
+
         #region Commands
 
+        public ICommand ItemSelectedCommand { get; set; }
         public ICommand ZakatBtnTapped { get; set; }
         public ICommand IncomeTaxBtnTapped { get; set; }
         public ICommand VatBtnTapped { get; set; }
@@ -37,7 +63,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
         {
             try
             {
-                _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
+               await _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
             }
             catch (InternetException ex)
             {
@@ -50,7 +76,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
         {
             try
             {
-                 _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
+                await _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
 
             }
             catch (InternetException ex)
@@ -64,7 +90,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
         {
             try
             {
-                _navigationService.NavigateTo(App.VatInstalmentPlanListPageView);
+              await  _navigationService.NavigateTo(App.VatInstalmentPlanListPageView);
             }
             catch (InternetException ex)
             {

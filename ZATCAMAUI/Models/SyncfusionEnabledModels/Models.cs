@@ -72,29 +72,19 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
                 _CalendarTyp = value;
                 if (_CalendarTyp != null)
                 {
-
                     if (dueDate != null)
                     {
-
-                        string formatedDate = string.Format(DateTime.Parse(dueDate).ToString("dd/MM/yyyy", new CultureInfo("en-US")));
-
+                        var date = DateTime.Parse(dueDate, new CultureInfo("en-US"));
+                        Day = date.Day.ToString();
                         if (calendarType.Equals("G"))
                         {
-
-                            string[] dts1 = formatedDate.Split('/');
-
-                            FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
-
+                            Month = UtilityManager.GetMonthName(date.Month.ToString());
                         }
-                        else if (calendarType.Equals("H"))
+                        else
                         {
-
-                            string[] dts1 = formatedDate.Split('/');
-
-                            FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthNameHijri(dts1[1]) + " " + dts1[2];
-
+                            Month = UtilityManager.GetMonthNameHijri(date.Month.ToString());
                         }
-
+                        FormatedDuedate = $"{Day}-{Month}-{date.Year}";
                     }
 
 
@@ -103,8 +93,6 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
             }
         }
 
-        //public string Abtypt { get; set; }
-        //public DateTime? Abrzo { get; set; }
         [JsonProperty("message")]
         public string OpenliMsg { get; set; }
         public string revenueType { get; set; }
@@ -119,7 +107,6 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
         public string inboundCorrespondenceTypeDescription { get; set; }
         public string ICRStatus { get; set; }
         public string sadadBillNumber { get; set; }
-        //public string Sopbel { get; set; }
         public bool IsFBNumberExist { get; set; }
         public string TaxPeriod { get; set; }
         private string _formatedSingleDueDate;
@@ -211,31 +198,20 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
             set
             {
                 _dueDate = value;
-                if (_dueDate != null)
+                if (dueDate != null)
                 {
-                    Day = DateTime.Parse(_dueDate).ToString("dd", new CultureInfo("en-US"));
+                    var date = DateTime.Parse(dueDate, new CultureInfo("en-US"));
+                    Day = date.Day.ToString();
                     if (App.IsArabic)
                     {
-                        Month = UtilityManager.GetMonthName(DateTime.Parse(_dueDate).ToString("MMMM", new CultureInfo("en-US")));
+                        Month = UtilityManager.GetMonthName(date.Month.ToString("MMMM", new CultureInfo("en-US")));
                     }
                     else
                     {
-                        Month = DateTime.Parse(_dueDate).ToString("MMM", new CultureInfo("en-US"));
+                        Month = date.Month.ToString("MMM", new CultureInfo("en-US"));
                     }
-                    // Month = Convert.ToDateTime(_dueDate).ToString("MMM", new CultureInfo("en-US"));
-                    FormatedSingleDueDate = DateTime.Parse(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    DueDateDateTime = DateTime.Parse(_dueDate);
-                    //if (App.IsArabic)
-                    //{
-                    //    string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    //    FormatedSingleDueDate = UtilityManager.ToArabicDate(date);
-                    //    DueDateDateTime = Convert.ToDateTime(_dueDate);
-                    //}
-                    //else
-                    //{
-                    //    FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    //    DueDateDateTime = Convert.ToDateTime(_dueDate);
-                    //}
+                    FormatedSingleDueDate = date.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    DueDateDateTime = date;
                 }
             }
         }
@@ -251,25 +227,22 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
             set
             {
                 _isUnSubmittedReturn = value;
-                if (_isUnSubmittedReturn != null)
+                if (_isUnSubmittedReturn == true)
                 {
-                    if (_isUnSubmittedReturn == true)
+                    StatusImage = "sf_ic_Overdue_Returns_Commitments.png";
+                    TaxPeriod = periodDescription;
+                    if (!string.IsNullOrEmpty(_fbnum))
                     {
-                        StatusImage = "sf_ic_Overdue_Returns_Commitments.png";
-                        TaxPeriod = periodDescription;
-                        if (!string.IsNullOrEmpty(_fbnum))
-                        {
-                            IsFBNumberExist = true;
-                        }
-                        else
-                        {
-                            IsFBNumberExist = false;
-                        }
+                        IsFBNumberExist = true;
                     }
                     else
                     {
-                        StatusImage = "sf_ic_Unpaid_Commitments.png";
+                        IsFBNumberExist = false;
                     }
+                }
+                else
+                {
+                    StatusImage = "sf_ic_Unpaid_Commitments.png";
                 }
             }
         }
