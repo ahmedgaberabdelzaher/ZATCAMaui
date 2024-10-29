@@ -2912,86 +2912,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                                 var singleItem = newItems[i];
 
-                                try
-                                {
-
-                                    if (singleItem.revenueType != null)
-                                    {
-
-                                        if (singleItem.revenueType.Equals("VATX") || singleItem.revenueType.Equals("ETAX"))
-                                        {
-                                            singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("en-US")));
-
-                                            string[] dts = singleItem.FormatedDuedate.Split('/');
-                                            if (App.IsArabic)
-                                            {
-
-                                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                                singleItem.FormatedDuedate = date;
-                                            }
-                                            else
-                                            {
-                                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                                singleItem.FormatedDuedate = date;
-                                            }
-                                        }
-                                        else
-                                        {
-
-
-                                            if (singleItem.calendarType?.Equals("G") == true)
-                                            {
-                                                singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("en-US")));
-
-                                                string[] dts = singleItem.FormatedDuedate.Split('/');
-                                                if (App.IsArabic)
-                                                {
-
-                                                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                                    singleItem.FormatedDuedate = date;
-                                                }
-                                                else
-                                                {
-                                                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                                    singleItem.FormatedDuedate = date;
-                                                }
-                                            }
-                                            else
-                                            {
-
-                                                singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("ar-SA")));
-
-                                                string[] dts = singleItem.FormatedDuedate.Split('/');
-                                                if (App.IsArabic)
-                                                {
-
-                                                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                                                    singleItem.FormatedDuedate = date;
-                                                }
-                                                else
-                                                {
-                                                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                                                    singleItem.FormatedDuedate = date;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-
-
-
-
-                                }
-
-
+                               
                                 pendingBills.Add(singleItem);
                             }
                         }
@@ -3000,81 +2921,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                             for (int i = 0; i < newItems.Count; i++)
                             {
                                 var singleItem = newItems[i];
-
-                                try
-                                {
-
-                                    if (singleItem.revenueType != null)
-                                    {
-
-                                        if (singleItem.revenueType.Equals("VATX") || singleItem.revenueType.Equals("ETAX"))
-                                        {
-                                            singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("en-US")));
-
-                                            string[] dts = singleItem.FormatedDuedate.Split('/');
-                                            if (App.IsArabic)
-                                            {
-
-                                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                                singleItem.FormatedDuedate = date;
-                                            }
-                                            else
-                                            {
-                                                string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                                singleItem.FormatedDuedate = date;
-                                            }
-                                        }
-                                        else
-                                        {
-
-
-                                            if (singleItem.calendarType?.Equals("G") == true)
-                                            {
-                                                singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("en-US")));
-
-                                                string[] dts = singleItem.FormatedDuedate.Split('/');
-                                                if (App.IsArabic)
-                                                {
-
-                                                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                                    singleItem.FormatedDuedate = date;
-                                                }
-                                                else
-                                                {
-                                                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                                    singleItem.FormatedDuedate = date;
-                                                }
-                                            }
-                                            else
-                                            {
-
-                                                singleItem.FormatedDuedate = string.Format(Convert.ToDateTime(singleItem.dueDate).ToString("d/M/yyyy", new CultureInfo("ar-SA")));
-
-                                                string[] dts = singleItem.FormatedDuedate.Split('/');
-                                                if (App.IsArabic)
-                                                {
-
-                                                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                                                    singleItem.FormatedDuedate = date;
-                                                }
-                                                else
-                                                {
-                                                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                                                    singleItem.FormatedDuedate = date;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                catch (Exception)
-                                {
-                                }
 
                                 pendingBills.Add(singleItem);
                             }
@@ -3238,33 +3084,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                     try
                     {
-                        if (SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
+                        if (SelectedCommitmentFilterValue != null && SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
                         {
                             BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a =>
-                            (a.dueDate != null && DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) <= 0)
-                            || (a.dueDate != null && DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) <= 0)).ToList();
+                            (a.dueDate != null && DateTime.Compare(a.DueDateDateTime, Today) <= 0)
+                            || (a.dueDate != null && DateTime.Compare(a.DueDateDateTime, Today) <= 0)).ToList();
 
                             foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
                             {
                                 var date = new DateTime();
 
-                                if (item.IsPaymentOverdue)
-                                { date = Convert.ToDateTime(item.dueDate); }
-                                else
-                                {
-                                    date = Convert.ToDateTime(item.dueDate);
-                                }
+                                date = item.DueDateDateTime;
 
                                 if (App.IsArabic)
                                 {
                                     if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
-                                        item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)
                                         {
                                             if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                             {
-                                                item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                                item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
                                                 if (!item.IsPaymentOverdue)
                                                 {
                                                     var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -3278,7 +3119,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                             }
                                             else
                                             {
-                                                item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                                item.Day = UtilityManager.GetMonthName(date.Month.ToString("MMMM", new CultureInfo("en-US")));
                                                 item.Month = date.Year.ToString();
                                             }
                                         }
@@ -3286,7 +3127,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                         {
                                             if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                             {
-                                                item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                                item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
                                                 if (!item.IsPaymentOverdue)
                                                 {
                                                     var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -3300,14 +3141,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                             }
                                             else
                                             {
-                                                item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
+                                                item.Day = date.Month.ToString("MMM", new CultureInfo("en-US"));
                                                 item.Month = date.Year.ToString();
                                             }
                                         }
                                     }
                                     else
                                     {
-                                        item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthName(date.Month.ToString("MMMM", new CultureInfo("en-US")));
                                         item.Month = date.Year.ToString();
                                     }
                                 }
@@ -3315,7 +3156,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                 {
                                     if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
-                                        item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)
                                         {
                                             var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -3329,7 +3170,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                     }
                                     else
                                     {
-                                        item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
+                                        item.Day = date.Month.ToString("MMM", new CultureInfo("en-US"));
                                         item.Month = date.Year.ToString();
                                     }
                                 }
@@ -3337,27 +3178,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                             }
                         }
-                        else if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
+                        else if (SelectedCommitmentFilterValue != null &&  SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
                         {
                             BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a =>
-                            (a.dueDate != null && DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) > 0)
-                            || (a.dueDate != null && DateTime.Compare(Convert.ToDateTime(a.dueDate), Today) > 0)).ToList();
+                            (a.dueDate != null && DateTime.Compare(a.DueDateDateTime, Today) > 0)
+                            || (a.dueDate != null && DateTime.Compare(a.DueDateDateTime, Today) > 0)).ToList();
                             foreach (var item in BillsAndReturnsCommitmentsOverdurItems)
                             {
                                 var date = new DateTime();
 
-                                if (item.IsPaymentOverdue)
-                                { date = Convert.ToDateTime(item.dueDate); }
-                                else
-                                {
-                                    date = Convert.ToDateTime(item.dueDate);
-                                }
-
+                                date = item.DueDateDateTime;
                                 if (App.IsArabic)
                                 {
                                     if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
-                                        item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)
                                         {
                                             var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -3371,7 +3206,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                     }
                                     else
                                     {
-                                        item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthName(date.Month.ToString("MMMM", new CultureInfo("en-US")));
                                         item.Month = date.Year.ToString();
                                     }
                                 }
@@ -3379,7 +3214,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                 {
                                     if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
-                                        item.Day = UtilityManager.GetMonthNameHijri(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
                                         if (!item.IsPaymentOverdue)
                                         {
                                             var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -3393,7 +3228,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                     }
                                     else
                                     {
-                                        item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
+                                        item.Day = date.Month.ToString("MMM", new CultureInfo("en-US"));
                                         item.Month = date.Year.ToString();
                                     }
                                 }
@@ -3412,7 +3247,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.StackTrace);
                     }
 
                     if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
@@ -3517,7 +3351,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     PopToRootPage();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
             }

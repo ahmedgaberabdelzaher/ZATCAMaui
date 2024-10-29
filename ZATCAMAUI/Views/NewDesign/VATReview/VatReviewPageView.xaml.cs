@@ -1,8 +1,6 @@
-﻿using Mopups.Services;
-using ZATCAMAUI.Core.Mangers;
+﻿using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
-using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ItemTappedEventArgs = Syncfusion.Maui.ListView.ItemTappedEventArgs;
 
@@ -23,257 +21,18 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                 viewModel = App.Locator.VatReviewView;
                 this.BindingContext = viewModel;
 
-                //viewModel.vRInterface = this;
-
 
                 viewModel.ResetData();
                 SelectDefaultPaymentOption();
 
-                _ = viewModel.VatReviewReasonDropDownData();
-                viewModel.setMoreOptioButtons();
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
-            
 
-        }
-
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            getYesCommand();
-            getNoCommand();
-
-
-
-
-            MessagingCenter.Unsubscribe<object, int>(this, "draftRequest");
-            MessagingCenter.Unsubscribe<object, int>(this, "draftSecurity");
-
-
-            try
-            {
-                MessagingCenter.Subscribe<object, int>(this, "draftRequest", (sender, arg) =>
-                {
-                    DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[arg];
-
-                });
             }
             catch (Exception)
             {
             }
 
-            try
-            {
-                MessagingCenter.Subscribe<object, int>(this, "draftSecurity", async (sender, arg) =>
-                {
-                    securityTypeListView.SelectedItem = viewModel.SecurityPaymentOptions[arg];
-                    if (arg == 0)
-                    {
-                        viewModel.EnableSadadSecurityView();
-                    }
-                    else if (arg == 1)
-                    {
-                        viewModel.EnablebankGuranteeSecurityView();
-                    }
-                    viewModel.EnableSecurityPaymentsConButton();
-
-
-                });
-            }
-            catch (Exception ex)
-            {
-                
-                
-            }
-
-
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
-            {
-                //viewModel.PickerModel = arg;
-                //viewModel.updatePicker();
-                viewModel.updatePickerData(arg);
-            });
-            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem",
-                (sender, arg) =>
-                {
-                    try
-                    {
-                        string dt1 = string.Empty;
-                        string[] dts = null;
-                        dts = arg.SelectedValue.Split('/');
-                        dt1 = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
-                        viewModel.PickedDateFullMonth = dt1;
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
-                    viewModel.PickedDate = arg.SelectedValue;
-                    viewModel.ValidateIdNumber();
-                });
-
-            MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
-            {
-                if (arg != null)
-                {
-                    viewModel.PopulateAttachments(arg.results);
-                }
-            });
-
-            MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
-            {
-                await MopupService.Instance.PopAsync();
-                if (arg != null)
-                {
-                    string message = arg;
-
-                    if (App.IsArabic)
-                    {
-                        ArButtons buttonId = ArButtons.None;
-                        if (!string.IsNullOrEmpty(message))
-                        {
-                            message = message.Replace(" ", "");
-                        }
-                        Enum.TryParse(message, out buttonId);
-                        switch (buttonId)
-                        {
-                            case ArButtons.إضافةملاحظات:
-                                //viewModel.VATReturnAddNote();
-                                break;
-                            case ArButtons.عرضملاحظات:
-                                //  viewModel.VATReturnGetNotes();
-                                break;
-                            case ArButtons.المرفقات:
-                                // viewModel.VATViewAttachments();
-                                break;
-                            case ArButtons.إلغاء:
-                                viewModel.IsDraftClicked = true;
-                                viewModel.VoidMsg();
-                                viewModel.IsDraftClicked = false;
-                                break;
-                            case ArButtons.عادةتعيين:
-                                //await viewModel.VATReturnResetAsync();
-                                break;
-                            case ArButtons.تعديل:
-                                // await viewModel.VATReturnAmendAsync();
-                                break;
-                            case ArButtons.حفظكمسودة:
-                                viewModel.IsDraftClicked = true;
-                                await viewModel.OnSaveDraftClicked();
-                                viewModel.IsDraftClicked = false;
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        Buttons buttonId = Buttons.None;
-                        if (!string.IsNullOrEmpty(message))
-                        {
-                            message = message.Replace(" ", "");
-                        }
-                        Enum.TryParse(message, out buttonId);
-                        switch (buttonId)
-                        {
-                            case Buttons.CreateNotes:
-                                //viewModel.VATReturnAddNote();
-                                break;
-                            case Buttons.DisplayNotes:
-                                //viewModel.VATReturnGetNotes();
-                                break;
-                            case Buttons.Attachments:
-                                // viewModel.VATViewAttachments();
-                                break;
-                            case Buttons.Void:
-                                viewModel.IsDraftClicked = true;
-                                viewModel.VoidMsg();
-                                viewModel.IsDraftClicked = false;
-                                break;
-                            case Buttons.Reset:
-                                //await viewModel.VATReturnResetAsync();
-                                break;
-                            case Buttons.Amend:
-                                // await viewModel.VATReturnAmendAsync();
-                                break;
-                            case Buttons.SaveasDraft:
-                                viewModel.IsDraftClicked = true;
-                                await viewModel.OnSaveDraftClicked();
-
-                                viewModel.IsDraftClicked = false;
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-
-                }
-            });
-
 
         }
-
-        public void getYesCommand()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
-                        {
-                            await MopupService.Instance.PopAsync();
-                            await viewModel.VATSetReturnVoid();
-                        }
-                        else if (arg == AppResources.ZZZRefundEnableMessage)
-                        {
-                            await MopupService.Instance.PopAsync();
-                        }
-                    }
-
-                });
-            }
-            catch (Exception ex)
-            {
-                
-                
-            }
-        }
-
-        public void getNoCommand()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
-                        {
-                            await MopupService.Instance.PopAsync();
-                        }
-                        else if (arg == AppResources.ZZZRefundEnableMessage)
-                        {
-                            await MopupService.Instance.PopAsync();
-                        }
-                    }
-
-                    //await MopupService.Instance.PopAsync();
-                    // await viewModel.VATSetReturnVoidAsync();
-                });
-            }
-            catch (Exception ex)
-            {
-                
-                
-            }
-        }
-
 
 
         protected override void OnDisappearing()
@@ -301,10 +60,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                 viewModel.ReportDetails = Report_Details_Tx.Text;
                 viewModel.EnableReportDetailsConButton();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                
-                
+
+
             }
         }
 
@@ -351,10 +110,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
                 viewModel.EnableSecurityPaymentsConButton();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                
-                
+
+
             }
         }
 
@@ -382,17 +141,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             {
                 viewModel._idNumber = e.NewTextValue;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                
-                
+
+
             }
         }
 
-        private void OnIDNumberFocusChanged(object sender, FocusEventArgs e)
-        {
-            viewModel.ValidateIdNumber();
-        }
 
         private void CheckBox_CheckedChanged(object sender, Boolean e)
         {
@@ -418,7 +173,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         {
             viewModel.RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(rrAmountTxt.Text.ToString());
 
-            if (!String.IsNullOrEmpty(viewModel.RequestedReviewAmount) && !String.IsNullOrEmpty(viewModel.TotalTaxLiability) &&
+            if (!string.IsNullOrEmpty(viewModel.RequestedReviewAmount) && !string.IsNullOrEmpty(viewModel.TotalTaxLiability) &&
                 Double.Parse(viewModel.RequestedReviewAmount) > Double.Parse(viewModel.TotalTaxLiability))
             {
                 viewModel.RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(viewModel.TotalTaxLiability);
@@ -446,10 +201,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                     viewModel.VRRequesttoReviewtheAmountValue = AppResources.VRInpartial;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                
-                
+
+
             }
         }
 
@@ -478,18 +233,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             viewModel.EnableLateFilingsDetailsConButton();
 
 
-        }
-
-        private async void OnInfoButtonTapped(object sender, EventArgs e)
-        {
-            try
-            {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatReviewLateFilingInfo));
-            }
-            catch (Exception)
-            {
-
-            }
         }
     }
 

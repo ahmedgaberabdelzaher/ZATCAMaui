@@ -1,6 +1,4 @@
 ﻿using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
-using Mopups.Services;
-using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.ChageFillingPeriodModel;
@@ -26,129 +24,12 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                 viewModel = App.Locator.ChangeFillingPeriodPageView;
                 this.BindingContext = viewModel;
                 viewModel.cFInterface = this;
-                viewModel.ResetData();
-                _ = viewModel.GetVATChangeFillingData();
+               
 
             }
             catch (Exception)
             {
             }
-        }
-
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-
-            getYesCommand();
-            getNoCommand();
-            MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
-            {
-                await MopupService.Instance.PopAsync();
-                if (arg != null)
-                {
-                    string message = arg;
-                    if (App.IsArabic)
-                    {
-                        ArButtons buttonId = ArButtons.None;
-                        if (!string.IsNullOrEmpty(message))
-                        {
-                            message = message.Replace(" ", "");
-                        }
-                        Enum.TryParse(message, out buttonId);
-                        switch (buttonId)
-                        {
-                            case ArButtons.إضافةملاحظات:
-                                break;
-                            case ArButtons.عرضملاحظات:
-                                break;
-                            case ArButtons.المرفقات:
-                                break;
-                            case ArButtons.إلغاء:
-                                viewModel.isDraftClicked = true;
-                                await viewModel.VoidMsg();
-                                viewModel.isDraftClicked = false;
-                                break;
-                            case ArButtons.عادةتعيين:
-                                break;
-                            case ArButtons.تعديل:
-                                break;
-                            case ArButtons.حفظكمسودة:
-                                viewModel.isDraftClicked = true;
-                                await viewModel.OnSaveDraftClicked();
-                                viewModel.isDraftClicked = false;
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        Buttons buttonId = Buttons.None;
-                        if (!string.IsNullOrEmpty(message))
-                        {
-                            message = message.Replace(" ", "");
-                        }
-                        Enum.TryParse(message, out buttonId);
-                        switch (buttonId)
-                        {
-                            case Buttons.CreateNotes:
-                                break;
-                            case Buttons.DisplayNotes:
-                                break;
-                            case Buttons.Attachments:
-                                break;
-                            case Buttons.Void:
-                                viewModel.isDraftClicked = true;
-                                await viewModel.VoidMsg();
-                                viewModel.isDraftClicked = false;
-                                break;
-                            case Buttons.Reset:
-                                break;
-                            case Buttons.Amend:
-                                break;
-                            case Buttons.SaveasDraft:
-                                viewModel.isDraftClicked = true;
-                                await viewModel.OnSaveDraftClicked();
-                                viewModel.isDraftClicked = false;
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }
-            });
-
-            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem",
-                async (sender, arg) =>
-                {
-
-                    viewModel.PickedDate = arg.SelectedValue;
-                    await viewModel.ValidateIdNumber();
-                });
-
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", async (sender, arg) =>
-            {
-                if (viewModel.selectedPicker == ChangeFillingPeriodViewModel.PickerEnum.EffectiveDate)
-                {
-                    viewModel.EffectiveDatePickerModel = arg;
-                    viewModel.updateEffectiveDatePicker();
-                }
-                else if (viewModel.selectedPicker == ChangeFillingPeriodViewModel.PickerEnum.IdType)
-                {
-                    viewModel.IDTypePickerModel = arg;
-                    await viewModel.updateIdTypePicker();
-                }
-            });
-
-            MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
-            {
-                if (arg != null)
-                {
-                    viewModel.PopulateAttachments(arg.results);
-                }
-            });
         }
 
         protected override void OnDisappearing()
@@ -164,54 +45,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
 
         }
 
-        public void getYesCommand()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
-                        {
-                            await MopupService.Instance.PopAsync();
-                            await viewModel.VATSetReturnVoidAsync();
-                        }
-                        else if (arg == AppResources.ZZZRefundEnableMessage)
-                        {
-                            await MopupService.Instance.PopAsync();
-                        }
-                    }
-                });
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        public void getNoCommand()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
-                        {
-                            await MopupService.Instance.PopAsync();
-                        }
-                        else if (arg == AppResources.ZZZRefundEnableMessage)
-                        {
-                            await MopupService.Instance.PopAsync();
-                        }
-                    }
-                });
-            }
-            catch (Exception)
-            {
-            }
-        }
+       
         void outletDecisionOptionsListView_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
         {
             ChangeFillingPeriodModel selectedItem = e.AddedItems[0] as ChangeFillingPeriodModel;
@@ -253,11 +87,6 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             catch (Exception)
             {
             }
-        }
-
-        private async void OnIDNumberFocusChanged(object sender, FocusEventArgs focusEventArgs)
-        {
-            await viewModel.ValidateIdNumber();
         }
 
         private void IdNumberTextChanged(object sender, TextChangedEventArgs e)

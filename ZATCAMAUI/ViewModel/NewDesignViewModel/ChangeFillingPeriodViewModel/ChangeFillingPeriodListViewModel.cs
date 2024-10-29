@@ -2,6 +2,7 @@
 using System.Windows.Input;
 
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -14,6 +15,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
     {
         public ICommand GoBackClick { get; set; }
         public ICommand MyRequestsButtonTapped { get; set; }
+        public ICommand RequestItemTapCommand { get; set; }
+        public ICommand DownloadAcknowledgementCommand { get; set; }
+        public ICommand OnAppearingChangeFillingPeriodListCommand { get; set; }
 
         private bool _isBackVisible = false;
         public bool IsBackVisible
@@ -276,10 +280,70 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             });
             MyRequestsButtonTapped = new Command(async () =>
             {
-
+                IsLoading = true;
                 App.selectedVatFillingItem = "";
                 App.selectedVATItemFbust = "";
                 await _navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
+                IsLoading = false;
+            });
+
+            DownloadAcknowledgementCommand = new Command(async () =>
+            {
+                if (vATChangingSummaryData.Fbnum != null)
+                {
+
+                    string downloadurl = ZATCAConstants.downloadFile + vATChangingSummaryData.Fbnum;
+                    await _navigationService.NavigateTo(App.PdfView, downloadurl);
+                }
+
+            });
+
+            OnAppearingChangeFillingPeriodListCommand = new Command(async () =>
+            {
+                try
+                {
+                    ResetData();
+                    await GetVATChangeFillingList();
+                }
+                catch (Exception)
+                {
+
+                }
+
+            });
+
+            RequestItemTapCommand = new Command<object>(async (obj) =>
+            {
+
+                try
+                {
+                    var item = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as VATChangeFillingListModel.ChangeFillingFrequency;
+
+                    if (item.Fbust == "E0018" || item.Fbust == "E0075" || item.Fbust == "E0074" || item.Fbust == "E0013")
+                    {
+                        App.selectedVatFillingItem = item.Fbnum;
+                        App.selectedVATItemFbust = item.Fbust;
+                        await _navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
+                    }
+                    else
+                    {
+
+                        await GetVATChangeFillingSummary(item);
+
+                        if (vATChangingSummaryData != null)
+                        {
+
+                            EnableSummaryView();
+
+                        }
+
+                    }
+                }
+                catch (Exception)
+                {
+
+
+                }
             });
         }
 
@@ -360,22 +424,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            _navigationService.GoBack();
-                        });
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
                     }
                     IsLoading = false;
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        IsLoading = false;
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    IsLoading = false;
+                    _navigationService.GoBack();
 
                 }
                 IsLoading = false;
@@ -383,23 +441,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
 
             }
             catch (Exception)
 
             {
                 IsLoading = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 

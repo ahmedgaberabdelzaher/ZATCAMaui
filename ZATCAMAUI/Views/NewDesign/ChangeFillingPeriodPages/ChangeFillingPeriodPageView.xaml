@@ -23,6 +23,10 @@
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingChangeFillingPeriodPageCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector" />
@@ -899,10 +903,10 @@
                                                         Text="{Binding IDNumber}"
                                                         TextChanged="IdNumberTextChanged"
                                                         TextColor="{StaticResource PrimaryColor}"
-                                                        Unfocused="OnIDNumberFocusChanged"
                                                         VerticalOptions="CenterAndExpand">
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <behaviour:OnlyNumericValuesBehaviour />
+                                                             <xct:EventToCommandBehavior Command="{Binding OnIDNumberFocusChanged}" EventName="Unfocused" />
                                                         </custom:GAZTBorderlessEntry.Behaviors>
 
                                                     </custom:GAZTBorderlessEntry>
