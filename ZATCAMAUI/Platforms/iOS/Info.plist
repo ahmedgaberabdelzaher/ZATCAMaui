@@ -93,7 +93,7 @@
 	<key>CFBundleVersion</key>
 	<string>5.0.279</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gazt.egazt</string>
+	<string>com.gazt.enterprise.zatca</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>This app requires access to your Apple Music library to allow you to play and manage your music collection.</string>
 </dict>
