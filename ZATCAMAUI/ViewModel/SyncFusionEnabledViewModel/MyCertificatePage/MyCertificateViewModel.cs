@@ -450,7 +450,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
 
                 string lang = UtilityManager.GetLanguageParameter();
                 TaxPayerProfile = App.TP;
-                allCertificate = await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.userId);
+                allCertificate = await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.TIN);
                 await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 bool Flag = false;
                 if (allCertificate != null)

@@ -153,19 +153,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard");
-            MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
-            MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
-            MessagingCenter.Unsubscribe<object>(this, "UpdateProgressBar");
-            MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
-            MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
-            MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
-            MessagingCenter.Unsubscribe<App, string>(this, "DashboardApplePayData");
-            MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
-            MessagingCenter.Unsubscribe<object, string>(this, "HideProfitGoods");
-
-
-            viewModel.isTimerOff = true;
+            viewModel.OnDisappearing();
         }
 
         protected override bool OnBackButtonPressed()

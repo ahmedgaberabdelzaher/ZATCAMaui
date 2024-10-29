@@ -2121,7 +2121,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                     IsLoading = true;
 
-                    DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.userId);
+                    DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.TIN);
 
                     PopulateReturnsInformation();
                     IsLoading = false;
@@ -2155,6 +2155,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
         }
 
+        public void OnDisappearing()
+        {
+           
+            MessagingCenter.Unsubscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard");
+            MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
+            MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
+            MessagingCenter.Unsubscribe<object>(this, "UpdateProgressBar");
+            MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
+            MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
+            MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
+            MessagingCenter.Unsubscribe<App, string>(this, "DashboardApplePayData");
+            MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
+            MessagingCenter.Unsubscribe<object, string>(this, "HideProfitGoods");
+
+
+            isTimerOff = true;
+        }
         public async Task OpenBrowser(Uri uri)
         {
             await Launcher.OpenAsync(uri);
