@@ -18,8 +18,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
         #region Commands
 
+        public ICommand OnAppearingZakatObjectionsListPageViewCommand { get; set; }
+        public ICommand ObjectionItemCommand { get; set; }
         public ICommand ReqInstalmentBtnTapped { get; set; }
-        public ICommand CloseClick { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand Download_Acknowledgement { get; set; }
         public ICommand ZDownloadForm { get; set; }
@@ -31,45 +32,75 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
 
             ReqInstalmentBtnTapped = new Command(ReqInstalmentBtnClicked);
-            CloseClick = new Command(() => { _navigationService.GoBack(); });
 
             GoBackClick = new Command(() => { BackNavigations(); });
 
             Download_Acknowledgement = new Command(async () =>
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 if (objRefNumber != null)
                 {
-                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + objRefNumber ;
-                    _navigationService.NavigateTo(App.PdfView, downloadurl);
+                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + objRefNumber;
+                    await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
-                await Task.Run(() =>
+                IsLoading = false;
+            });
+
+            OnAppearingZakatObjectionsListPageViewCommand = new Command(async () =>
+            {
+                IsLoading = true;
+                ResetData();
+                await ZAKATObjectionList();
+                IsLoading = false;
+            });
+
+            ObjectionItemCommand = new Command<object>(async (obj) =>
+            {
+                try
+                {
+                    IsLoading = true;
+                    var item = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as ZakatObjectionListModel.Result;
+                    Preferences.Set("ZakatObjectionSelectedValue", item.Fbnum);
+                    Preferences.Set("ZakatObjectionSelectedType", item.Fbtyp);
+
+                    if (item.Fbtyp == "TP09")
+                    {
+                        await GetWithdrawReviewReason(item.Fbnum);
+                    }
+                    else if (item.Fbtyp == "TP10")
+                    {
+                        await GetWithdrawReviewReasonTP10(item.Fbnum);
+                    }
+                    else if (item.Fbtyp == "ZNOB" && (item.StatText == "Additional Info Requested" || item.StatText == "طلب معلومات اضافية"))
+                    {
+                        await showRejectPopup();
+                    }
+                    else
+                    {
+                        ReqInstalmentBtnClicked();
+                    }
+                    IsLoading = false;
+                }
+                catch (Exception)
                 {
                     IsLoading = false;
-                });
+                }
+
+
             });
 
 
             ZDownloadForm = new Command(async () =>
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 if (objRefNumber != null)
                 {
-                    string downloadurl = ZATCAConstants.ZOdownloadCoverFormFile + objRefNumber ;
-                    _navigationService.NavigateTo(App.PdfView, downloadurl);
+                    string downloadurl = ZATCAConstants.ZOdownloadCoverFormFile + objRefNumber;
+                    await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             });
         }
         private void BackNavigations()
@@ -126,7 +157,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
         }
 
-       
+
 
         private string _returnNumber = "";
         public string ReturnNumber
@@ -445,127 +476,52 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+
+                ZakatObjectionListModel _ZAKATObjectionList = new ZakatObjectionListModel();
+                try
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    IsLoading = true;
-                    ZakatObjectionListModel _ZAKATObjectionList = new ZakatObjectionListModel();
-                    try
+                    _ZAKATObjectionList = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionList();
+
+                    var objectionsList = new ObservableCollection<ZakatObjectionListModel.Result>();
+                    if (_ZAKATObjectionList != null && _ZAKATObjectionList.d != null)
                     {
-                        _ZAKATObjectionList = await ZAKATObjectionsWebServiceManager.GAZTGetZAKATObjectionList();
-
-                        var objectionsList = new ObservableCollection<ZakatObjectionListModel.Result>();
-                        if (_ZAKATObjectionList != null && _ZAKATObjectionList.d != null)
+                        foreach (var objection in _ZAKATObjectionList.d.ListSet)
                         {
-                            foreach (var objection in _ZAKATObjectionList.d.ListSet)
-                            {
-
-
-                                //string strRequestedDate = objection.Erfdate;
-                                //if (objection.Erfdate != null)
-                                //{
-
-                                //    DateTime dateStart = new DateTime();
-                                //    CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                                //    string apiDate = @"""" + objection.Erfdate + @"""";
-                                //    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
-
-                                //    GregorianCalendar hjCalendar = new GregorianCalendar();
-                                //    int year = hjCalendar.GetYear(dateStart);
-                                //    int month = hjCalendar.GetMonth(dateStart);
-                                //    int day = hjCalendar.GetDayOfMonth(dateStart);
-
-                                //    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-
-                                //    string dt1 = string.Empty;
-                                //    string[] dts = null;
-                                //    dts = dateStr.Split('/');
-
-                                //    if (App.IsArabic)
-                                //    {
-
-                                //        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-
-                                //    }
-                                //    else
-                                //    {
-
-                                //        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-
-                                //    }
-
-
-                                //    strRequestedDate = dt1;
-                                //}
-
-                                //objection.Erfdate = strRequestedDate;
-
-
-
-                                objectionsList.Add(objection);
-                            }
-                            ObjectionsList = objectionsList;
-                            ObjectionsCount = ObjectionsList.Count + "  " + AppResources.ZakatObjection;
+                            objectionsList.Add(objection);
                         }
+                        ObjectionsList = objectionsList;
+                        ObjectionsCount = ObjectionsList.Count + "  " + AppResources.ZakatObjection;
+                    }
 
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
+                    else
+                    {
                         IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
                     }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
-                    }
-                });
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
-            }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                }
+                catch (InternetException ex)
                 {
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
                     _navigationService.GoBack();
-                });
+                }
+                IsLoading = false;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (Exception)
             {
-
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -573,131 +529,71 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                    ZAKATObjectionDataModel _ZAKATObjectionData = new ZAKATObjectionDataModel();
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = true;
+                ZAKATObjectionDataModel _ZAKATObjectionData = new ZAKATObjectionDataModel();
+                IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (Exception)
             {
-
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
         public async Task showRejectPopup()
         {
 
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(AppResources.ZakatObjectionPortalMessage, AppResources.Information);
-            });
+            IsLoading = false;
+            await _dialogService.ShowMessage(AppResources.ZakatObjectionPortalMessage, AppResources.Information);
 
         }
         public async Task GetWithdrawReviewReasonTP10(string SelectedFbNum)
         {
             try
             {
-                await Task.Run(() =>
+
+                IsLoading = true;
+                ZakatObjectionSummaryModel _ZAKATObjectionWithDraw = new ZakatObjectionSummaryModel();
+                try
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    IsLoading = true;
-                    ZakatObjectionSummaryModel _ZAKATObjectionWithDraw = new ZakatObjectionSummaryModel();
-                    try
+
+                    _ZAKATObjectionWithDraw = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatObjectionSummaryTP10(SelectedFbNum);
+
+                    if (_ZAKATObjectionWithDraw == null)
                     {
-                        //EnableSummaryView();
-                        //Data binding for withdraw objection details
-                        _ZAKATObjectionWithDraw = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatObjectionSummaryTP10(SelectedFbNum);
 
-                        if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
-                        {
-
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
                         IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
                     }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
-                    }
-                });
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
-            }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                }
+                catch (InternetException ex)
                 {
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                    _navigationService.GoBack();
+                }
+
+                IsLoading = false;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -706,167 +602,121 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                ZakatObjectionWDDropdownModel _ZAKATObjectionWithDraw = new ZakatObjectionWDDropdownModel();
+                try
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    IsLoading = true;
-                    ZakatObjectionWDDropdownModel _ZAKATObjectionWithDraw = new ZakatObjectionWDDropdownModel();
-                    try
+                    EnableSummaryView();
+                    _ZAKATObjectionWithDraw = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawDDData(SelectedFbNum);
+
+                    if (_ZAKATObjectionWithDraw == null)
                     {
-                        EnableSummaryView();
-                        //Data binding for withdraw objection details
-                        _ZAKATObjectionWithDraw = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawDDData(SelectedFbNum);
+                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
 
-                        if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
+                        DateTime dateTime = DateTime.ParseExact(_ZAKATObjectionWithDraw.d.results[0].APeriodFrom, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
+                        string dateStr = dateTime.ToString("MM/dd/yyyy");
+
+                        _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dateStr;
+                        string dt1 = string.Empty;
+                        string formatedDate1 = string.Empty;
+
+                        string[] dts = null;
+                        dts = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom.Split('/');
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                        if (App.IsArabic)
                         {
-                           // DateTime dateStart = new DateTime();
-                            CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                            /*string apiDate = @"""" + _ZAKATObjectionWithDraw.d.results[0].APeriodFrom + @"""";
-                            dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
-                            GregorianCalendar hjCalendar = new GregorianCalendar();
-                            int year = hjCalendar.GetYear(dateStart);
-                            int month = hjCalendar.GetMonth(dateStart);
-                            int day = hjCalendar.GetDayOfMonth(dateStart);*/
 
-                            DateTime dateTime = DateTime.ParseExact(_ZAKATObjectionWithDraw.d.results[0].APeriodFrom, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
-                            string dateStr = dateTime.ToString("MM/dd/yyyy");
+                            formatedDate1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                           // string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-                            _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dateStr;
-                            string dt1 = string.Empty;
-                            string formatedDate1 = string.Empty;
-
-                            string[] dts = null;
-                            dts = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom.Split('/');
-                            dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-
-                            if (App.IsArabic)
-                            {
-
-                                formatedDate1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-
-                            }
-                            else
-                            {
-
-                                formatedDate1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-
-                            }
-                            _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dt1;
-
-                            //DateTime dateStart1 = new DateTime();
-                            CultureInfo cultureInfo1 = new CultureInfo("ar-SA");
-                            /*string apiDate1 = @"""" + _ZAKATObjectionWithDraw.d.results[0].APeriodTo + @"""";
-                            dateStart1 = JsonConvert.DeserializeObject<DateTime>(apiDate1);
-                            GregorianCalendar hjCalendar1 = new GregorianCalendar();
-                            int year1 = hjCalendar1.GetYear(dateStart1);
-                            int month1 = hjCalendar1.GetMonth(dateStart1);
-                            int day1 = hjCalendar1.GetDayOfMonth(dateStart1);*/
-
-                            DateTime dateTime2 = DateTime.ParseExact(_ZAKATObjectionWithDraw.d.results[0].APeriodTo, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
-                            string dateStr1 = dateTime2.ToString("MM/dd/yyyy");
-
-                            //string dateStr1 = string.Format("{0:00}/{1}/{2}", day1, month1, year1);
-                            _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dateStr1;
-                            string dt11 = string.Empty;
-                            string formatedDate11 = string.Empty;
-
-                            string[] dts1 = null;
-                            dts1 = _ZAKATObjectionWithDraw.d.results[0].APeriodTo.Split('/');
-                            dt11 = dts1[0] + "-" + UtilityManager.GetShortMonthName(dts1[1]) + "-" + dts1[2];
-
-                            if (App.IsArabic)
-                            {
-
-                                formatedDate11 = dts1[0] + "-" + UtilityManager.GetMonthName(dts1[1]) + "-" + dts1[2];
-
-                            }
-                            else
-                            {
-
-                                formatedDate11 = dts1[0] + "-" + UtilityManager.GetShortMonthName(dts1[1]) + "-" + dts1[2];
-
-                            }
-
-                            _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dt11;
-
-                            objRefNumber = _ZAKATObjectionWithDraw.d.results[0].ObjFbnum;
-                            ReferenceNumberOfAssessment = _ZAKATObjectionWithDraw.d.results[0].ARefNo;
-                            AssessmentYear = _ZAKATObjectionWithDraw.d.results[0].AAssnmtYr;
-                            PeriodFrom = formatedDate1;
-                            PeriodTo = formatedDate11;
-
-                            if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ITAX"))
-                            {
-                                DisplaTaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
-                            }
-                            else if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ZAKT"))
-                            {
-                                DisplaTaxType = AppResources.FORM5Zakat;
-                            }
-
-                            Currency = _ZAKATObjectionWithDraw.d.results[0].ACurr;
-                            AssessmentAmount = _ZAKATObjectionWithDraw.d.results[0].AAssnmtAmt;
-                            DisplayRevisedAmount = _ZAKATObjectionWithDraw.d.results[0].ARevAmt;
-                            DisplayDisputeAmount = _ZAKATObjectionWithDraw.d.results[0].ADisputeAmt;
-                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
                         }
-
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
+
+                            formatedDate1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
                         }
-                        await ZakatRequestObjectionSummary(SelectedFbNum);
-                        IsLoading = false;
-                    }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
+                        _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dt1;
+
+                        CultureInfo cultureInfo1 = new CultureInfo("ar-SA");
+
+                        DateTime dateTime2 = DateTime.ParseExact(_ZAKATObjectionWithDraw.d.results[0].APeriodTo, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
+                        string dateStr1 = dateTime2.ToString("MM/dd/yyyy");
+                        _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dateStr1;
+                        string dt11 = string.Empty;
+                        string formatedDate11 = string.Empty;
+
+                        string[] dts1 = null;
+                        dts1 = _ZAKATObjectionWithDraw.d.results[0].APeriodTo.Split('/');
+                        dt11 = dts1[0] + "-" + UtilityManager.GetShortMonthName(dts1[1]) + "-" + dts1[2];
+
+                        if (App.IsArabic)
                         {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
+
+                            formatedDate11 = dts1[0] + "-" + UtilityManager.GetMonthName(dts1[1]) + "-" + dts1[2];
+
+                        }
+                        else
+                        {
+
+                            formatedDate11 = dts1[0] + "-" + UtilityManager.GetShortMonthName(dts1[1]) + "-" + dts1[2];
+
+                        }
+
+                        _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dt11;
+
+                        objRefNumber = _ZAKATObjectionWithDraw.d.results[0].ObjFbnum;
+                        ReferenceNumberOfAssessment = _ZAKATObjectionWithDraw.d.results[0].ARefNo;
+                        AssessmentYear = _ZAKATObjectionWithDraw.d.results[0].AAssnmtYr;
+                        PeriodFrom = formatedDate1;
+                        PeriodTo = formatedDate11;
+
+                        if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ITAX"))
+                        {
+                            DisplaTaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                        }
+                        else if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ZAKT"))
+                        {
+                            DisplaTaxType = AppResources.FORM5Zakat;
+                        }
+
+                        Currency = _ZAKATObjectionWithDraw.d.results[0].ACurr;
+                        AssessmentAmount = _ZAKATObjectionWithDraw.d.results[0].AAssnmtAmt;
+                        DisplayRevisedAmount = _ZAKATObjectionWithDraw.d.results[0].ARevAmt;
+                        DisplayDisputeAmount = _ZAKATObjectionWithDraw.d.results[0].ADisputeAmt;
+                        
                     }
-                });
-                await Task.Run(() =>
-                {
+
+                    else
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                    }
+                    await ZakatRequestObjectionSummary(SelectedFbNum);
                     IsLoading = false;
-                });
-            }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                }
+                catch (InternetException ex)
                 {
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
                     _navigationService.GoBack();
-                });
+                }
+
+                IsLoading = false;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (Exception)
             {
-
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -875,78 +725,47 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                ZakatObjectionRequestSummaryModel _ZakatObjectionRequestSummary = new ZakatObjectionRequestSummaryModel();
+                ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel _ZAKATObjectionReviewReturn = new ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel();
+                try
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    IsLoading = true;
-                    ZakatObjectionRequestSummaryModel _ZakatObjectionRequestSummary = new ZakatObjectionRequestSummaryModel();
-                    ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel _ZAKATObjectionReviewReturn = new ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel();
-                    try
+                    _ZakatObjectionRequestSummary = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatRequestObjectionSummary(fbnum);
+
+                    if (_ZakatObjectionRequestSummary != null && _ZakatObjectionRequestSummary.d != null)
                     {
-                        _ZakatObjectionRequestSummary = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatRequestObjectionSummary(fbnum);
+                        BindSummaryData(_ZakatObjectionRequestSummary);
+                    }
 
-                        if (_ZakatObjectionRequestSummary != null && _ZakatObjectionRequestSummary.d != null)
-                        {
-
-
-                            BindSummaryData(_ZakatObjectionRequestSummary);
-                        }
-
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
+                    else
+                    {
                         IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
                     }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
-                    }
-                });
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
-            }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                }
+                catch (InternetException ex)
                 {
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
                     _navigationService.GoBack();
-                });
+                }
+
+                IsLoading = false;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 

@@ -13,19 +13,21 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     ios:Page.UseSafeArea="true"
+    x:Name="page"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingZakatObjectionsListPageViewCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Resources>
         <ResourceDictionary>
-
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
-
         </ResourceDictionary>
-
-
     </ContentPage.Resources>
 
 
@@ -175,7 +177,7 @@
                                         HorizontalOptions="CenterAndExpand"
                                         IsScrollingEnabled="False"
                                         ItemSpacing="0"
-                                        ItemTapped="Objection_ItemTapped"
+                                        TapCommand="{Binding ObjectionItemCommand}"
                                         ItemsSource="{Binding ObjectionsList}"
                                         ScrollBarVisibility="Never"
                                         SelectionBackground="Transparent"
@@ -184,6 +186,7 @@
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
                                                 <Border
+                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                     Grid.Column="0"
                                                     Margin="0,15,0,0"
                                                     Padding="10"
@@ -603,7 +606,7 @@
                                                     <listView:SfListView.ItemTemplate>
                                                         <DataTemplate>
 
-                                                            <Grid>
+                                                            <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                                 <Grid.RowDefinitions>
                                                                     <RowDefinition Height="auto" />
                                                                 </Grid.RowDefinitions>

@@ -102,7 +102,7 @@
                                         </Image.Source>
                                     </Image>
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Instalment_copy_Tapped" />
+                                        <TapGestureRecognizer Command="{Binding InstalmentCopyCommand}" />
                                     </Grid.GestureRecognizers>
                                 </Grid>
                             </Border>
@@ -113,7 +113,7 @@
                                 Grid.ColumnSpan="2"
                                 Margin="10,20,10,20"
                                 Background="{StaticResource Secondary}"
-                                Clicked="Download_Acknowledgement"
+                                Command="{Binding DownloadAcknowledgement}"
                                 CornerRadius="10"
                                 FontAttributes="Bold"
                                 FontSize="15"
@@ -126,7 +126,7 @@
                                 Grid.ColumnSpan="2"
                                 Margin="10,20,10,20"
                                 Background="{StaticResource Secondary}"
-                                Clicked="Download_Form"
+                                Command="{Binding DownloadAcknowledgement}"
                                 CornerRadius="10"
                                 FontAttributes="Bold"
                                 FontSize="15"
@@ -145,7 +145,7 @@
                                 Style="{StaticResource BodyLabelSecondary}"
                                 Text="{x:Static ResourceManager:AppResources.ZakatObjection}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ZAkat_Objections_Tapped" />
+                                    <TapGestureRecognizer Command="{Binding ZAkatObjectionsCommand}" />
                                 </Label.GestureRecognizers>
                             </Label>
                         </StackLayout>

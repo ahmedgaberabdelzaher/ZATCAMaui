@@ -114,22 +114,35 @@
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         Keyboard="Telephone"
-                                        Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                        Placeholder="5XXXX"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding UnRegisteredUser.mobileNumber}"
                                         TextColor="#58595B" />
 
                                 </custom:CustomSfTextInputView.TextInputView>
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Grid>
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            LineBreakMode="NoWrap"
-                                            Text="+966" />
 
-                                    </Grid>
+                                <inputLayout:SfTextInputLayout.LeadingView>
+                                        <StackLayout
+                                            Padding="2"
+                                            Orientation="Horizontal"
+                                            Spacing="0"
+                                            WidthRequest="45">
 
-                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            <Label
+                                                FontSize="14"
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                Text="+966"
+                                                TextColor="#002447"
+                                                VerticalOptions="CenterAndExpand" />
+
+                                            <BoxView
+                                                BackgroundColor="#EBEBEB"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Fill"
+                                                WidthRequest="2" />
+
+                                        </StackLayout>
+                                </inputLayout:SfTextInputLayout.LeadingView>
 
                             </custom:CustomSfTextInputView>
 

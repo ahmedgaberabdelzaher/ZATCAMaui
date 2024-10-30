@@ -767,12 +767,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public async Task ShowVatReviewPageAsync()
         {
-            IsLoading = true;
-
             App.selectedVATItem = "";
             App.selectedVATItemFbust = "";
             await _navigationService.NavigateTo(App.VatReviewPageView);
-            IsLoading = false;
+
         }
 
         public void ResetListData()
@@ -823,6 +821,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     else
                     {
+                        IsLoading = false;
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
                                  AppResources.Information);
                         _navigationService.GoBack();
@@ -838,8 +837,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 catch (InternetException ex)
                 {
 
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    
                     _navigationService.GoBack();
                 }
             }
@@ -880,18 +880,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     else
                     {
-
+                        IsLoading = false;
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
                             AppResources.Information);
                         _navigationService.GoBack();
                     }
-
-                    IsLoading = false;
                 }
                 catch (InternetException ex)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   
                     _navigationService.GoBack();
                 }
                 IsLoading = false;

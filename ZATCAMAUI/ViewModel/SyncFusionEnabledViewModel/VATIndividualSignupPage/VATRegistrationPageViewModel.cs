@@ -812,15 +812,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_vATRegistrationDetailsData == value) return;
                 _vATRegistrationDetailsData = value;
 
-                //if( _vATRegistrationDetailsData != null || _vATRegistrationDetailsData.d != null)
-                //{
-                //    if (_vATRegistrationDetailsData.d.PendingIbanMsg != "")
-                //    {
-                //        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIncomplete));
-                //        PopToRootPage();
-                //    }
-                //}
-
                 OnPropertyChanged("VATRegistrationDetailsData");
             }
         }
@@ -1136,8 +1127,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _addressLineOne;
-        public String AddressLineOne
+        private string _addressLineOne;
+        public string AddressLineOne
         {
             get
             {
@@ -1152,8 +1143,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _addressLineTwo;
-        public String AddressLineTwo
+        private string _addressLineTwo;
+        public string AddressLineTwo
         {
             get
             {
@@ -1168,8 +1159,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _vatEligibleStartDate = string.Empty;
-        public String VatEligibleStartDate
+        private string _vatEligibleStartDate = string.Empty;
+        public string VatEligibleStartDate
         {
             get
             {
@@ -1184,8 +1175,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _gpartFR = string.Empty;
-        public String GpartFR
+        private string _gpartFR = string.Empty;
+        public string GpartFR
         {
             get
             {
@@ -1199,8 +1190,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("GpartFR");
             }
         }
-        private String _typeFR = string.Empty;
-        public String TypeFR
+        private string _typeFR = string.Empty;
+        public string TypeFR
         {
             get
             {
@@ -1215,8 +1206,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _idnumberFR = string.Empty;
-        public String IdnumberFR
+        private string _idnumberFR = string.Empty;
+        public string IdnumberFR
         {
             get
             {
@@ -1230,39 +1221,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("IdnumberFR");
             }
         }
-        //private String _title = string.Empty;
-        //public String Title
-        //{
-        //    get
-        //    {
-        //        return _title;
-        //    }
-        //    set
-        //    {
-        //        if (_title == value) return;
-
-        //        _title = value;
-        //        OnPropertyChanged("Title");
-        //    }
-        //}
-        //private bool _titleVisibility = false;
-        //public bool TitleVisibility
-        //{
-        //    get
-        //    {
-        //        return _titleVisibility;
-        //    }
-        //    set
-        //    {
-        //        if (_titleVisibility == value) return;
-
-        //        _titleVisibility = value;
-        //        OnPropertyChanged("TitleVisibility");
-
-        //    }
-        //}
-        private String _firstnmFR = string.Empty;
-        public String FirstnmFR
+      
+        private string _firstnmFR = string.Empty;
+        public string FirstnmFR
         {
             get
             {
@@ -1277,8 +1238,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _lastnmFR = string.Empty;
-        public String LastnmFR
+        private string _lastnmFR = string.Empty;
+        public string LastnmFR
         {
             get
             {
@@ -1293,7 +1254,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _mobNumberFR = string.Empty;
+        private string _mobNumberFR = string.Empty;
         public String MobNumberFR
         {
             get
@@ -1309,8 +1270,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _idNumberSR = string.Empty;
-        public String IdNumberSR
+        private string _idNumberSR = string.Empty;
+        public string IdNumberSR
         {
             get
             {
@@ -1325,8 +1286,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _firstNameSR = string.Empty;
-        public String FirstNameSR
+        private string _firstNameSR = string.Empty;
+        public string FirstNameSR
         {
             get
             {
@@ -1341,8 +1302,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _smtpAddrFR = string.Empty;
-        public String SmtpAddrFR
+        private string _smtpAddrFR = string.Empty;
+        public string SmtpAddrFR
         {
             get
             {
@@ -1507,7 +1468,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
                         TxtIDTypeFR = _selectedIdTypeFR.Name;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                     }
 
