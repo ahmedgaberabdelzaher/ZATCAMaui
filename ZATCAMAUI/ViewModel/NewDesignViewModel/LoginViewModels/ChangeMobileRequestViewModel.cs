@@ -18,6 +18,8 @@ using System.Text;
 using Microsoft.Maui.Controls.Shapes;
 using ZATCAMAUI.Core.CustomControls;
 using Syncfusion.Maui.ProgressBar;
+using System;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 {
@@ -79,12 +81,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 });
             }
         }
+        private string guid = string.Empty;
+        private string idnum = string.Empty;
+        public Dictionary<string, string> d;
+
         public ICommand StartTimerCommand
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
+                    InitializePopups();
+
+                    setDefaults();
+
+                    if (d != null && d.Count > 0)
+                    {
+                        var e = d.First();
+                        guid = e.Value;
+                        idnum = e.Key;
+                    }
+                    await GetIdTypesAsync(guid, idnum);
+
+                    await InitCountryCodesAPI();
+                    NafathGUID = guid;
+                    var x = guid;
+                    ShowTpDetailsPage();
+                    if (!string.IsNullOrEmpty(guid))
+                    {
+                        await InitCountryCodesAPI();
+                        await GetCaptchAndGUID("CHMB");
+                    }
+
                     StartOTPTimer();
                 });
             }
@@ -656,7 +684,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 }
             });
 
-            CancelBtnTapped = new Command(async () =>
+            CancelBtnTapped = new Command(() =>
             {
                 if (NafathGUID.Length > 0)
                 {
@@ -788,20 +816,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                 {
                                     ChangeMobModel.d = response.result;
                                     ShowOTPSection = false;
-                                    if (ChangeMobModel.d.Tintyp != "A")
-                                    {
-                                        //ChangeButtonLabel = AppResources.Submit;
-
-                                        //ShowAttachmentSection = true;
-                                        //ShowSubmitForAutomatic = false;
-                                    }
-                                    else
-                                    {
-                                        //ChangeButtonLabel = AppResources.ZVATChangeButton;
-
-                                        //ShowAttachmentSection = false;
-                                        //ShowSubmitForAutomatic = true;
-                                    }
 
                                     if (NafathGUID.Length > 0)
                                     {
@@ -944,7 +958,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 {
                     App.GUIDFrChangeMob = "";
                     _navigationService.GoBack();
-                  await  _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_COMPANY_CHANGE_MOBILE_NUMBER);
+                    await _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_COMPANY_CHANGE_MOBILE_NUMBER);
                 }
                 catch (Exception)
                 {
@@ -953,7 +967,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
             });
 
-            PrintFormClicked = new Command( () =>
+            PrintFormClicked = new Command(() =>
             {
                 try
                 {
@@ -1847,16 +1861,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WithReplacedString));
         }
 
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    //var _navigation = Application.Current.MainPage.Navigation;
-                    //_navigation.PopToRootAsync();
-                    await MopupService.Instance.PopAsync();
-                });
+                await MopupService.Instance.PopAsync();
             }
         }
 
@@ -1879,7 +1888,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         {
             countDownSeconds--;
 
-          
+
 
             if (countDownSeconds <= 9 && countDownSeconds > 0)
                 LblCountDownTimer = "0:0" + countDownSeconds.ToString();
@@ -1964,7 +1973,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 ShowValidationPopup(AppResources.Somethingwentwrong);
             }
-           
+
 
         }
         private void ShowValidationPopup(string _message)
@@ -1983,6 +1992,57 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 otpTimer.Stop();
             }
 
+        }
+        private void setDefaults()
+        {
+            //OtpSection1 = false;
+            ShowOTPSection = false;
+            ShowAttachmentSection = false;
+            //ShowMainForm = true;
+            //ShowOtpForm = false;
+            TinNumber = string.Empty;
+            ManagerName = string.Empty;
+            SelectedIDType = string.Empty;
+            ManagerId = string.Empty;
+            AttachedForms.Clear();
+            //DissableSendOtp = true;
+            TxtMobileNumber = string.Empty;
+            OTPFirstDigit = string.Empty;
+            OTPSecondDigit = string.Empty;
+            OTPThirdDigit = string.Empty;
+            OTPFourthDigit = string.Empty;
+            ShowOTPSuccessMessage = false;
+            ShowSubmitForAutomatic = false;
+            //EnableContinue2 = true;
+
+
+            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
+            {
+                TxtMobileNumber = string.Empty;
+                // IntnlCodes.Text = arg;
+                TxtCountryCode = arg;
+            });
+            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedCountryCode", (sender, arg) =>
+            {
+
+                MobileCountryCode = arg;
+            });
+        }
+
+        private void InitializePopups()
+        {
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelected", (sender, arg) =>
+            {
+                // PickerModelExcemptionYear = arg;
+
+                var selectedType = string.Empty;
+                string SelectedIDTypeValue = string.Empty;
+                if (arg.PickerId == "EntityTypePicker")
+                {
+                    SelectedIDType = arg.SelectedValue;
+                }
+
+            });
         }
         public async Task GetCaptchAndGUID(string CaptchaRequestCode, string guid = "", string captchaCode = "")
         {
@@ -2010,7 +2070,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
                 forgotPasswordOTP.result = d;
                 forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(d);
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                 if (forgotPasswordOTP?.result != null && !string.IsNullOrEmpty(forgotPasswordOTP.result.captchaCode))
                 {

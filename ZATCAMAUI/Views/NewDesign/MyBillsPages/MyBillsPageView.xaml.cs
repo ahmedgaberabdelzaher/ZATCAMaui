@@ -66,7 +66,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[0];
                     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist[0];
                 }
-
+              
             }
             catch (Exception)
             {
@@ -147,19 +147,14 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            try
-            {
-                MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
-                MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
-                MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
-                MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
-                MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
-                MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
 
-            }
-            catch (Exception exp)
-            {
-            }
+            MessagingCenter.Unsubscribe<object, string>(this, "Card_Payment");
+            MessagingCenter.Unsubscribe<object, string>(this, "Apple_Pay");
+            MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
+            MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
+            MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
+            MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
+
         }
 
 

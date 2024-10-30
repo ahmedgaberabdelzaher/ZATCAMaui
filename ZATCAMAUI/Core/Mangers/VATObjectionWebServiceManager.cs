@@ -111,22 +111,15 @@ namespace ZATCAMAUI.Core.Mangers
                     String url = "";
                     if (string.IsNullOrEmpty(FBGuid))
                     {
-
-                        //   url = Constants.GetVATObjectionSummaryURL + "FormGuid='" + "',Fbnumx='" + "',Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='" + lang + "'," +
-                        //"Officerx='" + "',PortalUsrx='" + "',Euserx='" + "',Appfg='N')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
-
                         url = ZATCAConstants.GetVATObjectionSummaryURL + App.LoginDataRetrieved.TIN + "&language=" + lang + "&application=N";
 
                     }
                     else
                     {
-                        //    url = Constants.GetVATObjectionSummaryURL + "FormGuid='" + "',Fbnumx='" + FBGuid + "',Gpartx='" + "',Langx='" + lang + "'," +
-                        //"Officerx='" + "',PortalUsrx='" + "',Euserx='00000000000000000000',Appfg='N')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
 
                         url = ZATCAConstants.GetVATObjectionSummaryURL + App.LoginDataRetrieved.TIN + "&language=" + lang + "&application=N" + "&formBundleNumber=" + FBGuid;
                     }
                     HttpResponseMessage vATObjectionSummaryResponse = await client.GetAsync(url);
-                    // HttpResponseMessage vATObjectionSummaryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (vATObjectionSummaryResponse != null)
                     {
                         if (vATObjectionSummaryResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -150,9 +143,9 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             App.Token = NewToken;
                         }
-                        string __vATObjectionSummaryData = vATObjectionSummaryResponse.Content.ReadAsStringAsync().Result;
+                        string __vATObjectionSummaryData = await vATObjectionSummaryResponse.Content.ReadAsStringAsync();
                         _vATObjectionSummaryModel = JsonConvert.DeserializeObject<VATObjectionSummaryModel>(__vATObjectionSummaryData);
-                        if (!string.IsNullOrEmpty(__vATObjectionSummaryData) && _vATObjectionSummaryModel.d == null )
+                        if (!string.IsNullOrEmpty(__vATObjectionSummaryData) && _vATObjectionSummaryModel.d == null)
                         {
                             string errorMessage = WebServiceManager.PrepareErrorMessageByJson(__vATObjectionSummaryData);
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
@@ -198,9 +191,6 @@ namespace ZATCAMAUI.Core.Mangers
 
 
                     HttpResponseMessage vATObjectionRejectedFormResponse = await client.GetAsync(url);
-                    //String url = Constants.GetVATObjectionRejectedFormURL + "Langx='" + lang + "',Gpartx='" + App.LoginDataRetrieved.TIN + "',TxnTpx='" + "',Fbustx='" + fbustx + "'," +
-                    // "Fbstax='" + "',UserTypx='" + UserTypx + "',RvRsn='" + RvRsn + "',RvSubRsn='" + rvSubRsn + "',Fbnumx='" + fbnumx + "',Sopbel='" + sopbel + "',Formprocx='" + formprocx + "')?$expand=RejectedFormSet&$format=json";
-                    //HttpResponseMessage vATObjectionRejectedFormResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (vATObjectionRejectedFormResponse != null)
                     {
                         if (vATObjectionRejectedFormResponse.StatusCode == HttpStatusCode.Unauthorized)

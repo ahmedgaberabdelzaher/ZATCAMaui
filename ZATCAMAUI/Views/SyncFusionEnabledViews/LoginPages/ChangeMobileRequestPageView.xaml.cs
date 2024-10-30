@@ -12,88 +12,16 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages;
 public partial class ChangeMobileRequestPageView : ContentPage
 {
 	ChangeMobileRequestViewModel viewModel;
-	private string guid = string.Empty;
-	private string idnum = string.Empty;
+	
 
 	public ChangeMobileRequestPageView(Dictionary<string, string> d)
 	{
-		InitializeComponent();
-		this.BindingContext = viewModel = App.Locator.ChangeMobileRequestPageView;
-		InitializePopups();
+        InitializeComponent();
+        this.BindingContext = viewModel = App.Locator.ChangeMobileRequestPageView;
+        viewModel.d = d;
+    }
 
-		setDefaults();
-
-		if (d != null && d.Count > 0)
-		{
-			var e = d.First();
-			guid = e.Value;
-			idnum = e.Key;
-		}
-		viewModel.GetIdTypesAsync(guid, idnum);
-
-		viewModel.InitCountryCodesAPI();
-		viewModel.NafathGUID = guid;
-		var x = guid;
-        viewModel.ShowTpDetailsPage();
-        if (!string.IsNullOrEmpty(guid))
-		{
-            viewModel.InitCountryCodesAPI();
-            viewModel.GetCaptchAndGUID("CHMB");
-        }
-
-	}
-
-	private void setDefaults()
-	{
-		//viewModel.OtpSection1 = false;
-		viewModel.ShowOTPSection = false;
-		viewModel.ShowAttachmentSection = false;
-		//viewModel.ShowMainForm = true;
-		//viewModel.ShowOtpForm = false;
-		viewModel.TinNumber = string.Empty;
-		viewModel.ManagerName = string.Empty;
-		viewModel.SelectedIDType = string.Empty;
-		viewModel.ManagerId = string.Empty;
-		viewModel.AttachedForms.Clear();
-		//viewModel.DissableSendOtp = true;
-		viewModel.TxtMobileNumber = string.Empty;
-		viewModel.OTPFirstDigit = string.Empty;
-		viewModel.OTPSecondDigit = string.Empty;
-		viewModel.OTPThirdDigit = string.Empty;
-		viewModel.OTPFourthDigit = string.Empty;
-		viewModel.ShowOTPSuccessMessage = false;
-		viewModel.ShowSubmitForAutomatic = false;
-		//viewModel.EnableContinue2 = true;
-
-
-        MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
-		{
-			viewModel.TxtMobileNumber = string.Empty;
-			// IntnlCodes.Text = arg;
-			viewModel.TxtCountryCode = arg;
-		});
-		MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedCountryCode", (sender, arg) =>
-		{
-
-			viewModel.MobileCountryCode = arg;
-		});
-	}
-
-	private void InitializePopups()
-	{
-		MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelected", (sender, arg) =>
-		{
-			// viewModel.PickerModelExcemptionYear = arg;
-
-			var selectedType = string.Empty;
-			string SelectedIDTypeValue = string.Empty;
-			if (arg.PickerId == "EntityTypePicker")
-			{
-				viewModel.SelectedIDType = arg.SelectedValue;
-			}
-
-		});
-	}
+	
 
 	protected override void OnDisappearing()
 	{
@@ -204,11 +132,11 @@ public partial class ChangeMobileRequestPageView : ContentPage
 			QuestionMark = "?";
 		}
 		var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + data.Filename + QuestionMark);
-		confirmPopup.OnSelect = (str) =>
+		confirmPopup.OnSelect =async (str) =>
 		{
 			if (str == "Yes")
 			{
-				viewModel.OnRentAttachmentDeleteButtonTapped(data);
+				await viewModel.OnRentAttachmentDeleteButtonTapped(data);
 			}
 		};
 		await MopupService.Instance.PushAsync(confirmPopup);

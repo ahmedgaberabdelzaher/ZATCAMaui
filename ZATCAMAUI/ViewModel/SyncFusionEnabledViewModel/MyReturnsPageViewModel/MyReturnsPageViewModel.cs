@@ -1123,7 +1123,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             Task GetReturnDataTask = null;
             GetReturnDataTask = Task.Run(async () =>
             {
-                MyReturns = await WebServiceManager.GAZTGetReturnData(App.TP.userId);
+                MyReturns = await WebServiceManager.GAZTGetReturnData(App.TP.TIN);
             });
             try
             {

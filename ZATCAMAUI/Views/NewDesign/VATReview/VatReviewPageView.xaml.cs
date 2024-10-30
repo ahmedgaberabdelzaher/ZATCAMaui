@@ -8,7 +8,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class VatReviewPageView : ContentPage, VatReviewInterface
+    public partial class VatReviewPageView : ContentPage
     {
         private VatReviewViewModel viewModel;
 
@@ -20,10 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
                 viewModel = App.Locator.VatReviewView;
                 this.BindingContext = viewModel;
-
-
-                viewModel.ResetData();
-                SelectDefaultPaymentOption();
 
 
             }
@@ -208,22 +204,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
         }
 
-        public void SelectDefaultPaymentOption()
-        {
-            DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[viewModel.DefaultReq];
-
-            securityTypeListView.SelectedItem = viewModel.SecurityPaymentOptions[viewModel.DefaultSecurity];
-
-            if (viewModel.DefaultSecurity == 0)
-            {
-                viewModel.EnableSadadSecurityView();
-            }
-            else if (viewModel.DefaultSecurity == 1)
-            {
-                viewModel.EnablebankGuranteeSecurityView();
-            }
-            viewModel.EnableSecurityPaymentsConButton();
-        }
+       
 
         private void LateFiling_Details_Tx_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -234,11 +215,5 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
 
         }
-    }
-
-    public interface VatReviewInterface
-    {
-        void SelectDefaultPaymentOption();
-
     }
 }

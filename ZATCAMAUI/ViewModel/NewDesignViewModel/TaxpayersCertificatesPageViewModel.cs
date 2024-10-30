@@ -253,7 +253,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 CertificateListToVAT = new List<Result>();
                 CertificateListToET = new List<Result>();
                 CertificateListToAll = new List<Result>();
-                allCertificate = await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.userId );
+                allCertificate = await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.TIN );
                 PopToRootPage();
                 if (allCertificate != null)
                 {
