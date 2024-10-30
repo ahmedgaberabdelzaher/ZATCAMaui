@@ -186,7 +186,7 @@ namespace ZATCAMAUI.Core.CustomControls
                 this.Columns = pickerColumns;
 
                 this.SelectionChanged += Picker_SelectionChanged;
-                newDay = day[0]; newMonth = month[0]; newYear = year[0];
+                newDay = day[0]; newMonth = month[0]; newYear = year[yearColumn.SelectedIndex];
 
                 SelectedDate = new DateTime(int.Parse(newYear), int.Parse(newMonth), int.Parse(newDay));
                 SelectedItem = new ObservableCollection<object>

@@ -2056,9 +2056,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             {
                 await OnDataLoad();
                 RefreshDashboardCommand();
-                getYesCommandToLogout();
-
-
+               
                 isPayNowTapped = false;
 
                 NextCommitmentsString = AppResources.ZZMyCommitments;
