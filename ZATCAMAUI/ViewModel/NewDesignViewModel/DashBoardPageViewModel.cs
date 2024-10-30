@@ -909,23 +909,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
         }
 
-        //public CalendarEventCollection CommittmentsSchedule
-        //{
-        //    get
-        //    {
-        //        return _CommittmentsSchedule;
-        //    }
-        //    set
-        //    {
-        //        if (_CommittmentsSchedule == value)
-        //        {
-        //            return;
-        //        }
-        //        _CommittmentsSchedule = value;
-        //        this.OnPropertyChanged("CommittmentsSchedule");
-        //    }
-        //}
-
+        
         private double _debitAmountEndProgressBar = 0;
         public double DebitAmountEndProgressBar
         {
@@ -3100,12 +3084,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                 {
                                     if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
-                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString());
                                         if (!item.IsPaymentOverdue)
                                         {
                                             if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                             {
-                                                item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
+                                                item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString());
                                                 if (!item.IsPaymentOverdue)
                                                 {
                                                     var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -3119,7 +3103,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                             }
                                             else
                                             {
-                                                item.Day = UtilityManager.GetMonthName(date.Month.ToString("MMMM", new CultureInfo("en-US")));
+                                                item.Day = UtilityManager.GetMonthName(date.Month.ToString());
                                                 item.Month = date.Year.ToString();
                                             }
                                         }
@@ -3127,7 +3111,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                         {
                                             if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                             {
-                                                item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
+                                                item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString());
                                                 if (!item.IsPaymentOverdue)
                                                 {
                                                     var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -3141,14 +3125,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                             }
                                             else
                                             {
-                                                item.Day = date.Month.ToString("MMM", new CultureInfo("en-US"));
+                                                item.Day = UtilityManager.GetMonthName(date.Month.ToString());
                                                 item.Month = date.Year.ToString();
                                             }
                                         }
                                     }
                                     else
                                     {
-                                        item.Day = UtilityManager.GetMonthName(date.Month.ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthName(date.Month.ToString());
                                         item.Month = date.Year.ToString();
                                     }
                                 }
@@ -3156,7 +3140,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                 {
                                     if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
-                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString());
                                         if (!item.IsPaymentOverdue)
                                         {
                                             var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -3170,7 +3154,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                     }
                                     else
                                     {
-                                        item.Day = date.Month.ToString("MMM", new CultureInfo("en-US"));
+                                        item.Day = UtilityManager.GetMonthName(date.Month.ToString());
                                         item.Month = date.Year.ToString();
                                     }
                                 }
@@ -3192,7 +3176,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                 {
                                     if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
-                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString());
                                         if (!item.IsPaymentOverdue)
                                         {
                                             var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -3206,7 +3190,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                     }
                                     else
                                     {
-                                        item.Day = UtilityManager.GetMonthName(date.Month.ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthName(date.Month.ToString());
                                         item.Month = date.Year.ToString();
                                     }
                                 }
@@ -3214,7 +3198,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                 {
                                     if (item.calendarType?.Equals("H") == true || item.inboundCorrespondenceType.StartsWith("H"))
                                     {
-                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString("MMMM", new CultureInfo("en-US")));
+                                        item.Day = UtilityManager.GetMonthNameHijri(date.Month.ToString());
                                         if (!item.IsPaymentOverdue)
                                         {
                                             var hijriDate = UtilityManager.ConvertToHijri(date.ToString("yyyy/MM/dd"));
@@ -3228,7 +3212,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                                     }
                                     else
                                     {
-                                        item.Day = date.Month.ToString("MMM", new CultureInfo("en-US"));
+                                        item.Day = UtilityManager.GetMonthName(date.Month.ToString());
                                         item.Month = date.Year.ToString();
                                     }
                                 }
@@ -3245,7 +3229,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                     }
 
@@ -3292,9 +3276,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     }
                     var BillsAndReturnsCommitmentsLocalDueDTC = BillsAndReturnsCommitmentsLocal.Where(x => x.dueDate != null).ToList();
                     var BillsAndReturnsCommitmentsLocalDueDT = BillsAndReturnsCommitmentsLocal.Where(x => x.dueDate != null).ToList();
-                    //BillsAndReturnsCommitmentsLocalDueDT = BillsAndReturnsCommitmentsLocalDueDT.Select(x =>
-                    //{ x.dueDate = Convert.ToDateTime(x.dueDate);return x; }
-                    //    ).ToList() ;
+
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocalDueDTC.Concat(BillsAndReturnsCommitmentsLocalDueDT).ToList();
 
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderByDescending(i => (i.dueDate)).ToList();
@@ -4412,6 +4394,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 });
             }
         }
+
         public ICommand ZakatInstalmentPlanCommand
         {
             get
@@ -4429,6 +4412,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 });
             }
         }
+
         public ICommand ChnageFillingPeriodCommand
         {
             get
@@ -4527,6 +4511,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 });
             }
         }
+
         public ICommand TinRegistrationDetailsCommand
         {
             get

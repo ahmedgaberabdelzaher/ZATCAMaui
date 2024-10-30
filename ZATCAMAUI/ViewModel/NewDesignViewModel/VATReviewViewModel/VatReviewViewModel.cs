@@ -123,7 +123,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-       
+
         private bool _isReviewReasonVisible = false;
 
         public bool ReviewReasonVisible
@@ -1539,18 +1539,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-        //public string _totalPenalities = "";
-        //public string TotalPenalities
-        //{
-        //    get { return _totalPenalities; }
-        //    set
-        //    {
-        //        if (_totalPenalities == value) return;
-
-        //        _totalPenalities = value;
-        //        OnPropertyChanged("TotalPenalities");
-        //    }
-        //}
 
         public string _taxPaid = "";
         public string TaxPaid
@@ -1625,21 +1613,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-        //private bool isTotalPenaltiesVisible = false;
-        //public bool IsTotalPenaltiesVisible
-        //{
-        //    get
-        //    {
-        //        return isTotalPenaltiesVisible;
-        //    }
-        //    set
-        //    {
-        //        if (isTotalPenaltiesVisible == value) return;
-
-        //        isTotalPenaltiesVisible = value;
-        //        OnPropertyChanged("IsTotalPenaltiesVisible");
-        //    }
-        //}
+       
 
         public DateTime? vRTIDEffectiveDateFrom = null;
         public DateTime? VRTIDEffectiveDateFrom
@@ -2386,7 +2360,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         }
 
 
-        
+
 
         public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
 
@@ -2595,7 +2569,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         }
 
 
-        
+
         public class SelectionModel
         {
             public SelectionModel()
@@ -3182,13 +3156,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public VatReviewInterface vRInterface { get; set; }
 
-        public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
+        public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
 
             GoBackClick = new Command(() => { BackNavigations(); });
 
-            ReviewReasonConBtnTapped = new Command( async() => { await ReviewReasonConBtnClicked(); });
+            ReviewReasonConBtnTapped = new Command(async () => { await ReviewReasonConBtnClicked(); });
 
             ReviewDetailsConBtnTapped = new Command(async () => { await ReviewDetailsConBtnClicked(); });
             ReportDetailsConBtnTapped = new Command(async () => { await ReportDetailsConBtnClicked(); });
@@ -3199,13 +3173,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             SummaryConBtnTapped = new Command(async () => { await SummaryConBtnClicked(); });
 
-            GoBackToReviewReason = new Command( () => { EnableReviewReasonView(); });
+            GoBackToReviewReason = new Command(() => { EnableReviewReasonView(); });
             GoBackToReviewDetails = new Command(() => { EnableReviewDetailsView(); });
             GoBackToDeclaration = new Command(() => { EnableDeclarationView(); });
             ViewApplicationTapped = new Command(async () => { await ViewApplicationClicked(); });
             NewAttachmentTapped = new Command(async () => { await NewAttachmentClicked(); });
             NewBankGuranteeAttachmentTapped = new Command(async () => await NewBankGuranteeAttachmentClicked());
-            LateFilingAttachmentTapped = new Command(async () =>  await LateFilingAttachmentClicked());
+            LateFilingAttachmentTapped = new Command(async () => await LateFilingAttachmentClicked());
             ReviewReasonCommand = new Command(async () => { await showReviewReasonPickerDialog(); });
             SubReviewReasonCommand = new Command(async () => { await showSubReviewReasonPickerDialog(); });
             ApplicationNumRefCommand = new Command(async () => { await showAppRefNumberPickerDialog(); });
@@ -3216,21 +3190,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             GoBackToLateFilingDetails = new Command(() => { EnableLateFilingDetailsView(); });
             onMoreOptionClicked = new Command(async () =>
             {
-               await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                IsLoading = true;
+                await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                IsLoading = false;
             });
 
             OnAppearingVatReviewCommand = new Command(async () =>
             {
                 try
                 {
-                    IsLoading = true;
+                    await ResetData();
+                    SelectDefaultPaymentOption();
+
                     await VatReviewReasonDropDownData();
+
                     setMoreOptioButtons();
 
                     getYesCommand();
+
                     getNoCommand();
-
-
 
 
                     MessagingCenter.Unsubscribe<object, int>(this, "draftRequest");
@@ -3241,7 +3219,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         DisputeSelectedItem = DisputeAmountPaymentOptions[arg];
 
                     });
-                    MessagingCenter.Subscribe<object, int>(this, "draftSecurity", async (sender, arg) =>
+
+                    MessagingCenter.Subscribe<object, int>(this, "draftSecurity", (sender, arg) =>
                     {
                         SelectedOption = SecurityPaymentOptions[arg];
                         if (arg == 0)
@@ -3305,25 +3284,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 Enum.TryParse(message, out buttonId);
                                 switch (buttonId)
                                 {
-                                    case ArButtons.إضافةملاحظات:
-                                        //VATReturnAddNote();
-                                        break;
-                                    case ArButtons.عرضملاحظات:
-                                        //  VATReturnGetNotes();
-                                        break;
-                                    case ArButtons.المرفقات:
-                                        // VATViewAttachments();
-                                        break;
                                     case ArButtons.إلغاء:
                                         IsDraftClicked = true;
-                                        VoidMsg();
+                                        await VoidMsg();
                                         IsDraftClicked = false;
-                                        break;
-                                    case ArButtons.عادةتعيين:
-                                        //await VATReturnResetAsync();
-                                        break;
-                                    case ArButtons.تعديل:
-                                        // await VATReturnAmendAsync();
                                         break;
                                     case ArButtons.حفظكمسودة:
                                         IsDraftClicked = true;
@@ -3344,25 +3308,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 Enum.TryParse(message, out buttonId);
                                 switch (buttonId)
                                 {
-                                    case Buttons.CreateNotes:
-                                        //VATReturnAddNote();
-                                        break;
-                                    case Buttons.DisplayNotes:
-                                        //VATReturnGetNotes();
-                                        break;
-                                    case Buttons.Attachments:
-                                        // VATViewAttachments();
-                                        break;
                                     case Buttons.Void:
                                         IsDraftClicked = true;
-                                       await VoidMsg();
+                                        await VoidMsg();
                                         IsDraftClicked = false;
-                                        break;
-                                    case Buttons.Reset:
-                                        //await VATReturnResetAsync();
-                                        break;
-                                    case Buttons.Amend:
-                                        // await VATReturnAmendAsync();
                                         break;
                                     case Buttons.SaveasDraft:
                                         IsDraftClicked = true;
@@ -3378,9 +3327,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         }
                     });
 
-                    IsLoading = false;
                 }
-                catch (Exception )
+                catch (Exception)
                 {
 
                 }
@@ -3394,7 +3342,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     await ValidateIdNumber();
                     IsLoading = false;
                 }
-                catch (Exception )
+                catch (Exception)
                 {
 
                 }
@@ -3408,7 +3356,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatReviewLateFilingInfo));
                     IsLoading = false;
                 }
-                catch (Exception )
+                catch (Exception)
                 {
 
                 }
@@ -3418,9 +3366,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             genericDatePickerModel.DatePickerTitle = AppResources.VRDateOfBirth;
             genericDatePickerModel.PickerId = "DatePicker";
 
-            //setIdPickerModel();
         }
+        public void SelectDefaultPaymentOption()
+        {
+            DisputeSelectedItem = DisputeAmountPaymentOptions[DefaultReq];
 
+            SelectedOption = SecurityPaymentOptions[DefaultSecurity];
+
+            if (DefaultSecurity == 0)
+            {
+               EnableSadadSecurityView();
+            }
+            else if (DefaultSecurity == 1)
+            {
+                EnablebankGuranteeSecurityView();
+            }
+            EnableSecurityPaymentsConButton();
+        }
         public void getYesCommand()
         {
             try
@@ -3605,12 +3567,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                 {
-                  
+
                     IsLoading = false;
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
 
                 }
-                
+
             }
 
 
@@ -3670,7 +3632,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (Exception)
             {
-                
+
             }
         }
 
@@ -3701,7 +3663,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (Exception)
             {
-                
+
             }
         }
 
@@ -3733,7 +3695,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (Exception)
             {
-                
+
             }
         }
 
@@ -4075,7 +4037,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     IsDeclarationEnabled = true;
                     if (!string.IsNullOrEmpty(Zterms) && !IsDECCheckBox)
                     {
-                      await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                         return;
                     }
                 }
@@ -4140,8 +4102,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (Exception)
             {
-                
-                
+
+
             }
         }
 
@@ -4411,7 +4373,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 IsGeneratingFormbundle = true;
                 IsSadadRefeshVisible = true;
 
-              await  SaveClicked();
+                await SaveClicked();
 
             }
             IsLoading = false;
@@ -4427,9 +4389,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             else
             {
 
-              await _dialogService.ShowMessage(message: AppResources.VRSadadAlert, title: AppResources.ZZZConfirmationMsg,
-               buttonConfirmText: AppResources.ZZZOkayText, buttonCancelText: AppResources.ZZCancel,
-               afterHideCallback: async (status) => await GenerateSadadConfirmaton(status));
+                await _dialogService.ShowMessage(message: AppResources.VRSadadAlert, title: AppResources.ZZZConfirmationMsg,
+                 buttonConfirmText: AppResources.ZZZOkayText, buttonCancelText: AppResources.ZZCancel,
+                 afterHideCallback: async (status) => await GenerateSadadConfirmaton(status));
             }
             IsLoading = false;
         }
@@ -4595,7 +4557,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 });
                 VATDeregistrationSummaryReasonData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
         }
@@ -4651,10 +4613,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 });
                 VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
             }
-            catch (Exception )
+            catch (Exception)
             {
-                
-                
+
+
             }
         }
 
@@ -4708,7 +4670,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             if (genericPickerModel.PickerId == PickerEnum.IDType.ToString())
             {
                 IDTypePickerModel = genericPickerModel;
-                updateIdTypePicker();
+              await  updateIdTypePicker();
             }
             else if (genericPickerModel.PickerId == PickerEnum.ReviewReason.ToString())
             {
@@ -4730,9 +4692,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 ApplicationRefNumber = ApplicationRefPickerModel.SelectedValue;
 
                 ResetDataAfterAppRefNumPicked();
-                setDataBasedOnAppRefNum(ApplicationRefPickerModel.SelectedValue);
+               await setDataBasedOnAppRefNum(ApplicationRefPickerModel.SelectedValue);
 
-                
+
             }
         }
 
@@ -4887,7 +4849,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                     catch (Exception)
                     {
-                        
+
                     }
                 }
                 else
@@ -4914,7 +4876,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     {
                         lastFulfilmentDate = (selectedApplicationRef.LastFulfilledDt);
                     }
-                    catch (Exception )
+                    catch (Exception)
                     {
                         lastFulfilmentDate = "";
                     }
@@ -4924,7 +4886,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 {
                     SadadlastFulfilmentDate = (selectedApplicationRef.LastFulfilledDt);
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     SadadlastFulfilmentDate = "";
                 }
@@ -4964,7 +4926,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                   
+
 
                     strTaxPeriodTo = dt1;
                 }
@@ -4976,7 +4938,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 TotalTaxLiability = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString());
                 try
-               
+
                 {
                     if (selectedApplicationRef.Fbtyp == "VTPC" || selectedApplicationRef.Fbtyp == "VTPN")
                     {
@@ -4988,10 +4950,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         TaxPaid = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Penamount.ToString());
                     }
                 }
-                catch (Exception )
+                catch (Exception)
                 {
-                    
-                    
+
+
                 }
                 RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString());
                 try
@@ -5003,10 +4965,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
                 }
-                catch (Exception )
+                catch (Exception)
                 {
-                    
-                    
+
+
                 }
 
 
@@ -5032,10 +4994,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                     EnableSecurityPaymentsConButton();
                 }
-                catch (Exception )
+                catch (Exception)
                 {
-                    
-                    
+
+
                 }
 
                 if (selectedApplicationRef.Msgflg == "X")
@@ -5107,7 +5069,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 ContractPersonEditable = false;
             }
 
-           await ValidateIdNumber();
+            await ValidateIdNumber();
         }
 
         public async Task ValidateIdNumber()
@@ -5139,7 +5101,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                             IDNumber = string.Empty;
-                            //ZZPleaseenteravalidNationalID
                         }
                         else
                         {
@@ -5167,7 +5128,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     popUp.FlowDirections = "LeftToRight";
                                 }
 
-                                //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                                 IDNumber = string.Empty;
@@ -5202,9 +5162,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-
-                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
-
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                             IDNumber = string.Empty;
@@ -5235,9 +5192,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-
-                                //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
-
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                                 IDNumber = string.Empty;
@@ -5272,8 +5226,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
-
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
 
                             IDNumber = string.Empty;
@@ -5292,12 +5244,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
-
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
 
                             IDNumber = string.Empty;
-                            // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
                         }
                         else
                         {
@@ -5316,8 +5265,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (Exception)
             {
-                
-                
+
+
 
             }
         }
@@ -5330,10 +5279,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             SadadAmountVisible = false;
         }
 
-        public void ResetData()
+        public async Task ResetData()
         {
             EnableReviewReasonView();
-            ShowInstructionsDialog();
+            await ShowInstructionsDialog();
+
 
             IsSadadCheckBoxEnabled = true;
             HideSadadGenerateButton();
@@ -5542,7 +5492,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 if (attachment.DocUrl != null)
                 {
-                  await  _navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    await _navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
                 }
             }
             else
@@ -5580,7 +5530,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             if (App.selectedVATItem != "")
             {
 
-                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc, continueString: AppResources.CRContinue, isEditable: true,
+             await   MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc, continueString: AppResources.CRContinue, isEditable: true,
            _dialogType: InstructionsBottomPopUpViewModel.DialogType
                .Instructions));
 
@@ -5588,7 +5538,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             else
             {
-                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
+              await  MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
                  instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc,
                  continueString: AppResources.CRContinue,
                  _dialogType: InstructionsBottomPopUpViewModel.DialogType
@@ -5606,7 +5556,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             await fetchApplicationRefNums(SubReviewReason, modelVATReview.d.Fbnumx, modelVATReview.d.SecurityDtl.Sopbel);
             ApplicationRefNumber = modelVATReview.d.RejFb;
-           await setDataBasedOnAppRefNum(ApplicationRefNumber);
+            await setDataBasedOnAppRefNum(ApplicationRefNumber);
 
 
             DefaultSecurity = modelVATReview.d.SecurityDtl.Sectp == "B" ? 1 : 0;
@@ -5849,8 +5799,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
                 catch (InternetException ex)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 }
                 IsLoading = false;
@@ -5890,12 +5840,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         modelVATReview = await VATObjectionWebServiceManager.GAZTGetVATObjectionSummary("");
 
                     }
-
-
-                    VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(modelVATReview.d.Fbnumx);
-
                     if (modelVATReview != null && modelVATReview.d != null)
                     {
+                        VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(modelVATReview.d.Fbnumx);
 
                         List<VATObjectionFormModel.ReviewReason> reasonList =
                             new List<VATObjectionFormModel.ReviewReason>();
@@ -5947,28 +5894,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     }
 
+
                     else
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
+                        IsLoading = false;
+                       await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
                                  AppResources.Information);
                         _navigationService.GoBack();
                     }
-
                     IsLoading = false;
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
                 }
                 catch (InternetException ex)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
                     _navigationService.GoBack();
 
                 }
-                IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -5997,14 +5946,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 VATObjectionEnableSubmitModel _VATObjectionEnableSubmit = new VATObjectionEnableSubmitModel();
                 _VATObjectionEnableSubmit = await VATObjectionWebServiceManager.GAZTGetVATObjectionEnableSubmit(statusx, rvRsn, rvSubRsn, rejFb);
 
-               
+
 
                 IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
                 IsLoading = false;
-               await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (InternetException ex)
             {
@@ -6012,7 +5961,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
-            catch (Exception )
+            catch (Exception)
             {
                 IsLoading = false;
             }
@@ -6027,20 +5976,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 string strACK = null;
                 strACK = VATObjectionWebServiceManager.GetVATObjectionDownloadAck(fbnum);
 
-                
+
             }
             catch (GAZTErrorException ex)
             {
-               await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (InternetException ex)
             {
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
-            catch (Exception )
+            catch (Exception)
             {
-                
+
             }
         }
 
@@ -6140,7 +6089,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
-            catch (Exception )
+            catch (Exception)
             {
 
                 IsLoading = false;
@@ -6173,10 +6122,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                         EnableSecurityPaymentsConButton();
                     }
-                    catch (Exception )
+                    catch (Exception)
                     {
-                        
-                        
+
+
                     }
 
                 }
@@ -6196,7 +6145,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
-            catch (Exception )
+            catch (Exception)
             {
 
                 IsLoading = false; IsLoading = false;
@@ -6221,7 +6170,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             catch (GAZTErrorException ex)
             {
                 IsLoading = false;
-                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (InternetException ex)
             {
@@ -6230,7 +6179,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
-            catch (Exception )
+            catch (Exception)
             {
 
                 IsLoading = false;
@@ -6422,7 +6371,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
-            catch (Exception )
+            catch (Exception)
             {
 
 
@@ -6918,10 +6867,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                         }
                     }
-                    catch (Exception )
+                    catch (Exception)
                     {
-                        
-                        
+
+
                     }
 
                 }
@@ -7061,7 +7010,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
-            catch (Exception )
+            catch (Exception)
             {
                 IsLoading = false;
                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -7505,7 +7454,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
-            catch (Exception )
+            catch (Exception)
             {
                 IsLoading = false;
                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);

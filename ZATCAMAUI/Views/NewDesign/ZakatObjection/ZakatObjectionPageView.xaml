@@ -15,19 +15,21 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     ios:Page.UseSafeArea="true"
+    x:Name="page"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingZakatObjectionPageViewCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
-
-
         </ResourceDictionary>
-
-
     </ContentPage.Resources>
 
 
@@ -133,7 +135,7 @@
                                                 <DataTemplate>
                                                     <ViewCell>
                                                         <ViewCell.View>
-                                                            <Grid>
+                                                            <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                                 <Grid.RowDefinitions>
                                                                     <RowDefinition Height="auto" />
                                                                     <RowDefinition Height="auto" />
@@ -190,7 +192,9 @@
                                             </listView:SfListView.HeaderTemplate>
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <cards:SfCardView BackgroundColor="Transparent" CornerRadius="10">
+                                                    <cards:SfCardView
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                        BackgroundColor="Transparent" CornerRadius="10">
                                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                             <Image
                                                                 Aspect="AspectFill"
@@ -617,7 +621,8 @@
 
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Grid HorizontalOptions="FillAndExpand">
+                                                    <Grid HorizontalOptions="FillAndExpand"
+                                                          FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
@@ -797,6 +802,7 @@
 
                                                 <DataTemplate>
                                                     <cards:SfCardView
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         BackgroundColor="Transparent"
                                                         CornerRadius="20"
                                                         HeightRequest="120">
@@ -901,7 +907,8 @@
 
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Grid HorizontalOptions="FillAndExpand">
+                                                    <Grid HorizontalOptions="FillAndExpand"
+                                                          FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
@@ -1999,16 +2006,16 @@
                                                         AutoFitMode="Height"
                                                         HorizontalOptions="Center"
                                                         IsScrollingEnabled="False"
-                                                        ItemTapped="SummaryAttachments_ItemTapped"
                                                         ItemsSource="{Binding AttachmentsListViewData}"
                                                         ScrollBarVisibility="Never"
                                                         SelectionBackground="Transparent"
                                                         SelectionMode="None"
+                                                        TapCommand="{Binding SummaryAttachmentsTapCommand}"
                                                         VerticalOptions="Center">
                                                         <listView:SfListView.ItemTemplate>
                                                             <DataTemplate>
 
-                                                                <Grid>
+                                                                <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                                     <Grid.RowDefinitions>
                                                                         <RowDefinition Height="auto" />
                                                                     </Grid.RowDefinitions>
@@ -2555,7 +2562,8 @@
 
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Grid HorizontalOptions="FillAndExpand">
+                                                    <Grid HorizontalOptions="FillAndExpand"
+                                                          FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
@@ -2689,7 +2697,8 @@
 
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Grid HorizontalOptions="FillAndExpand">
+                                                    <Grid HorizontalOptions="FillAndExpand"
+                                                          FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
