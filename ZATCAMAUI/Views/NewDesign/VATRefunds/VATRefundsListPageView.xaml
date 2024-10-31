@@ -264,7 +264,7 @@
                                                 BackgroundColor="LightGray"
                                                 HeightRequest="1"
                                                 HorizontalOptions="FillAndExpand" />
-                                            <Grid Padding="10,10,10,10" RowSpacing="15">
+                                            <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="20">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
                                                     <RowDefinition Height="*" />

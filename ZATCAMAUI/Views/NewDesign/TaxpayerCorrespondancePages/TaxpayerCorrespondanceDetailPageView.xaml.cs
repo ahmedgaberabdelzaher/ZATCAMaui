@@ -17,8 +17,5 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             BindingContext = viewModel;
             viewModel.CorrModel = (CorrespondanceModel)CorrModel[0];
         }
-
-
-      
     }
 }
