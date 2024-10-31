@@ -150,7 +150,6 @@
                     <Image
                         Grid.Row="0"
                         Grid.Column="1"
-                        Margin="0,-30,0,0"
                         IsVisible="{Binding IsFavoriteVisible}"
                         Source="{Binding FavIcon}"
                         VerticalOptions="Center">
