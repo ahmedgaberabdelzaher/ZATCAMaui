@@ -11,6 +11,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     ios:Page.UseSafeArea="true"
+    x:Name="page"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -114,6 +115,8 @@
                                 VerticalOptions="FillAndExpand">
 
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
@@ -358,7 +361,8 @@
                                                 BackgroundColor="Transparent"
                                                 CornerRadius="20"
                                                 HeightRequest="136"
-                                                WidthRequest="171">
+                                                WidthRequest="171"
+                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                 <Grid
                                                     ColumnSpacing="0"
                                                     HorizontalOptions="FillAndExpand"
@@ -424,8 +428,8 @@
                                 </listView:SfListView>
                                 <Border
                                     Grid.Row="4"
-                                    Grid.Column="0"
                                     Grid.ColumnSpan="2"
+                                    Grid.Column="0"
                                     Margin="0,20,0,10"
                                     Stroke="#B1B1B1"
                                     StrokeThickness="1"
@@ -437,22 +441,121 @@
                                                 HorizontalOptions="Start"
                                                 Source="ic_vat_info.png"
                                                 VerticalOptions="Center"
-                                                WidthRequest="24" />
+                                                WidthRequest="24" >
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding IBANAccManagementTapped}" CommandParameter="IBANAccTapped" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
                                             <Label
                                                 Margin="10,0,10,0"
+                                                HorizontalTextAlignment="Start"
                                                 HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource ValueLabelBlack}"
-                                                Text="{x:Static ResourceManager:AppResources.Information}" />
+                                                VerticalOptions="EndAndExpand"
+                                                Style="{StaticResource ValueLabelBlack}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.PleaseGoToIBan}"/>
+                                                        <Span Text=" "/>
+                                                        <Span Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}" TextColor="{StaticResource Secondary}" >
+                                                            <Span.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding IBANAccManagementTapped}" CommandParameter="IBANAccTapped" />
+                                                            </Span.GestureRecognizers>
+                                                        </Span>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
                                         </StackLayout>
-                                        <Label
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestUpdateIBANInfo}" />
-
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding IBANAccManagementTapped}" CommandParameter="IBANAccTapped" />
+                                        </StackLayout.GestureRecognizers>
                                     </StackLayout>
                                 </Border>
+                                <listView:SfListView
+                                        Margin="3"
+                                        Grid.Row="5"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        BackgroundColor="Transparent"
+                                        ItemsSource="{Binding VatfrmRefundsModel}"
+                                        x:Name="VATrefundDetailsView"
+                                        IsScrollingEnabled="True"
+                                        VerticalOptions="FillAndExpand"
+                                        SelectionGesture="Tap"
+                                        AutoFitMode="DynamicHeight"
+                                        SelectionMode="Multiple"
+                                        ItemSpacing="4">
+                                    <listView:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <cards:SfCardView
+                                                Margin="0,10,0,10"
+                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                BorderColor="{StaticResource Secondary}"
+                                                Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                <Grid
+                                                    Padding="10"
+                                                    x:Name="Item_template"
+                                                    BackgroundColor="Transparent">
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="1*" />
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="2*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackLayout
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        Margin="0"
+                                                        BackgroundColor="Transparent">
+                                                        <Label 
+                                                             Text="{x:Static ResourceManager:AppResources.VATRefundsFBNum}"
+                                                             Style="{StaticResource CaptionLabelGrey}"  />
+
+                                                        <Label 
+                                                             Text="{Binding Fbnum}"
+                                                             Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+
+                                                    <buttons:SfCheckBox
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="End"
+                                                        IsChecked="{Binding IsItemSelected}"
+                                                        StateChanged="SfCheckBox_StateChanged"/>
+
+                                                    <StackLayout
+                                                        Grid.Row="1"
+                                                        Grid.Column="0" >
+                                                        <Label 
+                                                            Text="{x:Static ResourceManager:AppResources.VATRefundsperiod}"
+                                                            Style="{StaticResource CaptionLabelGrey}" />
+
+                                                        <Label 
+                                                            Text="{Binding Perslt}"
+                                                            Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="1"
+                                                        Grid.Column="1" >
+                                                        <Label 
+                                                            Text="{x:Static ResourceManager:AppResources.VATRefundsCRAMT}"
+                                                            Style="{StaticResource CaptionLabelGrey}" />
+                                                        <Label 
+                                                            Text="{Binding Betrw}"
+                                                            Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+                                                </Grid>
+                                            </cards:SfCardView>
+                                        </DataTemplate>
+                                    </listView:SfListView.ItemTemplate>
+                                </listView:SfListView>
+
+                               
                                 <Border
-                                    Grid.Row="5"
+                                    Grid.Row="6"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     Margin="0,16,0,8"
@@ -463,7 +566,7 @@
                                     Opacity="0.1"
                                     StrokeShape="RoundRectangle 15,15,15,15" />
                                 <StackLayout
-                                    Grid.Row="5"
+                                    Grid.Row="6"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     Orientation="Horizontal">
@@ -479,7 +582,7 @@
                                     </StackLayout>
                                     <StackLayout
                                         Padding="16,8,16,0"
-                                        HorizontalOptions="End"
+                                        HorizontalOptions="EndAndExpand"
                                         Orientation="Horizontal"
                                         VerticalOptions="Center">
                                         <Label HorizontalOptions="EndAndExpand" Style="{StaticResource SectionTitleBlackBold}">
@@ -494,7 +597,7 @@
                                     </StackLayout>
                                 </StackLayout>
                                 <Border
-                                    Grid.Row="6"
+                                    Grid.Row="7"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     Margin="0,20,0,10"

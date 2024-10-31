@@ -332,12 +332,7 @@ namespace ZATCAMAUI.Models.VATRefunds
                 _refundReqDt = value;
                 if (_refundReqDt != null)
                 {
-                    //string date = UtilityManager.FormatAccordingToDeviceForVAT(value.ToShortDateString());
-
-                    RefundReqDtString = Convert.ToDateTime(value).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    string[] dts = RefundReqDtString.Split('-');
-                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    RefundReqDtString = date;
+                    RefundReqDtString = Convert.ToDateTime(value).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                 }
             }
         }
