@@ -187,23 +187,7 @@
                 Command="{Binding SortCommand}"
                 CornerRadius="4"
                 Style="{StaticResource SfButtonStyle}">
-                <!--<buttons:SfButton.Content>
-                    <StackLayout
-                        Padding="8,5,8,6"
-                        Orientation="Horizontal"
-                        Spacing="8">
-                        <Label
-                            FontFamily="{StaticResource FontIcons}"
-                            FontSize="18"
-                            Style="{StaticResource OptionButtonLabelStyle}"
-                            Text="{StaticResource Sort}"
-                            VerticalTextAlignment="End" />
-                        <Label
-                            FontFamily="{StaticResource GE_SS_Two-SemiBold}"
-                            Style="{StaticResource OptionButtonLabelStyle}"
-                            Text="Sorting" />
-                    </StackLayout>
-                </buttons:SfButton.Content>-->
+               
             </buttons:SfButton>
         </StackLayout>
     </DataTemplate>
@@ -222,19 +206,8 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="HorizontalOptions" Value="Center" />
     </Style>
-    <!--<rating:SfRatingSettings
-        x:Key="RatingSettings"
-        RatedFill="{StaticResource OrangeyYellow}"
-        RatedStroke="{StaticResource OrangeyYellow}" />-->
-    <!--  Common style for SfRating  -->
-    <!--<Style x:Key="SfRatingStyle" TargetType="rating:SfRating">
-        <Setter Property="ItemCount" Value="5" />
-        <Setter Property="ReadOnly" Value="True" />
-        <Setter Property="ItemSize" Value="14" />
-        <Setter Property="ItemSpacing" Value="0" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="HorizontalOptions" Value="Start" />
-    </Style>-->
+
+
     <Style x:Key="FavouriteButtonStyle" TargetType="Button">
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />

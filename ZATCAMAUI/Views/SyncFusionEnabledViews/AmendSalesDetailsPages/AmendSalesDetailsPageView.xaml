@@ -170,7 +170,7 @@
                             Grid.Row="7"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
-                            FontFamily="{StaticResource GAZT_FONT_REGULAR}"
+                            FontFamily="{StaticResource SomarRegular}"
                             Style="{StaticResource GAZTSmallGreenLabelStyle}"
                             Text="{x:Static ResourceManager:AppResources.Attachments}" />
 

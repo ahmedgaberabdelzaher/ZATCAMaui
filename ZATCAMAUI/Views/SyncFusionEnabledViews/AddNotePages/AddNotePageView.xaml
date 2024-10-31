@@ -65,7 +65,7 @@
                     Grid.ColumnSpan="2"
                     Margin="12"
                     BackgroundColor="White"
-                    FontFamily="{StaticResource GAZT_FONT_REGULAR}"
+                    FontFamily="{StaticResource SomarRegular}"
                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                     Text="{Binding NoteText}" />
                 <buttons:SfButton

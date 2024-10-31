@@ -370,58 +370,54 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public async Task getVatEligibleDate(string vatEligibleStartDate)
         {
-            await Task.Run(async () =>
-            {
-                VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate + "T00:00:00", "");
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                if (vATcommencementData != null && vATcommencementData.d != null && vATcommencementData.d.VatTaxDt != null)
-                {
-                    try
-                    {
-                        String DateTimeToBeParsed = DateTime.Parse(vATcommencementData.d.VatTaxDt).ToString("yyyy-MM-ddTHH:mm:ss");
-                        String dateSource = UtilityManager.DDMMFormatDateToYYYYFromDateTypeString(UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture));
-                        DateTime ChangedDate = new DateTime(2018, 1, 1, 0, 0, 0);
+            IsLoading = true;
+            VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate + "T00:00:00", "");
+           await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                        int Result = DateTime.Compare((DateTime)UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture), (DateTime)VatRegDate);
-                        Result = 1;
-                        if (Result < 0)
+            if (vATcommencementData != null && vATcommencementData.d != null && vATcommencementData.d.VatTaxDt != null)
+            {
+                try
+                {
+                    String DateTimeToBeParsed = DateTime.Parse(vATcommencementData.d.VatTaxDt).ToString("yyyy-MM-ddTHH:mm:ss");
+                    String dateSource = UtilityManager.DDMMFormatDateToYYYYFromDateTypeString(UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture));
+                    DateTime ChangedDate = new DateTime(2018, 1, 1, 0, 0, 0);
+
+                    int Result = DateTime.Compare((DateTime)UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture), (DateTime)VatRegDate);
+                    Result = 1;
+                    if (Result < 0)
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
+                        VatEligibleStartDate = "";
+                    }
+                    else
+                    {
+                        DateTime convertedDate = UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
+
+                        int CompareDate = DateTime.Compare((DateTime)convertedDate, ChangedDate);
+
+                        if (CompareDate < 0)
                         {
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
-                            VatEligibleStartDate = "";
+                            VatEligibleStartDate = dateSource;
                         }
                         else
                         {
-                            DateTime convertedDate = UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
-
-                            int CompareDate = DateTime.Compare((DateTime)convertedDate, ChangedDate);
-
-                            if (CompareDate < 0)
+                            if (vATcommencementData.d.ErrorFg == "X")
                             {
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
-                                VatEligibleStartDate = dateSource;
                             }
-                            else
-                            {
-                                if (vATcommencementData.d.ErrorFg == "X")
-                                {
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
-                                }
-                                VatEligibleStartDate = dateSource;
-                            }
+                            VatEligibleStartDate = dateSource;
                         }
-                        IsLoading = false;
                     }
-                    catch (Exception)
-                    {
-                        IsLoading = false;
-                    }
+                    IsLoading = false;
                 }
-                else
+                catch (Exception)
                 {
+                    IsLoading = false;
                 }
-                IsLoading = false;
+            }
 
-            });
+            IsLoading = false;
         }
 
 
@@ -1522,7 +1518,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _importerImageSource = null;
+        private string _importerImageSource;
         public string ImporterImageSource
         {
             get
@@ -1572,7 +1568,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-        private string _exporterImageSource = null;
+        private string _exporterImageSource ;
         public string ExporterImageSource
         {
             get
@@ -1781,8 +1777,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _imageforTextQuestion3First = string.Empty;
-        public String ImageforTextQuestion3First
+        private string _imageforTextQuestion3First = string.Empty;
+        public string ImageforTextQuestion3First
         {
             get
             {
@@ -1796,8 +1792,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("ImageforTextQuestion3First");
             }
         }
-        private String _imageforTextQuestion3Second = string.Empty;
-        public String ImageforTextQuestion3Second
+        private string _imageforTextQuestion3Second = string.Empty;
+        public string ImageforTextQuestion3Second
         {
             get
             {
@@ -1811,8 +1807,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("ImageforTextQuestion3Second");
             }
         }
-        private String _imageforTextQuestion4First = string.Empty;
-        public String ImageforTextQuestion4First
+        private string _imageforTextQuestion4First = string.Empty;
+        public string ImageforTextQuestion4First
         {
             get
             {
@@ -2037,16 +2033,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             vATRegistration response = new vATRegistration();
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-
+                IsLoading = true;
                 setDATA();
                 List<Attachment> ATTDETSetnew = new List<Attachment>();
                 ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
                 VATRegistrationDetailsData.d.NresFg = string.Empty;
-                //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
+                
                 response = await VatRegistrationWebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData.d);
                 PopToRootPage();
                 if (response != null)
@@ -2059,24 +2051,24 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             {
                                 string number = response.Fbnumz;
                                 string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                                //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
                                 _navigationService.GoBack();
                             }
                             if (response.Operationz.Equals("05"))
                             {
-                                //  string number = response.d.Fbnumz;
+                                
                                 string displayMessage = AppResources.VATRSaveasdraftMessage;
-                                //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                               
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
                             }
                             if (response.Operationz.Equals("25"))
                             {
-                                //  string number = response.d.Fbnumz;
+                               
                                 string displayMessage = AppResources.VATRegistrationSuccessMessage + " " + response.Fbnumz + " " + AppResources.VatApproved;
-                                //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
-                                //_navigationService.GoBack();
+                                
                             }
 
                             VATRegistrationDetailsData = new VATRegistrationDetails();
@@ -2084,7 +2076,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetnew;
                             VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetObject;
                             //Set data after api call 
-                            setDataAfterSubmitAPIAsync(response);
+                           await setDataAfterSubmitAPIAsync(response);
 
                         }
                         IsLoading = false;
@@ -2102,14 +2094,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    //_navigationService.GoBack();
+                IsLoading = false;
 
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 return response;
             }
 
@@ -2122,26 +2109,20 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public async Task setDataAfterSubmitAPIAsync(vATRegistration vatRegistration)
         {
             //Set applicable buttons
-            await Task.Run(() =>
+            IsLoading = true;
+
+            VATRegistrationOtherDetails vATRegistrationOther = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDataWithButtons(vatRegistration.Fbnumz, vatRegistration.Officerz, vatRegistration.Statusz, vatRegistration.TxnTpz, "ZTAX_VT_REG");
+
+            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+            if (vATRegistrationOther != null && vATRegistrationOther.d != null)
             {
-                IsLoading = true;
-            });
+                VATRegistrationOtherDetails = vATRegistrationOther;
 
-            await Task.Run(async () =>
-            {
-                VATRegistrationOtherDetails vATRegistrationOther = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDataWithButtons(vatRegistration.Fbnumz, vatRegistration.Officerz, vatRegistration.Statusz, vatRegistration.TxnTpz, "ZTAX_VT_REG");
-
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-                if (vATRegistrationOther != null && vATRegistrationOther.d != null)
-                {
-                    VATRegistrationOtherDetails = vATRegistrationOther;
-
-                    SetApplicableButtons();
-                    setMoreOptioButtons();
-                }
-                IsLoading = false;
-            });
+                SetApplicableButtons();
+                setMoreOptioButtons();
+            }
+            IsLoading = false;
         }
 
         public void setQuestionImage()
@@ -2214,27 +2195,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                var _navigation = Application.Current.MainPage.Navigation;
+                 await _navigation.PopToRootAsync();
+             
             }
         }
 
-        private String GetLocalisedButtonString(String ButtonName)
+        private string GetLocalisedButtonString(String ButtonName)
         {
-            String LocalisedButtonString = String.Empty;
+            string LocalisedButtonString = string.Empty;
 
-            //if (0 == String.Compare(ButtonName, "Submit"))
-            //{
-            //    LocalisedButtonString = AppResources.Submit;
-            //}
-
+          
             if (0 == String.Compare(ButtonName, "SaveasDraft"))
             {
                 LocalisedButtonString = AppResources.ZZSaveAsDraft;
@@ -2247,11 +2222,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 LocalisedButtonString = AppResources.ZZVoid;
             }
-            //else if (0 == String.Compare(ButtonName, "Validate"))
-            //{
-            //    LocalisedButtonString = AppResources.ZZValidate;
-            //}            
-
+          
             return LocalisedButtonString;
         }
 
@@ -2281,14 +2252,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         if (vATRegistration.d.CONTACT_PERSONSet != null)
                         {
                             GpartFR = vATRegistration.d.CONTACT_PERSONSet[0].Gpart;
-                            //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
                             idnumber = string.Empty;
                             idnumber = vATRegistration.d.CONTACT_PERSONSet[0].Idnumber;
                             FirstnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Firstnm;
                             LastnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Lastnm;
                             MobNumberFR = vATRegistration.d.CONTACTDTSet[0].MobNumber;
                             SmtpAddrFR = vATRegistration.d.CONTACTDTSet[0].SmtpAddr;
-                            //Title = vATRegistration.d.CONTACT_PERSONSet[0].Title;
 
                             SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type).FirstOrDefault();
                             ATTDETSetObject = new List<Attachment>();
@@ -2297,16 +2266,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
 
                         //Step 5
-
-                        /* if (vATRegistration.d.Decfg == "1")
-                         {*/
                         IsDeclarationChecked = true;
-                        //VATRegistrationDetailsData.d.Decfg = "1";
-                        /*}
-                        else if (vATRegistration.d.Decfg == "0")
-                        {
-                            IsDeclarationChecked = false;
-                        }*/
                         if (vATRegistration.d.AgrFg != null)
                         {
                             if (vATRegistration.d.AgrFg == "1")
@@ -2334,8 +2294,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
                         if (vATRegistration.d.CrStdt != null)
                         {
-
-                            //StartdateToshow = UtilityManager.CovertDateTimeToDDMMYYYY(vATRegistration.d.CrStdt);
                             VatRegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""");
                             StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                         }
@@ -2434,58 +2392,34 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                            _navigationService.GoBack();
-                        });
+                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        _navigationService.GoBack();
                     }
                     IsLoading = false;
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw ex;
-                }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        IsLoading = false;
-                        _navigationService.GoBack();
-                    });
-                    //   await Task.Run(() =>
-                    //   {
-                    //  });
+                    IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                    _navigationService.GoBack();
                 }
                 IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                _navigationService.GoBack();
 
             }
             catch (Exception ex)
             {
-
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                _navigationService.GoBack();
             }
         }
 

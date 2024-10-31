@@ -143,21 +143,26 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (!string.IsNullOrEmpty(message))
                     {
                         List<Result2> results1D = new List<Result2>();
-                        foreach (var item in viewModel.IbanList)
-                        {
-                            Result2 result = new Result2();
-                            result = item;
 
-                            if (string.IsNullOrEmpty(item.Bkvid))
+                        if(viewModel.IbanList != null)
+                        {
+                            foreach (var item in viewModel.IbanList)
                             {
-                                isExist = true;
-                                result.Iban = message;
-                                //item.Iban = message;
-                                viewModel.VATRegistrationDetailsData.d.OptIban = message;
-                                viewModel.NewAccountText = AppResources.VATREditAccount;
+                                Result2 result = new Result2();
+                                result = item;
+
+                                if (string.IsNullOrEmpty(item.Bkvid))
+                                {
+                                    isExist = true;
+                                    result.Iban = message;
+                                    //item.Iban = message;
+                                    viewModel.VATRegistrationDetailsData.d.OptIban = message;
+                                    viewModel.NewAccountText = AppResources.VATREditAccount;
+                                }
+                                results1D.Add(result);
                             }
-                            results1D.Add(result);
                         }
+                       
 
                         if (results1D != null && results1D.Count != 0)
                         {
