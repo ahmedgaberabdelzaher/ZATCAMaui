@@ -3948,8 +3948,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     if (vATCalculationData.d.VTTHSet.Count != 0)
                     {
-                        CorrectionPeriodAmount = vATCalculationData.d.VTTHSet.Where(x => x.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
-                        CorrectionNegativePeriodAmount = vATCalculationData.d.VTTHSet.Where(x => x.Type == "001").Select(x => x.MinVal).FirstOrDefault();
+                        CorrectionPeriodAmount = vATCalculationData.d.VTTHSet.Where(x => x.Type == "001" || x.Type == "005").Select(x => x.MaxVal).FirstOrDefault();
+                        CorrectionNegativePeriodAmount = vATCalculationData.d.VTTHSet.Where(x => x.Type == "001" || x.Type == "005").Select(x => x.MinVal).FirstOrDefault();
                         if (!string.IsNullOrEmpty(CorrectionPeriodAmount))
                         {
                             if (App.IsArabic)

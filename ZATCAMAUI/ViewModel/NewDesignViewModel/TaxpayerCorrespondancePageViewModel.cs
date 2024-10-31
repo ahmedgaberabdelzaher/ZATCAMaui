@@ -564,7 +564,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
                             childZakat.IsFav = false;
-                            childZakat.FavImg = "arrowRight.png";
+                            if (App.IsArabic)
+                            {
+                                childZakat.FavImg = "arrowLeft.png";
+                            }
+                            else
+                            {
+                                childZakat.FavImg = "arrowRight.png";
+                            }
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
@@ -682,7 +689,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
                             childVAT.IsFav = false;
-                            childVAT.FavImg = "arrowRight.png";
+                            if (App.IsArabic)
+                            {
+                                childVAT.FavImg = "arrowLeft.png";
+                            }
+                            else
+                            {
+                                childVAT.FavImg = "arrowRight.png";
+                            }
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
@@ -796,7 +810,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
                             childET.IsFav = false;
-                            childET.FavImg = "arrowRight.png";
+                            if (App.IsArabic)
+                            {
+                                childET.FavImg = "arrowLeft.png";
+                            }
+                            else
+                            {
+                                childET.FavImg = "arrowRight.png";
+                            }
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
@@ -909,7 +930,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
                             childColl.IsFav = false;
-                            childColl.FavImg = "arrowRight.png";
+                            if (App.IsArabic)
+                            {
+                                childColl.FavImg = "arrowLeft.png";
+                            }
+                            else
+                            {
+                                childColl.FavImg = "arrowRight.png";
+                            }
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;

@@ -17,7 +17,7 @@
                     x:Name="MessageText"
                     Margin="10"
                     Style="{StaticResource BodyLabelBlack}" />
-                <buttons:SfButton
+                <buttons:SfButton Margin="10"
                     x:Name="btnOK"
                     Clicked="OnOkButtonClicked"
                     HorizontalOptions="FillAndExpand"

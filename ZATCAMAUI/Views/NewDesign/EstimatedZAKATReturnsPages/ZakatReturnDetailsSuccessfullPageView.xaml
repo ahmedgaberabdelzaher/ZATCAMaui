@@ -34,7 +34,7 @@
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="Margin" Value="0,-10,0,0" />
+                <Setter Property="Margin" Value="0,10,0,0" />
             </Style>
 
         </ResourceDictionary>
@@ -68,7 +68,6 @@
                         Text="{x:Static ResourceManager:AppResources.NDZakatReturn}"
                         TextColor="White" />
                     <Label
-                        Margin="0,-10,0,0"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
                         IsVisible="{Binding SetSuccessMessageVisibility}"
@@ -82,7 +81,7 @@
                         TextColor="White">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZZZZakatReturnSubmittedNew}" />
+                                <Span Style="{StaticResource CaptionLabelWhite}" Text="{x:Static ResourceManager:AppResources.ZZZZZakatReturnSubmittedNew}" />
                                 <Span Text="&#160;&#160;" />
                                 <Span
                                     Style="{StaticResource CaptionLabelBlack}"
@@ -117,7 +116,10 @@
                         <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
                             <StackLayout Spacing="0">
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
-                                    <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
+                                    <StackLayout
+                                        Padding="5,10,5,10"
+                                        Orientation="Horizontal"
+                                        Spacing="12">
                                         <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelGrey}"
@@ -132,7 +134,7 @@
                                             VerticalOptions="Center"
                                             VerticalTextAlignment="Center"
                                             WidthRequest="180" />
-                                        <Image Source="zakat_copy.png">
+                                        <Image HorizontalOptions="EndAndExpand" Source="zakat_copy.png">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnCopySadadNumberButtonClicked" />
                                             </Image.GestureRecognizers>
@@ -142,7 +144,10 @@
                                 </Border>
 
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
-                                    <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
+                                    <StackLayout
+                                        Padding="5,10,5,10"
+                                        Orientation="Horizontal"
+                                        Spacing="12">
                                         <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelGrey}"
@@ -157,7 +162,7 @@
                                             VerticalOptions="Center"
                                             VerticalTextAlignment="Center"
                                             WidthRequest="180" />
-                                        <Image Source="zakat_copy.png">
+                                        <Image HorizontalOptions="EndAndExpand" Source="zakat_copy.png">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnCopyTaxablePeriodClicked" />
                                             </Image.GestureRecognizers>

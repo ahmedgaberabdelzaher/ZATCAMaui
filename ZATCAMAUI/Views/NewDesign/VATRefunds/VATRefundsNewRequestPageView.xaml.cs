@@ -342,5 +342,20 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                 }
             }
         }
+
+        void SfCheckBox_StateChanged(System.Object sender, Syncfusion.Maui.Buttons.StateChangedEventArgs e)
+        {
+            try
+            {
+                Syncfusion.Maui.Buttons.SfCheckBox isCheckedOrNot = (Syncfusion.Maui.Buttons.SfCheckBox)sender;
+                VatReffundAmtDetails details_Amt = isCheckedOrNot.BindingContext as VatReffundAmtDetails;
+
+                viewModel.CheckBoxSelected_update(details_Amt, isCheckedOrNot.IsChecked);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }

@@ -24,6 +24,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
         public ICommand IbanIdTypeTapped { get; set; }
         public ICommand IbanIdNumberTapped { get; set; }
         public ICommand OnMoreClicked { get; set; }
+        public ICommand IBANAccManagementTapped { get; set; }
+        
 
         #endregion
 
@@ -519,6 +521,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
                 }
             });
+            IBANAccManagementTapped = new Command(async () =>
+            {
+                await _navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+            });
         }
 
         internal void Selected_update(IReadOnlyList<object> currentSelection)
@@ -649,8 +655,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
                     }
                 }
-
-                // VatRefundsDisplayDataModel.VAtRefundSET.results.Equa= VatfrmRefundsModel;
 
                 VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
 
@@ -1194,7 +1198,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
                 VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
             }
-            // VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
+
             VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
             if (SelectedIDTypeCode != null)
             {
@@ -1202,7 +1206,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
             }
             VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundTpParameter;
-            //VatRefundsDisplayDataModel.VAtRefundSET.results = VatfrmRefundsModel;
 
             for (int i = 0; i < VatfrmRefundsModel.Count; i++)
             {
@@ -1300,14 +1303,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         VatfrmRefundsCopyModel[i].CheckFg = "X";
                         VatfrmRefundsCopyModel[i].IsItemSelected = true;
                         amount = A + amount;
-                        //this.isSadadBillCheckBox1 = true;
                     }
                     else
                     {
                         VatfrmRefundsCopyModel[i].CheckFg = "";
                         VatfrmRefundsCopyModel[i].IsItemSelected = false;
                         amount -= A;
-                        // this.isSadadBillCheckBox1 = false;
                     }
                 }
             }
