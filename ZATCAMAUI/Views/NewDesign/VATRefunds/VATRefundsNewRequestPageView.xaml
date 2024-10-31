@@ -105,13 +105,15 @@
 
                 <Grid>
 
-                    <ScrollView VerticalOptions="FillAndExpand">
+                    <ScrollView VerticalOptions="FillAndExpand"
+                                VerticalScrollBarVisibility="Never">
                         <Grid VerticalOptions="Fill">
                             <Grid
                                 Margin="20,10,20,0"
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand"
                                 IsVisible="true"
+                                ColumnSpacing="10"
                                 VerticalOptions="FillAndExpand">
 
                                 <Grid.RowDefinitions>

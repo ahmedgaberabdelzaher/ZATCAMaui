@@ -1581,7 +1581,7 @@ namespace ZATCAMAUI.Core.Mangers
                 DateTime dateTime10 = DateTime.ParseExact(dateTime, format, provider);
                 return dateTime10;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 DateTime dateTime10 = new DateTime();
                 return dateTime10;

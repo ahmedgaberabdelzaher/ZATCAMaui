@@ -9,6 +9,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         public YesNoAlertPopupView(string buttonOKName, string buttonNoName, string message)
         {
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             MessageText.Text = message;
             btnOK.Text = buttonOKName;
             btnNO.Text = buttonNoName;

@@ -992,7 +992,7 @@
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="auto" />
 
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Column="0" Grid.Row="0">
@@ -1053,7 +1053,6 @@
                                             Style="{StaticResource CheckboxHeightWidth32}" />
 
 
-                                        <!--  <CheckBox x:Name="CBTermsAndCondition  CheckedChanged="TermsAndConditions_CheckedChanged"/>-->
                                         <Label
                                             FontFamily="{StaticResource SomarRegular}"
                                             Grid.Column="1"
@@ -1095,6 +1094,8 @@
                                         <custom:CheckboxCustom
                                             Grid.Column="0"
                                             Grid.Row="0"
+                                            Margin="0,10,0,0"
+                                            VerticalOptions="Start"
                                             IsChecked="{Binding AcknowledgementChecked}"
                                             Style="{StaticResource CheckboxHeightWidth32}" />
 
