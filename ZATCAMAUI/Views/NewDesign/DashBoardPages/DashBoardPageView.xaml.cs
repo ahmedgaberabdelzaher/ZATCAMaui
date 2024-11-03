@@ -65,7 +65,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
                    await viewModel.OnDataLoad();
                 });
-                viewModel.getYesCommandToLogout();
+                
             }
             catch (Exception)
             {

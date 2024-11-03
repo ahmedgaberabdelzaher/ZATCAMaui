@@ -2128,6 +2128,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     await SadadPaymentSelected();
                     isPayNowTapped = false;
                 });
+                MessagingCenter.Subscribe<object, string>(this, "YesPressedToLogout", async (sender, arg) =>
+                {
+                    App.TP = null;
+                    await LogOut();
+                });
 
             }
             catch (Exception)
@@ -2158,24 +2163,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
         {
             await Launcher.OpenAsync(uri);
         }
-
-        public void getYesCommandToLogout()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "YesPressedToLogout", async (sender, arg) =>
-                {
-                    App.TP = null;
-                    await LogOut();
-                });
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-
 
         private async Task LoadData()
         {
