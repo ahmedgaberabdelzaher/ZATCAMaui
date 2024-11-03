@@ -884,20 +884,10 @@
                                             Source="check_oval.png"
                                             VerticalOptions="Center" />
 
-                                         <Image
+                                        <Image
                                             Grid.Column="2"
-                                            Rotation="0"
-                                            Source="arrowLeft.png"
+                                            Source="{Binding ArrowImageSource}"
                                             VerticalOptions="CenterAndExpand">
-                                            <Image.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding AppDirection}"
-                                                    TargetType="Image"
-                                                    Value="LeftToRight">
-                                                    <Setter Property="Rotation" Value="180" />
-                                                </DataTrigger>
-                                            </Image.Triggers>
-
                                         </Image>
 
                                     </Grid>
