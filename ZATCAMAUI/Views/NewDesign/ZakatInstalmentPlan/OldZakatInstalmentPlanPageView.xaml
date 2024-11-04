@@ -24,7 +24,7 @@
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
-     <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
@@ -3587,7 +3587,6 @@
                                                 Padding="3,0,3,0"
                                                 AutoFitMode="Height"
                                                 HorizontalOptions="Center"
-                                                ScrollBarVisibility="Never"
                                                 IsScrollingEnabled="False"
                                                 ItemSpacing="5"
                                                 SelectedItem="{Binding SummaryAttachmentsItem,Mode=TwoWay}"
