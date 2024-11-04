@@ -18,11 +18,15 @@
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     FlowDirection="{Binding AppDirection}"
+    x:Name="page"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
-
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -2101,6 +2105,7 @@
                                 SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
                                 SelectionBackground="Transparent"
                                 SelectionMode="Single"
+                                SelectedItem="{Binding FrequencyOptionsSelectedItem,Mode=TwoWay}"
                                 VerticalOptions="Center">
 
                                 <listView:SfListView.ItemsLayout>
@@ -2284,7 +2289,8 @@
 
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid HorizontalOptions="FillAndExpand">
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                                  FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
                                                     <RowDefinition Height="*" />
@@ -2423,7 +2429,8 @@
 
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid HorizontalOptions="FillAndExpand">
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                                  FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
                                                     <RowDefinition Height="auto" />
@@ -2563,11 +2570,13 @@
                                 AutoFitMode="Height"
                                 HorizontalOptions="FillAndExpand"
                                 ItemSpacing="10"
-                                ItemTapped="Bills_ItemTapped"
+                                SelectedItem="{Binding BillsVATItem,Mode=TwoWay}"
+                                TapCommand="{Binding BillsItemTapCommand}"
                                 ItemsSource="{Binding ZakatInvoicesList}"
                                 SelectionBackground="Transparent"
                                 SelectionChanging="listView_SelectionChanging"
                                 SelectionMode="Multiple"
+                                ScrollBarVisibility="Never"
                                 VerticalOptions="FillAndExpand">
 
                                 <listView:SfListView.HeaderTemplate>
@@ -2575,6 +2584,7 @@
                                         <ViewCell>
                                             <ViewCell.View>
                                                 <Grid
+                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                     HorizontalOptions="FillAndExpand"
                                                     RowDefinitions="auto,auto,auto,auto,auto"
                                                     RowSpacing="10">
@@ -2648,7 +2658,7 @@
                                         <ViewCell>
                                             <ViewCell.View>
 
-                                                <StackLayout>
+                                                <StackLayout FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
 
                                                     <Border
                                                         Padding="0"
@@ -2694,7 +2704,9 @@
 
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <cards:SfCardView BackgroundColor="White" CornerRadius="10">
+                                        <cards:SfCardView BackgroundColor="White"
+                                                          FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                          CornerRadius="10">
 
                                             <Grid
                                                 HorizontalOptions="FillAndExpand"
@@ -2814,7 +2826,9 @@
                                 </listView:SfListView.ItemTemplate>
                                 <listView:SfListView.SelectedItemTemplate>
                                     <DataTemplate>
-                                        <cards:SfCardView BackgroundColor="Transparent" CornerRadius="10">
+                                        <cards:SfCardView BackgroundColor="Transparent"
+                                                          FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                          CornerRadius="10">
                                             <Grid
                                                 HorizontalOptions="FillAndExpand"
                                                 RowDefinitions="auto"
@@ -2966,13 +2980,16 @@
                                 ItemsSource="{Binding StatementList}"
                                 SelectionBackground="Transparent"
                                 SelectionMode="Single"
+                                ScrollBarVisibility="Never"
                                 VerticalOptions="FillAndExpand">
 
                                 <listView:SfListView.HeaderTemplate>
                                     <DataTemplate>
                                         <ViewCell>
                                             <ViewCell.View>
-                                                <Grid HorizontalOptions="FillAndExpand" RowDefinitions="auto,auto,auto,auto">
+                                                <Grid HorizontalOptions="FillAndExpand"
+                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                      RowDefinitions="auto,auto,auto,auto">
 
                                                     <Grid Grid.Row="0" HorizontalOptions="End">
                                                         <commonView:PageIndicatorView
@@ -3016,7 +3033,7 @@
                                             <ViewCell.View>
 
 
-                                                <StackLayout>
+                                                <StackLayout FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
 
                                                     <Border
                                                         Margin="0,10,0,0"
@@ -3058,7 +3075,9 @@
 
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <Border Margin="0,10,0,10"
+                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                Style="{StaticResource GreyBorderFrameWithShadow}">
                                             <Grid Padding="0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
@@ -3305,6 +3324,7 @@
                                                     <Grid
                                                         Margin="10,5,10,0"
                                                         Padding="0"
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         RowSpacing="0">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
@@ -3567,8 +3587,10 @@
                                                 Padding="3,0,3,0"
                                                 AutoFitMode="Height"
                                                 HorizontalOptions="Center"
+                                                ScrollBarVisibility="Never"
                                                 IsScrollingEnabled="False"
                                                 ItemSpacing="5"
+                                                SelectedItem="{Binding SummaryAttachmentsItem,Mode=TwoWay}"
                                                 ItemsSource="{Binding AttachmentsListViewData}"
                                                 ScrollBarVisibility="Never"
                                                 SelectionBackground="Transparent"
@@ -3579,6 +3601,7 @@
                                                         <Grid
                                                             Margin="10,5,10,0"
                                                             Padding="0"
+                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             RowSpacing="0">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />

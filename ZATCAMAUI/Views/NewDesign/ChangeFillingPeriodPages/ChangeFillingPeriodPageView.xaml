@@ -342,7 +342,7 @@
                                             CheckChanged="OnFrequechCheckChanged"
                                             IsChecked="{Binding IsFrequencyDetailsChecked}"
                                             Style="{StaticResource CheckboxHeightWidth32}"
-                                            VerticalOptions="CenterAndExpand" />
+                                            VerticalOptions="Start" />
                                         <Label
                                             Grid.Row="0"
                                             Grid.Column="1"
@@ -718,7 +718,7 @@
                                         Grid.Row="4"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
-                                        Margin="0,0,0,10"
+                                        Margin="0,20"
                                         BackgroundColor="{Binding AttachButtonBackGroundColor}"
                                         Command="{Binding AttachmentsContinueBtnTapped}"
                                         HeightRequest="48"

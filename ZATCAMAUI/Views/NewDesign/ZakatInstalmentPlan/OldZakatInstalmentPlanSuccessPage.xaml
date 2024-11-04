@@ -43,7 +43,7 @@
                     TextColor="White" />
 
             </StackLayout>
-            <ScrollView>
+            <ScrollView VerticalScrollBarVisibility="Never">
                 <Grid>
 
                     <Border

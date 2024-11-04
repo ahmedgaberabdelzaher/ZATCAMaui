@@ -83,13 +83,14 @@
 
 
 
-                            <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Grid ColumnDefinitions="*,auto,auto"
+                                  ColumnSpacing="10">
 
                                 <!--  ReportNumber Label  -->
                                 <Label
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
-                                    HorizontalOptions="StartAndExpand"
+                                    HorizontalOptions="Start"
                                     Text="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}"
                                     TextColor="{StaticResource NeutralGreay}" />
 
@@ -97,7 +98,8 @@
                                 <Label
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
-                                    HorizontalOptions="StartAndExpand"
+                                    Grid.Column="1"
+                                    HorizontalOptions="Center"
                                     Text="{Binding ReportNumberResult}"
                                     TextColor="#58595B" />
 
@@ -105,13 +107,14 @@
                                 <Image
                                     HorizontalOptions="End"
                                     Source="zakat_copy"
+                                    Grid.Column="2"
                                     Style="{StaticResource SmallIcon}" />
 
-                                <StackLayout.GestureRecognizers>
+                                <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding CopyCommand}" />
-                                </StackLayout.GestureRecognizers>
+                                </Grid.GestureRecognizers>
 
-                            </StackLayout>
+                            </Grid>
 
 
 

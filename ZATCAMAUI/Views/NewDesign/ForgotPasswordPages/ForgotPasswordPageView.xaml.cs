@@ -22,12 +22,8 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
                 viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
                 BindingContext = viewModel;
                 viewModel.ClearData();
-               // viewModel.OnPageLoad();
                 viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
-               // SetPickerFont();
                 viewModel.StartPage = 1;
-
-                Console.WriteLine("------ On Constructor End-------");
             }
             catch (Exception)
             {
@@ -35,38 +31,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             }
         }
 
-        public void SetPickerFont()
-        {
-            try
-            {
-                switch (DeviceInfo.Platform)
-                {
-
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        {
-
-                            Picker_Tins.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            Picker_Tins.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            Picker_Tins.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            Picker_Tins.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
-                        }
-                        break;
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-                        Picker_Tins.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                        Picker_Tins.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        Picker_Tins.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        Picker_Tins.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
-
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
+        
 
         private void OnPasswordCardClicked(object sender, EventArgs e)
         {
@@ -177,7 +142,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             {
                 //TODO
                 TINModel selectedTinId = viewModel.TINs[e.NewValue];
-                //Picker_Tins.Columns[0].SelectedIndex = e.NewValue;
                 viewModel.SelectedTinId = selectedTinId;
             }
             catch (Exception)
@@ -213,13 +177,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
                 OTPFourthEntry.Focus();
             }
         }
-
-
-        void OtpFourthEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-            viewModel.OtpFilled();
-        }
-
 
         // * Password Validation
         void NewPassword_TextChanged(object sender, FocusEventArgs e)
@@ -318,7 +275,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
 
                 NewPasswordIcon.Source = "hidePassword";
                 ConfirmNewPasswordIcon.Source = "hidePassword";
-                Console.WriteLine("------ On Appeating End-------");
             }
             catch (Exception)
             {
