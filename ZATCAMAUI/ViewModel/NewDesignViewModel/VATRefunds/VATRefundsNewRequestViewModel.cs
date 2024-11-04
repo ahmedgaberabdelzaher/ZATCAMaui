@@ -523,7 +523,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             });
             IBANAccManagementTapped = new Command(async () =>
             {
-                await _navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+                await _navigationService.NavigateTo(App.GAZTBankAccountManagementPageView,true);
             });
         }
 

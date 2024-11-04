@@ -55,6 +55,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         }
 
         private IBanAccountManagementResponseModel _iBANAccountData;
+        public bool isRemove = false;
 
         public IBanAccountManagementResponseModel IBANAccountData
         {
@@ -74,6 +75,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             {
                 IBANAccountData.d.isUpdateFlag = false;
                 App.SelectedIBAN = "";
+                IBANAccountData.d.isRemove = isRemove;
                 _navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, IBANAccountData);
             }
             catch (InternetException ex)

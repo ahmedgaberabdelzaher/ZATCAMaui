@@ -49,7 +49,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "BankAccManagement", "BankAccManagement");
 
 
-                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView, false);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
                 }

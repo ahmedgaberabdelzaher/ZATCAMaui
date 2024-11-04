@@ -2584,16 +2584,16 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (vATSignUpData.d == null)
                 {
                     IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                    if (SignupIsIDTypeValidError.header.moreInformation.errorDetails[0].message == "An exception was raised.")
                     {
                         FrmTINNumber.HasError = true;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.header.moreInformation.errorDetails[0].message));
                         EntryTINNumber.Text = string.Empty;
                     }
                     else
                     {
                         FrmTINNumber.HasError = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.header.moreInformation.errorDetails[0].message));
                         EntryTINNumber.Text = string.Empty;
                     }
                 }
@@ -3256,11 +3256,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel._navigationService.GoBack();
         }
 
-        private void IBANAccManagementTapped(object sender, EventArgs e)
+        void IBANAccountManagementCommand(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
-
+             viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView, true);
         }
-
     }
 }

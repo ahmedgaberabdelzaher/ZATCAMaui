@@ -15,6 +15,7 @@ using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using Newtonsoft.Json.Linq;
 using Syncfusion.Maui.Core.Carousel;
+using ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 {
@@ -952,7 +953,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                             };
                             somewarningpopup.OnDone = () =>
                             {
-                                _navigationService.GoBack();
+                                BankAccountRemoveNavigationPage();
                             };
                             await MopupService.Instance.PushAsync(somewarningpopup);
                         }
@@ -964,7 +965,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                             };
                             somewarningpopup.OnDone =  () =>
                             {
-                                _navigationService.GoBack();
+                                BankAccountRemoveNavigationPage();
                             };
                             await MopupService.Instance.PushAsync(somewarningpopup);
                         }
@@ -978,7 +979,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                         };
                         somewarningpopup.OnDone =  () =>
                         {
-                            _navigationService.GoBack();
+                            BankAccountRemoveNavigationPage();
                         };
                         await MopupService.Instance.PushAsync(somewarningpopup);
                     }
@@ -986,12 +987,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
+                    BankAccountRemoveNavigationPage();
                 }
                 catch (InternetException ex)
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
+                    BankAccountRemoveNavigationPage();
                 }
 
             }
@@ -1178,6 +1179,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             {
                 _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
+            }
+        }
+
+        public void BankAccountRemoveNavigationPage()
+        {
+            try
+            {
+                if (IBANAccountData.d.isRemove)
+                {
+                    var navigation = Application.Current.MainPage.Navigation;
+                    var pagesToRemove = navigation.NavigationStack.Where(page => page.GetType() == typeof(BankAccountManagementPageView) || page.GetType() == typeof(BankAccountAddorUpdateIBANPageView)).ToList();
+                    foreach (var page in pagesToRemove)
+                    {
+                        navigation.RemovePage(page);
+                    }
+                }
+                else
+                {
+                    _navigationService.GoBack();
+                }
+            }
+            catch (Exception)
+            {
             }
         }
     }

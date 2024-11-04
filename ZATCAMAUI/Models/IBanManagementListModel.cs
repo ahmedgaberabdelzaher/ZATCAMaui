@@ -253,6 +253,8 @@ namespace ZATCAMAUI.Models
 
             [JsonProperty("idTypes")]
             public List<IdTypeListSetResult> IdTypeListSet { get; set; }
+            [JsonIgnore]
+            public bool isRemove { get; set; }
         }
 
         
