@@ -2320,6 +2320,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 try
                 {
                     var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingPeriodDropdownData(App.LoginDataRetrieved.TIN);
+                    IsLoading = false;
                     if (resultData != null && resultData.d != null)
                     {
                         EffectiveDateResponse = resultData;
@@ -2337,7 +2338,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         _navigationService.GoBack();
                     }
-                    IsLoading = false;
+                    
                 }
                 catch (InternetException ex)
                 {

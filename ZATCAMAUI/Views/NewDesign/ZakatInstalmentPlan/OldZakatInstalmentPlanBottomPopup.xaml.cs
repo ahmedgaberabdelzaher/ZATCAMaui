@@ -11,6 +11,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
         public OldZakatInstalmentPlanBottomPopup()
         {
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             viewModel = App.Locator.OldZakatInstalmentPlanPageView;
             this.BindingContext = viewModel;
         }

@@ -23,20 +23,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public readonly IZatacaAPIHAndle _zatacaAPIHAndle;
         private string captcha = string.Empty;
         private string GUID = string.Empty;
-        //public ICommand OnSubmitClicked { get; set; }
-        //public ICommand OnCaptchaRegenerateClicked { get; set; }
-        //public ICommand OnChangePasswordSubmitClicked { get; set; }
         public Command OnResendOTPClicked { get; set; }
         public Command OnValidateOTPClicked { get; set; }
         public Command OnUserNameCardClicked { get; set; }
         public Command OnPasswordCardClicked { get; set; }
         public Command OnCorporateCardClicked { get; set; }
+        public Command VerifyOTPCommand { get; set; }
         public Command OnIndividualOrPersonalBusinessCardClicked { get; set; }
         public Command OnLogInClick { get; set; }
         public System.Timers.Timer otpTimer;
         public int countDownSeconds;
-        //public ICommand OnLoginPageLinkClicked { get; set; }
-        //public ICommand BackButtonClicked { get; set; }
         public ICommand OnContinueClick { get; set; }
 
         public int currentAttempts = 0;
@@ -1158,13 +1154,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
-                        VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                    ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+                    VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
 
-                    });
-                    // IsResendOTPEnabled = true;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
@@ -1620,8 +1612,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
         #endregion
         #region Constructor
-        public GAZTNewDesignForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
-        {      
+        public GAZTNewDesignForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        {
+
+
             OnContinueClick = new Command(async () =>
             {
                 if (StartPage == 2)
@@ -1749,9 +1743,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             });
 
-
-
-
             OnCorporateCardClicked = new Command(() =>
             {
                 MaximumUserNameCharacter = 10;
@@ -1761,6 +1752,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 IndividualOrPersonalBusinessTextColor = (Color)Application.Current.Resources["Primary"];
                 IDNumber = string.Empty;
 
+            });
+
+            VerifyOTPCommand = new Command(async() =>
+            {
+                IsLoading = true;
+                await OtpFilled();
+                IsLoading = false;
             });
 
 
@@ -1805,7 +1803,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             UserNameLayoutVisibility = true;
 
         }
-        public async void OtpFilled()
+        public async Task OtpFilled()
         {
             if (StartPage == 2)
             {
@@ -1831,7 +1829,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             return _isVerifyOTPEnabled;
         }
-        public async void ExecuteSubmitClickCommand(object obj)
+        public async Task ExecuteSubmitClickCommand(object obj)
         {
             await ValidateOTP();
         }
@@ -1839,7 +1837,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             return _isResendOTPEnabled;
         }
-        public async void ExecuteResendOTPClickCommand(object obj)
+        public async Task ExecuteResendOTPClickCommand(object obj)
         {
             await SendOTPToRegisterMobileNumber();
         }
@@ -1952,310 +1950,264 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (GAZTErrorException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                    SetIDNumberEnability = true;
-                    IDNumber = String.Empty;
-                });
+                IsLoading = false;
+                SetIDNumberEnability = true;
+                IDNumber = String.Empty;
             }
 
             catch (InternetException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
+                IsLoading = false;
 
-                    SetIDNumberEnability = true;
-                    IDNumber = String.Empty;
-                });
+                SetIDNumberEnability = true;
+                IDNumber = String.Empty;
             }
         }
         private async Task SendOTPToRegisterMobileNumber()
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                Enabled = false;
+                try
                 {
-                    IsLoading = true;
-                    Enabled = false;
-                });
-                await Task.Run(async () =>
+                    string idNumber = GetTinId();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
+                    string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                    string st1 = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
+                    string uri = st1 + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                    string type = ZATCAConstants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                    ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
+                    Metadata metadata = new Metadata();
+                    metadata.id = id;
+                    metadata.uri = uri;
+                    metadata.type = type;
+                    D d = new D();
+                    //d.__metadata =  metadata;
+                    d.Action = "";
+                    d.Tin = idNumber;
+                    d.Langu = UtilityManager.GetLanguageParameter();
+                    d.EmailId = "";
+                    d.SubType = "";
+                    d.Idnumber = "";
+                    d.RdBt = "P";
+                    d.TpType = "";
+                    d.MobileNo = "";
+                    // d.Refresh = "";
+                    d.Hyperlink = "";
+                    //d.Taxpayer = "";
+                    d.Name = "";
+                    d.Otp = "";
+                    d.NewPwd = "";
+                    d.CnfPwd = "";
+                    d.Application = "FPWD";
+                    d.Captcha = Captcha;
+                    d.Guid = GUID;
+                    forgotPasswordOTP.d = d;
+                    var OTPreq = new OTPRequest();
+
+                    OTPreq.TIN = idNumber;
+                    OTPreq.email = "";
+                    OTPreq.birthDate = "";
+                    OTPreq.language = UtilityManager.GetLanguageParameter();
+                    OTPreq.captchaCode = Captcha;
+                    OTPreq.GUID = GUID;
+
+                    var OTPResponseDATA = await WebServiceManager.SendOTP(OTPreq);
+
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    if (OTPResponseDATA?.result != null/* && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId)*/)
+                    {
+                        ContinueButtonEnability = true;
+                        IsResendOTPEnabled = false;
+                        StartOTPTimer();
+                        ResendOTPTextColor = (Color)Application.Current.Resources["DarkGrayTextColor"];
+                        IsAPICalledSuccessfully = true;
+
+                        OTPFirstDigit = string.Empty;
+                        OTPSecondDigit = string.Empty;
+                        OTPThirdDigit = string.Empty;
+                        OTPFourthDigit = string.Empty;
+
+                        StartPage = 2;
+
+                        DefaultCardLayoutVisibility = false;
+                        UserIDLayoutVisibility = false;
+                        VerificationCodeVisibility = true;
+                        MobileNumber = OTPResponseDATA.result.mobileNumber;
+                        OTPSentOnThisMobileNumber = AppResources.MobileNumber + " " + MobileNumber;
+                        Captcha = OTPResponseDATA.result.captchaCode;
+                    }
+                    else
+                    {
+                        IsLoading = false;
+                        MessageTxt = AppResources.ErrorCaptcha;
+                        IsShowMsgView = true;
+                    }
+
+                }
+                catch (GAZTErrorException ex)
                 {
-                    try
-                    {
-                        string idNumber = GetTinId();
-                        string lang = UtilityManager.GetLanguageParameter();
-                        string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
-                        string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
-                        string st1 = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
-                        string uri = st1 + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
-                        string type = ZATCAConstants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
-                        ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
-                        Metadata metadata = new Metadata();
-                        metadata.id = id;
-                        metadata.uri = uri;
-                        metadata.type = type;
-                        D d = new D();
-                        //d.__metadata =  metadata;
-                        d.Action = "";
-                        d.Tin = idNumber;
-                        d.Langu = UtilityManager.GetLanguageParameter();
-                        d.EmailId = "";
-                        d.SubType = "";
-                        d.Idnumber = "";
-                        d.RdBt = "P";
-                        d.TpType = "";
-                        d.MobileNo = "";
-                        // d.Refresh = "";
-                        d.Hyperlink = "";
-                        //d.Taxpayer = "";
-                        d.Name = "";
-                        d.Otp = "";
-                        d.NewPwd = "";
-                        d.CnfPwd = "";
-                        d.Application = "FPWD";
-                        d.Captcha = Captcha;
-                        d.Guid = GUID;
-                        forgotPasswordOTP.d = d;
-                        var OTPreq = new OTPRequest();
-
-                        OTPreq.TIN = idNumber;
-                        OTPreq.email = "";
-                        OTPreq.birthDate = "";
-                        OTPreq.language = UtilityManager.GetLanguageParameter();
-                        OTPreq.captchaCode = Captcha;
-                        OTPreq.GUID = GUID;
-
-                        var OTPResponseDATA = await WebServiceManager.SendOTP(OTPreq);
-                      
-                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        if (OTPResponseDATA?.result != null/* && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId)*/)
-                        {
-                            ContinueButtonEnability = true;
-                            IsResendOTPEnabled = false;
-                            StartOTPTimer();
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                ResendOTPTextColor = (Color)Application.Current.Resources["DarkGrayTextColor"];
-                            });
-                            IsAPICalledSuccessfully = true;
-
-                            OTPFirstDigit = string.Empty;
-                            OTPSecondDigit = string.Empty;
-                            OTPThirdDigit = string.Empty;
-                            OTPFourthDigit = string.Empty;
-
-                            StartPage = 2;
-
-                            DefaultCardLayoutVisibility = false;
-                            UserIDLayoutVisibility = false;
-                            VerificationCodeVisibility = true;
-                            MobileNumber = OTPResponseDATA.result.mobileNumber;
-                            OTPSentOnThisMobileNumber = AppResources.MobileNumber + " " + MobileNumber;
-                            Captcha = OTPResponseDATA.result.captchaCode;
-                        }
-
-                    }
-                    catch (GAZTErrorException ex)
-                    {
-                        IsAPICalledSuccessfully = false;
-                        SetIDNumberEnability = true;
-                        IDNumber = String.Empty;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    }
-                    catch (Exception)
-                    {
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                    IsAPICalledSuccessfully = false;
+                    SetIDNumberEnability = true;
+                    IDNumber = String.Empty;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                }
+                IsLoading = false;
             }
             catch (InternetException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
+                IsLoading = false;
 
-                    SetIDNumberEnability = true;
-                    IDNumber = String.Empty;
-                });
+                SetIDNumberEnability = true;
+                IDNumber = String.Empty;
             }
         }
         private async Task ValidateOTP()
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                if (!string.IsNullOrEmpty(EnteredOTP))
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    if (!string.IsNullOrEmpty(EnteredOTP))
+                    currentAttempts++;
+                    string idNumber = GetTinId();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
+                    string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                    string st1 = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
+                    string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
+                    string type = ZATCAConstants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                    ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
+                    Metadata metadata = new Metadata();
+                    metadata.id = id;
+                    metadata.uri = uri;
+                    metadata.type = type;
+                    D d = new D();
+                    if (currentAttempts < 3)
                     {
-                        currentAttempts++;
-                        string idNumber = GetTinId();
-                        string lang = UtilityManager.GetLanguageParameter();
-                        string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
-                        string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
-                        string st1 = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
-                        string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
-                        string type = ZATCAConstants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
-                        ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
-                        Metadata metadata = new Metadata();
-                        metadata.id = id;
-                        metadata.uri = uri;
-                        metadata.type = type;
-                        D d = new D();
-                        if (currentAttempts < 3)
-                        {
-                            d.Action = "01";
-                        }
-                        else
-                        {
-                            d.Action = "42";
-                        }
-                        d.Tin = idNumber;
-                        d.Langu = UtilityManager.GetLanguageParameter();
-                        d.CurrAttmps = currentAttempts;
-                        d.EmailId = "";
-                        d.TpType = "1";
-                        d.MobileNo = "";
-                        d.SubType = "ZS001";
-                        d.Idnumber = "";
-                        d.Otp = EnteredOTP;
-                        d.Minutes = 0;
-                        d.Name = "";
-                        d.Attempts = 0;
-                        d.Captcha = captcha;
-                        d.Guid = GUID;
-                        d.Application = "FPWD";
-                        // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
-                        d.NewPwd = "";
-                        d.CnfPwd = "";
-                        d.RdBt = "P";
-                        d.Hyperlink = "";
-                        forgotPassword.d = d;
-                        VAliadteOTP vAliadteOTP = new VAliadteOTP();
-                        vAliadteOTP.TIN = idNumber;
-                        vAliadteOTP.language = UtilityManager.GetLanguageParameter();
-                        vAliadteOTP.captchaCode = captcha;
-                        vAliadteOTP.GUID = GUID;
-                        vAliadteOTP.OTP = EnteredOTP;
-                        var response = await WebServiceManager.ValidateOTPNEW(vAliadteOTP);
-                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-                        if (response != null && response.result != null)
-                        {
-                            StartPage = StartPage + 1;
-                            VerificationCodeVisibility = false;
-                            PasswordLayoutVisibility = true;
-
-                            IsAPICalledSuccessfully = true;
-
-                            OTPLayoutVisibility = false;
-                            NewPasswordLayoutVisibility = true;
-                            MobileNumber = forgotPassword.d.MobileNo;
-                        }
-                        else if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("42"))
-                        {
-                            IsAPICalledSuccessfully = true;
-
-                            StartPage = StartPage + 1;
-
-                            VerificationCodeVisibility = false;
-                            PasswordLayoutVisibility = true;
-
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                OTPFirstDigit = string.Empty;
-                                OTPSecondDigit = string.Empty;
-                                OTPThirdDigit = string.Empty;
-                                OTPFourthDigit = string.Empty;
-                                string messagefordialogue = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;
-                                if (!App.IsArabic)
-                                {
-                                    messagefordialogue = messagefordialogue.Replace("{0}", "3");
-                                }
-                                else
-                                {
-                                    messagefordialogue = messagefordialogue.Replace("}0{", "3");
-                                }
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(messagefordialogue));
-
-                                _navigationService.GoBack();
-                            });
-                        }
-                        else
-                        {
-                            if (currentAttempts == 1)
-                            {
-                                //Invalied user name
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    OTPFirstDigit = string.Empty;
-                                    OTPSecondDigit = string.Empty;
-                                    OTPThirdDigit = string.Empty;
-                                    OTPFourthDigit = string.Empty;
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZWrongVerificationCode));
-                                });
-                            }
-                            else if (currentAttempts == 2)
-                            {
-                                // You have one remaining attaampt
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    OTPFirstDigit = string.Empty;
-                                    OTPSecondDigit = string.Empty;
-                                    OTPThirdDigit = string.Empty;
-                                    OTPFourthDigit = string.Empty;
-                                    String message = String.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                                });
-                            }
-                            else
-                            {
-                            }
-                            EnteredOTP = "";
-                        }
+                        d.Action = "01";
                     }
                     else
                     {
-                        IsAPICalledSuccessfully = false;
-
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.EnterVerificationCode));
-
-                        });
+                        d.Action = "42";
                     }
-                });
-                await Task.Run(() =>
+                    d.Tin = idNumber;
+                    d.Langu = UtilityManager.GetLanguageParameter();
+                    d.CurrAttmps = currentAttempts;
+                    d.EmailId = "";
+                    d.TpType = "1";
+                    d.MobileNo = "";
+                    d.SubType = "ZS001";
+                    d.Idnumber = "";
+                    d.Otp = EnteredOTP;
+                    d.Minutes = 0;
+                    d.Name = "";
+                    d.Attempts = 0;
+                    d.Captcha = captcha;
+                    d.Guid = GUID;
+                    d.Application = "FPWD";
+                    // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
+                    d.NewPwd = "";
+                    d.CnfPwd = "";
+                    d.RdBt = "P";
+                    d.Hyperlink = "";
+                    forgotPassword.d = d;
+                    VAliadteOTP vAliadteOTP = new VAliadteOTP();
+                    vAliadteOTP.TIN = idNumber;
+                    vAliadteOTP.language = UtilityManager.GetLanguageParameter();
+                    vAliadteOTP.captchaCode = captcha;
+                    vAliadteOTP.GUID = GUID;
+                    vAliadteOTP.OTP = EnteredOTP;
+                    var response = await WebServiceManager.ValidateOTPNEW(vAliadteOTP);
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                    if (response != null && response.result != null)
+                    {
+                        StartPage = StartPage + 1;
+                        VerificationCodeVisibility = false;
+                        PasswordLayoutVisibility = true;
+
+                        IsAPICalledSuccessfully = true;
+
+                        OTPLayoutVisibility = false;
+                        NewPasswordLayoutVisibility = true;
+                        MobileNumber = forgotPassword.d.MobileNo;
+                    }
+                    else if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("42"))
+                    {
+                        IsAPICalledSuccessfully = true;
+
+                        StartPage = StartPage + 1;
+
+                        VerificationCodeVisibility = false;
+                        PasswordLayoutVisibility = true;
+
+                        OTPFirstDigit = string.Empty;
+                        OTPSecondDigit = string.Empty;
+                        OTPThirdDigit = string.Empty;
+                        OTPFourthDigit = string.Empty;
+                        string messagefordialogue = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;
+                        if (!App.IsArabic)
+                        {
+                            messagefordialogue = messagefordialogue.Replace("{0}", "3");
+                        }
+                        else
+                        {
+                            messagefordialogue = messagefordialogue.Replace("}0{", "3");
+                        }
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(messagefordialogue));
+
+                        _navigationService.GoBack();
+                    }
+                    else
+                    {
+                        if (currentAttempts == 1)
+                        {
+                            //Invalied user name
+                            OTPFirstDigit = string.Empty;
+                            OTPSecondDigit = string.Empty;
+                            OTPThirdDigit = string.Empty;
+                            OTPFourthDigit = string.Empty;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZWrongVerificationCode));
+                        }
+                        else if (currentAttempts == 2)
+                        {
+                            // You have one remaining attaampt
+                            OTPFirstDigit = string.Empty;
+                            OTPSecondDigit = string.Empty;
+                            OTPThirdDigit = string.Empty;
+                            OTPFourthDigit = string.Empty;
+                            String message = String.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                        }
+                        else
+                        {
+                        }
+                        EnteredOTP = "";
+                    }
+                }
+                else
                 {
-                    IsLoading = false;
-                });
+                    IsAPICalledSuccessfully = false;
+
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.EnterVerificationCode));
+                }
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (InternetException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
         }
         public async Task SendIDNumberToUsernameEmail()
@@ -2263,71 +2215,51 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             try
             {
                 string idNumber = GetTinId();
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    string lang = UtilityManager.GetLanguageParameter();
 
-                    ForgotPasswordOTP1 forgotPassword = new ForgotPasswordOTP1();
-                    ForgotPasswordOTP forgotPassword1 = new ForgotPasswordOTP();
-                    forgotPassword.Action = "";
-                    forgotPassword.Langu = UtilityManager.GetLanguageParameter();
-                    forgotPassword.TpType = "1";
-                    forgotPassword.MobileNo = "";
-                    forgotPassword.SubType = "ZS0001";
-                    forgotPassword.Idnumber = idNumber;
-                    forgotPassword.Otp = EnteredOTP;
-                    forgotPassword.Captcha = Captcha;
-                    forgotPassword.Guid = GUID;
-                    forgotPassword.RdBt = "U";
-                    forgotPassword.Application = "FUSR";
-                    forgotPassword1 = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
-                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    if (forgotPassword1 != null && forgotPassword1.d != null)
-                    {
+                IsLoading = true;
+                string lang = UtilityManager.GetLanguageParameter();
 
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            if (forgotPassword1.d != null)
-                            {
-                                captcha = forgotPassword1.d.Captcha;
-                            }
-                            await SendUserNameToRegidteredEmail();
-                      });
-                    }
-                    else
-                    {
-                        IsAPICalledSuccessfully = false;
-                        IDNumber = string.Empty;
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDEntervaliduserid));
-                        });
-                    }
-                });
-                await Task.Run(() =>
+                ForgotPasswordOTP1 forgotPassword = new ForgotPasswordOTP1();
+                ForgotPasswordOTP forgotPassword1 = new ForgotPasswordOTP();
+                forgotPassword.Action = "";
+                forgotPassword.Langu = UtilityManager.GetLanguageParameter();
+                forgotPassword.TpType = "1";
+                forgotPassword.MobileNo = "";
+                forgotPassword.SubType = "ZS0001";
+                forgotPassword.Idnumber = idNumber;
+                forgotPassword.Otp = EnteredOTP;
+                forgotPassword.Captcha = Captcha;
+                forgotPassword.Guid = GUID;
+                forgotPassword.RdBt = "U";
+                forgotPassword.Application = "FUSR";
+                forgotPassword1 = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                if (forgotPassword1 != null && forgotPassword1.d != null)
                 {
-                    IsLoading = false;
-                });
+
+                    if (forgotPassword1.d != null)
+                    {
+                        captcha = forgotPassword1.d.Captcha;
+                    }
+                    await SendUserNameToRegidteredEmail();
+                }
+                else
+                {
+                    IsAPICalledSuccessfully = false;
+                    IDNumber = string.Empty;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDEntervaliduserid));
+                }
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (InternetException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
         }
         private async Task SendUserNameToRegidteredEmail()
@@ -2335,153 +2267,108 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             try
             {
                 string idNumber = GetTinId();
-                await Task.Run(() =>
+                IsLoading = true;
+                ForgotPasswordOTP1 forgotPassword = new ForgotPasswordOTP1();
+                ForgotPasswordOTP forgotPassword1 = new ForgotPasswordOTP();
+
+                D d = new D();
+                forgotPassword.Action = "40";
+                forgotPassword.Langu = UtilityManager.GetLanguageParameter();
+                forgotPassword.MobileNo = "";
+                forgotPassword.SubType = "ZS0001";
+                forgotPassword.Idnumber = idNumber;
+                forgotPassword.Otp = EnteredOTP;
+                forgotPassword.Captcha = captcha;
+                forgotPassword.Guid = GUID;
+                forgotPassword.RdBt = "U";
+                forgotPassword1 = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                if (forgotPassword1?.d != null)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {                 
-                    ForgotPasswordOTP1 forgotPassword = new ForgotPasswordOTP1();
-                    ForgotPasswordOTP forgotPassword1 = new ForgotPasswordOTP();
-                  
-                    D d = new D();
-                    forgotPassword.Action = "40";
-                    forgotPassword.Langu = UtilityManager.GetLanguageParameter();
-                    forgotPassword.MobileNo = "";
-                    forgotPassword.SubType = "ZS0001";
-                    forgotPassword.Idnumber = idNumber;
-                    forgotPassword.Otp = EnteredOTP;
-                    forgotPassword.Captcha = captcha;
-                    forgotPassword.Guid = GUID;
-                    forgotPassword.RdBt = "U";
-                    forgotPassword1 = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
-                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    if (forgotPassword1?.d != null)
+
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    try
                     {
-                      
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            var _navigation = Application.Current.MainPage.Navigation;
-                            try
-                            {
-                                MainThread.BeginInvokeOnMainThread(() =>
-                                {
-                                    _navigation.NavigationStack.ToList().Clear();
-                                    _navigation.PopToRootAsync();
-                                });
-                                await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverUsernamePageView());
-                            }
-                            catch (Exception ex)
-                            {
-                                
-                                
-                            }
-                        });
+                        _navigation.NavigationStack.ToList().Clear();
+                        await _navigation.PopToRootAsync();
+                        await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverUsernamePageView());
                     }
-                    else
+                    catch (Exception)
                     {
-                        IsAPICalledSuccessfully = false;
-                        IDNumber = string.Empty;
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDEntervaliduserid));
-                        });
+
+
                     }
-                });
-                await Task.Run(() =>
+                }
+                else
                 {
-                    IsLoading = false;
-                });
+                    IsAPICalledSuccessfully = false;
+                    IDNumber = string.Empty;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDEntervaliduserid));
+                }
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (InternetException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
         }
         private async Task ChangePassword()
         {
             try
             {
-                await Task.Run(async () =>
+                currentAttempts = 0;
+
+                bool isNewPasswordValid = UtilityManager.IsPasswordValid(NewPassword);
+                if (isNewPasswordValid)
                 {
-                    currentAttempts = 0;
+                    IsLoading = true;
 
-                    bool isNewPasswordValid = UtilityManager.IsPasswordValid(NewPassword);
-                    if (isNewPasswordValid)
+
+
+                    PasswordChangeRequest passwordChangeRequest = new PasswordChangeRequest();
+                    passwordChangeRequest.TIN = IDNumber;
+                    passwordChangeRequest.GUID = GUID;
+                    passwordChangeRequest.language = UtilityManager.GetLanguageParameter(); ;
+                    passwordChangeRequest.newPassword = NewPassword;
+                    passwordChangeRequest.TIN = IDNumber;
+
+
+
+
+                    if (NewPassword.Equals(ConfirmPassword))
                     {
-                        await Task.Run(() =>
+                        var dataPassoerd = await WebServiceManager.ChangePassword(passwordChangeRequest);
+                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        if (dataPassoerd != null && dataPassoerd.result != null)
                         {
-                            IsLoading = true;
-                        });
+                            StartPage = StartPage + 1;
+                            NewPasswordLayoutVisibility = false;
+                            OTPLayoutVisibility = false;
+                            await navigateLogin();
+                            return;
 
-
-                       
-                        PasswordChangeRequest passwordChangeRequest = new PasswordChangeRequest();
-                        passwordChangeRequest.TIN = IDNumber;
-                        passwordChangeRequest.GUID = GUID;
-                        passwordChangeRequest.language = UtilityManager.GetLanguageParameter(); ;
-                        passwordChangeRequest.newPassword = NewPassword;
-                        passwordChangeRequest.TIN = IDNumber;
-
-
-
-
-                        if (NewPassword.Equals(ConfirmPassword))
-                        {
-                            var dataPassoerd = await WebServiceManager.ChangePassword(passwordChangeRequest);
-                            PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                            if (dataPassoerd != null && dataPassoerd.result != null)
-                            {
-                                StartPage = StartPage + 1;
-                                NewPasswordLayoutVisibility = false;
-                                OTPLayoutVisibility = false;
-                                navigateLogin();
-                                return;
-
-                            }
-                            else
-                            {
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
-                                });
-                            }
                         }
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Boththepasswordfieldsshouldmatch));
-
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
                         }
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PasswordGuidelineText));
-                        });
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Boththepasswordfieldsshouldmatch));
                     }
-                });
-                await Task.Run(() =>
+                }
+                else
                 {
-                    IsLoading = false;
-                });
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PasswordGuidelineText));
+                }
+                IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
@@ -2491,54 +2378,43 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (InternetException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
         }
 
-        private void navigateLogin()
+        private async Task navigateLogin()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
+            try
             {
-                try
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.YourPasswordhasbeenChangedsuccessfully));
-                    var _navigation = Application.Current.MainPage.Navigation;
-                   
-                   await _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                    _navigation.NavigationStack.ToList().Clear();
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.YourPasswordhasbeenChangedsuccessfully));
+                var _navigation = Application.Current.MainPage.Navigation;
 
-                }
-                catch (Exception e)
-                {
+                await _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                _navigation.NavigationStack.ToList().Clear();
 
-                }
+            }
+            catch (Exception)
+            {
 
-
-            });
+            }
         }
 
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+                var _navigation = Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
                 {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
+                    if (item.GetType().Name == App.SFLoginPageView)
                     {
-                        if (item.GetType().Name == App.SFLoginPageView)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
+                        _navigation.RemovePage(item);
+                        break;
                     }
-                    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                    _navigation.NavigationStack.ToList().Clear();
+                }
+                await _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                _navigation.NavigationStack.ToList().Clear();
 
-                });
             }
         }
         public async Task SetTinsListLayoutVisibility(bool IsEmailUserName)
@@ -2552,10 +2428,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     try
                     {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = true;
-                        });
+                        IsLoading = true;
                         SelectedTinId = null;
                         Tins = await WebServiceManager.GAZTGetAllTins(Email);
                         TINs = Tins;
@@ -2577,7 +2450,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         IsLoading = false;
                     }
-                    catch (Exception )
+                    catch (Exception)
                     {
                         IsAPICalledSuccessfully = false;
 
@@ -2660,11 +2533,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     if (TotalSec <= 0)
                     {
                         OTPValidDuration = " 0:00";
-                        MainThread.BeginInvokeOnMainThread(() =>
-                        {
-                            ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
-                            VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
-                        });
+                        ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+                        VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
 
 
                         IsResendOTPEnabled = true;
@@ -2676,10 +2546,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     TotalSec = TotalSec - 1;
                     numberOfSeconds = TotalSec;
                     TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
-                    });
+                    OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
                     return true;
                 }
             });
@@ -2697,20 +2564,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             return IsMandatoryFieldEntered;
         }
-        private void ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
+        private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
         {
             if (!IsMandatoryFieldEntered)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsVisibleTinIds = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZMandatorydatanotentered));
 
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-                });
+                IsVisibleTinIds = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZMandatorydatanotentered));
+
+                IsLoading = false;
             }
         }
         public bool ValidateFirstStep()
@@ -2796,10 +2658,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 ContinueButtonEnability = false;
                 IsResendOTPEnabled = true;
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    ResendOTPTextColor = (Color)Application.Current.Resources["Primary"];
-                });
+                ResendOTPTextColor = (Color)Application.Current.Resources["Primary"];
                 otpTimer.Stop();
             }
         }

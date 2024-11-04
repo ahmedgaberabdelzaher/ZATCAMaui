@@ -101,7 +101,9 @@
 
                 <Grid>
 
-                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ScrollView HorizontalOptions="FillAndExpand"
+                                VerticalScrollBarVisibility="Never"
+                                VerticalOptions="FillAndExpand">
 
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 

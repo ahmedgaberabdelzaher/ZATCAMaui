@@ -6898,11 +6898,11 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
     </data>
     <data name="VFCInstructions" xml:space="preserve">
         <value>1. Check eligibility and review potential consequences of request
-− For taxpayers &lt;40M SAR annual taxable revenues requesting monthly VAT Tax Period:
+− For taxpayers 40M SAR annual taxable revenues requesting monthly VAT Tax Period:
 Taxpayers are eligible without providing further evidence; reverting to a quarterly Tax Period is again possible after having filed 2 years with a monthly Tax Period with the last 12 months revenues being below 40 million SAR
-− For taxpayers &lt;40M SAR annual taxable revenues requesting quarterly VAT Tax Period:
+− For taxpayers 40M SAR annual taxable revenues requesting quarterly VAT Tax Period:
 Taxpayer is required to provide evidence that he has been filing for 2 years with a monthly Tax Period and that revenues during last 12 months were below 40 million SAR
-− Exception: quarterly VAT tax period for taxpayers &gt;40M SAR annual taxable revenues: Might be granted by ZATCA if taxpayer provides evidence that average Days Sales Outstanding for the previous 12 months have been significantly greater than VAT tax period and are hence severely affecting the taxpayer’s cash flow.
+− Exception: quarterly VAT tax period for taxpayers 40M SAR annual taxable revenues: Might be granted by ZATCA if taxpayer provides evidence that average Days Sales Outstanding for the previous 12 months have been significantly greater than VAT tax period and are hence severely affecting the taxpayer’s cash flow.
 2. Fill out the request form and submit
 − Upload required documentation if taxpayer wants to change to quarterly filing</value>
     </data>
@@ -11763,4 +11763,7 @@ the credit balance of the current period will be carried forward, you can reques
   <data name="VerifyAdjustmentAmount" xml:space="preserve">
      <value>Verify adjustment amount</value> 
   </data>
+  <data name="ErrorCaptcha" xml:space="preserve">
+        <value>Invalid captcha code</value>
+    </data>
 </root>

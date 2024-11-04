@@ -21,7 +21,8 @@
                 HorizontalOptions="Center"
                 Style="{StaticResource SectionTitleBlack}"
                 Text="Instructions and Conditions" />
-            <ScrollView Grid.Row="1">
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="5" Spacing="15">
                     <Border
                         Padding="15"

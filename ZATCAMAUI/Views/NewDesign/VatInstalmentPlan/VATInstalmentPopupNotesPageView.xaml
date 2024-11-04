@@ -112,7 +112,6 @@
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
                                     LineHeight="1"
-                                    Style="{StaticResource TCBodyLabelGrey}"
                                     Text="{Binding VATRevokeMessage}" />
                             </Grid>
                         </Border>
