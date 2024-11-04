@@ -71,6 +71,7 @@
 
                             <Label
                                 FontFamily="{StaticResource SomarRegular}"
+                                 Margin="0,10,0,0"
                                 FontSize="11"
                                 HorizontalOptions="StartAndExpand"
                                 TextColor="{StaticResource NeutralGreay}"
@@ -1096,6 +1097,7 @@
                         <commonView:PageIndicatorView
                                 Completed="{Binding MarkComplete}"
                                 DotSize="16"
+                            HorizontalOptions="EndAndExpand"
                                 MaxNum="{Binding MaxIndex}"
                                 MinNum="{Binding CurrentIndex}"
                                 VerticalOptions="Start" />
