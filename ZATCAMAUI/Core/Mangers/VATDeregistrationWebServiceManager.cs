@@ -847,11 +847,16 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         else if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
                         {
-                            VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["result"].ToString();
-                            _newRequestSummaryDataResponse = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
-                            if (_newRequestSummaryDataResponse == null)
+                            var result = JObject.Parse(VatRefundsListResultModelSetResponseJson);
+                            if (result["result"] != null)
                             {
-                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["result"].ToString();
+                                _newRequestSummaryDataResponse = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
+                            }
+                            else
+                            {
+                                var error_message = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
+                                throw new GAZTErrorException(error_message);
                             }
                         }
                         else
@@ -865,10 +870,12 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTUnlockAccountException(ex.Message);
                 }
-
+                catch (GAZTErrorException ex)
+                {
+                    throw new GAZTErrorException(ex.Message);
+                }
                 catch (Exception)
                 {
-
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }
             }

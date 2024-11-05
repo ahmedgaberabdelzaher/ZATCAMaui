@@ -5280,7 +5280,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
         <value>Transferred</value>
     </data>
     <data name="VATRefundsStatusDraft" xml:space="preserve">
-        <value>DRAFT</value>
+        <value>saved as draft</value>
     </data>
     <data name="VATRefundsStatusInProcess" xml:space="preserve">
         <value> IN PROCESS </value>
@@ -11765,5 +11765,5 @@ the credit balance of the current period will be carried forward, you can reques
   </data>
   <data name="ErrorCaptcha" xml:space="preserve">
         <value>Invalid captcha code</value>
-    </data>
+    </data> 
 </root>

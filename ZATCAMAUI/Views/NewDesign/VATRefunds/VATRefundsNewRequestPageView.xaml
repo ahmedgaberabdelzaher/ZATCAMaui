@@ -90,7 +90,7 @@
                             WidthRequest="5" />
                     </StackLayout>
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnMoreClicked}" />
+                        <TapGestureRecognizer Command="{Binding OnMoreClicked}" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
 
@@ -269,7 +269,7 @@
                                                 Style="{StaticResource ValueLabelPrimary}"
                                                 Text="{x:Static ResourceManager:AppResources.VATRefundsAddAccount}" />
                                             <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="NewAccount_Clicked" />
+                                                <TapGestureRecognizer Command="{Binding NewAccountCommand}" />
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
                                     </Border>
@@ -528,6 +528,7 @@
                                                         IsChecked="{Binding IsItemSelected}"
                                                         StateChanged="SfCheckBox_StateChanged"/>
 
+
                                                     <StackLayout
                                                         Grid.Row="1"
                                                         Grid.Column="0" >
@@ -633,7 +634,7 @@
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     Margin="0,0,0,16"
-                                    Clicked="ContinueButton_Tapped"
+                                    Command="{Binding ContinueCommand}"
                                     HeightRequest="48"
                                     Style="{StaticResource PrimaryButtonStyle}"
                                     Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" />

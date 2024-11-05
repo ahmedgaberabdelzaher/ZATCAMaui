@@ -5204,7 +5204,7 @@
         <value>تم التحويل</value>
     </data>
     <data name="VATRefundsStatusDraft" xml:space="preserve">
-        <value>مسودة</value>
+        <value>محفوظ كمسودة</value>
     </data>
     <data name="VATRefundAmounts" xml:space="preserve">
         <value>مبلغ الاسترداد</value>

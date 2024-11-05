@@ -306,8 +306,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_selectedDropdownItem == value) return;
-
                 _selectedDropdownItem = value;
                 if (_selectedDropdownItem != null)
                 {
@@ -316,8 +314,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         SetAllCorrespondancedata();
                     }
-                    //FilterOnBasisOfTaxType();
-
                 }
 
                 OnPropertyChanged("SelectedDropdownItem");
@@ -634,9 +630,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     ListZAKATCorrespondance = ZakatCo;
                     ListAllCorrespondance = ListAllCorrespondance.Union(ListZAKATCorrespondance).ToList();
                 }
-                else
-                {
-                }
                 PopToRootPage();
                 // Assigning data in the list
                 if (VATCorres != null && VATCorres.d != null && VATCorres.d.results != null && VATCorres.d.results.Count > 0)
@@ -751,9 +744,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     ListVATCorrespondance = VATCo;
                     ListAllCorrespondance = ListAllCorrespondance.Union(ListVATCorrespondance).ToList();
-                }
-                else
-                {
                 }
                 // Assigning data in the list
                 if (ETCorres != null && ETCorres.d != null && ETCorres.d.results != null && ETCorres.d.results.Count > 0)
@@ -872,10 +862,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     ListETCorrespondance = ETCo;
                     ListAllCorrespondance = ListAllCorrespondance.Union(ListETCorrespondance).ToList();
-                }
-                else
-                {
-
                 }
                 // Assigning data in the list
                 if (CollCorres != null && CollCorres.d != null && CollCorres.d.results != null && CollCorres.d.results.Count > 0)
@@ -1162,7 +1148,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
 
             Correspondenceobj.Add(CorresModel);
-          await  _navigationService.NavigateTo(App.TaxpayerCorrespondanceDetailPageView, Correspondenceobj);
+            await  _navigationService.NavigateTo(App.TaxpayerCorrespondanceDetailPageView, Correspondenceobj);
 
 
             IsLoading = false;
