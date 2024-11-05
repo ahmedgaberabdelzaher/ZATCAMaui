@@ -53,17 +53,13 @@
         public static string CustomSTGBaseUrl = "http://10.112.34.38:8024/";
         public static string VatCustomSTGURL = "https://vatapislb.zatca.gov.sa/api/";
         public static string VatCustomProdURL = "http://172.25.39.60:8443/api/";
-        public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
-        /// <summary>
-        /// Old one
-      //   public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/v1/api/customs/";
-        /// </summary>
-       public static string DATAPowerProdCustomBaseUrl = "https://api.zatca.gov.sa/integration/third-party/v1/api/customs/";
+        
 
-
+        public static string DATAPowerProdCustomBaseUrl = "https://api.zatca.gov.sa/integration/third-party/v1/api/customs/";
         public static string DATAPowerSTGZATCABaseUrl = "https://test-api.zatca.gov.sa/test/third-party/";
         public static string DATAPowerProdCZATCABaseUrl = "https://api.zatca.gov.sa/integration/third-party/";
-        public static string DATAPowerQAZATCABaseUrl = "https://test-api.zatca.gov.sa/qa/third-party/";////https://test-api.zatca.gov.sa/qa/third-party/v1/customs/shipment-tracking
+        public static string DATAPowerQAZATCABaseUrl = "https://test-api.zatca.gov.sa/qa/third-party/";
+        public static string DATAPowerSTGCustomBaseUrl = $"{DATAPowerQAZATCABaseUrl}v1/api/customs/";
 
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
         public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
@@ -86,7 +82,7 @@
 
 
 
-        public static string CustomBaseUrl=CustomSTGBaseUrl;
+        public static string CustomBaseUrl = CustomSTGBaseUrl;
         public static string IAMLoginBaseUrl;
         public static string ZATCABaseURL;
         public static string CustomPaymentBaseUrl;
@@ -104,8 +100,8 @@
         public static string ZATCAPaymentWebViewProdBaseURL = "https://eservices.zatca.gov.sa";
         public static string ZATCAPaymentWebViewBaseURL;
 
-        public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
-        public static string CurrentEnvironment="STG";
+        public static string FasahApiKey = "Av549-e756Z-4c29-a16a-287de9c04755";
+        public static string CurrentEnvironment = "STG";
         public static string CheckTarget_Environment(string environment = "STG")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
@@ -117,7 +113,7 @@
         }
         public static void GetBaseURL(string environment = "STG")
         {
-           // Target_Environment = CheckTarget_Environment(environment);
+            // Target_Environment = CheckTarget_Environment(environment);
             switch (Target_Environment)
             {
                 case "STG":
@@ -381,14 +377,12 @@
         {
             if (App.IsArabic)
             {
-                //  return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/ar/edeclaration/Pages/EDeclarationPages/ViewEDeclarationPage.aspx?refCode=";
                 return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/ar/app-view/Pages/ViewEDeclarationPage.aspx?";
             }
             else
             {
                 return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/en/app-view/Pages/ViewEDeclarationPage.aspx?";
 
-                //   return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/en/edeclaration/Pages/EDeclarationPages/ViewEDeclarationPage.aspx?";
             }
         }
         public static string GetCustomsIssueUrl()

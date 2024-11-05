@@ -6,12 +6,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    x:Name="page"
     NavigationPage.HasNavigationBar="False">
 
 
@@ -392,7 +392,7 @@
                                 VerticalOptions="Center">
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
+                                        <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>

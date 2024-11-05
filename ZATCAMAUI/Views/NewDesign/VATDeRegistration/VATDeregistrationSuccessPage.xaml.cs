@@ -45,10 +45,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                 {
                     var text = await Clipboard.GetTextAsync();
                     var displayText = AppResources.VATRSAppNumber + " " + text;
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
-                    });
+                    await viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
                 }
             }
 
