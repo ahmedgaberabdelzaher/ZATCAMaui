@@ -4040,10 +4040,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                         if (!isPayNowTapped)
                         {
                             isPayNowTapped = true;
-                            Border payNowCard = sender as Border;
-                            OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
+                            OverduePaymentAndUnSubmittedReturn payNowCard = sender as OverduePaymentAndUnSubmittedReturn;
 
-                            await verifyPaymentAndShowBillsPopup(BModel);
+                            await verifyPaymentAndShowBillsPopup(payNowCard);
                         }
 
                     }

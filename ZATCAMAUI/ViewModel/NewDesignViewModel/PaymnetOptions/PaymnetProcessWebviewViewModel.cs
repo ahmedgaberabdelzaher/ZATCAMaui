@@ -13,7 +13,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
 
     public class PaymnetProcessWebviewViewModel : BaseViewModel
     {
-        public ICommand GoBackClick { get; set; }
+        public override ICommand BackCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+
+                    await CancelPaymentService();
+
+                });
+            }
+        }
+
         public int PaymentType;
 
 
@@ -37,12 +49,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
 
         public PaymnetProcessWebviewViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-
-            GoBackClick = new Command(async () =>
-            {
-                CancelPaymentService();
-            });
-
         }
 
 

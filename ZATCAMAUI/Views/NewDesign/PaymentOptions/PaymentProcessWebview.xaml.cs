@@ -30,7 +30,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             isPaymentProcessed = false;
             webView = new WebView();
             viewModel.IsLoading = true;
@@ -40,8 +39,9 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             webView.Navigated += OnNavigated;
             webView.Navigating += OnNavigating;
 
+
             WebviewGrid.Add(webView, 0, 0);
-            WebviewGrid.Insert(WebviewGrid.Count, webView);
+
         }
 
         protected override void OnDisappearing()

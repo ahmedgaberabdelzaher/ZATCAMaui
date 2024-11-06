@@ -491,8 +491,8 @@
                                                                         </StackLayout>
 
                                                                         <Border.GestureRecognizers>
-                                                                            <TapGestureRecognizer Command="{Binding BillsPayNowCommand}"
-                                                                                                  CommandParameter="{Binding Source={x:Reference border}}"/>
+                                                                            <TapGestureRecognizer Command="{Binding Source={x:Reference page}, Path=BindingContext.BillsPayNowCommand}"
+                                                                                                  CommandParameter="{Binding .}"/>
                                                                         </Border.GestureRecognizers>
                                                                     </Border>
 
