@@ -15,7 +15,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public RefundAccountPopupPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            
+
         }
 
         #region Properties
@@ -123,7 +123,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_selectedIBANType != null)
                 {
                     if (!VATDeclarationDetails.data.Cr1645GoliveFg.Equals("X"))
-                    { 
+                    {
                         if (VATDeclarationDetails.data.PendingIbanMsg != "")
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
@@ -147,8 +147,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                                 //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
 
-                             
-                                
+
+
 
                             });
                             return;
@@ -158,7 +158,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             SetIBANIdNumber();
                             TxtSelectedIBANType = _selectedIBANType.Text;
                         }
-                        }
+                    }
                 }
                 else
                 {
@@ -258,7 +258,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             set
             {
-               if (_txtSelectedIBANType == value) return;
+                if (_txtSelectedIBANType == value) return;
 
                 _txtSelectedIBANType = value;
                 OnPropertyChanged("TxtSelectedIBANType");
@@ -425,7 +425,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     Text = AppResources.TinDeregistrationGCCID
                 });
             }
-           
+
             else if (idType == "BUP002")
             {
                 IBANTypesList.Add(new IBANType
@@ -447,7 +447,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     Type = ""
                 });
             }
-            catch(Exception e)
+            catch (Exception e)
             {
 
             }
@@ -836,7 +836,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 TxtSelectedIBANIDNumber = string.Empty;
                 List<IBANIDNumber> iBANIDNumbersResponse = await WebServiceManager.GAZTGetIBANIdNumber(SelectedIBANType.key);
-                PopToRootPage();
+                await PopToRootPage();
                 if (iBANIDNumbersResponse != null || iBANIDNumbersResponse.Count() != 0)
                 {
                     IBANIDNumberList = new List<IBANIDNumber>();
@@ -845,10 +845,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
 
@@ -866,7 +863,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
 
                         VATDeclaration _vATDeclarationForGet = await WebServiceManager.GAZTGetVATReturns(App.Fbguid, VATDeclarationDetails.data.Fbnumz, App.EUser, "");
-                        PopToRootPage();
+                        await PopToRootPage();
                         if (_vATDeclarationForGet != null && _vATDeclarationForGet.data != null)
                         {
                             if (!string.IsNullOrEmpty(_vATDeclarationForGet.data.Fbnum))
@@ -875,33 +872,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
-                                    headerAmountInfo.IsLinkAvailable = false;
-                                    headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
-
-                                    headerWithInfos.Add(headerAmountInfo);
-
-
-                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-                                    _navigationService.GoBack();
-                                });
-                            }
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
@@ -918,9 +888,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                                 await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-
                                 _navigationService.GoBack();
-                            });
+                            }
+                        }
+                        else
+                        {
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
+
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+                            _navigationService.GoBack();
                         }
                     }
 
@@ -943,7 +933,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         await MopupService.Instance.PopAsync();
                         MessagingCenter.Send<object, string>(this, "RefundClicked", "Yes");
-                        _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationDetails);
+                        await _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationDetails);
                         // _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
                     else
@@ -951,54 +941,47 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         IsLoading = false;
                         if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
-                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
-                                headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
-
-                                headerWithInfos.Add(headerAmountInfo);
+                            headerWithInfos.Add(headerAmountInfo);
 
 
-                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
-                                // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
+                            // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            _navigationService.GoBack();
                         }
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
-                                headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
 
-                                headerWithInfos.Add(headerAmountInfo);
+                            headerWithInfos.Add(headerAmountInfo);
 
 
-                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-                                //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
-                                //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
-                                WebServiceManager.ErrorMessageForVAT = string.Empty;
-                            });
+                            //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
+                            //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                            WebServiceManager.ErrorMessageForVAT = string.Empty;
                         }
                     }
                 }
@@ -1038,31 +1021,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
 
 
-                        //List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                        //HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                        //NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
-                        //headerAmountInfo.IsLinkAvailable = false;
-
-                        //StringBuilder Masseges = new StringBuilder();
-                        //Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
-                        //Masseges.Append(Environment.NewLine);
-                        //Masseges.Append(Environment.NewLine);
-                        //Masseges.Append(Environment.NewLine);
-                        //Masseges.Append(AppResources.CreditReturnMsg);
-                        //headerAmountInfo.IsLinkAvailable = false;
-                        //headerAmountInfo.IsRed = "#e84941";
-                        //headerAmountInfo.IsBold = "Bold";
-                        //headerAmountInfo.Message = Masseges.ToString();
-
-                        //headerWithInfos.Add(headerAmountInfo);
-
-
-                        //newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                        //newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                        //newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                        //MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                         result = true;
 
@@ -1072,14 +1030,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         if (resNew.data.SubmitFg == "" || resNew.data.SubmitFg == string.Empty)
                         {
                             MessagingCenter.Send<object, string>(this, "Refundsubmitted", "Refundsubmitted");
-                           
+
                             if (App.ICRStatus == "E0045" || App.ICRStatus == "E0056")
                             {
                                 await Task.Delay(5000);
                             }
                             await MopupService.Instance.PopAsync();
                             MessagingCenter.Send<object, string>(this, "RefundClicked", "Yes");
-                            _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationDetails);
+                            await _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationDetails);
                         }
                         else
                         {
@@ -1093,55 +1051,48 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     IsLoading = false;
                     if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
-                            headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
-                            headerWithInfos.Add(headerAmountInfo);
+                        headerWithInfos.Add(headerAmountInfo);
 
 
-                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-                            _navigationService.GoBack();
-                        });
+                        _navigationService.GoBack();
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
-                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
 
-                            headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
-
-                            headerWithInfos.Add(headerAmountInfo);
+                        headerWithInfos.Add(headerAmountInfo);
 
 
-                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-                            WebServiceManager.ErrorMessageForVAT = string.Empty;
-                        });
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        WebServiceManager.ErrorMessageForVAT = string.Empty;
                     }
                 }
                 return result;
             }
             catch (Exception)
-            { 
+            {
 
                 return false;
             }
@@ -1161,7 +1112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     VATDeclarationDetails.data.ATTACHSet = ATTACHSetsList;
                 }
                 VATDeclaration response = await WebServiceManager.SaveVATDeclarationData(VATDeclarationDetails);
-                PopToRootPage();
+                await PopToRootPage();
                 if (response != null && response.data != null && !string.IsNullOrEmpty(response.data.Fbnum))
                 {
                     try
@@ -1170,22 +1121,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             VATDeclarationDetails = response;
                             ResponseVATDeclarationD = VATDeclarationDetails.data;
-                            if (VATDeclarationDetails.data.VATPERITEMSet != null)
-                            {
-                                if (VATDeclarationDetails.data.GoliveFg == "X")
-                                {
-                                    if (VATDeclarationDetails.data.Yesno == "X")
-                                    {
-                                        //VATNewModelFor15Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
-                                        //VATNewModelFor5Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "003").FirstOrDefault();
-                                    }
-                                    else
-                                    {
-                                        // VATNewModelFor15Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
-                                    }
-                                }
-                            }
-                            //  SetCommasforAll();
+
                             if (DummyATTACHSetsList != null && DummyATTACHSetsList.Count() != 0)
                             {
                                 VATDeclarationDetails.data.ATTACHSet = DummyATTACHSetsList;

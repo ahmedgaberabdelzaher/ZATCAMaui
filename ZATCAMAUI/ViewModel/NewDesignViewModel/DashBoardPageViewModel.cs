@@ -491,7 +491,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             {
                 DashBoardUpdateViewResponseModel dashBoardUpdateViewResponse = await WebServiceManager.getTaxPayerActivityUpdateStatus();
 
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+               await  PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (dashBoardUpdateViewResponse != null && dashBoardUpdateViewResponse.d != null && dashBoardUpdateViewResponse.d.results != null
                 && dashBoardUpdateViewResponse.d.results.Count > 0 && dashBoardUpdateViewResponse.d.results[0] != null
                 && !string.IsNullOrEmpty(dashBoardUpdateViewResponse.d.results[0].Msg))
@@ -2771,7 +2771,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                         }
                         else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
                         {
-                            PopToRootPage();
+                          await  PopToRootPage();
                         }
                     }
 
@@ -2780,7 +2780,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             catch (GAZTSessionExpiredException)
             {
                 await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                PopToRootPage();
+              await  PopToRootPage();
             }
             catch (Exception)
             {
@@ -2966,9 +2966,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 {
                     temp2.Add(ee);
                 }
-                MainThread.BeginInvokeOnMainThread(() => Returns = temp2);
+                Returns = temp2;
             }
-            catch (GAZTErrorException ex)
+            catch (GAZTErrorException )
             {
 
 
@@ -3332,10 +3332,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                    PopToRootPage();
+                  await  PopToRootPage();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
             }

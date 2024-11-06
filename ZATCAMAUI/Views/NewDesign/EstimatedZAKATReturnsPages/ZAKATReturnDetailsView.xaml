@@ -61,7 +61,7 @@
                     </Image>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnBackButtonClicked}" />
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
 
                 </StackLayout>

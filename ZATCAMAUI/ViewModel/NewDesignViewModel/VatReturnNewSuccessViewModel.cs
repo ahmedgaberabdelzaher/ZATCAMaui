@@ -182,21 +182,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public VatReturnNewSuccessViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnDownloadFormClicked = new Command( () =>
+            OnDownloadFormClicked = new Command( async () =>
             {
                 string Url = string.Empty;
-                // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
-                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
 
                 Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnum + "',Utype='')/$value?saml2=enabled";
-                ShowPdf(Url);
+               await ShowPdf(Url);
             });
-            OnAcknowlwdgementClicked = new Command( () =>
+            OnAcknowlwdgementClicked = new Command( async () =>
             {
                 string Url = string.Empty;
-                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
                 Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnum + "')/$value?saml2=enabled";
-                ShowPdf(Url);
+              await  ShowPdf(Url);
             });
 
             OnBackButtonClicked = new Command(() =>
@@ -204,82 +201,65 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _navigationService.GoBack();
             });
         }
-        public void ShowPdf(string pdfUrl)
+        public async Task ShowPdf(string pdfUrl)
         {
 
             if (pdfUrl != null)
             {
-                _navigationService.NavigateTo(App.PdfView, pdfUrl);
+               await _navigationService.NavigateTo(App.PdfView, pdfUrl);
             }
             else
             {
-                //pop that certificate is not available
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                });
+                await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
             }
-            //}
         }
 
         public async Task OnRefreshClick()
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.data.Fbnum);
+                await PopToRootPage();
+                if (response != null && response.d != null && response.d.results.Count != 0)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.data.Fbnum);
-                    PopToRootPage();
-                    if (response != null && response.d != null && response.d.results.Count != 0)
+                    SadadNumber = response.d.results[0].Sopbel;
+                    AmountPayable = response.d.results[0].Betrh;
+                    if (!string.IsNullOrEmpty(SadadNumber))
                     {
-                        SadadNumber = response.d.results[0].Sopbel;
-                        AmountPayable = response.d.results[0].Betrh;
-                        if (!string.IsNullOrEmpty(SadadNumber))
+                        if (VATDeclarationData.data.RefundFg == "1")
                         {
-                            if (VATDeclarationData.data.RefundFg == "1")
-                            {
-                                IsSadadNumberVisible = false;
-                            }
-                            else
-                            {
-                                IsSadadNumberVisible = true;
-                            }
-                            IsButtonVisible = true;
-                            if (VATDeclarationData.data.EstimatedFg == "X")
-                            {
-                                IsAcknowledgementButtonVisible = false;
-                            }
-                            else
-                            {
-                                IsAcknowledgementButtonVisible = true;
-                            }
-                            IsRefreshButtonVisible = false;
+                            IsSadadNumberVisible = false;
                         }
                         else
                         {
-                            IsSadadNumberVisible = false;
-                            IsButtonVisible = false;
-                            IsAcknowledgementButtonVisible = false;
-                            IsRefreshButtonVisible = true;
+                            IsSadadNumberVisible = true;
                         }
+                        IsButtonVisible = true;
+                        if (VATDeclarationData.data.EstimatedFg == "X")
+                        {
+                            IsAcknowledgementButtonVisible = false;
+                        }
+                        else
+                        {
+                            IsAcknowledgementButtonVisible = true;
+                        }
+                        IsRefreshButtonVisible = false;
                     }
+                    else
+                    {
+                        IsSadadNumberVisible = false;
+                        IsButtonVisible = false;
+                        IsAcknowledgementButtonVisible = false;
+                        IsRefreshButtonVisible = true;
+                    }
+                }
 
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
     }

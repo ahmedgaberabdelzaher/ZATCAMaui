@@ -1183,7 +1183,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 IsLoading = true;
                 List<IBANIDNumber> iBANIDNumbersResponse = await WebServiceManager.GAZTGetIBANIdNumber(selectedIbanIdType);
 
-                PopToRootPage();
+                await PopToRootPage();
                 if (iBANIDNumbersResponse != null || iBANIDNumbersResponse.Count() != 0)
                 {
                     IBANIDNumberList = new ObservableCollection<IBANIDNumber>(iBANIDNumbersResponse);

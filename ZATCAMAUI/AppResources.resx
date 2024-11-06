@@ -1710,9 +1710,6 @@ Please refer to the FAQ section before filling out the refund form.
 ZATCA has the right to audit and amend any credit balance that is requested to be refunded before allow the taxpayer to refund his credit balance.
 Taxpayer has the right to withdraw his verified credit balance after the taxpayer pays his remaining liabilities or after ZATCA offset the taxpayer remaining liabilities.</value>
     </data>
-    <data name="MyCertificates" xml:space="preserve">
-        <value>My Certificates</value>
-    </data>
     <data name="Nocertificateavailable" xml:space="preserve">
         <value>No certificate available</value>
     </data>

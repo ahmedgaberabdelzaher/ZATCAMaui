@@ -283,7 +283,6 @@
                                                             Margin="0,0,0,14"
                                                             IsVisible="{Binding IsPeriodVisible}">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDPeriod}" />
-                                                            <!--<Label Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" />-->
                                                             <StackLayout Orientation="Horizontal">
                                                                 <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding PeriodPart1}" />
                                                                 <Label Style="{StaticResource ValueLabelBlack}" Text="-" />
@@ -357,7 +356,7 @@
                                                             Grid.Column="0"
                                                             Margin="0,0,0,20">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.InvoiceStatus}" />
-                                                            <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding StatusText}" />
+                                                            <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Status}" />
                                                         </StackLayout>
 
 

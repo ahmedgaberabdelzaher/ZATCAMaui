@@ -634,7 +634,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                 IBANAccountDataFormGuid = await IBanManagmentWebserviceManager.GAZTGetIBanAccountsFormGUID();
 
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+              await  PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                 IsLoading = false;
             }

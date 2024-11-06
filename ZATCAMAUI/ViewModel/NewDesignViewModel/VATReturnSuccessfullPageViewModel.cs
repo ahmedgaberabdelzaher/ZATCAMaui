@@ -253,36 +253,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public VATReturnSuccessfullPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
 
-
-
-
-            OnDownloadFormClicked = new Command(() =>
+            OnDownloadFormClicked = new Command(async () =>
             {
                 string Url = string.Empty;
-                // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
-                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
 
                 Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnumz + "',Utype='')/$value?saml2=enabled";
 
-                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value";
-                ShowPdf(Url);
+               
+               await ShowPdf(Url);
             });
-            OnAcknowlwdgementClicked = new Command(() =>
+            OnAcknowlwdgementClicked = new Command(async () =>
             {
                 string Url = string.Empty;
-                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
-
+                
                 Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnumz + "')/$value?saml2=enabled";
-                ShowPdf(Url);
+               await ShowPdf(Url);
             });
 
             OnBackButtonClicked = new Command(() =>
@@ -296,43 +282,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _navigationService.GoBack();
             });
         }
-        public void ShowPdf(string pdfUrl)
+        public async Task ShowPdf(string pdfUrl)
         {
 
             if (pdfUrl != null)
             {
-                _navigationService.NavigateTo(App.PdfView, pdfUrl);
+               await _navigationService.NavigateTo(App.PdfView, pdfUrl);
             }
             else
             {
-                //pop that certificate is not available
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                });
+                await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
             }
-            //}
         }
 
-        public void MadaPaymentSelected()
+        public async Task MadaPaymentSelected()
         {
 
-            DoValidatePayment(fbNum: VATDeclarationData.data.Fbnumz, "Mada Payment");
+          await  DoValidatePayment(fbNum: VATDeclarationData.data.Fbnumz, "Mada Payment");
         }
 
-        public void ApplePaySelected()
+        public async Task ApplePaySelected()
         {
             //DoProcessApplePayPayment(VATDeclarationData.d.Fbnum);
 
-            DoValidatePayment(fbNum: VATDeclarationData.data.Fbnumz, "A");
+          await  DoValidatePayment(fbNum: VATDeclarationData.data.Fbnumz, "A");
 
 
 
         }
 
-        public void gotoSuccessPage()
+        public async Task gotoSuccessPage()
         {
-            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, _vATDeclarationData);
+           await _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, _vATDeclarationData);
         }
         public async Task DoValidatePayment(string fbNum, string paymentType)
         {
@@ -387,18 +368,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                         if (paymentType == "Mada Payment")
                         {
-                            MainThread.BeginInvokeOnMainThread(async () => {
-                                IsLoading = true;
-                                //CR7420
-                                CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
-                                IsLoading = false;
-                                if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
-                                {
-                                    App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
-                                    _navigationService.NavigateTo(App.PaymentProcessWebview, 1);
-                                    //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
-                                }
-                            });
+                            IsLoading = true;
+                            //CR7420
+                            CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
+                            IsLoading = false;
+                            if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
+                            {
+                                App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                                await _navigationService.NavigateTo(App.PaymentProcessWebview, 1);
+                            }
                         }
                         else
                         {
@@ -412,44 +390,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 catch (GAZTValidatePaymentInProcessException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-
-                        IsLoading = false;
-                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
-                    });
-                }
-                catch (GAZTNetworkConnectivityIssueException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
-                    });
-                }
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                catch (InternetException )
                 {
                     IsLoading = false;
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
-                });
+                }
+                catch (GAZTNetworkConnectivityIssueException )
+                {
+                    IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
+                }
+            }
+            catch (InternetException )
+            {
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                _navigationService.GoBack();
             }
         }
         public async Task<CreateMadaResponseRoot> GetWebviewContent(string srcid)
@@ -468,13 +430,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (GAZTValidateMadaPaymentException ex)
             {
                 IsLoading = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    //_navigationService.GoBack();
-                });
+                var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+
                 return null;
             }
             catch (Exception)
@@ -519,8 +477,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     ApplePayToken modelDetails = new ApplePayToken();
                     modelDetails.Guid = App.PaymentGuid;
                     modelDetails.SrcId = platform;
-
-                    //var token = "GrPRb/eyYkhLaxIi8ugsU5I0D2/IE6JT6SYb4o6CH/emQV7n5twiqt8IVazkcItvmCkHXeie16Nvbq+uFFx0mS4O/1+SoDHrP8HcDbJ/Q1swCCHR/Dwv69oTcTUy1riK6Zvpe0w1r+WJ21I36gorRUn7u94Yi9n4afOfnGJC3EmFd6DKSIRQWlT4BuLlNv5826XruanuFjdL3MKty/xoCyx2GKN+e8W6BFVnQc/gsBe4UW7oqHIQ5PrQJlQwymi5Ytd1IIJT8QsUMxiVjz6yVS5zdQBaN86ZtuokJRmC89jCwVkUMwDl9jQ5xYbFlIFS1VXKJjtWKDfMGwCWK3jvWdtCcdb4VrPIxtK7LvTWc+4C7m6SPzkOhdC/XPn7ufwvrh95no7p9tpQMkP7zOJIYAl+hS4oEqvOxdpw55dCytGXJ0yjN/HOQ3t4ofyW9mBGiHoq";
                     modelDetails.PaymentToken = ApplePayTokenData;
 
 
@@ -535,32 +491,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                         if (response.d.Success)
                         {
-
-                            MainThread.BeginInvokeOnMainThread(() =>
+                            PaymentSucess paymentInfo = new PaymentSucess();
+                            paymentInfo.Paymentref = response.d.PayRef;
+                            if (response.d.PerslTxt != null)
                             {
+                                paymentInfo.Period = response.d.PerslTxt;
+                            }
 
-                                PaymentSucess paymentInfo = new PaymentSucess();
-                                paymentInfo.Paymentref = response.d.PayRef;
-                                if (response.d.PerslTxt != null)
-                                {
-                                    paymentInfo.Period = response.d.PerslTxt;
-                                }
-
-                                _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, paymentInfo);
-
-                            });
+                            await _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, paymentInfo);
                         }
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-
-                                    await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
-
-                                });
-                            });
+                            await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
 
                         }
 
@@ -570,31 +512,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 catch (GAZTValidatePaymentInProcessException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
-                    });
-                }
-            }
-            catch (InternetException ex)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                catch (InternetException )
                 {
                     IsLoading = false;
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
-                });
+                }
+            }
+            catch (InternetException )
+            {
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                _navigationService.GoBack();
             }
         }
 
@@ -602,60 +535,49 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.data.Fbnumz);
+                await PopToRootPage();
+                if (response != null && response.d != null && response.d.results.Count != 0)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.data.Fbnumz);
-                    PopToRootPage();
-                    if (response != null && response.d != null && response.d.results.Count != 0)
+                    SadadNumber = response.d.results[0].Sopbel;
+                    AmountPayable = response.d.results[0].Betrh;
+                    if (!string.IsNullOrEmpty(SadadNumber))
                     {
-                        SadadNumber = response.d.results[0].Sopbel;
-                        AmountPayable = response.d.results[0].Betrh;
-                        if (!string.IsNullOrEmpty(SadadNumber))
+                        if (VATDeclarationData.data.RefundFg == "1")
                         {
-                            if (VATDeclarationData.data.RefundFg == "1")
-                            {
-                                IsSadadNumberVisible = false;
-                            }
-                            else
-                            {
-                                IsSadadNumberVisible = true;
-                            }
-                            IsButtonVisible = true;
-                            if (VATDeclarationData.data.EstimatedFg == "X")
-                            {
-                                IsAcknowledgementButtonVisible = false;
-                            }
-                            else
-                            {
-                                IsAcknowledgementButtonVisible = true;
-                            }
-                            IsRefreshButtonVisible = false;
+                            IsSadadNumberVisible = false;
                         }
                         else
                         {
-                            IsSadadNumberVisible = false;
-                            IsButtonVisible = false;
-                            IsAcknowledgementButtonVisible = false;
-                            IsRefreshButtonVisible = true;
+                            IsSadadNumberVisible = true;
                         }
+                        IsButtonVisible = true;
+                        if (VATDeclarationData.data.EstimatedFg == "X")
+                        {
+                            IsAcknowledgementButtonVisible = false;
+                        }
+                        else
+                        {
+                            IsAcknowledgementButtonVisible = true;
+                        }
+                        IsRefreshButtonVisible = false;
                     }
+                    else
+                    {
+                        IsSadadNumberVisible = false;
+                        IsButtonVisible = false;
+                        IsAcknowledgementButtonVisible = false;
+                        IsRefreshButtonVisible = true;
+                    }
+                }
 
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
+
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
     }

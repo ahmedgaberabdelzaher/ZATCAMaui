@@ -773,16 +773,6 @@
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
             <Style
-                x:Key="GAZTVerifyButton"
-                x:Name="GAZTVerifyButton"
-                TargetType="Button">
-                <Setter Property="FontSize" Value="Small" />
-                <Setter Property="CornerRadius" Value="9" />
-                <Setter Property="Margin" Value="10,10,10,10" />
-                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
-                <Setter Property="BackgroundColor" Value="{DynamicResource GreenLabelTextColor}" />
-            </Style>
-            <Style
                 x:Key="GAZTGreenLabelStyleForEservicesIcon"
                 x:Name="GAZTGreenLabelStyleForEservicesIcon"
                 TargetType="Label">
