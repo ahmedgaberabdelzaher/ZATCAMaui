@@ -258,7 +258,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 string Url = string.Empty;
 
-                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnumz + "',Utype='')/$value?saml2=enabled";
+                Url = ZATCAConstants.downloadFile + VATDeclarationData.data.Fbnumz;
 
                
                await ShowPdf(Url);
@@ -267,7 +267,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 string Url = string.Empty;
                 
-                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnumz + "')/$value?saml2=enabled";
+                Url = ZATCAConstants.downloadFile + VATDeclarationData.data.Fbnumz;
                await ShowPdf(Url);
             });
 

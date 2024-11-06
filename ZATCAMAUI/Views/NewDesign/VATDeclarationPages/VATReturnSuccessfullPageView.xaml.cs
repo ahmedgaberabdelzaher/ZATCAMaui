@@ -114,19 +114,19 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
-                    viewModel.MadaPaymentSelected();
+                   await viewModel.MadaPaymentSelected();
 
                 });
-                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
-                    viewModel.ApplePaySelected();
+                  await  viewModel.ApplePaySelected();
                 });
-                MessagingCenter.Subscribe<object, string>(this, "SADAD", (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
                 {
 
-                    viewModel.gotoSuccessPage();
+                   await viewModel.gotoSuccessPage();
                 });
                 MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
                 {
@@ -144,31 +144,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async void RefreshForSadad()
+        public async Task RefreshForSadad()
         {
             try
             {
-                await Task.Run(() =>
-                 {
-                     viewModel.IsLoading = true;
-                 });
-                await Task.Run(async () =>
-                {
-                    await viewModel.OnRefreshClick();
-                });
-                await Task.Run(() =>
-                 {
-                     viewModel.IsLoading = false;
-                 });
+                viewModel.IsLoading = true;
+                await viewModel.OnRefreshClick();
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
-
-
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
 
@@ -226,15 +212,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                 newDesignPopUp.MainHeader = AppResources.Copied;
 
-                MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+              await  MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
         }
 
-        private void OnVATPayNowClicked(object sender, EventArgs e)
+        private async void OnVATPayNowClicked(object sender, EventArgs e)
         {
 
 
-            doValidateVATReturnAmount();
+          await doValidateVATReturnAmount();
         }
 
 
