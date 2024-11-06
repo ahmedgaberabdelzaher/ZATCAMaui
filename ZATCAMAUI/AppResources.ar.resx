@@ -1727,9 +1727,6 @@
     <data name="VATRefundRequest" xml:space="preserve">
         <value>طلب استرداد</value>
     </data>
-    <data name="MyCertificates" xml:space="preserve">
-        <value>الشهادات</value>
-    </data>
     <data name="Nocertificateavailable" xml:space="preserve">
         <value>لا يوجد شهادة</value>
     </data>

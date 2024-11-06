@@ -211,32 +211,19 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
         #region Method
         public async Task OnPageLoad()
         {
-            await Task.Run(() =>
+           
+            try
             {
                 IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-                try
-                {
-                    estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
-                    PopToRootPage();
-                    UpdateICRList();
-                }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
-                }
-
-            });
-
-            await Task.Run(() =>
-            {
+                estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
+                await PopToRootPage();
+                UpdateICRList();
                 IsLoading = false;
-            });
+            }
+            catch (InternetException ex)
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            }
         }
         public void GetZAKATICRStatusList()
         {
@@ -450,26 +437,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             {
             }
         }
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                var _navigation = Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
                 {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
+                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
                     {
-                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
+                        _navigation.RemovePage(item);
+                        break;
                     }
-                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-                    _navigation.NavigationStack.ToList().Clear();
-                    //var _navigation = Application.Current.MainPage.Navigation;
-                    //_navigation.PopToRootAsync();
-                });
+                }
+                await _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                _navigation.NavigationStack.ToList().Clear();
             }
         }
         public void HandleNoDataMessageVisibility(List<EstimatedZakatReturnsResult> filteredCRStatusList)

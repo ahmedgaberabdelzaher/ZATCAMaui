@@ -187,10 +187,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
         public TaxEvasionMyReportsListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnBackButtonClicked = new Command(() =>
+            OnBackButtonClicked = new Command(async () =>
             {
-                _navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
-                //_navigationService.GoBack();
+               await _navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
             });
         }
         public void PopulateDataInChips()
@@ -235,7 +234,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                     {
                                         list.Add(item);
                                     }
-                                    //ListToDisplay = new ObservableCollection<TaxEvasionReportDetails>(TERListReportbymobno);
                                 }
                                 if (Item.TemplateType.Equals(AppResources.ZReportStatusClose))
                                 {
@@ -243,7 +241,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                     {
                                         list.Add(item);
                                     }
-                                    //  ListToDisplay = new ObservableCollection<TaxEvasionReportDetails>(TERListReportbymobnoClosed);
                                 }
 
                             }
@@ -281,7 +278,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
                 rootObject = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllReportsByMobileNumber(taxEvasionSendSmsModel);
 
-                PopToRootPage();
+                await PopToRootPage();
 
                 if (rootObject != null)
                 {
@@ -299,10 +296,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                     TERListReportbymobnoAll.Add(item);
                                 }
                             }
-                            else
-                            {
-                                //  SetNoDataLabelVisibilityforOpen = true;
-                            }
 
                         }
                         if (rootObject.Data.Closed != null)
@@ -315,20 +308,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                 {
                                     TERListReportbymobnoAll.Add(item);
                                 }
-                                //SetNoDataLabelVisibilityforClose = false;
-                            }
-                            else
-                            {
                             }
                         }
 
                     }
-                    else
-                    {
-                    }
-                }
-                else
-                {
                 }
             }
             catch (GAZTException gex)
@@ -351,27 +334,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 {
                     MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                 }
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-                    //     await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
+                IsLoading = false;
+
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
             catch (Exception)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                });
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
             }
         }
 
@@ -379,16 +349,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         {
             try
             {
-                Task.Run(() =>
-                {
-                    IsLoading = true;
+               _navigationService.NavigateTo(App.TaxEvasionReportDetailPageView, SelectedTaxEvasionReport);
 
-                });
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    _navigationService.NavigateTo(App.TaxEvasionReportDetailPageView, SelectedTaxEvasionReport);
-
-                });
 
             }
             catch (Exception)

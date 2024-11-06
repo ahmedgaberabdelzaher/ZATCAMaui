@@ -2545,7 +2545,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                 forgotPasswordOTP.result = d;
                 forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(d);
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                 if (forgotPasswordOTP?.result != null && !string.IsNullOrEmpty(forgotPasswordOTP.result.captchaCode))
                 {
@@ -2588,81 +2588,69 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                 try
                 {
-                    await Task.Run(async () =>
+                    try
                     {
-                        try
+                        SignUpNextBodyModel CreateModel = new SignUpNextBodyModel();
+                        CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
+                        CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
+                        CreateModel.ACityCode = SignUpModelRootObjectM.d.signupD.ACityCode;
+                        CreateModel.ACommId = SignUpModelRootObjectM.d.signupD.ACommId;
+                        CreateModel.AEmail = SignUpModelRootObjectM.d.signupD.AEmail;
+                        CreateModel.AFirstname = SignUpModelRootObjectM.d.signupD.AFirstname;
+                        CreateModel.AIdnumber = SignUpModelRootObjectM.d.signupD.AIdnumber;
+                        CreateModel.AIdtype = SignUpModelRootObjectM.d.signupD.AIdtype;
+                        CreateModel.AIssuedBy = SignUpModelRootObjectM.d.signupD.AIssuedBy;
+                        CreateModel.ALang = SignUpModelRootObjectM.d.signupD.ALang;
+                        CreateModel.ALastname = SignUpModelRootObjectM.d.signupD.ALastname;
+                        CreateModel.ALicenceNo = SignUpModelRootObjectM.d.signupD.ALicenceNo;
+                        CreateModel.AMobile = SignUpModelRootObjectM.d.signupD.AMobile;
+                        CreateModel.ACountry = SignUpModelRootObjectM.d.signupD.ACountry;
+
+                        CreateModel.APhone = SignUpModelRootObjectM.d.signupD.APhone;
+                        CreateModel.ATin = SignUpModelRootObjectM.d.signupD.ATin;
+                        CreateModel.ATinExist = SignUpModelRootObjectM.d.signupD.ATinExist;
+                        CreateModel.AType = SignUpModelRootObjectM.d.signupD.AType;
+                        CreateModel.CaseGuid = SignUpModelRootObjectM.d.signupD.CaseGuid;
+                        CreateModel.ACaptcha = SignUpModelRootObjectM.d.signupD.ACaptcha;
+                        if (OtpMDl != null && OtpMDl.d != null)
                         {
-                            SignUpNextBodyModel CreateModel = new SignUpNextBodyModel();
-                            CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
-                            CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
-                            CreateModel.ACityCode = SignUpModelRootObjectM.d.signupD.ACityCode;
-                            CreateModel.ACommId = SignUpModelRootObjectM.d.signupD.ACommId;
-                            CreateModel.AEmail = SignUpModelRootObjectM.d.signupD.AEmail;
-                            CreateModel.AFirstname = SignUpModelRootObjectM.d.signupD.AFirstname;
-                            CreateModel.AIdnumber = SignUpModelRootObjectM.d.signupD.AIdnumber;
-                            CreateModel.AIdtype = SignUpModelRootObjectM.d.signupD.AIdtype;
-                            CreateModel.AIssuedBy = SignUpModelRootObjectM.d.signupD.AIssuedBy;
-                            CreateModel.ALang = SignUpModelRootObjectM.d.signupD.ALang;
-                            CreateModel.ALastname = SignUpModelRootObjectM.d.signupD.ALastname;
-                            CreateModel.ALicenceNo = SignUpModelRootObjectM.d.signupD.ALicenceNo;
-                            CreateModel.AMobile = SignUpModelRootObjectM.d.signupD.AMobile;
-                            CreateModel.ACountry = SignUpModelRootObjectM.d.signupD.ACountry;
-
-                            CreateModel.APhone = SignUpModelRootObjectM.d.signupD.APhone;
-                            CreateModel.ATin = SignUpModelRootObjectM.d.signupD.ATin;
-                            CreateModel.ATinExist = SignUpModelRootObjectM.d.signupD.ATinExist;
-                            CreateModel.AType = SignUpModelRootObjectM.d.signupD.AType;
-                            CreateModel.CaseGuid = SignUpModelRootObjectM.d.signupD.CaseGuid;
-                            CreateModel.ACaptcha = SignUpModelRootObjectM.d.signupD.ACaptcha;
-                            if (OtpMDl != null && OtpMDl.d != null)
-                            {
-                                CreateModel.AAbsherGuid = OtpMDl.d.Guid16;
-                                CreateModel.AAbsherOtp = OtpMDl.d.OtpCode;
-                            }
-                            else
-                            {
-                                CreateModel.AAbsherGuid = string.Empty;
-                                CreateModel.AAbsherOtp = string.Empty;
-                            }
-                            string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
-                            SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
-                            if (ResultFirstSubmitModel.d == null)
-                            {
-                                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
-                                });
-                            }
-                            else
-                            {
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou));
-                                });
-
-                                ButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
-                                ButtonDisableTextColor = Colors.Gray;
-                                VerifyButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
-                                VerifyButtonDisableTextColor = Colors.White;
-                                IsResendOTPEnabled = false;
-                                IsVerifyOTPEnabled = true;
-                                IsOTPEntryEnable = true;
-                                StartOTPTimer();
-                                IsNextButtonEnable = true;
-                                IsResendOTPEnabled = false;
-
-                                SignUpModelRootObjectM.d = ResultFirstSubmitModel.d;
-                            }
+                            CreateModel.AAbsherGuid = OtpMDl.d.Guid16;
+                            CreateModel.AAbsherOtp = OtpMDl.d.OtpCode;
                         }
-                        catch (InternetException ex)
+                        else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                            });
+                            CreateModel.AAbsherGuid = string.Empty;
+                            CreateModel.AAbsherOtp = string.Empty;
                         }
-                    });
+                        string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
+                        SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                        if (ResultFirstSubmitModel.d == null)
+                        {
+                            SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+                        }
+                        else
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou));
+
+                            ButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                            ButtonDisableTextColor = Colors.Gray;
+                            VerifyButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+                            VerifyButtonDisableTextColor = Colors.White;
+                            IsResendOTPEnabled = false;
+                            IsVerifyOTPEnabled = true;
+                            IsOTPEntryEnable = true;
+                            StartOTPTimer();
+                            IsNextButtonEnable = true;
+                            IsResendOTPEnabled = false;
+
+                            SignUpModelRootObjectM.d = ResultFirstSubmitModel.d;
+                        }
+                    }
+                    catch (InternetException ex)
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    }
                 }
                 catch (InternetException ex)
                 {
@@ -2687,7 +2675,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #region new Methods
 
 
-        public void OnPageLoad()
+        public async Task OnPageLoad()
         {
             try
             {
@@ -2724,12 +2712,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    _navigationService.GoBack();
-                });
+
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                _navigationService.GoBack();
             }
         }
         private Dictionary<string, string> EnIssueBy = new Dictionary<string, string>()

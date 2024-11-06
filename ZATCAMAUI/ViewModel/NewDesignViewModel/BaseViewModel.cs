@@ -188,26 +188,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         string title;
         public string Title { get { return title; } set { title = value; OnPropertyChanged(); } }
 
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             App.IsSessionExpired = false;
 
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+                var _navigation = Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
                 {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
+                    if (item.GetType().Name == App.SFLoginPageView)
                     {
-                        if (item.GetType().Name == App.SFLoginPageView)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
+                        _navigation.RemovePage(item);
+                        break;
                     }
-                    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                    _navigation.NavigationStack.ToList().Clear();
-                });
+                }
+                await _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                _navigation.NavigationStack.ToList().Clear();
             }
         }
 

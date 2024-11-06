@@ -850,7 +850,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         #region Commands
         public ICommand OnContinueClicked { get; set; }
         public ICommand OnBackStepClicked { get; set; }
-        public ICommand OnAttachmentClick { get; set; }
         public ICommand OnGotoReportPageClicked { get; set; }
         public ICommand OnEditClicked { get; set; }
         #endregion
@@ -860,19 +859,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         {
             OnContinueClicked = new Command(async () => await navigateToNextAsync());
             OnBackStepClicked = new Command(() => navigateToBack());
-            OnAttachmentClick = new Command(() =>
-            {
-                // AddAttachment();
-            });
-            OnGotoReportPageClicked = new Command(() => gotoReportsListpage());
+            OnGotoReportPageClicked = new Command(async () => await gotoReportsListpage());
             OnEditClicked = new Command<NewTaxEvasionTabEnum>((gotoTab) => EditInfo(gotoTab));
         }
         #endregion
 
         #region Method
-        private void gotoReportsListpage()
+        private async Task gotoReportsListpage()
         {
-            _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView, "142536474");
+           await _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView, "142536474");
         }
         private async Task navigateToNextAsync()
         {
@@ -1057,53 +1052,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 else
                 {
-                   
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        //_dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        //_navigationService.GoBack();
-                    });
+
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
-
-
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    //_dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    //_navigationService.GoBack();
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
             }
             catch (Exception)
             {
-
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    // _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    //_navigationService.GoBack();
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
             }
 
             //load report types
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 TaxEvasionCategoriesModel rootObject = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetCategories();
-                PopToRootPage();
+                await PopToRootPage();
                 if (rootObject != null)
                 {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-
+                    IsLoading = false;
                     if (rootObject.Data != null)
                     {
                         ReportTypes = new ObservableCollection<TaxEvasionCategoriesDataModel>();
@@ -1119,10 +1089,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 else
                 {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    IsLoading = false;
                 }
             }
             catch (GAZTException gex)
@@ -1145,42 +1112,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 {
                     MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                 }
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                _navigationService.GoBack();
             }
             catch (Exception)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-
-                    // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    _navigationService.GoBack();
-                });
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                _navigationService.GoBack();
             }
 
         }
 
-        public void NoInternetGoBack()
+        public async Task NoInternetGoBack()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                ///   await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
-                _navigationService.GoBack();
-            });
+            IsLoading = false;
+            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
+            _navigationService.GoBack();
         }
 
         public void CreateCompanyTypeList()
@@ -1213,175 +1162,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
         public async Task onSelectedTaxEvasionRegion()
         {
-            await Task.Run(() =>
+            try
             {
                 IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-                try
+                if (SelectedTaxEvasionRegion != null)
                 {
-                    if (SelectedTaxEvasionRegion != null)
-                    {
-                        TaxEvasionRegionsCityModel citylist = new TaxEvasionRegionsCityModel();
-                        citylist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
-                        PopToRootPage();
-                        CList = citylist.Data;
-                    }
-                    else
-                    {
-
-                    }
+                    TaxEvasionRegionsCityModel citylist = new TaxEvasionRegionsCityModel();
+                    citylist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
+                    await PopToRootPage();
+                    CList = citylist.Data;
                 }
-                catch (InternetException)
-
-                {
-                    NoInternetGoBack();
-                }
-            });
-            await Task.Run(() =>
-            {
                 IsLoading = false;
-            });
+            }
+            catch (InternetException)
+
+            {
+              await  NoInternetGoBack();
+            }
+
         }
 
-        //public async Task AddAttachment()
-        //{
-        //    try
-        //    {
-        //        if (AttachmentCount < 3)
-        //        {
-        //            string[] filetypes = null ;
-
-        //            try
-        //            {
-        //                filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //            }
-        //            var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-        //            //if (AttachmentSize < 10)
-        //            //{
-        //            if (fileData != null)
-        //            {
-        //                attachment = fileData.DataArray;
-
-        //                string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
-        //                AttachmentName = fileData.FileName;
-
-        //                float sizemb = (attachment.Length / 1024f) / 1024f;
-        //                AttachmentSize = AttachmentSize + (Decimal)sizemb;
-        //                if (fileData.FileName.Contains("."))
-        //                {
-        //                    string Extention = fileData.FileName.Split('.')[1];//pdf
-        //                    if ( Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
-        //                    {
-        //                        if (TotalAttachmentSize <= 30)
-        //                        {
-        //                            AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
-        //                            decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
-        //                            if (Convert.ToDecimal(AttachmentSize) <= 10)
-        //                            {
-        //                                if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
-        //                                {
-        //                                    bool isAttachmentexixt = false;
-
-        //                                    try
-        //                                    {
-        //                                        UploadedDocumentsList a = new UploadedDocumentsList();
-        //                                        a.FileNameWithExtension = AttachmentName;
-        //                                        a.DocBinaryInBase64 = attachment;
-        //                                        a.Size = AttachmentSize.ToString();
-
-        //                                        string attachmentType = UtilityManager.GetContentType(Extention);
-        //                                        //UploadedDocumentsList.DocBinaryInBase64 = base64String;
-        //                                        //UploadedDocumentsList.FileNameWithExtension = AttachmentName;
-        //                                        a.MimeType = attachmentType;
-        //                                        foreach (UploadedDocumentsList ItemA in UploadedDocumentsListObj)
-        //                                        {
-        //                                            if (AttachmentName == ItemA.FileNameWithExtension)
-        //                                            {
-        //                                                isAttachmentexixt = true;
-        //                                            }
-        //                                        }
-        //                                        if (isAttachmentexixt == false)
-        //                                        {
-        //                                            UploadedDocumentsListObj.Add(a);
-        //                                            AttachmentCount++;
-        //                                            AttachmentName = string.Empty;
-
-        //                                            //MessagingCenter.Unsubscribe<object, string>(this, "OnCameraClicked");
-        //                                            //MessagingCenter.Unsubscribe<object, string>(this, "OnGalleryClicked");
-
-        //                                        }
-        //                                        else
-        //                                        {
-        //                                            AttachmentName = string.Empty;
-        //                                            // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-        //                                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
-        //                                        }
-        //                                        //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
-
-        //                                    }
-        //                                    catch (Exception ex)
-        //                                    {
-        //                                    }
-        //                                }
-        //                                else
-        //                                {
-        //                                    AttachmentName = string.Empty;
-        //                                    //  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-        //                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-        //                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
-        //                    }
-        //                }
-        //            }
-
-        //        }
-        //        else
-        //        {
-        //            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof3attachmentscanbeuploaded));
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //}
 
         public async Task SubmitCreatedReport()
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
                 string date = DateTime.UtcNow.ToString("dd/MM/yyyy");//1902/03/09
                 date = DatePick;
                 TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportDetails();
                 TaxEvasionReportTobeUsedToSubmit.CreatedAt = date;
-                //TaxEvasionReportTobeUsedToSubmit.CompanyType = SelectedTaxEvasionCompanyType.Id;
 
                 TaxEvasionReportTobeUsedToSubmit.Category = SelectedCategory;
-
-                //Removed
-                //TaxEvasionReportTobeUsedToSubmit.Channel = "2";
-                //TaxEvasionReportTobeUsedToSubmit.ReporterName = TName;
-                //TaxEvasionReportTobeUsedToSubmit.ReporterEmail = TEmail;
-                //TaxEvasionReportTobeUsedToSubmit.CompanyType = "0";
-                //TaxEvasionReportTobeUsedToSubmit.HavingTIN = IsTINVisible.ToString().ToLower();
-                //TaxEvasionReportTobeUsedToSubmit.CompanyOwnerName = TFaciOwnerName;
-                //TaxEvasionReportTobeUsedToSubmit.CompanyEmail = TFaciEmail;
 
                 TaxEvasionReportTobeUsedToSubmit.Tin = TxtTIN;
                 TaxEvasionReportTobeUsedToSubmit.Content = TReportDetail;
@@ -1398,9 +1210,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 TaxEvasionReportTobeUsedToSubmit.WorkType = TFWType;
                 TaxEvasionReportTobeUsedToSubmit.RegionCode = Convert.ToString(SelectedTaxEvasionRegion.Id);
                 TaxEvasionReportTobeUsedToSubmit.City = Convert.ToString(SelectLCType.Id);
-
-                //List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
-                //TaxEvasionReportTobeUsedToSubmit.PhoneNumber = TFaciMobNo;
 
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList();
 
@@ -1419,46 +1228,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     var newrm = resmessage.Replace("Report Number", response.Data.TicketId);
                     SuccessResponse = newrm;
 
-                    //await _dialogService.ShowMessage(newReplacedMsg, AppResources.ZZZSubmittedReport);
-                    //var _navigation = Application.Current.MainPage.Navigation;
-                    //var _lastPage = _navigation.NavigationStack.LastOrDefault();
-                    ////Remove last page
-                    //_navigation.RemovePage(_lastPage);
-                    //var _lastPage2 = _navigation.NavigationStack.LastOrDefault();
-                    ////Remove last page
-                    //_navigation.RemovePage(_lastPage2);
-                    ////Go back 
-
-                    //_navigation.PopAsync();
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        _navigationService.NavigateTo(App.NewTaxEvasionFormSuccessPaveView);
-                    });
+                    IsLoading = false;
+                    await _navigationService.NavigateTo(App.NewTaxEvasionFormSuccessPaveView);
                 }
                 else
                 {//ZTEReportReportSuccessResponsep2
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    IsLoading = false;
                     // _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2, " ");
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTEReportReportSuccessResponsep2));
                 }
-                await Task.Run(() =>
-                {
-                    //  App.HideProgressView();
-                });
             }
             catch (GAZTException gex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
                 // Handle the GAZT custom exception.
                 string MessageForTheUser = gex.Message;
                 if (gex is GAZTInvalidDataException)
@@ -1477,510 +1259,254 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 {
                     MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                 }
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+            }
+            catch (Exception)
+            {
+                IsLoading = false;
 
-                    //_dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                    //viewModel._navigationService.GoBack();
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+            }
+        }
+
+
+        public async Task UploadAttachment()
+        {
+            try
+            {
+                await CrossMedia.Current.Initialize();
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    await _dialogService.ShowMessage("No Camera", "OK");
+                    return;
+                }
+                var mediaOption = new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                {
+                    Name = "image.jpg",
+                    SaveToAlbum = false,
+                    CustomPhotoSize = 75,
+                    CompressionQuality = 50,
+                    PhotoSize = PhotoSize.Medium
+                };
+                var file = await CrossMedia.Current.TakePhotoAsync(mediaOption);
+                if (file != null)
+                {
+                    var filePath = await ReadFully(file.GetStream());
+                    var imagePath = file.Path;
+                    var imageName = Path.GetFileName(imagePath);
+                    byte[] baseString = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetImagePathByteArray(file.Path);
+                    //imageArray = System.Convert.FromBase64String(baseString);
+                    imageArray = baseString;
+                    FileName = imageName;
+
+                    if (AttachmentCount < 3)
+                    {
+                        if (file != null)
+                        {
+                            attachment = baseString;
+
+                            string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
+                            AttachmentName = FileName;
+
+                            float sizemb = (attachment.Length / 1024f) / 1024f;
+                            AttachmentSize = AttachmentSize + (Decimal)sizemb;
+                            if (FileName.Contains("."))
+                            {
+                                string Extention = FileName.Split('.')[1];//pdf
+                                if (Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
+                                {
+                                    if (TotalAttachmentSize <= 30)
+                                    {
+                                        AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
+                                        decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
+                                        if (Convert.ToDecimal(AttachmentSize) <= 10)
+                                        {
+                                            if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
+                                            {
+                                                bool isAttachmentexixt = false;
+
+                                                try
+                                                {
+                                                    UploadedDocumentsList a = new UploadedDocumentsList();
+                                                    a.FileNameWithExtension = AttachmentName;
+                                                    a.DocBinaryInBase64 = attachment;
+                                                    a.Size = AttachmentSize.ToString();
+
+                                                    string attachmentType = UtilityManager.GetContentType(Extention);
+                                                    //UploadedDocumentsList.DocBinaryInBase64 = base64String;
+                                                    //UploadedDocumentsList.FileNameWithExtension = AttachmentName;
+                                                    a.MimeType = attachmentType;
+                                                    foreach (UploadedDocumentsList ItemA in UploadedDocumentsListObj)
+                                                    {
+                                                        if (AttachmentName == ItemA.FileNameWithExtension)
+                                                        {
+                                                            isAttachmentexixt = true;
+                                                        }
+                                                    }
+                                                    if (isAttachmentexixt == false)
+                                                    {
+                                                        UploadedDocumentsListObj.Add(a);
+                                                        AttachmentCount++;
+                                                        AttachmentName = string.Empty;
+                                                        //MessagingCenter.Unsubscribe<object, string>(this, "OnCameraClicked");
+                                                        //MessagingCenter.Unsubscribe<object, string>(this, "OnGalleryClicked");
+
+                                                    }
+                                                    else
+                                                    {
+                                                        AttachmentName = string.Empty;
+                                                        // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+                                                    }
+                                                    //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
+
+                                                }
+                                                catch (Exception ex)
+                                                {
+
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                AttachmentName = string.Empty;
+                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof3attachmentscanbeuploaded));
+                    }
+                }
             }
             catch (Exception ex)
             {
-                await Task.Run(() =>
+
+
+            }
+
+        }
+
+
+        public async Task AddAttachment()
+        {
+            
+
+            try
+            {
+                await CrossMedia.Current.Initialize();
+                MediaFile file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
                 {
-                    IsLoading = false;
-
-                    /* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-                    Before:
-                                    });
-
-
-
-                                    MainThread.BeginInvokeOnMainThread(async () =>
-                    After:
-                                    });
-
-
-
-                                    MainThread.BeginInvokeOnMainThread(async () =>
-                    */
+                    PhotoSize = PhotoSize.Medium
                 });
-
-
-
-                MainThread.BeginInvokeOnMainThread(async () =>
+                if (file != null)
                 {
-                    await Task.Run(() =>
+                    Stream s = file.GetStream();
+                    var filePath = await ReadFully(file.GetStream());
+                    var imagePath = file.Path;
+                    var imageName = Path.GetFileName(imagePath);
+                    byte[] baseString = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetImagePathByteArray(file.Path);
+                    imageArray = baseString;
+                    FileName = imageName;
+
+                    if (AttachmentCount < 3)
                     {
-                        IsLoading = false;
-                    });
+                        if (file != null)
+                        {
+                            attachment = baseString;
 
-                    //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                });
+                            string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
+                            AttachmentName = FileName;
+
+                            float sizemb = attachment.Length / 1024f / 1024f;
+                            AttachmentSize = AttachmentSize + (decimal)sizemb;
+                            if (FileName.Contains("."))
+                            {
+                                string Extention = FileName.Split('.')[1];//pdf
+                                if (Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
+                                {
+                                    if (TotalAttachmentSize <= 30)
+                                    {
+                                        AttachmentSize = Math.Round(Convert.ToDecimal(Convert.ToDouble(attachment.Length) / 1048576.0), 2);
+                                        decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal(Convert.ToDouble(attachment.Length) / 1048576.0), 4);
+                                        if (Convert.ToDecimal(AttachmentSize) <= 10)
+                                        {
+                                            if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
+                                            {
+                                                bool isAttachmentexixt = false;
+
+                                                try
+                                                {
+                                                    UploadedDocumentsList a = new UploadedDocumentsList();
+                                                    a.FileNameWithExtension = AttachmentName;
+                                                    a.DocBinaryInBase64 = attachment;
+                                                    a.Size = AttachmentSize.ToString();
+
+                                                    string attachmentType = UtilityManager.GetContentType(Extention);
+                                                    a.MimeType = attachmentType;
+                                                    foreach (UploadedDocumentsList ItemA in UploadedDocumentsListObj)
+                                                    {
+                                                        if (AttachmentName == ItemA.FileNameWithExtension)
+                                                        {
+                                                            isAttachmentexixt = true;
+                                                        }
+                                                    }
+                                                    if (isAttachmentexixt == false)
+                                                    {
+                                                        UploadedDocumentsListObj.Add(a);
+                                                        AttachmentCount++;
+                                                        AttachmentName = string.Empty;
+
+                                                    }
+                                                    else
+                                                    {
+                                                        AttachmentName = string.Empty;
+                                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+                                                    }
+
+                                                }
+                                                catch (Exception)
+                                                {
+                                                }
+                                            }
+                                            else
+                                            {
+                                                AttachmentName = string.Empty;
+                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof3attachmentscanbeuploaded));
+                    }
+                }
+            }
+            catch (Exception)
+            {
             }
         }
 
 
-        public void UploadAttachment()
-        {
-            //imageArray = null;
-            //FileName = AppResources.NoFilechosen;
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await CrossMedia.Current.Initialize();
-
-                try
-                {
-                    if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
-                    {
-                        await _dialogService.ShowMessage("No Camera", "OK");
-                        return;
-                    }
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    ////await Task.Run(async () =>
-                    {
-                        var mediaOption = new Plugin.Media.Abstractions.StoreCameraMediaOptions
-                        {
-                            Name = "image.jpg",
-                            SaveToAlbum = false,
-                            CustomPhotoSize = 75,
-                            CompressionQuality = 50,
-                            PhotoSize = PhotoSize.Medium
-                        };
-                        var file = await CrossMedia.Current.TakePhotoAsync(mediaOption);
-                        if (file != null)
-                        {
-                            var filePath = await ReadFully(file.GetStream());
-                                //  UtilityManager.imagestring = Convert.ToBase64String(filePath);
-                            }
-                        if (file == null)
-                        {
-                            return;
-                        }
-
-                        if (file != null)
-                        {
-
-                            var imagePath = file.Path;
-                            var imageName = Path.GetFileName(imagePath);
-                            byte[] baseString = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetImagePathByteArray(file.Path);
-                                //imageArray = System.Convert.FromBase64String(baseString);
-                                imageArray = baseString;
-                            FileName = imageName;
-
-                            if (AttachmentCount < 3)
-                            {
-                                if (file != null)
-                                {
-                                    attachment = baseString;
-
-                                    string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
-                                    AttachmentName = FileName;
-
-                                    float sizemb = (attachment.Length / 1024f) / 1024f;
-                                    AttachmentSize = AttachmentSize + (Decimal)sizemb;
-                                    if (FileName.Contains("."))
-                                    {
-                                        string Extention = FileName.Split('.')[1];//pdf
-                                            if (Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
-                                        {
-                                            if (TotalAttachmentSize <= 30)
-                                            {
-                                                AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
-                                                decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
-                                                if (Convert.ToDecimal(AttachmentSize) <= 10)
-                                                {
-                                                    if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
-                                                    {
-                                                        bool isAttachmentexixt = false;
-
-                                                        try
-                                                        {
-                                                            UploadedDocumentsList a = new UploadedDocumentsList();
-                                                            a.FileNameWithExtension = AttachmentName;
-                                                            a.DocBinaryInBase64 = attachment;
-                                                            a.Size = AttachmentSize.ToString();
-
-                                                            string attachmentType = UtilityManager.GetContentType(Extention);
-                                                                //UploadedDocumentsList.DocBinaryInBase64 = base64String;
-                                                                //UploadedDocumentsList.FileNameWithExtension = AttachmentName;
-                                                                a.MimeType = attachmentType;
-                                                            foreach (UploadedDocumentsList ItemA in UploadedDocumentsListObj)
-                                                            {
-                                                                if (AttachmentName == ItemA.FileNameWithExtension)
-                                                                {
-                                                                    isAttachmentexixt = true;
-                                                                }
-                                                            }
-                                                            if (isAttachmentexixt == false)
-                                                            {
-                                                                UploadedDocumentsListObj.Add(a);
-                                                                AttachmentCount++;
-                                                                AttachmentName = string.Empty;
-                                                                    //MessagingCenter.Unsubscribe<object, string>(this, "OnCameraClicked");
-                                                                    //MessagingCenter.Unsubscribe<object, string>(this, "OnGalleryClicked");
-
-                                                                }
-                                                            else
-                                                            {
-                                                                AttachmentName = string.Empty;
-                                                                    // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-                                                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
-                                                            }
-                                                                //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
-
-                                                            }
-                                                        catch (Exception ex)
-                                                        {
-                                                            
-                                                            
-                                                        }
-                                                    }
-                                                    else
-                                                    {
-                                                        AttachmentName = string.Empty;
-                                                            //  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                                // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
-                                        }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof3attachmentscanbeuploaded));
-                            }
-                        }
-
-
-
-                    });
-                }
-                catch (Exception ex)
-                {
-                    
-                    
-                }
-
-
-
-            });
-        }
-
-
-        public void AddAttachment()
-        {
-            //imageArray = null;
-            //FileName = AppResources.NoFilechosen;
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await CrossMedia.Current.Initialize();
-
-                try
-                {
-
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    ////await Task.Run(async () =>
-                    {
-                        //var mediaOption = new Plugin.Media.Abstractions.StoreCameraMediaOptions
-                        //{
-                        //    Name = "image.jpg",
-                        //    SaveToAlbum = false,
-                        //    CustomPhotoSize = 75,
-                        //    CompressionQuality = 50,
-                        //    PhotoSize = PhotoSize.Medium
-                        //};
-                        //var file = await CrossMedia.Current.TakePhotoAsync(mediaOption);
-
-                        MediaFile file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
-                        {
-                            PhotoSize = PhotoSize.Medium
-                            //CompressionQuality = 92
-                        });
-
-                        if (file != null)
-                        {
-                            Stream s = file.GetStream();
-                            var filePath = await ReadFully(file.GetStream());
-
-                            //UtilityManager.imagestring = Convert.ToBase64String(filePath);
-                        }
-                        if (file != null)
-                        {
-                            var filePath = await ReadFully(file.GetStream());
-                            //  UtilityManager.imagestring = Convert.ToBase64String(filePath);
-                        }
-                        if (file == null)
-                        {
-                            return;
-                        }
-
-                        if (file != null)
-                        {
-
-                            var imagePath = file.Path;
-                            var imageName = Path.GetFileName(imagePath);
-                            byte[] baseString = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetImagePathByteArray(file.Path);
-                            //imageArray = System.Convert.FromBase64String(baseString);
-                            imageArray = baseString;
-                            FileName = imageName;
-
-                            if (AttachmentCount < 3)
-                            {
-                                if (file != null)
-                                {
-                                    attachment = baseString;
-
-                                    string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
-                                    AttachmentName = FileName;
-
-                                    float sizemb = attachment.Length / 1024f / 1024f;
-                                    AttachmentSize = AttachmentSize + (decimal)sizemb;
-                                    if (FileName.Contains("."))
-                                    {
-                                        string Extention = FileName.Split('.')[1];//pdf
-                                        if (Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
-                                        {
-                                            if (TotalAttachmentSize <= 30)
-                                            {
-                                                AttachmentSize = Math.Round(Convert.ToDecimal(Convert.ToDouble(attachment.Length) / 1048576.0), 2);
-                                                decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal(Convert.ToDouble(attachment.Length) / 1048576.0), 4);
-                                                if (Convert.ToDecimal(AttachmentSize) <= 10)
-                                                {
-                                                    if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
-                                                    {
-                                                        bool isAttachmentexixt = false;
-
-                                                        try
-                                                        {
-                                                            UploadedDocumentsList a = new UploadedDocumentsList();
-                                                            a.FileNameWithExtension = AttachmentName;
-                                                            a.DocBinaryInBase64 = attachment;
-                                                            a.Size = AttachmentSize.ToString();
-
-                                                            string attachmentType = UtilityManager.GetContentType(Extention);
-                                                            //UploadedDocumentsList.DocBinaryInBase64 = base64String;
-                                                            //UploadedDocumentsList.FileNameWithExtension = AttachmentName;
-                                                            a.MimeType = attachmentType;
-                                                            foreach (UploadedDocumentsList ItemA in UploadedDocumentsListObj)
-                                                            {
-                                                                if (AttachmentName == ItemA.FileNameWithExtension)
-                                                                {
-                                                                    isAttachmentexixt = true;
-                                                                }
-                                                            }
-                                                            if (isAttachmentexixt == false)
-                                                            {
-                                                                UploadedDocumentsListObj.Add(a);
-                                                                AttachmentCount++;
-                                                                AttachmentName = string.Empty;
-                                                                //MessagingCenter.Unsubscribe<object, string>(this, "OnCameraClicked");
-                                                                //MessagingCenter.Unsubscribe<object, string>(this, "OnGalleryClicked");
-
-                                                            }
-                                                            else
-                                                            {
-                                                                AttachmentName = string.Empty;
-                                                                // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-                                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
-                                                            }
-                                                            //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
-
-                                                        }
-                                                        catch (Exception)
-                                                        {
-                                                        }
-                                                    }
-                                                    else
-                                                    {
-                                                        AttachmentName = string.Empty;
-                                                        //  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                            // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
-                                        }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof3attachmentscanbeuploaded));
-                            }
-                        }
-
-
-
-                    });
-                }
-                catch (Exception)
-                {
-                }
-
-
-
-            });
-        }
-
-
-        //public void AddAttachment()
-        //{
-        //    //imageArray = null;
-        //    //FileName = AppResources.NoFilechosen;
-        //    MainThread.BeginInvokeOnMainThread(async () =>
-        //    {
-        //        await CrossMedia.Current.Initialize();
-
-        //        try
-        //        {
-
-        //            MainThread.BeginInvokeOnMainThread(async () =>
-        //            {
-        //                MediaFile file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
-        //                {
-        //                    PhotoSize = PhotoSize.Medium
-        //                    //CompressionQuality = 92
-        //                });
-
-        //                if (file != null)
-        //                {
-        //                    Stream s = file.GetStream();
-        //                    var filePath = await ReadFully(file.GetStream());
-
-        //                }
-        //                if (file != null)
-        //                {
-        //                    var filePath = await ReadFully(file.GetStream());
-        //                }
-        //                if (file == null)
-        //                {
-        //                    return;
-        //                }
-
-        //                if (file != null)
-        //                {
-
-        //                    var imagePath = file.Path;
-        //                    var imageName = Path.GetFileName(imagePath);
-        //                    byte[] baseString = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetImagePathByteArray(file.Path);
-        //                    imageArray = baseString;
-        //                    FileName = imageName;
-
-        //                    if (AttachmentCount < 3)
-        //                    {
-        //                        if (file != null)
-        //                        {
-        //                            attachment = baseString;
-
-        //                            string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
-        //                            AttachmentName = FileName;
-
-        //                            float sizemb = attachment.Length / 1024f / 1024f;
-        //                            AttachmentSize = AttachmentSize + (decimal)sizemb;
-        //                            if (FileName.Contains("."))
-        //                            {
-        //                                string Extention = FileName.Split('.')[1];//pdf
-        //                                if (Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
-        //                                {
-        //                                    if (TotalAttachmentSize <= 30)
-        //                                    {
-        //                                        AttachmentSize = Math.Round(Convert.ToDecimal(Convert.ToDouble(attachment.Length) / 1048576.0), 2);
-        //                                        decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal(Convert.ToDouble(attachment.Length) / 1048576.0), 4);
-        //                                        if (Convert.ToDecimal(AttachmentSize) <= 10)
-        //                                        {
-        //                                            if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
-        //                                            {
-        //                                                bool isAttachmentexixt = false;
-
-        //                                                try
-        //                                                {
-        //                                                    UploadedDocumentsList a = new UploadedDocumentsList();
-        //                                                    a.FileNameWithExtension = AttachmentName;
-        //                                                    a.DocBinaryInBase64 = attachment;
-        //                                                    a.Size = AttachmentSize.ToString();
-
-        //                                                    string attachmentType = UtilityManager.GetContentType(Extention);
-        //                                                    a.MimeType = attachmentType;
-        //                                                    foreach (UploadedDocumentsList ItemA in UploadedDocumentsListObj)
-        //                                                    {
-        //                                                        if (AttachmentName == ItemA.FileNameWithExtension)
-        //                                                        {
-        //                                                            isAttachmentexixt = true;
-        //                                                        }
-        //                                                    }
-        //                                                    if (isAttachmentexixt == false)
-        //                                                    {
-        //                                                        UploadedDocumentsListObj.Add(a);
-        //                                                        AttachmentCount++;
-        //                                                        AttachmentName = string.Empty;
-
-        //                                                    }
-        //                                                    else
-        //                                                    {
-        //                                                        AttachmentName = string.Empty;
-        //                                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
-        //                                                    }
-
-        //                                                }
-        //                                                catch (Exception)
-        //                                                {
-
-
-        //                                                }
-        //                                            }
-        //                                            else
-        //                                            {
-        //                                                AttachmentName = string.Empty;
-        //                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
-        //                                            }
-        //                                        }
-        //                                    }
-        //                                }
-        //                                else
-        //                                {
-        //                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof3attachmentscanbeuploaded));
-        //                    }
-        //                }
-
-
-
-        //            });
-        //        }
-        //        catch (Exception)
-        //        {
-
-
-        //        }
-
-
-
-        //    });
-        //}
+    
 
 
         public static async Task<byte[]> ReadFully(Stream input)

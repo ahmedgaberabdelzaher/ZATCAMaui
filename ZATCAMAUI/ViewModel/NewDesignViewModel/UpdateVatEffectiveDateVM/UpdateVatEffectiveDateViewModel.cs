@@ -156,7 +156,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
 
             LogResponse = await VatEffectiveDateWebServiceManager.GAZTGetIBanAccounts();
 
-            PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
             IsLoading = false;
 
             if (LogResponse != null && LogResponse.d != null && LogResponse.d.ItemSet != null

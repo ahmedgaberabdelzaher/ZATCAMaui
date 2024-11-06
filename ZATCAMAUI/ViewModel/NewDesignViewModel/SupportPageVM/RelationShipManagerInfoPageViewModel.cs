@@ -124,51 +124,37 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
 
         public async Task GetRmContactDetailsOnPageLoad()
         {
-            await Task.Run(() =>
+            IsLoading = true;
+            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+            if (RmContactsdetailsBaseModel != null && RmContactsdetailsBaseModel.d != null)
             {
-                IsLoading = true;
-            });
-
-            await Task.Run(async () =>
-            {
-                 //RmContactsdetailsBaseModel = await RMContactDetailsWebServiceManager.GetGAZTRMContactDetails(App.LoginDataRetrieved.TIN);
-
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-                if (RmContactsdetailsBaseModel != null && RmContactsdetailsBaseModel.d != null)
+                try
                 {
-                    try
-                    {
-                        if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.RmName))
-                            getRMName = RmContactsdetailsBaseModel.d.RmName; 
-                        if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.RmMobile))
-                            getRMMobile = RmContactsdetailsBaseModel.d.RmMobile;
-                        if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.RmEmail))
-                            getRMEmail = RmContactsdetailsBaseModel.d.RmEmail;
+                    if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.RmName))
+                        getRMName = RmContactsdetailsBaseModel.d.RmName;
+                    if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.RmMobile))
+                        getRMMobile = RmContactsdetailsBaseModel.d.RmMobile;
+                    if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.RmEmail))
+                        getRMEmail = RmContactsdetailsBaseModel.d.RmEmail;
 
-                        if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.SupName))
-                            getSupName = RmContactsdetailsBaseModel.d.SupName;
-                        if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.SupMobile))
-                            getSupMobile = RmContactsdetailsBaseModel.d.SupMobile;
-                        if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.SupEmail))
-                            getSupEmail = RmContactsdetailsBaseModel.d.SupEmail;
+                    if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.SupName))
+                        getSupName = RmContactsdetailsBaseModel.d.SupName;
+                    if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.SupMobile))
+                        getSupMobile = RmContactsdetailsBaseModel.d.SupMobile;
+                    if (!string.IsNullOrEmpty(RmContactsdetailsBaseModel.d.SupEmail))
+                        getSupEmail = RmContactsdetailsBaseModel.d.SupEmail;
 
-                        IsLoading = false;
-                    }
-                    catch (Exception ex)
-                    {
-                        
-                        
-                        IsLoading = false;
-                    }
+                    IsLoading = false;
                 }
-                IsLoading = false;
-            });
-        }
+                catch (Exception)
+                {
 
-        public async Task getGaztAuthorityDetails()
-        {
-            throw new NotImplementedException();
+
+                    IsLoading = false;
+                }
+            }
+            IsLoading = false;
         }
     }
 }

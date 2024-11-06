@@ -13,7 +13,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
     public class TaxpayersCertificatesPageViewModel : BaseViewModel
     {
-        public ICommand OnBackButtonClicked { get; set; }
+        public ICommand OnAppearingTaxpayersCertificatesCommand { get; set; }
+        public ICommand CertificateItemTappedCommand { get; set; }
 
 
         #region proprety
@@ -53,10 +54,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _selectedCertificate = value;
                 OnPropertyChanged("SelectedCertificate");
-                if (SelectedCertificate != null && SelectedCertificate.pdfURL != null)
-                {
-                    ShowPdf(SelectedCertificate.pdfURL);
-                }
+
             }
         }
         public string _filterLabelText;
@@ -233,9 +231,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #endregion
         public TaxpayersCertificatesPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnBackButtonClicked = new Command(() =>
+            OnAppearingTaxpayersCertificatesCommand = new Command(async () =>
             {
-                _navigationService.GoBack();
+                PopulateCirtificateTypeList();
+                IsLoading = true;
+                await OnPageLoad();
+                IsLoading = false;
+            });
+
+            CertificateItemTappedCommand = new Command(async () =>
+            {
+                if (SelectedCertificate != null && SelectedCertificate.pdfURL != null)
+                {
+                    await ShowPdf(SelectedCertificate.pdfURL);
+                    SelectedCertificate = null;
+                }
             });
 
         }
@@ -253,8 +263,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 CertificateListToVAT = new List<Result>();
                 CertificateListToET = new List<Result>();
                 CertificateListToAll = new List<Result>();
-                allCertificate = await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.TIN );
-                PopToRootPage();
+                allCertificate = await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.TIN);
+                await PopToRootPage();
                 if (allCertificate != null)
                 {
                     if (allCertificate.ZakatSet != null && allCertificate.ZakatSet != null && allCertificate.ZakatSet.Count > 0)
@@ -284,25 +294,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     SelectedTaxTypeForFilter = TaxTypeForFilter.Where(x => x.Id == "00").FirstOrDefault();
                 }
-                else
-                {
-
-                }
             }
             catch (InternetException ex)
             {
-                //_dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 _navigationService.GoBack();
             }
             catch (Exception)
             {
-                
-                
-                //   _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
-               await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
         }
+
         public void FilterCertificateOnBasisOfType()
         {
             try
@@ -343,6 +346,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
 
         }
+
         public void PopulateCirtificateTypeList()
         {
             try
@@ -353,7 +357,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         new ReturnTypes {Id = "01",TaxType = AppResources.ZakatCertificates},
                         new ReturnTypes {Id = "02",TaxType = AppResources.VATCertificates},
                         new ReturnTypes {Id = "03",TaxType = AppResources.ExciseCertificates},
-                        //new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
                 };
             }
             catch (Exception)
@@ -362,6 +365,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
         }
+
         public async Task ShowPdf(string pdfUrl)
         {
             IsLoading = true;
@@ -369,7 +373,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (pdfUrl != null)
                 {
-                   await _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                    await _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
@@ -381,7 +385,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (pdfUrl != null)
                 {
-                   await _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                    await _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {

@@ -496,7 +496,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 VATCorres = await WebServiceManager.GAZTGetVATCorrespondece();
                 ETCorres = await WebServiceManager.GAZTGetETCorrespondece();
                 CollCorres = await WebServiceManager.GAZTGetCollectionsCorrespondece();
-                PopToRootPage();
+                await PopToRootPage();
                 IsLoading = false;
             }
             catch (InternetException ex)
@@ -504,7 +504,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
         }
-        public void SetData()
+        public async void SetData()
         {
             try
             {
@@ -630,7 +630,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     ListZAKATCorrespondance = ZakatCo;
                     ListAllCorrespondance = ListAllCorrespondance.Union(ListZAKATCorrespondance).ToList();
                 }
-                PopToRootPage();
+            await PopToRootPage();
                 // Assigning data in the list
                 if (VATCorres != null && VATCorres.d != null && VATCorres.d.results != null && VATCorres.d.results.Count > 0)
                 {
