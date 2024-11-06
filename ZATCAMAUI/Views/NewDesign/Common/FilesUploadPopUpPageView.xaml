@@ -26,9 +26,8 @@
                     FontAttributes="Bold"
                     FontSize="Medium"
                     HorizontalOptions="End"
-                    Style="{StaticResource GAZTVerifyButton}"
                     Text="{x:Static ResourceManager:AppResources.CRDone}"
-                    TextColor="{StaticResource Primary}" />
+                    TextColor="{StaticResource Primary}"/>
 
                 <Label
                     Margin="0,0,0,0"
@@ -133,10 +132,9 @@
                 </ListView>
 
                 <buttons:SfButton
-                    x:Name="btnAddAttachment"
                     Margin="0,20,0,35"
+                    x:Name="btnAddAttachment"
                     Command="{Binding OnAttachmentClick}"
-                    FontFamily="{StaticResource SomarBold}"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.FAPAddAttachment}" />
 
