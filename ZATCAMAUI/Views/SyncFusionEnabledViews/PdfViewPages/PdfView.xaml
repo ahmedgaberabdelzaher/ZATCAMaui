@@ -18,56 +18,59 @@
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
-        <Grid RowDefinitions="Auto, *" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-            <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <!--#region Header-->
-                <Grid Padding="20,10" HorizontalOptions="FillAndExpand" ColumnDefinitions="*,*">
-                    <StackLayout>
-                        <!--  Back Button  -->
-                        <Image
-                            HorizontalOptions="Start"
-                            Rotation="0"
-                            Source="arrowRight.png"
-                            VerticalOptions="CenterAndExpand">
+        <Grid RowDefinitions="Auto, *"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand" >
 
-                            <Image.Triggers>
-                                <DataTrigger
-                                    Binding="{Binding AppDirection}"
-                                    TargetType="Image"
-                                    Value="LeftToRight">
-                                    <Setter Property="Rotation" Value="180" />
-                                </DataTrigger>
-                            </Image.Triggers>
+           <!--#region Header-->
+           <Grid Padding="20,10" HorizontalOptions="FillAndExpand" ColumnDefinitions="*,*">
+                <StackLayout>
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="arrowRight.png"
+                        VerticalOptions="CenterAndExpand">
 
-                        </Image>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BackCommand}" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
 
-                    <buttons:SfButton
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        HorizontalOptions="EndAndExpand"
-                        x:Name="ShareButton"
-                        Command="{Binding ShareCommand}"
-                        CornerRadius="4"
-                        IsEnabled="{TemplateBinding BindingContext.IsShareButtonEnable}"
-                        Style="{StaticResource IconButtonStyle}"
-                        Text="{DynamicResource Share}"
-                        TextColor="{StaticResource Primary}" />
-                </Grid>
-            </StackLayout>
+                    </Image>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <buttons:SfButton
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="EndAndExpand"
+                    x:Name="ShareButton"
+                    Command="{Binding ShareCommand}"
+                    CornerRadius="4"
+                    IsEnabled="{TemplateBinding BindingContext.IsShareButtonEnable}"
+                    Style="{StaticResource IconButtonStyle}"
+                    Text="{DynamicResource Share}"
+                    TextColor="{StaticResource Primary}" />
+           </Grid>
+           <!--#endregion Header-->
+
             <!--#region Body-->
             <syncfusion:SfPdfViewer
                     x:Name="PdfViewForCertificate"
                     Grid.Row="1"
                     DocumentSource="{Binding StreamForDownloadURL}"
                     HorizontalOptions="FillAndExpand"
-                    IsVisible="True"
                     VerticalOptions="FillAndExpand" />
-            
-            <custom:Loader IsVisible="{Binding IsLoading}" />
+
+            <!--Loader-->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

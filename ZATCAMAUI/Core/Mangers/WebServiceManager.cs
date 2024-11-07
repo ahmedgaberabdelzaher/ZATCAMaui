@@ -29,6 +29,7 @@ using ZATCAMAUI.Models.Authentication;
 using ZATCAMAUI.Models.NewModelAPI.Logout;
 using ZATCAMAUI.Models.AttachmentRequest;
 using ZATCAMAUI.Models.EstablishmentRegistration;
+using System.Globalization;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -916,7 +917,7 @@ namespace ZATCAMAUI.Core.Mangers
             {
                 DateTime dt = DateTime.Now;
                 AllCertificate allCertificate = new AllCertificate();
-                string currentDate = dt.ToString("yyyy-MM-ddTHH\\%3AMM\\%3Ass");
+                string currentDate = dt.ToString("yyyy-MM-ddTHH\\%3AMM\\%3Ass", new CultureInfo("en-US"));
                 string NewToken = string.Empty;
                 try
                 {
@@ -2763,9 +2764,9 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClient client = new HttpClient();
                     DateTime DateTimeNow = DateTime.Now;
 
-                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss");
+                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
 
-                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss");
+                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -2828,14 +2829,10 @@ namespace ZATCAMAUI.Core.Mangers
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                     string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     string lang = UtilityManager.GetLanguageParameter();
-                    //HttpClient client = new HttpClient(App.httpClientHandler);
                     HttpClient client = new HttpClient();
                     DateTime DateTimeNow = DateTime.Now;
-                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss");
-                    //String url = ZATCAConstants.GAZTGetCorrespondence + "'" + App.TP.TIN + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'VAT' and UserTin eq ''";
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
-                    //var uri = new Uri(url);
-                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss");
+                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
+                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -2900,12 +2897,9 @@ namespace ZATCAMAUI.Core.Mangers
                     string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     string lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient();
-                    //HttpClient client = new HttpClient(App.httpClientHandler);
                     DateTime DateTimeNow = DateTime.Now;
-                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss");
-                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss");
-                    //String url = ZATCAConstants.GAZTGetCorrespondence + " '" + App.TP.TIN + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'ET' and UserTin eq ''";
-                    //var uri = new Uri(url);
+                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
+                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -2967,8 +2961,8 @@ namespace ZATCAMAUI.Core.Mangers
                     string lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     DateTime DateTimeNow = DateTime.Now;
-                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm");
-                    String url = ZATCAConstants.GAZTGetCorrespondence + " '" + App.TP.TIN + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'L' and Auditor eq 'null' and TaxtpFg eq 'COLL' and UserTin eq ''";
+                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm", new CultureInfo("en-US"));
+                    string url = ZATCAConstants.GAZTGetCorrespondence + " '" + App.TP.TIN + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'L' and Auditor eq 'null' and TaxtpFg eq 'COLL' and UserTin eq ''";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTETCorresList = await client.GetAsync(uri);
                     if (GAZTETCorresList != null)
@@ -4228,10 +4222,6 @@ namespace ZATCAMAUI.Core.Mangers
                 var lang = UtilityManager.GetLanguageParameter();
                 try
                 {
-                    if (false == NetworkCheck.IsInternet())
-                    {
-                        throw new GAZTInternetException();
-                    }
                     string url = ZATCAConstants.GAZTGetReturnList + TIN + "&language=" + lang;
                     HttpClient client = new HttpClient();
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
