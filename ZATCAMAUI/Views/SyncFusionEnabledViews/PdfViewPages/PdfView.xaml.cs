@@ -1,4 +1,7 @@
-﻿using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage;
+﻿using System.Globalization;
+using Mopups.Services;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
 {
@@ -11,23 +14,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
             try
             {
                 viewModel = App.Locator.pdfView;
+                CultureInfo myLanguage = CultureInfo.GetCultureInfo("en-US");
+                CultureInfo.CurrentUICulture = myLanguage;
+                Thread.CurrentThread.CurrentCulture = myLanguage;
                 InitializeComponent();
-
-                if (DeviceInfo.Platform == DevicePlatform.Android)
-                {
-                    //TODO Not supported yet 
-                    //PdfViewForCertificate.CustomPdfRenderer = DependencyService.Get<ICustomPdfRendererService>().AlternatePdfRenderer;
-                }
                 viewModel.pdfUrl = Pdfurl;
-
-                //TODO Not supported yet
-
-                //PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("search", false);
-                //PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("save", false);
-                //PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("bookmark", false);
-                //PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("annotation", false);
-                //PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("print", false);
-
                 BindingContext = viewModel;
             }
             catch (Exception)
@@ -37,7 +28,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
             }
         }
 
-        protected async override void OnDisappearing()
+        protected override void OnDisappearing()
         {
             base.OnDisappearing();
             PdfViewForCertificate.UnloadDocument();
@@ -45,7 +36,5 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
             viewModel.PdfUrl = string.Empty;
             viewModel.StreamForDownloadURL = null;
         }
-       
-        
     }
 }

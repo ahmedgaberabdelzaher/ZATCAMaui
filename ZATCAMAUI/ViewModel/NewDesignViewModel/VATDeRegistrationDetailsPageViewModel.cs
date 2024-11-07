@@ -1376,8 +1376,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 SelectedOutletOption = new VATDeregistrationModel();
 
                 SelectedDocumentOption = new ResultsAttachmentItemForElgblDocSet();
-               await AddOutletDocumentOptions();
-               await GetLastICRDate();
+                await AddOutletDocumentOptions();
+                await GetLastICRDate();
                 IsLoading = true;
                 VATDeRegistrationDetailsData = null;
                 VATDeRegistrationDetails vATDeRegistration = null;
@@ -1539,7 +1539,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
 
-               await EnableReasonView();
+                await EnableReasonView();
                 IsDOBEditorVisible = false;
                 VoidIsVisible = false;
 
@@ -1639,24 +1639,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                     case ProcessStep.Step2:
                         {
-                          await  EnableReasonView();
+                            await EnableReasonView();
                             break;
                         }
 
                     case ProcessStep.Step3:
                         {
-                           await EnableAttachmentsView();
+                            await EnableAttachmentsView();
 
                             break;
                         }
                     case ProcessStep.Step4:
                         {
-                           await EnableDeclarationView();
+                            await EnableDeclarationView();
                             break;
                         }
                     case ProcessStep.Step5:
                         {
-                          await  EnableSummaryView();
+                            await EnableSummaryView();
                             break;
                         }
                 }
@@ -1670,7 +1670,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-     
+
 
         [Obsolete]
         public async Task OnVatRegistrationReasonClicked()
@@ -1913,10 +1913,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                         if (isDateValidated)
                         {
-                         await   setDATA("05");
+                            await setDATA("05");
                             await saveAsDraftVoidAPIMethodCall();
                             VoidIsVisible = true;
-                          await  EnableAttachmentsView();
+                            await EnableAttachmentsView();
                         }
                     }
                     else
@@ -1935,7 +1935,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                             await   setDATA("05");
+                                await setDATA("05");
                                 await saveAsDraftVoidAPIMethodCall();
                                 VoidIsVisible = true;
                                 await EnableAttachmentsView();
@@ -2184,7 +2184,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
-                   
+
                 }
                 if (VATDeRegistrationDetailsData.d.headerSet.Declareflg)
                 {
@@ -2459,7 +2459,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                     _attachment.d.Dotyp = DocTypeString;
                                                     VATDeRegistrationDetailsForAttach.d.AttdetSet.Add(_attachment.d);
                                                     ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeRegistrationDetailsForAttach.d.AttdetSet as List<Attachment>);
-                                                   
+
                                                     VatAttachmentsList = myCollection;
                                                     foreach (var item in VatAttachmentsList)
                                                     {
@@ -2542,7 +2542,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             AttachmentName = string.Empty;
                             IsLoading = false;
-                          await  _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                         }
                     }
                 }
@@ -2582,7 +2582,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     _attachment = null;
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
             IsLoading = false;
@@ -2671,7 +2671,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        public  Task setDATA(string operation)
+        public Task setDATA(string operation)
         {
             try
             {
@@ -2857,7 +2857,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             VATDeRegistrationDetails response = new VATDeRegistrationDetails();
             try
             {
-               
+
                 IsLoading = true;
                 VATDeRegistrationDetails vATDeRegistrationDetails = new VATDeRegistrationDetails();
                 VATDeRegistrationDetailsData.d.headerSet.Gpartx = VATDeRegistrationDetailsData.d.headerSet.Gpart;
@@ -2867,7 +2867,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     VATDeRegistrationDetailsData.d.headerSet.Taxdt = date.ToString("yyyy-MM-ddTHH:mm:ss");
                 }
                 response = await VatRegistrationWebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
-            
+
                 if (response != null && response.d != null)
                 {
                     try
@@ -2920,7 +2920,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 return response;
             }
 
-            catch (Exception )
+            catch (Exception)
             {
 
 
@@ -2932,9 +2932,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             VATDeRegistrationDetails response = new VATDeRegistrationDetails();
             try
             {
-               
+
                 IsLoading = true;
-               await setDATA("01");
+                await setDATA("01");
                 VATDeRegistrationDetails vATDeRegistrationDetails = new VATDeRegistrationDetails();
 
                 VATDeRegistrationDetailsData.d.AttdetSet = new List<Attachment>();
@@ -2980,7 +2980,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         IsLoading = false;
                         return response;
                     }
-                    catch (Exception )
+                    catch (Exception)
                     {
 
 

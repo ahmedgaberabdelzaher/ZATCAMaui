@@ -369,29 +369,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public async Task ShowPdf(string pdfUrl)
         {
             IsLoading = true;
-            if (DeviceInfo.Platform == DevicePlatform.iOS)
+            if (pdfUrl != null)
             {
-                if (pdfUrl != null)
-                {
-                    await _navigationService.NavigateTo(App.PdfView, pdfUrl);
-                }
-                else
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
-                }
+                await _navigationService.NavigateTo(App.PdfView, pdfUrl);
             }
             else
             {
-                if (pdfUrl != null)
-                {
-                    await _navigationService.NavigateTo(App.PdfView, pdfUrl);
-                }
-                else
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
-                }
+                IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
             }
 
 

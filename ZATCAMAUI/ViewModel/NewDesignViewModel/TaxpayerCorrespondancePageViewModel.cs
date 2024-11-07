@@ -504,7 +504,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
         }
-        public async void SetData()
+        public async Task SetData()
         {
             try
             {

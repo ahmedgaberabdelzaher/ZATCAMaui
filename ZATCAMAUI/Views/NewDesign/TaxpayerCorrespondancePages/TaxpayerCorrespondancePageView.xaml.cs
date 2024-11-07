@@ -28,7 +28,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             {
                 viewModel.IsLoading = true;
                 await viewModel.onPageLoad();
-                viewModel.SetData();
+                await viewModel.SetData();
                 viewModel.FilterOnbasisOfChipSelectedItem();
                 viewModel.IsLoading = false;
 
