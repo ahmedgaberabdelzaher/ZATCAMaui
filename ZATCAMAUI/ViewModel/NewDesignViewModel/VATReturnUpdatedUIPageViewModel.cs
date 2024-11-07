@@ -2761,7 +2761,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                                 headerAmountInfo.HeaderText = AppResources.ZZZConfirmationMsg;
                                 headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = AppResources.ZZZNewRefundEnableMessage;
+                                headerAmountInfo.Message = AppResources.ZZZRefundEnableMessage;
 
                                 headerWithInfos.Add(headerAmountInfo);
 
