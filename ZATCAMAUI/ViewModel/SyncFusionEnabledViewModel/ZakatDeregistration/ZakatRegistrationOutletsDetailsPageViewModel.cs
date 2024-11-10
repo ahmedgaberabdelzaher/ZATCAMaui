@@ -9,7 +9,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
- 
+
     public class ZakatRegistrationOutletsDetailsPageViewModel : EstablishmentRegistrationPageViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
@@ -20,33 +20,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public async Task LoadDataOutletDetails()
         {
-            await Task.Run(() =>
-            {
-                App.DisplayProgressView();
-            });
+
             try
             {
-                await Task.Run(async () =>
-                {
-                    await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.Outlets);
-                });
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                App.DisplayProgressView();
+                await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.Outlets);
+                App.HideProgressView();
             }
             catch (InternetException)
             {
                 if (MopupService.Instance.PopupStack.Count > 0)
                     await MopupService.Instance.PopAsync(true);
-                try
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
-
-                }
-                catch (Exception)
-                {
-                }
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
             }
             catch (GAZTErrorException ex)
             {
@@ -58,10 +43,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                App.HideProgressView();
             }
         }
     }

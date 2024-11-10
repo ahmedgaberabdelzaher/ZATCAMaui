@@ -50,6 +50,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public ICommand InitPageCommand { get; set; }
         #endregion
 
+
+        private bool contactNameIsEnabled;
+        public bool ContactNameIsEnabled
+        {
+            get
+            {
+                return contactNameIsEnabled;
+            }
+            set
+            {
+                if (contactNameIsEnabled == value) return;
+                contactNameIsEnabled = value;
+                OnPropertyChanged("ContactNameIsEnabled");
+            }
+        }
+
         public enum ProcessStep
         {
             Step1 = 0,
@@ -865,14 +881,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_iSDeclarationContinueButtonEnabled == value) return;
 
                 _iSDeclarationContinueButtonEnabled = value;
-                //if (_iSDeclarationContinueButtonEnabled)
-                //{
-                //    DeclarationContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
-                //}
-                //else
-                //{
-                //    DeclarationContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
-                //}
                 OnPropertyChanged("IsDeclarationContinueButtonEnabled");
             }
         }
@@ -1361,11 +1369,433 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             OnVatRegistrationReasonTapped = new Command(async () => await this.OnVatRegistrationReasonClicked());
             OnVatRegistrationDateTapped = new Command(async () => await this.OnVatRegistrationReasonDateClicked());
-            // InitPageCommand = new Command(this.onPageLoad);
+
         }
 
+        public ICommand OnAppearingCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    IsLoading = true;
+                    await GetVatDeRegistrationData();
+                    IsLoading = false;
+                    VoidIsVisible = false;
+                    ContactNameIsEnabled = true;
 
 
+                    IsSummaryViewEnabled = false;
+                    MessagingCenterCallBacks();
+
+                    if (VATDeRegistrationDetailsData != null)
+                    {
+                        if (VATDeRegistrationDetailsData.d != null)
+                        {
+                            if (VATDeRegistrationDetailsData.data.Fbnumx == string.Empty)
+                            {
+                                VoidIsVisible = false;
+                            }
+                            else
+                            {
+                                VoidIsVisible = true;
+
+                            }
+                        }
+                    }
+                    MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
+                    {
+                        if (arg != null)
+                        {
+                            PopulateAttachments(arg.results);
+                            updateattachmentList();
+
+                        }
+                    });
+                    PopulateSummaryDeclarationData();
+
+                });
+            }
+        }
+
+        private void MessagingCenterCallBacks()
+        {
+            MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) =>
+            {
+                if (arg)
+                {
+                    IsInstructionChecked = arg;
+
+                }
+            });
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            {
+                IsContactPersonEnabled = false;
+                if (App.IsArabic)
+                {
+                    if (arg.PickerTitle.Contains(AppResources.VatDeregIDType))
+                    {
+                        IDType = arg.SelectedValue;
+
+                        if (IDType.Contains(AppResources.ZZGCCID))
+                        {
+                            IsContactPersonEnabled = true;
+                            IsDOBEditorVisible = false;
+                        }
+                        else
+                        {
+                            IsDOBEditorVisible = true;
+                        }
+                    }
+                    else
+                    {
+                        ReasonTitle = arg.SelectedValue;
+
+                        if (ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
+                        {
+                            IsOthersEditorVisible = true;
+                        }
+                        else
+                        {
+                            IsOthersEditorVisible = false;
+                        }
+                    }
+                }
+                else
+                {
+                    if (arg.PickerTitle.Contains(AppResources.VatDeregIDType))
+                    {
+                        IDType = arg.SelectedValue;
+                        if (IDType.Contains(AppResources.ZZGCCID))
+                        {
+                            IsDOBEditorVisible = false;
+                        }
+                        else
+                        {
+                            IsDOBEditorVisible = true;
+                        }
+                    }
+                    else
+                    {
+                        ReasonTitle = arg.SelectedValue;
+                        if (ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
+                        {
+                            IsOthersEditorVisible = true;
+                        }
+                        else
+                        {
+                            IsOthersEditorVisible = false;
+                        }
+                    }
+                }
+            });
+
+            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", async (sender, arg) =>
+            {
+
+                if (App.IsArabic)
+                {
+                    if (arg.PickerId == "StartDateTypePicker")
+                    {
+                        FromDate = Convert.ToDateTime(arg.SelectedValue);
+                    }
+                    else if (arg.PickerId == "EndDateTypePicker")
+                    {
+                        ToDate = Convert.ToDateTime(arg.SelectedValue);
+                    }
+                    else
+                    {
+                        DOB = arg.SelectedValue;
+                        try
+                        {
+                            if (TxtIDNumber != string.Empty && DOB != string.Empty)
+                            {
+                                await ValidateIDNumberContact();
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+
+                        }
+                    }
+                }
+                else
+                {
+
+                    if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle))
+                    {
+                        FromDate = Convert.ToDateTime(arg.SelectedValue);
+                    }
+                    else if (arg.DatePickerTitle.Contains(AppResources.VatDeregEndDatePickerTitle))
+                    {
+                        ToDate = Convert.ToDateTime(arg.SelectedValue);
+
+                    }
+                    else
+                    {
+                        DOB = arg.SelectedValue;
+                        try
+                        {
+                            if (TxtIDNumber != string.Empty && DOB != string.Empty)
+                            {
+                                await ValidateIDNumberContact();
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+
+                        }
+                    }
+                }
+
+                if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle) || arg.DatePickerTitle.Contains(AppResources.VatDeregEndDatePickerTitle))
+                {
+                    bool isValidated = await suspendedDateValidation();
+                }
+
+            });
+        }
+
+        public async Task ValidateIDNumberContact()
+        {
+            IsLoading = true;
+            string dob = DOB.Replace("/", "-");
+
+            if (IDType == AppResources.NationaID)
+            {
+                ContactNameIsEnabled = false;
+
+                if (!string.IsNullOrEmpty(TxtIDNumber))
+                {
+                    try
+                    {
+
+                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", TxtIDNumber, dob);
+                        VATSignUp vATSignUpData = new VATSignUp();
+                        vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
+                        if (vATSignUpData.d == null)
+                        {
+                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                            {
+                                FrameIDError = true;
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                            }
+                            else
+                            {
+                                FrameIDError = false;
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                            }
+                        }
+                        else
+                        {
+                            ContactPersonName = vATSignUpData.d.taxpayerFullName; ;
+                            ContactNameIsEnabled = false;
+                            FrameIDError = false;
+                        }
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", TxtIDNumber, dob);
+                            IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                            if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                            {
+                                FrameIDError = true;
+                                TxtIDNumber = string.Empty;
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                            }
+                            else
+                            {
+                                FrameIDError = false;
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                            }
+                        }
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            IsLoading = false;
+
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            _navigationService.GoBack();
+                        }
+                        catch (InternetException ex)
+                        {
+                            IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                        }
+                        catch (HttpRequestException)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
+                        }
+                        catch (Exception)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
+                        }
+                    }
+                }
+            }
+            if (IDType == AppResources.ZZIqamaID)
+            {
+                ContactNameIsEnabled = false;
+
+                if (!string.IsNullOrEmpty(TxtIDNumber))
+                {
+                    try
+                    {
+
+                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", TxtIDNumber, dob);
+                        VATSignUp vATSignUpData = new VATSignUp();
+                        vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
+                        if (vATSignUpData.d == null)
+                        {
+                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                            {
+                                FrameIDError = true;
+                                TxtIDNumber = string.Empty;
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                            }
+                            else
+                            {
+                                FrameIDError = false;
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                            }
+                        }
+                        else
+                        {
+                            ContactPersonName = vATSignUpData.d.name1 + " " + vATSignUpData.d.name2;
+                            ContactNameIsEnabled = false;
+                            FrameIDError = false;
+                        }
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", TxtIDNumber, dob);
+                            IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                            if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                            {
+                                FrameIDError = true;
+                                TxtIDNumber = string.Empty;
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                            }
+                            else
+                            {
+                                FrameIDError = false;
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                            }
+                        }
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            _navigationService.GoBack();
+                        }
+                        catch (InternetException ex)
+                        {
+                            IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                        }
+                        catch (HttpRequestException)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                        }
+                        catch (Exception)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ContactNameIsEnabled = true;
+            }
+            IsLoading = false;
+        }
+
+        public async Task GetVatDeRegistrationData()
+        {
+            try
+            {
+                IsLoading = true;
+                await onPageLoad();
+                IsLoading = false;
+            }
+            catch (Exception)
+            {
+
+
+
+            }
+        }
         public async Task onPageLoad()
         {
             string reqType = string.Empty;
@@ -1386,10 +1816,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     vATDeRegistration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
                     //TODO 7062 Changes
-                    VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(vATDeRegistration.d.headerSet.Fbnumx);
-
+                   
                     if (vATDeRegistration != null && vATDeRegistration.d != null)
                     {
+                        VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(vATDeRegistration.d.headerSet?.Fbnumx);
+
                         if (vATDeRegistration.d.headerSet.Agreeflg)
                         {
                             IsInstructionChecked = true;
@@ -1515,6 +1946,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 OtherField = vATDeRegistration.d.NotesSet[0].Strline;
                             }
                         }
+                        PopulateAttachments(vATDeRegistration.d.AttdetSet);
                     }
                     else
                     {
@@ -1524,11 +1956,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     IsLoading = false;
 
-                    PopulateAttachments(vATDeRegistration.d.AttdetSet);
-                }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw ex;
+                    
                 }
                 catch (InternetException ex)
                 {
@@ -1538,7 +1966,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     _navigationService.GoBack();
                 }
                 IsLoading = false;
-
                 await EnableReasonView();
                 IsDOBEditorVisible = false;
                 VoidIsVisible = false;
@@ -1553,7 +1980,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _navigationService.GoBack();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
             }
@@ -1850,44 +2277,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
                 string reqType = string.Empty;
                 if (SelectedOutletOption != null && SelectedOutletOption.ActiveOutletDecisionOptions != null && SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.VATDeregistrationReasonType1))
-                // if (SelectedOutletOptionIndex == 0)
                 {
                     reqType = "VT_DREG";
                     IsDeregReasonVisible = true;
                     IsSuspReasonVisible = false;
-
-
                 }
                 else
                 {
                     reqType = "VT_SUSP";
                     IsDeregReasonVisible = false;
                     IsSuspReasonVisible = true;
-
-
                 }
-
-                //OutletDocumentOptions = new ObservableCollection<VATDeregistrationModel>();
                 string attachmentType = string.Empty;
 
                 if (reqType != null || reqType != string.Empty)
                 {
 
-                    try
+                    VATDeRegistrationAttachmentDropdownDetails reasonList = await VATDeregistrationWebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType).ConfigureAwait(true);
+                    if (reasonList != null)
                     {
-
-                        VATDeRegistrationAttachmentDropdownDetails reasonList = await VATDeregistrationWebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType).ConfigureAwait(true);
-                        if (reasonList != null)
-                        {
-                            List<ResultsAttachmentItemForElgblDocSet> tempAttachmentList = reasonList.VatDeregSubItemsSet.Where(m => m.Txt50 != string.Empty).ToList();
-                            AttachmentTypes = new ObservableCollection<ResultsAttachmentItemForElgblDocSet>(tempAttachmentList);
-                        }
-
-                    }
-                    catch (Exception)
-                    {
-
-
+                        List<ResultsAttachmentItemForElgblDocSet> tempAttachmentList = reasonList.VatDeregSubItemsSet.Where(m => m.Txt50 != string.Empty).ToList();
+                        AttachmentTypes = new ObservableCollection<ResultsAttachmentItemForElgblDocSet>(tempAttachmentList);
                     }
                 }
             }
@@ -1904,14 +2314,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-                try
+                if (SelectedOutletOptionIndex == 1)
                 {
-                    if (SelectedOutletOptionIndex == 1)
+
+                    await suspendedDateValidation();
+
+                    if (isDateValidated)
                     {
+                        await setDATA("05");
+                        await saveAsDraftVoidAPIMethodCall();
+                        VoidIsVisible = true;
+                        await EnableAttachmentsView();
+                    }
+                }
+                else
+                {
+                    if (ReasonTitle == string.Empty)
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
-                        await suspendedDateValidation();
 
-                        if (isDateValidated)
+                    }
+                    else if (ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
+                    {
+                        if (string.IsNullOrEmpty(OtherField))
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        }
+                        else
                         {
                             await setDATA("05");
                             await saveAsDraftVoidAPIMethodCall();
@@ -1921,55 +2351,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        if (ReasonTitle == string.Empty)
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-
-
-                        }
-                        else if (ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
-                        {
-                            if (string.IsNullOrEmpty(OtherField))
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                            }
-                            else
-                            {
-                                await setDATA("05");
-                                await saveAsDraftVoidAPIMethodCall();
-                                VoidIsVisible = true;
-                                await EnableAttachmentsView();
-                            }
-                        }
-                        else
-                        {
-                            await setDATA("05");
-                            await saveAsDraftVoidAPIMethodCall();
-                            VoidIsVisible = true;
-                            await EnableAttachmentsView();
-                        }
-
+                        await setDATA("05");
+                        await saveAsDraftVoidAPIMethodCall();
+                        VoidIsVisible = true;
+                        await EnableAttachmentsView();
                     }
 
                 }
-                catch (InternetException ex)
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                    _navigationService.GoBack();
+                if (VatAttachmentsList == null)
+                {
+                    VatAttachmentsList = new ObservableCollection<Attachment>();
                 }
 
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                 _navigationService.GoBack();
             }
 
-            if (VatAttachmentsList == null)
-            {
-                VatAttachmentsList = new ObservableCollection<Attachment>();
-            }
         }
 
         public void clearData()
@@ -1996,8 +2398,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 catch (InternetException ex)
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 }
 
@@ -2006,8 +2406,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (InternetException ex)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
         }
@@ -2016,51 +2414,40 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-
-                try
+                if (!IsDeclarationChecked)
                 {
-                    if (!IsDeclarationChecked)
+                    return;
+                }
+
+                if (VatDeregDeclaration != null && VatDeregDeclaration.D != null && string.IsNullOrEmpty(VatDeregDeclaration.D.Zterms))
+                {
+
+                    if (string.IsNullOrEmpty(IDType))
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        return;
+                    }
+                    else if (IDType == AppResources.NationaID || IDType == AppResources.ZZIqamaID)
+                    {
+                        if (IsDOBEditorVisible && string.IsNullOrEmpty(DOB))
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                            return;
+                        }
+                    }
+                    else if (IDType == AppResources.ZZGCCID && string.IsNullOrEmpty(TxtIDNumber))
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        return;
+                    }
+                    if (FrameIDError)
                     {
                         return;
                     }
-
-                    if (VatDeregDeclaration != null && VatDeregDeclaration.D != null && string.IsNullOrEmpty(VatDeregDeclaration.D.Zterms))
-                    {
-
-                        if (string.IsNullOrEmpty(IDType))
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                            return;
-                        }
-                        else if (IDType == AppResources.NationaID || IDType == AppResources.ZZIqamaID)
-                        {
-                            if (IsDOBEditorVisible && string.IsNullOrEmpty(DOB))
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                                return;
-                            }
-                        }
-                        else if (IDType == AppResources.ZZGCCID && string.IsNullOrEmpty(TxtIDNumber))
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                            return;
-                        }
-                        if (FrameIDError)
-                        {
-                            return;
-                        }
-                    }
-                    await setDATA("05");
-                    shouldShowDialog = true;
-                    await saveAsDraftVoidAPIMethodCall();
-
                 }
-                catch (InternetException ex)
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                    _navigationService.GoBack();
-                }
+                await setDATA("05");
+                shouldShowDialog = true;
+                await saveAsDraftVoidAPIMethodCall();
 
                 PopulateSummaryDeclarationData();
                 await EnableSummaryView();
@@ -2071,6 +2458,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 IsLoading = false;
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                 _navigationService.GoBack();
             }
         }
@@ -2206,8 +2594,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheBirthDate));
 
-                    //await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
-
                 }
                 else
                 {
@@ -2263,9 +2649,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (VatAttachmentsList != null)
                 {
-                    //AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
                     List<VATDeregistrationAttachmentsModel> check = new List<VATDeregistrationAttachmentsModel>();
-                    //AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
 
                     for (int i = 0; i < VatAttachmentsList.Count; i++)
                     {
@@ -2339,7 +2723,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 DeregRequestType = JsonConvert.DeserializeObject<List<string>>(DeregRequestTypeSerialised)[0];
                 DeregReason = !string.IsNullOrEmpty(OtherField) ? OtherField : ReasonTitle;
 
-                // VATDeregistrationSummaryReasonData = new List<VATDeregistrationSummaryModel>(check);
             }
             catch (Exception ex)
             {
@@ -2352,7 +2735,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public void PopulateSummaryDeclarationData()
         {
-            //VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>();
             List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
             try
             {
@@ -2403,14 +2785,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     filetypes = DependencyService.Get<IDeviceInfoZATCA>().GetAttachmentTypeStringForAll();
                     filetypes = DependencyService.Get<IDeviceInfoZATCA>().GetAttachmentTypeStringForAll();
                     PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
-                    //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
                     var fileData = await FilePicker.PickAsync(options);
                     var stream = await fileData.OpenReadAsync();
                     var attachment = UtilityManager.ReadFully(stream as Stream);
                     if (fileData != null && attachment != null && attachment.Length > 0)
                     {
-                        //attachment = fileData.DataArray;
                         AttachmentName = fileData.FileName;
                         FileName = fileData.FileName;
 

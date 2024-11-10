@@ -22,9 +22,13 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
-
         </ResourceDictionary>
     </ContentPage.Resources>
+
+      <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
@@ -853,6 +857,7 @@
                                                 HorizontalTextAlignment="Start"
                                                 Placeholder="{x:Static ResourceManager:AppResources.VatDeregContactPerson}"
                                                 Text="{Binding ContactPersonName}"
+                                                IsEnabled="{Binding ContactNameIsEnabled}"
                                                 TextColor="#bbbbbb"
                                                 VerticalTextAlignment="Start">
                                                         <custom:GAZTBorderlessEntry.Behaviors>

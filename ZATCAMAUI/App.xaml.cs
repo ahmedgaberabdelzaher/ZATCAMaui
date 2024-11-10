@@ -1060,11 +1060,8 @@ namespace ZATCAMAUI
 
         public static void HideProgressView()
         {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                if (MopupService.Instance.PopupStack.Count > 0)
-                    MopupService.Instance.PopAsync(true);
-            });
+            if (MopupService.Instance.PopupStack.Count > 0)
+                MopupService.Instance.PopAsync(true);
         }
 
         //rohith-login

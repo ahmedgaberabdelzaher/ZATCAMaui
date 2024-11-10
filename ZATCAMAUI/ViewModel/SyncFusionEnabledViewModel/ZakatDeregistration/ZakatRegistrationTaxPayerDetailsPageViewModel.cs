@@ -16,7 +16,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ZakatRegistrationTaxPayerDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
         }
-       
+
 
         public async Task LoadDataTaxPayerDetails()
         {
@@ -53,22 +53,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //  IsLoading = true;
                 if (MopupService.Instance.PopupStack.Count > 0)
                     await MopupService.Instance.PopAsync(true);
-
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
-                });
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
             }
             catch (GAZTErrorException ex)
             {
                 IsLoading = false;
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+
+                App.HideProgressView();
                 if (MopupService.Instance.PopupStack.Count > 0)
                     await MopupService.Instance.PopAsync(true);
 

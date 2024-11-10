@@ -381,12 +381,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     if (LookUpNo.Length != 15)
                     {
                         IsLoading = false;
+                        IsMainView = true;
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.InValidCode));
                         return;
                     }
                     LookupNumber = LookUpNo;
                 }
-                string _language = "A"; //UtilityManager.GetLanguageParameter();
+                string _language = "A";
 
                 VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
                 if (vatLookUp != null)
@@ -474,7 +475,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsMainView = true;
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -484,7 +485,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             finally
             {
-                IsMainView = true;
+                
                 IsShowScanView = false;
             }
 
