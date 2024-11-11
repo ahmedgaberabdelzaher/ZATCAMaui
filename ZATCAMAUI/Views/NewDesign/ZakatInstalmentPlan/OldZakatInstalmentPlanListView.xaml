@@ -12,12 +12,12 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    x:Name="page"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -33,7 +33,7 @@
 
     </ContentPage.Resources>
 
-     <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
@@ -52,7 +52,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -105,9 +104,10 @@
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView HorizontalOptions="FillAndExpand"
-                            VerticalScrollBarVisibility="Never"
-                            VerticalOptions="FillAndExpand">
+                <ScrollView
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    VerticalScrollBarVisibility="Never">
 
                     <Grid>
 
@@ -249,16 +249,16 @@
                                     ItemsSource="{Binding ZakatListData}"
                                     ScrollBarVisibility="Never"
                                     SelectionBackground="Transparent"
-                                    TapCommand="{Binding SummaryattachmentsListViewItemCommand}"
                                     SelectionMode="Single"
+                                    TapCommand="{Binding SummaryattachmentsListViewItemCommand}"
                                     VerticalOptions="FillAndExpand">
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <Border
                                                 Grid.Column="0"
                                                 Margin="0,15,0,0"
-                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                 Padding="10"
+                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                 StrokeShape="RoundRectangle 15,15,15,15"
                                                 Style="{StaticResource GreyBorderFrameWithShadow}">
                                                 <Grid
@@ -471,9 +471,9 @@
                                                 <DataTemplate>
                                                     <Grid
                                                         Margin="10,5,10,0"
-                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         Padding="0"
                                                         ColumnDefinitions="50*,50*"
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         RowDefinitions="auto,auto,auto,auto,auto">
 
                                                         <Label
@@ -686,8 +686,8 @@
                                                     <Grid
                                                         Margin="10,5,10,0"
                                                         Padding="0"
-                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         ColumnDefinitions="auto,*"
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         RowDefinitions="auto,auto"
                                                         RowSpacing="0">
 
@@ -1273,8 +1273,8 @@
                                         <Border
                                             Grid.Column="0"
                                             Margin="0,15,0,0"
-                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             Padding="10"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             HorizontalOptions="FillAndExpand"
                                             StrokeShape="RoundRectangle 15,15,15,15"
                                             Style="{StaticResource GreyBorderFrameWithShadow}"

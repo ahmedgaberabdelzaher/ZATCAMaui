@@ -21,15 +21,14 @@
     </ContentView.Resources>
     <ContentView.Content>
         <StackLayout>
-            <Grid Margin="0,11,0,0"
-                  ColumnDefinitions="*,Auto">
+            <Grid Margin="0,11,0,0" ColumnDefinitions="*,Auto">
 
                 <custom:CustomSfTextInputView
-                    Grid.Column="0"
                     x:Name="EmailInputLayout"
+                    Grid.Column="0"
                     Grid.ColumnSpan="2">
 
-                     <custom:GAZTBorderlessEntry
+                    <custom:GAZTBorderlessEntry
                         x:Name="email"
                         FontSize="Small"
                         PlaceholderColor="Gray"
@@ -61,14 +60,14 @@
                     <ColumnDefinition Width="80*" />
                     <ColumnDefinition Width="20*" />
                 </Grid.ColumnDefinitions>
-                 <custom:CustomSfTextInputView
-                     x:Name="TINSLayout"
+                <custom:CustomSfTextInputView
+                    x:Name="TINSLayout"
                     Grid.Row="0"
                     Grid.Column="0"
-                     IsVisible="{Binding IsVisibleTinIds}"
-                    Grid.ColumnSpan="2">
+                    Grid.ColumnSpan="2"
+                    IsVisible="{Binding IsVisibleTinIds}">
 
-                     <custom:GAZTBorderlessEntry
+                    <custom:GAZTBorderlessEntry
                         x:Name="TinDropdown"
                         FontFamily="{StaticResource SomarBold}"
                         FontSize="Small"

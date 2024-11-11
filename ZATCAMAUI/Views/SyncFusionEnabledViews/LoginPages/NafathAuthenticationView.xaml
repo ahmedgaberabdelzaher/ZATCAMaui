@@ -4,10 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="http://schemas.syncfusion.com/maui"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:buttons="http://schemas.syncfusion.com/maui"
     x:Name="page"
     Title="NafathAuthenticationView"
     ios:Page.UseSafeArea="true"
@@ -15,7 +15,7 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-     <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingNafathAuthenticationViewCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
@@ -33,7 +33,7 @@
 
         <Grid RowDefinitions="Auto,*">
 
-              <!--#region Header-->
+            <!--#region Header-->
             <Grid Padding="15,10" ColumnDefinitions="*,4*,*">
 
                 <StackLayout>
@@ -92,7 +92,7 @@
                             LineBreakMode="WordWrap"
                             LineHeight="1"
                             Text="{x:Static ResourceManager:AppResources.ApproveInNafathApp}"
-                            TextColor="#002447"/>
+                            TextColor="#002447" />
 
 
 
@@ -123,7 +123,7 @@
 
                         </Border>
 
-                         <Label
+                        <Label
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.ApproveInNafathApp}"
                             VerticalOptions="CenterAndExpand" />

@@ -7,23 +7,27 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.PdfViewer;assembly=Syncfusion.Maui.PdfViewer"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
     BackgroundColor="White"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-      <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingPdfViewCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
-        <Grid RowDefinitions="Auto, *"
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand" >
+        <Grid
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="Auto, *"
+            VerticalOptions="FillAndExpand">
 
-           <!--#region Header-->
-           <Grid Padding="20,10" HorizontalOptions="FillAndExpand" ColumnDefinitions="*,*">
+            <!--#region Header-->
+            <Grid
+                Padding="20,10"
+                ColumnDefinitions="*,*"
+                HorizontalOptions="FillAndExpand">
                 <StackLayout>
                     <!--  Back Button  -->
                     <Image
@@ -48,28 +52,28 @@
                 </StackLayout>
 
                 <buttons:SfButton
+                    x:Name="ShareButton"
                     Grid.Row="0"
                     Grid.Column="1"
-                    HorizontalOptions="EndAndExpand"
-                    x:Name="ShareButton"
                     Command="{Binding ShareCommand}"
                     CornerRadius="4"
+                    HorizontalOptions="EndAndExpand"
                     IsEnabled="{TemplateBinding BindingContext.IsShareButtonEnable}"
                     Style="{StaticResource IconButtonStyle}"
                     Text="{DynamicResource Share}"
                     TextColor="{StaticResource Primary}" />
-           </Grid>
-           <!--#endregion Header-->
+            </Grid>
+            <!--#endregion Header-->
 
             <!--#region Body-->
             <syncfusion:SfPdfViewer
-                    x:Name="PdfViewForCertificate"
-                    Grid.Row="1"
-                    DocumentSource="{Binding StreamForDownloadURL}"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand" />
+                x:Name="PdfViewForCertificate"
+                Grid.Row="1"
+                DocumentSource="{Binding StreamForDownloadURL}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
 
-            <!--Loader-->
+            <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>

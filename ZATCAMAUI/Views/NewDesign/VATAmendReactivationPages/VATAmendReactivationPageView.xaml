@@ -337,9 +337,7 @@
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.TIN}" />
 
-                                                    <custom:CustomSfTextInputView
-                                                        HorizontalOptions="FillAndExpand"
-                                                        IsEnabled="{Binding BindingContext.TaxPayerDetails.TinEntry1, Source={x:Reference VATRegistration}}">
+                                                    <custom:CustomSfTextInputView HorizontalOptions="FillAndExpand" IsEnabled="{Binding BindingContext.TaxPayerDetails.TinEntry1, Source={x:Reference VATRegistration}}">
                                                         <custom:CustomSfTextInputView.TextInputView>
                                                             <custom:GAZTBorderlessEntry
                                                                 InputTransparent="True"
@@ -360,7 +358,7 @@
                                                         Padding="0,0,0,0"
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZName}" />
-                                                    <custom:CustomSfTextInputView HorizontalOptions="FillAndExpand" >
+                                                    <custom:CustomSfTextInputView HorizontalOptions="FillAndExpand">
                                                         <custom:CustomSfTextInputView.TextInputView>
                                                             <custom:GAZTBorderlessEntry
                                                                 InputTransparent="True"
@@ -377,8 +375,7 @@
                                                         Padding="0,0,0,0"
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZVATRMainOutlet}" />
-                                                    <custom:CustomSfTextInputView
-                                                        IsEnabled="{Binding BindingContext.TaxPayerDetails.MainOutletEntry1, Source={x:Reference VATRegistration}}">
+                                                    <custom:CustomSfTextInputView IsEnabled="{Binding BindingContext.TaxPayerDetails.MainOutletEntry1, Source={x:Reference VATRegistration}}">
                                                         <custom:CustomSfTextInputView.TextInputView>
                                                             <custom:GAZTBorderlessEntry
                                                                 InputTransparent="True"
@@ -392,9 +389,7 @@
                                                         </custom:CustomSfTextInputView.TextInputView>
                                                     </custom:CustomSfTextInputView>
 
-                                                    <custom:CustomSfTextInputView
-                                                        Margin="0,6,0,6"
-                                                        IsEnabled="{Binding BindingContext.TaxPayerDetails.MainOutletEntry2, Source={x:Reference VATRegistration}}">
+                                                    <custom:CustomSfTextInputView Margin="0,6,0,6" IsEnabled="{Binding BindingContext.TaxPayerDetails.MainOutletEntry2, Source={x:Reference VATRegistration}}">
                                                         <custom:CustomSfTextInputView.TextInputView>
                                                             <custom:GAZTBorderlessEntry
                                                                 FontSize="Small"
@@ -431,8 +426,7 @@
                                                         Padding="0,0,0,0"
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatAddress}" />
-                                                    <custom:CustomSfTextInputView
-                                                        IsEnabled="{Binding BindingContext.TaxPayerDetails.AddressEntry1, Source={x:Reference VATRegistration}}">
+                                                    <custom:CustomSfTextInputView IsEnabled="{Binding BindingContext.TaxPayerDetails.AddressEntry1, Source={x:Reference VATRegistration}}">
                                                         <custom:GAZTBorderlessEntry
                                                             InputTransparent="True"
                                                             IsReadOnly="True"
@@ -440,8 +434,7 @@
                                                             Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineOne}" />
                                                     </custom:CustomSfTextInputView>
 
-                                                    <custom:CustomSfTextInputView
-                                                        IsEnabled="{Binding BindingContext.TaxPayerDetails.AddressEntry2, Source={x:Reference VATRegistration}}">
+                                                    <custom:CustomSfTextInputView IsEnabled="{Binding BindingContext.TaxPayerDetails.AddressEntry2, Source={x:Reference VATRegistration}}">
                                                         <custom:CustomSfTextInputView.TextInputView>
 
                                                             <custom:GAZTBorderlessEntry
@@ -459,8 +452,7 @@
                                                         Padding="0,0,0,0"
                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZVATRSource}" />
-                                                    <custom:CustomSfTextInputView
-                                                        IsEnabled="{Binding BindingContext.TaxPayerDetails.SourceEntry, Source={x:Reference VATRegistration}}">
+                                                    <custom:CustomSfTextInputView IsEnabled="{Binding BindingContext.TaxPayerDetails.SourceEntry, Source={x:Reference VATRegistration}}">
                                                         <custom:CustomSfTextInputView.TextInputView>
                                                             <custom:GAZTBorderlessEntry
                                                                 InputTransparent="True"
@@ -628,9 +620,7 @@
                                                             </Label.FormattedText>
                                                         </Label>
 
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmEStartDate"
-                                                            IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled, Source={x:Reference VATRegistration}}">
+                                                        <custom:CustomSfTextInputView x:Name="FrmEStartDate" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled, Source={x:Reference VATRegistration}}">
 
 
                                                             <custom:CustomSfTextInputView.TextInputView>
@@ -737,8 +727,7 @@
                                                                 </Label.FormattedText>
                                                             </Label>
 
-                                                            <custom:CustomSfTextInputView
-                                                                x:Name="FrmENewStartDate">
+                                                            <custom:CustomSfTextInputView x:Name="FrmENewStartDate">
                                                                 <custom:CustomSfTextInputView.TextInputView>
 
                                                                     <custom:GAZTBorderlessEntry
@@ -957,8 +946,8 @@
                                                                 <!--  Attachments  -->
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="AttachmentOptional"
-                                                                    IsEnabled="False"
                                                                     InputTransparent="True"
+                                                                    IsEnabled="False"
                                                                     IsReadOnly="True"
                                                                     Placeholder="{x:Static ResourceManager:AppResources.Attachments}"
                                                                     Style="{StaticResource DefaultEntry}" />
@@ -967,7 +956,7 @@
 
                                                             <inputLayout:SfTextInputLayout.TrailingView>
 
-                                                                  <Image HorizontalOptions="EndAndExpand" Rotation="270">
+                                                                <Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                                     <Image.Source>
                                                                         <FontImageSource
                                                                             FontFamily="UserIconFont"
@@ -981,9 +970,9 @@
                                                                 </Image>
                                                             </inputLayout:SfTextInputLayout.TrailingView>
 
-                                                         <custom:CustomSfTextInputView.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="ImporterExporterAttachment" />
-                                                        </custom:CustomSfTextInputView.GestureRecognizers>
+                                                            <custom:CustomSfTextInputView.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="ImporterExporterAttachment" />
+                                                            </custom:CustomSfTextInputView.GestureRecognizers>
                                                         </custom:CustomSfTextInputView>
                                                     </StackLayout>
 
@@ -1000,8 +989,7 @@
                                                                     Text="{x:Static ResourceManager:AppResources.VATRBankAccount}" />
                                                             </StackLayout>
 
-                                                            <custom:CustomSfTextInputView
-                                                                Grid.Row="1">
+                                                            <custom:CustomSfTextInputView Grid.Row="1">
 
                                                                 <!--  New Accounts  -->
                                                                 <custom:CustomSfTextInputView.TextInputView>
@@ -1070,8 +1058,8 @@
                                                                         <cards:SfCardView
                                                                             BackgroundColor="Transparent"
                                                                             CornerRadius="20"
+                                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                                             HeightRequest="104"
-                                                                            FlowDirection="{Binding Source={x:Reference page},Path=FlowDirection}" 
                                                                             WidthRequest="171">
                                                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                                 <Grid.RowDefinitions>
@@ -1560,9 +1548,7 @@
                                                                 Text="{x:Static ResourceManager:AppResources.ZZZAmendFinancialRepreGtext}" />
                                                         </StackLayout>
 
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmNewAttachment"
-                                                            Grid.Row="1">
+                                                        <custom:CustomSfTextInputView x:Name="FrmNewAttachment" Grid.Row="1">
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <!--  New Attachment  -->
                                                                 <custom:GAZTBorderlessEntry
@@ -1778,8 +1764,7 @@
                                                                             Grid.Row="0"
                                                                             Style="{StaticResource ComponentHeaderBlackBold}"
                                                                             Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
-                                                                        <custom:CustomSfTextInputView
-                                                                            Grid.Row="1">
+                                                                        <custom:CustomSfTextInputView Grid.Row="1">
                                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                                 <custom:GAZTBorderlessEntry
                                                                                     HorizontalOptions="FillAndExpand"
@@ -1864,8 +1849,7 @@
                                                                         IsVisible="{Binding IDNumberVisibility}"
                                                                         Style="{StaticResource ComponentHeaderBlackBold}"
                                                                         Text="{x:Static ResourceManager:AppResources.IDNumber}" />
-                                                                    <custom:CustomSfTextInputView
-                                                                        HasError="{Binding FrameIDError}">
+                                                                    <custom:CustomSfTextInputView HasError="{Binding FrameIDError}">
                                                                         <custom:CustomSfTextInputView.TextInputView>
 
                                                                             <custom:GAZTBorderlessEntry
@@ -2017,7 +2001,7 @@
                                                                             </custom:GAZTBorderlessEntry>
 
                                                                         </custom:CustomSfTextInputView.TextInputView>
-                                                                       
+
                                                                     </custom:CustomSfTextInputView>
                                                                 </StackLayout>
                                                                 <StackLayout Grid.Row="6">
@@ -2103,9 +2087,7 @@
                                                     <StackLayout Grid.Row="0">
 
                                                         <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.TIN}" />
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmTINNumber"
-                                                            IsEnabled="{Binding FinancialRepresentative.TinEntry}">
+                                                        <custom:CustomSfTextInputView x:Name="FrmTINNumber" IsEnabled="{Binding FinancialRepresentative.TinEntry}">
                                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                                 <custom:GAZTBorderlessEntry
@@ -2137,9 +2119,7 @@
                                                                 Grid.Row="0"
                                                                 Style="{StaticResource ComponentHeaderBlackBold}"
                                                                 Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
-                                                            <custom:CustomSfTextInputView
-                                                                x:Name="FrmIDType"
-                                                                Grid.Row="1">
+                                                            <custom:CustomSfTextInputView x:Name="FrmIDType" Grid.Row="1">
                                                                 <custom:CustomSfTextInputView.TextInputView>
 
                                                                     <custom:GAZTBorderlessEntry
@@ -2389,9 +2369,7 @@
                                                     <StackLayout Grid.Row="4">
 
                                                         <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmFirstName"
-                                                            IsEnabled="False">
+                                                        <custom:CustomSfTextInputView x:Name="FrmFirstName" IsEnabled="False">
                                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                                 <custom:GAZTBorderlessEntry
@@ -2411,9 +2389,7 @@
                                                     <StackLayout Grid.Row="5">
 
                                                         <Label Style="{StaticResource ComponentHeaderBlackBold}" Text="{x:Static ResourceManager:AppResources.ZZZVATRSurName}" />
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmLastName"
-                                                            IsEnabled="False">
+                                                        <custom:CustomSfTextInputView x:Name="FrmLastName" IsEnabled="False">
                                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                                 <custom:GAZTBorderlessEntry
@@ -2970,8 +2946,7 @@
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
-                                                        <custom:CustomSfTextInputView
-                                                            Grid.Row="1">
+                                                        <custom:CustomSfTextInputView Grid.Row="1">
                                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                                 <custom:GAZTBorderlessEntry
@@ -3069,9 +3044,7 @@
                                                             </Label.FormattedText>
                                                         </Label>
 
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmContactIDNumber"
-                                                            IsEnabled="{Binding Declaration.IDTypeOrNoPicker}">
+                                                        <custom:CustomSfTextInputView x:Name="FrmContactIDNumber" IsEnabled="{Binding Declaration.IDTypeOrNoPicker}">
                                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                                 <custom:GAZTBorderlessEntry
@@ -3212,9 +3185,7 @@
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmContactName"
-                                                            IsEnabled="{Binding Declaration.ContactNameEntry}">
+                                                        <custom:CustomSfTextInputView x:Name="FrmContactName" IsEnabled="{Binding Declaration.ContactNameEntry}">
                                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                                 <custom:GAZTBorderlessEntry
@@ -3367,8 +3338,7 @@
                                     DotSize="12"
                                     HorizontalOptions="End"
                                     MaxNum="{Binding MaxIndex}"
-                                    MinNum="{Binding CurrentIndex}"
-                                    />
+                                    MinNum="{Binding CurrentIndex}" />
 
                             </StackLayout>
 

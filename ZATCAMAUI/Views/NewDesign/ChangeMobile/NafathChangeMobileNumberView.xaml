@@ -7,7 +7,8 @@
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" xmlns:inputLayout="http://schemas.syncfusion.com/maui"
+    xmlns:inputLayout="http://schemas.syncfusion.com/maui"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     x:Name="page"
     Title="NafathChangeMobileNumberView"
     ios:Page.UseSafeArea="true"
@@ -30,7 +31,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -127,9 +127,9 @@
                                 TextColor="{StaticResource PrimaryColor}" />
                             <custom:GAZTBorderlessEntry
                                 Margin="5,0,0,0"
-                                MaxLength="{Binding MaxLength}"
                                 Keyboard="{OnPlatform Android=Telephone,
-                                                        iOS=Default}"
+                                                      iOS=Default}"
+                                MaxLength="{Binding MaxLength}"
                                 Style="{StaticResource DefaultEntry}"
                                 Text="{Binding MobileNumber}"
                                 TextColor="{StaticResource PrimaryColor}">
@@ -151,7 +151,7 @@
                 </StackLayout>
             </Border>
 
-             <!--  Loader  -->
+            <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
             <!--#endregion Body-->
         </Grid>

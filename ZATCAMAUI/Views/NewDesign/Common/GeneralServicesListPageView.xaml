@@ -27,7 +27,6 @@
                         IsVisible="{Binding IsBackStepButtonVisible}"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>

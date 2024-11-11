@@ -6,8 +6,8 @@
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    BackgroundColor="#88000000"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
 
@@ -21,8 +21,7 @@
                 HorizontalOptions="Center"
                 Style="{StaticResource SectionTitleBlack}"
                 Text="Instructions and Conditions" />
-            <ScrollView Grid.Row="1"
-                        VerticalScrollBarVisibility="Never">
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="5" Spacing="15">
                     <Border
                         Padding="15"

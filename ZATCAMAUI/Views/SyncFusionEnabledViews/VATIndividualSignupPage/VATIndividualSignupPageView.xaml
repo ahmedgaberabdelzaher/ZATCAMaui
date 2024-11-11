@@ -8,14 +8,14 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
-     <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingVATIndividualSignupCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 

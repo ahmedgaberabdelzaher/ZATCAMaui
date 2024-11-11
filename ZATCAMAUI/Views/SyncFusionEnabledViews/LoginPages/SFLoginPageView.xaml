@@ -18,9 +18,7 @@
     <ContentPage.Content>
         <Grid RowDefinitions="*">
 
-            <StackLayout
-                Padding="10,0"
-                Spacing="20">
+            <StackLayout Padding="10,0" Spacing="20">
 
                 <!--  Back Button  -->
                 <Image
@@ -121,18 +119,20 @@
                             TextColor="#58595B" />
 
                     </custom:CustomSfTextInputView.TextInputView>
-                     <custom:CustomSfTextInputView.LeadingView>
+                    <custom:CustomSfTextInputView.LeadingView>
                         <Image Aspect="AspectFit" Source="password_key.png" />
 
                     </custom:CustomSfTextInputView.LeadingView>
                     <custom:CustomSfTextInputView.TrailingView>
-                        <Image x:Name="ImageSeePassword"
-                               Source="showPassword.png"
-                               Aspect="AspectFit"
-                               HeightRequest="40" WidthRequest="40">
+                        <Image
+                            x:Name="ImageSeePassword"
+                            Aspect="AspectFit"
+                            HeightRequest="40"
+                            Source="showPassword.png"
+                            WidthRequest="40">
 
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ImageSeePassword_Tapped"/>
+                                <TapGestureRecognizer Tapped="ImageSeePassword_Tapped" />
                             </Image.GestureRecognizers>
 
                         </Image>
@@ -179,10 +179,10 @@
 
                 <Label
                     x:Name="registerLabel"
+                    Margin="0"
                     FontSize="Small"
                     HorizontalOptions="CenterAndExpand"
                     Opacity="0.8"
-                    Margin="0"
                     TextColor="LightGreen">
 
                     <Label.GestureRecognizers>
@@ -194,7 +194,7 @@
             </StackLayout>
 
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
-             
+
             <custom:BottomMenu Grid.Row="2" VerticalOptions="EndAndExpand" />
 
             <!--  Popup Msg  -->

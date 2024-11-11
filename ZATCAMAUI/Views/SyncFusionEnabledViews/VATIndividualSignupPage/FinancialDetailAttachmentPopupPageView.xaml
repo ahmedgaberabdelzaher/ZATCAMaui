@@ -10,10 +10,10 @@
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    BackgroundColor="#88000000"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Grid>
@@ -62,9 +62,7 @@
                                     FontFamily="{StaticResource SomarBold}"
                                     Text="{x:Static ResourceManager:AppResources.VATRAttachmentCategory}" />
 
-                                <custom:CustomSfTextInputView
-                                    x:Name="FrmIDType"
-                                    Grid.Row="1">
+                                <custom:CustomSfTextInputView x:Name="FrmIDType" Grid.Row="1">
 
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
@@ -155,19 +153,17 @@
                                         FontFamily="{StaticResource SomarBold}"
                                         Text="{x:Static ResourceManager:AppResources.Attachment}" />
 
-                                    <custom:CustomSfTextInputView
-                                        x:Name="FrmAttachmentOptional"
-                                        Grid.Row="3">
+                                    <custom:CustomSfTextInputView x:Name="FrmAttachmentOptional" Grid.Row="3">
 
                                         <custom:CustomSfTextInputView.TextInputView>
-                                           <custom:GAZTBorderlessEntry
+                                            <custom:GAZTBorderlessEntry
                                                 x:Name="EntryExploreAttachment"
                                                 FontFamily="{StaticResource SomarBold}"
                                                 FontSize="Small"
-                                                IsEnabled="False"
                                                 InputTransparent="True"
+                                                IsEnabled="False"
                                                 IsReadOnly="True"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZExplore}" >
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZExplore}">
 
                                                 <custom:GAZTBorderlessEntry.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
@@ -194,8 +190,8 @@
                                         </custom:CustomSfTextInputView.GestureRecognizers>
                                     </custom:CustomSfTextInputView>
 
-                                     <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
                                     </StackLayout.GestureRecognizers>
 
                                 </StackLayout>

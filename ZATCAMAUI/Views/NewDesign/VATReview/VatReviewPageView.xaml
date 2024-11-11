@@ -15,11 +15,11 @@
     xmlns:inputLayout="http://schemas.syncfusion.com/maui"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    x:Name="page"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
@@ -135,8 +135,7 @@
                                     HorizontalOptions="End"
                                     MaxNum="{Binding MaxIndex}"
                                     MinNum="{Binding CurrentIndex}"
-                                    VerticalOptions="CenterAndExpand"
-                                />
+                                    VerticalOptions="CenterAndExpand" />
                             </Grid>
 
 
@@ -439,8 +438,7 @@
 
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid HorizontalOptions="FillAndExpand"
-                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}" HorizontalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
                                                         <RowDefinition Height="auto" />
@@ -614,9 +612,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}"
                                             Text="{x:Static ResourceManager:AppResources.VRTaxPeriodofCase}" />
 
-                                        <custom:CustomSfTextInputView
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2">
+                                        <custom:CustomSfTextInputView Grid.Row="1" Grid.ColumnSpan="2">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                     HorizontalOptions="FillAndExpand"
@@ -626,7 +622,7 @@
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding TaxPeriodOfCase}"
                                                     TextColor="{StaticResource Primary}" />
-                                           </custom:CustomSfTextInputView.TextInputView>
+                                            </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
 
                                     </Grid>
@@ -644,18 +640,16 @@
                                             Style="{StaticResource MicroGrayLabelStyle}"
                                             Text="{x:Static ResourceManager:AppResources.VRPeriodFrom}" />
 
-                                        <custom:CustomSfTextInputView
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2">
+                                        <custom:CustomSfTextInputView Grid.Row="1" Grid.ColumnSpan="2">
                                             <custom:CustomSfTextInputView.TextInputView>
-                                            <custom:GAZTBorderlessEntry
-                                                HorizontalOptions="FillAndExpand"
-                                                InputTransparent="True"
-                                                IsReadOnly="True"
-                                                Placeholder="{x:Static ResourceManager:AppResources.VRPeriodFrom}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding FormattedTaxperdioFromDate}"
-                                                TextColor="{StaticResource Primary}" />
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.VRPeriodFrom}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding FormattedTaxperdioFromDate}"
+                                                    TextColor="{StaticResource Primary}" />
 
                                             </custom:CustomSfTextInputView.TextInputView>
 
@@ -676,18 +670,16 @@
                                             Style="{StaticResource MicroGrayLabelStyle}"
                                             Text="{x:Static ResourceManager:AppResources.VRPeriodTo}" />
 
-                                        <custom:CustomSfTextInputView
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2">
+                                        <custom:CustomSfTextInputView Grid.Row="1" Grid.ColumnSpan="2">
                                             <custom:CustomSfTextInputView.TextInputView>
-                                            <custom:GAZTBorderlessEntry
-                                                HorizontalOptions="FillAndExpand"
-                                                InputTransparent="True"
-                                                IsReadOnly="True"
-                                                Placeholder="{x:Static ResourceManager:AppResources.VRPeriodTo}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding FormattedTaxperdioToDate}"
-                                                TextColor="{StaticResource Primary}" />
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.VRPeriodTo}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding FormattedTaxperdioToDate}"
+                                                    TextColor="{StaticResource Primary}" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
 
@@ -706,18 +698,16 @@
                                             Style="{StaticResource MicroGrayLabelStyle}"
                                             Text="{x:Static ResourceManager:AppResources.VRPenality_amount_in_question}" />
 
-                                        <custom:CustomSfTextInputView
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2">
+                                        <custom:CustomSfTextInputView Grid.Row="1" Grid.ColumnSpan="2">
                                             <custom:CustomSfTextInputView.TextInputView>
-                                            <custom:GAZTBorderlessEntry
-                                                HorizontalOptions="FillAndExpand"
-                                                InputTransparent="True"
-                                                IsReadOnly="True"
-                                                Placeholder="{x:Static ResourceManager:AppResources.VRPenality_amount_in_question}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding PenalityAmountInQuestion, Converter={StaticResource commaSeparatorConverter}}"
-                                                TextColor="{StaticResource Primary}" />
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.VRPenality_amount_in_question}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding PenalityAmountInQuestion, Converter={StaticResource commaSeparatorConverter}}"
+                                                    TextColor="{StaticResource Primary}" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
 
@@ -736,18 +726,16 @@
                                             Style="{StaticResource MicroGrayLabelStyle}"
                                             Text="{x:Static ResourceManager:AppResources.VRTotalTaxLiability}" />
 
-                                        <custom:CustomSfTextInputView
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2">
+                                        <custom:CustomSfTextInputView Grid.Row="1" Grid.ColumnSpan="2">
                                             <custom:CustomSfTextInputView.TextInputView>
-                                            <custom:GAZTBorderlessEntry
-                                                HorizontalOptions="FillAndExpand"
-                                                InputTransparent="True"
-                                                Placeholder="{x:Static ResourceManager:AppResources.VRTotalTaxLiability}"
-                                                IsReadOnly="True"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding TotalTaxLiability}"
-                                                TextColor="{StaticResource Primary}" />
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.VRTotalTaxLiability}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding TotalTaxLiability}"
+                                                    TextColor="{StaticResource Primary}" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
 
@@ -796,18 +784,16 @@
                                             Style="{StaticResource MicroGrayLabelStyle}"
                                             Text="{Binding TaxPaidLable}" />
 
-                                        <custom:CustomSfTextInputView
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2">
+                                        <custom:CustomSfTextInputView Grid.Row="1" Grid.ColumnSpan="2">
                                             <custom:CustomSfTextInputView.TextInputView>
-                                            <custom:GAZTBorderlessEntry
-                                                HorizontalOptions="FillAndExpand"
-                                                InputTransparent="True"
-                                                IsReadOnly="True"
-                                                Placeholder="Binding TaxPaidLable}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding TaxPaid}"
-                                                TextColor="{StaticResource Primary}" />
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Placeholder="Binding TaxPaidLable}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding TaxPaid}"
+                                                    TextColor="{StaticResource Primary}" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
 
@@ -842,9 +828,9 @@
 
                                                 <DataTemplate>
                                                     <cards:SfCardView
-                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         BackgroundColor="Transparent"
                                                         CornerRadius="20"
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         HeightRequest="120">
                                                         <Grid
                                                             ColumnSpacing="20"
@@ -874,9 +860,9 @@
 
                                                 <DataTemplate>
                                                     <cards:SfCardView
-                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         BackgroundColor="Transparent"
                                                         CornerRadius="20"
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         HeightRequest="120">
                                                         <Grid
                                                             ColumnSpacing="20"
@@ -926,20 +912,18 @@
                                             Style="{StaticResource MicroGrayLabelStyle}"
                                             Text="{x:Static ResourceManager:AppResources.VRPleasespecifytheparticularamount}" />
 
-                                        <custom:CustomSfTextInputView
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2">
+                                        <custom:CustomSfTextInputView Grid.Row="1" Grid.ColumnSpan="2">
                                             <custom:CustomSfTextInputView.TextInputView>
-                                            <custom:GAZTBorderlessEntry
-                                                x:Name="rrAmountTxt"
-                                                HorizontalOptions="FillAndExpand"
-                                                IsEnabled="{Binding IsRRAmountEdit}"
-                                                Placeholder="{x:Static ResourceManager:AppResources.VRPleasespecifytheparticularamount}"
-                                                Keyboard="Numeric"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding RequestedReviewAmount}"
-                                                TextColor="{StaticResource Primary}"
-                                                Unfocused="RRAmountUnfocused" />
+                                                <custom:GAZTBorderlessEntry
+                                                    x:Name="rrAmountTxt"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    IsEnabled="{Binding IsRRAmountEdit}"
+                                                    Keyboard="Numeric"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.VRPleasespecifytheparticularamount}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding RequestedReviewAmount}"
+                                                    TextColor="{StaticResource Primary}"
+                                                    Unfocused="RRAmountUnfocused" />
                                             </custom:CustomSfTextInputView.TextInputView>
                                         </custom:CustomSfTextInputView>
 
@@ -967,9 +951,7 @@
                                         </Label>
 
 
-                                        <custom:CustomSfTextInputView
-                                            Grid.Row="1"
-                                            MinimumHeightRequest="100">
+                                        <custom:CustomSfTextInputView Grid.Row="1" MinimumHeightRequest="100">
 
                                             <custom:CustomSfTextInputView.TextInputView>
 
@@ -1062,17 +1044,16 @@
                                                 Source="ic_vat_info"
                                                 VerticalOptions="CenterAndExpand">
                                                 <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding OnInfoButtonTapped}" />
+                                                    <TapGestureRecognizer Command="{Binding OnInfoButtonTapped}" NumberOfTapsRequired="1" />
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </StackLayout>
 
 
 
-                                        <custom:CustomSfTextInputView
-                                            Grid.Row="0">
+                                        <custom:CustomSfTextInputView Grid.Row="0">
 
-                                            <custom:CustomSfTextInputView.TextInputView >
+                                            <custom:CustomSfTextInputView.TextInputView>
 
                                                 <custom:GAZTBorderlessEditor
                                                     x:Name="LateFiling_Details_Txx"
@@ -1111,8 +1092,7 @@
 
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid HorizontalOptions="FillAndExpand"
-                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}" HorizontalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
                                                         <RowDefinition Height="auto" />
@@ -1308,9 +1288,9 @@
 
                                                     <DataTemplate>
                                                         <cards:SfCardView
-                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             BackgroundColor="Transparent"
                                                             CornerRadius="20"
+                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             HeightRequest="120">
                                                             <Grid
                                                                 ColumnSpacing="20"
@@ -1340,9 +1320,9 @@
 
                                                     <DataTemplate>
                                                         <cards:SfCardView
-                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             BackgroundColor="Transparent"
                                                             CornerRadius="20"
+                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             HeightRequest="120">
                                                             <Grid
                                                                 ColumnSpacing="20"
@@ -1431,8 +1411,7 @@
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Grid HorizontalOptions="FillAndExpand"
-                                                              FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                        <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}" HorizontalOptions="FillAndExpand">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
                                                                 <RowDefinition Height="auto" />
@@ -1925,8 +1904,7 @@
                                                     </Label.FormattedText>
                                                 </Label>
 
-                                                <custom:CustomSfTextInputView
-                                                    Grid.Row="1">
+                                                <custom:CustomSfTextInputView Grid.Row="1">
 
                                                     <custom:CustomSfTextInputView.TextInputView>
                                                         <custom:GAZTBorderlessEntry
@@ -1938,7 +1916,7 @@
                                                             Text="{Binding IDNumber}"
                                                             TextChanged="IdNumberTextChanged">
                                                             <custom:GAZTBorderlessEntry.Behaviors>
-                                                                <xct:EventToCommandBehavior Command="{Binding OnIDNumberFocusChanged}" EventName="Unfocused"/>
+                                                                <xct:EventToCommandBehavior Command="{Binding OnIDNumberFocusChanged}" EventName="Unfocused" />
 
                                                             </custom:GAZTBorderlessEntry.Behaviors>
 
@@ -2028,15 +2006,14 @@
                                                 </Label.FormattedText>
                                             </Label>
 
-                                            <custom:CustomSfTextInputView
-                                                Grid.Row="1">
+                                            <custom:CustomSfTextInputView Grid.Row="1">
                                                 <custom:CustomSfTextInputView.TextInputView>
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="ContactPersonEntry"
                                                         HeightRequest="48"
-                                                        Placeholder="{x:Static ResourceManager:AppResources.VRContactPersonName}"
                                                         HorizontalOptions="FillAndExpand"
                                                         IsReadOnly="False"
+                                                        Placeholder="{x:Static ResourceManager:AppResources.VRContactPersonName}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ContactPersonName}"
                                                         Unfocused="ContactPersonTextUnFocus" />

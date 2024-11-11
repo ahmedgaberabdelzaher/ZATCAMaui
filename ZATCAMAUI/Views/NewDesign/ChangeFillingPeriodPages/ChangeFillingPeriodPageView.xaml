@@ -16,14 +16,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    ios:Page.UseSafeArea="true"
     x:Name="page"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
-     <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingChangeFillingPeriodPageCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
@@ -117,9 +117,10 @@
 
                 <Grid>
 
-                    <ScrollView HorizontalOptions="FillAndExpand"
-                                VerticalScrollBarVisibility="Never"
-                                VerticalOptions="FillAndExpand">
+                    <ScrollView
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never">
                         <Grid>
 
                             <Grid.RowDefinitions>
@@ -127,15 +128,15 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <!--<Grid Grid.Row="0" >-->
-                             <commonView:PageIndicatorView
-                                        HeightRequest="16"
-                                        Margin="24,32,24,0"
-                                        MaxNum="{Binding MaxIndex}"
-                                        MinNum="{Binding CurrentIndex}"
-                                        Completed="{Binding MarkComplete}"
-                                        VerticalOptions="CenterAndExpand"
-                                        HorizontalOptions="End"
-                                        DotSize="12" />
+                            <commonView:PageIndicatorView
+                                Margin="24,32,24,0"
+                                Completed="{Binding MarkComplete}"
+                                DotSize="12"
+                                HeightRequest="16"
+                                HorizontalOptions="End"
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}"
+                                VerticalOptions="CenterAndExpand" />
 
                             <Grid Grid.Row="1">
 
@@ -472,8 +473,7 @@
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Grid HorizontalOptions="FillAndExpand"
-                                                              FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                        <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}" HorizontalOptions="FillAndExpand">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
                                                                 <RowDefinition Height="auto" />
@@ -554,8 +554,7 @@
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Grid HorizontalOptions="FillAndExpand"
-                                                              FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                        <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}" HorizontalOptions="FillAndExpand">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
                                                                 <RowDefinition Height="auto" />
@@ -906,7 +905,7 @@
                                                         VerticalOptions="CenterAndExpand">
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <behaviour:OnlyNumericValuesBehaviour />
-                                                             <xct:EventToCommandBehavior Command="{Binding OnIDNumberFocusChanged}" EventName="Unfocused" />
+                                                            <xct:EventToCommandBehavior Command="{Binding OnIDNumberFocusChanged}" EventName="Unfocused" />
                                                         </custom:GAZTBorderlessEntry.Behaviors>
 
                                                     </custom:GAZTBorderlessEntry>
@@ -1270,8 +1269,10 @@
                                                         VerticalOptions="Center">
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate>
-                                                                <Grid Padding="5" HorizontalOptions="FillAndExpand"
-                                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                                <Grid
+                                                                    Padding="5"
+                                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                                    HorizontalOptions="FillAndExpand">
                                                                     <Grid.RowDefinitions>
                                                                         <RowDefinition Height="auto" />
                                                                     </Grid.RowDefinitions>
@@ -1305,8 +1306,7 @@
                                                         VerticalOptions="Center">
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate>
-                                                                <Grid Padding="5"
-                                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                                <Grid Padding="5" FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="*" />
                                                                         <ColumnDefinition Width="*" />
@@ -1334,8 +1334,7 @@
                                                         VerticalOptions="Center">
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate>
-                                                                <Grid Padding="5,0"
-                                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                                <Grid Padding="5,0" FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="*" />
                                                                         <ColumnDefinition Width="*" />

@@ -101,9 +101,10 @@
 
                 <Grid>
 
-                    <ScrollView HorizontalOptions="FillAndExpand"
-                                VerticalScrollBarVisibility="Never"
-                                VerticalOptions="FillAndExpand">
+                    <ScrollView
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never">
 
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
@@ -1592,7 +1593,14 @@
                                     Grid.Row="0"
                                     Grid.ColumnSpan="3"
                                     HorizontalOptions="End">
-                                    <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" HorizontalOptions="End" DotSize="12"/>
+                                    <commonView:PageIndicatorView
+                                        Margin="20,25,0,0"
+                                        Completed="{Binding MarkComplete}"
+                                        DotSize="12"
+                                        HorizontalOptions="End"
+                                        MaxNum="{Binding MaxIndex}"
+                                        MinNum="{Binding CurrentIndex}"
+                                        VerticalOptions="CenterAndExpand" />
 
                                 </Grid>
                                 <Grid
@@ -1924,7 +1932,14 @@
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0" HorizontalOptions="End">
-                                    <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" HorizontalOptions="End" DotSize="12"/>
+                                    <commonView:PageIndicatorView
+                                        Margin="20,25,0,0"
+                                        Completed="{Binding MarkComplete}"
+                                        DotSize="12"
+                                        HorizontalOptions="End"
+                                        MaxNum="{Binding MaxIndex}"
+                                        MinNum="{Binding CurrentIndex}"
+                                        VerticalOptions="CenterAndExpand" />
 
                                 </Grid>
                                 <Grid Grid.Row="1">
@@ -2296,7 +2311,14 @@
                                                             Grid.Row="0"
                                                             Grid.ColumnSpan="3"
                                                             HorizontalOptions="End">
-                                                            <commonView:PageIndicatorView Margin="10,15,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" HorizontalOptions="End" DotSize="12"/>
+                                                            <commonView:PageIndicatorView
+                                                                Margin="10,15,0,0"
+                                                                Completed="{Binding MarkComplete}"
+                                                                DotSize="12"
+                                                                HorizontalOptions="End"
+                                                                MaxNum="{Binding MaxIndex}"
+                                                                MinNum="{Binding CurrentIndex}"
+                                                                VerticalOptions="CenterAndExpand" />
 
                                                         </Grid>
 
@@ -2677,7 +2699,14 @@
                                                             Grid.Row="0"
                                                             Grid.ColumnSpan="3"
                                                             HorizontalOptions="End">
-                                                            <commonView:PageIndicatorView Margin="10,15,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="12" HorizontalOptions="End"/>
+                                                            <commonView:PageIndicatorView
+                                                                Margin="10,15,0,0"
+                                                                Completed="{Binding MarkComplete}"
+                                                                DotSize="12"
+                                                                HorizontalOptions="End"
+                                                                MaxNum="{Binding MaxIndex}"
+                                                                MinNum="{Binding CurrentIndex}"
+                                                                VerticalOptions="CenterAndExpand" />
                                                         </Grid>
                                                         <Label
                                                             Grid.Row="1"
@@ -2889,7 +2918,14 @@
                                     Grid.Row="0"
                                     Grid.ColumnSpan="3"
                                     HorizontalOptions="End">
-                                    <commonView:PageIndicatorView Margin="10,15,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand" DotSize="12" HorizontalOptions="End"/>
+                                    <commonView:PageIndicatorView
+                                        Margin="10,15,0,0"
+                                        Completed="{Binding MarkComplete}"
+                                        DotSize="12"
+                                        HorizontalOptions="End"
+                                        MaxNum="{Binding MaxIndex}"
+                                        MinNum="{Binding CurrentIndex}"
+                                        VerticalOptions="CenterAndExpand" />
 
                                 </Grid>
                                 <Grid

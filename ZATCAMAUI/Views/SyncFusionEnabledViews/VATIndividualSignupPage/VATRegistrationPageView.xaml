@@ -16,11 +16,11 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+    x:Name="page"
     Title="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationTile}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    x:Name="page"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <!--  ZZZZVatRegistrationTile  -->
@@ -99,8 +99,8 @@
                     Margin="0"
                     Padding="0,15,0,0"
                     BackgroundColor="White"
-                    RowDefinitions="auto,*"
                     HorizontalOptions="FillAndExpand"
+                    RowDefinitions="auto,*"
                     VerticalOptions="FillAndExpand">
 
                     <!--#region Inner Header-->
@@ -110,9 +110,10 @@
                         Margin="15,15,15,0"
                         Padding="0"
                         BackgroundColor="White">
-                        <Grid Margin="0,7,0,0"
-                              RowDefinitions="auto,auto"
-                              ColumnDefinitions="20*,60*,20*">
+                        <Grid
+                            Margin="0,7,0,0"
+                            ColumnDefinitions="20*,60*,20*"
+                            RowDefinitions="auto,auto">
 
                             <Image
                                 Grid.Row="0"
@@ -178,7 +179,11 @@
                                 Padding="10,0,0,10"
                                 BackgroundColor="White"
                                 HorizontalOptions="FillAndExpand">
-                                <commonView:PageIndicatorView MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" HorizontalOptions="End"/>
+                                <commonView:PageIndicatorView
+                                    DotSize="12"
+                                    HorizontalOptions="End"
+                                    MaxNum="{Binding MaxIndex}"
+                                    MinNum="{Binding CurrentIndex}" />
 
 
                             </StackLayout>
@@ -208,10 +213,10 @@
                                 <Grid
                                     Margin="0"
                                     BackgroundColor="White"
-                                    HorizontalOptions="FillAndExpand"
-                                    RowSpacing="0"
-                                    RowDefinitions="100*"
                                     ColumnDefinitions="100*"
+                                    HorizontalOptions="FillAndExpand"
+                                    RowDefinitions="100*"
+                                    RowSpacing="0"
                                     VerticalOptions="FillAndExpand">
 
                                     <!--#region Terms and Conditions-->
@@ -225,8 +230,7 @@
                                         RowSpacing="0"
                                         VerticalOptions="FillAndExpand">
 
-                                        <ScrollView HorizontalOptions="FillAndExpand"
-                                                    VerticalScrollBarVisibility="Never">
+                                        <ScrollView HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
 
                                             <StackLayout BackgroundColor="White">
 
@@ -252,7 +256,7 @@
                                                     Style="{StaticResource GAZTTermsConditions}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span 
+                                                            <Span
                                                                 Style="{StaticResource GAZTTermsConditions}"
                                                                 Text="{x:Static ResourceManager:AppResources.ZZZZVATRFAQ1}"
                                                                 TextColor="{StaticResource Secondary}" />
@@ -377,8 +381,8 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Padding="0,0,0,0"
-                                        RowDefinitions="auto,auto"
-                                        IsVisible="{Binding IsTaxPayersVisible}">
+                                        IsVisible="{Binding IsTaxPayersVisible}"
+                                        RowDefinitions="auto,auto">
 
                                         <StackLayout Grid.Row="0">
                                             <Label
@@ -498,8 +502,8 @@
                                                                 x:Name="Entry_CrStdt"
                                                                 Margin="0"
                                                                 InputTransparent="True"
-                                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZZVATRStartDate}"
                                                                 IsReadOnly="True"
+                                                                Placeholder="{x:Static ResourceManager:AppResources.ZZZZVATRStartDate}"
                                                                 Style="{StaticResource DefaultEntry}"
                                                                 Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.StartdateToshow}" />
                                                         </custom:CustomSfTextInputView.TextInputView>
@@ -569,9 +573,10 @@
                                                         StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
 
-                                                            <Grid RowDefinitions="auto"
-                                                                  ColumnSpacing="10"
-                                                                  ColumnDefinitions="20,*">
+                                                            <Grid
+                                                                ColumnDefinitions="20,*"
+                                                                ColumnSpacing="10"
+                                                                RowDefinitions="auto">
 
                                                                 <Image
                                                                     Grid.Row="0"
@@ -655,8 +660,7 @@
                                                         </Label.FormattedText>
                                                     </Label>
 
-                                                    <custom:CustomSfTextInputView
-                                                        x:Name="FrmEStartDate">
+                                                    <custom:CustomSfTextInputView x:Name="FrmEStartDate">
                                                         <custom:CustomSfTextInputView.TextInputView>
                                                             <custom:GAZTBorderlessEntry
                                                                 x:Name="DateEntry"
@@ -693,7 +697,7 @@
                                                         SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}">
 
                                                         <custom:CustomDatePicker.ColumnHeaderView>
-                                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                                         </custom:CustomDatePicker.ColumnHeaderView>
 
                                                         <custom:CustomDatePicker.SelectionView>
@@ -705,9 +709,9 @@
                                                         </custom:CustomDatePicker.SelectedTextStyle>
 
                                                         <custom:CustomDatePicker.HeaderView>
-                                                             <syncfusion:PickerHeaderView
+                                                            <syncfusion:PickerHeaderView
                                                                 Height="46"
-                                                                 Background="{StaticResource NeutralBlack}"
+                                                                Background="{StaticResource NeutralBlack}"
                                                                 Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
                                                                 <syncfusion:PickerHeaderView.TextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="White" />
@@ -718,11 +722,10 @@
 
                                                         <custom:CustomDatePicker.FooterView>
 
-                                                            <syncfusion:PickerFooterView Height="46"
-                                                                                        Background="{StaticResource NeutralBlack}">
+                                                            <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
                                                                 <syncfusion:PickerFooterView.TextStyle>
-                                                                    <syncfusion:PickerTextStyle  TextColor="White" />
+                                                                    <syncfusion:PickerTextStyle TextColor="White" />
                                                                 </syncfusion:PickerFooterView.TextStyle>
 
                                                             </syncfusion:PickerFooterView>
@@ -738,9 +741,10 @@
                                                         Style="{StaticResource CaptionLabelGrey}"
                                                         Text="{x:Static ResourceManager:AppResources.VATRImportExport}" />
 
-                                                    <Grid ColumnSpacing="30"
-                                                          RowDefinitions="auto,auto"
-                                                          ColumnDefinitions="auto,auto">
+                                                    <Grid
+                                                        ColumnDefinitions="auto,auto"
+                                                        ColumnSpacing="30"
+                                                        RowDefinitions="auto,auto">
 
                                                         <cards:SfCardView
                                                             Grid.Row="0"
@@ -841,45 +845,45 @@
 
                                                 <Border
                                                     Grid.Row="9"
-                                                    Grid.ColumnSpan="2"
                                                     Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
                                                     Margin="0,20,0,10"
                                                     Stroke="#B1B1B1"
                                                     StrokeThickness="1"
                                                     Style="{StaticResource GreyBorderFrame}">
-                                                    <StackLayout Orientation="Horizontal" Spacing="0" Margin="8">
+                                                    <StackLayout
+                                                        Margin="8"
+                                                        Orientation="Horizontal"
+                                                        Spacing="0">
                                                         <Image
-                                                               HeightRequest="24"
-                                                               HorizontalOptions="Start"
-                                                               Source="ic_vat_info.png"
-                                                               VerticalOptions="Center"
-                                                               WidthRequest="24" >
-                                                        </Image>
+                                                            HeightRequest="24"
+                                                            HorizontalOptions="Start"
+                                                            Source="ic_vat_info.png"
+                                                            VerticalOptions="Center"
+                                                            WidthRequest="24" />
                                                         <Label
-                                                                Margin="10,0,10,0"
-                                                                HorizontalTextAlignment="Start"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                VerticalOptions="EndAndExpand"
-                                                                Style="{StaticResource ValueLabelBlack}">
+                                                            Margin="10,0,10,0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            HorizontalTextAlignment="Start"
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            VerticalOptions="EndAndExpand">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.PleaseGoToIBan}"/>
-                                                                    <Span Text=" "/>
-                                                                    <Span Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}" TextColor="{StaticResource Secondary}" >
-                                                                    </Span>
+                                                                    <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.PleaseGoToIBan}" />
+                                                                    <Span Text=" " />
+                                                                    <Span Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}" TextColor="{StaticResource Secondary}" />
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
                                                         <StackLayout.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="IBANAccountManagementCommand"/>
+                                                            <TapGestureRecognizer Tapped="IBANAccountManagementCommand" />
                                                         </StackLayout.GestureRecognizers>
                                                     </StackLayout>
                                                 </Border>
 
                                                 <StackLayout Grid.Row="10">
 
-                                                    <Grid RowDefinitions="auto,auto"
-                                                          ColumnDefinitions="50*,50*">
+                                                    <Grid ColumnDefinitions="50*,50*" RowDefinitions="auto,auto">
 
                                                         <CollectionView
                                                             x:Name="Ibanset"
@@ -900,17 +904,17 @@
                                                                 <DataTemplate>
 
                                                                     <cards:SfCardView
-                                                                         FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                                         BackgroundColor="Transparent"
                                                                         CornerRadius="20"
+                                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                                         HeightRequest="136"
                                                                         WidthRequest="171">
                                                                         <Grid
+                                                                            ColumnDefinitions="*"
                                                                             ColumnSpacing="0"
                                                                             HorizontalOptions="FillAndExpand"
-                                                                            RowSpacing="10"
                                                                             RowDefinitions="30*,70*,auto"
-                                                                            ColumnDefinitions="*"
+                                                                            RowSpacing="10"
                                                                             VerticalOptions="FillAndExpand">
                                                                             <Image
                                                                                 Grid.Row="0"
@@ -1444,9 +1448,7 @@
                                                                 Text="{Binding Attachments}" />
                                                         </StackLayout>
 
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmNewAttachment"
-                                                            Grid.Row="1">
+                                                        <custom:CustomSfTextInputView x:Name="FrmNewAttachment" Grid.Row="1">
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <!--  New Attachment  -->
                                                                 <custom:GAZTBorderlessEntry
@@ -1570,8 +1572,7 @@
                                                     <StackLayout Grid.Row="0">
 
                                                         <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TIN}" />
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmTINNumber">
+                                                        <custom:CustomSfTextInputView x:Name="FrmTINNumber">
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="EntryTINNumber"
@@ -1597,9 +1598,7 @@
                                                             Grid.Row="0"
                                                             Style="{StaticResource CaptionLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmIDType"
-                                                            Grid.Row="1">
+                                                        <custom:CustomSfTextInputView x:Name="FrmIDType" Grid.Row="1">
                                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                                 <custom:GAZTBorderlessEntry
@@ -1705,9 +1704,7 @@
                                                             </Label.FormattedText>
                                                         </Label>
 
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmIDNo"
-                                                            HasError="{Binding FrameIDError}">
+                                                        <custom:CustomSfTextInputView x:Name="FrmIDNo" HasError="{Binding FrameIDError}">
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="EntryIDNo"
@@ -1807,7 +1804,7 @@
                                                             SelectedItem="{Binding TodayDate}">
 
                                                             <custom:CustomDatePicker.ColumnHeaderView>
-                                                                <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                                                <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                                             </custom:CustomDatePicker.ColumnHeaderView>
 
 
@@ -1820,40 +1817,38 @@
                                                             </custom:CustomDatePicker.SelectedTextStyle>
 
                                                             <custom:CustomDatePicker.HeaderView>
-                                                             <syncfusion:PickerHeaderView
-                                                                Height="46"
-                                                                 Background="{StaticResource NeutralBlack}"
-                                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
-                                                                <syncfusion:PickerHeaderView.TextStyle>
-                                                                    <syncfusion:PickerTextStyle TextColor="White" />
-                                                                </syncfusion:PickerHeaderView.TextStyle>
-                                                            </syncfusion:PickerHeaderView>
+                                                                <syncfusion:PickerHeaderView
+                                                                    Height="46"
+                                                                    Background="{StaticResource NeutralBlack}"
+                                                                    Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
+                                                                    <syncfusion:PickerHeaderView.TextStyle>
+                                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                                    </syncfusion:PickerHeaderView.TextStyle>
+                                                                </syncfusion:PickerHeaderView>
 
-                                                        </custom:CustomDatePicker.HeaderView>
+                                                            </custom:CustomDatePicker.HeaderView>
 
-                                                        <custom:CustomDatePicker.FooterView>
+                                                            <custom:CustomDatePicker.FooterView>
 
-                                                            <syncfusion:PickerFooterView Height="46"
-                                                                                        Background="{StaticResource NeutralBlack}">
+                                                                <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
-                                                                <syncfusion:PickerFooterView.TextStyle>
-                                                                    <syncfusion:PickerTextStyle  TextColor="White" />
-                                                                </syncfusion:PickerFooterView.TextStyle>
+                                                                    <syncfusion:PickerFooterView.TextStyle>
+                                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                                    </syncfusion:PickerFooterView.TextStyle>
 
-                                                            </syncfusion:PickerFooterView>
+                                                                </syncfusion:PickerFooterView>
 
-                                                        </custom:CustomDatePicker.FooterView>
+                                                            </custom:CustomDatePicker.FooterView>
 
                                                         </custom:CustomDatePicker>
 
                                                     </StackLayout>
 
 
-                                                    <StackLayout Grid.Row="4" >
+                                                    <StackLayout Grid.Row="4">
 
                                                         <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmFirstName">
+                                                        <custom:CustomSfTextInputView x:Name="FrmFirstName">
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="EntryFirstName"
@@ -1872,9 +1867,7 @@
                                                     <StackLayout Grid.Row="5">
 
                                                         <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZVATRSurName}" />
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmLastName"
-                                                            IsEnabled="{Binding IsFDNameMobEmailEnable}">
+                                                        <custom:CustomSfTextInputView x:Name="FrmLastName" IsEnabled="{Binding IsFDNameMobEmailEnable}">
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="EntryLastName"
@@ -2269,8 +2262,7 @@
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
-                                                        <custom:CustomSfTextInputView
-                                                            Grid.Row="1">
+                                                        <custom:CustomSfTextInputView Grid.Row="1">
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <custom:GAZTBorderlessEntry
                                                                     HorizontalOptions="FillAndExpand"
@@ -2365,9 +2357,7 @@
                                                             </Label.FormattedText>
                                                         </Label>
 
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmContactIDNumber"
-                                                            HasError="{Binding FrameContactIDError}">
+                                                        <custom:CustomSfTextInputView x:Name="FrmContactIDNumber" HasError="{Binding FrameContactIDError}">
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="EntryContactIDNumber"
@@ -2499,8 +2489,7 @@
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
-                                                        <custom:CustomSfTextInputView
-                                                            x:Name="FrmContactName">
+                                                        <custom:CustomSfTextInputView x:Name="FrmContactName">
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="EntryContactName"
@@ -2578,9 +2567,9 @@
 
                                 <!--#region Next Button-->
                                 <buttons:SfButton
-                                    Margin="0,10,0,10"
                                     x:Name="MainButtonName"
                                     Grid.ColumnSpan="2"
+                                    Margin="0,10,0,10"
                                     Background="{Binding ContinueButtonnBackroundColor}"
                                     Clicked="btnContinue_Clicked"
                                     CornerRadius="14"

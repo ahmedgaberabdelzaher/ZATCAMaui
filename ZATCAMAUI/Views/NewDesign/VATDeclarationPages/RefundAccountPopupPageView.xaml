@@ -11,9 +11,9 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    FlowDirection="{Binding AppDirection}"
-    BackgroundColor="#88000000"
     x:Name="page"
+    BackgroundColor="#88000000"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Border
         BackgroundColor="White"
@@ -40,25 +40,26 @@
                         Text="{x:Static ResourceManager:AppResources.VATRefund}" />
 
                     <StackLayout
-                            Grid.Row="1"
-                            Grid.ColumnSpan="2"
-                            Margin="0,0,0,7"
-                            Spacing="15">
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,0,7"
+                        Spacing="15">
 
                         <StackLayout>
-                            <Border Stroke="#B1B1B1"
-                                            StrokeThickness="1"
-                                            Style="{StaticResource GreyBorderFrame}"
-                                    Padding="15,15,15,15"
-                                    BackgroundColor="White">
+                            <Border
+                                Padding="15,15,15,15"
+                                BackgroundColor="White"
+                                Stroke="#B1B1B1"
+                                StrokeThickness="1"
+                                Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Orientation="Horizontal">
                                     <Image Source="ic_vat_info" VerticalOptions="StartAndExpand" />
                                     <custom:CustomLabel
-                                            HorizontalOptions="StartAndExpand"
-                                            HorizontalTextAlignment="Start"
-                                            LineSpacing="1"
-                                            Text="{x:Static ResourceManager:AppResources.IBanRefundsInfo}"
-                                            VerticalOptions="EndAndExpand" />
+                                        HorizontalOptions="StartAndExpand"
+                                        HorizontalTextAlignment="Start"
+                                        LineSpacing="1"
+                                        Text="{x:Static ResourceManager:AppResources.IBanRefundsInfo}"
+                                        VerticalOptions="EndAndExpand" />
                                 </StackLayout>
                             </Border>
                         </StackLayout>
@@ -74,21 +75,21 @@
 
                         <StackLayout>
                             <Label
-                            BackgroundColor="White"
-                            Style="{StaticResource CaptionLabelGrey}"
-                            Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" />
+                                BackgroundColor="White"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" />
 
                             <custom:CustomSfTextInputView x:Name="txtEntryName">
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
-                                                    BackgroundColor="Transparent"
-                                                    InputTransparent="True"
-                                                    IsReadOnly="True"
-                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
-                                                    Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding TxtSelectedIBANType}"
-                                                    TextColor="{StaticResource NeutralBlack}"
-                                                    VerticalTextAlignment="Center" />
+                                        BackgroundColor="Transparent"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding TxtSelectedIBANType}"
+                                        TextColor="{StaticResource NeutralBlack}"
+                                        VerticalTextAlignment="Center" />
                                 </custom:CustomSfTextInputView.TextInputView>
 
                                 <custom:CustomSfTextInputView.TrailingView>
@@ -102,15 +103,15 @@
                             </custom:CustomSfTextInputView>
 
                             <custom:CustomSfPicker
-                                            x:Name="IDTypeDropdown"
-                                            Margin="0"
-                                            Background="Transparent"
-                                            CancelButtonClicked="IDTypeDropdown_CancelButtonClicked"
-                                            IsOpen="False"
-                                            ItemHeight="46"
-                                            Mode="Dialog"
-                                            OkButtonClicked="IDTypeDropdown_OkButtonClicked"
-                                            SelectionChanged="IDType_SelectionChanged">
+                                x:Name="IDTypeDropdown"
+                                Margin="0"
+                                Background="Transparent"
+                                CancelButtonClicked="IDTypeDropdown_CancelButtonClicked"
+                                IsOpen="False"
+                                ItemHeight="46"
+                                Mode="Dialog"
+                                OkButtonClicked="IDTypeDropdown_OkButtonClicked"
+                                SelectionChanged="IDType_SelectionChanged">
 
                                 <syncfusion:SfPicker.TextStyle>
                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -118,16 +119,16 @@
 
                                 <syncfusion:SfPicker.Columns>
                                     <syncfusion:PickerColumn
-                                                    Width="300"
-                                                    DisplayMemberPath="Text"
-                                                    ItemsSource="{Binding IBANTypesList}"/>
+                                        Width="300"
+                                        DisplayMemberPath="Text"
+                                        ItemsSource="{Binding IBANTypesList}" />
                                 </syncfusion:SfPicker.Columns>
 
                                 <syncfusion:SfPicker.SelectedTextStyle>
                                     <syncfusion:PickerTextStyle
-                                                    FontAttributes="Bold"
-                                                    FontSize="15"
-                                                    TextColor="{StaticResource NeutralBlack}" />
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        TextColor="{StaticResource NeutralBlack}" />
                                 </syncfusion:SfPicker.SelectedTextStyle>
 
                                 <syncfusion:SfPicker.SelectionView>
@@ -137,9 +138,9 @@
                                 <syncfusion:SfPicker.HeaderView>
 
                                     <syncfusion:PickerHeaderView
-                                                    Height="55"
-                                                    Background="{StaticResource Primary}"
-                                                    Text="{x:Static ResourceManager:AppResources.ZZIDType}">
+                                        Height="55"
+                                        Background="{StaticResource Primary}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZIDType}">
                                         <syncfusion:PickerHeaderView.TextStyle>
                                             <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
                                         </syncfusion:PickerHeaderView.TextStyle>
@@ -168,7 +169,6 @@
                         Grid.Row="3"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
-                        
                         IsEnabled="{Binding IsIdNumberEnabled}">
 
 
@@ -180,14 +180,14 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
-                                                    BackgroundColor="Transparent"
-                                                    InputTransparent="True"
-                                                    IsReadOnly="True"
-                                                    Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
-                                                    Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding TxtSelectedIBANIDNumber}"
-                                                    TextColor="{StaticResource NeutralBlack}"
-                                                    VerticalTextAlignment="Center" />
+                                    BackgroundColor="Transparent"
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding TxtSelectedIBANIDNumber}"
+                                    TextColor="{StaticResource NeutralBlack}"
+                                    VerticalTextAlignment="Center" />
                             </custom:CustomSfTextInputView.TextInputView>
 
                             <custom:CustomSfTextInputView.TrailingView>
@@ -201,15 +201,15 @@
                         </custom:CustomSfTextInputView>
 
                         <custom:CustomSfPicker
-                                            x:Name="IDNumberDropdown"
-                                            Margin="0"
-                                            Background="Transparent"
-                                            CancelButtonClicked="IDNumberDropdown_CancelButtonClicked"
-                                            IsOpen="False"
-                                            ItemHeight="46"
-                                            Mode="Dialog"
-                                            OkButtonClicked="IDNumberDropdown_OkButtonClicked"
-                                            SelectionChanged="IDNumber_SelectionChanged">
+                            x:Name="IDNumberDropdown"
+                            Margin="0"
+                            Background="Transparent"
+                            CancelButtonClicked="IDNumberDropdown_CancelButtonClicked"
+                            IsOpen="False"
+                            ItemHeight="46"
+                            Mode="Dialog"
+                            OkButtonClicked="IDNumberDropdown_OkButtonClicked"
+                            SelectionChanged="IDNumber_SelectionChanged">
 
                             <syncfusion:SfPicker.TextStyle>
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -217,16 +217,16 @@
 
                             <syncfusion:SfPicker.Columns>
                                 <syncfusion:PickerColumn
-                                                    Width="300"
-                                                    DisplayMemberPath="Text"
-                                                    ItemsSource="{Binding IBANIDNumberList}"/>
+                                    Width="300"
+                                    DisplayMemberPath="Text"
+                                    ItemsSource="{Binding IBANIDNumberList}" />
                             </syncfusion:SfPicker.Columns>
 
                             <syncfusion:SfPicker.SelectedTextStyle>
                                 <syncfusion:PickerTextStyle
-                                                    FontAttributes="Bold"
-                                                    FontSize="15"
-                                                    TextColor="{StaticResource NeutralBlack}" />
+                                    FontAttributes="Bold"
+                                    FontSize="15"
+                                    TextColor="{StaticResource NeutralBlack}" />
                             </syncfusion:SfPicker.SelectedTextStyle>
 
                             <syncfusion:SfPicker.SelectionView>
@@ -236,9 +236,9 @@
                             <syncfusion:SfPicker.HeaderView>
 
                                 <syncfusion:PickerHeaderView
-                                                    Height="55"
-                                                    Background="{StaticResource Primary}"
-                                                    Text="{x:Static ResourceManager:AppResources.IDNumber}">
+                                    Height="55"
+                                    Background="{StaticResource Primary}"
+                                    Text="{x:Static ResourceManager:AppResources.IDNumber}">
                                     <syncfusion:PickerHeaderView.TextStyle>
                                         <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
                                     </syncfusion:PickerHeaderView.TextStyle>
@@ -286,47 +286,95 @@
                         </Border>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="5" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
+                    <StackLayout
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="White"
+                        Spacing="0">
 
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
-                        <listView:SfListView Orientation="Horizontal" x:Name="OtherIbanlist"   AutoFitMode="Height" 
-                                         HeightRequest="100"
-                                                 VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
-                                                 ItemsSource="{Binding IBANList, Mode=TwoWay}" SelectedItem="{Binding SelectedIBAN, Mode=TwoWay}"
-                                                  Margin="0"  ScrollBarVisibility="Never">
+                        <custom:CustomLabel
+                            BackgroundColor="White"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="{x:Static ResourceManager:AppResources.NAIBAN}" />
+                        <listView:SfListView
+                            x:Name="OtherIbanlist"
+                            Margin="0"
+                            AutoFitMode="Height"
+                            HeightRequest="100"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding IBANList, Mode=TwoWay}"
+                            Orientation="Horizontal"
+                            ScrollBarVisibility="Never"
+                            SelectedItem="{Binding SelectedIBAN, Mode=TwoWay}"
+                            VerticalOptions="Fill">
 
                             <listView:SfListView.ItemsLayout>
-                                <listView:LinearLayout   />
+                                <listView:LinearLayout />
                             </listView:SfListView.ItemsLayout>
 
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid HorizontalOptions="FillAndExpand"
-                                           FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
-                                          VerticalOptions="FillAndExpand" WidthRequest="150"  ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0">
+                                    <Grid
+                                        Margin="0"
+                                        Padding="0"
+                                        ColumnSpacing="0"
+                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                        HorizontalOptions="FillAndExpand"
+                                        RowSpacing="10"
+                                        VerticalOptions="FillAndExpand"
+                                        WidthRequest="150">
 
-                                        <Image Source="vat_tile_listofsignup_W" x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
-                                        <custom:CustomLabel Text="{Binding Iban}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
-                                                                    FontFamily="{StaticResource SomarSemiBold}"
-                                                                      HorizontalOptions="Start"  Padding="20" 
-                                                                VerticalOptions="End" HorizontalTextAlignment="Start"
-                                                                />
+                                        <Image
+                                            x:Name="cardBackGroundImage"
+                                            Aspect="Fill"
+                                            HeightRequest="100"
+                                            HorizontalOptions="FillAndExpand"
+                                            Source="vat_tile_listofsignup_W"
+                                            VerticalOptions="FillAndExpand" />
+                                        <custom:CustomLabel
+                                            x:Name="cardLabel"
+                                            Padding="20"
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            HorizontalOptions="Start"
+                                            HorizontalTextAlignment="Start"
+                                            Style="{StaticResource CaptionLabelBlack}"
+                                            Text="{Binding Iban}"
+                                            VerticalOptions="End" />
                                     </Grid>
                                 </DataTemplate>
                             </listView:SfListView.ItemTemplate>
 
                             <listView:SfListView.SelectedItemTemplate>
                                 <DataTemplate>
-                                    <Grid HorizontalOptions="FillAndExpand"
-                                           FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
-                                          VerticalOptions="FillAndExpand" WidthRequest="150"  ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0"   BackgroundColor="Yellow">
+                                    <Grid
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="Yellow"
+                                        ColumnSpacing="0"
+                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                        HorizontalOptions="FillAndExpand"
+                                        RowSpacing="10"
+                                        VerticalOptions="FillAndExpand"
+                                        WidthRequest="150">
 
-                                        <Image x:Name="cardBackGroundImage" Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
-                                        <custom:CustomLabel Text="{Binding Iban}" TextColor="White" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
-                                                                    FontFamily="{StaticResource SomarSemiBold}"
-                                                                      HorizontalOptions="Start"  Padding="20" 
-                                                                VerticalOptions="End" HorizontalTextAlignment="Start"
-                                                                />
+                                        <Image
+                                            x:Name="cardBackGroundImage"
+                                            Aspect="Fill"
+                                            HeightRequest="100"
+                                            HorizontalOptions="FillAndExpand"
+                                            Source="vat_tile_listofsignup"
+                                            VerticalOptions="FillAndExpand" />
+                                        <custom:CustomLabel
+                                            x:Name="cardLabel"
+                                            Padding="20"
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            HorizontalOptions="Start"
+                                            HorizontalTextAlignment="Start"
+                                            Style="{StaticResource CaptionLabelBlack}"
+                                            Text="{Binding Iban}"
+                                            TextColor="White"
+                                            VerticalOptions="End" />
                                     </Grid>
                                 </DataTemplate>
                             </listView:SfListView.SelectedItemTemplate>
@@ -336,26 +384,40 @@
 
                     </StackLayout>
 
-                    <StackLayout  Grid.Row="6" Grid.ColumnSpan="2" Spacing="15" Margin="0,0,0,7">
+                    <StackLayout
+                        Grid.Row="6"
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,0,7"
+                        Spacing="15">
 
                         <StackLayout>
-                            <Border Stroke="#B1B1B1"
-                                            StrokeThickness="1"
-                                            Style="{StaticResource GreyBorderFrame}" BackgroundColor="White"  Padding="15,15,15,15" >
-                                <StackLayout Orientation="Horizontal" >
-                                    <Image Source="ic_vat_info"/>
-                                    <custom:CustomLabel  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" LineSpacing="1" VerticalOptions="EndAndExpand"   >
+                            <Border
+                                Padding="15,15,15,15"
+                                BackgroundColor="White"
+                                Stroke="#B1B1B1"
+                                StrokeThickness="1"
+                                Style="{StaticResource GreyBorderFrame}">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="ic_vat_info" />
+                                    <custom:CustomLabel
+                                        HorizontalOptions="StartAndExpand"
+                                        HorizontalTextAlignment="Start"
+                                        LineSpacing="1"
+                                        VerticalOptions="EndAndExpand">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
 
-                                                <Span Text="{x:Static ResourceManager:AppResources.PleaseGoToIBan}"/>
+                                                <Span Text="{x:Static ResourceManager:AppResources.PleaseGoToIBan}" />
 
 
-                                                <Span x:Name="VisitIbanNav" Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}" TextColor="#006450" />
+                                                <Span
+                                                    x:Name="VisitIbanNav"
+                                                    Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}"
+                                                    TextColor="#006450" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                         <custom:CustomLabel.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="IBANAccManagementTapped" CommandParameter="false"/>
+                                            <TapGestureRecognizer CommandParameter="false" Tapped="IBANAccManagementTapped" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
                                 </StackLayout>

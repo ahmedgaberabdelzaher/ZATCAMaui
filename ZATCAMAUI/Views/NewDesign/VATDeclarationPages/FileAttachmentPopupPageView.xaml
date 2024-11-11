@@ -6,12 +6,12 @@
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    BackgroundColor="#88000000"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="fileAttachmentPopup"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Border
@@ -116,7 +116,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <ContentView  FlowDirection="{Binding Source={x:Reference fileAttachmentPopup}, Path=FlowDirection}">
+                                <ContentView FlowDirection="{Binding Source={x:Reference fileAttachmentPopup}, Path=FlowDirection}">
                                     <cards:SfCardView
                                         Margin="10"
                                         BackgroundColor="White"

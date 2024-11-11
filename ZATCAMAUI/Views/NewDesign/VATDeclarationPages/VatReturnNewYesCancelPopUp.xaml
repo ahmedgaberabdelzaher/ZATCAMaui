@@ -8,8 +8,8 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     Title="VatReturnNewYesCancelPopUp"
-    FlowDirection="{Binding AppDirection}"
-    BackgroundColor="#88000000">
+    BackgroundColor="#88000000"
+    FlowDirection="{Binding AppDirection}">
 
     <Mopups:PopupPage.Animation>
         <Animations:ScaleAnimation

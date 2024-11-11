@@ -12,7 +12,7 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
- 
+
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
 
@@ -26,7 +26,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -41,7 +40,7 @@
                     </Image>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
 
                 </StackLayout>
@@ -59,7 +58,7 @@
             </Grid>
             <!--#endregion Header-->
 
-             <WebView
+            <WebView
                 x:Name="AboutUsWebView"
                 Grid.Row="1"
                 HorizontalOptions="FillAndExpand"
