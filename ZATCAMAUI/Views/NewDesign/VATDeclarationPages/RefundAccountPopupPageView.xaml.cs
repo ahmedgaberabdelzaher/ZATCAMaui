@@ -88,31 +88,14 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             viewModel.IsRefundCheckboxEnabled = value;
             viewModel.IsConfirmRefundButtonEnabled = value;
         }
-        public void ValidationsForVATRefund()
-        {
 
-
-
-
-
-
-        }
         protected override void OnAppearing()
         {
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                IDTypeDropdown.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
-                IDNumberDropdown.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
-            }
-            else
-            {
-                IDTypeDropdown.BackgroundColor = (Color)Application.Current.Resources["White"];
-                IDNumberDropdown.BackgroundColor = (Color)Application.Current.Resources["White"];
-            }
             getIban();
             getYesRefundMsgCommand();
             getNoRefundMsgCommand();
         }
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -120,6 +103,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             MessagingCenter.Unsubscribe<object, string>(this, "YesReceivedForRefundMsg");
             MessagingCenter.Unsubscribe<object, string>(this, "NoReceivedForRefundMsg");
         }
+
         public void getIban()
         {
             try
@@ -152,6 +136,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
             }
         }
+
         public void triggerIban(string messagestring)
         {
             try
@@ -202,18 +187,19 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             viewModel.NewAccountText = AppResources.VATREditAccount;
                         }
                     }
-                    //                viewModel.IsNewAccountClicked = false;
                 }
             }
             catch (Exception)
             {
             }
         }
+
         private void OnPageSelectedForIban(object sender, SelectionChangedEventArgs e)
         {
             ((ListView)sender).SelectedItem = null;
 
         }
+
         public bool IsCheckedDraftMode()
         {
             bool value = false;
@@ -224,7 +210,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             return value;
         }
 
-        public async void GetAllIbanList()
+        public async Task GetAllIbanList()
         {
             try
             {
@@ -252,10 +238,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             viewModel.IBANList = new ObservableCollection<Result2>();
                             viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.data.IBANSet);
 
-                            //viewModel.SelectedIBAN = viewModel.IBANList.FirstOrDefault();
                             viewModel.SelectedIBAN = viewModel.VATDeclarationDetails.data.IBANSet.FirstOrDefault();
 
-                            getAllChecks();
+                           await getAllChecks();
                         }
 
 
@@ -305,9 +290,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 Type = ""
                             });
                         }
-
-
-                        //viewModel.IBANList = true;
                     }
 
                     else
@@ -321,22 +303,22 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
-        public void onPageLoad()
+        public async Task onPageLoad()
         {
             if (viewModel.VATDeclarationDetails.data.Cr1645GoliveFg.Equals("X"))
             {
-                GetAllIbanList();
+              await  GetAllIbanList();
             }
             else
             {
-                getAllChecks();
+              await  getAllChecks();
             }
         }
-        public async void getAllChecks()
+        public async Task getAllChecks()
         {
             try
             {
@@ -747,7 +729,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     if (arg != null)
                     {
                         await MopupService.Instance.PopAsync();
-                        saveRefund();
+                       await saveRefund();
                     }
                 });
             }
@@ -774,7 +756,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async void saveRefund()
+        public async Task saveRefund()
         {
             try
             {
@@ -850,7 +832,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
             }
         }
-        private void Confirm_RefundClicked(object sender, EventArgs e)
+        private async void Confirm_RefundClicked(object sender, EventArgs e)
         {
 
             if (CheckValidationsForSubmitButtonWithMsg())
@@ -879,18 +861,14 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                     newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
 
-                    MopupService.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+                   await MopupService.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
 
                 }
                 else
                 {
-                    saveRefund();
+                   await saveRefund();
                 }
             }
-        }
-
-        private void IbanChanged(object sender, ItemSelectionChangedEventArgs e)
-        {
         }
 
         private async void OnRefundInCTapped(object sender, EventArgs e)
@@ -914,7 +892,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         private async void IBANAccManagementTapped(object sender, EventArgs e)
         {
             await MopupService.Instance.PopAsync();
-            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView, true);
+           await viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView, true);
 
         }
 

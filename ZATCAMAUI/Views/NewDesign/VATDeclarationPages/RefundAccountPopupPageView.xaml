@@ -8,13 +8,12 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     FlowDirection="{Binding AppDirection}"
     BackgroundColor="#88000000"
-    x:Name="refundAccountPopupPageView"
+    x:Name="page"
     mc:Ignorable="d">
     <Border
         BackgroundColor="White"
@@ -302,7 +301,9 @@
 
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="150"  ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0">
+                                    <Grid HorizontalOptions="FillAndExpand"
+                                           FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                          VerticalOptions="FillAndExpand" WidthRequest="150"  ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0">
 
                                         <Image Source="vat_tile_listofsignup_W" x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
                                         <custom:CustomLabel Text="{Binding Iban}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
@@ -316,7 +317,9 @@
 
                             <listView:SfListView.SelectedItemTemplate>
                                 <DataTemplate>
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="150"  ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0"   BackgroundColor="Yellow">
+                                    <Grid HorizontalOptions="FillAndExpand"
+                                           FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                          VerticalOptions="FillAndExpand" WidthRequest="150"  ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0"   BackgroundColor="Yellow">
 
                                         <Image x:Name="cardBackGroundImage" Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
                                         <custom:CustomLabel Text="{Binding Iban}" TextColor="White" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
