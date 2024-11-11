@@ -767,7 +767,7 @@
                                             VerticalOptions="Start" />
                                         <Label
                                             HorizontalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="{Binding TermsAlignment}"
+                                            HorizontalTextAlignment="Start"
                                             Style="{StaticResource CheckboxUnselectedFontStyle}"
                                             Text="{Binding Zterms}"
                                             TextType="Html"

@@ -119,7 +119,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                 {
                     var conent = await submitRes.Content.ReadAsStringAsync();
                     var data = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<Result>>(conent);
-                    if (data.header.status.code == "I000000")
+                    if (data.header?.status?.code == "I000000")
                     {
                         if (data?.result?.travelerDeclarationResponse != null)
                         {

@@ -100,7 +100,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     try
                     {
-                        if (IsValidateTermsReport())
+                        if (IsValidateReport() && IsValidateTermsReport())
                         {
                             IsLoading = true;
 
@@ -133,7 +133,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                                 regionCode = SubmitReport.RegionCode,
                                 regionName = SubmitReport.Region,
                                 reportCategory = SubmitReport.ReportCategory,
-                                reportSubCategory=SubmitReport.ReportSubCategory,
+                                reportSubCategory = SubmitReport.ReportSubCategory,
                                 reportCategoryName = SubmitReport.ReportCategoryName,
                                 reportDetails = SubmitReport.ReportDetails,
                                 reporterEmail = SubmitReport.ReporterEmail,
@@ -149,45 +149,47 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                                 workType = SubmitReport.ReportTaxType,
                                 attachements = DATAPowerAttachements,
 
-                                reporterNationalID= SubmitReport.ReporterNationalId,
-                                reportSubCategoryName=submitReport.ReportSubCategoryName,
-                                reporterID= SubmitReport.ReporterNationalId,
+                                reporterNationalID = SubmitReport.ReporterNationalId,
+                                reportSubCategoryName = submitReport.ReportSubCategoryName,
+                                reporterID = SubmitReport.ReporterNationalId,
 
                             };
                             #region DATA Power Response
-                         var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
-                         
-                            if (reportResult.header.status.code == "I000000")
-                            {
-                                ReportNumberResult = reportResult.result?.referenceNumber;
-                                SubmitReport = new SubmitReportModel();
-                                IsCityShowen = false;
-                                IsReportCategoryShowen = false;
-                                IsMissingFieldShowen = false;
-                                ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
-                                _navigationService.NavigateTo("/ReportSuccessPage");
+                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
 
-                            }
-                            else
+                            if (reportResult != null)
                             {
-                                IsShowMsgView = true;
-                                MessageTxt = AppResources.RequestTimeoutDescription;
+                                if (reportResult.header?.status?.code == "I000000")
+                                {
+                                    ReportNumberResult = reportResult.result?.referenceNumber;
+                                    SubmitReport = new SubmitReportModel();
+                                    IsCityShowen = false;
+                                    IsReportCategoryShowen = false;
+                                    IsMissingFieldShowen = false;
+                                    ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
+                                    await _navigationService.NavigateTo("/ReportSuccessPage");
+
+                                }
+                                else if (!string.IsNullOrWhiteSpace(reportResult?.header?.moreInformation?.backendErrors))
+                                {
+                                    MessageTxt = reportResult?.header?.moreInformation?.backendErrors;
+                                    IsShowMsgView = true;
+                                }
+                                else if (reportResult.header.status.code == "E999999")
+                                {
+                                    MessageTxt = reportResult?.header?.status?.description;
+                                    IsShowMsgView = true;
+                                }
+                                else
+                                {
+                                    IsShowMsgView = true;
+                                    MessageTxt = AppResources.RequestTimeoutDescription;
+                                }
                             }
-                           
+
+
 
                             #endregion
-                            /*
-                            var res = await _submitReportServices.CreateZatcaReport(SubmitReport);
-                            if (res.Success)
-                            {
-                                ReportNumberResult = res.Result.Data;
-                                SubmitReport = new SubmitReportModel();
-                                IsCityShowen = false;
-                                IsReportCategoryShowen = false;
-                                IsMissingFieldShowen = false;
-                                ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
-                                _navigationService.NavigateTo("/ReportSuccessPage");
-                            }*/
                             IsLoading = false;
 
                         }
@@ -456,7 +458,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                     }
                     else
                     {
-                       
+
                     }
 
                 });
@@ -517,7 +519,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                             SubmitReport.MissedField = string.Empty;
                             IsMissingFieldShowen = false;
                             IsReportCategoryShowen = string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName) ? false : true;
-                         
+
                         }
                         else if (isReportCategorySelected)
                         {
@@ -525,7 +527,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                             SubmitReport.ReportCategory = e.Id;
                             #region GetSubbCategeory
                             ReportSubCategory = await _submitReportServices.GetReportSubCategories(e.Id);
-                            if (ReportSubCategory != null && ReportSubCategory.Count>0)
+                            if (ReportSubCategory != null && ReportSubCategory.Count > 0)
                             {
                                 IsSubCategeoryShow = true;
                             }
@@ -608,7 +610,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     try
                     {
-                     
+
                         IsLoading = true;
                         isReportTypeSelected = true;
                         isReportCategorySelected = false;
@@ -668,7 +670,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     try
                     {
-                        isReportSubCategorySelected=true;
+                        isReportSubCategorySelected = true;
                         isReportCategorySelected = false;
                         isReportTypeSelected = false;
                         isMissingFieldSelected = false;
@@ -780,7 +782,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             }
         }
 
-#endregion
+        #endregion
 
         public SubmitReportViewModel(ISubmitReportServices submitReportServices, INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
@@ -882,6 +884,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
         private bool IsValidateReport()
         {
 
+            if (string.IsNullOrWhiteSpace(SubmitReport.MissedFieldName)
+                && SubmitReport.ReportCategory.ToLower().Equals("v36"))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
+                return false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(SubmitReport.TIN))
+            {
+                if (!Regex.IsMatch(SubmitReport.TIN, @"^\d{10}$"))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.ZZTINnumberconsistsofnumbersonly + "; " + AppResources.ZZTINnumberlengthcannotbelessthan10digits;
+                    return false;
+
+                }
+
+            }
+
+            if (!string.IsNullOrWhiteSpace(SubmitReport.CR))
+            {
+                if (!Regex.IsMatch(SubmitReport.CR, @"^\d{10}$"))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.ZZCommercialReiterationNumberconsistsofnumbersonly + "; " + AppResources.ZZCommercialReiterationNumbershouddbe10digits;
+                    return false;
+
+                }
+
+            }
+
             if (string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName)
                 || string.IsNullOrWhiteSpace(SubmitReport.ReportCategoryName)
                 || string.IsNullOrWhiteSpace(SubmitReport.CompanyName)
@@ -903,35 +937,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(SubmitReport.MissedFieldName)
-                && SubmitReport.ReportCategory.ToLower().Equals("v36"))
-            {
-                IsShowMsgView = true;
-                MessageTxt = AppResources.RequiredData;
-                return false;
-            }
-            if (!string.IsNullOrWhiteSpace(SubmitReport.TIN))
-            {
-                if (!Regex.IsMatch(SubmitReport.TIN, @"^\d{10}$"))
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.ZZTINnumberconsistsofnumbersonly + "; " + AppResources.ZZTINnumberlengthcannotbelessthan10digits;
-                    return false;
-
-                }
-
-            }
-            if (!string.IsNullOrWhiteSpace(SubmitReport.CR))
-            {
-                if (!Regex.IsMatch(SubmitReport.CR, @"^\d{10}$"))
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.ZZCommercialReiterationNumberconsistsofnumbersonly + "; " + AppResources.ZZCommercialReiterationNumbershouddbe10digits;
-                    return false;
-
-                }
-
-            }
+            
             return true;
 
         }
@@ -1001,7 +1007,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
-            
+
             return true;
 
         }
@@ -1037,7 +1043,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 IsLoading = false;
                 return false;
             }
-            
+
         }
 
         private async Task SetLocation(Location location)
@@ -1055,7 +1061,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
 
             SubmitReport.Location = $"{SubmitReport.Latitude},{SubmitReport.Longitude},{possibleAddresses.FirstOrDefault()}";
         }
-
 
         private async Task MoveMapToLocation()
         {
