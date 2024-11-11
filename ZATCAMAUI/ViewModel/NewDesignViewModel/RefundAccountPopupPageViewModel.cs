@@ -1046,7 +1046,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         if (resNew.data1.SubmitFg == "" || resNew.data1.SubmitFg == string.Empty)
                         {
                             MessagingCenter.Send<Object, string>(this, "Refundsubmitted", "Refundsubmitted");
-                            
+
                             if (App.ICRStatus == "E0045" || App.ICRStatus == "E0056")
                             {
                                 await Task.Delay(5000);
@@ -1059,7 +1059,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
                             result = true;
-                          
+
                         }
                     }
                 }
@@ -1111,7 +1111,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
                             await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-                     
+
                             WebServiceManager.ErrorMessageForVAT = string.Empty;
                         });
                     }
@@ -1122,6 +1122,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 result = false;
             }
+            return result;
         }
 
         private async Task<VATDeclaration> SaveReturnAndGetReturnAndSetButtons()
