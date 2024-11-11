@@ -175,11 +175,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                                     MessageTxt = reportResult?.header?.moreInformation?.backendErrors;
                                     IsShowMsgView = true;
                                 }
-                                else if (reportResult.header.status.code == "E999999")
-                                {
-                                    MessageTxt = reportResult?.header?.status?.description;
-                                    IsShowMsgView = true;
-                                }
                                 else
                                 {
                                     IsShowMsgView = true;
@@ -892,7 +887,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 return false;
             }
 
-            if (!string.IsNullOrWhiteSpace(SubmitReport.TIN))
+            else if (!string.IsNullOrWhiteSpace(SubmitReport.TIN))
             {
                 if (!Regex.IsMatch(SubmitReport.TIN, @"^\d{10}$"))
                 {
@@ -904,7 +899,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
 
             }
 
-            if (!string.IsNullOrWhiteSpace(SubmitReport.CR))
+            else if (!string.IsNullOrWhiteSpace(SubmitReport.CR))
             {
                 if (!Regex.IsMatch(SubmitReport.CR, @"^\d{10}$"))
                 {
@@ -916,28 +911,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
 
             }
 
-            if (string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName)
-                || string.IsNullOrWhiteSpace(SubmitReport.ReportCategoryName)
-                || string.IsNullOrWhiteSpace(SubmitReport.CompanyName)
-                || string.IsNullOrWhiteSpace(SubmitReport.Region)
-                || string.IsNullOrWhiteSpace(SubmitReport.City)
-                || string.IsNullOrWhiteSpace(SubmitReport.District)
-                || string.IsNullOrWhiteSpace(SubmitReport.Street)
-                || string.IsNullOrWhiteSpace(SubmitReport.WorkType)
-                || string.IsNullOrWhiteSpace(SubmitReport.CompanyAddress)
-                || string.IsNullOrWhiteSpace(SubmitReport.ReportDetails)
-                || string.IsNullOrWhiteSpace(SubmitReport.Location)
-                || string.IsNullOrWhiteSpace(SubmitReport.WorkType)
-                || SelectedDate.Date > DateTime.Now.Date
-                || !IsReadTermsandCondition
-                || ReportUloadedFiles.Count == 0)
+            else if (string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName)
+                 || string.IsNullOrWhiteSpace(SubmitReport.ReportCategoryName)
+                 || string.IsNullOrWhiteSpace(SubmitReport.CompanyName)
+                 || string.IsNullOrWhiteSpace(SubmitReport.Region)
+                 || string.IsNullOrWhiteSpace(SubmitReport.City)
+                 || string.IsNullOrWhiteSpace(SubmitReport.District)
+                 || string.IsNullOrWhiteSpace(SubmitReport.Street)
+                 || string.IsNullOrWhiteSpace(SubmitReport.WorkType)
+                 || string.IsNullOrWhiteSpace(SubmitReport.CompanyAddress)
+                 || string.IsNullOrWhiteSpace(SubmitReport.ReportDetails)
+                 || string.IsNullOrWhiteSpace(SubmitReport.Location)
+                 || string.IsNullOrWhiteSpace(SubmitReport.WorkType)
+                 || SelectedDate.Date > DateTime.Now.Date
+                 || !IsReadTermsandCondition
+                 || ReportUloadedFiles.Count == 0)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
 
-            
+
             return true;
 
         }
@@ -947,11 +942,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             Regex phoneRegex = new Regex(@"^05[0-9]{8}$");
             Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
 
-            if (SubmitReport.IsNeedReward)
+            if (SubmitReport.IsNeedReward || IsreporterDataMandatory)
             {
                 if (string.IsNullOrWhiteSpace(SubmitReport.ReporterNameAr)
                     || string.IsNullOrWhiteSpace(SubmitReport.ReporterMobileNumber)
-                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterEmail))
+                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterEmail)
+                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterNationalId))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.RequiredData;
@@ -969,43 +965,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                     IsShowMsgView = true;
                     MessageTxt = AppResources.ZZMobilenumberhastostartwithnumber05;
                     return false;
-
-
                 }
+
             }
 
-            else if (IsreporterDataMandatory)
+            if (!string.IsNullOrWhiteSpace(SubmitReport.ReporterNationalId))
             {
-                if (string.IsNullOrWhiteSpace(SubmitReport.ReporterNameAr)
-                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterMobileNumber)
-                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterEmail))
+                if (!Regex.IsMatch(SubmitReport.ReporterNationalId, @"^\d{10}$"))
                 {
                     IsShowMsgView = true;
-                    MessageTxt = AppResources.RequiredData;
-                    return false;
-
-                }
-                else if (!Email.IsMatch(SubmitReport.ReporterEmail.ToLower()))
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.InvalidEmailFormat;
+                    MessageTxt = AppResources.ZZNationalIDconsistsofnumbersonly + "; " + AppResources.ZZNationalIDlengthis10digit;
                     return false;
                 }
-                else if (!phoneRegex.IsMatch(SubmitReport.ReporterMobileNumber))
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.ZZMobilenumberhastostartwithnumber05;
-                    return false;
 
-
-                }
-            }
-
-            if (!IsReadTermsandCondition)
-            {
-                IsShowMsgView = true;
-                MessageTxt = AppResources.RequiredData;
-                return false;
             }
 
             return true;
