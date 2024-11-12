@@ -512,6 +512,7 @@
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Border
+                                        FlowDirection="{Binding Source={x:Reference ESTActivityItemPage}, Path=FlowDirection}"
                                         Padding="10"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 10,10,10,10"
@@ -595,6 +596,7 @@
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Border
+                                        FlowDirection="{Binding Source={x:Reference ESTActivityItemPage}, Path=FlowDirection}"
                                         Padding="10"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 10,10,10,10"
@@ -709,6 +711,7 @@
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView
+                                    FlowDirection="{Binding Source={x:Reference ESTActivityItemPage}, Path=FlowDirection}"
                                     BackgroundColor="Transparent"
                                     BorderColor="{StaticResource NeutralGreay}"
                                     BorderWidth="0.7">
@@ -1182,6 +1185,7 @@
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Border
+                                        FlowDirection="{Binding Source={x:Reference ESTActivityItemPage}, Path=FlowDirection}"
                                         Padding="10"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 10,10,10,10"

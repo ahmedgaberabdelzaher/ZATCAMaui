@@ -114,7 +114,7 @@
                                     <DataTemplate>
                                         <ViewCell>
                                             <ViewCell.View>
-                                                <StackLayout x:Name="rootArea">
+                                                <StackLayout x:Name="rootArea" FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                     <StackLayout>
                                                         <Label
                                                             FontFamily="{StaticResource SomarLight}"
@@ -224,7 +224,7 @@
                                 </listView:SfListView.HeaderTemplate>
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
+                                        <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
@@ -509,6 +509,7 @@
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <Grid
+                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             x:Name="grid"
                                                             Margin="0,5,0,0"
                                                             Padding="10"
@@ -769,7 +770,8 @@
                                     VerticalOptions="Center">
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid HorizontalOptions="FillAndExpand">
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                                  FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
                                                     <RowDefinition Height="auto" />

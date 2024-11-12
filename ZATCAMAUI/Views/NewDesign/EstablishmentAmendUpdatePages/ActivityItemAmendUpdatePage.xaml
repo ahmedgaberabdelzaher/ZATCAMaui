@@ -593,6 +593,7 @@
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Border
+                                        FlowDirection="{Binding Source={x:Reference ESTActivityAmendUpdateItemPage}, Path=FlowDirection}"
                                         Padding="10"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 14,14,14,14"
@@ -672,6 +673,7 @@
                                 <DataTemplate>
                                     <Border
                                         Padding="10"
+                                        FlowDirection="{Binding Source={x:Reference ESTActivityAmendUpdateItemPage}, Path=FlowDirection}"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 14,14,14,14"
                                         StrokeThickness="1">
@@ -768,6 +770,7 @@
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView
+                                    FlowDirection="{Binding Source={x:Reference ESTActivityAmendUpdateItemPage}, Path=FlowDirection}"
                                     BackgroundColor="Transparent"
                                     BorderColor="{StaticResource NeutralGreay}"
                                     BorderWidth="0.7">
@@ -1229,6 +1232,7 @@
                                 <DataTemplate>
                                     <Border
                                         Padding="10"
+                                        FlowDirection="{Binding Source={x:Reference ESTActivityAmendUpdateItemPage}, Path=FlowDirection}"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 14,14,14,14"
                                         StrokeThickness="1">

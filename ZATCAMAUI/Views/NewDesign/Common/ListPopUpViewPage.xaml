@@ -6,6 +6,7 @@
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     BackgroundColor="#88000000"
+    x:Name="page"
     FlowDirection="{Binding AppDirection}">
     <Mopups:PopupPage.Animation>
         <animations:ScaleAnimation
@@ -36,7 +37,7 @@
                 <CollectionView.ItemTemplate>
 
                     <DataTemplate>
-                        <StackLayout>
+                        <StackLayout FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                             <Label
                                 Padding="10"
                                 FontFamily="{StaticResource SomarSemiBold}"

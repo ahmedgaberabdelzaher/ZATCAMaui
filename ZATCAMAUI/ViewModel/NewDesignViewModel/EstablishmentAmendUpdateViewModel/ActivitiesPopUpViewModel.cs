@@ -15,8 +15,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
         public static event EventHandler<List<NregMulSet>> DataSent;
 
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
 
         public ICommand OnMainGroupSelectButtonClick { get; set; }
         public ICommand OnSubGroupSelectButtonClick { get; set; }
@@ -271,16 +269,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
             AllActivitiesList = new ObservableCollection<NregMulSet>();
 
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
+           
             OnNextButtonClick = new Command(() =>
             {
                 ValidateActvityDetialFields();
@@ -325,9 +314,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
 
                     }
-                    catch (Exception e)
+                    catch (Exception )
                     {
-                        Console.WriteLine(e.StackTrace);
                     }
                 };
                 MopupService.Instance.PushAsync(poupWindow);
@@ -360,9 +348,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                             AllActivitiesList[itemPosition].ActSgrp = CRSubGroup.Text;
                             AllActivitiesList[itemPosition].ActSgrpCode = CRSubGroup.IndSector;
                         }
-                        catch (Exception e)
+                        catch (Exception )
                         {
-                            Console.WriteLine(e.StackTrace);
                         }
                     };
                     MopupService.Instance.PushAsync(poupWindow);
@@ -401,9 +388,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                             CheckDuplicates = RemoveDuplicates(AllActivitiesList, obj => $"{obj.Idnumber}-{obj.ActMgrp}-{obj.ActSgrp}-{obj.Activity}");
                         }
-                        catch (Exception e)
+                        catch (Exception )
                         {
-                            Console.WriteLine(e.StackTrace);
                         }
                     };
                     poupWindow.Closed += (sender, args) =>

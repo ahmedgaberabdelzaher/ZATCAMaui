@@ -3,17 +3,16 @@
     x:Class="ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages.ActivitiesPopupPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     x:Name="ActivitiesPopupPage"
-    BackgroundColor="#75000000"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
 
     <Border
@@ -127,6 +126,7 @@
 
                             <Border
                                 Margin="10"
+                                FlowDirection="{Binding Source={x:Reference ActivitiesPopupPage}, Path=FlowDirection}"
                                 Stroke="{StaticResource NeutralLightGrey}"
                                 StrokeShape="RoundRectangle 22,22,22,22">
                                 <StackLayout Padding="10,5,10,5">

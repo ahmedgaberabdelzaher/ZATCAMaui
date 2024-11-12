@@ -151,6 +151,7 @@
                         <SfChipGroup:SfChipGroup.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout
+                                    FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                     Margin="0"
                                     Padding="5,2,5,2"
                                     Orientation="Horizontal"
@@ -544,6 +545,7 @@
                                             <DataTemplate>
                                                 <Border
                                                     Padding="10"
+                                                    FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                     Stroke="{StaticResource NeutralGreay}"
                                                     StrokeShape="RoundRectangle 10,10,10,10"
                                                     StrokeThickness="1"
@@ -1040,6 +1042,7 @@
                                     <DataTemplate>
                                         <Grid
                                             Margin="0,0,0,0"
+                                            FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                             Padding="0"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand">
@@ -1081,6 +1084,7 @@
                                         <Grid
                                             Margin="0,0,0,0"
                                             Padding="0"
+                                            FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
@@ -1596,6 +1600,7 @@
                                             <DataTemplate>
 
                                                 <cards:SfCardView
+                                                    FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                     Margin="0,0,24,0"
                                                     CornerRadius="20"
                                                     HeightRequest="104"
@@ -1623,6 +1628,7 @@
                                             <DataTemplate>
 
                                                 <cards:SfCardView
+                                                    FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                     Margin="0,0,24,0"
                                                     CornerRadius="20"
                                                     HeightRequest="104"
@@ -2202,6 +2208,7 @@
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
                                                 <Border
+                                                    FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                     Margin="0,0,0,10"
                                                     Padding="10"
                                                     IsEnabled="{Binding PassportDetails.Attachment}"
@@ -2310,7 +2317,7 @@
 
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <Grid>
+                                <Grid FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
@@ -2425,7 +2432,8 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <ViewCell.View>
-                                                        <StackLayout x:Name="rootArea">
+                                                        <StackLayout x:Name="rootArea"
+                                                                     FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}">
                                                             <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
@@ -2439,7 +2447,9 @@
                                         </listView:SfListView.HeaderTemplate>
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                <ScrollView HorizontalOptions="FillAndExpand"
+                                                            FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
+                                                            Orientation="Horizontal">
                                                     <Grid
                                                         x:Name="grid"
                                                         Margin="0,5,0,0"
@@ -2576,7 +2586,9 @@
                                         </listView:SfListView.ItemTemplate>
                                         <listView:SfListView.FooterTemplate>
                                             <DataTemplate>
-                                                <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTAmendReactivationPage}}">
+                                                <StackLayout HorizontalOptions="Center"
+                                                             FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
+                                                             IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTAmendReactivationPage}}">
                                                     <Label
                                                         HorizontalOptions="StartAndExpand"
                                                         HorizontalTextAlignment="Start"
@@ -2602,7 +2614,8 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <ViewCell.View>
-                                                        <StackLayout x:Name="rootArea">
+                                                        <StackLayout x:Name="rootArea"
+                                                                     FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}">
                                                             <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
@@ -2616,7 +2629,9 @@
                                         </listView:SfListView.HeaderTemplate>
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                <ScrollView HorizontalOptions="FillAndExpand"
+                                                            FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
+                                                            Orientation="Horizontal">
                                                     <Grid
                                                         x:Name="grid"
                                                         Margin="0,5,0,0"
@@ -2727,7 +2742,9 @@
                                         </listView:SfListView.ItemTemplate>
                                         <listView:SfListView.FooterTemplate>
                                             <DataTemplate>
-                                                <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTAmendReactivationPage}}">
+                                                <StackLayout HorizontalOptions="Center"
+                                                             FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
+                                                             IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTAmendReactivationPage}}">
                                                     <Label
                                                         HorizontalOptions="StartAndExpand"
                                                         HorizontalTextAlignment="Start"
@@ -2781,6 +2798,7 @@
 
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
+                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                         CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
@@ -2808,6 +2826,7 @@
 
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
+                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                         CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
@@ -2854,6 +2873,7 @@
                                 <DataTemplate>
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
+                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                         CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
@@ -2881,6 +2901,7 @@
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
                                         CornerRadius="20"
+                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -3029,6 +3050,7 @@
                                 <DataTemplate>
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
+                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                         CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
@@ -3071,6 +3093,7 @@
                                 <DataTemplate>
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
+                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                         CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
@@ -3675,6 +3698,7 @@
                                                 <DataTemplate>
                                                     <Label
                                                         HorizontalOptions="End"
+                                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                         Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                         Text="{Binding Filename}" />
                                                 </DataTemplate>
@@ -3770,6 +3794,7 @@
                                         <DataTemplate>
                                             <Grid
                                                 Padding="16,0,16,16"
+                                                FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                 ColumnSpacing="0"
                                                 HorizontalOptions="Fill"
                                                 RowSpacing="0"

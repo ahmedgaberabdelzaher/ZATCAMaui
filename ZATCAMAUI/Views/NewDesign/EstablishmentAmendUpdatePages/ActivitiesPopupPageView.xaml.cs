@@ -21,7 +21,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel = App.Locator.ActivityPopUpPageView;
                 InitializeComponent();
                 this.BindingContext = viewModel;
-                SetLTR();
+                FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
                 viewModel.AllActivitiesList.Clear();
                 MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
                 {
@@ -60,22 +60,12 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
                 viewModel.isEditable = isEnabled;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                Console.WriteLine(ex.Message);
-
             }
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
-        private async void onItemDelete_ItemTapped(object sender, EventArgs e)
+        private void onItemDelete_ItemTapped(object sender, EventArgs e)
         {
             var button = sender as SfButton;
             if (button != null)

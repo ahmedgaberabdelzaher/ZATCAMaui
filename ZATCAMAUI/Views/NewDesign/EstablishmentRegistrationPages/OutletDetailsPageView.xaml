@@ -14,6 +14,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     ios:Page.UseSafeArea="true"
+    x:Name="page"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -1137,6 +1138,7 @@
                             <SfEffectsView:SfChipGroup.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout
+                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                         Margin="0"
                                         Padding="10"
                                         Orientation="Horizontal"
@@ -1171,6 +1173,7 @@
                                     <DataTemplate>
                                         <StackLayout
                                             Margin="0"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             Padding="10"
                                             Orientation="Horizontal"
                                             Spacing="2">

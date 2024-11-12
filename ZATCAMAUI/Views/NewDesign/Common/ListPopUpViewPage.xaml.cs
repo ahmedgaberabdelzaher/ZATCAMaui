@@ -12,6 +12,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         public ListPopUpViewPage(object data)
         {
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             PopupList.ItemsSource = (System.Collections.IEnumerable)data;
         }
         async void PopupList_SelectionChanged(object sender, SelectionChangedEventArgs e)

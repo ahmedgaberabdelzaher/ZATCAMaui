@@ -919,7 +919,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime crIssueDate);
                         DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
-                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+                        DateTime.TryParseExact("2060/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
                         foreach (var licenseActivity in NregMulActivityList)
                         {
                             licenseActivity.Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber;
@@ -1055,11 +1055,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                         {
-                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
-                             IsLoading = false;
-                         });
+                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
                     }
 
                 }
@@ -1399,7 +1396,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        public async void validateCRNumber(string idNumber, bool CallMulset = false)
+        public async Task validateCRNumber(string idNumber, bool CallMulset = false)
         {
             IsLoading = true;
 
@@ -1465,14 +1462,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
                     IsLoading = false;
                     if (validateCR != null && validateCR.Crnum == null)
                     {
-                        PrepareError(result);
+                       await PrepareError(result);
                         return;
                     }
 
@@ -1525,7 +1522,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             updateDatePickers(EstablishmentOutletActivitiesTabsEnum.CRDetails);
         }
 
-        private void PrepareError(string result)
+        private async Task PrepareError(string result)
         {
             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
             var errorID = string.Empty;
@@ -1558,17 +1555,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
 
-                MainThread.BeginInvokeOnMainThread(async () =>
+                if (errorID.Contains("896"))
                 {
-                    if (errorID.Contains("896"))
-                    {
-                        await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
-                    }
-                    else
-                    {
-                        await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
-                    }
-                });
+                    await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
+                }
+                else
+                {
+                    await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
+                }
             }
         }
 
@@ -1942,7 +1936,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }

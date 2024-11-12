@@ -19,6 +19,7 @@
     ios:Page.UseSafeArea="true"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
+    x:Name="page"
     mc:Ignorable="d">
     <ContentPage.Resources>
 
@@ -470,7 +471,8 @@
                                             VerticalOptions="Center">
                                             <SfChipGroup:SfChipGroup.ItemTemplate>
                                                 <DataTemplate>
-                                                    <StackLayout WidthRequest="80">
+                                                    <StackLayout WidthRequest="80"
+                                                                 FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                         <Label
                                                             HorizontalOptions="FillAndExpand"
                                                             HorizontalTextAlignment="Center"

@@ -100,7 +100,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 OnPropertyChanged(nameof(LicenseDetails));
             }
         }
-        
+
         private bool CanExecuteClickCommand(object args) => EnableInputFields;
         private bool CanIssueByExecuteClickCommand(object args) => EnableIssueByDropDown;
 
@@ -740,8 +740,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             ActivityDetails = new ActivityDetails();
             LicenseDetails = new LicenseDetails();
             OnActivitiesButtonClick = new Command<string>(DisplayActivityPopUp);
-            OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
-            OnUpdateButtonClick = new Command(() => updateActivityCrOrLicense());
+            OnNextButtonClick = new Command(async () => await navigateToNext(), () => CanExecute);
+            OnUpdateButtonClick = new Command(async () => await updateActivityCrOrLicense());
 
             OnPreButtonClick = new Command(() =>
             {
@@ -771,7 +771,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
                 }
             });
-            OnIssueCountrySelectButtonClick = new Command((object o) =>
+            OnIssueCountrySelectButtonClick = new Command(async (object o) =>
             {
                 try
                 {
@@ -791,18 +791,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "LicenseCountryPicker";
 
-                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException)
                 {
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
                 catch (Exception)
                 {
@@ -810,7 +807,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 }
 
             }, CanExecuteClickCommand);
-            OnIssueBySelectButtonClick = new Command((object o) =>
+            OnIssueBySelectButtonClick = new Command(async (object o) =>
             {
                 try
                 {
@@ -844,25 +841,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "LicenseIssueByPicker";
 
-                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException)
                 {
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
                 catch (Exception)
                 {
                 }
 
             }, CanIssueByExecuteClickCommand);
-            OnIssueCitySelectButtonClick = new Command((object o) =>
+            OnIssueCitySelectButtonClick = new Command(async (object o) =>
             {
                 var filterCities = OutletDropDowns?.city_dropdownSet?.Where(i =>
                 {
@@ -894,18 +888,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                         genericPickerModel.PickerId = "LicenseCityPicker";
 
-                        MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                        await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                     }
                     catch (GAZTUnlockAccountException)
                     {
                     }
                     catch (InternetException ex)
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            _navigationService.GoBack();
-                        });
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
                     }
                     catch (Exception)
                     {
@@ -942,7 +933,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 }
             });
 
-            OnMainGroupSelectButtonClick = new Command(() =>
+            OnMainGroupSelectButtonClick = new Command(async () =>
             {
                 var dropDownData = activityList?.act_groupSet?.ToList();
                 try
@@ -963,7 +954,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "MainGroupPicker";
 
-                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
@@ -972,18 +963,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
                 catch (Exception)
                 {
                 }
 
             });
-            OnSubGroupSelectButtonClick = new Command(() =>
+            OnSubGroupSelectButtonClick = new Command(async () =>
             {
                 List<ActGroupSet> subGroupList = new List<ActGroupSet>();
                 var dropDownData = new List<ActGroupSet>();
@@ -1011,7 +999,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "SubGroupPicker";
 
-                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
@@ -1020,17 +1008,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
                 catch (Exception)
                 { }
 
             });
-            OnAcitivitySelectButtonClick = new Command(() =>
+            OnAcitivitySelectButtonClick = new Command(async () =>
             {
                 List<ActGroupSet> subGroupList = new List<ActGroupSet>();
 
@@ -1056,10 +1041,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                     GenericPickerModel genericPickerModel = new GenericPickerModel();
                     genericPickerModel.PickerData = reportingBranchData;
-                    //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "ActivityPicker";
 
-                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
@@ -1068,11 +1052,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
                 catch (Exception)
                 { }
@@ -1283,7 +1264,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime crIssueDate);
                         DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
-                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+                        DateTime.TryParseExact("2060/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
                         item = new Nreg_ActivityItem
                         {
                             Type = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? "BUP002" : "ZS0004",
@@ -1332,7 +1313,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime crIssueDate);
                         DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
-                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+                        DateTime.TryParseExact("2060/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
 
                         foreach (var licenseActivity in NregMulActivityList)
                         {
@@ -1349,7 +1330,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                             Country = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCountry.Land1 : LicenseIssueCountry.Land1,
                             City = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityName : LicenseIssueCity.CityName,
                             CityCode = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityCode : LicenseIssueCity.CityCode,
-                             Actcat = MainActivity ? "M" : "S",
+                            Actcat = MainActivity ? "M" : "S",
 
                             Actno = $"{Int16.Parse(newNumber?.Actno):00000}",
                             Crattfg = CRsCopies.Count > 0 ? "X" : string.Empty,
@@ -1502,37 +1483,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                                     else
                                     {
                                         attachmentName = string.Empty;
-                                        MainThread.BeginInvokeOnMainThread(async () =>
-                                        {
-                                            await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                                        });
+                                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                     }
                                 }
                                 else
                                 {
-                                    MainThread.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
-                                    });
+                                    await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
                                 }
 
                             }
                             else
                             {
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                });
+                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
                         }
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
-                            IsLoading = false;
-                        });
+                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
                     }
 
                 }
@@ -1641,8 +1610,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         {
                             MainActivity = false;
                         }
-                         updateActivityList();
-                         updateCRAttachments();
+                        updateActivityList();
+                        updateCRAttachments();
                     }
                     if (CrName.Length > 0)
                     {
@@ -1697,7 +1666,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                             MainActivity = false;
                         }
                         updateActivityList(SelectedLicenseItem?.Activity);
-                       
+
                         List<Attachment> list = new List<Attachment>();
                         var lists = taxPayerDetails.AttDetSet.Where(x => x.Dotyp == "RG02" && x.OutletRef == string.Format("{0}-{1}", SelectedLicenseItem?.Actno, SelectedLicenseItem?.Idnumber)).ToList();
                         if (SelectedLicenseItem?.activitySet != null && SelectedLicenseItem?.activitySet?.Count > 0)
@@ -1812,7 +1781,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 }
             }
         }
-        public async void validateCRNumber(string idNumber, bool CallMulset = false)
+        public async Task validateCRNumber(string idNumber, bool CallMulset = false)
         {
 
             if (idNumber != null && idNumber.Length > 0)
@@ -1894,18 +1863,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 updateCRAttachments();
                 if (validateCR?.NotFound == "X")
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
-                    });
+                    await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
                     return;
                 }
                 if (validateCR?.Excption == "X")
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
-                    });
+                    await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
                     return;
                 }
                 CRIssueCity = new CityDropdownItem()
@@ -1953,17 +1916,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                 String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
 
-                MainThread.BeginInvokeOnMainThread(async () =>
+                if (errorID.Contains("896"))
                 {
-                    if (errorID.Contains("896"))
-                    {
-                        await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
-                    }
-                    else
-                    {
-                        await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
-                    }
-                });
+                    await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
+                }
+                else
+                {
+                    await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
+                }
 
             }
         }
@@ -2097,8 +2057,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     }
                 }
             }
-            catch (Exception )
-            {}
+            catch (Exception)
+            { }
             finally
             {
                 IsLoading = false;
@@ -2182,7 +2142,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRValidFrom));
                     return false;
                 }
-               
+
                 else
                 {
                     return true;
@@ -2215,7 +2175,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateALicenseValidFrom));
                     return false;
                 }
-              
+
                 else if (string.IsNullOrEmpty(LicenseName))
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateLicenseName));
@@ -2301,8 +2261,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             }
             catch (Exception ex)
             {
-                
-                
+
+
                 HijriCalendar hijriCalendar = new HijriCalendar();
                 return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }

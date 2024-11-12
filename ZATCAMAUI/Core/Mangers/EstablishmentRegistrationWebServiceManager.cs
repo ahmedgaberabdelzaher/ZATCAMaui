@@ -1002,11 +1002,8 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
-                    // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
