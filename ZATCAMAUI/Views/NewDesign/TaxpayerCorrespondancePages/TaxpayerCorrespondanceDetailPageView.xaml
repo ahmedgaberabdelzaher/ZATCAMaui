@@ -8,164 +8,159 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     mc:Ignorable="d">
-     <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingTaxpayerCorrespondanceDetailCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <Grid>
-
-                <StackLayout>
-                    <Grid
-                        Padding="15,5,15,5"
-                        ColumnDefinitions="20*,60*,20*"
-                        RowDefinitions="auto"
-                        RowSpacing="0">
-
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            HorizontalOptions="Center"
-                            Style="{StaticResource SectionTitleWhiteBold}"
-                            Text="{x:Static ResourceManager:AppResources.ZZCorrespondence}" />
-
-                        <Image
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            HorizontalOptions="StartAndExpand"
-                            IsVisible="{Binding IsBackStepButtonVisible}"
-                            Source="arrowLeftwhite"
-                            
-                            VerticalOptions="CenterAndExpand">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </Grid>
-                    <Border
-                        Padding="0"
-                        BackgroundColor="White"
-                        StrokeShape="RoundRectangle 15,15,0,0"
-                        VerticalOptions="FillAndExpand">
-                        <Grid
-                            x:Name="VATRMainGrid"
-                            Margin="0"
-                            Padding="0,-14,0,0"
-                            BackgroundColor="White"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand">
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="100*" />
-                            </Grid.RowDefinitions>
-                            <ContentPresenter
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" />
-                        </Grid>
-                    </Border>
-                </StackLayout>
-
-            </Grid>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-
     <ContentPage.Content>
         <Grid Padding="0" RowDefinitions="auto,*">
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
 
-            <Grid
-                Grid.Row="1"
-                Padding="15"
-                RowDefinitions="*,auto">
+                <StackLayout>
 
-                <custom:MyWebView
-                    x:Name="CorWebView"
-                    Source="{Binding CorWebViewSource}"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand" />
-                <Border
-                    Grid.Row="1"
-                    Margin="0,10,0,10"
-                    IsVisible="{Binding IsAttachmentEnabled}"
-                    Style="{StaticResource GreyBorderFrameWithShadow}">
-                    <Grid
-                        Padding="15"
-                        ColumnDefinitions="15*,85*"
-                        RowDefinitions="auto">
-                        <StackLayout Grid.Column="1">
-                            <Label
-                                Style="{StaticResource CaptionLabelBlack}"
-                                Text="{x:Static ResourceManager:AppResources.Attachment}"
-                                VerticalOptions="CenterAndExpand" />
-                        </StackLayout>
-                        <Image
-                            Margin="10,0,10,0"
-                            Aspect="AspectFit"
-                            HorizontalOptions="End"
-                            Source="newui_ic_pdf.png"
-                            VerticalOptions="CenterAndExpand" />
-
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
-                        </Grid.GestureRecognizers>
-
-                    </Grid>
-                </Border>
-
-
-            </Grid>
-
-            <StackLayout
-                Grid.Row="0"
-                Padding="15,45,15,0"
-                BackgroundColor="White"
-                VerticalOptions="Center">
-                <Grid ColumnDefinitions="85*,15*" RowDefinitions="auto">
-                    <StackLayout>
-                        <Label
-                            Padding="0,10,0,0"
-                            Style="{StaticResource PageTitleBlack}"
-                            Text="{Binding CorrespondenceTitle}" />
-                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-                            <Label
-                                HorizontalOptions="Start"
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{Binding CorrespondenceDateTime}" />
-                            <Label
-                                HorizontalOptions="Start"
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{Binding CorrespondenceTime}" />
-                        </StackLayout>
-
-                    </StackLayout>
+                    <!--  Back Button  -->
                     <Image
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Margin="0,-30,0,0"
-                        IsVisible="{Binding IsFavoriteVisible}"
-                        Source="{Binding FavIcon}"
-                        VerticalOptions="Center">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnFavClicked}" />
-                        </Image.GestureRecognizers>
+                        HorizontalOptions="Start"
+                        IsVisible="{Binding IsBackStepButtonVisible}"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
 
                     </Image>
 
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.ZZCorrespondence}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body -->
+            <Border
+                Grid.Row="1"
+                Margin="0,10,0,0"
+                Padding="10,0"
+                Style="{StaticResource CommonTopCurves}">
+                <Grid RowDefinitions="auto,*">
+
+
+                    <Grid
+                        Grid.Row="1"
+                        Padding="15"
+                        RowDefinitions="*,auto">
+
+                        <custom:MyWebView
+                            x:Name="CorWebView"
+                            HorizontalOptions="FillAndExpand"
+                            Source="{Binding CorWebViewSource}"
+                            VerticalOptions="FillAndExpand" />
+                        <Border
+                            Grid.Row="1"
+                            Margin="0,10,0,10"
+                            IsVisible="{Binding IsAttachmentEnabled}"
+                            Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Grid
+                                Padding="15"
+                                ColumnDefinitions="15*,85*"
+                                RowDefinitions="auto">
+                                <StackLayout Grid.Column="1">
+                                    <Label
+                                        Style="{StaticResource CaptionLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.Attachment}"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                                <Image
+                                    Margin="10,0,10,0"
+                                    Aspect="AspectFit"
+                                    HorizontalOptions="End"
+                                    Source="newui_ic_pdf.png"
+                                    VerticalOptions="CenterAndExpand" />
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+                        </Border>
+
+
+                    </Grid>
+
+                    <StackLayout
+                        Grid.Row="0"
+                        Padding="15,45,15,0"
+                        BackgroundColor="White"
+                        VerticalOptions="Center">
+                        <Grid ColumnDefinitions="85*,15*" RowDefinitions="auto">
+                            <StackLayout>
+                                <Label
+                                    Padding="0,10,0,0"
+                                    Style="{StaticResource PageTitleBlack}"
+                                    Text="{Binding CorrespondenceTitle}" />
+                                <StackLayout HorizontalOptions="StartAndExpand"
+                                             Spacing="10"
+                                             Orientation="Horizontal">
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        Text="{Binding CorrespondenceDateTime}" />
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        Text="{Binding CorrespondenceTime}" />
+                                </StackLayout>
+
+                            </StackLayout>
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                IsVisible="{Binding IsFavoriteVisible}"
+                                Source="{Binding FavIcon}"
+                                VerticalOptions="Center">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnFavClicked}" />
+                                </Image.GestureRecognizers>
+
+                            </Image>
+
+                        </Grid>
+                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
+
+
+
+                    </StackLayout>
                 </Grid>
-                <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
+            </Border>
+            <!--#endregion-->
 
-
-
-            </StackLayout>
         </Grid>
 
 

@@ -147,7 +147,7 @@ namespace ZATCAMAUI.Core.Helper
         public static string GAZTSaveEstimatedZaktReturn = BaseUrlOfODataServices + "/v1/estimated-returns/zakat-returns/details?language=";
         public static string GAZTVATReturnGetApplicableButtons = BaseUrlOfODataServices + "/v1/vat/returns/forms/details?formBundleNumber=";
         public static string GAZTGetEstimatedZAKATSADADNumber = BaseUrlOfODataServices + "/v1/estimated-returns/zakat-returns/details?TIN=";
-        public static string GAZTSaveEstimatedZAKATAttachement = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(RetGuid='";
+        public static string GAZTSaveEstimatedZAKATAttachement = BaseUrlOfODataServices + "/v1/vat-deregistration/attachments?outletReference=";
         public static string GAZTGetIdNumber = BaseUrlOfODataServices + "/v1/vat-registration/id-number?TIN=";
         public static string GAZTCheckIBANNumber = BaseUrlOfODataServices + "/v1/accounts/iban/validation";
         public static string GAZTGetEstimatedZAKATReturnInvoicePdf = BaseUrlOfODataServices + "/v1/estimated-returns/zakat-returns/invoices/attachments?correspondenceKey=";

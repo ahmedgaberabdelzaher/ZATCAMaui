@@ -28,6 +28,8 @@ using ZATCAMAUI.Models.SignUP;
 using ZATCAMAUI.Models.Authentication;
 using ZATCAMAUI.Models.NewModelAPI.Logout;
 using ZATCAMAUI.Models.AttachmentRequest;
+using ZATCAMAUI.Models.EstablishmentRegistration;
+using System.Globalization;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -915,7 +917,7 @@ namespace ZATCAMAUI.Core.Mangers
             {
                 DateTime dt = DateTime.Now;
                 AllCertificate allCertificate = new AllCertificate();
-                string currentDate = dt.ToString("yyyy-MM-ddTHH\\%3AMM\\%3Ass");
+                string currentDate = dt.ToString("yyyy-MM-ddTHH\\%3AMM\\%3Ass", new CultureInfo("en-US"));
                 string NewToken = string.Empty;
                 try
                 {
@@ -2467,10 +2469,12 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<AttachmentRootOject> GAZTSaveEstimatedZAKATAttachment(Stream AttachmentByte, string fileName, string RetGuid, string Dotyp, string ContentType)//, string returnedFguid
         {
+
             if (NetworkCheck.IsInternet())
             {
                 try
                 {
+                    AttachmentRootOject _attachment = new AttachmentRootOject();
                     var content = new MultipartFormDataContent();
                     var fileContent = new StreamContent(AttachmentByte);
                     fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
@@ -2479,45 +2483,32 @@ namespace ZATCAMAUI.Core.Mangers
                         FileName = fileName
                     };
                     content.Add(fileContent, "attachmentFile", fileName);
-
-                    AttachmentRootOject _attachment = new AttachmentRootOject();
                     var lang = UtilityManager.GetLanguageParameter();
                     string AttBy = "TP";
-                    if (Dotyp == null)
-                    {
-                        Dotyp = string.Empty;
-                    }
-                    // String url = ZATCAConstants.GAZTSaveAttachmentGeneric + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
-                    String url = ZATCAConstants.GAZTSaveEstimatedZAKATAttachement + "&returnGUID=" + RetGuid + "&attachmentFlag=New" + "&documentCategory=" + Dotyp + "&serialNumber=1" + "&attachedByPerson=TP" + "&fileName=" + fileName + "&documentId=";
-                    // url = url.Replace("attachmentServiceurl", apiServiceUrl);
+                    //String url = Constants.GAZTSaveAttachment + " + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
+                    String url = ZATCAConstants.GAZTSaveEstimatedZAKATAttachement + "&attachmentFlag=New" + "&returnGUID=" + RetGuid + "&formGUID=" + "&documentCategory=" + Dotyp + "&serialNumber=1" + "&documentId=" + "&attachedByPerson=TP" + "&fileName=" + fileName;
                     var uri = new Uri(url);
-                    //char LangZ = GetLangZParameter();
-                    //string url = ZATCAConstants.GAZTSaveEstimatedZAKATAttachement + RetGuid + "',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=enabled";
-                    //var uri = new Uri(url);
-                    //HttpClient client = new HttpClient(App.httpClientHandler);
-                    HttpClient client = new HttpClient();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", fileName);
-                    //client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    //ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    //if (!string.IsNullOrEmpty(ContentType))
-                    //    baContent.Headers.ContentType = new MediaTypeHeaderValue(ContentType);
+
+                    var serializeOptions = new JsonSerializerSettings
+                    {
+                        DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
+                        DateTimeZoneHandling = DateTimeZoneHandling.Utc
+                    };
+                    serializeOptions.Converters.Add(new JsonFieldListConverter());
+                    var serialized = JsonConvert.SerializeObject(_attachment, serializeOptions);
                     var response = await client.PostAsync(url, content);
-                    var responsestr = await response.Content.ReadAsStringAsync();
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    
-                    
                     return null;
                 }
             }
@@ -2773,9 +2764,9 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClient client = new HttpClient();
                     DateTime DateTimeNow = DateTime.Now;
 
-                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss");
+                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
 
-                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss");
+                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -2838,14 +2829,10 @@ namespace ZATCAMAUI.Core.Mangers
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                     string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     string lang = UtilityManager.GetLanguageParameter();
-                    //HttpClient client = new HttpClient(App.httpClientHandler);
                     HttpClient client = new HttpClient();
                     DateTime DateTimeNow = DateTime.Now;
-                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss");
-                    //String url = ZATCAConstants.GAZTGetCorrespondence + "'" + App.TP.TIN + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'VAT' and UserTin eq ''";
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
-                    //var uri = new Uri(url);
-                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss");
+                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
+                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -2910,12 +2897,9 @@ namespace ZATCAMAUI.Core.Mangers
                     string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     string lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient();
-                    //HttpClient client = new HttpClient(App.httpClientHandler);
                     DateTime DateTimeNow = DateTime.Now;
-                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss");
-                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss");
-                    //String url = ZATCAConstants.GAZTGetCorrespondence + " '" + App.TP.TIN + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'ET' and UserTin eq ''";
-                    //var uri = new Uri(url);
+                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
+                    var startDate = new DateTime(2007, 1, 1).ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -2977,8 +2961,8 @@ namespace ZATCAMAUI.Core.Mangers
                     string lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     DateTime DateTimeNow = DateTime.Now;
-                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm");
-                    String url = ZATCAConstants.GAZTGetCorrespondence + " '" + App.TP.TIN + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'L' and Auditor eq 'null' and TaxtpFg eq 'COLL' and UserTin eq ''";
+                    string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm", new CultureInfo("en-US"));
+                    string url = ZATCAConstants.GAZTGetCorrespondence + " '" + App.TP.TIN + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'L' and Auditor eq 'null' and TaxtpFg eq 'COLL' and UserTin eq ''";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTETCorresList = await client.GetAsync(uri);
                     if (GAZTETCorresList != null)
@@ -4238,10 +4222,6 @@ namespace ZATCAMAUI.Core.Mangers
                 var lang = UtilityManager.GetLanguageParameter();
                 try
                 {
-                    if (false == NetworkCheck.IsInternet())
-                    {
-                        throw new GAZTInternetException();
-                    }
                     string url = ZATCAConstants.GAZTGetReturnList + TIN + "&language=" + lang;
                     HttpClient client = new HttpClient();
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;

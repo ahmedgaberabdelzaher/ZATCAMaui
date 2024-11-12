@@ -55,6 +55,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         }
 
         private IBanAccountManagementResponseModel _iBANAccountData;
+        public bool isRemove = false;
 
         public IBanAccountManagementResponseModel IBANAccountData
         {
@@ -74,6 +75,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             {
                 IBANAccountData.d.isUpdateFlag = false;
                 App.SelectedIBAN = "";
+                IBANAccountData.d.isRemove = isRemove;
                 _navigationService.NavigateTo(App.GAZTBankAccountAddOrUpdatePageView, IBANAccountData);
             }
             catch (InternetException ex)
@@ -189,110 +191,107 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             MainListData.Clear();
             IsLoading = true;
 
-            await Task.Run(async () =>
+            IBanAccountManagementResponseModel IbanAccounts = await IBanManagmentWebserviceManager.GAZTGetIBanAccounts();
+
+            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+            IsLoading = false;
+
+            foreach (var item in IbanAccounts.d.IbanListSet)
             {
-                IBanAccountManagementResponseModel IbanAccounts = await IBanManagmentWebserviceManager.GAZTGetIBanAccounts();
+                IbanListSetResult newItem = new IbanListSetResult();
 
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                IsLoading = false;
+                newItem.VisibleUpdate = item.VisibleUpdate;
+                newItem.Type = item.Type;
+                newItem.Tin = item.Tin;
+                newItem.StatusDesc = item.StatusDesc;
+                newItem.Status = item.Status;
+                newItem.Koinh = item.Koinh;
+                newItem.IdtypeDesc = item.IdtypeDesc;
+                newItem.Idnumber = item.Idnumber;
+                newItem.Iban = item.Iban;
+                newItem.FormGuid = item.FormGuid;
+                newItem.Fbnum = item.Fbnum;
+                newItem.EnableUpdate = item.EnableUpdate;
+                newItem.Bkext = item.Bkext;
+                newItem.Bankid = item.Bankid;
+                newItem.AgreeFg = item.AgreeFg;
+                newItem.ActiveIban = item.ActiveIban;
+                newItem.Action = item.Action;
 
-                foreach (var item in IbanAccounts.d.IbanListSet)
+                if (item.VisibleUpdate.Equals(""))
                 {
-                    IbanListSetResult newItem = new IbanListSetResult();
-
-                    newItem.VisibleUpdate = item.VisibleUpdate;
-                    newItem.Type = item.Type;
-                    newItem.Tin = item.Tin;
-                    newItem.StatusDesc = item.StatusDesc;
-                    newItem.Status = item.Status;
-                    newItem.Koinh = item.Koinh;
-                    newItem.IdtypeDesc = item.IdtypeDesc;
-                    newItem.Idnumber = item.Idnumber;
-                    newItem.Iban = item.Iban;
-                    newItem.FormGuid = item.FormGuid;
-                    newItem.Fbnum = item.Fbnum;
-                    newItem.EnableUpdate = item.EnableUpdate;
-                    newItem.Bkext = item.Bkext;
-                    newItem.Bankid = item.Bankid;
-                    newItem.AgreeFg = item.AgreeFg;
-                    newItem.ActiveIban = item.ActiveIban;
-                    newItem.Action = item.Action;
-
-                    if (item.VisibleUpdate.Equals(""))
+                    if (item.ActiveIban.Equals("X"))
                     {
-                        if (item.ActiveIban.Equals("X"))
-                        {
-                            //EDIT icon
-                            newItem.StatusText = AppResources.IBanDeactivate;
-                            newItem.isUpdateDisabled = false;
-                            newItem.isUpdateEnabled = true;
-                        }
-                        else
-                        {
-                            newItem.StatusText = AppResources.IBanActivate;
-                            newItem.isUpdateDisabled = true;
-                            newItem.isUpdateEnabled = false;
-                        }
+                        //EDIT icon
+                        newItem.StatusText = AppResources.IBanDeactivate;
+                        newItem.isUpdateDisabled = false;
+                        newItem.isUpdateEnabled = true;
+                    }
+                    else
+                    {
+                        newItem.StatusText = AppResources.IBanActivate;
+                        newItem.isUpdateDisabled = true;
+                        newItem.isUpdateEnabled = false;
+                    }
+
+                }
+                else
+                {
+                    if (item.EnableUpdate.Equals("X"))
+                    {
+                        newItem.StatusText = AppResources.IBANUpdate;
+                        newItem.isUpdateEnabled = true;
+                        newItem.isUpdateDisabled = false;
 
                     }
                     else
                     {
-                        if (item.EnableUpdate.Equals("X"))
-                        {
-                            newItem.StatusText = AppResources.IBANUpdate;
-                            newItem.isUpdateEnabled = true;
-                            newItem.isUpdateDisabled = false;
-
-                        }
-                        else
-                        {
-                            newItem.StatusText = AppResources.IBANUpdate;
-                            newItem.isUpdateEnabled = false;
-                            newItem.isUpdateDisabled = true;
-                        }
-                        //newItem.isUpdateDisabled = true;
-                        //newItem.isUpdateEnabled = false;
+                        newItem.StatusText = AppResources.IBANUpdate;
+                        newItem.isUpdateEnabled = false;
+                        newItem.isUpdateDisabled = true;
                     }
-                    MainListData.Add(newItem);
+                    //newItem.isUpdateDisabled = true;
+                    //newItem.isUpdateEnabled = false;
                 }
+                MainListData.Add(newItem);
+            }
 
 
 
-                if (IbanAccounts != null && IbanAccounts.d != null && IbanAccounts.d.IbanListSet != null
-                && IbanAccounts.d.IbanListSet != null && IbanAccounts.d.IbanListSet.Count > 0)
+            if (IbanAccounts != null && IbanAccounts.d != null && IbanAccounts.d.IbanListSet != null
+            && IbanAccounts.d.IbanListSet != null && IbanAccounts.d.IbanListSet.Count > 0)
+            {
+                try
                 {
-                    try
+                    // MainListData = IbanAccounts.d.IbanListSet.results;
+
+                    var RejectMatch = MainListData.Where(selectedValue => (selectedValue.StatusDesc == "Rejected") || (selectedValue.StatusDesc == "„—›Ê÷")).First();
+                    var MissingIfoMatch = MainListData.Where(selectedValue => (selectedValue.StatusDesc == "Missing Informaiton") || (selectedValue.StatusDesc == "„⁄·Ê„«  «·Õ”«» €Ì— „ﬂ „·…")).First();
+
+
+                    if (MissingIfoMatch != null || RejectMatch != null)
                     {
-                        // MainListData = IbanAccounts.d.IbanListSet.results;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIncomplete));
 
-                        var RejectMatch = MainListData.Where(selectedValue => (selectedValue.StatusDesc == "Rejected") || (selectedValue.StatusDesc == "„—›Ê÷")).First();
-                        var MissingIfoMatch = MainListData.Where(selectedValue => (selectedValue.StatusDesc == "Missing Informaiton") || (selectedValue.StatusDesc == "„⁄·Ê„«  «·Õ”«» €Ì— „ﬂ „·…")).First();
-
-
-                        if (MissingIfoMatch != null || RejectMatch != null)
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIncomplete));
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        
-                        
-                        IsLoading = false;
                     }
                 }
-
-
-                if (IbanAccounts != null && IbanAccounts.d != null)
+                catch (Exception)
                 {
 
-                    IBANAccountData = IbanAccounts;
 
+                    IsLoading = false;
                 }
+            }
 
-                IsLoading = false;
-            });
+
+            if (IbanAccounts != null && IbanAccounts.d != null)
+            {
+
+                IBANAccountData = IbanAccounts;
+
+            }
+
+            IsLoading = false;
         }
     }
 }

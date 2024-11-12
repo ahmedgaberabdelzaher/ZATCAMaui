@@ -6,11 +6,11 @@
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    BackgroundColor="#88000000"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Border Style="{StaticResource CommonTopCurves}" VerticalOptions="End">
@@ -26,27 +26,27 @@
 
             <custom:CustomSfTextInputView>
                 <custom:CustomSfTextInputView.TextInputView>
-                   <StackLayout Margin="0,16,0,0">
-                    <Editor
-                        x:Name="NoteDetail"
-                        AutoSize="TextChanges"
-                        FontSize="Small"
-                        HeightRequest="200"
-                        HorizontalOptions="FillAndExpand"
-                        IsSpellCheckEnabled="False"
-                        MaxLength="999"
-                        Text="{Binding NoteText}" />
+                    <StackLayout Margin="0,16,0,0">
+                        <Editor
+                            x:Name="NoteDetail"
+                            AutoSize="TextChanges"
+                            FontSize="Small"
+                            HeightRequest="200"
+                            HorizontalOptions="FillAndExpand"
+                            IsSpellCheckEnabled="False"
+                            MaxLength="999"
+                            Text="{Binding NoteText}" />
 
-                    <Label
-                        FontSize="Micro"
-                        HorizontalOptions="EndAndExpand"
-                        Style="{StaticResource CaptionLabelGrey}"
-                        Text="{Binding Source={x:Reference NoteDetail}, Path=Text.Length, StringFormat='{0}/999'}"
-                        VerticalOptions="Start"
-                        VerticalTextAlignment="Start" />
-                 </StackLayout>
+                        <Label
+                            FontSize="Micro"
+                            HorizontalOptions="EndAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="{Binding Source={x:Reference NoteDetail}, Path=Text.Length, StringFormat='{0}/999'}"
+                            VerticalOptions="Start"
+                            VerticalTextAlignment="Start" />
+                    </StackLayout>
                 </custom:CustomSfTextInputView.TextInputView>
-                
+
 
             </custom:CustomSfTextInputView>
 

@@ -11,6 +11,7 @@ using ZATCAMAUI.Core.Behaviors;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM;
 using Entry = Microsoft.Maui.Controls.Entry;
+using System;
 
 namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 {
@@ -5462,8 +5463,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 }
                 if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text != "." && EntryPreperiodcorr.Text != "-" && EntryPreperiodcorr.Text != ",")
                 {
-                    string MinValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MinVal).FirstOrDefault();
-                    string MaxValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
+                    string MinValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001" || a.Type == "005").Select(x => x.MinVal).FirstOrDefault();
+                    string MaxValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001" || a.Type == "005").Select(x => x.MaxVal).FirstOrDefault();
                     if (Convert.ToDecimal(EntryPreperiodcorr.Text) <= Convert.ToDecimal(MinValue) || Convert.ToDecimal(EntryPreperiodcorr.Text) >= Convert.ToDecimal(MaxValue))
                     {
                         viewModel._dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValue, MaxValue, MinValue), AppResources.Information);
@@ -8858,9 +8859,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                 headerAmountInfo.Message = AppResources.ZToolTipCorrectionsfrompreviousperiod;
                 headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                string MessageWithPositiveValue = headerAmountInfo.Message.Replace("<5,000>", viewModel.CorrectionPeriodAmount);
-                string MessageWithNegativeValue = headerAmountInfo.Message.Replace("<-5,000>", MessageWithPositiveValue);
-                headerAmountInfo.Message = MessageWithNegativeValue;
+                string MinValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001" || a.Type == "005").Select(x => x.MinVal).FirstOrDefault();
+                string MaxValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001" || a.Type == "005").Select(x => x.MaxVal).FirstOrDefault();
+                headerAmountInfo.Message = String.Format(AppResources.ZToolTipCorrectionsfrompreviousperiod, MaxValue, MinValue);
+
                 headerAmountInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {

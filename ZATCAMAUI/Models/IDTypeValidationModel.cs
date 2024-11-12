@@ -53,5 +53,7 @@
     public class IDTypeValidateRootObject
     {
         public IDTypeValidateError error { get; set; }
+        public Header header { get; set; }
+
     }
 }

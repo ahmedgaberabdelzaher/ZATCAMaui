@@ -13,6 +13,7 @@ using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 using ZATCAMAUI.Views.NewDesign.VATRefunds;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 {
@@ -24,6 +25,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
         public ICommand IbanIdTypeTapped { get; set; }
         public ICommand IbanIdNumberTapped { get; set; }
         public ICommand OnMoreClicked { get; set; }
+        public ICommand IBANAccManagementTapped { get; set; }
+        public ICommand NewAccountCommand { get; set; }
+        public ICommand ContinueCommand { get; set; }
+        public ICommand VoidCommand { get; set; }
+
 
         #endregion
 
@@ -519,6 +525,42 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
                 }
             });
+            IBANAccManagementTapped = new Command(async () =>
+            {
+                await _navigationService.NavigateTo(App.GAZTBankAccountManagementPageView,true);
+            });
+
+            NewAccountCommand = new Command(async () =>
+            {
+                await MopupService.Instance.PushAsync(new NewAccountPopUpPageView(string.Empty));
+            });
+
+
+            ContinueCommand = new Command(async () =>
+            {
+                await ContinueBtnClicked();
+            });
+            VoidCommand = new Command(async () =>
+            {
+                if (App.IsArabic)
+                {
+                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZNo, AppResources.ZYes);
+
+                    if (!result)
+                    {
+                        await OnVoidBtnClicked();
+                    }
+                }
+                else
+                {
+                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZYes, AppResources.ZNo);
+
+                    if (result)
+                    {
+                        await OnVoidBtnClicked();
+                    }
+                }
+            });
         }
 
         internal void Selected_update(IReadOnlyList<object> currentSelection)
@@ -650,8 +692,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     }
                 }
 
-                // VatRefundsDisplayDataModel.VAtRefundSET.results.Equa= VatfrmRefundsModel;
-
                 VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
 
                 IsLoading = true;
@@ -728,7 +768,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             {
 
                 IsLoading = true;
-
+                amount = 0;
                 VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
                 VatfrmRefundsModel = new ObservableCollection<VatReffundAmtDetails>(VatRefundsDisplayDataModel.VAtRefundSET);//
 
@@ -765,8 +805,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     {
                         GetAllIbanList();
                     }
-
-
                 }
 
 
@@ -859,8 +897,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
                 if (IBanListResponse != null && IBanListResponse.D != null && IBanListResponse.D.Results != null && IBanListResponse.D.Results.Count > 0)
                 {
-
-
                     for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
                     {
                         var IbanListsResults = new VarRefundIbanDataModelMetadataResult()
@@ -870,30 +906,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         IbanData.Add(IbanListsResults);
                     }
 
-
-
-
                 }
                 if (IbanData.Count > 0)
                 {
-
                     SelectedIbanData = IbanData.FirstOrDefault();
-
-
-
                     IsTypeEditable = false;
                 }
-
-
-
-
             }
             catch (InternetException ex)
             {
                 _ = _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
-
-
         }
 
         public async Task LoadDraftsData(VatRefundsListResultModel draftsData)
@@ -901,10 +924,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             try
             {
                 IsLoading = true;
+                amount = 0;
+                
                 VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(draftsData.WiDtlSet[0].Fbguid);
-
-                VatRefundsDisplayDataModel.Rfamt = "0.0";// VatRefundsDisplayDataModel.Rfamt.Replace("-",string.Empty);
-
 
                 if (VatRefundsDisplayDataModel.Idnumber != null && VatRefundsDisplayDataModel.Idnumber != string.Empty)
                 {
@@ -923,15 +945,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     {
                       
                     }
-                }
-
-                if (VatRefundsDisplayDataModel.Rfamt == "0")
-                {
-                    amount = 0;
-                }
-                else
-                {
-                    amount = decimal.Parse(VatRefundsDisplayDataModel.Rfamt);
                 }
 
                 if (string.IsNullOrEmpty(VatRefundsDisplayDataModel.RefundTp))
@@ -960,6 +973,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
                 foreach (var i in VatfrmRefundsModel)
                 {
+                    decimal A = decimal.Parse(i.Betrw);
                     if (i.CheckFg == "X")
                     {
                         isSadadBillCheckBox1 = true;
@@ -986,6 +1000,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         IsAddAccountVisisble = true;
                     }
                 }
+
+                await GetAllIbanList();
 
                 IsLoading = false;
             }
@@ -1167,7 +1183,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 IsLoading = true;
                 List<IBANIDNumber> iBANIDNumbersResponse = await WebServiceManager.GAZTGetIBANIdNumber(selectedIbanIdType);
 
-                PopToRootPage();
+                await PopToRootPage();
                 if (iBANIDNumbersResponse != null || iBANIDNumbersResponse.Count() != 0)
                 {
                     IBANIDNumberList = new ObservableCollection<IBANIDNumber>(iBANIDNumbersResponse);
@@ -1194,7 +1210,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
                 VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
             }
-            // VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
+
             VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
             if (SelectedIDTypeCode != null)
             {
@@ -1202,7 +1218,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
             }
             VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundTpParameter;
-            //VatRefundsDisplayDataModel.VAtRefundSET.results = VatfrmRefundsModel;
 
             for (int i = 0; i < VatfrmRefundsModel.Count; i++)
             {
@@ -1300,14 +1315,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         VatfrmRefundsCopyModel[i].CheckFg = "X";
                         VatfrmRefundsCopyModel[i].IsItemSelected = true;
                         amount = A + amount;
-                        //this.isSadadBillCheckBox1 = true;
                     }
                     else
                     {
                         VatfrmRefundsCopyModel[i].CheckFg = "";
                         VatfrmRefundsCopyModel[i].IsItemSelected = false;
                         amount -= A;
-                        // this.isSadadBillCheckBox1 = false;
                     }
                 }
             }

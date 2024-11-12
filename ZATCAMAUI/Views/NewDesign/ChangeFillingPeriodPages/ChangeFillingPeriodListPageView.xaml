@@ -9,14 +9,14 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    ios:Page.UseSafeArea="true"
-    BackgroundImageSource="partials_background.png"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-     <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingChangeFillingPeriodListCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
@@ -88,9 +88,10 @@
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
-                    <ScrollView HorizontalOptions="FillAndExpand"
-                                VerticalScrollBarVisibility="Never"
-                                VerticalOptions="FillAndExpand">
+                    <ScrollView
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never">
                         <StackLayout>
 
                             <Grid
@@ -123,7 +124,7 @@
                                     RowDefinitions="auto"
                                     VerticalOptions="FillAndExpand">
 
-                                    <Border 
+                                    <Border
                                         Grid.Row="0"
                                         Margin="0,20,0,0"
                                         Padding="16"
@@ -142,11 +143,11 @@
                                                 HorizontalOptions="Start"
                                                 Source="ic_add1.png"
                                                 WidthRequest="24" />
-                                            <Label 
+                                            <Label
                                                 x:Name="Filinglbl"
                                                 Grid.Column="1"
-                                                HorizontalOptions="StartAndExpand"
                                                 FontSize="15"
+                                                HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                                 Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}"
                                                 VerticalOptions="Start" />
@@ -168,19 +169,19 @@
                                         AutoFitMode="DynamicHeight"
                                         HorizontalOptions="Center"
                                         IsScrollingEnabled="False"
-                                        TapCommand="{Binding RequestItemTapCommand}"
                                         ItemsSource="{Binding MyRequestsListViewData}"
                                         ScrollBarVisibility="Never"
                                         SelectionBackground="Transparent"
                                         SelectionMode="SingleDeselect"
+                                        TapCommand="{Binding RequestItemTapCommand}"
                                         VerticalOptions="FillAndExpand">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
                                                 <Border
                                                     Grid.Column="0"
-                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                     Margin="0,15,0,0"
                                                     Padding="10"
+                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                     StrokeShape="RoundRectangle 15,15,15,15"
                                                     Style="{StaticResource GreyBorderFrameWithShadow}"
                                                     VerticalOptions="FillAndExpand">

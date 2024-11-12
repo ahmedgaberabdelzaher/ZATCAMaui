@@ -306,8 +306,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             set
             {
-                if (_selectedDropdownItem == value) return;
-
                 _selectedDropdownItem = value;
                 if (_selectedDropdownItem != null)
                 {
@@ -316,8 +314,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         SetAllCorrespondancedata();
                     }
-                    //FilterOnBasisOfTaxType();
-
                 }
 
                 OnPropertyChanged("SelectedDropdownItem");
@@ -500,7 +496,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 VATCorres = await WebServiceManager.GAZTGetVATCorrespondece();
                 ETCorres = await WebServiceManager.GAZTGetETCorrespondece();
                 CollCorres = await WebServiceManager.GAZTGetCollectionsCorrespondece();
-                PopToRootPage();
+                await PopToRootPage();
                 IsLoading = false;
             }
             catch (InternetException ex)
@@ -508,7 +504,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
         }
-        public void SetData()
+        public async Task SetData()
         {
             try
             {
@@ -564,7 +560,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
                             childZakat.IsFav = false;
-                            childZakat.FavImg = "arrowRight.png";
+                            if (App.IsArabic)
+                            {
+                                childZakat.FavImg = "arrowLeft.png";
+                            }
+                            else
+                            {
+                                childZakat.FavImg = "arrowRight.png";
+                            }
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
@@ -627,10 +630,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     ListZAKATCorrespondance = ZakatCo;
                     ListAllCorrespondance = ListAllCorrespondance.Union(ListZAKATCorrespondance).ToList();
                 }
-                else
-                {
-                }
-                PopToRootPage();
+            await PopToRootPage();
                 // Assigning data in the list
                 if (VATCorres != null && VATCorres.d != null && VATCorres.d.results != null && VATCorres.d.results.Count > 0)
                 {
@@ -682,7 +682,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
                             childVAT.IsFav = false;
-                            childVAT.FavImg = "arrowRight.png";
+                            if (App.IsArabic)
+                            {
+                                childVAT.FavImg = "arrowLeft.png";
+                            }
+                            else
+                            {
+                                childVAT.FavImg = "arrowRight.png";
+                            }
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
@@ -737,9 +744,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     ListVATCorrespondance = VATCo;
                     ListAllCorrespondance = ListAllCorrespondance.Union(ListVATCorrespondance).ToList();
-                }
-                else
-                {
                 }
                 // Assigning data in the list
                 if (ETCorres != null && ETCorres.d != null && ETCorres.d.results != null && ETCorres.d.results.Count > 0)
@@ -796,7 +800,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
                             childET.IsFav = false;
-                            childET.FavImg = "arrowRight.png";
+                            if (App.IsArabic)
+                            {
+                                childET.FavImg = "arrowLeft.png";
+                            }
+                            else
+                            {
+                                childET.FavImg = "arrowRight.png";
+                            }
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
@@ -852,10 +863,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     ListETCorrespondance = ETCo;
                     ListAllCorrespondance = ListAllCorrespondance.Union(ListETCorrespondance).ToList();
                 }
-                else
-                {
-
-                }
                 // Assigning data in the list
                 if (CollCorres != null && CollCorres.d != null && CollCorres.d.results != null && CollCorres.d.results.Count > 0)
                 {
@@ -909,7 +916,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
                             childColl.IsFav = false;
-                            childColl.FavImg = "arrowRight.png";
+                            if (App.IsArabic)
+                            {
+                                childColl.FavImg = "arrowLeft.png";
+                            }
+                            else
+                            {
+                                childColl.FavImg = "arrowRight.png";
+                            }
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
@@ -1134,7 +1148,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
 
             Correspondenceobj.Add(CorresModel);
-          await  _navigationService.NavigateTo(App.TaxpayerCorrespondanceDetailPageView, Correspondenceobj);
+            await  _navigationService.NavigateTo(App.TaxpayerCorrespondanceDetailPageView, Correspondenceobj);
 
 
             IsLoading = false;

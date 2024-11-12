@@ -8,14 +8,14 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-     <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingVatReviewListCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
@@ -95,7 +95,7 @@
                                 IsVisible="{Binding IsVatListVisible}"
                                 VerticalOptions="FillAndExpand">
 
-                                
+
                                 <Label
                                     Grid.Row="1"
                                     Margin="5"
@@ -161,10 +161,10 @@
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
                                                 <Border
-                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                     Grid.Column="0"
                                                     Margin="0,15,0,0"
                                                     Padding="10"
+                                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                     StrokeShape="RoundRectangle 15,15,15,15"
                                                     Style="{StaticResource GreyBorderFrameWithShadow}">
                                                     <StackLayout>
@@ -184,35 +184,35 @@
                                                                 VerticalOptions="CenterAndExpand" />
 
                                                             <Border
-                                                            Grid.Row="1"
-                                                            Grid.Column="1"
-                                                            BackgroundColor="{StaticResource PartialBg}"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            StrokeShape="RoundRectangle 14,14,14,14"
-                                                            StrokeThickness="1"
-                                                            VerticalOptions="CenterAndExpand">
-
-                                                            <Label
-                                                                Padding="8,3,8,3"
-                                                                HorizontalOptions="CenterAndExpand"
-                                                                HorizontalTextAlignment="Center"
-                                                                Style="{StaticResource CaptionLabelBlack}"
-                                                                Text="{Binding FbustTxt}"
-                                                                TextColor="{StaticResource Partial}"
+                                                                Grid.Row="1"
+                                                                Grid.Column="1"
+                                                                BackgroundColor="{StaticResource PartialBg}"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                StrokeShape="RoundRectangle 14,14,14,14"
+                                                                StrokeThickness="1"
                                                                 VerticalOptions="CenterAndExpand">
-                                                                <Label.Triggers>
 
-                                                                    <DataTrigger
-                                                                        Binding="{Binding FbustTxt}"
-                                                                        TargetType="Label"
-                                                                        Value="{x:Static ResourceManager:AppResources.NDBilled}">
-                                                                        <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.NDBilled}" />
-                                                                        <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                                        <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                                                    </DataTrigger>
-                                                                </Label.Triggers>
-                                                            </Label>
-                                                        </Border>
+                                                                <Label
+                                                                    Padding="8,3,8,3"
+                                                                    HorizontalOptions="CenterAndExpand"
+                                                                    HorizontalTextAlignment="Center"
+                                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                                    Text="{Binding FbustTxt}"
+                                                                    TextColor="{StaticResource Partial}"
+                                                                    VerticalOptions="CenterAndExpand">
+                                                                    <Label.Triggers>
+
+                                                                        <DataTrigger
+                                                                            Binding="{Binding FbustTxt}"
+                                                                            TargetType="Label"
+                                                                            Value="{x:Static ResourceManager:AppResources.NDBilled}">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.NDBilled}" />
+                                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                                            <Setter Property="HorizontalTextAlignment" Value="Center" />
+                                                                        </DataTrigger>
+                                                                    </Label.Triggers>
+                                                                </Label>
+                                                            </Border>
 
                                                         </StackLayout>
                                                     </StackLayout>
@@ -225,13 +225,12 @@
                             </StackLayout>
 
                             <Grid
-                                
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand"
                                 IsVisible="{Binding SummaryVisible}"
                                 VerticalOptions="FillAndExpand">
 
-                                <StackLayout >
+                                <StackLayout>
 
                                     <Label
                                         HorizontalOptions="StartAndExpand"
@@ -246,7 +245,7 @@
 
                                     <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout >
+                                        <StackLayout>
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -366,7 +365,7 @@
 
                                     <Border Margin="0,16,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout >
+                                        <StackLayout>
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -431,14 +430,13 @@
                                                     ItemsSource="{Binding AttachmentsListViewData}"
                                                     ScrollBarVisibility="Never"
                                                     SelectionBackground="Transparent"
-                                                    TapCommand="{Binding BankGuranAttachTapCommand}"
                                                     SelectionMode="None"
+                                                    TapCommand="{Binding BankGuranAttachTapCommand}"
                                                     VerticalOptions="Center">
                                                     <listView:SfListView.ItemTemplate>
                                                         <DataTemplate>
 
-                                                            <Grid VerticalOptions="FillAndExpand"
-                                                                  FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                            <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}" VerticalOptions="FillAndExpand">
                                                                 <Grid.RowDefinitions>
                                                                     <RowDefinition Height="auto" />
                                                                 </Grid.RowDefinitions>
@@ -483,7 +481,7 @@
                                         IsVisible="{Binding IsSecurityPaymentsTabVisible}"
                                         Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout >
+                                        <StackLayout>
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -650,7 +648,7 @@
                                         IsVisible="{Binding IsSecurityPaymentsTabVisible}"
                                         Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout >
+                                        <StackLayout>
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -758,8 +756,8 @@
                                                     ItemsSource="{Binding BankGuranteeAttachmentsListViewData}"
                                                     ScrollBarVisibility="Never"
                                                     SelectionBackground="Transparent"
-                                                    TapCommand="{Binding BankGuranAttachTapCommand}"
                                                     SelectionMode="None"
+                                                    TapCommand="{Binding BankGuranAttachTapCommand}"
                                                     VerticalOptions="Center">
                                                     <listView:SfListView.ItemTemplate>
                                                         <DataTemplate>
@@ -806,7 +804,7 @@
                                         Padding="0,0,0,16"
                                         Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                        <StackLayout >
+                                        <StackLayout>
 
                                             <Grid Padding="15" RowSpacing="0">
                                                 <Grid.RowDefinitions>

@@ -4537,7 +4537,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private void IBANAccManagementTapped(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView, true);
 
         }
 

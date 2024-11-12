@@ -19,7 +19,6 @@
         <Border
             Grid.Row="0"
             Padding="0"
-            HeightRequest="400"
             Stroke="{StaticResource NeutralLightGrey}"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
@@ -34,11 +33,11 @@
 
                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDWriteYourObjectionReason}" />
 
-                            <custom:CustomSfTextInputView Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         x:Name="ObjectionReason"
-                                        Style="{StaticResource InputTableEntryLayoutStyle}"
+                                        Style="{StaticResource DefaultEntry}"
                                         Text="{Binding ObjectionReason}" />
                                 </custom:CustomSfTextInputView.TextInputView>
                             </custom:CustomSfTextInputView>

@@ -6,12 +6,13 @@
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:sfconverter="clr-namespace:ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister"
-    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker" xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     x:Name="page"
     Title="TinOutletDeRegRequestPageView"
     ios:Page.UseSafeArea="true"
@@ -88,9 +89,14 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-                        <commonView:PageIndicatorView Margin="20,10,20,0" MaxNum="{Binding MaxIndex}"
-                                                MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}"
-                                                VerticalOptions="CenterAndExpand" DotSize="12" HorizontalOptions="End"/>
+                        <commonView:PageIndicatorView
+                            Margin="20,10,20,0"
+                            Completed="{Binding MarkComplete}"
+                            DotSize="12"
+                            HorizontalOptions="End"
+                            MaxNum="{Binding MaxIndex}"
+                            MinNum="{Binding CurrentIndex}"
+                            VerticalOptions="CenterAndExpand" />
                     </Grid>
 
                     <Grid Grid.Row="1" VerticalOptions="FillAndExpand">

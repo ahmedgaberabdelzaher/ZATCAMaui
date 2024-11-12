@@ -11,6 +11,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATLookUpNewPageView : ContentPage
     {
+        bool scanFinished = false;
         string barcodeResultValue;
         VATLookUpNewPageViewModel viewModel;
         public VATLookUpNewPageView()
@@ -19,7 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
 
             viewModel = App.Locator.VATLookUpNewPageView;
             BindingContext = viewModel;
-            SetPickerFont();
             viewModel.ResetFormData();
             viewModel.IsTooltipEnableVisible = false;
             viewModel.TxtSearchParameter = string.Empty;
@@ -39,7 +39,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             zxing.Options = new BarcodeReaderOptions()
             {
                 Formats = BarcodeFormats.All,
-
                 TryHarder = true,
                 AutoRotate = false,
 
@@ -48,43 +47,28 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             #endregion
 
         }
-        public void SetPickerFont()
+        
+
+        protected override async void OnAppearing()
         {
-            try
+            PermissionStatus granted = await Permissions.CheckStatusAsync<Permissions.Camera>();
+            if (granted != PermissionStatus.Granted)
             {
-                switch (DeviceInfo.Platform)
-                {
-
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        {
-                            PPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            PPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            PPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            PPicker.TextStyle.FontFamily = "Somar-SemiBold";
-
-                        }
-                        break;
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-                        {
-                            PPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            PPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            PPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            PPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                        }
-                        break;
-                }
+                _ = await Permissions.RequestAsync<Permissions.Camera>();
             }
-            catch (Exception)
-            {
-
-            }
-
+            MessagingCenter.Send(this, "ScanData", "abc");
         }
 
-        protected override void OnAppearing()
+        protected override bool OnBackButtonPressed()
         {
+            if (viewModel.IsShowRsltView)
+            {
 
-            MessagingCenter.Send(this, "ScanData", "abc");
+                this.viewModel.BackCommand.Execute(null);
+                return false;
+            }
+
+            return base.OnBackButtonPressed();
         }
 
 
@@ -98,7 +82,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
         {
             if (viewModel.SelectedParameterType != null)
             {
-               
                 MopupService.Instance.PushAsync(new AttachmentInformationPopUp(viewModel.VATACCOrCRNOOrVATCER));
 
             }
@@ -114,25 +97,30 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
 
         private void zxing_BarcodesDetected(object sender, BarcodeDetectionEventArgs e)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
+            
+            MainThread.BeginInvokeOnMainThread(async() =>
             {
                 try
                 {
-                    zxing.IsDetecting = false;
-                    foreach (var barcode in e.Results)
+                    if (!scanFinished)
                     {
-                        barcodeResultValue = barcode.Value;
+                        zxing.IsDetecting = false;
+                        foreach (var barcode in e.Results)
+                        {
+                            barcodeResultValue = barcode.Value;
+                        }
+
+                        viewModel.SelectedParameterType = viewModel.ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
+                        await viewModel.getBarcodeData(barcodeResultValue);
+                        scanFinished = true;
                     }
 
-                    viewModel.SelectedParameterType = viewModel.ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
-                    await viewModel.getBarcodeData(barcodeResultValue);
                 }
                 catch (Exception)
                 {
 
-                }
-
-
+                }    
+               
             });
         }
 

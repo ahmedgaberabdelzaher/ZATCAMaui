@@ -3,12 +3,12 @@
     x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.AdjustmentPopupPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    BackgroundColor="#88000000"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Border
@@ -40,7 +40,7 @@
                             <Label
                                 CharacterSpacing="0"
                                 Style="{StaticResource CaptionLabelGrey}"
-                                 Text="{x:Static ResourceManager:AppResources.AdjustmentAmountDis}" />
+                                Text="{x:Static ResourceManager:AppResources.AdjustmentAmountDis}" />
 
                         </StackLayout>
                     </Border>

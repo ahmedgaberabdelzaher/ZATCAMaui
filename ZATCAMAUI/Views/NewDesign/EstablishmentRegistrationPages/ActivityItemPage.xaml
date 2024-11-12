@@ -110,10 +110,10 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
+                                    FontFamily="{StaticResource SomarBold}"
                                     InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
-                                    FontFamily="{StaticResource SomarBold}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTIssueBy}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CRIssueBy}"
@@ -149,10 +149,10 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
+                                    FontFamily="{StaticResource SomarBold}"
                                     InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
-                                    FontFamily="{StaticResource SomarBold}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTIssueCity}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CRIssueCity}"
@@ -255,8 +255,8 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
                                     FontFamily="{StaticResource SomarBold}"
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTValidFrom}"
@@ -618,9 +618,9 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
+                                    FontFamily="{StaticResource SomarBold}"
                                     InputTransparent="True"
                                     IsReadOnly="True"
-                                    FontFamily="{StaticResource SomarBold}"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTMainGroup}"
                                     Style="{StaticResource DefaultEntry}"
@@ -657,10 +657,10 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
+                                    FontFamily="{StaticResource SomarBold}"
                                     InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
-                                    FontFamily="{StaticResource SomarBold}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTSubGroup}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CRSubGroup}"
@@ -696,10 +696,10 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
+                                    FontFamily="{StaticResource SomarBold}"
                                     InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
-                                    FontFamily="{StaticResource SomarBold}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTActivity}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CRAcitivity}"
@@ -806,23 +806,12 @@
 
                                         <Image
                                             Grid.Column="2"
-                                            Rotation="180"
-                                            Source="arrowLeft.png"
+                                            Source="{Binding ArrowImageSource}"
                                             VerticalOptions="CenterAndExpand">
 
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityItemPage}, Path=BindingContext.OnLicenseSelected}" CommandParameter="{Binding .}" />
                                             </Image.GestureRecognizers>
-
-                                            <Image.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding AppDirection}"
-                                                    TargetType="Image"
-                                                    Value="LeftToRight">
-                                                    <Setter Property="Rotation" Value="180" />
-                                                </DataTrigger>
-                                            </Image.Triggers>
-
                                         </Image>
 
                                     </Grid>

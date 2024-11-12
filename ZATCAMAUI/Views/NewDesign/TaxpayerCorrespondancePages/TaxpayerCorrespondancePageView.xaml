@@ -292,6 +292,7 @@
                                                     Grid.Row="1"
                                                     Grid.Column="0"
                                                     Margin="0,0,5,5"
+                                                    Spacing="10"
                                                     Orientation="Horizontal"
                                                     VerticalOptions="FillAndExpand">
                                                     <Label
@@ -313,38 +314,12 @@
                                                 HorizontalOptions="End"
                                                 VerticalOptions="CenterAndExpand">
                                                 <Image
-                                                    x:Name="ImageBackArrow"
-                                                    HeightRequest="30"
-                                                    Source="{Binding FavImg}"
-                                                    WidthRequest="30" >
-                                                    <Image.Triggers>
-                                                        <MultiTrigger TargetType="Image">
-                                                            <MultiTrigger.Conditions>
-                                                                <BindingCondition 
-                                                                   Binding="{Binding IsFav}"
-                                                                    Value="False" />
-                                                                <BindingCondition 
-                                                                    Binding="{Binding AppDirection}"
-                                                                    Value="LeftToRight" />
-                                                            </MultiTrigger.Conditions>
-
-                                                            <Setter Property="Rotation" Value="180" />
-                                                        </MultiTrigger>
-                                                         <MultiTrigger TargetType="Image">
-                                                            <MultiTrigger.Conditions>
-                                                                <BindingCondition 
-                                                                   Binding="{Binding IsFav}"
-                                                                    Value="False" />
-                                                                <BindingCondition 
-                                                                    Binding="{Binding AppDirection}"
-                                                                    Value="RightToLeft" />
-                                                            </MultiTrigger.Conditions>
-
-                                                            <Setter Property="Rotation" Value="0" />
-                                                        </MultiTrigger>
-                                                    </Image.Triggers>
-
-                                                </Image>
+                                                     x:Name="ImageBackArrow"
+                                                     HeightRequest="30"
+                                                     Source="{Binding FavImg}"
+                                                     Style="{DynamicResource BackButtonArrow}"
+                                                     WidthRequest="30" >
+                                                    </Image>
 
                                             </StackLayout>
                                         </Grid>

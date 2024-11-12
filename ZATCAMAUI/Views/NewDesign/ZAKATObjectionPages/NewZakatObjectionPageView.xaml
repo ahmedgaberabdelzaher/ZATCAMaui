@@ -184,19 +184,15 @@
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="Sales" />
 
-                                <custom:CustomSfTextInputView
-                                    Grid.Row="1"
-                                    Grid.Column="0">
+                                <custom:CustomSfTextInputView Grid.Row="1" Grid.Column="0">
                                     <custom:CustomSfTextInputView.TextInputView>
-                                    <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="400.00" />
+                                        <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="400.00" />
                                     </custom:CustomSfTextInputView.TextInputView>
                                 </custom:CustomSfTextInputView>
 
-                                <custom:CustomSfTextInputView
-                                    Grid.Row="1"
-                                    Grid.Column="1">
+                                <custom:CustomSfTextInputView Grid.Row="1" Grid.Column="1">
                                     <custom:CustomSfTextInputView.TextInputView>
-                                    <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="400.00" />
+                                        <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="400.00" />
                                     </custom:CustomSfTextInputView.TextInputView>
                                 </custom:CustomSfTextInputView>
                             </Grid>
@@ -362,20 +358,16 @@
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="Date of Birth" />
 
-                            <custom:CustomSfTextInputView
-                                Grid.Row="3"
-                                Grid.Column="0">
+                            <custom:CustomSfTextInputView Grid.Row="3" Grid.Column="0">
                                 <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="Q1720187" />
+                                    <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="Q1720187" />
                                 </custom:CustomSfTextInputView.TextInputView>
                             </custom:CustomSfTextInputView>
 
-                            <custom:CustomSfTextInputView
-                                Grid.Row="3"
-                                Grid.Column="1">
+                            <custom:CustomSfTextInputView Grid.Row="3" Grid.Column="1">
 
                                 <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="7 jun 1995" />
+                                    <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="7 jun 1995" />
                                 </custom:CustomSfTextInputView.TextInputView>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -400,11 +392,9 @@
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="Contact Person Name" />
 
-                            <custom:CustomSfTextInputView
-                                Grid.Row="5"
-                                Grid.ColumnSpan="2">
+                            <custom:CustomSfTextInputView Grid.Row="5" Grid.ColumnSpan="2">
                                 <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="Zaed Hardy" />
+                                    <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="Zaed Hardy" />
                                 </custom:CustomSfTextInputView.TextInputView>
                             </custom:CustomSfTextInputView>
 
@@ -433,7 +423,7 @@
                             <StackLayout>
                                 <custom:CustomSfTextInputView>
                                     <custom:CustomSfTextInputView.TextInputView>
-                                    <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                                        <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
                                     </custom:CustomSfTextInputView.TextInputView>
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image>

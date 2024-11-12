@@ -619,11 +619,17 @@
                                 <custom:CustomSfTextInputView.TextInputView>
 
                                     <custom:GAZTBorderlessEntry
-                                        Keyboard="Text"
+                                        Keyboard="Numeric"
                                         Placeholder="{x:Static ResourceManager:AppResources.TIN}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitReport.TIN}"
-                                        TextColor="#58595B" />
+                                        MaxLength="10"
+                                        TextColor="#58595B" >
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behaviors:NumericValidationBehavior />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                                    </custom:GAZTBorderlessEntry>
 
                                 </custom:CustomSfTextInputView.TextInputView>
 
@@ -673,11 +679,17 @@
                                 <custom:CustomSfTextInputView.TextInputView>
 
                                     <custom:GAZTBorderlessEntry
-                                        Keyboard="Text"
                                         Placeholder="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitReport.CR}"
-                                        TextColor="#58595B" />
+                                        MaxLength="10"
+                                        Keyboard="Numeric"
+                                        TextColor="#58595B" >
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behaviors:NumericValidationBehavior />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                                    </custom:GAZTBorderlessEntry>
 
                                 </custom:CustomSfTextInputView.TextInputView>
 

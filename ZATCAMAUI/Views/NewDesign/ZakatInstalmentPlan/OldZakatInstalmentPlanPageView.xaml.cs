@@ -17,7 +17,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
         #region Variable
         OldZakatInstalmentPlanViewModel viewModel;
 
-        double totalAmountDue = 0.0;
+       
         #endregion
 
         public OldZakatInstalmentPlanPageView()
@@ -26,20 +26,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             {
                 InitializeComponent();
                 viewModel = App.Locator.OldZakatInstalmentPlanPageView;
-
-                viewModel.MinInstalments = 1;
-                viewModel.MaxInstalments = 36;
-                viewModel.MinAmount = 0;
-                viewModel.MaxAmount = 1;
-                viewModel.ResetData();
                 BindingContext = viewModel;
-                viewModel.IsZakat = Preferences.Get("isZakat", false);
-                viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
-                viewModel.showInstructionsDialog();
-                _ = GetZakatInstalmentData();
-                outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0];
-                frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
-                viewModel.setMoreOptioButtons();
+                
             }
             catch (Exception)
             {
@@ -53,21 +41,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
-        public async Task GetZakatInstalmentData()
-        {
-            try
-            {
-
-                viewModel.IsLoading = true;
-                await viewModel.OnPageLoad();
-                viewModel.IsLoading = false;
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
+       
 
 
         private void Frequncy_Selected(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
@@ -110,7 +84,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
-
         private void Year1Change_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (viewModel.Year1.Contains("_") || viewModel.Year1.Contains("-") || viewModel.Year1.Contains(",") || viewModel.Year1.Contains(".") || viewModel.Year1.Contains(" "))
@@ -127,8 +100,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-
-
         private void Installment_ValueChanged(object sender, ValueChangedEventArgs args)
         {
 
@@ -143,6 +114,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
             }
         }
+
         private void SearchItem_PropertyChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -190,73 +162,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
-        private void Bills_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
-        {
-            OldResults3 dataItem = e.DataItem as OldResults3;
-
-            if (App.selectedZakatItem == "")
-            {
-
-                totalAmountDue = 0.0;
-
-
-
-                try
-                {
-
-
-                    if (viewModel.selectedList.ToList().Exists(item => item.AIvNoTb == dataItem.AIvNoTb))
-                    {
-
-                        viewModel.selectedList.Remove(dataItem);
-
-                    }
-                    else
-                    {
-
-                        viewModel.selectedList.Add(dataItem);
-                    }
-
-                    for (int i = 0; i < viewModel.selectedList.Count; i++)
-                    {
-                        totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.selectedList[i].ADueAmtTb);
-
-                    }
-
-
-
-                    viewModel.VATBillDueAmount = string.Format("{0:N2}", totalAmountDue);
-                    viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmountDue);
-                    if (viewModel.MaxAmount < Math.Round(totalAmountDue * (20.0f / 100.0f), 2))
-                    {
-                        viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
-                        viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                    }
-                    else if (viewModel.MinAmount > Math.Round(totalAmountDue, 2))
-                    {
-                        viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                        viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
-                    }
-                    else
-                    {
-                        viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
-                        viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                    }
-
-                    viewModel.MinAmountTitle = AppResources.ZakatMin + " " + string.Format("{0:N}", viewModel.MinAmount);
-                    viewModel.MaxAmountTitle = AppResources.ZakatMax + " " + string.Format("{0:N}", viewModel.MaxAmount);
-                    viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-
-
-                }
-                catch (Exception)
-                {
-
-
-
-                }
-            }
-        }
 
         private void listView_SelectionChanging(object sender, Syncfusion.Maui.ListView.ItemSelectionChangingEventArgs e)
         {
@@ -280,268 +185,21 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             MessagingCenter.Unsubscribe<object, string>(this, "SelectedReason");
             MessagingCenter.Unsubscribe<object, AttachmentsList>(this, "PickerSelectedItem");
         }
+
         protected override void OnAppearing()
         {
             try
             {
                 base.OnAppearing();
-                viewModel.IsZakat = Preferences.Get("isZakat", false);
-                viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
-
-                getYesCommand();
-                getNoCommand();
-
-
-
-                MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        viewModel.PopulateAttachments(arg.results);
+                
+                //if (DeviceInfo.Platform == DevicePlatform.iOS)
+                //{
+                //    //iOS stuff
+                //    BillsVATListVIew.IsScrollingEnabled = false;
+                //    VATInstalmentDisplayDetailsViewPage.IsScrollingEnabled = false;
 
 
-
-                        if (viewModel.BankStatementsAttachmentsListViewData != null)
-                        {
-                            attachmentsListView.ItemsSource = viewModel.BankStatementsAttachmentsListViewData;
-                        }
-                        if (viewModel.FinanceAttachmentsListViewData != null)
-                        {
-                            FinancialAttachmentsList.ItemsSource = viewModel.FinanceAttachmentsListViewData;
-                        }
-
-
-
-
-                        if (viewModel.AttachmentsListViewData != null && viewModel.FinanceAttachmentsListViewData != null && viewModel.BankStatementsAttachmentsListViewData != null)
-                        {
-                            viewModel.PopulateSummaryAttachments();
-                            SummaryAttachmentsListView.ItemsSource = viewModel.AttachmentsListViewData;
-                        }
-                    }
-                });
-
-                MessagingCenter.Subscribe<object, bool>(this, "InvoiceBillsLoaded", (sender, arg) =>
-                {
-                    if (viewModel.ZakatInvoicesList != null && App.selectedZakatItem != "")
-                    {
-                        totalAmountDue = 0;
-                        for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
-                        {
-                            var dataItem = viewModel.ZakatInvoicesList[i];
-
-
-                            if (viewModel.selectedList.ToList().Exists(item => item.AIvNoTb == dataItem.AIvNoTb))
-                            {
-
-                                BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[i];
-                                totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.ZakatInvoicesList[i].ADueAmtTb);
-
-                            }
-
-                        }
-                        viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                        viewModel.MinAmountTitle = AppResources.ZakatMin + " " + viewModel.MinAmount;
-                        viewModel.PeriodicInstalment = Math.Round(totalAmountDue - viewModel.MinAmount);
-
-
-                    }
-                });
-
-
-
-
-
-
-                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
-                {
-                    viewModel.YesNoPickerModel = arg;
-                    viewModel.updatePicker();
-
-                });
-
-
-
-                MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
-                {
-                    await MopupService.Instance.PopAsync();
-                    if (arg != null)
-                    {
-                        string message = arg;
-
-                        if (App.IsArabic)
-                        {
-                            ArButtons buttonId = ArButtons.None;
-                            if (!string.IsNullOrEmpty(message))
-                            {
-                                message = message.Replace(" ", "");
-                            }
-                            Enum.TryParse(message, out buttonId);
-                            switch (buttonId)
-                            {
-                                case ArButtons.إضافةملاحظات:
-                                    //viewModel.VATReturnAddNote();
-                                    break;
-                                case ArButtons.عرضملاحظات:
-                                    //  viewModel.VATReturnGetNotes();
-                                    break;
-                                case ArButtons.المرفقات:
-                                    // viewModel.VATViewAttachments();
-                                    break;
-                                case ArButtons.إلغاء:
-                                    viewModel.isDraftClicked = true;
-                                   await viewModel.VoidMsg();
-                                    viewModel.isDraftClicked = false;
-                                    break;
-                                case ArButtons.عادةتعيين:
-                                    //await viewModel.VATReturnResetAsync();
-                                    break;
-                                case ArButtons.تعديل:
-                                    // await viewModel.VATReturnAmendAsync();
-                                    break;
-                                case ArButtons.حفظكمسودة:
-                                    viewModel.isDraftClicked = true;
-                                   await viewModel.OnSaveDraftClicked();
-                                    viewModel.isDraftClicked = false;
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            Buttons buttonId = Buttons.None;
-                            if (!string.IsNullOrEmpty(message))
-                            {
-                                message = message.Replace(" ", "");
-                            }
-                            Enum.TryParse(message, out buttonId);
-                            switch (buttonId)
-                            {
-                                case Buttons.CreateNotes:
-                                    //viewModel.VATReturnAddNote();
-                                    break;
-                                case Buttons.DisplayNotes:
-                                    //viewModel.VATReturnGetNotes();
-                                    break;
-                                case Buttons.Attachments:
-                                    // viewModel.VATViewAttachments();
-                                    break;
-                                case Buttons.Void:
-                                    viewModel.isDraftClicked = true;
-                                    viewModel.VoidMsg();
-                                    viewModel.isDraftClicked = false;
-                                    break;
-                                case Buttons.Reset:
-                                    //await viewModel.VATReturnResetAsync();
-                                    break;
-                                case Buttons.Amend:
-                                    // await viewModel.VATReturnAmendAsync();
-                                    break;
-                                case Buttons.SaveasDraft:
-                                    viewModel.isDraftClicked = true;
-                                    viewModel.OnSaveDraftClicked();
-
-                                    viewModel.isDraftClicked = false;
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-
-                    }
-                });
-
-                MessagingCenter.Subscribe<object, string>(this, "SelectedReason", (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        MainThread.BeginInvokeOnMainThread(() =>
-                        {
-
-                            try
-                            {
-
-                                switch (arg)
-                                {
-                                    case "1": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatFinancialCrisis]; break; }
-                                    case "2": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[1]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatDisputeInFavorOfGAZT]; break; }
-                                    case "3": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[2]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatOtherReason]; break; }
-
-                                }
-                            }
-                            catch (Exception)
-                            {
-
-
-                            }
-                        });
-                    }
-                });
-
-
-                MessagingCenter.Subscribe<object, string>(this, "SelectedFrequencyType", (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        switch (arg)
-                        {
-                            case "1":
-                                {
-                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
-                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
-                                    {
-                                        FrequencyOptions = AppResources.ZakatInstalmetMonthly,
-                                        IsSelected = true
-                                    });
-                                    break;
-                                }
-                            case "2":
-                                {
-                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[1];
-                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
-                                    {
-                                        FrequencyOptions = AppResources.ZakatInstalmetQuarterly,
-                                        IsSelected = true
-                                    });
-                                    break;
-                                }
-                            case "3":
-                                {
-                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[2];
-                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
-                                    {
-                                        FrequencyOptions = AppResources.ZakatInstalmetHalfYearly,
-                                        IsSelected = true
-                                    });
-                                    break;
-                                }
-                            case "4":
-                                {
-                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[3];
-                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
-                                    {
-                                        FrequencyOptions = AppResources.ZakatInstalmetYearly,
-                                        IsSelected = true
-                                    });
-                                    break;
-                                }
-                        }
-                    }
-                });
-
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                {
-                    //iOS stuff
-                    BillsVATListVIew.IsScrollingEnabled = false;
-                    VATInstalmentDisplayDetailsViewPage.IsScrollingEnabled = false;
-
-
-                }
-                else if (DeviceInfo.Platform == DevicePlatform.Android)
-                {
-
-                }
+                //}
 
             }
             catch (Exception)
@@ -668,59 +326,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-        public void getYesCommand()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
-                        {
-                            await MopupService.Instance.PopAsync();
-                            await viewModel.VATSetReturnVoidAsync();
-                        }
-                        else if (arg == AppResources.ZZZRefundEnableMessage)
-                        {
-                            await MopupService.Instance.PopAsync();
-                        }
-                    }
-
-                });
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-
-        public void getNoCommand()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
-                        {
-                            await MopupService.Instance.PopAsync();
-                        }
-                        else if (arg == AppResources.ZZZRefundEnableMessage)
-                        {
-                            await MopupService.Instance.PopAsync();
-                        }
-                    }
-
-                });
-            }
-            catch (Exception)
-            {
-
-            }
-        }
+       
 
         void CashBankText_Unfocused(object sender, FocusEventArgs e)
         {

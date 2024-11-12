@@ -40,7 +40,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
         bool isMandatoryDataEntered = true;
-        public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnSearchButtonClicked { get; set; }
 
         #region proprety
@@ -210,22 +209,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
         #endregion
+
+        
         public VATLookUpNewPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             try
             {
                 IsMainView = true;
-
-                OnBackButtonClicked = new Command(() =>
-                {
-                    if (IsShowScanView || IsShowRsltView)
-                    {
-                        IsShowScanView = IsShowRsltView = false;
-                        return;
-                    }
-                    ResetFormData();
-                    _navigationService.GoBack();
-                });
 
                 OnSearchButtonClicked = new Command(async () =>
                 {
@@ -378,6 +368,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             IsNameVisible = false;
             LookupNumber = "";
             LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
+           
         }
         public async Task getBarcodeData(string LookUpNo = "")
         {
@@ -390,12 +381,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     if (LookUpNo.Length != 15)
                     {
                         IsLoading = false;
+                        IsMainView = true;
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.InValidCode));
                         return;
                     }
                     LookupNumber = LookUpNo;
                 }
-                string _language = "A"; //UtilityManager.GetLanguageParameter();
+                string _language = "A";
 
                 VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
                 if (vatLookUp != null)
@@ -486,8 +478,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (Exception)
             {
                 IsMainView = true;
-
-
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 IsLoading = false;
 
@@ -495,6 +485,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             finally
             {
+                
                 IsShowScanView = false;
             }
 
@@ -510,14 +501,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 return new Command(() =>
                 {
-
-                    if (IsShowRsltView || IsShowScanView)
+                    try
                     {
-                        IsShowRsltView = IsShowScanView = false;
-                        IsMainView = true;
-                        return;
+                        if (IsShowScanView || IsShowRsltView)
+                        {
+                            IsShowScanView = IsShowRsltView = false;
+                            IsMainView = true;
+                            return;
+                        }
+                        ResetFormData();
+                        _navigationService.GoBack();
+
                     }
-                    _navigationService.GoBack();
+                    catch (Exception)
+                    {
+
+                    }
+
 
                 });
             }

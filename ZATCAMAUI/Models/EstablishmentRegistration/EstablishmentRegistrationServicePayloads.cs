@@ -326,6 +326,8 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Country { get; set; } = string.Empty;
         [JsonProperty("institute")]
         public string Institute { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string ArrowImageSource { get; set; } = string.Empty;
         [JsonProperty("city")]
         public string City { get; set; } = string.Empty;
         [JsonProperty("CRCopyTransfer")]

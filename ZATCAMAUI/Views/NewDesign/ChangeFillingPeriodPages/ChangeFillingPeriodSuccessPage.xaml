@@ -57,8 +57,7 @@
                             Padding="0"
                             Stroke="LightGray"
                             StrokeShape="RoundRectangle 8,8,8,8">
-                            <Grid Padding="10"
-                                  ColumnSpacing="10">
+                            <Grid Padding="10" ColumnSpacing="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>

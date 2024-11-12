@@ -105,13 +105,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private async void Checked_IBAN()
+        private async Task Checked_IBAN()
         {
             try
             {
                 try
                 {
-                    var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
+                    var response = await WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
                     if (response != null)
                     {
                         viewModel.IsIBANValid = true;
@@ -125,65 +125,36 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         viewModel.IsIBANValid = false;
                         if (viewModel.IbanNumberText == "SA")
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
-                            });
+                            await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
                         }
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
-                            });
+                            await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
                         }
                     }
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
             }
             catch (Exception)
-            {
-
-
+            { 
                 viewModel.IsIBANValid = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
-                });
+                await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
             }
         }
 
 
 
-        private void IbanAddButtonClicked(object sender, EventArgs e)
+        private async void IbanAddButtonClicked(object sender, EventArgs e)
         {
             viewModel.IbanNumberText = string.Empty;
             viewModel.IbanNumberText = "SA" + viewModel.IbanPartOne + viewModel.IbanPartTwo + viewModel.IbanPartThree + viewModel.IbanPartFour + viewModel.IbanPartFive;
-            Checked_IBAN();
+           await Checked_IBAN();
         }
 
-        private void Close_Tapped(object sender, EventArgs e)
-        {
-
-            if (viewModel.IsIBANValid)
-            {
-                MopupService.Instance.PopAsync();
-
-            }
-            else
-            {
-                Checked_IBAN();
-
-            }
-
-        }
-
+        
         private async void IbanOne_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.NewTextValue))

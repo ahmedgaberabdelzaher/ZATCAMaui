@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
@@ -16,8 +17,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #endregion
 
         #region Property
-        private List<HeaderWithInfo> _headerWithInfoList;
-        public List<HeaderWithInfo> HeaderWithInfoList
+        private ObservableCollection<HeaderWithInfo> _headerWithInfoList;
+        public ObservableCollection<HeaderWithInfo> HeaderWithInfoList
         {
             get
             {

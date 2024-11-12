@@ -68,17 +68,11 @@
                         TextColor="White">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZZZVatReturnSubmittedNew}" />
+                                <Span Text="{x:Static ResourceManager:AppResources.ZZZZVatReturnSubmittedNew}" />
                                 <Span Text="&#160;&#160;" />
-                                <Span
-                                    Style="{StaticResource CaptionLabelBlack}"
-                                    Text="{Binding AmountPayable, Converter={StaticResource commaSeparatorConverter}}"
-                                    TextColor="White" />
+                                <Span Text="{Binding AmountPayable, Converter={StaticResource commaSeparatorConverter}}" TextColor="White" />
                                 <Span Text="&#160;" />
-                                <Span
-                                    Style="{StaticResource CaptionLabelBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.ZSAR}"
-                                    TextColor="White" />
+                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" TextColor="White" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>

@@ -19,15 +19,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
         public VATRefundsNewRequestPageView()
         {
             InitializeComponent();
-
             viewModel = App.Locator.VATRefundsNewRequestPageView;
-
             BindingContext = viewModel;
             DraftsRequestDataModel = null;
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
-            {
-                viewModel.PickerModel = arg;
-            });
             viewModel.setMoreOptioButtons();
 
         }
@@ -35,16 +29,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
         public VATRefundsNewRequestPageView(VatRefundsListResultModel draftsRequestData)
         {
             InitializeComponent();
-
             viewModel = App.Locator.VATRefundsNewRequestPageView;
-
             BindingContext = viewModel;
             DraftsRequestDataModel = draftsRequestData;
-
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
-            {
-                viewModel.PickerModel = arg;
-            });
             viewModel.setMoreOptioButtons();
 
         }
@@ -151,16 +138,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
 
                 }
             });
-
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            {
+                viewModel.PickerModel = arg;
+            });
             try
             {
                 if (DraftsRequestDataModel == null)
                 {
                     await viewModel.ReloadData();
-                    if (viewModel.VatRefundsDisplayDataModel.Fbnumx != string.Empty)
-                    {
-
-                    }
                 }
                 else
                 {
@@ -194,8 +180,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                         });
 
                         viewModel.OnVoidBtnClicked();
-
-
 
                         var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                         Navigation.RemovePage(firstPageToRemove);
@@ -299,47 +283,18 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
         }
 
-
-       
-
-        private void NewAccount_Clicked(object sender, EventArgs e)
-        {
-            // viewModel.IsNewAccountClicked = true;
-            MopupService.Instance.PushAsync(new NewAccountPopUpPageView(string.Empty));
-        }
-
-        void ContinueButton_Tapped(object sender, EventArgs e)
+        void SfCheckBox_StateChanged(System.Object sender, Syncfusion.Maui.Buttons.StateChangedEventArgs e)
         {
             try
             {
-                viewModel.ContinueBtnClicked();
+                Syncfusion.Maui.Buttons.SfCheckBox isCheckedOrNot = (Syncfusion.Maui.Buttons.SfCheckBox)sender;
+                VatReffundAmtDetails details_Amt = isCheckedOrNot.BindingContext as VatReffundAmtDetails;
+
+                viewModel.CheckBoxSelected_update(details_Amt, isCheckedOrNot.IsChecked);
             }
             catch (Exception)
             {
 
-
-            }
-        }
-
-        public async void VoidButton_Tapped(object sender, EventArgs e)
-        {
-            if (App.IsArabic)
-            {
-                var result = await DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZNo, AppResources.ZYes);
-
-                if (!result)
-                {
-                    viewModel.OnVoidBtnClicked();
-                }
-            }
-            else
-            {
-                var result = await DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZYes, AppResources.ZNo);
-
-                if (result)
-                {
-                    viewModel.OnVoidBtnClicked();
-                }
             }
         }
     }

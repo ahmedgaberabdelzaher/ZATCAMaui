@@ -7,64 +7,11 @@
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-
-
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <Grid BackgroundColor="Transparent">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Border
-                        Grid.Row="1"
-                        Padding="0"
-                        BackgroundColor="Black"
-                        StrokeShape="RoundRectangle 15,15,0,0">
-                        <Grid
-                            x:Name="VATRMainGrid"
-                            Margin="0"
-                            Padding="0,0,0,0"
-                            HorizontalOptions="FillAndExpand"
-                            RowDefinitions="100*"
-                            VerticalOptions="FillAndExpand">
-                            <ContentPresenter
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" />
-                        </Grid>
-                    </Border>
-                    <Grid Grid.Row="0" Padding="20,32,24,10">
-
-                        <Image
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            HeightRequest="24"
-                            HorizontalOptions="StartAndExpand"
-                            Source="arrowLeftwhite"
-                            
-                            VerticalOptions="StartAndExpand"
-                            WidthRequest="24">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" />
-                            </Image.GestureRecognizers>
-                        </Image>
-
-
-
-                    </Grid>
-                </Grid>
-            </Grid>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*">
+            <Grid Grid.Row="0" Padding="20,10" ColumnDefinitions="*">
 
                 <StackLayout>
 
@@ -96,7 +43,7 @@
             </Grid>
             <!--#endregion Header-->
 
-            <Grid HeightRequest="850">
+            <Grid Grid.Row="1" >
 
                 <Grid
                     x:Name="WebviewGrid"
@@ -104,8 +51,6 @@
                     RowDefinitions="100*" />
 
             </Grid>
-
-            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
         </Grid>
 
     </ContentPage.Content>

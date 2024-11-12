@@ -11,11 +11,12 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
     {
         private BankAccountManagementPageViewModel _viewModel;
         private IbanListSetResult selectedItem;
-        public BankAccountManagementPageView()
+        public BankAccountManagementPageView(bool navigation = false)
         {
             InitializeComponent();
             _viewModel = App.Locator.BankAccountManagementPageView;
             this.BindingContext = _viewModel;
+            _viewModel.isRemove = navigation;
         }
 
         protected async override void OnAppearing()
