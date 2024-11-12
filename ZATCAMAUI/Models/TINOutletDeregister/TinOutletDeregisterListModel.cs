@@ -597,6 +597,13 @@ namespace ZATCAMAUI.Models.TINOutletDeregister
             public string AOutletActionTypeTb { get; set; }
             [JsonProperty("MOI")]
             public string AOuletMoiFlag { get; set; }
+
+            [JsonProperty("ACompFg")]
+            public string ACompFg { get; set; }
+
+            [JsonProperty("AOutletZ700NumberTb")]
+            public string AOutletZ700NumberTb { get; set; }
+
         }
 
         //

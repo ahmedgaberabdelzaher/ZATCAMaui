@@ -127,6 +127,7 @@
     <data name="AmountNotObjected" xml:space="preserve">
         <value>Amount not objected</value>
     </data>
+
     <data name="Attachment" xml:space="preserve">
         <value>Attachment</value>
     </data>
@@ -139,6 +140,7 @@
     <data name="AverageNumOfEmployment" xml:space="preserve">
         <value>Average number of employment</value>
     </data>
+
     <data name="Back" xml:space="preserve">
         <value>Back</value>
     </data>
@@ -11762,5 +11764,35 @@ the credit balance of the current period will be carried forward, you can reques
   </data>
   <data name="ErrorCaptcha" xml:space="preserve">
         <value>Invalid captcha code</value>
-    </data> 
+    </data>
+
+	<!--CR 7453-->
+	<data name="ZZCRNationalNumber" xml:space="preserve">
+   <value>CR National Number</value>
+   <comment>Sign up</comment>
+ </data>
+	<data name="EstActivities" xml:space="preserve">
+  <value>Activities</value>
+</data>
+	<data name="EstAdd" xml:space="preserve">
+  <value>Add</value>
+</data>
+	<data name="EstNoData" xml:space="preserve">
+  <value>No Data</value>
+</data>
+	<data name="EstGotDuplicates" xml:space="preserve">
+  <value>Duplicate entry found</value>
+</data>
+	<data name="ZZSelectatleastoneofthefieldsCommercialRegistrationNatiNumberorLicencebelow" xml:space="preserve">
+   <value>Select at least one of the fields (Commercial Registration National Number or Licence) below</value>
+   <comment>Sign up</comment>
+ </data>
+	<data name="ZZCommercialRegistrationNumbershouddbe10digitswith7starts" xml:space="preserve">
+   <value>CR National Number should start with 7 and should have 10 digits</value>
+   <comment>Sign Up</comment>
+   </data>
+	<data name="ZZPleaseentervalidCRNationalnumber" xml:space="preserve">
+   <value>Please enter valid CR National Number</value>
+   <comment>Sign Up</comment>
+ </data>
 </root>

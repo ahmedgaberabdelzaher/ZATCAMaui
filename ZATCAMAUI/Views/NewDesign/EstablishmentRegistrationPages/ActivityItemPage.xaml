@@ -246,6 +246,49 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Margin="0,6,0,6"
+                            ContainerType="Outlined"
+                            HorizontalOptions="FillAndExpand"
+                            InputViewPadding="16,0,16,0"
+                            IsEnabled="{Binding EnableCRNationalInputField}"
+                            LeadingViewPosition="Inside"
+                            Style="{StaticResource TextInputLayout}">
+                            <custom:GAZTBorderlessEntry
+                                Margin="10"
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="15"
+                                HeightRequest="48"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Start"
+                                Keyboard="Numeric"
+                                MaxLength="10"
+                                Placeholder="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}"
+                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding CRNationalNumber}"
+                                TextColor="{StaticResource NeutralBlack}"
+                                Unfocused="CR_National_Entry_Unfocused"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center">
+
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behaviors:NumericValidationBehavior />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+
+                        <Label
+                            Margin="0,10,0,0"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
                                     <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTValidFrom}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
@@ -602,122 +645,12 @@
                             FontSize="18"
                             Text="{x:Static ResourceManager:AppResources.ESTBusinessActivityDetails}"
                             TextColor="{StaticResource NeutralBlack}" />
-                        <Label
-                            Margin="0,0,0,0"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource CaptionLabelGrey}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    FontFamily="{StaticResource SomarBold}"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTMainGroup}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding CRMainGroup}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnMainGroupSelectButtonClick}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnMainGroupSelectButtonClick}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            <inputLayout:SfTextInputLayout.TrailingView>
-
-                                <Image Aspect="AspectFit" Source="arrowDropdown.png" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </custom:CustomSfTextInputView>
-
-                        <Label
-                            Margin="0,10,0,0"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource CaptionLabelGrey}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    FontFamily="{StaticResource SomarBold}"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTSubGroup}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding CRSubGroup}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnSubGroupSelectButtonClick}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnSubGroupSelectButtonClick}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            <inputLayout:SfTextInputLayout.TrailingView>
-
-                                <Image Aspect="AspectFit" Source="arrowDropdown.png" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </custom:CustomSfTextInputView>
-
-                        <Label
-                            Margin="0,10,0,0"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource CaptionLabelGrey}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    FontFamily="{StaticResource SomarBold}"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTActivity}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding CRAcitivity}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnAcitivitySelectButtonClick}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnAcitivitySelectButtonClick}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            <inputLayout:SfTextInputLayout.TrailingView>
-
-                                <Image Aspect="AspectFit" Source="arrowDropdown.png" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </custom:CustomSfTextInputView>
+                        <buttons:SfButton
+                            Command="{Binding OnActivitiesButtonClick}"
+                            CommandParameter="CRData"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
 
                     </StackLayout>
 
@@ -1301,122 +1234,14 @@
                             FontSize="18"
                             Text="{x:Static ResourceManager:AppResources.ESTBusinessActivityDetails}"
                             TextColor="{StaticResource NeutralBlack}" />
-                        <Label
-                            Margin="0,0,0,0"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource CaptionLabelGrey}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
 
-                        <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    FontFamily="{StaticResource SomarBold}"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTMainGroup}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding LicenseMainGroup}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnMainGroupSelectButtonClick}" CommandParameter="RG02" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                        <buttons:SfButton
+                            Command="{Binding OnActivitiesButtonClick}"
+                            CommandParameter="License"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
 
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnMainGroupSelectButtonClick}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            <inputLayout:SfTextInputLayout.TrailingView>
-
-                                <Image Aspect="AspectFit" Source="arrowDropdown.png" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </custom:CustomSfTextInputView>
-
-                        <Label
-                            Margin="0,10,0,0"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource CaptionLabelGrey}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    FontFamily="{StaticResource SomarBold}"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTSubGroup}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding LicenseSubGroup}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnSubGroupSelectButtonClick}" CommandParameter="RG02" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnSubGroupSelectButtonClick}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            <inputLayout:SfTextInputLayout.TrailingView>
-
-                                <Image Aspect="AspectFit" Source="arrowDropdown.png" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </custom:CustomSfTextInputView>
-
-                        <Label
-                            Margin="0,10,0,0"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource CaptionLabelGrey}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    FontFamily="{StaticResource SomarBold}"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTActivity}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding LicenseAcitivity}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnAcitivitySelectButtonClick}" CommandParameter="RG02" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnAcitivitySelectButtonClick}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            <inputLayout:SfTextInputLayout.TrailingView>
-
-                                <Image Aspect="AspectFit" Source="arrowDropdown.png" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </custom:CustomSfTextInputView>
 
                     </StackLayout>
 

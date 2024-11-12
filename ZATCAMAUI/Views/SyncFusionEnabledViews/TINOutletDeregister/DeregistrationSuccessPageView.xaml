@@ -37,7 +37,7 @@
                         HorizontalTextAlignment="Center"
                         Style="{StaticResource SectionTitleBlack}"
                         StyleId="OnBoardText"
-                        Text="{x:Static ResourceManager:AppResources.TinOutletDeregistrationSubTitle}"
+                        Text="{x:Static ResourceManager:AppResources.DeregistrationServiceTitle}"
                         TextColor="White" />
 
                     <Label

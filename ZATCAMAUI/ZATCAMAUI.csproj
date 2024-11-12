@@ -486,6 +486,9 @@
         <MauiXaml Update="Views\NewDesign\EDeclaration\QuestionsViews\TobacoView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
+        <MauiXaml Update="Views\NewDesign\EstablishmentAmendUpdatePages\ActivitiesPopupPageView.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
         <MauiXaml Update="Views\NewDesign\EstablishmentAmendUpdatePages\ActivityItemAmendUpdatePage.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>

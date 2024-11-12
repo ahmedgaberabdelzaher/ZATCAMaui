@@ -3736,13 +3736,29 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         IsIDTypeValidList = await CRValidationModelList.Content.ReadAsStringAsync();
                         CRValidationModelValid = JsonConvert.DeserializeObject<CRValidationModelRootObject>(IsIDTypeValidList);
+
+                        if (!string.IsNullOrEmpty(IsIDTypeValidList) && CRValidationModelValid.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(IsIDTypeValidList);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
                     }
                     return CRValidationModelValid;
                 }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
                 catch (Exception)
                 {
-                    
-                    
                     return null;
                 }
             }

@@ -16,6 +16,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Core.Interfaces;
 using System.Diagnostics;
+using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 {
@@ -1576,7 +1577,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
         }
         #region Commands
 
-
+        public ICommand OnActivitiesButtonClick { get; set; }
         public Command OnNextButtonClick { get; set; }
         public ICommand OnPreButtonClick { get; set; }
         public ICommand OnVoidOrSaveDraftClick { get; set; }
@@ -1666,6 +1667,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             TaxPayerDetailsAvailability = new TaxPayerPersonalDetailsAvailability();
             FinancialDetails = new FinancialDetails();
             PassportDetails = new PassportDetails();
+            OnActivitiesButtonClick = new Command((e) =>
+            {
+                try
+                {
+                    var newItem = e as Nreg_ActivityItem;
+                    var dataModel = UtilityManager.FilterActivityDetails(taxPayerDetails, activityList, newItem);
+                    MopupService.Instance.PushAsync(new ActivitiesPopupPageView(dataModel, false), true);
+                }
+                catch (Exception )
+                {
+                }
+            });
+
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() =>
             {
@@ -3590,7 +3604,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     obj.Actno = item.Actno;
                     obj.Type = item.Type;
                     obj.Idnumber = item.Idnumber;
-
+                    obj.Z700Number = item.Z700Number;
 
                     if (item.ValidDateFrom != null)
                     {

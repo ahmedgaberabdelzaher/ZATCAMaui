@@ -26,6 +26,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
         SignUpForEstablishmentPageViewModel viewModel;
         ObservableCollection<InternationalMobileData> mobileData = null;
         bool IsTermsAndConditionPage = true;
+        bool CrNumberUpdated = false;
+        bool isMoveForwardToContactDetails = true;
 
         public SignUpForEstablishmentPageView()
         {
@@ -424,6 +426,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                         {
                             if (Result.d != null)
                             {
+                                if (!string.IsNullOrEmpty(Result.d.Z700Crnum))
+                                {
+                                    viewModel.TxtCRNumber = Result.d.Z700Crnum;
+                                    CrNumberUpdated = true;
+                                }
                                 if (Result.d.NotFound == "X")
                                 {
                                     FrmCR.HasError = true;
@@ -494,46 +501,13 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
         private async void EntryCRNumber_Unfocused(object sender, FocusEventArgs e)
         {
-            viewModel.IsLoading = true;
             if (!string.IsNullOrEmpty(EntryCRNumber.Text))
             {
-                if (EntryCRNumber.Text.Length == 10)
-                {
-                    try
-                    {
-                        FrmCR.HasError = false;
-                        viewModel.IsLoading = true;
-                        CRValidationModelRootObject Result = await WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
-                        if (Result != null)
-                        {
-                            if (Result.d != null)
-                            {
-                                if (Result.d.NotFound == "X")
-                                {
-                                    FrmCR.HasError = true;
-                                    viewModel.IsAllValidCRNumberEntered = false;
-                                    viewModel.TxtCRNumber = string.Empty;
-                                   await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentervalidCRnumber));
-                                }
-                                else
-                                {
-                                    FrmCR.HasError = false;
-                                    viewModel.IsAllValidCRNumberEntered = true;
-                                }
-                            }
-                        }
-                        viewModel.IsLoading = false;
-                    }
-                    catch (InternetException)
-                    {
-                        viewModel.IsLoading = true;
-                        await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
-                    }
-                }
-                else
+                //CR7453 Changes
+                if (EntryCRNumber.Text.Substring(0, 1) != "7" || EntryCRNumber.Text.Length != 10)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZCommercialReiterationNumbershouddbe10digits;
+                    popUp.Message = AppResources.ZZCommercialRegistrationNumbershouddbe10digitswith7starts;
                     popUp.IsLinkAvailable = false;
                     if (App.IsArabic)
                     {
@@ -544,11 +518,60 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                  await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCommercialReiterationNumbershouddbe10digits));
+                    // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCommercialRegistrationNumbershouddbe10digitswith7starts));
                     FrmCR.HasError = true;
                     viewModel.IsAllValidCRNumberEntered = false;
                     EntryCRNumber.Text = string.Empty;
-                    // EntryCRNumber.Focus();
+
+                }
+                else
+                {
+                    try
+                    {
+                        isMoveForwardToContactDetails = true;
+                        FrmCR.HasError = false;
+                        CRValidationModelRootObject Result = await WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
+                        if (Result != null)
+                        {
+                            if (Result.d != null)
+                            {
+                                if (!string.IsNullOrEmpty(Result.d.Z700Crnum))
+                                {
+                                    viewModel.TxtCRNumber = Result.d.Z700Crnum;
+                                    CrNumberUpdated = true;
+
+                                }
+                                if (Result.d.NotFound == "X")
+                                {
+                                    FrmCR.HasError = true;
+                                    viewModel.IsAllValidCRNumberEntered = false;
+                                    viewModel.TxtCRNumber = string.Empty;
+                                    // viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
+                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentervalidCRNationalnumber));
+                                }
+                                else
+                                {
+                                    FrmCR.HasError = false;
+                                    viewModel.IsAllValidCRNumberEntered = true;
+                                }
+
+
+
+                            }
+                        }
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        isMoveForwardToContactDetails = false;
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                    }
+                    catch (InternetException)
+                    {
+                        isMoveForwardToContactDetails = false;
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                    }
                 }
             }
             else
@@ -559,7 +582,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 }
             }
             viewModel.IsLoading = false;
-
         }
 
         private async void EntryEmail_TextChanged(object sender, FocusEventArgs e)
@@ -1682,7 +1704,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtLicenseNumber = string.Empty;
             viewModel.CROptionsVisible = true;
             viewModel.LicenseOptionsVisible = false;
-
+            isMoveForwardToContactDetails = true;
         }
 
         private void OnLicenseNumberTapped(object sender, TappedEventArgs e)
@@ -1694,7 +1716,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtCRNumber = string.Empty;
             viewModel.CROptionsVisible = false;
             viewModel.LicenseOptionsVisible = true;
-
+            isMoveForwardToContactDetails = true;
         }
 
         private void ImageSeeConfirmPassword_Tapped(object sender, TappedEventArgs e)
@@ -1987,7 +2009,14 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 }
                 else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.BusinessInformation)//EstablishmentSignUPTabEnum.BusinessInformation
                 {
-                    CheckValidationForBusinessStep();
+                    if (isMoveForwardToContactDetails == true)
+                    {
+                        if (CrNumberUpdated)
+                            CrNumberUpdated = false;
+
+                        CheckValidationForBusinessStep();
+
+                    }
                 }
 
                 else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.EmailVerification)

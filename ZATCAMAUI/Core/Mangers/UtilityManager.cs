@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Net;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Models.EstablishmentRegistration;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -1619,6 +1620,69 @@ namespace ZATCAMAUI.Core.Mangers
            
 
         }
+
+        public static PopUpServiceModel FilterActivityDetails(TaxPayerDetails taxPayerDetails, ActivitySetsList activityList, Nreg_ActivityItem newItem)
+        {
+
+            List<NregMulSet> existingActivitiesList = new List<NregMulSet>();
+            NregMulSet existingActivities = null;
+            PopUpServiceModel dataModel = null;
+
+            try
+            {
+                List<NregMulSet> filteredActivities = taxPayerDetails?.Nreg_Mul_ActivitySet?.Where(a => a.Idnumber == newItem.Idnumber).ToList();
+                int count = filteredActivities?.Count ?? 0;
+                if (count > 0)
+                {
+                    existingActivitiesList = GetExistingActivities(filteredActivities, existingActivities, activityList);
+                    dataModel = new PopUpServiceModel
+                    {
+                        existedActivities = existingActivitiesList,
+                    };
+                    return dataModel;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+
+
+        public static List<NregMulSet> GetExistingActivities(List<NregMulSet> filteredActivities, NregMulSet existingActivities, ActivitySetsList activityList,
+           bool isCodesRequired = false)
+        {
+            List<NregMulSet> ListOfActivities = new List<NregMulSet>();
+            try
+            {
+                foreach (var activities in filteredActivities)
+                {
+                    existingActivities = new NregMulSet
+                    {
+                        Activity = activityList?.activitySet?.Where(i => i.IndSector == activities?.Activity)?.FirstOrDefault()?.Text,
+                        ActivityCode = isCodesRequired ? activityList?.activitySet?.Where(i => i.IndSector == activities?.Activity)?.FirstOrDefault()?.IndSector : "",
+                        ActMgrp = activityList?.act_groupSet?.Where(i => i.IndSector == activities?.ActMgrp)?.FirstOrDefault()?.Text,
+                        ActMgrpCode = isCodesRequired ? activityList?.act_groupSet?.Where(i => i.IndSector == activities?.ActMgrp)?.FirstOrDefault()?.IndSector : "",
+                        ActSgrp = activityList?.act_subgroupSet?.Where(i => i.IndSector == activities?.ActSgrp)?.FirstOrDefault()?.Text,
+                        ActSgrpCode = isCodesRequired ? activityList?.act_subgroupSet?.Where(i => i.IndSector == activities?.ActSgrp)?.FirstOrDefault()?.IndSector : "",
+                        Idnumber = activities?.Idnumber,
+                    };
+                    ListOfActivities.Add(existingActivities);
+                }
+                return ListOfActivities;
+            }
+            catch (Exception ex)
+            {
+                return ListOfActivities;
+            }
+        }
+
         public static string FormatDateToYYYYDDMMFromDateTypeString(DateTime? dateToConvert)
         {
             string requiredDate = string.Empty;

@@ -254,6 +254,7 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<OutletDetailsAmendUpdatePageViewModel>()
                 .AddSingleton<ActivityItemPageViewModel>()
                 .AddSingleton<ActivityItemAmendUpdatePageViewModel>()
+                .AddSingleton<ActivitiesPopUpViewModel>()
                 .AddSingleton<RegistrationSuccessfulViewModel>()
                 .AddSingleton<ZakatReturnDetailsSuccessfullPageViewModel>()
                 .AddSingleton<ZakatReturnNewSuccessViewModel>()
@@ -2875,6 +2876,7 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.ActivityItemAmendUpdatePage, typeof(ActivityItemAmendUpdatePage));
             navigationService.Configure(App.OutletDetailsPageView, typeof(OutletDetailsPageView));
             navigationService.Configure(App.OutletDetailsAmendUpdatePageView, typeof(OutletDetailsAmendUpdatePageView));
+
             navigationService.Configure(App.RegistrationSuccessfulPage, typeof(RegistrationSuccessfulPage));
             navigationService.Configure(App.EstablishmentAmendUpdateSuccessfulPage, typeof(EstablishmentAmendUpdateSuccessfulPage));
             //End EST
@@ -3153,6 +3155,22 @@ namespace ZATCAMAUI.Core.Helper
             }
         }
 
+        public ActivitiesPopUpViewModel ActivityPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService< ActivitiesPopUpViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
         public CustomLoginViewModel CustomLoginViewModel
         {
             get

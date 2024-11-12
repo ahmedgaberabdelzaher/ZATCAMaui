@@ -301,6 +301,7 @@ namespace ZATCAMAUI.Core.Helper
         public static string ESTDeleteOutlet = BaseUrlOfODataServices + "/v1/establishment-signup/outlets/items/deletion";
         public static string ESTOutletAddressFetch = BaseUrlOfODataServices + "/v1/taxpayers/addresses";
         public static string ESTFinancialMaxDate = BaseUrlOfODataServices + "/v1/establishment-signup/financial-end-date";
+        public static string ESTCRExstingActivityData = BaseUrlOfODataServices + "/v1/taxpayers/activities/details";
         public static string UpdateLicenseAndCR = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/ISIC4Set";
         #endregion
 

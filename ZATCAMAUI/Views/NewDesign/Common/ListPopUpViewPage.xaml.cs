@@ -8,6 +8,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
     {
         public delegate void OnItemSelectDelegate(object item);
         public OnItemSelectDelegate OnItemSelect { get; set; } = null;
+        public event EventHandler Closed;
         public ListPopUpViewPage(object data)
         {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             {
                 OnItemSelect?.Invoke(e.CurrentSelection.FirstOrDefault());
                 await MopupService.Instance.PopAsync();
+                Closed?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception)
             {

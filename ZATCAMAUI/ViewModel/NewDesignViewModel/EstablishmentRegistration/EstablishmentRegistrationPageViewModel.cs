@@ -9,6 +9,7 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.Views.NewDesign.Common;
+using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
 using ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
@@ -1440,7 +1441,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
         #region Commands
 
-
+        public ICommand OnActivitiesButtonClick { get; set; }
         public Command OnNextButtonClick { get; set; }
         public ICommand OnPreButtonClick { get; set; }
         public ICommand OnVoidOrSaveDraftClick { get; set; }
@@ -1527,6 +1528,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            OnActivitiesButtonClick = new Command((e) =>
+            {
+                var newItem = e as Nreg_ActivityItem;
+                var dataModel = UtilityManager.FilterActivityDetails(taxPayerDetails, activityList, newItem);
+                MopupService.Instance.PushAsync(new ActivitiesPopupPageView(dataModel, false), true);
+            });
             OnNextButtonClick = new Command(async() => await navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() =>
             {
@@ -3530,11 +3537,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     obj.Actcat = item.Actcat;
                     obj.ActMgrp = item.ActMgrp;
 
-                    obj.ActivityDesc = activityList.activitySet.Where(i => i.IndSector == obj.Activity).FirstOrDefault().Text;
-                    obj.ActMgrpDesc = activityList.act_groupSet.Where(i => i.IndSector == obj.ActMgrp).FirstOrDefault().Text;
-                    obj.ActSgrpDesc = activityList.act_subgroupSet.Where(i => i.IndSector == obj.ActSgrp).FirstOrDefault().Text;
-                    obj.IssuedCity = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == obj.CityCode).FirstOrDefault()?.CityName;
-                    obj.IssuedCountry = OutletDropDowns.country_dropdownSet.Where(i => i.Land1 == obj.Country).FirstOrDefault()?.Landx;
+                    obj.Z700Number = item.Z700Number;
+
+                    obj.ActivityDesc = activityList.activitySet?.Where(i => i.IndSector == obj.Activity)?.FirstOrDefault()?.Text ?? "";
+                    obj.ActMgrpDesc = activityList.act_groupSet?.Where(i => i.IndSector == obj.ActMgrp)?.FirstOrDefault()?.Text ?? "";
+                    obj.ActSgrpDesc = activityList.act_subgroupSet?.Where(i => i.IndSector == obj.ActSgrp)?.FirstOrDefault()?.Text ?? "";
+                    obj.IssuedCity = OutletDropDowns.city_dropdownSet?.Where(i => i.CityCode == obj.CityCode)?.FirstOrDefault()?.CityName ?? "";
+                    obj.IssuedCountry = OutletDropDowns.country_dropdownSet?.Where(i => i.Land1 == obj.Country)?.FirstOrDefault()?.Landx ?? "";
 
                     if (App.IsArabic)
                     {

@@ -139,8 +139,7 @@
                     HorizontalOptions="End"
                     MarkSize="24"
                     MaxNum="{Binding MaxIndex}"
-                    MinNum="{Binding CurrentIndex}"
-                    />
+                    MinNum="{Binding CurrentIndex}" />
 
                 <Label
                     Margin="0,15,0,0"
@@ -1256,7 +1255,7 @@
                                 </Grid>
 
                                 <!--  DOB  -->
-                                <StackLayout HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                                <StackLayout Margin="0,10,0,0" HorizontalOptions="FillAndExpand">
 
                                     <Label Style="{StaticResource forLightLabel}">
                                         <Label.FormattedText>
@@ -2550,10 +2549,22 @@
                                                                     Text="{Binding Idnumber}"
                                                                     VerticalTextAlignment="Center" />
                                                             </StackLayout>
-
                                                             <StackLayout
                                                                 Grid.Row="0"
                                                                 Grid.Column="1"
+                                                                Margin="0,0,5,0">
+                                                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
+                                                                <custom:CustomLabel
+                                                                    HorizontalOptions="StartAndExpand"
+                                                                    HorizontalTextAlignment="Start"
+                                                                    Style="{StaticResource ValueLabelBlack}"
+                                                                    Text="{Binding Z700Number}"
+                                                                    VerticalTextAlignment="Center" />
+                                                            </StackLayout>
+
+                                                            <StackLayout
+                                                                Grid.Row="0"
+                                                                Grid.Column="2"
                                                                 Margin="0,0,5,0">
                                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRName}" />
                                                                 <Label
@@ -2566,7 +2577,7 @@
 
                                                             <StackLayout
                                                                 Grid.Row="0"
-                                                                Grid.Column="2"
+                                                                Grid.Column="3"
                                                                 Margin="0,0,5,0">
                                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CrType}" />
                                                                 <Label
@@ -2579,7 +2590,7 @@
 
                                                             <StackLayout
                                                                 Grid.Row="0"
-                                                                Grid.Column="3"
+                                                                Grid.Column="4"
                                                                 Margin="0,0,5,0">
                                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
                                                                 <Label
@@ -2592,7 +2603,7 @@
 
                                                             <StackLayout
                                                                 Grid.Row="0"
-                                                                Grid.Column="4"
+                                                                Grid.Column="5"
                                                                 Margin="0,0,5,0">
                                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
                                                                 <Label
@@ -2605,7 +2616,7 @@
 
                                                             <StackLayout
                                                                 Grid.Row="0"
-                                                                Grid.Column="5"
+                                                                Grid.Column="6"
                                                                 Margin="0,0,5,0">
                                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
                                                                 <Label
@@ -2618,7 +2629,7 @@
 
                                                             <StackLayout
                                                                 Grid.Row="0"
-                                                                Grid.Column="6"
+                                                                Grid.Column="7"
                                                                 Margin="0,0,5,0">
                                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
                                                                 <Label
@@ -2631,41 +2642,16 @@
 
                                                             <StackLayout
                                                                 Grid.Row="0"
-                                                                Grid.Column="7"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding ActMgrpDesc}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
                                                                 Grid.Column="8"
                                                                 Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding ActSgrpDesc}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
 
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="9"
-                                                                Margin="0,0,5,0">
                                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding ActivityDesc}"
-                                                                    VerticalTextAlignment="Center" />
+                                                                <buttons:SfButton
+                                                                    Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTRegistrationPage}}"
+                                                                    CommandParameter="{Binding .}"
+                                                                    Style="{StaticResource PrimaryButtonStyle}"
+                                                                    Text="{x:Static ResourceManager:AppResources.EstActivities}"
+                                                                    WidthRequest="180" />
                                                             </StackLayout>
 
                                                         </Grid>
@@ -2814,39 +2800,14 @@
                                                                 Grid.Row="0"
                                                                 Grid.Column="6"
                                                                 Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding ActMgrpDesc}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
 
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="7"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding ActSgrpDesc}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="8"
-                                                                Margin="0,0,5,0">
                                                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding ActivityDesc}"
-                                                                    VerticalTextAlignment="Center" />
+                                                                <buttons:SfButton
+                                                                    Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTRegistrationPage}}"
+                                                                    CommandParameter="{Binding .}"
+                                                                    Style="{StaticResource PrimaryButtonStyle}"
+                                                                    Text="{x:Static ResourceManager:AppResources.EstActivities}"
+                                                                    WidthRequest="180" />
                                                             </StackLayout>
 
 

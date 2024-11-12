@@ -6,12 +6,13 @@
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:sfconverter="clr-namespace:ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TINOutletDeregister"
-    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker" xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     x:Name="page"
     Title="TinOutletDeRegRequestPageView"
     ios:Page.UseSafeArea="true"
@@ -88,9 +89,14 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-                        <commonView:PageIndicatorView Margin="20,10,20,0" MaxNum="{Binding MaxIndex}"
-                                                MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}"
-                                                VerticalOptions="CenterAndExpand" DotSize="12" HorizontalOptions="End"/>
+                        <commonView:PageIndicatorView
+                            Margin="20,10,20,0"
+                            Completed="{Binding MarkComplete}"
+                            DotSize="12"
+                            HorizontalOptions="End"
+                            MaxNum="{Binding MaxIndex}"
+                            MinNum="{Binding CurrentIndex}"
+                            VerticalOptions="CenterAndExpand" />
                     </Grid>
 
                     <Grid Grid.Row="1" VerticalOptions="FillAndExpand">
@@ -245,6 +251,7 @@
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
@@ -343,17 +350,27 @@
                                                         <StackLayout
                                                             Grid.Row="3"
                                                             Grid.Column="0"
-                                                            Spacing="-5">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletIssueDate}" />
+                                                            Spacing="5">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
-                                                                <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletIssueDtTb}" />
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletZ700NumberTb}" />
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="3"
+                                                            Grid.Column="1"
+                                                            Spacing="5">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletIssueDate}" />
+                                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletIssueDtTb}" />
                                                             </StackLayout>
 
                                                         </StackLayout>
 
+
                                                         <StackLayout
-                                                            Grid.Row="3"
-                                                            Grid.Column="1"
+                                                            Grid.Row="4"
+                                                            Grid.Column="0"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletCRStatus}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -364,7 +381,7 @@
 
                                                         <StackLayout
                                                             Grid.Row="4"
-                                                            Grid.Column="0"
+                                                            Grid.Column="1"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletValidto}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -374,8 +391,8 @@
                                                         </StackLayout>
 
                                                         <StackLayout
-                                                            Grid.Row="4"
-                                                            Grid.Column="1"
+                                                            Grid.Row="5"
+                                                            Grid.Column="0"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletCRCloseTrnsfrDt}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -432,7 +449,7 @@
 
                                                         <StackLayout
                                                             Grid.Row="5"
-                                                            Grid.Column="0"
+                                                            Grid.Column="1"
                                                             Grid.ColumnSpan="2"
                                                             Spacing="-5">
                                                             <Label

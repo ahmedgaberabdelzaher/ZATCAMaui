@@ -53,6 +53,8 @@ namespace ZATCAMAUI.Models
         public string Addresstypey { get; set; }
         [JsonProperty("physicalAddress")]
         public string AddressPhysicaly { get; set; }
+        [JsonProperty("700Number")]
+        public string Z700Crnum { get; set; }
     }
     
     public class CRValidationModelRootObject
