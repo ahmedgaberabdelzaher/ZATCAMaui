@@ -14,9 +14,9 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -37,7 +37,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-      <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingIndividualRegistrationCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
@@ -310,10 +310,10 @@
 
                                     <custom:CustomSfPicker
                                         x:Name="DDlIDType"
+                                        AcceptCommand="{Binding DDlIDTypeOkayButtonCommand}"
                                         Background="White"
                                         ItemHeight="46"
                                         Mode="Dialog"
-                                        AcceptCommand="{Binding DDlIDTypeOkayButtonCommand}"
                                         SelectionChangedCommand="{Binding IDTypeSelectedIndexCommand}">
 
                                         <syncfusion:SfPicker.TextStyle>
@@ -425,14 +425,13 @@
                                         ChipStrokeThickness="1"
                                         ChipType="Choice"
                                         HorizontalOptions="Start"
-                                        SelectedItem="{Binding ChipGroupStatusFilterSelectedItem}"
                                         ItemsSource="{Binding ChipDataFilterlist}"
                                         SelectedChipBackground="{StaticResource PartialBg}"
+                                        SelectedItem="{Binding ChipGroupStatusFilterSelectedItem}"
                                         VerticalOptions="Center">
-                                         <SfChipGroup:SfChipGroup.Behaviors>
-                                           <xct:EventToCommandBehavior Command="{Binding ChipGroupSelectedCommand}"
-                                                                EventName="SelectionChanged" />
-                                         </SfChipGroup:SfChipGroup.Behaviors>
+                                        <SfChipGroup:SfChipGroup.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding ChipGroupSelectedCommand}" EventName="SelectionChanged" />
+                                        </SfChipGroup:SfChipGroup.Behaviors>
                                         <SfChipGroup:SfChipGroup.ItemTemplate>
                                             <DataTemplate>
                                                 <StackLayout WidthRequest="80">
@@ -461,12 +460,10 @@
                                                 Placeholder="dd/MM/yyyy"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding DOBddyymm}"
-                                                TextColor="{StaticResource Primary}" >
+                                                TextColor="{StaticResource Primary}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <xct:EventToCommandBehavior Command="{Binding DateEntryTextChangedCommand}"
-                                                                                EventName="TextChanged" />
-                                                    <xct:EventToCommandBehavior Command="{Binding DatePickerUnfocusedCommand}"
-                                                                                EventName="Unfocused" />
+                                                    <xct:EventToCommandBehavior Command="{Binding DateEntryTextChangedCommand}" EventName="TextChanged" />
+                                                    <xct:EventToCommandBehavior Command="{Binding DatePickerUnfocusedCommand}" EventName="Unfocused" />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
 
                                             </custom:GAZTBorderlessEntry>
@@ -486,11 +483,11 @@
 
                                     <custom:CustomDatePicker
                                         x:Name="SignUpDOB"
+                                        AcceptCommand="{Binding DOBOkButtonCommand}"
                                         Background="White"
                                         HorizontalOptions="FillAndExpand"
                                         ItemHeight="45"
                                         Mode="Dialog"
-                                        AcceptCommand="{Binding DOBOkButtonCommand}"
                                         SelectedItem="{Binding TodayDate}">
 
                                         <custom:CustomDatePicker.ColumnHeaderView>
@@ -536,11 +533,11 @@
 
                                     <custom:CustomHijriDatePicker
                                         x:Name="SignUpDOBHijri"
+                                        AcceptCommand="{Binding DOBOkButtonCommand}"
                                         Background="White"
                                         HorizontalOptions="FillAndExpand"
                                         ItemHeight="45"
                                         Mode="Dialog"
-                                        AcceptCommand="{Binding DOBOkButtonCommand}"
                                         SelectedItem="{Binding TodayDateinHijri}">
 
                                         <custom:CustomHijriDatePicker.SelectionView>
@@ -598,16 +595,15 @@
                                                 x:Name="EntryName"
                                                 FontFamily="{StaticResource SomarLight}"
                                                 FontSize="Small"
-                                                IsSpellCheckEnabled="False"
                                                 IsEnabled="{Binding IsEntryNameEnabled}"
+                                                IsSpellCheckEnabled="False"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZName}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding Name}">
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:AlphabetandArabicCharacters />
-                                                    <xct:EventToCommandBehavior Command="{Binding EntryNameTextChangedCommand}"
-                                                                                EventName="TextChanged" />
+                                                    <xct:EventToCommandBehavior Command="{Binding EntryNameTextChangedCommand}" EventName="TextChanged" />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
 
                                             </custom:GAZTBorderlessEntry>
@@ -705,7 +701,7 @@
                                                     IsSpellCheckEnabled="False"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding CountryName}" >
+                                                    Text="{Binding CountryName}">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <xct:EventToCommandBehavior Command="{Binding GccCountryNameTextChangedCommand}" EventName="TextChanged" />
 
@@ -726,13 +722,13 @@
 
                                         <custom:CustomSfPicker
                                             x:Name="GCCPicker_Country"
+                                            AcceptCommand="{Binding GCCCountryOkayButtonCommand}"
                                             Background="White"
                                             IsEnabled="{Binding SetEnabilityToCountryList}"
                                             IsVisible="{Binding SetGCCCountryVisibility}"
                                             ItemHeight="40"
                                             Mode="Dialog"
-                                            SelectionChangedCommand="{Binding GCCPickerCountrySelectionChanged}"
-                                            AcceptCommand="{Binding GCCCountryOkayButtonCommand}">
+                                            SelectionChangedCommand="{Binding GCCPickerCountrySelectionChanged}">
 
 
                                             <syncfusion:SfPicker.TextStyle>
@@ -837,11 +833,11 @@
 
                                         <custom:CustomSfPicker
                                             x:Name="Picker_Region"
+                                            AcceptCommand="{Binding RegionOkayButtonCommand}"
                                             Background="White"
                                             IsVisible="{Binding SetStateListVisibility}"
                                             ItemHeight="40"
-                                            Mode="Dialog"
-                                            AcceptCommand="{Binding RegionOkayButtonCommand}">
+                                            Mode="Dialog">
 
                                             <syncfusion:SfPicker.TextStyle>
                                                 <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
@@ -925,9 +921,9 @@
                                                     IsVisible="{Binding SetCityListVisibility}"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZCity}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding CityName}" >
+                                                    Text="{Binding CityName}">
 
-                                                     <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
                                                         <xct:EventToCommandBehavior Command="{Binding EntryCityTextChangedCommand}" EventName="TextChanged" />
 
                                                     </custom:GAZTBorderlessEntry.Behaviors>
@@ -947,11 +943,11 @@
 
                                         <custom:CustomSfPicker
                                             x:Name="Picker_City"
+                                            AcceptCommand="{Binding CityOkayButtonCommand}"
                                             Background="White"
                                             IsVisible="{Binding SetCityListVisibility}"
                                             ItemHeight="40"
-                                            Mode="Dialog"
-                                            AcceptCommand="{Binding CityOkayButtonCommand}">
+                                            Mode="Dialog">
 
 
                                             <syncfusion:SfPicker.TextStyle>
@@ -1044,7 +1040,7 @@
                                                 Text="{Binding PostalCode}">
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                      <xct:EventToCommandBehavior Command="{Binding EntryPostalCodeUnfocusedCommand}" EventName="Unfocused" />
+                                                    <xct:EventToCommandBehavior Command="{Binding EntryPostalCodeUnfocusedCommand}" EventName="Unfocused" />
                                                     <behaviors:OnlyNumericValuesBehaviour />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
 
@@ -1148,7 +1144,7 @@
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Email}">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
-                                                            <xct:EventToCommandBehavior Command="{Binding EntryEmailUnfocusedCommand}" EventName="Unfocused" />
+                                                        <xct:EventToCommandBehavior Command="{Binding EntryEmailUnfocusedCommand}" EventName="Unfocused" />
                                                         <behaviors:AlphaNumericValidatorBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
@@ -1182,7 +1178,7 @@
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding ConfirmEmail}">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
-                                                           <xct:EventToCommandBehavior Command="{Binding EntryConfirmEmailUnfocusedCommand}" EventName="Unfocused" />
+                                                        <xct:EventToCommandBehavior Command="{Binding EntryConfirmEmailUnfocusedCommand}" EventName="Unfocused" />
                                                         <behaviors:AlphaNumericValidatorBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
@@ -1219,7 +1215,7 @@
                                                     Style="{StaticResource SmallIcon}">
 
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding CountryCodesCommand}"/>
+                                                        <TapGestureRecognizer Command="{Binding CountryCodesCommand}" />
                                                     </Image.GestureRecognizers>
                                                 </Image>
 
@@ -1247,7 +1243,7 @@
                                                     VerticalOptions="Center">
 
                                                     <custom:GAZTBorderlessEntry.Behaviors>
-                                                         <xct:EventToCommandBehavior Command="{Binding EntryMobileNumberUnfocusedCommand}" EventName="Unfocused" />
+                                                        <xct:EventToCommandBehavior Command="{Binding EntryMobileNumberUnfocusedCommand}" EventName="Unfocused" />
                                                         <behaviors:OnlyNumericValuesBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
@@ -1260,9 +1256,10 @@
 
 
 
-                                    <Label HorizontalOptions="Start"
-                                           Margin="0,15,0,0"
-                                           Style="{StaticResource CardLabelBlack}">
+                                    <Label
+                                        Margin="0,15,0,0"
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource CardLabelBlack}">
 
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -1273,8 +1270,7 @@
 
                                     </Label>
 
-                                    <StackLayout Orientation="Horizontal"
-                                                 Spacing="10">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <custom:CustomSfTextInputView HasError="{Binding FrameCaptchaError}">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
@@ -1303,7 +1299,7 @@
                                                         Color="{StaticResource SecondaryNew}" />
                                                 </Image.Source>
                                                 <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding RefreshCaptchaCommand}"/>
+                                                    <TapGestureRecognizer Command="{Binding RefreshCaptchaCommand}" />
                                                 </Image.GestureRecognizers>
                                             </Image>
 
@@ -1779,7 +1775,7 @@
                                                     Text="{Binding Password}"
                                                     WidthRequest="128">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
-                                                         <xct:EventToCommandBehavior Command="{Binding EntryPasswordTextChangedCommand}" EventName="TextChanged" />
+                                                        <xct:EventToCommandBehavior Command="{Binding EntryPasswordTextChangedCommand}" EventName="TextChanged" />
                                                         <behaviors:PasswordTextBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
@@ -1793,7 +1789,7 @@
                                                     Style="{StaticResource SmallIcon}">
 
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding ImageSeePasswordCommand}"/>
+                                                        <TapGestureRecognizer Command="{Binding ImageSeePasswordCommand}" />
                                                     </Image.GestureRecognizers>
 
                                                 </Image>
@@ -1831,7 +1827,7 @@
                                                     WidthRequest="128">
 
                                                     <custom:GAZTBorderlessEntry.Behaviors>
-                                                         <xct:EventToCommandBehavior Command="{Binding ConfirmPasswordTextChangedCommand}" EventName="TextChanged" />
+                                                        <xct:EventToCommandBehavior Command="{Binding ConfirmPasswordTextChangedCommand}" EventName="TextChanged" />
                                                         <behaviors:PasswordTextBehaviour />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
@@ -1844,7 +1840,7 @@
                                                     Style="{StaticResource SmallIcon}">
 
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding ImageSeeConfirmPasswordCommand}"/>
+                                                        <TapGestureRecognizer Command="{Binding ImageSeeConfirmPasswordCommand}" />
                                                     </Image.GestureRecognizers>
 
                                                 </Image>

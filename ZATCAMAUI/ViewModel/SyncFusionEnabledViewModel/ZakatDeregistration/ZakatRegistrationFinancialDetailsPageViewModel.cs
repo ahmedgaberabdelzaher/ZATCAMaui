@@ -12,46 +12,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
     public class ZakatRegistrationFinancialDetailsPageViewModel : EstablishmentRegistrationPageViewModel
     {
-        public ICommand GoBackBtnTapped { get; set; }
-
         public ZakatRegistrationFinancialDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackBtnTapped = new Command(async () =>
-            {
-                _navigationService.GoBack();
-            });
         }
 
         public async Task LoadDataFinancialDetails()
         {
-            await Task.Run(() =>
-            {
-                App.DisplayProgressView();
-            });
             try
             {
-                await Task.Run(async () =>
-                {
-                    await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.FinancialDetail);
-                });
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                App.DisplayProgressView();
+                await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.FinancialDetail);
+                App.HideProgressView();
             }
             catch (InternetException)
             {
                 if (MopupService.Instance.PopupStack.Count > 0)
                     await MopupService.Instance.PopAsync(true);
-                try
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
-
-
-                }
-                catch (Exception)
-                {
-                }
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
             }
             catch (GAZTErrorException ex)
             {
@@ -65,10 +42,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                App.HideProgressView();
             }
         }
     }

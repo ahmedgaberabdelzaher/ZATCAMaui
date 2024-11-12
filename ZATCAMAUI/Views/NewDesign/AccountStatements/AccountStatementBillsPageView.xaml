@@ -6,10 +6,10 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    x:Name="page"
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
@@ -168,8 +168,8 @@
 
                             <Grid Margin="0,5,0,0" VerticalOptions="Start">
                                 <CollectionView
-                                    HeightRequest="50"
                                     BackgroundColor="Transparent"
+                                    HeightRequest="50"
                                     HorizontalOptions="Center"
                                     ItemsLayout="HorizontalList"
                                     ItemsSource="{Binding ChipDataFilterlistForStatus}"
@@ -180,9 +180,10 @@
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
 
-                                            <Grid Margin="5,0,5,0"
-                                                  HorizontalOptions="Start"
-                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                            <Grid
+                                                Margin="5,0,5,0"
+                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                HorizontalOptions="Start">
                                                 <Border
                                                     Grid.Row="0"
                                                     Padding="10,10,10,10"
@@ -253,9 +254,10 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Border Margin="0,12"
-                                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
-                                                Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <Border
+                                            Margin="0,12"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                             <StackLayout Spacing="0">
 
                                                 <Grid

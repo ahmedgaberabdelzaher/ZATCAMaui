@@ -125,7 +125,9 @@
                                     Padding="0,10,0,0"
                                     Style="{StaticResource PageTitleBlack}"
                                     Text="{Binding CorrespondenceTitle}" />
-                                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="StartAndExpand"
+                                             Spacing="10"
+                                             Orientation="Horizontal">
                                     <Label
                                         HorizontalOptions="Start"
                                         Style="{StaticResource CaptionLabelGrey}"

@@ -72,7 +72,6 @@
                             HorizontalOptions="StartAndExpand"
                             IsVisible="{TemplateBinding BindingContext.IsBackVisible}"
                             Source="arrowLeftwhite"
-                            
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="24">
                             <Image.GestureRecognizers>

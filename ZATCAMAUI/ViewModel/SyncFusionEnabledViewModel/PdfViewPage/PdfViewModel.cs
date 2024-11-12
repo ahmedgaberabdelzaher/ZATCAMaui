@@ -136,23 +136,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
         {
             try
             {
-                await Task.Run(async () =>
+                IsLoading = true;
+                if (!string.IsNullOrEmpty(pdfUrl))
                 {
-                    IsLoading = true;
-                    if (!string.IsNullOrEmpty(pdfUrl))
-                    {
-                        DownloadUrl = pdfUrl;
-                        await getPdfStreamAsync();
+                    DownloadUrl = pdfUrl;
+                    await Task.Delay(3000);
+                    await getPdfStreamAsync();
 
-                    }
-                    else
-                    {
-                        IsShareButtonEnable = false;
-                        string OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(OnSuccessfulAuthentication));
-                    }
-                    IsLoading = false;
-                });
+                }
+                else
+                {
+                    IsShareButtonEnable = false;
+                    string OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(OnSuccessfulAuthentication));
+                }
+                IsLoading = false;
             }
             catch (Exception)
             {
@@ -279,7 +277,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
         }
         #endregion
 
-        public ICommand CShareCommand
+        public ICommand ShareCommand
         {
             get
             {

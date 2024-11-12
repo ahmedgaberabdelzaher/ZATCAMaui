@@ -1,4 +1,5 @@
-﻿using Mopups.Pages;
+﻿using System.Collections.ObjectModel;
+using Mopups.Pages;
 using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -12,43 +13,28 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         public GAZTNewDesignShowVatInformationPopUpPageViewModel viewModel;
         public GAZTNewDesignShowVatInformationPopUpPageView(NewDesignPopUp newDesignPopData)
         {
-            InitializeComponent();
-            viewModel = App.Locator.GAZTNewDesignShowVatInformationPopUpPageView;
-            this.BindingContext = viewModel;
-            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
-            ClearData();
-            if (newDesignPopData != null)
+            try
             {
-                viewModel.NewDesignPopUp = newDesignPopData;
-                viewModel.MainString = viewModel.NewDesignPopUp.MainHeader;
-                if (viewModel.NewDesignPopUp.HeaderWithInfos != null && viewModel.NewDesignPopUp.HeaderWithInfos.Count != 0)
+                InitializeComponent();
+                viewModel = App.Locator.GAZTNewDesignShowVatInformationPopUpPageView;
+                this.BindingContext = viewModel;
+                ClearData();
+                if (newDesignPopData != null)
                 {
-                    viewModel.HeaderWithInfoList = viewModel.NewDesignPopUp.HeaderWithInfos;
-                    LoadLink();
-                }
+                    viewModel.NewDesignPopUp = newDesignPopData;
+                    viewModel.MainString = viewModel.NewDesignPopUp.MainHeader;
+                    if (viewModel.NewDesignPopUp.HeaderWithInfos != null && viewModel.NewDesignPopUp.HeaderWithInfos.Count != 0)
+                    {
+                        viewModel.HeaderWithInfoList = new ObservableCollection<HeaderWithInfo>(viewModel.NewDesignPopUp.HeaderWithInfos);
+                        LoadLink();
+                    }
 
-            }
-            SetMargin();
-        }
-        public void SetMargin()
-        {
-            if (viewModel.NewDesignPopUp != null && viewModel.NewDesignPopUp.HeaderWithInfos != null && viewModel.NewDesignPopUp.HeaderWithInfos.Count != 0)
-            {
-                if (viewModel.NewDesignPopUp.HeaderWithInfos.Count < 2)
-                {
-                    MainPanCakeView.Margin = new Thickness(0, 300, 0, 0);
-                }
-                else
-                {
-                    MainPanCakeView.Margin = new Thickness(0, 130, 0, 0);
                 }
             }
-            else
+            catch(Exception)
             {
-                MainPanCakeView.Margin = new Thickness(0, 130, 0, 0);
             }
         }
-
         public void ClearData()
         {
             viewModel.FirstLink = string.Empty;

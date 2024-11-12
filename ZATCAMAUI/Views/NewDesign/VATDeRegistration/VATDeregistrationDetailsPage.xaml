@@ -22,9 +22,13 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
-
         </ResourceDictionary>
     </ContentPage.Resources>
+
+      <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
@@ -261,18 +265,18 @@
                                 IsVisible="{Binding IsSuspReasonVisible}">
                                     <StackLayout>
 
-                                            <StackLayout>
+                                        <StackLayout>
 
-                                                <Label
+                                            <Label
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" />
 
-                                                <StackLayout>
-                                                    <custom:CustomSfTextInputView ContainerBackground="White"
+                                            <StackLayout>
+                                                <custom:CustomSfTextInputView ContainerBackground="White"
                                                     Stroke="{StaticResource Primary}">
-                                                        <custom:CustomSfTextInputView.TextInputView>
-                                                            <custom:GAZTBorderlessEntry
+                                                    <custom:CustomSfTextInputView.TextInputView>
+                                                        <custom:GAZTBorderlessEntry
                                                         Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationReason}"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
@@ -280,219 +284,219 @@
                                                         TextColor="{StaticResource NeutralBlack}"
                                                         Style="{StaticResource DefaultEntry}"/>
 
-                                                        </custom:CustomSfTextInputView.TextInputView>
+                                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                                        <custom:CustomSfTextInputView.GestureRecognizers>
-                                                            <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" />
-                                                        </custom:CustomSfTextInputView.GestureRecognizers>
-
-                                                        <custom:CustomSfTextInputView.TrailingView>
-                                                            <Image Aspect="AspectFit" Source="greyDropDown" />
-                                                        </custom:CustomSfTextInputView.TrailingView>
-
-                                                    </custom:CustomSfTextInputView>
-
-                                                    <StackLayout.GestureRecognizers>
+                                                    <custom:CustomSfTextInputView.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" />
-                                                    </StackLayout.GestureRecognizers>
-                                                </StackLayout>
+                                                    </custom:CustomSfTextInputView.GestureRecognizers>
 
-                                                <StackLayout Spacing="2">
-                                                    <custom:CustomSfTextInputView x:Name="OthersTxt" IsVisible="{Binding IsOthersEditorVisible}">
-                                                        <custom:CustomSfTextInputView.TextInputView>
-                                                            <custom:GAZTBorderlessEntry
+                                                    <custom:CustomSfTextInputView.TrailingView>
+                                                        <Image Aspect="AspectFit" Source="greyDropDown" />
+                                                    </custom:CustomSfTextInputView.TrailingView>
+
+                                                </custom:CustomSfTextInputView>
+
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" />
+                                                </StackLayout.GestureRecognizers>
+                                            </StackLayout>
+
+                                            <StackLayout Spacing="2">
+                                                <custom:CustomSfTextInputView x:Name="OthersTxt" IsVisible="{Binding IsOthersEditorVisible}">
+                                                    <custom:CustomSfTextInputView.TextInputView>
+                                                        <custom:GAZTBorderlessEntry
                                                             HeightRequest="100"
                                                             MaxLength="1000"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding OtherField}"
                                                             TextChanged="Others_Entry_TextChanged" />
-                                                        </custom:CustomSfTextInputView.TextInputView>
-                                                    </custom:CustomSfTextInputView>
+                                                    </custom:CustomSfTextInputView.TextInputView>
+                                                </custom:CustomSfTextInputView>
 
-                                                    <Label
+                                                <Label
                                                     Margin="0,10,0,10"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     Text="{Binding TextCount}" />
-                                                </StackLayout>
                                             </StackLayout>
+                                        </StackLayout>
 
-                                            <Grid ColumnDefinitions="*,*">
+                                        <Grid ColumnDefinitions="*,*">
 
-                                                <Label
+                                            <Label
                                                     Grid.Column="0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}" />
 
-                                                <Label
+                                            <Label
                                                     Grid.Column="1"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedEndDate}" />
 
-                                            </Grid>
+                                        </Grid>
 
-                                            <Border
+                                        <Border
                                                 Margin="10,0,10,0"
                                                 Stroke="#B1B1B1"
                                                 StrokeThickness="1"
                                                 Style="{StaticResource GreyBorderFrame}">
 
-                                                <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
-                                                    <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
-                                                        <Label
+                                            <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
+                                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                                    <Label
                                                         HorizontalOptions="Start"
                                                         Style="{StaticResource GAZTSmallBlackLabel}"
                                                         Text="{Binding FromDate, StringFormat='{0:yyyy/MM/dd}'}" />
-                                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                                            <Image Margin="5,0" HorizontalOptions="Center">
-                                                                <Image.Source>
-                                                                    <FontImageSource
+                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                        <Image Margin="5,0" HorizontalOptions="Center">
+                                                            <Image.Source>
+                                                                <FontImageSource
                                                                     FontFamily="UserIconFont"
                                                                     Glyph="{x:Static FontImage:IconFonts.GreaterThan}"
                                                                     Size="20"
                                                                     Color="{StaticResource SecondaryNew}" />
-                                                                </Image.Source>
-                                                            </Image>
-
-                                                        </StackLayout>
-                                                        <StackLayout.GestureRecognizers>
-                                                            <TapGestureRecognizer x:Name="StartDate" Tapped="VATDeregStartDateClicked" />
-                                                        </StackLayout.GestureRecognizers>
+                                                            </Image.Source>
+                                                        </Image>
 
                                                     </StackLayout>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="StartDate" Tapped="VATDeregStartDateClicked" />
+                                                    </StackLayout.GestureRecognizers>
 
-                                                    <StackLayout HorizontalOptions="End" Orientation="Horizontal">
-                                                        <Label
+                                                </StackLayout>
+
+                                                <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                                    <Label
                                                         HorizontalOptions="Start"
                                                         Style="{StaticResource GAZTSmallBlackLabel}"
                                                         Text="{Binding ToDate, StringFormat='{0:yyyy/MM/dd}'}" />
-                                                        <StackLayout HorizontalOptions="End" Orientation="Horizontal">
-                                                            <Image Margin="5,0">
-                                                                <Image.Source>
-                                                                    <FontImageSource
+                                                    <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                                        <Image Margin="5,0">
+                                                            <Image.Source>
+                                                                <FontImageSource
                                                                     FontFamily="UserIconFont"
                                                                     Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
                                                                     Size="20"
                                                                     Color="{StaticResource SecondaryNew}" />
-                                                                </Image.Source>
-                                                            </Image>
-                                                        </StackLayout>
-
-                                                        <StackLayout.GestureRecognizers>
-                                                            <TapGestureRecognizer x:Name="EndDate" Tapped="VATDeregEndDateClicked" />
-                                                        </StackLayout.GestureRecognizers>
-
+                                                            </Image.Source>
+                                                        </Image>
                                                     </StackLayout>
+
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="EndDate" Tapped="VATDeregEndDateClicked" />
+                                                    </StackLayout.GestureRecognizers>
+
                                                 </StackLayout>
-                                            </Border>
+                                            </StackLayout>
+                                        </Border>
 
-                                        </StackLayout>
+                                    </StackLayout>
 
-                                        <StackLayout>
-                                            <Label
+                                    <StackLayout>
+                                        <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedFilingPeriod}" />
-                                            <Border
+                                        <Border
                                             Margin="10,0,10,0"
                                             Stroke="#B1B1B1"
                                             StrokeThickness="1"
                                             Style="{StaticResource GreyBorderFrame}">
 
-                                                <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
-                                                    <Label
+                                            <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
+                                                <Label
                                                     HorizontalOptions="Center"
                                                     Style="{StaticResource GAZTSmallBlackLabel}"
                                                     Text="{Binding SuspendedStartDate, StringFormat='{0:yyyy/MM/dd}'}" />
-                                                    <Image Margin="5,0">
-                                                        <Image.Source>
-                                                            <FontImageSource
+                                                <Image Margin="5,0">
+                                                    <Image.Source>
+                                                        <FontImageSource
                                                             FontFamily="UserIconFont"
                                                             Glyph="{x:Static FontImage:IconFonts.GreaterThan}"
                                                             Size="20"
                                                             Color="{StaticResource SecondaryNew}" />
-                                                        </Image.Source>
-                                                    </Image>
-                                                    <Label
+                                                    </Image.Source>
+                                                </Image>
+                                                <Label
                                                     HorizontalOptions="End"
                                                     Style="{StaticResource GAZTSmallBlackLabel}"
                                                     Text="{Binding SuspendedEndDate, StringFormat='{0:yyyy/MM/dd}'}" />
-                                                    <Image Margin="5,0">
-                                                        <Image.Source>
-                                                            <FontImageSource
+                                                <Image Margin="5,0">
+                                                    <Image.Source>
+                                                        <FontImageSource
                                                             FontFamily="UserIconFont"
                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
                                                             Size="20"
                                                             Color="{StaticResource SecondaryNew}" />
-                                                        </Image.Source>
-                                                    </Image>
+                                                    </Image.Source>
+                                                </Image>
 
-                                                </StackLayout>
-                                            </Border>
-                                        </StackLayout>
+                                            </StackLayout>
+                                        </Border>
+                                    </StackLayout>
 
-                                        <StackLayout>
-                                            <Label
+                                    <StackLayout>
+                                        <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingPeriod}" />
-                                            <Border
+                                        <Border
                                             Margin="10,0,10,0"
                                             Stroke="#B1B1B1"
                                             StrokeThickness="1"
                                             Style="{StaticResource GreyBorderFrame}">
 
-                                                <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
-                                                    <Label
+                                            <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
+                                                <Label
                                                     HorizontalOptions="Start"
                                                     Style="{StaticResource GAZTSmallBlackLabel}"
                                                     Text="{Binding NextFilingStartDate, StringFormat='{0:yyyy/MM/dd}'}" />
-                                                    <Image Margin="5,0" HorizontalOptions="Center">
-                                                        <Image.Source>
-                                                            <FontImageSource
+                                                <Image Margin="5,0" HorizontalOptions="Center">
+                                                    <Image.Source>
+                                                        <FontImageSource
                                                             FontFamily="UserIconFont"
                                                             Glyph="{x:Static FontImage:IconFonts.GreaterThan}"
                                                             Size="20"
                                                             Color="{StaticResource SecondaryNew}" />
-                                                        </Image.Source>
-                                                    </Image>
-                                                    <Label
+                                                    </Image.Source>
+                                                </Image>
+                                                <Label
                                                     HorizontalOptions="End"
                                                     Style="{StaticResource GAZTSmallBlackLabel}"
                                                     Text="{Binding NextFilingEndDate, StringFormat='{0:yyyy/MM/dd}'}" />
-                                                    <Image Margin="5,0">
-                                                        <Image.Source>
-                                                            <FontImageSource
+                                                <Image Margin="5,0">
+                                                    <Image.Source>
+                                                        <FontImageSource
                                                             FontFamily="UserIconFont"
                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
                                                             Size="20"
                                                             Color="{StaticResource SecondaryNew}" />
-                                                        </Image.Source>
-                                                    </Image>
-                                                </StackLayout>
-                                            </Border>
-                                        </StackLayout>
+                                                    </Image.Source>
+                                                </Image>
+                                            </StackLayout>
+                                        </Border>
+                                    </StackLayout>
 
-                                        <StackLayout>
-                                            <Label
+                                    <StackLayout>
+                                        <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingDueDate}" />
 
-                                            <custom:CustomSfTextInputView
+                                        <custom:CustomSfTextInputView
                                                 Margin="10,0,10,0">
-                                                <custom:CustomSfTextInputView.TextInputView>
-                                                    <custom:GAZTBorderlessEntry
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
                                                         Text="{Binding NextFilingDueDate, StringFormat='{0:yyyy/MM/dd}'}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
                                                         Placeholder="{x:Static ResourceManager:AppResources.VatDeregNextFilingDueDate}"
                                                         />
-                                                </custom:CustomSfTextInputView.TextInputView>
-                                            </custom:CustomSfTextInputView>
-                                        </StackLayout>
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                        </custom:CustomSfTextInputView>
+                                    </StackLayout>
 
                                 </StackLayout>
 
@@ -603,11 +607,12 @@
 
                                             <!--  Attachments  -->
                                             <custom:GAZTBorderlessEntry
-                                        HorizontalTextAlignment="Start"
-                                        IsEnabled="False"
-                                        Placeholder="{x:Static ResourceManager:AppResources.VatDeregAttachmentInputPlaceholder}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        VerticalOptions="Center" />
+                                                HorizontalTextAlignment="Start"
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Placeholder="{x:Static ResourceManager:AppResources.VatDeregAttachmentInputPlaceholder}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                VerticalOptions="Center" />
                                         </custom:CustomSfTextInputView.TextInputView>
 
                                         <custom:CustomSfTextInputView.TrailingView>
@@ -620,8 +625,16 @@
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </custom:CustomSfTextInputView.TrailingView>
+
+                                        <custom:CustomSfTextInputView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NewAttachmentTapped}" />
+                                        </custom:CustomSfTextInputView.GestureRecognizers>
+
                                     </custom:CustomSfTextInputView>
 
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NewAttachmentTapped}" />
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <StackLayout
                                 Grid.Row="2"
@@ -844,6 +857,7 @@
                                                 HorizontalTextAlignment="Start"
                                                 Placeholder="{x:Static ResourceManager:AppResources.VatDeregContactPerson}"
                                                 Text="{Binding ContactPersonName}"
+                                                IsEnabled="{Binding ContactNameIsEnabled}"
                                                 TextColor="#bbbbbb"
                                                 VerticalTextAlignment="Start">
                                                         <custom:GAZTBorderlessEntry.Behaviors>

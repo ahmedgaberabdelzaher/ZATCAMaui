@@ -9,7 +9,6 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-
     x:Name="page"
     Title="NafathChangeMobileNumberOTPView"
     ios:Page.UseSafeArea="true"
@@ -29,7 +28,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -99,7 +97,6 @@
                                 ClassId="1"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 FontSize="16"
-                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -107,6 +104,7 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding FirstDigit}"
+                                TextColor="#0996D4"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
@@ -136,7 +134,6 @@
                                 ClassId="2"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 FontSize="16"
-                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -144,6 +141,7 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding SecondDigit}"
+                                TextColor="#0996D4"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
@@ -173,7 +171,6 @@
                                 ClassId="3"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 FontSize="16"
-                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -181,6 +178,7 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding ThirdDigit}"
+                                TextColor="#0996D4"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
@@ -210,7 +208,6 @@
                                 ClassId="4"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 FontSize="16"
-                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -218,6 +215,7 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding FourthDigit}"
+                                TextColor="#0996D4"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
@@ -247,7 +245,6 @@
                                 ClassId="5"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 FontSize="16"
-                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -255,6 +252,7 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding FifthDigit}"
+                                TextColor="#0996D4"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
@@ -284,7 +282,6 @@
                                 ClassId="5"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 FontSize="16"
-                                TextColor="#0996D4"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsPassword="True"
@@ -292,6 +289,7 @@
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding SixthDigit}"
+                                TextColor="#0996D4"
                                 WidthRequest="100">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <behaviors:OnlyNumericValuesBehaviour />
@@ -310,7 +308,7 @@
 
                     <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
 
-                        <Image Source="clock" HeightRequest="24"/>
+                        <Image HeightRequest="24" Source="clock" />
 
                         <Label
                             Style="{StaticResource CaptionLabelGrey}"

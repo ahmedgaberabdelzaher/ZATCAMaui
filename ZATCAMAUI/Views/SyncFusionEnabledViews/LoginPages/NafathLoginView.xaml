@@ -4,19 +4,19 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="page"
     Title="NafathLoginView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-     <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingNafathLoginViewCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
@@ -67,7 +67,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-             <Border
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -91,7 +91,7 @@
                                 BackgroundColor="{StaticResource NeutralLightGrey}"
                                 HeightRequest="2" />
 
-                             <!--  NationalIqamaID Field  -->
+                            <!--  NationalIqamaID Field  -->
                             <StackLayout Spacing="0">
 
                                 <!--  NationalIqamaID Label  -->

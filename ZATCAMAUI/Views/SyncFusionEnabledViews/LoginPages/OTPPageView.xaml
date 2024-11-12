@@ -4,10 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     x:Name="page"
     Title="OTPPageView"
     ios:Page.UseSafeArea="true"
@@ -45,7 +45,6 @@
                                 HeightRequest="45"
                                 HorizontalOptions="CenterAndExpand"
                                 Source="ic_logo_gazt.png"
-                                
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="40" />
 
@@ -57,7 +56,6 @@
                                     HorizontalOptions="EndAndExpand"
                                     Rotation="0"
                                     Source="darkClose.png"
-                                    
                                     VerticalOptions="CenterAndExpand" />
 
                                 <StackLayout.GestureRecognizers>
@@ -72,9 +70,9 @@
                         <Label
                             FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="28"
-                            Text="{x:Static ResourceManager:AppResources.VerificationCodeTitle}"
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
+                            Text="{x:Static ResourceManager:AppResources.VerificationCodeTitle}"
                             TextColor="#002447"
                             VerticalOptions="Start" />
 
@@ -296,12 +294,12 @@
 
                         </StackLayout>
 
-                         <Label
+                        <Label
                             FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="16"
-                            Text="{x:Static ResourceManager:AppResources.AccountLockedMsg}"
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
+                            Text="{x:Static ResourceManager:AppResources.AccountLockedMsg}"
                             TextColor="#002447"
                             VerticalOptions="Start" />
 
@@ -312,9 +310,9 @@
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             IsEnabled="{Binding IsResendCodeEnabled}"
-                            TextColor="{Binding ResendCodeTextColor}"
                             Opacity="{Binding ResendCodeOpacity}"
                             Text="{x:Static ResourceManager:AppResources.ResendVerificationCodeMsg}"
+                            TextColor="{Binding ResendCodeTextColor}"
                             TextDecorations="Underline"
                             VerticalOptions="Start">
 

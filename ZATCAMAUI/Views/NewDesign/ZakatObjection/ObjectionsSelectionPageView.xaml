@@ -24,7 +24,7 @@
 
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
 
         <Grid RowDefinitions="Auto,*">
@@ -110,10 +110,10 @@
 
                 </StackLayout>
             </Border>
-            
-            <!--endregion Body-->
+
+            <!--  endregion Body  -->
         </Grid>
 
-       
+
     </ContentPage.Content>
 </ContentPage>
