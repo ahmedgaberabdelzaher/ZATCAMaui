@@ -1539,18 +1539,16 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         if (_vATDeclarationD == null || _vATDeclarationD.data1 == null)
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                            {
-                                ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
-                                ErrorMessageForVAT += " " + errorMesg.error.innererror.errordetails[1].message;
-                                String WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
-                                ErrorMessageForVAT = WithReplacedString;
-                            }
+                            string errorMessage = PrepareErrorMessageByJson(detailJson);
+                            throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
                         return _vATDeclarationD;
                     }
                     return _vATDeclarationD;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (Exception ex)
                 {
