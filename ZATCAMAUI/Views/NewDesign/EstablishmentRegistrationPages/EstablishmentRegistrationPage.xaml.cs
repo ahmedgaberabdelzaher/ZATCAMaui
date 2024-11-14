@@ -30,6 +30,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             });
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
+            viewModel.GetGenderList();
         }
 
         protected override void OnAppearing()

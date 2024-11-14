@@ -1578,8 +1578,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region TaxPayer Variable initialization
 
-            GetGenderList();
-
             OnPDNatinalitySelectButtonClick = new Command(() =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
@@ -2164,7 +2162,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
 
-        private void GetGenderList()
+        public void GetGenderList()
         {
             GenderList.Clear();
             GenderList.Add(AppResources.ESTMaleLabel);
