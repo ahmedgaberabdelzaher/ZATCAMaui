@@ -2259,11 +2259,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             {
                 return date.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
 
-                HijriCalendar hijriCalendar = new HijriCalendar();
+                UmAlQuraCalendar hijriCalendar = new UmAlQuraCalendar();
                 return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }
         }

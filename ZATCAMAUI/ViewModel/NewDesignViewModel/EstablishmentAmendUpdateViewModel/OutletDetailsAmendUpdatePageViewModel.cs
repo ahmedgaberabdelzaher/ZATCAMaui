@@ -890,7 +890,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     await addActivities(list);
                 }
-            }); ;
+            });
         }
 
         private async Task navigateToNext()
@@ -1018,10 +1018,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     catch (Exception ex)
                     {
                         IsLoading = false;
-                        if (ex is HTTPBadRequestException)
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        }
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     }
                     finally
                     {
@@ -1233,54 +1230,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 IsLoading = false;
             }
         }
-        private void PrepareError(string result)
-        {
-            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
-            var errorID = string.Empty;
-            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-            {
-                string errorCode = errorMesg.error.innererror.errordetails[0].code;
-
-                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-
-                if (errorCode.Contains("206"))
-                {
-                    WebServiceManager.ErrorMessageForUnlockAccount = "206";
-                }
-                else if (errorCode.Contains("112"))
-                {
-                    WebServiceManager.ErrorMessageForUnlockAccount = "112";
-                }
-                else if (errorCode.Contains("896"))
-                {
-                    errorID = errorCode;
-                }
-
-                string line1 = "";
-
-                for (int i = 0; i < errorMesg.error.innererror.errordetails.Count; i++)
-                {
-                    line1 = line1 + " " + errorMesg.error.innererror.errordetails[i].message;
-                }
-                WebServiceManager.ErrorMessageForUnlockAccount = line1;
-
-                String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    if (errorID.Contains("896"))
-                    {
-                        await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
-                    }
-                    else
-                    {
-                        await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
-                    }
-
-                });
-
-            }
-        }
+        
         private void populateAddress(OutletAddress address)
         {
             BuildingNumber = address.BuildingNo;
@@ -1290,6 +1240,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             PostalCode = address.Zipcode;
             AddNumber = address.AdditionalNo;
         }
+
         private async Task<bool> validateForm()
         {
             if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)

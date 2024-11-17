@@ -60,7 +60,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel?.OnAppearing();
             MessagingCenter.Subscribe<EstablishmentAmendUpdatePageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
             {
                 if (res)

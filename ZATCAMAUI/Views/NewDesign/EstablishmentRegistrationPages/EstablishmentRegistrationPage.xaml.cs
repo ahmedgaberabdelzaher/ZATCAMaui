@@ -30,20 +30,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             });
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
-            viewModel.GetGenderList();
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            if (viewModel.currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
-            {
-                viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
-                viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
-            }
-            viewModel?.OnAppearing();
-        }
-
+       
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -117,11 +106,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
 
                 var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + data.Filename + QuestionMark);
 
-                confirmPopup.OnSelect = (str) =>
+                confirmPopup.OnSelect = async (str) =>
                 {
                     if (str == "Yes")
                     {
-                        viewModel.OnRentAttachmentDeleteButtonTapped(data);
+                       await viewModel.OnRentAttachmentDeleteButtonTapped(data);
                     }
                 };
                 await MopupService.Instance.PushAsync(confirmPopup);
@@ -151,11 +140,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
                 }
 
                 var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + data.Filename + QuestionMark);
-                confirmPopup.OnSelect = (str) =>
+                confirmPopup.OnSelect = async (str) =>
                 {
                     if (str == "Yes")
                     {
-                        viewModel.OnPassportAttachmentDeleteButtonTapped(data);
+                       await viewModel.OnPassportAttachmentDeleteButtonTapped(data);
                     }
                 };
                 await MopupService.Instance.PushAsync(confirmPopup);

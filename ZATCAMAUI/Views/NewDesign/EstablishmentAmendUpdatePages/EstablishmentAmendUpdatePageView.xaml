@@ -19,9 +19,15 @@
     x:Name="ESTAmendReactivationPage"
     Title="{Binding PageTitle}"
     ios:Page.UseSafeArea="true"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Resources>
         <ResourceDictionary>
 

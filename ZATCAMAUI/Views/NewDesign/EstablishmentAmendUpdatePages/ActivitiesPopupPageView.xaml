@@ -21,6 +21,7 @@
         StrokeShape="RoundRectangle 22,22,0,0"
         VerticalOptions="End">
         <StackLayout>
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -291,12 +292,11 @@
 
 
             </Grid>
-            <StackLayout Margin="0,10,0,20">
-                <buttons:SfButton
-                    Command="{Binding OnNextButtonClick}"
-                    Style="{StaticResource PrimaryButtonStyle}"
-                    Text="{x:Static ResourceManager:AppResources.ZDone}" />
-            </StackLayout>
+
+            <buttons:SfButton
+                Command="{Binding OnNextButtonClick}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZDone}" />
         </StackLayout>
     </Border>
 </Mopups:PopupPage>

@@ -51,7 +51,7 @@ namespace ZATCAMAUI.Core.Helper
         {
             try
             {
-                CultureInfo arSA = new CultureInfo("ar-SA");
+                CultureInfo arSA = new CultureInfo("ar-Sa");
                 arSA.DateTimeFormat.Calendar = new UmAlQuraCalendar();
                 DateTime.TryParse(dayMonthYearHigriDateString, arSA, DateTimeStyles.None, out DateTime gregorianDate);
                 var gregorianDateString = gregorianDate.ToString(format);
@@ -67,11 +67,18 @@ namespace ZATCAMAUI.Core.Helper
         {
             try
             {
-                var higriDateSTring = UmAlQuraCalendarHigriDateTime.ToString("dd/MM/yyyy", CultureInfo.CreateSpecificCulture("ar-SA"));
-                CultureInfo arSA = new CultureInfo("ar-SA");
+                CultureInfo arSA = new CultureInfo("ar-Sa");
                 arSA.DateTimeFormat.Calendar = new UmAlQuraCalendar();
-                DateTime.TryParse(higriDateSTring, arSA, DateTimeStyles.None, out DateTime gregorianDate);
+
+                CultureInfo enUS = new CultureInfo("en-US");
+                enUS.DateTimeFormat.Calendar = new GregorianCalendar();
+
+                var higriDateSTrings = UmAlQuraCalendarHigriDateTime.ToString("dd/MM/yyyy", enUS);
+
+                DateTime.TryParse(higriDateSTrings, arSA, DateTimeStyles.None, out DateTime gregorianDate);
+
                 var gregorianDateString = gregorianDate.ToString(format);
+
                 return Tuple.Create(gregorianDate, gregorianDateString);
             }
             catch (Exception)
@@ -85,6 +92,7 @@ namespace ZATCAMAUI.Core.Helper
             try
             {
                 CultureInfo arSA = CultureInfo.CreateSpecificCulture("ar-SA");
+                arSA.DateTimeFormat.Calendar = new UmAlQuraCalendar();
                 string hijriDateString = GregorianDateTime.ToString(format, arSA).Replace(' ', '/');
                 DateTime.TryParse(GregorianDateTime.ToString("MM/dd/yyyy", arSA).Replace(' ', '/'), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime hijriDate);
                 return Tuple.Create(hijriDate, hijriDateString);
@@ -100,8 +108,10 @@ namespace ZATCAMAUI.Core.Helper
             try
             {
                 CultureInfo arSA = CultureInfo.CreateSpecificCulture("ar-SA");
-                DateTime.TryParse(GregorianMonthDayYearDateString, out DateTime date);
+                arSA.DateTimeFormat.Calendar = new UmAlQuraCalendar();
+                var date = DateTimeFormater(GregorianMonthDayYearDateString);
                 string hijriDateString = date.ToString(format, arSA).Replace(' ', '/');
+               
                 DateTime.TryParse(date.ToString("MM/dd/yyyy", arSA).Replace(' ', '/'), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime hijriDate);
                 return Tuple.Create(hijriDate, hijriDateString);
             }

@@ -347,46 +347,46 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                       
-                            string deserialisedResponseJSONs = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"]?.ToString();
 
-                            if (deserialisedResponseJSONs == null)
+                        string deserialisedResponseJSONs = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"]?.ToString();
+
+                        if (deserialisedResponseJSONs == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                            if (errorMesg != null && errorMesg.header != null && errorMesg.header.moreInformation != null && errorMesg.header.moreInformation.errorDetails != null && errorMesg.header.moreInformation.errorDetails.Count > 0)
                             {
-                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                                if (errorMesg != null && errorMesg.header != null && errorMesg.header.moreInformation != null && errorMesg.header.moreInformation.errorDetails != null && errorMesg.header.moreInformation.errorDetails.Count > 0)
+                                string ErrorMessageFormServer = string.Empty;
+                                if (errorMesg.header.moreInformation.errorDetails?.Count > 0)
                                 {
-                                    string ErrorMessageFormServer = string.Empty;
-                                    if (errorMesg.header.moreInformation.errorDetails?.Count > 0)
-                                    {
 
-                                        if (errorMesg.header.moreInformation.errorDetails.Count > 2)
+                                    if (errorMesg.header.moreInformation.errorDetails.Count > 2)
+                                    {
+                                        for (int i = 0; i < errorMesg.header.moreInformation.errorDetails.Count - 1; i++)
                                         {
-                                            for (int i = 0; i < errorMesg.header.moreInformation.errorDetails.Count - 1; i++)
-                                            {
-                                                ErrorMessageFormServer = ErrorMessageFormServer + " " + errorMesg.header.moreInformation.errorDetails[i].message;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            ErrorMessageFormServer = errorMesg.header.moreInformation.errorDetails[0].message;
+                                            ErrorMessageFormServer = ErrorMessageFormServer + " " + errorMesg.header.moreInformation.errorDetails[i].message;
                                         }
                                     }
-                                    throw new GAZTVATRegistrationInProcessException(ErrorMessageFormServer);
+                                    else
+                                    {
+                                        ErrorMessageFormServer = errorMesg.header.moreInformation.errorDetails[0].message;
+                                    }
                                 }
-                                else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
-                                {
-                                    string ErrorMessageFormServer = errorMesg.error.message.value;
-                                    throw new GAZTVATRegistrationInProcessException(ErrorMessageFormServer);
-                                }
+                                throw new GAZTVATRegistrationInProcessException(ErrorMessageFormServer);
                             }
-                            else
+                            else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
                             {
-                                if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
-                                {
-                                    taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
-                                }
+                                string ErrorMessageFormServer = errorMesg.error.message.value;
+                                throw new GAZTVATRegistrationInProcessException(ErrorMessageFormServer);
                             }
-                        
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
+                            {
+                                taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
+                            }
+                        }
+
                     }
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
@@ -1002,7 +1002,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw gex;
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
             }

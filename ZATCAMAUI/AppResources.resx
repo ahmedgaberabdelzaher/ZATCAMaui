@@ -11795,4 +11795,14 @@ the credit balance of the current period will be carried forward, you can reques
    <value>Please enter valid CR National Number</value>
    <comment>Sign Up</comment>
  </data>
+ <data name="PassportIssueDisclaimer" xml:space="preserve">
+   <value>Passport issue date mustn't be before date of birth</value>
+ </data>
+  <data name="PassportExpiryDisclaimer" xml:space="preserve">
+   <value>Passport expiry date mustn't be before date of birth</value>
+ </data>
+ <data name="PassportDisclaimer" xml:space="preserve">
+   <value>Passport expiry date mustn't be before passport issue</value>
+ </data>
+
 </root> 

@@ -772,7 +772,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (!string.IsNullOrEmpty(validateCR?.Crname) || PreLoadedLicenseItem != null)
                     {
                         CanExecute = true;
-                        _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+                       await _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                         {
                             openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,
                             taxPayerDetails = taxPayerDetails,
@@ -878,10 +878,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     catch (Exception ex)
                     {
                         IsLoading = false;
-                        if (ex is GAZTVATRegistrationInProcessException)
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        }
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     }
                     finally
                     {

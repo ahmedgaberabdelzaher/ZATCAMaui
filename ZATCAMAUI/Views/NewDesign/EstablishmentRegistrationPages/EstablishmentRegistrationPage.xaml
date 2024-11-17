@@ -16,10 +16,16 @@
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     x:Name="ESTRegistrationPage"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Resources>
         <ResourceDictionary>
 
@@ -30,7 +36,8 @@
             <converters:DateFormatConverter x:Key="dateFormatConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ControlTemplate>
+
+    <!--<ContentPage.ControlTemplate>
         <ControlTemplate>
             <Border
                 Margin="0"
@@ -53,12 +60,14 @@
                 </StackLayout>
             </Border>
         </ControlTemplate>
-    </ContentPage.ControlTemplate>
+    </ContentPage.ControlTemplate>-->
+
     <ContentPage.Content>
         <Grid
             ColumnSpacing="0"
             RowDefinitions="Auto,*"
             RowSpacing="0">
+
             <!--#region Header-->
             <StackLayout
                 Grid.Row="0"
@@ -82,7 +91,7 @@
                         Source="arrowLeft.png"
                         VerticalOptions="CenterAndExpand">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Command="{Binding OnPreButtonClick}"  />
                         </Image.GestureRecognizers>
                         <Image.Triggers>
                             <DataTrigger
@@ -126,12 +135,13 @@
                                 WidthRequest="5" />
                         </StackLayout>
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
 
                 </Grid>
 
+              
                 <commonView:PageIndicatorView
                     Completed="{Binding MarkComplete}"
                     DotSize="12"
@@ -164,6 +174,7 @@
             <!--#region Body-->
             <StackLayout
                 Grid.Row="1"
+                BackgroundColor="White"
                 Padding="10,10,10,0"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
@@ -1174,6 +1185,7 @@
 
                 </Grid>
                 <!--#endregion-->
+
                 <!--#region TaxpayerDetail-->
                 <Grid
                     x:Name="TaxpayerDetailsTabMain"
@@ -3302,7 +3314,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnExpendGridViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Border.GestureRecognizers>
                                         </Border>
 
@@ -3317,7 +3329,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnExpendGridViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Label.GestureRecognizers>
                                         </Label>
 
@@ -3331,7 +3343,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnEditPageViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Label.GestureRecognizers>
                                         </Label>
 
@@ -3471,7 +3483,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnExpendGridViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Border.GestureRecognizers>
                                         </Border>
                                         <Label
@@ -3485,7 +3497,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnExpendGridViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Label.GestureRecognizers>
                                         </Label>
                                         <Label
@@ -3497,7 +3509,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnEditPageViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Label.GestureRecognizers>
                                         </Label>
                                     </Grid>
@@ -3775,7 +3787,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnExpendGridViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Border.GestureRecognizers>
                                         </Border>
                                         <Label
@@ -3789,7 +3801,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnExpendGridViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Label.GestureRecognizers>
                                         </Label>
                                         <Label
@@ -3801,7 +3813,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnEditPageViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Label.GestureRecognizers>
                                         </Label>
                                     </Grid>
@@ -3914,7 +3926,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnExpendGridViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Border.GestureRecognizers>
                                         </Border>
                                         <Label
@@ -3928,7 +3940,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnExpendGridViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Label.GestureRecognizers>
                                         </Label>
                                         <Label
@@ -3940,7 +3952,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnEditPageViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Label.GestureRecognizers>
                                         </Label>
                                     </Grid>
@@ -4064,7 +4076,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnExpendGridViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Border.GestureRecognizers>
                                         </Border>
                                         <Label
@@ -4078,7 +4090,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnExpendGridViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Label.GestureRecognizers>
                                         </Label>
                                         <Label
@@ -4090,7 +4102,7 @@
                                                 <TapGestureRecognizer
                                                     Command="{Binding OnEditPageViewClick}"
                                                     CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}"
-                                                    NumberOfTapsRequired="1" />
+                                                     />
                                             </Label.GestureRecognizers>
                                         </Label>
                                     </Grid>
@@ -4232,19 +4244,13 @@
                     </ScrollView>
                 </Grid>
                 <!--#endregion-->
+
                 <buttons:SfButton
                     Margin="0,10,0,10"
                     Command="{Binding OnNextButtonClick}"
                     HorizontalOptions="FillAndExpand"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{Binding NxtButtonLabel}" />
-
-                <!--<buttons:SfButton
-                    Margin="0,10,0,10"
-                    Command="{Binding OnNextButtonClick}"
-                    Style="{StaticResource PrimaryButtonStyle}"
-                    Text="{Binding NxtButtonLabel}"
-                    VerticalOptions="End" />-->
 
             </StackLayout>
             <!--#endregion-->

@@ -1187,19 +1187,16 @@
                                     <Border
                                         FlowDirection="{Binding Source={x:Reference ESTActivityItemPage}, Path=FlowDirection}"
                                         Padding="10"
+                                        Margin="10,0"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 10,10,10,10"
                                         StrokeThickness="1">
                                         <Grid
-                                            ColumnSpacing="0"
                                             HorizontalOptions="Fill"
                                             RowSpacing="0"
+                                            ColumnSpacing="10"
+                                            ColumnDefinitions="auto,*,auto"
                                             VerticalOptions="Center">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="auto" />
-                                            </Grid.ColumnDefinitions>
                                             <Image
                                                 Grid.Column="0"
                                                 HorizontalOptions="Center"
@@ -1207,7 +1204,6 @@
                                                 VerticalOptions="Center" />
                                             <Label
                                                 Grid.Column="1"
-                                                Margin="10,0,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 HorizontalTextAlignment="Start"
                                                 Style="{StaticResource BodyLabelGrey}"

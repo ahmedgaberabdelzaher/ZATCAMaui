@@ -11512,4 +11512,13 @@ info@zatca.gov.sa</value>
 	<data name="TinOutletDeregistrationSubTitle" xml:space="preserve">
    <value>ايقاف الرقم المميز / الفرع</value>
  </data>
+  <data name="PassportIssueDisclaimer" xml:space="preserve">
+   <value>يجب ألا يكون تاريخ إصدار جواز السفر قبل تاريخ الميلاد</value>
+ </data>
+   <data name="PassportExpiryDisclaimer" xml:space="preserve">
+   <value>يجب ألا يكون تاريخ انتهاء جواز السفر قبل تاريخ الميلاد</value>
+ </data>
+   <data name="PassportDisclaimer" xml:space="preserve">
+   <value>يجب ألا يكون تاريخ انتهاء جواز السفر قبل إصدار جواز السفر</value>
+ </data>
 </root> 
