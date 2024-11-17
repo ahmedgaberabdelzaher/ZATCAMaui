@@ -807,6 +807,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("madaButton")]
         public string MadabutFg { get; set; }
         [DataMember]
+        [JsonProperty("messageDescription")]
         public string OpenliMsg { get; set; }
         //protected void OnPropertyChanged(string propertyName)
         //{

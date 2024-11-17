@@ -1148,6 +1148,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
 
                 });
+                MessagingCenter.Subscribe<object, string>(this, "OkayToSubmit", async (sender, arg) =>
+                {
+                    //write submit command here.
+                    submitTheApplication();
+                });
             }
             catch (Exception)
             {
@@ -8974,29 +8979,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 }
                 else
                 {
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsNewLoading = true;
-                    });
+                    viewModel.IsNewLoading = true;
                     await viewModel.SubmitClicked();
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsNewLoading = false;
-                    });
+                    viewModel.IsNewLoading = false;
                 }
 
             }
             else
             {
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsNewLoading = true;
-                });
+                viewModel.IsNewLoading = true;
                 await viewModel.SubmitClicked();
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsNewLoading = false;
-                });
+                viewModel.IsNewLoading = false;
             }
         }
 
@@ -9238,9 +9231,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception)
             {
-
-
-
             }
         }
 
@@ -9250,17 +9240,19 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             if (viewModel.VATDeclarationData.data.MadabutFg == "X")
             {
                 MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
-
-                //viewModel.DoValidatePayment(fbNum: viewModel.VATDeclarationData.data.Fbnum);
             }
             else
             {
-
                 MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, viewModel.VATDeclarationData.data.OpenliMsg));
-
             }
 
 
+        }
+        private async void submitTheApplication()
+        {   
+            viewModel.IsNewLoading = true;
+            await viewModel.SubmitClicked();
+            viewModel.IsNewLoading = false;
         }
     }
 }

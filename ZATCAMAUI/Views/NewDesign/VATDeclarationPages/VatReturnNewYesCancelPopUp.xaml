@@ -19,48 +19,36 @@
             PositionIn="Bottom"
             PositionOut="Bottom" />
     </Mopups:PopupPage.Animation>
-
-
     <Border
         BackgroundColor="White"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
+        <Grid RowDefinitions="auto,auto">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" Spacing="0">
                 <Label
                     x:Name="confirmationText"
                     Margin="10"
                     Style="{StaticResource BodyLabelBlack}" />
             </StackLayout>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50*" />
-                    <ColumnDefinition Width="50*" />
-                </Grid.ColumnDefinitions>
+            <HorizontalStackLayout
+                Grid.Row="1"
+                HorizontalOptions="CenterAndExpand"
+                Spacing="5">
                 <buttons:SfButton
-                    Grid.Row="0"
-                    Grid.Column="0"
                     Clicked="OnOkayButtonClicked"
                     HorizontalOptions="FillAndExpand"
                     Style="{StaticResource PrimaryButtonStyle}"
-                    Text="{x:Static ResourceManager:AppResources.VatOkay}" />
+                    Text="{x:Static ResourceManager:AppResources.VatOkay}"
+                    WidthRequest="150" />
                 <buttons:SfButton
-                    Grid.Row="0"
-                    Grid.Column="1"
+                     x:Name="No"
                     Clicked="OnCancelClicked"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.VatCancel}"
-                    VerticalOptions="FillAndExpand" />
-            </Grid>
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="150" />
+            </HorizontalStackLayout>
         </Grid>
     </Border>
-
 </Mopups:PopupPage>
