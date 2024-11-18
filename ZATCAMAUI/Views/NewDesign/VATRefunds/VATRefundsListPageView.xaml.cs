@@ -22,21 +22,20 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                 viewModel = App.Locator.VATRefundsListPageView;
                 BindingContext = viewModel;
             }
-            catch(Exception ex)
+            catch(Exception )
             {
-                Console.WriteLine(ex.StackTrace);
             }
             
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             try
             {
 
-                viewModel.PopulateVATRefundsList();
+                await viewModel.PopulateVATRefundsList();
                MessagingCenter.Subscribe<object, string>(this, "InstructionsConfirmed", (message, arg) =>
                 {
                     if (arg == "NavigateToNewRequestPageView")

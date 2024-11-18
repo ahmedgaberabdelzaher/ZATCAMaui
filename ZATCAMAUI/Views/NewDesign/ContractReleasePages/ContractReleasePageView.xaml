@@ -20,7 +20,6 @@
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    HideSoftInputOnTapped="True"
     x:Name="page"
     NavigationPage.HasNavigationBar="False">
 
@@ -142,7 +141,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}" />
-                                        <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                        <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}"  />
                                     </StackLayout>
 
                                     <StackLayout Grid.Row="1">
@@ -340,7 +339,7 @@
                                             ItemHeight="36"
                                             Mode="Dialog"
                                             SelectedItem="{Binding TodayDateStart}"
-                                            Style="{StaticResource PickerStyle}">
+                                            >
 
                                             <custom:CustomDatePicker.ColumnHeaderView>
                                                 <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
@@ -392,7 +391,7 @@
                                             ItemHeight="36"
                                             Mode="Dialog"
                                             SelectedItem="{Binding TodayDateinHijriStart}"
-                                            Style="{StaticResource PickerStyle}">
+                                            >
 
                                             <custom:CustomHijriDatePicker.SelectionView>
                                                 <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
@@ -490,7 +489,7 @@
                                             ItemHeight="36"
                                             Mode="Dialog"
                                             SelectedItem="{Binding TodayDateEnd}"
-                                            Style="{StaticResource PickerStyle}">
+                                            >
 
                                             <custom:CustomDatePicker.ColumnHeaderView>
                                                 <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
@@ -546,7 +545,7 @@
                                             ItemHeight="36"
                                             Mode="Dialog"
                                             SelectedItem="{Binding TodayDateinHijriEnd}"
-                                            Style="{StaticResource PickerStyle}">
+                                            >
 
                                             <custom:CustomHijriDatePicker.SelectionView>
                                                 <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
@@ -1465,8 +1464,6 @@
                                             MinimumHeightRequest="32"
                                             MinimumWidthRequest="32"
                                             VerticalOptions="Start" />
-                                        <!--<htmlLabel:HtmlLabel VerticalOptions="FillAndExpand" TextType="Html" HorizontalOptions="StartAndExpand" Text="{Binding Zterms}" Style="{StaticResource CheckboxUnselectedFontStyle}"/>-->
-                                        <!--<Label HeightRequest="350" TextType="Html" Text="{Binding Zterms}" HorizontalTextAlignment="End" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Style="{StaticResource CheckboxUnselectedFontStyle}" IsVisible="{Binding ShouldShowAR}"/>-->
                                         <Label
                                             HeightRequest="350"
                                             HorizontalOptions="FillAndExpand"
@@ -1475,7 +1472,6 @@
                                             Text="{Binding Zterms}"
                                             TextType="Html"
                                             VerticalOptions="FillAndExpand" />
-                                        <!--  IsVisible="{Binding ShouldShowEN}"  -->
 
                                     </StackLayout>
 

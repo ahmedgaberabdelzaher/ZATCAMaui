@@ -78,53 +78,41 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             if (viewModel.VATDeclarationData.data.StepNumber == "01" || viewModel.VATDeclarationData.data.StepNumber == "1" || viewModel.VATDeclarationData.data.StepNumber == "0" || viewModel.VATDeclarationData.data.StepNumber == "00")
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+                if (viewModel.IsFifteenPercentChange)
                 {
-                    if (viewModel.IsFifteenPercentChange)
-                    {
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.VATReturns;
-                    }
-                    else
-                    {
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
-                    }
-                    viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
-                    viewModel.ManageButtonsNameOnViewModel();
-                });
+                    viewModel.currentTab = VATReturnUpdatedUITabEnum.VATReturns;
+                }
+                else
+                {
+                    viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
+                }
+                viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
+                viewModel.ManageButtonsNameOnViewModel();
             }
             else if (viewModel.VATDeclarationData.data.StepNumber == "02" || viewModel.VATDeclarationData.data.StepNumber == "2")
             {
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    Instrunctionsclicked();
-                });
+                Instrunctionsclicked();
             }
             else if (viewModel.VATDeclarationData.data.StepNumber == "03" || viewModel.VATDeclarationData.data.StepNumber == "3")
             {
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    Instrunctionsclicked();
-                });
+                Instrunctionsclicked();
             }
             else if (viewModel.VATDeclarationData.data.StepNumber == "04" || viewModel.VATDeclarationData.data.StepNumber == "4")
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+                if (viewModel.VATDeclarationData.data.OpenliMsg == "There is no open liability to be paid against this declaration" || viewModel.VATDeclarationData.data.OpenliMsg == "لا يوجد التزامات حالية متاحة للدفع لهذا الاقرار")
                 {
-                    if (viewModel.VATDeclarationData.data.OpenliMsg == "There is no open liability to be paid against this declaration" || viewModel.VATDeclarationData.data.OpenliMsg == "لا يوجد التزامات حالية متاحة للدفع لهذا الاقرار")
-                    {
 
-                        viewModel.IsPayNowVisible = false;
-                    }
-                    else
-                    {
+                    viewModel.IsPayNowVisible = false;
+                }
+                else
+                {
 
-                        viewModel.IsPayNowVisible = true;
-                    }
+                    viewModel.IsPayNowVisible = true;
+                }
 
 
 
-                    VatTotalAmountclicked();
-                });
+                VatTotalAmountclicked();
             }
         }
 
@@ -150,8 +138,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
                 if (viewModel.IsDeclarationCheckedForInstruction)
                 {
-                    //viewModel.currentTab = VATReturnUpdatedUITabEnum.TaxpayerDetails;
-                    //ManageButtonsName();
                     viewModel.IsCheckedTaxPayerDetailsInfo = true;
                     if (viewModel.IsFifteenPercentChange)
                     {
@@ -385,19 +371,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             viewModel.currentTab = VATReturnUpdatedUITabEnum.TotalVat;
         }
 
-        public void Summaryclicked()
-        {
-            if (viewModel.IsDeclarationCheckedForInstruction)
-            {
-                //viewModel.currentTab = VATReturnUpdatedUITabEnum.TaxpayerDetails;
-
-            }
-            else
-            {
-
-            }
-        }
-
         public void ManageButtonsName()
         {
             if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Instrunction)
@@ -406,12 +379,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel.IsMainButtonVisible = true;
                 viewModel.ContinueText = AppResources.ZZZZContinue;
             }
-            //else if(viewModel.currentTab == VATReturnUpdatedUITabEnum.TaxpayerDetails)
-            //{
-            //    viewModel.isBtnVisible = false;
-            //    viewModel.IsMainButtonVisible = true;
-            //    viewModel.ContinueText = AppResources.ZZZZContinue; 
-            //}
             else if (viewModel.currentTab == VATReturnUpdatedUITabEnum.VATReturns)
             {
                 viewModel.isBtnVisible = false;
@@ -491,20 +458,14 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel.IsNewReturn = true;
                 ShowHideContent(viewModel.IsNewReturn);
                 SetNewVATRate();
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.MaxIndex = 6;
-                });
+                viewModel.MaxIndex = 6;
             }
             else
             {
                 viewModel.IsFifteenPercentChange = false;
                 viewModel.IsNewReturn = false;
                 ShowHideContent(viewModel.IsNewReturn);
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.MaxIndex = 5;
-                });
+                viewModel.MaxIndex = 5;
             }
 
         }
@@ -671,20 +632,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 {
                     if (arg != null)
                     {
-                        //  viewModel.IsNavigatedToBilled = true;
-
-                        MainThread.BeginInvokeOnMainThread(() =>
-                       {
-                           viewModel.ManageEnabledProperty(false);
-                           viewModel.IsGetSadadNumberEnabled = false;
-                           viewModel.IsMainButtonEnabled = false;
-                           viewModel.IsMainButtonVisible = false;
-                           viewModel.IsRefundButtonEnabled = false;
-                           viewModel.IsRefundButtonVisible = false;
-                           viewModel.isBtnVisible = false;
-                           viewModel.IsEnableSwitchToggledFor15PercentChange = false;
-                           viewModel.IsNavigatedToSubmitted = true;
-                       });
+                        viewModel.ManageEnabledProperty(false);
+                        viewModel.IsGetSadadNumberEnabled = false;
+                        viewModel.IsMainButtonEnabled = false;
+                        viewModel.IsMainButtonVisible = false;
+                        viewModel.IsRefundButtonEnabled = false;
+                        viewModel.IsRefundButtonVisible = false;
+                        viewModel.isBtnVisible = false;
+                        viewModel.IsEnableSwitchToggledFor15PercentChange = false;
+                        viewModel.IsNavigatedToSubmitted = true;
                     }
 
                 });
@@ -715,10 +671,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "RefundClicked", (sender, arg) =>
                {
-                   MainThread.BeginInvokeOnMainThread(() =>
-                   {
-                       viewModel.IsNewLoading = true;
-                   });
+                   viewModel.IsNewLoading = true;
                });
             }
             catch (Exception)
@@ -734,10 +687,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "RefundClickedForStop", (sender, arg) =>
                {
-                   MainThread.BeginInvokeOnMainThread(() =>
-                   {
-                       viewModel.IsNewLoading = false;
-                   });
+                   viewModel.IsNewLoading = false;
                });
             }
             catch (Exception)
@@ -810,7 +760,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async void getActionCommand()
+        public async Task getActionCommand()
         {
             try
             {
@@ -864,27 +814,21 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                     }
                                     else
                                     {
-                                        MainThread.BeginInvokeOnMainThread(async () =>
-                                       {
-                                           List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                           HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                           NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                           headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                           headerAmountInfo.IsLinkAvailable = false;
-                                           headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
+                                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                        headerAmountInfo.IsLinkAvailable = false;
+                                        headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
 
-                                           headerWithInfos.Add(headerAmountInfo);
+                                        headerWithInfos.Add(headerAmountInfo);
 
 
-                                           newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                           newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                           newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                           await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-
-                                           // await viewModel._dialogService.ShowMessage(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields, AppResources.Information);
-                                       });
+                                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                                     }
                                     viewModel.IsVATReturnFieldCheckForSaveAsDraft = false;
                                     break;
@@ -935,27 +879,21 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                     }
                                     else
                                     {
-                                        MainThread.BeginInvokeOnMainThread(async () =>
-                                       {
+                                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                        headerAmountInfo.IsLinkAvailable = false;
+                                        headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
 
-                                           List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                           HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                           NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                           headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                                           headerAmountInfo.IsLinkAvailable = false;
-                                           headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
-
-                                           headerWithInfos.Add(headerAmountInfo);
+                                        headerWithInfos.Add(headerAmountInfo);
 
 
-                                           newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                           newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                           newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                           await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-                                           //await viewModel._dialogService.ShowMessage(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields, AppResources.Information);
-                                       });
+                                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                                     }
                                     viewModel.IsVATReturnFieldCheckForSaveAsDraft = false;
                                     break;
@@ -1074,18 +1012,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 }
                 catch (Exception)
                 {
-
-
-                    //scrollView.ScrollToAsync(0, 500, true);
-
-
                 }
 
 
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsNewLoading = false;
-                });
+                viewModel.IsNewLoading = false;
             }
             catch (Exception)
             {
@@ -1095,7 +1025,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             try
             {
@@ -1107,7 +1037,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 {
                     viewModel.IsSwitchVisible = false;
                 }
-                getActionCommand();
+                await getActionCommand();
                 getYesCommand();
                 getNoCommand();
                 getRefundClickedCommand();
@@ -1126,17 +1056,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
 
-                    viewModel.MadaPaymentSelected();
+                    await viewModel.MadaPaymentSelected();
 
                 });
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
-                    viewModel.ApplePaySelected();
+                    await viewModel.ApplePaySelected();
                 });
                 MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
                 {
 
-                    viewModel.gotoSuccessPage();
+                    await viewModel.gotoSuccessPage();
                 });
                 MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
                 {
@@ -1282,7 +1212,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 Note objNote = new Note();
                 int count = viewModel.VATDeclarationData.data.NOTESSet.Count;
                 string Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
-       
+
                 objNote.Notenoz = (count + 1).ToString();
                 objNote.DataVersionz = "00000";
                 objNote.Refnamez = String.Empty;
@@ -1313,56 +1243,42 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async void IntilizeAsync()
+        public async Task IntilizeAsync()
         {
-            MainThread.BeginInvokeOnMainThread(() =>
+            viewModel.IsNewLoading = true;
+            try
             {
-                viewModel.IsNewLoading = true;
-            });
+                await viewModel.pageLoad();
 
-            await Task.Run(async () =>
-            {
-                try
+                NavigationtoStep();
+                viewModel.ListOfActionButtonsApplicable = new List<string>();
+                await viewModel.SetButtons(viewModel.VATDeclarationData);
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
                 {
-                    await viewModel.pageLoad();
+                    viewModel.ManageEnabledProperty(true);
 
-                    await Task.Run(() =>
-                    {
-                        NavigationtoStep();
-                    });
-                    viewModel.ListOfActionButtonsApplicable = new List<string>();
-                    await viewModel.SetButtons(viewModel.VATDeclarationData);
-                    if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
-                    {
-                        viewModel.ManageEnabledProperty(true);
-
-                        viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                        viewModel.IsDeclarationCheckedForSummary = true;
-                        viewModel.IsDeclarationCheckedForInstruction = true;
-                        //viewModel.ButtonName = AppResources.ZVatDownloadForm;
-                        viewModel.IsMainButtonEnabled = false;
-                        viewModel.IsMainButtonVisible = false;
-                        viewModel.ManageButtonsNameOnViewModel();
-                    }
-                    if (App.CheckTINStatusPageView != "0045")
-                    {
-                        await onPageLoadCalculation();
-                    }
-                    SetEnabledProperty();
-                    //viewModel.IsMainButtonVisible = true;
+                    viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                    viewModel.IsDeclarationCheckedForSummary = true;
+                    viewModel.IsDeclarationCheckedForInstruction = true;
+                    //viewModel.ButtonName = AppResources.ZVatDownloadForm;
+                    viewModel.IsMainButtonEnabled = false;
+                    viewModel.IsMainButtonVisible = false;
+                    viewModel.ManageButtonsNameOnViewModel();
                 }
-                catch (Exception)
+                if (App.CheckTINStatusPageView != "0045")
                 {
-
-
-
+                    await onPageLoadCalculation();
                 }
-            });
-
-            MainThread.BeginInvokeOnMainThread(() =>
+                SetEnabledProperty();
+            }
+            catch (Exception)
             {
-                viewModel.IsNewLoading = false;
-            });
+
+
+
+            }
+
+            viewModel.IsNewLoading = false;
         }
         private void OnClickedFAQ(object sender, EventArgs e)
         {
@@ -1381,26 +1297,23 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         }
         public async Task onPageLoadCalculation()
         {
-            await Task.Run(() =>
+            viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
+            viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt, "0.00");
+            viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj, "0.00");
+            viewModel.TotalsalesVat = viewModel.ResponseVATDeclarationD.StdsalesVat;
+            viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
+            viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt, "0.00");
+            viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj, "0.00");
+            if (viewModel.ResponseVATDeclarationD.TpregFg == "X")
             {
-                viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
-                viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt, "0.00");
-                viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj, "0.00");
-                viewModel.TotalsalesVat = viewModel.ResponseVATDeclarationD.StdsalesVat;
-                viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
-                viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt, "0.00");
-                viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj, "0.00");
-                if (viewModel.ResponseVATDeclarationD.TpregFg == "X")
-                {
-                    viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
-                }
-                else
-                {
-                    viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
-                }
-                viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
-                viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
-            });
+                viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
+            }
+            else
+            {
+                viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
+            }
+            viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
+            viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
         }
 
 
@@ -1466,8 +1379,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                 MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-
-                //  MopupService.Instance.PushAsync(new AddPopPageView(popUp));
             }
             catch (Exception)
             {
@@ -1825,20 +1736,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                         {
                             IsAllEntered = false;
                         }
-                        //if (string.IsNullOrEmpty(EntryNetdueVat.Text))
-                        //{
-                        //    IsAllEntered = false;
-                        //}
                         if (IsAllEntered == false)
                         {
                             viewModel.IsMainButtonEnabled = false;
-                            // BtnNextStep.IsEnabled = false;
                         }
                         else
                         {
-                            // viewModel.IsDeclarationCheckedForInstruction = false;
                             viewModel.IsMainButtonEnabled = true;
-                            //  BtnNextStep.IsEnabled = true;
                         }
                     }
                 }
@@ -1958,13 +1862,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                         if (IsAllEntered == false)
                         {
                             viewModel.IsMainButtonEnabled = false;
-                            // BtnNextStep.IsEnabled = false;
                         }
                         else
                         {
-                            // viewModel.IsDeclarationCheckedForInstruction = false;
                             viewModel.IsMainButtonEnabled = true;
-                            //  BtnNextStep.IsEnabled = true;
                         }
                     }
                 }
@@ -2025,10 +1926,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 {
                     EntryVatAmountFrame5.HasError = false;
                 }
-
-
-
-
 
                 if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) || EntryVatAdjustmentWithSAR.TextColor == Colors.Red)
                 {
@@ -2148,13 +2045,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 if (IsAllEntered == false)
                 {
                     viewModel.IsMainButtonEnabled = false;
-                    // BtnNextStep.IsEnabled = false;
                 }
                 else
                 {
-                    // viewModel.IsDeclarationCheckedForInstruction = false;
                     viewModel.IsMainButtonEnabled = true;
-                    //  BtnNextStep.IsEnabled = true;
                 }
             }
             catch (Exception)
@@ -8932,7 +8826,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        public async void OnConfirmAndCarryForwardClicked()
+        public async Task OnConfirmAndCarryForwardClicked()
         {
             if (viewModel.IsCarriedForwandReviewMessage == false)
             {
@@ -8973,9 +8867,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                     await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-                    //MopupService.Instance.PushAsync(new AddPopPageView(Pop));
-                    //SelectedIndex = 2;
-                    //PageSelectedItem = VatTabbledPageList[2];
                 }
                 else
                 {
@@ -8993,7 +8884,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        private void OnContinueButtonClicked(object sender, EventArgs e)
+        private async void OnContinueButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -9023,10 +8914,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 VatTotalAmountclicked();
                                 break;
 
-                            case VATReturnUpdatedUITabEnum.Summery:
-                                Summaryclicked();
-                                //                        currentTab = VATReturnUpdatedUITabEnum.Summery;
-                                break;
                         }
                     }
                     else
@@ -9036,11 +8923,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             case VATReturnUpdatedUITabEnum.Instrunction:
                                 Instrunctionsclicked();
                                 break;
-
-                            //case VATReturnUpdatedUITabEnum.TaxpayerDetails:
-                            //    TaxpayerDetailsclicked();
-                            //    break;
-
                             case VATReturnUpdatedUITabEnum.Sales:
                                 VatSalesclicked();
                                 break;
@@ -9053,10 +8935,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 VatTotalAmountclicked();
                                 break;
 
-                            case VATReturnUpdatedUITabEnum.Summery:
-                                Summaryclicked();
-                                //                        currentTab = VATReturnUpdatedUITabEnum.Summery;
-                                break;
                         }
                     }
                 }
@@ -9091,14 +8969,14 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                     }
                                     else
                                     {
-                                        OnConfirmAndCarryForwardClicked();
+                                        await OnConfirmAndCarryForwardClicked();
 
                                     }
 
                                 }
                                 else
                                 {
-                                    OnConfirmAndCarryForwardClicked();
+                                    await OnConfirmAndCarryForwardClicked();
                                 }
                             }
                         }
@@ -9119,7 +8997,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                         newDesignPopUp.HeaderWithInfos = headerWithInfos;
                         newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                     }
                 }
 
@@ -9248,8 +9126,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
 
         }
-        private async void submitTheApplication()
-        {   
+        private async Task submitTheApplication()
+        {
             viewModel.IsNewLoading = true;
             await viewModel.SubmitClicked();
             viewModel.IsNewLoading = false;

@@ -142,10 +142,11 @@
                             <Grid Grid.Row="1" VerticalOptions="FillAndExpand">
 
 
-                                <!--  Review Reason  -->
+                                <!--  Review Reason   -->
 
                                 <StackLayout
                                     Margin="20,10,20,0"
+                                    Spacing="10"
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding ReviewReasonVisible}"
@@ -297,32 +298,25 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}"
                                                 Text="{x:Static ResourceManager:AppResources.VRRequestDate}" />
 
-                                            <Border
-                                                Grid.Row="1"
-                                                Margin="0,5,0,0"
-                                                Padding="10,0,10,0"
-                                                HeightRequest="48"
-                                                HorizontalOptions="FillAndExpand"
-                                                Stroke="Gray"
-                                                StrokeShape="RoundRectangle 12,12,12,12">
-                                                <StackLayout
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Orientation="Horizontal"
-                                                    VerticalOptions="CenterAndExpand">
-                                                    <Label
-                                                        HorizontalOptions="FillAndExpand"
-                                                        IsEnabled="False"
-                                                        Style="{StaticResource BodyLabelBlack}"
+                                            <custom:CustomSfTextInputView
+                                                Grid.Row="1">
+                                                <custom:CustomSfTextInputView.TextInputView>
+                                                    <custom:GAZTBorderlessEntry
+                                                        InputTransparent="True"
+                                                        IsReadOnly="True"
+                                                        Keyboard="Text"
+                                                        Placeholder="{x:Static ResourceManager:AppResources.VRRequestDate}"
+                                                        Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding FormattedRequestDate}"
-                                                        VerticalOptions="CenterAndExpand" />
+                                                        TextColor="#58595B"/>
 
-                                                    <Image
-                                                        Margin="0,0,5,0"
-                                                        HeightRequest="20"
-                                                        Source="calendar.png"
-                                                        WidthRequest="20" />
-                                                </StackLayout>
-                                            </Border>
+                                                </custom:CustomSfTextInputView.TextInputView>
+
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Image Aspect="AspectFit" Source="calendar.png"
+                                          WidthRequest="25" HeightRequest="25"/>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </custom:CustomSfTextInputView>
                                         </StackLayout>
                                     </Grid>
 
@@ -426,8 +420,6 @@
 
                                     </StackLayout>
 
-                                    <!--<Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand">-->
-
                                     <StackLayout
                                         Margin="0,5,0,10"
                                         BindableLayout.ItemsSource="{Binding AttachmentsListViewData}"
@@ -497,7 +489,6 @@
                                             </DataTemplate>
                                         </BindableLayout.ItemTemplate>
                                     </StackLayout>
-                                    <!--</Grid>-->
 
                                     <Grid
                                         Margin="0,10,0,10"
@@ -574,7 +565,8 @@
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding ReviewDetailsVisible}"
                                     VerticalOptions="FillAndExpand">
-                                    <Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand">
+                                    <Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand"
+                                          RowSpacing="10">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
@@ -999,7 +991,9 @@
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding LateFilingObjectionsVisible}"
                                     VerticalOptions="FillAndExpand">
-                                    <Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand">
+                                    <Grid Margin="0,5,0,10"
+                                          RowSpacing="10"
+                                          HorizontalOptions="FillAndExpand">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
@@ -1236,7 +1230,9 @@
                                     IsVisible="{Binding SecurityPaymentVisible}"
                                     VerticalOptions="FillAndExpand">
 
-                                    <Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand">
+                                    <Grid Margin="0,5,0,10"
+                                          RowSpacing="10"
+                                          HorizontalOptions="FillAndExpand">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
@@ -1706,6 +1702,7 @@
                                     <Grid
                                         Grid.Row="0"
                                         Margin="0,5,0,10"
+                                        RowSpacing="10"
                                         HorizontalOptions="FillAndExpand">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
@@ -2048,7 +2045,8 @@
 
                                     <StackLayout VerticalOptions="FillAndExpand">
 
-                                        <Grid Margin="0,5,0,10">
+                                        <Grid Margin="0,5,0,10"
+                                              RowSpacing="10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                                 <RowDefinition Height="auto" />
@@ -3074,6 +3072,9 @@
 
             <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
 
         </Grid>
 

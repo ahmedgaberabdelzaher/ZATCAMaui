@@ -318,6 +318,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     try
                     {
                         IsLoading = true;
+                        await PopulateReturnTypeList();
+                        SelectedChipFilterItem = null;
                         MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
                         {
                             PickerModel = arg;
@@ -406,7 +408,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             get
             {
-                return new Command( _ =>
+                return new Command(_ =>
                 {
                     try
                     {
@@ -421,13 +423,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else if (SelectedChipFilterItem.Text == AppResources.OverDue)
                         {
                             SelectedChipTextColor = (Color)App.Current.Resources["Error"];
-                           SelectedChipBackground = (Color)App.Current.Resources["ErrorBg"];
+                            SelectedChipBackground = (Color)App.Current.Resources["ErrorBg"];
 
                         }
                         else if (SelectedChipFilterItem.Text == AppResources.Submitted)
                         {
                             SelectedChipTextColor = (Color)App.Current.Resources["Success"];
-                           SelectedChipBackground = (Color)App.Current.Resources["SuccessBg"];
+                            SelectedChipBackground = (Color)App.Current.Resources["SuccessBg"];
 
                         }
                     }
@@ -651,7 +653,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             App.VATDeclrationFbguid = SelectedReturnsVAT.formBundleGUID;
             VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.formBundleGUID, SelectedReturnsVAT.formBundleNumber, App.TP.TIN, SelectedReturnsVAT.periodKey);
             IsLoading = false;
-            PopToRootPage();
+            await PopToRootPage();
             if (_vATDeclaration != null && _vATDeclaration.data != null)
             {
                 _vATDeclaration.data.Fbguid = SelectedICRGUID;
@@ -691,25 +693,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             return isValid;
         }
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(() =>
-                 {
-                     var _navigation = Application.Current.MainPage.Navigation;
-                     foreach (var item in _navigation.NavigationStack)
-                     {
-                         if (item.GetType().Name == App.SFLoginPageView)
-                         {
-                             _navigation.RemovePage(item);
-                             break;
-                         }
-                     }
+                var _navigation = Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
+                {
+                    if (item.GetType().Name == App.SFLoginPageView)
+                    {
+                        _navigation.RemovePage(item);
+                        break;
+                    }
+                }
 
-                     _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                     _navigation.NavigationStack.ToList().Clear();
-                 });
+                await _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                _navigation.NavigationStack.ToList().Clear();
             }
         }
         public async Task OnPageLoad()
@@ -758,7 +757,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
                         {
-                            PopToRootPage();
+                            await PopToRootPage();
                         }
                     }
                 }
@@ -766,12 +765,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (GAZTSessionExpiredException)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZYourSessionhasexpiredPleaseLoginagain));
-                PopToRootPage();
+                await PopToRootPage();
             }
             catch (Exception)
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                PopToRootPage();
+                await PopToRootPage();
             }
 
             IsLoading = false;
@@ -894,7 +893,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
 
 
@@ -933,7 +932,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
             }
-            catch (Exception )
+            catch (Exception)
             {
 
 

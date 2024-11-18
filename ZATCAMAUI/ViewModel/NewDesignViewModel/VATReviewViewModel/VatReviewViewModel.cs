@@ -3917,9 +3917,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     EnableReportDetailsView();
                     EnableReviewDetailsConButton();
-
-
+                    return;
                 }
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
 
             }
             catch (InternetException ex)
@@ -3943,9 +3944,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     {
                         EnableDeclarationView();
                     }
-
+                    return;
                 }
-
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
             }
             catch (InternetException ex)
             {
@@ -3973,9 +3975,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     {
                         EnableDeclarationView();
                     }
-
+                    return;
                 }
-
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
             }
             catch (InternetException ex)
             {
@@ -3998,9 +4001,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     {
                         EnableDeclarationView();
                     }
-
+                    return;
                 }
-
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
             }
             catch (InternetException ex)
             {
@@ -4018,8 +4022,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 if (IsSecurityPaymentEnabled)
                 {
                     EnableDeclarationView();
+                    return;
                 }
-
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
             }
             catch (InternetException ex)
             {

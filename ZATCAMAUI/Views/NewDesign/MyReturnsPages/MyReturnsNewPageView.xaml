@@ -256,7 +256,7 @@
                                                             <DataTrigger
                                                                 Binding="{Binding statusDescription}"
                                                                 TargetType="buttons:SfButton"
-                                                                Value="submitted">
+                                                                Value="Submitted">
                                                                 <Setter Property="TextColor" Value="{StaticResource Success}" />
                                                                 <Setter Property="FontSize" Value="12" />
                                                                 <Setter Property="Background" Value="{StaticResource BackgroundGray}" />
@@ -264,7 +264,7 @@
                                                             <DataTrigger
                                                                 Binding="{Binding statusDescription}"
                                                                 TargetType="buttons:SfButton"
-                                                                Value="unsubmitted">
+                                                                Value="Unsubmitted">
                                                                 <Setter Property="TextColor" Value="{StaticResource Error}" />
                                                                 <Setter Property="FontSize" Value="12" />
                                                                 <Setter Property="Background" Value="{StaticResource ErrorBg}" />
@@ -272,7 +272,7 @@
                                                             <DataTrigger
                                                                 Binding="{Binding statusDescription}"
                                                                 TargetType="buttons:SfButton"
-                                                                Value="overdue">
+                                                                Value="Overdue">
                                                                 <Setter Property="TextColor" Value="{StaticResource Error}" />
                                                                 <Setter Property="FontSize" Value="12" />
                                                                 <Setter Property="Background" Value="{StaticResource ChipPaidColor}" />

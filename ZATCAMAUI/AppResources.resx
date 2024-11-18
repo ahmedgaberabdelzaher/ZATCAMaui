@@ -6007,8 +6007,8 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
         <value>Instructions &amp; Conditions</value>
     </data>
     <data name="CRInstructions" xml:space="preserve">
-        <value>1. Must attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and if it’s in English, an Arabic version must be submitted and approved by certified translation office. 
-2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
+        <value>1. Must attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and if it’s in English, an Arabic version must be submitted and approved by certified translation office.
+            2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
     </data>
     <data name="CRInstructionsDesc" xml:space="preserve">
         <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>

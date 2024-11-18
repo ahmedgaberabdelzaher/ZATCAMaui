@@ -72,12 +72,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                var selectedItem = DpEStartDate.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
-                //viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
-                //          string DOB = year + month + day;
+                string month = DpEStartDate.SelectedDate.Month.ToString();
+                string day = DpEStartDate.SelectedDate.Day.ToString();
+                string year = DpEStartDate.SelectedDate.Year.ToString();
 
                 await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
             }
@@ -92,13 +89,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                var selectedItem = DpEStartDate.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = DpEStartDate.SelectedDate.Month.ToString();
+                string day = DpEStartDate.SelectedDate.Day.ToString();
+                string year = DpEStartDate.SelectedDate.Year.ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
-                //          string DOB = year + month + day;
-
             }
             catch (Exception)
             {
@@ -599,10 +593,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
                     }
                     viewModel.SliderLable1EligibilityText = eligibilityText;
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                    viewModel.IsLoading = false;
                 }
             }
         }
@@ -662,10 +653,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
                         }
                         viewModel.SliderLable1EligibilityText = eligibilityText;
-                        await Task.Run(() =>
-                        {
-                            viewModel.IsLoading = false;
-                        });
+                        viewModel.IsLoading = false;
                     }
                 }
             }
@@ -801,10 +789,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
                         viewModel.SliderLable1EligibilityText = eligibilityText;
-                        await Task.Run(() =>
-                        {
-                            viewModel.IsLoading = false;
-                        });
+                        viewModel.IsLoading = false;
                     }
                 }
                 catch (Exception)
@@ -2066,10 +2051,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = SignUpDOB.SelectedDate.Month.ToString();
+                string day = SignUpDOB.SelectedDate.Day.ToString();
+                string year = SignUpDOB.SelectedDate.Year.ToString();
                 viewModel.DOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
 
@@ -2350,10 +2334,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                var selectedItem = ContactDOBPicker.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = ContactDOBPicker.SelectedDate.Month.ToString();
+                string day = ContactDOBPicker.SelectedDate.Day.ToString();
+                string year = ContactDOBPicker.SelectedDate.Year.ToString();
                 viewModel.ContactDOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
                 await ValidateIDNumberContact();
@@ -2442,13 +2425,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                             {
-                                 viewModel.IsLoading = false;
+                            viewModel.IsLoading = false;
 
-                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                 viewModel._navigationService.GoBack();
-                             });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            viewModel._navigationService.GoBack();
                         }
                         catch (InternetException ex)
                         {
@@ -2461,7 +2441,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
 
 
@@ -2541,12 +2521,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                             {
-                                 viewModel.IsLoading = false;
-                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                 viewModel._navigationService.GoBack();
-                             });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            viewModel._navigationService.GoBack();
                         }
                         catch (InternetException ex)
                         {
@@ -2576,7 +2553,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                viewModel.IsLoading = false;
+                viewModel.IsLoading = true;
 
                 string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
                 VATSignUp vATSignUpData = new VATSignUp();
@@ -2648,43 +2625,29 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                     }
 
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        viewModel.IsLoading = false;
+                    viewModel.IsLoading = false;
 
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                        viewModel._navigationService.GoBack();
-                    });
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    viewModel._navigationService.GoBack();
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        await Task.Run(() =>
-                        {
-                            viewModel.IsLoading = false;
-                        });
-                    });
+                    viewModel.IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
                 {
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                    });
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
 
 
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                    });
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 }
             }
         }
@@ -2699,10 +2662,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = true;
                 double value = ((Slider)sender).Value;
                 viewModel.SliderCurrentValue1 = value;
                 Question1_Error.IsVisible = false;
@@ -2763,7 +2723,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 viewModel.IsLoading = false;
 
@@ -2894,10 +2854,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     FrmNewAttachment.HasError = false;
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
 
@@ -2954,10 +2911,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     FrmNewAttachment.HasError = false;
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
 
@@ -3013,10 +2967,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     FrmNewAttachment.HasError = false;
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
 
@@ -3076,10 +3027,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     FrmNewAttachment.HasError = false;
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
 
@@ -3215,10 +3163,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = SignUpDOB.SelectedDate.Month.ToString();
+                string day = SignUpDOB.SelectedDate.Day.ToString();
+                string year = SignUpDOB.SelectedDate.Year.ToString();
                 viewModel.DOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
                 //viewModel.DOBPrev = viewModel.DOB;
@@ -3226,7 +3173,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 await ValidateIDNumber();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
 
@@ -3237,10 +3184,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                var selectedItem = ContactDOBPicker.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = ContactDOBPicker.SelectedDate.Month.ToString();
+                string day = ContactDOBPicker.SelectedDate.Day.ToString();
+                string year = ContactDOBPicker.SelectedDate.Year.ToString();
                 viewModel.ContactDOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
 
