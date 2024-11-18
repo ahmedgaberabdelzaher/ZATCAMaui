@@ -356,7 +356,8 @@
                                                             Grid.Column="0"
                                                             Margin="0,0,0,20">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.InvoiceStatus}" />
-                                                            <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Status}" />
+                                                            <Label Style="{StaticResource ValueLabelBlack}"
+                                                                   Text="{Binding PymtStatus}" />
                                                         </StackLayout>
 
 

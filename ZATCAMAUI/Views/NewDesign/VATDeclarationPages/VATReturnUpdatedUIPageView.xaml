@@ -3481,6 +3481,7 @@
                                                             Text="{x:Static ResourceManager:AppResources.ZVatTaxpayersName}" />
                                                         <Label
                                                             HorizontalOptions="EndAndExpand"
+                                                            HorizontalTextAlignment="End"
                                                             Style="{StaticResource ValueLabelBlack}"
                                                             Text="{Binding Tpnm}" />
                                                     </StackLayout>

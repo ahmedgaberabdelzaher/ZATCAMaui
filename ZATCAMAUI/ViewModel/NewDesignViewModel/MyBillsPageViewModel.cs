@@ -3,8 +3,6 @@
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Windows.Input;
-using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
@@ -457,7 +455,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #region Constructor
         public GAZTNewDesignMyBillsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-          
+
 
         }
         #endregion
@@ -472,7 +470,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 MultiplePayableBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => (!String.IsNullOrEmpty(BModel.VTRE2) && x.VTRE2.Equals(BModel.VTRE2) && ((BModel.Status == "Partially Paid") || (BModel.Status == "Open")))).ToList());
 
-               
+
             }
 
             if (MultiplePayableBills != null && MultiplePayableBills.Count > 1)
@@ -484,7 +482,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             else
             {
-              await  ShowPaymentOptions();
+                await ShowPaymentOptions();
             }
 
 
@@ -531,8 +529,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     string lang = UtilityManager.GetLanguageParameter();
                     MyBills = await WebServiceManager.GetUserBills(App.TP.TIN, lang);
-                    //  MyBills = await WebServiceManager.GetUserBills(App.TP.TIN, lang);
-                  await  PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (MyBills != null)
                     {
@@ -616,22 +613,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 catch (Exception e)
                 {
-
+                    IsLoading = false;
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
                     _navigationService.GoBack();
-                    IsLoading = false;
+                   
                 }
             }
             catch (InternetException ex)
             {
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    _navigationService.GoBack();
-                });
                 IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                _navigationService.GoBack();
+              
             }
             IsLoading = false;
         }
@@ -645,23 +638,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         }
 
-        public async void showPickerDialog()
+        public async Task showPickerDialog()
         {
             try
             {
                 if (PickerModel != null)
                     await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -682,18 +669,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     foreach (MyBillsFilterDropdown dropdown in TaxTypeForFilter)
                     {
-                        try
-                        {
-                            list.Add(dropdown.revenueTypeDescription.ToUpper());
-                        }
-                        catch (Exception)
-                        {
-                        }
-
-
+                        list.Add(dropdown.revenueTypeDescription.ToUpper());
                     }
-
-
                     GenericPickerModel genericPickerModel = new GenericPickerModel();
                     genericPickerModel.PickerData = list;
                     genericPickerModel.PickerTitle = "";
@@ -752,7 +729,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             break;
                         }
                     }
-                    // _navigationService.NavigateTo(App.SFLoginPageView);
                     await _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                     _navigation.NavigationStack.ToList().Clear();
 
@@ -956,22 +932,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         if (paymentType == "Mada Payment")
                         {
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                            IsLoading = true;
+                            //CR7420
+                            CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
+                            IsLoading = false;
+                            if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
                             {
-
-                                IsLoading = true;
-                                //CR7420
-                                CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
-                                IsLoading = false;
-                                if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
-                                {
-                                    App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
-                                    await _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
-                                }
-
-
-
-                            });
+                                App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                                await _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                            }
                         }
 
                     }

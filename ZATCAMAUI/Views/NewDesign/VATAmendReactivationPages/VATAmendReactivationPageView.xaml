@@ -627,13 +627,11 @@
 
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="DateEntry"
-                                                                    Focused="DateEntry_Focused"
                                                                     IsEnabled="False"
                                                                     Placeholder="{x:Static ResourceManager:AppResources.ddmmyyyyformat}"
                                                                     Style="{StaticResource DefaultEntry}"
                                                                     Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
-                                                                    TextChanged="DateEntry_TextChanged_1"
-                                                                    Unfocused="DateEntry_Unfocused">
+                                                                    TextChanged="DateEntry_TextChanged_1">
                                                                     <custom:GAZTBorderlessEntry.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="VATEligibleDateClicked" />
                                                                     </custom:GAZTBorderlessEntry.GestureRecognizers>
@@ -664,8 +662,7 @@
                                                             ItemHeight="45"
                                                             Mode="Dialog"
                                                             OkButtonClicked="DpEStartDate_OkButtonClicked"
-                                                            SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
-                                                            SelectionChanged="DpEStartDate_SelectionChanged">
+                                                            SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}">
 
                                                             <custom:CustomDatePicker.ColumnHeaderView>
                                                                 <syncfusion:PickerColumnHeaderView Height="46" />
@@ -685,7 +682,7 @@
                                                                 <syncfusion:PickerHeaderView
                                                                     Height="46"
                                                                     Background="{StaticResource PrimaryColor}"
-                                                                    Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
+                                                                    Text="{x:Static ResourceManager:AppResources.VATREligibleStartDate}">
 
                                                                     <syncfusion:PickerHeaderView.TextStyle>
                                                                         <syncfusion:PickerTextStyle TextColor="White" />
@@ -732,13 +729,11 @@
 
                                                                     <custom:GAZTBorderlessEntry
                                                                         x:Name="NewDateEntry"
-                                                                        Focused="DateEntry_Focused"
                                                                         IsEnabled="False"
                                                                         Placeholder="DD/MM/YYYY"
                                                                         Style="{StaticResource DefaultEntry}"
                                                                         Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}"
-                                                                        TextChanged="DateEntry_TextChanged_1"
-                                                                        Unfocused="DateEntry_Unfocused" />
+                                                                        TextChanged="DateEntry_TextChanged_1"/>
                                                                 </custom:CustomSfTextInputView.TextInputView>
 
 
@@ -795,7 +790,7 @@
                                                                     <syncfusion:PickerHeaderView
                                                                         Height="46"
                                                                         Background="{StaticResource PrimaryColor}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
+                                                                        Text="{x:Static ResourceManager:AppResources.VATRNewVATEligibleStartDate}">
 
                                                                         <syncfusion:PickerHeaderView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="White" />

@@ -16,8 +16,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
             viewModel = App.Locator.GAZTNewDesignMyReturnsNewPageView;
             this.BindingContext = viewModel;
             viewModel.Index = Index;
-            viewModel.PopulateReturnTypeList();
-            viewModel.SelectedChipFilterItem = null;
+          
         }
     }
 }

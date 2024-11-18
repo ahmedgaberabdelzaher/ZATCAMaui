@@ -712,7 +712,7 @@
                                                             <syncfusion:PickerHeaderView
                                                                 Height="46"
                                                                 Background="{StaticResource NeutralBlack}"
-                                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
+                                                                Text="{x:Static ResourceManager:AppResources.VATREligibleStartDate}">
                                                                 <syncfusion:PickerHeaderView.TextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="White" />
                                                                 </syncfusion:PickerHeaderView.TextStyle>
