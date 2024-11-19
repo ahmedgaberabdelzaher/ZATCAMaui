@@ -68,6 +68,7 @@
                 <Grid RowDefinitions="*">
 
                     <ScrollView HorizontalOptions="FillAndExpand"
+                                VerticalScrollBarVisibility="Never"
                                 VerticalOptions="FillAndExpand">
 
                         <StackLayout

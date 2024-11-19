@@ -44,7 +44,7 @@
                     Text="{x:Static ResourceManager:AppResources.VFCSuccessDesc}"
                     TextColor="White" />
             </StackLayout>
-            <ScrollView>
+            <ScrollView VerticalScrollBarVisibility="Never">
                 <Border
                     Padding="20"
                     BackgroundColor="White"

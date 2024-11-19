@@ -138,40 +138,40 @@
                                         Padding="10"
                                         BindingContext="{Binding ZakatReturnDetail}"
                                         Spacing="10">
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FiscalYear}" />
-                                            <Label StyleId="ValueLabel" Text="{Binding Persl}" />
+                                        <StackLayout Orientation="Horizontal"
+                                                     Spacing="10">
+                                            <Label Style="{StaticResource ValueLabelGrey}"
+                                                   Text="{x:Static ResourceManager:AppResources.FiscalYear}" />
+                                            <Label StyleId="ValueLabel" Text="{Binding Persl}"
+                                                   HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal"
+                                                     Spacing="10">
                                             <Label
-                                                HorizontalOptions="End"
-                                                HorizontalTextAlignment="End"
                                                 Style="{StaticResource ValueLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.FinancialPeriodFrom}" />
                                             <StackLayout
-                                                HorizontalOptions="FillAndExpand"
-                                                Spacing="0"
+                                                Spacing="10"
                                                 StyleId="ValueLabel"
-                                                WidthRequest="160">
+                                                HorizontalOptions="EndAndExpand"
+                                                Orientation="Horizontal">
                                                 <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FromDate}" />
+                                                <Label Text="--"/>
                                                 <Label
-                                                    Margin="5"
                                                     StyleId="ValueLabel"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ToDate}" />
 
                                             </StackLayout>
                                         </StackLayout>
                                         <StackLayout
-                                            HeightRequest="60"
+                                            Spacing="10"
                                             HorizontalOptions="FillAndExpand"
                                             Orientation="Horizontal">
                                             <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZReturnReferenceNumber}" />
                                             <Label
-                                                HorizontalOptions="EndAndExpand"
-                                                HorizontalTextAlignment="End"
                                                 StyleId="ValueLabel"
                                                 Text="{Binding Fbnum}"
-                                                WidthRequest="120" />
+                                                HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
@@ -372,7 +372,7 @@
                                         <Grid
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
 
                                             <StackLayout
                                                 Grid.Row="0"
@@ -511,7 +511,6 @@
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <Label
-                                                    Margin="10,-10,0,0"
                                                     HorizontalOptions="EndAndExpand"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.isLabelVisible}"
                                                     Style="{StaticResource SectionTitleBlackTopNegative10}"
@@ -624,7 +623,6 @@
                                                 Grid.Row="6"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
-                                                Margin="-10,5,-10,15"
                                                 IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.isLabelVisible}"
                                                 Style="{StaticResource lineSeperator}" />
 
@@ -633,7 +631,7 @@
                                         <Grid
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -902,7 +900,7 @@
                                         <Grid
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -1173,7 +1171,7 @@
                                         <Grid
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -1423,7 +1421,7 @@
                                         <Grid
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -1683,7 +1681,7 @@
                                         <Grid
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -1940,7 +1938,7 @@
                                         <Grid
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -2206,7 +2204,7 @@
                                             ColumnDefinitions="*,*"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsRealEstateViewVisible}"
                                             RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -2432,7 +2430,7 @@
                                         <Grid
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -2607,7 +2605,9 @@
                                         BindingContext="{Binding ZakatReturnDetail}"
                                         Orientation="Horizontal"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
-                                        <Grid ColumnDefinitions="45*,auto,12*" RowDefinitions="30,*">
+                                        <Grid ColumnDefinitions="45*,auto,12*"
+                                              ColumnSpacing="5"
+                                              RowDefinitions="30,*">
                                             <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -2637,7 +2637,8 @@
 
                                     </StackLayout>
 
-                                    <Grid ColumnDefinitions="auto,*" RowDefinitions="auto">
+                                    <Grid ColumnDefinitions="auto,*"
+                                          RowDefinitions="auto">
 
                                         <custom:CheckboxCustom
                                             x:Name="checkBox"

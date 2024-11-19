@@ -57,6 +57,7 @@
         <!--#region Body-->
         <ScrollView
             Grid.Row="1"
+            VerticalScrollBarVisibility="Never"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
             <StackLayout

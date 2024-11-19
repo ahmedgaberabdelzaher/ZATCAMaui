@@ -182,6 +182,7 @@
                         HorizontalOptions="FillAndExpand"
                         ItemsSource="{Binding VATRefundsSet}"
                         SelectionBackground="Transparent"
+                        ScrollBarVisibility="Never"
                         SelectionChanged="vatRefundDetailsListView_SelectionChanged"
                         VerticalOptions="FillAndExpand">
                         <listView:SfListView.ItemTemplate>
