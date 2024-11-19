@@ -2575,7 +2575,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 if (ZakatReferanceNumber != null)
                 {
 
-                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + "'" + ZakatReferanceNumber + "')/$value";
+                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + ZakatReferanceNumber ;
                     await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
 
@@ -2590,7 +2590,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 if (ZakatReferanceNumber != null)
                 {
-                    string downloadurl = ZATCAConstants.OldZakatdownloadCoverFormFile + "'" + ZakatReferanceNumber + "')/$value";
+                    string downloadurl = ZATCAConstants.OldZakatdownloadCoverFormFile + ZakatReferanceNumber;
                     await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }

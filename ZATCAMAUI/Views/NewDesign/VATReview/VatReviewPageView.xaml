@@ -393,7 +393,8 @@
                                                         Text="{Binding ReportDetails}"
                                                         TextChanged="Report_Details_Tx_TextChanged"
                                                         Unfocused="Report_Details_UnFocused"
-                                                        VerticalOptions="CenterAndExpand" />
+                                                        VerticalOptions="CenterAndExpand"
+                                                        Keyboard="Text"/>
                                                 </custom:CustomSfTextInputView.TextInputView>
                                             </custom:CustomSfTextInputView>
 
@@ -732,8 +733,8 @@
                                         </custom:CustomSfTextInputView>
 
                                     </Grid>
-                                    <!--  CR6490 chnages  -->
-                                    <!--<Grid IsVisible="{Binding IsTotalPenaltiesVisible}">
+                                      <!--CR6490 chnages-->
+                                    <Grid IsVisible="{Binding IsTotalPenaltiesVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
@@ -750,7 +751,7 @@
                                             Grid.Row="1"
                                             Grid.ColumnSpan="2">
                                             <custom:CustomSfTextInputView.TextInputView>
-                                            <custom:GAZTBorderlessEntry
+                                                <custom:GAZTBorderlessEntry
                                                 HorizontalOptions="FillAndExpand"
                                                 InputTransparent="True"
                                                 Placeholder="{x:Static ResourceManager:AppResources.TotalPenalties}"
@@ -759,9 +760,8 @@
                                                 Text="{Binding TotalPenalities}"
                                                 TextColor="{StaticResource Primary}" />
                                             </custom:CustomSfTextInputView.TextInputView>
-                                        </Border>
-
-                                    </Grid>-->
+                                        </custom:CustomSfTextInputView>
+                                    </Grid>
 
                                     <Grid IsVisible="{Binding IsTaxPaidVisible}">
                                         <Grid.RowDefinitions>
@@ -790,7 +790,33 @@
                                         </custom:CustomSfTextInputView>
 
                                     </Grid>
+                                    <Grid IsVisible="{Binding IsUnpaidAmtVisible}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.ColumnSpan="2"
+                                            FontFamily="{StaticResource SomarRegular}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}"
+                                            Text="{x:Static ResourceManager:AppResources.UnpaidAmount}"/>
 
+                                        <custom:CustomSfTextInputView Grid.Row="1" Grid.ColumnSpan="2">
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Placeholder="Binding TaxPaidLable}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding UnpaidAmount,Converter={StaticResource commaSeparatorConverter}}"
+                                                    TextColor="{StaticResource Primary}" />
+                                            </custom:CustomSfTextInputView.TextInputView>
+                                        </custom:CustomSfTextInputView>
+
+                                    </Grid>
                                     <StackLayout IsVisible="{Binding IsAssessPayOptionVisible}">
 
                                         <Label
@@ -959,7 +985,8 @@
                                                     Text="{Binding DisputeDetailsDesc}"
                                                     TextChanged="Dispute_Details_Tx_TextChanged"
                                                     Unfocused="Dispute_Details_UnFocused"
-                                                    VerticalOptions="CenterAndExpand" />
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Keyboard="Text"/>
                                             </custom:CustomSfTextInputView.TextInputView>
 
                                         </custom:CustomSfTextInputView>
@@ -1061,7 +1088,8 @@
                                                     Text="{Binding LateFlngDetails}"
                                                     TextChanged="LateFiling_Details_Tx_TextChanged"
                                                     Unfocused="LateFiling_Details_UnFocused"
-                                                    VerticalOptions="CenterAndExpand" />
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Keyboard="Text"/>
                                             </custom:CustomSfTextInputView.TextInputView>
 
                                         </custom:CustomSfTextInputView>
@@ -1671,7 +1699,24 @@
                                                 Text="{Binding SecurityAmount, Converter={StaticResource commaSeparatorConverter}}" />
                                         </StackLayout>
                                     </Border>
-
+                                    <StackLayout
+                                             Orientation="Horizontal"
+                                             IsVisible="{Binding IsUnpaidAmtVisible}">
+                                        <Image
+                                             Source="ic_vat_info.png"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center"/>
+                                        <Label
+                                             Text="{x:Static ResourceManager:AppResources.UnpaidInfoMessage}"
+                                             Style="{StaticResource CaptionLabelBlackBold}"
+                                             HorizontalOptions="StartAndExpand"
+                                             VerticalOptions="Center"/>
+                                        <Label
+                                             Text="{x:Static ResourceManager:AppResources.UnpaidInfoMessageLatest}"
+                                             Style="{StaticResource CaptionLabelBlackBold}"
+                                             HorizontalOptions="StartAndExpand"
+                                             VerticalOptions="Center"/>
+                                    </StackLayout>
                                     <buttons:SfButton
                                         Margin="0,16,0,16"
                                         BackgroundColor="{Binding SecurityPaymentButtonBackGroundColor}"
@@ -2673,7 +2718,28 @@
                                                         </StackLayout>
                                                     </Grid>
 
-
+                                                    <Grid IsVisible="{Binding IsUnpaidAmtVisible}">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0">
+                                                            <Label       
+                                                                Text="{x:Static ResourceManager:AppResources.UnpaidAmount}"            
+                                                                HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"
+                                                                Style="{StaticResource ValueLabelGrey}" />
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1">
+                                                            <Label 
+                                                                Text="{Binding UnpaidAmount,Converter={StaticResource commaSeparatorConverter}}"
+                                                                Style="{StaticResource BodyLabelBlack}"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                HorizontalTextAlignment="End" />
+                                                        </StackLayout>
+                                                    </Grid>
                                                     <Grid IsVisible="{Binding IsAssessPayOptionVisible}">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />

@@ -26,53 +26,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         }
 
 
-        private async void Instalment_copy_Tapped(object sender, EventArgs e)
-        {
-            try
-            {
-                if (viewModel.VATReferanceNumber != null)
-                {
-
-
-                    await Clipboard.SetTextAsync(viewModel.VATReferanceNumber);
-                    if (Clipboard.HasText)
-                    {
-                        var text = await Clipboard.GetTextAsync();
-                        await viewModel._dialogService.ShowMessageBox(AppResources.NDReferenceNumber + " " + text, AppResources.Copied);
-
-                    }
-
-                }
-            }
-            catch (Exception)
-            {
-
-
-
-
-            }
-        }
-
-        private void Download_Acknowledgement(object sender, EventArgs e)
-        {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                viewModel.IsLoading = true;
-            });
-            if (viewModel.VATReferanceNumber != null)
-            {
-
-                string downloadurl = ZATCAConstants.downloadFile + "'" + viewModel.VATReferanceNumber + "')/$value";
-                viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
-
-            }
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                viewModel.IsLoading = false;
-            });
-        }
-
-        private void VatReview_Tapped(object sender, EventArgs e)
+        private async void VatReview_Tapped(object sender, EventArgs e)
         {
             var _navigation = Application.Current.MainPage.Navigation;
             foreach (var item in _navigation.NavigationStack)
@@ -102,7 +56,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                 }
             }
 
-            viewModel._navigationService.NavigateTo(App.VatReviewListPageView);
+            await viewModel._navigationService.NavigateTo(App.VatReviewListPageView);
         }
     }
 }

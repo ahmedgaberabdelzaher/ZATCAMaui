@@ -462,7 +462,7 @@ namespace ZATCAMAUI.Models.VATReviewModel
         public class AppRefNumResult
         {
             // public Metadata2 __metadata { get; set; }
-            [JsonProperty("dateFrom")]
+            [JsonProperty("periodStartDate")]
             public string Abrzu { get; set; }
             [JsonProperty("message")]
             public string Msgflg { get; set; }
@@ -488,11 +488,11 @@ namespace ZATCAMAUI.Models.VATReviewModel
             public string CaseGuid { get; set; }
             [JsonProperty("periodicity")]
             public string Periodicity { get; set; }
-            [JsonProperty("dateTo")]
+            [JsonProperty("periodEndDate")]
             public string Abrzo { get; set; }
-            //  [JsonProperty("dateFrom")]
+            [JsonProperty("dateFrom")]
             public string DateFrm { get; set; }
-            // [JsonProperty("dateTo")]
+            [JsonProperty("dateTo")]
             public string DateTo { get; set; }
             [JsonProperty("periodKey")]
             public string Persl { get; set; }
@@ -519,22 +519,26 @@ namespace ZATCAMAUI.Models.VATReviewModel
             [JsonProperty("lastFulfilledDate")]
             public string LastFulfilledDt { get; set; }
             public string allowedDays { get; set; }
-            [JsonProperty("periodStartDate")]
-            public string periodStartDate { set { Abrzu = value; } }
-            [JsonProperty("periodEndDate")]
-            public string periodEndDate { set { Abrzo = value; } }
-            //[JsonProperty("securityAmount")]
-            //public string Secamt { get; set; }
-            //[JsonProperty("penaltyPaidAmount")]
-            //public string PenPaidAmt { get; set; }
-            //[JsonProperty("messageFlag")]
-            //public string Bgmsgflg { get; set; }
-            //[JsonProperty("messageText")]
-            //public string Bgmsgtxt { get; set; }
+            //[JsonProperty("periodStartDate")]
+            //public string periodStartDate { get; set; }
+            //[JsonProperty("periodEndDate")]
+            //public string periodEndDate { get; set; }
+            [JsonProperty("securityAmount")]
+            public string Secamt { get; set; }
+            [JsonProperty("penaltyPaidAmount")]
+            public string PenPaidAmt { get; set; }
+            [JsonProperty("messageFlag")]
+            public string Bgmsgflg { get; set; }
+            [JsonProperty("messageText")]
+            public string Bgmsgtxt { get; set; }
+            [JsonProperty("unpaidAmount")]
+            public string Unpaidamt { get; set; }
+            [JsonProperty("unpaid")]
+            public string Unpayfg { get; set; }
 
         }
 
-        
+
         public class RejectedFormSet
         {
             [JsonProperty("rejectedFormList")]
@@ -842,6 +846,10 @@ namespace ZATCAMAUI.Models.VATReviewModel
         public string Sopbel { get; set; }
         [JsonProperty("periodDescription")]
         public string Perslt { get; set; }
+        [JsonProperty("unpaidAmount")]
+        public string Unpaidamt { get; set; }
+        [JsonProperty("unpaid")]
+        public string Unpayfg { get; set; }
     }
 
     public class MainReasonSetResults
@@ -1036,8 +1044,8 @@ namespace ZATCAMAUI.Models.VATReviewModel
             //public string transactionType { get; set; }
             // [JsonProperty("")]
             public string UserTypx { get; set; }
-            //[JsonProperty("CR6490Flag")]
-            //public string Cr6490Fg { get; set; }
+            [JsonProperty("CR6490Flag")]
+            public string Cr6490Fg { get; set; }
 
             [JsonProperty("reasons")]
             public List<ReasonSetResult> ReasonSet { get; set; }

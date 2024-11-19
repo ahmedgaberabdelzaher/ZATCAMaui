@@ -10819,13 +10819,15 @@ info@zatca.gov.sa</value>
 <data name="TotalPenalties" xml:space="preserve">
     <value>مبلغ الغرامات المستحقة</value>
 </data>
-<!-- <data name="UnpaidAmount" xml:space="preserve">
+ <data name="UnpaidAmount" xml:space="preserve">
     <value>المبلغ الغير مدفوع</value>
   </data>
- 
   <data name="UnpaidInfoMessage" xml:space="preserve">
     <value>مبلغ الضمان يساوي 25% من أجمالي مبلغ الغرامة</value>
-  </data> -->
+  </data>
+    <data name="UnpaidInfoMessageLatest" xml:space="preserve">
+    <value>مبلغ الضمان يساوي 25% من أجمالي مبلغ الغرامة , علماً ان الحد الادنى 2000 ريال سعودي والحد الأعلى 5,000,000 ريال سعودي</value>
+  </data>
 <data name="VRPaidAmount" xml:space="preserve">
     <value>المبلغ المدفوع </value>
 </data>
