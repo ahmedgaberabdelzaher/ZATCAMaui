@@ -11478,4 +11478,47 @@ info@zatca.gov.sa</value>
     <data name="ErrorCaptcha" xml:space="preserve">
         <value>كود الكابتشا غير صحيح</value>
     </data>
+
+	<!--CR 7453-->
+	<data name="ZZCRNationalNumber" xml:space="preserve">
+   <value>الرقم الوطني للسجل التجاري</value>
+   <comment>Sign up</comment>
+ </data>
+	<data name="ZZSelectatleastoneofthefieldsCommercialRegistrationNatiNumberorLicencebelow" xml:space="preserve">
+   <value>الرجاء اختيار إدخال رقم الرخصة أو الرقم الوطني للسجل التجاري</value>
+   <comment>Sign up</comment>
+ </data>
+	<data name="ZZCommercialRegistrationNumbershouddbe10digitswith7starts" xml:space="preserve">
+   <value>يجب أن يبدأ الرقم الوطني للسجل التجاري بالرقم 7 ويجب أن يتكون من 10 أرقام</value>
+   <comment>Sign Up</comment>
+</data>
+	<data name="ZZPleaseentervalidCRNationalnumber" xml:space="preserve">
+   <value>الرجاء إدخال رقم سجل تجاري وطني صحيح</value>
+   <comment>Sign Up</comment>
+ </data>
+	<data name="EstActivities" xml:space="preserve">
+  <value>الانشطة</value>
+</data>
+	<data name="EstAdd" xml:space="preserve">
+  <value>اضف</value>
+</data>
+	<data name="EstNoData" xml:space="preserve">
+  <value>لا توجد بيانات</value>
+</data>
+
+	<data name="EstGotDuplicates" xml:space="preserve">
+  <value>لا يسمح تكرار النشاط</value>
+</data>
+	<data name="TinOutletDeregistrationSubTitle" xml:space="preserve">
+   <value>ايقاف الرقم المميز / الفرع</value>
+ </data>
+  <data name="PassportIssueDisclaimer" xml:space="preserve">
+   <value>يجب ألا يكون تاريخ إصدار جواز السفر قبل تاريخ الميلاد</value>
+ </data>
+   <data name="PassportExpiryDisclaimer" xml:space="preserve">
+   <value>يجب ألا يكون تاريخ انتهاء جواز السفر قبل تاريخ الميلاد</value>
+ </data>
+   <data name="PassportDisclaimer" xml:space="preserve">
+   <value>يجب ألا يكون تاريخ انتهاء جواز السفر قبل إصدار جواز السفر</value>
+ </data> 
 </root>

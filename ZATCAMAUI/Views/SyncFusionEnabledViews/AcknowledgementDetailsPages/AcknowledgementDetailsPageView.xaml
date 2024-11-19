@@ -83,7 +83,8 @@
                     RowDefinitions="100*"
                     VerticalOptions="FillAndExpand">
 
-                    <ScrollView BackgroundColor="White">
+                    <ScrollView BackgroundColor="White"
+                                VerticalScrollBarVisibility="Never">
                         <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand">
                             <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand">
                                 <Label

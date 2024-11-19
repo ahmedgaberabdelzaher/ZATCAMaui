@@ -27,6 +27,7 @@
                     x:Name="ScrollViewContainer"
                     BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
+                    VerticalScrollBarVisibility="Never"
                     VerticalOptions="Fill">
                     <Grid
                         ColumnSpacing="0"
