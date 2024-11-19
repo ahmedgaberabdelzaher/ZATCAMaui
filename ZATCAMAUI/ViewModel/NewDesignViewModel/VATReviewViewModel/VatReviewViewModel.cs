@@ -82,7 +82,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         public ICommand GoBackToReportDetails { get; set; }
         public ICommand GoBackToLateFilingDetails { get; set; }
         public ICommand onMoreOptionClicked { get; set; }
-
+        public ICommand InstalmentCopyTapped { get; set; }
+        public ICommand Download_Acknowledgement { get; set; }
         #endregion
 
 
@@ -1539,6 +1540,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        public string _totalPenalities = "";
+        public string TotalPenalities
+        {
+            get { return _totalPenalities; }
+            set
+            {
+                if (_totalPenalities == value) return;
+
+                _totalPenalities = value;
+                OnPropertyChanged("TotalPenalities");
+            }
+        }
 
         public string _taxPaid = "";
         public string TaxPaid
@@ -1550,6 +1563,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 _taxPaid = value;
                 OnPropertyChanged("TaxPaid");
+            }
+        }
+        public string _unpaidAmount = "";
+        public string UnpaidAmount
+        {
+            get { return _unpaidAmount; }
+            set
+            {
+                if (_unpaidAmount == value) return;
+
+                _unpaidAmount = value;
+                OnPropertyChanged("UnpaidAmount");
             }
         }
 
@@ -1613,7 +1638,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-       
+        private bool isTotalPenaltiesVisible = false;
+        public bool IsTotalPenaltiesVisible
+        {
+            get
+            {
+                return isTotalPenaltiesVisible;
+            }
+            set
+            {
+                if (isTotalPenaltiesVisible == value) return;
+
+                isTotalPenaltiesVisible = value;
+                OnPropertyChanged("IsTotalPenaltiesVisible");
+            }
+        }
 
         public DateTime? vRTIDEffectiveDateFrom = null;
         public DateTime? VRTIDEffectiveDateFrom
@@ -2085,6 +2124,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 _isTaxPaidVisible = value;
                 OnPropertyChanged("IsTaxPaidVisible");
+            }
+        }
+        private bool _isUnpaidAmtVisible = true;
+        public bool IsUnpaidAmtVisible
+        {
+            get { return _isUnpaidAmtVisible; }
+            set
+            {
+                if (_isUnpaidAmtVisible == value) return;
+
+                _isUnpaidAmtVisible = value;
+                OnPropertyChanged("IsUnpaidAmtVisible");
             }
         }
 
@@ -3366,6 +3417,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             genericDatePickerModel.DatePickerTitle = AppResources.VRDateOfBirth;
             genericDatePickerModel.PickerId = "DatePicker";
 
+            InstalmentCopyTapped = new Command(async () =>
+            {
+                if (VATReferanceNumber != null)
+                {
+                    await Clipboard.SetTextAsync(VATReferanceNumber);
+                    if (Clipboard.HasText)
+                    {
+                        var text = await Clipboard.GetTextAsync();
+                        await _dialogService.ShowMessageBox(AppResources.NDReferenceNumber + " " + text, AppResources.Copied);
+                    }
+                }
+            });
+            Download_Acknowledgement = new Command(async () =>
+            {
+                IsLoading = true;
+                if (VATReferanceNumber != null)
+                {
+                    string downloadurl = ZATCAConstants.downloadFile + VATReferanceNumber;
+                    await _navigationService.NavigateTo(App.PdfView, downloadurl);
+                }
+                IsLoading = false;
+            });
+
         }
         public void SelectDefaultPaymentOption()
         {
@@ -3783,7 +3857,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 IsTaxPaidVisible = true;
             }
-
+            if (selectedReviewReason.ProcCD == "VTAS" && modelVATReview.d.Cr6490Fg == "X")
+            {
+                IsTotalPenaltiesVisible = true;
+            }
+            else
+            {
+                IsTotalPenaltiesVisible = false;
+            }
             EnableReviewDetailsConButton();
         }
 
@@ -3798,7 +3879,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 foreach (var refNum in results)
                 {
-                    if (refNum.Fbtyp != "VTPC")
+                    if (refNum.Fbtyp == "VTPC" || refNum.Fbtyp == "VTPN")
                     {
                         if (!string.IsNullOrEmpty(refNum.Opbel))
                         {
@@ -4751,8 +4832,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             selectedApplicationRef = appRefNumList.Find(appRef => (appRef.Fbnum == appRefNum) || (appRef.Opbel == appRefNum));
 
-
-
+            if (selectedApplicationRef.Fbtyp == "VTPN")
+            {
+                ApplicationRefNumber = selectedApplicationRef.Opbel;
+            }
+            else if (selectedApplicationRef.Fbtyp == "VTPC")
+            {
+                ApplicationRefNumber = selectedApplicationRef.Fbnum;
+            }
+            else
+            {
+                ApplicationRefNumber = appRefNum;
+            }
 
             if (selectedApplicationRef != null)
             {
@@ -4944,21 +5035,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 TotalTaxLiability = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString());
                 try
-
                 {
                     if (selectedApplicationRef.Fbtyp == "VTPC" || selectedApplicationRef.Fbtyp == "VTPN")
                     {
                         var rejectedForm = _VATObjectionRejected.d.RejectedFormSet.Where(x => x.Opbel == appRefNum || x.Fbnum == appRefNum).FirstOrDefault();
-                        TaxPaid = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Penamount.ToString());
+                        if (rejectedForm != null)
+                        {
+                            TaxPaid = UtilityManager.GetCommaSeparatedAmount(rejectedForm.PenPaidAmt.ToString());
+                        }
                     }
                     else
                     {
-                        TaxPaid = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Penamount.ToString());
+                        TaxPaid = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Clramt.ToString());
+                    }
+                    if (selectedApplicationRef.Unpayfg.ToUpper().Equals("X"))
+                    {
+                        UnpaidAmount = selectedApplicationRef.Unpaidamt;
+                        IsUnpaidAmtVisible = true;
+                    }
+                    else
+                    {
+                        IsUnpaidAmtVisible = false;
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
 
                 }
                 RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString());
@@ -4969,14 +5070,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     .ToString();
                     var secAmount = _VATObjectionRejected.d.RejectedFormSet.Where(x => x.Opbel == appRefNum || x.Fbnum == appRefNum).FirstOrDefault();// x => x.Opbel == appRefNum
 
+                    if (secAmount != null)
+                    {
+                        SecurityAmount = secAmount.Secamt;
+                    }
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
-
                 }
-
 
                 if (SecurityAmount == null || Double.Parse(SecurityAmount) < 0)
                 {
@@ -5024,9 +5127,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
                 else if (selectedApplicationRef.Fbtyp == "VATR")
                 {
-                    await _dialogService.ShowMessage(AppResources.VATWarningAssessment, AppResources.CRWarning);
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.VATWarningAssessment, AppResources.CRWarning, AppResources.OKText, async () =>
+                        {
+                            //CR6490 new enhancements
+                            TotalPenalities = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Penamount.ToString());
+                            if (selectedApplicationRef?.Bgmsgflg == "X")
+                            {
+                                await _dialogService.ShowMessage(selectedApplicationRef?.Bgmsgtxt, AppResources.CRWarning);
+                            }
+                        });
 
-                    EnableReviewReasonConButton();
+                        EnableReviewReasonConButton();
+                    });
                 }
                 else if (selectedApplicationRef.Fbtyp == "VTPN" && selectedApplicationRef.Pentyp == "R")
                 {
@@ -5415,13 +5529,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public void EnableReportDetailsConButton()
         {
-            if (!string.IsNullOrEmpty(ReportDetails) && AttachmentsListViewData != null && AttachmentsListViewData.Count > 0)
+            if (ReportDetails == "")
             {
-                IsReportDetailsEnabled = true;
+                IsReportDetailsEnabled = false;
             }
             else
             {
-                IsReportDetailsEnabled = false;
+                IsReportDetailsEnabled = true;
             }
 
         }
@@ -5898,6 +6012,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         }
                         setReviewReasonPickerModel();
 
+                        IsTotalPenaltiesVisible = (modelVATReview.d.Cr6490Fg == "X") ? true : false;
                     }
 
 
@@ -6417,6 +6532,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         {
             VatObjectionsRequest _postData = new VatObjectionsRequest();
 
+            modelVATReview.d.SecurityDtl.Unpaidamt = UnpaidAmount;
+            modelVATReview.d.SecurityDtl.Unpayfg = IsUnpaidAmtVisible ? "X" : "";
+
             _postData.__metadata = modelVATReview.d.__metadata;
             _postData.Actnm = modelVATReview.d.Actnm;
             _postData.Actno = modelVATReview.d.Actno;
@@ -6793,7 +6911,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     {
                         modelVATReview.d.DateFrm = selectedApplicationRef.DateFrm;
                         modelVATReview.d.DateFrmOld = selectedApplicationRef.DateFrm;
-                        modelVATReview.d.DecDt = RequestDate.ToString();
+                        modelVATReview.d.DecDt = selectedApplicationRef.DecDt;
                         String decDate = RequestDate.ToString();
                         modelVATReview.d.OVERDUEFG = OverdueFlag;
                         var strDecDate = modelVATReview.d.DecDt;
@@ -6987,7 +7105,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
 
                     VAVATReturnType = _vATDeclaration.data.Incotext;
-                    VAVatReturnReferenceNo = _vATDeclaration.data.Fbnum;
+                    VAVatReturnReferenceNo = _vATDeclaration.data.Fbnumz;
                     VATaxPeriod = _vATDeclaration.data.Perslt;
                     VAVatAccountNum = _vATDeclaration.data.Fin;
                     VASalesAmount = _vATDeclaration.data.TotalsalesAmt;
@@ -7111,7 +7229,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     {
                         VrVRImportExportText = "Exporter";
                     }
-                    else if (vATRegistration.d.ExFg == "1")
+                    else if (vATRegistration.d.ImFg == "1")
                     {
                         VrVRImportExportText = "Importer";
 

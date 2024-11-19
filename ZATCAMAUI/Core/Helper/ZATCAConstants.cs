@@ -81,10 +81,12 @@ namespace ZATCAMAUI.Core.Helper
         //public static string publicKeyStr = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqx7E3lJHpDDjrO4JsxpBllhkDm9YhMJpE64k0plrZoZ+f4jpmsP6+yFwWXwO7hnrD0WcWHyoQANfUtAe08p1m841p2TZH+ieRE8oxMK+mNEpYMM+7tXEe1gIR14aOrnjbjzdtdLGy/DTz4J2BJOVNFkgQN5OqHzFRP4KyGEUVUn3Qd8XG/+izXJ0YNdQDWrW5KQBC/2TPWhGC9HIPHWNrfxqndAR0fGfI4pEnLgbOAUXFk/Oi88oSg9mbhQWlpak46K8SE2R148xzEXvEb5QrYFmI11O87kZoa9CCfG2lmKnP8oZx9EDYfh4dHfzFItF9TLTe9e0MTFkfU4v2+uKQQIDAQAB";
 
         ////PRD
-        //public static string BaseUrlOfODataServices = "";
-        //public static string BaseUrlForSSLCheck = "";
-        //public static string ClientId = "";
-        //public static string ClientSecret = "";
+        //public static string BaseUrlOfODataServices = "https://api.zatca.gov.sa/integration/third-party";
+        //public static string BaseUrlForSSLCheck = "https://api.zatca.gov.sa";
+        //public static string ClientId = "802de35706277041a862927d6c9f1bfd";
+        //public static string ClientSecret = "50393c1c3eda9bb35a6ea052c6954c79";
+        //public static string publicKeyStr = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzDn5iCKcM5K+emKQH/WjUI8GVqB2VOH2xq6/pyQuWNDGQHHanXuRG26TS/1uHS8Mp9WKHkGFSAzJLH4DYp7JZylaZtAfnm6Gz1qQTmvco93Aru/MQ1YoKREXt5AWgy2LrlyFgtB4N83rwoSynQ1LWgivq8WhFIR5fkavFogssaGIR2yxSMhI5naX3U8JP+dPaic8Hb8Etaj63DFW5nztIbE/SP1uQKX7a3pQHDEZi1RZ3TX7/mFpRgFO/I3wEi/hweIEYCWMLyKeE2iZAjTdUilsi44MtV7eNQs4l/JHlI7iwrfI9M10L7WyiiLUVHttNlstYzjO/ZNIU1xcK3CvswIDAQAB";
+
 
 
         public static string DevBaseUrlForAuthentication = "https://tstdp1as1.mygazt.gov.sa:50001";

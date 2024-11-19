@@ -259,19 +259,19 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    string amttp = "P";
+                    string amttp = "Partial";
                     var lang = UtilityManager.GetLanguageParameter();
-                    string disamtRes = disamt.ToString("0");
-                    string liaamtRes = liaamt.ToString("0");
-                    string clramtRes = clramt.ToString("0");
+                    Decimal disamtRes = UtilityManager.CleanAndConvertToDecimal(disamt);
+                    Decimal liaamtRes = UtilityManager.CleanAndConvertToDecimal(liaamt);
+                    Decimal clramtRes = UtilityManager.CleanAndConvertToDecimal(clramt);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    // String url = Constants.GetVATObjectionSecurityURL + "Disamt=" + disamt + "m,Liaamt=" + liaamt + "m,Clramt=" + clramt + "m,Amttp='" + amttp + "')?$format=json";
-                    String url = ZATCAConstants.GetVATObjectionSecurityURL + App.TP.TIN + "&amountType=" + amttp + "&clearedAmount=" + clramtRes + "&disputedAmount=" + disamtRes + "&totalTaxLiability=" + liaamtRes + "',formBundleNumber='" + fbnum + "',reviewReason='" + rvrsn + "',reviewSubReason='" + rvsbrsn + "',businessPartner = '" + App.LoginDataRetrieved.TIN + "', securityType = '', documentNumber = ''";
+                    //String url = ZATCAConstants.GetVATObjectionSecurityURL + App.TP.TIN + "&amountType=" + amttp + "&clearedAmount=" + clramtRes + "&disputedAmount=" + disamtRes + "&totalTaxLiability=" + liaamtRes + "',formBundleNumber='" + fbnum + "',reviewReason='" + rvrsn + "',reviewSubReason='" + rvsbrsn + "',businessPartner = '" + App.LoginDataRetrieved.TIN + "', securityType = '', documentNumber = ''";
+                    String url = ZATCAConstants.GetVATObjectionSecurityURL + App.TP.TIN + "&amountType=" + amttp + "&clearedAmount=" + clramtRes + "&disputedAmount=" + disamtRes + "&totalTaxLiability=" + liaamtRes + "&formBundleNumber=" + fbnum + "&reviewReason=" + rvrsn + "&reviewSubReason=" + rvsbrsn + "&businessPartner=" + App.LoginDataRetrieved.TIN + "&securityType=" + "&documentNumber=";
                     HttpResponseMessage vATObjectionSecurityAmountResponse = await client.GetAsync(url);
 
                     //HttpResponseMessage vATObjectionSecurityAmountResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
@@ -485,7 +485,6 @@ namespace ZATCAMAUI.Core.Mangers
                 {
 
                     String Url = string.Empty;
-                    // Url = Constants.GetVATObjectionDownloadAckURL + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + fbnum + "')/$value";
                     Url = ZATCAConstants.GetVATObjectionDownloadAckURL + "&formBundleNumber=" + fbnum;
 
                     return Url;

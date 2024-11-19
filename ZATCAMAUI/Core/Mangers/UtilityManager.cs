@@ -1720,7 +1720,10 @@ namespace ZATCAMAUI.Core.Mangers
 
             return dateStr;
         }
-
+        public static decimal CleanAndConvertToDecimal(decimal amount)
+        {
+            return Convert.ToDecimal(amount.ToString("N", System.Globalization.CultureInfo.InvariantCulture).Replace(",", ""));
+        }
     }
 
 

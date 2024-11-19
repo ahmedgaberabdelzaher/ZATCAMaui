@@ -10930,8 +10930,18 @@ Then The system should cancel (/delete) the draft and apply the necessary change
         <value>I acknowledge and pledge my consent on amending the effective date of registration for VAT. I acknowledge my full awareness of the violations and penalties that may result from this procedure. I hold myself liable to all legal effects resulting from this procedure, and that the General Authority of Zakat and Tax is not liable, in whole or in part, for any direct or non-direct error or damage, whether accidental, consequential, or punitive, whether private or public. General Authority of Zakat and Tax is not liable to any missed opportunity, loss or damage resulting from any of the information or data entered.</value>
     </data>
     <data name="VATRNewVATEligibleStartDate" xml:space="preserve">
-        <value>New VAT Eligibility Commencement Date</value>
+       <value>New VAT Eligibility Commencement Date</value>
     </data>
+    <data name="UnpaidAmount" xml:space="preserve">
+     <value>Unpaid Amount</value>
+    </data>
+    <data name="UnpaidInfoMessage" xml:space="preserve">
+     <value>The guarantee amount is equal to 25% of the total fine amount</value>
+    </data>
+    <data name="UnpaidInfoMessageLatest" xml:space="preserve">
+       <value>The Bank Guarantee Amount Is Equal To 25% Of The Total Penalty Amount, Noting That The Minimum Amount For Cash Security Is 2000 SAR And The Maximum Limit Is 5,000,000 SAR</value>
+    </data>
+
     <!-- END of CR6490 -->
     <data name="DepartingTo" xml:space="preserve">
         <value>Departing To</value>

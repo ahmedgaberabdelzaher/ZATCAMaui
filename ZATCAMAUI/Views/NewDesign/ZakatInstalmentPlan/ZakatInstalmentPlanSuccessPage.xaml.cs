@@ -127,9 +127,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             if (viewModel.ZakatReferanceNumber != null)
             {
 
-                string downloadurl = ZATCAConstants.downloadFile + "'" + viewModel.ZakatReferanceNumber + "')/$value";
-                //await WebServiceManager.FileDownload(downloadurl, "pdf");
-                viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
+                string downloadurl = ZATCAConstants.downloadFile + viewModel.ZakatReferanceNumber;
+                await viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
 
             }
