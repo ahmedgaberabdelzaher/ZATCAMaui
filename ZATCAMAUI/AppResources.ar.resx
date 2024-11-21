@@ -742,6 +742,11 @@
     <data name="ZSAR" xml:space="preserve">
         <value>ر.س</value>
     </data>
+
+	<data name="ZZZZZakatReturnSubmittedNew" xml:space="preserve">
+        <value>تم تقديم إقرار الزكاة التقديري الخاص بك بنجاح وتم إصدار الفاتورة</value>
+    </data>
+
     <data name="ZTotalPaidAmount" xml:space="preserve">
         <value>إجمالي المبلغ المدفوع</value>
     </data>

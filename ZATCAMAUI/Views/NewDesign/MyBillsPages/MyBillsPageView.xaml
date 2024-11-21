@@ -9,8 +9,8 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    ios:Page.UseSafeArea="true"
     x:Name="myBills"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -175,13 +175,16 @@
                                 HorizontalOptions="FillAndExpand"
                                 IsVisible="{Binding IsListVisible}"
                                 ItemsSource="{Binding MyBills, Mode=TwoWay}"
-                                SeparatorVisibility="None" 
+                                SeparatorVisibility="None"
                                 VerticalOptions="FillAndExpand"
                                 VerticalScrollBarVisibility="Never">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                            <Border  FlowDirection="{Binding Source={x:Reference myBills}, Path=FlowDirection}" Margin="0,12" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <Border
+                                                Margin="0,12"
+                                                FlowDirection="{Binding Source={x:Reference myBills}, Path=FlowDirection}"
+                                                Style="{StaticResource GreyBorderFrameWithShadow}">
                                                 <StackLayout Spacing="0">
                                                     <Grid Padding="16,4" RowSpacing="3">
                                                         <Grid.RowDefinitions>
@@ -356,8 +359,7 @@
                                                             Grid.Column="0"
                                                             Margin="0,0,0,20">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.InvoiceStatus}" />
-                                                            <Label Style="{StaticResource ValueLabelBlack}"
-                                                                   Text="{Binding PymtStatus}" />
+                                                            <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding PaymentText}" />
                                                         </StackLayout>
 
 
