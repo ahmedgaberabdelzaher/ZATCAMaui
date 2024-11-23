@@ -68,34 +68,19 @@ namespace ZATCAMAUI.Models
                     {
                         try
                         {
-                            if (!calendarType.Equals("G"))
-                            {
-                                //string[] dts = null;
-                                //periodStartDateCharacter = UtilityManager.ConvertToGreg(periodStartDateCharacter);
-                            }
                             string[] dts = periodStartDateCharacter.Split('-');
-                            // FormatedAbrzu = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
-                            //string[] dts = periodStartDateCharacter.Split('/');
                             string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
                             FormatedAbrzu = UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
 
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.WriteLine(ex);
                         }
 
                     }
                     if (periodEndDateCharacter != null)
                     {
-                        if (!calendarType.Equals("H"))
-                        {
-                            //string[] dts = null;
-                            //periodEndDateCharacter = UtilityManager.ConvertToGreg(periodEndDateCharacter);
-                        }
                         string[] dts = periodEndDateCharacter.Split('-');
-                        //FormatedAbrzo = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
-                        //string[] dts = periodEndDateCharacter.Split('/');
 
                         string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
                         FormatedAbrzo = UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
@@ -105,9 +90,10 @@ namespace ZATCAMAUI.Models
                         try
                         {
                             DateTime date = DateTime.Parse(dueDate);
-                            FormatedSingleDueDate = date.ToString("dd-MMMM-yyyy");
+                            FormatedSingleDueDate = App.IsArabic ? date.ToString("dd-MMMM-yyyy", new CultureInfo("ar-SA"))
+                                : date.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
                             FormatedSingleDueDate = "";
                         }
@@ -130,33 +116,7 @@ namespace ZATCAMAUI.Models
             get; set;
         }
 
-        //private DateTime _abrzu;
-        //public DateTime Abrzu
-        //{
-        //    get
-        //    {
-        //        return _abrzu;
-        //    }
-        //    set
-        //    {
-        //        _abrzu = value;
-        //        if (_abrzu != null)
-        //        {
-        //            if (CalendarTyp != null)
-        //            {
-        //                if (CalendarTyp.Equals("G"))
-        //                {
-
-        //                    FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-        //                    string[] dts = FormatedAbrzu.Split('-');
-        //                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-        //                    FormatedAbrzu = date;
-        //                }
-
-        //            }  
-        //        }
-        //    }
-        //}
+       
         private string _AbrzuC;
         public string periodStartDateCharacter
         {
@@ -173,7 +133,6 @@ namespace ZATCAMAUI.Models
                     {
                         if (!calendarType.Equals("G"))
                         {
-                            //string[] dts = null;
                             _AbrzuC = UtilityManager.ConvertToGreg(value);
                         }
                         string[] dts = _AbrzuC.Split('-');
@@ -182,34 +141,7 @@ namespace ZATCAMAUI.Models
                 }
             }
         }
-        //private DateTime _abrzo;
-        //public DateTime Abrzo
-        //{
-        //    get
-        //    {
-        //        return _abrzo;
-        //    }
-        //    set
-        //    {
-        //        _abrzo = value;
-        //        if (_abrzo != null)
-        //        {
-        //            if (CalendarTyp != null)
-        //            {
-        //                if (CalendarTyp.Equals("G"))
-        //                {
-
-        //                    FormatedAbrzo = _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-        //                    string[] dts = FormatedAbrzo.Split('-');
-        //                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-        //                    FormatedAbrzo = date;
-        //                }
-
-        //            }
-
-        //        }
-        //    }
-        //}
+       
         private string _AbrzoC;
         public string periodEndDateCharacter
         {
@@ -253,9 +185,11 @@ namespace ZATCAMAUI.Models
                         try
                         {
                             DateTime date = DateTime.Parse(_dueDTC);
-                            FormatedSingleDueDate = date.ToString("dd-MMMM-yyyy");
+
+                            FormatedSingleDueDate = App.IsArabic ? date.ToString("dd-MMMM-yyyy", new CultureInfo("ar-SA"))
+                                : date.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
                             FormatedSingleDueDate = "";
                         }

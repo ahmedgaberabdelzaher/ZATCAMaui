@@ -3828,7 +3828,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 bool result;
                 if (App.IsArabic)
                 {
-                    result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundNoMsg, AppResources.ZZCancel, AppResources.Confirm);
+                    result = await _dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.VATRefundNoMsg, AppResources.ZZCancel, AppResources.Confirm);
                     if (!result)
                     {
                         returnResult = true;
@@ -3842,7 +3842,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 }
                 else
                 {
-                    result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundNoMsg, AppResources.Confirm, AppResources.ZZCancel);
+                    result = await _dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.VATRefundNoMsg, AppResources.Confirm, AppResources.ZZCancel);
                     if (result)
                     {
                         returnResult = true;
@@ -3880,7 +3880,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 {
                     if (VATDeclarationData != null && VATDeclarationData.data != null && VATDeclarationData.data.GoliveFg == "X")
                     {
-                        result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.ZZCancel, AppResources.Confirm);
+                        result = await _dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.ZZCancel, AppResources.Confirm);
                         if (!result)
                         {
                             returnResult = true;
@@ -3894,7 +3894,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     }
                     else
                     {
-                        result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsg, AppResources.ZZCancel, AppResources.Confirm);
+                        result = await _dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsg, AppResources.ZZCancel, AppResources.Confirm);
                         if (!result)
                         {
                             returnResult = true;
@@ -3911,7 +3911,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 {
                     if (VATDeclarationData != null && VATDeclarationData.data != null && VATDeclarationData.data.GoliveFg == "X")
                     {
-                        result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.Confirm, AppResources.ZZCancel);
+                        result = await _dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.Confirm, AppResources.ZZCancel);
                         if (result)
                         {
                             returnResult = true;
@@ -3925,7 +3925,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     }
                     else
                     {
-                        result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsg, AppResources.Confirm, AppResources.ZZCancel);
+                        result = await _dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsg, AppResources.Confirm, AppResources.ZZCancel);
                         if (result)
                         {
                             returnResult = true;
@@ -3963,7 +3963,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         }
         public async Task VATSetReturnVoidAsync()
         {
-            var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
+            var answer = await _dialogService.ShowMessage(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
             if (answer)
             {
                 IsLoading = true;

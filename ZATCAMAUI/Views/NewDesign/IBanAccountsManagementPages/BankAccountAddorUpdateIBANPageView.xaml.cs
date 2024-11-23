@@ -37,6 +37,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                 _viewModel.IsContinueButtonEnable = false;
                 _viewModel.IsIBanDropDownEnabled = true;
                 _viewModel.IsIBanUpdatePage = false;
+                _viewModel.TrailingViewContent = null;
 
                 _viewModel.IsIdInfoVisibility = false;
                 _viewModel.AttachmentVisible = false;

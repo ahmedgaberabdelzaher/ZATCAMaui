@@ -182,7 +182,7 @@
                                         SelectionBackground="Transparent"
                                         SelectionMode="Single"
                                         TapCommand="{Binding ObjectionItemCommand}"
-                                        VerticalOptions="StartAndExpand">
+                                        VerticalOptions="FillAndExpand">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
                                                 <Border
@@ -272,16 +272,21 @@
                                                             Grid.ColumnSpan="2"
                                                             Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                                        <StackLayout Grid.Row="2" Grid.Column="0">
+                                                        <StackLayout Grid.Row="2"
+                                                                     Spacing="10"
+                                                                     Grid.Column="0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZOObjectionType}" />
                                                             <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding FbtText}" />
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="2"
                                                             Grid.Column="1"
+                                                            Spacing="10"
                                                             HorizontalOptions="FillAndExpand"
                                                             VerticalOptions="FillAndExpand">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OZObjectionDate}" />
+                                                            <Label Style="{StaticResource CaptionLabelGrey}"
+                                                                   HorizontalOptions="End"
+                                                                   Text="{x:Static ResourceManager:AppResources.OZObjectionDate}" />
                                                             <Label
                                                                 HorizontalOptions="FillAndExpand"
                                                                 Style="{StaticResource ValueLabelBlack}"

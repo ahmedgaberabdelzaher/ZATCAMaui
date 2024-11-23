@@ -107,11 +107,8 @@
                                 VerticalScrollBarVisibility="Never"
                                 VerticalOptions="FillAndExpand">
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
+                        <Grid RowDefinitions="auto,*">
+
                             <Grid Grid.Row="0">
                                 <commonView:PageIndicatorView
                                     Margin="20,32,20,0"
@@ -124,6 +121,7 @@
                             </Grid>
 
                             <Grid Grid.Row="1">
+
                                 <Grid
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
@@ -224,7 +222,7 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                       <custom:CustomSfTextInputView >
+                                        <custom:CustomSfTextInputView >
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                     InputTransparent="True"
@@ -252,9 +250,9 @@
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                         </custom:CustomSfTextInputView>
 
-                                           <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding ShowPicker}" />
-                                            </StackLayout.GestureRecognizers>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ShowPicker}" />
+                                        </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
 
@@ -324,12 +322,12 @@
                                             </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                               <Image Aspect="AspectFit" Source="calendar.png"
+                                                <Image Aspect="AspectFit" Source="calendar.png"
                                                       WidthRequest="25" HeightRequest="25"/>
                                             </inputLayout:SfTextInputLayout.TrailingView>
 
                                         </custom:CustomSfTextInputView>
-                                        
+
                                         <custom:CustomDatePicker
                                             x:Name="NormalCalendar"
                                             Margin="2"
@@ -474,7 +472,7 @@
                                             </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                               <Image Aspect="AspectFit" Source="calendar.png"
+                                                <Image Aspect="AspectFit" Source="calendar.png"
                                                       WidthRequest="25" HeightRequest="25"/>
                                             </inputLayout:SfTextInputLayout.TrailingView>
 
@@ -507,12 +505,12 @@
 
                                             <custom:CustomDatePicker.HeaderView>
 
-                                                 <syncfusion:PickerHeaderView
+                                                <syncfusion:PickerHeaderView
                                                     Height="46"
                                                     Background="{StaticResource NeutralBlack}"
                                                     Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" >
 
-                                                        <syncfusion:PickerHeaderView.TextStyle>
+                                                    <syncfusion:PickerHeaderView.TextStyle>
                                                         <syncfusion:PickerTextStyle TextColor="White" />
                                                     </syncfusion:PickerHeaderView.TextStyle>
 
@@ -561,12 +559,12 @@
 
                                             <custom:CustomHijriDatePicker.HeaderView>
 
-                                                 <syncfusion:PickerHeaderView
+                                                <syncfusion:PickerHeaderView
                                                     Height="46"
                                                     Background="{StaticResource NeutralBlack}"
                                                     Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" >
 
-                                                        <syncfusion:PickerHeaderView.TextStyle>
+                                                    <syncfusion:PickerHeaderView.TextStyle>
                                                         <syncfusion:PickerTextStyle TextColor="White" />
                                                     </syncfusion:PickerHeaderView.TextStyle>
 
@@ -1060,10 +1058,8 @@
                                             Margin="0,16,0,16"
                                             Background="{Binding ReleaseDetailsButtonBackGroundColor}"
                                             Command="{Binding ReleaseDetailsConBtnTapped}"
-                                            HeightRequest="48"
                                             Style="{StaticResource PrimaryButtonStyle}"
-                                            Text="{x:Static ResourceManager:AppResources.CRContinue}"
-                                            WidthRequest="366" />
+                                            Text="{x:Static ResourceManager:AppResources.CRContinue}" />
                                     </Grid>
 
                                 </Grid>
@@ -1308,7 +1304,7 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                         <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
 
                                                 <custom:GAZTBorderlessEntry
@@ -1331,7 +1327,7 @@
 
                                         </custom:CustomSfTextInputView>
 
-                                        
+
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NewInvoiceAttachmentTapped}" />
                                         </StackLayout.GestureRecognizers>
@@ -1341,10 +1337,8 @@
                                         Margin="0,16,0,16"
                                         Background="{Binding AttachButtonBackGroundColor}"
                                         Command="{Binding AttachmentsConBtnTapped}"
-                                        HeightRequest="48"
                                         Style="{StaticResource PrimaryButtonStyle}"
-                                        Text="{x:Static ResourceManager:AppResources.CRContinue}"
-                                        WidthRequest="366" />
+                                        Text="{x:Static ResourceManager:AppResources.CRContinue}"/>
 
                                 </StackLayout>
 
@@ -1425,29 +1419,27 @@
                                         Grid.Row="7"
                                         Margin="0,16,0,16"
                                         Command="{Binding RemarksAndDescConBtnTapped}"
-                                        HeightRequest="48"
                                         Style="{StaticResource PrimaryButtonStyle}"
                                         Text="{x:Static ResourceManager:AppResources.CRContinue}"
-                                        VerticalOptions="End"
-                                        WidthRequest="366" />
+                                        VerticalOptions="End"/>
 
                                 </StackLayout>
 
                                 <!--  Release Contract 4  -->
                                 <StackLayout
-                                    Margin="20,10,20,0"
+                                    Margin="20,10"
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding DeclarationVisible}"
                                     VerticalOptions="FillAndExpand">
 
                                     <Label
-                                        Padding="0,10,0,0"
+                                        Padding="0,10"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource PageTitleBlack}"
                                         Text="{x:Static ResourceManager:AppResources.CRDeclaration}" />
                                     <Label
-                                        Margin="0,0,0,0"
+                                        Margin="0,0,0,10"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}" />
@@ -1455,8 +1447,10 @@
 
                                     <StackLayout
                                         Grid.Row="1"
+                                        Margin="0,10"
                                         IsVisible="{Binding IsDeclarationViewEnabledNew}"
                                         Orientation="Horizontal"
+                                        Spacing="10"
                                         VerticalOptions="StartAndExpand">
 
                                         <custom:CheckboxCustom
@@ -1517,81 +1511,74 @@
 
                                     <buttons:SfButton
                                         Margin="0,16,0,16"
-                                        Background="{Binding DeclarationButtonBackGroundColor}"
                                         Command="{Binding DeclarationConBtnTapped}"
-                                        HeightRequest="48"
                                         Style="{StaticResource PrimaryButtonStyle}"
                                         Text="{x:Static ResourceManager:AppResources.CRContinue}"
-                                        VerticalOptions="End"
-                                        WidthRequest="366" />
+                                        VerticalOptions="End" />
 
                                 </StackLayout>
 
                                 <!--  Release Contract 5  -->
                                 <Grid
-                                    Margin="20,10,20,0"
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding SummaryVisible}"
+                                    RowDefinitions="*"
                                     VerticalOptions="FillAndExpand">
+                                    <ScrollView HeightRequest="680"
+                                                VerticalScrollBarVisibility="Never">
+                                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-
-                                    </Grid.RowDefinitions>
-
-                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
-                                        <Grid Margin="0,5,0,10">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Label
+                                            <Grid Margin="0,5,0,10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+                                                <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 Padding="0,5,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource PageTitleBlack}"
                                                 Text="{x:Static ResourceManager:AppResources.CRSummary}" />
-                                            <Label
+                                                <Label
                                                 Grid.Row="1"
                                                 Grid.Column="0"
                                                 Margin="0,-10,0,15"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.CRReviewthebelowinformation}" />
-                                            <BoxView
+                                                <BoxView
                                                 Grid.Row="2"
                                                 Grid.Column="0"
                                                 Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                        </Grid>
+                                            </Grid>
 
-                                        <Border
+                                            <Border
                                             Margin="0,16,0,10"
                                             Style="{StaticResource GreyBorderFrameWithShadow}"
                                             VerticalOptions="StartAndExpand">
 
-                                            <StackLayout>
+                                                <StackLayout>
 
-                                                <Grid Padding="15" RowSpacing="0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="auto" />
-                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Padding="15" RowSpacing="0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="auto" />
+                                                        </Grid.ColumnDefinitions>
 
-                                                    <StackLayout
+                                                        <StackLayout
                                                         Grid.Row="0"
                                                         Grid.Column="0"
                                                         Padding="8,0,0,0"
                                                         HorizontalOptions="FillAndExpand"
                                                         Orientation="Horizontal">
-                                                        <Image
+                                                            <Image
                                                             Grid.Row="0"
                                                             Grid.Column="0"
                                                             Aspect="AspectFit"
@@ -1600,312 +1587,312 @@
                                                             Source="details"
                                                             VerticalOptions="Center"
                                                             WidthRequest="24" />
-                                                        <Label
+                                                            <Label
                                                             Padding="8,0"
                                                             Style="{StaticResource SectionTitleBlackBold}"
                                                             Text="{x:Static ResourceManager:AppResources.CRRequestDetails}"
                                                             VerticalOptions="CenterAndExpand" />
-                                                    </StackLayout>
-                                                    <StackLayout
+                                                        </StackLayout>
+                                                        <StackLayout
                                                         Grid.Row="0"
                                                         Grid.Column="1"
                                                         Padding="0,0"
                                                         HorizontalOptions="End">
-                                                        <Label
+                                                            <Label
                                                             FontSize="Medium"
                                                             Style="{StaticResource GAZTCaptioSecondarylStyle}"
                                                             Text="{x:Static ResourceManager:AppResources.CREdit}"
                                                             VerticalOptions="CenterAndExpand">
-                                                            <Label.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding GoBackToReleaseDetails}" />
-                                                            </Label.GestureRecognizers>
-                                                        </Label>
-                                                    </StackLayout>
-                                                </Grid>
+                                                                <Label.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding GoBackToReleaseDetails}" />
+                                                                </Label.GestureRecognizers>
+                                                            </Label>
+                                                        </StackLayout>
+                                                    </Grid>
 
-                                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
 
-                                                <Grid Padding="15,15,15,15">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto" />
-                                                        <RowDefinition Height="auto" />
-                                                        <RowDefinition Height="auto" />
-                                                        <RowDefinition Height="auto" />
-                                                        <RowDefinition Height="auto" />
-                                                        <RowDefinition Height="auto" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="*" />
+                                                    <Grid Padding="15,15,15,15">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
 
-                                                    </Grid.ColumnDefinitions>
+                                                        </Grid.ColumnDefinitions>
 
-                                                    <StackLayout Grid.Row="0" Grid.Column="0">
-                                                        <Label
+                                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                                            <Label
                                                             HorizontalOptions="StartAndExpand"
                                                             HorizontalTextAlignment="Start"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.CRContractonName}" />
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Row="0" Grid.Column="1">
-                                                        <Label
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Row="0" Grid.Column="1">
+                                                            <Label
                                                             HorizontalOptions="End"
                                                             HorizontalTextAlignment="End"
                                                             Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                             Text="{Binding ContractName}" />
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Row="1" Grid.Column="0">
-                                                        <Label
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Row="1" Grid.Column="0">
+                                                            <Label
                                                             HorizontalOptions="StartAndExpand"
                                                             HorizontalTextAlignment="Start"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.CRContractNumber}" />
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Row="1" Grid.Column="1">
-                                                        <Label
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Row="1" Grid.Column="1">
+                                                            <Label
                                                             HorizontalOptions="End"
                                                             HorizontalTextAlignment="End"
                                                             Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                             Text="{Binding ContractNumber}" />
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Row="2" Grid.Column="0">
-                                                        <Label
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Row="2" Grid.Column="0">
+                                                            <Label
                                                             HorizontalOptions="StartAndExpand"
                                                             HorizontalTextAlignment="Start"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.CRContractType}" />
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Row="2" Grid.Column="1">
-                                                        <Label
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Row="2" Grid.Column="1">
+                                                            <Label
                                                             HorizontalOptions="End"
                                                             HorizontalTextAlignment="End"
                                                             Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                             Text="{Binding PickedContract}" />
-                                                    </StackLayout>
-                                                    <StackLayout
+                                                        </StackLayout>
+                                                        <StackLayout
                                                         Grid.Row="3"
                                                         Grid.ColumnSpan="2"
                                                         Orientation="Horizontal">
-                                                        <Label
+                                                            <Label
                                                             HorizontalOptions="StartAndExpand"
                                                             HorizontalTextAlignment="Start"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.CRContractPeriod}" />
 
 
-                                                        <Label
+                                                            <Label
                                                             HorizontalOptions="EndAndExpand"
                                                             HorizontalTextAlignment="End"
                                                             Style="{StaticResource SectionTitleSmallMediumBlack}">
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <FormattedString.Spans>
-                                                                        <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{Binding FromDate, StringFormat='{0:dd MMM yyyy}'}" />
-                                                                        <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text=" - " />
-                                                                        <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{Binding ToDate, StringFormat='{0:dd MMM yyyy}'}" />
-                                                                    </FormattedString.Spans>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
-                                                    </StackLayout>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <FormattedString.Spans>
+                                                                            <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{Binding FromDate, StringFormat='{0:dd MMM yyyy}'}" />
+                                                                            <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text=" - " />
+                                                                            <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{Binding ToDate, StringFormat='{0:dd MMM yyyy}'}" />
+                                                                        </FormattedString.Spans>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                        </StackLayout>
 
-                                                    <StackLayout Grid.Row="4" Grid.Column="0">
-                                                        <Label
+                                                        <StackLayout Grid.Row="4" Grid.Column="0">
+                                                            <Label
                                                             HorizontalOptions="StartAndExpand"
                                                             HorizontalTextAlignment="Start"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}"
                                                             VerticalOptions="StartAndExpand" />
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Row="4" Grid.Column="1">
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Row="4" Grid.Column="1">
 
-                                                        <Label HorizontalOptions="EndAndExpand">
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{Binding ContractTotalAmount, Converter={StaticResource commaSeparatorConverter}}" />
-                                                                    <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="&#160;" />
-                                                                    <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
-                                                    </StackLayout>
+                                                            <Label HorizontalOptions="EndAndExpand">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{Binding ContractTotalAmount, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                        <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="&#160;" />
+                                                                        <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                        </StackLayout>
 
-                                                    <StackLayout Grid.Row="5" Grid.Column="0">
-                                                        <Label
+                                                        <StackLayout Grid.Row="5" Grid.Column="0">
+                                                            <Label
                                                             HorizontalOptions="StartAndExpand"
                                                             HorizontalTextAlignment="Start"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}"
                                                             VerticalOptions="StartAndExpand" />
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Row="5" Grid.Column="1">
-                                                        <Label HorizontalOptions="EndAndExpand">
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{Binding AmountToRelease, Converter={StaticResource commaSeparatorConverter}}" />
-                                                                    <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="&#160;" />
-                                                                    <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
-                                                    </StackLayout>
-                                                </Grid>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Row="5" Grid.Column="1">
+                                                            <Label HorizontalOptions="EndAndExpand">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{Binding AmountToRelease, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                        <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="&#160;" />
+                                                                        <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                        </StackLayout>
+                                                    </Grid>
 
-                                            </StackLayout>
+                                                </StackLayout>
 
-                                        </Border>
+                                            </Border>
 
-                                        <Border
+                                            <Border
                                             Margin="0,10,0,0"
                                             Padding="0"
                                             HorizontalOptions="FillAndExpand"
                                             StrokeShape="RoundRectangle 12,12,12,12"
                                             Style="{StaticResource SfStyleForZakatPlanGreen}"
                                             VerticalOptions="FillAndExpand">
-                                            <Grid
+                                                <Grid
                                                 Padding="10,3,10,2"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="CenterAndExpand">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label
                                                     Grid.Row="0"
                                                     Grid.Column="0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{x:Static ResourceManager:AppResources.CRTheValueofZakatdues}"
                                                     VerticalOptions="CenterAndExpand" />
-                                                <Label
+                                                    <Label
                                                     Grid.Row="0"
                                                     Grid.Column="1"
                                                     HorizontalOptions="EndAndExpand"
                                                     Style="{StaticResource SectionTitleBlackBold}">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding ZakatDues, Converter={StaticResource commaSeparatorConverter}}" />
-                                                            <Span Text="&#160;" />
-                                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding ZakatDues, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Text="&#160;" />
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
 
-                                            </Grid>
-                                        </Border>
+                                                </Grid>
+                                            </Border>
 
-                                        <Border
+                                            <Border
                                             Margin="0,10,0,0"
                                             Padding="0"
                                             HorizontalOptions="FillAndExpand"
                                             StrokeShape="RoundRectangle 12,12,12,12"
                                             Style="{StaticResource SfStyleForZakatPlanGreen}"
                                             VerticalOptions="FillAndExpand">
-                                            <Grid
+                                                <Grid
                                                 Padding="10,3,10,2"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="CenterAndExpand">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label
                                                     Grid.Row="0"
                                                     Grid.Column="0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{x:Static ResourceManager:AppResources.CRTheValueTaxDues}"
                                                     VerticalOptions="CenterAndExpand" />
-                                                <Label
+                                                    <Label
                                                     Grid.Row="0"
                                                     Grid.Column="1"
                                                     HorizontalOptions="EndAndExpand"
                                                     Style="{StaticResource SectionTitleBlackBold}">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding TaxDues, Converter={StaticResource commaSeparatorConverter}}" />
-                                                            <Span Text="&#160;" />
-                                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding TaxDues, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Text="&#160;" />
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
 
-                                            </Grid>
-                                        </Border>
+                                                </Grid>
+                                            </Border>
 
-                                        <Border
+                                            <Border
                                             Margin="0,10,0,0"
                                             Padding="0"
                                             HorizontalOptions="FillAndExpand"
                                             StrokeShape="RoundRectangle 12,12,12,12"
                                             Style="{StaticResource SfStyleForZakatPlanGreen}"
                                             VerticalOptions="FillAndExpand">
-                                            <Grid
+                                                <Grid
                                                 Padding="10,3,10,2"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="CenterAndExpand">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label
                                                     Grid.Row="0"
                                                     Grid.Column="0"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{x:Static ResourceManager:AppResources.CRTotalDues}"
                                                     VerticalOptions="CenterAndExpand" />
-                                                <Label
+                                                    <Label
                                                     Grid.Row="0"
                                                     Grid.Column="1"
                                                     HorizontalOptions="EndAndExpand"
                                                     Style="{StaticResource SectionTitleBlackBold}">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding TotalDues, Converter={StaticResource commaSeparatorConverter}}" />
-                                                            <Span Text="&#160;" />
-                                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding TotalDues, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                <Span Text="&#160;" />
+                                                                <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
 
-                                            </Grid>
-                                        </Border>
+                                                </Grid>
+                                            </Border>
 
 
-                                        <Border
+                                            <Border
                                             Margin="0,16,0,10"
                                             Padding="0,0,0,16"
                                             Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout>
+                                                <StackLayout>
 
-                                                <Grid Padding="15" RowSpacing="0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="auto" />
-                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Padding="15" RowSpacing="0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="auto" />
+                                                        </Grid.ColumnDefinitions>
 
-                                                    <StackLayout
+                                                        <StackLayout
                                                         Grid.Row="0"
                                                         Grid.Column="0"
                                                         Padding="8,0"
                                                         HorizontalOptions="FillAndExpand"
                                                         Orientation="Horizontal">
-                                                        <Image
+                                                            <Image
                                                             Grid.Row="0"
                                                             Grid.Column="0"
                                                             Aspect="AspectFit"
@@ -1914,34 +1901,34 @@
                                                             Source="ic_attachment"
                                                             VerticalOptions="Center"
                                                             WidthRequest="24" />
-                                                        <Label
+                                                            <Label
                                                             Padding="8,0"
                                                             Style="{StaticResource SectionTitleBlackBold}"
                                                             Text="{x:Static ResourceManager:AppResources.CRAttachments}"
                                                             VerticalOptions="CenterAndExpand" />
-                                                    </StackLayout>
-                                                    <StackLayout
+                                                        </StackLayout>
+                                                        <StackLayout
                                                         Grid.Row="0"
                                                         Grid.Column="1"
                                                         Padding="0,0"
                                                         HorizontalOptions="End">
-                                                        <Label
+                                                            <Label
                                                             FontSize="Medium"
                                                             Style="{StaticResource GAZTCaptioSecondarylStyle}"
                                                             Text="{x:Static ResourceManager:AppResources.CREdit}"
                                                             VerticalOptions="CenterAndExpand">
-                                                            <Label.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding GoBackToAttachments}" />
-                                                            </Label.GestureRecognizers>
-                                                        </Label>
-                                                    </StackLayout>
-                                                </Grid>
+                                                                <Label.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding GoBackToAttachments}" />
+                                                                </Label.GestureRecognizers>
+                                                            </Label>
+                                                        </StackLayout>
+                                                    </Grid>
 
-                                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                                <StackLayout Padding="15,15,15,0">
+                                                    <StackLayout Padding="15,15,15,0">
 
-                                                    <listView:SfListView
+                                                        <listView:SfListView
                                                         Grid.Row="0"
                                                         AutoFitMode="Height"
                                                         HorizontalOptions="Center"
@@ -1951,33 +1938,33 @@
                                                         SelectionBackground="Transparent"
                                                         SelectionMode="None"
                                                         VerticalOptions="Center">
-                                                        <listView:SfListView.ItemTemplate>
-                                                            <DataTemplate>
-                                                                <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition Height="auto" />
-                                                                    </Grid.RowDefinitions>
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="*" />
-                                                                        <ColumnDefinition Width="*" />
-                                                                    </Grid.ColumnDefinitions>
-                                                                    <StackLayout Grid.Row="0" Grid.Column="0">
-                                                                        <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRAttachContract}" />
-                                                                    </StackLayout>
-                                                                    <StackLayout Grid.Row="0" Grid.Column="1">
-                                                                        <Label
+                                                            <listView:SfListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="auto" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="*" />
+                                                                            <ColumnDefinition Width="*" />
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRAttachContract}" />
+                                                                        </StackLayout>
+                                                                        <StackLayout Grid.Row="0" Grid.Column="1">
+                                                                            <Label
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End"
                                                                             Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                                             Text="{Binding Filename}" />
-                                                                    </StackLayout>
-                                                                </Grid>
+                                                                        </StackLayout>
+                                                                    </Grid>
 
-                                                            </DataTemplate>
-                                                        </listView:SfListView.ItemTemplate>
-                                                    </listView:SfListView>
+                                                                </DataTemplate>
+                                                            </listView:SfListView.ItemTemplate>
+                                                        </listView:SfListView>
 
-                                                    <listView:SfListView
+                                                        <listView:SfListView
                                                         Grid.Row="1"
                                                         AutoFitMode="Height"
                                                         HorizontalOptions="Center"
@@ -1987,99 +1974,99 @@
                                                         SelectionBackground="Transparent"
                                                         SelectionMode="None"
                                                         VerticalOptions="Center">
-                                                        <listView:SfListView.ItemTemplate>
-                                                            <DataTemplate>
+                                                            <listView:SfListView.ItemTemplate>
+                                                                <DataTemplate>
 
-                                                                <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition Height="auto" />
-                                                                    </Grid.RowDefinitions>
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="*" />
-                                                                        <ColumnDefinition Width="*" />
-                                                                    </Grid.ColumnDefinitions>
-                                                                    <StackLayout Grid.Row="0" Grid.Column="0">
-                                                                        <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}" />
-                                                                    </StackLayout>
-                                                                    <StackLayout Grid.Row="0" Grid.Column="1">
-                                                                        <Label
+                                                                    <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="auto" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="*" />
+                                                                            <ColumnDefinition Width="*" />
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}" />
+                                                                        </StackLayout>
+                                                                        <StackLayout Grid.Row="0" Grid.Column="1">
+                                                                            <Label
                                                                             HorizontalOptions="EndAndExpand"
                                                                             HorizontalTextAlignment="End"
                                                                             Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                                             Text="{Binding Filename}" />
-                                                                    </StackLayout>
-                                                                </Grid>
-                                                            </DataTemplate>
-                                                        </listView:SfListView.ItemTemplate>
-                                                    </listView:SfListView>
+                                                                        </StackLayout>
+                                                                    </Grid>
+                                                                </DataTemplate>
+                                                            </listView:SfListView.ItemTemplate>
+                                                        </listView:SfListView>
 
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="*" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Label
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label
                                                             Grid.Column="0"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.CRRemarks}" />
-                                                        <Label
+                                                            <Label
                                                             Grid.Column="1"
                                                             HorizontalOptions="EndAndExpand"
                                                             HorizontalTextAlignment="End"
                                                             Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                             Text="{Binding Remarks}" />
-                                                    </Grid>
+                                                        </Grid>
 
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="*" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Label
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label
                                                             Grid.Column="0"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.CRDetailDescription}" />
-                                                        <Label
+                                                            <Label
                                                             Grid.Column="1"
                                                             HorizontalOptions="EndAndExpand"
                                                             HorizontalTextAlignment="End"
                                                             Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                             Text="{Binding DetailDescription}" />
-                                                    </Grid>
+                                                        </Grid>
+                                                    </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </Border>
+                                            </Border>
 
-                                        <Border
+                                            <Border
                                             Margin="0,16,0,10"
                                             Padding="0,0,0,16"
                                             IsVisible="{Binding IsDeclarationViewEnabled}"
                                             Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout>
+                                                <StackLayout>
 
-                                                <Grid Padding="15" RowSpacing="0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="auto" />
-                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Padding="15" RowSpacing="0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="auto" />
+                                                        </Grid.ColumnDefinitions>
 
-                                                    <StackLayout
+                                                        <StackLayout
                                                         Grid.Row="0"
                                                         Grid.Column="0"
                                                         Padding="8,0"
                                                         HorizontalOptions="FillAndExpand"
                                                         Orientation="Horizontal">
-                                                        <Image
+                                                            <Image
                                                             Grid.Row="0"
                                                             Grid.Column="0"
                                                             Aspect="AspectFit"
@@ -2088,143 +2075,144 @@
                                                             Source="declaration_blue"
                                                             VerticalOptions="Center"
                                                             WidthRequest="24" />
-                                                        <Label
+                                                            <Label
                                                             Padding="8,0"
                                                             Style="{StaticResource SectionTitleBlackBold}"
                                                             Text="{x:Static ResourceManager:AppResources.CRDeclaration}"
                                                             VerticalOptions="CenterAndExpand" />
-                                                    </StackLayout>
-                                                    <StackLayout
+                                                        </StackLayout>
+                                                        <StackLayout
                                                         Grid.Row="0"
                                                         Grid.Column="1"
                                                         Padding="0,0"
                                                         HorizontalOptions="End">
-                                                        <Label
+                                                            <Label
                                                             FontSize="Medium"
                                                             Style="{StaticResource GAZTCaptioSecondarylStyle}"
                                                             Text="{x:Static ResourceManager:AppResources.CREdit}"
                                                             VerticalOptions="CenterAndExpand">
-                                                            <Label.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding GoBackToDeclaration}" />
-                                                            </Label.GestureRecognizers>
-                                                        </Label>
-                                                    </StackLayout>
-                                                </Grid>
+                                                                <Label.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding GoBackToDeclaration}" />
+                                                                </Label.GestureRecognizers>
+                                                            </Label>
+                                                        </StackLayout>
+                                                    </Grid>
 
-                                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                                <StackLayout Padding="15,15,15,0">
+                                                    <StackLayout Padding="15,15,15,0">
 
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="*" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Label
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label
                                                             Grid.Column="0"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.CRContactPersonFullName}" />
-                                                        <Label
+                                                            <Label
                                                             Grid.Column="1"
                                                             HorizontalOptions="EndAndExpand"
                                                             HorizontalTextAlignment="End"
                                                             Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                             Text="{Binding ContactPersonName}" />
-                                                    </Grid>
+                                                        </Grid>
 
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="*" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Label
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label
                                                             Grid.Column="0"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.CRDesignation}" />
-                                                        <Label
+                                                            <Label
                                                             Grid.Column="1"
                                                             HorizontalOptions="EndAndExpand"
                                                             HorizontalTextAlignment="End"
                                                             Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                             Text="{Binding Designation}" />
-                                                    </Grid>
+                                                        </Grid>
 
+                                                    </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </Border>
+                                            </Border>
 
-                                        <Border
+                                            <Border
                                             Margin="0,16,0,10"
                                             Padding="0,0,0,16"
                                             Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout Padding="15,15,15,0" VerticalOptions="FillAndExpand">
+                                                <StackLayout Padding="15,15,15,0" VerticalOptions="FillAndExpand">
 
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="40" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto" />
-                                                        <ColumnDefinition Width="*" />
-                                                    </Grid.ColumnDefinitions>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="40" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
 
-                                                    <Grid
+                                                        <Grid
                                                         Grid.Row="0"
                                                         Grid.Column="0"
                                                         VerticalOptions="CenterAndExpand">
-                                                        <Image>
-                                                            <Image.Source>
-                                                                <FontImageSource
+                                                            <Image>
+                                                                <Image.Source>
+                                                                    <FontImageSource
                                                                     FontFamily="UserIconFont"
                                                                     Glyph="{x:Static FontImage:IconFonts.InformationOutline}"
                                                                     Size="24"
                                                                     Color="{StaticResource Primary}" />
-                                                            </Image.Source>
+                                                                </Image.Source>
 
-                                                        </Image>
-                                                    </Grid>
+                                                            </Image>
+                                                        </Grid>
 
-                                                    <Grid
+                                                        <Grid
                                                         Grid.Row="0"
                                                         Grid.Column="1"
                                                         VerticalOptions="CenterAndExpand">
-                                                        <Label
+                                                            <Label
                                                             HorizontalOptions="Start"
                                                             Style="{StaticResource SectionTitleBlackBold}"
                                                             Text="{x:Static ResourceManager:AppResources.CRInformation}" />
+                                                        </Grid>
                                                     </Grid>
-                                                </Grid>
 
-                                                <Label
+                                                    <Label
                                                     HorizontalOptions="Start"
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.CRIherebycertify}"
                                                     VerticalOptions="Start" />
 
-                                            </StackLayout>
+                                                </StackLayout>
 
-                                        </Border>
+                                            </Border>
 
-                                        <buttons:SfButton
+                                            <buttons:SfButton
                                             Margin="0,16,0,16"
                                             Command="{Binding SummaryConBtnTapped}"
-                                            HeightRequest="48"
                                             Style="{StaticResource PrimaryButtonStyle}"
-                                            Text="{x:Static ResourceManager:AppResources.Confirm}"
-                                            WidthRequest="366" />
+                                            Text="{x:Static ResourceManager:AppResources.Confirm}" />
 
-                                    </StackLayout>
+                                        </StackLayout>
+                                    </ScrollView>
                                 </Grid>
+
                             </Grid>
+
                         </Grid>
-                    
+
                     </ScrollView>
 
                 </Grid>
@@ -2235,6 +2223,9 @@
 
             <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
 
         </Grid>
 

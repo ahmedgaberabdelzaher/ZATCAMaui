@@ -1776,15 +1776,10 @@
 
                                     <Grid
                                         Grid.Row="1"
-                                        ColumnSpacing="5"
-                                        IsVisible="{Binding IsDeclarationViewEnabledNew}">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
+                                        IsVisible="{Binding IsDeclarationViewEnabledNew}"
+                                        RowDefinitions="auto"
+                                        ColumnSpacing="10"
+                                        ColumnDefinitions="auto,*">
 
 
 

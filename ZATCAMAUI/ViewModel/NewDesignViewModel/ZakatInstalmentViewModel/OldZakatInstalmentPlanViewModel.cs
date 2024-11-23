@@ -4086,7 +4086,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         {
             try
             {
-                await Application.Current.MainPage.DisplayAlert("Alert", "Instalment details schedule is displayed here.", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.InstalmentDetailsSchedule, AppResources.OKText);
 
             }
             catch (InternetException ex)

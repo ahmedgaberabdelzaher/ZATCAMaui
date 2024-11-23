@@ -81,9 +81,8 @@ public class ContractReleaseViewModel : BaseViewModel
                     await ShowInstructionDialog();
 
 
-                    
+
                     ChipGroupSelectedItem = ChipDataFilterlist.Where(x => x.TemplateType == AppResources.NDGregorian).FirstOrDefault();
-                    IsHijriCal = false;
 
                     MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
                     {
@@ -1004,7 +1003,7 @@ public class ContractReleaseViewModel : BaseViewModel
     ContractReleaseFormResponse _contractReleaseData;
     public ContractReleaseFormResponse ContractReleaseData { get { return _contractReleaseData; } set { _contractReleaseData = value; OnPropertyChanged(); } }
 
-    ContractReleaseFormResponse1 _contractReleaseData1;
+    ContractReleaseFormResponse1 _contractReleaseData1 = new ContractReleaseFormResponse1();
     public ContractReleaseFormResponse1 ContractReleaseData1 { get { return _contractReleaseData1; } set { _contractReleaseData1 = value; OnPropertyChanged(); } }
 
 
@@ -1435,25 +1434,26 @@ public class ContractReleaseViewModel : BaseViewModel
             if (IsHijriCal)
             {
                 calCul = new CultureInfo("ar-SA");
+
             }
             else
             {
                 calCul = new CultureInfo("en-US");
             }
-
-            if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(HDateNow(), "yyyy/MM/dd", calCul))
+            if (DateTime.Parse(FromDate, calCul).Date > DateTime.ParseExact(HDateNow(), "yyyy/MM/dd", calCul).Date)
             {
                 await _dialogService.ShowMessage(AppResources.CRContractDateshouldnotbegreaterfromcurentdate,
                     AppResources.Information);
                 return;
             }
-            else if (DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(HDateNow(), "yyyy/MM/dd", calCul))
+            else if (DateTime.Parse(ToDate, calCul).Date > DateTime.ParseExact(HDateNow(), "yyyy/MM/dd", calCul).Date)
             {
                 await _dialogService.ShowMessage(AppResources.CRContractEndDateshouldnotbegreaterfromcurentdate,
                     AppResources.Information);
                 return;
             }
-            else if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul))
+
+            else if (DateTime.Parse(FromDate, calCul).Date > DateTime.Parse(ToDate, calCul).Date)
             {
                 await _dialogService.ShowMessage(AppResources.CRContractEndDateshouldnotbelessfromcontractdate,
                     AppResources.Information);
@@ -1461,6 +1461,8 @@ public class ContractReleaseViewModel : BaseViewModel
             }
             else if (!IsReleaseDetailsEnabled)
             {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
                 return;
             }
 
@@ -1479,6 +1481,8 @@ public class ContractReleaseViewModel : BaseViewModel
         {
             if (!IsAttachmentsEnabled)
             {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
                 return;
             }
             EnableRemarksAndDescView();
@@ -1520,6 +1524,8 @@ public class ContractReleaseViewModel : BaseViewModel
             {
                 if (!IsDeclarationEnabled)
                 {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.RequiredData;
                     return;
                 }
             }
@@ -1542,6 +1548,7 @@ public class ContractReleaseViewModel : BaseViewModel
             {
                 await SubmitClicked();
             }
+
 
         }
         catch (GAZTErrorException ex)
@@ -1743,7 +1750,7 @@ public class ContractReleaseViewModel : BaseViewModel
 
                 calCul = new CultureInfo("en-US");
             }
-            return DateTime.Now.ToString("yyyy/MM/dd", calCul.DateTimeFormat);
+            return DateTime.Now.ToString("yyyy/MM/dd", calCul);
         }
         catch (Exception)
         {
@@ -1754,7 +1761,7 @@ public class ContractReleaseViewModel : BaseViewModel
         }
     }
 
-    public string ConvertToRequiredDatesFormat(string date, bool isTimeStamp, bool isRemoveTime = false)
+    public string ConvertToRequiredDatesFormat(string date, bool isTimeStamp, CultureInfo calCul, bool isRemoveTime = false)
     {
         try
         {
@@ -1764,22 +1771,22 @@ public class ContractReleaseViewModel : BaseViewModel
                 {
                     long timestamp = long.Parse(date.Substring(6, date.Length - 8));
                     DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(timestamp);
-                    string requiredTime = dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:ss");
+                    string requiredTime = dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:ss", calCul);
                     if (isRemoveTime)
                     {
-                        DateTime dateTime = DateTime.ParseExact(requiredTime, "yyyy-MM-ddTHH:mm:ss", null);
-                        requiredTime = dateTime.ToString("yyyy-MM-dd");
+                        DateTime dateTime = DateTime.ParseExact(requiredTime, "yyyy-MM-ddTHH:mm:ss", calCul);
+                        requiredTime = dateTime.ToString("yyyy-MM-dd", calCul);
                     }
                     return requiredTime;
                 }
                 else
                 {
-                    DateTime inputDate = DateTime.ParseExact(date, "yyyy/MM/dd", null);
-                    string requiredTime = inputDate.ToString("yyyy-MM-ddTHH:mm:ss");
+                    DateTime inputDate = DateTime.Parse(date, calCul);
+                    string requiredTime = inputDate.ToString("yyyy-MM-ddTHH:mm:ss", calCul);
                     if (isRemoveTime)
                     {
-                        DateTime dateTime = DateTime.ParseExact(requiredTime, "yyyy-MM-ddTHH:mm:ss", null);
-                        requiredTime = dateTime.ToString("yyyy-MM-dd");
+                        DateTime dateTime = DateTime.ParseExact(requiredTime, "yyyy-MM-ddTHH:mm:ss", calCul);
+                        requiredTime = dateTime.ToString("yyyy-MM-dd", calCul);
                     }
                     return requiredTime;
                 }
@@ -1788,7 +1795,7 @@ public class ContractReleaseViewModel : BaseViewModel
                 return "";
 
         }
-        catch (Exception)
+        catch (Exception ex)
         {
         }
 
@@ -1923,19 +1930,73 @@ public class ContractReleaseViewModel : BaseViewModel
             jsonDateTime2 = jsonDateTime2 + ")/";
             var convretedTodayate = jsonDateTime2;
 
-            request.d.AReceiveDt = ConvertToRequiredDatesFormat(convretedTodayate, true);
+            request.d.AReceiveDt = ConvertToRequiredDatesFormat(convretedTodayate, true, new CultureInfo("en-US"));
             CultureInfo calCul;
-
-            if (IsHijriCal)
+            DateTime dt = new DateTime();
+            DateTime dt1 = new DateTime();
+            if (ContractReleaseData.d.ACalTp == "Hijri")
             {
                 calCul = new CultureInfo("ar-SA");
+
+                // User enter Gregorian
+                if (!IsHijriCal)
+                {
+                    dt = DateTimeHelper.ConvertToUmAlQuraHigriDate(FromDate).Item1;
+                    dt1 = DateTimeHelper.ConvertToUmAlQuraHigriDate(ToDate).Item1;
+
+                    // Send to BE Hijri as user enter Gregorian
+                    request.d.AContDt1 = ConvertToRequiredDatesFormat($"{dt.Year}/{dt.Month}/{dt.Day}", false, calCul, true);
+
+                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat($"{dt1.Year}/{dt1.Month}/{dt1.Day}", false, calCul, true);
+                }
+                // User enter Hijri
+                else
+                {
+                    var fromDate = DateTime.Parse(FromDate, calCul);
+                    var toDate = DateTime.Parse(ToDate, calCul);
+                    dt = fromDate;
+                    dt1 = toDate;
+
+                    // Send to BE Hijri as user enter Hijri
+                    request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate, false, calCul, true);
+
+                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat(ToDate, false, calCul, true);
+
+                }
+
             }
             else
             {
                 calCul = new CultureInfo("en-US");
+                var fromDate = DateTime.Parse(FromDate, calCul);
+                var toDate = DateTime.Parse(ToDate, calCul);
+
+                // User enter Hijri
+                if (IsHijriCal)
+                {
+                    dt = DateTimeHelper.ConvertToGregorian(fromDate).Item1;
+                    dt1 = DateTimeHelper.ConvertToGregorian(toDate).Item1;
+
+                    // Send to BE Gregorian as user enter Hijri
+                    request.d.AContDt1 = ConvertToRequiredDatesFormat($"{dt.Year}/{dt.Month}/{dt.Day}", false, calCul, true);
+
+                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat($"{dt1.Year}/{dt1.Month}/{dt1.Day}", false, calCul, true);
+                }
+
+                // User enter Gregorian
+                else
+                {
+                    dt = fromDate;
+                    dt1 = toDate;
+
+                    // Send to BE Gregorian as user enter Gregorian
+                    request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate, false, calCul, true);
+
+                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat(ToDate, false, calCul, true);
+                }
             }
 
-            DateTime dt = DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul);
+
             JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
             {
                 DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
@@ -1946,7 +2007,7 @@ public class ContractReleaseViewModel : BaseViewModel
             jsonDateTime = jsonDateTime + ")/";
             var convretedFromDate = jsonDateTime;
 
-            DateTime dt1 = DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul);
+
             JsonSerializerSettings microsoftDateFormatSettings1 = new JsonSerializerSettings
             {
                 DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
@@ -1956,57 +2017,13 @@ public class ContractReleaseViewModel : BaseViewModel
             jsonDateTime1 = dateList1[0].Replace("\"\\", "");
             jsonDateTime1 = jsonDateTime1 + ")/";
             var convretedToDate = jsonDateTime1;
-            request.d.AContDt = ConvertToRequiredDatesFormat(convretedFromDate, true);
-            request.d.AContEndDt = ConvertToRequiredDatesFormat(convretedToDate, true);
-            request.d.AContEndDtCh = ToDate;
-            request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate, false, true);
+            request.d.AContDt = ConvertToRequiredDatesFormat(convretedFromDate, true, new CultureInfo("en-US"));
+            request.d.AContEndDt = ConvertToRequiredDatesFormat(convretedToDate, true, new CultureInfo("en-US"));
 
-            if (ContractReleaseData.d.ACalTp == "Hijri")
-            {
-                if (IsHijriCal)
-                {
-                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat(ToDate, false, true);
-                    request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate, false, true);
-                }
-                else
-                {
-                    CultureInfo arCI = new CultureInfo("en-US");
-
-                    DateTime tempDate = DateTime.ParseExact(ToDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                    DateTime tempDate1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-
-                    CultureInfo arCI1 = new CultureInfo("ar-SA");
-
-                    string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
-                    string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
-                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat(convertedDae1, false, true);
-                    request.d.AContDt1 = ConvertToRequiredDatesFormat(convertedDae2, false, true);
-                }
-            }
-            else
-            {
-                if (!IsHijriCal)
-                {
-
-                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat(ToDate, false, true);
-                    request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate, false, true);
-                }
-                else
-                {
-                    CultureInfo arCI1 = new CultureInfo("en-US");
-                    CultureInfo arCI = new CultureInfo("ar-SA");
-                    DateTime tempDate = DateTime.ParseExact(ToDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                    DateTime tempDate1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                    string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
-                    string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
-                    request.d.AContEndDtCh = ConvertToRequiredDatesFormat(convertedDae1, false, true);
-                    request.d.AContDt1 = ConvertToRequiredDatesFormat(convertedDae2, false, true);
-                }
-            }
             request.d.Savez = "X";
             request.d.Submitz = "X";
         }
-        catch (Exception)
+        catch (Exception ex)
         {
 
 
@@ -2017,67 +2034,41 @@ public class ContractReleaseViewModel : BaseViewModel
 
     public async Task<bool> SubmitClicked()
     {
-        ContractReleaseFormResponse1 response = new ContractReleaseFormResponse1();
-
-        ContractReleaseFormRequest request = new ContractReleaseFormRequest();
         try
         {
+            ContractReleaseFormRequest request = new ContractReleaseFormRequest();
             request = BuildRequestObject();
             IsLoading = true;
-            string ContractReleaseResponse = await ContractReleaseWebServiceManager.GAZTSubmitContractReleaseRequestData(request);
-            ContractReleaseFormResponse1 releaseFormResponse = JsonConvert.DeserializeObject<ContractReleaseFormResponse1>(ContractReleaseResponse);
-
-            if (releaseFormResponse.d == null)
+            var ContractReleaseResponse = await ContractReleaseWebServiceManager.GAZTSubmitContractReleaseRequestData(request);
+            IsLoading = false;
+            if (ContractReleaseResponse.result != null)
             {
-                IsLoading = false;
-                isSubmitted = false;
-                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ContractReleaseResponse);
-                StringBuilder Message = new StringBuilder();
-                foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
-                {
-                    if (itemerror.severity.Contains("error"))
-                    {
-                        if (Message.Length > 0)
-                        {
-                            Message.Append(Environment.NewLine);
-                        }
-                        Message.Append(itemerror.message);
-                    }
-                }
-
-                throw new GAZTErrorException(Message.ToString());
-            }
-            else
-            {
-                ContractReleaseData1 = releaseFormResponse;
+                ContractReleaseData1.d = ContractReleaseResponse?.result;
 
                 if (ContractReleaseData1.d != null)
                 {
                     IsLoading = false;
                     await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView(this));
+                    isSubmitted = true;
                 }
-
+                return true;
             }
+            isSubmitted = false;
+            return false;
         }
         catch (GAZTVATRegistrationInProcessException ex)
         {
             IsLoading = false;
-            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-            throw new GAZTVATRegistrationInProcessException(ex.ToString());
+            await _dialogService.ShowMessage(ex.Message, AppResources.ZError);
+            return false;
         }
 
         catch (Exception ex)
         {
             IsLoading = false;
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-            });
-
-
-            //throw;
+            await _dialogService.ShowMessage(ex.Message, AppResources.ZError);
+            return false;
         }
-        return true;
     }
 
 
@@ -2134,7 +2125,8 @@ public class ContractReleaseViewModel : BaseViewModel
         }
         else
         {
-            Zterms = VatDeregDeclaration.D.Zterms;
+            var direction = App.IsArabic ? "direction: rtl;" : "direction: ltr;";
+            Zterms = $"<div style=\"{direction}\"> {VatDeregDeclaration.D.Zterms} </div>";
             IsDeclarationViewEnabled = false;
             IsDeclarationViewEnabledNew = true;
             if (App.IsArabic)

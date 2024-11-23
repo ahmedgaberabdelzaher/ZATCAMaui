@@ -19,21 +19,22 @@
         StrokeShape="RoundRectangle 15,15,0,0"
         VerticalOptions="End">
         <StackLayout
-            Grid.Row="0"
-            Grid.Column="0"
-            Margin="24,8,24,0"
+            Margin="15,8,15,0"
             BackgroundColor="Transparent"
             HorizontalOptions="End"
             VerticalOptions="End">
+
             <BoxView
                 HorizontalOptions="Center"
                 Style="{StaticResource NeutralGrayBoxViewDrag}"
                 VerticalOptions="Start" />
+
             <Label
                 Margin="0,0,0,16"
                 HorizontalOptions="StartAndExpand"
                 Style="{StaticResource SectionTitleBlackBold}"
                 Text="{x:Static ResourceManager:AppResources.ZInstructions}" />
+
             <Border
                 Margin="0,0,0,10"
                 Stroke="#B1B1B1"
@@ -84,6 +85,7 @@
                     </StackLayout>
                 </ScrollView>
             </Border>
+
             <StackLayout
                 HorizontalOptions="FillAndExpand"
                 Orientation="Horizontal"
@@ -116,29 +118,29 @@
                     </Label.Triggers>
                 </Label>
             </StackLayout>
-            <buttons:SfButton
+
+            <Button
                 x:Name="btnConfirmVATRefundInstructions"
-                Grid.ColumnSpan="2"
-                Margin="0,24,0,24"
+                Margin="0,24"
                 Clicked="VATRefundRequestInstructions_Tapped"
                 IsEnabled="{Binding IsInstructionsChecked}"
-                Style="{StaticResource PrimaryButtonStyle}"
+                Style="{StaticResource PrimaryMauiButtonStyle}"
                 Text="{x:Static ResourceManager:AppResources.VATRefundRequestTtitle}">
-                <buttons:SfButton.Triggers>
+                <Button.Triggers>
                     <DataTrigger
                         Binding="{Binding IsInstructionsChecked}"
-                        TargetType="buttons:SfButton"
+                        TargetType="Button"
                         Value="true">
-                        <Setter Property="Background" Value="{StaticResource Secondary}" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
                     </DataTrigger>
                     <DataTrigger
                         Binding="{Binding IsInstructionsChecked}"
-                        TargetType="buttons:SfButton"
+                        TargetType="Button"
                         Value="false">
-                        <Setter Property="Background" Value="{StaticResource NeutralGreay}" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource NeutralGreay}" />
                     </DataTrigger>
-                </buttons:SfButton.Triggers>
-            </buttons:SfButton>
+                </Button.Triggers>
+            </Button>
         </StackLayout>
     </Border>
 

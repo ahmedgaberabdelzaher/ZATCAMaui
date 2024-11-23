@@ -77,13 +77,22 @@
                 Padding="10,0"
                 Style="{StaticResource CommonTopCurves}">
                 <StackLayout Grid.Row="1">
+
                     <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="24"
                         Margin="0,10"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{x:Static ResourceManager:AppResources.Objections}"
+                        TextColor="{StaticResource Primary}" />
+
+                    <Label
                         HorizontalOptions="StartAndExpand"
                         Style="{StaticResource BodyLabelGrey}"
                         Text="{x:Static ResourceManager:AppResources.VRChooseaZakatObjectionorVATReview}" />
 
-                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}"
+                             Margin="0,10"/>
 
                     <listView:SfListView
                         AutoFitMode="Height"

@@ -544,7 +544,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             {
                 if (App.IsArabic)
                 {
-                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZNo, AppResources.ZYes);
+                    var result = await _dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZNo, AppResources.ZYes);
 
                     if (!result)
                     {
@@ -553,7 +553,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 }
                 else
                 {
-                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZYes, AppResources.ZNo);
+                    var result = await _dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZYes, AppResources.ZNo);
 
                     if (result)
                     {
