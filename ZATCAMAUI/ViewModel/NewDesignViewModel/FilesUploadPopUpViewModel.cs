@@ -777,7 +777,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                             {
                                                                 AttachmentName = string.Empty;
                                                                 IsLoading = false;
-                                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                                                             }
                                                         }
@@ -894,7 +894,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                         {
                                                             AttachmentName = string.Empty;
                                                             IsLoading = false;
-                                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                                                         }
                                                     }
@@ -1017,7 +1017,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                             AttachmentName = string.Empty;
                                                             IsLoading = false;
 
-                                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                                                         }
                                                     }

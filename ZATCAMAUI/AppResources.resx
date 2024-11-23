@@ -5245,9 +5245,6 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <data name="VATRefundCancelRefund" xml:space="preserve">
         <value>Do you want to cancel the Refund?</value>
     </data>
-    <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
-        <value>Refund Request for VAT</value>
-    </data>
     <data name="VATRefundRequestTtitle" xml:space="preserve">
         <value>VAT Refund Request</value>
     </data>
@@ -11814,4 +11811,8 @@ the credit balance of the current period will be carried forward, you can reques
  <data name="PassportDisclaimer" xml:space="preserve">
    <value>Passport expiry date mustn't be before passport issue</value>
  </data>
-</root>
+  <data name="InstalmentDetailsSchedule" xml:space="preserve">
+   <value>Instalment details schedule is displayed here</value>
+ </data>
+
+</root> 

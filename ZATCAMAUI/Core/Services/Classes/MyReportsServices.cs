@@ -20,8 +20,6 @@ namespace ZATCAMAUI.Core.Services.Classes
                 languageCode=App.IsArabic?"ar":"en",
                 search = search
             };
-            /* var response = await NewHTTPManger.Post<BaseResponseModel<List<MyReportsModel>>>($"{App.VatBaseUrl}/Report/GetReportTaxByMobile?PageNumber={pageNumber}&PageSize={pageSize}&mobile={mobile}", body) as BaseResponseModel<List<MyReportsModel>>;
-             return response.Result;*/
             var response = await NewHTTPManger.Post<DATAPowerBaseResponseResult<ReportsResult>>($"{PageSettings.ZATCABaseURL}v1/vat/reports/tax-types", body) as DATAPowerBaseResponseResult<ReportsResult>;
             return response.result;
         }
@@ -35,7 +33,6 @@ namespace ZATCAMAUI.Core.Services.Classes
                 languageCode= lang,
                 mobile = mobile,
             };
-            /* var response = await NewHTTPManger.Post<BaseResponseModel<SendOTPModel>> ($"{App.VatBaseUrl}/SMS/SendOTP", body) as BaseResponseModel<SendOTPModel>;*/
           var response = await NewHTTPManger.Post<DATAPowerBaseResponseResult<KeyModel>> ($"{PageSettings.ZATCABaseURL}v1/vat/sms/otp/sending", body) as DATAPowerBaseResponseResult<KeyModel>;
 
             return response;

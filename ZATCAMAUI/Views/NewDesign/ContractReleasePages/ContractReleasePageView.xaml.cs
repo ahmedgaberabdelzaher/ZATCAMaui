@@ -32,7 +32,17 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
             MessagingCenter.Unsubscribe<object, AttachmentsList>(this, "AttachmentReceived");
-
+            ContractNumberText.Text = string.Empty;
+            ContractTotalAmountText.Text = string.Empty;
+            viewModel.ContractName = string.Empty;
+            viewModel.ContractNumber = string.Empty;
+            viewModel.ContractReleaseAmount = string.Empty;
+            viewModel.IsDeclarationEnabled = false;
+            viewModel.DeclarationButtonBackGroundColor = (viewModel.IsDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
+            viewModel.PickedContract = string.Empty;
+            viewModel.ContractTotalAmount = default;
+            viewModel.AmountToRelease = default;
+            viewModel.IsDECCheckBox = false;
         }
 
         public void setDateFormatFirstTime()
@@ -142,10 +152,9 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
                 {
                     if (HijriCalendar.SelectedItem != null)
                     {
-                        var selectedItem = HijriCalendar.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = HijriCalendar.SelectedDate.Month.ToString();
+                        string day = HijriCalendar.SelectedDate.Day.ToString();
+                        string year = HijriCalendar.SelectedDate.Year.ToString();
                         viewModel.FromDate = year + "/" + month + "/" + day;
                     }
                 }
@@ -153,10 +162,9 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
                 {
                     if (NormalCalendar.SelectedItem != null)
                     {
-                        var selectedItem = NormalCalendar.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = NormalCalendar.SelectedDate.Month.ToString();
+                        string day = NormalCalendar.SelectedDate.Day.ToString();
+                        string year = NormalCalendar.SelectedDate.Year.ToString();
                         viewModel.FromDate = year + "/" + month + "/" + day;
                     }
                 }
@@ -179,10 +187,9 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
                 {
                     if (EndDateHijriCalendar.SelectedItem != null)
                     {
-                        var selectedItem = EndDateHijriCalendar.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = EndDateHijriCalendar.SelectedDate.Month.ToString();
+                        string day = EndDateHijriCalendar.SelectedDate.Day.ToString();
+                        string year = EndDateHijriCalendar.SelectedDate.Year.ToString();
                         viewModel.ToDate = year + "/" + month + "/" + day;
                     }
                 }
@@ -190,10 +197,9 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
                 {
                     if (EndDateNormalCalendar.SelectedItem != null)
                     {
-                        var selectedItem = EndDateNormalCalendar.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = EndDateNormalCalendar.SelectedDate.Month.ToString();
+                        string day = EndDateNormalCalendar.SelectedDate.Day.ToString();
+                        string year = EndDateNormalCalendar.SelectedDate.Year.ToString();
                         viewModel.ToDate = year + "/" + month + "/" + day;
                     }
                 }

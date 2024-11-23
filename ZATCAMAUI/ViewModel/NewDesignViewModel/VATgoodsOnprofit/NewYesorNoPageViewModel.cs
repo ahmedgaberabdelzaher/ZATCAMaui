@@ -259,7 +259,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
                         {
                             if (ProfitGoodsModel.registration.ToUpper().Equals("X"))
                             {
-                                var result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.DeRegConfirmationmsg, AppResources.ZNo, AppResources.ZYes);
+                                var result = await _dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.DeRegConfirmationmsg, AppResources.ZNo, AppResources.ZYes);
                                 if (!result)
                                 {
                                     return;
@@ -413,7 +413,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
                     ShowDeregQuestion = true;
                     ShowQ1 = false;
 
-                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATProfitDeregisterQuestion, AppResources.ZYes, AppResources.ZNo);
+                    var result = await _dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.VATProfitDeregisterQuestion, AppResources.ZYes, AppResources.ZNo);
                     if (result)
                     {
                         await CallSubmit();
@@ -441,7 +441,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
 
         private async Task ShowAlertPopup(string _message)
         {
-             await Application.Current.MainPage.DisplayAlert(AppResources.Information, _message, AppResources.ZProfitOnGoodsConfrimationOk, AppResources.ZprofitsOnGoodscancel);
+             await _dialogService.ShowMessage(AppResources.Information, _message, AppResources.ZProfitOnGoodsConfrimationOk, AppResources.ZprofitsOnGoodscancel);
             MakeFalse();
             _navigationService.GoBack();
         }

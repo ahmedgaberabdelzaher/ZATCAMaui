@@ -4,6 +4,7 @@ using System.Text;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Models.BaseModels;
 using ZATCAMAUI.Models.ContractReleas;
 using ZATCAMAUI.Models.ContractRelease;
 using static ZATCAMAUI.Models.ErrorMessage;
@@ -205,7 +206,7 @@ namespace ZATCAMAUI.Core.Mangers
             }
         }
 
-        public async static Task<string> GAZTSubmitContractReleaseRequestData(ContractReleaseFormRequest contractReleaseFormData)
+        public async static Task<DATAPowerBaseResponseResult<CotractResponse>> GAZTSubmitContractReleaseRequestData(ContractReleaseFormRequest contractReleaseFormData)
         {
             string _contractReleasesubmitResponse = string.Empty;
             try
@@ -213,7 +214,6 @@ namespace ZATCAMAUI.Core.Mangers
                 string LangZ = WebServiceManager.GetLangZParameterAREN();
                 string url = ZATCAConstants.ContractReleaseSubmitUrl;
                 var uri = new Uri(url);
-                //HttpClient client = new HttpClient(App.httpClientHandler);
 
                 string deviceOs = DeviceInfo.Platform.ToString();
                 string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -231,32 +231,23 @@ namespace ZATCAMAUI.Core.Mangers
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                 HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                 _contractReleasesubmitResponse = await res.Content.ReadAsStringAsync();
-                if (!string.IsNullOrEmpty(_contractReleasesubmitResponse))
+                var result = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<CotractResponse>>(_contractReleasesubmitResponse);
+                if (result.result == null)
                 {
-                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_contractReleasesubmitResponse);
-                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                    {
-                        string errorMessage = string.Empty;
-                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                        string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                        errorMessage = WithReplacedString;
-                        throw new GAZTVATRegistrationInProcessException(errorMessage);
-                    }
+                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_contractReleasesubmitResponse);
+                    throw new GAZTVATRegistrationInProcessException(errorMessage);
                 }
-
+                return result;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
                 throw new GAZTVATRegistrationInProcessException(ex.Message);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                
-                
                 return null;
             }
-            return _contractReleasesubmitResponse;
+          
         }
 
         public async static Task<ContractReleaseSummaryModel> GAZTGetContractReleaseSummaryData(string taxpayerz, string fbnumz)
@@ -280,13 +271,9 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    //String url = Constants.ContractReleaseSummaryData + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
-                    //  "Savez='" + "',Fbnumz='" + fbnumz + "',Langz='" + lang + "',PeriodKeyz='" + "'," +
-                    //  "UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
                     String url = ZATCAConstants.ContractReleaseSummaryData + App.TP.TIN + "&language=" + lang + "&formBundleNumber=" + fbnumz;
                     var uri = new Uri(url);
                     HttpResponseMessage _contractReleasesummaryResponse = await client.GetAsync(uri);
-                    // HttpResponseMessage _contractReleasesummaryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
                     if (_contractReleasesummaryResponse != null)
                     {

@@ -278,7 +278,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     else
                     {
                         viewModel.IsDeclarationViewEnabledNew = true;
-                        viewModel.Zterms = viewModel.VatDeregDeclaration.D.Zterms;
+                        var direction = App.IsArabic ? "direction: rtl;" : "direction: ltr;";
+                        viewModel.Zterms = $"<div style=\"{direction}\"> {viewModel.VatDeregDeclaration.D.Zterms} </div>";
+
                     }
                 }
                 else if (viewModel.CurrentStep == AppResources.ZTEReportCategorySubmitBtn)

@@ -2538,7 +2538,8 @@
                                                         </Grid.RowDefinitions>
                                                         <StackLayout>
 
-                                                            <StackLayout Orientation="Horizontal">
+                                                            <StackLayout Orientation="Horizontal"
+                                                                         Spacing="10">
                                                                 <custom:CheckboxCustom
                                                                     IsChecked="{Binding IsDeclarationChecked}"
                                                                     MinimumHeightRequest="32"
