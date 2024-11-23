@@ -207,7 +207,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             SummaryRevokeBtnTapped = new Command(async () =>
             {
-                var result = await Application.Current.MainPage.DisplayAlert(AppResources.VatRefundsConfirmationTit, AppResources.ZakatRevokConfirmationText, AppResources.ZZCancel, AppResources.CRContinue);
+                var result = await _dialogService.ShowMessage(AppResources.VatRefundsConfirmationTit, AppResources.ZakatRevokConfirmationText, AppResources.ZZCancel, AppResources.CRContinue);
                 if (!result)
                 {
                     App.TP = null;

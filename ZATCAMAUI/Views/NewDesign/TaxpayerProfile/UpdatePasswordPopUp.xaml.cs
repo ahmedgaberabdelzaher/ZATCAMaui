@@ -35,22 +35,18 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                     // * NEW TP PROFILE API
                     viewModel.IsLoading = true;
                     var response = await WebServiceManager.ChangeTPProfilePasswordAPICall(viewModel.CurrentPasswordEntry, viewModel.NewPasswordEntry);
-                    if (response)
+                    if (response == null) return;
+
+                    if (response.result != null)
                     {
                         // * Navigating to Verification Screen
                         this.CloseAllPopup();
 
-                        MainThread.BeginInvokeOnMainThread(() =>
-                        {
-                            viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 3);
-                        });
+                        await viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 3);
                     }
                     else
                     {
-                        if (!string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
-                            ShowValidationPopup(WebServiceManager.ErrorMessage);
-                        else
-                            ShowValidationPopup(AppResources.InvalidPassword);
+                        ShowValidationPopup(response?.header?.moreInformation.errorDetails[0].message);
                     }
                     viewModel.IsLoading = false;
                 }

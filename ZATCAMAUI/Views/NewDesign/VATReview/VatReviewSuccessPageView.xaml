@@ -109,16 +109,10 @@
                             <buttons:SfButton
                                 Grid.ColumnSpan="2"
                                 Margin="10,20,10,20"
-                                Background="{StaticResource Secondary}"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 Command="{Binding Download_Acknowledgement}"
-                                CornerRadius="10"
-                                FontFamily="{StaticResource SomarBold}"
-                                FontSize="15"
-                                HeightRequest="48"
                                 Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
-                                TextColor="White"
-                                VerticalOptions="End"
-                                WidthRequest="366" />
+                                VerticalOptions="End"/>
 
                             <Label
                                 Margin="10,0,10,15"

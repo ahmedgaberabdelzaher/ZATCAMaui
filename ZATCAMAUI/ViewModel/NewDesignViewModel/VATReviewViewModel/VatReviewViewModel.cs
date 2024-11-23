@@ -4342,7 +4342,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             else
             {
-                Zterms = VatDeregDeclaration.D.Zterms;
+                var direction = App.IsArabic ? "direction: rtl;" : "direction: ltr;";
+                Zterms = $"<div style=\"{direction}\"> {VatDeregDeclaration.D.Zterms} </div>";
+
                 IsDeclarationViewEnabled = false;
                 IsDeclarationViewEnabledNew = true;
                 if (App.IsArabic)

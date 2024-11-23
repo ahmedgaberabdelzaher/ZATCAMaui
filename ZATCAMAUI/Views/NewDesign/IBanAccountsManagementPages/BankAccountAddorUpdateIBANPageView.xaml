@@ -840,11 +840,9 @@
                                 <buttons:SfButton
                                     Margin="0,16,0,16"
                                     Command="{Binding SummaryConBtnTapped}"
-                                    HeightRequest="48"
                                     IsEnabled="{Binding IsContinueButtonEnable}"
                                     Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.Confirm}"
-                                    WidthRequest="366" />
+                                    Text="{x:Static ResourceManager:AppResources.Confirm}" />
 
                             </StackLayout>
 

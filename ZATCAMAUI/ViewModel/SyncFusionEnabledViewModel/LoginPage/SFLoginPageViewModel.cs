@@ -68,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 
                                     if (hasForceUpdateResult && currentAndroidBuild < firebaseAndroidBuild)
                                     {
-                                        await Application.Current.MainPage.DisplayAlert(AppResources.TPUpdate, AppResources.ForceUpdateMsg, AppResources.OKText);
+                                        await dialogService.ShowMessage(AppResources.TPUpdate, AppResources.ForceUpdateMsg, AppResources.OKText);
                                         await Launcher.OpenAsync(new Uri("https://play.google.com/store/apps/details?id=com.gazt.egazt"));
                                         System.Diagnostics.Process.GetCurrentProcess().Kill();
                                     }
@@ -89,7 +89,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                                                  currentiOSBuildInt[1] < firebaseiOSBuildInt[1] ||
                                                  currentiOSBuildInt[2] < firebaseiOSBuildInt[2]))
                                     {
-                                        await Application.Current.MainPage.DisplayAlert(AppResources.TPUpdate, AppResources.ForceUpdateMsg, AppResources.OKText);
+                                        await dialogService.ShowMessage(AppResources.TPUpdate, AppResources.ForceUpdateMsg, AppResources.OKText);
                                         await Launcher.OpenAsync(new Uri("https://apps.apple.com/sa/app/zatca/id1517289036"));
                                         System.Diagnostics.Process.GetCurrentProcess().Kill();
                                     }

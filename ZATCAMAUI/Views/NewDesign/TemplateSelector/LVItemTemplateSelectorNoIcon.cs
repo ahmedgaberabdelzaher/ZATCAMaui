@@ -14,7 +14,6 @@ namespace ZATCAMAUI.Views.NewDesign.TemplateSelector
         }
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            //Application.Current.MainPage.DisplayAlert("", "", "cancel");
             return unselectedTemplateNoIcon;
         }
     }

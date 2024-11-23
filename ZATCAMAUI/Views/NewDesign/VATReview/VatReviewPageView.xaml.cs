@@ -23,9 +23,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Application.Current.MainPage.DisplayAlert(ex.Message, ex.StackTrace, "cancel");
             }
 
 
