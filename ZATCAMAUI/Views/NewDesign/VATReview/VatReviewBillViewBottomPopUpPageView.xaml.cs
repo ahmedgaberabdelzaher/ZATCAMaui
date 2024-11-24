@@ -17,7 +17,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             _viewModel = App.Locator.VatReviewView;
             this.BindingContext = _viewModel;
             this.billFormModel = _billDetails;
-
+            updatebillFormModel();
         }
 
         private void CloseTapped(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
         }
 
-        public void onAppering()
+        public void updatebillFormModel()
         {
             DocumentNumber.Text = this.billFormModel.DocumentNumber;
             SadadNumber.Text = this.billFormModel.SadadNumber;
