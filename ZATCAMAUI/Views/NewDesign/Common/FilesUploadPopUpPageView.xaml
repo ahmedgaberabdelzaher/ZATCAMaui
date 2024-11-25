@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -20,12 +19,14 @@
         <Grid RowDefinitions="Auto,Auto">
             <StackLayout Padding="10" Spacing="10">
 
-                <buttons:SfButton
-                    Background="Transparent"
+                <Button
+                    BackgroundColor="Transparent"
                     Command="{Binding GoButtonClick}"
                     FontAttributes="Bold"
                     FontSize="Medium"
-                    HorizontalOptions="End"
+                    WidthRequest="100"
+                    HorizontalOptions="EndAndExpand"
+                    Style="{StaticResource PrimaryMauiButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.CRDone}"
                     TextColor="{StaticResource Primary}" />
 
@@ -131,11 +132,11 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <buttons:SfButton
+                <Button
                     x:Name="btnAddAttachment"
                     Margin="0,20,0,35"
                     Command="{Binding OnAttachmentClick}"
-                    Style="{StaticResource PrimaryButtonStyle}"
+                    Style="{StaticResource PrimaryMauiButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.FAPAddAttachment}" />
 
             </StackLayout>

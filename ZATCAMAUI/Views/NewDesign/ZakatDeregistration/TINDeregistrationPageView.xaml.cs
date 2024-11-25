@@ -11,6 +11,7 @@ using System.Text;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 {
@@ -29,7 +30,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             viewModel.ClearData();
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             BindingContext = viewModel;
-           
+
             viewModel.LoadReasonSet();
             viewModel.PopulateAttachmentsListViewTemplate();
             if (viewModel.TinDeregistrationData != null)
@@ -54,12 +55,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 }
             }
 
-            SetDatePickerFont();
-            SetDateOfBirthPickerFont();
-            SetHijriDateOfBirthPickerFont();
-            SetHijriDateOfBirth2PickerFont();
-            SetTodayDatePickerFont();
-            SetTodayDateHijriPickerFont();
 
             viewModel.IsReasonViewEnabled = true;
             viewModel.IsOutletViewEnabled = false;
@@ -328,11 +323,11 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
         }
 
-        void attachmentsListView_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
+        async void attachmentsListView_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
         {
             viewModel.SelectedAttachment = e.AddedItems[0] as TinDeregestrationAttachmentsModel;
             viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
-            viewModel.NewAttachmentClicked();
+            await viewModel.NewAttachmentClicked();
             var view = sender as SfListView;
             view.SelectedItem = null;
 
@@ -370,7 +365,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
 
         }
-        private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
+        private async void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
         {
             try
             {
@@ -412,7 +407,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                                 viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(viewModel.PickerDOBDateDisplay))
                                 {
-                                    viewModel.ValidateIDNumber(viewModel.PickerDOBDateDisplay);
+                                    await viewModel.ValidateIDNumber(viewModel.PickerDOBDateDisplay);
                                 }
                             }
                         }
@@ -423,7 +418,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "2")
                         {
                             message = AppResources.ZZIqamaIDstartswith2;
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
                         }
@@ -442,7 +437,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             {
                                 message = Messages.ToString();
 
-                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
                                 viewModel.SelectedIdNumber = string.Empty;
@@ -453,7 +448,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                                 viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(viewModel.PickerDOBDateDisplay))
                                 {
-                                    viewModel.ValidateIDNumber(viewModel.PickerDOBDateDisplay);
+                                    await viewModel.ValidateIDNumber(viewModel.PickerDOBDateDisplay);
                                 }
                             }
                         }
@@ -465,7 +460,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         {
                             //Have to change to neww error message
                             message = AppResources.ZZGCCIDdonotstartwith0;
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -474,16 +469,14 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         {
                             message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
 
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                            //FrmIDNumber.HasError = true;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
-                            //EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
                         }
                         else
                         {
                             viewModel.FrameIDError = false;
-                            viewModel.ValidateIDNumber();
+                            await viewModel.ValidateIDNumber();
                         }
                     }
 
@@ -492,8 +485,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "7")
                         {
                             //Have to change to neww error message
-                           message = AppResources.TinDeregistrationCompanyIDCheck;
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                            message = AppResources.TinDeregistrationCompanyIDCheck;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -502,7 +495,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         {
                             //Have to change to neww error message
                             message = AppResources.CompanyIDlengthis10digit;
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -510,7 +503,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         else
                         {
                             viewModel.FrameIDError = false;
-                            viewModel.ValidateIDNumber();
+                            await viewModel.ValidateIDNumber();
                         }
                     }
                 }
@@ -629,17 +622,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
             finally
             {
-                try
+                if (viewModel != null)
                 {
-                    if (viewModel != null)
-                    {
-                        MainThread.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
-                    }
-                }
-                catch (Exception)
-                {
-
-
+                    HijriCalSwitch3.IsToggled = viewModel.IsHijriCal;
                 }
 
             }
@@ -685,7 +670,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
             finally
             {
-                MainThread.BeginInvokeOnMainThread(() => HijriCalSwitch1.IsToggled = viewModel.IsDOBHijriCal);
+                HijriCalSwitch1.IsToggled = viewModel.IsDOBHijriCal;
             }
         }
 
@@ -717,7 +702,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 DpDboHijri.IsOpen = true;
             }
         }
-        
+
 
         private void OnIDDOBClicked(object sender, EventArgs e)
         {
@@ -745,13 +730,13 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
 
         }
-        private void DpDbo_Closed(object sender, EventArgs e)
+        private async void DpDbo_Closed(object sender, EventArgs e)
         {
             FrmDBO.HasError = false;
             viewModel.IsDeRegistrationValid = true;
             bool isHIjri;
-            DateTime deregDate;
-            DateTime permitDate;
+            DateTime deregDate = new DateTime();
+            DateTime permitDate = new DateTime();
             try
             {
                 if (viewModel.IsHijriCal)
@@ -759,20 +744,19 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
                     if (DpDboHijri.SelectedItem != null && (DpDboHijri.SelectedItem as IList<object>).Count == 3)
                     {
-                        string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
-                        string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
-                        string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
+                        string month = DpDboHijri.SelectedDate.Month.ToString();
+                        string day = DpDboHijri.SelectedDate.Day.ToString();
+                        string year = DpDboHijri.SelectedDate.Year.ToString();
                         var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && viewModel.SelectedOutletOption.OutletOptionIndex != "1" && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
-                            //  viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
                             viewModel.PickerDOBDateDisplay = "";
                             viewModel.SelectedDob = "";
                         }
 
                         viewModel.PkrDBO = date;
-                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                        viewModel.DeregistrationDate = new DateTime(DpDboHijri.SelectedDate.Year, DpDboHijri.SelectedDate.Month, DpDboHijri.SelectedDate.Day);
                         viewModel.PickerDobToDisplay = date;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
@@ -783,23 +767,24 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
                     if (DpDbo.SelectedItem != null)
                     {
-                        string month = (DpDbo.SelectedItem as IList<object>)[1].ToString();
-                        string day = (DpDbo.SelectedItem as IList<object>)[0].ToString();
-                        string year = (DpDbo.SelectedItem as IList<object>)[2].ToString();
+                        string month = DpDbo.SelectedDate.Month.ToString();
+                        string day = DpDbo.SelectedDate.Day.ToString();
+                        string year = DpDbo.SelectedDate.Year.ToString();
                         var date = year + "/" + month + "/" + day;
+
                         if (!string.IsNullOrEmpty(date) && viewModel.SelectedOutletOption.OutletOptionIndex != "1" && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
-                            // viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
 
                             viewModel.PickerDOBDateDisplay = "";
                             viewModel.SelectedDob = "";
                         }
 
                         viewModel.PkrDBO = date;
-                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+                        var s = DateTime.Parse(date,new CultureInfo("en-US"));
+                        viewModel.DeregistrationDate = new DateTime(DpDbo.SelectedDate.Year, DpDbo.SelectedDate.Month, DpDbo.SelectedDate.Day);
 
-                        viewModel.PickerDobToDisplay = viewModel.PkrDBO; //DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        viewModel.PickerDobToDisplay = viewModel.PkrDBO; 
 
                     }
                     isHIjri = false;
@@ -813,46 +798,53 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     sortedDate = allPermitTypes.OrderBy(x => x.APermitValfrDtHTb).Select(x => x.APermitValfrDtHTb).FirstOrDefault();
                     datetype = permitInfo.APermitValfrDtCTb;
                 }
-                if (datetype.Contains("H"))
+                if(!string.IsNullOrWhiteSpace(datetype) && !string.IsNullOrWhiteSpace(sortedDate))
                 {
-                    string convertedSortedDate = UtilityManager.HijriToGreg(sortedDate);
-                    permitDate = Convert.ToDateTime(convertedSortedDate);
-                }
-                else
-                {
-                    permitDate = Convert.ToDateTime(sortedDate);
+                    if (datetype.Contains("H") || datetype.Contains("Hijri"))
+                    {
+                        string convertedSortedDate = UtilityManager.HijriToGreg(sortedDate);
+                        permitDate = DateTime.Parse(convertedSortedDate, new CultureInfo("ar-SA"));
+                    }
+                    else
+                    {
+                        permitDate = DateTime.Parse(sortedDate, new CultureInfo("en-US"));
 
+                    }
                 }
 
-                if (isHIjri)
+                if (!string.IsNullOrWhiteSpace(viewModel.PkrDBO))
                 {
-                    string convertedDeregDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
-                    deregDate = Convert.ToDateTime(convertedDeregDate);
+                    if (isHIjri)
+                    {
+                        string convertedDeregDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
+                        deregDate = DateTime.Parse(convertedDeregDate, new CultureInfo("ar-SA"));
+                    }
+                    else
+                    {
+                        deregDate = DateTime.Parse(viewModel.PkrDBO, new CultureInfo("en-US"));
+                    }
                 }
-                else
-                {
-                    deregDate = Convert.ToDateTime(viewModel.PkrDBO);
-                }
+               
 
 
                 if (deregDate < permitDate)
                 {
                     viewModel.IsDeRegistrationValid = false;
                     FrmDBO.HasError = true;
-                    // viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
-                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
 
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
             }
 
         }
-        private void DpDOB_Closed(object sender, EventArgs e)
+
+        private async void DpDOB_Closed(object sender, EventArgs e)
         {
             try
             {
@@ -860,14 +852,14 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 {
                     if (DpDboHijri3.SelectedItem != null && (DpDboHijri3.SelectedItem as IList<object>).Count == 3)
                     {
-                        string month = (DpDboHijri3.SelectedItem as IList<object>)[1].ToString();
-                        string day = (DpDboHijri3.SelectedItem as IList<object>)[0].ToString();
-                        string year = (DpDboHijri3.SelectedItem as IList<object>)[2].ToString();
+                        string month = DpDboHijri3.SelectedDate.Month.ToString();
+                        string day = DpDboHijri3.SelectedDate.Day.ToString();
+                        string year = DpDboHijri3.SelectedDate.Year.ToString();
                         var date = year + "/" + month + "/" + day;
-                        if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
+
+                        if (!string.IsNullOrEmpty(date) && DateTime.Parse(date, new CultureInfo("en-US")).Date > viewModel.DeregistrationDate.Date)
                         {
-                            // viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
 
                             return;
                         }
@@ -876,7 +868,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         viewModel.PickerDOBDateDisplay = viewModel.DateOfBirth;
                         if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID)
                             return;
-                        viewModel.ValidateIDNumber(date);
+                        await viewModel.ValidateIDNumber(date);
 
                     }
                 }
@@ -884,14 +876,13 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 {
                     if (DpDbo3.SelectedItem != null && (DpDbo3.SelectedItem as IList<object>).Count == 3)
                     {
-                        string month = (DpDbo3.SelectedItem as IList<object>)[1].ToString();
-                        string day = (DpDbo3.SelectedItem as IList<object>)[0].ToString();
-                        string year = (DpDbo3.SelectedItem as IList<object>)[2].ToString();
+                        string month = DpDbo3.SelectedDate.Month.ToString();
+                        string day = DpDbo3.SelectedDate.Day.ToString();
+                        string year = DpDbo3.SelectedDate.Year.ToString();
                         var date = year + "/" + month + "/" + day;
-                        if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
+                        if (!string.IsNullOrEmpty(date) && DateTime.Parse(date, new CultureInfo("en-US")).Date > viewModel.DeregistrationDate.Date)
                         {
-                            //viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
 
                             return;
                         }
@@ -900,7 +891,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         viewModel.PickerDOBDateDisplay = viewModel.DateOfBirth;
                         if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID)
                             return;
-                        viewModel.ValidateIDNumber(date);
+                        await viewModel.ValidateIDNumber(date);
 
                     }
                 }
@@ -953,12 +944,8 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
             else
             {
-                // viewModel.FrameTinError = true;
-                //Messages.Append(AppResources.ZZPleasefillallthemandatoryfields);
-
                 message = Messages.ToString();
-               
-                //  MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+
                 EntryTIN.Text = string.Empty;
             }
 
@@ -969,17 +956,17 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
             if (viewModel.IsDOBHijriCal)
             {
-                string month = (DpDboHijri3.SelectedItem as IList<object>)[1].ToString();
-                string day = (DpDboHijri3.SelectedItem as IList<object>)[0].ToString();
-                string year = (DpDboHijri3.SelectedItem as IList<object>)[2].ToString();
+                string month = DpDboHijri3.SelectedDate.Month.ToString();
+                string day = DpDboHijri3.SelectedDate.Day.ToString();
+                string year = DpDboHijri3.SelectedDate.Year.ToString();
                 string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
                 viewModel.SelectedDob = date;
             }
             else
             {
-                string month = (DpDbo3.SelectedItem as IList<object>)[1].ToString();
-                string day = (DpDbo3.SelectedItem as IList<object>)[0].ToString();
-                string year = (DpDbo3.SelectedItem as IList<object>)[2].ToString();
+                string month = DpDbo3.SelectedDate.Month.ToString();
+                string day = DpDbo3.SelectedDate.Day.ToString();
+                string year = DpDbo3.SelectedDate.Year.ToString();
                 string date = year + "/" + month + "/" + day;
                 viewModel.SelectedDob = date;
             }
@@ -992,9 +979,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             if (viewModel.IsHijriCal)
             {
 
-                string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
-                string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
-                string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
+                string month = DpDboHijri.SelectedDate.Month.ToString();
+                string day = DpDboHijri.SelectedDate.Day.ToString();
+                string year = DpDboHijri.SelectedDate.Year.ToString();
                 string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
                 viewModel.DeregistrationDate = Convert.ToDateTime(date);
 
@@ -1002,10 +989,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
             else
             {
-                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = DpDbo.SelectedDate.Month.ToString();
+                string day = DpDbo.SelectedDate.Day.ToString();
+                string year = DpDbo.SelectedDate.Year.ToString();
                 string date = year + "/" + month + "/" + day;
 
                 viewModel.DeregistrationDate = Convert.ToDateTime(date);
@@ -1098,10 +1084,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 DpDbo.SelectedItem = todaycollection;
             }
         }
-        private void DOBpicker_OkButtonClicked(object sender, EventArgs e)
-        {
-            //  ValidateIDNumber();
-        }
+
         void outletsListView_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
         {
 
@@ -1137,7 +1120,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
         async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            var result = await DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);
+            var result = await viewModel._dialogService.ShowMessage(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZYes, AppResources.ZNo);
             if (!result)
             {
                 if (viewModel.TinDeregistrationData != null)
@@ -1155,212 +1138,11 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        public void SetDatePickerFont()
-        {
-            try
-            {
-                switch (DeviceInfo.Platform)
-                {
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        {
-
-                            DpDbo2.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDbo2.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDbo2.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            DpDbo2.TextStyle.FontFamily = "Somar-SemiBold";
-                        }
-                        break;
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-                        {
-                            DpDbo2.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDbo2.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDbo2.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDbo2.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                        }
-                        break;
-                }
-            }
-            catch (Exception)
-            {
 
 
-            }
-
-        }
-
-        public void SetDateOfBirthPickerFont()
-        {
-            try
-            {
-                switch (DeviceInfo.Platform)
-                {
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        {
-
-                            DpDbo.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDbo.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDbo.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            DpDbo.TextStyle.FontFamily = "Somar-SemiBold";
-                        }
-                        break;
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-                        {
-                            DpDbo.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDbo.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDbo.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDbo.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                        }
-                        break;
-                }
-            }
-            catch (Exception)
-            {
 
 
-            }
 
-        }
-
-        public void SetHijriDateOfBirthPickerFont()
-        {
-            try
-            {
-                switch (DeviceInfo.Platform)
-                {
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        {
-
-                            DpDboHijri.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDboHijri.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDboHijri.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            DpDboHijri.TextStyle.FontFamily = "Somar-SemiBold";
-                        }
-                        break;
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-                        {
-                            DpDboHijri.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDboHijri.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDboHijri.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDboHijri.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                        }
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
-
-        public void SetHijriDateOfBirth2PickerFont()
-        {
-            try
-            {
-                switch (DeviceInfo.Platform)
-                {
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        {
-
-                            DpDboHijri2.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDboHijri2.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDboHijri2.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            DpDboHijri2.TextStyle.FontFamily = "Somar-SemiBold";
-                        }
-                        break;
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-                        {
-                            DpDboHijri2.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDboHijri2.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDboHijri2.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDboHijri2.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                        }
-                        break;
-
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
-
-        public void SetTodayDatePickerFont()
-        {
-            try
-            {
-                switch (DeviceInfo.Platform)
-                {
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        {
-
-                            DpDbo3.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDbo3.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDbo3.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            DpDbo3.TextStyle.FontFamily = "Somar-SemiBold";
-                        }
-                        break;
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-                        {
-                            DpDbo3.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDbo3.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDbo3.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDbo3.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                        }
-                        break;
-
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
-
-        public void SetTodayDateHijriPickerFont()
-        {
-            try
-            {
-                switch (DeviceInfo.Platform)
-                {
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        {
-
-                            DpDboHijri3.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDboHijri3.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            DpDboHijri3.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            DpDboHijri3.TextStyle.FontFamily = "Somar-SemiBold";
-                        }
-                        break;
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-                        {
-                            DpDboHijri3.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDboHijri3.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDboHijri3.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            DpDboHijri3.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                        }
-                        break;
-
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
 
         void newName_Clicked(object sender, EventArgs e)
         {
@@ -1381,13 +1163,13 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        private void attachmentsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void attachmentsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             try
             {
                 viewModel.SelectedAttachment = e.SelectedItem as TinDeregestrationAttachmentsModel;
                 viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
-                viewModel.NewAttachmentClicked();
+                await viewModel.NewAttachmentClicked();
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
@@ -1431,7 +1213,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        private void AddAttachment_Tapped(object sender, EventArgs e)
+        private async void AddAttachment_Tapped(object sender, EventArgs e)
         {
             try
             {
@@ -1439,7 +1221,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 TinDeregestrationAttachmentsModel selectedOutlet = (TinDeregestrationAttachmentsModel)(e as TappedEventArgs).Parameter;
                 viewModel.SelectedAttachment = selectedOutlet;
                 var obj = viewModel.TinDeregistrationData.AttDetSet;
-                viewModel.NewAttachmentClicked();
+                await viewModel.NewAttachmentClicked();
             }
             catch (Exception)
             {
@@ -1580,9 +1362,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        private void OnTinRegistrationReasonTapped(object sender, EventArgs e)
+        private async void OnTinRegistrationReasonTapped(object sender, EventArgs e)
         {
-            viewModel.OnTinRegisrtationReasonClicked();
+            await viewModel.OnTinRegisrtationReasonClicked();
         }
 
     }
