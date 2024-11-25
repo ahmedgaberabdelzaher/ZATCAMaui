@@ -655,8 +655,9 @@
                                     <cards:SfCardView
                                         Grid.Row="8"
                                         Padding="10"
+                                        BackgroundColor="White"
                                         BorderColor="{StaticResource NeutralLightGrey}"
-                                        BorderWidth="1"
+                                        BorderWidth="3"
                                         CornerRadius="20">
                                         <StackLayout>
 
@@ -699,8 +700,9 @@
                                     <cards:SfCardView
                                         Grid.Row="9"
                                         Padding="10"
+                                         BackgroundColor="White"
                                         BorderColor="{StaticResource NeutralLightGrey}"
-                                        BorderWidth="1"
+                                        BorderWidth="3"
                                         CornerRadius="20">
                                         <StackLayout Spacing="10">
 
@@ -748,8 +750,9 @@
                                     <cards:SfCardView
                                         Grid.Row="10"
                                         Padding="10"
+                                        BackgroundColor="White"
                                         BorderColor="{StaticResource NeutralLightGrey}"
-                                        BorderWidth="1"
+                                        BorderWidth="3"
                                         CornerRadius="20">
                                         <StackLayout Spacing="10">
 
@@ -822,8 +825,9 @@
                                     <cards:SfCardView
                                         Grid.Row="11"
                                         Padding="10"
+                                        BackgroundColor="White"
                                         BorderColor="{StaticResource NeutralLightGrey}"
-                                        BorderWidth="1"
+                                        BorderWidth="3"
                                         CornerRadius="20">
                                         <StackLayout Spacing="10">
                                             <StackLayout
@@ -893,8 +897,9 @@
                                     <cards:SfCardView
                                         Grid.Row="12"
                                         Padding="10"
+                                        BackgroundColor="White"
                                         BorderColor="{StaticResource NeutralLightGrey}"
-                                        BorderWidth="1"
+                                        BorderWidth="3"
                                         CornerRadius="20">
                                         <StackLayout Spacing="10">
                                             <StackLayout Orientation="Horizontal">
@@ -952,8 +957,9 @@
                                     <cards:SfCardView
                                         Grid.Row="13"
                                         Padding="10"
+                                         BackgroundColor="White"
                                         BorderColor="{StaticResource NeutralLightGrey}"
-                                        BorderWidth="1"
+                                        BorderWidth="3"
                                         CornerRadius="20">
                                         <StackLayout Spacing="10">
                                             <StackLayout Orientation="Horizontal">
@@ -1067,6 +1073,7 @@
                                 <!--  Release Contract 2  -->
                                 <StackLayout
                                     Margin="20,10,20,0"
+                                    Spacing="10"
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding AttachmentsVisible}"
@@ -1074,7 +1081,6 @@
 
 
                                     <Label
-                                        Padding="0,10,0,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource PageTitleBlack}"
                                         Text="{x:Static ResourceManager:AppResources.CRAttachments}" />
@@ -1099,7 +1105,7 @@
                                         ScrollBarVisibility="Never"
                                         SelectionBackground="Transparent"
                                         SelectionMode="SingleDeselect"
-                                        TapCommand="{Binding NewContractCopyAttachmentTapped}"
+                                        TapCommand="{Binding RemoveNewContractCopyAttachmentCommand}"
                                         VerticalOptions="Center">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
@@ -1224,7 +1230,7 @@
                                         ScrollBarVisibility="Never"
                                         SelectionBackground="Transparent"
                                         SelectionMode="SingleDeselect"
-                                        TapCommand="{Binding NewInvoiceAttachmentTapped}"
+                                        TapCommand="{Binding RemoveInvoiceAttachmentCommand}"
                                         VerticalOptions="Center">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>

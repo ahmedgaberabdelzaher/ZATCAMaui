@@ -60,7 +60,9 @@ public class ContractReleaseViewModel : BaseViewModel
     public ICommand ValueofTaxDuesCommand { get; set; }
     public ICommand TotalDuesCommand { get; set; }
     public ICommand NewContractCopyAttachmentTapped { get; set; }
+    public ICommand RemoveNewContractCopyAttachmentCommand { get; set; }
     public ICommand NewInvoiceAttachmentTapped { get; set; }
+    public ICommand RemoveInvoiceAttachmentCommand { get; set; }
     public ICommand ReleaseAmtUnfocused { get; set; }
 
     public ICommand OnAppearingContractReleaseCommand
@@ -1220,7 +1222,9 @@ public class ContractReleaseViewModel : BaseViewModel
         SummaryConBtnTapped = new Command(async () => await SummaryConBtnClicked());
         ContractInstructionsClicked = new Command(async () => await InstructionsTapped());
         NewInvoiceAttachmentTapped = new Command(async () => await NewInvoiceAttachmentClicked());
+        RemoveInvoiceAttachmentCommand = new Command<object>( (obj) => RemoveInvoiceAttachment(obj));
         NewContractCopyAttachmentTapped = new Command(async () => await NewContractCopyAttachmentClicked());
+        RemoveNewContractCopyAttachmentCommand = new Command<object>((obj) => RemoveNewContractCopyAttachment(obj));
         ReleaseAmtUnfocused = new Command(CalculateReleaseAmt);
         setPickerModel();
     }
@@ -2231,6 +2235,13 @@ public class ContractReleaseViewModel : BaseViewModel
         }
     }
 
+    public void RemoveNewContractCopyAttachment(object obj)
+    {
+        var selectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as Attachment;
+        if (selectedItem != null)
+            ContractCopyAttachmentsListViewData.Remove(selectedItem);
+    }
+
     public async Task NewContractCopyAttachmentClicked()
     {
         if (MopupService.Instance.PopupStack.Count > 0) return;
@@ -2274,6 +2285,12 @@ public class ContractReleaseViewModel : BaseViewModel
         }
     }
 
+    public void RemoveInvoiceAttachment(object obj)
+    {
+        var selectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as Attachment;
+        if(selectedItem != null)
+            InvoiceAttachmentsListViewData.Remove(selectedItem);
+    }
     public async Task NewInvoiceAttachmentClicked()
     {
         if (MopupService.Instance.PopupStack.Count > 0) return;
