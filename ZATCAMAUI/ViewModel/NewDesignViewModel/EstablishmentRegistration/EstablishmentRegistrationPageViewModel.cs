@@ -1239,6 +1239,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
+
+        private string _finSelectedMethod = null;
+        public string FinSelectedMethod
+        {
+            get => _finSelectedMethod;
+            set
+            {
+                if (_finSelectedMethod == value) return;
+
+                if (value != null)
+                {
+                    _finSelectedMethod = value;
+                    OnPropertyChanged(nameof(FinSelectedMethod));
+                }
+            }
+        }
+
         private List<string> _calendarTypeList = new List<string>();
         public List<string> CalendarTypeList
         {
@@ -2867,10 +2884,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
                     CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
                     if (taxPayerDetails?.Accmethod == "A")
+                    {
                         SelectedMethod = AppResources.NDAccounting;
+                        FinSelectedMethod = AppResources.FORM5AccountingMethod;
+                    }
                     else
+                    {
                         SelectedMethod = AppResources.NDEstimated;
-
+                        FinSelectedMethod = AppResources.ESTEstimatedMethod;
+                    }
 
                     if (taxPayerDetails?.Fdcalender == "1")
                     {
