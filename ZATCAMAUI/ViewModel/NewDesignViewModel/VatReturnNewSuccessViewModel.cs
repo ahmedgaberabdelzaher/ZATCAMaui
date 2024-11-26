@@ -185,15 +185,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             OnDownloadFormClicked = new Command( async () =>
             {
                 string Url = string.Empty;
-
-                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnum + "',Utype='')/$value?saml2=enabled";
+                Url = ZATCAConstants.ZOdownloadAckLetter + VATDeclarationData.data.Fbnum;
                await ShowPdf(Url);
             });
             OnAcknowlwdgementClicked = new Command( async () =>
             {
                 string Url = string.Empty;
-                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnum + "')/$value?saml2=enabled";
-              await  ShowPdf(Url);
+                Url = ZATCAConstants.ZOdownloadAckLetter + VATDeclarationData.data.Fbnum;
+                await ShowPdf(Url);
             });
 
             OnBackButtonClicked = new Command(() =>
