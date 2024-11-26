@@ -37,7 +37,11 @@ namespace ZATCAMAUI.Core.Helper
                                         "dd-MM-yyyy'T'hh:mm:ss","MM-dd-yyyy'T'hh:mm:ss",
                                         "dd-MM-yyyy'T'HH:mm:ss","MM-dd-yyyy'T'HH:mm:ss",
                                         "dd-MM-yyyy","MM-dd-yyyy","M-d-yyyy","d-M-yyyy",
-                                        "M-dd-yyyy","yyyy-MM-dd'T'hh:mm:ss","yyyy-MM-dd'T'HH:mm:ss"};
+                                        "M-dd-yyyy","yyyy-MM-dd'T'hh:mm:ss","yyyy-MM-dd'T'HH:mm:ss",
+                                        "yyyy-MM-dd'T'HH:mm:ss.sss","yyyy/MM/dd'T'HH:mm:ss.sss",
+                                        "yyyy-MM-ddTHH:mm:ss.sss","yyyy/MM/ddTHH:mm:ss.sss",
+                                        "yyyy/MM/dd'T'hh:mm:ss.sss","yyyy-MM-dd'T'hh:mm:ss.sss",
+                                        "yyyy/MM/ddThh:mm:ss.sss","yyyy-MM-ddThh:mm:ss.sss"};
                 return DateTime.ParseExact(dateTimeString, formates, cu, DateTimeStyles.None);
             }
             catch (Exception)

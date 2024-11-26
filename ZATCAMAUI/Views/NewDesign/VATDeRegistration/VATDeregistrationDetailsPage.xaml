@@ -87,7 +87,6 @@
                         <Grid>
 
                             <Grid
-                                BackgroundColor="Transparent"
                                 ColumnDefinitions="50*,50*"
                                 HorizontalOptions="FillAndExpand"
                                 IsVisible="{Binding IsReasonViewEnabled}"
@@ -259,6 +258,7 @@
                                 <StackLayout
                                 Grid.Row="4"
                                 Grid.Column="0"
+                                Spacing="10"
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="FillAndExpand"
                                 IsEnabled="{Binding IsRequestTypeEnabled}"
@@ -314,13 +314,14 @@
                                                 </custom:CustomSfTextInputView>
 
                                                 <Label
-                                                    Margin="0,10,0,10"
+                                                    Margin="0,10"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     Text="{Binding TextCount}" />
                                             </StackLayout>
                                         </StackLayout>
 
-                                        <Grid ColumnDefinitions="*,*">
+                                        <Grid ColumnDefinitions="*,*"
+                                              Margin="0,10">
 
                                             <Label
                                                     Grid.Column="0"
@@ -330,25 +331,24 @@
 
                                             <Label
                                                     Grid.Column="1"
-                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalOptions="EndAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedEndDate}" />
 
                                         </Grid>
 
                                         <Border
-                                                Margin="10,0,10,0"
                                                 Stroke="#B1B1B1"
                                                 StrokeThickness="1"
                                                 Style="{StaticResource GreyBorderFrame}">
 
                                             <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
-                                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                     <Label
-                                                        HorizontalOptions="Start"
+                                                        HorizontalOptions="StartAndExpand"
                                                         Style="{StaticResource GAZTSmallBlackLabel}"
                                                         Text="{Binding FromDate, StringFormat='{0:yyyy/MM/dd}'}" />
-                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                                                         <Image Margin="5,0" HorizontalOptions="Center">
                                                             <Image.Source>
                                                                 <FontImageSource
@@ -366,7 +366,7 @@
 
                                                 </StackLayout>
 
-                                                <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                                     <Label
                                                         HorizontalOptions="Start"
                                                         Style="{StaticResource GAZTSmallBlackLabel}"
@@ -393,23 +393,22 @@
 
                                     </StackLayout>
 
-                                    <StackLayout>
+                                    <StackLayout Spacing="10">
                                         <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedFilingPeriod}" />
                                         <Border
-                                            Margin="10,0,10,0"
                                             Stroke="#B1B1B1"
                                             StrokeThickness="1"
                                             Style="{StaticResource GreyBorderFrame}">
 
                                             <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
                                                 <Label
-                                                    HorizontalOptions="Center"
+                                                    HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource GAZTSmallBlackLabel}"
                                                     Text="{Binding SuspendedStartDate, StringFormat='{0:yyyy/MM/dd}'}" />
-                                                <Image Margin="5,0">
+                                                <Image Margin="5,0" HorizontalOptions="CenterAndExpand">
                                                     <Image.Source>
                                                         <FontImageSource
                                                             FontFamily="UserIconFont"
@@ -419,7 +418,7 @@
                                                     </Image.Source>
                                                 </Image>
                                                 <Label
-                                                    HorizontalOptions="End"
+                                                    HorizontalOptions="EndAndExpand"
                                                     Style="{StaticResource GAZTSmallBlackLabel}"
                                                     Text="{Binding SuspendedEndDate, StringFormat='{0:yyyy/MM/dd}'}" />
                                                 <Image Margin="5,0">
@@ -436,23 +435,22 @@
                                         </Border>
                                     </StackLayout>
 
-                                    <StackLayout>
+                                    <StackLayout Spacing="10">
                                         <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingPeriod}" />
                                         <Border
-                                            Margin="10,0,10,0"
                                             Stroke="#B1B1B1"
                                             StrokeThickness="1"
                                             Style="{StaticResource GreyBorderFrame}">
 
                                             <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
                                                 <Label
-                                                    HorizontalOptions="Start"
+                                                    HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource GAZTSmallBlackLabel}"
                                                     Text="{Binding NextFilingStartDate, StringFormat='{0:yyyy/MM/dd}'}" />
-                                                <Image Margin="5,0" HorizontalOptions="Center">
+                                                <Image Margin="5,0" HorizontalOptions="CenterAndExpand">
                                                     <Image.Source>
                                                         <FontImageSource
                                                             FontFamily="UserIconFont"
@@ -462,7 +460,7 @@
                                                     </Image.Source>
                                                 </Image>
                                                 <Label
-                                                    HorizontalOptions="End"
+                                                    HorizontalOptions="EndAndExpand"
                                                     Style="{StaticResource GAZTSmallBlackLabel}"
                                                     Text="{Binding NextFilingEndDate, StringFormat='{0:yyyy/MM/dd}'}" />
                                                 <Image Margin="5,0">
@@ -478,14 +476,13 @@
                                         </Border>
                                     </StackLayout>
 
-                                    <StackLayout>
+                                    <StackLayout Spacing="10">
                                         <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingDueDate}" />
 
-                                        <custom:CustomSfTextInputView
-                                                Margin="10,0,10,0">
+                                        <custom:CustomSfTextInputView>
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                         Text="{Binding NextFilingDueDate, StringFormat='{0:yyyy/MM/dd}'}"
@@ -505,7 +502,7 @@
                                 Grid.Row="5"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
-                                Margin="0,60,0,60"
+                                Margin="0,10"
                                 Command="{Binding ReasonContinueBtnTapped}"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
@@ -696,10 +693,12 @@
                             HorizontalOptions="FillAndExpand"
                              RowDefinitions="auto,auto,auto,auto,auto,*"
                              ColumnDefinitions="50*,50*"
+                             RowSpacing="10"
                             IsVisible="{Binding IsDeclarationViewEnabled}"
                             VerticalOptions="FillAndExpand">
                                 <Grid
                                     RowDefinitions="auto,auto,1"
+                                    RowSpacing="10"
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2">
@@ -929,6 +928,7 @@
                             Margin="20,10,20,0"
                             BackgroundColor="Transparent"
                             ColumnDefinitions="50*,50*"
+                            RowSpacing="10"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsDeclarationViewEnabledNew}"
                             RowDefinitions="auto,auto,auto,auto,auto,*"
@@ -938,6 +938,7 @@
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
+                                RowSpacing="10"
                                 RowDefinitions="auto,auto,1">
 
                                     <Label
@@ -1004,7 +1005,7 @@
                             </Grid>
 
                             <Grid
-                            Margin="20,10,20,0"
+                            Margin="20"
                             BackgroundColor="Transparent"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsSummaryViewEnabled}"
@@ -1024,7 +1025,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
-                                        <RowDefinition Height="1" />
+                                        <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
@@ -1037,7 +1038,6 @@
                                     <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
-                                    Margin="0,0,0,8"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource BodyLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" />
@@ -1049,11 +1049,11 @@
                                     <Border
                                     Grid.Row="3"
                                     Grid.Column="0"
-                                    Margin="0,16,0,10"
+                                    Margin="0,16"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
-                                        <StackLayout Padding="0">
+                                        <StackLayout Padding="10"
+                                                     Spacing="10">
                                             <Grid
-                                            Padding="15"
                                             ColumnDefinitions="auto,auto"
                                             RowDefinitions="auto,auto"
                                             RowSpacing="0">
@@ -1061,7 +1061,7 @@
                                                 <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
-                                                Padding="8,0"
+                                                Spacing="10"
                                                 Orientation="Horizontal">
                                                     <Image
                                                     HorizontalOptions="Start"
@@ -1069,71 +1069,56 @@
                                                     VerticalOptions="Center" />
 
                                                     <Label
-                                                    Padding="8,0"
                                                     FontSize="Medium"
                                                     Style="{StaticResource SectionTitleBlackBold}"
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregDetailsTitle}"
                                                     VerticalOptions="CenterAndExpand" />
                                                 </StackLayout>
-                                                <buttons:SfButton
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Background="Transparent"
-                                                Clicked="Button_Clicked_1"
-                                                FontFamily="SSTBold"
-                                                HorizontalOptions="End"
-                                                IsVisible="False"
-                                                Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}"
-                                                TextColor="{StaticResource Primary}"
-                                                VerticalOptions="Center" />
                                             </Grid>
 
                                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
                                             <Grid
                                             Padding="0"
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="auto,auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
                                                 <StackLayout
                                                 Grid.Row="0"
-                                                Grid.Column="0"
-                                                Spacing="-5">
+                                                Grid.Column="0">
                                                     <Label
                                                     FontSize="Small"
-                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalOptions="Start"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregRequestType}" />
                                                 </StackLayout>
                                                 <StackLayout
                                                 Grid.Row="0"
-                                                Grid.Column="1"
-                                                Spacing="-5">
+                                                Grid.Column="1">
                                                     <Label
                                                     FontSize="Small"
-                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalOptions="End"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{Binding DeregRequestType}" />
                                                 </StackLayout>
                                                 <StackLayout
                                                 Grid.Row="1"
-                                                Grid.Column="0"
-                                                Spacing="-5">
+                                                Grid.Column="0">
                                                     <Label
                                                     FontSize="Small"
-                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalOptions="Start"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregReasonTitle}" />
                                                 </StackLayout>
                                                 <StackLayout
                                                 Grid.Row="1"
-                                                Grid.Column="1"
-                                                Spacing="-5">
+                                                Grid.Column="1">
                                                     <Label
                                                     FontSize="Small"
-                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalOptions="End"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{Binding DeregReason}" />
@@ -1141,14 +1126,14 @@
                                             </Grid>
                                         </StackLayout>
                                     </Border>
+
                                     <Border
                                     Grid.Row="4"
                                     Grid.Column="0"
-                                    Margin="0,16,0,10"
+                                    Margin="0,16"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
-                                        <StackLayout Padding="0">
+                                        <StackLayout Padding="10">
                                             <Grid
-                                            Padding="15"
                                             ColumnDefinitions="auto,auto"
                                             RowDefinitions="auto,auto"
                                             RowSpacing="0">
@@ -1156,7 +1141,7 @@
                                                 <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
-                                                Padding="8,0"
+                                                Spacing="10"
                                                 Orientation="Horizontal">
                                                     <Image
                                                     Aspect="AspectFit"
@@ -1172,21 +1157,11 @@
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentsHeaderTitle}"
                                                     VerticalOptions="CenterAndExpand" />
                                                 </StackLayout>
-                                                <buttons:SfButton
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Background="Transparent"
-                                                Clicked="Button_Clicked_2"
-                                                FontFamily="SSTBold"
-                                                HorizontalOptions="End"
-                                                IsVisible="False"
-                                                Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}"
-                                                TextColor="{StaticResource Primary}"
-                                                VerticalOptions="Center" />
 
                                             </Grid>
 
                                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
                                             <listView:SfListView
                                             x:Name="summaryAttachmentsListView"
                                             AutoFitMode="Height"
@@ -1239,15 +1214,16 @@
                                             </listView:SfListView>
                                         </StackLayout>
                                     </Border>
+
                                     <Border
                                     Grid.Row="5"
                                     Grid.Column="0"
-                                    Margin="0,16,0,10"
+                                    Margin="0,16"
                                     IsVisible="{Binding IsDeclarationViewEnabled}"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
-                                        <StackLayout Padding="0">
+                                        <StackLayout Padding="10">
                                             <Grid
-                                            Padding="15"
+                                            Padding="0"
                                             ColumnDefinitions="auto,auto"
                                             RowDefinitions="auto,auto"
                                             RowSpacing="0">
@@ -1255,7 +1231,7 @@
                                                 <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
-                                                Padding="8,0"
+                                                Spacing="10"
                                                 Orientation="Horizontal">
                                                     <Image
                                                     Aspect="AspectFit"
@@ -1266,23 +1242,11 @@
                                                     WidthRequest="24" />
 
                                                     <Label
-                                                    Padding="8,0"
                                                     FontSize="Medium"
                                                     Style="{StaticResource SectionTitleBlackBold}"
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationTitle}"
                                                     VerticalOptions="CenterAndExpand" />
                                                 </StackLayout>
-                                                <buttons:SfButton
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Background="Transparent"
-                                                Clicked="Button_Clicked_3"
-                                                FontFamily="SSTBold"
-                                                HorizontalOptions="End"
-                                                IsVisible="False"
-                                                Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}"
-                                                TextColor="{StaticResource Primary}"
-                                                VerticalOptions="Center" />
 
                                             </Grid>
 
@@ -1329,13 +1293,15 @@
                                             </listView:SfListView>
                                         </StackLayout>
                                     </Border>
+
                                 </Grid>
+
                                 <buttons:SfButton
                                 x:Name="btnContinueSummary"
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
-                                Margin="8,10,0,36"
+                                Margin="8,10"
                                 Command="{Binding SummaryContinueBtnTapped}"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.Confirm}" />

@@ -89,42 +89,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
         }
 
 
-        public void onPageLoad(VATDeRegistrationDetails vATDeRegistrationDetails)
-        {
-            if (vATDeRegistrationDetails != null && vATDeRegistrationDetails.d != null)
-            {
-                viewModel.VATDeRegistrationDetailsForAttach = vATDeRegistrationDetails;
-                
-                if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet != null && viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet != null)
-                {
-                    if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.Count != 0)
-                    {
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet as List<Attachment>);
-                        viewModel.VatAttachmentsList = myCollection;
-
-                        try
-                        {
-                            foreach (var item in viewModel.VatAttachmentsList)
-                            {
-                                if (item.Erfdt != null && item.Erftm != null)
-                                {
-                                    viewModel.FileName = item.Filename;
-                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-                        }
-
-                        viewModel.filterList();
-                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
-                    }
-                }
-            }
-        }
-
+        
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
