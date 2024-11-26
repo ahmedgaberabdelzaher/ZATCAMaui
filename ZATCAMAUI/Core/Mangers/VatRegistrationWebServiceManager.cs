@@ -692,13 +692,6 @@ namespace ZATCAMAUI.Core.Mangers
                         String url = ZATCAConstants.SaveVATDeRegistration;
                         vATDeRegistration.d.headerSet.Langx = lang;
                         var uri = new Uri(url);
-                        //HttpClient client = new HttpClient();
-
-                        //client.DefaultRequestHeaders.Add("Token", "123");
-                        //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-
-                        //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                        //client.DefaultRequestHeaders.Add("Accept", "application/json");
                         HttpClient client = new HttpClient(App.httpClientHandler);
                         string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                         string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();

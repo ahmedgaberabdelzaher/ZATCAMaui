@@ -17,6 +17,7 @@ using ZATCAMAUI.Views.NewDesign.ZakatDeregistration;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatDeregistration;
 using Application = Microsoft.Maui.Controls.Application;
 using ZATCAMAUI.Core.Interfaces;
+using System.Collections.ObjectModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
@@ -1429,6 +1430,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 OnPropertyChanged("VATDeregistrationSummaryDeclarationData");
             }
         }
+
+        private ObservableCollection<Attachment> _summaryAttachments = new ObservableCollection<Attachment>();
+        public ObservableCollection<Attachment> SummaryAttachments
+        {
+            get
+            {
+                return _summaryAttachments;
+            }
+            set
+            {
+                if (_summaryAttachments == value) return;
+
+                _summaryAttachments = value;
+                OnPropertyChanged("SummaryAttachments");
+            }
+        }
+
         private bool _isDetailsFieldEnabled;
         public bool IsDetailsFieldEnabled
         {
@@ -4227,12 +4245,24 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableSummaryView()
         {
+            UpdateAttachments();
+
             CurrentStep = ProcessStep.Step5;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = true;
+        }
+
+        private void UpdateAttachments()
+        {
+            foreach(var item in TinDeregistrationData.AttDetSet)
+            {
+                SummaryAttachments.Add(item);
+            }
+            OnPropertyChanged("SummaryAttachments");
+            
         }
 
         public async Task GoBackBtnClicked()

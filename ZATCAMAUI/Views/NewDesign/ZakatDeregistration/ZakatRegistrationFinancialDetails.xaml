@@ -143,7 +143,7 @@
                                             Grid.Column="1"
                                             HorizontalOptions="EndAndExpand"
                                             Style="{StaticResource ValueLabelBlack}"
-                                            Text="{Binding SelectedMethod}" />
+                                            Text="{Binding FinSelectedMethod}" />
 
                                         <Label
                                             Grid.Row="1"

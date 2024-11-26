@@ -544,24 +544,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     AmountPayable = response.d.results[0].Betrh;
                     if (!string.IsNullOrEmpty(SadadNumber))
                     {
-                        if (VATDeclarationData.data.RefundFg == "1")
+                        if (response.d.results[0].Fbust.Equals("E0045") || response.d.results[0].Fbust.Equals("E0006"))
                         {
-                            IsSadadNumberVisible = false;
+                            IsRefreshButtonVisible = false;
+                            if (VATDeclarationData.data.RefundFg == "1")
+                            {
+                                IsSadadNumberVisible = false;
+                            }
+                            else
+                            {
+                                IsSadadNumberVisible = true;
+                            }
+                            IsButtonVisible = true;
+                            if (VATDeclarationData.data.EstimatedFg == "X")
+                            {
+                                IsAcknowledgementButtonVisible = false;
+                            }
+                            else
+                            {
+                                IsAcknowledgementButtonVisible = true;
+                            }
                         }
                         else
                         {
-                            IsSadadNumberVisible = true;
+                            IsRefreshButtonVisible = true;
                         }
-                        IsButtonVisible = true;
-                        if (VATDeclarationData.data.EstimatedFg == "X")
-                        {
-                            IsAcknowledgementButtonVisible = false;
-                        }
-                        else
-                        {
-                            IsAcknowledgementButtonVisible = true;
-                        }
-                        IsRefreshButtonVisible = false;
+                        
                     }
                     else
                     {
