@@ -1274,7 +1274,7 @@
                                                                     HeightRequest="104"
                                                                     HorizontalOptions="FillAndExpand"
                                                                     IsEnabled="{Binding FinancialDetails.VATEligibilityPoint3Parent}"
-                                                                    WidthRequest="171">
+                                                                    WidthRequest="150">
                                                                     <Grid>
                                                                         <Image
                                                                             Grid.Row="0"
@@ -1312,7 +1312,7 @@
                                                                     HeightRequest="104"
                                                                     HorizontalOptions="FillAndExpand"
                                                                     IsEnabled="{Binding FinancialDetails.VATEligibilityPoint3Parent}"
-                                                                    WidthRequest="171">
+                                                                    WidthRequest="150">
 
                                                                     <Grid
                                                                         Margin="0"
@@ -1385,7 +1385,7 @@
                                                                     CornerRadius="20"
                                                                     HeightRequest="104"
                                                                     IsEnabled="{Binding FinancialDetails.VATEligibilityPoint4Parent}"
-                                                                    WidthRequest="171">
+                                                                    WidthRequest="150">
                                                                     <Grid>
                                                                         <Image
                                                                             Grid.Row="0"
@@ -1424,7 +1424,7 @@
                                                                     HeightRequest="104"
                                                                     HorizontalOptions="FillAndExpand"
                                                                     IsEnabled="{Binding FinancialDetails.VATEligibilityPoint4Parent}"
-                                                                    WidthRequest="171">
+                                                                    WidthRequest="150">
 
                                                                     <Grid
                                                                         Margin="0"
@@ -1475,7 +1475,8 @@
                                                 <StackLayout
                                                     IsEnabled="{Binding FinancialDetails.AttachSectionCB}"
                                                     IsVisible="{Binding FinancialDetails.AttachSectionCBVisible}"
-                                                    Orientation="Horizontal">
+                                                    Orientation="Horizontal"
+                                                    Spacing="8">
                                                     <custom:CheckboxCustom
                                                         CheckChanged="FD_CheckedCanged"
                                                         IsChecked="{Binding IsFDChangeSectionChecked}"
@@ -1492,39 +1493,38 @@
                                                         BackgroundColor="White"
                                                         Stroke="#bbbbbb"
                                                         StrokeShape="RoundRectangle 10,10,10,10">
-                                                        <StackLayout>
 
-                                                            <Grid>
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="auto" />
+                                                        <Grid RowSpacing="8">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
 
-                                                                </Grid.RowDefinitions>
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="20" />
-                                                                    <ColumnDefinition Width="*" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <Image
-                                                                    Grid.Row="0"
-                                                                    Grid.Column="0"
-                                                                    HorizontalOptions="Start"
-                                                                    Style="{StaticResource SmallIcon}"
-                                                                    VerticalOptions="Start">
-                                                                    <Image.Source>
-                                                                        <FontImageSource
-                                                                            FontFamily="UserIconFont"
-                                                                            Glyph="{x:Static FontImage:IconFonts.Information}"
-                                                                            Size="30"
-                                                                            Color="{StaticResource SecondaryNew}" />
-                                                                    </Image.Source>
-                                                                </Image>
-                                                                <Label
-                                                                    Grid.Row="0"
-                                                                    Grid.Column="1"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource CaptionLabelGrey}"
-                                                                    Text="{x:Static ResourceManager:AppResources.VATRAttachmentMandatory}" />
-                                                            </Grid>
-                                                        </StackLayout>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="20" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Image
+                                                                Grid.Row="0"
+                                                                Grid.Column="0"
+                                                                HorizontalOptions="Start"
+                                                                Style="{StaticResource SmallIcon}"
+                                                                VerticalOptions="Start">
+                                                                <Image.Source>
+                                                                    <FontImageSource
+                                                                        FontFamily="UserIconFont"
+                                                                        Glyph="{x:Static FontImage:IconFonts.Information}"
+                                                                        Size="30"
+                                                                        Color="{StaticResource SecondaryNew}" />
+                                                                </Image.Source>
+                                                            </Image>
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                Margin="5,0,0,0"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource CaptionLabelGrey}"
+                                                                Text="{x:Static ResourceManager:AppResources.VATRAttachmentMandatory}" />
+                                                        </Grid>
 
                                                     </Border>
 
@@ -1543,16 +1543,26 @@
                                                                 Text="{x:Static ResourceManager:AppResources.ZZZAmendFinancialRepreGtext}" />
                                                         </StackLayout>
 
-                                                        <custom:CustomSfTextInputView x:Name="FrmNewAttachment" Grid.Row="1">
+                                                        <custom:CustomSfTextInputView
+                                                            x:Name="FrmNewAttachment"
+                                                            Grid.Row="1"
+                                                            IsEnabled="{Binding IsFDChangeSectionEnabled}">
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <!--  New Attachment  -->
                                                                 <custom:GAZTBorderlessEntry
-                                                                    IsEnabled="False"
+                                                                    IsEnabled="{Binding IsFDChangeSectionEnabled}"
                                                                     Style="{StaticResource DefaultEntry}"
                                                                     Text="{x:Static ResourceManager:AppResources.VATRNewAttachment}"
                                                                     TextColor="{StaticResource Primary}"
-                                                                    VerticalTextAlignment="Center" />
+                                                                    VerticalTextAlignment="Center">
+                                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="NewAttachment_Clicked" />
+                                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                                </custom:GAZTBorderlessEntry>
                                                             </custom:CustomSfTextInputView.TextInputView>
+                                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="NewAttachment_Clicked" />
+                                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
                                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                                 <Image Rotation="270">
                                                                     <Image.Source>
@@ -1566,14 +1576,9 @@
                                                             </inputLayout:SfTextInputLayout.TrailingView>
 
                                                         </custom:CustomSfTextInputView>
-                                                        <buttons:SfButton
-                                                            x:Name="NewAttachment"
-                                                            Grid.Row="1"
-                                                            Margin="0,0,0,0"
-                                                            Background="Transparent"
-                                                            Clicked="NewAttachment_Clicked"
-                                                            FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                                            IsEnabled="{Binding IsFDChangeSectionEnabled}" />
+
+
+
                                                     </Grid>
                                                 </StackLayout>
                                             </StackLayout>
@@ -1687,6 +1692,7 @@
                                                                 <Label
                                                                     Grid.Row="0"
                                                                     Grid.Column="1"
+                                                                      Margin="5,0,0,0"
                                                                     HorizontalTextAlignment="Start"
                                                                     Style="{StaticResource CaptionLabelGrey}"
                                                                     Text="{x:Static ResourceManager:AppResources.ZZZVATRFR1}" />

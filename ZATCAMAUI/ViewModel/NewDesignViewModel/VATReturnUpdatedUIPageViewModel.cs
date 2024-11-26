@@ -3406,6 +3406,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
                     await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    IsNewLoading = false;
                     return;
                 }
                 CreateDataForPost();
