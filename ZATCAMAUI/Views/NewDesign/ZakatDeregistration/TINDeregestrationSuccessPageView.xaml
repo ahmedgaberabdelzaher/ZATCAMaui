@@ -50,8 +50,7 @@
                                 <Label
                                     x:Name="Label_Name"
                                     HorizontalOptions="EndAndExpand"
-                                    Style="{StaticResource ValueLabelBlack}"
-                                    Text="Sandeep Kumar Saini Sankhala Jilla abc  Jhunjhunu" />
+                                    Style="{StaticResource ValueLabelBlack}"/>
 
                             </StackLayout>
 

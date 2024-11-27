@@ -2763,7 +2763,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             });
             OnAcknowlwdgementClicked = new Command(() =>
             {
-                string url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData + "')/$value?saml2=enabled";
+                string url = ZATCAConstants.ZOdownloadAckLetter + VATDeclarationData.data.Fbnum;
                 _navigationService.NavigateTo(App.AAcknowledgementView, url);
             });
             onFaqSectionClicked = new Command(async () =>
@@ -2779,7 +2779,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             });
             OnDownloadAcknowlwdgementClicked = new Command(async () =>
             {
-                string url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData + "',Utype='')/$value?saml2=enabled";
+                string url = ZATCAConstants.ZOdownloadAckLetter + VATDeclarationData.data.Fbnum;
                 _navigationService.NavigateTo(App.AAcknowledgementView, url);
             });
             OnVATRefreshButtonClicked = new Command(async () =>

@@ -1748,7 +1748,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                             }
                             x.APermitEffDtCTb = "Gregorian";
-                            x.APermitEffDtHTb = SingleOutletDeregistrationDate.ToString("yyyy/MM/dd");
+                            x.APermitEffDtHTb = SingleOutletDeregistrationDate.ToString("yyyy-MM-dd");
                             x.APermitDeregDisplayDate = SingleOutletDeregistrationDate.ToString("dd/MM/yyyy");
                             if (Convert.ToDateTime(x.APermitValfrDtHTb) > SingleOutletDeregistrationDate)
                             {
@@ -4079,9 +4079,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             {
                                 DateTime dt = Convert.ToDateTime(PickerDobToDisplay);
                                 permitInfo.APermitDeregDisplayDate = dt.ToString("yyyy/MM/dd");//DeregistrationDate.ToString("dd MMM yyyy");
-                                permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
+                                permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyy-MM-dd");
                                 permitInfo.APermitEffDtCTb = "Gregorian";
-                                permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+                                permitInfo.APermitEffDtTb = DeregistrationDate.ToString("yyyy-MM-ddTHH:mm:ss");
 
                             }
                             if (outletInfo.PermitTypes == null)
@@ -4245,6 +4245,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableSummaryView()
         {
+            SummaryAttachments?.Clear();
             UpdateAttachments();
 
             CurrentStep = ProcessStep.Step5;
@@ -4257,7 +4258,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         private void UpdateAttachments()
         {
-            foreach(var item in TinDeregistrationData.AttDetSet)
+            foreach (var item in TinDeregistrationData.AttDetSet)
             {
                 SummaryAttachments.Add(item);
             }
@@ -4453,9 +4454,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                         {
                                                             DateTime dt = Convert.ToDateTime(PickerDobToDisplay);
                                                             permitInfo.APermitDeregDisplayDate = dt.ToString("yyyy/MM/dd"); ;//DeregistrationDate.ToString("dd MMM yyyy");
-                                                            permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
+                                                            permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyy-MM-dd");
                                                             permitInfo.APermitEffDtCTb = "Gregorian";
-                                                            permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+                                                            permitInfo.APermitEffDtTb = DeregistrationDate.ToString("yyyy-MM-ddTHH:mm:ss");
 
                                                         }
                                                         catch (Exception)
@@ -4514,8 +4515,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                                         if (!string.IsNullOrEmpty(DeregistrationDate.ToString()))
                                                         {
-                                                            permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
-                                                            permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+                                                            permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyy-MM-dd");
+                                                            permitInfo.APermitEffDtTb = DeregistrationDate.ToString("yyyy-MM-ddTHH:mm:ss");
                                                         }
                                                         permitInfo.APermitEffDtCTb = "Gregorian";
 
@@ -4822,14 +4823,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             {
                                 item.APermitEffDtCTb = "Hijri";
                                 string date = UtilityManager.HijriToGreg(SingleDeregistrationDate);
-                                item.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
-
+                                item.APermitEffDtTb = Convert.ToDateTime(date).ToString("yyyy-MM-ddTHH:mm:ss");
                             }
                             else
                             {
                                 item.APermitEffDtCTb = "Gregorian";
-                                item.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
-
+                                item.APermitEffDtTb = Convert.ToDateTime(SingleDeregistrationDate).ToString("yyyy-MM-ddTHH:mm:ss");
                             }
                             item.APermitEffDtHTb = SingleDeregistrationDate;
                         }
@@ -5594,13 +5593,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             item.APermitEffDtCTb = "Gregorian";
                             item.APermitDobCTb = "Gregorian";
                         }
-                        item.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
+                        item.APermitEffDtTb = Convert.ToDateTime(SingleDeregistrationDate).ToString("yyyy-MM-ddTHH:mm:ss");
                         item.APermitTransTinTb = TINNumber;
                         item.APermitIdTypeTb = SelectedIDTypeCode;
                         item.APermitIdNoTb = SelectedIdNumber;
                         item.APermitDobHTb = SelectedDob;
                         item.APermitDregRsnTb = "3";
-                        item.APermitDobTb = ConvertDateFormat(Convert.ToDateTime(SelectedDob));
+                        item.APermitDobTb = Convert.ToDateTime(SelectedDob).ToString("yyyy-MM-ddTHH:mm:ss");
                         if (IsName1Visible)
                         {
                             item.APermitNm3Tb = IDTypeDataModel.name1;
@@ -5788,9 +5787,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                 if (permitInfo.APermitValfrDtTb != null)
                                 {
-                                    if (!permitInfo.APermitValfrDtTb.Contains("/Date("))
+                                    if (permitInfo.APermitValfrDtTb.Contains("/Date("))
                                     {
-                                        permitInfo.APermitValfrDtTb = ConvertDateFormat(permitInfo.APermitValfrDtTb);
+                                        permitInfo.APermitValfrDtTb = UtilityManager.ConvertToStringFromDate(permitInfo.APermitValfrDtTb);
+                                    }
+                                    if (permitInfo.APermitEffDtTb.Contains("/Date("))
+                                    {
+                                        permitInfo.APermitEffDtTb = UtilityManager.ConvertToStringFromDate(permitInfo.APermitEffDtTb);
+                                    }
+                                    else
+                                    {
+                                        var date = Convert.ToDateTime(permitInfo.APermitEffDtTb);
+                                        permitInfo.APermitEffDtTb = date.ToString("yyyy-MM-ddTHH:mm:ss");
                                     }
                                     permitInfo.APermitValfrDtCTb = "Gregorian";
                                 }
