@@ -215,6 +215,7 @@
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SelectedOutletType}"
                                     TextColor="{StaticResource NeutralBlack}">
