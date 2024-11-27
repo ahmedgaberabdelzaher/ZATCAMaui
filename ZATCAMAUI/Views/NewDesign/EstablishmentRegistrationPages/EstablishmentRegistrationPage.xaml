@@ -4247,11 +4247,11 @@
                 </Grid>
                 <!--#endregion-->
 
-                <buttons:SfButton
+                <Button
                     Margin="0,10,0,10"
                     Command="{Binding OnNextButtonClick}"
                     HorizontalOptions="FillAndExpand"
-                    Style="{StaticResource PrimaryButtonStyle}"
+                    Style="{StaticResource PrimaryMauiButtonStyle}"
                     Text="{Binding NxtButtonLabel}" />
 
             </StackLayout>

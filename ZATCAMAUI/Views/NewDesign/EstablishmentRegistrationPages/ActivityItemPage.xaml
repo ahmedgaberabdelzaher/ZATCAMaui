@@ -1316,9 +1316,9 @@
                 Margin="0,20,0,20"
                 Padding="20,15"
                 BackgroundColor="White">
-                <buttons:SfButton
+                <Button
                     Command="{Binding OnNextButtonClick}"
-                    Style="{StaticResource PrimaryButtonStyle}"
+                    Style="{StaticResource PrimaryMauiButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZZNext}" />
             </Grid>
 

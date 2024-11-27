@@ -4108,9 +4108,9 @@
                         <On Platform="Android" Value="0" />
                     </OnPlatform>
                 </Grid.Margin>
-                <buttons:SfButton
+                <Button
                     Command="{Binding OnNextButtonClick}"
-                    Style="{StaticResource PrimaryButtonStyle}"
+                    Style="{StaticResource PrimaryMauiButtonStyle}"
                     Text="{Binding NxtButtonLabel}" />
             </Grid>
             <!--#endregion-->

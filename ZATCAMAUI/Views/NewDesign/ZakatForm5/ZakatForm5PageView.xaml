@@ -4005,12 +4005,12 @@
                     </Grid>
                     <!--  End of Zakat Estimation  -->
 
-                    <buttons:SfButton
+                    <Button
                         x:Name="btnprimary"
                         Grid.Row="2"
                         Margin="0,20"
                         Command="{Binding OnNextButtonClick}"
-                        Style="{StaticResource PrimaryButtonStyle}"
+                        Style="{StaticResource PrimaryMauiButtonStyle}"
                         Text="{Binding NextText}" />
 
                 </Grid>

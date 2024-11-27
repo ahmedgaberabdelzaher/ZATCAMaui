@@ -6,7 +6,6 @@
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
@@ -43,17 +42,17 @@
                                        Grid.Row="1"
                                        HorizontalOptions="Center">
 
-                    <buttons:SfButton
+                    <Button
                         WidthRequest="150"
                         Clicked="Void_Button_Clicked"
                         HorizontalOptions="FillAndExpand"
-                        Style="{StaticResource PrimaryButtonStyle}"
+                        Style="{StaticResource PrimaryMauiButtonStyle}"
                         Text="{x:Static ResourceManager:AppResources.ESTZZVoid}" />
-                    <buttons:SfButton
+                    <Button
                         WidthRequest="150"
                         Clicked="CancelButton_Clicked"
                         HorizontalOptions="FillAndExpand"
-                        Style="{StaticResource PrimaryButtonStyle}"
+                        Style="{StaticResource PrimaryMauiButtonStyle}"
                         Text="{x:Static ResourceManager:AppResources.ZZCancel}" />
 
                 </HorizontalStackLayout>

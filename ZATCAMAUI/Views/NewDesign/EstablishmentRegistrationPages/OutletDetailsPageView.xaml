@@ -1195,9 +1195,9 @@
                         Padding="20,15"
                         BackgroundColor="White">
 
-                        <buttons:SfButton
+                        <Button
                             Command="{Binding OnNextButtonClick}"
-                            Style="{StaticResource PrimaryButtonStyle}"
+                            Style="{StaticResource PrimaryMauiButtonStyle}"
                             Text="{Binding NxtButtonLabel}" />
 
                     </Grid>
