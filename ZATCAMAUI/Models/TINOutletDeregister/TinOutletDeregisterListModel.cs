@@ -601,7 +601,7 @@ namespace ZATCAMAUI.Models.TINOutletDeregister
             [JsonProperty("ACompFg")]
             public string ACompFg { get; set; }
 
-            [JsonProperty("AOutletZ700NumberTb")]
+            [JsonProperty("outlet700Number")]
             public string AOutletZ700NumberTb { get; set; }
 
         }

@@ -28,7 +28,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     var lang = UtilityManager.GetLanguageParameter();
                
-                    String url = ZATCAConstants.OutletDeregistrationNewRequestUrl + App.LoginDataRetrieved.TIN + "&deregister=1" + "&language=" + lang + "&approve=" + tinDeregistrationResponseModel.Approvez + "&reject=" + tinDeregistrationResponseModel.Rejectz;
+                    String url = ZATCAConstants.OutletDeregistrationNewRequestUrl + "?TIN=" + App.LoginDataRetrieved.TIN + "&deregister=1" + "&language=" + lang + "&approve=" + tinDeregistrationResponseModel.Approvez + "&reject=" + tinDeregistrationResponseModel.Rejectz;
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -759,20 +759,9 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
                     String url = string.Empty;
-                    /*if(DeregTypeCode == 1)
-                    {
-                        url = Constants.OutletDeregistrationNewRequestUrl + "(Auditorz='',ADegister=%27" + DeregTypeCode + "%27,Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='" + lang + "',OfficerUidz='',Approvez='',Rejectz='',CreateTxAssesz='')?saml2=enabled&$format=json&sap-language='" + lang + "'&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet";
 
-                    }
-                    else
-                    {
-                        url = Constants.OutletDeregistrationNewRequestUrl + "(Auditorz='',ADegister=%27" + DeregTypeCode + "%27,Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='" + lang + "',OfficerUidz='',Approvez='',Rejectz='',CreateTxAssesz='')?saml2=enabled&$format=json&sap-language='" + lang + "'&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet,ErrMsgSet";
-
-                    }*/
-
-                    url = ZATCAConstants.OutletDeregistrationNewRequestUrl + App.LoginDataRetrieved.TIN + "&deregister=" + DeregTypeCode + "&language=" + lang;
-
-
+                
+                    url = ZATCAConstants.OutletDeregistrationNewRequestUrl + "?TIN=" + App.LoginDataRetrieved.TIN + "&deregister=" + DeregTypeCode + "&language=" + lang;
 
                     var uri = new Uri(url);
                     HttpResponseMessage _tinDeregNewRequestPrevousResponse = await client.GetAsync(uri);

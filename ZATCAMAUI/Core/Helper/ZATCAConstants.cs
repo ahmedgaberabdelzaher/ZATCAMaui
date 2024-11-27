@@ -388,7 +388,7 @@ namespace ZATCAMAUI.Core.Helper
         #region TIN/Outlet Deregistration
         public static string TinOutletDeregistrationPreousRequestsUrl = BaseUrlOfODataServices + "/v1/taxpayer-deregistration/requests";
         public static string TinOutletDeregistrationPreousRequestsPostUrl = BaseUrlOfODataServices + "/v1/taxpayer-deregistration/requests/cancel";
-        public static string OutletDeregistrationNewRequestUrl = BaseUrlOfODataServices + "/v1/taxpayer-deregistration/details?TIN=";
+        public static string OutletDeregistrationNewRequestUrl = BaseUrlOfODataServices + "/v1/taxpayer-deregistration/details";
         #endregion
         #region VATObjection
         public static string GetVATObjectionListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(";

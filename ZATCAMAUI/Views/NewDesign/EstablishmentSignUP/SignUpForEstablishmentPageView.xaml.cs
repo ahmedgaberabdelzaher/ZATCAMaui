@@ -17,6 +17,7 @@ using ZATCAMAUI.Core.Helper;
 using static ZATCAMAUI.Models.ErrorMessage;
 using ZATCAMAUI.Models.NewModelAPI.AbsherOTP;
 using Syncfusion.Maui.Core.Carousel;
+using System.Globalization;
 
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 {
@@ -420,7 +421,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     {
                         FrmCR.HasError = false;
                         viewModel.IsLoading = true;
-                        CRValidationModelRootObject Result = await WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
+                        CRValidationModelRootObject Result = await WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text, viewModel.TxtTIN);
                         viewModel.IsLoading = true;
                         if (Result != null)
                         {
@@ -434,7 +435,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 if (Result.d.NotFound == "X")
                                 {
                                     FrmCR.HasError = true;
-                                   await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentervalidCRnumber));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentervalidCRnumber));
                                     EntryCRNumber.Text = string.Empty;
                                     return false;
                                 }
@@ -456,12 +457,12 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                         {
                             return false;
                         }
-                        
+
                     }
                     catch (InternetException)
                     {
                         viewModel.IsLoading = false;
-                       await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
                         return false;
                     }
                 }
@@ -479,7 +480,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                   await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCommercialReiterationNumbershouddbe10digits));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCommercialReiterationNumbershouddbe10digits));
                     FrmCR.HasError = true;
                     EntryCRNumber.Text = string.Empty;
                     return false;
@@ -531,7 +532,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     {
                         isMoveForwardToContactDetails = true;
                         FrmCR.HasError = false;
-                        CRValidationModelRootObject Result = await WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
+                        CRValidationModelRootObject Result = await WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text, viewModel.TxtTIN);
                         if (Result != null)
                         {
                             if (Result.d != null)
@@ -603,7 +604,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                   await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseenteravalidEmailAddress));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseenteravalidEmailAddress));
                     FrmEmailAddress.HasError = true;
                     EntryEmail.Text = string.Empty;
                     viewModel.IsAllValidContactDataEnteredEmail = false;
@@ -676,7 +677,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                   await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                     FrmPhoneNumber.HasError = true;
 
                     EntryPhoneNumber.Text = string.Empty;
@@ -726,7 +727,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                   await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                     viewModel.IsAllValidContactDataEnteredMobileNbr = false;
 
                     EntryMobileNumber.Text = string.Empty;
@@ -741,7 +742,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             {
                 Message.AppendLine(AppResources.EnterMobileNumber);
                 popUp.Message = Message.ToString();
-              await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
             }
         }
 
@@ -989,7 +990,14 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
                 viewModel.PkrDBO = year + "/" + month + "/" + day;
-                DBO = year + "-" + month + "-" + day;
+
+                HijriCalendar hijriCalendar = new HijriCalendar();
+                int hijriYear = int.Parse(year);
+                int hijriMonth = int.Parse(month);
+                int hijriDay = int.Parse(day);
+
+                DateTime gregorianDate = hijriCalendar.ToDateTime(hijriYear, hijriMonth, hijriDay, 0, 0, 0, 0);
+                DBO = gregorianDate.ToString("yyyy-MM-dd");
             }
             else
             {
@@ -998,7 +1006,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
                 viewModel.PkrDBO = year + "/" + month + "/" + day;
-                DBO = year + "-" + month + "-" + day;
+                DBO = year +"-"+ month +"-"+ day;
             }
 
             viewModel.PkrDBOPrev = viewModel.PkrDBO;
@@ -1751,6 +1759,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             {
                 viewModel.IsAllValidDataEntered = false;
             }
+            viewModel.TxtTIN = EntryTIN.Text;
         }
 
 
@@ -2372,7 +2381,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             {
                 try
                 {
-                    DuplicateSignUpModelRootObject ResultDuplicate = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty, string.Empty);
+                    DuplicateSignUpModelRootObject ResultDuplicate = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber.Equals(string.Empty) ? viewModel.TxtLicenseNumber : viewModel.TxtCRNumber, "ZS0001", string.Empty, string.Empty, viewModel.TxtCRNumber.Equals(string.Empty) ? string.Empty : "CRNum", viewModel.TxtTIN);
                     if (ResultDuplicate.d.Flag == "")
                     {
                         if (viewModel.IsCRChecked == true)
@@ -2380,7 +2389,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             viewModel.IsAllValidCRNumberEntered = false;
                             try
                             {
-                                DuplicateSignUpModelRootObject ResultDuplicateCR = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
+                                DuplicateSignUpModelRootObject ResultDuplicateCR = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber.Equals(string.Empty) ? viewModel.TxtLicenseNumber : viewModel.TxtCRNumber, "BUP002", "90702", "SA", viewModel.TxtCRNumber.Equals(string.Empty) ? string.Empty : "CRNum", viewModel.TxtTIN);
                                 if (ResultDuplicateCR.d.Flag == "")
                                 {
                                     CaseGuidModelRootObject ResutGuid = await WebServiceManager.GAZTGetSignupGuid();
@@ -2522,7 +2531,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     {
 
 
-                                         NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                        NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
 
                                     }
                                 }
@@ -2545,7 +2554,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                         }
                                         else // if it's equal to YES
                                         {
-                                           await CRDuplicateCheck();
+                                            await CRDuplicateCheck();
                                         }
                                     }
                                     else
@@ -2557,7 +2566,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
                                         if (result == true)
                                         {
-                                           await CRDuplicateCheck();
+                                            await CRDuplicateCheck();
 
                                         }
                                         else // if it's equal to NO
@@ -2777,7 +2786,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 else
                                 {
 
-                                     NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
 
                                     //  viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
@@ -2925,7 +2934,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
             if (viewModel.SelectedSignUpUsing.ID == 2)
             {
-                DuplicateSignUpModelRootObject ResultDuplicate = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty, string.Empty);
+                DuplicateSignUpModelRootObject ResultDuplicate = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber.Equals(string.Empty) ? viewModel.TxtLicenseNumber : viewModel.TxtCRNumber, "ZS0002", string.Empty, string.Empty, viewModel.TxtCRNumber.Equals(string.Empty) ? string.Empty : "CRNum", viewModel.TxtTIN);
                 if (ResultDuplicate.d.Flag == "")
                 {
                     if (viewModel.IsCRChecked == true)
@@ -2933,7 +2942,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                         try
                         {
                             //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                            DuplicateSignUpModelRootObject ResultDuplicateCR = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
+                            DuplicateSignUpModelRootObject ResultDuplicateCR = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber.Equals(string.Empty) ? viewModel.TxtLicenseNumber : viewModel.TxtCRNumber, "BUP002", "90702", "SA", viewModel.TxtCRNumber.Equals(string.Empty) ? string.Empty : "CRNum", viewModel.TxtTIN);
 
                             if (ResultDuplicateCR.d.Flag == "")
                             {
@@ -3074,7 +3083,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 }
                                 else
                                 {
-                                     NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                 }
                             }
                             else if (ResultDuplicateCR.d.Flag == "X")
@@ -3096,7 +3105,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     }
                                     else // if it's equal to YES
                                     {
-                                      await  CRDuplicateCheck();
+                                        await CRDuplicateCheck();
                                     }
                                 }
                                 else
@@ -3108,7 +3117,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
                                     if (result == true)
                                     {
-                                       await CRDuplicateCheck();
+                                        await CRDuplicateCheck();
 
                                     }
                                     else // if it's equal to NO
@@ -3319,7 +3328,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             }
                             else
                             {
-                                 NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                 //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                             }
                         }
@@ -3387,13 +3396,13 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             {
                 try
                 {
-                    DuplicateSignUpModelRootObject ResultDuplicate = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty, string.Empty);
+                    DuplicateSignUpModelRootObject ResultDuplicate = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber.Equals(string.Empty) ? viewModel.TxtLicenseNumber : viewModel.TxtCRNumber, "ZS0003", string.Empty, string.Empty, viewModel.TxtCRNumber.Equals(string.Empty) ? string.Empty : "CRNum", viewModel.TxtTIN);
                     if (viewModel.IsCRChecked == true)
                     {
                         try
                         {
                             //  DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                            DuplicateSignUpModelRootObject ResultDuplicateCR = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
+                            DuplicateSignUpModelRootObject ResultDuplicateCR = await WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber.Equals(string.Empty) ? viewModel.TxtLicenseNumber : viewModel.TxtCRNumber, "BUP002", "90702", "SA", viewModel.TxtCRNumber.Equals(string.Empty) ? string.Empty : "CRNum", viewModel.TxtTIN);
 
                             if (ResultDuplicateCR.d.Flag == "")
                             {
@@ -3530,7 +3539,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 }
                                 else
                                 {
-                                     NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
+                                    NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                     // viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
                             }
@@ -3553,7 +3562,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     }
                                     else // if it's equal to YES
                                     {
-                                       await CRDuplicateCheck();
+                                        await CRDuplicateCheck();
                                     }
                                 }
                                 else
@@ -3565,7 +3574,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
                                     if (result == true)
                                     {
-                                       await CRDuplicateCheck();
+                                        await CRDuplicateCheck();
                                         viewModel._navigationService.GoBack();
 
                                     }
@@ -3952,7 +3961,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber) && !string.IsNullOrEmpty(viewModel.PickerDobToDisplay))
                 {
-                  await  ValidateIDNumber();
+                    await ValidateIDNumber();
                 }
 
 
@@ -3997,129 +4006,141 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 if (selectedReturntype.Text.Equals(AppResources.NDHijri))
                 {
                     viewModel.IsHijriCal = true;
-                    if (DpDboHijri.SelectedItem != null)
+                    if (!string.IsNullOrEmpty(viewModel.SelectedHijriDate) || !string.IsNullOrEmpty(viewModel.SelectedGregDate))
                     {
-                        if (!string.IsNullOrEmpty(viewModel.SelectedHijriDate))
+                        if (DpDboHijri.SelectedItem != null)
                         {
-
-                            if (!DpDboHijri.SelectedItem.ToString().Equals(viewModel.SelectedHijriDate))
+                            if (!string.IsNullOrEmpty(viewModel.SelectedHijriDate))
                             {
 
-                                var ConvertedDateArray = viewModel.SelectedHijriDate.Split('/');
+                                if (!DpDboHijri.SelectedItem.ToString().Equals(viewModel.SelectedHijriDate))
+                                {
 
-                                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-                                //Select today dates
-                                todaycollection.Add(ConvertedDateArray[0].ToString());
-                                todaycollection.Add(ConvertedDateArray[1].ToString());//day
-                                todaycollection.Add(ConvertedDateArray[2].ToString());
+                                    var ConvertedDateArray = viewModel.SelectedHijriDate.Split('/');
 
-                                DpDboHijri.SelectedItem = todaycollection;
+                                    ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                                    //Select today dates
+                                    todaycollection.Add(ConvertedDateArray[0].ToString());
+                                    todaycollection.Add(ConvertedDateArray[1].ToString());//day
+                                    todaycollection.Add(ConvertedDateArray[2].ToString());
+
+                                    DpDboHijri.SelectedItem = todaycollection;
+
+                                }
 
                             }
 
+
+
+                            var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                            string month = selectedItem[1].ToString();
+                            string day = selectedItem[0].ToString();
+                            string year = selectedItem[2].ToString();
+                            viewModel.PkrDBO = year + "/" + month + "/" + day;
+                            viewModel.PickerDobToDisplay = year + "/" + month + "/" + day;
+
+                            if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                            {
+
+                                var ConvertedDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
+                                var ConvertedDateArray = ConvertedDate.Split('/');
+
+
+
+                                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                                //Select today dates
+                                todaycollection.Add(ConvertedDateArray[2].ToString());
+                                todaycollection.Add(ConvertedDateArray[1].ToString());//day
+                                todaycollection.Add(ConvertedDateArray[0].ToString());
+
+                                DpDbo.SelectedItem = todaycollection;
+                            }
+
                         }
-
-
-
-                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
-                        viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.PickerDobToDisplay = year + "/" + month + "/" + day;
-
-                        if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                        else
                         {
+                            viewModel.PkrDBO = string.Empty;
+                            viewModel.PickerDobToDisplay = string.Empty;
 
-                            var ConvertedDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
-                            var ConvertedDateArray = ConvertedDate.Split('/');
-
-
-
-                            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-                            //Select today dates
-                            todaycollection.Add(ConvertedDateArray[2].ToString());
-                            todaycollection.Add(ConvertedDateArray[1].ToString());//day
-                            todaycollection.Add(ConvertedDateArray[0].ToString());
-
-                            DpDbo.SelectedItem = todaycollection;
                         }
-
                     }
                     else
                     {
                         viewModel.PkrDBO = string.Empty;
                         viewModel.PickerDobToDisplay = string.Empty;
-
                     }
 
                 }
                 else
                 {
                     viewModel.IsHijriCal = false;
-                    if (DpDbo.SelectedItem != null)
+                    if (!string.IsNullOrEmpty(viewModel.SelectedHijriDate) || !string.IsNullOrEmpty(viewModel.SelectedGregDate))
                     {
-
-                        if (!string.IsNullOrEmpty(viewModel.SelectedGregDate))
+                        if (DpDbo.SelectedItem != null)
                         {
 
-                            if (!DpDboHijri.SelectedItem.ToString().Equals(viewModel.SelectedGregDate))
+                            if (!string.IsNullOrEmpty(viewModel.SelectedGregDate))
                             {
 
-                                var ConvertedDateArray = viewModel.SelectedGregDate.Split('/');
+                                if (!DpDboHijri.SelectedItem.ToString().Equals(viewModel.SelectedGregDate))
+                                {
 
-                                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-                                //Select today dates
-                                todaycollection.Add(ConvertedDateArray[0].ToString());
-                                todaycollection.Add(ConvertedDateArray[1].ToString());//day
-                                todaycollection.Add(ConvertedDateArray[2].ToString());
+                                    var ConvertedDateArray = viewModel.SelectedGregDate.Split('/');
 
-                                DpDbo.SelectedItem = todaycollection;
+                                    ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                                    //Select today dates
+                                    todaycollection.Add(ConvertedDateArray[0].ToString());
+                                    todaycollection.Add(ConvertedDateArray[1].ToString());//day
+                                    todaycollection.Add(ConvertedDateArray[2].ToString());
+
+                                    DpDbo.SelectedItem = todaycollection;
+
+                                }
 
                             }
 
+                            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                            string month = selectedItem[1].ToString();
+                            string day = selectedItem[0].ToString();
+                            string year = selectedItem[2].ToString();
+                            viewModel.PkrDBO = year + "/" + month + "/" + day;
+                            viewModel.PickerDobToDisplay = year + "/" + month + "/" + day;
+
+                            if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                            {
+
+                                var ConvertedDate = UtilityManager.ConvertToHijri(viewModel.PkrDBO);
+                                var ConvertedDateArray = ConvertedDate.Split('/');
+
+
+
+                                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                                //Select today dates
+                                todaycollection.Add(ConvertedDateArray[2].ToString());
+                                todaycollection.Add(ConvertedDateArray[1].ToString());//day
+                                todaycollection.Add(ConvertedDateArray[0].ToString());
+
+                                DpDboHijri.SelectedItem = todaycollection;
+                            }
                         }
-
-                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
-                        viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.PickerDobToDisplay = year + "/" + month + "/" + day;
-
-                        if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                        else
                         {
+                            viewModel.PkrDBO = string.Empty;
+                            viewModel.PickerDobToDisplay = string.Empty;
 
-                            var ConvertedDate = UtilityManager.ConvertToHijri(viewModel.PkrDBO);
-                            var ConvertedDateArray = ConvertedDate.Split('/');
-
-
-
-                            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-                            //Select today dates
-                            todaycollection.Add(ConvertedDateArray[2].ToString());
-                            todaycollection.Add(ConvertedDateArray[1].ToString());//day
-                            todaycollection.Add(ConvertedDateArray[0].ToString());
-
-                            DpDboHijri.SelectedItem = todaycollection;
                         }
-
-
-
-
                     }
                     else
                     {
                         viewModel.PkrDBO = string.Empty;
                         viewModel.PickerDobToDisplay = string.Empty;
-
                     }
                 }
 
 
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber) && !string.IsNullOrEmpty(viewModel.PickerDobToDisplay))
                 {
-                  await  ValidateIDNumber();
+                    await ValidateIDNumber();
                 }
 
 
