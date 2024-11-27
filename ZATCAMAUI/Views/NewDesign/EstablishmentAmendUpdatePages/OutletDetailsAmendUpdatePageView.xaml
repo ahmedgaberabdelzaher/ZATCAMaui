@@ -210,21 +210,27 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <buttons:SfButton
-                            Margin="0,5,0,0"
-                            Padding="5"
-                            Clicked="OutletType_Clicked"
-                            CornerRadius="10"
-                            HorizontalTextAlignment="Start"
-                            ImageAlignment="End"
-                            ImageSource="arrowDropdown.png"
-                            IsEnabled="{Binding OutletDetails.OutletType}"
-                            ShowIcon="True"
-                            Stroke="{StaticResource NeutralGreay}"
-                            StrokeThickness="1"
-                            Style="{StaticResource NoBackgroundButtonStyle}"
-                            Text="{Binding SelectedOutletType}"
-                            TextColor="{StaticResource NeutralBlack}" />
+
+                        <custom:CustomSfTextInputView IsEnabled="{Binding OutletDetails.OutletType}">
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                    IsReadOnly="True"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SelectedOutletType}"
+                                    TextColor="{StaticResource NeutralBlack}">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OutletType_Clicked" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                            </custom:CustomSfTextInputView.TextInputView>
+                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OutletType_Clicked" />
+                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Image Aspect="AspectFit" Source="greyDropDown" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </custom:CustomSfTextInputView>
+                        
                         <Label
                             Margin="0,10,0,0"
                             FontFamily="{StaticResource SomarRegular}"
