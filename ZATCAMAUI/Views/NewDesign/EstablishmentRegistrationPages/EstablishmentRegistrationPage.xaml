@@ -37,31 +37,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <!--<ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <Border
-                Margin="0"
-                Padding="{OnPlatform Android='0',
-                                     iOS='0,0,0,30'}"
-                BackgroundColor="White"
-                HorizontalOptions="FillAndExpand"
-                StrokeShape="RoundRectangle 15,15,0,0"
-                VerticalOptions="FillAndExpand">
-                <StackLayout
-                    Margin="0"
-                    Padding="0"
-                    HorizontalOptions="FillAndExpand"
-                    Spacing="0"
-                    VerticalOptions="FillAndExpand">
-                    <ContentPresenter
-                        BackgroundColor="White"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand" />
-                </StackLayout>
-            </Border>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>-->
-
     <ContentPage.Content>
         <Grid
             ColumnSpacing="0"
@@ -3285,7 +3260,7 @@
                     <ScrollView
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand"
-                        VerticalScrollBarVisibility="Always">
+                        VerticalScrollBarVisibility="Never">
 
                         <StackLayout
                             HorizontalOptions="FillAndExpand"
