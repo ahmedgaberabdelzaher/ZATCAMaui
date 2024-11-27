@@ -3277,18 +3277,23 @@
                 <!--#endregion-->
 
                 <!--#region Declaration-->
-                <Grid HorizontalOptions="StartAndExpand" RowDefinitions="*">
+                <Grid x:Name="DeclarationMainTab"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}"
+                    RowSpacing="10"
+                    VerticalOptions="FillAndExpand">
                     <ScrollView
-                        x:Name="DeclarationMainTab"
-                        IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}"
-                        VerticalOptions="Start"
-                        VerticalScrollBarVisibility="Never">
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Always">
 
-                        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto">
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            Orientation="Vertical">
 
                             <cards:SfCardView
                                 x:Name="RegistrationTaxpayerTypeSummaryView"
-                                Grid.Row="0"
                                 Padding="0"
                                 BackgroundColor="Transparent"
                                 BorderColor="{StaticResource NeutralLightGrey}"
@@ -3450,7 +3455,6 @@
 
                             <cards:SfCardView
                                 x:Name="TaxpayerDetailsSummaryView"
-                                Grid.Row="1"
                                 BackgroundColor="Transparent"
                                 BorderColor="{StaticResource NeutralLightGrey}"
                                 BorderWidth="1">
@@ -3750,7 +3754,6 @@
 
                             <cards:SfCardView
                                 x:Name="PassportSummaryView"
-                                Grid.Row="2"
                                 Padding="0"
                                 BackgroundColor="Transparent"
                                 BorderColor="{StaticResource NeutralLightGrey}"
@@ -3890,7 +3893,6 @@
 
                             <cards:SfCardView
                                 x:Name="OutletSummaryView"
-                                Grid.Row="3"
                                 Padding="0"
                                 BackgroundColor="Transparent"
                                 BorderColor="{StaticResource NeutralLightGrey}"
@@ -4041,7 +4043,6 @@
 
                             <cards:SfCardView
                                 x:Name="FinancialDetailSummaryView"
-                                Grid.Row="4"
                                 Padding="0"
                                 BackgroundColor="Transparent"
                                 BorderColor="{StaticResource NeutralLightGrey}"
@@ -4211,7 +4212,6 @@
                             </cards:SfCardView>
 
                             <Grid
-                                Grid.Row="5"
                                 ColumnDefinitions="auto,*"
                                 ColumnSpacing="10">
 
@@ -4241,7 +4241,7 @@
 
                             </Grid>
 
-                        </Grid>
+                        </StackLayout>
 
                     </ScrollView>
                 </Grid>
