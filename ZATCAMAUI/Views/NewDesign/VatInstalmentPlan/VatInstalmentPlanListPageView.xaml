@@ -12,7 +12,6 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     x:Name="page"
@@ -1231,6 +1230,106 @@
                                 </StackLayout>
                             </Border>
 
+                        </Grid>
+                        <!-- Pending Sets -->
+                        <Grid
+                            IsVisible="{Binding IsPendingRequestsVisible}"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            RowDefinitions="auto,auto">
+
+                            <Label Grid.Row="0"
+                                   Style="{StaticResource CaptionLabelBlack}"
+                                   Text="{x:Static ResourceManager:AppResources.RequestToVatDispalyMsg}"
+                                   HorizontalTextAlignment="Start"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand" />
+
+                            <listView:SfListView
+                                x:Name="VATInstalmentPendingRequestsVisible"
+                                Grid.Row="1"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                AutoFitMode="Height"
+                                IsScrollingEnabled="False"
+                                ItemSpacing="0"
+                                ItemsSource="{Binding PendingSetList}"
+                                SelectionMode="None"
+                                ScrollBarVisibility="Never"
+                                SelectionBackground="Transparent">
+                                <listView:SfListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            Padding="10"
+                                            Grid.Column="0" 
+                                            Margin="0,15,0,0"
+                                            Style="{StaticResource GreyBorderFrameWithShadow}"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+
+                                            <Grid
+                                                Padding="0"
+                                                RowSpacing="0"
+                                                Margin="0"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand"
+                                                RowDefinitions="auto,auto,auto"
+                                                ColumnDefinitions="50*,50*">
+                                             
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Text="{x:Static ResourceManager:AppResources.RqstTOVatRtnDes}"
+                                                    Style="{StaticResource BodyLabelGrey}"
+                                                    HorizontalTextAlignment="Start"
+                                                    HorizontalOptions="StartAndExpand"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Text="{Binding Perslt}"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    HorizontalTextAlignment="Start"
+                                                    HorizontalOptions="StartAndExpand"/>
+
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Text="{x:Static ResourceManager:AppResources.RqstTOVatRtnPrd}"
+                                                    Style="{StaticResource BodyLabelGrey}"
+                                                    HorizontalTextAlignment="Center"
+                                                    HorizontalOptions="StartAndExpand"/>
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Text="{Binding Persl}"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    HorizontalTextAlignment="Center"
+                                                    HorizontalOptions="StartAndExpand"/>
+
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Text="{x:Static ResourceManager:AppResources.RqstTOVatTaxTyp}"
+                                                    Style="{StaticResource BodyLabelGrey}"
+                                                    HorizontalTextAlignment="Start"
+                                                    HorizontalOptions="StartAndExpand"/>
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    Text="{Binding Taxtp}"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    HorizontalTextAlignment="Start"
+                                                    HorizontalOptions="StartAndExpand"/>
+
+
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </listView:SfListView.ItemTemplate>
+
+                            </listView:SfListView>
                         </Grid>
 
                     </Grid>

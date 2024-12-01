@@ -1837,24 +1837,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
         }
 
-
-        //public ObservableCollection<ZakatRevokeList.Result> _revokList { get; set; }
-        //public ObservableCollection<ZakatRevokeList.Result> RevokList
-        //{
-        //    get
-        //    {
-        //        return _revokList;
-        //    }
-        //    set
-        //    {
-        //        if (_revokList == value)
-        //        {
-        //            return;
-        //        }
-        //        _revokList = value;
-        //        OnPropertyChanged("RevokList");
-        //    }
-        //}
         public ObservableCollection<ZakatSelectBillModel> summarySelectedBillsList { get; set; }
         public ObservableCollection<ZakatSelectBillModel> SummarySelectedBillsList
         {

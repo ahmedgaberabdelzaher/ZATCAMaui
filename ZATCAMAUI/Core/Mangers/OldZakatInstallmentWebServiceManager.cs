@@ -98,9 +98,6 @@ namespace ZATCAMAUI.Core.Mangers
 
         public async static Task<OldZakatRequestDisplayModel> GAZTGetOldZakatRequestDisplayData(string fbnum, string status)
         {
-
-
-
             if (NetworkCheck.IsInternet())
             {
                 OldZakatRequestDisplayModel _zakatRequestDisplayModel = new OldZakatRequestDisplayModel();

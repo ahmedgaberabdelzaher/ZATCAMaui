@@ -70,8 +70,9 @@ namespace ZATCAMAUI.Core.Helper
         //UAT
         //public static string BaseUrlOfODataServices = "https://test-api.zatca.gov.sa/uat/third-party";
         //public static string BaseUrlForSSLCheck = "https://test-api.zatca.gov.sa";
-        //public static string ClientId = "f4a2fde61a8115d5cfc989ada521f58e";
-        //public static string ClientSecret = "24ad1c31fc1a9372119d4bb5934c92e1"; 
+        //public static string ClientId = "37ff2102b2c738a0191478937bf49dd7";
+        //public static string ClientSecret = "d7f4d63635cc1fd2828f43000b88c916";
+        //public static string publicKeyStr = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJMtl5sh5y3FjSasKyyfcAWLvhjSkECAm3sJmkyJbCg/PN3olhTqknqecmZ8qQw4MNbyfEUkWjQfV+0fJXtRJOUIoeVJxQRDTOZ10abWGOenXj8IC5ETxnpVZ6XqKAYUGGQRtSBU4U3Uk+78gKw68pCNJCcgq/Z88rbLQ+KB//dwIDAQAB";
 
         //ECT
         //public static string BaseUrlOfODataServices = "https://test-api.zatca.gov.sa/pre-production/third-party";
