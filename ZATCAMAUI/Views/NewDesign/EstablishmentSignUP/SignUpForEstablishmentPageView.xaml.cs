@@ -991,7 +991,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 string year = selectedItem[2].ToString();
                 viewModel.PkrDBO = year + "/" + month + "/" + day;
 
-                HijriCalendar hijriCalendar = new HijriCalendar();
+                UmAlQuraCalendar hijriCalendar = new UmAlQuraCalendar();
                 int hijriYear = int.Parse(year);
                 int hijriMonth = int.Parse(month);
                 int hijriDay = int.Parse(day);
