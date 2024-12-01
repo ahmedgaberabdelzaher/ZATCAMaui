@@ -1467,6 +1467,7 @@ namespace ZATCAMAUI.Core.Mangers
                             {
                                 RequestVATDeclaration.data.Caltp = "Hijri";
                             }
+                            RequestVATDeclaration.data.Langz = UtilityManager.GetLanguageParameter();
                             RequestVATDeclaration.data.ATTACHSet = new List<ZATCAMAUI.Models.Attachment>();
                         }
                         String url = ZATCAConstants.SaveVATDeclarationData;
