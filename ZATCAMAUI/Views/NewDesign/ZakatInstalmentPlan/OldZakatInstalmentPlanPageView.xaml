@@ -3106,7 +3106,7 @@
                                                     <StackLayout
                                                         Grid.Row="0"
                                                         Grid.Column="0"
-                                                        Spacing="-10">
+                                                        Spacing="10">
                                                         <Label
                                                             Style="{StaticResource SectionTitleBlackBold}"
                                                             Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSrNo}"
