@@ -46,4 +46,18 @@ namespace ZATCAMAUI.Models.CustomServices
         public int count { get; set; }
         public string correlationid { get; set; }
     }
+
+    public class DeclarionSeizeDetailsResponse
+    {
+        public string seizureNumber { get; set; }
+        public string seizureDate { get; set; }
+        public string seizureAmount { get; set; }
+        public string seizureStartDate { get; set; }
+        public string seizureMainResone { get; set; }
+        public string seizureSubResone { get; set; }
+    }
+    public class DeclarionSeizeDetailsList
+    {
+        public List<DeclarionSeizeDetailsResponse> importerSeizures { get; set; }
+    }
 }

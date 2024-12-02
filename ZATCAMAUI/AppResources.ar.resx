@@ -11523,4 +11523,22 @@ info@zatca.gov.sa</value>
    <data name="InstalmentDetailsSchedule" xml:space="preserve">
    <value>يتم عرض جدول تفاصيل الأقساط هنا</value>
  </data>
+ <data name="ReservationStartDate" xml:space="preserve">
+   <value>تاريخ بداية الحجز</value>
+ </data>
+ <data name="ReservationDate" xml:space="preserve">
+   <value>تاريخ قرار الحجز</value>
+ </data>
+  <data name="ReservationAmount" xml:space="preserve">
+   <value>مبلغ الحجز</value>
+ </data>
+ <data name="ReservationNumber" xml:space="preserve">
+   <value>رقم قرار الحجز</value>
+ </data>
+  <data name="ReservationReason" xml:space="preserve">
+   <value>سبب الحجز</value>
+ </data>
+   <data name="ReservationEntity" xml:space="preserve">
+   <value>جهة الحجز</value>
+ </data>
 </root> 

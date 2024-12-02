@@ -1,4 +1,5 @@
-﻿using ZATCAMAUI.Models.CustomServices;
+﻿using ZATCAMAUI.Models.BaseModels;
+using ZATCAMAUI.Models.CustomServices;
 
 namespace ZATCAMAUI.Core.Services.Interface
 {
@@ -12,5 +13,6 @@ namespace ZATCAMAUI.Core.Services.Interface
         Task<Tuple<StatmentItemsResponse, bool, string>> GetDclStatmentItems(int portNo, int dcltnISN, int dclType);
         Task<Tuple<InquireByBillInfoResponse, bool, string>> GetDeclarationInfoByBill(int portNo, string billNo, int CarrPrefix);
         Task<Tuple<CustomItemCalcDescription, bool, string>> GetItemsCalcTxt(int portNo, int Dcltype, string DClISn);
+        Task<Tuple<DATAPowerBaseResponse<DeclarionSeizeDetailsList>, bool, string>> GetDcltnSeizeDetails(int portNo, string billNo, int dclType);
     }
 }

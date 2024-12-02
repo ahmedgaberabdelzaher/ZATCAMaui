@@ -1,5 +1,6 @@
 ﻿using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Services.Interface;
+using ZATCAMAUI.Models.BaseModels;
 using ZATCAMAUI.Models.CustomServices;
 
 namespace ZATCAMAUI.Core.Services.Classes
@@ -26,9 +27,16 @@ namespace ZATCAMAUI.Core.Services.Classes
 
             return response;
         }
+
         public async Task<Tuple<DeclarionInformationInquireResponse, bool, string>> GetDcltnBusID(int portNo, int billNo, string date, int dclType)
         {
             var response = await HttpManager.GetAsync<DeclarionInformationInquireResponse>(App.CustomBaseUrl + $"Declaration/GetDcltnBusID/{portNo}/{billNo}/{date}?dcltnType={dclType}", true, portNo.ToString()).ConfigureAwait(false);
+
+            return response;
+        }
+         public async Task<Tuple<DATAPowerBaseResponse<DeclarionSeizeDetailsList>, bool, string>> GetDcltnSeizeDetails(int portNo, string billNo, int dclType)
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<DeclarionSeizeDetailsList>>(App.CustomBaseUrl.Replace("v1/api/customs/", "v1/customs/") + $"importer/seizures/{billNo}/reason?portCode={portNo}&routePortCode={portNo}&declarationType={dclType}", true, portNo.ToString()).ConfigureAwait(false);
 
             return response;
         }
@@ -56,9 +64,6 @@ namespace ZATCAMAUI.Core.Services.Classes
 
         public async Task<Tuple<CustomItemCalcDescription, bool, string>> GetItemsCalcTxt(int portNo, int Dcltype, string DClISn)
         {
-            /* portNo = 31;
-             Dcltype = 1;
-             DClISn = "4296";*/
             var response = await HttpManager.GetAsync<CustomItemCalcDescription>(App.CustomBaseUrl + $"Declaration/GetItemCalcMthdTxt/{portNo}/{Dcltype}/{DClISn}", true, portNo.ToString()).ConfigureAwait(false);
 
             return response;
