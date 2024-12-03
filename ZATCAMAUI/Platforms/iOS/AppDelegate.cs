@@ -53,7 +53,12 @@ public class AppDelegate : MauiUIApplicationDelegate
                 handler.PlatformView.Layer.BorderWidth = 0;
             }
         });
-        
+
+        SearchBarHandler.Mapper.AppendToMapping("CancelButtonColor", (handler, view) =>
+        {
+            handler.PlatformView.SetShowsCancelButton(false, false);
+        });
+
         return MauiProgram.CreateMauiApp();
     }
 
