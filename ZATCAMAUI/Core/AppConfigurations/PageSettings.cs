@@ -59,7 +59,7 @@
         public static string DATAPowerSTGZATCABaseUrl = "https://test-api.zatca.gov.sa/test/third-party/";
         public static string DATAPowerProdCZATCABaseUrl = "https://api.zatca.gov.sa/integration/third-party/";
         public static string DATAPowerQAZATCABaseUrl = "https://test-api.zatca.gov.sa/qa/third-party/";
-        public static string DATAPowerSTGCustomBaseUrl = $"{DATAPowerQAZATCABaseUrl}v1/api/customs/";
+        public static string DATAPowerSTGCustomBaseUrl = $"{DATAPowerSTGZATCABaseUrl}v1/api/customs/";
 
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
         public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";

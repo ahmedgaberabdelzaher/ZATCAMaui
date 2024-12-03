@@ -170,12 +170,11 @@
                                 <CollectionView
                                     BackgroundColor="Transparent"
                                     HeightRequest="50"
-                                    HorizontalOptions="Center"
+                                    HorizontalOptions="Start"
                                     ItemsLayout="HorizontalList"
                                     ItemsSource="{Binding ChipDataFilterlistForStatus}"
                                     SelectionMode="None"
-                                    VerticalOptions="Start"
-                                    WidthRequest="320">
+                                    VerticalOptions="Start">
 
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
