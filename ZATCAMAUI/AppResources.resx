@@ -11814,5 +11814,22 @@ the credit balance of the current period will be carried forward, you can reques
   <data name="InstalmentDetailsSchedule" xml:space="preserve">
    <value>Instalment details schedule is displayed here</value>
  </data>
-
+  <data name="ReservationStartDate" xml:space="preserve">
+   <value>Reservation start date</value>
+ </data>
+ <data name="ReservationDate" xml:space="preserve">
+   <value>Reservation date</value>
+ </data>
+  <data name="ReservationAmount" xml:space="preserve">
+   <value>Reservation amount</value>
+ </data>
+ <data name="ReservationNumber" xml:space="preserve">
+   <value>Reservation number</value>
+ </data>
+  <data name="ReservationReason" xml:space="preserve">
+   <value>Reservation reason</value>
+ </data>
+   <data name="ReservationEntity" xml:space="preserve">
+   <value>Reservation entity</value>
+ </data>
 </root> 

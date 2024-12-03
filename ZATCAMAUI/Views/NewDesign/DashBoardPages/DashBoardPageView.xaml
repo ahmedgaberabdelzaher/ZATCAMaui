@@ -585,7 +585,7 @@
                                                         <syncfusion:PickerHeaderView
                                                             Height="55"
                                                             Background="{StaticResource Primary}"
-                                                            Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
+                                                            Text="{x:Static ResourceManager:AppResources.ZZMyCommitments}">
                                                             <syncfusion:PickerHeaderView.TextStyle>
                                                                 <syncfusion:PickerTextStyle TextColor="White" />
                                                             </syncfusion:PickerHeaderView.TextStyle>
