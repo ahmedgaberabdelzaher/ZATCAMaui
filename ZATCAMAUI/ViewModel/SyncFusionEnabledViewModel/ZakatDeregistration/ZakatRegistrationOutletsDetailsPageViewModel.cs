@@ -25,6 +25,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 App.DisplayProgressView();
                 await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.Outlets);
+                OnPropertyChanged(nameof(OutletData));
                 App.HideProgressView();
             }
             catch (InternetException)
