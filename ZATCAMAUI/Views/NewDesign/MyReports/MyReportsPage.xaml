@@ -279,31 +279,26 @@
                                     Stroke="#EBEBEB"
                                     StrokeShape="RoundRectangle 12,12,12,12">
 
-                                    <StackLayout Padding="25,20">
+                                    <StackLayout Padding="20">
 
                                         <!--  First section  -->
                                         <Grid
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="Auto,Auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
 
 
                                             <!--  Facility name Label  -->
                                             <Label
-                                                Grid.ColumnSpan="2"
                                                 FontFamily="{StaticResource SomarRegular}"
                                                 FontSize="20"
-                                                HorizontalOptions="Fill"
                                                 LineBreakMode="WordWrap"
-                                                MaxLines="2"
                                                 Text="{Binding facilityName}"
                                                 TextColor="#232323" />
 
                                             <!--  Status region  -->
                                             <Grid
-                                                Grid.RowSpan="2"
                                                 Grid.Column="1"
-                                                ColumnDefinitions="80"
                                                 HorizontalOptions="EndAndExpand"
                                                 VerticalOptions="CenterAndExpand">
 
@@ -377,6 +372,18 @@
                                                             Value="25">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Border"
+                                                            Value="34">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Border"
+                                                            Value="35">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
 
 
                                                         <!--  Open status  -->
@@ -409,7 +416,7 @@
 
                                                 <!--  Status Label  -->
                                                 <Border
-                                                    Padding="5"
+                                                    Padding="10,5"
                                                     BackgroundColor="Transparent"
                                                     StrokeShape="RoundRectangle 14,14,14,14">
 
@@ -471,56 +478,70 @@
                                                                 Binding="{Binding reportStatus}"
                                                                 TargetType="Label"
                                                                 Value="17">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedInsufficient}" />
                                                                 <Setter Property="TextColor" Value="#62B34F" />
                                                             </DataTrigger>
                                                             <DataTrigger
                                                                 Binding="{Binding reportStatus}"
                                                                 TargetType="Label"
                                                                 Value="18">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedTax}" />
                                                                 <Setter Property="TextColor" Value="#62B34F" />
                                                             </DataTrigger>
                                                             <DataTrigger
                                                                 Binding="{Binding reportStatus}"
                                                                 TargetType="Label"
                                                                 Value="20">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedTIN}" />
                                                                 <Setter Property="TextColor" Value="#62B34F" />
                                                             </DataTrigger>
                                                             <DataTrigger
                                                                 Binding="{Binding reportStatus}"
                                                                 TargetType="Label"
                                                                 Value="21">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedRelated}" />
                                                                 <Setter Property="TextColor" Value="#62B34F" />
                                                             </DataTrigger>
                                                             <DataTrigger
                                                                 Binding="{Binding reportStatus}"
                                                                 TargetType="Label"
                                                                 Value="22">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedInvalid}" />
                                                                 <Setter Property="TextColor" Value="#62B34F" />
                                                             </DataTrigger>
                                                             <DataTrigger
                                                                 Binding="{Binding reportStatus}"
                                                                 TargetType="Label"
                                                                 Value="23">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedResponse}" />
                                                                 <Setter Property="TextColor" Value="#62B34F" />
                                                             </DataTrigger>
                                                             <DataTrigger
                                                                 Binding="{Binding reportStatus}"
                                                                 TargetType="Label"
                                                                 Value="24">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedImposed}" />
                                                                 <Setter Property="TextColor" Value="#62B34F" />
                                                             </DataTrigger>
                                                             <DataTrigger
                                                                 Binding="{Binding reportStatus}"
                                                                 TargetType="Label"
                                                                 Value="25">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedPenalty}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="34">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedFine}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="35">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedWarning}" />
                                                                 <Setter Property="TextColor" Value="#62B34F" />
                                                             </DataTrigger>
                                                         </Label.Triggers>
@@ -544,14 +565,16 @@
                                         </Grid>
 
                                         <!--  Horizontal Line  -->
-                                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="2" />
+                                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}"
+                                                 HeightRequest="2"
+                                                 Margin="0,10"/>
 
 
                                         <!--  Second section  -->
                                         <Grid
                                             ColumnDefinitions="*,*"
                                             RowDefinitions="Auto,Auto,Auto"
-                                            RowSpacing="0">
+                                            RowSpacing="10">
 
 
                                             <!--  Report type value  -->
@@ -588,7 +611,7 @@
                                                 Grid.Column="1"
                                                 FontFamily="{StaticResource SomarRegular}"
                                                 FontSize="12"
-                                                HorizontalOptions="StartAndExpand"
+                                                HorizontalOptions="EndAndExpand"
                                                 Text="{x:Static ResourceManager:AppResources.ZTEReportReportDate}"
                                                 TextColor="#999999" />
 
@@ -598,7 +621,7 @@
                                                 Grid.Column="1"
                                                 FontFamily="{StaticResource SomarRegular}"
                                                 FontSize="12"
-                                                HorizontalOptions="StartAndExpand"
+                                                HorizontalOptions="End"
                                                 Text="{Binding ReportDate, StringFormat='{0:dd/MM/yyyy}'}"
                                                 TextColor="#002447" />
 

@@ -11551,4 +11551,34 @@ info@zatca.gov.sa</value>
 	<data name="ReservationEntity" xml:space="preserve">
    <value>جهة الحجز</value>
  </data>
+ <data name="ClosedPenalty" xml:space="preserve">
+   <value>مغلق - تم فرض الغرامة مسبقا</value>
+ </data>
+ <data name="ClosedInsufficient" xml:space="preserve">
+   <value>مغلق - لعدم توفر الأدلة الكافية</value>
+ </data>
+ <data name="ClosedTax" xml:space="preserve">
+   <value>مغلق - الاحتساب الضريبي صحيح</value>
+ </data>
+ <data name="ClosedTIN" xml:space="preserve">
+   <value>مغلق - الرقم المميز يخص المنشأة</value>
+ </data>
+ <data name="ClosedRelated" xml:space="preserve">
+   <value>مغلق - خارج اختصاص الهيئة</value>
+ </data>
+ <data name="ClosedInvalid" xml:space="preserve">
+   <value>مغلق - بلاغ غير صحيح</value>
+ </data>
+ <data name="ClosedResponse" xml:space="preserve">
+   <value>مغلق - لا يوجد رد من المبلغ</value>
+ </data>
+  <data name="ClosedImposed" xml:space="preserve">
+   <value>مغلق - تم فرض الغرامة</value>
+ </data>
+   <data name="ClosedFine" xml:space="preserve">
+   <value>مغلق - تم فرض الغرامة</value>
+ </data>
+ <data name="ClosedWarning" xml:space="preserve">
+   <value>مغلق– تنبيه بدون غرامة</value>
+ </data>
 </root>
