@@ -11832,4 +11832,34 @@ the credit balance of the current period will be carried forward, you can reques
    <data name="ReservationEntity" xml:space="preserve">
    <value>Reservation entity</value>
  </data>
+  <data name="ClosedPenalty" xml:space="preserve">
+   <value>Closed - Penalty has already been imposed</value>
+ </data>
+ <data name="ClosedInsufficient" xml:space="preserve">
+   <value>Closed - Insufficient information</value>
+ </data>
+ <data name="ClosedTax" xml:space="preserve">
+   <value>Closed - Tax calculation is correct</value>
+ </data>
+ <data name="ClosedTIN" xml:space="preserve">
+   <value>Closed – TIN is linked to company</value>
+ </data>
+ <data name="ClosedRelated" xml:space="preserve">
+   <value>Closed - Not related to ZATCA</value>
+ </data>
+ <data name="ClosedInvalid" xml:space="preserve">
+   <value>Closed - Invalid report</value>
+ </data>
+ <data name="ClosedResponse" xml:space="preserve">
+   <value>Closed - No response from the reporter</value>
+ </data>
+  <data name="ClosedImposed" xml:space="preserve">
+   <value>Closed - Penalty has been imposed</value>
+ </data>
+   <data name="ClosedFine" xml:space="preserve">
+   <value>Close the report with a fine</value>
+ </data>
+ <data name="ClosedWarning" xml:space="preserve">
+   <value>Closed - Warning with No Penalty</value>
+ </data>
 </root> 
