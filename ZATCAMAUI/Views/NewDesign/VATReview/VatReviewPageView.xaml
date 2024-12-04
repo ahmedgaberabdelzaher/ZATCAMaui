@@ -2503,8 +2503,8 @@
 
                                                     <StackLayout
                                                         BindableLayout.ItemsSource="{Binding LateFilingAttachmentsListViewData}"
-                                                        HorizontalOptions="Center"
-                                                        VerticalOptions="Center">
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="FillAndExpand">
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate>
                                                                 <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
@@ -2531,7 +2531,6 @@
 
                                                                     <Image
                                                                         Grid.Column="2"
-                                                                        Margin="5,0"
                                                                         HeightRequest="25"
                                                                         HorizontalOptions="Start"
                                                                         Source="Generic_attachment_icon"
