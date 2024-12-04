@@ -16,7 +16,8 @@
     mc:Ignorable="d">
 
 
-    <Grid VerticalOptions="End">
+    <Grid VerticalOptions="End"
+          BackgroundColor="White">
         <Border
             Padding="15,0"
             BackgroundColor="White"
