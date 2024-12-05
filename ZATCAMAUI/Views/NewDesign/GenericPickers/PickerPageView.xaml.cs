@@ -63,7 +63,42 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             }
         }
 
-        private void PopupClose_Clicked(object sender, EventArgs e)
+       
+
+        private void PopupCancel_Clicked(object sender, EventArgs e)
+        {
+
+            MopupService.Instance.PopAsync();
+
+        }
+
+        void PopupPage_BackgroundClicked(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                if (viewModel.PickerItemSource.Count == 1)
+                {
+                    viewModel.DataSource.SelectedValue = viewModel.DataSource.PickerData[0];
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
+                }
+                else if (_pageCode == 1)
+                {
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelected", viewModel.DataSource);
+                }
+                else if (viewModel.DataSource.SelectedValue != null)
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
+
+
+            }
+            catch (Exception)
+            {
+
+
+
+            }
+        }
+
+        void PopupClose_Clicked(System.Object sender, System.EventArgs e)
         {
             try
             {
@@ -80,39 +115,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
                 else if (viewModel.DataSource.SelectedValue != null)
                     MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
 
-            }
-            catch (Exception)
-            {
-
-
-
-            }
-        }
-
-        private void PopupCancel_Clicked(object sender, EventArgs e)
-        {
-
-            MopupService.Instance.PopAsync();
-
-        }
-
-        void PopupPage_BackgroundClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                if (viewModel.PickerItemSource.Count == 1)
-                {
-                    viewModel.DataSource.SelectedValue = viewModel.DataSource.PickerData[0];
-                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
-                }
-                else if (_pageCode == 1)
-                {
-                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelected", viewModel.DataSource);
-                }
-                else if (viewModel.DataSource.SelectedValue != null)
-                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
-
-              
             }
             catch (Exception)
             {
