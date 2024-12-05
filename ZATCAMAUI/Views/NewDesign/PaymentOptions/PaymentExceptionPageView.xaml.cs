@@ -16,6 +16,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
         public PaymentExceptionPageView()
         {
             InitializeComponent();
+            this.FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
 
 
