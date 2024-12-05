@@ -2514,32 +2514,21 @@
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="*" />
                                                                         <ColumnDefinition Width="*" />
-                                                                        <ColumnDefinition Width="Auto" />
                                                                     </Grid.ColumnDefinitions>
-
-                                                                    <Label
-                                                                        Grid.Column="0"
+                                                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                                                        <Label
                                                                         FontFamily="{StaticResource SomarRegular}"
                                                                         Style="{StaticResource ValueLabelGrey}"
-                                                                        Text="{x:Static ResourceManager:AppResources.VRAttachment}" />
-                                                                    <Label
-                                                                        Grid.Column="1"
+                                                                        Text="{x:Static ResourceManager:AppResources.VRAttachment}"/>
+                                                                    </StackLayout>
+                                                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                                                        <Label
                                                                         HorizontalOptions="EndAndExpand"
                                                                         HorizontalTextAlignment="End"
                                                                         Style="{StaticResource BodyLabelBlack}"
                                                                         Text="{Binding Filename}" />
-
-                                                                    <Image
-                                                                        Grid.Column="2"
-                                                                        HeightRequest="25"
-                                                                        HorizontalOptions="Start"
-                                                                        Source="Generic_attachment_icon"
-                                                                        VerticalOptions="Center"
-                                                                        WidthRequest="25" />
+                                                                    </StackLayout>
                                                                 </Grid>
-
-
-
                                                             </DataTemplate>
                                                         </BindableLayout.ItemTemplate>
                                                     </StackLayout>

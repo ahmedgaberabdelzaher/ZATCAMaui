@@ -1529,9 +1529,9 @@
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding SummaryVisible}"
-                                    RowDefinitions="*"
+                                    RowDefinitions="*,auto"
                                     VerticalOptions="FillAndExpand">
-                                    <ScrollView HeightRequest="680"
+                                    <ScrollView Grid.Row="0"
                                                 VerticalScrollBarVisibility="Never">
                                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
@@ -2204,15 +2204,15 @@
                                                 </StackLayout>
 
                                             </Border>
-
-                                            <buttons:SfButton
-                                            Margin="0,16,0,16"
-                                            Command="{Binding SummaryConBtnTapped}"
-                                            Style="{StaticResource PrimaryButtonStyle}"
-                                            Text="{x:Static ResourceManager:AppResources.Confirm}" />
-
                                         </StackLayout>
                                     </ScrollView>
+                                    <buttons:SfButton
+                                         Margin="0,16,0,16"
+                                         Grid.Row="1"
+                                         Command="{Binding SummaryConBtnTapped}"
+                                         Style="{StaticResource PrimaryButtonStyle}"
+                                         Text="{x:Static ResourceManager:AppResources.Confirm}"
+                                         VerticalOptions="End" />
                                 </Grid>
 
                             </Grid>

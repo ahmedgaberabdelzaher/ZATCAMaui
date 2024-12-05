@@ -19,7 +19,6 @@
     ios:Page.UseSafeArea="true"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
-    x:Name="page"
     mc:Ignorable="d">
     <ContentPage.Resources>
 
@@ -88,48 +87,46 @@
                 Padding="15,0,15,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <Grid
-                    Padding="0"
-                    HorizontalOptions="FillAndExpand"
+                <Grid HorizontalOptions="FillAndExpand"
+                      Padding="0"
                     RowDefinitions="auto,auto,auto,auto,*"
                     VerticalOptions="FillAndExpand">
 
                     <!--  Bullets  -->
                     <commonView:PageIndicatorView
-                        Grid.Row="0"
                         Completed="{Binding MarkComplete}"
                         DotSize="16"
+                        Grid.Row="0"
                         HorizontalOptions="EndAndExpand"
                         MaxNum="{Binding MaxIndex}"
                         MinNum="{Binding CurrentIndex}"
                         VerticalOptions="Start" />
 
                     <Label
-                        Grid.Row="1"
                         HorizontalOptions="StartAndExpand"
                         LineHeight="0"
+                        Grid.Row="1"
                         Style="{StaticResource PageTitleBlack}"
                         Text="{Binding PageTitle}"
                         VerticalOptions="Start" />
 
                     <Label
-                        Grid.Row="2"
                         Style="{StaticResource BodyLabelGrey}"
                         Text="{Binding BodyText}"
+                        Grid.Row="2"
                         VerticalOptions="Start" />
 
                     <BoxView
-                        Grid.Row="3"
                         BackgroundColor="{StaticResource NeutralLightGrey}"
                         HeightRequest="1"
+                        Grid.Row="3"
                         Style="{StaticResource SeparatorStyle}"
                         VerticalOptions="Start" />
 
-                    <Grid
-                        Grid.Row="4"
-                        Margin="0,0,0,10"
-                        RowDefinitions="*,auto,auto">
-
+                     <Grid RowDefinitions="*,auto,auto"
+                           Margin="0,0,0,10"
+                           Grid.Row="4">
+                        
                         <!--  step 1  -->
                         <WebView
                             x:Name="TCWebView"
@@ -471,8 +468,7 @@
                                             VerticalOptions="Center">
                                             <SfChipGroup:SfChipGroup.ItemTemplate>
                                                 <DataTemplate>
-                                                    <StackLayout WidthRequest="80"
-                                                                 FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                                    <StackLayout WidthRequest="80">
                                                         <Label
                                                             HorizontalOptions="FillAndExpand"
                                                             HorizontalTextAlignment="Center"
@@ -652,7 +648,7 @@
                                 <!--#region Business Information-->
                                 <StackLayout IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.BusinessInformation}}">
 
-                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNatiNumberorLicencebelow}" />
+                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow}" />
 
                                     <!--  CRNumber/LicenseNumber View  -->
                                     <Grid
@@ -673,7 +669,7 @@
                                                 Margin="16,0,16,0"
                                                 Padding="16,8,16,8"
                                                 Style="{StaticResource ButtonLabelBlackBold}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}"
+                                                Text="{x:Static ResourceManager:AppResources.ZZCRNumber}"
                                                 VerticalOptions="End">
                                                 <Label.Triggers>
                                                     <DataTrigger
@@ -729,7 +725,7 @@
                                         <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
+                                                    <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -749,7 +745,7 @@
                                                     x:Name="EntryCRNumber"
                                                     Keyboard="Numeric"
                                                     MaxLength="10"
-                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZCRNumber}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding TxtCRNumber}"
                                                     TextChanged="EntryCRNumber_TextChanged"
@@ -1009,7 +1005,8 @@
                                 <!--#endregion-->
 
                                 <!--#region Contact Information-->
-                                <StackLayout IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}">
+                                <StackLayout IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}"
+                                             Spacing="10">
                                     <!--  Email  -->
                                     <StackLayout>
                                         <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
@@ -1048,8 +1045,9 @@
                                     </StackLayout>
 
                                     <!--  Mobile number  -->
-                                    <StackLayout>
-                                        <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
+                                    <StackLayout Spacing="10">
+                                        <Label HorizontalOptions="Start"
+                                               Style="{StaticResource CaptionLabelGrey}">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" />
@@ -1097,7 +1095,7 @@
                                                         IsSpellCheckEnabled="False"
                                                         Keyboard="Telephone"
                                                         MaxLength="{Binding MaxDigids}"
-                                                        Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}"
+                                                        Placeholder="50XXX"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TxtMobileNumber}"
                                                         TextColor="{StaticResource PrimaryColor}"
@@ -1110,7 +1108,12 @@
 
 
                                     <!--  Phone Number  -->
-                                    <StackLayout>
+                                    <StackLayout Spacing="10">
+                                        <Label HorizontalOptions="Start"
+                                               Text="{x:Static ResourceManager:AppResources.ZZPhoneNumber}"
+                                               Style="{StaticResource CaptionLabelGrey}"/>
+
+
                                         <custom:CustomSfTextInputView x:Name="FrmPhoneNumber">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
@@ -1521,7 +1524,7 @@
                                         </Grid>
 
                                         <StackLayout
-                                            Margin="0"
+                                            Spacing="10"
                                             HorizontalOptions="Center"
                                             Orientation="Horizontal">
                                             <Image Source="clock" Style="{StaticResource SmallIcon}" />
@@ -1531,6 +1534,7 @@
                                                 FontSize="11"
                                                 Text="{Binding LblCountDownTimer}"
                                                 TextColor="{StaticResource Primary}" />
+
                                         </StackLayout>
 
                                         <buttons:SfButton
@@ -2040,7 +2044,7 @@
                                 </StackLayout>
                                 <!--#endregion-->
 
-
+                              
 
                             </StackLayout>
 
@@ -2048,8 +2052,9 @@
 
                         <!--  terms and condition  CheckBox  -->
                         <StackLayout
-                            Grid.Row="1"
                             Margin="0,10"
+                            Spacing="10"
+                            Grid.Row="1"
                             IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}"
                             Orientation="Horizontal">
 
@@ -2091,7 +2096,7 @@
                                 </DataTrigger>
                             </buttons:SfButton.Triggers>
                         </buttons:SfButton>
-
+                        
                     </Grid>
 
                 </Grid>
