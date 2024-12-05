@@ -657,12 +657,13 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView x:Name="Frame_Country">
+                                        <custom:CustomSfTextInputView x:Name="Frame_Country" >
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                     InputTransparent="{Binding SetEnabilityToCountryList}"
-                                                    IsReadOnly="{Binding SetEnabilityToCountryList}"
+                                                    IsReadOnly="True"
+                                                    IsEnabled="False"
                                                     IsSpellCheckEnabled="False"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                                     Style="{StaticResource DefaultEntry}"
@@ -678,7 +679,7 @@
 
                                     </StackLayout>
 
-                                    <StackLayout IsVisible="{Binding SetGCCCountryVisibility}">
+                                    <StackLayout IsVisible="{Binding SetGCCCountryVisibility}" >
 
                                         <Label HorizontalOptions="Start" Style="{StaticResource GAZTSmallGrayLabelStyle}">
 
