@@ -837,6 +837,7 @@
                                             Background="White"
                                             IsVisible="{Binding SetStateListVisibility}"
                                             ItemHeight="40"
+                                            SelectionChangedCommand="{Binding RegioSelectionChangedCommand}"
                                             Mode="Dialog">
 
                                             <syncfusion:SfPicker.TextStyle>
@@ -947,6 +948,7 @@
                                             Background="White"
                                             IsVisible="{Binding SetCityListVisibility}"
                                             ItemHeight="40"
+                                            SelectionChangedCommand="{Binding CitySelectionChangedCommand}"
                                             Mode="Dialog">
 
 

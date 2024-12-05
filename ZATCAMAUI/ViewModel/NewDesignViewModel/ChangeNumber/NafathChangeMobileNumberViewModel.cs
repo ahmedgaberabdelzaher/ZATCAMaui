@@ -137,7 +137,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
         private void BindCommands()
         {
             SnipperTappedCommand = new Command(async () => await SnipperTapped());
-            NextCommand = new Command(() => Next());
+            NextCommand = new Command(async() => await Next());
             CountryCodesCommand = new Command(() => { CountryCodesTapped(); });
         }
 
