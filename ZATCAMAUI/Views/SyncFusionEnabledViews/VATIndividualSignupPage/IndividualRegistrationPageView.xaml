@@ -98,7 +98,7 @@
                     VerticalOptions="FillAndExpand"
                     VerticalScrollBarVisibility="Never">
 
-                    <StackLayout Margin="0,0" VerticalOptions="FillAndExpand">
+                    <StackLayout Margin="10,0" VerticalOptions="FillAndExpand">
                         <commonView:PageIndicatorView
                             Completed="{Binding MarkComplete}"
                             DotSize="16"
@@ -1317,11 +1317,11 @@
                         </StackLayout>
                         <!--#endregion-->
 
-                        <!--#region SummeryView-->
+                        <!--#region SummeryView  IsVisible="{Binding SummeryView}"-->
                         <Grid
                             x:Name="SummeryView"
                             Padding="0,10,0,0"
-                            IsVisible="{Binding SummeryView}">
+                           IsVisible="False">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
@@ -1723,9 +1723,8 @@
                         </Grid>
                         <!--#endregion-->
 
-                        <!--#region Password-->
+                        <!--#region Password -->
                         <StackLayout x:Name="PasswordView" IsVisible="{Binding PasswordView}">
-
 
                             <StackLayout IsVisible="{Binding passwordMainView}">
                                 <Label
@@ -1748,9 +1747,7 @@
                             </StackLayout>
 
                             <StackLayout>
-
                                 <StackLayout IsVisible="{Binding passwordMainView}">
-
                                     <StackLayout IsVisible="{Binding IsGulfER}">
                                         <Label HorizontalOptions="Start" Style="{StaticResource GAZTSmallGrayLabelStyle}">
 
@@ -1774,8 +1771,7 @@
                                                     MaxLength="16"
                                                     Placeholder="{x:Static ResourceManager:AppResources.NewPassword}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding Password}"
-                                                    WidthRequest="128">
+                                                    Text="{Binding Password}">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <xct:EventToCommandBehavior Command="{Binding EntryPasswordTextChangedCommand}" EventName="TextChanged" />
                                                         <behaviors:PasswordTextBehaviour />
@@ -1820,13 +1816,11 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryConfirmPassword"
-                                                    FontSize="Small"
                                                     IsPassword="{Binding IsConfirmPasswordEncripted}"
                                                     MaxLength="16"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding ConfirmPassword}"
-                                                    WidthRequest="128">
+                                                    Text="{Binding ConfirmPassword}">
 
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <xct:EventToCommandBehavior Command="{Binding ConfirmPasswordTextChangedCommand}" EventName="TextChanged" />
@@ -1851,7 +1845,8 @@
 
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal"
+                                                 Spacing="10">
                                         <Image
                                             HorizontalOptions="Start"
                                             Source="{Binding MinEight}"
@@ -1862,7 +1857,7 @@
                                             TextColor="#010101" />
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <Image
                                             HorizontalOptions="Start"
                                             Source="{Binding CapsSmall}"
@@ -1873,7 +1868,7 @@
                                             TextColor="#010101" />
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <Image
                                             HorizontalOptions="Start"
                                             Source="{Binding MaxSixteen}"
@@ -1884,7 +1879,7 @@
                                             TextColor="#010101" />
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <Image
                                             HorizontalOptions="Start"
                                             Source="{Binding NumSymbol}"
@@ -1898,12 +1893,12 @@
                                 </StackLayout>
 
                                 <!--  Verification Code  -->
-                                <StackLayout>
+                                <StackLayout Margin="0,10"
+                                             Spacing="10">
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
-                                        Margin="10,0,10,0"
                                         FontFamily="{StaticResource SomarBold}"
                                         FontSize="22"
                                         Style="{StaticResource GAZTMediumBoldBlackLabelStyle}"
@@ -1916,7 +1911,6 @@
                                         Style="{StaticResource GAZTMediumGrayLabelStyle}"
                                         Text="{x:Static ResourceManager:AppResources.EnterVerificationCode}" />
                                     <BoxView
-                                        Margin="0,10,0,15"
                                         Style="{StaticResource lineSeperator}"
                                         WidthRequest="380" />
                                 </StackLayout>
@@ -1924,7 +1918,8 @@
                                 <StackLayout Spacing="10">
                                     <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding EncriptedMobileNumber}" />
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal"
+                                                 Spacing="10">
                                         <Image Source="clock.png" Style="{StaticResource SmallIcon}" />
                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding OTPValidDuration}" />
                                     </StackLayout>
@@ -1940,16 +1935,12 @@
 
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                FontFamily="{StaticResource SomarLight}"
-                                                FontSize="Small"
-                                                HorizontalOptions="StartAndExpand"
                                                 IsPassword="{Binding IsOTPEncripted}"
                                                 Keyboard="Numeric"
                                                 MaxLength="4"
                                                 Placeholder="{x:Static ResourceManager:AppResources.EnterOTP}"
                                                 Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding OTP}"
-                                                WidthRequest="128">
+                                                Text="{Binding OTP}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:OnlyNumericValuesBehaviour />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -1965,7 +1956,6 @@
                                         x:Name="btnResendOtp"
                                         Background="{Binding ButtonDisableColor}"
                                         Command="{Binding OnResendButtonClick}"
-                                        CornerRadius="0"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
                                         HeightRequest="56"
@@ -1979,11 +1969,11 @@
                         </StackLayout>
                         <!--#endregion-->
 
-                        <buttons:SfButton
+                        <Button
                             x:Name="btnContinue"
-                            Margin="0,10"
+                            Margin="10"
                             Command="{Binding OnContinueButtonClick}"
-                            Style="{StaticResource PrimaryButtonStyle}"
+                            Style="{StaticResource PrimaryMauiButtonStyle}"
                             Text="{Binding ContinueButtonText}"
                             VerticalOptions="EndAndExpand" />
 
