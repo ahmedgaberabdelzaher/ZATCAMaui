@@ -11,6 +11,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
     FlowDirection="{Binding AppDirection}"
+    x:Name="page"
     mc:Ignorable="d">
     <Mopups:PopupPage.Resources>
         <ResourceDictionary>
@@ -51,6 +52,7 @@
                             <cards:SfCardView
                                 BackgroundColor="{StaticResource PickerBgGray}"
                                 BorderColor="{StaticResource NeutralLightGrey}"
+                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                 BorderWidth="1"
                                 CornerRadius="10"
                                 HorizontalOptions="FillAndExpand"

@@ -856,7 +856,7 @@
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView
-                                    BackgroundColor="Transparent"
+                                    BackgroundColor="White"
                                     BorderColor="{StaticResource NeutralGreay}"
                                     BorderWidth="0.7">
                                     <Grid

@@ -420,7 +420,7 @@
                                                     <cards:SfCardView
                                                         Padding="5"
                                                         FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
-                                                        BackgroundColor="Transparent"
+                                                        BackgroundColor="White"
                                                         BorderColor="{StaticResource NeutralLightGrey}"
                                                         BorderWidth="1"
                                                         CornerRadius="16"
@@ -646,7 +646,7 @@
                                                                      WidthRequest="350">
 
                                                             <cards:SfCardView
-                                                                BackgroundColor="Transparent"
+                                                                BackgroundColor="White"
                                                                 BorderColor="{StaticResource NeutralLightGrey}"
                                                                 BorderWidth="1"
                                                                 CornerRadius="14"
@@ -692,7 +692,7 @@
                                                                     </cards:SfCardView>
 
                                                                     <cards:SfCardView
-                                                                        BackgroundColor="Transparent"
+                                                                        BackgroundColor="White"
                                                                         CornerRadius="14"
                                                                         HeightRequest="80"
                                                                         IsVisible="{Binding IsPaymentOverdue}"
@@ -985,7 +985,7 @@
                                                         <cards:SfCardView
                                                             Margin="3"
                                                             FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
-                                                            BackgroundColor="Transparent"
+                                                            BackgroundColor="White"
                                                             BorderColor="{StaticResource NeutralLightGrey}"
                                                             BorderWidth="1"
                                                             CornerRadius="16"
@@ -1180,7 +1180,7 @@
                                                         <cards:SfCardView
                                                             Margin="5"
                                                             Padding="15"
-                                                            BackgroundColor="Transparent"
+                                                            BackgroundColor="White"
                                                             BorderColor="{StaticResource NeutralLightGrey}"
                                                             BorderWidth="1"
                                                             CornerRadius="14"

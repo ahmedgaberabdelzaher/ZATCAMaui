@@ -1,9 +1,6 @@
 ﻿using Mopups.Services;
-using System.Net;
 using System.Web;
 using ZATCAMAUI.Core.Helper;
-using ZATCAMAUI.Core.Mangers;
-using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
