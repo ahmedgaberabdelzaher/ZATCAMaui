@@ -22,7 +22,7 @@
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
             <converters:EstablishmentRegistrationActivityTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:EstablishmentMainActivityToVisibilityConverter x:Key="isMainActivityConverter" />
         </ResourceDictionary>
@@ -77,13 +77,13 @@
                         <ColumnDefinition Width="75*" />
                         <ColumnDefinition Width="15*" />
                     </Grid.ColumnDefinitions>
-
+                    
                     <Image
                         HorizontalOptions="Start"
                         Rotation="180"
                         Source="arrowLeft.png"
                         VerticalOptions="CenterAndExpand">
-                        <Image.GestureRecognizers>
+                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
                         </Image.GestureRecognizers>
                         <Image.Triggers>
@@ -155,31 +155,31 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="{Binding ActivityDetails.IssueCountry, Converter={StaticResource InverseBoolConverter}}"
-                                    IsReadOnly="{Binding ActivityDetails.IssueCountry, Converter={StaticResource InverseBoolConverter}}"
-                                    Keyboard="Text"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding CRIssueCountry, TargetNullValue=''}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnIssueCountrySelectButtonClick}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                         <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="{Binding ActivityDetails.IssueCountry,Converter={StaticResource InverseBoolConverter}}"
+                                        IsReadOnly="{Binding ActivityDetails.IssueCountry,Converter={StaticResource InverseBoolConverter}}"
+                                        Keyboard="Text"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding CRIssueCountry, TargetNullValue=''}"
+                                        TextColor="{StaticResource NeutralBlack}">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnIssueCountrySelectButtonClick}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
 
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnIssueCountrySelectButtonClick}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnIssueCountrySelectButtonClick}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.TrailingView>
 
-                                <Image Aspect="AspectFit" Source="greyDropDown" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
 
-                        </custom:CustomSfTextInputView>
+                            </custom:CustomSfTextInputView>
                         <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
@@ -194,30 +194,30 @@
                         </Label>
 
                         <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="{Binding ActivityDetails.IssueBy, Converter={StaticResource InverseBoolConverter}}"
-                                    IsReadOnly="{Binding ActivityDetails.IssueBy, Converter={StaticResource InverseBoolConverter}}"
-                                    Keyboard="Text"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding CRIssueBy, TargetNullValue=''}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnIssueBySelectButtonClick}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="{Binding ActivityDetails.IssueBy,Converter={StaticResource InverseBoolConverter}}"
+                                        IsReadOnly="{Binding ActivityDetails.IssueBy,Converter={StaticResource InverseBoolConverter}}"
+                                        Keyboard="Text"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding CRIssueBy, TargetNullValue=''}"
+                                        TextColor="{StaticResource NeutralBlack}">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnIssueBySelectButtonClick}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
 
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnIssueBySelectButtonClick}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnIssueBySelectButtonClick}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.TrailingView>
 
-                                <Image Aspect="AspectFit" Source="greyDropDown" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
 
-                        </custom:CustomSfTextInputView>
+                            </custom:CustomSfTextInputView>
 
                         <Label
                             Margin="0,10,0,0"
@@ -233,28 +233,28 @@
                         </Label>
 
                         <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="{Binding ActivityDetails.IssueCity, Converter={StaticResource InverseBoolConverter}}"
-                                    IsReadOnly="{Binding ActivityDetails.IssueCity, Converter={StaticResource InverseBoolConverter}}"
-                                    Keyboard="Text"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding CRIssueCity, TargetNullValue=''}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnIssueCitySelectButtonClick}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="{Binding ActivityDetails.IssueCity,Converter={StaticResource InverseBoolConverter}}"
+                                        IsReadOnly="{Binding ActivityDetails.IssueCity,Converter={StaticResource InverseBoolConverter}}"
+                                        Keyboard="Text"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding CRIssueCity, TargetNullValue=''}"
+                                        TextColor="{StaticResource NeutralBlack}">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnIssueCitySelectButtonClick}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
 
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnIssueCitySelectButtonClick}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnIssueCitySelectButtonClick}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.TrailingView>
 
-                                <Image Aspect="AspectFit" Source="greyDropDown" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
 
                         </custom:CustomSfTextInputView>
 
@@ -333,45 +333,6 @@
                             </custom:CustomSfTextInputView>
 
                         </StackLayout>
-                        <!--  CR National number start  -->
-                        <Label
-                            Margin="0,10,0,0"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource CaptionLabelGrey}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <StackLayout Padding="0" IsEnabled="{Binding ActivityDetails.CRNo}">
-                            <custom:CustomSfTextInputView IsEnabled="{Binding EnableCRNationalInputField}" Style="{StaticResource TextInputLayout}">
-                                <custom:CustomSfTextInputView.TextInputView>
-                                    <custom:GAZTBorderlessEntry
-                                        FontFamily="{StaticResource SomarRegular}"
-                                        FontSize="15"
-                                        HeightRequest="48"
-                                        HorizontalOptions="FillAndExpand"
-                                        HorizontalTextAlignment="Start"
-                                        IsEnabled="{Binding EnableCRNationalInputField}"
-                                        Keyboard="Numeric"
-                                        MaxLength="10"
-                                        PlaceholderColor="{StaticResource NeutralGreay}"
-                                        Text="{Binding CRNationalNumber}"
-                                        TextColor="{StaticResource NeutralBlack}"
-                                        Unfocused="CR_National_Entry_Unfocused"
-                                        VerticalOptions="Center"
-                                        VerticalTextAlignment="Center">
-
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviors:NumericValidationBehavior />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
-                                    </custom:GAZTBorderlessEntry>
-                                </custom:CustomSfTextInputView.TextInputView>
-                            </custom:CustomSfTextInputView>
-                        </StackLayout>
-                        <!--  CR National number   End  -->
                         <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
@@ -386,31 +347,31 @@
                         </Label>
 
                         <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="{Binding ActivityDetails.ValidFrom, Converter={StaticResource InverseBoolConverter}}"
-                                    IsReadOnly="{Binding ActivityDetails.ValidFrom, Converter={StaticResource InverseBoolConverter}}"
-                                    Keyboard="Text"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding DisplayCRValidFrom, TargetNullValue=''}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="crValidFromButtonClick" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="{Binding ActivityDetails.ValidFrom,Converter={StaticResource InverseBoolConverter}}"
+                                        IsReadOnly="{Binding ActivityDetails.ValidFrom,Converter={StaticResource InverseBoolConverter}}"
+                                        Keyboard="Text"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding DisplayCRValidFrom, TargetNullValue=''}"
+                                        TextColor="{StaticResource NeutralBlack}">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="crValidFromButtonClick" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
 
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="crValidFromButtonClick" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="crValidFromButtonClick" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.TrailingView>
 
-                                <Image
-                                    HorizontalOptions="EndAndExpand"
-                                    Source="calendar.png"
-                                    Style="{StaticResource SmallIcon}" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image
+                                        HorizontalOptions="EndAndExpand"
+                                        Source="calendar.png"
+                                        Style="{StaticResource SmallIcon}" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
 
                         </custom:CustomSfTextInputView>
 
@@ -425,7 +386,7 @@
                             SelectedItem="{Binding SelectedCRValidFromDate}">
 
                             <custom:CustomDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
+                                <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
                             </custom:CustomDatePicker.ColumnHeaderView>
 
                             <custom:CustomDatePicker.SelectionView>
@@ -442,9 +403,9 @@
                                 <syncfusion:PickerHeaderView
                                     Height="46"
                                     Background="{StaticResource NeutralBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}">
+                                    Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" >
 
-                                    <syncfusion:PickerHeaderView.TextStyle>
+                                      <syncfusion:PickerHeaderView.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="White" />
                                     </syncfusion:PickerHeaderView.TextStyle>
 
@@ -481,7 +442,7 @@
                             </custom:CustomHijriDatePicker.SelectionView>
 
                             <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
+                                <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
                             </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                             <custom:CustomHijriDatePicker.SelectedTextStyle>
@@ -495,9 +456,9 @@
                                 <syncfusion:PickerHeaderView
                                     Height="46"
                                     Background="{StaticResource NeutralBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}">
+                                    Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" >
 
-                                    <syncfusion:PickerHeaderView.TextStyle>
+                                      <syncfusion:PickerHeaderView.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="White" />
                                     </syncfusion:PickerHeaderView.TextStyle>
 
@@ -510,7 +471,7 @@
                                 <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
                                     <syncfusion:PickerFooterView.TextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                         <syncfusion:PickerTextStyle TextColor="White" />
                                     </syncfusion:PickerFooterView.TextStyle>
 
                                 </syncfusion:PickerFooterView>
@@ -593,7 +554,6 @@
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Border
-                                        FlowDirection="{Binding Source={x:Reference ESTActivityAmendUpdateItemPage}, Path=FlowDirection}"
                                         Padding="10"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 14,14,14,14"
@@ -673,7 +633,6 @@
                                 <DataTemplate>
                                     <Border
                                         Padding="10"
-                                        FlowDirection="{Binding Source={x:Reference ESTActivityAmendUpdateItemPage}, Path=FlowDirection}"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 14,14,14,14"
                                         StrokeThickness="1">
@@ -725,12 +684,139 @@
                             IsVisible="{Binding ActivityDetails.MainGroup}"
                             Text="{x:Static ResourceManager:AppResources.ESTBusinessActivityDetails}"
                             TextColor="{StaticResource NeutralBlack}" />
-                        <buttons:SfButton
-                            Command="{Binding OnActivitiesButtonClick}"
-                            CommandParameter="CRData"
-                            HorizontalOptions="FillAndExpand"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.EstActivities}" />
+                        <Label
+                            Margin="0,0,0,0"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding ActivityDetails.MainGroup}"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <StackLayout
+                            Padding="0"
+                            IsVisible="{Binding ActivityDetails.MainGroup}">
+
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                       InputTransparent="{Binding ActivityDetails.MainGroup,Converter={StaticResource InverseBoolConverter}}"
+                                        IsReadOnly="{Binding ActivityDetails.MainGroup,Converter={StaticResource InverseBoolConverter}}"
+                                        Keyboard="Text"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding CRMainGroup, TargetNullValue=''}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnMainGroupSelectButtonClick}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnMainGroupSelectButtonClick}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                            </custom:CustomSfTextInputView>
+
+                        </StackLayout>
+                        <Label
+                            Margin="0,10,0,0"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding ActivityDetails.SubGroup}"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <StackLayout
+                            Padding="0"
+                            IsVisible="{Binding ActivityDetails.SubGroup}">
+
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="{Binding ActivityDetails.SubGroup,Converter={StaticResource InverseBoolConverter}}"
+                                        IsReadOnly="{Binding ActivityDetails.SubGroup,Converter={StaticResource InverseBoolConverter}}"
+                                        Keyboard="Text"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding CRSubGroup, TargetNullValue=''}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnSubGroupSelectButtonClick}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnSubGroupSelectButtonClick}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                            </custom:CustomSfTextInputView>
+
+
+                        </StackLayout>
+                        <Label
+                            Margin="0,10,0,0"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding ActivityDetails.Activity}"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <StackLayout
+                            Padding="0"
+                            IsVisible="{Binding ActivityDetails.Activity}">
+
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="{Binding ActivityDetails.Activity,Converter={StaticResource InverseBoolConverter}}"
+                                        IsReadOnly="{Binding ActivityDetails.Activity,Converter={StaticResource InverseBoolConverter}}"
+                                        Keyboard="Text"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding CRAcitivity, TargetNullValue=''}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnAcitivitySelectButtonClick}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnAcitivitySelectButtonClick}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                            </custom:CustomSfTextInputView>
+
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
                 <!--#endregion-->
@@ -770,8 +856,7 @@
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView
-                                    FlowDirection="{Binding Source={x:Reference ESTActivityAmendUpdateItemPage}, Path=FlowDirection}"
-                                    BackgroundColor="Transparent"
+                                    BackgroundColor="White"
                                     BorderColor="{StaticResource NeutralGreay}"
                                     BorderWidth="0.7">
                                     <Grid
@@ -802,7 +887,8 @@
                                         <Image
                                             Grid.Column="2"
                                             Source="{Binding ArrowImageSource}"
-                                            VerticalOptions="CenterAndExpand" />
+                                            VerticalOptions="CenterAndExpand">
+                                        </Image>
 
                                     </Grid>
                                     <cards:SfCardView.GestureRecognizers>
@@ -835,11 +921,11 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <custom:CustomSfTextInputView>
+                       <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
-                                    InputTransparent="{Binding LicenseDetails.IssueCountry, Converter={StaticResource InverseBoolConverter}}"
-                                    IsReadOnly="{Binding LicenseDetails.IssueCountry, Converter={StaticResource InverseBoolConverter}}"
+                                    InputTransparent="{Binding LicenseDetails.IssueCountry,Converter={StaticResource InverseBoolConverter}}"
+                                    IsReadOnly="{Binding LicenseDetails.IssueCountry,Converter={StaticResource InverseBoolConverter}}"
                                     Keyboard="Text"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding LicenseIssueCountry, TargetNullValue=''}"
@@ -873,31 +959,31 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <custom:CustomSfTextInputView>
-                            <custom:CustomSfTextInputView.TextInputView>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="{Binding LicenseDetails.IssueBy, Converter={StaticResource InverseBoolConverter}}"
-                                    IsReadOnly="{Binding LicenseDetails.IssueBy, Converter={StaticResource InverseBoolConverter}}"
-                                    Keyboard="Text"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding LicenseIssueBy, TargetNullValue=''}"
-                                    TextColor="{StaticResource NeutralBlack}">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnIssueBySelectButtonClick}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                         <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                         InputTransparent="{Binding LicenseDetails.IssueBy,Converter={StaticResource InverseBoolConverter}}"
+                                       IsReadOnly="{Binding LicenseDetails.IssueBy,Converter={StaticResource InverseBoolConverter}}"
+                                        Keyboard="Text"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding LicenseIssueBy, TargetNullValue=''}"
+                                        TextColor="{StaticResource NeutralBlack}">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnIssueBySelectButtonClick}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
 
-                            </custom:CustomSfTextInputView.TextInputView>
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnIssueBySelectButtonClick}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnIssueBySelectButtonClick}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.TrailingView>
 
-                                <Image Aspect="AspectFit" Source="greyDropDown" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
 
-                        </custom:CustomSfTextInputView>
+                            </custom:CustomSfTextInputView>
                         <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
@@ -910,11 +996,11 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <custom:CustomSfTextInputView>
+                       <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
-                                    InputTransparent="{Binding LicenseDetails.IssueCity, Converter={StaticResource InverseBoolConverter}}"
-                                    IsReadOnly="{Binding LicenseDetails.IssueCity, Converter={StaticResource InverseBoolConverter}}"
+                                    InputTransparent="{Binding LicenseDetails.IssueCity,Converter={StaticResource InverseBoolConverter}}"
+                                    IsReadOnly="{Binding LicenseDetails.IssueCity,Converter={StaticResource InverseBoolConverter}}"
                                     Keyboard="Text"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding LicenseIssueCity, TargetNullValue=''}"
@@ -1023,8 +1109,8 @@
                         <custom:CustomSfTextInputView>
                             <custom:CustomSfTextInputView.TextInputView>
                                 <custom:GAZTBorderlessEntry
-                                    InputTransparent="{Binding LicenseDetails.ValidFrom, Converter={StaticResource InverseBoolConverter}}"
-                                    IsReadOnly="{Binding LicenseDetails.ValidFrom, Converter={StaticResource InverseBoolConverter}}"
+                                    InputTransparent="{Binding LicenseDetails.ValidFrom,Converter={StaticResource InverseBoolConverter}}"
+                                    IsReadOnly="{Binding LicenseDetails.ValidFrom,Converter={StaticResource InverseBoolConverter}}"
                                     Keyboard="Text"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding DisplayValidFrom, TargetNullValue=''}"
@@ -1059,7 +1145,7 @@
                             SelectedItem="{Binding SelectedValidFromDate}">
 
                             <custom:CustomDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
+                                <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
                             </custom:CustomDatePicker.ColumnHeaderView>
 
                             <custom:CustomDatePicker.SelectionView>
@@ -1068,12 +1154,12 @@
 
                             <custom:CustomDatePicker.HeaderView>
 
-                                <syncfusion:PickerHeaderView
+                                  <syncfusion:PickerHeaderView
                                     Height="46"
                                     Background="{StaticResource NeutralBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}">
+                                    Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" >
 
-                                    <syncfusion:PickerHeaderView.TextStyle>
+                                      <syncfusion:PickerHeaderView.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="White" />
                                     </syncfusion:PickerHeaderView.TextStyle>
 
@@ -1090,7 +1176,7 @@
                                 <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
                                     <syncfusion:PickerFooterView.TextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                          <syncfusion:PickerTextStyle TextColor="White" />
                                     </syncfusion:PickerFooterView.TextStyle>
 
                                 </syncfusion:PickerFooterView>
@@ -1115,17 +1201,17 @@
                             </custom:CustomHijriDatePicker.SelectionView>
 
                             <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
+                                <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
                             </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                             <custom:CustomHijriDatePicker.HeaderView>
 
-                                <syncfusion:PickerHeaderView
+                                 <syncfusion:PickerHeaderView
                                     Height="46"
                                     Background="{StaticResource NeutralBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}">
+                                    Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" >
 
-                                    <syncfusion:PickerHeaderView.TextStyle>
+                                      <syncfusion:PickerHeaderView.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="White" />
                                     </syncfusion:PickerHeaderView.TextStyle>
 
@@ -1144,7 +1230,7 @@
                                 <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
                                     <syncfusion:PickerFooterView.TextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                         <syncfusion:PickerTextStyle TextColor="White" />
                                     </syncfusion:PickerFooterView.TextStyle>
 
                                 </syncfusion:PickerFooterView>
@@ -1232,7 +1318,6 @@
                                 <DataTemplate>
                                     <Border
                                         Padding="10"
-                                        FlowDirection="{Binding Source={x:Reference ESTActivityAmendUpdateItemPage}, Path=FlowDirection}"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 14,14,14,14"
                                         StrokeThickness="1">
@@ -1285,13 +1370,119 @@
                             FontSize="18"
                             Text="{x:Static ResourceManager:AppResources.ESTBusinessActivityDetails}"
                             TextColor="{StaticResource NeutralBlack}" />
+                        <Label
+                            Margin="0,0,0,0"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
 
-                        <buttons:SfButton
-                            Command="{Binding OnActivitiesButtonClick}"
-                            CommandParameter="License"
-                            HorizontalOptions="FillAndExpand"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.EstActivities}" />
+                         <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        IsReadOnly="{Binding LicenseDetails.MainGroup, Converter={StaticResource InverseBoolConverter}}"
+                                        InputTransparent="{Binding LicenseDetails.MainGroup, Converter={StaticResource InverseBoolConverter}}"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ESTMainGroup}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding LicenseMainGroup}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnMainGroupSelectButtonClick}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnMainGroupSelectButtonClick}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                        </custom:CustomSfTextInputView>
+
+                        <Label
+                            Margin="0,10,0,0"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                       <custom:CustomSfTextInputView>
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                    IsReadOnly="{Binding LicenseDetails.SubGroup, Converter={StaticResource InverseBoolConverter}}"
+                                    InputTransparent="{Binding LicenseDetails.SubGroup, Converter={StaticResource InverseBoolConverter}}"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ESTSubGroup}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding LicenseSubGroup}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnSubGroupSelectButtonClick}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+
+                            </custom:CustomSfTextInputView.TextInputView>
+                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnSubGroupSelectButtonClick}" />
+                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            <inputLayout:SfTextInputLayout.TrailingView>
+
+                                <Image Aspect="AspectFit" Source="greyDropDown" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </custom:CustomSfTextInputView>
+
+                        <Label
+                            Margin="0,10,0,0"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <custom:CustomSfTextInputView>
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                    IsReadOnly="{Binding LicenseDetails.Activity, Converter={StaticResource InverseBoolConverter}}"
+                                    InputTransparent="{Binding LicenseDetails.Activity, Converter={StaticResource InverseBoolConverter}}"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ESTActivity}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding LicenseAcitivity}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnAcitivitySelectButtonClick}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+
+                            </custom:CustomSfTextInputView.TextInputView>
+                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnAcitivitySelectButtonClick}" />
+                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            <inputLayout:SfTextInputLayout.TrailingView>
+
+                                <Image Aspect="AspectFit" Source="greyDropDown" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </custom:CustomSfTextInputView>
 
                     </StackLayout>
                 </ScrollView>
@@ -1299,7 +1490,7 @@
             </Grid>
             <Grid
                 Grid.Row="2"
-                Margin="0,20,0,20"
+                Margin="0,0,0,0"
                 Padding="20,0,20,35"
                 BackgroundColor="White">
                 <buttons:SfButton

@@ -1529,9 +1529,10 @@
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding SummaryVisible}"
-                                    RowDefinitions="*,auto"
+                                    RowDefinitions="*"
                                     VerticalOptions="FillAndExpand">
                                     <ScrollView Grid.Row="0"
+                                                HeightRequest="650"
                                                 VerticalScrollBarVisibility="Never">
                                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
@@ -1875,7 +1876,6 @@
                                                 </Grid>
                                             </Border>
 
-
                                             <Border
                                             Margin="0,16,0,10"
                                             Padding="0,0,0,16"
@@ -2204,15 +2204,16 @@
                                                 </StackLayout>
 
                                             </Border>
+
+                                            <buttons:SfButton
+                                                 Margin="0,20"
+                                                 Command="{Binding SummaryConBtnTapped}"
+                                                 Style="{StaticResource PrimaryButtonStyle}"
+                                                 Text="{x:Static ResourceManager:AppResources.Confirm}"
+                                                 VerticalOptions="End" />
                                         </StackLayout>
                                     </ScrollView>
-                                    <buttons:SfButton
-                                         Margin="0,16,0,16"
-                                         Grid.Row="1"
-                                         Command="{Binding SummaryConBtnTapped}"
-                                         Style="{StaticResource PrimaryButtonStyle}"
-                                         Text="{x:Static ResourceManager:AppResources.Confirm}"
-                                         VerticalOptions="End" />
+                                    
                                 </Grid>
 
                             </Grid>

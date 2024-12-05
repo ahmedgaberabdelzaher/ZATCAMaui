@@ -5,12 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-    <ScrollView>
+    <ScrollView VerticalScrollBarVisibility="Never">
         <StackLayout
             Margin="0"
             BackgroundColor="Transparent"
@@ -34,23 +33,14 @@
                     TextColor="White" />
             </StackLayout>
 
-            <StackLayout
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                Margin="30,60,30,80"
+           <Button
+                Margin="20"
                 HorizontalOptions="Center"
-                VerticalOptions="End">
-                <buttons:SfButton
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Margin="0,8,0,16"
-                    Clicked="TryAgainClicked"
-                    HeightRequest="46"
-                    Style="{StaticResource PrimaryButtonStyle}"
-                    Text="{x:Static ResourceManager:AppResources.tryAgain}" />
-            </StackLayout>
+                VerticalOptions="End"
+                Clicked="TryAgainClicked"
+                HeightRequest="46"
+                Style="{StaticResource PrimaryMauiButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.tryAgain}" />
         </StackLayout>
     </ScrollView>
 </Mopups:PopupPage>

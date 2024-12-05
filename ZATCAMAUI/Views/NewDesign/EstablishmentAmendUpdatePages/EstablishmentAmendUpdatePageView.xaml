@@ -19,15 +19,9 @@
     x:Name="ESTAmendReactivationPage"
     Title="{Binding PageTitle}"
     ios:Page.UseSafeArea="true"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-
-    <ContentPage.Behaviors>
-        <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
-    </ContentPage.Behaviors>
-
     <ContentPage.Resources>
         <ResourceDictionary>
 
@@ -119,7 +113,8 @@
                     HorizontalOptions="End"
                     MarkSize="24"
                     MaxNum="{Binding MaxIndex}"
-                    MinNum="{Binding CurrentIndex}" />
+                    MinNum="{Binding CurrentIndex}"
+                    />
                 <Label
                     Margin="0,10,0,0"
                     FontFamily="{StaticResource SomarBold}"
@@ -157,7 +152,6 @@
                         <SfChipGroup:SfChipGroup.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout
-                                    FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                     Margin="0"
                                     Padding="5,2,5,2"
                                     Orientation="Horizontal"
@@ -316,6 +310,7 @@
                                         <cards:SfCardView
                                             Grid.Row="0"
                                             Grid.Column="0"
+                                            BackgroundColor="White"
                                             CornerRadius="20"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
@@ -341,6 +336,7 @@
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             CornerRadius="20"
+                                            BackgroundColor="White"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption}"
                                             WidthRequest="171">
@@ -372,6 +368,7 @@
                                         </Grid.GestureRecognizers>
                                         <cards:SfCardView
                                             Grid.Row="0"
+                                            BackgroundColor="White"
                                             Grid.Column="0"
                                             CornerRadius="20"
                                             HeightRequest="104"
@@ -551,7 +548,6 @@
                                             <DataTemplate>
                                                 <Border
                                                     Padding="10"
-                                                    FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                     Stroke="{StaticResource NeutralGreay}"
                                                     StrokeShape="RoundRectangle 10,10,10,10"
                                                     StrokeThickness="1"
@@ -656,6 +652,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
+                                                BackgroundColor="White"
                                                 IsVisible="{Binding IsClickedPermanentLegalEntity}"
                                                 WidthRequest="171">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -689,6 +686,7 @@
                                             <cards:SfCardView
                                                 Grid.Row="0"
                                                 Grid.Column="0"
+                                                BackgroundColor="White"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
@@ -715,6 +713,7 @@
                                                 Grid.Column="0"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
+                                                BackgroundColor="White"
                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -770,6 +769,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
+                                                BackgroundColor="White"
                                                 IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -790,6 +790,7 @@
                                             </cards:SfCardView>
                                             <cards:SfCardView
                                                 CornerRadius="20"
+                                                BackgroundColor="White"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -877,6 +878,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
+                                                BackgroundColor="White"
                                                 HorizontalOptions="FillAndExpand"
                                                 IsVisible="{Binding IsClickedInstallationPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -899,6 +901,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
+                                                BackgroundColor="White"
                                                 HorizontalOptions="FillAndExpand"
                                                 IsVisible="{Binding IsClickedInstallationPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -1048,7 +1051,6 @@
                                     <DataTemplate>
                                         <Grid
                                             Margin="0,0,0,0"
-                                            FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                             Padding="0"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand">
@@ -1090,7 +1092,6 @@
                                         <Grid
                                             Margin="0,0,0,0"
                                             Padding="0"
-                                            FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
@@ -1619,8 +1620,8 @@
                                             <DataTemplate>
 
                                                 <cards:SfCardView
-                                                    FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                     Margin="0,0,24,0"
+                                                    BackgroundColor="White"
                                                     CornerRadius="20"
                                                     HeightRequest="104"
                                                     WidthRequest="171">
@@ -1647,9 +1648,9 @@
                                             <DataTemplate>
 
                                                 <cards:SfCardView
-                                                    FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                     Margin="0,0,24,0"
                                                     CornerRadius="20"
+                                                    BackgroundColor="White"
                                                     HeightRequest="104"
                                                     WidthRequest="171">
                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2252,7 +2253,6 @@
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
                                                 <Border
-                                                    FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                     Margin="0,0,0,10"
                                                     Padding="10"
                                                     IsEnabled="{Binding PassportDetails.Attachment}"
@@ -2361,7 +2361,7 @@
 
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <Grid FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}">
+                                <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
@@ -2476,8 +2476,7 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <ViewCell.View>
-                                                        <StackLayout x:Name="rootArea"
-                                                                     FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}">
+                                                        <StackLayout x:Name="rootArea">
                                                             <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
@@ -2491,9 +2490,7 @@
                                         </listView:SfListView.HeaderTemplate>
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <ScrollView HorizontalOptions="FillAndExpand"
-                                                            FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
-                                                            Orientation="Horizontal">
+                                                <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                     <Grid
                                                         x:Name="grid"
                                                         Margin="0,5,0,0"
@@ -2518,7 +2515,7 @@
                                                             Grid.Row="0"
                                                             Grid.Column="0"
                                                             Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" />
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNumber}" />
                                                             <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
@@ -2526,20 +2523,6 @@
                                                                 Text="{Binding Idnumber}"
                                                                 VerticalTextAlignment="Center" />
                                                         </StackLayout>
-
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="1"
-                                                            Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
-                                                            <custom:CustomLabel
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding Z700Number}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-
                                                         <StackLayout
                                                             Grid.Row="0"
                                                             Grid.Column="1"
@@ -2554,7 +2537,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
-                                                            Grid.Column="3"
+                                                            Grid.Column="2"
                                                             Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CrType}" />
                                                             <Label
@@ -2566,7 +2549,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
-                                                            Grid.Column="4"
+                                                            Grid.Column="3"
                                                             Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
                                                             <Label
@@ -2578,7 +2561,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
-                                                            Grid.Column="5"
+                                                            Grid.Column="4"
                                                             Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
                                                             <Label
@@ -2590,7 +2573,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
-                                                            Grid.Column="6"
+                                                            Grid.Column="5"
                                                             Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
                                                             <Label
@@ -2602,7 +2585,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
-                                                            Grid.Column="7"
+                                                            Grid.Column="6"
                                                             Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
                                                             <Label
@@ -2614,15 +2597,39 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
+                                                            Grid.Column="7"
+                                                            Margin="0,0,5,0">
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                            <Label
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActMgrpDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
                                                             Grid.Column="8"
                                                             Margin="0,0,5,0">
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                            <Label
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActSgrpDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="9"
+                                                            Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                            <buttons:SfButton
-                                                                Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTAmendReactivationPage}}"
-                                                                CommandParameter="{Binding .}"
-                                                                Style="{StaticResource PrimaryButtonStyle}"
-                                                                Text="{x:Static ResourceManager:AppResources.EstActivities}"
-                                                                WidthRequest="180" />
+                                                            <Label
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActivityDesc}"
+                                                                VerticalTextAlignment="Center" />
                                                         </StackLayout>
                                                     </Grid>
                                                 </ScrollView>
@@ -2630,9 +2637,7 @@
                                         </listView:SfListView.ItemTemplate>
                                         <listView:SfListView.FooterTemplate>
                                             <DataTemplate>
-                                                <StackLayout HorizontalOptions="Center"
-                                                             FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
-                                                             IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTAmendReactivationPage}}">
+                                                <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTAmendReactivationPage}}">
                                                     <Label
                                                         HorizontalOptions="StartAndExpand"
                                                         HorizontalTextAlignment="Start"
@@ -2658,8 +2663,7 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <ViewCell.View>
-                                                        <StackLayout x:Name="rootArea"
-                                                                     FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}">
+                                                        <StackLayout x:Name="rootArea">
                                                             <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
@@ -2673,9 +2677,7 @@
                                         </listView:SfListView.HeaderTemplate>
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <ScrollView HorizontalOptions="FillAndExpand"
-                                                            FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
-                                                            Orientation="Horizontal">
+                                                <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                     <Grid
                                                         x:Name="grid"
                                                         Margin="0,5,0,0"
@@ -2771,14 +2773,37 @@
                                                             Grid.Row="0"
                                                             Grid.Column="6"
                                                             Margin="0,0,5,0">
-
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                            <Label
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActMgrpDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="7"
+                                                            Margin="0,0,5,0">
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                            <Label
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActSgrpDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="8"
+                                                            Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                            <buttons:SfButton
-                                                                Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTAmendReactivationPage}}"
-                                                                CommandParameter="{Binding .}"
-                                                                Style="{StaticResource PrimaryButtonStyle}"
-                                                                Text="{x:Static ResourceManager:AppResources.EstActivities}"
-                                                                WidthRequest="180" />
+                                                            <Label
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActivityDesc}"
+                                                                VerticalTextAlignment="Center" />
                                                         </StackLayout>
                                                     </Grid>
                                                 </ScrollView>
@@ -2786,9 +2811,7 @@
                                         </listView:SfListView.ItemTemplate>
                                         <listView:SfListView.FooterTemplate>
                                             <DataTemplate>
-                                                <StackLayout HorizontalOptions="Center"
-                                                             FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
-                                                             IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTAmendReactivationPage}}">
+                                                <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTAmendReactivationPage}}">
                                                     <Label
                                                         HorizontalOptions="StartAndExpand"
                                                         HorizontalTextAlignment="Start"
@@ -2842,7 +2865,6 @@
 
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
-                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                         CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
@@ -2870,8 +2892,8 @@
 
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
-                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                         CornerRadius="20"
+                                        BackgroundColor="White"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2917,8 +2939,8 @@
                                 <DataTemplate>
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
-                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                         CornerRadius="20"
+                                        BackgroundColor="White"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2945,7 +2967,7 @@
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
                                         CornerRadius="20"
-                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
+                                        BackgroundColor="White"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -3094,9 +3116,9 @@
                                 <DataTemplate>
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
-                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                         CornerRadius="20"
                                         HeightRequest="104"
+                                        BackgroundColor="White"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
@@ -3137,7 +3159,7 @@
                                 <DataTemplate>
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
-                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
+                                        BackgroundColor="White"
                                         CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
@@ -3192,7 +3214,7 @@
                         <cards:SfCardView
                             x:Name="RegistrationTaxpayerTypeSummaryView"
                             Padding="0"
-                            BackgroundColor="Transparent"
+                            BackgroundColor="White"
                             BorderColor="{StaticResource NeutralLightGrey}"
                             BorderWidth="1">
                             <StackLayout Spacing="0">
@@ -3633,7 +3655,7 @@
                         <cards:SfCardView
                             x:Name="PassportSummaryView"
                             Padding="0"
-                            BackgroundColor="Transparent"
+                            BackgroundColor="White"
                             BorderColor="{StaticResource NeutralLightGrey}"
                             BorderWidth="1"
                             IsVisible="{Binding IsSaudi, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
@@ -3742,7 +3764,6 @@
                                                 <DataTemplate>
                                                     <Label
                                                         HorizontalOptions="End"
-                                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                         Style="{StaticResource SectionTitleSmallMediumBlack}"
                                                         Text="{Binding Filename}" />
                                                 </DataTemplate>
@@ -3767,7 +3788,7 @@
                         <cards:SfCardView
                             x:Name="OutletSummaryView"
                             Padding="0"
-                            BackgroundColor="Transparent"
+                            BackgroundColor="White"
                             BorderColor="{StaticResource NeutralLightGrey}"
                             BorderWidth="1">
                             <StackLayout Spacing="0">
@@ -3838,7 +3859,6 @@
                                         <DataTemplate>
                                             <Grid
                                                 Padding="16,0,16,16"
-                                                FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                 ColumnSpacing="0"
                                                 HorizontalOptions="Fill"
                                                 RowSpacing="0"
@@ -4108,9 +4128,9 @@
                         <On Platform="Android" Value="0" />
                     </OnPlatform>
                 </Grid.Margin>
-                <Button
+                <buttons:SfButton
                     Command="{Binding OnNextButtonClick}"
-                    Style="{StaticResource PrimaryMauiButtonStyle}"
+                    Style="{StaticResource PrimaryButtonStyle}"
                     Text="{Binding NxtButtonLabel}" />
             </Grid>
             <!--#endregion-->
