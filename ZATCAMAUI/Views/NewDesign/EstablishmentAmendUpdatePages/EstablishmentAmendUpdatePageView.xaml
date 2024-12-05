@@ -310,6 +310,7 @@
                                         <cards:SfCardView
                                             Grid.Row="0"
                                             Grid.Column="0"
+                                            BackgroundColor="White"
                                             CornerRadius="20"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
@@ -335,6 +336,7 @@
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             CornerRadius="20"
+                                            BackgroundColor="White"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption}"
                                             WidthRequest="171">
@@ -366,6 +368,7 @@
                                         </Grid.GestureRecognizers>
                                         <cards:SfCardView
                                             Grid.Row="0"
+                                            BackgroundColor="White"
                                             Grid.Column="0"
                                             CornerRadius="20"
                                             HeightRequest="104"
@@ -649,6 +652,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
+                                                BackgroundColor="White"
                                                 IsVisible="{Binding IsClickedPermanentLegalEntity}"
                                                 WidthRequest="171">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -682,6 +686,7 @@
                                             <cards:SfCardView
                                                 Grid.Row="0"
                                                 Grid.Column="0"
+                                                BackgroundColor="White"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
@@ -708,6 +713,7 @@
                                                 Grid.Column="0"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
+                                                BackgroundColor="White"
                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -763,6 +769,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
+                                                BackgroundColor="White"
                                                 IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -783,6 +790,7 @@
                                             </cards:SfCardView>
                                             <cards:SfCardView
                                                 CornerRadius="20"
+                                                BackgroundColor="White"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -870,6 +878,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
+                                                BackgroundColor="White"
                                                 HorizontalOptions="FillAndExpand"
                                                 IsVisible="{Binding IsClickedInstallationPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -892,6 +901,7 @@
                                             <cards:SfCardView
                                                 CornerRadius="20"
                                                 HeightRequest="104"
+                                                BackgroundColor="White"
                                                 HorizontalOptions="FillAndExpand"
                                                 IsVisible="{Binding IsClickedInstallationPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -1611,6 +1621,7 @@
 
                                                 <cards:SfCardView
                                                     Margin="0,0,24,0"
+                                                    BackgroundColor="White"
                                                     CornerRadius="20"
                                                     HeightRequest="104"
                                                     WidthRequest="171">
@@ -1639,6 +1650,7 @@
                                                 <cards:SfCardView
                                                     Margin="0,0,24,0"
                                                     CornerRadius="20"
+                                                    BackgroundColor="White"
                                                     HeightRequest="104"
                                                     WidthRequest="171">
                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2881,6 +2893,7 @@
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
                                         CornerRadius="20"
+                                        BackgroundColor="White"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2927,6 +2940,7 @@
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
                                         CornerRadius="20"
+                                        BackgroundColor="White"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2953,6 +2967,7 @@
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
                                         CornerRadius="20"
+                                        BackgroundColor="White"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -3103,6 +3118,7 @@
                                         Margin="0,0,24,0"
                                         CornerRadius="20"
                                         HeightRequest="104"
+                                        BackgroundColor="White"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
@@ -3143,6 +3159,7 @@
                                 <DataTemplate>
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
+                                        BackgroundColor="White"
                                         CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
@@ -3197,7 +3214,7 @@
                         <cards:SfCardView
                             x:Name="RegistrationTaxpayerTypeSummaryView"
                             Padding="0"
-                            BackgroundColor="Transparent"
+                            BackgroundColor="White"
                             BorderColor="{StaticResource NeutralLightGrey}"
                             BorderWidth="1">
                             <StackLayout Spacing="0">
@@ -3638,7 +3655,7 @@
                         <cards:SfCardView
                             x:Name="PassportSummaryView"
                             Padding="0"
-                            BackgroundColor="Transparent"
+                            BackgroundColor="White"
                             BorderColor="{StaticResource NeutralLightGrey}"
                             BorderWidth="1"
                             IsVisible="{Binding IsSaudi, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
@@ -3771,7 +3788,7 @@
                         <cards:SfCardView
                             x:Name="OutletSummaryView"
                             Padding="0"
-                            BackgroundColor="Transparent"
+                            BackgroundColor="White"
                             BorderColor="{StaticResource NeutralLightGrey}"
                             BorderWidth="1">
                             <StackLayout Spacing="0">

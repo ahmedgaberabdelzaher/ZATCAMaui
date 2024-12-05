@@ -1317,11 +1317,11 @@
                         </StackLayout>
                         <!--#endregion-->
 
-                        <!--#region SummeryView  IsVisible="{Binding SummeryView}"-->
+                        <!--#region SummeryView  -->
                         <Grid
                             x:Name="SummeryView"
                             Padding="0,10,0,0"
-                           IsVisible="False">
+                            IsVisible="{Binding SummeryView}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />

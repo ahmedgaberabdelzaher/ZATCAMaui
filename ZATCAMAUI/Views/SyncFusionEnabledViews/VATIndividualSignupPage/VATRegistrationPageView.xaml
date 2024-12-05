@@ -1302,6 +1302,7 @@
                                                                     Grid.Row="1"
                                                                     Grid.Column="0"
                                                                     Margin="3"
+                                                                    BackgroundColor="White"
                                                                     Padding="0"
                                                                     CornerRadius="3"
                                                                     HorizontalOptions="FillAndExpand">
