@@ -87,7 +87,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
-
         #endregion
 
     }
