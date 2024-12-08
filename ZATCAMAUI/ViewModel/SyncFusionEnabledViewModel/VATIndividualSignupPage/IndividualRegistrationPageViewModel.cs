@@ -600,11 +600,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     currentStep = 5;
                     SetcolorForDots("PasswordView");
-                    BackArrowVisible = false;
-                }
-                else
-                {
-                    BackArrowVisible = true;
+                    oneStepBackArrowVisible = false;
                 }
                 OnPropertyChanged("PasswordView");
             }
@@ -1535,6 +1531,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 _backArrowVisible = value;
                 OnPropertyChanged("BackArrowVisible");
+            }
+        }
+        
+        private bool _oneStepBackArrowVisible = true;
+        public bool oneStepBackArrowVisible
+        {
+            get
+            {
+                return _oneStepBackArrowVisible;
+            }
+            set
+            {
+                if (_oneStepBackArrowVisible == value) return;
+
+                _oneStepBackArrowVisible = value;
+                OnPropertyChanged("oneStepBackArrowVisible");
             }
         }
         private bool _isOTPEntryEnable = true;
@@ -3172,6 +3184,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             UnitNumber = string.Empty;
             PostalCode = string.Empty;
             BackArrowVisible = true;
+            oneStepBackArrowVisible = true;
             ConfirmPassword = string.Empty;
             DOBddyymm = string.Empty;
             OTP = string.Empty;
@@ -4093,6 +4106,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         Mguid = response.data.GUID;
                         SummeryView = false;
                         PasswordView = true;
+                        oneStepBackArrowVisible = false;
                         if (IsCitizen)
                         {
                             passwordMainView = false;

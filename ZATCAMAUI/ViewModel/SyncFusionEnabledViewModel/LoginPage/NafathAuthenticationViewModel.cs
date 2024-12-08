@@ -98,17 +98,18 @@ public class NafathAuthenticationViewModel : BaseViewModel
 
                 if (response != null && response.result.statusCode.Equals("S"))
                 {
-                    await NavigateToNextSteps(response.result.returnId);
                     _isTimerRepeatRequired = false;
+                    await NavigateToNextSteps(response.result.returnId);
                 }
                 else if (response != null && response.result.statusCode.Equals("E"))
                 {
+                    _isTimerRepeatRequired = false;
                     await _dialogService.ShowMessage(response.result.statusDescription, AppResources.Information, AppResources.OKText, delegate ()
                     {
                         _navigationService.GoBack();
                     });
 
-                    _isTimerRepeatRequired = false;
+                   
                 }
                 else
                 {
@@ -157,6 +158,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
         {
             idType = "IQAMA";
         }
+
 
         var response = await WebServiceManager.NafathSSOUserAccountsInquiry(Response.idNumber, guid, idType);
 
