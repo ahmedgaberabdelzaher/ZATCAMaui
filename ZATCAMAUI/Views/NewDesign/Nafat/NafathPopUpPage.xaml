@@ -46,7 +46,7 @@
                             Source="{Binding CitigenImage}"
                             VerticalOptions="FillAndExpand" />
                         <Label
-                            Padding="10"
+                            Padding="5"
                             FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="Small"
                             Text="{x:Static ResourceManager:AppResources.ZREGCitizen}"
@@ -70,12 +70,12 @@
                             Aspect="Fill"
                             HorizontalOptions="FillAndExpand"
                             Source="{Binding GulfImage}"
-                            VerticalOptions="FillAndExpand" />
+                            VerticalOptions="CenterAndExpand" />
 
                         <Label
                             Grid.Row="0"
                             Grid.Column="0"
-                            Padding="10"
+                            Padding="5"
                             FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="Small"
                             Text="{x:Static ResourceManager:AppResources.ZREGGulfCtzn}"
