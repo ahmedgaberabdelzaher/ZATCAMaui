@@ -182,29 +182,37 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             }
         }
 
-
         protected override void OnDisappearing()
         {
-            if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements)
+            try
             {
-                MessagingCenter.Send<Object, AttachmentsList>(this, "AttachmentRecvdinst", viewModel.AttachmentsList);
-            }
-            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
-            {
-                MessagingCenter.Send<Object, AttachmentsList>(this, "AttachmentRecvdinst", viewModel.AttachmentsList);
-            }
-            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionDynamicAttachment)
-            {
-                MessagingCenter.Send<Object, FilesUploadPopUpViewModel>(this, "ZakatAttachmentReceived", viewModel);
-            }
-            else
-            {
-                MessagingCenter.Send<Object, AttachmentsList>(this, "AttachmentReceived", viewModel.AttachmentsList);
-            }
+                if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements)
+                {
+                    MessagingCenter.Send<Object, AttachmentsList>(this, "AttachmentRecvdinst", viewModel.AttachmentsList);
+                }
+                else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
+                {
+                    MessagingCenter.Send<Object, AttachmentsList>(this, "AttachmentRecvdinst", viewModel.AttachmentsList);
+                }
+                else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatExemtionDynamicAttachment)
+                {
+                    MessagingCenter.Send<Object, FilesUploadPopUpViewModel>(this, "ZakatAttachmentReceived", viewModel);
+                }
+                else
+                {
+                    MessagingCenter.Send<Object, AttachmentsList>(this, "AttachmentReceived", viewModel.AttachmentsList);
+                }
+                if(viewModel.AttachmentList?.Count != 0)
+                    viewModel.AttachmentList = new ObservableCollection<VATAttachment>();
 
-            viewModel.AttachmentList = new ObservableCollection<VATAttachment>();
-            viewModel.IsLoading = false;
-            viewModel.AttachmentsList = null;
+                viewModel.IsLoading = false;
+                viewModel.AttachmentsList = null;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
 
             base.OnDisappearing();
         }
@@ -327,8 +335,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
 
         }
 
-       
-
         private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
             try
@@ -358,11 +364,8 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    viewModel.IsLoading = false;
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                viewModel.IsLoading = false;
+                await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
     }

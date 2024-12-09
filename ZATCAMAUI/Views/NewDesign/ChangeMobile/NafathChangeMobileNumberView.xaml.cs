@@ -41,6 +41,7 @@ public partial class NafathChangeMobileNumberView : ContentPage
 
 	async Task NafathChangeMobileNumber(string idNumber, string guid)
 	{
+		viewModel.IsLoading = true;
 		NafathChangeMobileNumberModel model = new NafathChangeMobileNumberModel()
 		{
 			Guid = string.Empty,
@@ -55,7 +56,8 @@ public partial class NafathChangeMobileNumberView : ContentPage
 		};
 		var response = await WebServiceManager.NafathChangeMobileNumber(model);
 		BindTelephoneCodes(response);
-	}
+        viewModel.IsLoading = false;
+    }
 
 	void BindTelephoneCodes(NafathChangeMobileNumberModelResponse response)
 	{
@@ -92,8 +94,7 @@ public partial class NafathChangeMobileNumberView : ContentPage
 			{
 				viewModel._dialogService.ShowMessage(response.d.messageDescription, AppResources.Information, AppResources.OKText, delegate ()
 				{
-					viewModel._navigationService.GoBack();
-					viewModel._navigationService.GoBack();
+					viewModel._navigationService.NavigateTo("/SFLoginPageView", App.GAZTNewDesignDashBoardPageView);
 				});
 			}
 		}
@@ -101,9 +102,8 @@ public partial class NafathChangeMobileNumberView : ContentPage
 		{
 			viewModel._dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information, AppResources.OKText, delegate ()
 			{
-				viewModel._navigationService.GoBack();
-				viewModel._navigationService.GoBack();
-			});
+                viewModel._navigationService.NavigateTo("/SFLoginPageView", App.GAZTNewDesignDashBoardPageView);
+            });
 		}
 	}
 

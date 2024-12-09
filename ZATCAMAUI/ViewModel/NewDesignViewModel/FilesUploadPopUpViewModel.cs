@@ -743,34 +743,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                                 {
                                                                     try
                                                                     {
-                                                                        if (App.IsArabic)
+                                                                        if (item.Erfdt != null)
                                                                         {
-                                                                            if (item.Erfdt != null)
-                                                                            {
-                                                                                item.Erfdt = item.Erfdt;
-                                                                            }
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            if (item.Erfdt != null)
-                                                                            {
-                                                                                item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                                                item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                                            }
+                                                                            item.Erfdt = item.Erfdt;
                                                                         }
                                                                     }
-                                                                    catch (Exception )
+                                                                    catch (Exception ex)
                                                                     {
-
-
                                                                         IsLoading = false;
                                                                     }
                                                                 }
                                                                 AttachmentCount++;
                                                                 filterList();
-                                                                //CloneAttachmentList(VatAttachmentsListtofilter);
                                                                 CloneAttachmentList(VatAttachmentsList);
-                                                                // TotalAttachmentSize += AttachmentSize;
                                                                 AttachmentName = string.Empty;
                                                             }
                                                             else
@@ -781,7 +766,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                                                             }
                                                         }
-                                                        catch (Exception)
+                                                        catch (Exception ex)
                                                         {
                                                             AttachmentName = string.Empty;
                                                             IsLoading = false;
@@ -1089,7 +1074,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
 
@@ -1234,7 +1219,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     // VatAttachmentsListtofilter= new ObservableCollection<Attachment>(attachmentsList); ;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -1426,7 +1411,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     list.Add(vATAttachment);
                 }
 
-                AttachmentList = list;
+                AttachmentList = new ObservableCollection<VATAttachment>(list);
                 if (AttachmentsList != null && AttachmentsList.results != null)
                     if (AttachmentsList.results.Count != 0)
                     {

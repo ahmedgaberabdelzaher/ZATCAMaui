@@ -49,7 +49,7 @@
 
                 <Image
                     HorizontalOptions="Start"
-                    IsVisible="{Binding BackArrowVisible}"
+                    IsVisible="{Binding oneStepBackArrowVisible}"
                     Source="arrowRight.png">
                     <Image.Triggers>
                         <DataTrigger
@@ -661,7 +661,7 @@
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                    InputTransparent="{Binding SetEnabilityToCountryList}"
+                                                    InputTransparent="True"
                                                     IsReadOnly="True"
                                                     IsEnabled="False"
                                                     IsSpellCheckEnabled="False"
@@ -807,11 +807,16 @@
                                                     x:Name="Entry_Region"
                                                     FontFamily="{StaticResource SomarLight}"
                                                     FontSize="Small"
+                                                    InputTransparent="True"
                                                     IsReadOnly="True"
                                                     IsSpellCheckEnabled="False"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Region}">
+                                                    
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="PickerBtn_Region_Clicked" />
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
 
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <xct:EventToCommandBehavior Command="{Binding EntryRegionTextChangedCommand}" EventName="TextChanged" />
@@ -918,6 +923,7 @@
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="Entry_City"
                                                     FontSize="Small"
+                                                    InputTransparent="True"
                                                     IsReadOnly="True"
                                                     IsSpellCheckEnabled="False"
                                                     IsVisible="{Binding SetCityListVisibility}"
@@ -929,6 +935,10 @@
                                                         <xct:EventToCommandBehavior Command="{Binding EntryCityTextChangedCommand}" EventName="TextChanged" />
 
                                                     </custom:GAZTBorderlessEntry.Behaviors>
+
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="PickerBtn_City_Clicked" />
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
 
                                                 </custom:GAZTBorderlessEntry>
                                             </custom:CustomSfTextInputView.TextInputView>

@@ -1,8 +1,4 @@
-﻿
-using Mopups.Services;
-using ZATCAMAUI.Models;
-using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
-using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
+﻿using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
@@ -16,7 +12,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel = App.Locator.VATRegistrationSuccessfulPageView;
             BindingContext = viewModel;
             viewModel.TINnumber = TIN;
-            //App.IsArabic = false;
             if (App.successMsg == true)
             {
                 viewModel.IsGulf = true;
