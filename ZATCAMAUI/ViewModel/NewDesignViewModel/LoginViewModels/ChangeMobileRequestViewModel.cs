@@ -1715,7 +1715,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 ShowAttachmentSection = false;
                 ShowSubmitForAutomatic = true;
             }
-            //ShowAttachmentDetails = true;
         }
 
         private async Task ShowIDTypeDialogAsync()
@@ -1726,18 +1725,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 await MopupService.Instance.PushAsync(new PickerPageView(PickerModelIDType));
 
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-
-            }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
             }
         }
 
@@ -1778,7 +1769,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 IsLoading = true;
                 if (string.IsNullOrEmpty(guid))
                 {
-                    getIdTypesData(guid);
+                   await getIdTypesData(guid);
                 }
                 else
                 {
@@ -1798,7 +1789,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     IsLoading = false;
                     if (nafathChmbResponse != null && nafathChmbResponse.d != null)
                     {
-                        getIdTypesData(nafathChmbResponse?.d?.Guid);
+                       await getIdTypesData(nafathChmbResponse?.d?.Guid);
                     }
                     else
                     {
@@ -1806,7 +1797,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1930,29 +1921,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             otpTimer.Start();
         }
 
-        public void PrintForm(string fbnumz)
+        public async Task PrintForm(string fbnumz)
         {
-            //https://sapgatewayd.zatca.gov.sa/sap/opu/odata/SAP/Z_DOWN_FORM_EXT_SRV/cover_formSet(Utype='',Fbnum='40000006834')/$value
-            String pdfUrl = ZATCAConstants.PrintFormUrl + fbnumz;
-            ShowPdf(pdfUrl);
+            string pdfUrl = ZATCAConstants.PrintFormUrl + fbnumz;
+           await ShowPdf(pdfUrl);
         }
-        public void ShowPdf(string pdfUrl)
+        public async Task ShowPdf(string pdfUrl)
         {
             try
             {
                 if (pdfUrl != null)
                 {
-                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                  await  _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
-                    });
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
 
@@ -1995,17 +1982,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         }
         private void setDefaults()
         {
-            //OtpSection1 = false;
             ShowOTPSection = false;
             ShowAttachmentSection = false;
-            //ShowMainForm = true;
-            //ShowOtpForm = false;
             TinNumber = string.Empty;
             ManagerName = string.Empty;
             SelectedIDType = string.Empty;
             ManagerId = string.Empty;
             AttachedForms.Clear();
-            //DissableSendOtp = true;
             TxtMobileNumber = string.Empty;
             OTPFirstDigit = string.Empty;
             OTPSecondDigit = string.Empty;
@@ -2013,7 +1996,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             OTPFourthDigit = string.Empty;
             ShowOTPSuccessMessage = false;
             ShowSubmitForAutomatic = false;
-            //EnableContinue2 = true;
 
 
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
@@ -2083,9 +2065,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
             catch (InternetException ex)
             {
+                IsLoading = false;
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                IsLoading = false;
+                
             }
             finally
             {

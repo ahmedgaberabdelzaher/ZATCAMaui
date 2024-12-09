@@ -216,9 +216,13 @@
                                                 <TapGestureRecognizer Command="{Binding ShowFinancialStatementPicker}" />
                                             </Image.GestureRecognizers>
                                         </Image>
-
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ShowFinancialStatementPicker}" />
+                                        </StackLayout.GestureRecognizers>
                                     </StackLayout>
-
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ShowFinancialStatementPicker}" />
+                                    </Border.GestureRecognizers>
                                 </Border>
 
                             </Grid>
@@ -2298,7 +2302,7 @@
                                                     Grid.Row="0"
                                                     Padding="12"
                                                     Style="{StaticResource SfStyleGreyBorderFrame}">
-                                                    <Grid>
+                                                    <Grid ColumnSpacing="10">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                         </Grid.RowDefinitions>
@@ -2309,39 +2313,34 @@
                                                             <ColumnDefinition Width="auto" />
                                                         </Grid.ColumnDefinitions>
 
-                                                        <StackLayout Grid.Row="0" Grid.Column="0">
-                                                            <Image
-                                                                HeightRequest="25"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                Source="documents_Green"
-                                                                VerticalOptions="CenterAndExpand"
-                                                                WidthRequest="25" />
-                                                        </StackLayout>
+                                                         <Image
+                                                            HeightRequest="25"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Source="documents_Green"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            WidthRequest="25" />
 
-                                                        <StackLayout Grid.Row="0" Grid.Column="1">
-                                                            <Label
-                                                                HorizontalOptions="End"
-                                                                HorizontalTextAlignment="End"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding Filename}"
-                                                                VerticalOptions="FillAndExpand" />
-                                                        </StackLayout>
+                                                        <Label
+                                                            Grid.Row="0" Grid.Column="1"
+                                                            HorizontalOptions="Start"
+                                                            HorizontalTextAlignment="Start"
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding Filename}"
+                                                            VerticalOptions="FillAndExpand" />
 
-                                                        <StackLayout Grid.Row="0" Grid.Column="2">
-
-                                                            <Image
-                                                                HorizontalOptions="Center"
-                                                                Rotation="90"
-                                                                VerticalOptions="Center">
-                                                                <Image.Source>
-                                                                    <FontImageSource
-                                                                        FontFamily="UserIconFont"
-                                                                        Glyph="{x:Static FontImage:IconFonts.Close}"
-                                                                        Size="24"
-                                                                        Color="{StaticResource SecondaryNew}" />
-                                                                </Image.Source>
-                                                            </Image>
-                                                        </StackLayout>
+                                                         <Image
+                                                            HorizontalOptions="End"
+                                                            Rotation="90"
+                                                            Grid.Row="0" Grid.Column="2"
+                                                            VerticalOptions="Center">
+                                                            <Image.Source>
+                                                                <FontImageSource
+                                                                    FontFamily="UserIconFont"
+                                                                    Glyph="{x:Static FontImage:IconFonts.Close}"
+                                                                    Size="24"
+                                                                    Color="{StaticResource SecondaryNew}" />
+                                                            </Image.Source>
+                                                        </Image>
 
                                                     </Grid>
                                                 </Border>
@@ -2438,7 +2437,7 @@
                                                     Margin="0,0,0,10"
                                                     Padding="12"
                                                     Style="{StaticResource SfStyleGreyBorderFrame}">
-                                                    <Grid>
+                                                    <Grid ColumnSpacing="10">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                         </Grid.RowDefinitions>
@@ -2449,39 +2448,34 @@
                                                             <ColumnDefinition Width="auto" />
                                                         </Grid.ColumnDefinitions>
 
-                                                        <StackLayout Grid.Row="0" Grid.Column="0">
-                                                            <Image
-                                                                HeightRequest="25"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                Source="documents_Green"
-                                                                VerticalOptions="CenterAndExpand"
-                                                                WidthRequest="25" />
-                                                        </StackLayout>
+                                                         <Image
+                                                            HeightRequest="25"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Source="documents_Green"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            WidthRequest="25" />
 
-                                                        <StackLayout Grid.Row="0" Grid.Column="1">
-                                                            <Label
-                                                                HorizontalOptions="End"
-                                                                HorizontalTextAlignment="End"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding Filename}"
-                                                                VerticalOptions="FillAndExpand" />
-                                                        </StackLayout>
+                                                        <Label
+                                                            Grid.Row="0" Grid.Column="1"
+                                                            HorizontalOptions="Start"
+                                                            HorizontalTextAlignment="Start"
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding Filename}"
+                                                            VerticalOptions="FillAndExpand" />
 
-                                                        <StackLayout Grid.Row="0" Grid.Column="2">
-
-                                                            <Image
-                                                                HorizontalOptions="Center"
-                                                                Rotation="90"
-                                                                VerticalOptions="Center">
-                                                                <Image.Source>
-                                                                    <FontImageSource
-                                                                        FontFamily="UserIconFont"
-                                                                        Glyph="{x:Static FontImage:IconFonts.Close}"
-                                                                        Size="24"
-                                                                        Color="{StaticResource SecondaryNew}" />
-                                                                </Image.Source>
-                                                            </Image>
-                                                        </StackLayout>
+                                                        <Image
+                                                            Grid.Row="0" Grid.Column="2"
+                                                            HorizontalOptions="End"
+                                                            Rotation="90"
+                                                            VerticalOptions="Center">
+                                                            <Image.Source>
+                                                                <FontImageSource
+                                                                    FontFamily="UserIconFont"
+                                                                    Glyph="{x:Static FontImage:IconFonts.Close}"
+                                                                    Size="24"
+                                                                    Color="{StaticResource SecondaryNew}" />
+                                                            </Image.Source>
+                                                        </Image>
 
                                                     </Grid>
                                                 </Border>
@@ -3624,8 +3618,8 @@
                                                                 Margin="10,0,10,0">
 
                                                                 <Label
-                                                                    HorizontalOptions="End"
-                                                                    HorizontalTextAlignment="End"
+                                                                    HorizontalOptions="Start"
+                                                                    HorizontalTextAlignment="Start"
                                                                     Style="{StaticResource ValueLabelBlack}"
                                                                     Text="{Binding Filename}"
                                                                     VerticalOptions="FillAndExpand" />

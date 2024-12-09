@@ -95,7 +95,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-
+                IsLoading = true;
                 if (response != null && response.result.statusCode.Equals("S"))
                 {
                     await NavigateToNextSteps(response.result.returnId);
@@ -117,6 +117,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
                         response = await WebServiceManager.CheckNafathAuthentication(Response);
                     }
                 }
+                IsLoading = false;
             });
             return _isTimerRepeatRequired;
         });
@@ -157,8 +158,9 @@ public class NafathAuthenticationViewModel : BaseViewModel
         {
             idType = "IQAMA";
         }
-
+        IsLoading = true;
         var response = await WebServiceManager.NafathSSOUserAccountsInquiry(Response.idNumber, guid, idType);
+        IsLoading = false;
 
         if (response != null && response.data != null && response.data.SSOUserAccounts != null)
         {
