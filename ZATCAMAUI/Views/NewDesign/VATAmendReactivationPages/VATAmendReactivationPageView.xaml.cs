@@ -413,7 +413,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ImFg))
                 {
-                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ImporterImageSource = "QUnselected.png";
                     viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
@@ -421,13 +421,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("0"))
                     {
-                        viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                        viewModel.ImporterImageSource = "QUnselected.png";
                         viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"]; ;
                         viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                     }
                     else if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("1"))
                     {
-                        viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
+                        viewModel.ImporterImageSource = "QSelected.png";
                         viewModel.ImporterTextColor = Colors.White;
                         viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                     }
@@ -435,7 +435,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
                 if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ExFg))
                 {
-                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ExporterImageSource = "QUnselected.png";
                     viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
@@ -443,13 +443,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("0"))
                     {
-                        viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                        viewModel.ExporterImageSource = "QUnselected.png";
                         viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                         viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                     }
                     else if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("1"))
                     {
-                        viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
+                        viewModel.ExporterImageSource = "QSelected.png";
                         viewModel.ExporterTextColor = Colors.White;
                         viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                     }
@@ -1151,8 +1151,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) => { MopupService.Instance.PopAsync(); });
                 MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", async (sender, arg) =>
                 {
-                    //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
-                    //viewModel.VatEligibleStartDate = DateTime.Parse(arg.SelectedValue).Date.ToString("dd/MM/yyyy").Replace('-', '/');
                     if (App.isVatEffectDateNav)
                         await viewModel.GetNewVatEligibleDateAsync(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
                     else
@@ -1534,14 +1532,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private void btnID_Clicked(object sender, EventArgs e)
         {
-            //DDlIDType.IsOpen = true;
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = new List<string>();
             foreach (var item in viewModel.IdTypeListFR)
             {
                 genericPickerModel.PickerData.Add(item.Name);
             }
-            //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
             genericPickerModel.PickerId = "FinancialIdTypePicker";
             MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
@@ -1609,7 +1605,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             if (App.VATType == PageExecutionType.Reactivation)
             {
-                // DDlContactIDType.IsOpen = true;
                 GenericPickerModel genericPickerModel = new GenericPickerModel();
                 genericPickerModel.PickerData = new List<string>();
                 foreach (var item in viewModel.IdTypeListSR)
@@ -1621,10 +1616,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
         }
-        #region SetColor
-       
 
-        #endregion
 
         private void TappedOnBackButton(object sender, EventArgs e)
         {
@@ -1714,15 +1706,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ImporterImageSource == "QSelected.png")
                 {
-                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ImporterImageSource = "QUnselected.png";
                     viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
                 else
                 {
-                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
+                    viewModel.ImporterImageSource = "QSelected.png";
                     viewModel.ImporterTextColor = Colors.White;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                 }
@@ -1750,15 +1742,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ExporterImageSource == "QSelected.png")
                 {
-                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ExporterImageSource = "QUnselected.png";
                     viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
                 else
                 {
-                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
+                    viewModel.ExporterImageSource = "QSelected.png";
                     viewModel.ExporterTextColor = Colors.White;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                 }
@@ -2053,7 +2045,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 bool isImporter = false;
                 VATRegistrationPageViewModel.IsComeFromForAttachment = IsComeFromForAttachment.Import;
-                if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ImporterImageSource == "QSelected.png")
                 {
                     isImporter = true;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
@@ -2062,7 +2054,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
-                if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ExporterImageSource == "QSelected.png")
                 {
                     isImporter = false;
 
@@ -3856,11 +3848,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         private void FDChangeSection_CheckedChanged(object sender, Syncfusion.Maui.Buttons.CheckedChangedEventArgs e)
         {
             viewModel.IsFDChangeSectionEnabled = ((CheckBox)sender).IsChecked;
-        }
-
-        private void OnBackTapped(object sender, EventArgs e)
-        {
-            viewModel._navigationService.GoBack();
         }
 
         private async void VATEligibleDateClicked(object sender, EventArgs e)
