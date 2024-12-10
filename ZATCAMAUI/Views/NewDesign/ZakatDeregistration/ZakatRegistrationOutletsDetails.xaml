@@ -4,12 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     ios:Page.UseSafeArea="true"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    x:Name="page"
     NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
@@ -67,7 +68,6 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Margin="-3,0,-3,0"
                     AutoFitMode="Height"
                     HorizontalOptions="Center"
                     IsScrollingEnabled="True"
@@ -82,6 +82,7 @@
                             <Border
                                 Grid.Row="3"
                                 Grid.Column="0"
+                                FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                 Margin="0,16,0,10"
                                 Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
@@ -190,6 +191,9 @@
 
             </Border>
             <!--#endregion-->
+
+             <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
