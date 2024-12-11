@@ -4150,13 +4150,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             try
             {
 
+                IsLoading = true;
                 IsGeneratingFormbundle = false;
                 IsSadadRefeshVisible = false;
                 modelVATReview.d.Operationx = "01";
 
                 var vatReviewResponse = await SubmitClicked();
 
-
+                IsLoading = false;
                 if (vatReviewResponse != null && vatReviewResponse.d != null)
                 {
 
@@ -4165,10 +4166,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     await Application.Current.MainPage.Navigation.PushAsync(new VatReviewSuccessPageView(modelVATReview));
                 }
-
+                
             }
             catch (InternetException ex)
             {
+                IsLoading = false;
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
@@ -6854,9 +6856,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 _postData.RvSubRsn = "";
             }
-
-
-            //if (string.IsNullOrEmpty(ApplicationRefNumber))
             if (string.IsNullOrEmpty(selectedApplicationRef.Fbnum))
             {
 
@@ -6865,8 +6864,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             else
             {
-
-                //_postData.RejFb = ApplicationRefNumber;
                 _postData.RejFb = selectedApplicationRef.Fbnum;
             }
 
@@ -6932,14 +6929,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 {
                                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
                                 };
-                                //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                                 var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
                                 string[] dateList = jsonDateTime.Split('+');
                                 jsonDateTime = dateList[0].Replace("\"\\", "");
                                 var t = jsonDateTime.Replace("\\/\"", "");
                                 t = t + "/";
-                                //modelVATReview.d.DecDt = t;
-                                //strDecDate = t;
 
 
                             }
@@ -7006,8 +7000,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 request.Operationx = modelVATReview.d.Operationx;
 
-                response = await VATObjectionWebServiceManager.SaveVatReviewObjection(request);
-                response.d = response.result;
+                var result = await VATObjectionWebServiceManager.SaveVatReviewObjection(request);
+                response.d = result.result.d;
                 IsLoading = false;
                 return response;
 

@@ -5,18 +5,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
     BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
 
-
+     <Mopups:PopupPage.Animation>
+        <Animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </Mopups:PopupPage.Animation>
     <Border
         BackgroundColor="White"
-        HorizontalOptions="End"
-        IsVisible="true"
         StrokeShape="RoundRectangle 15,15,0,0"
         VerticalOptions="EndAndExpand">
 
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">
+        <ScrollView HorizontalOptions="FillAndExpand"
+                    VerticalScrollBarVisibility="Never"
+                    VerticalOptions="EndAndExpand">
 
             <StackLayout Margin="15" VerticalOptions="FillAndExpand">
 
