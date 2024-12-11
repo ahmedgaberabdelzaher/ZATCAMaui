@@ -1416,7 +1416,8 @@
                                         </Border>
                                     </Grid>
 
-                                    <StackLayout IsVisible="{Binding IsBankGurantSecuritySelected}">
+                                    <StackLayout IsVisible="{Binding IsBankGurantSecuritySelected}"
+                                                 Margin="0,10">
 
                                         <listView:SfListView
                                                 AutoFitMode="Height"
@@ -1636,7 +1637,8 @@
 
                                         </Border>
 
-                                        <Grid ColumnSpacing="10">
+                                        <Grid ColumnSpacing="10"
+                                              Margin="0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
@@ -2078,7 +2080,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 IsVisible="{Binding SummaryVisible}"
                                 VerticalOptions="FillAndExpand">
-                                <ScrollView HeightRequest="650">
+                                <ScrollView HeightRequest="650" VerticalScrollBarVisibility="Never">
 
                                     <StackLayout VerticalOptions="FillAndExpand"
                                                  HorizontalOptions="FillAndExpand">
@@ -2166,6 +2168,7 @@
 
                                                 <StackLayout
                                                     Padding="15,15,15,0"
+                                                    Spacing="10"
                                                     HorizontalOptions="FillAndExpand"
                                                     VerticalOptions="FillAndExpand">
 
@@ -2326,72 +2329,56 @@
                                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                                                 <StackLayout
-                                                    Padding="15,15,15,15"
+                                                    Padding="15"
+                                                    Spacing="10"
                                                     HorizontalOptions="FillAndExpand"
                                                     VerticalOptions="FillAndExpand">
 
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="*" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <StackLayout Grid.Column="0">
+                                                    <StackLayout Orientation="Horizontal"
+                                                                 HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="FillAndExpand">
                                                             <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelGrey}"
                                                                 Text="{x:Static ResourceManager:AppResources.VRReportDetails}" />
-                                                        </StackLayout>
-                                                        <StackLayout Grid.Column="1">
-                                                            <Label
+
+                                                              <Label
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End"
                                                                 Style="{StaticResource BodyLabelBlack}"
                                                                 Text="{Binding ReportDetails}" />
-                                                        </StackLayout>
-
-                                                    </Grid>
+                                                    </StackLayout>
 
                                                     <StackLayout
                                                         BindableLayout.ItemsSource="{Binding BankGuranteeAttachmentsListViewData}"
-                                                        HorizontalOptions="Center"
-                                                        VerticalOptions="Center">
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="FillAndExpand">
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate>
 
 
 
-                                                                <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition Height="auto" />
-                                                                    </Grid.RowDefinitions>
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="*" />
-                                                                        <ColumnDefinition Width="*" />
-                                                                        <ColumnDefinition Width="Auto" />
-                                                                    </Grid.ColumnDefinitions>
+                                                                <Grid ColumnDefinitions="*,*,auto"
+                                                                      FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
 
                                                                     <Label
                                                                         Grid.Column="0"
                                                                         Style="{StaticResource ValueLabelGrey}"
                                                                         Text="{x:Static ResourceManager:AppResources.VRAttachment}" />
+
                                                                     <Label
                                                                         Grid.Column="1"
-                                                                        HorizontalOptions="EndAndExpand"
+                                                                        HorizontalOptions="End"
                                                                         HorizontalTextAlignment="End"
                                                                         Style="{StaticResource BodyLabelBlack}"
                                                                         Text="{Binding Filename}" />
 
                                                                     <Image
                                                                         Grid.Column="2"
-                                                                        Margin="5,0"
                                                                         HeightRequest="25"
-                                                                        HorizontalOptions="Start"
+                                                                        HorizontalOptions="End"
                                                                         Source="Generic_attachment_icon"
-                                                                        VerticalOptions="Center"
                                                                         WidthRequest="25" />
                                                                 </Grid>
 
@@ -2411,7 +2398,8 @@
                                     IsVisible="{Binding LateFilingObjectionsSummaryVisible}"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="FillAndExpand"
+                                                         VerticalOptions="FillAndExpand">
 
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -2473,6 +2461,7 @@
 
                                                 <StackLayout
                                                     Padding="15,15,15,15"
+                                                    Spacing="10"
                                                     HorizontalOptions="FillAndExpand"
                                                     VerticalOptions="FillAndExpand">
 
@@ -2517,7 +2506,6 @@
                                                                     </Grid.ColumnDefinitions>
                                                                     <StackLayout Grid.Row="0" Grid.Column="0">
                                                                         <Label
-                                                                        FontFamily="{StaticResource SomarRegular}"
                                                                         Style="{StaticResource ValueLabelGrey}"
                                                                         Text="{x:Static ResourceManager:AppResources.VRAttachment}"/>
                                                                     </StackLayout>
@@ -2597,7 +2585,8 @@
 
                                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                                <StackLayout Padding="15,15,15,15">
+                                                <StackLayout Padding="15,15,15,15"
+                                                             Spacing="10">
 
                                                     <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                                                         <Grid.RowDefinitions>
@@ -2826,7 +2815,8 @@
 
                                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                                <StackLayout Padding="15,15,15,15">
+                                                <StackLayout Padding="15,15,15,15"
+                                                             Spacing="10">
 
                                                     <Grid>
                                                         <Grid.RowDefinitions>
@@ -2852,28 +2842,20 @@
                                                         </StackLayout>
                                                     </Grid>
 
-                                                    <Grid IsVisible="{Binding IsSecurityAmountMorethanZero}">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="*" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <StackLayout Grid.Column="0">
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelGrey}"
-                                                                Text="{x:Static ResourceManager:AppResources.VRSecurityType}" />
-                                                        </StackLayout>
-                                                        <StackLayout Grid.Column="1">
-                                                            <Label
-                                                                HorizontalOptions="EndAndExpand"
-                                                                HorizontalTextAlignment="End"
-                                                                Style="{StaticResource BodyLabelBlack}"
-                                                                Text="{Binding SecurityType}" />
-                                                        </StackLayout>
+                                                    <Grid IsVisible="{Binding IsSecurityAmountMorethanZero}"
+                                                          ColumnDefinitions="*,*">
+                                                      <Label
+                                                        HorizontalOptions="StartAndExpand"
+                                                        HorizontalTextAlignment="Start"
+                                                        Style="{StaticResource ValueLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.VRSecurityType}" />
+
+                                                    <Label
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Grid.Column="1"
+                                                        HorizontalTextAlignment="End"
+                                                        Style="{StaticResource BodyLabelBlack}"
+                                                        Text="{Binding SecurityType}" />
                                                     </Grid>
 
                                                     <Grid IsVisible="{Binding IsSadadSecuritySelected}">
@@ -2886,6 +2868,8 @@
                                                         </Grid.ColumnDefinitions>
                                                         <Label
                                                             Grid.Column="0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            HorizontalTextAlignment="Start"
                                                             Style="{StaticResource ValueLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.VRSADADNumber}" />
                                                         <Label
@@ -2898,9 +2882,9 @@
 
                                                     <StackLayout
                                                         BindableLayout.ItemsSource="{Binding BankGuranteeAttachmentsListViewData}"
-                                                        HorizontalOptions="Center"
+                                                        HorizontalOptions="FillAndExpand"
                                                         IsVisible="{Binding IsBankGurantSecuritySelected}"
-                                                        VerticalOptions="Center">
+                                                        VerticalOptions="FillAndExpand">
 
 
                                                         <BindableLayout.ItemTemplate>
@@ -2918,7 +2902,7 @@
 
                                                                     <Label
                                                                         Grid.Column="0"
-                                                                        FontFamily="{StaticResource SomarRegular}"
+                                                                        HorizontalOptions="StartAndExpand"
                                                                         Style="{StaticResource ValueLabelGrey}"
                                                                         Text="{x:Static ResourceManager:AppResources.VRAttachment}" />
                                                                     <Label
@@ -2929,9 +2913,8 @@
                                                                         Text="{Binding Filename}" />
                                                                     <Image
                                                                         Grid.Column="2"
-                                                                        Margin="5,0"
                                                                         HeightRequest="25"
-                                                                        HorizontalOptions="Start"
+                                                                        HorizontalOptions="EndAndExpand"
                                                                         Source="Generic_attachment_icon"
                                                                         VerticalOptions="Center"
                                                                         WidthRequest="25" />

@@ -4,6 +4,7 @@ using System.Text;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Models.BaseModels;
 using ZATCAMAUI.Models.VATReviewModel;
 using static ZATCAMAUI.Models.ErrorMessage;
 
@@ -270,11 +271,9 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    //String url = ZATCAConstants.GetVATObjectionSecurityURL + App.TP.TIN + "&amountType=" + amttp + "&clearedAmount=" + clramtRes + "&disputedAmount=" + disamtRes + "&totalTaxLiability=" + liaamtRes + "',formBundleNumber='" + fbnum + "',reviewReason='" + rvrsn + "',reviewSubReason='" + rvsbrsn + "',businessPartner = '" + App.LoginDataRetrieved.TIN + "', securityType = '', documentNumber = ''";
                     String url = ZATCAConstants.GetVATObjectionSecurityURL + App.TP.TIN + "&amountType=" + amttp + "&clearedAmount=" + clramtRes + "&disputedAmount=" + disamtRes + "&totalTaxLiability=" + liaamtRes + "&formBundleNumber=" + fbnum + "&reviewReason=" + rvrsn + "&reviewSubReason=" + rvsbrsn + "&businessPartner=" + App.LoginDataRetrieved.TIN + "&securityType=" + "&documentNumber=";
                     HttpResponseMessage vATObjectionSecurityAmountResponse = await client.GetAsync(url);
 
-                    //HttpResponseMessage vATObjectionSecurityAmountResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (vATObjectionSecurityAmountResponse != null)
                     {
                         if (vATObjectionSecurityAmountResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -512,17 +511,7 @@ namespace ZATCAMAUI.Core.Mangers
                     Char lang = WebServiceManager.GetLangZParameter();
                     String url = ZATCAConstants.GetVATObjectionGenrateorRefreshSADADURL;
 
-                    /*if (sadadGenerationObject.flag)
-                    {
-
-                        url = Constants.GetVATObjectionGenrateorRefreshSADADURL + "Fbnum='" + fbnum + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Disamt=" + Disamt + "" +
-                       "m,Liaamt=" + Liaamt + "m,Sectp='Sadad',Abrzu=datetime'" + Abrzu + "',Abrzo=datetime'" + Abrzo + "',Flag=true,Secamt=" + Secamt + "m,Security='" + Security + "',Persl='" + Persl + "')?$format=json";
-                    }
-                    else
-                    {
-                        url = Constants.GetVATObjectionGenrateorRefreshSADADURL + "Fbnum='" + fbnum + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Disamt=" + Disamt + "" +
-                       "m,Liaamt=" + Liaamt + "m,Sectp='Sadad',Abrzu=datetime'" + Abrzu + "',Abrzo=datetime'" + Abrzo + "',Flag=false,Secamt=" + Secamt + "m,Security='" + Security + "',Persl='" + Persl + "')?$format=json";
-                    }*/
+                   
                     string LangZ = WebServiceManager.GetLangZParameterAREN();
                     HttpClient client = new HttpClient();
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
@@ -541,8 +530,6 @@ namespace ZATCAMAUI.Core.Mangers
                     var uri = new Uri(url);
                     HttpResponseMessage _vATObjectionGenrateSadadResponse = await client.PostAsync(uri, contentPost);
 
-
-                    //HttpResponseMessage _vATObjectionGenrateSadadResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_vATObjectionGenrateSadadResponse != null)
                     {
                         if (_vATObjectionGenrateSadadResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -617,10 +604,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    // String url = Constants.GetVATObjectionViewBillURL + "Opbel eq'" + opbel + "' and Vtre2 eq'" + vtre2 + "'&$format=json";
                     string url = ZATCAConstants.GetVATObjectionViewBillURL + App.TP.TIN + "&language=" + lang + "&documentNumber=" + opbel;
-                    // HttpResponseMessage _vATObjectionViewbillResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
-
                     HttpResponseMessage _vATObjectionViewbillResponse = await client.GetAsync(url);
                     if (_vATObjectionViewbillResponse != null)
                     {
@@ -680,7 +664,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
 
 
-        public async static Task<VATObjectionSummaryModel> SaveVatReviewObjection(VatObjectionsRequest _vatObjectionDetails)
+        public async static Task<DATAPowerBaseResponseResult<VATObjectionSummaryModel>> SaveVatReviewObjection(VatObjectionsRequest _vatObjectionDetails)
         {
 
 
@@ -689,14 +673,13 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
 
-                    VATObjectionSummaryModel _vatObjectionResponseObject = new VATObjectionSummaryModel();
+                    DATAPowerBaseResponseResult<VATObjectionSummaryModel> _vatObjectionResponseObject = new DATAPowerBaseResponseResult<VATObjectionSummaryModel>();
                     string LangZ = WebServiceManager.GetLangZParameterAREN();
                     string url = ZATCAConstants.PostVATObjectionURL;
                     var uri = new Uri(url);
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                     string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
-                    //HttpClient client = new HttpClient(App.httpClientHandler);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -708,29 +691,18 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
                     var serilized = JsonConvert.SerializeObject(_vatObjectionDetails);
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var _vatObjectionsResponsestr = res.Content.ReadAsStringAsync().Result;
-                    _vatObjectionResponseObject = JsonConvert.DeserializeObject<VATObjectionSummaryModel>(_vatObjectionsResponsestr);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var _vatObjectionsResponsestr = await res.Content.ReadAsStringAsync();
+                    _vatObjectionResponseObject = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<VATObjectionSummaryModel>>(_vatObjectionsResponsestr);
+                    
                     if (!string.IsNullOrEmpty(_vatObjectionsResponsestr) && _vatObjectionResponseObject.result == null)
                     {
-                        WebServiceManager.ErrorMessage = string.Empty;
+                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_vatObjectionsResponsestr);
 
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vatObjectionsResponsestr);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                        {
-                            WebServiceManager.ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
-
-                            WebServiceManager.ErrorMessageForVAT = WebServiceManager.ErrorMessage;
-                            throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessage);
-
-                        }
+                        throw new GAZTVATRegistrationInProcessException(errorMessage);
 
                     }
                     return _vatObjectionResponseObject;
