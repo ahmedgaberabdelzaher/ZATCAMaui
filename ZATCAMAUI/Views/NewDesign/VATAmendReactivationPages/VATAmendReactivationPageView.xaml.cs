@@ -323,6 +323,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             else
                             {
                                 FrmNewAttachment.HasError = true;
+                                
                             }
                         }
                         else
@@ -4232,6 +4233,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             catch (Exception)
             {
             }
+        }
+
+        void IBANAccountManagementCommand(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView, true);
         }
     }
 }

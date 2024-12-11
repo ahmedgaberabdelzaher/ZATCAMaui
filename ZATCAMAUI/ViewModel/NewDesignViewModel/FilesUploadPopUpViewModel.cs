@@ -382,9 +382,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             FileAttachments = new ObservableCollection<string>();
             OnAttachmentClick = new Command(async () =>
             {
-                IsLoading = true;
                 await AddAttachmentEx();
-                IsLoading = false;
             });
 
             AttachmentItemSelected = new Command(async () =>

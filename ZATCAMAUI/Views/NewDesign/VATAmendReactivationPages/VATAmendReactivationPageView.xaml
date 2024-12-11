@@ -950,45 +950,45 @@
                                                     </StackLayout>
 
                                                     <StackLayout Grid.Row="9" IsEnabled="{Binding BindingContext.IsTaxPayerIBANEnabled, Source={x:Reference VATRegistration}}">
-                                                        <Label
-                                                            Padding="0,0,0,0"
-                                                            Style="{StaticResource ComponentHeaderBlackBold}"
-                                                            Text="{x:Static ResourceManager:AppResources.VATRBankAccount}" />
-
-                                                        <custom:CustomSfTextInputView >
-                                                            <!--  New Accounts  -->
-                                                            <custom:CustomSfTextInputView.TextInputView>
-
-                                                                <custom:GAZTBorderlessEntry
-                                                                    HorizontalOptions="FillAndExpand"
-                                                                    IsEnabled="False"
-                                                                    Style="{StaticResource DefaultEntry}"
-                                                                    Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewAccountText}"
-                                                                    TextColor="{StaticResource Primary}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </custom:CustomSfTextInputView.TextInputView>
-
-                                                            <inputLayout:SfTextInputLayout.TrailingView>
-                                                                <Image  IsEnabled="{Binding BindingContext.TaxPayerDetails.NewIBANPicker, Source={x:Reference VATRegistration}}">
-                                                                    <Image.Source>
-                                                                        <FontImageSource
-                                                                            FontFamily="UserIconFont"
-                                                                            Glyph="{x:Static FontImage:IconFonts.PlusCircleOutline}"
-                                                                            Size="25"
-                                                                            Color="{StaticResource SecondaryNew}" />
-                                                                    </Image.Source>
-
-                                                                    <Image.GestureRecognizers>
-                                                                        <TapGestureRecognizer Tapped="NewAccount_Clicked"/>
-
-                                                                    </Image.GestureRecognizers>
-                                                                </Image>
-                                                            </inputLayout:SfTextInputLayout.TrailingView>
-
-
-                                                        </custom:CustomSfTextInputView>
+                                                        <Border
+                                                    Grid.Row="9"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    Margin="0,20,0,10"
+                                                    Stroke="#B1B1B1"
+                                                    StrokeThickness="1"
+                                                    Style="{StaticResource GreyBorderFrame}">
+                                                            <StackLayout
+                                                        Margin="8"
+                                                        Orientation="Horizontal"
+                                                        Spacing="0">
+                                                                <Image
+                                                            HeightRequest="24"
+                                                            HorizontalOptions="Start"
+                                                            Source="ic_vat_info.png"
+                                                            VerticalOptions="Center"
+                                                            WidthRequest="24" />
+                                                                <Label
+                                                            Margin="10,0,10,0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            HorizontalTextAlignment="Start"
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            VerticalOptions="EndAndExpand">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.PleaseGoToIBan}" />
+                                                                            <Span Text=" " />
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.VisitIBanManagement}" TextColor="{StaticResource Secondary}" />
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                                <StackLayout.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="IBANAccountManagementCommand" />
+                                                                </StackLayout.GestureRecognizers>
+                                                            </StackLayout>
+                                                        </Border>
                                                     </StackLayout>
-                                                    <StackLayout Grid.Row="10" IsEnabled="{Binding IsTaxPayerIBANEnabled}">
+                                                    <StackLayout Grid.Row="10" IsEnabled="{Binding IsTaxPayerIBANEnabled}" IsVisible="False">
 
                                                         <Grid RowDefinitions="auto,auto"
                                                               ColumnDefinitions="50*,50*">
