@@ -275,19 +275,19 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem; 
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                     string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     var lang = UtilityManager.GetLanguageParameter();
-                    HttpClient client = new HttpClient();
-                    String url = ZATCAConstants.GAZTGetVATRegistrationData + App.LoginDataRetrieved.TIN + "&language=" + lang + "&transactionType=CRE_RGVT";
+                    HttpClient client = new HttpClient();      
+                    String url = ZATCAConstants.GAZTGetVATRegistrationData + App.LoginDataRetrieved.TIN + "&serialNumber=" + "&language=" + lang + "&transactionType=06" + "&formBundleGUID="; //transactionType = CRE_RGVT
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
                     client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
                     client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
-                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", App.IncomingChannel);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATRegistrationDataResponse = await client.GetAsync(uri);
@@ -316,18 +316,10 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         string VatRegistrationData = GAZTVATRegistrationDataResponse.Content.ReadAsStringAsync().Result;
                         vATRegistrationDetails = JsonConvert.DeserializeObject<VATRegistrationDetails>(VatRegistrationData);
-                        if (!string.IsNullOrEmpty(VatRegistrationData) && vATRegistrationDetails.d == null)
+                        if (vATRegistrationDetails.d == null)
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                            {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
-                            }
+                            string errorMessage = WebServiceManager.PrepareErrorMessageByJson(VatRegistrationData);
+                            throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
                     }
                     return vATRegistrationDetails;
