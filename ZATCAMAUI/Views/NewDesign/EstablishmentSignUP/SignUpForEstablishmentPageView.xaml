@@ -88,7 +88,7 @@
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid HorizontalOptions="FillAndExpand"
-                      Padding="0"
+                    Padding="0"
                     RowDefinitions="auto,auto,auto,auto,*"
                     VerticalOptions="FillAndExpand">
 
@@ -124,9 +124,9 @@
                         VerticalOptions="Start" />
 
                      <Grid RowDefinitions="*,auto,auto"
-                           Margin="0,0,0,10"
+                        Margin="0,0,0,10"
                            Grid.Row="4">
-                        
+
                         <!--  step 1  -->
                         <WebView
                             x:Name="TCWebView"
@@ -774,13 +774,7 @@
                                                 </Label.FormattedText>
                                             </Label>
 
-                                            <custom:CustomSfTextInputView
-                                                x:Name="FrmLicenseNumber"
-                                                ContainerBackground="White"
-                                                ContainerType="Outlined"
-                                                InputViewPadding="16,0,16,0"
-                                                LeadingViewPosition="Inside"
-                                                OutlineCornerRadius="10">
+                                            <custom:CustomSfTextInputView x:Name="FrmLicenseNumber" HasError="False">
 
                                                 <custom:CustomSfTextInputView.TextInputView>
                                                     <custom:GAZTBorderlessEntry
@@ -815,7 +809,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <custom:CustomSfTextInputView x:Name="FrmlicenceNumberIssuedbyframe">
+                                            <custom:CustomSfTextInputView x:Name="FrmlicenceNumberIssuedbyframe" HasError="False">
                                                 <custom:CustomSfTextInputView.TextInputView>
                                                     <custom:GAZTBorderlessEntry
                                                         InputTransparent="True"
@@ -1056,12 +1050,7 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10">
+                                        <custom:CustomSfTextInputView x:Name="FrmMobile">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <StackLayout
                                                     FlowDirection="LeftToRight"
@@ -2044,7 +2033,7 @@
                                 </StackLayout>
                                 <!--#endregion-->
 
-                              
+
 
                             </StackLayout>
 
@@ -2096,7 +2085,7 @@
                                 </DataTrigger>
                             </buttons:SfButton.Triggers>
                         </buttons:SfButton>
-                        
+
                     </Grid>
 
                 </Grid>

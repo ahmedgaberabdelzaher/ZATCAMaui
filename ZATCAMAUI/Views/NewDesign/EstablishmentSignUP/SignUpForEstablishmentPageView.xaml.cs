@@ -17,6 +17,7 @@ using ZATCAMAUI.Core.Helper;
 using static ZATCAMAUI.Models.ErrorMessage;
 using ZATCAMAUI.Models.NewModelAPI.AbsherOTP;
 using Syncfusion.Maui.Core.Carousel;
+using Microsoft.Maui.Platform;
 
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 {
@@ -2029,7 +2030,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 viewModel.ShowIqamaTypeDesc = false;
 
             }
-            if (string.IsNullOrEmpty(viewModel.PkrDBO))
+            if (string.IsNullOrEmpty(DateEntry.Text))
             {
                 flag = false;
                 FrmDBO.HasError = true;
@@ -2063,7 +2064,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             bool flag = true;
             if (string.IsNullOrEmpty(viewModel.TxtMobileNumber))
             {
-                //FrmMobile.HasError = true;
+                FrmMobile.HasError = true;
                 flag = false;
             }
             if (string.IsNullOrEmpty(viewModel.TxtEmailAddress))
@@ -2133,8 +2134,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 }
                 else
                 {
-                    FrmLicenseNumber.HasError = false;
-                    FrmlicenceNumberIssuedbyframe.HasError = false;
                     MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
 
                 }

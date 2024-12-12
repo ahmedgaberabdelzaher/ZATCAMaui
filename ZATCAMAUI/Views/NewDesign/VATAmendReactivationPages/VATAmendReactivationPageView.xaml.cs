@@ -1690,7 +1690,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private async void NewAttachment_Clicked(object sender, EventArgs e)
         {
-            if (MopupService.Instance.PopupStack.Count > 0) return;
+            if (!viewModel.IsFDChangeSectionEnabled || MopupService.Instance.PopupStack.Count > 0)
+                return;
             try
             {
                 DataToPassTofinancialDetailAttachmentPopup sendtoPopup = new DataToPassTofinancialDetailAttachmentPopup();
