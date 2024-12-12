@@ -5,55 +5,38 @@ namespace ZATCAMAUI.Core.CustomControls;
 using Syncfusion.Maui.Core;
 using Microsoft.Maui.Controls;
 
-public partial class CustomSfTextInputView : SfTextInputLayout
+
+
+partial class CustomSfTextInputView : SfTextInputLayout
 {
     public CustomSfTextInputView()
     {
         InitializeComponent();
         UpdateErrorState();
     }
-
- 
     public View TextInputView
     {
         get => MainContainer;
         set => MainContainer.Add(value);
     }
 
-    public static new readonly BindableProperty HasErrorProperty =
-        BindableProperty.Create(
-            nameof(HasError),
-            typeof(bool),
-            typeof(CustomSfTextInputView),
-            false,
-            propertyChanged: OnHasErrorChanged);
-
-    public new bool HasError
+    protected override void OnPropertyChanged(string propertyName = null)
     {
-        get => (bool)GetValue(HasErrorProperty);
-        set => SetValue(HasErrorProperty, value);
-    }
+        base.OnPropertyChanged(propertyName);
 
-    private static void OnHasErrorChanged(BindableObject bindable, object oldValue, object newValue)
-    {
-        if (bindable is CustomSfTextInputView control && oldValue != newValue)
+        if (propertyName == nameof(HasError))
         {
-            control.UpdateErrorState();
+            UpdateErrorState();
         }
     }
 
-
     private void UpdateErrorState()
     {
-        this.Stroke = Color.FromArgb(HasError ? "#B00020" : "#999999");
 
-
-        //refresh the layout manually
+        this.Stroke = HasError ? (Color)Application.Current.Resources["ErrorColor"] : (Color)Application.Current.Resources["NeutralGreay"];
         this.Dispatcher.Dispatch(() =>
         {
             this.InvalidateMeasure();
-            
         });
     }
-
 }
