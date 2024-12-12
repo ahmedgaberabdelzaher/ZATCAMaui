@@ -12,24 +12,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRegistrationDetails
             InitializeComponent();
             viewModel = App.Locator.VATRegistrationDisplayDetails;
             BindingContext = viewModel;
-            Task.Run(async () =>
-            {
-                await GetVatRegistrationData();
-            });
-        }
-
-
-        public async Task GetVatRegistrationData()
-        {
-            try
-            {
-                await viewModel.onPageLoad();
-            }
-            catch (Exception)
-            {
-
-
-            }
         }
     }
 }

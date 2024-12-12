@@ -4050,7 +4050,7 @@
         <comment>VATRegistrationPageView</comment>
     </data>
 	<data name="VATRImportExport" xml:space="preserve">
-        <value>مستورد  مصدر</value>
+        <value>مستورد/مصدر</value>
         <comment>VATRegistrationPageView</comment>
     </data>
 	<data name="VATRInmaBank" xml:space="preserve">
