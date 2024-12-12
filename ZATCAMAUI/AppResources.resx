@@ -4109,7 +4109,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
         <comment>VATRegistrationPageView</comment>
     </data>
     <data name="VATRImportExport" xml:space="preserve">
-        <value>Importer  Exporter</value>
+        <value>Importer/Exporter</value>
         <comment>VATRegistrationPageView</comment>
     </data>
     <data name="VATRInmaBank" xml:space="preserve">

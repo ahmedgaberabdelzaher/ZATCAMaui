@@ -16,13 +16,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
     {
 
         string idnumber { get; set; }
-        public ICommand OnBackButtonClicked { get; set; }
+        public ICommand OnAppearingCommand { get; set; }
 
         public VATRegistrationDisplayDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnBackButtonClicked = new Command(() =>
+            OnAppearingCommand = new Command(async() =>
             {
-                _navigationService.GoBack();
+                IsLoading = true;
+                try
+                {
+                    await onPageLoad();
+                }
+                catch (Exception)
+                {
+
+
+                }
+                IsLoading = false;
             });
 
 
@@ -473,7 +483,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         await _dialogService.ShowMessage("IBAN INCOMPLETE", AppResources.NDIBANIncomplete);
                         return;
                     }
-                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                   await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (vATRegistration != null && vATRegistration.d != null)
                     {
@@ -522,7 +532,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                         }
 
-                        // IDType = vATRegistration.d.DecidTy;
                         IDNumber = vATRegistration.d.DecidNo;
                         ContactPersonName = vATRegistration.d.Decname;
                     }
@@ -551,29 +560,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         List<ResultsItemForQuestion> quest1AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "001" && s.QoptAns == "1").ToList();
                         if (quest1AnsList.Count > 0)
                         {
-                            quesTion1answerSelected = quest1AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+                            quesTion1answerSelected = quest1AnsList.FirstOrDefault().QoptTxt;
                         }
                         List<ResultsItemForQuestion> quest2AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "002" && s.QoptAns == "1").ToList();
                         if (quest2AnsList.Count > 0)
                         {
-                            quesTion2answerSelected = quest2AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+                            quesTion2answerSelected = quest2AnsList.FirstOrDefault().QoptTxt; 
                         }
 
                         List<ResultsItemForQuestion> quest3AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList();
                         if (quest3AnsList.Count > 0)
                         {
-                            quesTion3answerSelected = quest3AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+                            quesTion3answerSelected = quest3AnsList.FirstOrDefault().QoptTxt; 
                         }
                         List<ResultsItemForQuestion> quest4AnsList = vATRegistration.d.QUESTIONSSet.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToList();
                         if (quest4AnsList.Count > 0)
                         {
-                            quesTion4answerSelected = quest3AnsList.FirstOrDefault().QoptTxt;//vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToString();
+                            quesTion4answerSelected = quest3AnsList.FirstOrDefault().QoptTxt;
                         }
                     }
                     if (vATRegistration.d.VatTaxDt != null)
                     {
                         string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.VatTaxDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        VatEligibleStartDate = Convert.ToDateTime(convertedDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                        VatEligibleStartDate = DateTime.Parse(convertedDate, new CultureInfo("en-US")).ToString("dd/MM/yyyy");
                     }
                     if (vATRegistration.d.QUESCONFIG_MSet != null && vATRegistration.d.QUESCONFIG_MSet.Count > 0)
                     {
@@ -603,11 +612,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw ex;
-                }
-                catch (InternetException ex)
+                catch (InternetException)
                 {
                     IsLoading = false;
                 }
@@ -618,20 +623,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 IsLoading = false;
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
             }
         }
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
         }
 
