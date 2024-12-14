@@ -589,7 +589,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <custom:CustomSfTextInputView x:Name="FrmName">
+                                    <custom:CustomSfTextInputView x:Name="FrmName" HasError="{Binding FrameNameError}">
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryName"
@@ -657,13 +657,13 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView x:Name="Frame_Country" >
+                                        <custom:CustomSfTextInputView x:Name="Frame_Country">
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
                                                     InputTransparent="True"
-                                                    IsReadOnly="True"
                                                     IsEnabled="False"
+                                                    IsReadOnly="True"
                                                     IsSpellCheckEnabled="False"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                                     Style="{StaticResource DefaultEntry}"
@@ -679,7 +679,7 @@
 
                                     </StackLayout>
 
-                                    <StackLayout IsVisible="{Binding SetGCCCountryVisibility}" >
+                                    <StackLayout IsVisible="{Binding SetGCCCountryVisibility}">
 
                                         <Label HorizontalOptions="Start" Style="{StaticResource GAZTSmallGrayLabelStyle}">
 
@@ -691,7 +691,7 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView x:Name="GCCFrame_Country">
+                                        <custom:CustomSfTextInputView x:Name="GCCFrame_Country" HasError="{Binding FrameGccCountyError}">
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
@@ -813,7 +813,7 @@
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Region}">
-                                                    
+
                                                     <custom:GAZTBorderlessEntry.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="PickerBtn_Region_Clicked" />
                                                     </custom:GAZTBorderlessEntry.GestureRecognizers>
@@ -843,8 +843,8 @@
                                             Background="White"
                                             IsVisible="{Binding SetStateListVisibility}"
                                             ItemHeight="40"
-                                            SelectionChangedCommand="{Binding RegioSelectionChangedCommand}"
-                                            Mode="Dialog">
+                                            Mode="Dialog"
+                                            SelectionChangedCommand="{Binding RegioSelectionChangedCommand}">
 
                                             <syncfusion:SfPicker.TextStyle>
                                                 <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
@@ -959,8 +959,8 @@
                                             Background="White"
                                             IsVisible="{Binding SetCityListVisibility}"
                                             ItemHeight="40"
-                                            SelectionChangedCommand="{Binding CitySelectionChangedCommand}"
-                                            Mode="Dialog">
+                                            Mode="Dialog"
+                                            SelectionChangedCommand="{Binding CitySelectionChangedCommand}">
 
 
                                             <syncfusion:SfPicker.TextStyle>
@@ -1328,7 +1328,7 @@
                         </StackLayout>
                         <!--#endregion-->
 
-                        <!--#region SummeryView  -->
+                        <!--#region SummeryView-->
                         <Grid
                             x:Name="SummeryView"
                             Padding="0,10,0,0"
@@ -1734,7 +1734,7 @@
                         </Grid>
                         <!--#endregion-->
 
-                        <!--#region Password -->
+                        <!--#region Password-->
                         <StackLayout x:Name="PasswordView" IsVisible="{Binding PasswordView}">
 
                             <StackLayout IsVisible="{Binding passwordMainView}">
@@ -1856,8 +1856,7 @@
 
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal"
-                                                 Spacing="10">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <Image
                                             HorizontalOptions="Start"
                                             Source="{Binding MinEight}"
@@ -1904,8 +1903,7 @@
                                 </StackLayout>
 
                                 <!--  Verification Code  -->
-                                <StackLayout Margin="0,10"
-                                             Spacing="10">
+                                <StackLayout Margin="0,10" Spacing="10">
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
@@ -1921,16 +1919,13 @@
                                         FontSize="15"
                                         Style="{StaticResource GAZTMediumGrayLabelStyle}"
                                         Text="{x:Static ResourceManager:AppResources.EnterVerificationCode}" />
-                                    <BoxView
-                                        Style="{StaticResource lineSeperator}"
-                                        WidthRequest="380" />
+                                    <BoxView Style="{StaticResource lineSeperator}" WidthRequest="380" />
                                 </StackLayout>
 
                                 <StackLayout Spacing="10">
                                     <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding EncriptedMobileNumber}" />
 
-                                    <StackLayout Orientation="Horizontal"
-                                                 Spacing="10">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <Image Source="clock.png" Style="{StaticResource SmallIcon}" />
                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding OTPValidDuration}" />
                                     </StackLayout>

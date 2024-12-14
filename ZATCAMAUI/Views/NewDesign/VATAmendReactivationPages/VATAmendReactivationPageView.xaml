@@ -1512,8 +1512,7 @@
 
                                                         <custom:CustomSfTextInputView
                                                             x:Name="FrmNewAttachment"
-                                                            Grid.Row="1"
-                                                            IsEnabled="{Binding IsFDChangeSectionEnabled}">
+                                                            Grid.Row="1" >
                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                 <!--  New Attachment  -->
                                                                 <custom:GAZTBorderlessEntry

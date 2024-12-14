@@ -81,6 +81,7 @@
 
                     <Grid
                         Padding="10,0"
+                        FlowDirection="LeftToRight"
                         ColumnDefinitions="*,*,*,*,*,*"
                         ColumnSpacing="15">
 
@@ -116,7 +117,7 @@
                             </custom:GAZTBorderlessEntry>
 
                             <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference SecondDigitEntry}}" />
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference FirstDigitEntry}}" />
                             </Border.GestureRecognizers>
 
                         </Border>
@@ -153,7 +154,7 @@
                             </custom:GAZTBorderlessEntry>
 
                             <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference ThirdDigitEntry}}" />
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference SecondDigitEntry}}" />
                             </Border.GestureRecognizers>
 
                         </Border>
@@ -190,7 +191,7 @@
                             </custom:GAZTBorderlessEntry>
 
                             <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference FourthDigitEntry}}" />
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference ThirdDigitEntry}}" />
                             </Border.GestureRecognizers>
 
                         </Border>
@@ -227,7 +228,7 @@
                             </custom:GAZTBorderlessEntry>
 
                             <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference FifthDigitEntry}}" />
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference FourthDigitEntry}}" />
                             </Border.GestureRecognizers>
 
                         </Border>
@@ -264,7 +265,7 @@
                             </custom:GAZTBorderlessEntry>
 
                             <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference SixthDigitEntry}}" />
+                                <TapGestureRecognizer Command="{Binding FocusEntryCommand}" CommandParameter="{Binding Source={x:Reference FifthDigitEntry}}" />
                             </Border.GestureRecognizers>
 
                         </Border>

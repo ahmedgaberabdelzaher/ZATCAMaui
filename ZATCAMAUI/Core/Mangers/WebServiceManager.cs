@@ -8048,16 +8048,9 @@ namespace ZATCAMAUI.Core.Mangers
                 response = JsonConvert.DeserializeObject<NafathChangeMobileNumberSendOTPResponse>(result);
                 if (!string.IsNullOrEmpty(result) && response.d == null)
                 {
-                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
-                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                    {
-                        string errorMessage = string.Empty;
-                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                        errorMessage = WithReplacedString;
-                        throw new GAZTErrorException(errorMessage);
-                    }
+                    var errorMesg = PrepareErrorMessageByJson(result);
+                    throw new GAZTErrorException(errorMesg);
+                    
                 }
             }
             return response;
@@ -8092,16 +8085,8 @@ namespace ZATCAMAUI.Core.Mangers
                 response = JsonConvert.DeserializeObject<NafathChangeMobileNumberCheckOTPModelResponse>(result);
                 if (!string.IsNullOrEmpty(result) && response.d == null)
                 {
-                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
-                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                    {
-                        string errorMessage = string.Empty;
-                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                        errorMessage = WithReplacedString;
-                        throw new GAZTErrorException(errorMessage);
-                    }
+                   var errorMesg = PrepareErrorMessageByJson(result);
+                    throw new GAZTErrorException(errorMesg);
                 }
             }
             return response;
@@ -8117,7 +8102,7 @@ namespace ZATCAMAUI.Core.Mangers
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
 
-                string LangZ = WebServiceManager.GetLangZParameterAREN();
+                string LangZ = GetLangZParameterAREN();
                 string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                 string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
                 string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
@@ -8135,16 +8120,9 @@ namespace ZATCAMAUI.Core.Mangers
                 response = JsonConvert.DeserializeObject<SSOUserAccountModelResponse>(result);
                 if (!string.IsNullOrEmpty(result) && response.data == null)
                 {
-                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
-                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                    {
-                        string errorMessage = string.Empty;
-                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                        errorMessage = WithReplacedString;
-                        throw new GAZTErrorException(errorMessage);
-                    }
+                    var errorMesg = PrepareErrorMessageByJson(result);
+                    throw new GAZTErrorException(errorMesg);
+                   
                 }
             }
             return response;
@@ -8418,17 +8396,9 @@ namespace ZATCAMAUI.Core.Mangers
                     forgotPasswordCaptcha = JsonConvert.DeserializeObject<OTPModelD>(detailJson);
                     if (!string.IsNullOrEmpty(detailJson) && forgotPasswordCaptcha.d == null)
                     {
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                        {
-                            string errorMessage = string.Empty;
-                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                            errorMessage = WithReplacedString;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
-                            return null;
-                        }
+                        var errorMesg = PrepareErrorMessageByJson(detailJson);
+                        throw new GAZTErrorException(errorMesg);
+                       
                     }
                     return forgotPasswordCaptcha;
                 }

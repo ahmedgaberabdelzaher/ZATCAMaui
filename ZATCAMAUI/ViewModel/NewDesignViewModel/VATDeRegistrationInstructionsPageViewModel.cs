@@ -10,7 +10,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
     public class VATDeRegistrationInstructionsPageViewModel : BaseViewModel
     {
         #region Variable
-        public ICommand GoBackClick { get; set; }
         public ICommand VATDeregistrationClicked { get; set; }
         #endregion
         private Color _continueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
@@ -88,18 +87,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-                GoBackClick = new Command(() =>
-                {
-                    _navigationService.GoBack();
-                });
 
                 IsContinueButtonEnable = false;
-                VATDeregistrationClicked = new Command(() =>
+                VATDeregistrationClicked = new Command(async () =>
                 {
-                    VATDeregistrationTapped();
+                   await VATDeregistrationTapped();
                 });
             }
-            catch(Exception ex)
+            catch(Exception )
             {
 
             }
@@ -118,21 +113,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 try
                 {
                     await MopupService.Instance.PopAsync();
-                    _navigationService.NavigateTo(App.VATDeregistrationDetailsPage);
-                }
-                catch (GAZTUnlockAccountException)
-                {
+                   await _navigationService.NavigateTo(App.VATDeregistrationDetailsPage);
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-                }
-                catch (Exception)
-                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
                 }
             }
         }
