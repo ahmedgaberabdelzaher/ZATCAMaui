@@ -3623,7 +3623,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                 headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                 headerAmountInfo.IsLinkAvailable = false;
-                // headerAmountInfo.Message = string.Format(AppResources.VATReviewDraftSaved, "  " + modelVATReview.d.Fbnumx);
                 headerAmountInfo.Message = string.Format(AppResources.VATReviewNewDraftSaved);
 
                 headerWithInfos.Add(headerAmountInfo);
@@ -7001,7 +7000,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 request.Operationx = modelVATReview.d.Operationx;
 
                 var result = await VATObjectionWebServiceManager.SaveVatReviewObjection(request);
-                response.d = result.result.d;
+                response.d = result.result;
                 IsLoading = false;
                 return response;
 

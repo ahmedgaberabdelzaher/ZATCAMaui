@@ -1096,7 +1096,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     _selectedDocumentOption.TextCol = Colors.White;
                     _selectedDocumentOption.ImgSource = "vat_tile_listofsignup";
                 }
-                //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
                 OnPropertyChanged("SelectedDocumentOption");
             }
         }
@@ -2547,7 +2546,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        Zterms = VatDeregDeclaration.D.Zterms;
+                        var direction = App.IsArabic ? "direction: rtl;" : "direction: ltr;";
+                        Zterms = $"<div style=\"{direction}\"> {VatDeregDeclaration.D.Zterms} </div>";
                         IsDeclarationViewEnabledNew = true;
                         IsDeclarationViewEnabled = false;
 
@@ -3316,7 +3316,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 response = await VatRegistrationWebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
 
-                // PopToRootPage();
                 if (response != null && response.d != null)
                 {
                     try
