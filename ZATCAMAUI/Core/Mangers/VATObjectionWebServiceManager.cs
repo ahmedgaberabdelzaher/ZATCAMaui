@@ -664,7 +664,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
 
 
-        public async static Task<DATAPowerBaseResponseResult<VATObjectionSummaryModel>> SaveVatReviewObjection(VatObjectionsRequest _vatObjectionDetails)
+        public async static Task<VATObjectionSummaryModel> SaveVatReviewObjection(VatObjectionsRequest _vatObjectionDetails)
         {
 
 
@@ -673,7 +673,7 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
 
-                    DATAPowerBaseResponseResult<VATObjectionSummaryModel> _vatObjectionResponseObject = new DATAPowerBaseResponseResult<VATObjectionSummaryModel>();
+                    VATObjectionSummaryModel _vatObjectionResponseObject = new VATObjectionSummaryModel();
                     string LangZ = WebServiceManager.GetLangZParameterAREN();
                     string url = ZATCAConstants.PostVATObjectionURL;
                     var uri = new Uri(url);
@@ -696,7 +696,7 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var _vatObjectionsResponsestr = await res.Content.ReadAsStringAsync();
-                    _vatObjectionResponseObject = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<VATObjectionSummaryModel>>(_vatObjectionsResponsestr);
+                    _vatObjectionResponseObject = JsonConvert.DeserializeObject<VATObjectionSummaryModel>(_vatObjectionsResponsestr);
                     
                     if (!string.IsNullOrEmpty(_vatObjectionsResponsestr) && _vatObjectionResponseObject.result == null)
                     {

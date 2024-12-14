@@ -1081,48 +1081,40 @@
                                             <Grid
                                             Padding="0"
                                             ColumnDefinitions="*,*"
-                                            RowDefinitions="auto,auto"
+                                            RowDefinitions="*,*"
                                             RowSpacing="10">
-                                                <StackLayout
-                                                Grid.Row="0"
-                                                Grid.Column="0">
-                                                    <Label
+                                               <Label
                                                     FontSize="Small"
+                                                    Grid.Row="0"
+                                                Grid.Column="0"
                                                     HorizontalOptions="Start"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregRequestType}" />
-                                                </StackLayout>
-                                                <StackLayout
-                                                Grid.Row="0"
-                                                Grid.Column="1">
-                                                    <Label
+                                                <Label
                                                     FontSize="Small"
-                                                    HorizontalOptions="End"
+                                                     Grid.Row="0"
+                                                Grid.Column="1"
+                                                    HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{Binding DeregRequestType}" />
-                                                </StackLayout>
-                                                <StackLayout
-                                                Grid.Row="1"
-                                                Grid.Column="0">
-                                                    <Label
+                                                <Label
+                                                         Grid.Row="1"
+                                                Grid.Column="0"
                                                     FontSize="Small"
                                                     HorizontalOptions="Start"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregReasonTitle}" />
-                                                </StackLayout>
-                                                <StackLayout
-                                                Grid.Row="1"
-                                                Grid.Column="1">
-                                                    <Label
+                                                <Label
+                                                         Grid.Row="1"
+                                                Grid.Column="1"
                                                     FontSize="Small"
-                                                    HorizontalOptions="End"
-                                                    HorizontalTextAlignment="Start"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    HorizontalTextAlignment="End"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{Binding DeregReason}" />
-                                                </StackLayout>
                                             </Grid>
                                         </StackLayout>
                                     </Border>
@@ -1182,28 +1174,25 @@
                                                         ColumnSpacing="0"
                                                         RowDefinitions="auto,auto"
                                                         RowSpacing="0">
-
-                                                            <StackLayout Grid.Row="0" Grid.Column="0">
-                                                                <Label
+                                                             <Label
                                                                 FontSize="Small"
-                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalOptions="Start"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource BodyLabelGrey}"
                                                                 Text="{Binding FieldTitle}" />
-                                                            </StackLayout>
                                                             <StackLayout
                                                             Grid.Row="0"
                                                             Grid.Column="1"
                                                             Orientation="Horizontal"
                                                             Spacing="0">
                                                                 <Image
-                                                                Margin="5,0,5,0"
-                                                                HorizontalOptions="Center"
+                                                                HorizontalOptions="EndAndExpand"
                                                                 IsVisible="{Binding IsAttachmentAttached, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
-                                                                Source="Generic_attachment_icon.png"
-                                                                VerticalOptions="Center" />
+                                                                Source="Generic_attachment_icon.png" />
+
                                                                 <Label
                                                                 FontSize="Small"
+                                                                HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 Text="{Binding AttachmentName}" />

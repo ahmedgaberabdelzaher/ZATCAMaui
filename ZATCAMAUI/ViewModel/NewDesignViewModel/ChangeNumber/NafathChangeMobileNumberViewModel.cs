@@ -131,14 +131,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
         public NafathChangeMobileNumberViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             BindCommands();
-            //BindEvents();
         }
 
         private void BindCommands()
         {
             SnipperTappedCommand = new Command(async () => await SnipperTapped());
             NextCommand = new Command(async() => await Next());
-            CountryCodesCommand = new Command(() => { CountryCodesTapped(); });
+            CountryCodesCommand = new Command(async () => { await CountryCodesTapped(); });
         }
 
         async Task SnipperTapped()
@@ -201,7 +200,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             }
             catch (GAZTErrorException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             finally
             {
@@ -210,9 +210,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             
         }
 
-        private void CountryCodesTapped()
+        private  async Task CountryCodesTapped()
         {
-            MopupService.Instance.PushAsync(new InternationalCodeSearchPage(CountryCodesList));
+           await MopupService.Instance.PushAsync(new InternationalCodeSearchPage(CountryCodesList));
         }
 
 
