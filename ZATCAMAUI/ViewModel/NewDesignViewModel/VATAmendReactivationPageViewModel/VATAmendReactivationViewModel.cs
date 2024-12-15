@@ -3332,8 +3332,8 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
                     }
                     if (VATRegistrationDetailsData.d.VatTaxDt != null)
                     {
-                        string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATRegistrationDetailsData.d.VatTaxDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        VatEligibleStartDate = DateTime.Parse(convertedDate, new CultureInfo("en-US")).ToString("dd/MM/yyyy");
+                        VatEligibleStartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATRegistrationDetailsData.d.VatTaxDt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                        //VatEligibleStartDate = DateTime.Parse(convertedDate, new CultureInfo("en-US")).ToString("dd/MM/yyyy");
                     }
                     if (VATRegistrationDetailsData.d.ImFg == "1")
                     {
