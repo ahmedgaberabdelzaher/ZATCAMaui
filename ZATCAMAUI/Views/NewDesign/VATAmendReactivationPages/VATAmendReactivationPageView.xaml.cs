@@ -3224,10 +3224,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         public async Task ValidateTinNumber(string TinNumber)
         {
+            viewModel.IsLoading = true;
             try
             {
-                viewModel.IsLoading = true;
-
                 string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
                 VATSignUp vATSignUpData = new VATSignUp();
                 vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
@@ -3258,7 +3257,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.DOB = vATSignUpData.d.birthDate10;
                     viewModel.FirstnmFR = vATSignUpData.d.name1;
                     viewModel.LastnmFR = vATSignUpData.d.name2;
-                    viewModel.MobNumberFR = vATSignUpData.d.mobile.Substring(5);
+                    if (vATSignUpData.d.mobile != null && !string.IsNullOrEmpty(vATSignUpData.d.mobile))
+                    {
+                        viewModel.MobNumberFR = vATSignUpData.d.mobile.Substring(5);
+                    }
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                     viewModel.SmtpAddrFR = vATSignUpData.d.email;
                     FrmTINNumber.HasError = false;
@@ -3332,6 +3334,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 }
             }
+            viewModel.IsLoading = false;
+
         }
 
 

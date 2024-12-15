@@ -1858,23 +1858,22 @@
                                                                             IsVisible="{Binding DOBNonMandatoryVisibility}"
                                                                             Style="{StaticResource ComponentHeaderBlackBold}"
                                                                             Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
-                                                                        <custom:CustomSfTextInputView
-                                                                            Grid.Row="1"
+                                                                        <custom:CustomSfTextInputView 
                                                                             HasError="{Binding FrameDOBError}"
                                                                             IsVisible="{Binding DOBMandatoryVisibility}">
 
                                                                             <custom:CustomSfTextInputView.TextInputView>
                                                                                 <custom:GAZTBorderlessEntry
-                                                                                    HorizontalOptions="FillAndExpand"
                                                                                     IsEnabled="False"
                                                                                     Placeholder="YYYY/MM/DD"
                                                                                     Style="{StaticResource DefaultEntry}"
-                                                                                    Text="{Binding DOB}" />
+                                                                                    Text="{Binding DOB}"
+                                                                                    InputTransparent="True"/>
                                                                             </custom:CustomSfTextInputView.TextInputView>
                                                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                                                 <Image
-                                                                                    HorizontalOptions="EndAndExpand"
                                                                                     Source="calendar.png"
+                                                                                     WidthRequest="25" HeightRequest="25"
                                                                                     Style="{StaticResource SmallIcon}" />
                                                                             </inputLayout:SfTextInputLayout.TrailingView>
                                                                         </custom:CustomSfTextInputView>
@@ -1886,9 +1885,8 @@
                                                                             Clicked="btnDate_Clicked" />
 
                                                                         <custom:CustomDatePicker
-                                                                            Grid.Row="1"
-                                                                            Margin="2"
-                                                                            Background="#EAF7CC"
+                                                                           Margin="10,0,10,0"
+                                                                            Background="White"
                                                                             HorizontalOptions="FillAndExpand"
                                                                             ItemHeight="45"
                                                                             Mode="Dialog"
@@ -2103,12 +2101,10 @@
                                                                 </custom:CustomSfTextInputView.TextInputView>
                                                                 <inputLayout:SfTextInputLayout.TrailingView>
                                                                     <Image
-                                                                        HorizontalOptions="EndAndExpand"
-                                                                        Source="arrowDropdown.png"
-                                                                        Style="{StaticResource SmallIcon}" />
+                                                                        Aspect="AspectFit" Source="greyDropDown"
+                                                                        />
                                                                 </inputLayout:SfTextInputLayout.TrailingView>
                                                             </custom:CustomSfTextInputView>
-
                                                             <buttons:SfButton
                                                                 x:Name="btnID"
                                                                 Grid.Row="1"
@@ -2120,7 +2116,6 @@
 
                                                             <custom:CustomSfPicker
                                                                 x:Name="DDlIDType"
-                                                                Grid.Row="1"
                                                                 Margin="10,0,10,0"
                                                                 Background="White"
                                                                 ItemHeight="40"
