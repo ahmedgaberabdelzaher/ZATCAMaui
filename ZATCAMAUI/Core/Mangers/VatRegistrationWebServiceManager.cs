@@ -222,7 +222,6 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             string errorMessage = WebServiceManager.PrepareErrorMessageByJson(VatRegistrationData);
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
-                           
                         }
                     }
                     return vATRegistrationDetails;

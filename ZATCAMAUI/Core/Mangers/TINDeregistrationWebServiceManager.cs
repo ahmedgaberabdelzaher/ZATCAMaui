@@ -419,70 +419,18 @@ namespace ZATCAMAUI.Core.Mangers
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage tinDeregResponse = await client.PostAsync(uri, contentPost);
-
-                    if (tinDeregResponse != null)
+                    TinDeregResponseJson = tinDeregResponse.Content.ReadAsStringAsync().Result;
+                    TinDeregistrationParentResponseModel obj = JsonConvert.DeserializeObject<TinDeregistrationParentResponseModel>(TinDeregResponseJson);
+                    if (obj.D == null)
                     {
-                        if (tinDeregResponse.StatusCode == HttpStatusCode.Unauthorized)
-                        {
-                            App.IsSessionExpired = true;
-                            return null;
-                        }
-                        string _responseData = tinDeregResponse.Content.ReadAsStringAsync().Result;
-                        if (tinDeregResponse.StatusCode == HttpStatusCode.BadRequest)
-                        {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                            {
-                                string errorCode = errorMesg.error.innererror.errordetails[0].code;
-                                // WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-
-                                /* String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-                                 WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
-                                 //ErrorMessageForVAT
-                                 throw new GAZTErrorException(WebServiceManager.ErrorMessageForUnlockAccount);*/
-
-                                string line1 = "";
-                                /* if (errorMesg.error.innererror.errordetails.Count > 2)
-                                 {*/
-                                for (int i = 0; i < errorMesg.error.innererror.errordetails.Count; i++)
-                                {
-                                    if (i == 0)
-                                    {
-                                        line1 = line1 + errorMesg.error.innererror.errordetails[i].message + "\n";
-                                    }
-                                    else
-                                    {
-                                        line1 = line1 + "\u2022" + errorMesg.error.innererror.errordetails[i].message + "\n";
-                                    }
-
-                                }
-                                WebServiceManager.ErrorMessageForUnlockAccount = line1;
-
-                                String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("\u2022An exception was raised", string.Empty);
-                                throw new GAZTErrorException(WithReplacedString);
-                            }
-                        }
-                        HttpHeaders headers = tinDeregResponse.Headers;
-                        IEnumerable<string> values;
-                        if (headers.TryGetValues("token", out values))
-                        {
-                            NewToken = values.First();
-                            App.IsSessionExpired = false;
-                        }
-                        if (!string.IsNullOrEmpty(NewToken))
-                        {
-                            if (0 == string.Compare(NewToken, "Token has expired") || 0 == string.Compare(NewToken, "Invalid Token"))
-                            {
-                                App.IsSessionExpired = true;
-                                return null;
-                            }
-                            App.Token = NewToken;
-                        }
-
-                        TinDeregResponseJson = tinDeregResponse.Content.ReadAsStringAsync().Result;
-
+                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(TinDeregResponseJson);
+                        throw new GAZTVATRegistrationInProcessException(errorMessage);
                     }
                     return TinDeregResponseJson;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (GAZTErrorException ex)
                 {
