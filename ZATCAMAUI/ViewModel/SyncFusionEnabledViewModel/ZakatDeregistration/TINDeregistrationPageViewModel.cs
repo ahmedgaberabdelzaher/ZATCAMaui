@@ -5634,6 +5634,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 TinDeregistrationData.Xvoidz = "";
                 await SubmitRequest();
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+            }
             catch (InternetException)
             {
                 App.HideProgressView();
@@ -5654,7 +5658,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 App.HideProgressView();
             }
-
         }
 
         public async Task VoidForm()
@@ -5871,28 +5874,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 try
                 {
                     string TinDeregistrationDataResponse = await TINDeregistrationWebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
-                    TinDeregistrationParentResponseModel obj = JsonConvert.DeserializeObject<TinDeregistrationParentResponseModel>(TinDeregistrationDataResponse);
-
-                    if (obj.D == null)
-                    {
-                        isSubmitted = false;
-                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(TinDeregistrationDataResponse);
-                        StringBuilder Message = new StringBuilder();
-                        foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
-                        {
-                            if (itemerror.severity.Contains("error"))
-                            {
-                                if (Message.Length > 0)
-                                {
-                                    Message.Append(Environment.NewLine);
-                                }
-                                Message.Append(itemerror.message);
-                            }
-                        }
-
-
-                    }
-                    else if (!string.IsNullOrEmpty(TinDeregistrationDataResponse))
+                    if (!string.IsNullOrEmpty(TinDeregistrationDataResponse))
                     {
                         TinDeregistrationDataResponse = JObject.Parse(TinDeregistrationDataResponse)["result"].ToString();
                         var tempTinDeregData = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregistrationDataResponse);
@@ -5932,6 +5914,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
 
                 }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw ex;
+                }
                 catch (InternetException)
                 {
 
@@ -5953,6 +5939,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     isSubmitted = false;
                 }
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                throw ex;
             }
             catch (InternetException)
             {

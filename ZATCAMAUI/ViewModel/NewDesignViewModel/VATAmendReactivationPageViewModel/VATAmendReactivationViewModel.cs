@@ -11,6 +11,7 @@ using ZATCAMAUI.Models.Template;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Enums;
+using System;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
 
@@ -2492,11 +2493,33 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
         switch (App.VATType)
         {
             case PageExecutionType.Amend:
-               
+                InstAndCondition.CBAgreeCondition =
+
+                TaxPayerDetails.Parent =
+                TaxPayerDetails.TaxPayerDetailsParent =
+
+                TaxPayerDetails.TinEntry1 =
+                TaxPayerDetails.TinEntry2 =
+                TaxPayerDetails.MainOutletEntry1 =
+                TaxPayerDetails.MainOutletEntry2 =
+                TaxPayerDetails.StartDateEntry =
+                TaxPayerDetails.AddressEntry1 =
+                TaxPayerDetails.AddressEntry2 =
+                TaxPayerDetails.SourceEntry =
                 TaxPayerDetails.CommencementDate = false;
 
                 IsTaxPayerEligDateEnabled = false;
-                
+                TaxPayerDetails.AddInformationCB =
+                TaxPayerDetails.AddInformationCBVisible =
+                TaxPayerDetails.AddInformationParent =
+                IsTaxPayerIBANEnabled =
+                TaxPayerDetails.ImporterYesRB =
+                TaxPayerDetails.ImporterNoRB =
+                TaxPayerDetails.ImporterAttachmentsBtn =
+                TaxPayerDetails.ExporterYesRB =
+                TaxPayerDetails.ExporterNoRB =
+                TaxPayerDetails.ExporterrAttachmentsBtn =
+                TaxPayerDetails.ExistingIBANPicker =
                 TaxPayerDetails.NewIBANPicker = true;
 
                 FinancialRepresentative.Parent = false;
@@ -3383,9 +3406,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
             catch (InternetException ex)
             {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                _navigationService.GoBack();
+                await showErrorMessaagePopupAsync(ex.Message);
             }
 
 
@@ -3396,15 +3417,28 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
         catch (GAZTVATRegistrationInProcessException ex)
         {
             IsLoading = false;
-            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-            _navigationService.GoBack();
+            await showErrorMessaagePopupAsync(ex.Message);
+
         }
         catch (Exception ex)
         {
             IsLoading = false;
-            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-            _navigationService.GoBack();
+            await showErrorMessaagePopupAsync(AppResources.Somethingwentwrong);
         }
+
+    }
+
+    private async Task showErrorMessaagePopupAsync(string ErrorMsg)
+    {
+        var ErrorPopup = new AttachmentInformationPopUp(ErrorMsg)
+        {
+            CloseWhenBackgroundIsClicked = false
+        };
+        ErrorPopup.OnDone = () =>
+        {
+            _navigationService.GoBack();
+        };
+        await MopupService.Instance.PushAsync(ErrorPopup);
     }
 
     private void SetApplicableButtons()
