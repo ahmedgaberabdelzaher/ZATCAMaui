@@ -12,6 +12,7 @@ using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.ForgotModel;
 using ZATCAMAUI.Models.SignUP;
 using ZATCAMAUI.Core.Services.Interfac;
+using System;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -2593,6 +2594,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public void ClearData()
         {
+            GUID = string.Empty;
 
             PasswordLayoutVisibility = false;
             RecoverUserNameLayout = false;
