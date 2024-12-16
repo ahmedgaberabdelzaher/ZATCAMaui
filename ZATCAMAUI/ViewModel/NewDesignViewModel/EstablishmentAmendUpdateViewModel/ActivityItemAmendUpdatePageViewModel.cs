@@ -1888,43 +1888,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
         {
             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
             var errorID = string.Empty;
-            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+            if (errorMesg?.header?.moreInformation?.errorDetails[0]?.message != null)
             {
-                string errorCode = errorMesg.error.innererror.errordetails[0].code;
 
-                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg?.header?.moreInformation?.errorDetails[0].message;
 
-                if (errorCode.Contains("206"))
-                {
-                    WebServiceManager.ErrorMessageForUnlockAccount = "206";
-                }
-                else if (errorCode.Contains("112"))
-                {
-                    WebServiceManager.ErrorMessageForUnlockAccount = "112";
-                }
-                else if (errorCode.Contains("896"))
-                {
-                    errorID = errorCode;
-                }
+               
                 string line1 = "";
 
-                for (int i = 0; i < errorMesg.error.innererror.errordetails.Count; i++)
+                for (int i = 0; i < errorMesg?.header?.moreInformation?.errorDetails.Count; i++)
                 {
-                    line1 = line1 + " " + errorMesg.error.innererror.errordetails[i].message;
+                    line1 = line1 + " " + errorMesg?.header?.moreInformation?.errorDetails[i].message;
                 }
                 WebServiceManager.ErrorMessageForUnlockAccount = line1;
 
                 String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
 
-                if (errorID.Contains("896"))
-                {
-                    await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
-                }
-                else
-                {
-                    await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
-                }
-
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WithReplacedString));
+              
             }
         }
 

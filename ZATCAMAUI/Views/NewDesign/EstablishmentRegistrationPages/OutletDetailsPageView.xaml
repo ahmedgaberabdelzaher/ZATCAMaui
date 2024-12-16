@@ -13,8 +13,8 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
-    ios:Page.UseSafeArea="true"
     x:Name="page"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -71,8 +71,8 @@
                                 VerticalOptions="Center" />
 
                             <Label
+                                Margin="0,10,0,0"
                                 FontFamily="{StaticResource SomarRegular}"
-                                 Margin="0,10,0,0"
                                 FontSize="11"
                                 HorizontalOptions="StartAndExpand"
                                 TextColor="{StaticResource NeutralGreay}"
@@ -1096,12 +1096,12 @@
                         </Grid>
 
                         <commonView:PageIndicatorView
-                                Completed="{Binding MarkComplete}"
-                                DotSize="16"
+                            Completed="{Binding MarkComplete}"
+                            DotSize="16"
                             HorizontalOptions="EndAndExpand"
-                                MaxNum="{Binding MaxIndex}"
-                                MinNum="{Binding CurrentIndex}"
-                                VerticalOptions="Start" />
+                            MaxNum="{Binding MaxIndex}"
+                            MinNum="{Binding CurrentIndex}"
+                            VerticalOptions="Start" />
 
                         <Label
                             FontFamily="{StaticResource SomarBold}"
@@ -1138,9 +1138,9 @@
                             <SfEffectsView:SfChipGroup.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout
-                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                         Margin="0"
                                         Padding="10"
+                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                         Orientation="Horizontal"
                                         Spacing="2">
                                         <Label
@@ -1173,8 +1173,8 @@
                                     <DataTemplate>
                                         <StackLayout
                                             Margin="0"
-                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             Padding="10"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             Orientation="Horizontal"
                                             Spacing="2">
                                             <Label

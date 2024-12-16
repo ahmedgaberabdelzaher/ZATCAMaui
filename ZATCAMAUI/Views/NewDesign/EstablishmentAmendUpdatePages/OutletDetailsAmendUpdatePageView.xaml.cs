@@ -36,6 +36,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
                     viewModel.PickerModel = arg;
                 });
+                viewModel.IsNextbttnEnable = true;
             }
             catch (Exception ex)
             {

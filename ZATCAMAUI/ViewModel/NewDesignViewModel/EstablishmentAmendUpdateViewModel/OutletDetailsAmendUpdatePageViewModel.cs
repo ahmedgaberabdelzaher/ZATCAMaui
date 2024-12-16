@@ -556,6 +556,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 OnPropertyChanged(nameof(CanExecute));
             }
         }
+        
+        private bool _isNextbttnEnable = true;
+        public bool IsNextbttnEnable
+        {
+            get => _isNextbttnEnable;
+            set
+            {
+                if (_isNextbttnEnable == value) return;
+
+                _isNextbttnEnable = value;
+                OnPropertyChanged(nameof(IsNextbttnEnable));
+            }
+        }
         private GenericPickerModel _pickerModel { get; set; }
         public GenericPickerModel PickerModel
         {
@@ -888,6 +901,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 nextNumber = newNumber,
                 goBackAction = async (List<Nreg_ActivityItem> list) =>
                 {
+                    if (list.Count > 0|| IsEditingMode==true)
+                        IsNextbttnEnable = true;
+                    else
+                        return;
+
                     await addActivities(list);
                 }
             });
@@ -909,9 +927,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
                     }
+                    IsNextbttnEnable = IsEditingMode;
+
                 }
                 else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
                 {
+                    if(taxPayerDetails?.Nreg_ActivitySet?.Count == 0)
+                    {
+                        return;
+                    }
+                    IsNextbttnEnable = true;
+
                     currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
                 }
                 else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
