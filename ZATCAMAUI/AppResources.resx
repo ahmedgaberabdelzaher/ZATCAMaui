@@ -11862,4 +11862,7 @@ the credit balance of the current period will be carried forward, you can reques
  <data name="ClosedWarning" xml:space="preserve">
    <value>Closed - Warning with No Penalty</value>
  </data>
+ <data name="OTPStatus" xml:space="preserve">
+     <value>There is a pre-access request, please wait</value>
+  </data>
 </root> 

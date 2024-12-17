@@ -129,8 +129,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     activityUpdateModel.Taxpayer = App.LoginDataRetrieved.TIN;
                     activityUpdateModel.Flag = true;
 
+                    IsLoading = true;
                     DashBoardUpdateResponseModel responsne =await WebServiceManager.getTaxPayerActivityUpdateStatusAfterTermsChecked(activityUpdateModel);
+                    IsLoading = false;
                     await MopupService.Instance.PopAsync();
+                }
+                catch (GAZTVATRegistrationInProcessException exs)
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(exs.Message, AppResources.Information);
                 }
                 catch (InternetException ex)
                 {

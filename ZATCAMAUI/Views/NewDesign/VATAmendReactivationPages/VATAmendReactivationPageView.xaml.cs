@@ -554,7 +554,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             FrmContactName.HasError = true;
 
                         }
-                        if (btnSR.IsVisible && string.IsNullOrEmpty(viewModel.ContactDOB))
+                        if (string.IsNullOrEmpty(viewModel.ContactDOB))
                         {
                             flag = false;
                             viewModel.FrameContactDOBError = true;
@@ -1226,20 +1226,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 if (string.IsNullOrEmpty(arg.SelectedValue) || string.IsNullOrWhiteSpace(arg.SelectedValue))
                                 {
                                     FrmContactDBO.IsVisible = false;
-                                    btnSR.IsVisible = false;
                                     lblDOB.IsVisible = false;
                                 }
                                 else
                                 {
                                     FrmContactDBO.IsVisible = true;
-                                    btnSR.IsVisible = true;
                                     lblDOB.IsVisible = true;
                                 }
                             }
                             else
                             {
                                 FrmContactDBO.IsVisible = false;
-                                btnSR.IsVisible = false;
                                 lblDOB.IsVisible = false;
                             }
                         }
@@ -1969,20 +1966,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     if (viewModel.IdTypeListSR[DDlContactIDType.Columns[0].SelectedIndex] != null)
                     {
                         FrmContactDBO.IsVisible = false;
-                        btnSR.IsVisible = false;
                         lblDOB.IsVisible = false;
                     }
                     else
                     {
                         FrmContactDBO.IsVisible = true;
-                        btnSR.IsVisible = true;
                         lblDOB.IsVisible = true;
                     }
                 }
                 else
                 {
                     FrmContactDBO.IsVisible = false;
-                    btnSR.IsVisible = false;
                     lblDOB.IsVisible = false;
                 }
             }
@@ -2090,7 +2084,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             bool result = false;
             viewModel.IsLoading = true;
-            string dob = viewModel.DOB.Replace("/", "");
+            string dob = viewModel.DOB.Replace("/", "-");
             if (viewModel.SelectedIdTypeFR?.ID == "ZS0001")
             {
                 if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
@@ -2104,17 +2098,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         if (vATSignUpData.d == null)
                         {
                             result = false;
-                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                            {
+                            var message = WebServiceManager.PrepareErrorMessageByJson(Result);
+                            
                                 viewModel.FrameIDError = true;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                            }
-                            else
-                            {
-                                viewModel.FrameIDError = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                            }
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                           
                         }
                         else
                         {
@@ -3812,8 +3800,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                string month = SignUpDOB.SelectedDate.Month.ToString();
-                string day = SignUpDOB.SelectedDate.Day.ToString();
+                string month = SignUpDOB.SelectedDate.Month.ToString("00");
+                string day = SignUpDOB.SelectedDate.Day.ToString("00");
                 string year = SignUpDOB.SelectedDate.Year.ToString();
                 viewModel.DOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
@@ -4218,20 +4206,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     if (viewModel.IdTypeListSR[DDlContactIDType.Columns[0].SelectedIndex] != null)
                     {
                         FrmContactDBO.IsVisible = false;
-                        btnSR.IsVisible = false;
                         lblDOB.IsVisible = false;
                     }
                     else
                     {
                         FrmContactDBO.IsVisible = true;
-                        btnSR.IsVisible = true;
                         lblDOB.IsVisible = true;
                     }
                 }
                 else
                 {
                     FrmContactDBO.IsVisible = false;
-                    btnSR.IsVisible = false;
                     lblDOB.IsVisible = false;
                 }
             }

@@ -486,18 +486,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
         public async Task getActivityUpdateStatus()
         {
-
-            await Task.Run(async () =>
+            try
             {
+                IsLoading = true;
                 DashBoardUpdateViewResponseModel dashBoardUpdateViewResponse = await WebServiceManager.getTaxPayerActivityUpdateStatus();
 
-               await  PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                IsLoading = false;
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (dashBoardUpdateViewResponse != null && dashBoardUpdateViewResponse.d != null && dashBoardUpdateViewResponse.d.results != null
                 && dashBoardUpdateViewResponse.d.results.Count > 0 && dashBoardUpdateViewResponse.d.results[0] != null
                 && !string.IsNullOrEmpty(dashBoardUpdateViewResponse.d.results[0].Msg))
                     await MopupService.Instance.PushAsync(new UpdateActivityInstructionsPageView(false, dashBoardUpdateViewResponse.d.results[0].Msg));
-            });
-
+            }
+            catch (GAZTErrorException ex)
+            {
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            }
+          
         }
 
         public List<TaxRelationSetResult> TaxTypeFilter
