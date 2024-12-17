@@ -1220,6 +1220,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             }
         }
 
+        private bool _showOutletList = false;
+        public bool ShowOutletList
+        {
+            get => _showOutletList;
+            set
+            {
+                if (_showOutletList == value) return;
+
+                _showOutletList = value;
+                OnPropertyChanged("ShowOutletList");
+            }
+        }
+
         private ObservableCollection<OuteltInfo_NestedListView> _outlettUiList = new ObservableCollection<OuteltInfo_NestedListView>();
         public ObservableCollection<OuteltInfo_NestedListView> OutlettUiList
         {
@@ -1229,8 +1242,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             }
             set
             {
-                if (_outlettUiList == value) return;
-
                 _outlettUiList = value;
 
                 OnPropertyChanged("OutlettUiList");
@@ -3381,7 +3392,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                     OutlettUiList.Add(newItem);
                 });
-
+                ShowOutletList = true;
                 IsLoading = false;
             }
             catch (GAZTErrorException ex)
@@ -3399,51 +3410,71 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
         private async Task openEditOutlet(OuteltInfo_NestedListView item, int btnCode)
         {
-
-            if (btnCode == 1)
+            try
             {
-                if (SelectedItem != null)
+                if (btnCode == 1)
                 {
-                    if (SelectedItem.ActNo == item.ActNo && SelectedItem.IsInnerListVisible == true)
+                    if (item != null)
                     {
-                        item.IsInnerListVisible = false;
-                        return;
+                        if (item.ActNo == item.ActNo && item.IsInnerListVisible == true)
+                        {
+                            item.IsInnerListVisible = false;
+                            return;
+                        }
+                        else
+                        {
+                            item.IsInnerListVisible = true;
+                        }
                     }
                     else
                     {
-                        item.IsInnerListVisible = true;
+                        item.IsInnerListVisible = !item.IsInnerListVisible;
                     }
                 }
-                else
+                SelectedItem = item;
+                var index = OutlettUiList.IndexOf(item);
+                IsLoading = true;
+                OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
+                outletNavigationModels.taxPayerDetails = taxPayerDetails;
+                var OutletActNumber = (item.ActNo == null || string.IsNullOrEmpty(item?.ActNo)) ? "00000" : item.ActNo;
+                item.ContactDetails = new ObservableCollection<Nreg_ActivityItem>();
+                item.ContactDetails2 = new ObservableCollection<Nreg_ActivityItem>();
+                OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
+                activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
+                taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber,
+                    taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx);
+                item = await PrepareUIBranchesList(item);
+                MainThread.BeginInvokeOnMainThread(() => {
+                    if (item.ContactDetails.Count > 0)
+                    {
+                        ShowCRNoData = false;
+                    }
+                    else
+                    {
+                        ShowCRNoData = true;
+                    }
+                    if (item.ContactDetails2.Count > 0)
+                    {
+                        ShowLicenceNoData = false;
+                    }
+                    else
+                    {
+                        ShowLicenceNoData = true;
+                    }
+                    IsLoading = false;
+
+                });
+                if (btnCode == 2)
                 {
-                    item.IsInnerListVisible = !item.IsInnerListVisible;
+                    outletNavigationModels.idItem = idItem;
+                    outletNavigationModels.selectedOutletItem = GetSelectedItem(item);
+                    outletNavigationModels.IsEditingMode = true;
+                    outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
+                    await _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
                 }
             }
-            SelectedItem = item;
-            IsLoading = true;
-
-            OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
-            outletNavigationModels.taxPayerDetails = taxPayerDetails;
-            var OutletActNumber = (item.ActNo == null || string.IsNullOrEmpty(item?.ActNo)) ? "00000" : item.ActNo;
-
-            item.ContactDetails = new ObservableCollection<Nreg_ActivityItem>();
-            item.ContactDetails2 = new ObservableCollection<Nreg_ActivityItem>();
-
-            OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
-            activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
-
-            taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber,
-                taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx);
-            //taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
-            PrepareUIBranchesList(item);
-            IsLoading = false;
-            if (btnCode == 2)
+            catch (Exception)
             {
-                outletNavigationModels.idItem = idItem;
-                outletNavigationModels.selectedOutletItem = GetSelectedItem(item);
-                outletNavigationModels.IsEditingMode = true;
-                outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
-                await _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
             }
         }
 
@@ -3505,12 +3536,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             return newItem;
         }
 
-        private void PrepareUIBranchesList(OuteltInfo_NestedListView outletItem)
+        private async Task<OuteltInfo_NestedListView> PrepareUIBranchesList(OuteltInfo_NestedListView outletItem)
         {
             try
             {
                 outletItem.ContactDetails.Clear();
                 outletItem.ContactDetails2.Clear();
+
                 foreach (var item in taxPayerDetails.Nreg_ActivitySet)
                 {
 
@@ -3641,29 +3673,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     }
 
                 }
-                if (outletItem.ContactDetails.Count > 0)
-                {
-                    ShowCRNoData = false;
-                }
-                else
-                {
-                    ShowCRNoData = true;
-                }
-                if (outletItem.ContactDetails2.Count > 0)
-                {
-                    ShowLicenceNoData = false;
-                }
-                else
-                {
-                    ShowLicenceNoData = true;
-                }
             }
             catch (Exception)
             {
 
             }
 
-
+            return outletItem;
         }
 
         private void ResidenceTypePrePopulateData(TaxPayerDetails taxPayerDetails)

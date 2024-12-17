@@ -1324,7 +1324,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         {
                             Type = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? "BUP002" : "ZS0004",
                             ValidDateFrom = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? crIssueDate.ToString("yyyy-MM-ddThh:mm:ss") : issueDate.ToString("yyyy-MM-ddThh:mm:ss"),
-                            ValidDateTo = maxDate.ToString("yyyy-MM-ddThh:mm:ss"),
+                            ValidDateTo = "9999-12-31T00:00:00", //maxDate.ToString("yyyy-MM-ddThh:mm:ss"),
                             Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber,
                             ActName = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CrName : LicenseName,
                             Country = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCountry.Land1 : LicenseIssueCountry.Land1,
@@ -1374,8 +1374,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     }
                 }
             }
-            catch (Exception)
-            { }
+            catch (Exception ex)
+            {
+                Console.WriteLine("---->" + ex.StackTrace);
+            }
             finally
             {
                 CanExecute = true;
