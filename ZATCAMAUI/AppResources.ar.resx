@@ -11581,4 +11581,7 @@ info@zatca.gov.sa</value>
  <data name="ClosedWarning" xml:space="preserve">
    <value>مغلق– تنبيه بدون غرامة</value>
  </data>
+ <data name="OTPStatus" xml:space="preserve">
+     <value>يوجد طلب مسبقاٌ، برجاء الأنتظار</value>
+  </data>
 </root>
