@@ -239,7 +239,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
                                                 if (IsAttachmentPresent == false)
                                                 {
                                                     string attachmentType = UtilityManager.GetContentType(Extention);
-                                                    AttachmentRootOject _attachment = await SaveAttachment(stream, attachmentType);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
+                                                    AttachmentRootOject _attachment = await SaveAttachment(stream, attachmentType);
                                                     PopToRootPage();
                                                     if (_attachment != null && _attachment.d != null)
                                                     {
@@ -268,8 +268,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
                                                                 {
                                                                     if (item.Erfdt != null)
                                                                     {
-                                                                        //item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                                        //item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                                                         item.Erfdt = item.Erfdt;
                                                                     }
                                                                 }
@@ -296,82 +294,55 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
                                                     else
                                                     {
                                                         AttachmentName = string.Empty;
-                                                        MainThread.BeginInvokeOnMainThread(async () =>
-                                                        {
-                                                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                                        });
+                                                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                                     }
                                                 }
                                                 else
                                                 {
                                                     AttachmentName = string.Empty;
-                                                    MainThread.BeginInvokeOnMainThread(async () =>
-                                                    {
-                                                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-                                                    });
+                                                    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
                                                 }
                                             }
                                             else
                                             {
                                                 AttachmentName = string.Empty;
-                                                MainThread.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                                                });
+                                                await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                             }
                                         }
                                         else
                                         {
                                             AttachmentName = string.Empty;
-                                            MainThread.BeginInvokeOnMainThread(async () =>
-                                            {
-                                                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
-                                            });
+                                            await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
                                         }
                                     }
                                     else
                                     {
                                         AttachmentName = string.Empty;
-                                        MainThread.BeginInvokeOnMainThread(async () =>
-                                        {
-                                            await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
-                                        });
+                                        await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
                                     }
                                 }
                                 else
                                 {
                                     AttachmentName = string.Empty;
-                                    MainThread.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                    });
+                                   await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                 }
                             }
                             else
                             {
                                 AttachmentName = string.Empty;
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                });
+                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
                         }
                     }
                     else
                     {
                         AttachmentName = string.Empty;
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
-                        });
+                        await _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
                     }
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
             }
             catch (Exception)
@@ -384,45 +355,37 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
         {
             AttachmentRootOject _attachment = null;
             IsLoading = true;
-            await Task.Run(async () =>
+            try
             {
-                try
+                AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.data.ReturnIdz, "VTA0", contentType);
+                if (attachment != null && attachment.d != null)
                 {
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.data.ReturnIdz, "VTA0", contentType);
-                    if (attachment != null && attachment.d != null)
-                    {
-                        attachmentSizeVisibility = true;
-                        AttachmentSizeVisibility = attachmentSizeVisibility;
-                        SizeList.Add(AttachmentSize);
-                        AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
-                        TotalAttachmentSize = AttachmentUploadedSize;
-                        _attachment = attachment;
-                    }
-                    else
-                    {
-                        _attachment = null;
-                    }
+                    attachmentSizeVisibility = true;
+                    AttachmentSizeVisibility = attachmentSizeVisibility;
+                    SizeList.Add(AttachmentSize);
+                    AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
+                    TotalAttachmentSize = AttachmentUploadedSize;
+                    _attachment = attachment;
                 }
-                catch (Exception)
+                else
                 {
-                    //  return null;
-
-
+                    _attachment = null;
                 }
-            });
+            }
+            catch (Exception)
+            {
+                IsLoading = false;
+            }
             IsLoading = false;
             return _attachment;
         }
 
-        public void PopToRootPage()
+        public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
         }
 

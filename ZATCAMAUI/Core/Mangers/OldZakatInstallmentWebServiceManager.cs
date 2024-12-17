@@ -98,9 +98,6 @@ namespace ZATCAMAUI.Core.Mangers
 
         public async static Task<OldZakatRequestDisplayModel> GAZTGetOldZakatRequestDisplayData(string fbnum, string status)
         {
-
-
-
             if (NetworkCheck.IsInternet())
             {
                 OldZakatRequestDisplayModel _zakatRequestDisplayModel = new OldZakatRequestDisplayModel();
@@ -117,9 +114,7 @@ namespace ZATCAMAUI.Core.Mangers
                     string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
 
                     HttpClient client = new HttpClient();
-                    //String url = Constants.ZakatOldInstalmentsSummarytUrl + "Auditorz='',Taxpayerz='',PeriodKeyz='',Euser='00000000000000000000',Langz='" + lang + "',Fbguid='" + fbguid + "'," +
-                    //    "Fbnumz='',Submitz='',Savez='',UserTin='')?$expand=Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet&$format=json";
-                    String url = ZATCAConstants.ZakatOldInstalmentsSummarytUrl + App.LoginDataRetrieved.TIN + "&authenticationUser=" + euser + "&formBundleGUID=" + fbguid + "&language=" + lang;
+                    string url = ZATCAConstants.ZakatOldInstalmentsSummarytUrl + App.LoginDataRetrieved.TIN + "&authenticationUser=" + euser + "&formBundleGUID=" + fbguid + "&language=" + lang;
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
@@ -217,8 +212,6 @@ namespace ZATCAMAUI.Core.Mangers
                     string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
                     HttpClient client = new HttpClient();
                     string lang = WebServiceManager.GetLangZParameterAREN();
-                    //String url = Constants.GetOldZAKATSummaryInputURL + App.LoginDataRetrieved.TIN + "&authenticationUser1=='00000000000000000000',Fbguid='" + "',Fbnum='" + Newfbnum + "',Fbtyp='" + fbtyp + "'," +
-                    // "Gpart='" + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?$format=json";
                     String url = ZATCAConstants.GetOldZAKATSummaryInputURL + App.LoginDataRetrieved.TIN + "&authenticationUser1=" + euser + "&formBundleNumber=" + Newfbnum + "&formBundleType=" + fbtyp + "&language=" + lang + "&status=" + status;
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
@@ -303,10 +296,6 @@ namespace ZATCAMAUI.Core.Mangers
                     client.Timeout = TimeSpan.FromMinutes(10);
 
                     var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails);
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var lang = UtilityManager.GetLanguageParameter();
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
@@ -322,8 +311,8 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var _zakatReturnDetailsDesponsestr = await res.Content.ReadAsStringAsync();
                     _zakatResponseObject = JsonConvert.DeserializeObject<OldZakatRequestDisplayModel>(_zakatReturnDetailsDesponsestr);
                     if (!string.IsNullOrEmpty(_zakatReturnDetailsDesponsestr) && _zakatResponseObject.d == null)
                     {

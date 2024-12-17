@@ -15,9 +15,9 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.NewDesign.ZakatDeregistration;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatDeregistration;
-using static ZATCAMAUI.Models.ErrorMessage;
 using Application = Microsoft.Maui.Controls.Application;
 using ZATCAMAUI.Core.Interfaces;
+using System.Collections.ObjectModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
@@ -1430,6 +1430,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 OnPropertyChanged("VATDeregistrationSummaryDeclarationData");
             }
         }
+
+        private ObservableCollection<Attachment> _summaryAttachments = new ObservableCollection<Attachment>();
+        public ObservableCollection<Attachment> SummaryAttachments
+        {
+            get
+            {
+                return _summaryAttachments;
+            }
+            set
+            {
+                if (_summaryAttachments == value) return;
+
+                _summaryAttachments = value;
+                OnPropertyChanged("SummaryAttachments");
+            }
+        }
+
         private bool _isDetailsFieldEnabled;
         public bool IsDetailsFieldEnabled
         {
@@ -1731,7 +1748,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                             }
                             x.APermitEffDtCTb = "Gregorian";
-                            x.APermitEffDtHTb = SingleOutletDeregistrationDate.ToString("yyyy/MM/dd");
+                            x.APermitEffDtHTb = SingleOutletDeregistrationDate.ToString("yyyy-MM-dd");
                             x.APermitDeregDisplayDate = SingleOutletDeregistrationDate.ToString("dd/MM/yyyy");
                             if (Convert.ToDateTime(x.APermitValfrDtHTb) > SingleOutletDeregistrationDate)
                             {
@@ -2703,8 +2720,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
             OutletPermitPopupReasonContinueBtnTapped = new Command(this.OutletPermitPopupReasonContinueBtnClicked);
             OutletContinueBtnTapped = new Command(async () => await OutletContinueBtnClicked());
-            AttachmentsContinueBtnTapped = new Command(async () => await  AttachmentsContinueBtnClicked());
-            DeclarationContinueBtnTapped = new Command(this.DeclarationContinueBtnClicked);
+            AttachmentsContinueBtnTapped = new Command(async () => await AttachmentsContinueBtnClicked());
+            DeclarationContinueBtnTapped = new Command(async () => await this.DeclarationContinueBtnClicked());
             SummaryContinueBtnTapped = new Command(async () => await SummaryContinueBtnClicked());
             OnTinRegisrtationReasonDateTapped = new Command(async () => await OnTinRegisrtationReasonDateClicked());
             OnTinDeregOutletDeregDatePickerTapped = new Command(async () => await OnTinDeregOutletDeregDatePickerClicked());
@@ -3642,116 +3659,91 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             try
             {
                 IsLoading = true;
-                await Task.Run(async () =>
+                try
                 {
-                    try
+                    string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(tinNumber);
+
+                    SelectedDob = string.Empty;
+                    if (IDTypeDataModel == null)
                     {
-                        string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(tinNumber);
+                        IDTypeDataModel = new VATSignUpD();
+                    }
 
-                        SelectedDob = string.Empty;
-                        if (IDTypeDataModel == null)
+                    string _responseData = string.Empty;
+                    string ErrorMessage = string.Empty;
+                    _responseData = JObject.Parse(resultData)["result"].ToString();
+                    IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+                    FirstNameFromIdType = IDTypeDataModel.name1;
+                    if (string.IsNullOrWhiteSpace(_responseData))
+                    {
+                        IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
+                        if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                         {
-                            IDTypeDataModel = new VATSignUpD();
-                        }
+                            App.HideProgressView();
+                            FrameIDError = true;
 
-                        string _responseData = string.Empty;
-                        string ErrorMessage = string.Empty;
-                         _responseData = JObject.Parse(resultData)["result"].ToString();
-                            IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
-                            FirstNameFromIdType = IDTypeDataModel.name1;
-                        try
-                        {
-                           
-                        }
-                        catch (Exception)
-                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(resultData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                            {
-                                string errorCode = errorMesg.error.innererror.errordetails[0].code;
-                                ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
-
-                                //String WithReplacedString = ErrorMessage.Replace("An exception was raised", string.Empty);
-                                //ErrorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTErrorException(AppResources.InvalidEntry);
-                            }
-                        }
-
-                        if (string.IsNullOrWhiteSpace(_responseData))
-                        {
-                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
-                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                            {
-                                App.HideProgressView();
-                                FrameIDError = true;
-
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-
-                            }
-                            else
-                            {
-                                FrameIDError = false;
-                                App.HideProgressView();
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-
-                            }
                         }
                         else
                         {
-                            ///IDTypeDataModel = new VATSignUpD();
-                            //IDTypeDataModel = resultData.d;
-                            IsEnteredTINValid = true;
-                            IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
-                            if (idType != null)
+                            FrameIDError = false;
+                            App.HideProgressView();
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                        }
+                    }
+                    else
+                    {
+                        ///IDTypeDataModel = new VATSignUpD();
+                        //IDTypeDataModel = resultData.d;
+                        IsEnteredTINValid = true;
+                        IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
+                        if (idType != null)
+                        {
+                            SelectedIdtype = idType.Text;
+                            SelectedIDTypeCode = idType.key;
+                            IsName1Visible = false;
+
+
+                            FirstNameLbl = AppResources.ZZZVATRFirstName;
+                            SurnameNameLbl = AppResources.TinDeregistrationSurName;
+
+                            TINNumber = IDTypeDataModel.TIN;
+                            SelectedIdNumber = IDTypeDataModel.Idnum;
+
+                            SelectedDob = IDTypeDataModel.birthDate10;
+                            PickerDOBDateDisplay = IDTypeDataModel.birthDate10;
+
+                            if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
                             {
-                                SelectedIdtype = idType.Text;
-                                SelectedIDTypeCode = idType.key;
-                                IsName1Visible = false;
-
-
-                                FirstNameLbl = AppResources.ZZZVATRFirstName;
-                                SurnameNameLbl = AppResources.TinDeregistrationSurName;
-
-                                await Task.Run(() =>
-                                {
-                                    TINNumber = IDTypeDataModel.TIN;
-                                    SelectedIdNumber = IDTypeDataModel.Idnum;
-                                });
-
-                                SelectedDob = IDTypeDataModel.birthDate10;
-                                PickerDOBDateDisplay = IDTypeDataModel.birthDate10;
-
-                                if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
-                                {
-                                    NationalTypeSelected();
-                                }
-                                else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
-                                {
-                                    IsName1Visible = true;
-                                    CompanyIdTypeSelected();
-                                }
-                                else if (SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
-                                {
-                                    IqamaTypeSelected();
-                                }
-                                else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
-                                {
-                                    GCCIdTypeSelected();
-                                }
+                                NationalTypeSelected();
+                            }
+                            else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
+                            {
+                                IsName1Visible = true;
+                                CompanyIdTypeSelected();
+                            }
+                            else if (SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
+                            {
+                                IqamaTypeSelected();
+                            }
+                            else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
+                            {
+                                GCCIdTypeSelected();
                             }
                         }
-                        IsLoading = false;
                     }
-                    catch (InternetException ex)
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    IsLoading = false;
+                }
+                catch (InternetException ex)
+                {
+                    IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                        IsLoading = false;
-                        _navigationService.GoBack();
-                    }
-                });
+
+                    _navigationService.GoBack();
+                }
                 IsLoading = false;
             }
             catch (GAZTVATChangeFillingPeriodException ex)
@@ -4087,9 +4079,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             {
                                 DateTime dt = Convert.ToDateTime(PickerDobToDisplay);
                                 permitInfo.APermitDeregDisplayDate = dt.ToString("yyyy/MM/dd");//DeregistrationDate.ToString("dd MMM yyyy");
-                                permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
+                                permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyy-MM-dd");
                                 permitInfo.APermitEffDtCTb = "Gregorian";
-                                permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+                                permitInfo.APermitEffDtTb = DeregistrationDate.ToString("yyyy-MM-ddTHH:mm:ss");
 
                             }
                             if (outletInfo.PermitTypes == null)
@@ -4253,12 +4245,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableSummaryView()
         {
+            SummaryAttachments?.Clear();
+            UpdateAttachments();
+
             CurrentStep = ProcessStep.Step5;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = true;
+        }
+
+        private void UpdateAttachments()
+        {
+            foreach (var item in TinDeregistrationData.AttDetSet)
+            {
+                SummaryAttachments.Add(item);
+            }
+            OnPropertyChanged("SummaryAttachments");
+            
         }
 
         public async Task GoBackBtnClicked()
@@ -4307,7 +4312,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                     case ProcessStep.Step5:
                         {
-                           await EnableDeclarationView();
+                            await EnableDeclarationView();
                             break;
                         }
                 }
@@ -4347,7 +4352,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     else if (SelectedOutletOption.OutletOptionIndex == null)
                     {
-                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
@@ -4449,9 +4454,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                         {
                                                             DateTime dt = Convert.ToDateTime(PickerDobToDisplay);
                                                             permitInfo.APermitDeregDisplayDate = dt.ToString("yyyy/MM/dd"); ;//DeregistrationDate.ToString("dd MMM yyyy");
-                                                            permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
+                                                            permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyy-MM-dd");
                                                             permitInfo.APermitEffDtCTb = "Gregorian";
-                                                            permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+                                                            permitInfo.APermitEffDtTb = DeregistrationDate.ToString("yyyy-MM-ddTHH:mm:ss");
 
                                                         }
                                                         catch (Exception)
@@ -4510,8 +4515,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                                         if (!string.IsNullOrEmpty(DeregistrationDate.ToString()))
                                                         {
-                                                            permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
-                                                            permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+                                                            permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyy-MM-dd");
+                                                            permitInfo.APermitEffDtTb = DeregistrationDate.ToString("yyyy-MM-ddTHH:mm:ss");
                                                         }
                                                         permitInfo.APermitEffDtCTb = "Gregorian";
 
@@ -4734,7 +4739,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         SelectedOutletForCloseTranser.ReasonDescription = AppResources.TinDeregistrationTransfer;
                         SetDataForTransferToASingleTranferee();
-                        //   await SaveAsDraft();
                         EnableOutletDetaislView();
                     }
 
@@ -4744,21 +4748,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     //TODO validation for transfer/close to indiviual case missing
                     if (SelectedReason == null)
                     {
-                        // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDate)) != null)
                     {
-                        //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDregRsnTb)) != null)
                     {
-                        // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -4769,20 +4770,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         if (transferrred.FirstOrDefault(x => x.APermitTransTinTb == App.LoginDataRetrieved.TIN) != null)
                         {
-                            //   await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationSameNotAllow));
                             return;
                         }
                         else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitIdNoTb)) != null)
                         {
-                            //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
                         }
                         else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDobDate)) != null)
                         {
-                            // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
@@ -4825,14 +4823,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             {
                                 item.APermitEffDtCTb = "Hijri";
                                 string date = UtilityManager.HijriToGreg(SingleDeregistrationDate);
-                                item.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
-
+                                item.APermitEffDtTb = Convert.ToDateTime(date).ToString("yyyy-MM-ddTHH:mm:ss");
                             }
                             else
                             {
                                 item.APermitEffDtCTb = "Gregorian";
-                                item.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
-
+                                item.APermitEffDtTb = Convert.ToDateTime(SingleDeregistrationDate).ToString("yyyy-MM-ddTHH:mm:ss");
                             }
                             item.APermitEffDtHTb = SingleDeregistrationDate;
                         }
@@ -4895,7 +4891,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             if (!IsOutletContinueButtonEnabled)
             {
-                //     await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                 return;
@@ -4935,7 +4930,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         isMandatoryDocAttached = TinDeregistrationData.AttDetSet.Any(attachedDocs => attachedDocs.Dotyp == reqAttachment.DocType);
                         if (!isMandatoryDocAttached)
                         {
-                            //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             break;
@@ -4945,7 +4939,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 if (!isMandatoryDocAttached)
                     return;
-               await EnableDeclarationView();
+                await EnableDeclarationView();
             }
             catch (GAZTUnlockAccountException)
             {
@@ -4959,39 +4953,32 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public void DeclarationContinueBtnClicked()
+        public async Task DeclarationContinueBtnClicked()
         {
             try
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                TinDeregistrationData.AttDetSet = new List<Attachment>();
+                TinDeregistrationData.AttDetSet = attachmentList;
+                if (IsDeclarationChecked)
                 {
-                    TinDeregistrationData.AttDetSet = new List<Attachment>();
-                    TinDeregistrationData.AttDetSet = attachmentList;
-                    if (IsDeclarationChecked)
+                    PopulateSummaryReasonData();
+                    PopulateSummaryDeclarationData();
+                    if (TinDeregistrationData.ADecName == string.Empty || TinDeregistrationData.ADecDesig == string.Empty || TinDeregistrationData.ADecTelNo == string.Empty)
                     {
-                        PopulateSummaryReasonData();
-                        PopulateSummaryDeclarationData();
-                        if (TinDeregistrationData.ADecName == string.Empty || TinDeregistrationData.ADecDesig == string.Empty || TinDeregistrationData.ADecTelNo == string.Empty)
-                        {
-                            //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
-                        }
-                        else
-                        {
-                            EnableSummaryView();
-                        }
                     }
-                });
+                    else
+                    {
+                        EnableSummaryView();
+                    }
+                }
             }
             catch (InternetException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                    _navigationService.GoBack();
-                });
+                _navigationService.GoBack();
             }
         }
 
@@ -5006,7 +4993,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 await Submit();
                 if (isSubmitted)
                 {
-                   await _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
+                    await _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
                 }
             }
             catch (InternetException ex)
@@ -5089,7 +5076,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
         #region Attachments View
-        public  Task PopulateAttachmentsListViewTemplate()
+        public Task PopulateAttachmentsListViewTemplate()
         {
             try
             {
@@ -5315,7 +5302,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 return Task.CompletedTask;
             }
-           
+
             catch (Exception)
             {
 
@@ -5606,13 +5593,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             item.APermitEffDtCTb = "Gregorian";
                             item.APermitDobCTb = "Gregorian";
                         }
-                        item.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
+                        item.APermitEffDtTb = Convert.ToDateTime(SingleDeregistrationDate).ToString("yyyy-MM-ddTHH:mm:ss");
                         item.APermitTransTinTb = TINNumber;
                         item.APermitIdTypeTb = SelectedIDTypeCode;
                         item.APermitIdNoTb = SelectedIdNumber;
                         item.APermitDobHTb = SelectedDob;
                         item.APermitDregRsnTb = "3";
-                        item.APermitDobTb = ConvertDateFormat(Convert.ToDateTime(SelectedDob));
+                        item.APermitDobTb = Convert.ToDateTime(SelectedDob).ToString("yyyy-MM-ddTHH:mm:ss");
                         if (IsName1Visible)
                         {
                             item.APermitNm3Tb = IDTypeDataModel.name1;
@@ -5647,7 +5634,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 TinDeregistrationData.Xvoidz = "";
                 await SubmitRequest();
             }
-            catch (InternetException )
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+            }
+            catch (InternetException)
             {
                 App.HideProgressView();
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
@@ -5667,7 +5658,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 App.HideProgressView();
             }
-
         }
 
         public async Task VoidForm()
@@ -5800,9 +5790,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                 if (permitInfo.APermitValfrDtTb != null)
                                 {
-                                    if (!permitInfo.APermitValfrDtTb.Contains("/Date("))
+                                    if (permitInfo.APermitValfrDtTb.Contains("/Date("))
                                     {
-                                        permitInfo.APermitValfrDtTb = ConvertDateFormat(permitInfo.APermitValfrDtTb);
+                                        permitInfo.APermitValfrDtTb = UtilityManager.ConvertToStringFromDate(permitInfo.APermitValfrDtTb);
+                                    }
+                                    if (permitInfo.APermitEffDtTb.Contains("/Date("))
+                                    {
+                                        permitInfo.APermitEffDtTb = UtilityManager.ConvertToStringFromDate(permitInfo.APermitEffDtTb);
+                                    }
+                                    else
+                                    {
+                                        var date = Convert.ToDateTime(permitInfo.APermitEffDtTb);
+                                        permitInfo.APermitEffDtTb = date.ToString("yyyy-MM-ddTHH:mm:ss");
                                     }
                                     permitInfo.APermitValfrDtCTb = "Gregorian";
                                 }
@@ -5829,7 +5828,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitDeregDisplayDate);
 
                                 }
-                                // permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitEffDtTb);
                                 permitInfo.APermitEffDtCTb = "Gregorian";
 
                                 permitInfo.APermitDobCTb = string.IsNullOrEmpty(permitInfo.APermitDobTb) ? "" : "Gregorian";
@@ -5844,7 +5842,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     permitInfo.APermitDobTb = ConvertDateFormat(permitInfo.APermitDobTb);
 
                                 }
-                                //permitInfo.APermitDobTb = ConvertDateFormat(permitInfo.APermitDobTb);
                             }
                         }
                         catch (Exception)
@@ -5877,28 +5874,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 try
                 {
                     string TinDeregistrationDataResponse = await TINDeregistrationWebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
-                    TinDeregistrationParentResponseModel obj = JsonConvert.DeserializeObject<TinDeregistrationParentResponseModel>(TinDeregistrationDataResponse);
-
-                    if (obj.D == null)
-                    {
-                        isSubmitted = false;
-                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(TinDeregistrationDataResponse);
-                        StringBuilder Message = new StringBuilder();
-                        foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
-                        {
-                            if (itemerror.severity.Contains("error"))
-                            {
-                                if (Message.Length > 0)
-                                {
-                                    Message.Append(Environment.NewLine);
-                                }
-                                Message.Append(itemerror.message);
-                            }
-                        }
-
-
-                    }
-                    else if (!string.IsNullOrEmpty(TinDeregistrationDataResponse))
+                    if (!string.IsNullOrEmpty(TinDeregistrationDataResponse))
                     {
                         TinDeregistrationDataResponse = JObject.Parse(TinDeregistrationDataResponse)["result"].ToString();
                         var tempTinDeregData = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregistrationDataResponse);
@@ -5930,7 +5906,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         string number = TinDeregistrationData.Fbnum;
                         string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                        // await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
 
 
@@ -5938,6 +5913,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
 
 
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw ex;
                 }
                 catch (InternetException)
                 {
@@ -5960,6 +5939,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     isSubmitted = false;
                 }
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                throw ex;
             }
             catch (InternetException)
             {
@@ -5995,11 +5978,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 case ProcessStep.Step1:
                     {
-                        //ReasonContinueBtnClicked();
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             if (!string.IsNullOrEmpty(PopUpMsgFor2021))
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
                             else
@@ -6010,11 +5991,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 case ProcessStep.Step2:
                     {
-                        // OutletContinueBtnClicked();
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             if (!string.IsNullOrEmpty(PopUpMsgFor2021))
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
                             else
@@ -6024,11 +6003,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 case ProcessStep.Step3:
                     {
-                        //AttachmentsContinueBtnClicked();
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             isSaveAsDraftCalledForAttachment = true;
                             if (!string.IsNullOrEmpty(PopUpMsgFor2021))
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
@@ -6040,12 +6017,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 case ProcessStep.Step4:
                     {
-                        // DeclarationContinueBtnClicked();
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
-                            // await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
                             isSaveAsDraftCalledForAttachment = true;
                             if (!string.IsNullOrEmpty(PopUpMsgFor2021))
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
@@ -6056,12 +6030,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 case ProcessStep.Step5:
                     {
-                        //SummaryContinueBtnClicked();
-
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             isSaveAsDraftCalledForAttachment = true;
                             if (!string.IsNullOrEmpty(PopUpMsgFor2021))
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
@@ -6082,29 +6053,19 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
+                IsLoading = true;
+                TinDeregistrationResponseModel zakatDeregResponseData = new TinDeregistrationResponseModel();
+                zakatDeregResponseData.Approvez = "";
+                zakatDeregResponseData.Rejectz = "";
 
-                    TinDeregistrationResponseModel zakatDeregResponseData = new TinDeregistrationResponseModel();
-                    zakatDeregResponseData.Approvez = "";
-                    zakatDeregResponseData.Rejectz = "";
+                zakatDeregResponseData = await TINDeregistrationWebServiceManager.GaztTinDeregistrationNewRequestData(zakatDeregResponseData);
+                TinDeregistrationData = zakatDeregResponseData;
+                await DeletUploadedImage(TinDeregistrationData.AttDetSet);
+                TinDeregistrationData?.AttDetSet?.Clear();
+                SelectedOutletOption = null;
+                PickerDobToDisplay = null;
 
-                    zakatDeregResponseData = await TINDeregistrationWebServiceManager.GaztTinDeregistrationNewRequestData(zakatDeregResponseData);
-                    TinDeregistrationData = zakatDeregResponseData;
-                    await DeletUploadedImage(TinDeregistrationData.AttDetSet);
-                    TinDeregistrationData?.AttDetSet?.Clear();
-                    SelectedOutletOption = null;
-                    PickerDobToDisplay = null;
-                });
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
             }
             catch (Exception)
@@ -6115,7 +6076,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
 
-        public  Task DeletUploadedImage(List<Attachment> AttachmentList)
+        public Task DeletUploadedImage(List<Attachment> AttachmentList)
         {
             try
             {
@@ -6149,10 +6110,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             try
             {
                 string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, TinDeregistrationData.CaseGuid, "", attachment.Doguid);
-                if (results != "X")
-                {
-                    //   _navigationService.NavigateTo(AppResources.Somethingwentwrong, AppResources.ZError);
-                }
             }
             catch (Exception)
             {
@@ -6191,19 +6148,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void SetDefaultReasonLayout()
         {
-            // TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
             int index = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
 
             SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(SelectedOutletOption);
 
-            //if (SelectedOutletOptionIndex == 1)
-            //{
-            //   NationalTypeSelected();
-            //}
             if (SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
                 NationalTypeSelected();
-                MainThread.BeginInvokeOnMainThread(() => IsDobVisible = true);
+                IsDobVisible = true;
             }
 
             IsOption1Visible = index == 0 ? true : false;
@@ -6256,14 +6208,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 else
                 {
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        IDTypeDataModel.name1 = string.Empty;
-                        IDTypeDataModel.name2 = string.Empty;
-                        IDTypeDataModel.fatherName = string.Empty;
-                        IDTypeDataModel.grandfatherName = string.Empty;
-                        IDTypeDataModel.familyName = string.Empty;
-                    });
+                    IDTypeDataModel.name1 = string.Empty;
+                    IDTypeDataModel.name2 = string.Empty;
+                    IDTypeDataModel.fatherName = string.Empty;
+                    IDTypeDataModel.grandfatherName = string.Empty;
+                    IDTypeDataModel.familyName = string.Empty;
                 }
                 PickerDobToDisplay = string.Empty;
             }

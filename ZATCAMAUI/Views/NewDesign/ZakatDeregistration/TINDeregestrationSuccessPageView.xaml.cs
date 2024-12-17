@@ -16,16 +16,14 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             BindingContext = viewModel;
             if (response != null)
             {
-                if (response.Fbnum != null)
+                if (response.Fbnumz != null)
                 {
                     if (response.ADecName != null)
                         Label_Name.Text = response.ATaxpayerName;
 
-                    Label_ApplicationNumber.Text = response.Fbnum;
-                    viewModel.FBNumber = response.Fbnum;
-                    //string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-
-                    Label_Date.Text = DateTime.Today.Date.ToString("dd/MM/yyyy").Replace('-', '/');
+                    Label_ApplicationNumber.Text = response.Fbnumz;
+                    viewModel.FBNumber = response.Fbnumz;
+                    Label_Date.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 }
             }
         }

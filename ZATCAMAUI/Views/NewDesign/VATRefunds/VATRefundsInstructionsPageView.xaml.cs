@@ -23,11 +23,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
         }
 
 
-        public void VATRefundRequestInstructions_Tapped(object sender, EventArgs e)
+        public async void VATRefundRequestInstructions_Tapped(object sender, EventArgs e)
         {
             try
             {
-                viewModel.VATRefundInstructionsConfirmedBtnTapped();
+               await viewModel.VATRefundInstructionsConfirmedBtnTapped();
             }
             catch (Exception)
             {

@@ -20,7 +20,8 @@
 
             <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.AdjustmentAmount}" />
 
-            <ScrollView Grid.Row="1">
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
                 <StackLayout Spacing="15">
                     <Border
                         Padding="15"

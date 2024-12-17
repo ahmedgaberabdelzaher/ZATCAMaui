@@ -287,13 +287,13 @@
                                                     <StackLayout
                                                         Grid.Row="1"
                                                         Grid.Column="1"
-                                                        HorizontalOptions="FillAndExpand"
+                                                        HorizontalOptions="End"
                                                         VerticalOptions="FillAndExpand">
 
                                                         <Border
                                                             Padding="8,3,8,3"
                                                             BackgroundColor="{StaticResource PartialBg}"
-                                                            HorizontalOptions="Center"
+                                                            HorizontalOptions="End"
                                                             StrokeShape="RoundRectangle 14,14,14,14"
                                                             StrokeThickness="1"
                                                             VerticalOptions="CenterAndExpand">
@@ -321,62 +321,20 @@
                                                         </Border>
                                                     </StackLayout>
 
-                                                    <BoxView
-                                                        Grid.Row="2"
+                                                    <StackLayout
+                                                        Grid.Row="3"
+                                                        Grid.Column="0"
                                                         Grid.ColumnSpan="2"
-                                                        Margin="0,5"
-                                                        HeightRequest="1"
-                                                        Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-
-                                                    <StackLayout
-                                                        Grid.Row="3"
-                                                        Grid.Column="0"
                                                         Margin="0,5">
-                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatDueAmount}" />
-
-                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding dueamount}" />
-
-                                                    </StackLayout>
-
-                                                    <StackLayout
-                                                        Grid.Row="3"
-                                                        Grid.Column="1"
-                                                        Margin="0,5">
-                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInstalmentAmount}" />
-                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding instalmentAmount}" />
-                                                    </StackLayout>
-
-                                                    <StackLayout
-                                                        Grid.Row="4"
-                                                        Grid.Column="0"
-                                                        Margin="0,5">
-                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentNumberOfInstalments}" />
-
-                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding noOfInstalments}" />
-                                                    </StackLayout>
-
-                                                    <StackLayout
-                                                        Grid.Row="4"
-                                                        Grid.Column="1"
-                                                        Margin="0,5"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        VerticalOptions="FillAndExpand">
-
-                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDownPaymentAmount}" />
-                                                        <Label
-                                                            HorizontalOptions="FillAndExpand"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            Text="{Binding downpayment}"
-                                                            VerticalOptions="FillAndExpand" />
-
-                                                    </StackLayout>
-
-                                                    <StackLayout Grid.Row="5" Margin="0,5">
                                                         <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSubmissionDate}" />
 
                                                         <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding dateOfSubmission}" />
 
                                                     </StackLayout>
+
+
+
+
 
 
                                                 </Grid>

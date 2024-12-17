@@ -206,35 +206,14 @@
                                                 TextColor="{StaticResource NeutralBlack}"
                                                 Unfocused="EntryIDNumber_Unfocused">
 
-                                                <custom:GAZTBorderlessEntry.Triggers>
-
-                                                    <DataTrigger
-                                                        Binding="{Binding IsDropdownVisibile}"
-                                                        TargetType="custom:GAZTBorderlessEntry"
-                                                        Value="true">
-                                                        <Setter Property="IsReadOnly" Value="True" />
-                                                        <Setter Property="InputTransparent" Value="True" />
-                                                    </DataTrigger>
-
-                                                    <DataTrigger
-                                                        Binding="{Binding IsDropdownVisibile}"
-                                                        TargetType="custom:GAZTBorderlessEntry"
-                                                        Value="false">
-                                                        <Setter Property="IsReadOnly" Value="False" />
-                                                        <Setter Property="InputTransparent" Value="False" />
-                                                    </DataTrigger>
-
-                                                </custom:GAZTBorderlessEntry.Triggers>
+                                              
 
                                             </custom:GAZTBorderlessEntry>
 
                                         </custom:CustomSfTextInputView.TextInputView>
 
                                         <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image
-                                                Aspect="AspectFit"
-                                                IsVisible="{Binding IsDropdownVisibile}"
-                                                Source="greyDropDown" />
+                                            <ContentView Content="{Binding TrailingViewContent}" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
 
                                         <inputLayout:SfTextInputLayout.GestureRecognizers>
@@ -861,11 +840,9 @@
                                 <buttons:SfButton
                                     Margin="0,16,0,16"
                                     Command="{Binding SummaryConBtnTapped}"
-                                    HeightRequest="48"
                                     IsEnabled="{Binding IsContinueButtonEnable}"
                                     Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.Confirm}"
-                                    WidthRequest="366" />
+                                    Text="{x:Static ResourceManager:AppResources.Confirm}" />
 
                             </StackLayout>
 

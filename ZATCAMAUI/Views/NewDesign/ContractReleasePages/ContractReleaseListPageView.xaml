@@ -146,7 +146,8 @@
                                         StrokeShape="RoundRectangle 15,15,15,15"
                                         Style="{StaticResource GreyBorderFrameWithShadow}"
                                         VerticalOptions="FillAndExpand">
-                                        <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal"
+                                                     Spacing="10">
                                             <Image
                                                 Grid.Row="0"
                                                 Grid.Column="0"

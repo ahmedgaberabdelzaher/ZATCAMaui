@@ -9,7 +9,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <ScrollView HorizontalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never"
+                VerticalOptions="FillAndExpand">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

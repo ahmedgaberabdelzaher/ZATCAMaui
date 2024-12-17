@@ -23,9 +23,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             try
             {
-                App.DisplayProgressView();
+                IsLoading = true;
                 await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.Outlets);
-                App.HideProgressView();
+                IsLoading = false;
             }
             catch (InternetException)
             {
@@ -43,7 +43,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception)
             {
-                App.HideProgressView();
+                IsLoading = false;
             }
         }
     }

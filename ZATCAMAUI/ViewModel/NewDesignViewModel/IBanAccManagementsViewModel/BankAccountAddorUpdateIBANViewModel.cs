@@ -343,6 +343,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
+        private View _trailingViewContent;
+        public View TrailingViewContent
+        {
+            get => _trailingViewContent;
+            set
+            {
+                if (_trailingViewContent != value)
+                {
+                    _trailingViewContent = value;
+                    OnPropertyChanged(nameof(TrailingViewContent));
+                }
+            }
+        }
+
 
         private bool _summaryVisible = false;
 
@@ -732,6 +746,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             }
         }
 
+        public void ToggleDropdownVisibility()
+        {
+            TrailingViewContent = IsDropdownVisibile ? new Image { Source = "greyDropDown", Aspect = Aspect.AspectFit }: null;
+        }
         private void SummaryEditClicked()
         {
             EnableNewFormView();
@@ -1034,8 +1052,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     else
                     {
                         isNameEnabled = true;
+                        IsDropdownVisibile = false;
                         AttachmentVisible = true;
                     }
+                    ToggleDropdownVisibility();
                 }
             }
             catch (Exception)
@@ -1049,7 +1069,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         {
             try
             {
-                if (AccountOwnerName.Equals(""))
+                if(string.IsNullOrEmpty(AccountOwnerName))
                 {
                     MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertName));
 

@@ -219,6 +219,7 @@
                                         <StackLayout
                                             FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             Margin="0"
+                                            Padding="5"
                                             HorizontalOptions="StartAndExpand"
                                             Orientation="Horizontal"
                                             Spacing="10">

@@ -237,7 +237,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
         private void BindCommands()
         {
             VerifyOTPCommand = new Command(async () => await VerifyOTP());
-            ResendCommand = new Command(() => Resend());
+            ResendCommand = new Command(async () => await Resend());
 
         }
 
@@ -247,6 +247,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             {
                 if (!Validate())
                 {
+                    IsLoading = true;
                     NafathChangeMobileNumberCheckOTPModel model = new NafathChangeMobileNumberCheckOTPModel();
                     model.Guid = Request.d.Guid;
                     model.Scrid = Device.RuntimePlatform == Device.iOS ? "C3" : "C4";
@@ -254,9 +255,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
                     model.Lang = WebServiceManager.GetLangZParameterAREN();
                     model.Otp = FirstDigit + SecondDigit + ThirdDigit + FourthDigit + FifthDigit + SixthDigit;
                     var response = await WebServiceManager.NafathChangeMobileNumberCheckOTP(model);
+                    IsLoading = false;
                     if (response != null && response.d != null)
                     {
-                        _navigationService.NavigateTo(App.NafathChangeMobileNumberSuccessView);
+                       await _navigationService.NavigateTo(App.NafathChangeMobileNumberSuccessView);
                     }
                     else
                     {
@@ -264,9 +266,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
                     }
                 }
             }
-            catch (Exception ex)
+            catch (GAZTErrorException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
 
         }
@@ -346,6 +349,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
         {
             try
             {
+                IsLoading = true;
                 NafathChangeMobileNumberSendOTPModel model = new NafathChangeMobileNumberSendOTPModel();
                 model.Partner = Request.d.Partner;
                 model.Guid = Request.d.Guid;
@@ -356,6 +360,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
                 model.Lang = WebServiceManager.GetLangZParameterAREN();
                 model.Scrid = Device.RuntimePlatform == Device.iOS ? "C3" : "C4";
                 var response = await WebServiceManager.NafathChangeMobileNumberSendOTP(model);
+                IsLoading = false;
                 if (response != null && response.d != null)
                 {
                     Request.d.Guid = response.d.Guid;
@@ -366,11 +371,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
             }
             catch (GAZTErrorException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-            }
-            catch (Exception ex)
-            {
-
+                IsLoading = false;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
 
         }

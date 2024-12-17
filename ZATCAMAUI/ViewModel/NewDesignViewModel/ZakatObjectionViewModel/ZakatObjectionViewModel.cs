@@ -917,7 +917,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (VATReferanceNumber != null)
                 {
 
-                    string downloadurl = ZATCAConstants.downloadFile + "'" + VATReferanceNumber + "')/$value";
+                    string downloadurl = ZATCAConstants.downloadFile + VATReferanceNumber;
                     await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }

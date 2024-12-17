@@ -68,7 +68,9 @@
                                     HorizontalOptions="Start"
                                     Style="{StaticResource ValueLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.VATRSAppNumber}" />
-                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="EndAndExpand"
+                                             Spacing="10"
+                                             Orientation="Horizontal">
                                     <Label
                                         x:Name="Label_ApplicationNumber"
                                         HorizontalOptions="Start"

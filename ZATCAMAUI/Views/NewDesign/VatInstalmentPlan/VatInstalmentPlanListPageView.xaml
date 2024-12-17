@@ -12,7 +12,6 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     x:Name="page"
@@ -776,7 +775,7 @@
                         <Grid
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsDisplayListVisible}"
-                            RowDefinitions="auto,auto"
+                            RowDefinitions="auto,*"
                             VerticalOptions="FillAndExpand">
 
                             <Grid Grid.Row="0" RowDefinitions="auto,auto,auto">
@@ -812,11 +811,8 @@
 
                                 <listView:SfListView
                                     x:Name="VATInstalmentDisplayViewPage"
-                                    Grid.Row="0"
-                                    Margin="0"
-                                    Padding="0"
                                     AutoFitMode="Height"
-                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalOptions="FillAndExpand"
                                     IsScrollingEnabled="False"
                                     ItemSpacing="0"
                                     ItemsSource="{Binding RequestForScheduleList}"
@@ -824,7 +820,7 @@
                                     SelectionBackground="Transparent"
                                     SelectionMode="Single"
                                     TapCommand="{Binding DisplayListViewItemCommand}"
-                                    VerticalOptions="Center">
+                                    VerticalOptions="FillAndExpand">
                                     <listView:SfListView.ItemTemplate>
 
 
@@ -858,29 +854,35 @@
                                                         BackgroundColor="LightGray"
                                                         HeightRequest="1"
                                                         HorizontalOptions="FillAndExpand" />
-                                                    <Grid Padding="10,10,10,10" RowSpacing="10">
+                                                    <Grid Padding="10,10,10,10"
+                                                          RowSpacing="20">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition Width="auto" />
                                                         </Grid.ColumnDefinitions>
 
-                                                        <StackLayout Grid.Row="0" Grid.Column="0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentMonthlyInstallment}" />
-                                                            <Label>
+                                                        <StackLayout Grid.Row="0" Grid.Column="0"
+                                                                     Spacing="10">
+                                                            <Label Style="{StaticResource CaptionLabelGrey}"
+                                                                   Text="{x:Static ResourceManager:AppResources.ZakatInstalmentMonthlyInstallment}" />
+                                                            <Label HorizontalOptions="Start">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding InstalmentAmt, Converter={StaticResource commaSeparatorConverter}}" />
-                                                                        <Span Style="{StaticResource ValueLabelBlack}" Text="&#160;" />
+                                                                        <Span Style="{StaticResource ValueLabelBlack}"
+                                                                              Text="{Binding InstalmentAmt, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                        <Span Style="{StaticResource ValueLabelBlack}"
+                                                                              Text="&#160;" />
                                                                         <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                         </StackLayout>
-                                                        <StackLayout Grid.Row="0" Grid.Column="1">
+                                                        <StackLayout Grid.Row="0" Grid.Column="1"
+                                                                     Spacing="10">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountRemaining}" />
                                                             <Label>
                                                                 <Label.FormattedText>
@@ -892,7 +894,8 @@
                                                                 </Label.FormattedText>
                                                             </Label>
                                                         </StackLayout>
-                                                        <StackLayout Grid.Row="1" Grid.ColumnSpan="0">
+                                                        <StackLayout Grid.Row="1" Grid.ColumnSpan="0"
+                                                                     Spacing="10">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentRelevantTax}" />
                                                             <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding PeriodText}" />
                                                         </StackLayout>
@@ -1227,6 +1230,106 @@
                                 </StackLayout>
                             </Border>
 
+                        </Grid>
+                        <!-- Pending Sets -->
+                        <Grid
+                            IsVisible="{Binding IsPendingRequestsVisible}"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            RowDefinitions="auto,auto">
+
+                            <Label Grid.Row="0"
+                                   Style="{StaticResource CaptionLabelBlack}"
+                                   Text="{x:Static ResourceManager:AppResources.RequestToVatDispalyMsg}"
+                                   HorizontalTextAlignment="Start"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand" />
+
+                            <listView:SfListView
+                                x:Name="VATInstalmentPendingRequestsVisible"
+                                Grid.Row="1"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                AutoFitMode="Height"
+                                IsScrollingEnabled="False"
+                                ItemSpacing="0"
+                                ItemsSource="{Binding PendingSetList}"
+                                SelectionMode="None"
+                                ScrollBarVisibility="Never"
+                                SelectionBackground="Transparent">
+                                <listView:SfListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            Padding="10"
+                                            Grid.Column="0" 
+                                            Margin="0,15,0,0"
+                                            Style="{StaticResource GreyBorderFrameWithShadow}"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+
+                                            <Grid
+                                                Padding="0"
+                                                RowSpacing="0"
+                                                Margin="0"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand"
+                                                RowDefinitions="auto,auto,auto"
+                                                ColumnDefinitions="50*,50*">
+                                             
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Text="{x:Static ResourceManager:AppResources.RqstTOVatRtnDes}"
+                                                    Style="{StaticResource BodyLabelGrey}"
+                                                    HorizontalTextAlignment="Start"
+                                                    HorizontalOptions="StartAndExpand"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Text="{Binding Perslt}"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    HorizontalTextAlignment="Start"
+                                                    HorizontalOptions="StartAndExpand"/>
+
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Text="{x:Static ResourceManager:AppResources.RqstTOVatRtnPrd}"
+                                                    Style="{StaticResource BodyLabelGrey}"
+                                                    HorizontalTextAlignment="Center"
+                                                    HorizontalOptions="StartAndExpand"/>
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Text="{Binding Persl}"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    HorizontalTextAlignment="Center"
+                                                    HorizontalOptions="StartAndExpand"/>
+
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Text="{x:Static ResourceManager:AppResources.RqstTOVatTaxTyp}"
+                                                    Style="{StaticResource BodyLabelGrey}"
+                                                    HorizontalTextAlignment="Start"
+                                                    HorizontalOptions="StartAndExpand"/>
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    Text="{Binding Taxtp}"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    HorizontalTextAlignment="Start"
+                                                    HorizontalOptions="StartAndExpand"/>
+
+
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </listView:SfListView.ItemTemplate>
+
+                            </listView:SfListView>
                         </Grid>
 
                     </Grid>

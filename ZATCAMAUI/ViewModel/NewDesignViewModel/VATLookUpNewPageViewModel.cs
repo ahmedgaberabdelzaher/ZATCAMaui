@@ -406,7 +406,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             Name = vatLookUp.d.results[0].Name;
                             TIN = vatLookUp.d.results[0].Tin;
                             Region = vatLookUp.d.results[0].Region;
-                            VatNumber = vatLookUp.d.results[0].Idnumber;
+                            //VatNumber = vatLookUp.d.results[0].Idnumber;
+                            if (!string.IsNullOrEmpty(TIN))
+                            {
+                                VatNumber = vatLookUp.d.results[0].Tin + "00003";
+                            }
                             VATCertificateNumber = vatLookUp.d.results[0].VatCertNo;
 
                             IsNameVisible = true;

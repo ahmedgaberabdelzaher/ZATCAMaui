@@ -373,7 +373,7 @@
                                 ItemHeight="36"
                                 Mode="Dialog"
                                 SelectedItem="{Binding TodayDateNormal}"
-                                Style="{StaticResource PickerStyle}">
+                                >
 
                                 <custom:CustomDatePicker.ColumnHeaderView>
                                     <syncfusion:PickerColumnHeaderView Height="46" Background="white" />
@@ -486,7 +486,7 @@
                                 ItemHeight="36"
                                 Mode="Dialog"
                                 SelectedItem="{Binding TodayDateNormal}"
-                                Style="{StaticResource PickerStyle}">
+                                >
 
                                 <custom:CustomDatePicker.ColumnHeaderView>
                                     <syncfusion:PickerColumnHeaderView Height="46" Background="White" />

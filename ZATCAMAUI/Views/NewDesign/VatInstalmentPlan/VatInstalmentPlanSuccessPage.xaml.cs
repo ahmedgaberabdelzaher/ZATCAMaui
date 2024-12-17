@@ -113,7 +113,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
                     viewModel.IsLoading = true;
                 });
 
-                string downloadurl = ZATCAConstants.downloadFile + "'" + viewModel.VATReferanceNumber + "')/$value";
+                string downloadurl = ZATCAConstants.downloadFile + viewModel.VATReferanceNumber;
                 //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 

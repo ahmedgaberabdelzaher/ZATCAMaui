@@ -127,6 +127,7 @@
     <data name="AmountNotObjected" xml:space="preserve">
         <value>Amount not objected</value>
     </data>
+
     <data name="Attachment" xml:space="preserve">
         <value>Attachment</value>
     </data>
@@ -139,6 +140,7 @@
     <data name="AverageNumOfEmployment" xml:space="preserve">
         <value>Average number of employment</value>
     </data>
+
     <data name="Back" xml:space="preserve">
         <value>Back</value>
     </data>
@@ -4107,7 +4109,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
         <comment>VATRegistrationPageView</comment>
     </data>
     <data name="VATRImportExport" xml:space="preserve">
-        <value>Importer  Exporter</value>
+        <value>Importer/Exporter</value>
         <comment>VATRegistrationPageView</comment>
     </data>
     <data name="VATRInmaBank" xml:space="preserve">
@@ -5243,9 +5245,6 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <data name="VATRefundCancelRefund" xml:space="preserve">
         <value>Do you want to cancel the Refund?</value>
     </data>
-    <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
-        <value>Refund Request for VAT</value>
-    </data>
     <data name="VATRefundRequestTtitle" xml:space="preserve">
         <value>VAT Refund Request</value>
     </data>
@@ -6005,8 +6004,8 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
         <value>Instructions &amp; Conditions</value>
     </data>
     <data name="CRInstructions" xml:space="preserve">
-        <value>1. Must attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and if it’s in English, an Arabic version must be submitted and approved by certified translation office. 
-2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
+        <value>1. Must attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and if it’s in English, an Arabic version must be submitted and approved by certified translation office.
+            2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
     </data>
     <data name="CRInstructionsDesc" xml:space="preserve">
         <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
@@ -10928,8 +10927,18 @@ Then The system should cancel (/delete) the draft and apply the necessary change
         <value>I acknowledge and pledge my consent on amending the effective date of registration for VAT. I acknowledge my full awareness of the violations and penalties that may result from this procedure. I hold myself liable to all legal effects resulting from this procedure, and that the General Authority of Zakat and Tax is not liable, in whole or in part, for any direct or non-direct error or damage, whether accidental, consequential, or punitive, whether private or public. General Authority of Zakat and Tax is not liable to any missed opportunity, loss or damage resulting from any of the information or data entered.</value>
     </data>
     <data name="VATRNewVATEligibleStartDate" xml:space="preserve">
-        <value>New VAT Eligibility Commencement Date</value>
+       <value>New VAT Eligibility Commencement Date</value>
     </data>
+    <data name="UnpaidAmount" xml:space="preserve">
+     <value>Unpaid Amount</value>
+    </data>
+    <data name="UnpaidInfoMessage" xml:space="preserve">
+     <value>The guarantee amount is equal to 25% of the total fine amount</value>
+    </data>
+    <data name="UnpaidInfoMessageLatest" xml:space="preserve">
+       <value>The Bank Guarantee Amount Is Equal To 25% Of The Total Penalty Amount, Noting That The Minimum Amount For Cash Security Is 2000 SAR And The Maximum Limit Is 5,000,000 SAR</value>
+    </data>
+
     <!-- END of CR6490 -->
     <data name="DepartingTo" xml:space="preserve">
         <value>Departing To</value>
@@ -11762,5 +11771,98 @@ the credit balance of the current period will be carried forward, you can reques
   </data>
   <data name="ErrorCaptcha" xml:space="preserve">
         <value>Invalid captcha code</value>
-    </data> 
-</root>
+    </data>
+
+	<!--CR 7453-->
+	<data name="ZZCRNationalNumber" xml:space="preserve">
+   <value>CR National Number</value>
+   <comment>Sign up</comment>
+ </data>
+	<data name="EstActivities" xml:space="preserve">
+  <value>Activities</value>
+</data>
+	<data name="EstAdd" xml:space="preserve">
+  <value>Add</value>
+</data>
+	<data name="EstNoData" xml:space="preserve">
+  <value>No Data</value>
+</data>
+	<data name="EstGotDuplicates" xml:space="preserve">
+  <value>Duplicate entry found</value>
+</data>
+	<data name="ZZSelectatleastoneofthefieldsCommercialRegistrationNatiNumberorLicencebelow" xml:space="preserve">
+   <value>Select at least one of the fields (Commercial Registration National Number or Licence) below</value>
+   <comment>Sign up</comment>
+ </data>
+	<data name="ZZCommercialRegistrationNumbershouddbe10digitswith7starts" xml:space="preserve">
+   <value>CR National Number should start with 7 and should have 10 digits</value>
+   <comment>Sign Up</comment>
+   </data>
+	<data name="ZZPleaseentervalidCRNationalnumber" xml:space="preserve">
+   <value>Please enter valid CR National Number</value>
+   <comment>Sign Up</comment>
+ </data>
+ <data name="PassportIssueDisclaimer" xml:space="preserve">
+   <value>Passport issue date mustn't be before date of birth</value>
+ </data>
+  <data name="PassportExpiryDisclaimer" xml:space="preserve">
+   <value>Passport expiry date mustn't be before date of birth</value>
+ </data>
+ <data name="PassportDisclaimer" xml:space="preserve">
+   <value>Passport expiry date mustn't be before passport issue</value>
+ </data>
+  <data name="InstalmentDetailsSchedule" xml:space="preserve">
+   <value>Instalment details schedule is displayed here</value>
+ </data>
+  <data name="ReservationStartDate" xml:space="preserve">
+   <value>Reservation start date</value>
+ </data>
+ <data name="ReservationDate" xml:space="preserve">
+   <value>Reservation date</value>
+ </data>
+  <data name="ReservationAmount" xml:space="preserve">
+   <value>Reservation amount</value>
+ </data>
+ <data name="ReservationNumber" xml:space="preserve">
+   <value>Reservation number</value>
+ </data>
+  <data name="ReservationReason" xml:space="preserve">
+   <value>Reservation reason</value>
+ </data>
+   <data name="ReservationEntity" xml:space="preserve">
+   <value>Reservation entity</value>
+ </data>
+  <data name="ClosedPenalty" xml:space="preserve">
+   <value>Closed - Penalty has already been imposed</value>
+ </data>
+ <data name="ClosedInsufficient" xml:space="preserve">
+   <value>Closed - Insufficient information</value>
+ </data>
+ <data name="ClosedTax" xml:space="preserve">
+   <value>Closed - Tax calculation is correct</value>
+ </data>
+ <data name="ClosedTIN" xml:space="preserve">
+   <value>Closed – TIN is linked to company</value>
+ </data>
+ <data name="ClosedRelated" xml:space="preserve">
+   <value>Closed - Not related to ZATCA</value>
+ </data>
+ <data name="ClosedInvalid" xml:space="preserve">
+   <value>Closed - Invalid report</value>
+ </data>
+ <data name="ClosedResponse" xml:space="preserve">
+   <value>Closed - No response from the reporter</value>
+ </data>
+  <data name="ClosedImposed" xml:space="preserve">
+   <value>Closed - Penalty has been imposed</value>
+ </data>
+   <data name="ClosedFine" xml:space="preserve">
+   <value>Close the report with a fine</value>
+ </data>
+ <data name="ClosedWarning" xml:space="preserve">
+   <value>Closed - Warning with No Penalty</value>
+ </data>
+ <data name="OTPStatus" xml:space="preserve">
+     <value>There is a pre-access request, please wait</value>
+  </data>
+</root> 

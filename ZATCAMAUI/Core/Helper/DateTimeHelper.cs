@@ -32,11 +32,16 @@ namespace ZATCAMAUI.Core.Helper
                                         "dd/MM/yyyy", "MM/dd/yyyy", "M/dd/yyyy",
                                         "d/MM/yyyy","M/d/yyyy","d/M/yyyy",
                                         "dd/M/yyyy","MM/d/yyyy","d-MM-yyyy",
-                                        "dd-M-yyyy","MM-d-yyyy",
+                                        "dd-M-yyyy","MM-d-yyyy","yyyy/M/d","yyyy/M/d",
+                                        "yyyy-M-d","yyyy-d-M","yyyy/dd/MM","yyyy-dd-MM",
                                         "dd-MM-yyyy'T'hh:mm:ss","MM-dd-yyyy'T'hh:mm:ss",
                                         "dd-MM-yyyy'T'HH:mm:ss","MM-dd-yyyy'T'HH:mm:ss",
                                         "dd-MM-yyyy","MM-dd-yyyy","M-d-yyyy","d-M-yyyy",
-                                        "M-dd-yyyy","yyyy-MM-dd'T'hh:mm:ss","yyyy-MM-dd'T'HH:mm:ss"};
+                                        "M-dd-yyyy","yyyy-MM-dd'T'hh:mm:ss","yyyy-MM-dd'T'HH:mm:ss",
+                                        "yyyy-MM-dd'T'HH:mm:ss.sss","yyyy/MM/dd'T'HH:mm:ss.sss",
+                                        "yyyy-MM-ddTHH:mm:ss.sss","yyyy/MM/ddTHH:mm:ss.sss",
+                                        "yyyy/MM/dd'T'hh:mm:ss.sss","yyyy-MM-dd'T'hh:mm:ss.sss",
+                                        "yyyy/MM/ddThh:mm:ss.sss","yyyy-MM-ddThh:mm:ss.sss"};
                 return DateTime.ParseExact(dateTimeString, formates, cu, DateTimeStyles.None);
             }
             catch (Exception)

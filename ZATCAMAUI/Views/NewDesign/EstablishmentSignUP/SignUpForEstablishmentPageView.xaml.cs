@@ -17,6 +17,7 @@ using ZATCAMAUI.Core.Helper;
 using static ZATCAMAUI.Models.ErrorMessage;
 using ZATCAMAUI.Models.NewModelAPI.AbsherOTP;
 using Syncfusion.Maui.Core.Carousel;
+using Microsoft.Maui.Platform;
 
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 {
@@ -2029,7 +2030,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 viewModel.ShowIqamaTypeDesc = false;
 
             }
-            if (string.IsNullOrEmpty(viewModel.PkrDBO))
+            if (string.IsNullOrEmpty(DateEntry.Text))
             {
                 flag = false;
                 FrmDBO.HasError = true;
@@ -2063,7 +2064,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             bool flag = true;
             if (string.IsNullOrEmpty(viewModel.TxtMobileNumber))
             {
-                //FrmMobile.HasError = true;
+                FrmMobile.HasError = true;
                 flag = false;
             }
             if (string.IsNullOrEmpty(viewModel.TxtEmailAddress))
@@ -2133,8 +2134,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 }
                 else
                 {
-                    FrmLicenseNumber.HasError = false;
-                    FrmlicenceNumberIssuedbyframe.HasError = false;
                     MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
 
                 }
@@ -2504,7 +2503,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     if (App.IsArabic)
                                     {
 
-                                        result = await Application.Current.MainPage.DisplayAlert
+                                        result = await viewModel._dialogService.ShowMessage
                                                                         (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
                                                                             AppResources.ZZZNoText, AppResources.ZZZYesText);
                                         if (result == true)
@@ -3041,13 +3040,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                             Message.Append(itemerror.message);
                                         }
                                     }
-                                    //   viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                                 }
                                 else
                                 {
                                      NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
-                                    //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
                             }
                             else if (ResultDuplicateCR.d.Flag == "X")
@@ -3057,7 +3054,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 if (App.IsArabic)
                                 {
 
-                                    result = await Application.Current.MainPage.DisplayAlert
+                                    result = await viewModel._dialogService.ShowMessage
                                                                     (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
                                                                         AppResources.ZZZNoText, AppResources.ZZZYesText);
                                     if (result == true)
@@ -3075,14 +3072,13 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 else
                                 {
 
-                                    result = await Application.Current.MainPage.DisplayAlert
+                                    result = await viewModel._dialogService.ShowMessage
                                                                    (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
                                                                        AppResources.ZZZYesText, AppResources.ZZZNoText);
 
                                     if (result == true)
                                     {
                                        await CRDuplicateCheck();
-                                        // _navigationService.GoBack();
 
                                     }
                                     else // if it's equal to NO
@@ -3092,14 +3088,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                         return; // just return to the page and do nothing.
                                     }
                                 }
-
-                                //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
-
-
                             }
                             else
                             {
-                                //   viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
                             }
                         }
@@ -3520,7 +3511,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 if (App.IsArabic)
                                 {
 
-                                    result = await Application.Current.MainPage.DisplayAlert
+                                    result = await viewModel._dialogService.ShowMessage
                                                                     (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
                                                                         AppResources.ZZZNoText, AppResources.ZZZYesText);
                                     if (result == true)
@@ -3538,7 +3529,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 else
                                 {
 
-                                    result = await Application.Current.MainPage.DisplayAlert
+                                    result = await viewModel._dialogService.ShowMessage
                                                                    (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
                                                                        AppResources.ZZZYesText, AppResources.ZZZNoText);
 
@@ -3555,14 +3546,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                         return; // just return to the page and do nothing.
                                     }
                                 }
-
-                                //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
-
-
                             }
                             else
                             {
-                                //  await viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
                             }
                         }

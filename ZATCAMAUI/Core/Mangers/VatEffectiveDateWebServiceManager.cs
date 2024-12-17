@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http.Headers;
-using ZATCAMAUI;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;

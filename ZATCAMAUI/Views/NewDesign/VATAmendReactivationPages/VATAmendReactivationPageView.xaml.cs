@@ -4,7 +4,6 @@ using Mopups.Services;
 using Syncfusion.Maui.Buttons;
 using Syncfusion.Maui.ListView;
 using Syncfusion.Maui.Picker;
-using System.Collections.ObjectModel;
 using System.Text;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Core.CustomControls;
@@ -23,8 +22,6 @@ using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using Application = Microsoft.Maui.Controls.Application;
 using Page = Microsoft.Maui.Controls.Page;
 using Slider = Microsoft.Maui.Controls.Slider;
-using System;
-using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 {
@@ -70,7 +67,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsNewStartDateInfoChecked = false;
                 viewModel.NewVatEligibleStartDate = string.Empty;
                 viewModel.CurrentStep = AppResources.VATRStep2;
-                SetfirstBoxColor();
                 viewModel.IsNewAccountClicked = false;
                 viewModel.IsInstrunctionChecked = false;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
@@ -144,14 +140,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             EntryIDNo.Text = string.Empty;
         }
 
-        private async void DpEStartDate_Closed(object sender, EventArgs e)
+        private void DpEStartDate_Closed(object sender, EventArgs e)
         {
             try
             {
-                var selectedItem = DpEStartDate.SelectedItem as List<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = DpEStartDate.SelectedDate.Month.ToString();
+                string day = DpEStartDate.SelectedDate.Day.ToString();
+                string year = DpEStartDate.SelectedDate.Year.ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
 
             }
@@ -160,14 +155,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
             }
         }
-        private async void DpENewStartDate_Closed(object sender, EventArgs e)
+        private void DpENewStartDate_Closed(object sender, EventArgs e)
         {
             try
             {
-                var selectedItem = DpENewStartDate.SelectedItem as List<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = DpENewStartDate.SelectedDate.Month.ToString();
+                string day = DpENewStartDate.SelectedDate.Day.ToString();
+                string year = DpENewStartDate.SelectedDate.Year.ToString();
                 viewModel.NewVatEligibleStartDate = day + "/" + month + "/" + year;
 
             }
@@ -177,32 +171,28 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private async void DpEStartDate_OkButtonClicked(object sender, EventArgs e)
+        private void DpEStartDate_OkButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                var selectedItem = DpEStartDate.SelectedItem as List<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = DpEStartDate.SelectedDate.Month.ToString();
+                string day = DpEStartDate.SelectedDate.Day.ToString();
+                string year = DpEStartDate.SelectedDate.Year.ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
-                //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
             }
             catch (Exception)
             {
 
             }
         }
-        private async void DpENewDate_OkButtonClicked(object sender, EventArgs e)
+        private void DpENewDate_OkButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                var selectedItem = DpENewStartDate.SelectedItem as List<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = DpENewStartDate.SelectedDate.Month.ToString();
+                string day = DpENewStartDate.SelectedDate.Day.ToString();
+                string year = DpENewStartDate.SelectedDate.Year.ToString();
                 viewModel.NewVatEligibleStartDate = day + "/" + month + "/" + year;
-                //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
             }
             catch (Exception)
             {
@@ -303,11 +293,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         viewModel.CurrentStep = AppResources.VATRStep2;
                         viewModel.SetVisibility();
                         viewModel.IsTaxPayersVisible = true;
-                        SetsecondBoxColor();
                     }
                     else if (viewModel.CurrentStep == AppResources.VATRStep2)
                     {
-                        step2Validation();
+                        await step2Validation();
                         setAttachmentImporterExporterVisibility();
 
                         if (App.isVatEffectDateNav)
@@ -317,7 +306,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     }
                     else if (viewModel.CurrentStep == AppResources.VATRStep3)
                     {
-                        step3Validation();
+                        await step3Validation();
                     }
                     else if (viewModel.CurrentStep == AppResources.VATRStep4)
                     {
@@ -328,13 +317,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 viewModel.CurrentStep = AppResources.VATRStep5;
                                 viewModel.SetVisibility();
                                 viewModel.IsFinancialVisible = true;
-                                SetfourthBoxColor();
                                 if (viewModel.CurrentIndex == 3)
                                     viewModel.CurrentIndex++;
                             }
                             else
                             {
                                 FrmNewAttachment.HasError = true;
+                                
                             }
                         }
                         else
@@ -342,7 +331,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             viewModel.CurrentStep = AppResources.VATRStep5;
                             viewModel.SetVisibility();
                             viewModel.IsFinancialVisible = true;
-                            SetfourthBoxColor();
                             if (viewModel.CurrentIndex == 3)
                                 viewModel.CurrentIndex++;
                         }
@@ -381,7 +369,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         {
                             viewModel.IsDeclarationViewEnabled = false;
                             viewModel.IsDeclarationViewEnabledNew = true;
-                            viewModel.Zterms = viewModel.VatDeregDeclaration.D.Zterms;
+                            var direction = App.IsArabic ? "direction: rtl;" : "direction: ltr;";
+                            viewModel.Zterms = $"<div style=\"{direction}\"> {viewModel.VatDeregDeclaration.D.Zterms} </div>";
                             if (App.IsArabic)
                             {
                                 viewModel.ShouldShowAR = true;
@@ -393,7 +382,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 viewModel.ShouldShowAR = false;
                             }
                         }
-                        SetfifthBoxColor();
                         if (viewModel.CurrentIndex == 4)
                             viewModel.CurrentIndex++;
                         if (viewModel.IsDeclarationChecked)
@@ -409,15 +397,14 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     {
                         if (viewModel.IsContinueButtonEnable)
                         {
-                            step5Validation();
+                            await step5Validation();
                         }
                     }
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
             }
 
         }
@@ -427,7 +414,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ImFg))
                 {
-                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ImporterImageSource = "QUnselected.png";
                     viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
@@ -435,13 +422,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("0"))
                     {
-                        viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                        viewModel.ImporterImageSource = "QUnselected.png";
                         viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"]; ;
                         viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                     }
                     else if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("1"))
                     {
-                        viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
+                        viewModel.ImporterImageSource = "QSelected.png";
                         viewModel.ImporterTextColor = Colors.White;
                         viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                     }
@@ -449,7 +436,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
                 if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ExFg))
                 {
-                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ExporterImageSource = "QUnselected.png";
                     viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
@@ -457,13 +444,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("0"))
                     {
-                        viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                        viewModel.ExporterImageSource = "QUnselected.png";
                         viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                         viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                     }
                     else if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("1"))
                     {
-                        viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
+                        viewModel.ExporterImageSource = "QSelected.png";
                         viewModel.ExporterTextColor = Colors.White;
                         viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                     }
@@ -542,7 +529,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
             return await Task.FromResult(flag);
         }
-        public async void step5Validation()
+        public async Task step5Validation()
         {
             if (viewModel.IsDeclarationChecked == true)
             {
@@ -567,7 +554,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             FrmContactName.HasError = true;
 
                         }
-                        if (btnSR.IsVisible && string.IsNullOrEmpty(viewModel.ContactDOB))
+                        if (string.IsNullOrEmpty(viewModel.ContactDOB))
                         {
                             flag = false;
                             viewModel.FrameContactDOBError = true;
@@ -604,15 +591,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             {
                                 Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                                 Navigation.RemovePage(pg1);
-                                this.Navigation.PopAsync();
+                                await this.Navigation.PopAsync();
                             }
-                            //viewModel._navigationService.GoBack();
                         }
                         else
                         {
-                            viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
+                            await viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
                         }
-                        //viewModel._navigationService.NavigateTo(App.VATAmendReactivationSuccessfulPageView, response);
                     }
 
                 }
@@ -635,15 +620,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     popUp.FlowDirections = "LeftToRight";
                 }
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATRAcceptDeclarationToSubmit));
                 chkDeclaration.Focus();
             }
         }
-        public async void step2Validation()
+        public async Task step2Validation()
         {
             if (viewModel.IsInstrunctionChecked == true)
             {
@@ -651,7 +633,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.CurrentStep = AppResources.VATRStep3;
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
-                SetsecondBoxColor();
                 if (viewModel.CurrentIndex == 1)
                     viewModel.CurrentIndex++;
                 setdefaultvalueforTPDetailscreen();
@@ -686,15 +667,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     popUp.FlowDirections = "LeftToRight";
                 }
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselecttermsandconditions));
                 chkDeclaration.Focus();
             }
         }
-        public void step3Validation()
+        public async Task step3Validation()
         {
             if (!string.IsNullOrEmpty(DateEntry.Text))
             {
@@ -706,7 +684,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.CurrentStep = AppResources.VATRStep4;
                     viewModel.SetVisibility();
                     viewModel.IsSalesVisible = true;
-                    SetthirdBoxColor();
                     if (viewModel.CurrentIndex == 2)
                         viewModel.CurrentIndex++;
                     viewModel.IsFDNameMobEmailEnable = false;
@@ -714,15 +691,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "Resident")
                     {
                         viewModel.IsResident = true;
-                        setAnsWerOneSlider();
-                        setDefaultAnswerThree();
-                        setDefaultansForAnswer4();
-                        setAnsWertwoSlider();
+                        await setAnsWerOneSlider();
+                        await setDefaultAnswerThree();
+                        await setDefaultansForAnswer4();
+                        await setAnsWertwoSlider();
                     }
                     else
                     {
                         viewModel.IsResident = false;
-                        setAnsWertwoSlider();
+                        await setAnsWertwoSlider();
                     }
                 }
                 else
@@ -737,7 +714,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 FrmEStartDate.HasError = true;
             }
         }
-        public async void setDefaultAnswerThree()
+        public async Task setDefaultAnswerThree()
         {
             if (viewModel.answer3selectedcount == 0)
             {
@@ -787,16 +764,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     }
                     viewModel.SliderLable1EligibilityText = eligibilityText;
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                    viewModel.IsLoading = false;
                 }
             }
         }
 
 
-        public async void setDefaultansForAnswer4()
+        public async Task setDefaultansForAnswer4()
         {
             if (viewModel.answer4selectedcount == 0)
             {
@@ -845,14 +819,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     }
                     viewModel.SliderLable1EligibilityText = eligibilityText;
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                    viewModel.IsLoading = false;
                 }
             }
         }
-        public async void setAnsWerOneSlider()
+        public async Task setAnsWerOneSlider()
         {
             if (viewModel.answer1selectedcount != 0)
             {
@@ -909,18 +880,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
                         viewModel.SliderLable1EligibilityText = eligibilityText;
-                        await Task.Run(() =>
-                        {
-                            viewModel.IsLoading = false;
-                        });
+                        viewModel.IsLoading = false;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                    viewModel.IsLoading = false;
                 }
             }
             else
@@ -978,23 +943,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
                         viewModel.SliderLable1EligibilityText = eligibilityText;
-                        await Task.Run(() =>
-                        {
-                            viewModel.IsLoading = false;
-                        });
+                        viewModel.IsLoading = false;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                    viewModel.IsLoading = false;
 
                 }
             }
         }
-        public async void setAnsWertwoSlider()
+        public async Task setAnsWertwoSlider()
         {
             if (viewModel.answer2selectedcount != 0)
             {
@@ -1053,13 +1012,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
                         viewModel.SliderLable1EligibilityText = eligibilityText;
-                        await Task.Run(() =>
-                        {
-                            viewModel.IsLoading = false;
-                        });
+                        viewModel.IsLoading = false;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1118,13 +1074,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                         }
                         viewModel.SliderLable1EligibilityText = eligibilityText;
-                        await Task.Run(() =>
-                        {
-                            viewModel.IsLoading = false;
-                        });
+                        viewModel.IsLoading = false;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1166,20 +1119,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     DDlContactIDType.BackgroundColor = (Color)Application.Current.Resources["White"];
                 }
                 string message = string.Empty;
-                MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
-                {
-                    //if (res)
-                    //    Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
-                    //else
-                    //    Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
-                });
-                MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsDeclarationChecked", (obj, res) =>
-                {
-                    //if (res)
-                      // Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
-                    //else
-                       // Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
-                });
+
+
                 MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsAddAdditionalInfoChecked", (obj, res) =>
                 {
                     if (res)
@@ -1209,54 +1150,52 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 });
                 MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) => { MopupService.Instance.PopAsync(); });
-                MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
+                MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", async (sender, arg) =>
                 {
-                    //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
-                    //viewModel.VatEligibleStartDate = DateTime.Parse(arg.SelectedValue).Date.ToString("dd/MM/yyyy").Replace('-', '/');
                     if (App.isVatEffectDateNav)
-                        viewModel.GetNewVatEligibleDateAsync(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
+                        await viewModel.GetNewVatEligibleDateAsync(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
                     else
-                        viewModel.getVatEligibleDate(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
+                        await viewModel.getVatEligibleDate(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
                 });
-               MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        message = arg;
-                        try
-                        {
-                            if (message == "SA")
-                            {
-                                if (viewModel.IbanList != null)
-                                {
-                                    viewModel.IbanList.Clear();
-                                }
-                                viewModel.IbanList = null;
-                                if (viewModel.VATRegistrationDetailsData != null && viewModel.VATRegistrationDetailsData.d != null && viewModel.VATRegistrationDetailsData.d.IBANSet != null)
-                                {
-                                    viewModel.IbanList.Clear();
-                                    foreach (var item in viewModel.VATRegistrationDetailsData.d.IBANSet)
-                                    {
-                                        if (!string.IsNullOrEmpty(item.Bkvid))
-                                        {
-                                            viewModel.IbanList.Add(item);
-                                        }
-                                    }
-                                }
-                                viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
-                                viewModel.NewAccountText = AppResources.ZTERNewAccount;
-                            }
-                            else
-                            {
-                                triggerIban(message);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
+                MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
+                 {
+                     if (arg != null)
+                     {
+                         message = arg;
+                         try
+                         {
+                             if (message == "SA")
+                             {
+                                 if (viewModel.IbanList != null)
+                                 {
+                                     viewModel.IbanList.Clear();
+                                 }
+                                 viewModel.IbanList = null;
+                                 if (viewModel.VATRegistrationDetailsData != null && viewModel.VATRegistrationDetailsData.d != null && viewModel.VATRegistrationDetailsData.d.IBANSet != null)
+                                 {
+                                     viewModel.IbanList.Clear();
+                                     foreach (var item in viewModel.VATRegistrationDetailsData.d.IBANSet)
+                                     {
+                                         if (!string.IsNullOrEmpty(item.Bkvid))
+                                         {
+                                             viewModel.IbanList.Add(item);
+                                         }
+                                     }
+                                 }
+                                 viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
+                                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                             }
+                             else
+                             {
+                                 triggerIban(message);
+                             }
+                         }
+                         catch (Exception )
+                         {
 
-                        }
-                    }
-                });
+                         }
+                     }
+                 });
 
                 MessagingCenter.Subscribe<object, List<Attachment>>(this, "AttachmentReceived", (sender, arg) =>
                 {
@@ -1267,13 +1206,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         viewModel.ATTDETSetObject = viewModel.VATRegistrationDetailsData.d.ATTDETSet;
                     }
                 });
-              MessagingCenter.Subscribe<object, List<ResultsItemForDOCSetforsubmit>>(this, "EligibilitySetAttachmentReceived", (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-                        viewModel.VATRegistrationDetailsData.d.ELGBL_DOCSet = arg;
-                    }
-                });
+                MessagingCenter.Subscribe<object, List<ResultsItemForDOCSetforsubmit>>(this, "EligibilitySetAttachmentReceived", (sender, arg) =>
+                  {
+                      if (arg != null)
+                      {
+                          viewModel.VATRegistrationDetailsData.d.ELGBL_DOCSet = arg;
+                      }
+                  });
                 MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
                 {
                     if (arg != null && !string.IsNullOrEmpty(arg.SelectedValue))
@@ -1287,20 +1226,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 if (string.IsNullOrEmpty(arg.SelectedValue) || string.IsNullOrWhiteSpace(arg.SelectedValue))
                                 {
                                     FrmContactDBO.IsVisible = false;
-                                    btnSR.IsVisible = false;
                                     lblDOB.IsVisible = false;
                                 }
                                 else
                                 {
                                     FrmContactDBO.IsVisible = true;
-                                    btnSR.IsVisible = true;
                                     lblDOB.IsVisible = true;
                                 }
                             }
                             else
                             {
                                 FrmContactDBO.IsVisible = false;
-                                btnSR.IsVisible = false;
                                 lblDOB.IsVisible = false;
                             }
                         }
@@ -1357,7 +1293,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 });
                 viewModel.IsNewFinancialRepVisible = viewModel.IsAddNewRepresentativeChecked;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1390,19 +1326,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 }
             }
         }
-        private void DateEntry_Focused(object sender, FocusEventArgs e)
-        {
 
-        }
-
-        private void DateEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void DpEStartDate_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-        }
 
         private async void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
         {
@@ -1606,14 +1530,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private void btnID_Clicked(object sender, EventArgs e)
         {
-            //DDlIDType.IsOpen = true;
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = new List<string>();
             foreach (var item in viewModel.IdTypeListFR)
             {
                 genericPickerModel.PickerData.Add(item.Name);
             }
-            //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
             genericPickerModel.PickerId = "FinancialIdTypePicker";
             MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
@@ -1677,25 +1599,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void EntryFirstName_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void EntryLastName_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-        private void EntryPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void btnContactID_Clicked(object sender, EventArgs e)
         {
             if (App.VATType == PageExecutionType.Reactivation)
             {
-                // DDlContactIDType.IsOpen = true;
                 GenericPickerModel genericPickerModel = new GenericPickerModel();
                 genericPickerModel.PickerData = new List<string>();
                 foreach (var item in viewModel.IdTypeListSR)
@@ -1707,24 +1614,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
         }
-        #region SetColor
-        public void SetfirstBoxColor()
-        {
-        }
-        public void SetsecondBoxColor()
-        {
-        }
-        public void SetthirdBoxColor()
-        {
-        }
-        public void SetfourthBoxColor()
-        {
-        }
-        public void SetfifthBoxColor()
-        {
-        }
 
-        #endregion
 
         private void TappedOnBackButton(object sender, EventArgs e)
         {
@@ -1734,7 +1624,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsInstrunctionVisible = true;
                 viewModel.CurrentIndex = 1;
                 viewModel.CurrentStep = AppResources.VATRStep2;
-                SetfirstBoxColor();
                 if (viewModel.IsInstrunctionChecked)
                 {
                     viewModel.IsContinueButtonEnable = true;
@@ -1746,7 +1635,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsTaxPayersVisible = true;
                 viewModel.CurrentIndex = 2;
                 viewModel.CurrentStep = AppResources.VATRStep3;
-                SetsecondBoxColor();
                 setAttachmentImporterExporterVisibility();
             }
             else if (viewModel.IsFinancialVisible)
@@ -1755,7 +1643,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsSalesVisible = true;
                 viewModel.CurrentIndex = 3;
                 viewModel.CurrentStep = AppResources.VATRStep4;
-                SetthirdBoxColor();
             }
             else if (viewModel.IsSummaryVisible)
             {
@@ -1763,7 +1650,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsFinancialVisible = true;
                 viewModel.CurrentIndex = 4;
                 viewModel.CurrentStep = AppResources.VATRStep5;
-                SetfourthBoxColor();
             }
         }
 
@@ -1801,7 +1687,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private async void NewAttachment_Clicked(object sender, EventArgs e)
         {
-            if (MopupService.Instance.PopupStack.Count > 0) return;
+            if (!viewModel.IsFDChangeSectionEnabled || MopupService.Instance.PopupStack.Count > 0)
+                return;
             try
             {
                 DataToPassTofinancialDetailAttachmentPopup sendtoPopup = new DataToPassTofinancialDetailAttachmentPopup();
@@ -1818,15 +1705,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ImporterImageSource == "QSelected.png")
                 {
-                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ImporterImageSource = "QUnselected.png";
                     viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
                 else
                 {
-                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
+                    viewModel.ImporterImageSource = "QSelected.png";
                     viewModel.ImporterTextColor = Colors.White;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                 }
@@ -1854,15 +1741,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ExporterImageSource == "QSelected.png")
                 {
-                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ExporterImageSource = "QUnselected.png";
                     viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
                 else
                 {
-                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
+                    viewModel.ExporterImageSource = "QSelected.png";
                     viewModel.ExporterTextColor = Colors.White;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                 }
@@ -2061,8 +1948,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     await MopupService.Instance.PushAsync(popUp);
 
 
-                    //  String action = await DisplayActionSheet("", AppResources.VATAmendRegistrationCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
-
                 }
             }
             catch (Exception)
@@ -2081,20 +1966,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     if (viewModel.IdTypeListSR[DDlContactIDType.Columns[0].SelectedIndex] != null)
                     {
                         FrmContactDBO.IsVisible = false;
-                        btnSR.IsVisible = false;
                         lblDOB.IsVisible = false;
                     }
                     else
                     {
                         FrmContactDBO.IsVisible = true;
-                        btnSR.IsVisible = true;
                         lblDOB.IsVisible = true;
                     }
                 }
                 else
                 {
                     FrmContactDBO.IsVisible = false;
-                    btnSR.IsVisible = false;
                     lblDOB.IsVisible = false;
                 }
             }
@@ -2159,7 +2041,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 bool isImporter = false;
                 VATRegistrationPageViewModel.IsComeFromForAttachment = IsComeFromForAttachment.Import;
-                if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ImporterImageSource == "QSelected.png")
                 {
                     isImporter = true;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
@@ -2168,7 +2050,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
-                if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ExporterImageSource == "QSelected.png")
                 {
                     isImporter = false;
 
@@ -2201,14 +2083,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         public async Task<bool> ValidateIDNumber()
         {
             bool result = false;
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-            });
-            string dob = viewModel.DOB.Replace("/", "");
+            viewModel.IsLoading = true;
+            string dob = viewModel.DOB.Replace("/", "-");
             if (viewModel.SelectedIdTypeFR?.ID == "ZS0001")
             {
                 if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
@@ -2222,17 +2098,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         if (vATSignUpData.d == null)
                         {
                             result = false;
-                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                            {
+                            var message = WebServiceManager.PrepareErrorMessageByJson(Result);
+                            
                                 viewModel.FrameIDError = true;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                            }
-                            else
-                            {
-                                viewModel.FrameIDError = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                            }
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                           
                         }
                         else
                         {
@@ -2295,40 +2165,26 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel.IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                viewModel._navigationService.GoBack();
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            viewModel._navigationService.GoBack();
                         }
                         catch (InternetException ex)
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                         }
                         catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
                     }
                 }
@@ -2413,40 +2269,26 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel.IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                viewModel._navigationService.GoBack();
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            viewModel._navigationService.GoBack();
                         }
                         catch (InternetException ex)
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                         }
                         catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
                     }
                 }
@@ -2458,10 +2300,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     try
                     {
                         string Result = string.Empty;
-                        await Task.Run(async () =>
-                        {
-                            Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0003", viewModel.IdnumberFR, dob);
-                        });
+                        Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0003", viewModel.IdnumberFR, dob);
                         VATSignUp vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (string.IsNullOrEmpty(Result) || vATSignUpData == null)
                         {
@@ -2551,63 +2390,36 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel.IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                viewModel._navigationService.GoBack();
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            viewModel._navigationService.GoBack();
                         }
                         catch (InternetException ex)
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                         }
                         catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
                     }
                 }
             }
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            });
+            viewModel.IsLoading = false;
             return await Task.FromResult(result);
         }
 
-        public async void ValidateIDNumberSR()
+        public async Task ValidateIDNumberSR()
         {
-           MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-            });
+            viewModel.IsLoading = true;
             string dob = viewModel.ContactDOB.Replace("/", "");
             if (viewModel.SelectedIdTypeSR.ID == "ZS0001")
             {
@@ -2676,41 +2488,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel.IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                viewModel._navigationService.GoBack();
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            viewModel._navigationService.GoBack();
                         }
                         catch (InternetException ex)
                         {
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                         }
                         catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
                     }
                     FrmContactName.IsEnabled = false;
@@ -2783,41 +2581,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel.IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                viewModel._navigationService.GoBack();
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            viewModel._navigationService.GoBack();
                         }
                         catch (InternetException ex)
                         {
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                         }
                         catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
                     }
                     FrmContactName.IsEnabled = false;
@@ -2830,10 +2614,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     try
                     {
                         string Result = string.Empty;
-                        await Task.Run(async () =>
-                        {
-                            Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0003", viewModel.IdNumberSR, dob);
-                        });
+                        Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0003", viewModel.IdNumberSR, dob);
 
                         VATSignUp vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -2908,52 +2689,31 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel.IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                viewModel._navigationService.GoBack();
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            viewModel._navigationService.GoBack();
                         }
                         catch (InternetException ex)
                         {
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                         }
                         catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                           MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
                     }
                 }
             }
-           MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            });
+            viewModel.IsLoading = false;
         }
 
 
@@ -2966,10 +2726,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                var selectedItem = SignUpDOB.SelectedItem as List<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = SignUpDOB.SelectedDate.Month.ToString();
+                string day = SignUpDOB.SelectedDate.Day.ToString();
+                string year = SignUpDOB.SelectedDate.Year.ToString();
                 viewModel.DOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
                 if (string.IsNullOrEmpty(viewModel.DOB))
@@ -2994,7 +2753,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             ContactDOBPicker.IsOpen = true;
         }
 
-        private void EntryTINNumber_Unfocused(object sender, FocusEventArgs e)
+        private async void EntryTINNumber_Unfocused(object sender, FocusEventArgs e)
         {
             PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
@@ -3026,7 +2785,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                     EntryTINNumber.Text = string.Empty;
                 }
                 else
@@ -3051,27 +2810,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                                 EntryTINNumber.Text = string.Empty;
                             }
                         }
                         else
                         {
                             FrmTINNumber.HasError = false;
-                            ValidateTinNumber(viewModel.GpartFR);
+                            await ValidateTinNumber(viewModel.GpartFR);
                             FrmTINNumber.HasError = false;
                         }
                     }
                     else
                     {
                         FrmTINNumber.HasError = false;
-                        ValidateTinNumber(viewModel.GpartFR);
+                        await ValidateTinNumber(viewModel.GpartFR);
                     }
                 }
             }
         }
 
-        private void EntryContactIDNumber_Unfocused(object sender, FocusEventArgs e)
+        private async void EntryContactIDNumber_Unfocused(object sender, FocusEventArgs e)
         {
             PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
@@ -3092,7 +2851,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
                         viewModel.FrameContactIDError = true;
                         viewModel.IdNumberSR = string.Empty;
                     }
@@ -3119,7 +2878,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                             viewModel.FrameContactIDError = true;
                             EntryContactIDNumber.Text = string.Empty;
                         }
@@ -3128,7 +2887,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             viewModel.FrameContactIDError = false;
                             if (!string.IsNullOrEmpty(viewModel.ContactDOB))
                             {
-                                ValidateIDNumberSR();
+                                await ValidateIDNumberSR();
                             }
                         }
                     }
@@ -3148,7 +2907,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
                         viewModel.FrameContactIDError = true;
                         viewModel.IdNumberSR = string.Empty;
                     }
@@ -3175,7 +2934,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                             viewModel.FrameContactIDError = true;
                             viewModel.IdNumberSR = string.Empty;
                         }
@@ -3184,7 +2943,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             viewModel.FrameContactIDError = false;
                             if (!string.IsNullOrEmpty(viewModel.ContactDOB))
                             {
-                                ValidateIDNumberSR();
+                                await ValidateIDNumberSR();
                             }
                         }
                     }
@@ -3205,7 +2964,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
                         viewModel.FrameContactIDError = true;
                         viewModel.IdNumberSR = string.Empty;
                     }
@@ -3222,13 +2981,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
                         viewModel.FrameContactIDError = true;
                         viewModel.IdNumberSR = string.Empty;
                     }
                     else
                     {
-                        ValidateIDNumberSR();
+                        await ValidateIDNumberSR();
                     }
                 }
             }
@@ -3238,17 +2997,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void ContactDOBPicker_OkButtonClicked(object sender, EventArgs e)
+        private async void ContactDOBPicker_OkButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                var selectedItem = ContactDOBPicker.SelectedItem as List<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = ContactDOBPicker.SelectedDate.Month.ToString();
+                string day = ContactDOBPicker.SelectedDate.Day.ToString();
+                string year = ContactDOBPicker.SelectedDate.Year.ToString();
                 viewModel.ContactDOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
-                ValidateIDNumberContact();
+                await ValidateIDNumberContact();
             }
             catch (Exception)
             {
@@ -3256,15 +3014,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        public async void ValidateIDNumberContact()
+        public async Task ValidateIDNumberContact()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-            });
+            viewModel.IsLoading = true;
             FrmContactName.IsEnabled = false;
             string dob = viewModel.ContactDOB.Replace("/", "");
             if (viewModel.SelectedIdTypeSR.ID == "ZS0001")
@@ -3336,41 +3088,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel.IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                viewModel._navigationService.GoBack();
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            viewModel._navigationService.GoBack();
                         }
                         catch (InternetException ex)
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                         }
                         catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
                     }
                 }
@@ -3444,63 +3182,39 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                 MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel.IsLoading = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                viewModel._navigationService.GoBack();
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            viewModel._navigationService.GoBack();
                         }
                         catch (InternetException ex)
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                await Task.Run(() =>
-                                {
-                                    viewModel.IsLoading = false;
-                                });
-                            });
+                            viewModel.IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                         }
                         catch (HttpRequestException)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            });
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         }
                     }
                 }
             }
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            });
+            viewModel.IsLoading = false;
         }
 
-        public async void ValidateTinNumber(string TinNumber)
+        public async Task ValidateTinNumber(string TinNumber)
         {
+            viewModel.IsLoading = true;
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-
                 string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
                 VATSignUp vATSignUpData = new VATSignUp();
                 vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
@@ -3531,7 +3245,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.DOB = vATSignUpData.d.birthDate10;
                     viewModel.FirstnmFR = vATSignUpData.d.name1;
                     viewModel.LastnmFR = vATSignUpData.d.name2;
-                    viewModel.MobNumberFR = vATSignUpData.d.mobile.Substring(5);
+                    if (vATSignUpData.d.mobile != null && !string.IsNullOrEmpty(vATSignUpData.d.mobile))
+                    {
+                        viewModel.MobNumberFR = vATSignUpData.d.mobile.Substring(5);
+                    }
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                     viewModel.SmtpAddrFR = vATSignUpData.d.email;
                     FrmTINNumber.HasError = false;
@@ -3582,43 +3299,31 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                     }
 
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        viewModel.IsLoading = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                        viewModel._navigationService.GoBack();
-                    });
+                    viewModel.IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    viewModel._navigationService.GoBack();
                 }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        await Task.Run(() =>
-                        {
-                            viewModel.IsLoading = false;
-                        });
-                    });
+                    viewModel.IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
                 }
                 catch (HttpRequestException)
                 {
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                    });
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                    });
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 }
             }
+            viewModel.IsLoading = false;
+
         }
 
 
@@ -3632,10 +3337,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = true;
                 double value = ((Slider)sender).Value;
                 viewModel.SliderCurrentValue1 = value;
 
@@ -3694,18 +3396,14 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception ex)
+
+            catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = false;
 
             }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-            });
+
+            viewModel.IsLoading = false;
 
         }
 
@@ -3771,7 +3469,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3828,10 +3526,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     FrmNewAttachment.HasError = false;
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
 
@@ -3885,10 +3580,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     FrmNewAttachment.HasError = false;
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
 
@@ -3943,10 +3635,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     FrmNewAttachment.HasError = false;
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
 
@@ -4001,10 +3690,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     FrmNewAttachment.HasError = false;
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
         }
 
@@ -4060,12 +3746,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             string mobileNUmber = ((GAZTBorderlessEntry)sender).Text;
 
-            //  SfTextInputLayout str = (SfTextInputLayout)((BorderlessEntry)sender).Parent;
 
             if (string.IsNullOrEmpty(mobileNUmber))
             {
-
-                ///str.HasError = true;
                 return;
             }
             StringBuilder Messages = new StringBuilder();
@@ -4077,20 +3760,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                     ShowValidationPopup(message);
 
-                    // str.HasError = true;
                     return;
                 }
                 else if (mobileNUmber.Substring(0, 6) != "009665")
                 {
                     message = AppResources.VATAmendMobileNumberValidation;
                     ShowValidationPopup(message);
-                    // str.HasError = true;
                     return;
                 }
                 else
                 {
-                    // if (mobileNUmber.Length != 15)
-                    //{
                     if (mobileNUmber.Length < 14)
                     {
                         message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
@@ -4100,7 +3779,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     if (Messages.Length > 0)
                     {
                         ShowValidationPopup(message);
-                        // str.HasError = true;
                     }
                 }
             }
@@ -4122,10 +3800,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = SignUpDOB.SelectedDate.Month.ToString("00");
+                string day = SignUpDOB.SelectedDate.Day.ToString("00");
+                string year = SignUpDOB.SelectedDate.Year.ToString();
                 viewModel.DOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
                 if (!string.IsNullOrEmpty(viewModel.DOB))
@@ -4144,17 +3821,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void ContactDOBPicker_Closed(object sender, EventArgs e)
+        private async void ContactDOBPicker_Closed(object sender, EventArgs e)
         {
             try
             {
-                var selectedItem = ContactDOBPicker.SelectedItem as List<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = ContactDOBPicker.SelectedDate.Month.ToString();
+                string day = ContactDOBPicker.SelectedDate.Day.ToString();
+                string year = ContactDOBPicker.SelectedDate.Year.ToString();
                 viewModel.ContactDOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
-                ValidateIDNumberContact();
+                await ValidateIDNumberContact();
             }
             catch (Exception)
             {
@@ -4166,11 +3842,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         private void FDChangeSection_CheckedChanged(object sender, Syncfusion.Maui.Buttons.CheckedChangedEventArgs e)
         {
             viewModel.IsFDChangeSectionEnabled = ((CheckBox)sender).IsChecked;
-        }
-
-        private void OnBackTapped(object sender, EventArgs e)
-        {
-            viewModel._navigationService.GoBack();
         }
 
         private async void VATEligibleDateClicked(object sender, EventArgs e)
@@ -4185,17 +3856,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     var ssd = App.Locator.CalendarPickerPageView.SelectedDate;
                     await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
                 }
-                catch (GAZTUnlockAccountException)
-                {
-
-                }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        viewModel._navigationService.GoBack();
-                    });
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._navigationService.GoBack();
                 }
             }
         }
@@ -4212,17 +3876,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     var ssd = App.Locator.CalendarPickerPageView.SelectedDate;
                     await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
                 }
-                catch (GAZTUnlockAccountException)
-                {
-
-                }
                 catch (InternetException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        viewModel._navigationService.GoBack();
-                    });
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._navigationService.GoBack();
                 }
             }
         }
@@ -4415,19 +4072,18 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             viewModel.CurrentStep = AppResources.VATRStep2;
             viewModel.SetVisibility();
             viewModel.IsTaxPayersVisible = true;
-            SetsecondBoxColor();
         }
 
-        private void GoBackToSalesDetails(object sender, EventArgs e)
+        private async void GoBackToSalesDetails(object sender, EventArgs e)
         {
             viewModel.CurrentIndex = 3;
-            step3Validation();
+            await step3Validation();
         }
 
-        private void GoBackToVATExpenseDetails(object sender, EventArgs e)
+        private async void GoBackToVATExpenseDetails(object sender, EventArgs e)
         {
             viewModel.CurrentIndex = 3;
-            step3Validation();
+            await step3Validation();
         }
         private void GoBackToFinacialRepresentativeDetails(object sender, EventArgs e)
         {
@@ -4440,7 +4096,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
                     viewModel.SetVisibility();
                     viewModel.IsFinancialVisible = true;
-                    SetfourthBoxColor();
                     if (viewModel.CurrentIndex == 3)
                         viewModel.CurrentIndex++;
                 }
@@ -4454,7 +4109,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.CurrentStep = AppResources.VATRStep5;
                 viewModel.SetVisibility();
                 viewModel.IsFinancialVisible = true;
-                SetfourthBoxColor();
                 if (viewModel.CurrentIndex == 3)
                     viewModel.CurrentIndex++;
             }
@@ -4489,8 +4143,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
@@ -4503,12 +4157,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
-        private void AddAdditionalInfo_CheckedChanged(object sender, bool e)
+        private void AddAdditionalInfo_CheckedChanged(object sender, Boolean e)
         {
             try
             {
@@ -4517,12 +4171,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
-        private void FD_CheckedCanged(object sender, bool e)
+        private void FD_CheckedCanged(object sender, Boolean e)
         {
             try
             {
@@ -4530,8 +4184,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
             catch (Exception ex)
             {
-                
-                
+
+
             }
         }
 
@@ -4552,26 +4206,28 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     if (viewModel.IdTypeListSR[DDlContactIDType.Columns[0].SelectedIndex] != null)
                     {
                         FrmContactDBO.IsVisible = false;
-                        btnSR.IsVisible = false;
                         lblDOB.IsVisible = false;
                     }
                     else
                     {
                         FrmContactDBO.IsVisible = true;
-                        btnSR.IsVisible = true;
                         lblDOB.IsVisible = true;
                     }
                 }
                 else
                 {
                     FrmContactDBO.IsVisible = false;
-                    btnSR.IsVisible = false;
                     lblDOB.IsVisible = false;
                 }
             }
             catch (Exception)
             {
             }
+        }
+
+        void IBANAccountManagementCommand(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView, true);
         }
     }
 }

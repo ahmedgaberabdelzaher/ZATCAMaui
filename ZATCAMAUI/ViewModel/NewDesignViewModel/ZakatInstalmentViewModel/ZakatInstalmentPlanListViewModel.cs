@@ -207,7 +207,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             SummaryRevokeBtnTapped = new Command(async () =>
             {
-                var result = await Application.Current.MainPage.DisplayAlert(AppResources.VatRefundsConfirmationTit, AppResources.ZakatRevokConfirmationText, AppResources.ZZCancel, AppResources.CRContinue);
+                var result = await _dialogService.ShowMessage(AppResources.VatRefundsConfirmationTit, AppResources.ZakatRevokConfirmationText, AppResources.ZZCancel, AppResources.CRContinue);
                 if (!result)
                 {
                     App.TP = null;
@@ -1837,24 +1837,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
         }
 
-
-        //public ObservableCollection<ZakatRevokeList.Result> _revokList { get; set; }
-        //public ObservableCollection<ZakatRevokeList.Result> RevokList
-        //{
-        //    get
-        //    {
-        //        return _revokList;
-        //    }
-        //    set
-        //    {
-        //        if (_revokList == value)
-        //        {
-        //            return;
-        //        }
-        //        _revokList = value;
-        //        OnPropertyChanged("RevokList");
-        //    }
-        //}
         public ObservableCollection<ZakatSelectBillModel> summarySelectedBillsList { get; set; }
         public ObservableCollection<ZakatSelectBillModel> SummarySelectedBillsList
         {

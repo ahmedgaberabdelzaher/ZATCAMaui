@@ -88,7 +88,7 @@
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid HorizontalOptions="FillAndExpand"
-                      Padding="0"
+                    Padding="0"
                     RowDefinitions="auto,auto,auto,auto,*"
                     VerticalOptions="FillAndExpand">
 
@@ -124,9 +124,9 @@
                         VerticalOptions="Start" />
 
                      <Grid RowDefinitions="*,auto,auto"
-                           Margin="0,0,0,10"
+                        Margin="0,0,0,10"
                            Grid.Row="4">
-                        
+
                         <!--  step 1  -->
                         <WebView
                             x:Name="TCWebView"
@@ -774,13 +774,7 @@
                                                 </Label.FormattedText>
                                             </Label>
 
-                                            <custom:CustomSfTextInputView
-                                                x:Name="FrmLicenseNumber"
-                                                ContainerBackground="White"
-                                                ContainerType="Outlined"
-                                                InputViewPadding="16,0,16,0"
-                                                LeadingViewPosition="Inside"
-                                                OutlineCornerRadius="10">
+                                            <custom:CustomSfTextInputView x:Name="FrmLicenseNumber" HasError="False">
 
                                                 <custom:CustomSfTextInputView.TextInputView>
                                                     <custom:GAZTBorderlessEntry
@@ -815,7 +809,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <custom:CustomSfTextInputView x:Name="FrmlicenceNumberIssuedbyframe">
+                                            <custom:CustomSfTextInputView x:Name="FrmlicenceNumberIssuedbyframe" HasError="False">
                                                 <custom:CustomSfTextInputView.TextInputView>
                                                     <custom:GAZTBorderlessEntry
                                                         InputTransparent="True"
@@ -1005,7 +999,8 @@
                                 <!--#endregion-->
 
                                 <!--#region Contact Information-->
-                                <StackLayout IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}">
+                                <StackLayout IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}"
+                                             Spacing="10">
                                     <!--  Email  -->
                                     <StackLayout>
                                         <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
@@ -1044,8 +1039,9 @@
                                     </StackLayout>
 
                                     <!--  Mobile number  -->
-                                    <StackLayout>
-                                        <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
+                                    <StackLayout Spacing="10">
+                                        <Label HorizontalOptions="Start"
+                                               Style="{StaticResource CaptionLabelGrey}">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" />
@@ -1054,12 +1050,7 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10">
+                                        <custom:CustomSfTextInputView x:Name="FrmMobile">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <StackLayout
                                                     FlowDirection="LeftToRight"
@@ -1093,7 +1084,7 @@
                                                         IsSpellCheckEnabled="False"
                                                         Keyboard="Telephone"
                                                         MaxLength="{Binding MaxDigids}"
-                                                        Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}"
+                                                        Placeholder="50XXX"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TxtMobileNumber}"
                                                         TextColor="{StaticResource PrimaryColor}"
@@ -1106,7 +1097,12 @@
 
 
                                     <!--  Phone Number  -->
-                                    <StackLayout>
+                                    <StackLayout Spacing="10">
+                                        <Label HorizontalOptions="Start"
+                                               Text="{x:Static ResourceManager:AppResources.ZZPhoneNumber}"
+                                               Style="{StaticResource CaptionLabelGrey}"/>
+
+
                                         <custom:CustomSfTextInputView x:Name="FrmPhoneNumber">
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
@@ -1517,7 +1513,7 @@
                                         </Grid>
 
                                         <StackLayout
-                                            Margin="0"
+                                            Spacing="10"
                                             HorizontalOptions="Center"
                                             Orientation="Horizontal">
                                             <Image Source="clock" Style="{StaticResource SmallIcon}" />
@@ -1527,6 +1523,7 @@
                                                 FontSize="11"
                                                 Text="{Binding LblCountDownTimer}"
                                                 TextColor="{StaticResource Primary}" />
+
                                         </StackLayout>
 
                                         <buttons:SfButton
@@ -2036,7 +2033,7 @@
                                 </StackLayout>
                                 <!--#endregion-->
 
-                              
+
 
                             </StackLayout>
 
@@ -2045,6 +2042,7 @@
                         <!--  terms and condition  CheckBox  -->
                         <StackLayout
                             Margin="0,10"
+                            Spacing="10"
                             Grid.Row="1"
                             IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}"
                             Orientation="Horizontal">
@@ -2087,7 +2085,7 @@
                                 </DataTrigger>
                             </buttons:SfButton.Triggers>
                         </buttons:SfButton>
-                        
+
                     </Grid>
 
                 </Grid>

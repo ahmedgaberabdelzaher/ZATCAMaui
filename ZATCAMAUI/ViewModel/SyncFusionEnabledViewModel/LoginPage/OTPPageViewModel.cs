@@ -349,6 +349,7 @@ public class OTPPageViewModel : BaseViewModel
                     App.TP.formBundleNumber = TPProfile.formBundleNumber;
                     App.TP.activityName = TPProfile.activityName;
                     App.TP.VtpmFg = TPProfile.VtpmFg;
+                    App.TP.authenticationUser1 = TPProfile.authenticationUser1;
 
                 }
 

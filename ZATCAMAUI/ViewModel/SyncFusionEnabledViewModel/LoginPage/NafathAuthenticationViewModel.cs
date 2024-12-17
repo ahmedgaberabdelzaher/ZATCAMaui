@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using AppDynamics.Agent;
 using Mopups.Services;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
@@ -95,20 +96,21 @@ public class NafathAuthenticationViewModel : BaseViewModel
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-
+                IsLoading = true;
                 if (response != null && response.result.statusCode.Equals("S"))
                 {
-                    await NavigateToNextSteps(response.result.returnId);
                     _isTimerRepeatRequired = false;
+                    await NavigateToNextSteps(response.result.returnId);
                 }
                 else if (response != null && response.result.statusCode.Equals("E"))
                 {
+                    _isTimerRepeatRequired = false;
                     await _dialogService.ShowMessage(response.result.statusDescription, AppResources.Information, AppResources.OKText, delegate ()
                     {
                         _navigationService.GoBack();
                     });
 
-                    _isTimerRepeatRequired = false;
+
                 }
                 else
                 {
@@ -117,6 +119,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
                         response = await WebServiceManager.CheckNafathAuthentication(Response);
                     }
                 }
+                IsLoading = false;
             });
             return _isTimerRepeatRequired;
         });
@@ -147,34 +150,44 @@ public class NafathAuthenticationViewModel : BaseViewModel
 
     private async Task GetAccount(string guid)
     {
-        string idType = string.Empty;
-
-        if (Response.idNumber.StartsWith("1"))
+        try
         {
-            idType = "NationalId";
-        }
-        else if (Response.idNumber.StartsWith("2"))
-        {
-            idType = "IQAMA";
-        }
+            string idType = string.Empty;
 
-        var response = await WebServiceManager.NafathSSOUserAccountsInquiry(Response.idNumber, guid, idType);
-
-        if (response != null && response.data != null && response.data.SSOUserAccounts != null)
-        {
-            if (response.data!.SSOUserAccounts!.Count > 0)
+            if (Response.idNumber.StartsWith("1"))
             {
-                if (response.data.SSOUserAccounts[0].code == "100")
+                idType = "NationalId";
+            }
+            else if (Response.idNumber.StartsWith("2"))
+            {
+                idType = "IQAMA";
+            }
+            IsLoading = true;
+            var response = await WebServiceManager.NafathSSOUserAccountsInquiry(Response.idNumber, guid, idType);
+            IsLoading = false;
+
+            if (response != null && response.data != null && response.data.SSOUserAccounts != null)
+            {
+                if (response.data!.SSOUserAccounts!.Count > 0)
                 {
-                    await Login(response.data.SSOUserAccounts[0].username, response.data.SSOUserAccounts[0].GUID);
-                }
-                else if (response.data.SSOUserAccounts[0].code == "101")
-                {
-                    App.GUIDFrSSO = response.data.SSOUserAccounts[0].GUID;
-                    await _navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
+                    if (response.data.SSOUserAccounts[0].code == "100")
+                    {
+                        await Login(response.data.SSOUserAccounts[0].username, response.data.SSOUserAccounts[0].GUID);
+                    }
+                    else if (response.data.SSOUserAccounts[0].code == "101")
+                    {
+                        App.GUIDFrSSO = response.data.SSOUserAccounts[0].GUID;
+                        await _navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
+                    }
                 }
             }
         }
+        catch (GAZTErrorException ex)
+        {
+            IsLoading = false;
+            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+        }
+        
 
     }
 

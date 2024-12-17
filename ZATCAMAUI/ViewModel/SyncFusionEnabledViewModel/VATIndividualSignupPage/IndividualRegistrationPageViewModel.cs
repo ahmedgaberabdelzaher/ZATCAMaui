@@ -17,6 +17,7 @@ using ZATCAMAUI.Models.SignUP;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using Syncfusion.Maui.Picker;
 using System.Text.RegularExpressions;
+using ZATCAMAUI.Core.CustomControls;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
@@ -599,11 +600,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     currentStep = 5;
                     SetcolorForDots("PasswordView");
-                    BackArrowVisible = false;
-                }
-                else
-                {
-                    BackArrowVisible = true;
+                    oneStepBackArrowVisible = false;
                 }
                 OnPropertyChanged("PasswordView");
             }
@@ -1536,6 +1533,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("BackArrowVisible");
             }
         }
+        
+        private bool _oneStepBackArrowVisible = true;
+        public bool oneStepBackArrowVisible
+        {
+            get
+            {
+                return _oneStepBackArrowVisible;
+            }
+            set
+            {
+                if (_oneStepBackArrowVisible == value) return;
+
+                _oneStepBackArrowVisible = value;
+                OnPropertyChanged("oneStepBackArrowVisible");
+            }
+        }
         private bool _isOTPEntryEnable = true;
         public bool IsOTPEntryEnable
         {
@@ -2224,7 +2237,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 });
             }
         }
+        public ICommand RegioSelectionChangedCommand
+        {
 
+            get
+            {
+                return new Command<PickerSelectionChangedEventArgs>((e) =>
+                {
+                    try
+                    {
+                        SelectedRegionIndex = e.NewValue;
+                        SelectedRegion = RegionList[e.NewValue];
+                        Region = RegionList[e.NewValue].Bezei;
+                        CityName = string.Empty;
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                });
+            }
+        }
         public ICommand GCCCountryOkayButtonCommand
         {
 
@@ -2264,7 +2297,26 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 });
             }
         }
+        public ICommand CitySelectionChangedCommand
+        {
 
+            get
+            {
+                return new Command<PickerSelectionChangedEventArgs>((e) =>
+                {
+                    try
+                    {
+                        SelectedCityIndex = e.NewValue;
+                        SelectedCity = CityList[e.NewValue];
+                        CityName = CityList[e.NewValue].CityName;
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                });
+            }
+        }
         public ICommand EntryIDNumberTextCommand
         {
 
@@ -2432,6 +2484,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     try
                     {
+                        SelectedGCCCountryIndex = e.NewValue;
+                        SelectedCityIndex = e.NewValue;
                         CountryName = GCCCountryList[e.NewValue].CountryName;
                         SelectedGCCCountry = GCCCountryList[e.NewValue];
                     }
@@ -2452,6 +2506,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     try
                     {
+                        IDTypeIndex = e.NewValue;
                         TxtIDType = IdTypeList[e.NewValue].Name;
                         SelectedIdType = IdTypeList[e.NewValue];
                         IdNumber = string.Empty;
@@ -3129,6 +3184,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             UnitNumber = string.Empty;
             PostalCode = string.Empty;
             BackArrowVisible = true;
+            oneStepBackArrowVisible = true;
             ConfirmPassword = string.Empty;
             DOBddyymm = string.Empty;
             OTP = string.Empty;
@@ -4050,6 +4106,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         Mguid = response.data.GUID;
                         SummeryView = false;
                         PasswordView = true;
+                        oneStepBackArrowVisible = false;
                         if (IsCitizen)
                         {
                             passwordMainView = false;

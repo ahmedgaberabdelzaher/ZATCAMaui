@@ -1518,7 +1518,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 IsDeclarationViewEnabledOld = false;
                 IsDeclarationViewEnabledNew = true;
-                Zterms = VatDeregDeclaration.D.Zterms;
+                var direction = App.IsArabic ? "direction: rtl;" : "direction: ltr;";
+                Zterms = $"<div style=\"{direction}\"> {VatDeregDeclaration.D.Zterms} </div>";
             }
             IsSummaryViewEnabled = false;
             IsBackVisible = true;

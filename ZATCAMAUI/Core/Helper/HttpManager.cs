@@ -114,8 +114,6 @@ namespace ZATCAMAUI.Core.Helper
                     var response = await client.GetAsync(requestUrl);
                     if (response != null)
                     {
-                        Debug.WriteLine(requestUrl);
-                        Debug.WriteLine(response.StatusCode);
                         if (response.IsSuccessStatusCode)
                         {
                             var responseJson = await response.Content.ReadAsStringAsync();
@@ -146,10 +144,6 @@ namespace ZATCAMAUI.Core.Helper
             }
             catch (System.Exception exp)
             {
-                Debug.WriteLine(requestUrl);
-                Debug.WriteLine(exp.StackTrace);
-
-
                 return Tuple.Create((T)Activator.CreateInstance(typeof(T)), false, AppResources.ServerErrorOrNoInternetConnection);
             }
 

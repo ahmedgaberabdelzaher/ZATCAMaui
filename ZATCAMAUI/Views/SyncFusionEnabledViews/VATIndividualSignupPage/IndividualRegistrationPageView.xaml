@@ -49,7 +49,7 @@
 
                 <Image
                     HorizontalOptions="Start"
-                    IsVisible="{Binding BackArrowVisible}"
+                    IsVisible="{Binding oneStepBackArrowVisible}"
                     Source="arrowRight.png">
                     <Image.Triggers>
                         <DataTrigger
@@ -98,7 +98,7 @@
                     VerticalOptions="FillAndExpand"
                     VerticalScrollBarVisibility="Never">
 
-                    <StackLayout Margin="0,0" VerticalOptions="FillAndExpand">
+                    <StackLayout Margin="10,0" VerticalOptions="FillAndExpand">
                         <commonView:PageIndicatorView
                             Completed="{Binding MarkComplete}"
                             DotSize="16"
@@ -589,7 +589,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <custom:CustomSfTextInputView x:Name="FrmName">
+                                    <custom:CustomSfTextInputView x:Name="FrmName" HasError="{Binding FrameNameError}">
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryName"
@@ -661,8 +661,9 @@
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
-                                                    InputTransparent="{Binding SetEnabilityToCountryList}"
-                                                    IsReadOnly="{Binding SetEnabilityToCountryList}"
+                                                    InputTransparent="True"
+                                                    IsEnabled="False"
+                                                    IsReadOnly="True"
                                                     IsSpellCheckEnabled="False"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                                     Style="{StaticResource DefaultEntry}"
@@ -690,7 +691,7 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <custom:CustomSfTextInputView x:Name="GCCFrame_Country">
+                                        <custom:CustomSfTextInputView x:Name="GCCFrame_Country" HasError="{Binding FrameGccCountyError}">
 
                                             <custom:CustomSfTextInputView.TextInputView>
                                                 <custom:GAZTBorderlessEntry
@@ -806,11 +807,16 @@
                                                     x:Name="Entry_Region"
                                                     FontFamily="{StaticResource SomarLight}"
                                                     FontSize="Small"
+                                                    InputTransparent="True"
                                                     IsReadOnly="True"
                                                     IsSpellCheckEnabled="False"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding Region}">
+
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="PickerBtn_Region_Clicked" />
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
 
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <xct:EventToCommandBehavior Command="{Binding EntryRegionTextChangedCommand}" EventName="TextChanged" />
@@ -837,7 +843,8 @@
                                             Background="White"
                                             IsVisible="{Binding SetStateListVisibility}"
                                             ItemHeight="40"
-                                            Mode="Dialog">
+                                            Mode="Dialog"
+                                            SelectionChangedCommand="{Binding RegioSelectionChangedCommand}">
 
                                             <syncfusion:SfPicker.TextStyle>
                                                 <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
@@ -916,6 +923,7 @@
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="Entry_City"
                                                     FontSize="Small"
+                                                    InputTransparent="True"
                                                     IsReadOnly="True"
                                                     IsSpellCheckEnabled="False"
                                                     IsVisible="{Binding SetCityListVisibility}"
@@ -927,6 +935,10 @@
                                                         <xct:EventToCommandBehavior Command="{Binding EntryCityTextChangedCommand}" EventName="TextChanged" />
 
                                                     </custom:GAZTBorderlessEntry.Behaviors>
+
+                                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="PickerBtn_City_Clicked" />
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
 
                                                 </custom:GAZTBorderlessEntry>
                                             </custom:CustomSfTextInputView.TextInputView>
@@ -947,7 +959,8 @@
                                             Background="White"
                                             IsVisible="{Binding SetCityListVisibility}"
                                             ItemHeight="40"
-                                            Mode="Dialog">
+                                            Mode="Dialog"
+                                            SelectionChangedCommand="{Binding CitySelectionChangedCommand}">
 
 
                                             <syncfusion:SfPicker.TextStyle>
@@ -1724,7 +1737,6 @@
                         <!--#region Password-->
                         <StackLayout x:Name="PasswordView" IsVisible="{Binding PasswordView}">
 
-
                             <StackLayout IsVisible="{Binding passwordMainView}">
                                 <Label
                                     FontFamily="{StaticResource SomarBold}"
@@ -1746,9 +1758,7 @@
                             </StackLayout>
 
                             <StackLayout>
-
                                 <StackLayout IsVisible="{Binding passwordMainView}">
-
                                     <StackLayout IsVisible="{Binding IsGulfER}">
                                         <Label HorizontalOptions="Start" Style="{StaticResource GAZTSmallGrayLabelStyle}">
 
@@ -1772,8 +1782,7 @@
                                                     MaxLength="16"
                                                     Placeholder="{x:Static ResourceManager:AppResources.NewPassword}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding Password}"
-                                                    WidthRequest="128">
+                                                    Text="{Binding Password}">
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <xct:EventToCommandBehavior Command="{Binding EntryPasswordTextChangedCommand}" EventName="TextChanged" />
                                                         <behaviors:PasswordTextBehaviour />
@@ -1818,13 +1827,11 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryConfirmPassword"
-                                                    FontSize="Small"
                                                     IsPassword="{Binding IsConfirmPasswordEncripted}"
                                                     MaxLength="16"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding ConfirmPassword}"
-                                                    WidthRequest="128">
+                                                    Text="{Binding ConfirmPassword}">
 
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <xct:EventToCommandBehavior Command="{Binding ConfirmPasswordTextChangedCommand}" EventName="TextChanged" />
@@ -1849,7 +1856,7 @@
 
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <Image
                                             HorizontalOptions="Start"
                                             Source="{Binding MinEight}"
@@ -1860,7 +1867,7 @@
                                             TextColor="#010101" />
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <Image
                                             HorizontalOptions="Start"
                                             Source="{Binding CapsSmall}"
@@ -1871,7 +1878,7 @@
                                             TextColor="#010101" />
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <Image
                                             HorizontalOptions="Start"
                                             Source="{Binding MaxSixteen}"
@@ -1882,7 +1889,7 @@
                                             TextColor="#010101" />
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <Image
                                             HorizontalOptions="Start"
                                             Source="{Binding NumSymbol}"
@@ -1896,12 +1903,11 @@
                                 </StackLayout>
 
                                 <!--  Verification Code  -->
-                                <StackLayout>
+                                <StackLayout Margin="0,10" Spacing="10">
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
-                                        Margin="10,0,10,0"
                                         FontFamily="{StaticResource SomarBold}"
                                         FontSize="22"
                                         Style="{StaticResource GAZTMediumBoldBlackLabelStyle}"
@@ -1913,16 +1919,13 @@
                                         FontSize="15"
                                         Style="{StaticResource GAZTMediumGrayLabelStyle}"
                                         Text="{x:Static ResourceManager:AppResources.EnterVerificationCode}" />
-                                    <BoxView
-                                        Margin="0,10,0,15"
-                                        Style="{StaticResource lineSeperator}"
-                                        WidthRequest="380" />
+                                    <BoxView Style="{StaticResource lineSeperator}" WidthRequest="380" />
                                 </StackLayout>
 
                                 <StackLayout Spacing="10">
                                     <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding EncriptedMobileNumber}" />
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                         <Image Source="clock.png" Style="{StaticResource SmallIcon}" />
                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding OTPValidDuration}" />
                                     </StackLayout>
@@ -1938,16 +1941,12 @@
 
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                FontFamily="{StaticResource SomarLight}"
-                                                FontSize="Small"
-                                                HorizontalOptions="StartAndExpand"
                                                 IsPassword="{Binding IsOTPEncripted}"
                                                 Keyboard="Numeric"
                                                 MaxLength="4"
                                                 Placeholder="{x:Static ResourceManager:AppResources.EnterOTP}"
                                                 Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding OTP}"
-                                                WidthRequest="128">
+                                                Text="{Binding OTP}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:OnlyNumericValuesBehaviour />
                                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -1963,7 +1962,6 @@
                                         x:Name="btnResendOtp"
                                         Background="{Binding ButtonDisableColor}"
                                         Command="{Binding OnResendButtonClick}"
-                                        CornerRadius="0"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
                                         HeightRequest="56"
@@ -1977,11 +1975,11 @@
                         </StackLayout>
                         <!--#endregion-->
 
-                        <buttons:SfButton
+                        <Button
                             x:Name="btnContinue"
-                            Margin="0,10"
+                            Margin="10"
                             Command="{Binding OnContinueButtonClick}"
-                            Style="{StaticResource PrimaryButtonStyle}"
+                            Style="{StaticResource PrimaryMauiButtonStyle}"
                             Text="{Binding ContinueButtonText}"
                             VerticalOptions="EndAndExpand" />
 

@@ -821,10 +821,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     DateTime toDate = Convert.ToDateTime(ZakatReturnDetail.Abrzo);
 
                     string CalenderType = ZakatReturnDetail.Incotyp.Substring(0, 1);
-                    if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+                    if (CalenderType.Equals("H"))
                     {
-                        FromDate = UtilityManager.Converthijri(fromDate);// fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        ToDate = UtilityManager.Converthijri(toDate);// " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        FromDate = UtilityManager.Converthijri(fromDate);
+                        ToDate = UtilityManager.Converthijri(toDate);
                     }
                     else
                     {

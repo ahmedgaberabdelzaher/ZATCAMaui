@@ -656,11 +656,12 @@
                                 Text="{x:Static ResourceManager:AppResources.Importerinformation}" />
 
                             <Border
-                                Padding="0"
+                                Padding="16"
                                 Stroke="LightGray"
                                 StrokeShape="RoundRectangle 8,8,8,8">
 
-                                <StackLayout Margin="16">
+                                <Grid RowSpacing="10"
+                                      RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto">
 
                                     <Grid Padding="8,0" ColumnDefinitions="1.25*,*">
 
@@ -693,18 +694,84 @@
 
                                     </Grid>
 
-                                    <BoxView Style="{StaticResource lineSeperator}" />
+                                    <BoxView Style="{StaticResource lineSeperator}"
+                                             Grid.Row="1"/>
 
-                                    <StackLayout Margin="15">
+                                    <Label Style="{StaticResource BodyLabelGrey}"
+                                           Grid.Row="2"
+                                           Text="{x:Static ResourceManager:AppResources.NameForImprter}" />
 
-                                        <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NameForImprter}" />
+                                     <Label Style="{StaticResource BodyLabelBlack}"
+                                            Grid.Row="3" 
+                                            Text="{Binding DeclarionByInformationInquireLst[0].arbc_impr_name}" />
 
-                                        <Label Style="{StaticResource BodyLabelBlack}" Text="{Binding DeclarionByInformationInquireLst[0].arbc_impr_name}" />
+                                    <Label Style="{StaticResource BodyLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.ReservationStartDate}"
+                                            IsVisible="{Binding ShowDetails}"
+                                           Grid.Row="4"/>
 
+                                    <Label Style="{StaticResource BodyLabelBlack}"
+                                           Text="{Binding ReservationStartDate}"
+                                           IsVisible="{Binding ShowDetails}"
+                                           Grid.Row="5"/>
 
-                                    </StackLayout>
+                                    <Label Style="{StaticResource BodyLabelGrey}"
+                                           Text="{x:Static ResourceManager:AppResources.ReservationDate}"
+                                           Grid.Row="4"
+                                           IsVisible="{Binding ShowDetails}"
+                                           HorizontalOptions="End"/>
 
-                                </StackLayout>
+                                    <Label Style="{StaticResource BodyLabelBlack}"
+                                           Text="{Binding ReservationDate}"
+                                           IsVisible="{Binding ShowDetails}"
+                                           Grid.Row="5"
+                                           HorizontalOptions="End"/>
+
+                                     <Label Style="{StaticResource BodyLabelGrey}"
+                                            HorizontalOptions="End"
+                                            IsVisible="{Binding ShowDetails}"
+                                            Text="{x:Static ResourceManager:AppResources.ReservationAmount}"
+                                            Grid.Row="6"/>
+
+                                    <Label Style="{StaticResource BodyLabelBlack}"
+                                           HorizontalOptions="End"
+                                           IsVisible="{Binding ShowDetails}"
+                                           Text="{Binding ReservationAmount}"
+                                           Grid.Row="7"/>
+
+                                     <Label Style="{StaticResource BodyLabelGrey}"
+                                            IsVisible="{Binding ShowDetails}"
+                                            Text="{x:Static ResourceManager:AppResources.ReservationNumber}"
+                                            Grid.Row="6"/>
+
+                                    <Label Style="{StaticResource BodyLabelBlack}"
+                                           IsVisible="{Binding ShowDetails}"
+                                           Text="{Binding ReservationNumber}"
+                                           Grid.Row="7"/>
+
+                                    <Label Style="{StaticResource BodyLabelGrey}"
+                                           HorizontalOptions="End"
+                                           IsVisible="{Binding ShowDetails}"
+                                           Text="{x:Static ResourceManager:AppResources.ReservationReason}"
+                                           Grid.Row="8"/>
+
+                                    <Label Style="{StaticResource BodyLabelBlack}"
+                                           HorizontalOptions="End"
+                                           IsVisible="{Binding ShowDetails}"
+                                           Text="{Binding ReservationReason}"
+                                           Grid.Row="9"/>
+
+                                    <Label Style="{StaticResource BodyLabelGrey}"
+                                           IsVisible="{Binding ShowDetails}"
+                                           Text="{x:Static ResourceManager:AppResources.ReservationEntity}"
+                                           Grid.Row="8"/>
+
+                                    <Label Style="{StaticResource BodyLabelBlack}"
+                                           IsVisible="{Binding ShowDetails}"
+                                           Text="{Binding ReservationEntity}"
+                                           Grid.Row="9"/>
+
+                                </Grid>
 
                             </Border>
 

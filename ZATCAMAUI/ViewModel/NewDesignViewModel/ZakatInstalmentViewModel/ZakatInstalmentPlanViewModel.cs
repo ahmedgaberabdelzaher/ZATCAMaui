@@ -2820,7 +2820,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             Preferences.Set("IsFromRevok", false);
             Preferences.Set("RevokeRef", "");
-            await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZakatInstalmentPlanSubmittedPopUpMsg + " " + ZakatInstalments.result.DpAmt + " " + AppResources.FORM5SAR + ", " +AppResources.NDSadadBillNo + " " + ZakatInstalments.result.Sopbel , AppResources.CRContinue);
+            await _dialogService.ShowMessage(AppResources.Information, AppResources.ZakatInstalmentPlanSubmittedPopUpMsg + " " + ZakatInstalments.result.DpAmt + " " + AppResources.FORM5SAR + ", " +AppResources.NDSadadBillNo + " " + ZakatInstalments.result.Sopbel , AppResources.CRContinue);
             await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
 
         }
@@ -3697,7 +3697,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         {
             try
             {
-                await Application.Current.MainPage.DisplayAlert("Alert", "Instalment details schedule is displayed here.", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.InstalmentDetailsSchedule, AppResources.OKText);
 
             }
             catch (InternetException ex)

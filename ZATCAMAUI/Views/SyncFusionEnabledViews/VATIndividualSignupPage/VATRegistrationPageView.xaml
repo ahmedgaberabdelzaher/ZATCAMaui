@@ -712,7 +712,7 @@
                                                             <syncfusion:PickerHeaderView
                                                                 Height="46"
                                                                 Background="{StaticResource NeutralBlack}"
-                                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
+                                                                Text="{x:Static ResourceManager:AppResources.VATREligibleStartDate}">
                                                                 <syncfusion:PickerHeaderView.TextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="White" />
                                                                 </syncfusion:PickerHeaderView.TextStyle>
@@ -1302,6 +1302,7 @@
                                                                     Grid.Row="1"
                                                                     Grid.Column="0"
                                                                     Margin="3"
+                                                                    BackgroundColor="White"
                                                                     Padding="0"
                                                                     CornerRadius="3"
                                                                     HorizontalOptions="FillAndExpand">
@@ -2538,7 +2539,8 @@
                                                         </Grid.RowDefinitions>
                                                         <StackLayout>
 
-                                                            <StackLayout Orientation="Horizontal">
+                                                            <StackLayout Orientation="Horizontal"
+                                                                         Spacing="10">
                                                                 <custom:CheckboxCustom
                                                                     IsChecked="{Binding IsDeclarationChecked}"
                                                                     MinimumHeightRequest="32"

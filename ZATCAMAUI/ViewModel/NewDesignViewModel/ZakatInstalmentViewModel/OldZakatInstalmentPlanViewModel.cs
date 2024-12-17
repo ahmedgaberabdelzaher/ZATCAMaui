@@ -2575,7 +2575,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 if (ZakatReferanceNumber != null)
                 {
 
-                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + "'" + ZakatReferanceNumber + "')/$value";
+                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + ZakatReferanceNumber ;
                     await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
 
@@ -2590,7 +2590,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 if (ZakatReferanceNumber != null)
                 {
-                    string downloadurl = ZATCAConstants.OldZakatdownloadCoverFormFile + "'" + ZakatReferanceNumber + "')/$value";
+                    string downloadurl = ZATCAConstants.OldZakatdownloadCoverFormFile + ZakatReferanceNumber;
                     await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
@@ -4045,7 +4045,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     }
 
                 }
-
+                IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -4086,7 +4086,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         {
             try
             {
-                await Application.Current.MainPage.DisplayAlert("Alert", "Instalment details schedule is displayed here.", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.InstalmentDetailsSchedule, AppResources.OKText);
 
             }
             catch (InternetException ex)
@@ -4099,27 +4099,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         #region Attachments View
         public void PopulateAttachments(List<Attachment> attachments)
         {
-            var attachmentsListViewData = new ObservableCollection<Attachment>();
-
-
-
-            foreach (Attachment attachemnt in attachments)
+            try
             {
-                attachmentsListViewData.Add(attachemnt);
+                var attachmentsListViewData = new ObservableCollection<Attachment>();
+
+
+                foreach (Attachment attachemnt in attachments)
+                {
+                    attachmentsListViewData.Add(attachemnt);
+                }
+
+
+
+                if (_bankStatementsAttachment)
+                {
+                    BankStatementsAttachmentsListViewData = attachmentsListViewData;
+                }
+                else
+                {
+                    FinanceAttachmentsListViewData = attachmentsListViewData;
+                }
+
+                EnableDeclarationContinue();
             }
-
-
-
-            if (_bankStatementsAttachment)
+            catch (Exception ex)
             {
-                BankStatementsAttachmentsListViewData = attachmentsListViewData;
-            }
-            else
-            {
-                FinanceAttachmentsListViewData = attachmentsListViewData;
-            }
 
-            EnableDeclarationContinue();
+            }
+            
 
         }
 
@@ -5138,7 +5145,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         if (apiDate != null && !apiDate.Contains("Date"))
                         {
 
-                            DateTime dt = Convert.ToDateTime(ZakatInstalments.d.Z_INVOICE_UI5Set[i].ADueDtTb);
+                            DateTime dt = DateTime.Parse(ZakatInstalments.d.Z_INVOICE_UI5Set[i].ADueDtTb,new CultureInfo("en-US"));
 
                             ZakatInstalments.d.Z_INVOICE_UI5Set[i].ADueDtTb = dt.ToString("yyyy-MM-ddTHH:mm:ss");
                         }
@@ -5261,22 +5268,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 request = BuildRequestObject();
                 response = await OldZakatInstallmentWebServiceManager.SaveOldZakatInstalmentData(request);
                 await PopToRootPage();
-                if (response != null)
-                {
-                    try
-                    {
-                        IsLoading = false;
-                        return response;
-
-                    }
-                    catch (Exception)
-                    {
-                        IsLoading = false;
-                        return null;
-
-                    }
-                }
                 IsLoading = false;
+                
                 return response;
             }
             catch (GAZTVATRegistrationInProcessException ex)

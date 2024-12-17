@@ -20,7 +20,17 @@ namespace ZATCAMAUI.Models
         [JsonProperty("paymentStatus")]
         public string PymtStatus { get; set; }
 
-
+        public string PaymentText
+        {
+            get
+            {
+                 if (PymtStatus == "Unpaid")
+                    return  AppResources.UnPaid;
+                if (PymtStatus == "Partially Paid")
+                    return AppResources.PartiallyPaid;
+                return "";
+            }
+        }
         public Color StatusTextColor { get; set; }
         public Color StatusBackGColor { get; set; }
 

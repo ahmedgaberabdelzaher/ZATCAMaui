@@ -709,12 +709,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,20,10,20"
                                             Command="{Binding DownloadAcknowledgementCommand}"
-                                            CornerRadius="10"
-                                            HeightRequest="48"
                                             Style="{StaticResource PrimaryButtonStyle}"
                                             Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
-                                            VerticalOptions="End"
-                                            WidthRequest="366" />
+                                            VerticalOptions="End"/>
                                     </StackLayout>
                                 </Grid>
 

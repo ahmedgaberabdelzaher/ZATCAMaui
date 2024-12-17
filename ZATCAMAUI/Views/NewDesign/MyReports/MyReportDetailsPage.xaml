@@ -70,10 +70,11 @@
 
                     <ScrollView VerticalScrollBarVisibility="Never">
 
-                        <StackLayout>
+                        <StackLayout Padding="10">
 
                             <!--  Report Details Title  -->
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal"
+                                         Spacing="10">
 
                                 <!--  Report Details Image  -->
                                 <Image
@@ -85,6 +86,7 @@
                                 <Label
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="20"
+                                    FontAttributes="Bold"
                                     HorizontalOptions="StartAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.ReportDetails}"
                                     TextColor="#58595B"
@@ -109,7 +111,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.ReportType}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
                                 <!--  Report Type Value  -->
                                 <Label
@@ -121,18 +123,9 @@
                                     LineBreakMode="WordWrap"
                                     MaxLines="2"
                                     Text="{Binding MyReports.reportType}"
-                                    TextColor="#58595B">
+                                    TextColor="#58595B"/>
 
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference reportType}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
 
-                                </Label>
 
                                 <!--  Facility Name Label  -->
                                 <Label
@@ -140,7 +133,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
                                 <!--  Facility Name Value  -->
                                 <Label
@@ -151,18 +144,9 @@
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{Binding MyReports.facilityName}"
-                                    TextColor="#58595B">
+                                    TextColor="#58595B"/>
 
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference facilityName}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
 
-                                </Label>
 
                                 <!--  Commercial Registration Label  -->
                                 <Label
@@ -170,7 +154,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
                                 <!--  Commercial Registration Value  -->
                                 <Label
@@ -181,18 +165,9 @@
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{Binding MyReports.cr}"
-                                    TextColor="#58595B">
+                                    TextColor="#58595B"/>
 
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference cr}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
 
-                                </Label>
 
                                 <!--  Work type Label  -->
                                 <Label
@@ -200,7 +175,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.WorkType}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
                                 <!--  Work type Value  -->
                                 <Label
@@ -211,18 +186,9 @@
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{Binding MyReports.workType}"
-                                    TextColor="#58595B">
+                                    TextColor="#58595B"/>
 
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference workType}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
 
-                                </Label>
 
                                 <!--  Company address Label  -->
                                 <Label
@@ -230,7 +196,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.NDFacilityAddress}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
                                 <!--  Company address Value  -->
                                 <Label
@@ -241,18 +207,9 @@
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{Binding MyReports.companyAddress}"
-                                    TextColor="#58595B">
+                                    TextColor="#58595B"/>
 
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference companyAddress}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
 
-                                </Label>
 
                                 <!--  Region Label  -->
                                 <Label
@@ -260,7 +217,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
                                 <!--  Region Value  -->
                                 <Label
@@ -271,18 +228,7 @@
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{Binding MyReports.region}"
-                                    TextColor="#58595B">
-
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference region}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
-
-                                </Label>
+                                    TextColor="#58595B"/>
 
 
                                 <!--  City Label  -->
@@ -291,7 +237,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.ZZZZCity}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
                                 <!--  City Value  -->
                                 <Label
@@ -302,18 +248,10 @@
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{Binding MyReports.city}"
-                                    TextColor="#58595B">
+                                    TextColor="#58595B"/>
 
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference city}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
 
-                                </Label>
+
 
                                 <!--  District Label  -->
                                 <Label
@@ -321,7 +259,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}"/>
 
                                 <!--  District Value  -->
                                 <Label
@@ -332,18 +270,10 @@
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{Binding MyReports.district}"
-                                    TextColor="#58595B">
+                                    TextColor="#58595B"/>
 
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference district}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
 
-                                </Label>
+
 
                                 <!--  Street Label  -->
                                 <Label
@@ -352,7 +282,7 @@
                                     FontSize="16"
                                     IsVisible="false"
                                     Text="{x:Static ResourceManager:AppResources.ReportStreetName}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
 
                                 <!--  Street Value  -->
@@ -364,18 +294,8 @@
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{Binding MyReports.street}"
-                                    TextColor="#58595B">
+                                    TextColor="#58595B"/>
 
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference street}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
-
-                                </Label>
 
 
                                 <!--  TIN number Label  -->
@@ -385,7 +305,7 @@
                                     FontSize="16"
                                     IsVisible="false"
                                     Text="{x:Static ResourceManager:AppResources.ZVATAccountNumber}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
                                 <!--  TIN number Value  -->
                                 <Label
@@ -396,18 +316,9 @@
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{Binding MyReports.tin}"
-                                    TextColor="#58595B">
+                                    TextColor="#58595B"/>
 
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference tin}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
 
-                                </Label>
 
                                 <!--  Report location Label  -->
                                 <Label
@@ -415,7 +326,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.ZTERReportDetailReportDetailRLocation}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
                                 <!--  Report location Value  -->
                                 <Label
@@ -427,18 +338,9 @@
                                     HorizontalOptions="CenterAndExpand"
                                     LineBreakMode="WordWrap"
                                     Text="{Binding MyReports.ReportLocation}"
-                                    TextColor="#58595B">
+                                    TextColor="#58595B"/>
 
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference location}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
 
-                                </Label>
 
                                 <!--  Report details Label  -->
                                 <Label
@@ -446,7 +348,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.ReportDetails}"
-                                    TextColor="#58595B" />
+                                    TextColor="{StaticResource Primary}" />
 
                                 <!--  Report details Value  -->
                                 <Label
@@ -460,15 +362,6 @@
                                     Text="{Binding MyReports.details}"
                                     TextColor="#58595B"
                                     VerticalOptions="CenterAndExpand">
-
-                                    <!--<Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding Source={x:Reference reportDetails}, Path=Text.Length}"
-                                                TargetType="Label"
-                                                Value="0">
-                                                <Setter Property="Text" Value="-" />
-                                            </DataTrigger>
-                                        </Label.Triggers>-->
 
                                 </Label>
 

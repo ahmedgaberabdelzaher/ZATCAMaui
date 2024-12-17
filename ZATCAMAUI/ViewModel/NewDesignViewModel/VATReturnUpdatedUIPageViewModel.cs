@@ -26,7 +26,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public ICommand OnMoreClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
 
-        public ICommand onCountinueClicked { get; set; }
 
         public ICommand onSecondButtonClicked { get; set; }
 
@@ -2905,17 +2904,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 else if (CreditDetailsText == AppResources.ZZZZGetAckNew)
                 {
-                    _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationData);
+                    await _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationData);
                 }
             });
 
-            onCountinueClicked = new Command(() =>
-            {
-
-
-
-
-            });
 
             OnBackStepClicked = new Command(() =>
             {
@@ -3008,48 +3000,62 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #endregion
         public async Task VATSetReturnVoidAsync()
         {
-            //var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
-            //if (answer)
-            //{
-            await Task.Run(() =>
+            try
             {
                 IsNewLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-                try
+                CreateDataForPost();
+                string operation = "04";// Passed 04 to set void
+                VATDeclarationData.data.Operationz = operation;
+                StepNumber = "01";
+                if (IsDeclarationCheckedForInstruction == true)
                 {
-                    CreateDataForPost();
-                    string operation = "04";// Passed 04 to set void
-                    VATDeclarationData.data.Operationz = operation;
-                    StepNumber = "01";
-                    if (IsDeclarationCheckedForInstruction == true)
+                    StepNumber = "02";
+                }
+                if (IsCheckedTaxPayerDetailsInfo == true)
+                {
+                    StepNumber = "03";
+                }
+                if (IsDeclarationCheckedForSummary == true)
+                {
+                    StepNumber = "04";
+                }
+                VATDeclarationData.data.StepNumber = StepNumber;
+                VATDeclarationData.data.UserTypz = "TP";
+                var response = WebServiceManager.GAZTSetVATReturnVoid(VATDeclarationData);
+                await PopToRootPage();
+                var res = await SaveReturnAndGetReturnAndSetButtons();
+                if (res != null && res.data1 != null)
+                {
+                    ManageEnabledProperty(false);
+                    IsVoidClicked = true;
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATReturnFormCancelled;
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                }
+                else
+                {
+                    IsLoading = false;
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                     {
-                        StepNumber = "02";
-                    }
-                    if (IsCheckedTaxPayerDetailsInfo == true)
-                    {
-                        StepNumber = "03";
-                    }
-                    if (IsDeclarationCheckedForSummary == true)
-                    {
-                        StepNumber = "04";
-                    }
-                    VATDeclarationData.data.StepNumber = StepNumber;
-                    VATDeclarationData.data.UserTypz = "TP";
-                    var response = WebServiceManager.GAZTSetVATReturnVoid(VATDeclarationData);
-                    await PopToRootPage();
-                    var res = await SaveReturnAndGetReturnAndSetButtons();
-                    if (res != null && res.data != null && response != null)
-                    {
-                        ManageEnabledProperty(false);
-                        IsVoidClicked = true;
                         List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                         HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                         NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                         headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                         headerAmountInfo.IsLinkAvailable = false;
-                        headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATReturnFormCancelled;
+                        headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
                         headerWithInfos.Add(headerAmountInfo);
 
@@ -3060,58 +3066,40 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                         await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
+
+                        _navigationService.GoBack();
                     }
                     else
                     {
-                        IsLoading = false;
-                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
-                        {
-                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                            headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
 
-                            headerWithInfos.Add(headerAmountInfo);
+                        headerWithInfos.Add(headerAmountInfo);
 
 
-                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-
-                            _navigationService.GoBack();
-                        }
-                        else
-                        {
-                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                            headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
-
-                            headerWithInfos.Add(headerAmountInfo);
-
-
-                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                            await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-                            WebServiceManager.ErrorMessageForVAT = string.Empty;
-                        }
+                        WebServiceManager.ErrorMessageForVAT = string.Empty;
                     }
                 }
-                catch (InternetException ex)
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                }
-            });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                IsLoading = false;
+                await ShowDialog(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            }
             IsNewLoading = false;
         }
         public async Task OnSaveDraftClicked()
@@ -3140,7 +3128,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 VATDeclarationData.data.StepNumberz = StepNumberz;
                 VATDeclarationData.data.UserTypz = "TP";
                 var res = await SaveReturnAndGetReturnAndSetButtons();
-                if (res != null && res.data != null)
+                if (res != null && res.data1 != null)
                 {
                     if (currentTab == VATReturnUpdatedUITabEnum.Instrunction)
                     {
@@ -3157,7 +3145,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                     headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                     headerAmountInfo.IsLinkAvailable = false;
-                    headerAmountInfo.Message = string.Format(AppResources.DraftSaved, "  " + res.data.Fbnum);
+                    headerAmountInfo.Message = string.Format(AppResources.DraftSaved, "  " + res.data1.Fbnum);
 
                     headerWithInfos.Add(headerAmountInfo);
 
@@ -3213,6 +3201,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                 }
                 IsNewLoading = false;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                IsLoading = false;
+                await ShowDialog(ex.Message);
             }
             catch (Exception)
             {
@@ -3358,6 +3351,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                 }
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                IsLoading = false;
+                await ShowDialog(ex.Message);
+            }
             catch (InternetException ex)
             {
                 if (showPopupMsg)
@@ -3385,124 +3383,138 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public async Task VATReturnAmendAsync()
         {
-            IsNewLoading = true;
-            string periodto = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.data.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-            TimeSpan TS = DateTime.Now - Convert.ToDateTime(periodto);
-            double Years = TS.TotalDays / 365.25;
-            if (Years >= 5)
+            try
             {
-                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                headerAmountInfo.IsLinkAvailable = false;
-                headerAmountInfo.Message = AppResources.ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed;
-
-                headerWithInfos.Add(headerAmountInfo);
-
-
-                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-                return;
-            }
-            CreateDataForPost();
-            string operation = "45";// Passed 45 to set for Amendment
-            VATDeclarationData.data.Operationz = operation;
-            StepNumber = "01";
-            // ButtonName = AppResources.ZVatStepTwo;
-            if (IsDeclarationCheckedForInstruction == true)
-            {
-                StepNumber = "02";
-            }
-            if (IsCheckedTaxPayerDetailsInfo == true)
-            {
-                StepNumber = "03";
-            }
-            if (IsDeclarationCheckedForSummary == true)
-            {
-                StepNumber = "04";
-            }
-            VATDeclarationData.data.StepNumber = StepNumber;
-            VATDeclarationData.data.UserTypz = "TP";
-            await PopToRootPage();
-            var res = await SaveReturnAndGetReturnAndSetButtons();
-            if (res != null && res.data != null)
-            {
-                ManageEnabledProperty(true);
-                IsMainButtonVisible = true;
-                if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && VATDeclarationData.data.Yesno == "X")
+                IsNewLoading = true;
+                var periodto = DateTimeHelper.DateTimeFormater(VATDeclarationData.data.Abrzo);
+                TimeSpan TS = DateTime.Now - Convert.ToDateTime(periodto);
+                double Years = TS.TotalDays / 365.25;
+                if (Years >= 5)
                 {
-                    IsEnableSwitchToggledFor15PercentChange = false;
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = AppResources.ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed;
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    IsNewLoading = false;
+                    return;
+                }
+                CreateDataForPost();
+                string operation = "45";// Passed 45 to set for Amendment
+                VATDeclarationData.data.Operationz = operation;
+                StepNumber = "01";
+                // ButtonName = AppResources.ZVatStepTwo;
+                if (IsDeclarationCheckedForInstruction == true)
+                {
+                    StepNumber = "02";
+                }
+                if (IsCheckedTaxPayerDetailsInfo == true)
+                {
+                    StepNumber = "03";
+                }
+                if (IsDeclarationCheckedForSummary == true)
+                {
+                    StepNumber = "04";
+                }
+                VATDeclarationData.data.StepNumber = StepNumber;
+                VATDeclarationData.data.UserTypz = "TP";
+                await PopToRootPage();
+                var res = await SaveReturnAndGetReturnAndSetButtons();
+                if (res != null && res.data1 != null)
+                {
+                    ManageEnabledProperty(true);
+                    IsMainButtonVisible = true;
+                    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && VATDeclarationData.data.Yesno == "X")
+                    {
+                        IsEnableSwitchToggledFor15PercentChange = false;
+                    }
+                    else
+                    {
+                        IsEnableSwitchToggledFor15PercentChange = true;
+                    }
+
+                    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && VATDeclarationData.data.GovsupYesno == "X")
+                    {
+                        IsEnableSwitchToggledFor15PercentChange = false;
+
+                    }
+                    else
+                    {
+                        IsEnableSwitchToggledFor15PercentChange = true;
+                    }
+                    IsDeclarationCheckEnabled = false;
+                    IsTaxPayerCheckEnabled = false;
+                    IsAmendClicked = true;
+                    IsMainButtonEnabled = true;
+                    IsMainButtonVisible = true;
+                    ManageButtonsNameOnViewModel();
+
                 }
                 else
                 {
-                    IsEnableSwitchToggledFor15PercentChange = true;
-                }
+                    IsLoading = false;
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                    {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
-                if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && VATDeclarationData.data.GovsupYesno == "X")
-                {
-                    IsEnableSwitchToggledFor15PercentChange = false;
+                        headerWithInfos.Add(headerAmountInfo);
 
-                }
-                else
-                {
-                    IsEnableSwitchToggledFor15PercentChange = true;
-                }
-                IsDeclarationCheckEnabled = false;
-                IsTaxPayerCheckEnabled = false;
-                IsAmendClicked = true;
-                IsMainButtonEnabled = true;
-                IsMainButtonVisible = true;
-                ManageButtonsNameOnViewModel();
 
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                        _navigationService.GoBack();
+                    }
+                    else
+                    {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
+
+                        headerWithInfos.Add(headerAmountInfo);
+
+
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                        WebServiceManager.ErrorMessageForVAT = string.Empty;
+                    }
+                }
             }
-            else
+            catch (GAZTVATRegistrationInProcessException ex)
             {
                 IsLoading = false;
-                if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
-                {
-                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                    headerAmountInfo.IsLinkAvailable = false;
-                    headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
-
-                    headerWithInfos.Add(headerAmountInfo);
-
-
-                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-                    _navigationService.GoBack();
-                }
-                else
-                {
-                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                    headerAmountInfo.IsLinkAvailable = false;
-                    headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
-
-                    headerWithInfos.Add(headerAmountInfo);
-
-
-                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-                    WebServiceManager.ErrorMessageForVAT = string.Empty;
-                }
+                await ShowDialog(ex.Message);
             }
+            catch (Exception ex)
+            {
+
+            }
+
             IsNewLoading = false;
         }
 
@@ -3961,10 +3973,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 return response;
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                throw new GAZTVATRegistrationInProcessException(ex.Message);
+            }
             catch (InternetException)
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
+        }
+        public async Task ShowDialog(string msg)
+        {
+            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(msg));
+
         }
         public async Task SubmitClicked()
         {
@@ -4101,10 +4122,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                     }
                 }
-                else
-                {
 
-                }
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                IsLoading = false;
+                await ShowDialog(ex.Message);
             }
             catch (Exception)
             {
@@ -4215,6 +4238,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                 }
                 return result;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                throw new GAZTVATRegistrationInProcessException(ex.Message);
             }
             catch (Exception)
             {
@@ -5785,9 +5812,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             return iSValiedNumber;
         }
 
-        public void gotoSuccessPage()
+        public async Task gotoSuccessPage()
         {
-            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, _vATDeclarationData);
+            await _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, _vATDeclarationData);
         }
         public async Task DoValidatePayment(string fbNum, string paymentType)
         {

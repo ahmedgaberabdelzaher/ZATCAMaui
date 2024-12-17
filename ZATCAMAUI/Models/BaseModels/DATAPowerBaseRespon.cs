@@ -21,6 +21,11 @@ namespace ZATCAMAUI.Models.BaseModels
         public string code { get; set; }
         public string description { get; set; }
     }
+    public class ErrorDetails
+    {
+        public string code { get; set; }
+        public string message { get; set; }
+    }
     public class DATAPowerBaseResponseResult<T>
     {
         public Header header { get; set; }
@@ -31,6 +36,8 @@ namespace ZATCAMAUI.Models.BaseModels
         public string backendErrors { get; set; }
         [JsonProperty("Error details:")]
         public List<string> Errordetails { get; set; }
+        [JsonProperty("errorDetails")]
+        public List<ErrorDetails> errorDetails { get; set; }
     }
 
 }

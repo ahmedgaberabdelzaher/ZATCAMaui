@@ -12,6 +12,7 @@ using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.ForgotModel;
 using ZATCAMAUI.Models.SignUP;
 using ZATCAMAUI.Core.Services.Interfac;
+using System;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -1937,7 +1938,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 IsLoading = true;
                 ImageCaptchaModel result = await WebServiceManager.GetCaptchaImage(ApplicationCode, GUID);
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+               await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (result != null)
                 {
                     ImageBase64 = result.data.cval;
@@ -1949,16 +1950,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (GAZTErrorException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+               
                 SetIDNumberEnability = true;
                 IDNumber = String.Empty;
             }
 
             catch (InternetException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                
 
                 SetIDNumberEnability = true;
                 IDNumber = String.Empty;
@@ -1985,7 +1988,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     metadata.uri = uri;
                     metadata.type = type;
                     D d = new D();
-                    //d.__metadata =  metadata;
                     d.Action = "";
                     d.Tin = idNumber;
                     d.Langu = UtilityManager.GetLanguageParameter();
@@ -1995,9 +1997,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     d.RdBt = "P";
                     d.TpType = "";
                     d.MobileNo = "";
-                    // d.Refresh = "";
                     d.Hyperlink = "";
-                    //d.Taxpayer = "";
                     d.Name = "";
                     d.Otp = "";
                     d.NewPwd = "";
@@ -2018,7 +2018,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     var OTPResponseDATA = await WebServiceManager.SendOTP(OTPreq);
 
                     await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    if (OTPResponseDATA?.result != null/* && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId)*/)
+                    if (OTPResponseDATA?.result != null)
                     {
                         ContinueButtonEnability = true;
                         IsResendOTPEnabled = false;
@@ -2184,9 +2184,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             String message = String.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                         }
-                        else
-                        {
-                        }
                         EnteredOTP = "";
                     }
                 }
@@ -2194,20 +2191,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     IsAPICalledSuccessfully = false;
 
+                    IsLoading = false;
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.EnterVerificationCode));
                 }
                 IsLoading = false;
             }
             catch (GAZTErrorException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                
             }
             catch (InternetException ex)
             {
+                IsLoading = false;
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                IsLoading = false;
             }
         }
         public async Task SendIDNumberToUsernameEmail()
@@ -2251,10 +2250,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
             }
-            catch (GAZTErrorException ex)
+            catch (GAZTErrorException edx)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 IsLoading = false;
+                await _dialogService.ShowMessageBox(edx.Message, AppResources.Information);
             }
             catch (InternetException ex)
             {
@@ -2287,17 +2286,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
 
                     var _navigation = Application.Current.MainPage.Navigation;
-                    try
-                    {
-                        _navigation.NavigationStack.ToList().Clear();
-                        await _navigation.PopToRootAsync();
-                        await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverUsernamePageView());
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
+                    _navigation.NavigationStack.ToList().Clear();
+                    await _navigation.PopToRootAsync();
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverUsernamePageView());
                 }
                 else
                 {
@@ -2307,15 +2298,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
             }
-            catch (GAZTErrorException ex)
+            catch (GAZTErrorException eax)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 IsLoading = false;
+                await _dialogService.ShowMessageBox(eax.Message, AppResources.Information);
+
             }
             catch (InternetException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                
             }
         }
         private async Task ChangePassword()
@@ -2377,8 +2370,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (InternetException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 IsLoading = false;
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
         }
 
@@ -2593,6 +2586,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public void ClearData()
         {
+            GUID = string.Empty;
 
             PasswordLayoutVisibility = false;
             RecoverUserNameLayout = false;

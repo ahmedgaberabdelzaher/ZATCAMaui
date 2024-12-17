@@ -1145,53 +1145,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 OnPropertyChanged(SearchText);
             }
         }
-        private ObservableCollection<OutletItem> _outletData = new ObservableCollection<OutletItem>();
-        public ObservableCollection<OutletItem> OutletData
-        {
-            get => _outletData;
-            set
-            {
-                if (_outletData == value) return;
 
-                if (value != null && value.Count > 0)
-                {
-                    _outletData = value;
-                    OnPropertyChanged(nameof(OutletData));
-                }
-            }
-        }
-        private ObservableCollection<OutletItem> _searchableOutletData = new ObservableCollection<OutletItem>();
-        public ObservableCollection<OutletItem> SearchableOutletData
-        {
-            get => _searchableOutletData;
-            private set
-            {
-                if (_searchableOutletData == value) return;
+        ObservableCollection<OutletItem> _outletData = new ObservableCollection<OutletItem>();
+        public ObservableCollection<OutletItem> OutletData { get { return _outletData; } set { _outletData = value; OnPropertyChanged(); } }
 
-                if (value != null && value.Count > 0)
-                {
-                    _searchableOutletData = value;
-                    OnPropertyChanged(nameof(SearchableOutletData));
-                }
-            }
-        }
+        ObservableCollection<OutletItem> _searchableOutletData = new ObservableCollection<OutletItem>();
+        public ObservableCollection<OutletItem> SearchableOutletData { get { return _searchableOutletData; } set { _searchableOutletData = value; OnPropertyChanged(); } }
 
-        private ObservableCollection<OuteltInfo_NestedListView> _outlettUiList = new ObservableCollection<OuteltInfo_NestedListView>();
-        public ObservableCollection<OuteltInfo_NestedListView> OutlettUiList
-        {
-            get
-            {
-                return _outlettUiList;
-            }
-            set
-            {
-                if (_outlettUiList == value) return;
+        ObservableCollection<OuteltInfo_NestedListView> _outlettUiList = new ObservableCollection<OuteltInfo_NestedListView>();
+        public ObservableCollection<OuteltInfo_NestedListView> OutlettUiList { get { return _outlettUiList; } set { _outlettUiList = value; OnPropertyChanged(); } }
 
-                _outlettUiList = value;
 
-                OnPropertyChanged("OutlettUiList");
-            }
-        }
+
+      
 
         #endregion
 
@@ -1239,6 +1205,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
+
+        private string _finSelectedMethod = null;
+        public string FinSelectedMethod
+        {
+            get => _finSelectedMethod;
+            set
+            {
+                if (_finSelectedMethod == value) return;
+
+                if (value != null)
+                {
+                    _finSelectedMethod = value;
+                    OnPropertyChanged(nameof(FinSelectedMethod));
+                }
+            }
+        }
+
         private List<string> _calendarTypeList = new List<string>();
         public List<string> CalendarTypeList
         {
@@ -2867,10 +2850,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
                     CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
                     if (taxPayerDetails?.Accmethod == "A")
+                    {
                         SelectedMethod = AppResources.NDAccounting;
+                        FinSelectedMethod = AppResources.FORM5AccountingMethod;
+                    }
                     else
+                    {
                         SelectedMethod = AppResources.NDEstimated;
-
+                        FinSelectedMethod = AppResources.ESTEstimatedMethod;
+                    }
 
                     if (taxPayerDetails?.Fdcalender == "1")
                     {

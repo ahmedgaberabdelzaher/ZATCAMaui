@@ -145,7 +145,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         }
 
 
-        private void CheckBox_CheckedChanged(object sender, Boolean e)
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             viewModel.EnableSecurityPaymentsConButton();
         }
@@ -212,7 +212,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             viewModel.LateFlngDetails = LateFiling_Details_Txx.Text;
 
             viewModel.EnableLateFilingsDetailsConButton();
-
 
         }
     }

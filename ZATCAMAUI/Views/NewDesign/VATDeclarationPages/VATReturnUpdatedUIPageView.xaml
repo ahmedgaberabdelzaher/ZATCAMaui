@@ -263,21 +263,21 @@
                                                 VerticalTextAlignment="Center" />
                                         </StackLayout>
 
-                                        <buttons:SfButton
+                                        <buttons:SfButton Margin="5"
                                             Clicked="OnAmendButtonClicked"
                                             IsVisible="{Binding IsVisibleAmendButton}"
                                             Style="{StaticResource PrimaryButtonStyle}"
                                             Text="{x:Static ResourceManager:AppResources.ZZAmend}"
                                             VerticalOptions="CenterAndExpand" />
 
-                                        <buttons:SfButton
+                                        <buttons:SfButton 
                                             Clicked="OnContinueButtonClicked"
                                             IsVisible="{Binding IsMainButtonVisible}"
                                             Style="{StaticResource PrimaryButtonStyle}"
                                             Text="{Binding ContinueText}"
                                             VerticalOptions="CenterAndExpand" />
 
-                                        <buttons:SfButton
+                                        <buttons:SfButton Margin="5"
                                             Background="Transparent"
                                             Command="{Binding onRefundClicked}"
                                             IsEnabled="{Binding IsRefundButtonEnabled}"
@@ -286,7 +286,7 @@
                                             Text="{Binding RefundButtonText}"
                                             TextColor="{StaticResource NewDullOrangeColor}" />
 
-                                        <buttons:SfButton
+                                        <buttons:SfButton 
                                             Background="Transparent"
                                             Command="{Binding onSecondButtonClicked}"
                                             IsEnabled="{Binding IsGetSadadNumberEnabled}"
@@ -295,7 +295,7 @@
                                             Text="{Binding CreditDetailsText}"
                                             TextColor="{StaticResource NewDullOrangeColor}" />
 
-                                        <buttons:SfButton
+                                        <buttons:SfButton Margin="5"
                                             Background="Transparent"
                                             Command="{Binding onCreditForwardClicked}"
                                             IsVisible="{Binding IsCreditForwardBtnVisible}"
@@ -3481,6 +3481,7 @@
                                                             Text="{x:Static ResourceManager:AppResources.ZVatTaxpayersName}" />
                                                         <Label
                                                             HorizontalOptions="EndAndExpand"
+                                                            HorizontalTextAlignment="End"
                                                             Style="{StaticResource ValueLabelBlack}"
                                                             Text="{Binding Tpnm}" />
                                                     </StackLayout>
@@ -4031,7 +4032,7 @@
                                         Text="{x:Static ResourceManager:AppResources.ZZAmend}"
                                         VerticalOptions="CenterAndExpand" />
 
-                                    <buttons:SfButton
+                                    <buttons:SfButton Margin="5"
                                         Clicked="OnContinueButtonClicked"
                                         IsVisible="{Binding IsMainButtonVisible}"
                                         Style="{StaticResource PrimaryButtonStyle}"
@@ -4047,7 +4048,7 @@
                                         Text="{Binding RefundButtonText}"
                                         TextColor="{StaticResource NewDullOrangeColor}" />
 
-                                    <buttons:SfButton
+                                    <buttons:SfButton Margin="5"
                                         Background="Transparent"
                                         Command="{Binding onSecondButtonClicked}"
                                         IsEnabled="{Binding IsGetSadadNumberEnabled}"

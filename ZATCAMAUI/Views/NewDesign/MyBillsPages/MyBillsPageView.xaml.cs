@@ -19,8 +19,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
         {
             InitializeComponent();
 
-            //  App.DisplayProgressView();
-
             if (viewModel != null) return;
             viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
             BindingContext = viewModel;
@@ -29,7 +27,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                 viewModel.PopulateFilterDropdown();
                 viewModel.onPageLoad(billInfo);
                 viewModel.PopulateDataInChips();
-                //viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
 
                 if (viewModel.MyBillsOriginal != null)
                 {
@@ -159,10 +156,10 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
 
 
-        private void btn_Clicked(object sender, EventArgs e)
+        private async void btn_Clicked(object sender, EventArgs e)
         {
 
-            viewModel.showPickerDialog();
+           await viewModel.showPickerDialog();
 
         }
 
@@ -175,7 +172,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
             {
 
                 ChipModel selectedReturntype = (ChipModel)e.AddedItem;
-                //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     if (selectedReturntype.Text == AppResources.UnPaid)
@@ -191,7 +187,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                     }
                 });
 
-                //viewModel.AmountTitle = AppResources.MyBillsTotalUnPaidAmount;
                 viewModel.SelectedChipFilterItem = selectedReturntype;
             }
             catch (Exception)
@@ -206,16 +201,12 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
         {
             try
             {
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                viewModel.IsLoading = true;
                 var dataItem = e.Item as MyBills;
                 await Clipboard.SetTextAsync(dataItem.VTRE2);
                 if (Clipboard.HasText)
                 {
                     var text = await Clipboard.GetTextAsync();
-                    //await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
                     List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                     HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
@@ -248,10 +239,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
                     await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                 }
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {

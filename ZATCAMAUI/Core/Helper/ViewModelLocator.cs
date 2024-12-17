@@ -291,7 +291,7 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<ZakatAcknowledgmentPageViewModel>()
                 .AddSingleton<ChangeFillingPeriodViewModel>()
                 .AddSingleton<ContractReleaseViewModel>()
-                .AddSingleton<FilesUploadPopUpViewModel>()
+                .AddTransient<FilesUploadPopUpViewModel>()
                 .AddSingleton<InstructionsBottomPopUpViewModel>()
                 .AddSingleton<EstablishmentSignUPPageViewModel>()
                 .AddSingleton<SignUpForEstablishmentPageViewModel>()
@@ -324,7 +324,7 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<VATInstalmentNotesPageViewModel>()
                 .AddSingleton<VATInstalmentPlanRevokeViewModel>()
                 .AddSingleton<OTPPageViewModel>()
-                .AddSingleton<AttachmentViewModel>()
+                .AddTransient<AttachmentViewModel>()
                 .AddSingleton<AccountLockedViewModel>()
 
             #endregion

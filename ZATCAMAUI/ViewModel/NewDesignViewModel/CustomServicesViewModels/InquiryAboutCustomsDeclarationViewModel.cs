@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text;
 using System.Timers;
 using System.Windows.Input;
@@ -140,6 +141,97 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isStatmentDetailsVisible = value;
+                OnPropertyChanged();
+            }
+        }
+
+        string reservationStartDate { get; set; }
+
+        public string ReservationStartDate
+        {
+            get { return reservationStartDate; }
+
+            set
+            {
+                reservationStartDate = value;
+                OnPropertyChanged();
+            }
+        }
+
+        string reservationDate { get; set; }
+
+        public string ReservationDate
+        {
+            get { return reservationDate; }
+
+            set
+            {
+                reservationDate = value;
+                OnPropertyChanged();
+            }
+        }
+
+        string reservationAmount { get; set; }
+
+        public string ReservationAmount
+        {
+            get { return reservationAmount; }
+
+            set
+            {
+                reservationAmount = value;
+                OnPropertyChanged();
+            }
+        }
+
+        string reservationNumber { get; set; }
+
+        public string ReservationNumber
+        {
+            get { return reservationNumber; }
+
+            set
+            {
+                reservationNumber = value;
+                OnPropertyChanged();
+            }
+        }
+
+        string reservationReason { get; set; }
+
+        public string ReservationReason
+        {
+            get { return reservationReason; }
+
+            set
+            {
+                reservationReason = value;
+                OnPropertyChanged();
+            }
+        }
+
+        string reservationEntity { get; set; }
+
+        public string ReservationEntity
+        {
+            get { return reservationEntity; }
+
+            set
+            {
+                reservationEntity = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool showDetails { get; set; }
+
+        public bool ShowDetails
+        {
+            get { return showDetails; }
+
+            set
+            {
+                showDetails = value;
                 OnPropertyChanged();
             }
         }
@@ -826,6 +918,58 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             IsOTPView = false;
             IsDetailsVisible = true;
+            if (DeclarionByInformationInquireLst[0].dcltn_sta_cd == 16)
+            {
+               var data = await _customInquiryService.GetDcltnSeizeDetails(selectedPort.port_cd, DeclarionByInformationInquireLst[0].dcltn_isn.Split('.')[0], DeclarationType != null ? DeclarationType.Value : selectedDeclarationType.Key);
+
+                if(data.Item1 != null)
+                {
+                    var item = data.Item1;
+                    if (item.header?.status?.code == "I000000")
+                    {
+                        if (item.data?.importerSeizures != null && item.data?.importerSeizures.Count > 0)
+                        {
+                            
+                            var startDate = DateTime.Parse(item.data.importerSeizures[0].seizureStartDate, new CultureInfo("ar-SA"));
+
+                            ReservationStartDate = $"{startDate.Day.ToString("D2")}-{startDate.Month.ToString("D2")}-{startDate.Year.ToString("D2")}";
+
+                            var seizureDate = DateTime.Parse(item.data.importerSeizures[0].seizureDate, new CultureInfo("ar-SA"));
+
+                            ReservationDate = $"{seizureDate.Day.ToString("D2")}-{seizureDate.Month.ToString("D2")}-{seizureDate.Year.ToString("D2")}";
+                            ReservationAmount = item.data.importerSeizures[0].seizureAmount;
+                            ReservationNumber = item.data.importerSeizures[0].seizureNumber;
+                            ReservationReason = item.data.importerSeizures[0].seizureMainResone;
+                            ReservationEntity = item.data.importerSeizures[0].seizureSubResone;
+                            ShowDetails = true;
+                        }
+                        else
+                        {
+                            ShowDetails = false;
+                        }
+                    }
+                    else if (!string.IsNullOrWhiteSpace(item?.header?.moreInformation?.backendErrors))
+                    {
+                        MessageTxt = item?.header?.moreInformation?.backendErrors;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+                        ShowDetails = false;
+                    }
+                    else
+                    {
+                        MessageTxt = AppResources.RequestTimeoutDescription;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+                        ShowDetails = false;
+                    }
+                }
+               
+            }
+            else
+            {
+                ShowDetails = false;
+            }
+
             if (IsFromBillInfo)
             {
                 await GetDeclarationFees(DeclarationNumber.Value, SelectedPort.port_cd, Date, DeclarationType.Value);
@@ -1252,7 +1396,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             try
             {
-                //PhoneNo = "0556810326";
+                //PhoneNo = "0503455172";
                 Phone = PhoneNo;
                 IsLoading = true;
                 string otp = OTPHelper.Generate();

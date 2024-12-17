@@ -141,7 +141,6 @@ namespace ZATCAMAUI.Core.Manager
                     client.Timeout = TimeSpan.FromSeconds(60);
 
 
-                    //String url = Constants.ZakatExemtionRequestList + "Euser='',Fbguid='',Tin=" + "'" + App.LoginDataRetrieved.TIN + "',UserTyp='TP',Langz=" + "'" + lang + "')?&$expand=FbnumListSet,statusSet&$format=json";
                     String url = ZATCAConstants.ZakatExemtionRequestList + "TIN=" + App.LoginDataRetrieved.TIN + "&userType=TP&language="+ lang;
 
                     var uri = new Uri(url);
@@ -195,7 +194,7 @@ namespace ZATCAMAUI.Core.Manager
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -236,8 +235,8 @@ namespace ZATCAMAUI.Core.Manager
                     client.Timeout = TimeSpan.FromMinutes(_timeoutMinutes);
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    _vatObjectionsResponsestr = res.Content.ReadAsStringAsync().Result;
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    _vatObjectionsResponsestr = await res.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(_vatObjectionsResponsestr))
                     {
                         ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vatObjectionsResponsestr);
@@ -257,7 +256,7 @@ namespace ZATCAMAUI.Core.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }

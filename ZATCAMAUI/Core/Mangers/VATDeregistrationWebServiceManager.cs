@@ -799,8 +799,6 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);

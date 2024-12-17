@@ -23,7 +23,7 @@
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
             <StackLayout>
-                <ScrollView>
+                <ScrollView VerticalScrollBarVisibility="Never">
                     <StackLayout
                         Grid.Row="0"
                         Padding="15"

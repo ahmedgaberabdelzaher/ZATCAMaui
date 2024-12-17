@@ -4,7 +4,6 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.ZakatInstalationModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
-using ZATCAMAUI.Views.NewDesign.GenericPickers;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 {
@@ -186,28 +185,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             MessagingCenter.Unsubscribe<object, AttachmentsList>(this, "PickerSelectedItem");
         }
 
-        protected override void OnAppearing()
-        {
-            try
-            {
-                base.OnAppearing();
-                
-                //if (DeviceInfo.Platform == DevicePlatform.iOS)
-                //{
-                //    //iOS stuff
-                //    BillsVATListVIew.IsScrollingEnabled = false;
-                //    VATInstalmentDisplayDetailsViewPage.IsScrollingEnabled = false;
-
-
-                //}
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
+       
 
         private void calculation_TextChanged(object sender, TextChangedEventArgs e)
         {
