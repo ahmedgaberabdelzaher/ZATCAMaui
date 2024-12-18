@@ -33,7 +33,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                     if (Inquire.IsNotPaid)
 
                     {
-                        var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{Inquire.ReferenceID}&travilID={Inquire.travelID}";
+                        var decreptedURlParam = EncryptionHelper.EncryptStringAES($"\"refCode={Inquire.ReferenceID}&travilID={Inquire.travelID}\"");
+
+                        var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{decreptedURlParam}";
                         Browser.OpenAsync(paymentRedirectURL, new BrowserLaunchOptions
                         {
                             LaunchMode = BrowserLaunchMode.SystemPreferred,
