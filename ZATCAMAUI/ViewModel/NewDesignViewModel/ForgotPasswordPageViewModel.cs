@@ -2284,11 +2284,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (forgotPassword1?.d != null)
                 {
-
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    _navigation.NavigationStack.ToList().Clear();
-                    await _navigation.PopToRootAsync();
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverUsernamePageView());
+                    await _navigationService.NavigateTo(App.GAZTNewDesignRecoverUsername);
                 }
                 else
                 {
