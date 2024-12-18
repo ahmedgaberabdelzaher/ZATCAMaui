@@ -8,12 +8,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeNumber
         public ICommand GotoLoginCommand { get; set; }
         public NafathChangeMobileNumberSuccessViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GotoLoginCommand = new Command(() => GotoLogin());
+            GotoLoginCommand = new Command(async () => await GotoLogin());
         }
 
-        private void GotoLogin()
+        private async Task GotoLogin()
         {
-            navigateLogin();
+           await navigateLogin();
         }
     }
 

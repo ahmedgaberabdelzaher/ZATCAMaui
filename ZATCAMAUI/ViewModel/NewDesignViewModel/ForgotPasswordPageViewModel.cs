@@ -2376,10 +2376,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             try
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.YourPasswordhasbeenChangedsuccessfully));
-                var _navigation = Application.Current.MainPage.Navigation;
 
-                await _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                _navigation.NavigationStack.ToList().Clear();
+                await _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
 
             }
             catch (Exception)
