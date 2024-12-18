@@ -10,12 +10,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public Command OnLoginButtonClicked { get; set; }
         public GAZTNewDesignRecoverUsernameViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-
-
             OnLoginButtonClicked = new Command(async () =>
             {
-
-                await Application.Current.MainPage.Navigation.PopModalAsync(true);
+                var _navigation = Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
+                {
+                    if (item.GetType().Name == App.GAZTNewDesignForgotPasswordPageView)
+                    {
+                        _navigation.RemovePage(item);
+                        break;
+                    }
+                }
+                navigationService.GoBack();
             });
         }
     }
