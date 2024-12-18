@@ -25,9 +25,8 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
                 viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
                 viewModel.StartPage = 1;
             }
-            catch (Exception ex )
+            catch (Exception)
             {
-                App.Current.MainPage.DisplayAlert(ex.Message, ex.StackTrace, "ok");
             }
         }
 
