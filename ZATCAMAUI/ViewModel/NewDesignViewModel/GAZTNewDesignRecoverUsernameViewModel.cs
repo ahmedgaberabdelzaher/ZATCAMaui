@@ -12,16 +12,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             OnLoginButtonClicked = new Command(async () =>
             {
-                var _navigation = Application.Current.MainPage.Navigation;
-                foreach (var item in _navigation.NavigationStack)
-                {
-                    if (item.GetType().Name == App.GAZTNewDesignForgotPasswordPageView)
-                    {
-                        _navigation.RemovePage(item);
-                        break;
-                    }
-                }
-                navigationService.GoBack();
+                await _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
             });
         }
     }
