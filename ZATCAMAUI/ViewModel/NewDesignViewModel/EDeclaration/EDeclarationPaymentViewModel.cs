@@ -1,6 +1,8 @@
 ﻿using System.Windows.Input;
 
 using Acr.UserDialogs;
+using ZATCAMAUI.Core.AppConfigurations;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.EDeclerationsModel;
 using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
@@ -88,7 +90,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                         else
                         {
                             SADADNewTXT = string.Empty;
-                          await  _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
+                            var decreptedURlParam = EncryptionHelper.EncryptStringAES($"\"refCode={TravelerDeclarationResponse.ReferenceID}&travilID={TravelerDeclarationResponse.travelID}\"");
+
+                            var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{decreptedURlParam}";
+                            await Browser.OpenAsync(paymentRedirectURL, new BrowserLaunchOptions
+                            {
+                                LaunchMode = BrowserLaunchMode.SystemPreferred,
+                                TitleMode = BrowserTitleMode.Show,
+                                PreferredToolbarColor = Color.FromArgb("#002447"),
+                                PreferredControlColor = Color.FromArgb("#0996d4")
+                            });
                         }
                     }
                     catch (Exception)

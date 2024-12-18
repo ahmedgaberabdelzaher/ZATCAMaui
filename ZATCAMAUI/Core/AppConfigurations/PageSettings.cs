@@ -96,7 +96,7 @@
         public static string FasahBaseUrlStG = "https://soga.fasah.sa/";
         public static string FasahRedirectUrl = "https://soga.fasah.sa/";
         public static string FasahBaseUrl;
-        public static string ZATCAPaymentWebViewStgBaseURL = "https://peservices.zatca.gov.sa";
+        public static string ZATCAPaymentWebViewStgBaseURL = "https://pre-eservices.zatca.gov.sa";
         public static string ZATCAPaymentWebViewProdBaseURL = "https://eservices.zatca.gov.sa";
         public static string ZATCAPaymentWebViewBaseURL;
 
