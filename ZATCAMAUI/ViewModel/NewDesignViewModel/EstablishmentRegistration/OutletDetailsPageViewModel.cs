@@ -819,7 +819,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         defaultAddress.AddrType = "XXDEFAULT";
                         defaultAddress.Srcidentify = string.Format("O{0}", OutletActNumber);
                         defaultAddress.Begda = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
-                        defaultAddress.Endda = maxDate.ToString("yyyy-MM-ddTHH:mm:ss");
+                        defaultAddress.Endda = "9999-12-31T00:00:00";
+
                         taxPayerDetails?.Nreg_AddressSet?.Add(defaultAddress);
 
                         Nreg_AddressItem _address = new Nreg_AddressItem();
@@ -838,7 +839,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         _address.AddrType = "0001";
                         _address.Srcidentify = string.Format("O{0}", OutletActNumber);
                         _address.Begda = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
-                        _address.Endda = maxDate.ToString("yyyy-MM-ddTHH:mm:ss"); ;
+                        _address.Endda = "9999-12-31T00:00:00";
                         taxPayerDetails?.Nreg_AddressSet?.Add(_address);
 
                         taxPayerDetails?.Nreg_OutletSet?.Clear();

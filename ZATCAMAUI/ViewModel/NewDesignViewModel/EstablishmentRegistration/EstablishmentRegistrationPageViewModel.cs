@@ -3348,25 +3348,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
-
-
-
-                SelectedItem = item;
-                IsLoading = true;
-                OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
-                outletNavigationModels.taxPayerDetails = taxPayerDetails;
-                var OutletActNumber = (item.ActNo == null || string.IsNullOrEmpty(item?.ActNo)) ? "00000" : item.ActNo;
-
-
-                item.ContactDetails = new ObservableCollection<Nreg_ActivityItem>();
-                item.ContactDetails2 = new ObservableCollection<Nreg_ActivityItem>();
-
-                OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
-                activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
-
-                taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
-                PrepareUIBranchesList(item);
-                IsLoading = false;
                 if (btnCode == 1)
                 {
                     if (SelectedItem != null)
@@ -3386,7 +3367,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         item.IsInnerListVisible = !item.IsInnerListVisible;
                     }
                 }
+                SelectedItem = item;
+                IsLoading = true;
+                OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
+                outletNavigationModels.taxPayerDetails = taxPayerDetails;
+                var OutletActNumber = (item.ActNo == null || string.IsNullOrEmpty(item?.ActNo)) ? "00000" : item.ActNo;
 
+
+                item.ContactDetails = new ObservableCollection<Nreg_ActivityItem>();
+                item.ContactDetails2 = new ObservableCollection<Nreg_ActivityItem>();
+
+                OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
+                activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
+
+                taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                item = await PrepareUIBranchesList(item);
+                
+                if (item.ContactDetails.Count > 0)
+                {
+                    ShowCRNoData = false;
+                }
+                else
+                {
+                    ShowCRNoData = true;
+                }
+                if (item.ContactDetails2.Count > 0)
+                {
+                    ShowLicenceNoData = false;
+                }
+                else
+                {
+                    ShowLicenceNoData = true;
+                }
+                IsLoading = false;
                 if (btnCode == 2)
                 {
                     outletNavigationModels.idItem = idItem;
@@ -3441,7 +3454,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             return newItem;
         }
 
-        private void PrepareUIBranchesList(OuteltInfo_NestedListView outletItem)
+        private async Task<OuteltInfo_NestedListView> PrepareUIBranchesList(OuteltInfo_NestedListView outletItem)
         {
             try
             {
@@ -3561,28 +3574,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
                 }
-                if (outletItem.ContactDetails.Count > 0)
-                {
-                    ShowCRNoData = false;
-                }
-                else
-                {
-                    ShowCRNoData = true;
-                }
-                if (outletItem.ContactDetails2.Count > 0)
-                {
-                    ShowLicenceNoData = false;
-                }
-                else
-                {
-                    ShowLicenceNoData = true;
-                }
             }
             catch (Exception)
             {
 
             }
-
+            return outletItem;
         }
 
 
