@@ -18,8 +18,8 @@ namespace ZATCAMAUI.Models.EDeclerationsModel
             SADADImage = "ColorSadad.png";
 
             VisaCardTextColor = Colors.White;
-            AppleTextColor = Color.FromHex("#002447");
-            SADADTextColor = Color.FromHex("#002447");
+            AppleTextColor = Color.FromArgb("#002447");
+            SADADTextColor = Color.FromArgb("#002447");
         }
 
         Color _VisaCardTextColor;
@@ -54,7 +54,8 @@ namespace ZATCAMAUI.Models.EDeclerationsModel
     public enum PaymentTypes
     {
         Visa = 1,
-        SADAD = 2
+        SADAD = 2,
+        Apple =3
     }
 }
 
