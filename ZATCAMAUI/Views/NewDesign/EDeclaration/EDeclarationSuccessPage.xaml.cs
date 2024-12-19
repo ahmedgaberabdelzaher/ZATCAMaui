@@ -11,6 +11,11 @@ namespace ZATCAMAUI.Views.NewDesign.EDeclaration
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.PaymentCardCommand.Execute("1");
+        }
     }
 }
 

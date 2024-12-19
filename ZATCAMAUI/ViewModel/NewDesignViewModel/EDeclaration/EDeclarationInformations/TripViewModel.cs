@@ -48,8 +48,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                         TripCard.LandImage = "QUnselected.png";
 
                         TripCard.AirTextColor = Colors.White;
-                        TripCard.SeaTextColor = Color.FromHex("#002447");
-                        TripCard.LandTextColor = Color.FromHex("#002447");
+                        TripCard.SeaTextColor = Color.FromArgb("#002447");
+                        TripCard.LandTextColor = Color.FromArgb("#002447");
 
                         // if the user select the Tobacco & Product
                         // so we will remove "Traveler Count in XAML","Trip Number" & "Travel Purpose in XAML"

@@ -619,6 +619,139 @@
                         </Border>
                         <!--#endregion Frame Contains Fees-->
 
+                        <!--#region Payment Cards-->
+                        <StackLayout
+                            HeightRequest="100"
+                            Margin="0,10"
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="20"
+                            VerticalOptions="StartAndExpand">
+
+                            <!--  Visa Card  -->
+                            <Grid
+                                HeightRequest="94"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
+
+                                <!--  Background Visa image selected  -->
+                                <Image Aspect="AspectFill" Source="{Binding PaymentCard.BackgroundVisaCardImage}" />
+
+                                <StackLayout
+                                    Padding="15,20"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="15"
+                                    VerticalOptions="FillAndExpand">
+
+                                    <!--  Visa image selected  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Start"
+                                        Source="{Binding PaymentCard.VisaCardImage}"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Visa Card Label  -->
+                                    <Label
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.MasterVisa}"
+                                        TextColor="{Binding PaymentCard.VisaCardTextColor}"
+                                        VerticalOptions="EndAndExpand" />
+                                </StackLayout>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PaymentCardCommand}" CommandParameter="1" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+
+                            <Grid
+                                Padding="5"
+                                HeightRequest="94"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
+
+                                <!--  Background SADAD image selected  -->
+                                <Image Aspect="AspectFill" Source="{Binding PaymentCard.BackgroundSADADImage}" />
+
+
+                                <!--  SADAD card  -->
+                                <StackLayout
+                                    Padding="15,20"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="15"
+                                    VerticalOptions="FillAndExpand">
+
+                                    <!--  SADAD image selected  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Start"
+                                        Source="{Binding PaymentCard.SADADImage}"
+                                        VerticalOptions="Start" />
+
+                                    <!--  SADAD label  -->
+                                    <Label
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.Sadad}"
+                                        TextColor="{Binding PaymentCard.SADADTextColor}"
+                                        VerticalOptions="EndAndExpand" />
+
+                                </StackLayout>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PaymentCardCommand}" CommandParameter="2" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                        </StackLayout>
+
+                        <!--  Apple card Not Used now  -->
+                        <Grid
+                            Padding="5"
+                            HeightRequest="94"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="false"
+                            WidthRequest="171">
+
+                            <!--  Background image selected  -->
+                            <Image Aspect="AspectFill" Source="{Binding PaymentCard.BackgroundAppleImage}" />
+
+                            <!--  Apple card  -->
+                            <StackLayout
+                                    Padding="15,20"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="15"
+                                    VerticalOptions="FillAndExpand">
+
+                                <!--  Apple image selected  -->
+                                <Image
+                                    Aspect="AspectFit"
+                                    HorizontalOptions="Start"
+                                    Source="{Binding PaymentCard.AppleImage}"
+                                    VerticalOptions="Start" />
+
+                                <!--  Apple label  -->
+                                <Label
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.PaymentMethodApplePay}"
+                                    TextColor="{Binding PaymentCard.AppleTextColor}"
+                                    VerticalOptions="EndAndExpand" />
+
+                            </StackLayout>
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PaymentCardCommand}" CommandParameter="3" />
+                            </Grid.GestureRecognizers>
+
+                        </Grid>
+
+                        <!--#endregion Payment Cards-->
 
                         <!--  Online Payment Button  -->
                         <buttons:SfButton
@@ -627,7 +760,10 @@
                             IsVisible="{Binding Inquire.IsNotPaid}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"
-                            VerticalOptions="EndAndExpand" />
+                            VerticalOptions="EndAndExpand"/>
+
+
+
 
                         <!--  Pervious Button  -->
                         <buttons:SfButton
@@ -651,7 +787,73 @@
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
             <!--  Popup Msg  -->
-            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+            <Grid
+                Grid.RowSpan="2"
+                Margin="0"
+                IsVisible="{Binding IsShowMsgView}"
+                VerticalOptions="FillAndExpand">
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseMsgViewCommand}" />
+                </Grid.GestureRecognizers>
+
+                <StackLayout
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    VerticalOptions="FillAndExpand" />
+
+                <Border
+                    Padding="20,20,20,10"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 15,15,0,0"
+                    Style="{StaticResource CommonTopCurves}"
+                    VerticalOptions="EndAndExpand">
+
+                    <StackLayout Margin="0" VerticalOptions="Center">
+
+                        <StackLayout Orientation="Horizontal">
+
+                            <StackLayout Spacing="10">
+
+                                <Label
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding MessageTxt}" />
+
+                                <Label
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding SADADNewTXT}" />
+
+                            </StackLayout>
+
+
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="25"
+                                HorizontalOptions="EndAndExpand"
+                                Source="Copy"
+                                VerticalOptions="Start"
+                                WidthRequest="25" />
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CopyCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <buttons:SfButton
+                            Margin="0,10"
+                            Command="{Binding CloseMsgViewCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
+                            VerticalOptions="CenterAndExpand" />
+
+                    </StackLayout>
+
+                </Border>
+
+            </Grid>
 
         </Grid>
     </ContentPage.Content>
