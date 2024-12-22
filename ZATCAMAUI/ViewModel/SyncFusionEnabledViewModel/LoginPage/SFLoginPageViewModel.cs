@@ -17,6 +17,7 @@ using ZATCAMAUI.Models.Authentication;
 using Newtonsoft.Json;
 using ZATCAMAUI.Views.NewDesign.ChangeMobile;
 using ZATCAMAUI.Core.AppConfigurations;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 {
@@ -708,47 +709,59 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                     password = cypherText,
                     language = lang
                 };
-                var loginResponse = await WebServiceManager.LoginRequest(model);
 
-                string response = loginResponse.Content.ReadAsStringAsync().Result;
-                if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                try
                 {
-
-                    var result = JsonConvert.DeserializeObject<LoginResponseModel>(response);
-                    App.Token = result.Result.Token;
-                    App.MobileNumber = result.Result.MobileNumber;
-                    App.LoginDataRetrieved = new LoginModel() { TIN = IsTinDropdownVisible ? this.SelectedTin : this.TIN };
-
-                    await _navigationService.NavigateTo(App.OtpLoginPageView);
-                }
-                else if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                {
-
-                    var result = JsonConvert.DeserializeObject<TokenErrorModel>(response);
-                    App.Token = result.Result.ErrorToken; //to Resend the request
-                    MessageTxt = result.Result.ErrorDescription;
-                    IsShowMsgView = true;
-                    if (result.Result.ErrorCode.Equals("M002"))
+                    var loginResponse = await WebServiceManager.LoginRequest(model);
+                    IsLoading = false;
+                    string response = loginResponse.Content.ReadAsStringAsync().Result;
+                    if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        _navigationService.GoBack();
-                        await _navigationService.NavigateTo(App.AccountLockedPageView);
-                        LoginError = false;
+
+                        var result = JsonConvert.DeserializeObject<LoginResponseModel>(response);
+                        App.Token = result.Result.Token;
+                        App.MobileNumber = result.Result.MobileNumber;
+                        App.LoginDataRetrieved = new LoginModel() { TIN = IsTinDropdownVisible ? this.SelectedTin : this.TIN };
+
+                        await _navigationService.NavigateTo(App.OtpLoginPageView);
+                    }
+                    else if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+
+                        var result = JsonConvert.DeserializeObject<TokenErrorModel>(response);
+                        App.Token = result.Result.ErrorToken; //to Resend the request
+                        MessageTxt = result.Result.ErrorDescription;
+                        IsShowMsgView = true;
+                        if (result.Result.ErrorCode.Equals("M002"))
+                        {
+                            _navigationService.GoBack();
+                            await _navigationService.NavigateTo(App.AccountLockedPageView);
+                            LoginError = false;
+                        }
+                    }
+                    else if (loginResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                    {
+                        JObject json = JObject.Parse(response);
+                        IsShowMsgView = true;
+                        MessageTxt = json.GetValue("httpMessage").ToString();
                     }
                 }
-                else if (loginResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                catch (Exception gex)
                 {
-                    JObject json = JObject.Parse(response);
-                    IsShowMsgView = true;
-                    MessageTxt = json.GetValue("httpMessage").ToString();
+                    string MessageForTheUser = gex.Message;
+
+                    if (gex is GAZTNetworkConnectivityIssueException)
+                    {
+                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                    }
+                    else if (gex is InternetException)
+                    {
+                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                    }
+                    IsLoading = false;
+
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 }
-                IsLoading = false;
-
-            }
-
-
-            catch (Exception)
-            {
-                IsLoading = false;
             }
             finally
             {
@@ -842,7 +855,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         {
 
             var callTracker = Instrumentation.BeginCall("SFLoginPageView", "HamburgerMenuClicked", "Anonymous Menu Opened");
-             await  _navigationService.NavigateTo(App.DashboardAnonymousMenuPageView);
+            await _navigationService.NavigateTo(App.DashboardAnonymousMenuPageView);
             Instrumentation.EndCall(callTracker);
         }
         #endregion

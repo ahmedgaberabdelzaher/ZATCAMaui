@@ -1088,7 +1088,7 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         var errorMesg = PrepareErrorMessageByJson(detailJson);
                         throw new GAZTErrorException(errorMesg);
-                       
+
                     }
                     return forgotPasswordOTP;
 
@@ -1132,7 +1132,7 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         var errorMesg = PrepareErrorMessageByJson(detailJson);
                         throw new GAZTErrorException(errorMesg);
-                        
+
                     }
 
                     return forgotPasswordOTP;
@@ -1834,7 +1834,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     var LangZ = UtilityManager.GetLanguageParameter();
                     string AttBy = "TP";
-                    
+
 
                     string url = ZATCAConstants.GAZTGETVATAttachments + "outletReference=" + RetGuid + "&attachmentFlag=New" + "&returnGUID=" + RetGuid + "&formGUID=" + "&documentCategory=ZIP1" + "&serialNumber=1" + "&documentId=" + "&attachedByPerson=TP" + "&fileName=" + fileName;
 
@@ -3609,8 +3609,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-                    
-                    
+
+
                     return null;
                 }
             }
@@ -7348,23 +7348,36 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<HttpResponseMessage> LoginRequest(LoginRequestModel model)
         {
-            HttpClient client = new HttpClient();
-            string lang = UtilityManager.GetLanguageParameter();
-            string url = ZATCAConstants.GAZTLogin;
+            if (NetworkCheck.IsInternet())
+            {
+                try
+                {
+                    HttpClient client = new HttpClient();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    string url = ZATCAConstants.GAZTLogin;
 
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-            client.DefaultRequestHeaders.Add("X-Session-Language", lang);
-            client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
-            client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
 
-            var uri = new Uri(url);
-            var serilized = JsonConvert.SerializeObject(model);
-            client.Timeout = new TimeSpan(0, 0, 180);
-            HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-            var loginResponse = await client.PostAsync(uri, contentPost);
+                    var uri = new Uri(url);
+                    var serilized = JsonConvert.SerializeObject(model);
+                    client.Timeout = new TimeSpan(0, 0, 180);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    var loginResponse = await client.PostAsync(uri, contentPost);
 
-            return loginResponse;
-
+                    return loginResponse;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
         }
         public static async Task<HttpResponseMessage> ValidateOTP(TokenRequestModel model)
         {
@@ -7907,7 +7920,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     var errorMesg = PrepareErrorMessageByJson(result);
                     throw new GAZTErrorException(errorMesg);
-                    
+
                 }
             }
             return response;
@@ -7942,7 +7955,7 @@ namespace ZATCAMAUI.Core.Mangers
                 response = JsonConvert.DeserializeObject<NafathChangeMobileNumberCheckOTPModelResponse>(result);
                 if (!string.IsNullOrEmpty(result) && response.d == null)
                 {
-                   var errorMesg = PrepareErrorMessageByJson(result);
+                    var errorMesg = PrepareErrorMessageByJson(result);
                     throw new GAZTErrorException(errorMesg);
                 }
             }
@@ -7979,7 +7992,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     var errorMesg = PrepareErrorMessageByJson(result);
                     throw new GAZTErrorException(errorMesg);
-                   
+
                 }
             }
             return response;
@@ -8255,7 +8268,7 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         var errorMesg = PrepareErrorMessageByJson(detailJson);
                         throw new GAZTErrorException(errorMesg);
-                       
+
                     }
                     return forgotPasswordCaptcha;
                 }
