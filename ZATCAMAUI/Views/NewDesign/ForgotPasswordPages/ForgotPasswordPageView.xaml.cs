@@ -27,7 +27,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -100,7 +99,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             viewModel.ContinueORConfirmButtonText = AppResources.Confirm;
             viewModel.IsContinueButtonVisibe = viewModel.ValidateFirstStep();
 
-            _ = viewModel.GetCaptchImage(ZATCAConstants.FPWD);
+            await viewModel.GetCaptchImage(ZATCAConstants.FPWD);
 
 
         }
@@ -179,7 +178,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
         }
 
         // * Password Validation
-        void NewPassword_TextChanged(object sender, FocusEventArgs e)
+        void NewPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
             ResetPasswordValidationConditions();
 

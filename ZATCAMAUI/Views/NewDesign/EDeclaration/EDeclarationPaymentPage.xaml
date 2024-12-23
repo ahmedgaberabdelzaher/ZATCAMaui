@@ -199,11 +199,11 @@
 
                         <!--#region Payment Cards-->
                         <StackLayout
-                            Padding="5"
-                            HeightRequest="100"
+                           HeightRequest="100"
+                            Margin="0,10"
                             HorizontalOptions="StartAndExpand"
                             Orientation="Horizontal"
-                            Spacing="10"
+                            Spacing="20"
                             VerticalOptions="StartAndExpand">
 
                             <!--  Visa Card  -->
@@ -297,16 +297,31 @@
                             WidthRequest="171">
 
                             <!--  Background image selected  -->
-                            <Image Aspect="AspectFill" Source="{Binding PaymentCard.SeaImage}" />
+                            <Image Aspect="AspectFill" Source="{Binding PaymentCard.BackgroundAppleImage}" />
 
-                            <!--  Apple label  -->
-                            <Label
-                                Padding="15"
-                                FontSize="16"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.SeaTrip}"
-                                TextColor="{Binding PaymentCard.SeaTextColor}"
-                                VerticalOptions="EndAndExpand" />
+                            <!--  Apple card  -->
+                            <StackLayout
+                                    Padding="15,20"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="15"
+                                    VerticalOptions="FillAndExpand">
+
+                                <!--  SADAD image selected  -->
+                                <Image
+                                    Aspect="AspectFit"
+                                    HorizontalOptions="Start"
+                                    Source="{Binding PaymentCard.AppleImage}"
+                                    VerticalOptions="Start" />
+
+                                <!--  SADAD label  -->
+                                <Label
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.PaymentMethodApplePay}"
+                                    TextColor="{Binding PaymentCard.AppleTextColor}"
+                                    VerticalOptions="EndAndExpand" />
+
+                            </StackLayout>
 
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding PaymentCardCommand}" CommandParameter="3" />

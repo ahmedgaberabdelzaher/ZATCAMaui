@@ -2284,11 +2284,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (forgotPassword1?.d != null)
                 {
-
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    _navigation.NavigationStack.ToList().Clear();
-                    await _navigation.PopToRootAsync();
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverUsernamePageView());
+                    await _navigationService.NavigateTo(App.GAZTNewDesignRecoverUsername);
                 }
                 else
                 {
@@ -2380,10 +2376,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             try
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.YourPasswordhasbeenChangedsuccessfully));
-                var _navigation = Application.Current.MainPage.Navigation;
 
-                await _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                _navigation.NavigationStack.ToList().Clear();
+                await _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
 
             }
             catch (Exception)
