@@ -4,6 +4,7 @@ using AppDynamics.Agent;
 using Mopups.Services;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.CustomControls;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -175,6 +176,7 @@ public class OTPPageViewModel : BaseViewModel
 
             IsLoading = true;
             var tokenResponse = await WebServiceManager.ValidateOTP(model);
+            IsLoading = false;
             string response = tokenResponse.Content.ReadAsStringAsync().Result;
             if (tokenResponse != null && tokenResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -214,14 +216,23 @@ public class OTPPageViewModel : BaseViewModel
                 }
 
             }
-
-            IsLoading = false;
         }
-        catch (Exception)
+        catch (Exception gex)
         {
             IsLoading = false;
             IsShowMsgView = true;
-            MessageTxt = AppResources.RequestTimeoutDescription;
+            if (gex is GAZTNetworkConnectivityIssueException)
+            {
+                MessageTxt = AppResources.NetworkConnectivityIssue;
+            }
+            else if (gex is InternetException)
+            {
+                MessageTxt = AppResources.ZZInternetConnectionMessage;
+            }
+            else
+            {
+                MessageTxt = AppResources.RequestTimeoutDescription;
+            }
         }
     }
 
@@ -284,33 +295,53 @@ public class OTPPageViewModel : BaseViewModel
 
     public async Task ResendToken()
     {
-        IsLoading = true;
-        string UserId = App.LoginDataRetrieved.TIN;
-        string language = UtilityManager.GetLanguageParameter();
-        var model = new ResentTokenRequestModel()
+        try
         {
-            Token = App.Token,
-            Lang = language
-        };
-        HttpResponseMessage response = await WebServiceManager.ResendToken(model);
-        if (response != null && response.StatusCode == System.Net.HttpStatusCode.OK)
-        {
-            string responseResult = response.Content.ReadAsStringAsync().Result;
-            var result = JsonConvert.DeserializeObject<LoginResponseModel>(responseResult);
-            App.Token = result.Result.Token;
-
-        }
-        else
-        {
-            LoginAttempt++;
-            IsShowMsgView = true;
-            MessageTxt = AppResources.OTPScreenErrMsg;
-            if (LoginAttempt == 3)
+            IsLoading = true;
+            string UserId = App.LoginDataRetrieved.TIN;
+            string language = UtilityManager.GetLanguageParameter();
+            var model = new ResentTokenRequestModel()
             {
-                await _navigationService.NavigateTo(App.UnlockAccountTINPageView);
+                Token = App.Token,
+                Lang = language
+            };
+            HttpResponseMessage response = await WebServiceManager.ResendToken(model);
+            if (response != null && response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                string responseResult = response.Content.ReadAsStringAsync().Result;
+                var result = JsonConvert.DeserializeObject<LoginResponseModel>(responseResult);
+                App.Token = result.Result.Token;
+
             }
+            else
+            {
+                LoginAttempt++;
+                IsShowMsgView = true;
+                MessageTxt = AppResources.OTPScreenErrMsg;
+                if (LoginAttempt == 3)
+                {
+                    await _navigationService.NavigateTo(App.UnlockAccountTINPageView);
+                }
+            }
+            IsLoading = false;
         }
-        IsLoading = false;
+        catch (Exception gex)
+        {
+            string MessageForTheUser = gex.Message;
+
+            if (gex is GAZTNetworkConnectivityIssueException)
+            {
+                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+            }
+            else if (gex is InternetException)
+            {
+                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+            }
+            IsLoading = false;
+
+            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+        }
+
     }
 
     public async Task LoginCompleted()
@@ -350,9 +381,7 @@ public class OTPPageViewModel : BaseViewModel
                     App.TP.activityName = TPProfile.activityName;
                     App.TP.VtpmFg = TPProfile.VtpmFg;
                     App.TP.authenticationUser1 = TPProfile.authenticationUser1;
-
                 }
-
             }
             catch (Exception)
             {

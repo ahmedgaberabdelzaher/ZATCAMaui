@@ -394,7 +394,7 @@ namespace ZATCAMAUI.Core.Mangers
                     return null;
                 }
 
-                catch (Exception )
+                catch (Exception)
                 {
                     return null;
                 }
@@ -723,7 +723,7 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                     return myICRs;
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     return null;
                 }
@@ -761,7 +761,7 @@ namespace ZATCAMAUI.Core.Mangers
                     var detailJson = await res.Content.ReadAsStringAsync();
                     dashBoardViewResponse = JsonConvert.DeserializeObject<DashBoardUpdateResponseModel>(detailJson);
 
-                    if (!string.IsNullOrWhiteSpace(detailJson) &&(dashBoardViewResponse == null || dashBoardViewResponse.d == null))
+                    if (!string.IsNullOrWhiteSpace(detailJson) && (dashBoardViewResponse == null || dashBoardViewResponse.d == null))
                     {
                         var errorMesg = PrepareErrorMessageByJson(detailJson);
                         throw new GAZTVATRegistrationInProcessException(errorMesg);
@@ -839,7 +839,7 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             var errorMesg = PrepareErrorMessageByJson(VatRegistrationOtherData);
                             throw new GAZTErrorException(errorMesg);
-                            
+
                         }
 
                     }
@@ -849,7 +849,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTErrorException(ex.Message);
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -956,7 +956,7 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         var errorMesg = PrepareErrorMessageByJson(detailJson);
                         throw new GAZTVATRegistrationInProcessException(errorMesg);
-                        
+
                     }
                     return forgotPasswordResponse;
 
@@ -1088,7 +1088,7 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         var errorMesg = PrepareErrorMessageByJson(detailJson);
                         throw new GAZTErrorException(errorMesg);
-                       
+
                     }
                     return forgotPasswordOTP;
 
@@ -1132,7 +1132,7 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         var errorMesg = PrepareErrorMessageByJson(detailJson);
                         throw new GAZTErrorException(errorMesg);
-                        
+
                     }
 
                     return forgotPasswordOTP;
@@ -1834,7 +1834,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     var LangZ = UtilityManager.GetLanguageParameter();
                     string AttBy = "TP";
-                    
+
 
                     string url = ZATCAConstants.GAZTGETVATAttachments + "outletReference=" + RetGuid + "&attachmentFlag=New" + "&returnGUID=" + RetGuid + "&formGUID=" + "&documentCategory=ZIP1" + "&serialNumber=1" + "&documentId=" + "&attachedByPerson=TP" + "&fileName=" + fileName;
 
@@ -3562,7 +3562,7 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static async Task<CRValidationModelRootObject> GAZTValidateCRNumber(string CRNumber, string Gpart = "")
+        public static async Task<CRValidationModelRootObject> GAZTValidateCRNumber(string CRNumber)
         {
             if (NetworkCheck.IsInternet())
             {
@@ -3572,7 +3572,7 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     var lang = UtilityManager.GetLanguageParameter();
-                    String url = ZATCAConstants.GAZTSiguupValidateCR + CRNumber + "&TIN=" + Gpart + "&IdNumber=" + "" + "&IdType=" + "";
+                    String url = ZATCAConstants.GAZTSiguupValidateCR + CRNumber;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -3604,29 +3604,13 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         IsIDTypeValidList = await CRValidationModelList.Content.ReadAsStringAsync();
                         CRValidationModelValid = JsonConvert.DeserializeObject<CRValidationModelRootObject>(IsIDTypeValidList);
-
-                        if (!string.IsNullOrEmpty(IsIDTypeValidList) && CRValidationModelValid.d == null)
-                        {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(IsIDTypeValidList);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                            {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
-                            }
-                        }
                     }
                     return CRValidationModelValid;
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw new GAZTVATRegistrationInProcessException(ex.Message);
-                }
                 catch (Exception)
                 {
+
+
                     return null;
                 }
             }
@@ -3635,7 +3619,7 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static async Task<DuplicateSignUpModelRootObject> GAZTValidateDuplicate(string IDNum, string IDType, string Institude, string Country, string crNum, string tin = "")
+        public static async Task<DuplicateSignUpModelRootObject> GAZTValidateDuplicate(string IDNum, string IDType, string Institude, string Country, string crNum)
         {
             if (NetworkCheck.IsInternet())
             {
@@ -3647,7 +3631,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     var lang = UtilityManager.GetLanguageParameter();
                     DuplicateSignUpReqModel duplicateModel = new DuplicateSignUpReqModel();
-                    duplicateModel.TIN = tin;
+                    duplicateModel.TIN = "";
                     duplicateModel.idType = IDType;
                     duplicateModel.idNumber = IDNum;
                     if (!string.IsNullOrEmpty(crNum))
@@ -4370,8 +4354,6 @@ namespace ZATCAMAUI.Core.Mangers
                     catch (Exception)
                     {
 
-
-
                     }
 
                     CookieContainer cookieContainer = new CookieContainer();
@@ -4397,9 +4379,6 @@ namespace ZATCAMAUI.Core.Mangers
 
                     catch (Exception)
                     {
-
-
-
                     }
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -4507,9 +4486,6 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                     catch (Exception)
                     {
-
-
-
                     }
 
                     CookieContainer cookieContainer = new CookieContainer();
@@ -5283,135 +5259,145 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<TaxPayerProfile> GetTPProfileAndUpdatePasswordAPICall(string TIN)
         {
-            TaxPayerProfile TPProfileData = null;
-            string NewToken = string.Empty;
-            string GAZTTPProfileResponseJSON = string.Empty;
-            string lang = UtilityManager.GetLanguageParameter();
-            try
+            if (NetworkCheck.IsInternet())
             {
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("X-Session-Language", lang);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                var url = ZATCAConstants.GAZTGetTP + TIN + "&language=" + UtilityManager.GetLanguageParameter();
-                HttpResponseMessage UpdatePWDResponse = await client.GetAsync(url);
-                if (UpdatePWDResponse != null)
+                TaxPayerProfile TPProfileData = null;
+                string NewToken = string.Empty;
+                string GAZTTPProfileResponseJSON = string.Empty;
+                string lang = UtilityManager.GetLanguageParameter();
+                try
                 {
-                    if (UpdatePWDResponse.StatusCode == HttpStatusCode.Unauthorized)
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var url = ZATCAConstants.GAZTGetTP + TIN + "&language=" + UtilityManager.GetLanguageParameter();
+                    HttpResponseMessage UpdatePWDResponse = await client.GetAsync(url);
+                    if (UpdatePWDResponse != null)
                     {
-                        App.IsSessionExpired = true;
-                        return null;
-                    }
-
-                    if (UpdatePWDResponse.Headers != null)
-                    {
-                        HttpHeaders headers = UpdatePWDResponse.Headers;
-                        IEnumerable<string> values;
-
-                        if (headers.TryGetValues("token", out values)) { NewToken = values.First(); }
-
-                        if ((!string.IsNullOrEmpty(NewToken)))
+                        if (UpdatePWDResponse.StatusCode == HttpStatusCode.Unauthorized)
                         {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
+                        if (UpdatePWDResponse.Headers != null)
+                        {
+                            HttpHeaders headers = UpdatePWDResponse.Headers;
+                            IEnumerable<string> values;
+
+                            if (headers.TryGetValues("token", out values)) { NewToken = values.First(); }
+
+                            if ((!string.IsNullOrEmpty(NewToken)))
                             {
-                                App.IsSessionExpired = true;
-                                return null;
+                                if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                                {
+                                    App.IsSessionExpired = true;
+                                    return null;
+                                }
+                                App.Token = NewToken;
                             }
-                            App.Token = NewToken;
-                        }
 
-                        GAZTTPProfileResponseJSON = await UpdatePWDResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
-                        {
-                            GAZTTPProfileResponseJSON = JObject.Parse(GAZTTPProfileResponseJSON)["data"].ToString();
-                            TPProfileData = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTTPProfileResponseJSON);
+                            GAZTTPProfileResponseJSON = await UpdatePWDResponse.Content.ReadAsStringAsync();
+                            if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
+                            {
+                                GAZTTPProfileResponseJSON = JObject.Parse(GAZTTPProfileResponseJSON)["data"].ToString();
+                                TPProfileData = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTTPProfileResponseJSON);
+                            }
                         }
                     }
+                    else
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
-                else
-                    throw new Exception(AppResources.NetworkConnectivityIssue);
-            }
-            catch (Exception ex)
-            {
-
-
-                System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
-
-                if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
+                catch (Exception ex)
                 {
-                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(GAZTTPProfileResponseJSON);
-                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
                     {
-                        string errorMessage = string.Empty;
-                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(GAZTTPProfileResponseJSON);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            string errorMessage = string.Empty;
+                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
-                        string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                        errorMessage = WithReplacedString;
-                        throw new Exception(errorMessage);
+                            string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            errorMessage = WithReplacedString;
+                            throw new Exception(errorMessage);
+                        }
                     }
                 }
-            }
 
-            return TPProfileData;
+                return TPProfileData;
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
         }
         public static async Task<TaxPayerAccountDetail> GetTPAccountDetails(string TIN)
         {
-            TaxPayerAccountDetail TPProfileData = null;
-            string NewToken = string.Empty;
-            string GAZTTPProfileResponseJSON = string.Empty;
-            string lang = UtilityManager.GetLanguageParameter();
-            try
+            if (NetworkCheck.IsInternet())
             {
-                string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
-                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
-                string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("X-Session-Language", lang);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                var url = ZATCAConstants.GAZTGetTPAccountDetails + "?deviceId=" + deviceUdid + "&deviceType=" + deviceOs;
-                HttpResponseMessage UpdatePWDResponse = await client.GetAsync(url);
-                if (UpdatePWDResponse != null)
+                TaxPayerAccountDetail TPProfileData = null;
+                string NewToken = string.Empty;
+                string GAZTTPProfileResponseJSON = string.Empty;
+                string lang = UtilityManager.GetLanguageParameter();
+                try
                 {
-                    if (UpdatePWDResponse.StatusCode == HttpStatusCode.OK)
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var url = ZATCAConstants.GAZTGetTPAccountDetails + "?deviceId=" + deviceUdid + "&deviceType=" + deviceOs;
+                    HttpResponseMessage UpdatePWDResponse = await client.GetAsync(url);
+                    if (UpdatePWDResponse != null)
                     {
-
-                        GAZTTPProfileResponseJSON = await UpdatePWDResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
+                        if (UpdatePWDResponse.StatusCode == HttpStatusCode.OK)
                         {
-                            GAZTTPProfileResponseJSON = JObject.Parse(GAZTTPProfileResponseJSON)["data"].ToString();
-                            TPProfileData = JsonConvert.DeserializeObject<TaxPayerAccountDetail>(GAZTTPProfileResponseJSON);
+
+                            GAZTTPProfileResponseJSON = await UpdatePWDResponse.Content.ReadAsStringAsync();
+                            if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
+                            {
+                                GAZTTPProfileResponseJSON = JObject.Parse(GAZTTPProfileResponseJSON)["data"].ToString();
+                                TPProfileData = JsonConvert.DeserializeObject<TaxPayerAccountDetail>(GAZTTPProfileResponseJSON);
+                            }
+                        }
+                    }
+                    else
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
+                catch (Exception ex)
+                {
+
+                    if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(GAZTTPProfileResponseJSON);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            string errorMessage = string.Empty;
+                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
+
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            errorMessage = WithReplacedString;
+                            throw new Exception(errorMessage);
                         }
                     }
                 }
-                else
-                    throw new Exception(AppResources.NetworkConnectivityIssue);
+
+                return TPProfileData;
             }
-            catch (Exception ex)
+            else
             {
-
-                if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
-                {
-                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(GAZTTPProfileResponseJSON);
-                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                    {
-                        string errorMessage = string.Empty;
-                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
-
-                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                        errorMessage = WithReplacedString;
-                        throw new Exception(errorMessage);
-                    }
-                }
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
-
-            return TPProfileData;
         }
 
         public static async Task<TaxPayerProfile> POSTTPProfileAPICalls(TPProfileAPIRequest TPProfileAPIRequestPOSTData, string APIType)
@@ -5699,61 +5685,62 @@ namespace ZATCAMAUI.Core.Mangers
 
 
         public async static Task<ValidatePaymentResponse> GAZTValidatePayment(ValidatePayment PayDetails)
-
         {
-
-            ValidatePaymentResponse paymentResponse = null;
-
-
-
-            string _paymentsubmitResponse = string.Empty;
-
-            try
-
+            if (NetworkCheck.IsInternet())
             {
-                string lang = UtilityManager.GetLanguageParameter();
-                String url = ZATCAConstants.ValidatePaymentInformation;
+                ValidatePaymentResponse paymentResponse = null;
+                string _paymentsubmitResponse = string.Empty;
 
-                var uri = new Uri(url);
-
-                var serilized = JsonConvert.SerializeObject(PayDetails);
-                string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
-                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
-                string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("X-Session-Language", lang);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
-                client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
-                client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
-                client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-
-                HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-
-                _paymentsubmitResponse = await res.Content.ReadAsStringAsync();
-
-                paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(_paymentsubmitResponse);
-
-                if (paymentResponse == null)
+                try
                 {
-                    string errorMessage = PrepareErrorMessageByJson(_paymentsubmitResponse);
-                    throw new GAZTVATRegistrationInProcessException(errorMessage);
-                }
-            }
+                    string lang = UtilityManager.GetLanguageParameter();
+                    String url = ZATCAConstants.ValidatePaymentInformation;
 
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                throw new GAZTVATRegistrationInProcessException(ex.Message);
+                    var uri = new Uri(url);
+
+                    var serilized = JsonConvert.SerializeObject(PayDetails);
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+
+                    _paymentsubmitResponse = await res.Content.ReadAsStringAsync();
+
+                    paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(_paymentsubmitResponse);
+
+                    if (paymentResponse == null)
+                    {
+                        string errorMessage = PrepareErrorMessageByJson(_paymentsubmitResponse);
+                        throw new GAZTVATRegistrationInProcessException(errorMessage);
+                    }
+                }
+
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+                return paymentResponse;
             }
-            catch (Exception)
+            else
             {
-                App.IsSessionExpired = true;
-                return null;
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
-            return paymentResponse;
         }
 
 
@@ -6839,9 +6826,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
         public static async Task<Dashboard> GAZTGetDashboardData(string lang, string TIN)
-
         {
-
             Dashboard dashboardData = null;
 
             if (NetworkCheck.IsInternet())
@@ -7364,47 +7349,75 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<HttpResponseMessage> LoginRequest(LoginRequestModel model)
         {
-            HttpClient client = new HttpClient();
-            string lang = UtilityManager.GetLanguageParameter();
-            string url = ZATCAConstants.GAZTLogin;
+            if (NetworkCheck.IsInternet())
+            {
+                try
+                {
+                    HttpClient client = new HttpClient();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    string url = ZATCAConstants.GAZTLogin;
 
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-            client.DefaultRequestHeaders.Add("X-Session-Language", lang);
-            client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
-            client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
 
-            var uri = new Uri(url);
-            var serilized = JsonConvert.SerializeObject(model);
-            client.Timeout = new TimeSpan(0, 0, 180);
-            HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-            var loginResponse = await client.PostAsync(uri, contentPost);
+                    var uri = new Uri(url);
+                    var serilized = JsonConvert.SerializeObject(model);
+                    client.Timeout = new TimeSpan(0, 0, 180);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    var loginResponse = await client.PostAsync(uri, contentPost);
 
-            return loginResponse;
-
+                    return loginResponse;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
         }
         public static async Task<HttpResponseMessage> ValidateOTP(TokenRequestModel model)
         {
-            using (var client = new HttpClient())
+            if (NetworkCheck.IsInternet())
             {
-                string lang = UtilityManager.GetLanguageParameter();
-                string url = ZATCAConstants.GAZTValidateLoginOTP;
-                var tokenUri = new Uri(url);
-                string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
-                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
-                string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                try
+                {
 
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("X-Session-Language", lang);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
-                client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
-                client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    using (var client = new HttpClient())
+                    {
+                        string lang = UtilityManager.GetLanguageParameter();
+                        string url = ZATCAConstants.GAZTValidateLoginOTP;
+                        var tokenUri = new Uri(url);
+                        string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                        string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                        string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
 
-                var serializedTokenRequest = JsonConvert.SerializeObject(model);
-                HttpContent tokenContent = new StringContent(serializedTokenRequest, Encoding.UTF8, ZATCAConstants.ContentType);
-                var tokenResponse = await client.PostAsync(tokenUri, tokenContent);
-                return tokenResponse;
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+                        client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                        client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                        client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                        client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+
+                        var serializedTokenRequest = JsonConvert.SerializeObject(model);
+                        HttpContent tokenContent = new StringContent(serializedTokenRequest, Encoding.UTF8, ZATCAConstants.ContentType);
+                        var tokenResponse = await client.PostAsync(tokenUri, tokenContent);
+                        return tokenResponse;
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
         public static async Task<PasswordChangeResponse> ChangePassword(PasswordChangeRequest passwordChangeRequest)
@@ -7608,34 +7621,45 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                 }
             }
-
-
-
-
             return myBills;
         }
         public static async Task<HttpResponseMessage> ResendToken(ResentTokenRequestModel model)
         {
-            using (var client = new HttpClient())
+            if (NetworkCheck.IsInternet())
             {
-                string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
-                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
-                string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
-                string lang = WebServiceManager.GetLangZParameterAREN();
-                string url = ZATCAConstants.GAZTResendOTP;
-                var tokenUri = new Uri(url);
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("X-Session-Language", lang);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
-                client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
-                client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
-                client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                var serializedTokenRequest = JsonConvert.SerializeObject(model);
-                HttpContent tokenContent = new StringContent(serializedTokenRequest, Encoding.UTF8, ZATCAConstants.ContentType);
-                var tokenResponse = await client.PostAsync(tokenUri, tokenContent);
-                return tokenResponse;
+                try
+                {
+                    using (var client = new HttpClient())
+                    {
+                        string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                        string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                        string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                        string lang = WebServiceManager.GetLangZParameterAREN();
+                        string url = ZATCAConstants.GAZTResendOTP;
+                        var tokenUri = new Uri(url);
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+                        client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                        client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                        client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                        client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                        client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                        var serializedTokenRequest = JsonConvert.SerializeObject(model);
+                        HttpContent tokenContent = new StringContent(serializedTokenRequest, Encoding.UTF8, ZATCAConstants.ContentType);
+                        var tokenResponse = await client.PostAsync(tokenUri, tokenContent);
+                        return tokenResponse;
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
 
@@ -7923,7 +7947,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     var errorMesg = PrepareErrorMessageByJson(result);
                     throw new GAZTErrorException(errorMesg);
-                    
+
                 }
             }
             return response;
@@ -7958,7 +7982,7 @@ namespace ZATCAMAUI.Core.Mangers
                 response = JsonConvert.DeserializeObject<NafathChangeMobileNumberCheckOTPModelResponse>(result);
                 if (!string.IsNullOrEmpty(result) && response.d == null)
                 {
-                   var errorMesg = PrepareErrorMessageByJson(result);
+                    var errorMesg = PrepareErrorMessageByJson(result);
                     throw new GAZTErrorException(errorMesg);
                 }
             }
@@ -7995,7 +8019,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     var errorMesg = PrepareErrorMessageByJson(result);
                     throw new GAZTErrorException(errorMesg);
-                   
+
                 }
             }
             return response;
@@ -8271,7 +8295,7 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         var errorMesg = PrepareErrorMessageByJson(detailJson);
                         throw new GAZTErrorException(errorMesg);
-                       
+
                     }
                     return forgotPasswordCaptcha;
                 }
