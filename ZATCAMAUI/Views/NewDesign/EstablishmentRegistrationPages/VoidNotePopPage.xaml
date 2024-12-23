@@ -6,7 +6,6 @@
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
@@ -25,13 +24,10 @@
             Stroke="Black"
             StrokeThickness="1"
             VerticalOptions="EndAndExpand">
-            <Grid RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <Grid RowSpacing="0"
+                  RowDefinitions="*,*">
 
-                 <custom:CustomSfTextInputView ErrorText="{x:Static ResourceManager:AppResources.ZZZRequired}"
+                <custom:CustomSfTextInputView ErrorText="{x:Static ResourceManager:AppResources.ZZZRequired}"
                                                x:Name="notesInputLayout">
                     <custom:CustomSfTextInputView.TextInputView>
                         <custom:GAZTBorderlessEntry
@@ -42,31 +38,24 @@
                     </custom:CustomSfTextInputView.TextInputView>
                 </custom:CustomSfTextInputView>
 
-                <Grid Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*" />
-                        <ColumnDefinition Width="50*" />
-                    </Grid.ColumnDefinitions>
-                    <buttons:SfButton
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Padding="20,0"
+                <HorizontalStackLayout Spacing="10"
+                                       Grid.Row="1"
+                                       HorizontalOptions="Center">
+
+                    <Button
+                        WidthRequest="150"
                         Clicked="Void_Button_Clicked"
                         HorizontalOptions="FillAndExpand"
-                        Style="{StaticResource PrimaryButtonStyle}"
+                        Style="{StaticResource PrimaryMauiButtonStyle}"
                         Text="{x:Static ResourceManager:AppResources.ESTZZVoid}" />
-                    <buttons:SfButton
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Padding="20,0"
+                    <Button
+                        WidthRequest="150"
                         Clicked="CancelButton_Clicked"
                         HorizontalOptions="FillAndExpand"
-                        Style="{StaticResource PrimaryButtonStyle}"
+                        Style="{StaticResource PrimaryMauiButtonStyle}"
                         Text="{x:Static ResourceManager:AppResources.ZZCancel}" />
-                </Grid>
+
+                </HorizontalStackLayout>
             </Grid>
         </Border>
     </Mopups:PopupPage.Content>

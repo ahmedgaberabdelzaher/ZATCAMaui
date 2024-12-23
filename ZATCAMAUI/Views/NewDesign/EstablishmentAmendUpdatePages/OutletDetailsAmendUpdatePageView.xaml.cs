@@ -23,6 +23,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
                 //_outletNavigation = outletNavigation;
                 viewModel = App.Locator.OutletDetailsAmendUpdatePageView;
                 viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
+                viewModel.activities = outletNavigation?.activitySetsList;
                 viewModel.idItem = outletNavigation.idItem;
                 viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;
                 viewModel.IsEditingMode = outletNavigation.IsEditingMode;
@@ -35,6 +36,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
                     viewModel.PickerModel = arg;
                 });
+                viewModel.IsNextbttnEnable = true;
             }
             catch (Exception ex)
             {

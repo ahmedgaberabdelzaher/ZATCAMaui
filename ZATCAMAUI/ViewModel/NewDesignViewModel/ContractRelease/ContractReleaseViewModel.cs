@@ -1697,7 +1697,7 @@ public class ContractReleaseViewModel : BaseViewModel
 
         //TodayDateinHijri
         ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
-        var calendar = new HijriCalendar();
+        var calendar = new UmAlQuraCalendar();
         if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
             todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
         else

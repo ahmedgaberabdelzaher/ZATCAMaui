@@ -3164,7 +3164,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             switch (Calendar)
             {
                 case "Hijri":
-                    DTFormat.Calendar = new HijriCalendar();
+                    DTFormat.Calendar = new UmAlQuraCalendar();
                     break;
 
                 case "Gregorian":

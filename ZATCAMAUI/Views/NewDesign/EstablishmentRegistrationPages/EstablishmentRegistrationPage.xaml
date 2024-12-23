@@ -37,31 +37,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <!--<ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <Border
-                Margin="0"
-                Padding="{OnPlatform Android='0',
-                                     iOS='0,0,0,30'}"
-                BackgroundColor="White"
-                HorizontalOptions="FillAndExpand"
-                StrokeShape="RoundRectangle 15,15,0,0"
-                VerticalOptions="FillAndExpand">
-                <StackLayout
-                    Margin="0"
-                    Padding="0"
-                    HorizontalOptions="FillAndExpand"
-                    Spacing="0"
-                    VerticalOptions="FillAndExpand">
-                    <ContentPresenter
-                        BackgroundColor="White"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand" />
-                </StackLayout>
-            </Border>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>-->
-
     <ContentPage.Content>
         <Grid
             ColumnSpacing="0"
@@ -2321,7 +2296,6 @@
                     x:Name="OutletsTabMainLayout"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}"
-                    Spacing="10"
                     VerticalOptions="FillAndExpand">
 
                     <custom:CustomSfTextInputView>
@@ -2373,9 +2347,10 @@
 
                     <!--  5250 start  -->
                     <Grid
-                        HeightRequest="300"
-                        RowDefinitions="*"
-                        VerticalOptions="Start">
+                        BackgroundColor="Red"
+                        HeightRequest="400"
+                        RowDefinitions="*">
+
                         <listView:SfListView
                             x:Name="outerListView"
                             AutoFitMode="DynamicHeight"
@@ -2386,18 +2361,27 @@
 
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
 
-                                    <Grid RowDefinitions="auto,auto,auto"
+<Grid RowDefinitions="auto,auto,auto"
                                           FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
                                           RowSpacing="10">
-                                        <cards:SfCardView
+
+                                         <xct:Expander Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick}"
+                                                CommandParameter="{Binding .}" >
+
+                                                 <xct:Expander.Header>
+                                                     <cards:SfCardView
                                             Grid.Row="0"
                                             Margin="5,0,0,0"
                                             BackgroundColor="White"
                                             BorderColor="{StaticResource NeutralLightGrey}"
                                             BorderWidth="1"
                                             CornerRadius="10">
-                                            <Grid
+
+                                            
+                                                     <Grid
                                                 x:Name="GridItem"
                                                 Padding="8"
                                                 ColumnSpacing="5"
@@ -2416,19 +2400,22 @@
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout>
                                                     <Image
+                                                        IsEnabled="False"
                                                         Aspect="AspectFit"
-                                                        HeightRequest="25"
                                                         HorizontalOptions="Start"
                                                         Source="greyDropDown"
-                                                        WidthRequest="25">
+                                                        WidthRequest="18"
+                                                          HeightRequest="18">
 
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick}" CommandParameter="{Binding .}" />
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick}" CommandParameter="{Binding .}" />
-                                                    </StackLayout.GestureRecognizers>
+                                                        <Image.Triggers>
+                                                     <DataTrigger TargetType="Image" Binding="{Binding IsInnerListVisible}" Value="True">
+                                                         <Setter Property="Rotation" Value="180" />
+                                                     </DataTrigger>
+                                                     <DataTrigger TargetType="Image" Binding="{Binding IsInnerListVisible}" Value="False">
+                                                         <Setter Property="Rotation" Value="0" />
+                                                     </DataTrigger>
+                                                 </Image.Triggers>
+                                                        </Image>
                                                 </StackLayout>
 
 
@@ -2505,15 +2492,19 @@
                                                     </StackLayout>
                                                 </StackLayout>
                                             </Grid>
+                                            
                                         </cards:SfCardView>
+                                                     </xct:Expander.Header>
 
-                                        <listView:SfListView
+                                        <xct:Expander.Content>
+
+                                             <Grid RowDefinitions="*,*">
+                                                 <listView:SfListView
                                             x:Name="innerListView"
-                                            Grid.Row="1"
-                                            Margin="5"
-                                            AutoFitMode="DynamicHeight"
-                                            IsScrollingEnabled="False"
-                                            IsVisible="{Binding IsInnerListVisible}"
+                                        Grid.Row="0"
+                                        Margin="5"
+                                        IsScrollingEnabled="False"
+                                        ScrollBarVisibility="Never"
                                             ItemsSource="{Binding ContactDetails}">
                                             <listView:SfListView.HeaderTemplate>
                                                 <DataTemplate>
@@ -2540,8 +2531,8 @@
                                                                 Orientation="Horizontal">
                                                         <Grid
                                                             x:Name="grid"
-                                                            Margin="0,5,0,0"
-                                                            Padding="10"
+                                                            Margin="0"
+                                                            Padding="5"
                                                             BackgroundColor="#DBE9FA">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
@@ -2673,7 +2664,9 @@
                                                                     Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTRegistrationPage}}"
                                                                     CommandParameter="{Binding .}"
                                                                     Style="{StaticResource PrimaryButtonStyle}"
+                                                                    FontSize="12"
                                                                     Text="{x:Static ResourceManager:AppResources.EstActivities}"
+                                                                    HeightRequest="25"
                                                                     WidthRequest="180" />
                                                             </StackLayout>
 
@@ -2699,15 +2692,14 @@
                                             </listView:SfListView.FooterTemplate>
                                         </listView:SfListView>
 
-                                        <listView:SfListView
+                                                 <listView:SfListView
                                             x:Name="innerListView2"
-                                            Grid.Row="2"
+                                            Grid.Row="1"
                                             Margin="5"
-                                            AutoFitMode="DynamicHeight"
+                                            VerticalOptions="FillAndExpand"
                                             IsScrollingEnabled="False"
-                                            IsVisible="{Binding IsInnerListVisible}"
+                                            ScrollBarVisibility="Never"
                                             ItemsSource="{Binding ContactDetails2}">
-
                                             <listView:SfListView.HeaderTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
@@ -2733,7 +2725,7 @@
                                                         <Grid
                                                             x:Name="grid"
                                                             Margin="0,5,0,0"
-                                                            Padding="10"
+                                                            Padding="5"
                                                             BackgroundColor="#DBE9FA">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
@@ -2834,7 +2826,9 @@
                                                                     Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTRegistrationPage}}"
                                                                     CommandParameter="{Binding .}"
                                                                     Style="{StaticResource PrimaryButtonStyle}"
+                                                                    FontSize="12"
                                                                     Text="{x:Static ResourceManager:AppResources.EstActivities}"
+                                                                    HeightRequest="25"
                                                                     WidthRequest="180" />
                                                             </StackLayout>
 
@@ -2862,7 +2856,18 @@
 
                                             </listView:SfListView.FooterTemplate>
                                         </listView:SfListView>
-                                    </Grid>
+
+                                             </Grid>
+                                        </xct:Expander.Content>
+
+                                        
+                                        </xct:Expander>
+                                        </Grid>
+                                        </ViewCell.View>
+
+                                    </ViewCell>
+
+                                    
 
 
                                 </DataTemplate>
@@ -2871,6 +2876,7 @@
 
                         </listView:SfListView>
                     </Grid>
+                    
                     <!--  5250 End  -->
 
                 </StackLayout>
@@ -3277,18 +3283,23 @@
                 <!--#endregion-->
 
                 <!--#region Declaration-->
-                <Grid HorizontalOptions="StartAndExpand" RowDefinitions="*">
+                <Grid x:Name="DeclarationMainTab"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}"
+                    RowSpacing="10"
+                    VerticalOptions="FillAndExpand">
                     <ScrollView
-                        x:Name="DeclarationMainTab"
-                        IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}"
-                        VerticalOptions="Start"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
                         VerticalScrollBarVisibility="Never">
 
-                        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto">
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            Orientation="Vertical">
 
                             <cards:SfCardView
                                 x:Name="RegistrationTaxpayerTypeSummaryView"
-                                Grid.Row="0"
                                 Padding="0"
                                 BackgroundColor="Transparent"
                                 BorderColor="{StaticResource NeutralLightGrey}"
@@ -3450,7 +3461,6 @@
 
                             <cards:SfCardView
                                 x:Name="TaxpayerDetailsSummaryView"
-                                Grid.Row="1"
                                 BackgroundColor="Transparent"
                                 BorderColor="{StaticResource NeutralLightGrey}"
                                 BorderWidth="1">
@@ -3750,7 +3760,6 @@
 
                             <cards:SfCardView
                                 x:Name="PassportSummaryView"
-                                Grid.Row="2"
                                 Padding="0"
                                 BackgroundColor="Transparent"
                                 BorderColor="{StaticResource NeutralLightGrey}"
@@ -3890,7 +3899,6 @@
 
                             <cards:SfCardView
                                 x:Name="OutletSummaryView"
-                                Grid.Row="3"
                                 Padding="0"
                                 BackgroundColor="Transparent"
                                 BorderColor="{StaticResource NeutralLightGrey}"
@@ -4041,7 +4049,6 @@
 
                             <cards:SfCardView
                                 x:Name="FinancialDetailSummaryView"
-                                Grid.Row="4"
                                 Padding="0"
                                 BackgroundColor="Transparent"
                                 BorderColor="{StaticResource NeutralLightGrey}"
@@ -4211,7 +4218,6 @@
                             </cards:SfCardView>
 
                             <Grid
-                                Grid.Row="5"
                                 ColumnDefinitions="auto,*"
                                 ColumnSpacing="10">
 
@@ -4241,17 +4247,17 @@
 
                             </Grid>
 
-                        </Grid>
+                        </StackLayout>
 
                     </ScrollView>
                 </Grid>
                 <!--#endregion-->
 
-                <buttons:SfButton
+                <Button
                     Margin="0,10,0,10"
                     Command="{Binding OnNextButtonClick}"
                     HorizontalOptions="FillAndExpand"
-                    Style="{StaticResource PrimaryButtonStyle}"
+                    Style="{StaticResource PrimaryMauiButtonStyle}"
                     Text="{Binding NxtButtonLabel}" />
 
             </StackLayout>
