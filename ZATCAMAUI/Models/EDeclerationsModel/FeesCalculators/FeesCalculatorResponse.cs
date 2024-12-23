@@ -16,6 +16,10 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.FeesCalculators
         public double? extraFees { get; set; }
         public double? excise { get; set; }
         public double totalDuty { get; set; } = 0;
+        public double extraFeesMinimumValue { get; set; } = 0;
+        public double extraFeesMaximumValue { get; set; } = 0;
+        public double extraFeesPercentage { get; set; } = 0;
+
     }
 
 
