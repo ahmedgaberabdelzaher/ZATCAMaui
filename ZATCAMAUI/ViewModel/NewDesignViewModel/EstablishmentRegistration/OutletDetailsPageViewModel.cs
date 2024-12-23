@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Mopups.Services;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Enums;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.EstablishmentRegistration;
@@ -21,6 +22,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Variable
 
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
+        public ActivitySetsList activities { get; set; } = null;
         private OutletNumber newNumber = null;
         public Nreg_IdItem idItem { get; set; } = null;
         private ValidateCR validateCR = null;
@@ -770,7 +772,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (!string.IsNullOrEmpty(validateCR?.Crname) || PreLoadedLicenseItem != null)
                     {
                         CanExecute = true;
-                        _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+                       await _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                         {
                             openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,
                             taxPayerDetails = taxPayerDetails,
@@ -798,7 +800,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     try
                     {
                         IsLoading = true;
-                        DateTime.TryParseExact("2060/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
 
                         taxPayerDetails?.Nreg_AddressSet?.Clear();
                         Nreg_AddressItem defaultAddress = new Nreg_AddressItem();
@@ -817,7 +819,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         defaultAddress.AddrType = "XXDEFAULT";
                         defaultAddress.Srcidentify = string.Format("O{0}", OutletActNumber);
                         defaultAddress.Begda = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
-                        defaultAddress.Endda = maxDate.ToString("yyyy-MM-ddTHH:mm:ss");
+                        defaultAddress.Endda = "9999-12-31T00:00:00";
+
                         taxPayerDetails?.Nreg_AddressSet?.Add(defaultAddress);
 
                         Nreg_AddressItem _address = new Nreg_AddressItem();
@@ -836,7 +839,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         _address.AddrType = "0001";
                         _address.Srcidentify = string.Format("O{0}", OutletActNumber);
                         _address.Begda = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
-                        _address.Endda = maxDate.ToString("yyyy-MM-ddTHH:mm:ss"); ;
+                        _address.Endda = "9999-12-31T00:00:00";
                         taxPayerDetails?.Nreg_AddressSet?.Add(_address);
 
                         taxPayerDetails?.Nreg_OutletSet?.Clear();
@@ -849,6 +852,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails.StepNumberx = "03";
                         taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                         taxPayerDetails.UserTypx = "TP";
+
+                        //Attaching MulActivity Sets0106
+                        taxPayerDetails?.Nreg_Mul_ActivitySet?.Clear();
+                        foreach (var items in taxPayerDetails?.Nreg_ActivitySet)
+                        {
+                            foreach (var acttivity in items.activitySet)
+                            {
+                                taxPayerDetails?.Nreg_Mul_ActivitySet?.Add(new NregMulSet
+                                {
+                                    ActMgrp = acttivity?.ActMgrpCode,
+                                    ActSgrp = acttivity?.ActSgrpCode,
+                                    Activity = acttivity?.ActivityCode,
+                                    Idnumber = acttivity?.Idnumber,
+                                });
+
+                            }
+
+                        }
                         await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
 
@@ -858,10 +879,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     catch (Exception ex)
                     {
                         IsLoading = false;
-                        if (ex is HTTPBadRequestException)
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        }
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     }
                     finally
                     {
@@ -916,6 +934,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     OutletActNumber = newNumber == null || string.IsNullOrEmpty(newNumber?.Actno) ? "00000" : newNumber.Actno;
                     //$"{Int32.Parse(newNumber?.Actno):00000}";
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                    foreach (var activityItem in taxPayerDetails?.Nreg_ActivitySet)
+                    {
+                        var selectedItemActivities = taxPayerDetails?.Nreg_Mul_ActivitySet?.Where(a => a.Idnumber == activityItem?.Idnumber)?.ToList();
+                        if (selectedItemActivities?.Count > 0)
+                        {
+                            foreach (var mulactivities in selectedItemActivities)
+                            {
+                                var existingActivities = new NregMulSet
+                                {
+                                    Activity = activities?.activitySet?.Where(i => i.IndSector == mulactivities?.Activity)?.FirstOrDefault()?.Text,
+                                    ActivityCode = activities?.activitySet?.Where(i => i.IndSector == mulactivities?.Activity)?.FirstOrDefault()?.IndSector,
+                                    ActMgrp = activities?.act_groupSet?.Where(i => i.IndSector == mulactivities?.ActMgrp)?.FirstOrDefault()?.Text,
+                                    ActMgrpCode = activities?.act_groupSet?.Where(i => i.IndSector == mulactivities?.ActMgrp)?.FirstOrDefault()?.IndSector,
+                                    ActSgrp = activities?.act_subgroupSet?.Where(i => i.IndSector == mulactivities?.ActSgrp)?.FirstOrDefault()?.Text,
+                                    ActSgrpCode = activities?.act_subgroupSet?.Where(i => i.IndSector == mulactivities?.ActSgrp)?.FirstOrDefault()?.IndSector,
+                                    Idnumber = mulactivities?.Idnumber,
+                                };
+
+                                activityItem?.activitySet.Add(existingActivities);
+                            }
+                        }
+                    }
+
                     if (OutletActNumber == "00000")
                     {
                         var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();

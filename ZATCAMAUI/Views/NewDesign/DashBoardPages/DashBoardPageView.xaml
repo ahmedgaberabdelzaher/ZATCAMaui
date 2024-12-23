@@ -311,6 +311,10 @@
                                         Text="{x:Static ResourceManager:AppResources.NDRegZakatin5mins}"
                                         TextColor="White"
                                         VerticalOptions="Center" />
+
+                                    <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnZakatNowCommand}" />
+                                    </Grid.GestureRecognizers>
                                 </Grid>
 
                                 <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand">

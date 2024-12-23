@@ -304,6 +304,7 @@ namespace ZATCAMAUI.Core.Helper
         public static string ESTDeleteOutlet = BaseUrlOfODataServices + "/v1/establishment-signup/outlets/items/deletion";
         public static string ESTOutletAddressFetch = BaseUrlOfODataServices + "/v1/taxpayers/addresses";
         public static string ESTFinancialMaxDate = BaseUrlOfODataServices + "/v1/establishment-signup/financial-end-date";
+        public static string ESTCRExstingActivityData = BaseUrlOfODataServices + "/v1/taxpayers/activities/details";
         public static string UpdateLicenseAndCR = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/ISIC4Set";
         #endregion
 
@@ -388,7 +389,7 @@ namespace ZATCAMAUI.Core.Helper
         #region TIN/Outlet Deregistration
         public static string TinOutletDeregistrationPreousRequestsUrl = BaseUrlOfODataServices + "/v1/taxpayer-deregistration/requests";
         public static string TinOutletDeregistrationPreousRequestsPostUrl = BaseUrlOfODataServices + "/v1/taxpayer-deregistration/requests/cancel";
-        public static string OutletDeregistrationNewRequestUrl = BaseUrlOfODataServices + "/v1/taxpayer-deregistration/details?TIN=";
+        public static string OutletDeregistrationNewRequestUrl = BaseUrlOfODataServices + "/v1/taxpayer-deregistration/details";
         #endregion
         #region VATObjection
         public static string GetVATObjectionListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(";

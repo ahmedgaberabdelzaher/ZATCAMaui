@@ -7,7 +7,6 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     BackgroundColor="#88000000"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     FlowDirection="{Binding AppDirection}">
     <Mopups:PopupPage.Animation>
         <animations:ScaleAnimation
@@ -87,11 +86,11 @@
                     HorizontalOptions="End"
                     Orientation="Horizontal"
                     VerticalOptions="EndAndExpand">
-                    <buttons:SfButton
+                    <Button
                         Padding="20,0"
                         Clicked="CancelButton_Clicked"
                         HorizontalOptions="Center"
-                        Style="{StaticResource PrimaryButtonStyle}"
+                        Style="{StaticResource PrimaryMauiButtonStyle}"
                         Text="{x:Static ResourceManager:AppResources.ZZZCancelText}" />
                 </StackLayout>
             </Grid>

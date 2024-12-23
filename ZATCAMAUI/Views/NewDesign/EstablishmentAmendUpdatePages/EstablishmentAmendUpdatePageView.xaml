@@ -16,12 +16,18 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="ESTAmendReactivationPage"
     Title="{Binding PageTitle}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Resources>
         <ResourceDictionary>
 
@@ -113,8 +119,7 @@
                     HorizontalOptions="End"
                     MarkSize="24"
                     MaxNum="{Binding MaxIndex}"
-                    MinNum="{Binding CurrentIndex}"
-                    />
+                    MinNum="{Binding CurrentIndex}" />
                 <Label
                     Margin="0,10,0,0"
                     FontFamily="{StaticResource SomarBold}"
@@ -208,7 +213,7 @@
                             x:Name="RegistrationTab"
                             HorizontalOptions="FillAndExpand"
                             RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
-                            RowSpacing="24"
+                            RowSpacing="8"
                             VerticalOptions="FillAndExpand">
                             <StackLayout Grid.Row="0">
                                 <Label HorizontalOptions="Start" Style="{StaticResource forLightLabel}">
@@ -335,8 +340,8 @@
                                         <cards:SfCardView
                                             Grid.Row="0"
                                             Grid.Column="0"
-                                            CornerRadius="20"
                                             BackgroundColor="White"
+                                            CornerRadius="20"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption}"
                                             WidthRequest="171">
@@ -368,8 +373,8 @@
                                         </Grid.GestureRecognizers>
                                         <cards:SfCardView
                                             Grid.Row="0"
-                                            BackgroundColor="White"
                                             Grid.Column="0"
+                                            BackgroundColor="White"
                                             CornerRadius="20"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedOwnRentOption, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
@@ -650,9 +655,9 @@
                                                 </Grid>
                                             </cards:SfCardView>
                                             <cards:SfCardView
+                                                BackgroundColor="White"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                BackgroundColor="White"
                                                 IsVisible="{Binding IsClickedPermanentLegalEntity}"
                                                 WidthRequest="171">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -711,9 +716,9 @@
                                             <cards:SfCardView
                                                 Grid.Row="0"
                                                 Grid.Column="0"
+                                                BackgroundColor="White"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                BackgroundColor="White"
                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -767,9 +772,9 @@
                                                 <TapGestureRecognizer Command="{Binding ABranchOfNonResidentCompanyPEClick}" />
                                             </Grid.GestureRecognizers>
                                             <cards:SfCardView
+                                                BackgroundColor="White"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                BackgroundColor="White"
                                                 IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
@@ -789,8 +794,8 @@
                                                 </Grid>
                                             </cards:SfCardView>
                                             <cards:SfCardView
-                                                CornerRadius="20"
                                                 BackgroundColor="White"
+                                                CornerRadius="20"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -876,9 +881,9 @@
                                                 <TapGestureRecognizer Command="{Binding InstallationPEClick}" />
                                             </Grid.GestureRecognizers>
                                             <cards:SfCardView
+                                                BackgroundColor="White"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                BackgroundColor="White"
                                                 HorizontalOptions="FillAndExpand"
                                                 IsVisible="{Binding IsClickedInstallationPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -899,9 +904,9 @@
                                                 </Grid>
                                             </cards:SfCardView>
                                             <cards:SfCardView
+                                                BackgroundColor="White"
                                                 CornerRadius="20"
                                                 HeightRequest="104"
-                                                BackgroundColor="White"
                                                 HorizontalOptions="FillAndExpand"
                                                 IsVisible="{Binding IsClickedInstallationPE}">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -1137,7 +1142,7 @@
                         <Grid
                             x:Name="TaxpayerDetailsTab"
                             HorizontalOptions="FillAndExpand"
-                            RowSpacing="24"
+                            RowSpacing="8"
                             VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
@@ -1250,7 +1255,7 @@
                                         SelectedItem="{Binding SelectedDOBDate}">
 
                                         <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                         </custom:CustomDatePicker.ColumnHeaderView>
 
 
@@ -1267,10 +1272,10 @@
                                             <syncfusion:PickerHeaderView
                                                 Height="46"
                                                 Background="{StaticResource Primary}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
 
                                                 <syncfusion:PickerHeaderView.TextStyle>
-                                                    <syncfusion:PickerTextStyle TextColor="White"/>
+                                                    <syncfusion:PickerTextStyle TextColor="White" />
 
                                                 </syncfusion:PickerHeaderView.TextStyle>
 
@@ -1309,7 +1314,7 @@
                                         </custom:CustomHijriDatePicker.SelectionView>
 
                                         <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                         </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                         <custom:CustomHijriDatePicker.SelectedTextStyle>
@@ -1320,10 +1325,10 @@
 
                                             <syncfusion:PickerHeaderView
                                                 Height="46"
-                                               Background="{StaticResource Primary}"
+                                                Background="{StaticResource Primary}"
                                                 Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
                                                 <syncfusion:PickerHeaderView.TextStyle>
-                                                    <syncfusion:PickerTextStyle TextColor="White"/>
+                                                    <syncfusion:PickerTextStyle TextColor="White" />
 
                                                 </syncfusion:PickerHeaderView.TextStyle>
 
@@ -1649,8 +1654,8 @@
 
                                                 <cards:SfCardView
                                                     Margin="0,0,24,0"
-                                                    CornerRadius="20"
                                                     BackgroundColor="White"
+                                                    CornerRadius="20"
                                                     HeightRequest="104"
                                                     WidthRequest="171">
                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -1770,12 +1775,12 @@
                 <!--#endregion-->
                 <!--#region Passport details-->
                 <Grid x:Name="PassportDetailsTabMainGrid" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}}">
-                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" VerticalScrollBarVisibility="Never">
                         <Grid
                             x:Name="PassportDetailsTab"
                             HorizontalOptions="FillAndExpand"
                             RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
-                            RowSpacing="24"
+                            RowSpacing="8"
                             VerticalOptions="FillAndExpand">
 
                             <Border
@@ -1785,12 +1790,13 @@
                                 StrokeThickness="1"
                                 Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="0,0,10,0">
-                                    <StackLayout Padding="0,0,10,0" Orientation="Horizontal">
+                                    <StackLayout Padding="0,0,10,0" Orientation="Horizontal" Spacing="5">
                                         <Image Source="ic_vat_info.png" />
                                         <Label
                                             Style="{StaticResource GAZTSmallBlackLbl}"
                                             Text="{x:Static ResourceManager:AppResources.Information}"
-                                            TextColor="{StaticResource PrimaryColor}" />
+                                            TextColor="{StaticResource PrimaryColor}"
+                                            VerticalOptions="Center"/>
                                     </StackLayout>
                                     <Label
                                         HorizontalOptions="StartAndExpand"
@@ -1861,19 +1867,36 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <buttons:SfButton
-                                    Padding="5"
-                                    Command="{Binding OnPassportIssueCountryButtonClick}"
-                                    HorizontalTextAlignment="Start"
-                                    ImageAlignment="End"
-                                    ImageSource="arrowDropdown.png"
-                                    IsEnabled="{Binding PassportDetails.IssueCountry}"
-                                    ShowIcon="True"
-                                    Stroke="{StaticResource NeutralGreay}"
-                                    StrokeThickness="1"
-                                    Style="{StaticResource ButtonBlackBold16}"
-                                    Text="{Binding SelectedPassportIssueCountry?.Landx50}" />
 
+                                <custom:CustomSfTextInputView IsEnabled="{Binding PassportDetails.IssueCountry}" Stroke="{StaticResource NeutralGreay}">
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            FontFamily="{StaticResource SomarLight}"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}"
+                                            FontSize="Small"
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding SelectedPassportIssueCountry.Landx50}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalTextAlignment="Center" >
+                                            <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnPassportIssueCountryButtonClick}" />
+                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            </custom:GAZTBorderlessEntry>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                    <custom:CustomSfTextInputView.TrailingView>
+                                        <Image
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="arrowDropdown.png"
+                                            Style="{StaticResource SmallIcon}" />
+                                    </custom:CustomSfTextInputView.TrailingView>
+
+                                    <custom:CustomSfTextInputView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnPassportIssueCountryButtonClick}" />
+                                    </custom:CustomSfTextInputView.GestureRecognizers>
+                                </custom:CustomSfTextInputView>
+                                
                             </StackLayout>
                             <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand">
                                 <Label Style="{StaticResource CaptionLabelGrey}">
@@ -1929,7 +1952,7 @@
                                     SelectedItem="{Binding SelectedPassportIssueDate}">
 
                                     <custom:CustomDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                     </custom:CustomDatePicker.ColumnHeaderView>
 
 
@@ -1947,10 +1970,10 @@
                                         <syncfusion:PickerHeaderView
                                             Height="46"
                                             Background="{StaticResource Primary}"
-                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" >
+                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}">
 
                                             <syncfusion:PickerHeaderView.TextStyle>
-                                                <syncfusion:PickerTextStyle TextColor="White"/>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
 
                                             </syncfusion:PickerHeaderView.TextStyle>
 
@@ -1963,7 +1986,7 @@
                                         <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                             <syncfusion:PickerFooterView.TextStyle>
-                                                <syncfusion:PickerTextStyle TextColor="White"/>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
                                             </syncfusion:PickerFooterView.TextStyle>
 
                                         </syncfusion:PickerFooterView>
@@ -1990,7 +2013,7 @@
                                     </custom:CustomHijriDatePicker.SelectionView>
 
                                     <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                     </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.SelectedTextStyle>
@@ -2003,9 +2026,9 @@
                                         <syncfusion:PickerHeaderView
                                             Height="46"
                                             Background="{StaticResource Primary}"
-                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" >
+                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}">
                                             <syncfusion:PickerHeaderView.TextStyle>
-                                                <syncfusion:PickerTextStyle TextColor="White"/>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
 
                                             </syncfusion:PickerHeaderView.TextStyle>
 
@@ -2018,7 +2041,7 @@
                                         <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                             <syncfusion:PickerFooterView.TextStyle>
-                                                <syncfusion:PickerTextStyle  TextColor="White"/>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
                                             </syncfusion:PickerFooterView.TextStyle>
 
                                         </syncfusion:PickerFooterView>
@@ -2083,7 +2106,7 @@
                                     SelectedItem="{Binding SelectedPassportExpireDate}">
 
                                     <custom:CustomDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                     </custom:CustomDatePicker.ColumnHeaderView>
 
 
@@ -2101,9 +2124,9 @@
                                         <syncfusion:PickerHeaderView
                                             Height="46"
                                             Background="{StaticResource Primary}"
-                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" >
+                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}">
                                             <syncfusion:PickerHeaderView.TextStyle>
-                                                <syncfusion:PickerTextStyle TextColor="White"/>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
 
                                             </syncfusion:PickerHeaderView.TextStyle>
 
@@ -2146,7 +2169,7 @@
                                     </custom:CustomHijriDatePicker.SelectionView>
 
                                     <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                     </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
@@ -2154,9 +2177,9 @@
                                         <syncfusion:PickerHeaderView
                                             Height="46"
                                             Background="{StaticResource Primary}"
-                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" >
+                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}">
                                             <syncfusion:PickerHeaderView.TextStyle>
-                                                <syncfusion:PickerTextStyle TextColor="White"/>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
 
                                             </syncfusion:PickerHeaderView.TextStyle>
 
@@ -2305,69 +2328,105 @@
                 </Grid>
                 <!--#endregion-->
                 <!--#region Outletsdetails-->
-                <Grid
+                <StackLayout
                     x:Name="OutletsTabMainLayout"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}"
-                    RowSpacing="18"
+                    
                     VerticalOptions="FillAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <buttons:SfButton
-                        Grid.Row="0"
+                    
+                    <!--<buttons:SfButton
+                        
                         Padding="5"
                         Command="{Binding OnNewOutletButtonClick}"
-                        HorizontalTextAlignment="Start"
+                        HorizontalTextAlignment="End"
                         ImageSource="ic_add1.png"
                         ShowIcon="True"
                         Stroke="{StaticResource NeutralGreay}"
                         StrokeThickness="1"
                         Style="{StaticResource ButtonBlackBold16}"
                         Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}"
-                        TextColor="{StaticResource NewDarkGreenColor}" />
+                        TextColor="{StaticResource NewDarkGreenColor}" />-->
+
                     <custom:CustomSfTextInputView
-                        Grid.Row="1"
-                        Margin="0"
+                        
+                        Margin="0,5,0,0"
+                        Style="{StaticResource TextInputLayout}"
                         IsHintAlwaysFloated="True">
                         <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="15"
-                                HorizontalOptions="FillAndExpand"
+                                IsReadOnly="True"
+                                InputTransparent="True"
+                                HorizontalTextAlignment="Start"
+                                Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}"
+                                TextColor="{StaticResource NewDarkGreenColor}" 
+                                Style="{StaticResource DefaultEntry}"
+                                VerticalTextAlignment="Center" >
+                                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnNewOutletButtonClick}"/>
+                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                        </custom:CustomSfTextInputView.TextInputView>
+                        <inputLayout:SfTextInputLayout.LeadingView>
+                            <Image Source="ic_add1.png" Style="{StaticResource SmallIcon}" />
+                             
+                        </inputLayout:SfTextInputLayout.LeadingView>
+
+                       <inputLayout:SfTextInputLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnNewOutletButtonClick}" />
+                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                    </custom:CustomSfTextInputView>
+
+
+                    <custom:CustomSfTextInputView
+                        
+                        Margin="0,5,0,0"
+                        Style="{StaticResource TextInputLayout}"
+                        IsHintAlwaysFloated="True">
+                        <custom:CustomSfTextInputView.TextInputView>
+                            <custom:GAZTBorderlessEntry
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="15"
                                 HorizontalTextAlignment="Start"
                                 IsSpellCheckEnabled="false"
                                 Placeholder="{x:Static ResourceManager:AppResources.SearchText}"
                                 PlaceholderColor="{StaticResource NeutralGreay}"
                                 Text="{Binding SearchText}"
                                 TextColor="{StaticResource NeutralBlack}"
-                                VerticalOptions="Center"
+                                Style="{StaticResource DefaultEntry}"
                                 VerticalTextAlignment="Center" />
                         </custom:CustomSfTextInputView.TextInputView>
                         <inputLayout:SfTextInputLayout.TrailingView>
-                            <Image Source="grey_search.png" />
+                            <Image Source="grey_search.png" Style="{StaticResource SmallIcon}" />
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </custom:CustomSfTextInputView>
-
                     <listView:SfListView
-                        x:Name="outerListView"
-                        Grid.Row="2"
-                        AutoFitMode="DynamicHeight"
-                        BackgroundColor="White"
+                        ScrollBarVisibility="Never"
                         ItemsSource="{Binding OutlettUiList}"
+                        IsVisible="{Binding ShowOutletList}"
+                        x:Name="outerListView"
+                        AutoFitMode="DynamicHeight"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
                         SelectionBackground="White">
-
-                        <listView:SfListView.ItemTemplate>
+                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <Grid>
+                                <ViewCell>
+                                    
+                                    <ViewCell.View>
+                                    <Grid FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <cards:SfCardView
+
+                                        <xct:Expander Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnEditOutletButtonClick}"
+                                                CommandParameter="{Binding .}" >
+
+                                            <xct:Expander.Header>
+                                                <cards:SfCardView
+                                        Grid.Row="0"
                                         Margin="5,0,0,10"
                                         BackgroundColor="White"
                                         BorderColor="{StaticResource NeutralLightGrey}"
@@ -2388,19 +2447,27 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <buttons:SfButton
+                                            <Image
+                                                VerticalOptions="Center"
                                                 Grid.Row="0"
                                                 Grid.Column="0"
-                                                Padding="5"
-                                                Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnEditOutletButtonClick}"
-                                                CommandParameter="{Binding .}"
-                                                CornerRadius="10"
-                                                HorizontalTextAlignment="Start"
-                                                ImageSource="arrowDropdown.png"
-                                                ShowIcon="True"
-                                                Style="{StaticResource NoBackgroundButtonStyle}"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                WidthRequest="100" />
+                                                IsEnabled="False"
+                                                Margin="10,0,0,0"
+                                                HorizontalOptions="Start"
+                                                Source="arrowDropdown.png"
+                                                WidthRequest="18"
+                                                HeightRequest="18">
+
+                                                <Image.Triggers>
+                                                     <DataTrigger TargetType="Image" Binding="{Binding IsInnerListVisible}" Value="True">
+                                                         <Setter Property="Rotation" Value="180" />
+                                                     </DataTrigger>
+                                                     <DataTrigger TargetType="Image" Binding="{Binding IsInnerListVisible}" Value="False">
+                                                         <Setter Property="Rotation" Value="0" />
+                                                     </DataTrigger>
+                                                 </Image.Triggers>
+
+                                            </Image>
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="1"
@@ -2463,14 +2530,23 @@
                                             </StackLayout>
                                         </Grid>
                                     </cards:SfCardView>
-                                    <!--#region Inner CR Details list data-->
+
+                                            </xct:Expander.Header>
+
+                                            <xct:Expander.Content>
+
+                                                <Grid RowDefinitions="*,*">
+
+                                                    <!--<Label Grid.Row="0" Text="Test 1"></Label>
+                                                    <Label Grid.Row="1" Text="Test 1"></Label>-->
+
+                                                     <!--#region Inner CR Details list data-->
                                     <listView:SfListView
                                         x:Name="innerListView"
-                                        Grid.Row="1"
+                                        Grid.Row="0"
                                         Margin="5"
-                                        AutoFitMode="DynamicHeight"
                                         IsScrollingEnabled="False"
-                                        IsVisible="{Binding IsInnerListVisible}"
+                                        ScrollBarVisibility="Never"
                                         ItemsSource="{Binding ContactDetails}">
                                         <listView:SfListView.HeaderTemplate>
                                             <DataTemplate>
@@ -2490,11 +2566,12 @@
                                         </listView:SfListView.HeaderTemplate>
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                               
+                                                <ViewCell>
+                                                <ViewCell.View>
+                                                <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                                                     <Grid
-                                                        x:Name="grid"
-                                                        Margin="0,5,0,0"
-                                                        Padding="10"
+                                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
                                                         BackgroundColor="#DBE9FA">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="Auto" />
@@ -2527,6 +2604,19 @@
                                                             Grid.Row="0"
                                                             Grid.Column="1"
                                                             Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding Z700Number}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="2"
+                                                            Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRName}" />
                                                             <Label
                                                                 HorizontalOptions="StartAndExpand"
@@ -2537,7 +2627,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
-                                                            Grid.Column="2"
+                                                            Grid.Column="3"
                                                             Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CrType}" />
                                                             <Label
@@ -2549,7 +2639,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
-                                                            Grid.Column="3"
+                                                            Grid.Column="4"
                                                             Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
                                                             <Label
@@ -2561,7 +2651,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
-                                                            Grid.Column="4"
+                                                            Grid.Column="5"
                                                             Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
                                                             <Label
@@ -2573,7 +2663,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
-                                                            Grid.Column="5"
+                                                            Grid.Column="6"
                                                             Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
                                                             <Label
@@ -2585,7 +2675,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             Grid.Row="0"
-                                                            Grid.Column="6"
+                                                            Grid.Column="7"
                                                             Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
                                                             <Label
@@ -2595,48 +2685,31 @@
                                                                 Text="{Binding ValidFromUI}"
                                                                 VerticalTextAlignment="Center" />
                                                         </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="7"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding ActMgrpDesc}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
+
                                                         <StackLayout
                                                             Grid.Row="0"
                                                             Grid.Column="8"
                                                             Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding ActSgrpDesc}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="9"
-                                                            Margin="0,0,5,0">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding ActivityDesc}"
-                                                                VerticalTextAlignment="Center" />
+                                                            <buttons:SfButton
+                                                                Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTAmendReactivationPage}}"
+                                                                CommandParameter="{Binding .}"
+                                                                Style="{StaticResource PrimaryButtonStyle}"
+                                                                Text="{x:Static ResourceManager:AppResources.EstActivities}"
+                                                                HeightRequest="30"
+                                                                WidthRequest="180" />
                                                         </StackLayout>
                                                     </Grid>
                                                 </ScrollView>
+                                                </ViewCell.View>
+                                                </ViewCell>
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                         <listView:SfListView.FooterTemplate>
                                             <DataTemplate>
+                                                <ViewCell>
+                                                    <ViewCell.View>
+
                                                 <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTAmendReactivationPage}}">
                                                     <Label
                                                         HorizontalOptions="StartAndExpand"
@@ -2645,19 +2718,22 @@
                                                         Text="{x:Static ResourceManager:AppResources.VatEffNoData}"
                                                         VerticalTextAlignment="Center" />
                                                 </StackLayout>
+
+                                                    </ViewCell.View>
+                                                </ViewCell>
                                             </DataTemplate>
                                         </listView:SfListView.FooterTemplate>
                                     </listView:SfListView>
                                     <!--#endregion-->
 
-                                    <!--#region Inner License list data-->
+                                                 <!--#region Inner License list data-->
                                     <listView:SfListView
                                         x:Name="innerListView2"
-                                        Grid.Row="2"
+                                        Grid.Row="1"
                                         Margin="5"
-                                        AutoFitMode="DynamicHeight"
+                                        VerticalOptions="FillAndExpand"
                                         IsScrollingEnabled="False"
-                                        IsVisible="{Binding IsInnerListVisible}"
+                                        ScrollBarVisibility="Never"
                                         ItemsSource="{Binding ContactDetails2}">
                                         <listView:SfListView.HeaderTemplate>
                                             <DataTemplate>
@@ -2677,14 +2753,18 @@
                                         </listView:SfListView.HeaderTemplate>
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                                    <Grid
-                                                        x:Name="grid"
-                                                        Margin="0,5,0,0"
-                                                        Padding="10"
-                                                        BackgroundColor="#DBE9FA">
+                                                 <ViewCell>
+                                                    <ViewCell.View>
+                                                        <Grid RowDefinitions="*" >
+
+                                                    <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                                    <Grid FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
+                                                        VerticalOptions="FillAndExpand"
+                                                        Padding="5"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        BackgroundColor="#DBE9FA"><!--#DBE9FA-->
                                                         <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="*" />
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="Auto" />
@@ -2694,9 +2774,9 @@
                                                             <ColumnDefinition Width="Auto" />
                                                             <ColumnDefinition Width="Auto" />
                                                             <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
+                                                      
                                                         </Grid.ColumnDefinitions>
+
                                                         <StackLayout
                                                             Grid.Row="0"
                                                             Grid.Column="0"
@@ -2769,48 +2849,34 @@
                                                                 Text="{Binding ValidFromUI}"
                                                                 VerticalTextAlignment="Center" />
                                                         </StackLayout>
-                                                        <StackLayout
+                                                        <StackLayout Spacing="2"
                                                             Grid.Row="0"
                                                             Grid.Column="6"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding ActMgrpDesc}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="7"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding ActSgrpDesc}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="8"
-                                                            Margin="0,0,5,0">
+                                                                    
+                                                            Margin="0,0,5,5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding ActivityDesc}"
-                                                                VerticalTextAlignment="Center" />
+                                                            <buttons:SfButton
+                                                                Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTAmendReactivationPage}}"
+                                                                CommandParameter="{Binding .}"
+                                                                Style="{StaticResource PrimaryButtonStyle}"
+                                                                Text="{x:Static ResourceManager:AppResources.EstActivities}"
+                                                                HeightRequest="30"
+                                                                WidthRequest="180" />
                                                         </StackLayout>
                                                     </Grid>
                                                 </ScrollView>
+                                                        </Grid>
+                                                
+
+
+                                                    </ViewCell.View>
+                                                </ViewCell>
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                         <listView:SfListView.FooterTemplate>
                                             <DataTemplate>
+                                                 <ViewCell>
+                                                    <ViewCell.View>
                                                 <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTAmendReactivationPage}}">
                                                     <Label
                                                         HorizontalOptions="StartAndExpand"
@@ -2819,16 +2885,29 @@
                                                         Text="{x:Static ResourceManager:AppResources.VatEffNoData}"
                                                         VerticalTextAlignment="Center" />
                                                 </StackLayout>
+
+
+                                                    </ViewCell.View>
+                                                </ViewCell>
                                             </DataTemplate>
                                         </listView:SfListView.FooterTemplate>
                                     </listView:SfListView>
                                     <!--#endregion-->
+                                                </Grid>
+                                               
+
+                                            </xct:Expander.Content>
+
+                                        </xct:Expander>
                                 </Grid>
+                                </ViewCell.View>
+                                </ViewCell>
                             </DataTemplate>
                         </listView:SfListView.ItemTemplate>
 
                     </listView:SfListView>
-                </Grid>
+                    
+                </StackLayout>
                 <!--#endregion-->
                 <!--#region Financial deatils-->
                 <ScrollView
@@ -2892,8 +2971,8 @@
 
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
-                                        CornerRadius="20"
                                         BackgroundColor="White"
+                                        CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2939,8 +3018,8 @@
                                 <DataTemplate>
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
-                                        CornerRadius="20"
                                         BackgroundColor="White"
+                                        CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2966,8 +3045,8 @@
                                 <DataTemplate>
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
-                                        CornerRadius="20"
                                         BackgroundColor="White"
+                                        CornerRadius="20"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -3116,9 +3195,9 @@
                                 <DataTemplate>
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
+                                        BackgroundColor="White"
                                         CornerRadius="20"
                                         HeightRequest="104"
-                                        BackgroundColor="White"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>

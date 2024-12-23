@@ -11477,21 +11477,21 @@ info@zatca.gov.sa</value>
     </data>
 	<!--CR 7453-->
 	<data name="ZZCRNationalNumber" xml:space="preserve">
-   <value>الرقم الوطني للسجل التجاري</value>
-   <comment>Sign up</comment>
- </data>
+    <value>الرقم الموحد للسجل التجاري</value>
+    <comment>Sign up</comment>
+  </data>
 	<data name="ZZSelectatleastoneofthefieldsCommercialRegistrationNatiNumberorLicencebelow" xml:space="preserve">
-   <value>الرجاء اختيار إدخال رقم الرخصة أو الرقم الوطني للسجل التجاري</value>
-   <comment>Sign up</comment>
- </data>
+    <value>الرجاء اختيار إدخال رقم الرخصة أو الرقم الموحد للسجل التجاري</value>
+    <comment>Sign up</comment>
+  </data>
 	<data name="ZZCommercialRegistrationNumbershouddbe10digitswith7starts" xml:space="preserve">
-   <value>يجب أن يبدأ الرقم الوطني للسجل التجاري بالرقم 7 ويجب أن يتكون من 10 أرقام</value>
-   <comment>Sign Up</comment>
-</data>
+    <value>يجب أن يبدأ الرقم الموحد للسجل التجاري بالرقم 7 ويجب أن يتكون من 10 أرقام</value>
+    <comment>Sign Up</comment>
+	</data>
 	<data name="ZZPleaseentervalidCRNationalnumber" xml:space="preserve">
-   <value>الرجاء إدخال رقم سجل تجاري وطني صحيح</value>
-   <comment>Sign Up</comment>
- </data>
+    <value>الرجاء إدخال الرقم الموحد للسجل التجاري الصحيح</value>
+    <comment>Sign Up</comment>
+  </data>
 	<data name="EstActivities" xml:space="preserve">
   <value>الانشطة</value>
 </data>

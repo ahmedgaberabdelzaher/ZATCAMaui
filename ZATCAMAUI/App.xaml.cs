@@ -94,6 +94,7 @@ namespace ZATCAMAUI
         public static string EstablishmentAmendUpdatePage = nameof(EstablishmentAmendUpdatePageView);
         public static string OutletDetailsPageView = nameof(OutletDetailsPageView);
         public static string OutletDetailsAmendUpdatePageView = nameof(OutletDetailsAmendUpdatePageView);
+        public static string ActivitiesPopUpPageView = nameof(ActivitiesPopUpPageView);
         public static string RegistrationSuccessfulPage = nameof(RegistrationSuccessfulPage);
         public static string EstablishmentAmendUpdateSuccessfulPage = nameof(EstablishmentAmendUpdateSuccessfulPage);
         //*End EST

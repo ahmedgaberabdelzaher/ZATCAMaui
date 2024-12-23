@@ -60,8 +60,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            SetPickerFont();
-            viewModel?.OnAppearing();
             MessagingCenter.Subscribe<EstablishmentAmendUpdatePageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
             {
                 if (res)
@@ -71,93 +69,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             });
         }
 
-        public void SetPickerFont()
-        {
-            try
-            {
-                switch (DeviceInfo.Platform)
-                {
-
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.iOS:
-                        {
-                            dobPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            dobPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            dobPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            dobPicker.TextStyle.FontFamily = "Somar-SemiBold";
-
-                            dobHijiriPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            dobHijiriPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            dobHijiriPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            dobHijiriPicker.TextStyle.FontFamily = "Somar-SemiBold";
-
-                            passportIssuePicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            passportIssuePicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            passportIssuePicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            passportIssuePicker.TextStyle.FontFamily = "Somar-SemiBold";
-
-                            passportIssueHijiriPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            passportIssueHijiriPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            passportIssueHijiriPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            passportIssueHijiriPicker.TextStyle.FontFamily = "Somar-SemiBold";
-
-
-                            passportExpiryPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            passportExpiryPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            passportExpiryPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            passportExpiryPicker.TextStyle.FontFamily = "Somar-SemiBold";
-
-                            passportExpiryHijiriPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            passportExpiryHijiriPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
-                            passportExpiryHijiriPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
-                            passportExpiryHijiriPicker.TextStyle.FontFamily = "Somar-SemiBold";
-
-                        }
-                        break;
-
-                    case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
-                        {
-
-                            dobPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            dobPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            dobPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            dobPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                            dobHijiriPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            dobHijiriPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            dobHijiriPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            dobHijiriPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                            passportIssuePicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssuePicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssuePicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssuePicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                            passportIssueHijiriPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssueHijiriPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssueHijiriPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssueHijiriPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                            passportExpiryPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                            passportExpiryHijiriPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryHijiriPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryHijiriPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryHijiriPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
-
-                        }
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
 
 
         protected override void OnDisappearing()

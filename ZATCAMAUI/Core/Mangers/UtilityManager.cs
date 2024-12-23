@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Net;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Models.EstablishmentRegistration;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -1177,7 +1178,7 @@ namespace ZATCAMAUI.Core.Mangers
                 DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
 
                 var hijriParts = hijri.Split('/');
-                var hijriCalendar = new HijriCalendar();
+                var hijriCalendar = new UmAlQuraCalendar();
 
                 int hijriYear = int.Parse(hijriParts[0]);
                 int hijriMonth = int.Parse(hijriParts[1]);
@@ -1186,8 +1187,6 @@ namespace ZATCAMAUI.Core.Mangers
                 DateTime gregDate = hijriCalendar.ToDateTime(hijriYear, hijriMonth, hijriDay, 0, 0, 0, 0);
 
                 return gregDate.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
-
-               // return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
             }
             catch (Exception)
             {
@@ -1208,15 +1207,11 @@ namespace ZATCAMAUI.Core.Mangers
                     DateTime tempDate = DateTime.ParseExact(date, allFormats, enCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
 
                     // Create an instance of the HijriCalendar
-                    HijriCalendar hijriCalendar = new HijriCalendar();
+                    UmAlQuraCalendar hijriCalendar = new UmAlQuraCalendar();
                     // Get the Hijri year, month, and day
                     int hijriYear = hijriCalendar.GetYear(tempDate);
                     int hijriMonth = hijriCalendar.GetMonth(tempDate);
                     int hijriDay = hijriCalendar.GetDayOfMonth(tempDate);
-
-
-
-                    //var var2 = tempDate.ToString("yyyy/MM/dd", arSA.DateTimeFormat);
                     var var2 =  $"{hijriYear}/{hijriMonth:00}/{hijriDay:00}";
                     return var2;
                 }
@@ -1619,6 +1614,69 @@ namespace ZATCAMAUI.Core.Mangers
            
 
         }
+
+        public static PopUpServiceModel FilterActivityDetails(TaxPayerDetails taxPayerDetails, ActivitySetsList activityList, Nreg_ActivityItem newItem)
+        {
+
+            List<NregMulSet> existingActivitiesList = new List<NregMulSet>();
+            NregMulSet existingActivities = null;
+            PopUpServiceModel dataModel = null;
+
+            try
+            {
+                List<NregMulSet> filteredActivities = taxPayerDetails?.Nreg_Mul_ActivitySet?.Where(a => a.Idnumber == newItem.Idnumber).ToList();
+                int count = filteredActivities?.Count ?? 0;
+                if (count > 0)
+                {
+                    existingActivitiesList = GetExistingActivities(filteredActivities, existingActivities, activityList);
+                    dataModel = new PopUpServiceModel
+                    {
+                        existedActivities = existingActivitiesList,
+                    };
+                    return dataModel;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+
+
+        public static List<NregMulSet> GetExistingActivities(List<NregMulSet> filteredActivities, NregMulSet existingActivities, ActivitySetsList activityList,
+           bool isCodesRequired = false)
+        {
+            List<NregMulSet> ListOfActivities = new List<NregMulSet>();
+            try
+            {
+                foreach (var activities in filteredActivities)
+                {
+                    existingActivities = new NregMulSet
+                    {
+                        Activity = activityList?.activitySet?.Where(i => i.IndSector == activities?.Activity)?.FirstOrDefault()?.Text,
+                        ActivityCode = isCodesRequired ? activityList?.activitySet?.Where(i => i.IndSector == activities?.Activity)?.FirstOrDefault()?.IndSector : "",
+                        ActMgrp = activityList?.act_groupSet?.Where(i => i.IndSector == activities?.ActMgrp)?.FirstOrDefault()?.Text,
+                        ActMgrpCode = isCodesRequired ? activityList?.act_groupSet?.Where(i => i.IndSector == activities?.ActMgrp)?.FirstOrDefault()?.IndSector : "",
+                        ActSgrp = activityList?.act_subgroupSet?.Where(i => i.IndSector == activities?.ActSgrp)?.FirstOrDefault()?.Text,
+                        ActSgrpCode = isCodesRequired ? activityList?.act_subgroupSet?.Where(i => i.IndSector == activities?.ActSgrp)?.FirstOrDefault()?.IndSector : "",
+                        Idnumber = activities?.Idnumber,
+                    };
+                    ListOfActivities.Add(existingActivities);
+                }
+                return ListOfActivities;
+            }
+            catch (Exception ex)
+            {
+                return ListOfActivities;
+            }
+        }
+
         public static string FormatDateToYYYYDDMMFromDateTypeString(DateTime? dateToConvert)
         {
             string requiredDate = string.Empty;

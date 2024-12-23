@@ -347,77 +347,53 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        try
+
+                        string deserialisedResponseJSONs = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"]?.ToString();
+
+                        if (deserialisedResponseJSONs == null)
                         {
-
-                            string deserialisedResponseJSONs = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"]?.ToString();
-
-                            if (deserialisedResponseJSONs == null)
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                            if (errorMesg != null && errorMesg.header != null && errorMesg.header.moreInformation != null && errorMesg.header.moreInformation.errorDetails != null && errorMesg.header.moreInformation.errorDetails.Count > 0)
                             {
-                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count > 0)
+                                string ErrorMessageFormServer = string.Empty;
+                                if (errorMesg.header.moreInformation.errorDetails?.Count > 0)
                                 {
-                                    string ErrorMessageFormServer = string.Empty;
-                                    if (errorMesg.error.innererror.errordetails?.Count > 0)
+
+                                    if (errorMesg.header.moreInformation.errorDetails.Count > 2)
                                     {
-
-                                        if (errorMesg.error.innererror.errordetails.Count > 2)
+                                        for (int i = 0; i < errorMesg.header.moreInformation.errorDetails.Count - 1; i++)
                                         {
-                                            for (int i = 0; i < errorMesg.error.innererror.errordetails.Count - 1; i++)
-                                            {
-                                                ErrorMessageFormServer = ErrorMessageFormServer + " " + errorMesg.error.innererror.errordetails[i].message;
-                                            }
+                                            ErrorMessageFormServer = ErrorMessageFormServer + " " + errorMesg.header.moreInformation.errorDetails[i].message;
                                         }
-                                        else
-                                        {
-                                            ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
-                                        }
-
                                     }
-
-
-                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
+                                    else
+                                    {
+                                        ErrorMessageFormServer = errorMesg.header.moreInformation.errorDetails[0].message;
+                                    }
                                 }
-                                else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
-                                {
-                                    string ErrorMessageFormServer = errorMesg.error.message.value;
-                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
-                                }
+                                throw new GAZTVATRegistrationInProcessException(ErrorMessageFormServer);
                             }
-
-                            else
+                            else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
                             {
-                                if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
-                                {
-                                    taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
-                                }
+                                string ErrorMessageFormServer = errorMesg.error.message.value;
+                                throw new GAZTVATRegistrationInProcessException(ErrorMessageFormServer);
                             }
                         }
-                        catch (Exception ex)
+                        else
                         {
-
-
-                            System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex);
-                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                            if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
                             {
-                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count > 0)
-                                {
-                                    string ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
-                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
-                                }
-                                else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
-                                {
-                                    string ErrorMessageFormServer = errorMesg.error.message.value;
-                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
-                                }
+                                taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
                             }
                         }
-
 
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -428,8 +404,8 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                 }
                 catch (Exception)
-
                 {
+                    return null;
                 }
             }
             else
@@ -949,6 +925,95 @@ namespace ZATCAMAUI.Core.Mangers
             }
             return list;
         }
+
+        public static async Task<CRMulActivityDetails> ESTGetCRMulActivitySetList(string crNumber)
+        {
+            CRMulActivityDetails list = null;
+            if (NetworkCheck.IsInternet())
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    if (!NetworkCheck.IsInternet())
+                    {
+                        throw new GAZTInternetException();
+                    }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
+                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var url = ZATCAConstants.ESTCRExstingActivityData;
+
+                    var payload = new
+                    {
+                        TIN = App.LoginDataRetrieved.TIN,
+                        idNumber = crNumber
+                    };
+
+                    var serilized = JsonConvert.SerializeObject(payload);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(url, contentPost);
+
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        {
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
+                            list = JsonConvert.DeserializeObject<CRMulActivityDetails>(ESTBranchesDropDownResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return list;
+        }
+
+
         public static async Task<string> ESTValidateCRNum(string cr)
         {
             //ValidateCR validate = null;

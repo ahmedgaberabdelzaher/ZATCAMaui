@@ -1600,12 +1600,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 todaycollection.Add(DateTime.Now.Date.Month.ToString());
             todaycollection.Add(DateTime.Now.Date.Year.ToString());
             TodayDateNormal = todaycollection;
-            //TodayDateEnd = todaycollection;
-            //DefaultMonth = DateTime.Now.Date.Month;
-
-            //TodayDateinHijri
             ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
-            var calendar = new HijriCalendar();
+            var calendar = new UmAlQuraCalendar();
             if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
                 todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
             else
@@ -1617,25 +1613,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
 
             TodayDateinHijri = todaycollectionHijri;
-            //TodayDateinHijriEnd = todaycollectionHijri;
-
-            /*if (ContractReleaseData != null)
-            {
-
-
-                if (ContractReleaseData.d.ACalTp == "H")
-                {
-
-                    FromDate = HDateNow();
-                    ToDate = HDateNow();
-                }
-                else
-                {
-                    FromDate = (TodayDateStart[2] + "/" + TodayDateStart[1] + "/" + TodayDateStart[0]).ToString();
-                    ToDate = (TodayDateEnd[2] + "/" + TodayDateEnd[1] + "/" + TodayDateEnd[0]).ToString();
-                }
-
-            }*/
+           
         }
 
 

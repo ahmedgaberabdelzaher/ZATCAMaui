@@ -114,7 +114,7 @@
                                     <DataTemplate>
                                         <ViewCell>
                                             <ViewCell.View>
-                                                <StackLayout x:Name="rootArea">
+                                                <StackLayout x:Name="rootArea" FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                     <StackLayout>
                                                         <Label
                                                             FontFamily="{StaticResource SomarLight}"
@@ -224,7 +224,7 @@
                                 </listView:SfListView.HeaderTemplate>
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
+                                        <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
@@ -246,6 +246,7 @@
                                                         </Grid.GestureRecognizers>
 
                                                         <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
@@ -349,17 +350,27 @@
                                                         <StackLayout
                                                             Grid.Row="3"
                                                             Grid.Column="0"
-                                                            Spacing="-5">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletIssueDate}" />
+                                                            Spacing="5">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
-                                                                <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletIssueDtTb}" />
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletZ700NumberTb}" />
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="3"
+                                                            Grid.Column="1"
+                                                            Spacing="5">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletIssueDate}" />
+                                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletIssueDtTb}" />
                                                             </StackLayout>
 
                                                         </StackLayout>
 
+
                                                         <StackLayout
-                                                            Grid.Row="3"
-                                                            Grid.Column="1"
+                                                            Grid.Row="4"
+                                                            Grid.Column="0"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletCRStatus}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -370,7 +381,7 @@
 
                                                         <StackLayout
                                                             Grid.Row="4"
-                                                            Grid.Column="0"
+                                                            Grid.Column="1"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletValidto}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -380,8 +391,8 @@
                                                         </StackLayout>
 
                                                         <StackLayout
-                                                            Grid.Row="4"
-                                                            Grid.Column="1"
+                                                            Grid.Row="5"
+                                                            Grid.Column="0"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletCRCloseTrnsfrDt}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -438,7 +449,7 @@
 
                                                         <StackLayout
                                                             Grid.Row="5"
-                                                            Grid.Column="0"
+                                                            Grid.Column="1"
                                                             Grid.ColumnSpan="2"
                                                             Spacing="-5">
                                                             <Label
@@ -498,6 +509,7 @@
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <Grid
+                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             x:Name="grid"
                                                             Margin="0,5,0,0"
                                                             Padding="10"
@@ -758,7 +770,8 @@
                                     VerticalOptions="Center">
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid HorizontalOptions="FillAndExpand">
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                                  FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
                                                     <RowDefinition Height="auto" />
