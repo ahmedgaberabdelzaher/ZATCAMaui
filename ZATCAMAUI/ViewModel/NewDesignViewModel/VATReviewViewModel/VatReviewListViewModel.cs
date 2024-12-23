@@ -737,10 +737,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                     IsLoading = false;
                 }
-                catch (Exception)
+                catch (Exception gex)
                 {
-
-
+                    if (gex is InternetException)
+                    {
+                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                    }
+                    IsLoading = false;
                 }
             });
         }

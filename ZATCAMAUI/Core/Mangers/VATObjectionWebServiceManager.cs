@@ -666,8 +666,6 @@ namespace ZATCAMAUI.Core.Mangers
 
         public async static Task<VATObjectionSummaryModel> SaveVatReviewObjection(VatObjectionsRequest _vatObjectionDetails)
         {
-
-
             if (NetworkCheck.IsInternet())
             {
                 try

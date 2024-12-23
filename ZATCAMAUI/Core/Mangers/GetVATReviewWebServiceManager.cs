@@ -446,8 +446,9 @@ namespace ZATCAMAUI.Core.Mangers
 
         public async static Task email(string doguid, Attachment attachment)
         {
-
-            await Task.Run(async () =>
+            if (NetworkCheck.IsInternet())
+            {
+                await Task.Run(async () =>
             {
                 try
                 {
@@ -490,8 +491,13 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                 }
             });
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
 
-        }
+            }
 
 
         #endregion

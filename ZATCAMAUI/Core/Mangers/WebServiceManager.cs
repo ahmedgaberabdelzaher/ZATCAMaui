@@ -979,7 +979,6 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<GenerateCaptchaGUID> GAZTCaptchaAndGUID(GetCaptcha readCaptcha)
         {
-
             if (NetworkCheck.IsInternet())
             {
                 try
@@ -5842,7 +5841,6 @@ namespace ZATCAMAUI.Core.Mangers
 
 
         public static async Task<CancelPaymentResponse> GAZTCancelPayment(string GUID, string type)
-
         {
 
             CancelPaymentResponse paymentResponse = null;
@@ -6032,17 +6030,11 @@ namespace ZATCAMAUI.Core.Mangers
         }
 
 
-
-
-
         public static async Task<ValidatePaymentResponse> GAZTValidateMyBillsPayment(string fbNum, string TIN, string devicetype, string sadadNo, string paymentType)
-
         {
-
             ValidatePaymentResponse paymentResponse = null;
 
             if (NetworkCheck.IsInternet())
-
             {
 
                 DateTime currentDate = DateTime.Now;
@@ -6235,10 +6227,6 @@ namespace ZATCAMAUI.Core.Mangers
             return paymentResponse;
 
         }
-
-
-
-
 
         public static async Task<MadaPaymentResponse> GAZTUpdateMadaPaymentDetails(string caseGuid, string devicetype)
         {
@@ -7115,8 +7103,6 @@ namespace ZATCAMAUI.Core.Mangers
             {
                 try
                 {
-
-
                     string LangZ = WebServiceManager.GetLangZParameterAREN();
                     String url = ZATCAConstants.TaxpayervatgoodsAmrgin + "?TIN=" + App.TP.TIN + "&formBundleGUID=" + App.LoginDataRetrieved.FbGuid;
                     var uri = new Uri(url);
@@ -7534,94 +7520,102 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<ObservableCollection<MyBills>> GetUserBills(string Tin, string lang)
         {
-            ObservableCollection<MyBills> myBills = new ObservableCollection<MyBills>();
-            string NewToken = string.Empty;
-            string BillResponse = string.Empty;
-            // MyBillsResponse myBillsResponse = null;
-            try
+            if (NetworkCheck.IsInternet())
             {
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("X-Session-Language", lang);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                String url = ZATCAConstants.GetMyBills + App.TP.TIN;
-                HttpResponseMessage UpdatePWDResponse = await client.GetAsync(url);
 
-                if (UpdatePWDResponse != null)
+                ObservableCollection<MyBills> myBills = new ObservableCollection<MyBills>();
+                string NewToken = string.Empty;
+                string BillResponse = string.Empty;
+                // MyBillsResponse myBillsResponse = null;
+                try
                 {
-                    if (UpdatePWDResponse.StatusCode == HttpStatusCode.Unauthorized)
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.GetMyBills + App.TP.TIN;
+                    HttpResponseMessage UpdatePWDResponse = await client.GetAsync(url);
+
+                    if (UpdatePWDResponse != null)
                     {
-                        App.IsSessionExpired = true;
-                        return null;
-                    }
-
-
-                    if (UpdatePWDResponse.Headers != null)
-                    {
-                        HttpHeaders headers = UpdatePWDResponse.Headers;
-                        IEnumerable<string> values;
-
-
-
-                        if (headers.TryGetValues("token", out values)) { NewToken = values.First(); }
-
-
-
-                        if ((!string.IsNullOrEmpty(NewToken)))
+                        if (UpdatePWDResponse.StatusCode == HttpStatusCode.Unauthorized)
                         {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
+
+                        if (UpdatePWDResponse.Headers != null)
+                        {
+                            HttpHeaders headers = UpdatePWDResponse.Headers;
+                            IEnumerable<string> values;
+
+
+
+                            if (headers.TryGetValues("token", out values)) { NewToken = values.First(); }
+
+
+
+                            if ((!string.IsNullOrEmpty(NewToken)))
                             {
-                                App.IsSessionExpired = true;
-                                return null;
+                                if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                                {
+                                    App.IsSessionExpired = true;
+                                    return null;
+                                }
+                                App.Token = NewToken;
                             }
-                            App.Token = NewToken;
+
+
+
+                            BillResponse = await UpdatePWDResponse.Content.ReadAsStringAsync();
+                            BillResponse = JObject.Parse(BillResponse)["data"].ToString();
+                            if (string.IsNullOrEmpty(BillResponse) != true)
+                            {
+                                myBills = JsonConvert.DeserializeObject<ObservableCollection<MyBills>>(BillResponse);
+                            }
+                            return myBills;
                         }
-
-
-
-                        BillResponse = await UpdatePWDResponse.Content.ReadAsStringAsync();
-                        BillResponse = JObject.Parse(BillResponse)["data"].ToString();
-                        if (string.IsNullOrEmpty(BillResponse) != true)
-                        {
-                            myBills = JsonConvert.DeserializeObject<ObservableCollection<MyBills>>(BillResponse);
-                        }
-                        return myBills;
                     }
+                    else
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+
+
+
                 }
-                else
-                    throw new Exception(AppResources.NetworkConnectivityIssue);
-
-
-
-            }
-            catch (Exception ex)
-            {
-
-
-                System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
-
-
-
-                if (!string.IsNullOrEmpty(BillResponse))
+                catch (Exception ex)
                 {
-                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(BillResponse);
-                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+
+
+                    System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
+
+
+
+                    if (!string.IsNullOrEmpty(BillResponse))
                     {
-                        string errorMessage = string.Empty;
-                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(BillResponse);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            string errorMessage = string.Empty;
+                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
 
 
-                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                        errorMessage = WithReplacedString;
-                        throw new Exception(errorMessage);
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            errorMessage = WithReplacedString;
+                            throw new Exception(errorMessage);
+                        }
                     }
                 }
+                return myBills;
             }
-            return myBills;
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
         }
         public static async Task<HttpResponseMessage> ResendToken(ResentTokenRequestModel model)
         {
