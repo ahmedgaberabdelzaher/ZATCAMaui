@@ -1533,7 +1533,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("BackArrowVisible");
             }
         }
-        
+
         private bool _oneStepBackArrowVisible = true;
         public bool oneStepBackArrowVisible
         {
@@ -4128,13 +4128,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 string MessageForTheUser = AppResources.Somethingwentwrong;
-
+                if (ex is InternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else
+                {
+                    IsVerifyOTPEnabled = true;
+                }
                 IsLoading = false;
-                IsVerifyOTPEnabled = true;
-
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
 

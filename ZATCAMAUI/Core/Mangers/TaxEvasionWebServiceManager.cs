@@ -163,8 +163,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     if (errorReponseModel.Data.Contains("Invalid code") || errorReponseModel.Data.Contains("«·—„“ €Ì— ’ÕÌÕ"))
                     {
@@ -227,8 +227,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
                 }
@@ -281,8 +281,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
                 }
@@ -328,8 +328,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
                 }
@@ -389,8 +389,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -449,8 +449,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -540,8 +540,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
                 }
@@ -609,8 +609,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -689,19 +689,19 @@ namespace ZATCAMAUI.Core.Mangers
                     return SignUpCityList;
                 }
 
-                catch (JsonReaderException )
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException )
+                catch (HttpRequestException)
                 {
                     return null;
                 }
-                catch (GAZTSessionExpiredException )
+                catch (GAZTSessionExpiredException)
                 {
                     return null;
                 }
-                catch (GAZTException )
+                catch (GAZTException)
                 {
                     return null;
                 }
@@ -786,19 +786,19 @@ namespace ZATCAMAUI.Core.Mangers
                     return SignUpCityList;
                 }
 
-                catch (JsonReaderException )
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException )
+                catch (HttpRequestException)
                 {
                     return null;
                 }
-                catch (GAZTSessionExpiredException )
+                catch (GAZTSessionExpiredException)
                 {
                     return null;
                 }
-                catch (GAZTException )
+                catch (GAZTException)
                 {
                     return null;
                 }
@@ -808,8 +808,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -874,12 +874,12 @@ namespace ZATCAMAUI.Core.Mangers
                     return SignUpCityList;
                 }
 
-                catch (JsonReaderException )
+                catch (JsonReaderException)
 
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException )
+                catch (HttpRequestException)
 
                 {
 
@@ -887,7 +887,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (GAZTSessionExpiredException )
+                catch (GAZTSessionExpiredException)
 
                 {
 
@@ -895,7 +895,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (GAZTException )
+                catch (GAZTException)
 
                 {
 
@@ -903,7 +903,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (Exception )
+                catch (Exception)
 
                 {
                     throw new GAZTNetworkConnectivityIssueException();
@@ -1131,20 +1131,36 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<String> VatSignUP(CreateVatSignUPRequest createVatSignUPRequest)
         {
-            HttpClient client = new HttpClient(App.httpClientHandler);
-            string lang = WebServiceManager.GetLangZParameterAREN();
-            string url = ZATCAConstants.VatSignUPURL; // "https://test-api.zatca.gov.sa/test/third-party/v1/vat-signup/cases";
-          
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-            client.DefaultRequestHeaders.Add("X-Session-Language", lang);
-            client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
-            client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+            if (NetworkCheck.IsInternet())
+            {
 
-            var serilized = JsonConvert.SerializeObject(createVatSignUPRequest);
-            HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-            HttpResponseMessage res = await client.PostAsync(url, contentPost);
-            var detailJson = res.Content.ReadAsStringAsync().Result;
-            return detailJson;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    string lang = WebServiceManager.GetLangZParameterAREN();
+                    string url = ZATCAConstants.VatSignUPURL; // "https://test-api.zatca.gov.sa/test/third-party/v1/vat-signup/cases";
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+
+                    var serilized = JsonConvert.SerializeObject(createVatSignUPRequest);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(url, contentPost);
+                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                    return detailJson;
+
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
 
         }
 

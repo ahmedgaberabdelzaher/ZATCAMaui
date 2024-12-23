@@ -3449,7 +3449,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             if (DefaultSecurity == 0)
             {
-               EnableSadadSecurityView();
+                EnableSadadSecurityView();
             }
             else if (DefaultSecurity == 1)
             {
@@ -4165,7 +4165,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     await Application.Current.MainPage.Navigation.PushAsync(new VatReviewSuccessPageView(modelVATReview));
                 }
-                
+
             }
             catch (InternetException ex)
             {
@@ -4760,7 +4760,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             if (genericPickerModel.PickerId == PickerEnum.IDType.ToString())
             {
                 IDTypePickerModel = genericPickerModel;
-              await  updateIdTypePicker();
+                await updateIdTypePicker();
             }
             else if (genericPickerModel.PickerId == PickerEnum.ReviewReason.ToString())
             {
@@ -4782,7 +4782,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 ApplicationRefNumber = ApplicationRefPickerModel.SelectedValue;
 
                 ResetDataAfterAppRefNumPicked();
-               await setDataBasedOnAppRefNum(ApplicationRefPickerModel.SelectedValue);
+                await setDataBasedOnAppRefNum(ApplicationRefPickerModel.SelectedValue);
 
 
             }
@@ -5610,20 +5610,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public async Task OpenAttachment(Attachment attachment)
         {
-            IsLoading = true;
-            if (attachment.FileExtn.Equals("PDF") || attachment.FileExtn.Equals("pdf"))
+            try
             {
-                if (attachment.DocUrl != null)
+                IsLoading = true;
+                if (attachment.FileExtn.Equals("PDF") || attachment.FileExtn.Equals("pdf"))
                 {
-                    await _navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    if (attachment.DocUrl != null)
+                    {
+                        await _navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    }
                 }
+                else
+                {
+                    await GetVATReviewWebServiceManager.email(attachment.Doguid, attachment);
+                }
+
+                IsLoading = false;
+
             }
-            else
+            catch (Exception gex)
             {
-                await GetVATReviewWebServiceManager.email(attachment.Doguid, attachment);
+                if (gex is InternetException)
+                {
+                    IsLoading = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                }
+                IsLoading = false;
             }
 
-            IsLoading = false;
 
         }
 
@@ -5653,19 +5667,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             if (App.selectedVATItem != "")
             {
 
-             await   MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc, continueString: AppResources.CRContinue, isEditable: true,
-           _dialogType: InstructionsBottomPopUpViewModel.DialogType
-               .Instructions));
+                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc, continueString: AppResources.CRContinue, isEditable: true,
+              _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                  .Instructions));
 
 
             }
             else
             {
-              await  MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
-                 instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc,
-                 continueString: AppResources.CRContinue,
-                 _dialogType: InstructionsBottomPopUpViewModel.DialogType
-                     .Instructions));
+                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
+                   instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc,
+                   continueString: AppResources.CRContinue,
+                   _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                       .Instructions));
             }
         }
 
@@ -6022,8 +6036,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     else
                     {
                         IsLoading = false;
-                       await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
-                                 AppResources.Information);
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
+                                  AppResources.Information);
                         _navigationService.GoBack();
                     }
                     IsLoading = false;
@@ -6049,7 +6063,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
-            catch (Exception )
+            catch (Exception)
             {
                 IsLoading = false;
                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);

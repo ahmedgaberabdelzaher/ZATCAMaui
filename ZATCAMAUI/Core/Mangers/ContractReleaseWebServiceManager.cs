@@ -208,47 +208,54 @@ namespace ZATCAMAUI.Core.Mangers
 
         public async static Task<DATAPowerBaseResponseResult<CotractResponse>> GAZTSubmitContractReleaseRequestData(ContractReleaseFormRequest contractReleaseFormData)
         {
-            string _contractReleasesubmitResponse = string.Empty;
-            try
+            if (NetworkCheck.IsInternet())
             {
-                string LangZ = WebServiceManager.GetLangZParameterAREN();
-                string url = ZATCAConstants.ContractReleaseSubmitUrl;
-                var uri = new Uri(url);
-
-                string deviceOs = DeviceInfo.Platform.ToString();
-                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
-                string deviceModel = DeviceInfo.Model;
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("X-Session-Language", LangZ);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
-                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
-                client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
-                client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
-                client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                var serilized = JsonConvert.SerializeObject(contractReleaseFormData.d);
-                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
-                HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                _contractReleasesubmitResponse = await res.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<CotractResponse>>(_contractReleasesubmitResponse);
-                if (result.result == null)
+                string _contractReleasesubmitResponse = string.Empty;
+                try
                 {
-                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_contractReleasesubmitResponse);
-                    throw new GAZTVATRegistrationInProcessException(errorMessage);
+                    string LangZ = WebServiceManager.GetLangZParameterAREN();
+                    string url = ZATCAConstants.ContractReleaseSubmitUrl;
+                    var uri = new Uri(url);
+
+                    string deviceOs = DeviceInfo.Platform.ToString();
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DeviceInfo.Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", LangZ);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var serilized = JsonConvert.SerializeObject(contractReleaseFormData.d);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    _contractReleasesubmitResponse = await res.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<CotractResponse>>(_contractReleasesubmitResponse);
+                    if (result.result == null)
+                    {
+                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_contractReleasesubmitResponse);
+                        throw new GAZTVATRegistrationInProcessException(errorMessage);
+                    }
+                    return result;
                 }
-                return result;
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
             }
-            catch (GAZTVATRegistrationInProcessException ex)
+            else
             {
-                throw new GAZTVATRegistrationInProcessException(ex.Message);
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
-            catch (Exception)
-            {
-                return null;
+
             }
-          
-        }
 
         public async static Task<ContractReleaseSummaryModel> GAZTGetContractReleaseSummaryData(string taxpayerz, string fbnumz)
         {

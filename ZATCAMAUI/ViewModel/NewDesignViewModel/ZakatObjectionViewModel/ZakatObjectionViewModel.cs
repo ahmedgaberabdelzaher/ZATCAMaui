@@ -15,6 +15,7 @@ using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.ZakatObjection;
 using ZATCAMAUI.Core.Interfaces;
 using static ZATCAMAUI.Models.ZakatObjectionsModel.ZakatObjectionWithDrawListModel;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 {
@@ -1022,14 +1023,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     {
                         await GetVATReviewWebServiceManager.email(attachment.Doguid, attachment);
                     }
-
-
-
                     IsLoading = false;
                 }
-                catch (Exception)
+                catch (Exception gex)
                 {
-
+                     if (gex is InternetException)
+                    {
+                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                    }
                     IsLoading = false;
                 }
             });

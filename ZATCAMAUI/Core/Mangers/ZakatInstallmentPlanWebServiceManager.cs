@@ -445,8 +445,6 @@ namespace ZATCAMAUI.Core.Mangers
 
         public async static Task<ZakatInstalmentPlanResponse> SaveZakatInstalmentData(ZakatInstalmentPlanRequest _zakatInstalmentDetails)
         {
-
-
             if (NetworkCheck.IsInternet())
             {
                 try
@@ -613,8 +611,6 @@ namespace ZATCAMAUI.Core.Mangers
 
         public async static Task<ZakatInstalmentPlanRevokeResponse> SaveZakatInstalmentRevokeData(ZakatInstalmentPlanRevokeRequest _zakatInstalmentDetails)
         {
-
-
             if (NetworkCheck.IsInternet())
             {
                 try

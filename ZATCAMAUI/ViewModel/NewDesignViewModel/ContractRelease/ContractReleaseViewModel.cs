@@ -2060,6 +2060,14 @@ public class ContractReleaseViewModel : BaseViewModel
             isSubmitted = false;
             return false;
         }
+
+        catch (InternetException ex)
+        {
+            IsLoading = false;
+
+            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+            return false;
+        }
         catch (GAZTVATRegistrationInProcessException ex)
         {
             IsLoading = false;

@@ -86,7 +86,6 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<ZakatObjectionWithDrawListModelClass> GAZTGetZakatWithDrawList()
         {
-
             ZakatObjectionWithDrawListModelClass _zakatObjectionWithDrawListModel = new ZakatObjectionWithDrawListModelClass();
             if (NetworkCheck.IsInternet())
             {
