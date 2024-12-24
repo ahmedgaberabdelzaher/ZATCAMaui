@@ -404,7 +404,7 @@
                             StrokeShape="RoundRectangle 10,10,10,10"
                             VerticalOptions="StartAndExpand">
 
-                            <StackLayout Spacing="10">
+                            <VerticalStackLayout Spacing="10">
 
                                 <Label
                                     Margin="0"
@@ -418,6 +418,7 @@
                                 <Label
                                     HorizontalOptions="Start"
                                     HorizontalTextAlignment="Start"
+                                    FontFamily="{StaticResource SomarBold}"
                                     Style="{StaticResource BodyLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.Productvalue}" />
 
@@ -439,14 +440,19 @@
 
                                 <Label
                                     HorizontalOptions="Start"
+                                    FontFamily="{StaticResource SomarBold}"
                                     HorizontalTextAlignment="Start"
                                     Style="{StaticResource BodyLabelGrey}">
 
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
+                                            <Span Style="{StaticResource BodyLabelGrey}"
+                                                  FontFamily="{StaticResource SomarBold}"
+                                                  Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
                                             <Span Text=" " />
-                                            <Span Style="{StaticResource BodyLabelBlack}" Text="{Binding CustomFeesPercentage}" />
+                                            <Span Style="{StaticResource BodyLabelGrey}"
+                                                  FontFamily="{StaticResource SomarBold}"
+                                                  Text="{Binding CustomFeesPercentage}" />
                                         </FormattedString>
                                     </Label.FormattedText>
 
@@ -459,6 +465,13 @@
                                     HorizontalTextAlignment="Start"
                                     Style="{StaticResource BodyLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.CustomsdeclarationDisclaimer}" />
+
+                                <Label
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{Binding CustomFeesCalculate}" />
 
                                 <Label
                                     HorizontalOptions="Start"
@@ -474,20 +487,21 @@
 
                                 </Label>
 
-                                <Label
-                                    FontSize="12"
-                                    HorizontalOptions="Start"
-                                    HorizontalTextAlignment="Start"
-                                    Style="{StaticResource BodyLabelGrey}"
-                                    Text="{Binding CustomFeesCalculate}" />
+                                
 
                                 <BoxView BackgroundColor="{StaticResource Primary}" HeightRequest="1" />
 
                                 <Label
                                     HorizontalOptions="Start"
                                     HorizontalTextAlignment="Start"
+                                    FontFamily="{StaticResource SomarBold}"
                                     Style="{StaticResource BodyLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.Customsdeclarationissuancefees}" />
+
+                                <!--Extra fees Disclamier-->
+                                <Label Style="{StaticResource BodyLabelGrey}"
+                                        FontSize="12"
+                                        Text="{x:Static ResourceManager:AppResources.ExtraFeesDescription}" />
 
                                 <Label
                                     HorizontalOptions="Start"
@@ -501,6 +515,8 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+
+                                
 
                                 <BoxView BackgroundColor="{StaticResource Primary}" HeightRequest="1" />
 
@@ -554,9 +570,13 @@
 
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
+                                            <Span Style="{StaticResource BodyLabelGrey}"
+                                                  FontFamily="{StaticResource SomarBold}"
+                                                  Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
                                             <Span Text=" " />
-                                            <Span Style="{StaticResource BodyLabelGrey}" Text="{Binding VatPercenntage}" />
+                                            <Span Style="{StaticResource BodyLabelGrey}"
+                                                  FontFamily="{StaticResource SomarBold}"
+                                                  Text="{Binding VatPercenntage}" />
                                         </FormattedString>
                                     </Label.FormattedText>
 
@@ -571,6 +591,13 @@
                                     Text="{x:Static ResourceManager:AppResources.VATCertificatesDisclaimer}" />
 
                                 <Label
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{Binding VatCalculte}" />
+
+                                <Label
                                     HorizontalOptions="Start"
                                     HorizontalTextAlignment="Start"
                                     Style="{StaticResource BodyLabelBlack}">
@@ -583,16 +610,11 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <Label
-                                    FontSize="12"
-                                    HorizontalOptions="Start"
-                                    HorizontalTextAlignment="Start"
-                                    Style="{StaticResource BodyLabelGrey}"
-                                    Text="{Binding VatCalculte}" />
+                                
 
-                                <BoxView BackgroundColor="{StaticResource Primary}" HeightRequest="1" />
+                               
 
-                                <Grid Margin="0">
+                                <Grid Margin="0,10">
 
                                     <Border
                                         Margin="-16"
@@ -606,6 +628,7 @@
                                         <StackLayout Orientation="Horizontal">
                                             <Label
                                                 FontSize="20"
+                                                FontFamily="{StaticResource SomarBold}"
                                                 Text="{x:Static ResourceManager:AppResources.Total2}"
                                                 TextColor="#002447" />
 
@@ -630,7 +653,7 @@
 
                                 </Grid>
 
-                            </StackLayout>
+                            </VerticalStackLayout>
 
                         </Border>
 

@@ -63,10 +63,17 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
         <CreatePackage>false</CreatePackage>
-        <CodesignProvision>Automatic</CodesignProvision>
+        <CodesignProvision></CodesignProvision>
         <CodesignKey>iPhone Developer</CodesignKey>
         <CodesignEntitlements></CodesignEntitlements>
         <MtouchLink>None</MtouchLink>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+      <AndroidKeyStore>True</AndroidKeyStore>
+      <AndroidSigningKeyStore>/Users/ahmed/Documents/Zatca Docs/KeyStoreMaui/z-mobile.keystore</AndroidSigningKeyStore>
+      <AndroidSigningStorePass>zatca@123</AndroidSigningStorePass>
+      <AndroidSigningKeyAlias>z-mobile</AndroidSigningKeyAlias>
+      <AndroidSigningKeyPass>zatca@123</AndroidSigningKeyPass>
     </PropertyGroup>
     <ItemGroup>
         <Compile Remove="KeyStore\**" />
@@ -246,6 +253,12 @@
         </Compile>
         <Compile Update="AppResources.Designer.cs">
           <DependentUpon>AppResources.resx</DependentUpon>
+        </Compile>
+        <Compile Update="AppResources.Designer.cs">
+          <DependentUpon>AppResources.resx</DependentUpon>
+        </Compile>
+        <Compile Update="AppResources.ar.Designer.cs">
+          <DependentUpon>AppResources.ar.resx</DependentUpon>
         </Compile>
     </ItemGroup>
     <ItemGroup>
