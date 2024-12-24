@@ -35,6 +35,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         double productValue;
         public double ProductValue { get { return productValue; } set { productValue = value; OnPropertyChanged(); } }
 
+        string extraFeesDescription;
+        public string ExtraFeesDescription { get { return extraFeesDescription; } set { extraFeesDescription = value; OnPropertyChanged(); } }
+
+
         public CustomFeesFormViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices,INativeNafath nativeNafath) : base(navigationService, dialogService, declerationServices,nativeNafath)
         {
 
@@ -244,7 +248,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     var data = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<FeesCalculatorResponse>>(conent);
                     if (data.result != null)
                     {
+
                         FeesCalculatorResponse = data.result;
+                        //ExtraFeesDescription = AppResources.Customsdeclarationissuancefees + " = " + FeesCalculatorResponse.extraFeesMinimumValue + " > " + " " + FeesCalculatorResponse.totalPayment + " * " + FeesCalculatorResponse.extraFeesPercentage + " > " + FeesCalculatorResponse.extraFeesMaximumValue;
+
                         if (FeesCalculatorResponse.vat != null && FeesCalculatorResponse.vat > 0)
                         {
                             VatPercenntage = "15%";
@@ -265,12 +272,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             {
 
                                 CustomFeesPercentage = "5%";
-                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty} *5%";
+                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={ProductValue} *5%";
                             }
                         }
                         else
                         {
-                            CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty} * 0%";
+                            CustomFeesCalculate = $"{AppResources.CustomsFees} ={ProductValue} * 0%";
                             CustomFeesPercentage = "";
                         }
                         if (FeesCalculatorResponse.excise != null && FeesCalculatorResponse.excise > 0)
