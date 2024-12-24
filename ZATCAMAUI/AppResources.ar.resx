@@ -10206,8 +10206,11 @@ info@zatca.gov.sa</value>
 	<data name="ProductValueHint" xml:space="preserve">
     <value>أدخل هنا القيمة الإجمالية للسلع</value>
 </data>
-	<data name="Customsdeclarationissuancefees" xml:space="preserve">
+<data name="Customsdeclarationissuancefees" xml:space="preserve">
     <value>رسوم الخدمات الجمركية</value>
+</data>
+<data name="ExtraFeesDescription" xml:space="preserve">
+    <value>رسوم الخدمات الجمركية = قيمة المنتج * 0.0015 حد ادنى 15 ريال بحد اقصى 500 ريال</value>
 </data>
 	<data name="cleared" xml:space="preserve">
     <value>معتمده</value>

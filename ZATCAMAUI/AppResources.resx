@@ -10270,6 +10270,9 @@ Zakat, Tax and Customs Authority
     <data name="Customsdeclarationissuancefees" xml:space="preserve">
         <value>Customs declaration issuance fees</value>
     </data>
+    <data name="ExtraFeesDescription" xml:space="preserve">
+        <value>Customs service fees = Product value * 0.0015 Minimum Value 15 SAR Maximum Value 500 SAR</value>
+    </data>
     <data name="Total2" xml:space="preserve">
         <value>Total</value>
     </data>

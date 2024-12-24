@@ -250,7 +250,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     {
 
                         FeesCalculatorResponse = data.result;
-                        ExtraFeesDescription = AppResources.Customsdeclarationissuancefees + " = " + FeesCalculatorResponse.extraFeesMinimumValue + " > " + " " + FeesCalculatorResponse.totalPayment + " * " + FeesCalculatorResponse.extraFeesPercentage + " > " + FeesCalculatorResponse.extraFeesMaximumValue;
+                        //ExtraFeesDescription = AppResources.Customsdeclarationissuancefees + " = " + FeesCalculatorResponse.extraFeesMinimumValue + " > " + " " + FeesCalculatorResponse.totalPayment + " * " + FeesCalculatorResponse.extraFeesPercentage + " > " + FeesCalculatorResponse.extraFeesMaximumValue;
 
                         if (FeesCalculatorResponse.vat != null && FeesCalculatorResponse.vat > 0)
                         {
@@ -272,12 +272,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             {
 
                                 CustomFeesPercentage = "5%";
-                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty} *5%";
+                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={ProductValue} *5%";
                             }
                         }
                         else
                         {
-                            CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty} * 0%";
+                            CustomFeesCalculate = $"{AppResources.CustomsFees} ={ProductValue} * 0%";
                             CustomFeesPercentage = "";
                         }
                         if (FeesCalculatorResponse.excise != null && FeesCalculatorResponse.excise > 0)
