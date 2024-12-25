@@ -4,8 +4,9 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
-    BackgroundColor="#88000000"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    BackgroundColor="#88000000"
+    x:Name="page"
     FlowDirection="{Binding AppDirection}">
     <Mopups:PopupPage.Animation>
         <animations:ScaleAnimation
@@ -31,12 +32,12 @@
                 VerticalOptions="Start"
                 VerticalScrollBarVisibility="Always">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout  Orientation="Vertical"/>
+                    <LinearItemsLayout Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
 
                     <DataTemplate>
-                        <StackLayout>
+                        <StackLayout FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                             <Label
                                 Padding="10"
                                 FontFamily="{StaticResource SomarSemiBold}"

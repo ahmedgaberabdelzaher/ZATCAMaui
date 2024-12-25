@@ -501,7 +501,11 @@
                                 <!--Extra fees Disclamier-->
                                 <Label Style="{StaticResource BodyLabelGrey}"
                                         FontSize="12"
+<<<<<<< HEAD
                                         Text="{x:Static ResourceManager:AppResources.ExtraFeesDescription}" />
+=======
+                                        Text="{Binding ExtraFeesDescription}" />
+>>>>>>> qa/CR-8211
 
                                 <Label
                                     HorizontalOptions="Start"
